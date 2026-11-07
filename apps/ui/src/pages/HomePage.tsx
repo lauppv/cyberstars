@@ -255,7 +255,7 @@ export function HomePage() {
                   recent={recentLessons}
                 />
               )}
-              <StatsCard streak={streak} />
+              <StatsCard streak={streak} loading={progressLoading} />
             </div>
 
             {/* ── Today's picks and Laniakea ── */}
@@ -468,15 +468,20 @@ function ContinueCard({
 
 // The level as a ring that fills toward the next one, its title and the XP
 // still to go, then the days in a row, the lessons done and the badges on one
-// line; the whole picture is on Progress
-function StatsCard({ streak }: { streak: number | null }) {
+// line; the whole picture is on Progress. Until the progress is in it shows
+// dashes, not the level 1 and zeros it would count from nothing
+function StatsCard({ streak, loading }: { streak: number | null; loading: boolean }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const g = useGamification();
   const stats = [
     { icon: Flame, value: streak ?? '-', label: t('profile.streak') },
-    { icon: BookCheck, value: g.totalCompleted, label: t('profile.lessonsDone') },
-    { icon: Award, value: g.badges.filter((b) => b.earned).length, label: t('profile.badges') },
+    { icon: BookCheck, value: loading ? '-' : g.totalCompleted, label: t('profile.lessonsDone') },
+    {
+      icon: Award,
+      value: loading ? '-' : g.badges.filter((b) => b.earned).length,
+      label: t('profile.badges'),
+    },
   ];
   return (
     <div className="p-5 panel rounded-[var(--radius-lg)] flex flex-col">
@@ -495,15 +500,19 @@ function StatsCard({ streak }: { streak: number | null }) {
         </button>
       </div>
       <div className="flex-1 flex items-center gap-4 py-2">
-        <LevelRing level={g.xp.level} pct={g.xp.xpPct} />
+        <LevelRing level={loading ? null : g.xp.level} pct={loading ? 0 : g.xp.xpPct} />
         <div className="min-w-0">
-          <div className="text-[16px] font-bold tracking-[-0.2px] truncate">{t(g.xp.titleKey)}</div>
+          <div className="text-[16px] font-bold tracking-[-0.2px] truncate">
+            {loading ? '-' : t(g.xp.titleKey)}
+          </div>
           <div className="mt-0.5 text-[12px] text-[var(--text3)]">
-            {t('profile.levelProgress', {
-              current: g.xp.xpIntoLevel,
-              needed: g.xp.xpForLevelSpan,
-              next: g.xp.level + 1,
-            })}
+            {loading
+              ? t('common.loading')
+              : t('profile.levelProgress', {
+                  current: g.xp.xpIntoLevel,
+                  needed: g.xp.xpForLevelSpan,
+                  next: g.xp.level + 1,
+                })}
           </div>
         </div>
       </div>
@@ -528,8 +537,8 @@ function StatsCard({ streak }: { streak: number | null }) {
 }
 
 // A ring around the level's number, filled as far as the student is toward
-// the next level
-function LevelRing({ level, pct }: { level: number; pct: number }) {
+// the next level; empty, with a dash, while the level isn't known yet
+function LevelRing({ level, pct }: { level: number | null; pct: number }) {
   const { t } = useTranslation();
   const r = 27;
   const c = 2 * Math.PI * r;
@@ -537,7 +546,9 @@ function LevelRing({ level, pct }: { level: number; pct: number }) {
     <div
       className="relative w-[72px] h-[72px] flex-shrink-0"
       role="img"
-      aria-label={`${t('level.label', { n: level })}, ${pct}%`}
+      aria-label={
+        level === null ? t('common.loading') : `${t('level.label', { n: level })}, ${pct}%`
+      }
     >
       <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90" aria-hidden="true">
         <circle cx="32" cy="32" r={r} fill="none" stroke="var(--surface2)" strokeWidth="5" />
@@ -558,7 +569,7 @@ function LevelRing({ level, pct }: { level: number; pct: number }) {
         className="absolute inset-0 flex flex-col items-center justify-center"
         aria-hidden="true"
       >
-        <span className="text-[20px] font-bold leading-none">{level}</span>
+        <span className="text-[20px] font-bold leading-none">{level ?? '-'}</span>
         <span className="mt-0.5 text-[8px] font-semibold tracking-[1px] text-[var(--text3)] uppercase">
           {t('home.levelShort')}
         </span>

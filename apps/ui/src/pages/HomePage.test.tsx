@@ -218,6 +218,33 @@ describe('HomePage', () => {
     ).toBeInTheDocument();
   });
 
+  it('shows the level only once the progress is in', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: true,
+      refresh: vi.fn(),
+    });
+    const { rerender } = renderPage();
+    expect(screen.queryByRole('img', { name: 'Level 1, 40%' })).toBeNull();
+    expect(screen.queryByText('Cadet')).toBeNull();
+
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    rerender(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole('img', { name: 'Level 1, 40%' })).toBeInTheDocument();
+    expect(screen.getByText('Cadet')).toBeInTheDocument();
+  });
+
   it('welcomes a new account, not back, on its first day', () => {
     mockUseAuth.mockReturnValue({
       ...loggedInAuth,
