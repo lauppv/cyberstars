@@ -14,6 +14,7 @@ import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
 import { useAuth } from '../context/AuthContext';
+import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useResizeSplit } from '../hooks/useResizeSplit';
 import { courseLabel, courseMeta } from '../constants/courses';
@@ -224,7 +225,8 @@ function ProjectView({ project }: { project: Project }) {
   const [failed, setFailed] = useState(false);
   const [activeTab, setActiveTab] = useState<'project' | 'workspace'>('project');
   const [code, setCode] = useState(() => readCode(project));
-  const { output, isRunning, execute, stop, sendInput } = useCodeExecution();
+  const { notifyRunComplete } = useGuestSignupPrompt();
+  const { output, isRunning, execute, stop, sendInput } = useCodeExecution(notifyRunComplete);
   const bandRef = useRef<HTMLDivElement>(null);
   const workspaceRef = useRef<HTMLDivElement>(null);
   const hSplit = useResizeSplit({
