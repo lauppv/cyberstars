@@ -618,7 +618,6 @@
     "loadFailed": "Progresul tău nu s-a putut încărca, așa că unele cursuri pot părea neîncepute."
   },
   "algoList": {
-    "courseNotFound": "Cursul nu a fost găsit.",
     "challenges_one": "{{count}} provocare",
     "challenges_other": "{{count}} de provocări",
     "filters": {
@@ -633,7 +632,12 @@
       "hard": "greu"
     },
     "noMatch": "Nicio provocare nu corespunde acestui filtru.",
-    "challenges_few": "{{count}} provocări"
+    "challenges_few": "{{count}} provocări",
+    "viewChallenges": "Vezi provocările",
+    "challengesLabel": "Provocări",
+    "challengeNoun_one": "provocare",
+    "challengeNoun_few": "provocări",
+    "challengeNoun_other": "de provocări"
   },
   "auth": {
     "showPassword": "Arată parola",

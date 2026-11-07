@@ -606,7 +606,6 @@
     "loadFailed": "Your progress couldn't load, so some courses may look not started."
   },
   "algoList": {
-    "courseNotFound": "Course not found.",
     "challenges_one": "{{count}} challenge",
     "challenges_other": "{{count}} challenges",
     "filters": {
@@ -620,7 +619,11 @@
       "medium": "medium",
       "hard": "hard"
     },
-    "noMatch": "No challenges match this filter."
+    "noMatch": "No challenges match this filter.",
+    "viewChallenges": "View Challenges",
+    "challengesLabel": "Challenges",
+    "challengeNoun_one": "challenge",
+    "challengeNoun_other": "challenges"
   },
   "auth": {
     "showPassword": "Show password",

@@ -38,9 +38,6 @@ const CoursesPage = lazy(() =>
 const AlgorithmsPage = lazy(() =>
   import('./pages/AlgorithmsPage').then((m) => ({ default: m.AlgorithmsPage })),
 );
-const AlgorithmListPage = lazy(() =>
-  import('./pages/AlgorithmListPage').then((m) => ({ default: m.AlgorithmListPage })),
-);
 const ProjectsPage = lazy(() =>
   import('./pages/ProjectsPage').then((m) => ({ default: m.ProjectsPage })),
 );
@@ -141,7 +138,7 @@ function App() {
                                   <Route path="/courses" element={<CoursesPage />} />
                                   <Route path="/courses/:course" element={<CoursesPage />} />
                                   <Route path="/algorithms" element={<AlgorithmsPage />} />
-                                  <Route path="/algorithms/:lang" element={<AlgorithmListPage />} />
+                                  <Route path="/algorithms/:lang" element={<AlgorithmsPage />} />
                                   <Route path="/projects" element={<ProjectsPage />} />
                                   <Route path="/projects/:language" element={<ProjectListPage />} />
                                   <Route

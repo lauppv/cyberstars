@@ -1,69 +1,174 @@
-import type { CSSProperties } from 'react';
-import { useNavigate } from 'react-router';
+import { useCallback, useMemo, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
 import { PageHeader } from '../components/layout/PageHeader';
-import { ALGO_COURSE_KEYS, isBeta, xpForCourse } from '@cyberstars/shared/constants';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { SetCard } from '../components/sets/SetCard';
+import { SetDrawer } from '../components/sets/SetDrawer';
+import { SetGrid } from '../components/sets/SetGrid';
+import { SetRow } from '../components/sets/SetRow';
+import { continueSlug } from '../components/sets/continueSlug';
+import { DifficultyFilters } from '../components/ui/DifficultyFilters';
+import { type Difficulty, type DifficultyFilter } from '../constants/difficulty';
+import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
-import { courseLabel, courseMeta, courseWash } from '../constants/courses';
-import { BetaBadge } from '../components/ui/BetaBadge';
-import { CourseMark } from '../components/ui/CourseMark';
+import { useAllProgress } from '../context/ProgressContext';
+import { courseLabel, courseTitle } from '../constants/courses';
+import {
+  ALGO_COURSE_KEYS,
+  isBeta,
+  progressPct,
+  xpForCourse,
+  xpForLesson,
+} from '@cyberstars/shared/constants';
+import type { Course } from '@cyberstars/shared/lesson';
+import type { CourseProgress } from '@cyberstars/shared/progress';
 
-const LANGS = ALGO_COURSE_KEYS.map((key) => {
-  const m = courseMeta(key);
-  return { key, icon: m.icon, color: m.color };
-});
+function parseDifficulty(title: string): { diff: Difficulty; name: string } {
+  const m = title.match(/^(Easy|Medium|Hard)\s*·\s*(.+)$/i);
+  if (!m) return { diff: 'easy', name: title };
+  return { diff: m[1].toLowerCase() as Difficulty, name: m[2] };
+}
 
+// A challenge set's address names its language: /algorithms/python
+const langOf = (key: string) => key.replace(/^algo-/, '');
+
+// A card per challenge set, as Courses has one per course; /algorithms/:lang
+// opens that set's challenges in the drawer over them
 export function AlgorithmsPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { courses } = useCurriculum();
+  const { lang } = useParams<{ lang?: string }>();
+  const { isLoggedIn } = useAuth();
+  const { courses, isLoading: curriculumLoading } = useCurriculum();
+  const { progressMap, isLoading: progressLoading } = useAllProgress();
+
+  const sets = ALGO_COURSE_KEYS.map((key) => courses.find((c) => c.key === key)).filter(
+    (c): c is Course => !!c,
+  );
+  const open = lang ? sets.find((c) => langOf(c.key) === lang) : undefined;
+  const close = useCallback(() => navigate('/algorithms'), [navigate]);
+
+  if (curriculumLoading || (isLoggedIn && progressLoading)) return <PageLoading />;
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8">
+      <PageContainer>
         <PageHeader title={t('nav.algorithms')} subtitle={t('algorithms.subtitle')} />
-        <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
-          {LANGS.map((lang) => {
-            const course = courses.find((c) => c.key === lang.key);
-            const totalXp = course ? xpForCourse(course.lessons.length) : 0;
+        <SetGrid>
+          {sets.map((course) => {
+            const progress = progressMap[course.key];
+            const count = course.lessons.length;
+            const pct = progress ? progressPct(progress.completed, progress.total) : 0;
+            const next = continueSlug(course.lessons, progress?.lessons);
             return (
-              <button
-                key={lang.key}
-                onClick={() => navigate(`/algorithms/${lang.key.replace('algo-', '')}`)}
-                className="text-left panel rounded-xl overflow-hidden hover:border-[var(--course)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004] transition-all cursor-pointer group flex flex-col"
-                style={
-                  { '--course': lang.color, backgroundImage: courseWash(lang.key) } as CSSProperties
+              <SetCard
+                key={course.key}
+                setKey={course.key}
+                title={courseLabel(course.key, t)}
+                beta={isBeta(course.key)}
+                badge={t('common.xpTotal', { xp: xpForCourse(count) })}
+                description={t(`algorithms.desc.${course.key}`)}
+                count={{ n: count, noun: t('algoList.challengeNoun', { count }) }}
+                progress={
+                  progress && progress.completed > 0
+                    ? {
+                        pct,
+                        label: t('progress.solved', {
+                          done: progress.completed,
+                          total: progress.total,
+                        }),
+                      }
+                    : undefined
                 }
-              >
-                <div className="h-1.5 w-full" style={{ background: lang.color }} />
-                <div className="p-6 flex flex-col">
-                  <div className="flex items-center gap-3 mb-4">
-                    <CourseMark courseKey={lang.key} />
-                    <h3 className="flex-1 min-w-0 text-lg font-bold group-hover:text-[var(--accent)] transition truncate">
-                      {courseLabel(lang.key, t)}
-                    </h3>
-                    {isBeta(lang.key) && <BetaBadge />}
-                    {totalXp > 0 && (
-                      <span
-                        className="flex-shrink-0 text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
-                        title={t('common.xpTotal', { xp: totalXp })}
-                      >
-                        {t('common.xpTotal', { xp: totalXp })}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-[13px] text-[var(--text2)] leading-relaxed">
-                    {t(`algorithms.desc.${lang.key}`)}
-                  </p>
-                </div>
-              </button>
+                onContinue={() => next && navigate(`/lesson/${course.key}/${next}`)}
+                onOpen={() => navigate(`/algorithms/${langOf(course.key)}`)}
+                openLabel={t('algoList.viewChallenges')}
+              />
             );
           })}
-        </div>
-      </main>
+        </SetGrid>
+      </PageContainer>
+
+      {open && (
+        <ChallengeDrawer
+          key={open.key}
+          course={open}
+          progress={progressMap[open.key]}
+          onClose={close}
+        />
+      )}
     </div>
+  );
+}
+
+// A set's challenges with the difficulty filters over them
+function ChallengeDrawer({
+  course,
+  progress,
+  onClose,
+}: {
+  course: Course;
+  progress: CourseProgress | undefined;
+  onClose: () => void;
+}) {
+  const { t } = useTranslation();
+  const [filter, setFilter] = useState<DifficultyFilter>('all');
+
+  const challenges = useMemo(() => {
+    const solved = new Set((progress?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug));
+    return course.lessons.map((l, i) => {
+      const { diff, name } = parseDifficulty(l.title);
+      return { ...l, number: i + 1, diff, name, done: solved.has(l.slug) };
+    });
+  }, [course, progress]);
+  const shown = filter === 'all' ? challenges : challenges.filter((c) => c.diff === filter);
+  const count = challenges.length;
+
+  return (
+    <SetDrawer
+      setKey={course.key}
+      title={courseTitle(course.key, t)}
+      beta={isBeta(course.key)}
+      meta={[
+        { text: t('algoList.challenges', { count }) },
+        { text: t('common.xpTotal', { xp: xpForCourse(count) }), accent: true },
+      ]}
+      description={t(`algorithms.desc.${course.key}`)}
+      // Counted on the server, so a solved challenge that left the set still counts
+      progress={
+        progress && progress.completed > 0
+          ? {
+              pct: progressPct(progress.completed, progress.total),
+              label: t('progress.solved', { done: progress.completed, total: progress.total }),
+            }
+          : undefined
+      }
+      label={t('algoList.challengesLabel')}
+      toolbar={<DifficultyFilters value={filter} onChange={setFilter} />}
+      onClose={onClose}
+    >
+      {shown.length === 0 ? (
+        <p className="text-center text-[var(--text3)] text-sm py-6">{t('algoList.noMatch')}</p>
+      ) : (
+        <div className="flex flex-col gap-0.5 pl-1">
+          {shown.map((c, i) => (
+            <SetRow
+              key={c.slug}
+              to={`/lesson/${course.key}/${c.slug}`}
+              number={c.number}
+              title={c.name}
+              done={c.done}
+              difficulty={c.diff}
+              trailing={c.hasTests ? t('common.xpReward', { xp: xpForLesson(c.sortOrder) }) : null}
+              order={i}
+            />
+          ))}
+        </div>
+      )}
+    </SetDrawer>
   );
 }
