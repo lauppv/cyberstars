@@ -11,7 +11,7 @@ The log is `~/logs/access.log`, one request per line. Before anything else, look
 A line looks like this:
 
 ```text
-45.9.148.3 - - [06/Nov/2026:03:12:00] "POST /login HTTP/1.1" 401 120
+81.12.40.7 - - [06/Nov/2026:09:37:25] "GET /menu HTTP/1.1" 200 8240
 ```
 
 It holds, separated by spaces: the visitor's IP address, two dashes, the time in brackets, the request in quotes (the method, the page and the protocol), the status code the server answered and how many bytes it sent. `200` means the page was there, `404` that it wasn't, `401` that a login was refused.
