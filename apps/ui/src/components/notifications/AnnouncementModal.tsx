@@ -26,7 +26,7 @@ export function AnnouncementModal({
   // A portal, so the sticky topbar's stacking can't keep it under the page
   return createPortal(
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 overlay"
       onMouseDown={onClose}
     >
       <div
@@ -34,7 +34,7 @@ export function AnnouncementModal({
         aria-modal="true"
         aria-label={t('notif.announcementTitle')}
         onMouseDown={(e) => e.stopPropagation()}
-        className="w-full max-w-[560px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[560px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
       >
         <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)]">
           <div className="min-w-0">

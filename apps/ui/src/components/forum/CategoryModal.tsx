@@ -67,11 +67,11 @@ export function CategoryModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/65 z-[100] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 overlay z-[100] flex items-center justify-center p-4"
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[520px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[520px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
@@ -155,10 +155,7 @@ export function CategoryModal({
           {error && <div className="text-[13px] text-[var(--error)]">{error}</div>}
 
           <div className="flex items-center justify-end gap-2 pt-1">
-            <button
-              onClick={onClose}
-              className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-            >
+            <button onClick={onClose} className="btn btn-secondary">
               {t('forum.categoryModal.cancel')}
             </button>
             <button

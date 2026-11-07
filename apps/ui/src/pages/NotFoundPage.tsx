@@ -12,10 +12,7 @@ export function NotFoundPage() {
         <div className="panel max-w-[420px] w-full p-6 text-center">
           <h1 className="text-lg font-semibold mb-2">{t('notFound.title')}</h1>
           <p className="text-[13px] text-[var(--text2)] mb-5">{t('notFound.text')}</p>
-          <Link
-            to="/"
-            className="inline-block px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold no-underline hover:brightness-110 transition"
-          >
+          <Link to="/" className="btn btn-primary">
             {t('notFound.home')}
           </Link>
         </div>

@@ -11,6 +11,12 @@
     "almanac": "Almanac",
     "laniakea": "Laniakea"
   },
+  "pages": {
+    "homeTitle": "Welcome back, {{name}}",
+    "homeTitleNoName": "Welcome back",
+    "homeNewTitle": "Welcome, {{name}}",
+    "homeNewTitleNoName": "Welcome"
+  },
   "sidebar": {
     "label": "Main navigation",
     "community": "Community",
@@ -175,9 +181,9 @@
     "continueWhereLeftOff": "Continue where you left off",
     "recentlyAccessed": "Recently accessed",
     "fromAlmanac": "From the Almanac",
-    "viewAll": "View all →",
+    "viewAll": "View all",
     "readTime": "{{time}} read",
-    "readMore": "Read →",
+    "readMore": "Read",
     "activity": "Activity",
     "dayTue": "Tue",
     "dayThu": "Thu",
@@ -198,17 +204,12 @@
     "dayAgo": "{{count}}d ago",
     "lessonOfTheDay": "Lesson of the Day",
     "algoOfTheDay": "Algorithm of the Day",
-    "recommended": "Recommended",
-    "dailyXp": "{{xp}} XP",
-    "dailyBonus": "+{{pct}}%",
-    "continueJourney": "Continue your {{course}} journey with this lesson.",
-    "algoChallengeToday": "Sharpen your skills with today's challenge.",
     "completed": "Completed",
     "completedLessonToday": "You've completed today's lesson.",
     "completedAlgoToday": "You've solved today's challenge.",
     "review": "Review",
-    "startLesson": "Start Lesson →",
-    "solveChallenge": "Solve Challenge →",
+    "startLesson": "Start lesson",
+    "solveChallenge": "Solve challenge",
     "marketing": {
       "title": "Learn to code <1>for free</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
@@ -231,7 +232,9 @@
       "ready_one": "{{count}} planet ready to conquer",
       "ready_other": "{{count}} planets ready to conquer",
       "fly": "Fly to Laniakea"
-    }
+    },
+    "dailyBonusToday": "+{{pct}}% today",
+    "levelShort": "Level"
   },
   "landing": {
     "hero": {
@@ -445,16 +448,18 @@
     "lessons_one": "{{count}} lesson",
     "lessons_other": "{{count}} lessons",
     "loadMore": "Load more",
-    "empty": "No one has earned XP yet. Complete a lesson to claim the top spot!",
+    "empty": "No one has earned XP yet",
     "error": "Could not load the leaderboard. Please try again later.",
-    "place": "Place {{rank}}"
+    "place": "Place {{rank}}",
+    "emptyHint": "Complete a lesson to claim the top spot."
   },
   "messages": {
+    "conversations": "Conversations",
     "title": "Messages",
-    "emptyInbox": "No conversations yet.",
+    "emptyInbox": "No conversations yet",
     "loadFailed": "Your conversations couldn't be loaded.",
     "historyFailed": "This conversation couldn't be loaded.",
-    "selectPrompt": "Select a conversation to start chatting.",
+    "selectPrompt": "Select a conversation",
     "noMessagesYet": "No messages yet",
     "deletedMessage": "Message deleted",
     "youPrefix": "You: ",
@@ -470,7 +475,8 @@
     "loadOlder": "Load older messages",
     "seen": "Seen",
     "sent": "Sent",
-    "actions": "Message actions"
+    "actions": "Message actions",
+    "emptyInboxHint": "Start one from someone's profile or your connections."
   },
   "notif": {
     "title": "Notifications",
@@ -555,14 +561,13 @@
       "algo-c": "C Algorithms",
       "algo-trees-graphs": "Trees and Graphs Algorithms",
       "web": "Web Development"
-    },
-    "subtitle": "Pick a language and learn it by writing real code, right in your browser."
+    }
   },
   "projects": {
-    "subtitle": "Small real programs you build step by step, in the language you're learning. Tick each requirement off as your program does it.",
     "betaHint": "Still being built: more projects for every language are on the way",
     "setTitle": "{{language}} Projects",
     "count": "Projects: {{count}}",
+    "viewProjects": "View Projects",
     "desc": {
       "python": "Programs a small business could use tomorrow, built from input, lists, dictionaries and functions.",
       "c": "Tools close to the machine, built from arrays, strings, structs, pointers and files.",
@@ -591,8 +596,7 @@
       "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
       "algo-c": "C problems close to the machine: arrays, pointers, dynamic memory, a linked list and merge sort, then real concurrency with fork, pipes, threads, mutexes and semaphores.",
       "algo-trees-graphs": "Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them."
-    },
-    "subtitle": "Practise on problems from easy to hard, in the language you're learning."
+    }
   },
   "progress": {
     "courses": "Courses",
@@ -606,7 +610,6 @@
     "loadFailed": "Your progress couldn't load, so some courses may look not started."
   },
   "algoList": {
-    "courseNotFound": "Course not found.",
     "challenges_one": "{{count}} challenge",
     "challenges_other": "{{count}} challenges",
     "filters": {
@@ -620,7 +623,11 @@
       "medium": "medium",
       "hard": "hard"
     },
-    "noMatch": "No challenges match this filter."
+    "noMatch": "No challenges match this filter.",
+    "viewChallenges": "View Challenges",
+    "challengesLabel": "Challenges",
+    "challengeNoun_one": "challenge",
+    "challengeNoun_other": "challenges"
   },
   "auth": {
     "showPassword": "Show password",
@@ -751,9 +758,9 @@
     "submit": "Submit ticket",
     "submitted": "Ticket submitted!",
     "yourTickets": "Your tickets",
-    "noTickets": "You haven't opened any tickets yet.",
+    "noTickets": "You haven't opened any tickets yet",
     "allTickets": "All tickets · Admin",
-    "noTicketsAdmin": "No tickets from anyone yet.",
+    "noTicketsAdmin": "No tickets from anyone yet",
     "types": {
       "BUG": "Bug report",
       "QUESTION": "Question",
@@ -894,7 +901,7 @@
     "cancel": "Cancel",
     "posting": "Posting...",
     "createThread": "Create Thread",
-    "noThreads": "No threads yet. Be the first to post!",
+    "noThreads": "No threads yet",
     "solved": "✓ Solved",
     "loadingThread": "Loading thread...",
     "threadNotFound": "Thread not found.",
@@ -934,7 +941,8 @@
     "viewsLower_one": "view",
     "viewsLower_other": "views",
     "postsCount_one": "{{count}} post",
-    "postsCount_other": "{{count}} posts"
+    "postsCount_other": "{{count}} posts",
+    "noThreadsHint": "Be the first to post."
   },
   "almanac": {
     "categories": {
@@ -1041,8 +1049,6 @@
   },
   "usage": {
     "title": "Usage",
-    "pageTitle": "Usage",
-    "pageSubtitle": "How much of each allowance you've used in its current window, and when it refills.",
     "about": "Each allowance refills all at once when its window ends. A window opens the first time you use the feature after the last one ended: 24 hours for Show Solution, 5 hours for the tutor. A tutor message counts double when its answer is long, so a session holds between 15 and 30 messages. These are optional aids; you can complete every lesson without them.",
     "signInPrompt": "Sign in to see your usage.",
     "solution": "Show Solution",
@@ -1412,7 +1418,7 @@
   },
   "connections": {
     "title": "Connections",
-    "empty": "No connections yet. Visit someone's profile to connect.",
+    "empty": "No connections yet",
     "incoming": "Received requests",
     "outgoing": "Sent requests",
     "mine": "My connections",
@@ -1421,7 +1427,8 @@
     "remove": "Remove",
     "cancel": "Cancel",
     "pending": "Pending",
-    "loadFailed": "Your connections couldn't be loaded."
+    "loadFailed": "Your connections couldn't be loaded.",
+    "emptyHint": "Visit someone's profile to connect."
   },
   "settings": {
     "preferences": "Preferences",

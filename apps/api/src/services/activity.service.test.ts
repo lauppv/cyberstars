@@ -77,14 +77,16 @@ describe('recentActivity', () => {
       recentActivity(
         [
           { at: at(0), kind: 'lesson' },
-          { at: at(200), kind: 'algo' },
+          { at: at(400), kind: 'algo' },
           { at: at(3), kind: 'recap' },
+          { at: at(300), kind: 'lesson' },
         ],
         NOW,
       ),
     ).toEqual([
       { at: at(0).toISOString(), kind: 'lesson' },
       { at: at(3).toISOString(), kind: 'recap' },
+      { at: at(300).toISOString(), kind: 'lesson' },
     ]);
   });
 });

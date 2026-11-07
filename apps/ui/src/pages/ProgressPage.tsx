@@ -2,6 +2,7 @@ import { useEffect, useMemo, type CSSProperties } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { useAuth } from '../context/AuthContext';
@@ -48,8 +49,8 @@ export function ProgressPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 px-4 sm:px-6 py-8">
-        <div className="max-w-[880px] mx-auto space-y-8">
+      <PageContainer>
+        <div className="space-y-8">
           {failedCourses.size > 0 && (
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           )}
@@ -70,17 +71,13 @@ export function ProgressPage() {
             </div>
           </section>
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }
 
 function SectionHeader({ children }: { children: string }) {
-  return (
-    <h2 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
-      {children}
-    </h2>
-  );
+  return <h2 className="section-label mb-3">{children}</h2>;
 }
 
 function completedSlugs(progress: CourseProgress | undefined): Set<string> {

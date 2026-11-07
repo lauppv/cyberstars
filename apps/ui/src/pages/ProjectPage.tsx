@@ -3,11 +3,12 @@ import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Check, ChevronDown, ChevronRight } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
+import { LessonHeading } from '../components/ui/LessonHeading';
+import { ProgressBar } from '../components/sets/ProgressBar';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
-import { DIFF_COLORS } from '../constants/difficulty';
 import { PanelTabs } from '../components/judge/PanelTabs';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { CodeEditor } from '../components/code/CodeEditor';
@@ -132,14 +133,7 @@ function Steps({ project, sections }: { project: Project; sections: { body: stri
           </span>
         )}
       </div>
-      {user && checked && (
-        <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden mb-3">
-          <div
-            className="h-full rounded-sm transition-[width] duration-400"
-            style={{ width: `${(done / total) * 100}%`, background: color }}
-          />
-        </div>
-      )}
+      {user && checked && <ProgressBar pct={(done / total) * 100} color={color} className="mb-3" />}
       {!user && (
         <p className="mt-0 mb-3 text-[12px] text-[var(--text3)]">{t('projects.signInToTrack')}</p>
       )}
@@ -262,7 +256,6 @@ function ProjectView({ project }: { project: Project }) {
   const index = siblings.indexOf(project);
   const prev = siblings[index - 1];
   const next = siblings[index + 1];
-  const dc = DIFF_COLORS[project.difficulty];
   const meta = courseMeta(project.language);
   const sections = text === null ? null : splitProjectText(text);
 
@@ -301,24 +294,13 @@ function ProjectView({ project }: { project: Project }) {
           >
             <div className="flex-1 min-h-0 overflow-y-auto">
               <div className="px-9 py-8">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                    {t('projects.nOfM', { n: index + 1, total: siblings.length })}
-                  </span>
-                  <BetaBadge hint={t('projects.betaHint')} />
-                  <div className="ml-auto flex items-center gap-2">
-                    <span
-                      className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
-                      style={{ background: dc.bg, color: dc.text }}
-                    >
-                      {t(`algoList.filters.${project.difficulty}`)}
-                    </span>
-                  </div>
-                </div>
-
-                <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
-                  {project.title}
-                </h1>
+                <LessonHeading
+                  title={project.title}
+                  position={t('projects.nOfM', { n: index + 1, total: siblings.length })}
+                  badge={<BetaBadge hint={t('projects.betaHint')} />}
+                  difficulty={project.difficulty}
+                  difficultyLabel={t(`algoList.filters.${project.difficulty}`)}
+                />
 
                 {failed ? (
                   <LoadError text={t('projects.textFailed')} onRetry={retry} />
@@ -337,14 +319,14 @@ function ProjectView({ project }: { project: Project }) {
                   <button
                     onClick={() => prev && navigate(`/projects/${prev.language}/${prev.slug}`)}
                     disabled={!prev}
-                    className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="btn btn-secondary"
                   >
                     {t('projects.previous')}
                   </button>
                   <button
                     onClick={() => next && navigate(`/projects/${next.language}/${next.slug}`)}
                     disabled={!next}
-                    className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="btn btn-primary"
                   >
                     {t('projects.next')}
                   </button>

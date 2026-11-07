@@ -32,7 +32,7 @@ export function LaniakeaTrophies() {
 
   return (
     <div className="py-5 border-b border-[var(--border)]">
-      <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5 flex items-center gap-2">
+      <h2 className="section-label mb-3.5 flex items-center gap-2">
         {t('nav.laniakea')} <BetaBadge hint={t('laniakea.betaHint')} />
       </h2>
       <div className="grid grid-cols-2 gap-2.5">

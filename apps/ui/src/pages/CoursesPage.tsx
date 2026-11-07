@@ -1,13 +1,17 @@
-import { useMemo, type CSSProperties } from 'react';
-import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
+import { useMemo } from 'react';
+import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
-import { PageHeader } from '../components/layout/PageHeader';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { SetCard } from '../components/sets/SetCard';
+import { SetDrawer } from '../components/sets/SetDrawer';
+import { SetGrid } from '../components/sets/SetGrid';
+import { SetRow } from '../components/sets/SetRow';
+import { continueSlug } from '../components/sets/continueSlug';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { WEB_DEVELOPMENT, courseMeta, courseTitle, courseWash } from '../constants/courses';
+import { WEB_DEVELOPMENT, courseMeta, courseTitle } from '../constants/courses';
 import {
   progressPct,
   xpForCourse,
@@ -20,9 +24,7 @@ import {
   isMultiLanguage,
 } from '@cyberstars/shared/constants';
 import { canAccessFeature, PREVIEW_FEATURES } from '@cyberstars/shared/features';
-import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
-import { CourseMark } from '../components/ui/CourseMark';
 
 interface CourseData {
   key: string;
@@ -77,21 +79,6 @@ export function CoursesPage() {
       .map((course) => {
         const p = progressMap[course.key];
         const doneSet = new Set((p?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug));
-        const slugSet = new Set(course.lessons.map((l) => l.slug));
-        let lastAccessed: { slug: string; at: string } | null = null;
-        for (const l of p?.lessons ?? []) {
-          if (
-            l.lastAccessedAt &&
-            slugSet.has(l.slug) &&
-            (!lastAccessed || l.lastAccessedAt > lastAccessed.at)
-          ) {
-            lastAccessed = { slug: l.slug, at: l.lastAccessedAt };
-          }
-        }
-        const continueSlug =
-          lastAccessed?.slug ??
-          course.lessons.find((l) => !doneSet.has(l.slug))?.slug ??
-          course.lessons[0]?.slug;
         return {
           key: course.key,
           icon: courseMeta(course.key).icon,
@@ -112,7 +99,7 @@ export function CoursesPage() {
             xp: xpForLesson(l.sortOrder),
             done: doneSet.has(l.slug),
           })),
-          continueSlug,
+          continueSlug: continueSlug(course.lessons, p?.lessons),
         };
       });
   }, [serverCourses, progressMap, t, inWeb]);
@@ -121,16 +108,7 @@ export function CoursesPage() {
 
   if (legacyOpen) return <Navigate to={`/courses/${legacyOpen}`} replace />;
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-        <Topbar />
-        <main className="flex-1 flex items-center justify-center">
-          <div className="text-[var(--text3)]">{t('common.loading')}</div>
-        </main>
-      </div>
-    );
-  }
+  if (isLoading) return <PageLoading />;
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
@@ -140,329 +118,125 @@ export function CoursesPage() {
         }
       />
 
-      <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
+      <PageContainer>
         {failedCourses.size > 0 && (
           <div className="mb-4">
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           </div>
         )}
-        {inWeb ? (
-          <PageHeader
-            title={courseTitle(WEB_DEVELOPMENT, t)}
-            subtitle={t(`courses.descriptions.${WEB_DEVELOPMENT}`)}
-          />
-        ) : (
-          <PageHeader title={t('nav.courses')} subtitle={t('courses.subtitle')} />
-        )}
-        {/* Course grid */}
-        <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-4">
+        <SetGrid>
           {allCourses.map((c) => (
-            <div
+            <SetCard
               key={c.key}
-              onClick={() => openCourse(c.key)}
-              className="group panel rounded-xl overflow-hidden cursor-pointer transition-all hover:border-[var(--course)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]"
-              style={{ '--course': c.color, backgroundImage: courseWash(c.key) } as CSSProperties}
-            >
-              <div className="h-1.5 w-full" style={{ background: c.color }} />
-              <div className="p-5">
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <CourseMark courseKey={c.key} />
-                  <div className="flex-1 min-w-0">
-                    <div
-                      className="text-base font-bold mb-0.5 flex items-center gap-2"
-                      style={{ letterSpacing: '-0.2px' }}
-                    >
-                      {c.name}
-                      {c.beta && <BetaBadge />}
-                    </div>
-                    {c.languages && (
-                      <div className="text-[12px] text-[var(--text3)]">{c.languages}</div>
-                    )}
-                  </div>
-                  <span
-                    className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)]"
-                    title={t('common.xpTotal', { xp: c.totalXp })}
-                  >
-                    {t('common.xpTotal', { xp: c.totalXp })}
-                  </span>
-                </div>
-                <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">{c.desc}</p>
-                <div className="mb-4">
-                  <span className="text-[11px] text-[var(--text3)]">
-                    <strong className="text-[var(--text2)]">{c.lessonCount}</strong>{' '}
-                    {t('courses.lessons', { count: c.lessonCount })}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between">
-                  {c.progress > 0 ? (
-                    <>
-                      <div className="flex-1 mr-3">
-                        <div className="text-[11px] text-[var(--text3)] mb-1">
-                          {t('courses.percentComplete', { pct: c.progress })}
-                        </div>
-                        <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
-                          <div
-                            className="h-full rounded-sm transition-[width] duration-400"
-                            style={{ width: `${c.progress}%`, background: c.color }}
-                          />
-                        </div>
-                      </div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (c.continueSlug) {
-                            navigate(`/lesson/${c.key}/${c.continueSlug}`);
-                          }
-                        }}
-                        className="px-4 py-[7px] rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-xs font-semibold cursor-pointer border-none hover:brightness-110 transition flex-shrink-0"
-                      >
-                        {t('courses.continue')}
-                      </button>
-                    </>
-                  ) : (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openCourse(c.key);
-                      }}
-                      className="inline-flex items-center gap-1.5 px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
-                    >
-                      {t('courses.viewSyllabus')}
-                      <ArrowRight
-                        size={13}
-                        aria-hidden="true"
-                        className="transition-transform group-hover:translate-x-0.5"
-                      />
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
+              setKey={c.key}
+              title={c.name}
+              subtitle={c.languages}
+              beta={c.beta}
+              badge={t('common.xpTotal', { xp: c.totalXp })}
+              description={c.desc}
+              count={{ n: c.lessonCount, noun: t('courses.lessons', { count: c.lessonCount }) }}
+              progress={
+                c.progress > 0
+                  ? { pct: c.progress, label: t('courses.percentComplete', { pct: c.progress }) }
+                  : undefined
+              }
+              onContinue={() => c.continueSlug && navigate(`/lesson/${c.key}/${c.continueSlug}`)}
+              onOpen={() => openCourse(c.key)}
+              openLabel={t('courses.viewSyllabus')}
+            />
           ))}
           {!inWeb && (
-            <WebDevelopmentCard open={webOpen} onOpen={() => openCourse(WEB_DEVELOPMENT)} />
+            <SetCard
+              setKey={WEB_DEVELOPMENT}
+              title={courseTitle(WEB_DEVELOPMENT, t)}
+              subtitle={courseMeta(WEB_DEVELOPMENT).langLabel}
+              badge={PREVIEW_FEATURES.webDevelopment ? t('common.comingSoon') : undefined}
+              badgeMuted
+              description={t(`courses.descriptions.${WEB_DEVELOPMENT}`)}
+              onOpen={webOpen ? () => openCourse(WEB_DEVELOPMENT) : undefined}
+              openLabel={t('courses.viewCourses')}
+              dimmed={PREVIEW_FEATURES.webDevelopment}
+            />
           )}
-        </div>
-      </main>
+        </SetGrid>
+      </PageContainer>
 
-      {/* Syllabus drawer */}
       {syllabus && (
-        <>
-          <div
-            className="fixed inset-0 bg-black/65 z-[100] animate-fade-in"
-            onClick={closeCourse}
-          />
-          <div
-            className="fixed right-0 top-0 bottom-0 w-[440px] max-w-full bg-[var(--bg2)] border-l border-[var(--border)] overflow-y-auto z-[101]"
-            style={{ animation: 'slideIn 0.3s cubic-bezier(.22,1,.36,1)' }}
-          >
-            <div
-              className="flex items-start gap-3.5 p-6 pb-5 border-b border-[var(--border)]"
-              style={{ backgroundImage: courseWash(syllabus.key) }}
-            >
-              <CourseMark courseKey={syllabus.key} size={40} />
-              <div className="flex-1 min-w-0">
-                <div className="text-xl font-bold mb-1 flex items-center gap-2">
-                  {syllabus.name}
-                  {syllabus.beta && <BetaBadge />}
-                </div>
-                <div className="flex gap-3 text-xs text-[var(--text3)]">
-                  <span>
-                    {syllabus.lessonCount} {t('courses.lessons', { count: syllabus.lessonCount })}
-                  </span>
-                  <span className="text-[var(--accent)]">
-                    {t('common.xpTotal', { xp: syllabus.totalXp })}
-                  </span>
-                </div>
-              </div>
-              <button
-                onClick={closeCourse}
-                aria-label={t('common.close')}
-                className="w-8 h-8 rounded-full border border-[var(--border)] bg-transparent text-[var(--text3)] text-base flex items-center justify-center cursor-pointer hover:text-[var(--text)] hover:border-[var(--text3)] transition flex-shrink-0"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="px-6 py-5 text-[13px] text-[var(--text2)] leading-relaxed border-b border-[var(--border)]">
-              {syllabus.desc}
-            </div>
-
-            <div className="px-6 py-4">
-              <div className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
-                {t('courses.chapters')}
-              </div>
-              {(() => {
-                const total = syllabus.chapters.length;
-                const nextIdx = syllabus.chapters.findIndex((ch) => !ch.done);
-                const segs: { cls: string; top: number; height: number; delay: number }[] = [];
-                for (let i = 0; i < total - 1; i++) {
-                  const a = syllabus.chapters[i].done;
-                  const b = syllabus.chapters[i + 1].done;
-                  let cls = '';
-                  if (a && b) cls = 'seg-filled';
-                  else if (a && !b) cls = 'seg-half';
-                  segs.push({
-                    cls,
-                    top: (i / (total - 1)) * 100,
-                    height: (1 / (total - 1)) * 100,
-                    delay: i,
-                  });
+        <SetDrawer
+          setKey={syllabus.key}
+          title={syllabus.name}
+          beta={syllabus.beta}
+          meta={[
+            {
+              text: `${syllabus.lessonCount} ${t('courses.lessons', { count: syllabus.lessonCount })}`,
+            },
+            { text: t('common.xpTotal', { xp: syllabus.totalXp }), accent: true },
+          ]}
+          description={syllabus.desc}
+          progress={
+            syllabus.progress > 0
+              ? {
+                  pct: syllabus.progress,
+                  label: t('courses.percentComplete', { pct: syllabus.progress }),
                 }
-                return (
-                  <div className="relative flex flex-col gap-0.5 pl-1">
-                    {/* Vertical track */}
-                    <div className="absolute left-[21px] top-6 bottom-6 w-0.5 bg-[var(--bg3)] rounded-full pointer-events-none">
-                      {segs
-                        .filter((s) => s.cls)
-                        .map((s, k) => (
-                          <div
-                            key={k}
-                            className={`absolute left-0 right-0 rounded-full origin-top ${s.cls}`}
-                            style={{
-                              top: `${s.top}%`,
-                              height: `${s.height}%`,
-                              animation: `segIn 0.45s cubic-bezier(.22,1,.36,1) ${0.25 + s.delay * 0.08}s forwards`,
-                              transform: 'scaleY(0)',
-                            }}
-                          />
-                        ))}
-                    </div>
-                    {/* Chapter items */}
-                    {syllabus.chapters.map((ch, i) => {
-                      const isNext = i === nextIdx;
-                      return (
-                        <Link
-                          key={i}
-                          to={`/lesson/${syllabus.key}/${ch.slug}`}
-                          className={`relative flex items-center gap-3 px-3 py-2.5 rounded-[var(--radius-sm)] hover:bg-[var(--surface)] transition cursor-pointer text-[var(--text)] no-underline ${isNext ? 'ch-is-next' : ''}`}
-                          style={{
-                            opacity: 0,
-                            transform: 'translateX(-6px)',
-                            animation: `chapterIn 0.45s cubic-bezier(.22,1,.36,1) ${0.05 + i * 0.04}s forwards`,
-                          }}
-                        >
-                          <div
-                            className={`relative z-[1] w-[26px] h-[26px] rounded-full flex items-center justify-center text-[11px] font-semibold flex-shrink-0 border-2 border-[var(--bg2)] transition-all ${
-                              ch.done
-                                ? 'bg-[var(--success)] text-white shadow-[0_0_0_2px_var(--bg2),0_0_12px_rgba(0,214,143,0.4)]'
-                                : isNext
-                                  ? 'bg-[var(--bg2)] text-[var(--accent)] border-[var(--accent)] ch-next-pulse'
-                                  : 'bg-[var(--bg3)] text-[var(--text3)]'
-                            }`}
-                          >
-                            {ch.done ? '✓' : i + 1}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div
-                              className={`text-[13px] font-medium ${isNext ? 'text-[var(--accent)]' : ''}`}
-                            >
-                              {ch.name}
-                            </div>
-                          </div>
-                          <span
-                            className={`text-[10px] font-semibold tabular-nums flex-shrink-0 ${ch.done ? 'text-[var(--success)]' : 'text-[var(--text3)]'}`}
-                          >
-                            {t('common.xpReward', { xp: ch.xp })}
-                          </span>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                );
-              })()}
-            </div>
-          </div>
-        </>
+              : undefined
+          }
+          label={t('courses.chapters')}
+          onClose={closeCourse}
+        >
+          <CourseChapters course={syllabus} />
+        </SetDrawer>
       )}
-
-      <style>{`
-        @keyframes slideIn {
-          from { transform: translateX(100%); }
-          to { transform: translateX(0); }
-        }
-        @keyframes segIn {
-          to { transform: scaleY(1); }
-        }
-        @keyframes chapterIn {
-          to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes nextPulse {
-          0%, 100% { box-shadow: 0 0 0 2px var(--bg2), 0 0 0 0 var(--accent-glow); }
-          50% { box-shadow: 0 0 0 2px var(--bg2), 0 0 0 6px transparent, 0 0 16px var(--accent-glow); }
-        }
-        .seg-filled {
-          background: linear-gradient(180deg, var(--success), var(--accent));
-          box-shadow: 0 0 10px var(--accent-glow);
-        }
-        .seg-half {
-          background: linear-gradient(180deg, var(--success) 0%, var(--success) 45%, var(--bg3) 55%, var(--bg3) 100%);
-        }
-        .ch-next-pulse {
-          animation: nextPulse 2s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }
 
-// The Web Development card: Coming soon until it launches, and opening into
-// its courses for whoever may open it (admins and the founder before the launch)
-function WebDevelopmentCard({ open, onOpen }: { open: boolean; onOpen: () => void }) {
+// A course's chapters in order on a track that fills as they are done, the
+// next one to do ringed in the accent
+function CourseChapters({ course }: { course: CourseData }) {
   const { t } = useTranslation();
-  const key = WEB_DEVELOPMENT;
-  const { color, langLabel } = courseMeta(key);
+  const total = course.chapters.length;
+  const nextIdx = course.chapters.findIndex((ch) => !ch.done);
+  const segs: { cls: string; top: number; height: number; delay: number }[] = [];
+  for (let i = 0; i < total - 1; i++) {
+    const a = course.chapters[i].done;
+    const b = course.chapters[i + 1].done;
+    segs.push({
+      cls: a && b ? 'seg-filled' : a ? 'seg-half' : '',
+      top: (i / (total - 1)) * 100,
+      height: (1 / (total - 1)) * 100,
+      delay: i,
+    });
+  }
   return (
-    <div
-      onClick={open ? onOpen : undefined}
-      aria-disabled={open ? undefined : 'true'}
-      title={open ? undefined : t('common.comingSoonHint')}
-      className={`panel rounded-xl overflow-hidden ${
-        open
-          ? 'group cursor-pointer transition-all hover:border-[var(--course)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]'
-          : 'cursor-default'
-      } ${PREVIEW_FEATURES.webDevelopment ? 'opacity-70' : ''}`}
-      style={{ '--course': color, backgroundImage: courseWash(key) } as CSSProperties}
-    >
-      <div className="h-1.5 w-full" style={{ background: color }} />
-      <div className="p-5">
-        <div className="flex items-center gap-3.5 mb-3.5">
-          <CourseMark courseKey={key} />
-          <div className="flex-1 min-w-0">
+    <div className="relative flex flex-col gap-0.5 pl-1">
+      <div className="absolute left-[21px] top-6 bottom-6 w-0.5 bg-[var(--bg3)] rounded-full pointer-events-none">
+        {segs
+          .filter((s) => s.cls)
+          .map((s, k) => (
             <div
-              className="text-base font-bold mb-0.5 flex items-center gap-2"
-              style={{ letterSpacing: '-0.2px' }}
-            >
-              {courseTitle(key, t)}
-            </div>
-            <div className="text-[12px] text-[var(--text3)]">{langLabel}</div>
-          </div>
-          {PREVIEW_FEATURES.webDevelopment && (
-            <span className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] text-[var(--text2)]">
-              {t('common.comingSoon')}
-            </span>
-          )}
-        </div>
-        <p className={`text-[13px] text-[var(--text2)] leading-relaxed ${open ? 'mb-4' : ''}`}>
-          {t(`courses.descriptions.${key}`)}
-        </p>
-        {open && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onOpen();
-            }}
-            className="inline-flex items-center gap-1.5 px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
-          >
-            {t('courses.viewCourses')}
-            <ArrowRight
-              size={13}
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-0.5"
+              key={k}
+              className={`seg absolute left-0 right-0 rounded-full ${s.cls}`}
+              style={{
+                top: `${s.top}%`,
+                height: `${s.height}%`,
+                animationDelay: `${0.25 + s.delay * 0.08}s`,
+              }}
             />
-          </button>
-        )}
+          ))}
       </div>
+      {course.chapters.map((ch, i) => (
+        <SetRow
+          key={ch.slug}
+          to={`/lesson/${course.key}/${ch.slug}`}
+          number={i + 1}
+          title={ch.name}
+          done={ch.done}
+          next={i === nextIdx}
+          trailing={t('common.xpReward', { xp: ch.xp })}
+          order={i}
+        />
+      ))}
     </div>
   );
 }

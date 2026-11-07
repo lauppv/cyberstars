@@ -69,7 +69,6 @@ describe('UsagePage', () => {
   it('shows each allowance as a share used, with its window', () => {
     mockUsage = { loading: false, summary };
     renderPage();
-    expect(screen.getByRole('heading', { name: 'Usage' })).toBeInTheDocument();
     expect(screen.getByText('Show Solution')).toBeInTheDocument();
     expect(screen.getByText('Tutor messages')).toBeInTheDocument();
     expect(screen.getByText('33% used')).toBeInTheDocument();

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import type { ActivityKind } from '@cyberstars/shared/profile';
@@ -100,6 +100,14 @@ function getMonthLabels(data: HeatmapDay[][], locale: string): { month: string; 
   return labels;
 }
 
+// The day labels' column, the smallest and largest a cell gets, and the gap
+// between cells. Where even the smallest don't fit (a year on a phone) the
+// heatmap scrolls sideways, starting at the latest weeks
+const LABEL_COL = 24;
+const MIN_CELL = 10;
+const MAX_CELL = 16;
+const GAP = 3;
+
 export function ActivityHeatmap({
   activityCounts,
   months = 3,
@@ -112,14 +120,18 @@ export function ActivityHeatmap({
   const weeks = data.length;
   const monthLabels = useMemo(() => getMonthLabels(data, i18n.language), [data, i18n.language]);
   const totalActive = data.flat().filter((d) => d.level > 0).length;
-  const colWidth = 19;
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // A heatmap wider than its card opens on its latest weeks
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollLeft = el.scrollWidth;
+  }, [weeks]);
 
   return (
     <div className="p-5 panel rounded-[var(--radius)]">
       <div className="flex items-center justify-between mb-3.5">
-        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
-          {t('home.activity')}
-        </h3>
+        <h3 className="section-label">{t('home.activity')}</h3>
         <span className="text-xs text-[var(--text2)]">
           <Trans
             i18nKey="home.activeDays"
@@ -129,45 +141,62 @@ export function ActivityHeatmap({
         </span>
       </div>
 
-      {/* Month labels */}
-      <div className="flex" style={{ paddingLeft: 30 }}>
-        {monthLabels.map((m, i) => {
-          const nextCol = monthLabels[i + 1]?.col ?? weeks;
-          return (
-            <div
-              key={i}
-              className="text-[9px] text-[var(--text3)] font-medium"
-              style={{ width: (nextCol - m.col) * colWidth }}
-            >
-              {m.month}
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="flex">
-        {/* Day labels */}
-        <div className="flex flex-col gap-[3px] mr-1.5 shrink-0">
-          {['', t('home.dayTue'), '', t('home.dayThu'), '', t('home.daySat'), ''].map(
-            (label, i) => (
-              <div
-                key={i}
-                className="h-4 flex items-center text-[9px] text-[var(--text3)] font-medium"
-              >
-                {label}
-              </div>
-            ),
-          )}
-        </div>
-
-        {/* Grid */}
-        <div className="flex gap-[3px] overflow-x-auto pb-1">
-          {data.map((week, wi) => (
-            <div key={wi} className="flex flex-col gap-[3px]">
-              {week.map((day, di) => (
+      {/* The weeks share the card's width, each cell a square no wider than
+          MAX_CELL, so three months stay compact and a year fills the card */}
+      <div ref={scrollRef} className="overflow-x-auto">
+        <div
+          style={{
+            maxWidth: LABEL_COL + weeks * (MAX_CELL + GAP),
+            minWidth: LABEL_COL + weeks * (MIN_CELL + GAP),
+          }}
+        >
+          {/* Month labels */}
+          <div
+            className="grid"
+            style={{
+              gridTemplateColumns: `${LABEL_COL}px repeat(${weeks}, minmax(0, 1fr))`,
+              columnGap: GAP,
+            }}
+          >
+            {monthLabels.map((m, i) => {
+              const nextCol = monthLabels[i + 1]?.col ?? weeks;
+              return (
                 <div
-                  key={di}
-                  className="w-4 h-4 rounded-[3px] transition-all hover:outline hover:outline-2 hover:outline-[var(--accent)] hover:outline-offset-1"
+                  key={i}
+                  className="text-[9px] text-[var(--text3)] font-medium truncate"
+                  style={{ gridColumn: `${m.col + 2} / ${nextCol + 2}` }}
+                >
+                  {m.month}
+                </div>
+              );
+            })}
+          </div>
+
+          <div
+            className="grid grid-flow-col pb-1"
+            style={{
+              gridTemplateColumns: `${LABEL_COL}px repeat(${weeks}, minmax(0, 1fr))`,
+              gridTemplateRows: 'repeat(7, auto)',
+              gap: GAP,
+            }}
+          >
+            {/* Day labels */}
+            {['', t('home.dayTue'), '', t('home.dayThu'), '', t('home.daySat'), ''].map(
+              (label, i) => (
+                <div
+                  key={`d${i}`}
+                  className="flex items-center text-[9px] text-[var(--text3)] font-medium"
+                >
+                  {label}
+                </div>
+              ),
+            )}
+
+            {data.flatMap((week, wi) =>
+              week.map((day, di) => (
+                <div
+                  key={`${wi}-${di}`}
+                  className="aspect-square rounded-[3px] transition-all hover:outline hover:outline-2 hover:outline-[var(--accent)] hover:outline-offset-1"
                   style={{
                     background: day.outside ? 'transparent' : HEATMAP_COLORS[day.level],
                     border: day.isFuture ? '1px dashed rgba(102,102,128,0.15)' : 'none',
@@ -175,12 +204,11 @@ export function ActivityHeatmap({
                   }}
                   title={`${new Date(`${day.date}T00:00`).toLocaleDateString(i18n.language, { day: 'numeric', month: 'long', year: 'numeric' })}: ${dayLabel(t, day.counts)}`}
                 />
-              ))}
-            </div>
-          ))}
+              )),
+            )}
+          </div>
         </div>
       </div>
-
       <div className="flex items-center justify-end gap-1.5 mt-2.5">
         <span className="text-[10px] text-[var(--text3)]">{t('home.less')}</span>
         <div className="flex gap-[3px]">

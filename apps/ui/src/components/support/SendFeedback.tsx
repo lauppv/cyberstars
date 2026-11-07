@@ -9,7 +9,7 @@ const LOOKS = {
   page: {
     open: 'inline-flex items-center gap-1.5 bg-transparent border-none p-0 text-[12px] text-[var(--text3)] hover:text-[var(--accent)] cursor-pointer transition',
     field: INPUT_CLS + ' resize-y',
-    send: 'px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed',
+    send: 'btn btn-primary btn-sm',
     cancel:
       'px-4 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] text-[12px] font-semibold cursor-pointer hover:bg-[var(--surface)] transition',
     sent: 'text-[12px] text-[var(--success)] font-semibold',

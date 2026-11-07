@@ -122,20 +122,20 @@ describe('SupportPage', () => {
     it('says there are no tickets only when the list loaded empty', async () => {
       mockGetMyTickets.mockResolvedValue([]);
       render(<SupportPage />);
-      expect(await screen.findByText("You haven't opened any tickets yet.")).toBeInTheDocument();
+      expect(await screen.findByText("You haven't opened any tickets yet")).toBeInTheDocument();
     });
 
     it('shows nothing in place of the list while it loads', () => {
       mockGetMyTickets.mockReturnValue(new Promise(() => {}));
       render(<SupportPage />);
-      expect(screen.queryByText("You haven't opened any tickets yet.")).toBeNull();
+      expect(screen.queryByText("You haven't opened any tickets yet")).toBeNull();
     });
 
     it("says the student's tickets didn't load, and a retry brings them", async () => {
       mockGetMyTickets.mockRejectedValueOnce('nope');
       render(<SupportPage />);
       expect(await screen.findByRole('alert')).toHaveTextContent(GENERAL);
-      expect(screen.queryByText("You haven't opened any tickets yet.")).toBeNull();
+      expect(screen.queryByText("You haven't opened any tickets yet")).toBeNull();
       fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
       expect(await screen.findByText('Run is stuck')).toBeInTheDocument();
       expect(screen.queryByRole('alert')).toBeNull();

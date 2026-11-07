@@ -250,7 +250,7 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
       {expanded &&
         createPortal(
           <div
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 overlay"
             onMouseDown={close}
           >
             <div
@@ -267,7 +267,7 @@ export function VisualPlayer({ visual }: { visual: Visual }) {
                 if (e.key === 'Escape') close();
                 else stepKeys(e);
               }}
-              className="w-full max-w-[760px] max-h-[90vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl p-6 font-sans outline-none"
+              className="w-full max-w-[760px] max-h-[90vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)] p-6 font-sans outline-none"
             >
               <div className="flex items-center justify-between mb-2">
                 {title}

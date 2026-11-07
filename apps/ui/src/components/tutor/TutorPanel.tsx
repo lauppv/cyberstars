@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArrowUp, PanelLeft, SquarePen, Trash2, X } from 'lucide-react';
+import { ArrowUp, PanelLeft, SquarePen, Trash2, X, ArrowRight } from 'lucide-react';
 import { TUTOR_MESSAGE_MAX_LENGTH, type TutorMessage } from '@cyberstars/shared/tutor';
 import { useAuth } from '../../context/AuthContext';
 import { useTutor, type TutorLessonStage } from '../../context/TutorContext';
@@ -8,6 +8,7 @@ import type { TutorStarter } from '../../context/tutorStarters';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorHistory } from './TutorHistory';
+import { TutorHero } from './TutorHero';
 import { TutorMark, type TutorMood } from './TutorMark';
 import { TutorStatus } from './TutorStatus';
 
@@ -29,12 +30,12 @@ function closedNotice(): string | null {
 // setTimeout can't wait longer than this.
 const MAX_DELAY_MS = 2 ** 31 - 1;
 
-function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
+function StudentBubble({ text, muted, fresh }: { text: string; muted?: boolean; fresh?: boolean }) {
   return (
     <div
       className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] text-[var(--text)] whitespace-pre-wrap break-words ${
         muted ? 'opacity-60' : ''
-      }`}
+      } ${fresh ? 'rise-in' : ''}`}
     >
       {text}
     </div>
@@ -42,9 +43,17 @@ function StudentBubble({ text, muted }: { text: string; muted?: boolean }) {
 }
 
 // Everything the tutor says sits beside its mark, so a glance tells it from the student
-function TutorTurn({ children, mood }: { children: ReactNode; mood?: TutorMood }) {
+function TutorTurn({
+  children,
+  mood,
+  fresh,
+}: {
+  children: ReactNode;
+  mood?: TutorMood;
+  fresh?: boolean;
+}) {
   return (
-    <div className="flex items-start gap-2.5">
+    <div className={`flex items-start gap-2.5 ${fresh ? 'rise-in' : ''}`}>
       <TutorMark size="sm" mood={mood} />
       <div className="flex-1 min-w-0 flex flex-col gap-1 pt-0.5">{children}</div>
     </div>
@@ -353,22 +362,36 @@ export function TutorPanel() {
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
-            <TutorMark size="lg" mood={tutor.cheer ? 'happy' : 'idle'} />
-            <h3 className="text-[14px] font-semibold text-[var(--text)]">{emptyTitle}</h3>
-            <p className="text-[13px] text-[var(--text2)]">
+            <TutorHero title={emptyTitle} mood={tutor.cheer ? 'happy' : 'idle'} />
+            <p
+              className="text-[13px] text-[var(--text2)] rise-in"
+              style={{ animationDelay: '0.5s' }}
+            >
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
-              {(tutor.lesson ? lessonStarters(tutor.stage) : tutor.starters).map((starter) => (
-                <button
+              {(tutor.lesson ? lessonStarters(tutor.stage) : tutor.starters).map((starter, i) => (
+                // The rise sits on a wrapper: its fill would hold the button at
+                // full opacity and hide that it's disabled
+                <div
                   key={starter.key}
-                  type="button"
-                  onClick={() => ask(t(starter.key, starter.values))}
-                  disabled={limited}
-                  className="px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:bg-[var(--surface2)] hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="rise-in"
+                  style={{ animationDelay: `${0.6 + i * 0.07}s` }}
                 >
-                  {t(starter.key, starter.values)}
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => ask(t(starter.key, starter.values))}
+                    disabled={limited}
+                    className="group w-full flex items-center gap-2 px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:border-[var(--accent)]/50 hover:bg-[var(--accent)]/5 hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span className="flex-1 min-w-0">{t(starter.key, starter.values)}</span>
+                    <ArrowRight
+                      size={14}
+                      aria-hidden="true"
+                      className="flex-shrink-0 text-[var(--text3)] transition-transform group-hover:translate-x-0.5 group-hover:text-[var(--accent)]"
+                    />
+                  </button>
+                </div>
               ))}
             </div>
           </div>
@@ -406,10 +429,10 @@ export function TutorPanel() {
 
         {pending && (
           <>
-            <StudentBubble text={pending.question} />
-            <TutorTurn mood={pending.answer ? 'idle' : 'thinking'}>
+            <StudentBubble text={pending.question} fresh />
+            <TutorTurn mood={pending.answer ? 'idle' : 'thinking'} fresh>
               {pending.answer ? (
-                <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} />
+                <TutorAnswer text={pending.answer} onInAppLink={onInAppLink} streaming />
               ) : (
                 <TutorStatus lookup={pending.lookup} lesson={!!tutor.lesson} />
               )}

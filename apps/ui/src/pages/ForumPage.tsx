@@ -18,6 +18,8 @@ import type {
 } from '@cyberstars/shared/forum';
 import { isAdmin, type AuthenticatedUser, type UserRole } from '@cyberstars/shared/auth';
 import './ForumPage.css';
+import { MessagesSquare } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -286,7 +288,7 @@ function ForumIndex({
 
       {isStaff && (
         <div className="forum-page-actions">
-          <button className="forum-btn forum-btn-primary" onClick={() => setModal({})}>
+          <button className="btn btn-primary" onClick={() => setModal({})}>
             {t('forum.newCategory')}
           </button>
         </div>
@@ -427,10 +429,7 @@ function CategoryView({
           </div>
         </div>
         {canPost && (
-          <button
-            className="forum-btn forum-btn-primary"
-            onClick={() => toggleComposer(!showComposer)}
-          >
+          <button className="btn btn-primary" onClick={() => toggleComposer(!showComposer)}>
             {t('forum.newThread')}
           </button>
         )}
@@ -461,11 +460,11 @@ function CategoryView({
             onChange={(e) => setNewContent(e.target.value)}
           />
           <div className="forum-composer-footer">
-            <button className="forum-btn forum-btn-ghost" onClick={() => toggleComposer(false)}>
+            <button className="btn btn-secondary" onClick={() => toggleComposer(false)}>
               {t('forum.cancel')}
             </button>
             <button
-              className="forum-btn forum-btn-primary"
+              className="btn btn-primary"
               onClick={handleCreateThread}
               disabled={posting || !newTitle.trim() || !newContent.trim()}
             >
@@ -477,7 +476,11 @@ function CategoryView({
 
       <div className="thread-table">
         {threads.length === 0 ? (
-          <div className="thread-empty">{t('forum.noThreads')}</div>
+          <EmptyState
+            icon={MessagesSquare}
+            title={t('forum.noThreads')}
+            hint={t('forum.noThreadsHint')}
+          />
         ) : (
           threads.map((th) => (
             <div
@@ -754,7 +757,7 @@ function ThreadView({ threadId, user }: { threadId: number; user: AuthenticatedU
           <div className="forum-composer-footer">
             <span className="forum-composer-hint">{t('forum.markdownSupported')}</span>
             <button
-              className="forum-btn forum-btn-primary"
+              className="btn btn-primary"
               onClick={handleReply}
               disabled={posting || !replyContent.trim()}
             >
@@ -898,7 +901,7 @@ function PostCard({
             />
             <div className="post-edit-actions">
               <button
-                className="forum-btn forum-btn-ghost"
+                className="btn btn-secondary"
                 onClick={() => {
                   setEditing(false);
                   setDraft(post.content);
@@ -906,11 +909,7 @@ function PostCard({
               >
                 {t('forum.cancel')}
               </button>
-              <button
-                className="forum-btn forum-btn-primary"
-                onClick={saveEdit}
-                disabled={!draft.trim()}
-              >
+              <button className="btn btn-primary" onClick={saveEdit} disabled={!draft.trim()}>
                 {t('forum.save')}
               </button>
             </div>

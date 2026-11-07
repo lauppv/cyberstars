@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
@@ -11,6 +12,8 @@ import { CROWNS } from '../components/gamification/crowns';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
 import type { LeaderboardEntry } from '@cyberstars/shared/leaderboard';
+import { Trophy } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 const PAGE_SIZE = 50;
 
@@ -154,7 +157,7 @@ export function LeaderboardPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 max-w-[760px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
+      <PageContainer width="narrow">
         {loading ? (
           <div className="flex justify-center py-16">
             <LoadingSpinner />
@@ -162,7 +165,12 @@ export function LeaderboardPage() {
         ) : error ? (
           <div className="text-center text-[var(--text3)] py-16">{t('leaderboard.error')}</div>
         ) : entries.length === 0 ? (
-          <div className="text-center text-[var(--text3)] py-16">{t('leaderboard.empty')}</div>
+          <EmptyState
+            framed
+            icon={Trophy}
+            title={t('leaderboard.empty')}
+            hint={t('leaderboard.emptyHint')}
+          />
         ) : (
           <>
             <div className="rounded-[var(--radius)] panel overflow-hidden">
@@ -201,7 +209,7 @@ export function LeaderboardPage() {
             )}
           </>
         )}
-      </main>
+      </PageContainer>
     </div>
   );
 }

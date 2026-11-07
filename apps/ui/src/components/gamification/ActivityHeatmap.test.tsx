@@ -64,9 +64,10 @@ describe('ActivityHeatmap', () => {
     );
     expect(screen.getByText(/active day in the last 3 months/)).toBeInTheDocument();
     expect(screen.queryByTitle(/: 5 lessons$/)).not.toBeInTheDocument();
-    // A whole week per column, Monday to Sunday, from the week of 22 July
-    const grid = screen.getByTitle(/: 2 lessons$/).parentElement!.parentElement!;
-    expect(grid.children).toHaveLength(14);
+    // A whole week per column, Monday to Sunday, from the week of 22 July:
+    // 14 columns of 7 days after the 7 day labels
+    const grid = screen.getByTitle(/: 2 lessons$/).parentElement!;
+    expect(grid.children).toHaveLength(7 + 14 * 7);
   });
 
   it('names each kind done that day and paints the day by all of them', () => {

@@ -5,9 +5,9 @@ import { Avatar } from '../components/ui/Avatar';
 import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { Badge } from '../components/gamification/Badge';
 import { LaniakeaTrophies } from '../components/laniakea/LaniakeaTrophies';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { EmojiPicker } from '../components/ui/EmojiPicker';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
@@ -135,14 +135,7 @@ export function ProfilePage() {
   };
 
   if (isLoading || !user) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   const statusExpired = user.statusExpiresAt && new Date(user.statusExpiresAt) < new Date();
@@ -160,8 +153,8 @@ export function ProfilePage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
 
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
+      <PageContainer width="narrow">
+        <div className="rounded-[var(--radius)] panel px-6 py-6">
           {/* Header with avatar */}
           <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
             <div className="relative group">
@@ -246,11 +239,7 @@ export function ProfilePage() {
                   className={INPUT_CLS + ' flex-1'}
                 />
                 <EmojiPicker onSelect={insertEmoji} disabled={saving} />
-                <button
-                  onClick={saveStatus}
-                  disabled={saving}
-                  className="px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
-                >
+                <button onClick={saveStatus} disabled={saving} className="btn btn-primary btn-sm">
                   {t('profile.set')}
                 </button>
               </div>
@@ -322,9 +311,7 @@ export function ProfilePage() {
 
           {/* Badges */}
           <div className="py-5 border-b border-[var(--border)]">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
-              {t('profile.badges')}
-            </h2>
+            <h2 className="section-label mb-3.5">{t('profile.badges')}</h2>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2.5">
               {g.badges.map((b) => (
                 <Badge
@@ -351,7 +338,7 @@ export function ProfilePage() {
             </button>
           </div>
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

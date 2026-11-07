@@ -47,7 +47,7 @@ describe('MessagesPage inbox', () => {
     h.messages.loadFailed = true;
     renderPage();
     expect(screen.getByRole('alert')).toHaveTextContent("Your conversations couldn't be loaded.");
-    expect(screen.queryByText('No conversations yet.')).toBeNull();
+    expect(screen.queryByText('No conversations yet')).toBeNull();
     fireEvent.click(screen.getByText('Try again'));
     expect(h.messages.refresh).toHaveBeenCalledTimes(1);
   });
@@ -62,7 +62,7 @@ describe('MessagesPage inbox', () => {
 
   it('shows the empty inbox when it loaded with no conversations', () => {
     renderPage();
-    expect(screen.getByText('No conversations yet.')).toBeInTheDocument();
+    expect(screen.getByText('No conversations yet')).toBeInTheDocument();
     expect(screen.queryByRole('alert')).toBeNull();
   });
 });
