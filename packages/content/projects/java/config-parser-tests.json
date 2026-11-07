@@ -1,0 +1,43 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "# Settings for Star Miner\n{\n  \"player\": \"Ioana\",\n  \"volume\": 0.8,\n  \"graphics\": {\n    \"fullscreen\": true,\n    \"resolution\": { \"width\": 1920, \"height\": 1080 },\n    \"shadows\": \"high\"\n  },\n  \"controls\": [\"W\", \"A\", \"S\", \"D\"],\n  \"saves\": [\n    { \"name\": \"Moon base\", \"level\": 4 },\n    { \"name\": \"Asteroid\", \"level\": 7, \"hard\": true }\n  ],\n  \"cheats\": null,\n  \"mods\": []\n}\n---\nget player\nget graphics.resolution.width\nget controls[2]\nget saves[1].name\nget saves\ntype volume\ntype cheats\ntype graphics\nget graphics.colour\nget saves[5].name\nprint graphics\nprint mods\nprint saves[0]\nfly away\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "{ \"name\": \"Test\", \"items\": [1, 2.5, \"three\", false, null, [], {}] }\n---\nget items[1]\nget items[2]\ntype items[3]\ntype items[4]\ntype items[5]\nget items[6]\nprint .\nprint items[7]\nget items\nget name.first\nget items[x]\nquit\n"
+    },
+    {
+      "stdin": "{\n  \"a\": 1,\n  \"b\": 2\n  \"c\": 3\n}\n---\nget a\nquit\n"
+    },
+    {
+      "stdin": "{\n  \"game\": \"Star Miner\",\n  volume: 3\n}\n---\n"
+    },
+    {
+      "stdin": "{\n  \"x\": 1,\n  \"x\": 2\n}\n---\n"
+    },
+    {
+      "stdin": "{\n  \"levels\": [\n    { \"id\": 1, \"enemies\": [\"drone\", \"rock\"] },\n    { \"id\": 2, \"enemies\": [] }\n  ]\n---\n"
+    },
+    {
+      "stdin": "[1, 2]\n---\n"
+    },
+    {
+      "stdin": "{ \"a\": \"unclosed }\n---\n"
+    },
+    {
+      "stdin": "{ \"ok\": true } { \"extra\": 1 }\n---\n"
+    },
+    {
+      "stdin": "{ \"deep\": { \"deeper\": { \"deepest\": [ { \"x\": [ [ 7 ] ] } ] } } }\n---\nget deep.deeper.deepest[0].x[0][0]\nprint deep\ntype deep.deeper.deepest\nquit\n"
+    },
+    {
+      "stdin": "{ \"price\": 4@5 }\n---\n"
+    },
+    {
+      "stdin": "{ \"list\": [1 2] }\n---\n"
+    }
+  ]
+}

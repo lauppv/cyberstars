@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "6\nlight ceiling living 60\nlight lamp living 40\nheater radiator living 2000\nplug tv living 120\nlight desk office 30\nplug fridge kitchen 150\nstatus\non ceiling\non ceiling\non lamp\ndim lamp 50\ndim tv 50\ndim lamp 5\non radiator\nset radiator 24\nset lamp 24\non fridge\nstatus\nwait 60\noff radiator\nroom living off\nroom living off\nwait 120\nenergy\non sofa\ndim lamp half\nroom attic on\nroom living maybe\ncook\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "3\nlight hall hall 10\nheater oil bedroom 1500\nplug laptop bedroom 65\nenergy\non laptop\ndim hall 30\nwait 90\nset oil 30\nset oil 31\non oil\nroom bedroom off\nroom bedroom on\nstatus\nwait 30\nenergy\noff hall\noff hall\nroom hall on\nstatus\nquit\n"
+    },
+    {
+      "stdin": "1\nplug kettle kitchen 2000\non kettle\nwait 3\nenergy\ndim kettle 50\nset kettle 20\nroom kitchen off\nwait\ncook\nquit\n"
+    }
+  ]
+}

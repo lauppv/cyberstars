@@ -664,6 +664,56 @@ export const PROJECTS: Project[] = [
       { id: 'generic-methods', title: 'Generic methods' },
     ],
   },
+  {
+    slug: 'chess-moves',
+    language: 'java',
+    title: 'Chess Moves',
+    difficulty: 'hard',
+    summary:
+      "A chess board for a kids' club that checks every move: each piece a class with its own way of moving, turns, captures, pawns, check, checkmate and stalemate.",
+    steps: [
+      { id: 'board', title: 'The board' },
+      { id: 'pieces', title: 'Pieces are classes' },
+      { id: 'moves', title: 'Moves and turns' },
+      { id: 'path', title: 'Nothing in the way' },
+      { id: 'pawns', title: 'Pawns' },
+      { id: 'check', title: 'Check' },
+      { id: 'end', title: 'The end of the game' },
+    ],
+  },
+  {
+    slug: 'order-book',
+    language: 'java',
+    title: 'Order Book',
+    difficulty: 'hard',
+    summary:
+      'The exchange behind a school stock market game: buy and sell orders in priority queues, matched the moment prices meet, partial fills, market orders and portfolios.',
+    steps: [
+      { id: 'orders', title: 'Orders' },
+      { id: 'book', title: 'The book' },
+      { id: 'matching', title: 'Matching' },
+      { id: 'partial', title: 'Bits and pieces' },
+      { id: 'cancel-market', title: 'Cancel and market orders' },
+      { id: 'traders', title: 'Who owns what' },
+    ],
+  },
+  {
+    slug: 'config-parser',
+    language: 'java',
+    title: 'Settings Parser',
+    difficulty: 'hard',
+    summary:
+      "Read a game's nested JSON settings with a recursive parser of your own: tokens, groups and lists to any depth, settings found by path, broken files reported.",
+    steps: [
+      { id: 'input', title: 'The file and the questions' },
+      { id: 'tokens', title: 'Tokens' },
+      { id: 'reader', title: 'The recursive reader' },
+      { id: 'paths', title: 'Finding a setting' },
+      { id: 'types', title: 'What kind is it' },
+      { id: 'errors', title: 'Broken files' },
+      { id: 'print', title: 'Print it back' },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {

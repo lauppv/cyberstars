@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "send P1 Cluj Iasi 2.5 1\nsend P2 Cluj Brasov 0.8 1\nsend P3 Timisoara Iasi 14 2\nsend P1 Cluj Iasi 1 1\nsend P4 Cluj Cluj 1 1\nsend P5 Cluj Iasi 45 1\ndepot Cluj\nscan P1 out 1\nscan P1 leave 1\nscan P1 arrive 2 Sibiu\nscan P1 out 2\nscan P1 leave 2\nscan P1 arrive 3 Iasi\nscan P1 out 3\nscan P1 fail 3\nscan P1 out 4\nscan P1 deliver 4\ntrack P1\nscan P2 leave 1\nscan P2 arrive 2 Brasov\nscan P2 out 2\nscan P2 fail 2\nscan P2 out 3\nscan P2 fail 3\nscan P2 out 4\nscan P2 fail 4\ntrack P2\nscan P2 out 5\nscan P3 fly 3\nscan P9 leave 3\ndepot Timisoara\nlate 7\nreport\nsend P6 Cluj Iasi heavy 2\nscan P3 arrive 3\ntrack\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "send A1 Arad Deva 10 3\nsend A2 Deva Arad 10.5 3\nscan A1 leave 3\nscan A1 arrive 4 Deva\nscan A1 leave 4\nscan A1 arrive 5 Arad\nscan A1 out 5\nscan A1 leave 5\nscan A1 arrive 6 Deva\nscan A1 out 6\nscan A1 deliver 6\ntrack A1\nscan A1 fail 7\ndepot Deva\nlate 6\nlate 8\nreport\nquit\n"
+    },
+    {
+      "stdin": "report\nlate 1\nsend B1 Iasi Iasi 2 1\nsend B1 Iasi Cluj 0 1\nsend B1 Iasi Cluj 31 1\nsend B1 Iasi Cluj 1 1\ntrack B1\nscan B1 fail 2\nscan B1 arrive 2 Cluj\nscan B1 teleport 2\ndepot Cluj\ndepot Iasi\nquit\n"
+    }
+  ]
+}

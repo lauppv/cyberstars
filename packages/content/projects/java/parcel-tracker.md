@@ -1,6 +1,6 @@
 Colet Rapid is a small courier company that moves parcels between Romanian towns through its depots. Today a parcel's journey is a column of stamps on a paper slip, and when a customer calls to ask where it is, someone has to go and find the slip. You'll write the tracking system: every parcel gets a status, every scan at a depot moves it on (only in ways that make sense), and anyone can see its whole journey.
 
-You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run parcels your program has never seen. Passing them finishes the project.
 
 The program reads every line with a `Scanner` (`nextLine()`) and splits it into words; everything it says goes through `System.out.println`. Run it, then type the lines of an example yourself to see what it answers.
 
