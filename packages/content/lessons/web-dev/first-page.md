@@ -53,7 +53,7 @@ On the right you have a small editor of your own:
 
 - the **files** of your site, on the left of the editor. For now there is one, `index.html`, the page a browser opens first;
 - the **editor**, where you write the file you picked;
-- the **preview**, which shows your page and changes a moment after you stop typing. **Run** draws it again from scratch;
+- the **preview**, which shows your page and changes a moment after you stop typing. **Ctrl+Enter** in the editor (**⌘+Enter** on a Mac) draws it again from scratch;
 - the **console** under the preview. You'll need it once your page runs JavaScript.
 
 Try it: type `<h1>Hello</h1>` in `index.html` and look at the preview. Change the word and look again. Then break something on purpose, like leaving out the `</h1>`, and see what the browser does. Experimenting is the fastest way to learn.

@@ -11,10 +11,11 @@ import {
 
 // The preview of a web lesson's site (CYB-109): the page shown, the frame that
 // shows it and the console under it. The frame is drawn again from scratch a
-// moment after the files stop changing, and at once on Run or when the page
-// moves to another one of the site. A loop stopped for running too long
-// pauses that until the next Run, so a page that loops on load can't be
-// started over and over while the student types.
+// moment after the files stop changing, and at once on `run` (Ctrl+Enter in
+// the editor, Show the page again) or when the page moves to another one of
+// the site. A loop stopped for running too long pauses that until the next
+// `run`, so a page that loops on load can't be started over and over while
+// the student types.
 
 export interface ConsoleEntry {
   id: number;
@@ -184,7 +185,7 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
   const filesKey = useMemo(() => JSON.stringify(files), [files]);
   useEffect(() => {
     if (paused || filesKey === drawn.current) return;
-    // Run may have drawn these files already while the timer waited
+    // `run` may have drawn these files already while the timer waited
     const timer = setTimeout(() => {
       if (JSON.stringify(latest.current.files) !== drawn.current) void render();
     }, SETTLE_MS);
