@@ -11,7 +11,10 @@ import * as profileService from '../services/profileService';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
-import { courseLabel, courseMeta } from '../constants/courses';
+import { courseMeta, courseWash } from '../constants/courses';
+import { CourseMark } from '../components/ui/CourseMark';
+import { useGamification } from '../hooks/useGamification';
+import { ArrowRight, Award, BookCheck, Check, Flame } from 'lucide-react';
 import {
   LISTED_COURSE_KEYS,
   isClosedCourse,
@@ -29,6 +32,9 @@ import { fetchDaily } from '../services/dailyService';
 import type { DailyResponse } from '@cyberstars/shared/daily';
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
+
+// The dashboard's heatmap covers the year, which fills its row
+const HEATMAP_MONTHS = 12;
 
 // By an article's category, the same in both languages; its tag is translated
 const CAT_COLORS: Record<string, string> = {
@@ -78,6 +84,7 @@ export function HomePage() {
   const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
   const [daily, setDaily] = useState<DailyResponse | null>(null);
   const [activityCounts, setActivityCounts] = useState<Record<string, DayCounts>>({});
+  const [streak, setStreak] = useState<number | null>(null);
   const { courses: allCourses } = useCurriculum();
   const { progressMap, refresh: refreshProgress } = useAllProgress();
 
@@ -160,7 +167,9 @@ export function HomePage() {
     profileService
       .getActivity()
       .then((a) => {
-        if (!cancelled) setActivityCounts(bucketByLocalDay(a.activity));
+        if (cancelled) return;
+        setActivityCounts(bucketByLocalDay(a.activity));
+        setStreak(a.streak);
       })
       .catch(() => {});
     return () => {
@@ -224,94 +233,56 @@ export function HomePage() {
               ? t(`pages.${greeting}Title`, { name: firstName })
               : t(`pages.${greeting}TitleNoName`)}
           </h1>
-          <div className="space-y-6">
-            {/* ── Continue Where You Left Off + Activity ── */}
-            <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
+          <div className="space-y-5">
+            {/* ── What to do next, and how far along ── */}
+            <div className="grid grid-cols-1 @3xl:grid-cols-3 gap-5">
               {continueTo && (
-                <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
-                  <h3 className="section-label mb-3.5">{t('home.continueWhereLeftOff')}</h3>
-                  <button
-                    onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
-                    className="w-full text-left flex items-center gap-3 p-3 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer group"
-                  >
-                    <div className="flex-1 min-w-0">
-                      <span className="inline-block px-2 py-0.5 text-[10px] font-semibold tracking-[0.5px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-1">
-                        {continueTo.course.title}
-                      </span>
-                      <div className="font-semibold text-[14px] truncate">{continueTo.title}</div>
-                    </div>
-                  </button>
-
-                  {recentLessons.length > 1 && (
-                    <>
-                      <div className="border-t border-[var(--border)] my-3" />
-                      <h4 className="text-[10px] font-semibold tracking-[0.5px] text-[var(--text3)] mb-2">
-                        {t('home.recentlyAccessed')}
-                      </h4>
-                      <div className="flex flex-col gap-1.5">
-                        {recentLessons.slice(1, 4).map((l, i) => {
-                          return (
-                            <button
-                              key={i}
-                              onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
-                              className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer text-left"
-                            >
-                              <div className="flex-1 min-w-0">
-                                <div className="text-[12px] font-semibold truncate">{l.title}</div>
-                                <div className="text-[10px] text-[var(--text3)]">
-                                  {courseLabel(l.courseKey, t)} ·{' '}
-                                  {formatTimeAgo(l.lastAccessedAt, t)}
-                                </div>
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </>
-                  )}
-                </div>
+                <ContinueCard
+                  courseKey={continueTo.course.key}
+                  courseTitle={continueTo.course.title}
+                  slug={continueTo.slug}
+                  title={continueTo.title}
+                  pct={continueTo.pct}
+                  recent={recentLessons.slice(1, 4)}
+                />
               )}
-
-              <ActivityHeatmap activityCounts={activityCounts} />
+              <StatsCard streak={streak} />
             </div>
 
-            <LaniakeaCard />
+            {/* ── Today's picks and Laniakea ── */}
+            <div className="grid grid-cols-1 @3xl:grid-cols-3 gap-5">
+              {lessonOfTheDay && (
+                <OfTheDayCard
+                  heading={t('home.lessonOfTheDay')}
+                  courseKey={lessonOfTheDay.courseKey}
+                  courseTitle={lessonOfTheDay.courseTitle}
+                  slug={lessonOfTheDay.slug}
+                  title={lessonOfTheDay.title}
+                  completed={lessonOfTheDay.completed}
+                  xp={lessonOfTheDay.xp}
+                  bonusRatio={daily?.bonusRatio ?? 0}
+                  completedText={t('home.completedLessonToday')}
+                  cta={t('home.startLesson')}
+                />
+              )}
+              {algoOfTheDay && (
+                <OfTheDayCard
+                  heading={t('home.algoOfTheDay')}
+                  courseKey={algoOfTheDay.courseKey}
+                  courseTitle={algoOfTheDay.courseTitle}
+                  slug={algoOfTheDay.slug}
+                  title={algoOfTheDay.title}
+                  completed={algoOfTheDay.completed}
+                  xp={algoOfTheDay.xp}
+                  bonusRatio={daily?.bonusRatio ?? 0}
+                  completedText={t('home.completedAlgoToday')}
+                  cta={t('home.solveChallenge')}
+                />
+              )}
+              <LaniakeaCard />
+            </div>
 
-            {/* ── Lesson + Algo of the Day ── */}
-            {(lessonOfTheDay || algoOfTheDay) && (
-              <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
-                {lessonOfTheDay && (
-                  <OfTheDayCard
-                    heading={t('home.lessonOfTheDay')}
-                    courseKey={lessonOfTheDay.courseKey}
-                    courseTitle={lessonOfTheDay.courseTitle}
-                    slug={lessonOfTheDay.slug}
-                    title={lessonOfTheDay.title}
-                    completed={lessonOfTheDay.completed}
-                    xp={lessonOfTheDay.xp}
-                    bonusRatio={daily?.bonusRatio ?? 0}
-                    subtitle={t('home.continueJourney', { course: lessonOfTheDay.courseTitle })}
-                    completedText={t('home.completedLessonToday')}
-                    cta={t('home.startLesson')}
-                  />
-                )}
-                {algoOfTheDay && (
-                  <OfTheDayCard
-                    heading={t('home.algoOfTheDay')}
-                    courseKey={algoOfTheDay.courseKey}
-                    courseTitle={algoOfTheDay.courseTitle}
-                    slug={algoOfTheDay.slug}
-                    title={algoOfTheDay.title}
-                    completed={algoOfTheDay.completed}
-                    xp={algoOfTheDay.xp}
-                    bonusRatio={daily?.bonusRatio ?? 0}
-                    subtitle={t('home.algoChallengeToday')}
-                    completedText={t('home.completedAlgoToday')}
-                    cta={t('home.solveChallenge')}
-                  />
-                )}
-              </div>
-            )}
+            <ActivityHeatmap activityCounts={activityCounts} months={HEATMAP_MONTHS} />
 
             {/* ── Almanac Highlights ── */}
             {almanacHighlights?.length !== 0 && (
@@ -320,9 +291,14 @@ export function HomePage() {
                   <SectionHeader noMargin>{t('home.fromAlmanac')}</SectionHeader>
                   <button
                     onClick={() => navigate('/almanac')}
-                    className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer"
+                    className="group inline-flex items-center gap-1 text-xs text-[var(--accent)] font-medium bg-transparent border-none cursor-pointer"
                   >
                     {t('home.viewAll')}
+                    <ArrowRight
+                      size={12}
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
                   </button>
                 </div>
                 <div className="grid grid-cols-1 @xl:grid-cols-3 gap-3.5">
@@ -331,7 +307,7 @@ export function HomePage() {
                       return (
                         <div
                           key={i}
-                          className="p-5 panel rounded-[var(--radius)] animate-pulse h-[168px]"
+                          className="p-5 panel rounded-[var(--radius-lg)] animate-pulse h-[168px]"
                         />
                       );
                     }
@@ -340,7 +316,7 @@ export function HomePage() {
                       <button
                         key={i}
                         onClick={() => setAlmanacStory(a)}
-                        className="text-left p-5 panel rounded-[var(--radius)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
+                        className="text-left p-5 panel rounded-[var(--radius-lg)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
                       >
                         <div className="flex items-center gap-1.5 text-[9px] font-semibold tracking-[0.8px] mb-2">
                           <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
@@ -356,8 +332,9 @@ export function HomePage() {
                           <span className="text-[11px] text-[var(--text3)]">
                             {t('home.readTime', { time: a.readTime })}
                           </span>
-                          <span className="text-[11px] font-semibold text-[var(--accent)]">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--accent)]">
                             {t('home.readMore')}
+                            <ArrowRight size={11} aria-hidden="true" />
                           </span>
                         </div>
                       </button>
@@ -396,6 +373,192 @@ function formatTimeAgo(iso: string, t: TFunction): string {
   return t('home.dayAgo', { count: days });
 }
 
+/* ── Continue ── */
+
+// The lesson the student opened last, big, with how far along its course is
+// and Continue; the few opened before it in a short list under it
+function ContinueCard({
+  courseKey,
+  courseTitle,
+  slug,
+  title,
+  pct,
+  recent,
+}: {
+  courseKey: string;
+  courseTitle: string;
+  slug: string;
+  title: string;
+  pct: number;
+  recent: { courseKey: string; slug: string; title: string; lastAccessedAt: string }[];
+}) {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { color } = courseMeta(courseKey);
+  return (
+    <div
+      className="@3xl:col-span-2 p-5 panel rounded-[var(--radius-lg)] flex flex-col"
+      style={{ backgroundImage: courseWash(courseKey) }}
+    >
+      <h2 className="section-label mb-4">{t('home.continueWhereLeftOff')}</h2>
+      <div className="flex items-center gap-4">
+        <CourseMark courseKey={courseKey} size={44} />
+        <div className="flex-1 min-w-0">
+          <div className="text-[12px] text-[var(--text3)]">{courseTitle}</div>
+          <div className="text-[18px] font-bold tracking-[-0.3px] truncate">{title}</div>
+        </div>
+        <button
+          onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
+          className="btn btn-primary flex-shrink-0 group"
+        >
+          {t('courses.continue')}
+          <ArrowRight
+            size={14}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </button>
+      </div>
+      <div className="mt-4">
+        <div className="flex justify-between text-[11px] text-[var(--text3)] mb-1">
+          <span>{t('courses.percentComplete', { pct })}</span>
+        </div>
+        <div className="h-1 bg-[var(--surface2)] rounded-sm overflow-hidden">
+          <div
+            className="h-full rounded-sm transition-[width] duration-400"
+            style={{ width: `${pct}%`, background: color }}
+          />
+        </div>
+      </div>
+      {recent.length > 0 && (
+        <div className="mt-5 pt-4 border-t border-[var(--border)]">
+          <h3 className="section-label mb-2">{t('home.recentlyAccessed')}</h3>
+          <div className="grid grid-cols-1 @xl:grid-cols-3 gap-2">
+            {recent.map((l) => (
+              <button
+                key={`${l.courseKey}/${l.slug}`}
+                onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
+                className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--accent)]/5 transition cursor-pointer text-left text-[var(--text)] min-w-0"
+              >
+                <CourseMark courseKey={l.courseKey} size={24} />
+                <div className="flex-1 min-w-0">
+                  <div className="text-[12px] font-semibold truncate">{l.title}</div>
+                  <div className="text-[10px] text-[var(--text3)] truncate">
+                    {formatTimeAgo(l.lastAccessedAt, t)}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Where the student stands ── */
+
+// The level as a ring that fills toward the next one, its title and the XP
+// still to go, then the days in a row, the lessons done and the badges on one
+// line; the whole picture is on Progress
+function StatsCard({ streak }: { streak: number | null }) {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const g = useGamification();
+  const stats = [
+    { icon: Flame, value: streak ?? '-', label: t('profile.streak') },
+    { icon: BookCheck, value: g.totalCompleted, label: t('profile.lessonsDone') },
+    { icon: Award, value: g.badges.filter((b) => b.earned).length, label: t('profile.badges') },
+  ];
+  return (
+    <div className="p-5 panel rounded-[var(--radius-lg)] flex flex-col">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="section-label">{t('nav.progress')}</h2>
+        <button
+          onClick={() => navigate('/progress')}
+          className="group inline-flex items-center gap-1 text-xs text-[var(--accent)] font-medium bg-transparent border-none cursor-pointer"
+        >
+          {t('home.viewAll')}
+          <ArrowRight
+            size={12}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </button>
+      </div>
+      <div className="flex-1 flex items-center gap-4 py-2">
+        <LevelRing level={g.xp.level} pct={g.xp.xpPct} />
+        <div className="min-w-0">
+          <div className="text-[16px] font-bold tracking-[-0.2px] truncate">{t(g.xp.titleKey)}</div>
+          <div className="mt-0.5 text-[12px] text-[var(--text3)]">
+            {t('profile.levelProgress', {
+              current: g.xp.xpIntoLevel,
+              needed: g.xp.xpForLevelSpan,
+              next: g.xp.level + 1,
+            })}
+          </div>
+        </div>
+      </div>
+      <div className="pt-3">
+        <div className="grid grid-cols-3 border-t border-[var(--border)] pt-4">
+          {stats.map(({ icon: Icon, value, label }, i) => (
+            <div
+              key={label}
+              className={`flex flex-col items-center text-center px-1 ${i > 0 ? 'border-l border-[var(--border)]' : ''}`}
+            >
+              <div className="flex items-center gap-1.5">
+                <Icon size={14} className="text-[var(--accent)]" aria-hidden="true" />
+                <span className="text-[17px] font-bold leading-none tabular-nums">{value}</span>
+              </div>
+              <div className="mt-1.5 text-[10px] text-[var(--text3)] leading-tight">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// A ring around the level's number, filled as far as the student is toward
+// the next level
+function LevelRing({ level, pct }: { level: number; pct: number }) {
+  const { t } = useTranslation();
+  const r = 27;
+  const c = 2 * Math.PI * r;
+  return (
+    <div
+      className="relative w-[72px] h-[72px] flex-shrink-0"
+      role="img"
+      aria-label={`${t('level.label', { n: level })}, ${pct}%`}
+    >
+      <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90" aria-hidden="true">
+        <circle cx="32" cy="32" r={r} fill="none" stroke="var(--surface2)" strokeWidth="5" />
+        <circle
+          cx="32"
+          cy="32"
+          r={r}
+          fill="none"
+          stroke="var(--accent)"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={c * (1 - Math.min(Math.max(pct, 0), 100) / 100)}
+          className="transition-[stroke-dashoffset] duration-700"
+        />
+      </svg>
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center"
+        aria-hidden="true"
+      >
+        <span className="text-[20px] font-bold leading-none">{level}</span>
+        <span className="mt-0.5 text-[8px] font-semibold tracking-[1px] text-[var(--text3)] uppercase">
+          {t('home.levelShort')}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 /* ── Lesson / Algo of the Day ── */
 
 function OfTheDayCard({
@@ -407,7 +570,6 @@ function OfTheDayCard({
   completed,
   xp,
   bonusRatio,
-  subtitle,
   completedText,
   cta,
 }: {
@@ -419,62 +581,53 @@ function OfTheDayCard({
   completed: boolean;
   xp: number;
   bonusRatio: number;
-  subtitle: string;
   completedText: string;
   cta: string;
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <div className="p-5 panel rounded-[var(--radius)] flex flex-col flex-1">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="section-label">
-          {heading}
-          <span aria-hidden> · </span>
-          <span style={{ color: courseMeta(courseKey).color }}>{courseTitle}</span>
-        </h3>
-        {completed ? (
-          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[var(--success)]/15 px-2 py-0.5 rounded-full tracking-[0.5px]">
-            <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-              <path
-                fillRule="evenodd"
-                d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.8 6.8-6.8a1 1 0 0 1 1.4 0Z"
-                clipRule="evenodd"
-              />
-            </svg>
+    <div className="p-5 panel rounded-[var(--radius-lg)] flex flex-col">
+      <div className="flex items-center justify-between gap-2 mb-4">
+        <h3 className="section-label">{heading}</h3>
+        {completed && (
+          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[var(--success)]/15 px-2 py-0.5 rounded-full">
+            <Check size={11} strokeWidth={3} aria-hidden="true" />
             {t('home.completed')}
           </span>
-        ) : (
-          <span className="text-[10px] font-semibold text-[var(--warning)] bg-[var(--warning)]/15 px-2 py-0.5 rounded-full tracking-[0.5px]">
-            {t('home.recommended')}
-          </span>
         )}
       </div>
-      <div className="flex-1">
-        {!completed && (
-          <div className="flex items-center gap-2 mb-2.5">
-            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
-              {t('home.dailyXp', { xp })}
-              {bonusRatio > 0 && (
-                <span className="text-[var(--text3)]">
-                  {' '}
-                  ({t('home.dailyBonus', { pct: Math.round(bonusRatio * 100) })})
-                </span>
-              )}
+      <div className="flex items-center gap-3">
+        <CourseMark courseKey={courseKey} size={36} />
+        <div className="flex-1 min-w-0">
+          <div className="text-[11px] text-[var(--text3)] truncate">{courseTitle}</div>
+          <div className="text-[14px] font-bold leading-snug line-clamp-2">{title}</div>
+        </div>
+      </div>
+      <div className="mt-auto pt-5 flex items-center justify-between gap-2">
+        <span
+          className={`text-[11px] font-semibold ${completed ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+        >
+          {completed ? completedText : t('common.xpReward', { xp })}
+          {!completed && bonusRatio > 0 && (
+            <span className="font-medium text-[var(--text3)]">
+              {' · '}
+              {t('home.dailyBonusToday', { pct: Math.round(bonusRatio * 100) })}
             </span>
-          </div>
-        )}
-        <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
-        <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
-          {completed ? completedText : subtitle}
-        </p>
+          )}
+        </span>
+        <button
+          onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
+          className="btn btn-secondary btn-sm flex-shrink-0 group"
+        >
+          {completed ? t('home.review') : cta}
+          <ArrowRight
+            size={12}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </button>
       </div>
-      <button
-        onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
-        className="btn btn-primary btn-sm self-start"
-      >
-        {completed ? t('home.review') : cta}
-      </button>
     </div>
   );
 }

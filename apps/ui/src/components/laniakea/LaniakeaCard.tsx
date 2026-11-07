@@ -39,12 +39,12 @@ export function LaniakeaCard() {
   if (isLoading) return null;
 
   return (
-    <section className="p-5 panel rounded-[var(--radius)] flex flex-col @xl:flex-row @xl:items-center gap-4">
-      <div className="w-10 h-10 rounded-full bg-[var(--accent)]/15 text-[var(--accent)] flex items-center justify-center flex-shrink-0">
-        {open ? <Orbit size={20} strokeWidth={1.75} /> : <Lock size={18} strokeWidth={1.75} />}
-      </div>
+    <section className="p-5 panel rounded-[var(--radius-lg)] flex flex-col gap-3">
       <div className="flex-1 min-w-0">
         <h3 className="m-0 text-[14px] font-semibold flex items-center gap-2">
+          <span className="w-7 h-7 rounded-full bg-[var(--accent)]/15 text-[var(--accent)] flex items-center justify-center flex-shrink-0">
+            {open ? <Orbit size={15} strokeWidth={1.75} /> : <Lock size={13} strokeWidth={1.75} />}
+          </span>
           <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-[#facc15] text-[11px] font-bold text-[#1a1a1a]">
             {t('home.laniakea.new')}
           </span>
@@ -60,14 +60,14 @@ export function LaniakeaCard() {
         )}
       </div>
       {open ? (
-        <Link to="/laniakea" className="btn btn-primary text-center">
+        <Link to="/laniakea" className="btn btn-secondary btn-sm self-start mt-auto">
           {t('home.laniakea.fly')}
         </Link>
       ) : (
         next && (
           <Link
             to={`/lesson/${LANIAKEA_COURSE}/${next}`}
-            className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] text-[var(--text)] text-[13px] font-semibold no-underline text-center hover:bg-[var(--surface)]"
+            className="btn btn-secondary btn-sm self-start mt-auto"
           >
             {t('laniakea.locked.next')}
           </Link>

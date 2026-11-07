@@ -181,9 +181,9 @@
     "continueWhereLeftOff": "Continue where you left off",
     "recentlyAccessed": "Recently accessed",
     "fromAlmanac": "From the Almanac",
-    "viewAll": "View all →",
+    "viewAll": "View all",
     "readTime": "{{time}} read",
-    "readMore": "Read →",
+    "readMore": "Read",
     "activity": "Activity",
     "dayTue": "Tue",
     "dayThu": "Thu",
@@ -204,17 +204,12 @@
     "dayAgo": "{{count}}d ago",
     "lessonOfTheDay": "Lesson of the Day",
     "algoOfTheDay": "Algorithm of the Day",
-    "recommended": "Recommended",
-    "dailyXp": "{{xp}} XP",
-    "dailyBonus": "+{{pct}}%",
-    "continueJourney": "Continue your {{course}} journey with this lesson.",
-    "algoChallengeToday": "Sharpen your skills with today's challenge.",
     "completed": "Completed",
     "completedLessonToday": "You've completed today's lesson.",
     "completedAlgoToday": "You've solved today's challenge.",
     "review": "Review",
-    "startLesson": "Start Lesson →",
-    "solveChallenge": "Solve Challenge →",
+    "startLesson": "Start lesson",
+    "solveChallenge": "Solve challenge",
     "marketing": {
       "title": "Learn to code <1>for free</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> and <7>Linux</7>, right in your browser.",
@@ -237,7 +232,9 @@
       "ready_one": "{{count}} planet ready to conquer",
       "ready_other": "{{count}} planets ready to conquer",
       "fly": "Fly to Laniakea"
-    }
+    },
+    "dailyBonusToday": "+{{pct}}% today",
+    "levelShort": "Level"
   },
   "landing": {
     "hero": {

@@ -196,9 +196,9 @@
     "continueWhereLeftOff": "Continuă de unde ai rămas",
     "recentlyAccessed": "Accesate recent",
     "fromAlmanac": "Din Almanah",
-    "viewAll": "Vezi tot →",
+    "viewAll": "Vezi tot",
     "readTime": "{{time}} de citit",
-    "readMore": "Citește →",
+    "readMore": "Citește",
     "activity": "Activitate",
     "dayTue": "Mar",
     "dayThu": "Joi",
@@ -220,17 +220,12 @@
     "minAgo": "acum {{count}} min",
     "lessonOfTheDay": "Lecția zilei",
     "algoOfTheDay": "Algoritmul zilei",
-    "recommended": "Recomandat",
-    "dailyXp": "{{xp}} XP",
-    "dailyBonus": "+{{pct}}%",
-    "continueJourney": "Continuă-ți călătoria în {{course}} cu această lecție.",
-    "algoChallengeToday": "Antrenează-ți mintea cu provocarea de azi.",
     "completed": "Finalizată",
     "completedLessonToday": "Ai finalizat lecția de azi.",
     "completedAlgoToday": "Ai rezolvat provocarea de azi.",
     "review": "Revizuiește",
-    "startLesson": "Începe lecția →",
-    "solveChallenge": "Rezolvă provocarea →",
+    "startLesson": "Începe lecția",
+    "solveChallenge": "Rezolvă provocarea",
     "marketing": {
       "title": "Învață să programezi <1>gratuit</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>, direct în browser.",
@@ -264,7 +259,9 @@
       "ready_few": "{{count}} planete gata de cucerit",
       "ready_other": "{{count}} de planete gata de cucerit",
       "fly": "Zbori în Laniakea"
-    }
+    },
+    "dailyBonusToday": "+{{pct}}% azi",
+    "levelShort": "Nivel"
   },
   "landing": {
     "hero": {

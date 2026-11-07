@@ -31,6 +31,15 @@ vi.mock('../hooks/useGamification', () => ({
   useGamification: vi.fn(() => ({
     totalCompleted: 10,
     totalLessons: 50,
+    xp: {
+      earnedXp: 40,
+      totalXp: 1000,
+      level: 1,
+      titleKey: 'level.title.1',
+      xpIntoLevel: 40,
+      xpForLevelSpan: 100,
+      xpPct: 40,
+    },
     badges: [],
     perCourse: {},
     isLoading: false,
@@ -474,11 +483,11 @@ describe('HomePage', () => {
     renderPage();
     const heading = await screen.findByText('Lesson of the Day');
     expect(screen.getByText('Algorithm of the Day')).toBeInTheDocument();
-    // the course sits on the heading line, in its own colour
-    expect(heading).toHaveTextContent('Lesson of the Day · Python');
-    expect(within(heading).getByText('Python')).toHaveStyle({ color: '#3572A5' });
-    // the "not completed" branch shows the recommended badge
-    expect(screen.getAllByText('Recommended').length).toBeGreaterThanOrEqual(1);
+    // each names its course under the heading and offers the day's bonus
+    const card = heading.closest('.panel') as HTMLElement;
+    expect(within(card).getByText('Python')).toBeInTheDocument();
+    expect(within(card).getByText(/\+20% today/)).toBeInTheDocument();
+    expect(screen.queryByText('Recommended')).toBeNull();
   });
 
   it('shows the completed state and review CTA for a done daily pick', async () => {
