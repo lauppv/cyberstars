@@ -98,6 +98,7 @@ describe('planChecks', () => {
       'java 2/4',
       'java 3/4',
       'java 4/4',
+      'web',
     ]);
   });
 
@@ -111,13 +112,33 @@ describe('planChecks', () => {
       'java 2/4',
       'java 3/4',
       'java 4/4',
+      'web',
     ]);
   });
 
   it('grades one lesson per language when only the planner or its workflow changed', () => {
     const shards = planChecks(['.github/workflows/lesson-tests.yml']);
-    expect(shards.map((s) => s.name)).toEqual(['python', 'c', 'java']);
-    for (const s of shards) expect(s.targets).toMatch(/^[a-z]+\/[a-z0-9-]+:en$/);
+    expect(shards.map((s) => s.name)).toEqual(['python', 'c', 'java', 'web']);
+    for (const s of shards) expect(s.targets).toMatch(/^[a-z-]+\/[a-z0-9-]+:en$/);
+  });
+
+  it('grades a web lesson in an image built from the repo, and every one when its judge changed', () => {
+    expect(
+      planChecks([
+        'packages/content/lessons/web-dev/first-page-tests.json',
+        'packages/content/variants/web-dev/first-page/reject-no-lang.md',
+      ]),
+    ).toEqual([
+      {
+        name: 'web',
+        image: 'cyberstars-web-sandbox',
+        build: 'apps/api/src/runtimes/web-sandbox',
+        targets: 'web-dev/first-page',
+      },
+    ]);
+    const shards = planChecks(['apps/api/src/services/lesson-tests.runner.web.cjs']);
+    expect(shards.map((s) => s.name)).toEqual(['web']);
+    expect(shards[0].targets.split(' ')).toContain('web-dev/first-page:en');
   });
 
   it('grades every lesson in EN and RO on a manual run', () => {

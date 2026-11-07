@@ -1,7 +1,7 @@
 // Plans the lesson-tests CI job: from the files a PR changes, which lessons
 // check-tests has to grade again, split into shards per runtime. Each shard is
-// one matrix entry (one runner, one judge image pulled); an empty plan skips
-// the job.
+// one matrix entry (one runner, one judge image pulled, or built from the repo
+// for the web judge); an empty plan skips the job.
 //
 // - A lesson's spec, reference solution, hidden part or variants changed:
 //   that lesson, EN and RO.
@@ -17,11 +17,15 @@
 //   npx tsx apps/api/scripts/changed-lessons.ts --all
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-import { MULTI_LANGUAGE_COURSE_KEYS, isMultiLanguage } from '@cyberstars/shared/constants';
+import {
+  MULTI_LANGUAGE_COURSE_KEYS,
+  WEB_COURSE_KEYS,
+  isMultiLanguage,
+} from '@cyberstars/shared/constants';
 import { contentDir } from '../src/services/paths.js';
-import { getRuntime } from '../src/runtimes/registry.js';
+import { WEB_LANGUAGE, getRuntime } from '../src/runtimes/registry.js';
 
-type Runtime = 'python' | 'c' | 'java';
+type Runtime = 'python' | 'c' | 'java' | typeof WEB_LANGUAGE;
 
 // A multi-language course counts once per language, as <course>/<language>.
 const multi = (runtime: Runtime) => MULTI_LANGUAGE_COURSE_KEYS.map((key) => `${key}/${runtime}`);
@@ -30,12 +34,18 @@ const COURSES: Record<Runtime, string[]> = {
   python: ['python', 'algo-python', ...multi('python')],
   c: ['c', 'algo-c', ...multi('c')],
   java: ['java', 'algo-java', ...multi('java')],
+  web: [...WEB_COURSE_KEYS],
+};
+
+// The web judge's image is the app's own: the job builds it from here
+const BUILT_IMAGES: Partial<Record<Runtime, string>> = {
+  web: 'apps/api/src/runtimes/web-sandbox',
 };
 
 // For a whole language, sized on the measured judge cost (~70 ms per case for
 // Python, ~120 ms for C, ~800 ms for Java, plus each lesson's variants) to
 // keep a shard near 20 minutes.
-const WHOLE_SHARDS: Record<Runtime, number> = { python: 2, c: 1, java: 4 };
+const WHOLE_SHARDS: Record<Runtime, number> = { python: 2, c: 1, java: 4, web: 1 };
 
 export const RUNTIME_FILES: Record<Runtime, string[]> = {
   python: [
@@ -51,6 +61,13 @@ export const RUNTIME_FILES: Record<Runtime, string[]> = {
   java: [
     'apps/api/src/services/lesson-tests.runner.java',
     'framework/sandbox/src/languages/java.ts',
+  ],
+  web: [
+    'apps/api/src/services/lesson-tests.runner.web.cjs',
+    'apps/api/src/services/web-tests.ts',
+    'apps/api/src/runtimes/web-sandbox/Dockerfile',
+    'packages/shared/webTests.ts',
+    'packages/shared/webFiles.ts',
   ],
 };
 
@@ -83,13 +100,14 @@ export const SELF_FILES = [
 // packages/content/lessons/java/ro/hashmap-tests.json -> java/hashmap,
 // packages/content/algorithms/c/binary-search-c-solution.md -> algo-c/binary-search-c,
 // packages/content/variants/python/string-reverse/reject-slice-in-helper.py -> python/string-reverse,
+// packages/content/lessons/web-dev/first-page-tests.json -> web-dev/first-page,
 // and on a multi-language course, with the language after the course:
 // packages/content/lessons/trees-graphs/c/trees-tests.json -> trees-graphs/c/trees,
 // packages/content/algorithms/trees-graphs/c/max-depth-tests.json -> algo-trees-graphs/c/max-depth
 // (its -harness.md too),
 // packages/content/variants/trees-graphs/c/trees/reject-no-struct.c -> trees-graphs/c/trees.
 const LESSON_FILE =
-  /^packages\/content\/(lessons|algorithms)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md|harness\.md)$/;
+  /^packages\/content\/(lessons|algorithms)\/(python|c|java|web-dev)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md|harness\.md)$/;
 const VARIANT_FILE = /^packages\/content\/variants\/([^/]+)\/([^/]+)\/[^/]+$/;
 const MULTI_LESSON_FILE =
   /^packages\/content\/(lessons|algorithms)\/([^/]+)\/(python|c|java)\/(?:ro\/)?([^/]+)-(?:tests\.json|solution\.md|harness\.md)$/;
@@ -99,6 +117,8 @@ const MULTI_VARIANT_FILE =
 export interface Shard {
   name: string;
   image: string;
+  // Where the job builds the image from, when it isn't pulled
+  build?: string;
   targets: string;
 }
 
@@ -158,10 +178,12 @@ export function planChecks(changed: string[], all = false): Shard[] {
     const args = [...targets].sort().map(([lesson, lang]) => (lang ? `${lesson}:${lang}` : lesson));
     const count = Math.min(whole ? WHOLE_SHARDS[runtime] : 1, args.length);
     const image = getRuntime(runtime)!.image;
+    const build = BUILT_IMAGES[runtime];
     for (let i = 0; i < count; i++) {
       shards.push({
         name: count > 1 ? `${runtime} ${i + 1}/${count}` : runtime,
         image,
+        ...(build ? { build } : {}),
         targets: args.filter((_, j) => j % count === i).join(' '),
       });
     }
