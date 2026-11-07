@@ -60,18 +60,25 @@ export interface ProjectCheckDTO {
 }
 
 // A project's text: what comes before the first `## ` heading, then each
-// step's section, its heading being the step's title
+// step's section, its heading being the step's title. A `## ` line inside a
+// fenced code block (a shell comment, say) is part of the code, not a heading.
 export function splitProjectText(text: string): {
   intro: string;
   steps: { title: string; body: string }[];
 } {
-  const [intro, ...parts] = text.split(/^## /m);
+  const sections: string[][] = [[]];
+  let fence: string | null = null;
+  for (const line of text.split('\n')) {
+    const marker = /^\s*(```+|~~~+)/.exec(line)?.[1];
+    if (marker && (fence === null || (marker[0] === fence[0] && marker.length >= fence.length))) {
+      fence = fence === null ? marker : null;
+    }
+    if (fence === null && line.startsWith('## ')) sections.push([line.slice(3)]);
+    else sections[sections.length - 1].push(line);
+  }
+  const [intro, ...parts] = sections;
   return {
-    intro: intro.trim(),
-    steps: parts.map((part) => {
-      const newline = part.indexOf('\n');
-      const title = (newline < 0 ? part : part.slice(0, newline)).trim();
-      return { title, body: newline < 0 ? '' : part.slice(newline + 1).trim() };
-    }),
+    intro: intro.join('\n').trim(),
+    steps: parts.map(([title, ...body]) => ({ title: title.trim(), body: body.join('\n').trim() })),
   };
 }

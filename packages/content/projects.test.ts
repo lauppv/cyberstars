@@ -24,6 +24,17 @@ describe('splitProjectText', () => {
       ],
     });
   });
+
+  it('leaves a `## ` line inside a code block in its step', () => {
+    const text = '## One\n```bash\n## a shell comment\nls\n```\n~~~\n## another\n~~~\n## Two\nx';
+    expect(splitProjectText(text)).toEqual({
+      intro: '',
+      steps: [
+        { title: 'One', body: '```bash\n## a shell comment\nls\n```\n~~~\n## another\n~~~' },
+        { title: 'Two', body: 'x' },
+      ],
+    });
+  });
 });
 
 describe('findProject', () => {
