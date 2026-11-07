@@ -265,6 +265,7 @@ describe('runTerminalTests', () => {
             { kind: 'command_output', cmd: 'true', expected: '' },
           ],
           forbids: [{ kind: 'command', pattern: 'rm\\s' }],
+          requires: [{ kind: 'command', pattern: '^(?=.*\\bls\\b)(?=.*-l)' }],
         }),
       );
     });
@@ -273,7 +274,7 @@ describe('runTerminalTests', () => {
     });
 
     it('handles an absolute path, an empty-data O verdict, and a pattern-only forbid', async () => {
-      mockGetSessionView.mockReturnValue(view({ history: ['ls'] }));
+      mockGetSessionView.mockReturnValue(view({ history: ['ls -l'] }));
       // Index 1 is an O verdict with no base64 payload -> decodes to ''.
       mockDockerExec.mockResolvedValue('0 P\n1 O\n');
       const res = await runTerminalTests('user:1', 'sid', 'linux', slug);
@@ -281,6 +282,8 @@ describe('runTerminalTests', () => {
       const forbid = res.checks.find((c) => c.messageKey === 'terminalTests.forbid.command');
       // Only the command's name, never the pattern that pins it.
       expect(forbid?.params?.name).toBe('rm');
+      const require = res.checks.find((c) => c.messageKey === 'terminalTests.require.command');
+      expect(require).toMatchObject({ passed: true, params: { name: 'ls' } });
     });
   });
 

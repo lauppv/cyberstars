@@ -108,7 +108,9 @@ function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'>
 // pattern that pins its options and files, which would hand over the answer.
 function ruleLabel(rule: TerminalCommandRule): string {
   if (rule.name) return rule.name;
-  const pattern = rule.pattern ?? '';
+  // A pattern may open with lookaheads that take the arguments in any order,
+  // `^(?=.*\bhead\b)(?=.*\b5\b)`: the first word it asks for is the command.
+  const pattern = (rule.pattern ?? '').replace(/^\^?(\(\?=\.\*)?(\\b)?/, '');
   return pattern.match(/^[a-z][\w-]*/i)?.[0] ?? pattern.replace(/\\/g, '');
 }
 
