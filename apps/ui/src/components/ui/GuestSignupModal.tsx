@@ -24,14 +24,14 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 bg-black/65 z-[120] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 overlay z-[120] flex items-center justify-center p-4"
       onMouseDown={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="guest-signup-title"
-        className="w-full max-w-[480px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[480px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between px-6 py-4 border-b border-[var(--border)]">

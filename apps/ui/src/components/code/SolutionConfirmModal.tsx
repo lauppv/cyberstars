@@ -61,11 +61,11 @@ export function SolutionConfirmModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/65 z-[100] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 overlay z-[100] flex items-center justify-center p-4"
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[440px] bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[440px] bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="px-6 py-4 border-b border-[var(--border)] text-base font-bold">

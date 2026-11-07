@@ -54,12 +54,12 @@ export function LessonTour({ userName, completed, onFinish }: LessonTourProps) {
   };
 
   return createPortal(
-    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 overlay">
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="lesson-tour-title"
-        className="w-[min(360px,100%)] p-6 rounded-xl border border-[var(--border)] bg-[var(--bg2)] shadow-[0_8px_32px_#0008]"
+        className="w-[min(360px,100%)] p-6 rounded-[var(--radius-lg)] border border-[var(--border)] bg-[var(--bg2)] shadow-[0_8px_32px_#0008]"
       >
         <h2 id="lesson-tour-title" className="text-[16px] font-semibold text-[var(--text)] mb-2">
           {t(`tour.${card}.title`, { name: userName })}

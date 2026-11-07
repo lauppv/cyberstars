@@ -204,7 +204,7 @@
 .cat-icon {
   width: 46px;
   height: 46px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,7 +365,7 @@
 .cat-banner-icon {
   width: 56px;
   height: 56px;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -534,7 +534,7 @@
   font-size: 9px;
   font-weight: 700;
   padding: 2px 7px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   letter-spacing: 0.5px;
   line-height: 1.4;
 }
@@ -754,7 +754,7 @@
   align-items: center;
   gap: 5px;
   padding: 4px 10px;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: rgba(30, 30, 40, 0.15);
   border: 1px solid var(--border);
   font-size: 11px;
@@ -800,7 +800,7 @@
   display: flex;
   gap: 2px;
   padding: 6px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   background: var(--popover);
   border: 1px solid var(--accent);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -813,7 +813,7 @@
   font-size: 18px;
   line-height: 1;
   padding: 4px 5px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   transition: transform 0.12s;
 }
 
@@ -992,7 +992,7 @@
 .role-badge {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.6px;

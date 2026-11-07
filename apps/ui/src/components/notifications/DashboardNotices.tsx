@@ -111,12 +111,12 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
   // A portal, so the sticky topbar's stacking can't keep it under the page. A
   // click beside it doesn't close it, only the X or Done
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overlay">
       <div
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="w-full max-w-[560px] max-h-[85vh] flex flex-col bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[560px] max-h-[85vh] flex flex-col bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
       >
         <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-[var(--border)]">
           <div className="min-w-0">

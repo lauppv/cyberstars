@@ -236,7 +236,7 @@ export function PollSection({ className }: { className: string }) {
       {confirming &&
         createPortal(
           <div
-            className="fixed inset-0 bg-black/65 z-[100] flex items-center justify-center p-4 animate-fade-in"
+            className="fixed inset-0 overlay z-[100] flex items-center justify-center p-4"
             onMouseDown={close}
           >
             <div
@@ -244,7 +244,7 @@ export function PollSection({ className }: { className: string }) {
               aria-modal="true"
               aria-label={t('admin.poll.confirmTitle')}
               onMouseDown={(e) => e.stopPropagation()}
-              className="w-full max-w-[420px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl px-6 py-5"
+              className="w-full max-w-[420px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)] px-6 py-5"
             >
               <div className="text-base font-bold">{t('admin.poll.confirmTitle')}</div>
               <p className="mt-1 mb-4 text-[12px] text-[var(--text3)]">

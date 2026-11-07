@@ -83,11 +83,11 @@ export function ShareToForumModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/65 z-[100] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 overlay z-[100] flex items-center justify-center p-4"
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[600px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[600px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
