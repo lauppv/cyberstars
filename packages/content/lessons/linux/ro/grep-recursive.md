@@ -41,21 +41,10 @@ _undeva_ în proiectul meu?”.
 
 ---
 
-## Misiune: Investigarea defecțiunilor
+## Misiune: Investigarea Defecțiunii
 
-A fost raportată o defecțiune recurentă, iar echipa de mentenanță are nevoie de
-fiecare apariție a cuvântului `failure` din jurnalele stației, plus fișierul vinovat
-scos deoparte ca dovadă. Folderul `jurnale` conține fișiere răspândite în mai multe
-sub-foldere.
-
-1. Caută recursiv `failure` peste tot sub folderul `jurnale`. Fiecare rezultat arată
-   din ce fișier provine.
-2. Creează un folder numit `investigatie` și copiază jurnalul din ianuarie
-   `jurnale/ianuarie.log`, care conține defecțiunea pompei de răcire, în el sub numele
-   `dovada.log`.
-3. Afișează fișierul-dovadă ca să confirmi că a captat linia cu defecțiunea.
+S-a raportat o defecțiune care revine. Folderul `jurnale` ține jurnale împrăștiate prin mai multe subfoldere, iar echipa de mentenanță are nevoie de fiecare apariție a cuvântului `failure` din oricare dintre ele, cu fișierul din care vine. Una dintre defecțiuni e la pompa de răcire (`coolant pump`): scoate jurnalul care o raportează ca dovadă, copiat în `investigatie/dovada.log`.
 
 **Rezultat așteptat**
 
-Fiecare linie cu `failure` apare cu calea fișierului ei, iar folderul `investigatie`
-conține o copie a jurnalului din ianuarie sub numele `dovada.log`.
+Vezi fiecare linie `failure` cu fișierul ei, iar `investigatie/dovada.log` e o copie a jurnalului care raportează defecțiunea pompei de răcire.

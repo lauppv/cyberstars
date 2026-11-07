@@ -34,17 +34,10 @@ este menționat acest cuvânt?” `grep` îți răspunde instant.
 
 ---
 
-## Misiune: Scanare avertismente
+## Misiune: Scanarea Avertismentelor
 
-Comandantul stației vrea un briefing rapid cu avertismentele înregistrate în această
-tură și o copie a jurnalului la dosar. Jurnalul de evenimente se află în `sistem.log`.
-
-1. Afișează doar liniile care conțin cuvântul `warning`.
-2. Fă o a doua căutare pentru liniile care conțin `error`.
-3. Creează un folder numit `scanare` și copiază `sistem.log` în el sub numele
-   `tura.log` pentru evidență.
+Comandantul stației vrea un raport rapid din jurnalul de evenimente al turei, `sistem.log`: fiecare linie care e un `warning` și, într-o a doua căutare, tot ce spune jurnalul despre senzori (`sensor`). Păstrează o copie a jurnalului pentru registru ca `scanare/tura.log`.
 
 **Rezultat așteptat**
 
-Apar liniile de avertisment, apoi linia de eroare, iar folderul `scanare` conține o
-copie a jurnalului turei.
+Vezi doar liniile de avertisment, apoi doar liniile despre senzori, iar copia din `scanare` spune ce spune originalul.

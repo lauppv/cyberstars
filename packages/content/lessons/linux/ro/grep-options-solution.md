@@ -1,16 +1,18 @@
 ```bash
-grep -c warning sistem.log
-grep -v info sistem.log
-grep -n error sistem.log
+grep -c info sistem.log
+grep -v warning sistem.log
+grep -n warning sistem.log
 mkdir predare
 cp sistem.log predare/brief-noapte.log
 ```
 
 ```text
 3
-warning: temperatura carenei in crestere
-warning: rezerva de combustibil scazuta
+info: pornire completa
+info: echipaj la bord
 error: sensor 3 offline
-warning: latenta comunicatii ridicata
-5:error: sensor 3 offline
+info: orbita stabila
+2:warning: temperatura carenei in crestere
+4:warning: rezerva de combustibil scazuta
+7:warning: latenta comunicatii ridicata
 ```

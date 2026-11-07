@@ -53,13 +53,14 @@ _and_ numbered.
 
 ## Mission: Shift-End Log Summary
 
-Before handing off to the night crew, you need to prepare a summary of `system.log`: how many warnings were logged, what non-routine events occurred, and a copy filed for the next shift.
+Before handing off to the night crew, sum up `system.log` with three searches:
 
-1. Count how many lines contain `warning`, just the number, not the lines themselves.
-2. Print every line that does **not** contain `info`: the non-routine events.
-3. Print the `error` lines with a line number in front of each, so the night crew can jump straight to them.
-4. Create a folder called `handoff` and copy `system.log` into it as `night-brief.log`.
+1. How many routine `info` lines were logged? The number alone, not the lines.
+2. Everything that is not a `warning`, so the night crew sees the rest at a glance.
+3. The `warning` lines, each with its position in the file, so the crew can jump straight to them.
+
+Then file a copy of the log for the next shift as `handoff/night-brief.log`.
 
 **Expected result**
 
-You see the warning count, the filtered non-routine lines, the numbered error line, and a copy of the log waiting in `handoff`.
+You see a single number, then the lines with no warning in them, then the warnings with their line numbers, and the copy waits in `handoff`.

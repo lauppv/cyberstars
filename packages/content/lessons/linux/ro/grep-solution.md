@@ -1,6 +1,6 @@
 ```bash
 grep warning sistem.log
-grep error sistem.log
+grep sensor sistem.log
 mkdir scanare
 cp sistem.log scanare/tura.log
 ```
