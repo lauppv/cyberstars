@@ -3,11 +3,11 @@ import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Check, ChevronDown, ChevronRight } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
+import { LessonHeading } from '../components/ui/LessonHeading';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
-import { DIFF_COLORS } from '../constants/difficulty';
 import { PanelTabs } from '../components/judge/PanelTabs';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { CodeEditor } from '../components/code/CodeEditor';
@@ -262,7 +262,6 @@ function ProjectView({ project }: { project: Project }) {
   const index = siblings.indexOf(project);
   const prev = siblings[index - 1];
   const next = siblings[index + 1];
-  const dc = DIFF_COLORS[project.difficulty];
   const meta = courseMeta(project.language);
   const sections = text === null ? null : splitProjectText(text);
 
@@ -301,24 +300,13 @@ function ProjectView({ project }: { project: Project }) {
           >
             <div className="flex-1 min-h-0 overflow-y-auto">
               <div className="px-9 py-8">
-                <div className="flex items-center gap-3 mb-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                    {t('projects.nOfM', { n: index + 1, total: siblings.length })}
-                  </span>
-                  <BetaBadge hint={t('projects.betaHint')} />
-                  <div className="ml-auto flex items-center gap-2">
-                    <span
-                      className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
-                      style={{ background: dc.bg, color: dc.text }}
-                    >
-                      {t(`algoList.filters.${project.difficulty}`)}
-                    </span>
-                  </div>
-                </div>
-
-                <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
-                  {project.title}
-                </h1>
+                <LessonHeading
+                  title={project.title}
+                  position={t('projects.nOfM', { n: index + 1, total: siblings.length })}
+                  badge={<BetaBadge hint={t('projects.betaHint')} />}
+                  difficulty={project.difficulty}
+                  difficultyLabel={t(`algoList.filters.${project.difficulty}`)}
+                />
 
                 {failed ? (
                   <LoadError text={t('projects.textFailed')} onRetry={retry} />

@@ -24,6 +24,8 @@ import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { useTutor, type TutorLessonStage } from '../context/TutorContext';
 import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
+import { LessonHeading } from '../components/ui/LessonHeading';
+import type { Difficulty } from '../constants/difficulty';
 import { TutorFace } from '../components/tutor/TutorFace';
 import { AchievementToast } from '../components/gamification/AchievementToast';
 import { TutorToast } from '../components/tutor/TutorToast';
@@ -83,12 +85,6 @@ function parseDifficulty(title: string): {
 
 // What the lesson panel (the left side) shows.
 type LeftView = 'lesson' | 'result' | 'submissions';
-
-const DIFFICULTY_COLOR: Record<string, string> = {
-  Easy: 'var(--success)',
-  Medium: 'var(--warning)',
-  Hard: 'var(--error)',
-};
 
 export function LessonPage() {
   const { t, i18n } = useTranslation();
@@ -741,51 +737,27 @@ export function LessonPage() {
                   const { rest } = parseDifficulty(title);
                   const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
                   return (
-                    <>
-                      <div className="flex items-center gap-3 mb-2 flex-wrap">
-                        <span className="px-3 py-1 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--accent)]/15 text-[var(--accent)]">
-                          {t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
-                            n: currentIndex + 1,
-                            total: lessonList.length,
-                          })}
-                        </span>
-                        {isBeta(category) && <BetaBadge />}
-                        {lessonCompleted && (
-                          <span className="text-[var(--success)] text-xs font-semibold flex items-center gap-1">
-                            {t('lesson.completed')}
-                          </span>
-                        )}
-                        <div className="ml-auto flex items-center gap-2">
-                          {difficulty && (
-                            <span
-                              className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px]"
-                              style={{
-                                background: `color-mix(in srgb, ${DIFFICULTY_COLOR[difficulty]} 15%, transparent)`,
-                                color: DIFFICULTY_COLOR[difficulty],
-                              }}
-                            >
-                              {t(`lesson.difficulty.${difficulty}`)}
-                            </span>
-                          )}
-                          {currentIndex >= 0 && (
-                            <span
-                              className={`text-[11px] font-semibold tabular-nums flex items-center gap-1 ${lessonCompleted ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
-                              title={t('common.xpReward', {
-                                xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                              })}
-                            >
-                              {t('common.xpReward', {
-                                xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                              })}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      <h1 className="text-[28px] font-bold tracking-[-0.5px] mb-6 text-[var(--text)]">
-                        {rest}
-                      </h1>
-                    </>
+                    <LessonHeading
+                      title={rest}
+                      position={t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
+                        n: currentIndex + 1,
+                        total: lessonList.length,
+                      })}
+                      xp={
+                        currentIndex >= 0
+                          ? t('common.xpReward', {
+                              xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                            })
+                          : null
+                      }
+                      done={lessonCompleted}
+                      badge={isBeta(category) ? <BetaBadge /> : undefined}
+                      completed={lessonCompleted ? t('lesson.completed') : null}
+                      difficulty={difficulty ? (difficulty.toLowerCase() as Difficulty) : null}
+                      difficultyLabel={
+                        difficulty ? t(`lesson.difficulty.${difficulty}`) : undefined
+                      }
+                    />
                   );
                 })()}
 
