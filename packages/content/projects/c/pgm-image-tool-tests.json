@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "P2\n8 6\n255\n0 0 0 0 0 0 0 0\n0 60 60 60 200 200 200 0\n0 60 255 60 200 255 200 0\n0 60 60 60 200 200 200 0\n0 120 120 120 120 120 120 0\n0 0 0 0 0 0 0 0\nshow\nstats\ninvert\nshow\ninvert\nbrighten 100\nshow\nbrighten -100\nflip\nshow\nrotate\nshow\nrotate\nrotate\nrotate\ncrop 1 1 6 4\nshow\ncrop 4 4 9 9\nblur\nshow\nsave out.pgm\ncat out.pgm\nbrighten lots\npaint\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "P2\n8 6\n255\n0 0 0 0 0 0 0 0\n0 60 60 60 200 200 200 0\n0 60 255 60 200 255 200 0\n0 60 60 60 200 200 200 0\n0 120 120 120 120 120 120 0\n0 0 0 0 0 0 0 0\nflip\nshow\nflip\nrotate\nshow\nrotate\nrotate\nrotate\ncrop 1 1 6 4\nshow\nblur\nshow\nsave out.pgm\ncat out.pgm\nstats\nquit\n"
+    },
+    {
+      "stdin": "P2\n3 2\n15\n0 5 10\n15 7 3\nshow\nrotate\nshow\nstats\ncrop 0 0 2 2\ncrop 1 1 1 1\nshow\nbrighten -20\nshow\ninvert\nshow\nsave tiny.pgm\ncat tiny.pgm\ncat missing.pgm\nquit\n"
+    },
+    {
+      "stdin": "P5\n2 2\n255\n1 2 3 4\nquit\n"
+    },
+    {
+      "stdin": "P2\n2 2\n255\n1 2 3\n"
+    },
+    {
+      "stdin": "P2\n4 4\n100\n0 25 50 75\n100 75 50 25\n0 0 100 100\n50 50 50 50\nblur\nshow\nflip\nrotate\nshow\ncrop 0 0 4\nstats\nquit\n"
+    }
+  ]
+}

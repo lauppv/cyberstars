@@ -460,6 +460,23 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    slug: 'rle-compressor',
+    language: 'c',
+    title: 'Level Compressor',
+    difficulty: 'medium',
+    summary:
+      'Pack the maps of a pixel-art game with run-length encoding, unpack them again, catch damaged data and prove nothing was lost.',
+    steps: [
+      { id: 'mode', title: 'What to do with which lines' },
+      { id: 'runs', title: 'Runs' },
+      { id: 'long-runs', title: 'Long runs' },
+      { id: 'saved', title: 'How much was saved' },
+      { id: 'expand', title: 'Expanding' },
+      { id: 'broken', title: 'Broken data' },
+      { id: 'check', title: 'Prove it' },
+    ],
+  },
+  {
     slug: 'pgm-image-tool',
     language: 'c',
     title: 'PGM Image Tool',
@@ -493,6 +510,38 @@ export const PROJECTS: Project[] = [
       { id: 'jam', title: 'Paper jams' },
       { id: 'report', title: 'The office report' },
       { id: 'cleanup', title: 'Clean up' },
+    ],
+  },
+  {
+    slug: 'warehouse-robot',
+    language: 'c',
+    title: 'Warehouse Robot',
+    difficulty: 'hard',
+    summary:
+      'Drive a warehouse robot between stations on a map drawn in characters: shortest ways by breadth-first search, the round trip, and the route drawn.',
+    steps: [
+      { id: 'map', title: 'The map and the order' },
+      { id: 'search', title: 'How far is everything' },
+      { id: 'leg', title: 'One leg' },
+      { id: 'round', title: 'The whole round' },
+      { id: 'blocked', title: "When it can't go" },
+      { id: 'route', title: 'Draw the route' },
+    ],
+  },
+  {
+    slug: 'parallel-counter',
+    language: 'c',
+    title: 'Parallel Counter',
+    difficulty: 'hard',
+    summary:
+      'Count a newspaper archive with several worker processes at once: fork a child per slice, send the numbers back through pipes and add them up.',
+    steps: [
+      { id: 'job', title: 'The job' },
+      { id: 'count', title: 'Count a slice' },
+      { id: 'fork', title: 'One process per worker' },
+      { id: 'pipe', title: 'Send the numbers back' },
+      { id: 'wait', title: 'Wait for everyone' },
+      { id: 'check', title: 'Check the teamwork' },
     ],
   },
   {

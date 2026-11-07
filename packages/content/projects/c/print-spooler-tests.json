@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "2\nLaser 20\nInkjet 5\nsubmit ana 30 normal\nsubmit dan 8 normal\nsubmit ioana 12 urgent\nsubmit leo 50 normal\nqueue\ntick 2\nqueue\njam Inkjet\nqueue\ntick 3\ncancel 4\ncancel 4\nfixed Inkjet\nsubmit mara 6 urgent\nsubmit sara 4 normal\ntick 2\nreport\nsubmit ana lots normal\nsubmit ana 3 soon\ntick zero\nprint\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "1\nOffice 10\nsubmit ana 25 normal\nsubmit dan 5 urgent\nsubmit eva 5 urgent\ntick 1\nqueue\njam Office\nqueue\nfixed Office\ntick 5\nreport\nquit\n"
+    },
+    {
+      "stdin": "3\nA 4\nB 4\nC 100\nreport\nqueue\nsubmit x 8 normal\nsubmit y 8 normal\nsubmit z 8 normal\nsubmit w 8 normal\ntick 1\ncancel 4\ncancel 3\ncancel 9\njam Z\ntick 2\nreport\nquit\n"
+    }
+  ]
+}

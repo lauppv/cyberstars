@@ -1,6 +1,6 @@
 The office of a small architecture firm shares two printers: a fast laser and a slow inkjet. Everyone sends their drawings at the same time, urgent jobs get stuck behind a 200-page report, and when a printer jams its job simply vanishes. You'll write the print spooler, the program between the computers and the printers: it queues the jobs in the right order, hands them to whichever printer is free, survives jams and cancellations, and tells the office manager who printed what.
 
-You build it one step at a time, in one C file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one C file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run office days your program has never seen. Passing them finishes the project.
 
 The program reads everything with `scanf` and writes everything with `printf`. Commands are words: `scanf("%s", cmd)` reads the next one, and `strcmp` tells which it is. Run it, then type the lines of an example yourself to see what it answers.
 

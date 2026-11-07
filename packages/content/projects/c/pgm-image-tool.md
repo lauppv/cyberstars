@@ -1,6 +1,6 @@
 The town museum is scanning its old black-and-white photographs, and the scanner's computer has no screen, only a terminal. The scans come out as PGM files, the simplest image format there is: plain numbers, one per pixel. You'll write the tool the museum needs on that computer: it reads a scan, shows a rough preview, fixes it (invert, brighten, flip, rotate, crop, soften) and saves the result.
 
-You build it one step at a time, in one C file. Every step adds a command, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one C file. Every step adds a command, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run scans your program has never seen. Passing them finishes the project.
 
 The program reads the image and then the commands with `scanf`, and writes everything with `printf`. Run it, then type the lines of an example yourself to see what it answers (paste the image first).
 

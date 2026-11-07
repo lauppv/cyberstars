@@ -1,0 +1,44 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "pipe"
+      },
+      {
+        "kind": "call",
+        "name": "waitpid"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3 the\nThe storm came on the third night.\nSuddenly the lights of the town went out.\nOnly the lighthouse was still burning.\nOut at sea, a small boat was turning back.\nIon ran down the stairs, two at a time.\nThe boat was close now; he heard voices.\nA rope flew out of the dark.\nHe pulled until the boat scraped onto the sand.\n"
+    },
+    {
+      "visible": true,
+      "stdin": "1 a\nA cat, a hat, A bat.\n"
+    },
+    {
+      "stdin": "5 sea\nThe sea.\nSea!\nOverseas is not sea.\n"
+    },
+    {
+      "stdin": "2 don\nDon't stop. Don wasn't there; don.\n\n123 456 !!!\nMIXED case Words\n"
+    },
+    {
+      "stdin": "9 x\nx\n"
+    },
+    {
+      "stdin": "4 word\n"
+    },
+    {
+      "stdin": "8 lorem\nLorem ipsum line 1 dolor sit amet, lorem again\nLorem ipsum line 2 dolor sit amet, lorem again\nLorem ipsum line 3 dolor sit amet, lorem again\nLorem ipsum line 4 dolor sit amet, lorem again\nLorem ipsum line 5 dolor sit amet, lorem again\nLorem ipsum line 6 dolor sit amet, lorem again\nLorem ipsum line 7 dolor sit amet, lorem again\nLorem ipsum line 8 dolor sit amet, lorem again\nLorem ipsum line 9 dolor sit amet, lorem again\nLorem ipsum line 10 dolor sit amet, lorem again\nLorem ipsum line 11 dolor sit amet, lorem again\nLorem ipsum line 12 dolor sit amet, lorem again\nLorem ipsum line 13 dolor sit amet, lorem again\nLorem ipsum line 14 dolor sit amet, lorem again\nLorem ipsum line 15 dolor sit amet, lorem again\nLorem ipsum line 16 dolor sit amet, lorem again\nLorem ipsum line 17 dolor sit amet, lorem again\nLorem ipsum line 18 dolor sit amet, lorem again\nLorem ipsum line 19 dolor sit amet, lorem again\nLorem ipsum line 20 dolor sit amet, lorem again\n"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "compress\n####################\n#..................#\n#..@.......$$$.....#\n#..........#####...#\n#~~~~~~~~~~~~~~~~~~#\n####################\n"
+    },
+    {
+      "visible": true,
+      "stdin": "expand\n20#\n#18.#\n#2.@7.3$5.#\n"
+    },
+    {
+      "stdin": "compress\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nab\n\naabbbcccc\nxyz\n"
+    },
+    {
+      "stdin": "compress\n####\n#12#\n"
+    },
+    {
+      "stdin": "expand\n4#\n#3.#\n5.\n12\n"
+    },
+    {
+      "stdin": "expand\n3a1b\n"
+    },
+    {
+      "stdin": "expand\nab\n10x2y\n\n120~\n"
+    },
+    {
+      "stdin": "extract\nabc\n"
+    },
+    {
+      "stdin": "compress\n"
+    }
+  ]
+}
