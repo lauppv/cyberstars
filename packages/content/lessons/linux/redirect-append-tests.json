@@ -14,7 +14,7 @@
   "requires": [
     {
       "kind": "command",
-      "pattern": ">>"
+      "pattern": "^(?=.*\\becho\\b)(?=.*>>)"
     }
   ]
 }
