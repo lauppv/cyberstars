@@ -4,6 +4,7 @@
     "progress": "Progress",
     "courses": "Courses",
     "algorithms": "Algorithms",
+    "projects": "Projects",
     "forum": "Forum",
     "leaderboard": "Leaderboard",
     "messages": "Messages",
@@ -556,6 +557,33 @@
       "web": "Web Development"
     },
     "subtitle": "Pick a language and learn it by writing real code, right in your browser."
+  },
+  "projects": {
+    "subtitle": "Small real programs you build step by step, in the language you're learning. Tick each requirement off as your program does it.",
+    "betaHint": "Still being built: more projects for every language are on the way",
+    "setTitle": "{{language}} Projects",
+    "count": "Projects: {{count}}",
+    "desc": {
+      "python": "Programs a small business could use tomorrow, built from input, lists, dictionaries and functions.",
+      "c": "Tools close to the machine, built from arrays, strings, structs, pointers and files.",
+      "java": "Systems made of classes that work together: inheritance, interfaces, enums and collections.",
+      "linux": "Real jobs at the command line: tidy folders, search logs, build reports and lock down files."
+    },
+    "finished": "Finished: {{done}} of {{total}}",
+    "noMatch": "No projects match this filter.",
+    "noneYet": "No projects here yet.",
+    "nOfM": "Project {{n}} of {{total}}",
+    "steps": "Steps",
+    "stepsDone": "{{done}} / {{total}}",
+    "tabProject": "Project",
+    "previous": "Previous",
+    "next": "Next",
+    "checksFailed": "Your ticked steps couldn't load.",
+    "textFailed": "This project couldn't load.",
+    "saveFailed": "That tick couldn't be saved. Try again.",
+    "signInToTrack": "Sign in to keep track of the steps you've done.",
+    "markStep": "Mark \"{{title}}\" as done",
+    "terminalSoon": "The terminal for Linux projects is coming soon."
   },
   "algorithms": {
     "desc": {

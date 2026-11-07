@@ -3,9 +3,9 @@ import { Navigate, matchPath, useLocation } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 
 // The only pages a guest can open: the welcome page, the placement test,
-// sign-in, the courses and algorithm challenges they can run code in, and the
-// Almanac. Every other page,
-// a new one included, takes an account.
+// sign-in, the courses, algorithm challenges and projects they can run code in
+// (their runs share one guest budget), and the Almanac. Every other page, a new
+// one included, takes an account.
 const GUEST_PATHS = [
   '/',
   '/getstarted',
@@ -15,6 +15,9 @@ const GUEST_PATHS = [
   '/algorithms',
   '/algorithms/:lang',
   '/lesson/:category/:lesson',
+  '/projects',
+  '/projects/:language',
+  '/projects/:language/:slug',
   '/almanac',
   '/almanac/:slug',
 ];

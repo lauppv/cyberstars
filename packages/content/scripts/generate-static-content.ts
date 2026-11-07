@@ -12,6 +12,8 @@
 //                                   language, <courseKey>/<language>/, each with
 //                                   the course's visuals put into its lessons
 //                                   (see visuals.ts)
+//   <public>/projects/<language>/ : each project's steps (<slug>.md), copied
+//                                   from packages/content/projects/
 //
 // The app names its static files folder; the UI runs it before dev and build:
 //
@@ -23,7 +25,8 @@ import path from 'path';
 import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
 import { courses, lessons } from '../curriculum.js';
 import { lessonTitlesRo } from '../curriculum-ro.js';
-import { courseDir } from '../paths.js';
+import { courseDir, PROJECTS_DIR } from '../paths.js';
+import { PROJECTS } from '@cyberstars/shared/projects';
 import { visualFiller } from '../visuals.js';
 
 const [outDir] = process.argv.slice(2);
@@ -151,11 +154,27 @@ for (const course of curriculum) {
     }
   }
 }
+// Every project of the catalog needs its steps, and nothing else is published
+const PROJECTS_OUT = path.join(PUBLIC_DIR, 'projects');
+fs.rmSync(PROJECTS_OUT, { recursive: true, force: true });
+let projectFiles = 0;
+for (const project of PROJECTS) {
+  const file = `${project.slug}.md`;
+  const src = path.join(PROJECTS_DIR, project.language, file);
+  if (!fs.existsSync(src)) {
+    broken.push(`projects/${project.language}/${file}: missing`);
+    continue;
+  }
+  fs.mkdirSync(path.join(PROJECTS_OUT, project.language), { recursive: true });
+  fs.copyFileSync(src, path.join(PROJECTS_OUT, project.language, file));
+  projectFiles++;
+}
+
 if (broken.length) {
-  console.error(`A lesson names a visual that can't be put in:\n  ${broken.join('\n  ')}`);
+  console.error(`A lesson or project can't be published:\n  ${broken.join('\n  ')}`);
   process.exit(1);
 }
 
 console.log(
-  `Generated public/curriculum.json (${curriculum.length} courses) and copied ${copied} markdown files to public/lessons/.`,
+  `Generated public/curriculum.json (${curriculum.length} courses) and copied ${copied} markdown files to public/lessons/ and ${projectFiles} to public/projects/.`,
 );

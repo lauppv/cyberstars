@@ -1,0 +1,77 @@
+// Projects: small real programs built step by step. Each step is one
+// requirement the student ticks off themselves once their program does it; the
+// ticks are kept per account. The steps' texts live in
+// packages/content/projects/<language>/<slug>.md, one `## ` section per step
+// in this order; the catalog here is what the server checks a tick against.
+
+export const PROJECT_LANGUAGES = ['python', 'c', 'java', 'linux'] as const;
+export type ProjectLanguage = (typeof PROJECT_LANGUAGES)[number];
+
+type ProjectDifficulty = 'easy' | 'medium' | 'hard';
+
+interface ProjectStep {
+  // Kept in the database, so a step keeps its tick when steps are added or
+  // reordered around it; never reused for another requirement
+  id: string;
+  title: string;
+}
+
+export interface Project {
+  slug: string;
+  language: ProjectLanguage;
+  title: string;
+  difficulty: ProjectDifficulty;
+  // A sentence on what the program does
+  summary: string;
+  steps: ProjectStep[];
+}
+
+export const PROJECTS: Project[] = [
+  {
+    slug: 'library-desk',
+    language: 'python',
+    title: 'Library Desk',
+    difficulty: 'medium',
+    summary:
+      'The front desk program of a neighbourhood library: a catalog, loans, returns with late fees and an end-of-day report.',
+    steps: [
+      { id: 'catalog', title: 'Load the catalog' },
+      { id: 'list', title: 'List the books' },
+      { id: 'find', title: 'Search the catalog' },
+      { id: 'borrow', title: 'Borrow a book' },
+      { id: 'return', title: 'Return a book' },
+      { id: 'fees', title: 'Late fees' },
+      { id: 'member', title: 'Member card' },
+      { id: 'report', title: 'End-of-day report' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+];
+
+export function findProject(language: string, slug: string): Project | undefined {
+  return PROJECTS.find((p) => p.language === language && p.slug === slug);
+}
+
+// A ticked step, as the server sends it
+export interface ProjectCheckDTO {
+  language: ProjectLanguage;
+  slug: string;
+  stepId: string;
+}
+
+// A project's text: what comes before the first `## ` heading, then each
+// step's section, its heading being the step's title
+export function splitProjectText(text: string): {
+  intro: string;
+  steps: { title: string; body: string }[];
+} {
+  const [intro, ...parts] = text.split(/^## /m);
+  return {
+    intro: intro.trim(),
+    steps: parts.map((part) => {
+      const newline = part.indexOf('\n');
+      const title = (newline < 0 ? part : part.slice(0, newline)).trim();
+      return { title, body: newline < 0 ? '' : part.slice(newline + 1).trim() };
+    }),
+  };
+}
