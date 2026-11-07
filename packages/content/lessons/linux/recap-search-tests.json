@@ -1,16 +1,23 @@
 {
+  "checks": [
+    {
+      "kind": "files_equal",
+      "a": "station/comms/relay/distress.log",
+      "b": "rescue/signal.log"
+    }
+  ],
   "requires": [
     {
       "kind": "command",
-      "pattern": "find\\b.*station.*distress\\.log"
+      "pattern": "^(?=.*\\bfind\\b)(?=.*station)(?=.*distress\\.log)"
     },
     {
       "kind": "command",
-      "pattern": "grep\\b.*-r\\b.*SOS.*station"
+      "pattern": "^(?=.*\\bgrep\\b)(?=.* -\\S*r)(?=.*SOS)(?=.*station)"
     },
     {
       "kind": "command",
-      "pattern": "which\\b.*grep"
+      "pattern": "^(?=.*\\bwhich\\b)(?=.*\\bgrep\\b)"
     }
   ]
 }
