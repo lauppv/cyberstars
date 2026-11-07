@@ -211,6 +211,21 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     expect(unanswered.web).toMatchObject({ kind: 'text', found: 'offline' });
   });
 
+  it("answers an address the site doesn't have with a 404, a malformed one too", () => {
+    const page = `<p id="out"></p><script>
+      Promise.all(['missing.json', '%E0'].map((p) => fetch(p).then((r) => r.status)))
+        .then((s) => { document.getElementById('out').textContent = s.join(' '); });
+    </script>`;
+    const [result] = verdicts({ 'index.html': page }, [
+      {
+        name: 'Missing files',
+        visible: true,
+        steps: [{ text: '#out', equals: '404 404', label: 'the statuses' }],
+      },
+    ]);
+    expect(result.passed).toBe(true);
+  });
+
   it('reads styles, attributes, sizes and whether the page fits', () => {
     const files = {
       'index.html': `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">

@@ -66,9 +66,15 @@ function within(promise, ms) {
   ]).finally(() => clearTimeout(timer));
 }
 
-// The path of a site address: `/` and a folder open their index.html
+// The path of a site address: `/` and a folder open their index.html. An
+// address the page made up (`%E0`) is no file of the site, not a crash
 function sitePath(url) {
-  let path = decodeURIComponent(url.pathname.slice(1));
+  let path;
+  try {
+    path = decodeURIComponent(url.pathname.slice(1));
+  } catch {
+    return url.pathname.slice(1);
+  }
   if (path === '' || path.endsWith('/')) path += 'index.html';
   return path;
 }
@@ -78,34 +84,40 @@ function body(file) {
 }
 
 async function serve(context, files, answers) {
-  await context.route('**/*', (route) => {
-    const request = route.request();
-    let url;
-    try {
-      url = new URL(request.url());
-    } catch {
-      return route.abort('blockedbyclient');
+  // A page closed while a request was still being answered (the next case,
+  // a stuck page) must not take the run down with it
+  await context.route('**/*', (route) => answer(route, files, answers).catch(() => {}));
+}
+
+// Every request of the page: a file of the site, a fixed answer, or nothing
+// (async, so a throw comes back as a rejection the route catches)
+async function answer(route, files, answers) {
+  const request = route.request();
+  let url;
+  try {
+    url = new URL(request.url());
+  } catch {
+    return route.abort('blockedbyclient');
+  }
+  if (url.origin === ORIGIN) {
+    const path = sitePath(url);
+    const file = Object.hasOwn(files, path) ? files[path] : undefined;
+    if (file === undefined) {
+      return route.fulfill({ status: 404, contentType: 'text/plain', body: 'Not found' });
     }
-    if (url.origin === ORIGIN) {
-      const path = sitePath(url);
-      const file = Object.hasOwn(files, path) ? files[path] : undefined;
-      if (file === undefined) {
-        return route.fulfill({ status: 404, contentType: 'text/plain', body: 'Not found' });
-      }
-      return route.fulfill({ status: 200, contentType: typeOf(path), body: body(file) });
-    }
-    const answer = Object.hasOwn(answers, url.href) ? answers[url.href] : undefined;
-    if (answer) {
-      return route.fulfill({
-        status: answer.status ?? 200,
-        contentType: answer.type ?? 'application/json',
-        headers: { 'access-control-allow-origin': '*' },
-        body: answer.body,
-      });
-    }
-    // Nothing leaves the sandbox; an address the case didn't answer fails
-    return route.abort('internetdisconnected');
-  });
+    return route.fulfill({ status: 200, contentType: typeOf(path), body: body(file) });
+  }
+  const fixed = Object.hasOwn(answers, url.href) ? answers[url.href] : undefined;
+  if (fixed) {
+    return route.fulfill({
+      status: fixed.status ?? 200,
+      contentType: fixed.type ?? 'application/json',
+      headers: { 'access-control-allow-origin': '*' },
+      body: fixed.body,
+    });
+  }
+  // Nothing leaves the sandbox; an address the case didn't answer fails
+  return route.abort('internetdisconnected');
 }
 
 const MAX_ELEMENTS = 50;
