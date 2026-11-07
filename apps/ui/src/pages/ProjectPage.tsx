@@ -337,14 +337,14 @@ function ProjectView({ project }: { project: Project }) {
                   <button
                     onClick={() => prev && navigate(`/projects/${prev.language}/${prev.slug}`)}
                     disabled={!prev}
-                    className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="btn btn-secondary"
                   >
                     {t('projects.previous')}
                   </button>
                   <button
                     onClick={() => next && navigate(`/projects/${next.language}/${next.slug}`)}
                     disabled={!next}
-                    className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="btn btn-primary"
                   >
                     {t('projects.next')}
                   </button>

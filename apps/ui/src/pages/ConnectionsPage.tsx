@@ -166,7 +166,7 @@ export function ConnectionsPage() {
                         <button
                           disabled={busy === c.id}
                           onClick={() => act(c.id, connectionsService.accept)}
-                          className="px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                          className="btn btn-primary btn-sm"
                         >
                           {t('connections.accept')}
                         </button>

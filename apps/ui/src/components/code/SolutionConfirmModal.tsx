@@ -83,17 +83,10 @@ export function SolutionConfirmModal({
           )}
           {error && <span className="text-[12px] text-[var(--error)] font-semibold">{error}</span>}
           <div className="flex items-center justify-end gap-2 pt-1">
-            <button
-              onClick={onClose}
-              className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] font-semibold text-[13px] hover:text-[var(--text)] hover:border-[var(--text3)] transition cursor-pointer"
-            >
+            <button onClick={onClose} className="btn btn-secondary">
               {t('common.cancel')}
             </button>
-            <button
-              onClick={confirm}
-              disabled={busy || depleted}
-              className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
-            >
+            <button onClick={confirm} disabled={busy || depleted} className="btn btn-primary">
               {t('lesson.solutionConfirmCta')}
             </button>
           </div>

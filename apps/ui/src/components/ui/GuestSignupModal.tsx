@@ -63,11 +63,7 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
         </div>
 
         <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[var(--border)]">
-          <button
-            data-track="signup-prompt-later"
-            onClick={onClose}
-            className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-transparent text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)] transition"
-          >
+          <button data-track="signup-prompt-later" onClick={onClose} className="btn btn-secondary">
             {t('guestSignup.later')}
           </button>
           <button

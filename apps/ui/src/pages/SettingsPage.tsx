@@ -319,7 +319,7 @@ export function SettingsPage() {
                     <button
                       type="submit"
                       disabled={emailSaving || emailCode.length !== 6}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                      className="btn btn-primary btn-sm"
                     >
                       {emailSaving ? '...' : t('profile.emailConfirm')}
                     </button>
@@ -384,7 +384,7 @@ export function SettingsPage() {
                   <button
                     type="submit"
                     disabled={emailSaving || !emailPw || !newEmail}
-                    className="self-start px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                    className="btn btn-primary btn-sm self-start"
                   >
                     {emailSaving ? '...' : t('profile.emailSendCode')}
                   </button>
@@ -486,7 +486,7 @@ export function SettingsPage() {
                   <button
                     type="submit"
                     disabled={pwdSaving || !currentPassword || !newPassword || !confirmPassword}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                    className="btn btn-primary btn-sm"
                   >
                     {pwdSaving ? '...' : t('profile.changePassword')}
                   </button>

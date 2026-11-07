@@ -158,10 +158,7 @@ export function ShareToForumModal({
           {error && <div className="text-[13px] text-[var(--error)]">{error}</div>}
 
           <div className="flex items-center justify-end gap-2 pt-1">
-            <button
-              onClick={onClose}
-              className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-            >
+            <button onClick={onClose} className="btn btn-secondary">
               {t('forum.share.cancel')}
             </button>
             <button

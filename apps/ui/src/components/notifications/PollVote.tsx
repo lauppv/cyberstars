@@ -129,7 +129,7 @@ export function PollVote({ pollId }: { pollId: number }) {
                 <button
                   onClick={vote}
                   disabled={!picked.length || (writing && !answer.trim()) || sending}
-                  className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="btn btn-primary"
                 >
                   {sending ? t('poll.voting') : t('poll.vote')}
                 </button>

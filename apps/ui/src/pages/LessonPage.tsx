@@ -436,7 +436,7 @@ export function LessonPage() {
       type="button"
       data-track="next-lesson-after-pass"
       onClick={goNext}
-      className="self-start px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer"
+      className="btn btn-primary self-start"
     >
       {isAlgo ? t('lesson.nextChallenge') : t('lesson.nextLesson')}
     </button>
@@ -800,7 +800,7 @@ export function LessonPage() {
                     data-track="previous-lesson"
                     onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
                     disabled={!prevLesson}
-                    className="px-5 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="btn btn-secondary"
                   >
                     {t('lesson.previous')}
                   </button>
@@ -808,7 +808,7 @@ export function LessonPage() {
                     data-track="next-lesson"
                     onClick={goNext}
                     disabled={!nextLesson}
-                    className="px-5 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 disabled:opacity-30 disabled:cursor-not-allowed transition cursor-pointer"
+                    className="btn btn-primary"
                   >
                     {t('lesson.next')}
                   </button>

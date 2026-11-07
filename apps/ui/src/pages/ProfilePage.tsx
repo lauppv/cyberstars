@@ -241,11 +241,7 @@ export function ProfilePage() {
                   className={INPUT_CLS + ' flex-1'}
                 />
                 <EmojiPicker onSelect={insertEmoji} disabled={saving} />
-                <button
-                  onClick={saveStatus}
-                  disabled={saving}
-                  className="px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
-                >
+                <button onClick={saveStatus} disabled={saving} className="btn btn-primary btn-sm">
                   {t('profile.set')}
                 </button>
               </div>

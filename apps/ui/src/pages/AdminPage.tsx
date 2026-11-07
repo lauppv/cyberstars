@@ -85,11 +85,7 @@ export function AdminPage() {
         <PageHeader title={t('topbar.admin')} subtitle={t('pages.admin')} />
         <div>
           <div className="mb-8 flex justify-end">
-            <button
-              onClick={refresh}
-              disabled={refreshing}
-              className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-            >
+            <button onClick={refresh} disabled={refreshing} className="btn btn-primary">
               {refreshing ? t('admin.refreshing') : t('admin.refresh')}
             </button>
           </div>

@@ -472,7 +472,7 @@ function OfTheDayCard({
       </div>
       <button
         onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
-        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] text-white rounded-[var(--radius-sm)] text-xs font-semibold hover:brightness-110 transition cursor-pointer self-start"
+        className="btn btn-primary btn-sm self-start"
       >
         {completed ? t('home.review') : cta}
       </button>

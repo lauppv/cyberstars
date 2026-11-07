@@ -186,7 +186,7 @@ export function GuestVisits({
         <button
           onClick={() => more(next)}
           disabled={loadingMore}
-          className="mt-3 px-2.5 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-transparent text-[var(--text2)] hover:text-[var(--text)] cursor-pointer transition disabled:opacity-60 disabled:cursor-not-allowed"
+          className="btn btn-secondary btn-sm mt-3"
         >
           {t('admin.showMore')}
         </button>

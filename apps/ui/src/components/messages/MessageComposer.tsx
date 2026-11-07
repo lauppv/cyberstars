@@ -53,7 +53,7 @@ export function MessageComposer({
         <button
           type="submit"
           disabled={!value.trim() || sending}
-          className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+          className="btn btn-primary flex-shrink-0"
         >
           {t('messages.send')}
         </button>

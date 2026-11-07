@@ -397,10 +397,7 @@ export function PublicProfilePage() {
             <div className="pt-5 flex items-center gap-3">
               {profile.isSelf ? (
                 <>
-                  <button
-                    onClick={() => navigate('/profile')}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition"
-                  >
+                  <button onClick={() => navigate('/profile')} className="btn btn-primary">
                     {t('publicProfile.editProfile')}
                   </button>
                   <button
@@ -416,7 +413,7 @@ export function PublicProfilePage() {
                     <button
                       onClick={startConversation}
                       disabled={messaging}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                      className="btn btn-primary"
                     >
                       {t('publicProfile.sendMessage')}
                     </button>

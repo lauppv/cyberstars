@@ -60,10 +60,7 @@ export function LaniakeaCard() {
         )}
       </div>
       {open ? (
-        <Link
-          to="/laniakea"
-          className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold no-underline text-center"
-        >
+        <Link to="/laniakea" className="btn btn-primary text-center">
           {t('home.laniakea.fly')}
         </Link>
       ) : (

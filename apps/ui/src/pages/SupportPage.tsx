@@ -186,7 +186,7 @@ export function SupportPage() {
                 <button
                   type="submit"
                   disabled={submitting || !subject.trim() || !message.trim()}
-                  className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn btn-primary"
                 >
                   {submitting ? t('support.sending') : t('support.submit')}
                 </button>
@@ -455,11 +455,7 @@ function TicketConversation({
             placeholder={t('support.replyPlaceholder')}
             className={INPUT_CLS + ' flex-1'}
           />
-          <button
-            type="submit"
-            disabled={sending || !reply.trim()}
-            className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-          >
+          <button type="submit" disabled={sending || !reply.trim()} className="btn btn-primary">
             {sending ? '...' : t('support.send')}
           </button>
         </form>
