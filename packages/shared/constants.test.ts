@@ -5,6 +5,11 @@ import {
   MAIN_COURSE_KEYS,
   ALGO_COURSE_KEYS,
   ALL_COURSE_KEYS,
+  TERMINAL_COURSE_KEYS,
+  WEB_COURSE_KEYS,
+  WEB_DEVELOPMENT_OPEN,
+  LISTED_COURSE_KEYS,
+  isClosedCourse,
   xpForLesson,
   xpForCourse,
   levelFromXp,
@@ -114,6 +119,30 @@ describe('course key lists', () => {
     for (const key of ALGO_COURSE_KEYS) {
       expect(MAIN_COURSE_KEYS).toContain(baseLanguage(key));
     }
+  });
+});
+
+describe('web courses', () => {
+  it('are courses of their own, apart from the others', () => {
+    for (const key of WEB_COURSE_KEYS) {
+      expect([...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]).not.toContain(key);
+    }
+  });
+
+  it('are closed and listed nowhere until Web Development opens', () => {
+    for (const key of WEB_COURSE_KEYS) {
+      expect(isClosedCourse(key)).toBe(!WEB_DEVELOPMENT_OPEN);
+      expect(LISTED_COURSE_KEYS.includes(key)).toBe(WEB_DEVELOPMENT_OPEN);
+    }
+  });
+
+  it('leave every other course open and listed as before', () => {
+    for (const key of [...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]) {
+      expect(isClosedCourse(key)).toBe(false);
+    }
+    expect(
+      LISTED_COURSE_KEYS.slice(0, MAIN_COURSE_KEYS.length + TERMINAL_COURSE_KEYS.length),
+    ).toEqual([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
   });
 });
 
