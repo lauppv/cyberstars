@@ -67,7 +67,21 @@ export function SetCard({
           <CourseMark courseKey={setKey} />
           <div className="flex-1 min-w-0">
             <h2 className="m-0 text-base font-bold mb-0.5 flex items-center gap-2 tracking-[-0.2px]">
-              <span className="truncate">{title}</span>
+              {onOpen ? (
+                // The drawer from the keyboard too, where the card's own button is Continue
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onOpen();
+                  }}
+                  className="truncate p-0 bg-transparent border-0 text-inherit [font:inherit] text-left cursor-pointer rounded-sm focus-visible:outline-2 focus-visible:outline-[var(--course)]"
+                >
+                  {title}
+                </button>
+              ) : (
+                <span className="truncate">{title}</span>
+              )}
               {beta && <BetaBadge hint={betaHint} />}
             </h2>
             {subtitle && <div className="text-[12px] text-[var(--text3)]">{subtitle}</div>}

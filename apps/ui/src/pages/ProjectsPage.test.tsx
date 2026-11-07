@@ -109,6 +109,13 @@ describe('ProjectsPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/projects/c');
   });
 
+  it('opens a started language’s list from its title, for the keyboard', async () => {
+    renderPage();
+    await screen.findAllByRole('button', { name: 'Continue' });
+    fireEvent.click(screen.getByRole('button', { name: 'Python' }));
+    expect(mockNavigate).toHaveBeenCalledWith('/projects/python');
+  });
+
   it('lists a language’s projects in the drawer with the steps ticked', async () => {
     renderPage('/projects/python');
     const drawer = screen.getByRole('dialog', { name: /Python Projects/ });
