@@ -1,0 +1,15 @@
+{
+  "cwd": "/home/student/newsletter",
+  "dirs": ["newsletter"],
+  "files": [
+    {
+      "path": "newsletter/signups.txt",
+      "content": "ana.pop@gmail.com\nMihai.Ionescu@Yahoo.com\nioana@school.ro\n\ndan.radu@gmail.com\nANA.POP@GMAIL.COM\nelena.stan@outlook.com\nvlad@gmail\npaul.dinu@yahoo.com\nioana@school.ro\ncristina.m@gmail.com\nradu.vasile@outlook.com\ngeorge.tudor@gmail.com\nnot-an-email\nmaria.lupu@yahoo.com\n\nsorin.pana@school.ro\nirina.dobre@gmail.com\nPaul.Dinu@yahoo.com\nalex.marin@outlook.com\ndiana.neagu@gmail.com\n"
+    },
+    {
+      "path": "newsletter/unsubscribed.txt",
+      "content": "dan.radu@gmail.com\nalex.marin@outlook.com\n"
+    }
+  ],
+  "intro": "The bookshop's newsletter sign-ups are in ~/newsletter."
+}

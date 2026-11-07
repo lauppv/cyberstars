@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "2 + 3 * 4\n(2 + 3) * 4\n100 / 7\n100 % 7\nans * 2\n8 - 3 - 2\n2 * -3\n-(4 + 1) * 2\np = 12 * 3\nq = p / 4 + 1\np - q\nz + 1\n7 / (3 - 3)\n(1 + 2\n1 + 2)\n4 +\n3 4\n12 $ 3\n\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "1+1\n  42  \nquit\n"
+    },
+    {
+      "stdin": "a = 5\nb = a * a - 3 * a\na + b * 2\nc = (a + b) % 7\nans * ans * ans\nd = -c\n2 - -3\n---4\n(((7)))\n()\n5 ) (\nx = 1 +\nx\n9999999 * 9999999\nquit\n"
+    },
+    {
+      "stdin": "10 / 3 * 3\n10 * 3 / 3\n2 * (3 + 4) * (5 - 6)\n-2 * -2\n0 % 5\n5 % 0\nans\nabc + 1\n2a\n"
+    }
+  ]
+}

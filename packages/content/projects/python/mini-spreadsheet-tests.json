@@ -1,0 +1,22 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "A1 = \"Item\"\nB1 = \"Cost\"\nC1 = \"Kids\"\nA2 = \"Bus\"\nB2 = 900\nC2 = 30\nA3 = \"Museum\"\nB3 = 15 * C2\nA4 = \"Lunch\"\nB4 = C2 * (12.5 + 2)\nA5 = \"Total\"\nB5 = SUM(B2:B4)\nA6 = \"Each\"\nB6 = B5 / C2\nprint\nshow B6\nC2 = 0\nshow B6\nC2 = 30\nD1 = D2 + 1\nD2 = D1 * 2\nE1 = (2 + 3\nE2 = A1 + 1\nE3 = MAX(B2:B4) - MIN(B2:B4)\nprint\nshow Z9\nhello\nB9 =\n"
+    },
+    {
+      "visible": true,
+      "stdin": "A1 = 2\nA2 = A1 * 3 + 1\nA3 = -(A2 - 10) / 2\nprint\nshow A3\n"
+    },
+    {
+      "stdin": "B2 = 5\nC3 = SUM(C1:A1)\nA1 = 1\nB1 = 2\nC1 = 3\nD4 = SUM(D1:D3)\nprint\nA1 =\nshow A1\nshow C3\nA1 = 7 % 2\nB1 = 3 /\nC2 = 4 / (2 - 2)\nprint\nA1 = 1\nB1 = 2\nprint\n"
+    },
+    {
+      "stdin": "A1 = A1\nB1 = A1 + 1\nC1 = 5\nshow A1\nshow B1\nshow C1\ntotal = 4\nprint\n"
+    },
+    {
+      "stdin": "print\nA1 = \"Note\"\nB2 = \"with spaces\"\nprint\nA3 = 1.255 * 2\nA4 = 10 / 4\nA5 = 1 / 3\nprint\n"
+    }
+  ]
+}

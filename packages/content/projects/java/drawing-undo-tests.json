@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "12 6\nrect 1 1 6 4 #\nfill 3 2 o\ntext 8 1 HI\nshow\nline 0 5 11 5 =\nshow\nundo\nundo\nshow\nredo\nfill 0 0 ~\nshow\nhistory\nredo\nundo\nundo\nundo\nundo\nundo\nundo\nhistory\nshow\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "5 3\nshow\ntext 0 1 HELLOWORLD\nshow\nundo\nhistory\nquit\n"
+    },
+    {
+      "stdin": "8 5\nrect 0 0 8 5 *\nrect 2 1 4 3 *\nfill 3 2 x\nfill 0 0 .\nshow\nundo\nundo\nredo\nfill 3 2 *\nshow\nredo\nhistory\nline 7 0 7 4 |\nline 0 0 3 3 /\nline 5 4 1 4 -\nshow\nundo\nundo\nundo\nundo\nredo\nshow\nquit\n"
+    },
+    {
+      "stdin": "4 4\nrect 2 2 5 5 #\ntext -1 0 abc\nline 3 3 3 -2 !\nshow\nfill 9 9 x\nfill 0 0 ##\nrect 1 2 3\ntext one 1 a\nspray 1 1\nhistory\nquit\n"
+    }
+  ]
+}

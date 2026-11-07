@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat empty.txt",
+      "expected": "inbox/bogdan_hw1.py"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat hw3-in.txt",
+      "expected": "ana\ndana\nfilip\nioana"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat hw3-missing.txt",
+      "expected": "bogdan\nvlad"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ls inbox inbox/hw1 inbox/hw2 inbox/hw3",
+      "expected": "inbox:\nhw1\nhw2\nhw3\n\ninbox/hw1:\nana_hw1.py\nbogdan_hw1.py\ndana_hw1.py\nfilip_hw1.py\nioana_hw1.py\nvlad_hw1.py\n\ninbox/hw2:\nana_hw2.py\nbogdan_hw2.py\ndana_hw2.py\nioana_hw2.py\nvlad_hw2.py\n\ninbox/hw3:\nana_hw3.py\ndana_hw3.py\nfilip_hw3.py\nioana_hw3.py"
+    },
+    {
+      "kind": "file_contains",
+      "path": "notes.txt",
+      "text": "Empty upload: bogdan hw1"
+    },
+    {
+      "kind": "file_contains",
+      "path": "notes.txt",
+      "text": "Missing hw3: bogdan, vlad"
+    },
+    {
+      "kind": "file_contains",
+      "path": "notes.txt",
+      "text": "Copied hw2: vlad (from ioana)"
+    },
+    {
+      "kind": "file_contains",
+      "path": "notes.txt",
+      "text": "Debug print left: dana hw3"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "find"
+    },
+    {
+      "kind": "command",
+      "name": "grep"
+    },
+    {
+      "kind": "command",
+      "name": "mv"
+    }
+  ]
+}

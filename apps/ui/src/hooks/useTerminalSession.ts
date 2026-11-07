@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import {
   createTerminalSession,
+  createProjectTerminalSession,
   execTerminalCommand,
   destroyTerminalSession,
 } from '../services/terminalService';
@@ -14,10 +15,13 @@ export interface TerminalLine {
   prompt?: string;
 }
 
+// A lesson's sandbox, or with `kind` 'project' the Linux project `lessonSlug`
+// names (its files are English only, so the language doesn't matter there)
 export function useTerminalSession(
   courseKey: string,
   lessonSlug: string,
   onCommandRun?: () => void,
+  kind: 'lesson' | 'project' = 'lesson',
 ) {
   const { i18n } = useTranslation();
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
@@ -41,7 +45,10 @@ export function useTerminalSession(
     setIsReady(false);
     setLines([]);
     try {
-      const info = await createTerminalSession(courseKey, lessonSlug, lang);
+      const info =
+        kind === 'project'
+          ? await createProjectTerminalSession(lessonSlug)
+          : await createTerminalSession(courseKey, lessonSlug, lang);
       setSessionId(info.sessionId);
       sessionRef.current = info.sessionId;
       setCwd(info.cwd);
@@ -59,7 +66,7 @@ export function useTerminalSession(
         },
       ]);
     }
-  }, [courseKey, lessonSlug, lang]);
+  }, [courseKey, lessonSlug, lang, kind]);
 
   useEffect(() => {
     if (!courseKey || !lessonSlug) return;

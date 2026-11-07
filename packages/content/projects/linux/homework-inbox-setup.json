@@ -1,0 +1,71 @@
+{
+  "cwd": "/home/student",
+  "dirs": ["inbox"],
+  "files": [
+    {
+      "path": "inbox/ana_hw1.py",
+      "content": "# Author: Ana\nname = input()\nprint(\"Hello, \" + name)\n"
+    },
+    {
+      "path": "inbox/bogdan_hw1.py",
+      "content": ""
+    },
+    {
+      "path": "inbox/dana_hw1.py",
+      "content": "# Author: Dana\nname = input()\nprint(\"Hello, \" + name)\n"
+    },
+    {
+      "path": "inbox/filip_hw1.py",
+      "content": "# Author: Filip\nname = input()\nprint(\"Hello, \" + name)\n"
+    },
+    {
+      "path": "inbox/ioana_hw1.py",
+      "content": "# Author: Ioana\nname = input()\nprint(\"Hello, \" + name)\n"
+    },
+    {
+      "path": "inbox/vlad_hw1.py",
+      "content": "# Author: Vlad\nname = input()\nprint(\"Hello, \" + name)\n"
+    },
+    {
+      "path": "inbox/ana_hw2.py",
+      "content": "# Author: Ana\nn = int(input())\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(total)\n"
+    },
+    {
+      "path": "inbox/bogdan_hw2.py",
+      "content": "# Author: Bogdan\nn = int(input())\nprint(n * (n + 1) // 2)\n"
+    },
+    {
+      "path": "inbox/dana_hw2.py",
+      "content": "# Author: Dana\nn = int(input())\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(total)\n"
+    },
+    {
+      "path": "inbox/ioana_hw2.py",
+      "content": "# Author: Ioana\nn = int(input())\nprint(n * (n + 1) // 2)\n"
+    },
+    {
+      "path": "inbox/vlad_hw2.py",
+      "content": "# Author: Ioana\nn = int(input())\nprint(n * (n + 1) // 2)\n"
+    },
+    {
+      "path": "inbox/ana_hw3.py",
+      "content": "# Author: Ana\nwords = input().split()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nfor w in counts:\n    print(w, counts[w])\n"
+    },
+    {
+      "path": "inbox/dana_hw3.py",
+      "content": "# Author: Dana\nwords = input().split()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\n# TODO sort by count\nfor w in counts:\n    print(w, counts[w])\nprint(\"debug\")\n"
+    },
+    {
+      "path": "inbox/ioana_hw3.py",
+      "content": "# Author: Ioana\nwords = input().split()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\n# TODO sort by count\nfor w in counts:\n    print(w, counts[w])\n"
+    },
+    {
+      "path": "inbox/filip_hw3.py",
+      "content": "# Author: Filip\nwords = input().split()\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\n# TODO sort by count\n# TODO lowercase\nfor w in counts:\n    print(w, counts[w])\n"
+    },
+    {
+      "path": "roster.txt",
+      "content": "ana\nbogdan\ndana\nfilip\nioana\nvlad\n"
+    }
+  ],
+  "intro": "The homework uploads are in ~/inbox, the class list in ~/roster.txt."
+}

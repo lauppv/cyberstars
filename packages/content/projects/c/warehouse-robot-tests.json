@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "7 12\nR...........\n.##.##.##.#.\n.#A.#B.#C.#.\n.##.##.##.#.\n............\n.#D.#E.###..\n.##.##......\npick: C A E\n"
+    },
+    {
+      "visible": true,
+      "stdin": "3 5\nR.A.B\n.###.\n.....\npick: B A\n"
+    },
+    {
+      "stdin": "5 7\nR..#...\n.#.#.C.\n.#...#.\n.###.#D\nA.....#\npick: A C D\n"
+    },
+    {
+      "stdin": "4 6\nR.....\n###.##\n..#...\nB.#.A.\npick: A B\n"
+    },
+    {
+      "stdin": "3 4\nR..A\n....\n....\npick: A Q\n"
+    },
+    {
+      "stdin": "2 3\nR.A\n...\npick:\n"
+    }
+  ]
+}

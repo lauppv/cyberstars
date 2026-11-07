@@ -21,6 +21,7 @@ import {
   PROJECT_LANGUAGES,
   type Project,
   type ProjectCheckDTO,
+  type ProjectCompletionDTO,
 } from '@cyberstars/shared/projects';
 import * as projectsService from '../services/projectsService';
 import { NotFoundPage } from './NotFoundPage';
@@ -33,20 +34,24 @@ interface LanguageProjects {
 }
 
 // A card per language, as Algorithms has one per challenge set;
-// /projects/:language opens that language's projects in the drawer over them
+// /projects/:language opens that language's projects in the drawer over them.
+// Only passing its judge finishes a project; ticks are the student's own notes.
 export function ProjectsPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { user } = useAuth();
   const { language } = useParams<{ language?: string }>();
   const [checks, setChecks] = useState<ProjectCheckDTO[] | null>(null);
+  const [completions, setCompletions] = useState<ProjectCompletionDTO[]>([]);
   const [failed, setFailed] = useState(false);
   const allowed = canAccessFeature('projects', user?.role, import.meta.env.PROD);
 
   const fetchChecks = useCallback(() => {
-    projectsService
-      .getChecks()
-      .then(setChecks)
+    Promise.all([projectsService.getChecks(), projectsService.getCompletions()])
+      .then(([ticks, done]) => {
+        setChecks(ticks);
+        setCompletions(done);
+      })
       .catch(() => setFailed(true));
   }, []);
 
@@ -67,10 +72,15 @@ export function ProjectsPage() {
         for (const c of checks ?? []) {
           if (c.language === lang) ticks.set(c.slug, (ticks.get(c.slug) ?? 0) + 1);
         }
-        const projects = PROJECTS.filter((p) => p.language === lang).map((p, i) => {
-          const done = ticks.get(p.slug) ?? 0;
-          return { ...p, number: i + 1, done, finished: done === p.steps.length };
-        });
+        const finishedSlugs = new Set(
+          completions.filter((c) => c.language === lang).map((c) => c.slug),
+        );
+        const projects = PROJECTS.filter((p) => p.language === lang).map((p, i) => ({
+          ...p,
+          number: i + 1,
+          done: ticks.get(p.slug) ?? 0,
+          finished: finishedSlugs.has(p.slug),
+        }));
         return {
           language: lang,
           projects,
@@ -78,7 +88,7 @@ export function ProjectsPage() {
           ticked: projects.reduce((n, p) => n + p.done, 0),
         };
       }),
-    [checks],
+    [checks, completions],
   );
 
   const open = language ? byLanguage.find((l) => l.language === language) : undefined;

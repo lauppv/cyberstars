@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "sell Dan 10 105\nsell Eva 5 103\nsell Leo 8 103\nbuy Ana 4 100\nbook\nbuy Mara 12 104\nbook\nsell Ana 20 99\nbook\ncancel 4\ncancel 4\nmarket Mara buy 20\ntraders\nstats\nclose\n"
+    },
+    {
+      "visible": true,
+      "stdin": "buy Ana 5 50\nbuy Dan 5 50\nbuy Eva 5 51\nsell Leo 12 49\nbook\ntraders\nclose\n"
+    },
+    {
+      "stdin": "stats\nbook\nmarket Ana buy 5\nsell Ana 3 10\nsell Ana 3 9\nbuy Ana 1 20\nbuy Dan 10 9\nbook\nmarket Eva sell 100\nbook\nstats\ntraders\nclose\n"
+    },
+    {
+      "stdin": "buy Ana ten 5\nbuy Ana 0 5\nsell Ana 5\nmarket Ana hold 3\ncancel\ncancel x\ntrade\nbuy Zed 1 1\ncancel 1\nbook\nclose\n"
+    }
+  ]
+}

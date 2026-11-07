@@ -24,6 +24,17 @@ describe('splitProjectText', () => {
       ],
     });
   });
+
+  it('leaves a `## ` line inside a code block in its step', () => {
+    const text = '## One\n```bash\n## a shell comment\nls\n```\n~~~\n## another\n~~~\n## Two\nx';
+    expect(splitProjectText(text)).toEqual({
+      intro: '',
+      steps: [
+        { title: 'One', body: '```bash\n## a shell comment\nls\n```\n~~~\n## another\n~~~' },
+        { title: 'Two', body: 'x' },
+      ],
+    });
+  });
 });
 
 describe('findProject', () => {
@@ -43,6 +54,45 @@ describe.each(PROJECTS.map((p) => [`${p.language}/${p.slug}`, p] as const))('%s'
     expect(intro).not.toBe('');
     expect(steps.map((s) => s.title)).toEqual(project.steps.map((s) => s.title));
     for (const step of steps) expect(step.body, step.title).not.toBe('');
+  });
+
+  // The terminal writes each file with a docker exec of its own, so a project
+  // keeps to a handful, in the folder it starts in
+  it.runIf(project.language === 'linux')('starts its terminal with its own files', () => {
+    const setup = JSON.parse(
+      fs.readFileSync(path.join(PROJECTS_DIR, 'linux', `${project.slug}-setup.json`), 'utf8'),
+    );
+    expect(setup.cwd).toMatch(/^\/home\/student(\/|$)/);
+    expect(setup.files.length).toBeGreaterThan(0);
+    expect(setup.files.length).toBeLessThanOrEqual(20);
+    for (const file of setup.files) {
+      expect(file.path).toMatch(/^[\w.-]+(\/[\w.-]+)*$/);
+      expect(typeof file.content).toBe('string');
+    }
+  });
+
+  // Only passing the judge finishes a project, so every project needs its
+  // tests, and a code project the reference program its tests compare against
+  it('has its tests, and a code project its reference solution', () => {
+    const tests = JSON.parse(
+      fs.readFileSync(
+        path.join(PROJECTS_DIR, project.language, `${project.slug}-tests.json`),
+        'utf8',
+      ),
+    );
+    if (project.language === 'linux') {
+      expect(tests.checks.length).toBeGreaterThan(0);
+      for (const check of tests.checks) expect(check.expected).not.toBe('AUTO');
+    } else {
+      expect(tests.cases.length).toBeGreaterThanOrEqual(3);
+      for (const testCase of tests.cases) expect(typeof testCase.stdin).toBe('string');
+      expect(tests.cases.filter((c: { visible?: boolean }) => c.visible).length).toBeGreaterThan(0);
+      const solution = fs.readFileSync(
+        path.join(PROJECTS_DIR, project.language, `${project.slug}-solution.md`),
+        'utf8',
+      );
+      expect(solution).toMatch(/^```(python|c|java)\n[\s\S]+\n```\n$/);
+    }
   });
 
   it('names each step once, in a form the database keeps', () => {

@@ -4,6 +4,7 @@ import { prisma } from '../../src/config/db.js';
 import { markComplete } from '../../src/services/progress.service.js';
 import { clearCache } from '../../src/services/leaderboard.service.js';
 import { xpForLesson } from '@cyberstars/shared/constants';
+import { PROJECT_XP, findProject } from '@cyberstars/shared/projects';
 import type { LeaderboardPage, LeaderboardEntry } from '@cyberstars/shared/leaderboard';
 
 async function userIdFor(email: string): Promise<number> {
@@ -80,6 +81,34 @@ describe('Leaderboard', () => {
       [idA, 2],
       [expect.any(Number), 3],
     ]);
+  });
+
+  it('adds the XP of finished projects still in the catalog, never of ticked steps', async () => {
+    const [l0] = await twoPythonLessons();
+    const { agent: aA, name: nameA, email: emailA } = await createAuthenticatedAgent();
+    const { name: nameB, email: emailB } = await createAuthenticatedAgent();
+    const idA = await userIdFor(emailA);
+    const idB = await userIdFor(emailB);
+    await markComplete(idA, 'python', l0.slug);
+    await prisma.projectCompletion.createMany({
+      data: [
+        { userId: idB, language: 'python', projectSlug: 'library-desk' },
+        // A project no longer in the catalog gives nothing
+        { userId: idB, language: 'python', projectSlug: 'gone-project' },
+      ],
+    });
+    // Ticking every step of a project finishes nothing
+    await prisma.projectStepCheck.create({
+      data: { userId: idA, language: 'python', projectSlug: 'library-desk', stepId: 'catalog' },
+    });
+
+    const board = await fetchBoard(aA);
+    const [first, second] = board.entries;
+    expect(first.name).toBe(nameB);
+    expect(first.totalXp).toBe(PROJECT_XP[findProject('python', 'library-desk')!.difficulty]);
+    expect(first.lessonsDone).toBe(0);
+    expect(second.name).toBe(nameA);
+    expect(second.totalXp).toBe(xpForLesson(l0.sortOrder));
   });
 
   it('GET /me returns the caller rank; 401 without auth', async () => {

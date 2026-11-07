@@ -1,0 +1,22 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "# Robotics Club News\n\nThis week we finally got the **line follower** to work.\nIt took *three* evenings and one burnt motor.\n\n## What we did\n\n- Soldered the new sensor board\n- Wrote the code for the **PID** loop\n- Tested on the [school track](https://example.org/track)\n\n## Next meeting\n\n1. Bring your laptops\n2. Charge the batteries\n\nCode for the motor test:\n\n```\nif speed > 100 && ready:\n    run(<motor>)\n```\n\nQuestions? Ask Ms. Pop & Mr. Ionescu.\n"
+    },
+    {
+      "visible": true,
+      "stdin": "# Hello\n\nJust one paragraph.\n"
+    },
+    {
+      "stdin": "#not a heading\n#### Not this either\n### Small title\n\nText with **bold** and *italic*\nand a [link](http://a.b) and [broken link\n- one\n- two *em*\n1. first\n2. second\nplain line after list\n- again\n\n```\n<b>keep   spaces</b>\n# not a heading\n- not a list\n"
+    },
+    {
+      "stdin": "Use 3 < 5 & 7 > 2.\n**a** **b** *c* *d*\n"
+    },
+    {
+      "stdin": "- only a list\n- with [two](x) [links](y)\n\n## End *here*\n```\nx\n```\ndone\n"
+    }
+  ]
+}

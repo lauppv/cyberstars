@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router';
+import type React from 'react';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router', async (importOriginal) => {
@@ -34,6 +35,21 @@ vi.mock('../services/projectsService', () => ({
   getChecks: vi.fn(),
   setCheck: vi.fn(),
   getProjectText: vi.fn(),
+  getCompletions: vi.fn(),
+  runTests: vi.fn(),
+  checkTerminal: vi.fn(),
+}));
+vi.mock('../hooks/useRunWait', () => ({
+  setRunWait: vi.fn(),
+  withRunWait: (_: string, send: (id: string) => Promise<unknown>) => send('run-1'),
+}));
+vi.mock('../components/judge/ResultPanel', () => ({
+  ResultPanel: ({ results, next }: { results: { status: string }; next: React.ReactNode }) => (
+    <div>
+      <p>Verdict: {results.status}</p>
+      {results.status === 'passed' && next}
+    </div>
+  ),
 }));
 const execute = vi.fn();
 vi.mock('../hooks/useCodeExecution', () => ({
@@ -44,6 +60,38 @@ vi.mock('../hooks/useCodeExecution', () => ({
     stop: vi.fn(),
     sendInput: vi.fn(),
   }),
+}));
+const useTerminal = vi.fn();
+vi.mock('../hooks/useTerminalSession', () => ({
+  useTerminalSession: (...a: unknown[]) => {
+    useTerminal(...a);
+    return {
+      lines: [],
+      cwd: '/home/student',
+      sessionId: 'session-1',
+      isReady: true,
+      isExecuting: false,
+      execute: vi.fn(),
+      reset: vi.fn(),
+    };
+  },
+}));
+vi.mock('../components/terminal/TerminalPanel', () => ({
+  TerminalPanel: ({
+    onRunTests,
+    testResult,
+    nextAfterPass,
+  }: {
+    onRunTests: () => void;
+    testResult: { status: string } | null;
+    nextAfterPass: React.ReactNode;
+  }) => (
+    <div>
+      <p>Terminal</p>
+      <button onClick={onRunTests}>Check the terminal</button>
+      {testResult?.status === 'passed' && nextAfterPass}
+    </div>
+  ),
 }));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: ({ breadcrumb }: { breadcrumb: { course: string; lesson: string } }) => (
@@ -85,6 +133,7 @@ beforeEach(() => {
   vi.mocked(canAccessFeature).mockReturnValue(true);
   signedIn();
   vi.mocked(projectsService.getProjectText).mockResolvedValue(TEXT);
+  vi.mocked(projectsService.getCompletions).mockResolvedValue([]);
   vi.mocked(projectsService.getChecks).mockResolvedValue([
     { language: 'python', slug: 'shop', stepId: 'a' },
     { language: 'python', slug: 'bank', stepId: 'b' },
@@ -173,7 +222,7 @@ describe('ProjectPage', () => {
     localStorage.setItem('cyberstars.project.python.shop', 'print(1)');
     renderPage();
     await screen.findByText('Intro text');
-    fireEvent.click(screen.getByRole('button', { name: /Run/ }));
+    fireEvent.click(screen.getByRole('button', { name: /^▶ ?Run$|^Run$/ }));
     expect(execute).toHaveBeenCalledWith('print(1)', 'python');
   });
 
@@ -195,12 +244,73 @@ describe('ProjectPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/projects/python/shop');
   });
 
-  it('says the terminal is coming on a Linux project', async () => {
+  it('opens a terminal with the project’s files on a Linux project, no editor', async () => {
     renderPage('/projects/linux/tidy');
-    expect(
-      await screen.findByText('The terminal for Linux projects is coming soon.'),
-    ).toBeInTheDocument();
+    expect(await screen.findByText('Terminal')).toBeInTheDocument();
+    expect(useTerminal).toHaveBeenCalledWith('linux', 'tidy', expect.any(Function), 'project');
     expect(screen.queryByRole('button', { name: /Run/ })).toBeNull();
+  });
+
+  it('starts no terminal on a project in another language', async () => {
+    renderPage();
+    await screen.findByText('Intro text');
+    expect(useTerminal).not.toHaveBeenCalled();
+  });
+
+  it('runs the project’s tests, and a pass finishes the project with its XP', async () => {
+    vi.mocked(projectsService.runTests).mockResolvedValue({
+      status: 'passed',
+    } as Awaited<ReturnType<typeof projectsService.runTests>>);
+    renderPage();
+    await screen.findByText('Intro text');
+    expect(screen.queryByText('Finished')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Run Tests' }));
+    expect(await screen.findByText('Project finished: +100 XP')).toBeInTheDocument();
+    expect(projectsService.runTests).toHaveBeenCalledWith('python', 'shop', '', 'run-1');
+    expect(screen.getByText('Finished')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Back to output' }));
+    expect(screen.queryByText('Verdict: passed')).toBeNull();
+  });
+
+  it('keeps a project unfinished on a failing run', async () => {
+    vi.mocked(projectsService.runTests).mockResolvedValueOnce({
+      status: 'failed',
+    } as Awaited<ReturnType<typeof projectsService.runTests>>);
+    renderPage();
+    await screen.findByText('Intro text');
+    fireEvent.click(screen.getByRole('button', { name: 'Run Tests' }));
+    expect(await screen.findByText('Verdict: failed')).toBeInTheDocument();
+    expect(screen.queryByText('Finished')).toBeNull();
+  });
+
+  it('tells a guest whose run passes that the project needs an account', async () => {
+    signedIn(false);
+    vi.mocked(projectsService.runTests).mockResolvedValue({
+      status: 'passed',
+    } as Awaited<ReturnType<typeof projectsService.runTests>>);
+    renderPage();
+    await screen.findByText('Intro text');
+    fireEvent.click(screen.getByRole('button', { name: 'Run Tests' }));
+    expect(
+      await screen.findByText('Every test passes. Sign in to keep the project and its XP.'),
+    ).toBeInTheDocument();
+    expect(projectsService.getCompletions).not.toHaveBeenCalled();
+  });
+
+  it('shows a project the student finished before as finished', async () => {
+    vi.mocked(projectsService.getCompletions).mockResolvedValue([
+      { language: 'python', slug: 'shop', completedAt: '2026-11-08T10:00:00.000Z' },
+    ]);
+    renderPage();
+    expect(await screen.findByText('Finished')).toBeInTheDocument();
+  });
+
+  it('checks a Linux project’s terminal session against its checks', async () => {
+    vi.mocked(projectsService.checkTerminal).mockResolvedValue({ status: 'passed', checks: [] });
+    renderPage('/projects/linux/tidy');
+    fireEvent.click(await screen.findByRole('button', { name: 'Check the terminal' }));
+    expect(await screen.findByText('Project finished: +100 XP')).toBeInTheDocument();
+    expect(projectsService.checkTerminal).toHaveBeenCalledWith('session-1', 'tidy');
   });
 
   it.each([

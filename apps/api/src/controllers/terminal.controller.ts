@@ -4,7 +4,8 @@ import { ipKeyGenerator } from 'express-rate-limit';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { destroySchema } from '../schemas/terminal.schema.js';
 import * as sessionService from '../services/terminal-session.service.js';
-import { runTerminalTests } from '../services/terminal-tests.service.js';
+import { runProjectTerminalTests, runTerminalTests } from '../services/terminal-tests.service.js';
+import { completeIfPassed } from './projects.controller.js';
 import * as progressService from '../services/progress.service.js';
 import { requestWaitKey } from './runs.controller.js';
 
@@ -21,14 +22,11 @@ export function guestIpOf(req: Request): string | undefined {
 
 export async function createSession(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug, lang } = req.body;
-    const session = await sessionService.createSession(
-      courseKey,
-      lessonSlug,
-      resolveOwnerKey(req)!,
-      lang,
-      guestIpOf(req),
-    );
+    const owner = resolveOwnerKey(req)!;
+    const { project, courseKey, lessonSlug, lang } = req.body;
+    const session = project
+      ? await sessionService.createProjectSession(project, owner, guestIpOf(req))
+      : await sessionService.createSession(courseKey, lessonSlug, owner, lang, guestIpOf(req));
     res.json(session);
   } catch (err) {
     next(err);
@@ -76,6 +74,17 @@ export async function checkTests(req: Request, res: Response, next: NextFunction
         );
       }
     }
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function checkProject(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { sessionId, project } = req.body;
+    const result = await runProjectTerminalTests(resolveOwnerKey(req)!, sessionId, project);
+    await completeIfPassed(req, result.status === 'passed', 'linux', project);
     res.json(result);
   } catch (err) {
     next(err);

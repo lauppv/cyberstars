@@ -1,6 +1,7 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { WEB_COURSE_KEYS, isClosedCourse } from '@cyberstars/shared/constants';
+import { PROJECTS, PROJECT_XP } from '@cyberstars/shared/projects';
 
 export interface LeaderboardRow {
   id: number;
@@ -29,8 +30,23 @@ export interface LeaderboardRow {
 // Note: the query is built inside the function (not a module-level constant) so
 // Prisma.sql only evaluates when called, so route tests that mock @prisma/client
 // without the Prisma export can import this module without tripping it.
+//
+// Finished projects add their PROJECT_XP, read from the catalog as a VALUES
+// table, since the catalog lives in code; a project taken out of it gives none.
 export async function getRanked(): Promise<LeaderboardRow[]> {
   const closed = WEB_COURSE_KEYS.filter(isClosedCourse);
+  const catalog = Prisma.join(
+    PROJECTS.map(
+      (p) => Prisma.sql`(${p.language}::text, ${p.slug}::text, ${PROJECT_XP[p.difficulty]}::int)`,
+    ),
+  );
+  const projects = Prisma.sql`
+    SELECT pc.user_id, SUM(px.xp)::int AS xp, MAX(pc.completed_at) AS reached_at
+    FROM project_completions pc
+    JOIN (VALUES ${catalog}) AS px(language, slug, xp)
+      ON px.language = pc.language AND px.slug = pc.project_slug
+    GROUP BY pc.user_id
+  `;
   const ranked = Prisma.sql`
     SELECT
       u.id,
@@ -57,7 +73,13 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
   return prisma.$queryRaw<LeaderboardRow[]>(Prisma.sql`
     SELECT id, name, avatar_url, total_xp, lessons_done,
       CAST(ROW_NUMBER() OVER (ORDER BY total_xp DESC, reached_at ASC NULLS LAST, id) AS int) AS rank
-    FROM (${ranked}) ranked
+    FROM (
+      SELECT ranked.id, ranked.name, ranked.avatar_url, ranked.lessons_done,
+        (ranked.total_xp + COALESCE(projects.xp, 0))::int AS total_xp,
+        GREATEST(ranked.reached_at, projects.reached_at) AS reached_at
+      FROM (${ranked}) ranked
+      LEFT JOIN (${projects}) projects ON projects.user_id = ranked.id
+    ) totals
     ORDER BY rank
   `);
 }

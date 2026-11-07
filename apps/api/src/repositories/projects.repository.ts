@@ -34,3 +34,27 @@ export async function uncheck(
 ): Promise<void> {
   await prisma.projectStepCheck.deleteMany({ where: { userId, language, projectSlug, stepId } });
 }
+
+// Every project the student finished
+export function listCompletions(
+  userId: number,
+): Promise<{ language: string; projectSlug: string; completedAt: Date }[]> {
+  return prisma.projectCompletion.findMany({
+    where: { userId },
+    select: { language: true, projectSlug: true, completedAt: true },
+    orderBy: { completedAt: 'asc' },
+  });
+}
+
+// Passing again keeps the first completion
+export async function complete(
+  userId: number,
+  language: string,
+  projectSlug: string,
+): Promise<void> {
+  await prisma.projectCompletion.upsert({
+    where: { userId_language_projectSlug: { userId, language, projectSlug } },
+    create: { userId, language, projectSlug },
+    update: {},
+  });
+}

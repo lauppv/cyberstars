@@ -1,0 +1,59 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < before.txt",
+      "expected": "16"
+    },
+    {
+      "kind": "path_absent",
+      "path": "downloads/game-setup-9f3a.part"
+    },
+    {
+      "kind": "path_absent",
+      "path": "downloads/video-call-2b7c.part"
+    },
+    {
+      "kind": "path_absent",
+      "path": "downloads/thumbs.tmp"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "find downloads -maxdepth 1 -type f | wc -l",
+      "expected": "0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ls downloads/images downloads/documents downloads/music downloads/videos downloads/archives",
+      "expected": "downloads/archives:\nold-photos.zip\ntax-forms.zip\n\ndownloads/documents:\ncv-final.docx\ninvoice-april.pdf\ninvoice-march.pdf\nrecipe-pancakes.txt\n\ndownloads/images:\nbeach-day.jpg\nbirthday-cake.jpg\nscreenshot-login.png\n\ndownloads/music:\npodcast-ep12.mp3\nroad-trip-mix.mp3\n\ndownloads/videos:\nholiday-video.mp4"
+    },
+    {
+      "kind": "path_absent",
+      "path": "downloads/documents/cv-final-copy.docx"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "sort big-files.txt",
+      "expected": "./archives/old-photos.zip\n./videos/holiday-video.mp4"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat after.txt",
+      "expected": "downloads/archives/old-photos.zip\ndownloads/archives/tax-forms.zip\ndownloads/documents/cv-final.docx\ndownloads/documents/invoice-april.pdf\ndownloads/documents/invoice-march.pdf\ndownloads/documents/recipe-pancakes.txt\ndownloads/images/beach-day.jpg\ndownloads/images/birthday-cake.jpg\ndownloads/images/screenshot-login.png\ndownloads/music/podcast-ep12.mp3\ndownloads/music/road-trip-mix.mp3\ndownloads/videos/holiday-video.mp4"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "mv"
+    },
+    {
+      "kind": "command",
+      "name": "rm"
+    },
+    {
+      "kind": "command",
+      "name": "find"
+    }
+  ]
+}

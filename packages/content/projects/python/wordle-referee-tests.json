@@ -1,0 +1,22 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "words: crane slate trace crate react apple paper llama alley level hello world speed abbey kebab\ncrate: crane slate crate\napple: paper alley llama level xyzzy appl apple\nhello: world speed crane slate trace react paper\nabbey: kebab abbey\n"
+    },
+    {
+      "visible": true,
+      "stdin": "words: Crane Slate\ncrane: slate crane\n"
+    },
+    {
+      "stdin": "words: speed creep geese eerie sheep steep spree\ngeese: speed creep eerie steep sheep spree\neerie: geese creep\nsheep: steep sheep steep\nspeed: SPREE CREEP Speed\n"
+    },
+    {
+      "stdin": "words: robot motor rotor tutor otter\nrotor: robot motor tutor otter robot motor robot\nmotor: rotor tutors motor\n"
+    },
+    {
+      "stdin": "words: zzzzz\n"
+    }
+  ]
+}

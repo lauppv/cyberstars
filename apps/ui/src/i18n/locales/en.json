@@ -569,10 +569,10 @@
     "count": "Projects: {{count}}",
     "viewProjects": "View Projects",
     "desc": {
-      "python": "Programs a small business could use tomorrow, built from input, lists, dictionaries and functions.",
-      "c": "Tools close to the machine, built from arrays, strings, structs, pointers and files.",
-      "java": "Systems made of classes that work together: inheritance, interfaces, enums and collections.",
-      "linux": "Real jobs at the command line: tidy folders, search logs, build reports and lock down files."
+      "python": "Real programs, from a text adventure to a spreadsheet, built from input, lists, dictionaries, functions and recursion.",
+      "c": "Tools close to the machine: bytes and bits, binary files, stacks, linked lists and processes.",
+      "java": "Systems of classes that work together: inheritance, interfaces, generics, exceptions and collections.",
+      "linux": "Real jobs at the command line: tidy folders, search logs, fix config files and build reports."
     },
     "finished": "Finished: {{done}} of {{total}}",
     "noMatch": "No projects match this filter.",
@@ -588,7 +588,10 @@
     "saveFailed": "That tick couldn't be saved. Try again.",
     "signInToTrack": "Sign in to keep track of the steps you've done.",
     "markStep": "Mark \"{{title}}\" as done",
-    "terminalSoon": "The terminal for Linux projects is coming soon."
+    "finishedTag": "Finished",
+    "passedXp": "Project finished: +{{xp}} XP",
+    "passedGuest": "Every test passes. Sign in to keep the project and its XP.",
+    "showOutput": "Back to output"
   },
   "algorithms": {
     "desc": {

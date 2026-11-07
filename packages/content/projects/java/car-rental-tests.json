@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "5\ncar B-101-AAA Dacia 120\ncar B-102-BBB Skoda 160\nvan B-201-VAN Ford 200\nscooter B-301-SCO Vespa 50\nscooter B-302-SCO Piaggio 45\nlist\nrent B-101-AAA Ana 3\nrent B-101-AAA Dan 3\nrent B-999-XXX Dan 3\nrent B-201-VAN Dan 4\nrent B-301-SCO Ioana 4\nreturn B-101-AAA 6 520\nreturn B-201-VAN 4 130\nreturn B-301-SCO 9 40\nreturn B-301-SCO 9 40\navailable scooter\navailable car\nrent B-102-BBB Ana 10\nreturn B-102-BBB 14 1100\nrent B-102-BBB Leo 15\navailable car\nserviced B-102-BBB\nrent B-102-BBB Leo 15\ncustomer Ana\ncustomer Leo\nserviced B-102-BBB\nreport\nrent B-101-AAA Ana soon\nreturn B-101-AAA\ndrive B-101-AAA\nclose\n"
+    },
+    {
+      "visible": true,
+      "stdin": "3\ncar B-1 Logan 100\nvan B-2 Transit 150\nscooter B-3 Vespa 40\nrent B-3 Ana 1\nreturn B-3 3 10\nrent B-3 Ana 5\nreturn B-3 5 0\nrent B-2 Dan 2\nreturn B-2 1 10\nreturn B-2 2 2600\nlist\nrent B-2 Eva 3\nserviced B-2\nrent B-1 Eva 10\nreturn B-1 11 150\nreturn B-1 11 0\ncustomer Ana\ncustomer Dan\navailable van\navailable car\nreport\nclose\n"
+    },
+    {
+      "stdin": "1\ncar X-1 Fiat 80\nreport\navailable bus\ncustomer Nobody\nrent X-1 Ana\nserviced X-1\nclose\n"
+    }
+  ]
+}

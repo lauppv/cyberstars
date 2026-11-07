@@ -1,0 +1,24 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cat contacts/merged.csv",
+      "expected": "Ana Pop,0722111222\nBogdan Ilie,0744333444\nClinic Dr. Matei,0264555666\nDan Radu,0733777888\nDan Radu,0799888777\nElena Stan,\nFlorin Toma,0755123456\nGabi Neagu,0766432100\nIoana Marin,0740202303\nMama,0721000111\nPizzeria Roma,0264999000\nPlumber Vasile,0742600700"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat contacts/contacts.csv",
+      "expected": "name,phone\nAna Pop,0722111222\nBogdan Ilie,0744333444\nClinic Dr. Matei,0264555666\nDan Radu,0799888777\nElena Stan,\nFlorin Toma,0755123456\nGabi Neagu,0766432100\nIoana Marin,0740202303\nMama,0721000111\nPizzeria Roma,0264999000\nPlumber Vasile,0742600700"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "awk"
+    },
+    {
+      "kind": "command",
+      "name": "sort"
+    }
+  ]
+}

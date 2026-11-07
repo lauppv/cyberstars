@@ -1,0 +1,22 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "rnbqkbnr\npppppppp\n........\n........\n........\n........\nPPPPPPPP\nRNBQKBNR\ne2 e4\ne7 e5\nf1 c4\nb8 c6\nd1 h5\ng8 f6\nh5 f7\nboard\ncaptured\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "k.......\n........\n.Q......\n........\n........\n........\n........\n.......K\nb6 c7\n"
+    },
+    {
+      "stdin": "rnbqkbnr\npppppppp\n........\n........\n........\n........\nPPPPPPPP\nRNBQKBNR\ne7 e5\ne2 e5\ne3 e4\ne9 e4\ne2 e4\ne7 e5\ng1 f3\nb8 c6\nf1 b5\na7 a6\nb5 c6\nd7 c6\ne1 g1\ne1 e2\nf3 e5\nd8 d4\ne5 f7\nd4 e4\ncaptured\nboard\ne2 e1\nquit\n"
+    },
+    {
+      "stdin": "....k...\n...P....\n........\n........\n........\n........\nr.......\n....K...\nd7 d8\ne8 d8\ne1 e2\ne1 f1\na2 a1\nf1 e2\na1 a2\ne2 d3\nd8 c7\nd3 c4\nboard\nquit\n"
+    },
+    {
+      "stdin": "........\n........\n........\n........\n........\n......q.\nP....k..\n.......K\nh1 g1\na2 a4\ng3 g2\n"
+    }
+  ]
+}

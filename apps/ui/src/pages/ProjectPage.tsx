@@ -1,4 +1,12 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Check, ChevronDown, ChevronRight } from 'lucide-react';
@@ -14,13 +22,25 @@ import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
+import { TerminalPanel } from '../components/terminal/TerminalPanel';
+import { ResultPanel } from '../components/judge/ResultPanel';
+import { setRunWait, withRunWait } from '../hooks/useRunWait';
 import { useAuth } from '../context/AuthContext';
 import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useResizeSplit } from '../hooks/useResizeSplit';
+import { useTerminalSession } from '../hooks/useTerminalSession';
 import { courseLabel, courseMeta } from '../constants/courses';
 import { canAccessFeature } from '@cyberstars/shared/features';
-import { PROJECTS, findProject, splitProjectText, type Project } from '@cyberstars/shared/projects';
+import {
+  PROJECTS,
+  PROJECT_XP,
+  findProject,
+  splitProjectText,
+  type Project,
+} from '@cyberstars/shared/projects';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
+import type { TerminalTestResult } from '@cyberstars/shared/terminal';
 import * as projectsService from '../services/projectsService';
 import { NotFoundPage } from './NotFoundPage';
 
@@ -219,8 +239,16 @@ function ProjectView({ project }: { project: Project }) {
   const [failed, setFailed] = useState(false);
   const [activeTab, setActiveTab] = useState<'project' | 'workspace'>('project');
   const [code, setCode] = useState(() => readCode(project));
+  const { user } = useAuth();
   const { notifyRunComplete } = useGuestSignupPrompt();
   const { output, isRunning, execute, stop, sendInput } = useCodeExecution(notifyRunComplete);
+  // Only passing the project's judge finishes it; the ticks are the student's notes
+  const [finished, setFinished] = useState(false);
+  const [results, setResults] = useState<RunTestsResponse | null>(null);
+  const [testing, setTesting] = useState(false);
+  const [testsError, setTestsError] = useState<string | null>(null);
+  const testsRunner = useId();
+  const runTestsRef = useRef<() => Promise<void>>(async () => {});
   const bandRef = useRef<HTMLDivElement>(null);
   const workspaceRef = useRef<HTMLDivElement>(null);
   const hSplit = useResizeSplit({
@@ -247,6 +275,23 @@ function ProjectView({ project }: { project: Project }) {
 
   useEffect(fetchText, [fetchText]);
 
+  useEffect(() => {
+    if (!user) return;
+    let live = true;
+    projectsService
+      .getCompletions()
+      .then((done) => {
+        if (live) {
+          setFinished(done.some((c) => c.language === project.language && c.slug === project.slug));
+        }
+      })
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [user, project]);
+  useEffect(() => () => setRunWait(testsRunner, null), [testsRunner]);
+
   const retry = () => {
     setFailed(false);
     fetchText();
@@ -263,7 +308,42 @@ function ProjectView({ project }: { project: Project }) {
     setCode(value);
     writeCode(project, value);
   };
-  const run = () => execute(code, project.language);
+  const run = () => {
+    setResults(null);
+    execute(code, project.language);
+  };
+  const passed = (ok: boolean) => {
+    if (ok && user) setFinished(true);
+  };
+
+  const runTests = async () => {
+    if (testing || isRunning) return;
+    setTesting(true);
+    setTestsError(null);
+    try {
+      const verdict = await withRunWait(
+        testsRunner,
+        (runId) => projectsService.runTests(project.language, project.slug, code, runId),
+        () => void runTestsRef.current(),
+      );
+      setResults(verdict);
+      passed(verdict.status === 'passed');
+    } catch (err) {
+      setTestsError(err instanceof Error ? err.message : t('common.somethingWrong'));
+    } finally {
+      setTesting(false);
+    }
+  };
+  useEffect(() => {
+    runTestsRef.current = runTests;
+  });
+  const passLine = (
+    <p className="text-[13px] font-semibold text-[var(--success)]">
+      {user
+        ? t('projects.passedXp', { xp: PROJECT_XP[project.difficulty] })
+        : t('projects.passedGuest')}
+    </p>
+  );
 
   return (
     <div className="h-screen bg-transparent flex flex-col text-[var(--text)] overflow-hidden">
@@ -297,7 +377,16 @@ function ProjectView({ project }: { project: Project }) {
                 <LessonHeading
                   title={project.title}
                   position={t('projects.nOfM', { n: index + 1, total: siblings.length })}
-                  badge={<BetaBadge hint={t('projects.betaHint')} />}
+                  badge={
+                    <>
+                      <BetaBadge hint={t('projects.betaHint')} />
+                      {finished && (
+                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-[1px] bg-[var(--success)]/15 text-[var(--success)]">
+                          {t('projects.finishedTag')}
+                        </span>
+                      )}
+                    </>
+                  }
                   difficulty={project.difficulty}
                   difficultyLabel={t(`algoList.filters.${project.difficulty}`)}
                 />
@@ -346,9 +435,12 @@ function ProjectView({ project }: { project: Project }) {
             className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
           >
             {project.language === 'linux' ? (
-              <div className="flex-1 flex items-center justify-center p-8 text-[13px] text-[var(--text3)]">
-                {t('projects.terminalSoon')}
-              </div>
+              <ProjectTerminal
+                slug={project.slug}
+                onCommandRun={notifyRunComplete}
+                onChecked={passed}
+                passLine={passLine}
+              />
             ) : (
               <>
                 <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
@@ -382,14 +474,40 @@ function ProjectView({ project }: { project: Project }) {
                   <div className="flex-1 min-h-0 p-3 border-t border-[var(--border)] bg-[var(--glass)] flex flex-col">
                     <div className="flex gap-2 mb-3 items-center flex-wrap">
                       <RunButton onClick={run} isRunning={isRunning} onStop={stop} />
+                      <button
+                        onClick={runTests}
+                        disabled={testing || isRunning}
+                        className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+                      >
+                        {testing ? t('tests.running') : t('tests.run')}
+                      </button>
+                      {results && (
+                        <button
+                          onClick={() => setResults(null)}
+                          className="ml-auto text-[12px] font-semibold text-[var(--text2)] hover:text-[var(--accent)] bg-transparent border-none cursor-pointer"
+                        >
+                          {t('projects.showOutput')}
+                        </button>
+                      )}
+                      {testsError && (
+                        <span className="text-[12px] font-semibold text-[var(--error)]">
+                          {testsError}
+                        </span>
+                      )}
                     </div>
                     <div className="flex-1 min-w-0 min-h-0 flex flex-col">
-                      <CodeOutput
-                        output={output}
-                        isRunning={isRunning}
-                        onInput={sendInput}
-                        fillHeight
-                      />
+                      {results ? (
+                        <div className="flex-1 min-h-0 overflow-y-auto">
+                          <ResultPanel results={results} showRuntime={false} next={passLine} />
+                        </div>
+                      ) : (
+                        <CodeOutput
+                          output={output}
+                          isRunning={isRunning}
+                          onInput={sendInput}
+                          fillHeight
+                        />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -399,5 +517,65 @@ function ProjectView({ project }: { project: Project }) {
         </div>
       </div>
     </div>
+  );
+}
+
+// A Linux project's sandbox, started with the project's files; Reset starts
+// it over, since nothing in it is kept. Run Tests checks what the session left
+// behind against the project's checks.
+function ProjectTerminal({
+  slug,
+  onCommandRun,
+  onChecked,
+  passLine,
+}: {
+  slug: string;
+  onCommandRun: (exitCode: number | undefined) => void;
+  onChecked: (passed: boolean) => void;
+  passLine: ReactNode;
+}) {
+  const { t } = useTranslation();
+  // A command counts for the guest's sign-up nudge like a lesson's, as one that went well
+  const commandRun = useCallback(() => onCommandRun(0), [onCommandRun]);
+  const terminal = useTerminalSession('linux', slug, commandRun, 'project');
+  const [checking, setChecking] = useState(false);
+  const [result, setResult] = useState<TerminalTestResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const check = async () => {
+    if (!terminal.sessionId || checking) return;
+    setChecking(true);
+    setError(null);
+    try {
+      const verdict = await projectsService.checkTerminal(terminal.sessionId, slug);
+      setResult(verdict);
+      onChecked(verdict.status === 'passed');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('common.somethingWrong'));
+    } finally {
+      setChecking(false);
+    }
+  };
+
+  return (
+    <TerminalPanel
+      lines={terminal.lines}
+      cwd={terminal.cwd}
+      isReady={terminal.isReady}
+      isExecuting={terminal.isExecuting}
+      onExecute={terminal.execute}
+      onReset={() => {
+        setResult(null);
+        setError(null);
+        terminal.reset();
+      }}
+      hasTests
+      isChecking={checking}
+      onRunTests={check}
+      testResult={result}
+      onCloseTests={() => setResult(null)}
+      nextAfterPass={passLine}
+      testsError={error}
+    />
   );
 }

@@ -1,0 +1,35 @@
+{
+  "cwd": "/home/student",
+  "dirs": ["apps"],
+  "files": [
+    {
+      "path": "apps/shop/config/app.conf",
+      "content": "name=shop\nport=8080\ncache_server=cache-old.lan\nlog_level=info\n"
+    },
+    {
+      "path": "apps/shop/config/db.conf",
+      "content": "db_host=db-old.lan\ndb_port=5432\ndb_name=shop\ndb_user=shop\n"
+    },
+    {
+      "path": "apps/blog/config/app.conf",
+      "content": "name=blog\nport=8081\nlog_level=warn\nupload_port=5432\n"
+    },
+    {
+      "path": "apps/blog/config/db.conf",
+      "content": "db_host=db-old.lan\ndb_port=5432\ndb_name=blog\nreplica_host=db-old.lan\n"
+    },
+    {
+      "path": "apps/invoices/config/db.conf",
+      "content": "db_host=db-old.lan\ndb_port=5432\ndb_name=invoices\n"
+    },
+    {
+      "path": "apps/invoices/config/mail.conf",
+      "content": "smtp_host=mail.lan\nsmtp_port=587\ncache_server=cache-old.lan\n"
+    },
+    {
+      "path": "apps/invoices/NOTES.txt",
+      "content": "2024-03: moved invoices from db-old.lan's first disk to its second.\nAsk Radu before touching the config.\n"
+    }
+  ],
+  "intro": "The three apps and their config files are in ~/apps."
+}

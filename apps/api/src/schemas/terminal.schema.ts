@@ -1,10 +1,14 @@
 import { z } from 'zod';
 
-export const createSessionSchema = z.object({
-  courseKey: z.string().min(1),
-  lessonSlug: z.string().min(1),
-  lang: z.enum(['en', 'ro']).optional(),
-});
+// A lesson's sandbox, or a Linux project's (`project` is its slug)
+export const createSessionSchema = z.union([
+  z.object({
+    courseKey: z.string().min(1),
+    lessonSlug: z.string().min(1),
+    lang: z.enum(['en', 'ro']).optional(),
+  }),
+  z.object({ project: z.string().min(1).max(100) }),
+]);
 
 export const execSchema = z.object({
   sessionId: z.string().uuid(),
@@ -20,4 +24,10 @@ export const checkSchema = z.object({
   courseKey: z.string().min(1),
   lessonSlug: z.string().min(1),
   lang: z.enum(['en', 'ro']).optional(),
+});
+
+// A Linux project's checks, on a session started for that project
+export const projectCheckSchema = z.object({
+  sessionId: z.string().uuid(),
+  project: z.string().min(1).max(100),
 });

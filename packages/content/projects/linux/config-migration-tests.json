@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "cd apps-backup && grep -r db-old.lan . | sort",
+      "expected": "./blog/config/db.conf:db_host=db-old.lan\n./blog/config/db.conf:replica_host=db-old.lan\n./invoices/NOTES.txt:2024-03: moved invoices from db-old.lan's first disk to its second.\n./invoices/config/db.conf:db_host=db-old.lan\n./shop/config/db.conf:db_host=db-old.lan"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cd apps && grep -r 'db-old.lan\\|db.internal\\|_port\\|cache_server' */config invoices/NOTES.txt | sort",
+      "expected": "blog/config/app.conf:upload_port=5432\nblog/config/db.conf:db_host=db.internal\nblog/config/db.conf:db_port=6432\nblog/config/db.conf:replica_host=db.internal\ninvoices/NOTES.txt:2024-03: moved invoices from db-old.lan's first disk to its second.\ninvoices/config/db.conf:db_host=db.internal\ninvoices/config/db.conf:db_port=6432\ninvoices/config/mail.conf:# cache_server=cache-old.lan\ninvoices/config/mail.conf:smtp_port=587\nshop/config/app.conf:# cache_server=cache-old.lan\nshop/config/db.conf:db_host=db.internal\nshop/config/db.conf:db_port=6432"
+    },
+    {
+      "kind": "file_exists",
+      "path": "apps/CHANGES.txt"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "sed"
+    },
+    {
+      "kind": "command",
+      "name": "cp"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { AppError } from '@cyberstars-framework/server-kit/errors';
 import {
   findProject,
   type ProjectCheckDTO,
+  type ProjectCompletionDTO,
   type ProjectLanguage,
 } from '@cyberstars/shared/projects';
 import * as projectsRepo from '../repositories/projects.repository.js';
@@ -34,4 +35,23 @@ export async function setCheck(
   if (!project.steps.some((s) => s.id === stepId)) throw new AppError(404, 'Step not found');
   if (checked) await projectsRepo.check(userId, language, slug, stepId);
   else await projectsRepo.uncheck(userId, language, slug, stepId);
+}
+
+// The projects the student finished that are still in the catalog
+export async function listCompletions(userId: number): Promise<ProjectCompletionDTO[]> {
+  const rows = await projectsRepo.listCompletions(userId);
+  return rows
+    .filter((row) => findProject(row.language, row.projectSlug))
+    .map((row) => ({
+      language: row.language as ProjectLanguage,
+      slug: row.projectSlug,
+      completedAt: row.completedAt.toISOString(),
+    }));
+}
+
+// Only the judge's passing verdict calls this, for a signed-in student, so a
+// project can't be finished by ticking its steps
+export async function complete(userId: number, language: string, slug: string): Promise<void> {
+  if (!findProject(language, slug)) throw new AppError(404, 'Project not found');
+  await projectsRepo.complete(userId, language, slug);
 }

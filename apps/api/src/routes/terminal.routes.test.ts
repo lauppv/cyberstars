@@ -56,6 +56,7 @@ vi.mock('../repositories/user.repository.js', async (importOriginal) => ({
 
 const mockSessionService = vi.hoisted(() => ({
   createSession: vi.fn(),
+  createProjectSession: vi.fn(),
   execCommand: vi.fn(),
   destroySession: vi.fn(),
   loadSetup: vi.fn(),
@@ -114,6 +115,37 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
       // The guest's network, which their sandboxes count against
       '127.0.0.1',
     );
+  });
+
+  it("starts a Linux project's sandbox when the body names a project", async () => {
+    mockSessionService.createProjectSession.mockResolvedValue({
+      sessionId: 'sid',
+      cwd: '/home/student',
+    });
+
+    const res = await request(app)
+      .post('/api/terminal/session')
+      .set('Cookie', `token=${token}`)
+      .send({ project: 'night-shift-logs' });
+
+    expect(res.status).toBe(200);
+    expect(mockSessionService.createProjectSession).toHaveBeenCalledWith(
+      'night-shift-logs',
+      'user:42',
+      undefined,
+    );
+    expect(mockSessionService.createSession).not.toHaveBeenCalled();
+  });
+
+  it('refuses a body that names neither a lesson nor a project', async () => {
+    const res = await request(app)
+      .post('/api/terminal/session')
+      .set('Cookie', `token=${token}`)
+      .send({ courseKey: 'linux' });
+
+    expect(res.status).toBe(400);
+    expect(mockSessionService.createSession).not.toHaveBeenCalled();
+    expect(mockSessionService.createProjectSession).not.toHaveBeenCalled();
   });
 
   it('runs the rate-limited exec path for an owner (keyGenerator resolves the owner)', async () => {

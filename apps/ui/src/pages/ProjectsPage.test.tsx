@@ -45,7 +45,7 @@ vi.mock('@cyberstars/shared/features', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@cyberstars/shared/features')>()),
   canAccessFeature: vi.fn(),
 }));
-vi.mock('../services/projectsService', () => ({ getChecks: vi.fn() }));
+vi.mock('../services/projectsService', () => ({ getChecks: vi.fn(), getCompletions: vi.fn() }));
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => null }));
 vi.mock('./NotFoundPage', () => ({ NotFoundPage: () => <p>Not found</p> }));
 
@@ -80,9 +80,21 @@ beforeEach(() => {
     { language: 'python', slug: 'bank', stepId: 'a' },
     { language: 'c', slug: 'shell', stepId: 'a' },
   ]);
+  // Only the judge finishes a project
+  vi.mocked(projectsService.getCompletions).mockResolvedValue([
+    { language: 'python', slug: 'bank', completedAt: '2026-11-08T10:00:00.000Z' },
+    { language: 'c', slug: 'shell', completedAt: '2026-11-08T10:00:00.000Z' },
+  ]);
 });
 
 describe('ProjectsPage', () => {
+  it('finishes a project only by its judge, not by ticking every step', async () => {
+    vi.mocked(projectsService.getCompletions).mockResolvedValue([]);
+    renderPage();
+    expect(await screen.findAllByText('Finished: 0 of 2')).not.toHaveLength(0);
+    expect(screen.getByText('Finished: 0 of 1')).toBeInTheDocument();
+  });
+
   it('shows a card per language, as Algorithms does, each opening its projects', () => {
     renderPage();
     for (const name of ['Python', 'C', 'Java', 'Linux']) {

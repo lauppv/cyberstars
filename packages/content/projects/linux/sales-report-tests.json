@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "kind": "command_output",
+      "cmd": "wc -l < shop/data.csv",
+      "expected": "38"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c '^order,' shop/data.csv",
+      "expected": "0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c Fikus shop/clean.csv",
+      "expected": "0"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c ',Ficus,' shop/clean.csv",
+      "expected": "10"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat shop/by-city.txt",
+      "expected": "665 Cluj\n513 Bucharest\n398 Timisoara\n268 Iasi\n54 Brasov"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat shop/by-product.txt",
+      "expected": "23 Cactus\n18 Ficus\n13 Monstera\n11 Orchid\n3 Fern\n1 Snake Plant"
+    },
+    {
+      "kind": "file_contains",
+      "path": "shop/report.txt",
+      "text": "Orders: 38"
+    },
+    {
+      "kind": "file_contains",
+      "path": "shop/report.txt",
+      "text": "Plants shipped: 69"
+    },
+    {
+      "kind": "file_contains",
+      "path": "shop/report.txt",
+      "text": "Revenue: 1898"
+    },
+    {
+      "kind": "file_contains",
+      "path": "shop/report.txt",
+      "text": "Best city: Cluj"
+    },
+    {
+      "kind": "file_contains",
+      "path": "shop/report.txt",
+      "text": "Best seller: Cactus"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "command",
+      "name": "awk"
+    },
+    {
+      "kind": "command",
+      "name": "sed"
+    },
+    {
+      "kind": "command",
+      "name": "tail"
+    }
+  ]
+}
