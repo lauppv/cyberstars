@@ -10,6 +10,19 @@
     "almanac": "Almanah",
     "laniakea": "Laniakea"
   },
+  "pages": {
+    "homeTitle": "Bine ai revenit, {{name}}",
+    "homeTitleNoName": "Bine ai revenit",
+    "home": "Continuă de unde ai rămas sau încearcă azi ceva nou.",
+    "progress": "Cât de departe ai ajuns în fiecare curs și set de provocări.",
+    "leaderboard": "Toți studenții, în ordinea XP-ului câștigat.",
+    "settings": "Limba, ce văd alții despre tine și contul tău.",
+    "support": "Întreabă-ne orice sau spune-ne ce nu merge. Îți răspundem chiar aici.",
+    "rules": "Cum păstrăm CyberStars un loc bun pentru învățat.",
+    "connections": "Oamenii cu care ești conectat și cererile care așteaptă un răspuns.",
+    "profile": "Poza ta, numele și insignele pe care le-ai câștigat.",
+    "admin": "Cum merge platforma și ce le trimiți tuturor."
+  },
   "sidebar": {
     "label": "Navigare principală",
     "community": "Comunitate",

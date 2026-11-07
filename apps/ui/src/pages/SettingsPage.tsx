@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS, switchLanguage } from '../i18n';
 import * as profileService from '../services/profileService';
@@ -207,21 +208,15 @@ export function SettingsPage() {
   };
 
   if (isLoading || !user) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[520px] flex flex-col gap-5">
+      <PageContainer width="narrow">
+        <PageHeader title={t('topbar.settings')} subtitle={t('pages.settings')} />
+        <div className="flex flex-col gap-5">
           {/* Preferences */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
             <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
@@ -507,7 +502,7 @@ export function SettingsPage() {
             </div>
           </section>
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

@@ -2,6 +2,8 @@ import { useEffect, useMemo, type CSSProperties } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation, Trans } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { useAuth } from '../context/AuthContext';
@@ -48,8 +50,9 @@ export function ProgressPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 px-4 sm:px-6 py-8">
-        <div className="max-w-[880px] mx-auto space-y-8">
+      <PageContainer>
+        <PageHeader title={t('nav.progress')} subtitle={t('pages.progress')} />
+        <div className="space-y-8">
           {failedCourses.size > 0 && (
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           )}
@@ -70,7 +73,7 @@ export function ProgressPage() {
             </div>
           </section>
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

@@ -11,6 +11,19 @@
     "almanac": "Almanac",
     "laniakea": "Laniakea"
   },
+  "pages": {
+    "homeTitle": "Welcome back, {{name}}",
+    "homeTitleNoName": "Welcome back",
+    "home": "Pick up where you left off, or try something new today.",
+    "progress": "How far along you are in every course and challenge set.",
+    "leaderboard": "Every student, ranked by the XP they've earned.",
+    "settings": "Your language, what others see of you, and your account.",
+    "support": "Ask us anything or tell us about a problem. We answer right here.",
+    "rules": "How we keep CyberStars a good place to learn.",
+    "connections": "The people you're connected with, and the requests waiting for an answer.",
+    "profile": "Your picture, your name and the badges you've earned.",
+    "admin": "How the platform is doing, and what to send to everyone."
+  },
   "sidebar": {
     "label": "Main navigation",
     "community": "Community",

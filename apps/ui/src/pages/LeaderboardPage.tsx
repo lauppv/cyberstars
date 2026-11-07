@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
@@ -154,7 +156,8 @@ export function LeaderboardPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 max-w-[760px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
+      <PageContainer width="narrow">
+        <PageHeader title={t('nav.leaderboard')} subtitle={t('pages.leaderboard')} />
         {loading ? (
           <div className="flex justify-center py-16">
             <LoadingSpinner />
@@ -201,7 +204,7 @@ export function LeaderboardPage() {
             )}
           </>
         )}
-      </main>
+      </PageContainer>
     </div>
   );
 }

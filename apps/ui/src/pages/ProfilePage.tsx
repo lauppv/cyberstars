@@ -5,9 +5,10 @@ import { Avatar } from '../components/ui/Avatar';
 import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { Badge } from '../components/gamification/Badge';
 import { LaniakeaTrophies } from '../components/laniakea/LaniakeaTrophies';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { EmojiPicker } from '../components/ui/EmojiPicker';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
@@ -135,14 +136,7 @@ export function ProfilePage() {
   };
 
   if (isLoading || !user) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   const statusExpired = user.statusExpiresAt && new Date(user.statusExpiresAt) < new Date();
@@ -160,8 +154,9 @@ export function ProfilePage() {
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
 
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
+      <PageContainer width="narrow">
+        <PageHeader title={t('topbar.profile')} subtitle={t('pages.profile')} />
+        <div className="rounded-[var(--radius)] panel px-6 py-6">
           {/* Header with avatar */}
           <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
             <div className="relative group">
@@ -351,7 +346,7 @@ export function ProfilePage() {
             </button>
           </div>
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

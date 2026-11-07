@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { useAuth, wasSignedIn } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay, type DayCounts } from '../components/gamification/heatmap-utils';
 import * as profileService from '../services/profileService';
@@ -200,23 +201,23 @@ export function HomePage() {
   if (isLoading && !wasSignedIn()) return <LandingPage />;
 
   if (isLoading) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   if (isLoggedIn && user) {
+    const firstName = user.name?.trim().split(/\s+/)[0];
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
 
-        <main className="flex-1 px-4 sm:px-6 py-8">
-          <div className="max-w-[1040px] mx-auto space-y-6">
+        <PageContainer>
+          <PageHeader
+            title={
+              firstName ? t('pages.homeTitle', { name: firstName }) : t('pages.homeTitleNoName')
+            }
+            subtitle={t('pages.home')}
+          />
+          <div className="space-y-6">
             {/* ── Continue Where You Left Off + Activity ── */}
             <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
               {continueTo && (
@@ -361,7 +362,7 @@ export function HomePage() {
               </section>
             )}
           </div>
-        </main>
+        </PageContainer>
 
         {almanacStory && <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />}
         {/* The admins' announcements and polls, once a story read here is closed */}

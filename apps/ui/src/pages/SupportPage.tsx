@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { LoadError } from '../components/ui/LoadError';
 import * as supportService from '../services/supportService';
 import type {
@@ -117,21 +118,14 @@ export function SupportPage() {
   };
 
   if (isLoading || !user) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   if (openTicket) {
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
-        <main className="flex-1 flex justify-center px-6 py-10">
+        <PageContainer width="narrow">
           <TicketConversation
             ticket={openTicket}
             isAdmin={isAdmin}
@@ -142,7 +136,7 @@ export function SupportPage() {
             }}
             onStatusChange={(s) => changeStatus(openTicket.id, s)}
           />
-        </main>
+        </PageContainer>
       </div>
     );
   }
@@ -150,8 +144,9 @@ export function SupportPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[560px]">
+      <PageContainer width="narrow">
+        <PageHeader title={t('topbar.support')} subtitle={t('pages.support')} />
+        <div>
           {/* New ticket form */}
           <div className="panel p-5 mb-8">
             <h2 className="text-[14px] font-semibold mb-4">{t('support.newTicket')}</h2>
@@ -249,7 +244,7 @@ export function SupportPage() {
             </div>
           )}
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }
@@ -358,7 +353,7 @@ function TicketConversation({
   };
 
   return (
-    <div className="w-full max-w-[600px] flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center gap-3">
         <button

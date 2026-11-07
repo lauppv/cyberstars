@@ -5,6 +5,8 @@ import { useCurriculum } from '../context/CurriculumContext';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
+import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
@@ -73,21 +75,15 @@ export function AdminPage() {
   };
 
   if (isLoading || !isAdmin) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[960px]">
+      <PageContainer>
+        <PageHeader title={t('topbar.admin')} subtitle={t('pages.admin')} />
+        <div>
           <div className="mb-8 flex justify-end">
             <button
               onClick={refresh}
@@ -260,7 +256,7 @@ export function AdminPage() {
             </p>
           )}
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

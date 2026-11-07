@@ -8,6 +8,7 @@ import { CROWNS } from '../components/gamification/crowns';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { useCurriculum } from '../context/CurriculumContext';
@@ -241,7 +242,7 @@ export function PublicProfilePage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
+      <PageContainer width="narrow">
         {loading ? (
           <div className="flex items-center justify-center py-16">
             <LoadingSpinner />
@@ -457,7 +458,7 @@ export function PublicProfilePage() {
             )}
           </div>
         )}
-      </main>
+      </PageContainer>
     </div>
   );
 }
