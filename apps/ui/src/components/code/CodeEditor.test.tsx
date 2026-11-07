@@ -18,6 +18,11 @@ describe('CodeEditor language extensions', () => {
     'algo-c',
     'java',
     'algo-java',
+    'html',
+    'css',
+    'js',
+    'javascript',
+    'json',
     'ScReAmInG', // unknown → default branch, also covers toLowerCase()
   ];
 
