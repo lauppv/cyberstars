@@ -307,9 +307,12 @@ export async function execCommand(
 
     let output: string;
     try {
+      // The script goes in on stdin, not as an argument, so ps shows the
+      // student `bash -s` rather than their command wrapped in ours
       output = await dockerExec(
-        ['exec', session.containerId, 'timeout', String(EXEC_TIMEOUT), 'bash', '-c', script],
+        ['exec', '-i', session.containerId, 'timeout', String(EXEC_TIMEOUT), 'bash', '-s'],
         (EXEC_TIMEOUT + 2) * 1000,
+        script + '\n',
       );
     } catch (e: unknown) {
       output = e instanceof Error ? e.message : 'Command failed';

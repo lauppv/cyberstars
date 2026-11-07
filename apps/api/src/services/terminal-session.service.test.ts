@@ -163,6 +163,8 @@ describe('execCommand', () => {
     expect(listed.output.split('\n')[0]).toBe('/usr/bin/reactor-monitor --port=7700');
     expect(listed.output).toContain('/usr/bin/nav-computer --frozen');
     expect(listed.output).not.toContain('sleep 299');
+    // The student's own command shows as a plain shell, not wrapped in ours
+    expect(listed.output).not.toContain('/tmp/.cwd');
 
     // A stubborn one ignores a polite stop, but not a forced one, and stays stopped
     await execCommand(sessionId, 'kill $(pgrep -f nav-computer)', 'user:1');
