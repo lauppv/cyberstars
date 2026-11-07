@@ -570,7 +570,7 @@ function LevelRing({ level, pct }: { level: number | null; pct: number }) {
         aria-hidden="true"
       >
         <span className="text-[20px] font-bold leading-none">{level ?? '-'}</span>
-        <span className="mt-0.5 text-[8px] font-semibold tracking-[1px] text-[var(--text3)] uppercase">
+        <span className="mt-0.5 text-[8px] font-semibold tracking-[0.5px] text-[var(--text3)]">
           {t('home.levelShort')}
         </span>
       </div>
