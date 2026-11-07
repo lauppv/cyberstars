@@ -476,6 +476,94 @@ export const PROJECTS: Project[] = [
       { id: 'files', title: 'Save and open' },
     ],
   },
+  {
+    slug: 'tram-timetable',
+    language: 'c',
+    title: 'Tram Timetable',
+    difficulty: 'medium',
+    summary:
+      "Everything a tram stop's screen shows, worked out from a line's stops and timings: the next tram both ways, trip times, the printed timetable, first and last trams.",
+    steps: [
+      { id: 'line', title: 'The line' },
+      { id: 'next', title: 'The next tram' },
+      { id: 'directions', title: 'Both directions' },
+      { id: 'trip', title: 'Plan a trip' },
+      { id: 'timetable', title: 'The timetable on the pole' },
+      { id: 'first-last', title: 'First and last' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'weather-packets',
+    language: 'c',
+    title: 'Weather Packets',
+    difficulty: 'medium',
+    summary:
+      'Unpack weather reports squeezed into 32-bit packets with bit operations, reject the broken ones, summarise each station and pack reports the other way.',
+    steps: [
+      { id: 'layout', title: 'The packet' },
+      { id: 'receive', title: 'Receive a packet' },
+      { id: 'fields', title: 'Temperature, humidity, wind' },
+      { id: 'flags', title: 'Flags' },
+      { id: 'broken', title: 'Broken packets' },
+      { id: 'stations', title: 'Station summary' },
+      { id: 'encode', title: 'Pack a report' },
+    ],
+  },
+  {
+    slug: 'pgm-image-tool',
+    language: 'c',
+    title: 'PGM Image Tool',
+    difficulty: 'hard',
+    summary:
+      'A command-line tool for grayscale scans: read a PGM image into memory, preview it as text, invert, brighten, flip, rotate, crop, blur and save it.',
+    steps: [
+      { id: 'read', title: 'Read the image' },
+      { id: 'show', title: 'A preview' },
+      { id: 'invert', title: 'Invert and brighten' },
+      { id: 'rotate', title: 'Flip and rotate' },
+      { id: 'crop', title: 'Crop' },
+      { id: 'blur', title: 'Soften' },
+      { id: 'stats', title: 'Statistics' },
+      { id: 'save', title: 'Save' },
+    ],
+  },
+  {
+    slug: 'elevator-sim',
+    language: 'c',
+    title: 'Elevator Simulation',
+    difficulty: 'hard',
+    summary:
+      'Simulate an office elevator second by second: calls from every floor, the keep-going-your-way rule real elevators follow, and how long people wait.',
+    steps: [
+      { id: 'building', title: 'The building' },
+      { id: 'calls', title: 'Calls' },
+      { id: 'status', title: 'Status' },
+      { id: 'step', title: 'Time passes' },
+      { id: 'direction', title: 'Which way' },
+      { id: 'stops', title: 'Stops on the way' },
+      { id: 'report', title: "The engineers' report" },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'print-spooler',
+    language: 'c',
+    title: 'Print Spooler',
+    difficulty: 'hard',
+    summary:
+      'An office print spooler with a linked-list queue: urgent jobs first, printers taking jobs minute by minute, cancellations, paper jams and a report.',
+    steps: [
+      { id: 'printers', title: 'The printers' },
+      { id: 'submit', title: 'Submit a job' },
+      { id: 'queue', title: 'The order of the queue' },
+      { id: 'tick', title: 'Printing' },
+      { id: 'cancel', title: 'Cancel' },
+      { id: 'jam', title: 'Paper jams' },
+      { id: 'report', title: 'The office report' },
+      { id: 'cleanup', title: 'Clean up' },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {
