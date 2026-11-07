@@ -237,12 +237,13 @@ function shellQuote(text: string): string {
 }
 
 // Starts one of the setup's programs: a shell named after `cmd`, so ps shows
-// that, waiting on a pipe of its own forever. Its memory is a string it builds,
-// sent down that pipe. Returns its pid.
+// that, waiting on a pipe of its own forever. What it does besides is sent
+// down that pipe: ignoring a polite stop, and building a string that holds
+// its memory. Returns its pid.
 async function startProgram(
   containerId: string,
   i: number,
-  program: { cmd: string; memoryMb?: number },
+  program: { cmd: string; memoryMb?: number; stubborn?: boolean },
 ): Promise<string> {
   const pipe = `/tmp/.program${i}`;
   const pid = await dockerExec([
@@ -252,15 +253,18 @@ async function startProgram(
     '-c',
     `mkfifo ${pipe} && { exec -a ${shellQuote(program.cmd)} bash 0<>${pipe} >/dev/null 2>&1 & } && echo $!`,
   ]);
-  if (program.memoryMb) {
-    const bytes = Math.round(program.memoryMb * 1024 * 1024);
-    await dockerExec([
-      'exec',
-      containerId,
-      'bash',
-      '-c',
-      `echo ${shellQuote(`x=$(head -c ${bytes} /dev/zero | tr '\\0' a)`)} > ${pipe}`,
-    ]);
+  const lines = [
+    ...(program.stubborn ? ["trap '' TERM INT HUP"] : []),
+    ...(program.memoryMb
+      ? [`x=$(head -c ${Math.round(program.memoryMb * 1024 * 1024)} /dev/zero | tr '\\0' a)`]
+      : []),
+  ];
+  if (lines.length) {
+    await dockerExec(
+      ['exec', '-i', containerId, 'bash', '-c', `cat > ${pipe}`],
+      10_000,
+      lines.join('\n') + '\n',
+    );
   }
   return pid.trim();
 }

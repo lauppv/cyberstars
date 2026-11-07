@@ -6,10 +6,12 @@ interface TerminalFile {
 }
 
 // A program that runs in the sandbox from the start, for the process lessons:
-// `cmd` is what ps shows, `memoryMb` how much memory it holds.
+// `cmd` is what ps shows, `memoryMb` how much memory it holds, and a
+// `stubborn` one ignores a polite stop, so only a forced kill ends it.
 interface TerminalProcess {
   cmd: string;
   memoryMb?: number;
+  stubborn?: boolean;
 }
 
 // The starting filesystem materialised into a fresh sandbox container.

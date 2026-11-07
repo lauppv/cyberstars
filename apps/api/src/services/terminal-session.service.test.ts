@@ -151,7 +151,7 @@ describe('execCommand', () => {
         files: [],
         processes: [
           { cmd: '/usr/bin/reactor-monitor --port=7700', memoryMb: 8 },
-          { cmd: '/usr/bin/nav-computer --frozen' },
+          { cmd: '/usr/bin/nav-computer --frozen', stubborn: true },
         ],
       }),
     );
@@ -164,7 +164,10 @@ describe('execCommand', () => {
     expect(listed.output).toContain('/usr/bin/nav-computer --frozen');
     expect(listed.output).not.toContain('sleep 299');
 
-    // The student can stop one of them, and it stays stopped
+    // A stubborn one ignores a polite stop, but not a forced one, and stays stopped
+    await execCommand(sessionId, 'kill $(pgrep -f nav-computer)', 'user:1');
+    const asked = await execCommand(sessionId, 'ps -eo args=', 'user:1');
+    expect(asked.output).toContain('/usr/bin/nav-computer --frozen');
     await execCommand(sessionId, 'kill -9 $(pgrep -f nav-computer)', 'user:1');
     const after = await execCommand(sessionId, 'ps -eo args=', 'user:1');
     expect(after.output).not.toContain('nav-computer');
