@@ -23,9 +23,13 @@ export interface SetDrawerProps {
   children: ReactNode;
 }
 
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 // The set's contents in a drawer on the right, over the cards it was opened
 // from: a course's chapters, a language's challenges or projects. Escape, the
-// X or a click beside it closes it
+// X or a click beside it closes it. Tab stays inside it, and once it closes
+// the focus goes back to what opened it
 export function SetDrawer({
   setKey,
   title,
@@ -49,10 +53,39 @@ export function SetDrawer({
     onCloseRef.current = onClose;
   });
 
+  // What had the focus before the drawer opened, such as the card's title,
+  // gets it back when the drawer closes; declared first so it runs before the
+  // panel takes the focus
+  useEffect(() => {
+    const opener = document.activeElement;
+    return () => {
+      if (opener instanceof HTMLElement && opener !== document.body && opener.isConnected) {
+        opener.focus();
+      }
+    };
+  }, []);
+
   useEffect(() => {
     panelRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onCloseRef.current();
+      const panel = panelRef.current;
+      if (e.key !== 'Tab' || !panel) return;
+      const items = panel.querySelectorAll<HTMLElement>(FOCUSABLE);
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const at = document.activeElement;
+      if (!panel.contains(at)) {
+        e.preventDefault();
+        first.focus();
+      } else if (e.shiftKey && (at === first || at === panel)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && at === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
