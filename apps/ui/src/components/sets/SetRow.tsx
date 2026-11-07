@@ -68,7 +68,7 @@ export function SetRow({
       )}
       {difficulty && dc && (
         <span
-          className="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
+          className="w-[52px] text-center text-[10px] font-semibold py-0.5 rounded-full flex-shrink-0"
           style={{ background: dc.bg, color: dc.text }}
         >
           {t(`algoList.diff.${difficulty}`)}
