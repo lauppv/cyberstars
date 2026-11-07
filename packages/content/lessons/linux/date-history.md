@@ -38,8 +38,8 @@ history
     4  history
 ```
 
-You can re-run a previous command by typing `!NUMBER`, for example `!3` would re-run
-`grep error system.log`. This saves time when repeating complex commands.
+To run a previous command again, press the up arrow: each press brings back the one
+before, ready to edit or run with Enter. This saves time when repeating complex commands.
 
 ---
 

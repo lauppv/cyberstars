@@ -38,9 +38,9 @@ history
     4  history
 ```
 
-Poți rerula o comandă anterioară tastând `!NUMĂR`; de exemplu, `!3` ar rula din
-nou `grep error sistem.log`. Asta economisește timp atunci când repeți comenzi
-complexe.
+Ca să rulezi din nou o comandă anterioară, apasă săgeata în sus: fiecare apăsare
+aduce comanda dinainte, gata de modificat sau de rulat cu Enter. Asta economisește
+timp atunci când repeți comenzi complexe.
 
 ---
 
