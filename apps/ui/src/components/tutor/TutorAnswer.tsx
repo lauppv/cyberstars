@@ -52,13 +52,16 @@ function components(onInAppLink: (() => void) | null): Components {
 export function TutorAnswer({
   text,
   onInAppLink,
+  streaming,
 }: {
   text: string;
   // Null where in-app links are not followed.
   onInAppLink: (() => void) | null;
+  // Still arriving: it ends on a blinking caret
+  streaming?: boolean;
 }) {
   return (
-    <div className="tutor-answer">
+    <div className={`tutor-answer ${streaming ? 'tutor-streaming' : ''}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={components(onInAppLink)}
