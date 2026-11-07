@@ -33,6 +33,8 @@ beforeEach(() => {
 });
 
 const last = () => sent[sent.length - 1];
+const guard = () =>
+  (window as unknown as { __cyberstars: Record<string, CallableFunction> }).__cyberstars;
 
 describe('previewPrelude', () => {
   it('says it is ready, to the lesson only', () => {
@@ -148,24 +150,45 @@ describe('previewPrelude', () => {
     expect(last()).toMatchObject({ type: 'formSent', fields: 'name=Ana&seat=4' });
   });
 
-  it('stops a loop that runs too long, and tells the lesson', () => {
-    const guard = (window as unknown as { __cyberstars: Record<string, CallableFunction> })
-      .__cyberstars;
+  it('stops a loop that runs too long, and tells the lesson', async () => {
     const now = vi.spyOn(Date, 'now').mockReturnValue(0);
-    guard.s(7);
+    guard().s(7);
     let stopped = false;
     for (let turn = 1; turn <= 1000 && !stopped; turn++) {
       if (turn === 300) now.mockReturnValue(2001);
-      stopped = guard.t(7);
+      stopped = guard().t(7);
     }
     expect(stopped).toBe(true);
-    const error = guard.e(12, 'js/app.js') as Error;
+    const error = guard().e(12, 'js/app.js') as Error;
     expect(error.message).toBe('Stopped the loop on line 12 of js/app.js');
     expect(last()).toMatchObject({ type: 'loop', file: 'js/app.js', line: 12 });
     // A loop that starts again starts its clock again
-    guard.s(7);
+    guard().s(7);
     now.mockReturnValue(2500);
-    expect(guard.t(7)).toBe(false);
+    expect(guard().t(7)).toBe(false);
     now.mockRestore();
+  });
+
+  it('lets a loop that waits run as long as it likes', async () => {
+    const now = vi.spyOn(Date, 'now').mockReturnValue(0);
+    guard().s(10);
+    for (let turn = 1; turn <= 512; turn++) {
+      if (turn % 128 === 0) {
+        // The loop awaits a timer: the page runs its own in between
+        await new Promise((resolve) => setTimeout(resolve, 120));
+        now.mockReturnValue(turn * 1000);
+      }
+      expect(guard().t(10)).toBe(false);
+    }
+    // One that keeps the page busy, awaiting nothing that lets it go, is not
+    now.mockReturnValue(1_000_000);
+    let stopped = false;
+    for (let turn = 0; turn < 128 && !stopped; turn++) {
+      await Promise.resolve();
+      stopped = guard().t(10);
+    }
+    expect(stopped).toBe(true);
+    now.mockRestore();
+    await new Promise((resolve) => setTimeout(resolve, 0));
   });
 });

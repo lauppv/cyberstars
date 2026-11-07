@@ -64,17 +64,35 @@ export function previewPrelude(config: PreludeConfig): void {
     window.parent.postMessage({ source: SOURCE, ...message }, config.parentOrigin);
 
   // ── Loop guards ──────────────────────────────────────────────────────────
+  // A loop is stopped once it has kept the page busy for too long. A loop
+  // that waits (await, yield) lets the page run its timers in between, which
+  // `beat` counts: one that has seen a beat since its clock started is not
+  // holding the page, so its clock starts over. A loop can't see a beat
+  // while it holds the page, since no timer runs then.
   const started: Record<number, number> = {};
   const turns: Record<number, number> = {};
+  const beats: Record<number, number> = {};
+  let beat = 0;
+  setInterval(() => {
+    beat += 1;
+  }, 100);
+  const start = (id: number) => {
+    started[id] = Date.now();
+    beats[id] = beat;
+  };
   (window as unknown as Record<string, unknown>).__cyberstars = {
     s(id: number) {
-      started[id] = Date.now();
+      start(id);
       turns[id] = 0;
     },
     t(id: number) {
-      turns[id] = (turns[id] ?? 0) + 1;
+      const turn = (turns[id] = (turns[id] ?? 0) + 1);
       // Reading the clock every turn would slow every loop down
-      if (turns[id] % 128 !== 0) return false;
+      if (turn % 128 !== 0) return false;
+      if (beats[id] !== beat) {
+        start(id);
+        return false;
+      }
       return Date.now() - (started[id] ?? Date.now()) > config.loopLimitMs;
     },
     e(line: number, file: string) {
