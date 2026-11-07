@@ -84,7 +84,8 @@ const isTerminal = (courseKey: string) =>
   (TERMINAL_COURSE_KEYS as readonly string[]).includes(courseKey);
 
 // The commands of a Linux lesson's solution, English and Romanian, with their
-// spacing evened out so an answer can be searched for them.
+// spacing evened out so an answer can be searched for them. A bare command
+// name is left out: the tutor may name the tool a step needs.
 function solutionCommands(courseKey: string, slug: string): string[] {
   const dir = contentDir(courseKey);
   return [path.join(dir, `${slug}-solution.md`), path.join(dir, 'ro', `${slug}-solution.md`)]
@@ -92,7 +93,7 @@ function solutionCommands(courseKey: string, slug: string): string[] {
     .flatMap((file) => fs.readFileSync(file, 'utf8').match(/```bash\n([\s\S]*?)```/)?.[1] ?? '')
     .flatMap((block) => block.split('\n'))
     .map(even)
-    .filter(Boolean);
+    .filter((command) => command.includes(' '));
 }
 
 function even(text: string): string {
