@@ -275,6 +275,9 @@ describe.skipIf(!hasBrowser())('web runner', () => {
           '<h1>Hi</h1><script>const all = []; for (;;) all.push(new Array(1e6).fill(Math.random()));</script>',
       },
       [{ name: 'Loads', visible: true, steps: [{ exists: 'h1', label: 'a heading' }] }],
+      // Running out takes a busy machine (CI, every test file at once) past the
+      // usual step's 3s; given longer it is the memory, never the clock, that stops it
+      15_000,
     );
     expect(greedy.passed).toBe(false);
     expect(greedy.web).toEqual({ kind: 'memory' });
