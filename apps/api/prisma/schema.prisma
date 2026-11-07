@@ -135,6 +135,7 @@ model User {
   laniakeaPlanets    LaniakeaPlanet[]
   laniakeaPasses     LaniakeaPass[]
   projectChecks      ProjectStepCheck[]
+  projectCompletions ProjectCompletion[]
   laniakeaPlayer     LaniakeaPlayer?
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
@@ -575,6 +576,21 @@ model ProjectStepCheck {
 
   @@id([userId, language, projectSlug, stepId])
   @@map("project_step_checks")
+}
+
+// A project the student finished: only a passing verdict of the project's judge
+// writes one, never the ticks (packages/shared/projects.ts). Its XP is worked
+// out from the catalog, never stored.
+model ProjectCompletion {
+  userId      Int      @map("user_id")
+  language    String   @db.VarChar(10)
+  projectSlug String   @map("project_slug") @db.VarChar(100)
+  completedAt DateTime @default(now()) @map("completed_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, language, projectSlug])
+  @@map("project_completions")
 }
 
 model UserSavedCode {

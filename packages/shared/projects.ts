@@ -7,7 +7,13 @@
 export const PROJECT_LANGUAGES = ['python', 'c', 'java', 'linux'] as const;
 export type ProjectLanguage = (typeof PROJECT_LANGUAGES)[number];
 
-type ProjectDifficulty = 'easy' | 'medium' | 'hard';
+export type ProjectDifficulty = 'easy' | 'medium' | 'hard';
+
+// A finished project is worth more than any lesson or challenge (the most a
+// lesson gives is 69). XP is derived from the completions and this table, never
+// stored, like a lesson's (see shared/constants.ts); the leaderboard's query
+// uses the same numbers.
+export const PROJECT_XP: Record<ProjectDifficulty, number> = { easy: 100, medium: 150, hard: 200 };
 
 interface ProjectStep {
   // Kept in the database, so a step keeps its tick when steps are added or
@@ -745,6 +751,13 @@ export const PROJECTS: Project[] = [
 
 export function findProject(language: string, slug: string): Project | undefined {
   return PROJECTS.find((p) => p.language === language && p.slug === slug);
+}
+
+// A project the student finished by passing its judge
+export interface ProjectCompletionDTO {
+  language: ProjectLanguage;
+  slug: string;
+  completedAt: string;
 }
 
 // A ticked step, as the server sends it

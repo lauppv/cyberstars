@@ -1,9 +1,15 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-const mockRepo = { listChecks: vi.fn(), check: vi.fn(), uncheck: vi.fn() };
+const mockRepo = {
+  listChecks: vi.fn(),
+  check: vi.fn(),
+  uncheck: vi.fn(),
+  listCompletions: vi.fn(),
+  complete: vi.fn(),
+};
 vi.mock('../repositories/projects.repository.js', () => mockRepo);
 
-const { listChecks, setCheck } = await import('./projects.service.js');
+const { listChecks, setCheck, listCompletions, complete } = await import('./projects.service.js');
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -45,5 +51,28 @@ describe('projects.service setCheck', () => {
       message,
     });
     expect(mockRepo.check).not.toHaveBeenCalled();
+  });
+});
+
+describe('projects.service completions', () => {
+  it('lists the finished projects still in the catalog', async () => {
+    mockRepo.listCompletions.mockResolvedValue([
+      {
+        language: 'python',
+        projectSlug: 'library-desk',
+        completedAt: new Date('2026-11-08T10:00:00Z'),
+      },
+      { language: 'c', projectSlug: 'gone', completedAt: new Date('2026-11-08T11:00:00Z') },
+    ]);
+    expect(await listCompletions(7)).toEqual([
+      { language: 'python', slug: 'library-desk', completedAt: '2026-11-08T10:00:00.000Z' },
+    ]);
+  });
+
+  it('finishes a project of the catalog, and only one', async () => {
+    await complete(7, 'python', 'library-desk');
+    expect(mockRepo.complete).toHaveBeenCalledWith(7, 'python', 'library-desk');
+    await expect(complete(7, 'python', 'nope')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.complete).toHaveBeenCalledTimes(1);
   });
 });
