@@ -3,6 +3,7 @@
 // shipping a <slug>-tests.json next to its markdown (server-side only; the
 // static-content generator does not copy it into public/).
 import type { CodeLanguage } from './constants.js';
+import type { WebFailure } from './webTests.js';
 
 // 'masked' ignores integer runs (nondeterministic PIDs); 'unordered' compares
 // the set of lines (thread/process output whose line order is nondeterministic).
@@ -143,6 +144,10 @@ export interface TestCaseResult {
   index: number;
   visible: boolean;
   passed: boolean;
+  /** A web lesson's case (CYB-110): what it looks at, in a few words. */
+  name?: string;
+  /** Why a web lesson's case failed; a timeout is `error: 'timeout'` as elsewhere. */
+  web?: WebFailure;
   inject?: Record<string, InjectValue | InjectValue[]>;
   /** stdin fed to the program, shown on failed visible cases so the student can debug. */
   stdin?: string;
