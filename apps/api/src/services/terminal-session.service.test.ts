@@ -176,6 +176,16 @@ describe('execCommand', () => {
     expect(after.output).toContain('reactor-monitor');
   });
 
+  itDocker('lists the session’s commands in history', async () => {
+    mockExistsSync.mockReturnValue(false);
+    const { sessionId } = await createSession('linux', 'test', 'user:1');
+    sessionsToClean.push(sessionId);
+
+    await execCommand(sessionId, "echo 'it''s me'", 'user:1');
+    const result = await execCommand(sessionId, 'history', 'user:1');
+    expect(result.output).toMatch(/1\s+echo 'it''s me'\n\s+2\s+history$/);
+  });
+
   itDocker('rejects a command from a different user', async () => {
     mockExistsSync.mockReturnValue(false);
     const { sessionId } = await createSession('linux', 'test', 'user:1');

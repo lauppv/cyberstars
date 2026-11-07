@@ -232,6 +232,9 @@ async function startSession(
   return { sessionId, cwd, intro: setup?.intro };
 }
 
+// How many of the session's commands `history` lists, the newest ones
+const HISTORY_SHOWN = 100;
+
 function shellQuote(text: string): string {
   return `'${text.replace(/'/g, "'\\''")}'`;
 }
@@ -303,7 +306,13 @@ export async function execCommand(
     session.lastActivity = Date.now();
     session.history.push(command);
 
-    const script = `cd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
+    // A shell started for one command keeps no history, so the session's is
+    // handed to it first, for `history` to list
+    const past = session.history
+      .slice(-HISTORY_SHOWN)
+      .map((line) => `history -s ${shellQuote(line)}`)
+      .join('\n');
+    const script = `${past}\ncd "$(cat /tmp/.cwd)" && { ${command}; } 2>&1; echo $? > /tmp/.exit; pwd > /tmp/.cwd`;
 
     let output: string;
     try {
