@@ -42,13 +42,8 @@ using redirection. For now, just enjoy seeing it on screen.)
 
 ## Mission: Assemble and Archive the Crew Roster
 
-The station's crew list got split into two files: `team-a.txt` and `team-b.txt`. Command needs a combined view, a numbered roll call, and both files kept together for the record.
-
-1. Print `team-a.txt` and `team-b.txt` together in one go.
-2. Print both files again, this time with a line number in front of every line, running continuously across both.
-3. Create a folder called `roster` and copy both team files into it.
-4. Confirm the archive by printing `roster/team-a.txt` with its lines numbered.
+The crew list got split into `team-a.txt` and `team-b.txt`. Command wants a roll call: every name of both teams in one list, each with its number, counting on from team A into team B rather than starting again. They also want both files kept together in a new `roster` folder.
 
 **Expected result**
 
-Both teams appear one after another, then the same names with continuous line numbers. The `roster` folder holds a copy of each team file.
+You see one numbered list whose numbers run on from the first team into the second, and `roster` holds a copy of each team file.

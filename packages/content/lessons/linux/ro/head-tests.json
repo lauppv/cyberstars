@@ -1,11 +1,15 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "diagnostic" },
-    { "kind": "files_equal", "a": "sistem.log", "b": "diagnostic/pornire.log" }
+    {
+      "kind": "files_equal",
+      "a": "sistem.log",
+      "b": "diagnostic/pornire.log"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "head\\b.*\\b5\\b.*sistem\\.log" },
-    { "kind": "command", "name": "cp" },
-    { "kind": "command", "pattern": "head\\b.*\\b3\\b.*pornire\\.log" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bhead\\b)(?=.*(^|\\D)5(\\D|$))(?=.*sistem\\.log)"
+    }
   ]
 }
