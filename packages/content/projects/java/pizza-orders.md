@@ -1,6 +1,6 @@
 Forno, a small pizzeria with a delivery scooter, takes orders by phone and writes them on a notepad. Prices for the three sizes are worked out in the cook's head, the deal for big orders gets forgotten, and nobody knows at night which pizza sold best. You'll write the order program at the counter: it knows the menu and the sizes, builds each order with its extras, applies the deal, charges the delivery and reports at closing time.
 
-You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run an evening of orders your program has never seen. Passing them finishes the project.
 
 The program reads every line with a `Scanner` (`nextLine()`) and splits it into words; everything it says goes through `System.out.println`. Run it, then type the lines of an example yourself to see what it answers.
 

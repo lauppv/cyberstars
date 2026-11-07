@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "5\n101 Milk 6.50 unit\n102 Bread 4.20 unit\n201 Bananas 7.90 kg\n301 Beer 5.00 alcohol\n302 Wine 32.00 alcohol\nscan 101 2\nscan 999\nscan 201\nweigh 201 1250\nweigh 101 300\nscan 301 2\ntotal\npay cash 50\nstaff 25\nscan 302\nstaff 16\ntotal\npay cash 20\npay card 12\npay card 1234\npay card 1234\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "2\n1 Apple 2.00 unit\n2 Cheese 45.99 kg\npay cash 1\nscan 1\npay cash 2\ntotal\nweigh 2 333\npay coins 5\npay cash 20.00\nquit\n"
+    },
+    {
+      "stdin": "3\n7 TV 1999.99 unit\n8 Gin 80.00 alcohol\n9 Nuts 30.00 kg\nscan 7\npay card 0000\npay card 12345\npay cash 2000\nscan 8 3\nstaff 17\nstaff 30\nweigh 9 10\nscan 7 two\nweigh 9\nstaff old\ntotal\nquit\n"
+    }
+  ]
+}

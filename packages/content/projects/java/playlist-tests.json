@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "song|Blinding Lights|The Weeknd|3:20\nsong|Dragostea din tei|O-Zone|3:35\nsong|Bohemian Rhapsody|Queen|5:55\nsong|Levitating|Dua Lipa|3:23\nsong|Yellow|Coldplay|4:29\nepisode|Why the sky is blue|Science Hour|12|28:40\nepisode|Black holes|Science Hour|13|41:05\nplay music\nshuffle music 7\nshuffle music 7\nshuffle music 2026\nfit music 12:00\nstats\nremove music 3\nplay music\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "play music\nsong|Only One|Ana|2:05\nshuffle music 1\nepisode|Pilot|Mystery Show|1|1:02:03\nplay podcasts\nstats\nquit\n"
+    },
+    {
+      "stdin": "song|A|X|1:00\nsong|B|X|2:00\nsong|C|X|3:00\nsong|D|X|4:00\nsong|E|X|5:00\nsong|F|X|6:00\nsong|G|X|7:00\nshuffle music 0\nshuffle music 123456789\nshuffle music 2147483647\nfit music 9:30\nfit music 0:30\nremove music 8\nremove music 0\nremove music 1\nfit music 2:00\nstats\nquit\n"
+    },
+    {
+      "stdin": "song|Broken|X\nsong|Bad|X|3:75\nsong|Bad2|X|three:00\nepisode|E|S|two|1:00\nvideo|V|X|1:00\nplay radio\nshuffle music\nfit music\nremove podcasts x\nskip\nstats\nquit\n"
+    }
+  ]
+}

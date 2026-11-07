@@ -1,6 +1,6 @@
 RoadMate rents out cars, a van and a couple of scooters from a small office near the airport. Each kind is priced differently: cars include a daily allowance of kilometres, the van charges for every kilometre, scooters are cheap but must come back within three days. The staff work it out with a calculator and a printed price sheet. You'll write the office's program, and Java's inheritance does most of the pricing for you.
 
-You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run months at the office your program has never seen. Passing them finishes the project.
 
 The program reads every line with a `Scanner` (`nextLine()`) and splits it into words; everything it says goes through `System.out.println`. Run it, then type the lines of an example yourself to see what it answers.
 
