@@ -133,6 +133,94 @@ export const PROJECTS: Project[] = [
       { id: 'halves', title: 'First half, second half' },
     ],
   },
+  {
+    slug: 'config-migration',
+    language: 'linux',
+    title: 'Config Migration',
+    difficulty: 'medium',
+    summary:
+      'Move three apps to a new database server by editing their config files with sed, safely: backup first, preview, then only the lines that must change.',
+    steps: [
+      { id: 'map', title: 'Map the config files' },
+      { id: 'find', title: 'Find the old server' },
+      { id: 'backup', title: 'Back up first' },
+      { id: 'preview', title: 'Try the change without making it' },
+      { id: 'host', title: 'Move to the new server' },
+      { id: 'port', title: 'The new port' },
+      { id: 'cache', title: 'Switch off the cache' },
+      { id: 'check', title: 'Check the work' },
+    ],
+  },
+  {
+    slug: 'homework-inbox',
+    language: 'linux',
+    title: 'Homework Inbox',
+    difficulty: 'medium',
+    summary:
+      "Go through a class's homework uploads: what came in, what's missing, which files are broken, who copied and who left work unfinished.",
+    steps: [
+      { id: 'count', title: 'What came in' },
+      { id: 'empty', title: 'Broken uploads' },
+      { id: 'missing', title: 'Who is missing homework 3' },
+      { id: 'copied', title: 'Who copied' },
+      { id: 'todo', title: 'Unfinished work' },
+      { id: 'lines', title: 'Who wrote the most' },
+      { id: 'folders', title: 'A folder per assignment' },
+    ],
+  },
+  {
+    slug: 'manuscript',
+    language: 'linux',
+    title: 'Manuscript',
+    difficulty: 'medium',
+    summary:
+      'Prepare a short novel for print from the terminal: word counts, a table of contents, stray notes and spaces, an overused word and a renamed character.',
+    steps: [
+      { id: 'words', title: 'How long is it' },
+      { id: 'contents', title: 'Table of contents' },
+      { id: 'notes', title: 'Notes left behind' },
+      { id: 'spaces', title: 'Double spaces' },
+      { id: 'suddenly', title: 'Too sudden' },
+      { id: 'rename', title: 'A new name' },
+      { id: 'book', title: 'The book' },
+    ],
+  },
+  {
+    slug: 'contacts-merge',
+    language: 'linux',
+    title: 'Contacts Merge',
+    difficulty: 'medium',
+    summary:
+      'Merge two phone contact exports into one list to import: numbers written one way, everyone once, and the gaps and conflicts found.',
+    steps: [
+      { id: 'look', title: 'Look at both exports' },
+      { id: 'together', title: 'All in one file' },
+      { id: 'numbers', title: 'One way of writing a number' },
+      { id: 'once', title: 'Everyone once' },
+      { id: 'conflict', title: 'Two numbers for one name' },
+      { id: 'missing', title: 'Missing numbers' },
+      { id: 'mobiles', title: 'Mobiles and landlines' },
+      { id: 'import', title: 'Ready to import' },
+    ],
+  },
+  {
+    slug: 'incident-timeline',
+    language: 'linux',
+    title: 'Incident Timeline',
+    difficulty: 'hard',
+    summary:
+      "Merge the logs of three services into one timeline to find what took a shop's checkout down for twenty minutes, and write the post-mortem.",
+    steps: [
+      { id: 'look', title: 'Look at the logs' },
+      { id: 'errors', title: 'Errors per service' },
+      { id: 'tag', title: 'Say where each line came from' },
+      { id: 'timeline', title: 'One timeline' },
+      { id: 'window', title: 'The half hour that matters' },
+      { id: 'first', title: 'What broke first' },
+      { id: 'spread', title: 'How far it spread' },
+      { id: 'end', title: 'When it was over' },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {

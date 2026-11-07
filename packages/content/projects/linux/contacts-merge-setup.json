@@ -1,0 +1,15 @@
+{
+  "cwd": "/home/student/contacts",
+  "dirs": ["contacts"],
+  "files": [
+    {
+      "path": "contacts/old-phone.csv",
+      "content": "Ana Pop,0722 111 222\nBogdan Ilie,0744 333 444\nClinic Dr. Matei,0264 555 666\nDan Radu,0733 777 888\nElena Stan,\nFlorin Toma,0755 123 456\nMama,0721 000 111\nPizzeria Roma,0264 999 000\n"
+    },
+    {
+      "path": "contacts/new-phone.csv",
+      "content": "Mama,+40 721 000 111\nAna Pop,+40722111222\nDan Radu,0733 777 888\nDan Radu,0799 888 777\nGabi Neagu,+40 766 432 100\nFlorin Toma,0755123456\nIoana Marin,0740 202 303\nPlumber Vasile,0742 600 700\n"
+    }
+  ],
+  "intro": "The two phone exports are in ~/contacts."
+}
