@@ -201,6 +201,24 @@ describe('HomePage', () => {
     expect(screen.queryByTestId('landing')).toBeNull();
   });
 
+  it('welcomes a student back by their first name', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Welcome back, Alice' }),
+    ).toBeInTheDocument();
+  });
+
+  it('welcomes a new account, not back, on its first day', () => {
+    mockUseAuth.mockReturnValue({
+      ...loggedInAuth,
+      user: { ...loggedInAuth.user!, createdAt: new Date(Date.now() - 60_000).toISOString() },
+    });
+    renderPage();
+    expect(screen.getByRole('heading', { level: 1, name: 'Welcome, Alice' })).toBeInTheDocument();
+    expect(screen.getByText(/today's picks and your progress/)).toBeInTheDocument();
+  });
+
   it('shows continue where you left off section', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     mockUseCurriculum.mockReturnValue({

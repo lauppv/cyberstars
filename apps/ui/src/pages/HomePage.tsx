@@ -63,6 +63,13 @@ interface ResolvedPick {
   xp: number;
 }
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+// Whether the account was made in the last 24 hours
+function isFirstDay(createdAt: string): boolean {
+  return Date.now() - new Date(createdAt).getTime() < DAY_MS;
+}
+
 export function HomePage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -206,6 +213,8 @@ export function HomePage() {
 
   if (isLoggedIn && user) {
     const firstName = user.name?.trim().split(/\s+/)[0];
+    // A new account is welcomed, not welcomed back, on its first day
+    const greeting = isFirstDay(user.createdAt) ? 'homeNew' : 'home';
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
@@ -213,9 +222,11 @@ export function HomePage() {
         <PageContainer>
           <PageHeader
             title={
-              firstName ? t('pages.homeTitle', { name: firstName }) : t('pages.homeTitleNoName')
+              firstName
+                ? t(`pages.${greeting}Title`, { name: firstName })
+                : t(`pages.${greeting}TitleNoName`)
             }
-            subtitle={t('pages.home')}
+            subtitle={t(`pages.${greeting}`)}
           />
           <div className="space-y-6">
             {/* ── Continue Where You Left Off + Activity ── */}
