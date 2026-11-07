@@ -563,6 +563,7 @@
     "betaHint": "Still being built: more projects for every language are on the way",
     "setTitle": "{{language}} Projects",
     "count": "Projects: {{count}}",
+    "viewProjects": "View Projects",
     "desc": {
       "python": "Programs a small business could use tomorrow, built from input, lists, dictionaries and functions.",
       "c": "Tools close to the machine, built from arrays, strings, structs, pointers and files.",
