@@ -350,6 +350,44 @@ describe('HomePage', () => {
     expect(screen.queryByText('Arrays')).not.toBeInTheDocument();
   });
 
+  it('keeps the challenge opened last in Recently accessed and leaves out the Continue lesson', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    const lesson = (slug: string, title: string, minutesAgo: number) => ({
+      slug,
+      title,
+      completed: false,
+      completedAt: null,
+      lastAccessedAt: new Date(Date.now() - minutesAgo * 60_000).toISOString(),
+    });
+    const course = (courseKey: string, lessons: ReturnType<typeof lesson>[]) => ({
+      courseKey,
+      earnedXp: 0,
+      totalXp: 0,
+      completed: 0,
+      total: lessons.length,
+      lessons,
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: course('python', [lesson('intro', 'Intro', 2), lesson('booleans', 'Booleans', 9)]),
+        'algo-python': course('algo-python', [lesson('two-sum', 'Two Sum', 1)]),
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    const recent = screen.getByText('Recently accessed').parentElement!;
+    expect(within(recent).getByText('Two Sum')).toBeInTheDocument();
+    expect(within(recent).getByText('Booleans')).toBeInTheDocument();
+    expect(within(recent).queryByText('Intro')).not.toBeInTheDocument();
+  });
+
   it('continue section navigates on click', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     mockUseCurriculum.mockReturnValue({

@@ -125,8 +125,12 @@ export function HomePage() {
       }
     }
     items.sort((a, b) => b.lastAccessedAt.localeCompare(a.lastAccessedAt));
-    return items.slice(0, 4);
-  }, [isLoggedIn, progressMap]);
+    // Beside Continue, so its lesson isn't listed again; a challenge opened
+    // last stays, since Continue only goes to a course
+    return items
+      .filter((l) => !(l.courseKey === continueTo?.course.key && l.slug === continueTo.slug))
+      .slice(0, 3);
+  }, [isLoggedIn, progressMap, continueTo]);
 
   // The lesson/algo of the day are owned by the server (persisted per user per
   // day in the daily_picks table), so each is a single locked-in item that
@@ -243,7 +247,7 @@ export function HomePage() {
                   slug={continueTo.slug}
                   title={continueTo.title}
                   pct={continueTo.pct}
-                  recent={recentLessons.slice(1, 4)}
+                  recent={recentLessons}
                 />
               )}
               <StatsCard streak={streak} />
