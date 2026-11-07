@@ -3,6 +3,7 @@ import type { Interest } from '@cyberstars/shared/interests';
 import type { PlacementLevel } from '@cyberstars/shared/placement';
 import {
   TERMINAL_COURSE_KEYS,
+  WEB_COURSE_KEYS,
   codeLanguageOf,
   type CodeLanguage,
 } from '@cyberstars/shared/constants';
@@ -502,7 +503,10 @@ function workTurn(work: LessonWork, lang: Lang): string {
       ...describeChecks(work.checks, l),
     ].join('\n');
   }
-  const language = codeLanguageOf(work.courseKey, work.language);
+  // A web lesson's code is its site: a markdown block per file
+  const language = WEB_COURSE_KEYS.includes(work.courseKey)
+    ? 'markdown'
+    : codeLanguageOf(work.courseKey, work.language);
   const lines = [l.intro];
   if (work.code.trim()) lines.push(l.code, fenced(work.code, language));
   else lines.push(l.noCode);
