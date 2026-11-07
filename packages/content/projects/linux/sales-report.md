@@ -6,124 +6,58 @@ When every step is done, press **Run Tests**: it checks the files in this termin
 
 ## Look at the export
 
-You start in `~/shop`. Look at the first lines of `orders.csv`:
-
-```text
-order,date,customer,city,product,qty,price
-1001,2026-10-01,Ioana,Iasi,Ficus,2,30
-1002,2026-10-01,Paul,Cluj,Cactus,3,12
-1003,2026-10-02,Elena,Timisoara,Monstera,2,45
-```
-
-The first line names the seven columns; every other line is an order, its fields separated by commas. `price` is the price of one plant, `qty` how many were bought.
-
-`wc -l` counts 39 lines, so October had 38 orders.
+You start in `~/shop`, where `orders.csv` holds October's orders. Look at its first lines: the first one names the columns, and every other line is an order, its fields separated by commas. `price` is the price of one plant, `qty` how many were bought. How many orders did October have?
 
 ## Only the orders
 
-The header line would get in the way of every count. `tail -n +2` prints a file from its second line on; save that to `data.csv`. `wc -l data.csv` prints `38`.
+The header line would get in the way of every count. Save every line but the first to `data.csv`.
+
+New idea: `tail` can print a file from a given line on, instead of counting lines from the end. `tail --help` says how.
 
 ## Fix the typo
 
-Count the orders per plant: the product is the fifth field, so `cut -d, -f5`, then `sort` and `uniq -c`:
-
-```text
-     12 Cactus
-      2 Fern
-      8 Ficus
-      2 Fikus
-      8 Monstera
-      5 Orchid
-      1 Snake Plant
-```
-
-`Fikus` isn't a plant: someone mistyped it when adding orders by phone. Replace it with `Ficus` using `sed` and save the result to `clean.csv`. Put the commas around the word in the pattern, `s/,Fikus,/,Ficus,/`, so only a whole field changes. Count again, from the most ordered:
-
-```text
-     12 Cactus
-     10 Ficus
-      8 Monstera
-      5 Orchid
-      2 Fern
-      1 Snake Plant
-```
+Count the orders per plant. One of the plant names isn't a plant: someone mistyped it when adding orders by phone. Save `data.csv` with that name corrected to `clean.csv`, changing only that field, never the same letters inside another field. Count again to check.
 
 Every step from here reads `clean.csv`.
 
 ## What came in
 
-`awk -F,` splits lines on commas instead of spaces. An order brings in its quantity times its price, fields 6 and 7. Add them up over every line and print the sum at the end:
+How much money did October bring in? An order brings in its quantity times its price. And how many plants did Green Corner ship in all?
 
-```bash
-awk -F, '{sum += $6 * $7} END {print sum}' clean.csv
-```
-
-October brought in `1898`. Add up only the quantities the same way: Green Corner shipped `69` plants.
+New idea: `awk` splits lines on spaces unless you give it another separator with `-F`.
 
 ## The biggest orders
 
-For each order, print what it brought in, then its number and the customer. Sort the lines by that first number, largest first, and keep the top three:
-
-```text
-135 1020 Dan
-135 1004 Dan
-114 1030 Irina
-```
-
-Dan placed the two biggest orders of the month: Sara will send him a thank-you card.
+Which three orders brought in the most, and who placed them? Sara will send the customer who comes out on top a thank-you card.
 
 ## Money per city
 
-Here's one new thing about `awk`: a variable can hold a value per name, like a dictionary. `total[$4] += $6 * $7` adds each order to the total of its city, and in the `END` block `for (c in total)` goes through every city that came up:
+Save to `by-city.txt` how much each city brought in, one city a line, the amount and then the city, the largest first.
+
+New idea: an `awk` variable can hold one value per name, like a dictionary, and the `END` block can go through every name it saw. For example, this keeps each player's last score:
 
 ```bash
-awk -F, '{total[$4] += $6 * $7} END {for (c in total) print total[c], c}' clean.csv
+awk '{last[$1] = $2} END {for (p in last) print p, last[p]}' scores.txt
 ```
 
-`awk` lists the cities in no particular order, so sort the lines by their number, largest first, and save them to `by-city.txt`:
-
-```text
-665 Cluj
-513 Bucharest
-398 Timisoara
-268 Iasi
-54 Brasov
-```
+`awk` goes through the names in no particular order.
 
 ## Plants that sell
 
-Do the same per plant, adding up quantities instead of money, and save it to `by-product.txt`:
+Do the same per plant, adding up the plants sold instead of the money, and save it to `by-product.txt`: the number of plants and then the plant, the most sold first.
 
-```text
-23 Cactus
-18 Ficus
-13 Monstera
-11 Orchid
-3 Fern
-1 Snake Plant
-```
-
-Counting orders said Cactus 12; counting plants says 23, since people buy cacti by the handful. Sara will order more cacti and fewer snake plants for November.
+Counting orders and counting plants don't give the same winner order. Which one should Sara go by when she orders for November?
 
 ## First half, second half
 
-Did sales pick up during the month? Dates written as `2026-10-15` sort like text, so `awk` can compare them as text. Add up what came in on orders up to the 15th, then on the orders after it:
+Did sales pick up during the month? Add up what came in on orders up to October 15th, then on the orders after it. Dates written as `2026-10-15` compare like text, so `awk` can compare them as text.
 
-```bash
-awk -F, '$2 <= "2026-10-15" {sum += $6 * $7} END {print sum}' clean.csv
-```
+Then write the month's facts to `report.txt` from the terminal, one per line, with the numbers you found:
 
 ```text
-908
-990
-```
-
-The second half brought in a little more. Write the month's facts to `report.txt` with `echo` and `>>`, one per line, as Sara would like to read them:
-
-```text
-Orders: 38
-Plants shipped: 69
-Revenue: 1898
-Best city: Cluj
-Best seller: Cactus
+Orders: <how many orders>
+Plants shipped: <how many plants in all>
+Revenue: <how much money came in>
+Best city: <the city that brought in the most>
+Best seller: <the plant sold the most, counted in plants>
 ```

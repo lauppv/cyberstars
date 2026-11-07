@@ -6,93 +6,35 @@ When every step is done, press **Run Tests**: it checks the files in this termin
 
 ## Take stock
 
-Everything is in `~/downloads`. List it, then save the same list to `~/before.txt`, so you can compare once you are done:
-
-```bash
-ls downloads > before.txt
-```
-
-Count the lines of `before.txt` with `wc`. Maria has 16 files:
-
-```text
-16 before.txt
-```
+Everything is in `~/downloads`. Save the list of what is there to `~/before.txt`, one name per line, so you can compare once you are done. How many files does Maria have?
 
 ## Throw out the junk
 
-Three files are leftovers, not things Maria wants: the two downloads that never finished end in `.part`, and `thumbs.tmp` is a cache. Go into `downloads` and remove all three with a single `rm` and wildcards, without typing a full name.
-
-Then count what is left: `ls | wc -l` prints `13`.
+Some of the files are leftovers, not things Maria wants: downloads that never finished, and a cache file. Their names tell you which they are. Remove them all with a single command that doesn't spell out any full name.
 
 ## Make the shelves
 
-Inside `downloads`, make five folders with one `mkdir`: `images`, `documents`, `music`, `videos` and `archives`.
-
-`ls` now shows the five folders among the 13 files. `ls -d */` lists only the folders, each with a `/` after its name. The next step fills them.
+Inside `downloads`, make five folders with one command: `images`, `documents`, `music`, `videos` and `archives`.
 
 ## Sort by type
 
-Move every file into its folder by its extension, with wildcards again:
+Move every file onto its shelf by its extension, with as few commands as you can:
 
-- `.jpg` and `.png` go to `images`
+- pictures, `.jpg` and `.png`, go to `images`
 - `.pdf`, `.docx` and `.txt` go to `documents`
 - `.mp3` goes to `music`, `.mp4` to `videos`
 - `.zip` goes to `archives`
 
-`mv` takes several files and a folder last, so one command can move both kinds of pictures. When you are done, `ls` in `downloads` shows only the five folders:
-
-```text
-archives
-documents
-images
-music
-videos
-```
+When you are done, nothing but the five folders is left loose in `downloads`.
 
 ## Remove the copy
 
-Maria saved her CV twice. Find the copy with `find`, by a name that contains `-copy`:
-
-```text
-./documents/cv-final-copy.docx
-```
-
-Before you delete anything, make sure it really is the same CV: print both files with `cat`, and compare their sizes with `wc -c`. Both have 63 bytes and the same two lines. Then remove the copy, and keep `cv-final.docx`.
+Maria saved her CV twice: one of the files has `-copy` in its name, somewhere on the shelves. Find it by its name. Before you delete anything, make sure it really is the same CV as the original, in what it says and in its size. Then remove the copy and keep the original.
 
 ## Find the space hogs
 
-Two files take up almost all the room. Find every file in `downloads` bigger than 20 kilobytes with `find`'s `-type f` and `-size`, and save the list to `~/big-files.txt`:
-
-```text
-./archives/old-photos.zip
-./videos/holiday-video.mp4
-```
-
-(Run it from inside `downloads`, so the paths start with `./`.) `ls -lS archives videos` shows how big they are, the biggest first. Maria will decide herself whether to keep them, so leave them where they are.
+A couple of files take up almost all the room. Save to `~/big-files.txt` every file in `downloads` bigger than 20 kilobytes, one path per line as seen from inside `downloads`, so each starts with `./`. Maria will decide herself whether to keep them, so leave them where they are.
 
 ## Before and after
 
-Back in your home folder, save every file left in `downloads`, with its folder, sorted, to `~/after.txt`. `find` with `-type f` lists them; `sort` puts them in order:
-
-```text
-downloads/archives/old-photos.zip
-downloads/archives/tax-forms.zip
-downloads/documents/cv-final.docx
-downloads/documents/invoice-april.pdf
-downloads/documents/invoice-march.pdf
-downloads/documents/recipe-pancakes.txt
-downloads/images/beach-day.jpg
-downloads/images/birthday-cake.jpg
-downloads/images/screenshot-login.png
-downloads/music/podcast-ep12.mp3
-downloads/music/road-trip-mix.mp3
-downloads/videos/holiday-video.mp4
-```
-
-Then count both lists with one `wc -l`. From 16 files in a heap to 12 on their shelves:
-
-```text
- 16 before.txt
- 12 after.txt
- 28 total
-```
+Back in your home folder, save every file left in `downloads` to `~/after.txt`: one per line with its folders, starting with `downloads/`, in alphabetical order. Then count both lists with one command: how many files were in the heap, and how many are on their shelves?
