@@ -568,6 +568,7 @@
     "percentComplete": "{{pct}}% finalizat",
     "continue": "Continuă",
     "viewSyllabus": "Vezi programa",
+    "viewCourses": "Vezi cursurile",
     "chapters": "Capitole",
     "descriptions": {
       "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, cu trei proiecte mici la final.",

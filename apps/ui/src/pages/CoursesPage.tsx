@@ -7,13 +7,15 @@ import { PageHeader } from '../components/layout/PageHeader';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { COMING_SOON_COURSE_KEYS, courseMeta, courseTitle, courseWash } from '../constants/courses';
+import { WEB_DEVELOPMENT, courseMeta, courseTitle, courseWash } from '../constants/courses';
 import {
   progressPct,
   xpForCourse,
   xpForLesson,
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
+  WEB_COURSE_KEYS,
+  WEB_DEVELOPMENT_OPEN,
   CODE_LANGUAGES,
   isBeta,
   isMultiLanguage,
@@ -54,13 +56,21 @@ export function CoursesPage() {
   const { course: selectedKey } = useParams<{ course?: string }>();
   const [searchParams] = useSearchParams();
   const legacyOpen = searchParams.get('open');
+  // The Web Development card opens in development, and in production once it
+  // launches; inside it, its courses take the place of the others, and a web
+  // course's syllabus opens over them
+  const webOpen = WEB_DEVELOPMENT_OPEN || !import.meta.env.PROD;
+  const inWeb =
+    webOpen && (selectedKey === WEB_DEVELOPMENT || WEB_COURSE_KEYS.includes(selectedKey ?? ''));
   const openCourse = (key: string) => navigate(`/courses/${key}`);
-  const closeCourse = () => navigate('/courses');
+  const closeCourse = () => navigate(inWeb ? `/courses/${WEB_DEVELOPMENT}` : '/courses');
 
   const isLoading = curriculumLoading || (isLoggedIn && progressLoading);
 
   const allCourses: CourseData[] = useMemo(() => {
-    const visibleKeys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
+    const visibleKeys: readonly string[] = inWeb
+      ? WEB_COURSE_KEYS
+      : [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS];
     return serverCourses
       .filter((c) => visibleKeys.includes(c.key))
       .map((course) => {
@@ -104,7 +114,7 @@ export function CoursesPage() {
           continueSlug,
         };
       });
-  }, [serverCourses, progressMap, t]);
+  }, [serverCourses, progressMap, t, inWeb]);
 
   const syllabus = selectedKey ? allCourses.find((c) => c.key === selectedKey) : null;
 
@@ -123,7 +133,11 @@ export function CoursesPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
-      <Topbar />
+      <Topbar
+        breadcrumb={
+          inWeb ? { course: t('nav.courses'), lesson: courseTitle(WEB_DEVELOPMENT, t) } : undefined
+        }
+      />
 
       <main className="flex-1 max-w-[1040px] mx-auto w-full px-4 sm:px-7 py-8 pb-16">
         {failedCourses.size > 0 && (
@@ -131,7 +145,14 @@ export function CoursesPage() {
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           </div>
         )}
-        <PageHeader title={t('nav.courses')} subtitle={t('courses.subtitle')} />
+        {inWeb ? (
+          <PageHeader
+            title={courseTitle(WEB_DEVELOPMENT, t)}
+            subtitle={t(`courses.descriptions.${WEB_DEVELOPMENT}`)}
+          />
+        ) : (
+          <PageHeader title={t('nav.courses')} subtitle={t('courses.subtitle')} />
+        )}
         {/* Course grid */}
         <div className="grid grid-cols-1 @2xl:grid-cols-2 gap-4">
           {allCourses.map((c) => (
@@ -217,39 +238,9 @@ export function CoursesPage() {
               </div>
             </div>
           ))}
-          {COMING_SOON_COURSE_KEYS.map((key) => (
-            <div
-              key={key}
-              aria-disabled="true"
-              title={t('common.comingSoonHint')}
-              className="panel rounded-xl overflow-hidden cursor-default opacity-70"
-              style={{ backgroundImage: courseWash(key) }}
-            >
-              <div className="h-1.5 w-full" style={{ background: courseMeta(key).color }} />
-              <div className="p-5">
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <CourseMark courseKey={key} />
-                  <div className="flex-1 min-w-0">
-                    <div
-                      className="text-base font-bold mb-0.5 flex items-center gap-2"
-                      style={{ letterSpacing: '-0.2px' }}
-                    >
-                      {courseTitle(key, t)}
-                    </div>
-                    <div className="text-[12px] text-[var(--text3)]">
-                      {courseMeta(key).langLabel}
-                    </div>
-                  </div>
-                  <span className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] text-[var(--text2)]">
-                    {t('common.comingSoon')}
-                  </span>
-                </div>
-                <p className="text-[13px] text-[var(--text2)] leading-relaxed">
-                  {t(`courses.descriptions.${key}`)}
-                </p>
-              </div>
-            </div>
-          ))}
+          {!inWeb && (
+            <WebDevelopmentCard open={webOpen} onOpen={() => openCourse(WEB_DEVELOPMENT)} />
+          )}
         </div>
       </main>
 
@@ -410,6 +401,67 @@ export function CoursesPage() {
           animation: nextPulse 2s ease-in-out infinite;
         }
       `}</style>
+    </div>
+  );
+}
+
+// The Web Development card: Coming soon until it launches, and opening into
+// its courses wherever it is open (in development before the launch)
+function WebDevelopmentCard({ open, onOpen }: { open: boolean; onOpen: () => void }) {
+  const { t } = useTranslation();
+  const key = WEB_DEVELOPMENT;
+  const { color, langLabel } = courseMeta(key);
+  return (
+    <div
+      onClick={open ? onOpen : undefined}
+      aria-disabled={open ? undefined : 'true'}
+      title={open ? undefined : t('common.comingSoonHint')}
+      className={`panel rounded-xl overflow-hidden ${
+        open
+          ? 'group cursor-pointer transition-all hover:border-[var(--course)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]'
+          : 'cursor-default'
+      } ${WEB_DEVELOPMENT_OPEN ? '' : 'opacity-70'}`}
+      style={{ '--course': color, backgroundImage: courseWash(key) } as CSSProperties}
+    >
+      <div className="h-1.5 w-full" style={{ background: color }} />
+      <div className="p-5">
+        <div className="flex items-center gap-3.5 mb-3.5">
+          <CourseMark courseKey={key} />
+          <div className="flex-1 min-w-0">
+            <div
+              className="text-base font-bold mb-0.5 flex items-center gap-2"
+              style={{ letterSpacing: '-0.2px' }}
+            >
+              {courseTitle(key, t)}
+            </div>
+            <div className="text-[12px] text-[var(--text3)]">{langLabel}</div>
+          </div>
+          {!WEB_DEVELOPMENT_OPEN && (
+            <span className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] text-[var(--text2)]">
+              {t('common.comingSoon')}
+            </span>
+          )}
+        </div>
+        <p className={`text-[13px] text-[var(--text2)] leading-relaxed ${open ? 'mb-4' : ''}`}>
+          {t(`courses.descriptions.${key}`)}
+        </p>
+        {open && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpen();
+            }}
+            className="inline-flex items-center gap-1.5 px-4 py-[7px] rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] text-xs font-semibold cursor-pointer hover:border-[var(--accent)] hover:text-[var(--accent)] transition"
+          >
+            {t('courses.viewCourses')}
+            <ArrowRight
+              size={13}
+              aria-hidden="true"
+              className="transition-transform group-hover:translate-x-0.5"
+            />
+          </button>
+        )}
+      </div>
     </div>
   );
 }

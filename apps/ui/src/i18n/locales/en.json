@@ -529,6 +529,7 @@
     "percentComplete": "{{pct}}% complete",
     "continue": "Continue",
     "viewSyllabus": "View Syllabus",
+    "viewCourses": "View Courses",
     "chapters": "Chapters",
     "descriptions": {
       "python": "The best place to start if you've never coded. From print and variables to functions, lists and dictionaries, then searching, sorting and recursion, ending with three small projects.",

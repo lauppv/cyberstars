@@ -15,6 +15,8 @@ export const APP_ONLY_PATHS = [
   '/support',
   '/laniakea',
   '/admin',
+  // The web courses' card: a list of courses, each with its own pre-rendered page
+  '/courses/web',
   '/leaderboard',
   '/messages',
   '/connections',
