@@ -6,8 +6,11 @@ import {
   auditCases,
   auditKinds,
   auditHarness,
+  auditWebSpec,
   MAX_CASES,
+  MAX_WEB_CASES,
 } from './validate-tests.js';
+import type { WebTestsSpec } from '@cyberstars/shared/webTests';
 
 // The corpus regression: if anyone edits a -tests.json / -solution.md so an
 // inject key no longer resolves, or drops a RO tests file for an injection
@@ -201,5 +204,84 @@ describe('auditHarness', () => {
     expect(auditHarness(harness, { cases: [] }, 'def other():\n    return 1\n')).toEqual([
       "the solution doesn't define solve, which the hidden part calls",
     ]);
+  });
+});
+
+describe('auditWebSpec', () => {
+  const site = new Set(['index.html', 'crew.html', 'data/crew.json']);
+  const spec = (cases: unknown[]) => ({ cases }) as WebTestsSpec;
+  const one = (steps: unknown[], extra: object = {}) =>
+    auditWebSpec(spec([{ name: 'A case', steps, ...extra }]), site);
+
+  it('takes every kind of step with what it needs', () => {
+    expect(
+      one([
+        { exists: 'h1', label: 'a heading' },
+        { count: 'li', atLeast: 2, label: 'crew members' },
+        { text: 'h1', equals: 'Hi', label: 'the heading' },
+        { attr: 'html', name: 'lang', equals: 'en', label: 'the page' },
+        { style: 'h1', prop: 'color', equals: 'rgb(0, 0, 0)', label: 'the heading' },
+        { layout: '.card', arrange: 'row', label: 'the cards' },
+        { size: '.card', maxWidth: 300, label: 'a card' },
+        { click: 'a', label: 'the link' },
+        { fill: 'input', text: 'Ada', label: 'the name box' },
+        { press: 'Enter' },
+        { submit: 'form', label: 'the form' },
+        { wait: 500 },
+        { open: 'crew.html' },
+        { at: 'crew.html' },
+        { fits: true },
+        { logged: 'ready' },
+        { noErrors: true },
+      ]),
+    ).toEqual([]);
+  });
+
+  it('refuses a step the judge does not know, or without what it needs', () => {
+    expect(one([{ hover: 'a' }])).toEqual([expect.stringMatching(/none of the known keys/)]);
+    expect(one([{ exists: 'h1' }])).toEqual([expect.stringMatching(/without a label/)]);
+    expect(one([{ text: 'h1', label: 'x' }])).toEqual([expect.stringMatching(/exactly one of/)]);
+    expect(one([{ text: 'h1', equals: 'a', contains: 'a', label: 'x' }])).toEqual([
+      expect.stringMatching(/exactly one of/),
+    ]);
+    expect(one([{ count: 'li', label: 'x' }])).toEqual([
+      expect.stringMatching(/equals or atLeast/),
+    ]);
+    expect(one([{ layout: '.c', arrange: 'grid', label: 'x' }])).toEqual([
+      expect.stringMatching(/row or a column/),
+    ]);
+    expect(one([{ size: '.c', label: 'x' }])).toEqual([expect.stringMatching(/needs a bound/)]);
+    expect(one([{ wait: 10_000 }])).toEqual([expect.stringMatching(/wait must be/)]);
+    expect(one([{ exists: 'h1', label: 'x', equal: 'typo' }])).toEqual([
+      expect.stringMatching(/keys it doesn't take: equal/),
+    ]);
+  });
+
+  it('wants every page a case opens in the site', () => {
+    expect(one([{ open: 'wiki.html' }])).toEqual([expect.stringMatching(/doesn't have/)]);
+    expect(one([{ exists: 'h1', label: 'x' }], { page: 'wiki.html' })).toEqual([
+      expect.stringMatching(/opens wiki.html/),
+    ]);
+    // A case may bring the page itself
+    expect(
+      one([{ exists: 'h1', label: 'x' }], { page: 'wiki.html', files: { 'wiki.html': '<h1>' } }),
+    ).toEqual([]);
+  });
+
+  it('checks the case itself: a name, a width a window has, whole fetch addresses', () => {
+    expect(auditWebSpec(spec([{ steps: [{ fits: true }] }]), site)).toEqual([
+      expect.stringMatching(/no name/),
+    ]);
+    expect(one([{ fits: true }], { width: 100 })).toEqual([expect.stringMatching(/width 100/)]);
+    expect(one([{ fits: true }], { fetch: { '/api/crew': { body: '[]' } } })).toEqual([
+      expect.stringMatching(/whole http/),
+    ]);
+    expect(one([], {})).toEqual([expect.stringMatching(/no steps/)]);
+    expect(auditWebSpec(spec([]), site)).toEqual(['no cases']);
+    const many = Array.from({ length: MAX_WEB_CASES + 1 }, () => ({
+      name: 'x',
+      steps: [{ fits: true }],
+    }));
+    expect(auditWebSpec(spec(many), site)).toEqual([expect.stringMatching(/web limit/)]);
   });
 });

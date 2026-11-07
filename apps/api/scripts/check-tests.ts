@@ -25,7 +25,9 @@
 //   npx tsx apps/api/scripts/check-tests.ts trees-graphs/c/trees        # one lesson, in C
 import fs from 'fs';
 import path from 'path';
-import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
+import { CODE_LANGUAGES, WEB_COURSE_KEYS, isMultiLanguage } from '@cyberstars/shared/constants';
+import { webFailureText } from '@cyberstars/shared/webTests';
+import type { RunTestsResponse } from '@cyberstars/shared/tests';
 import { VARIANTS_DIR } from '@cyberstars/content/paths';
 import { contentDir } from '../src/services/paths.js';
 import { runLessonTests } from '../src/services/lesson-tests.service.js';
@@ -33,8 +35,10 @@ import { sandbox } from '../src/services/sandbox.js';
 
 const TESTS_SUFFIX = '-tests.json';
 
-function solutionCode(dir: string, slug: string): string {
+function solutionCode(dir: string, slug: string, courseKey: string): string {
   const md = fs.readFileSync(path.join(dir, `${slug}-solution.md`), 'utf8');
+  // A web lesson's solution is a whole site, a fenced block per file
+  if (WEB_COURSE_KEYS.includes(courseKey)) return md;
   const fenced = md.match(/```[\w-]*\n([\s\S]*?)```/);
   if (!fenced) throw new Error(`${dir}/${slug}-solution.md has no fenced block`);
   return fenced[1];
@@ -78,6 +82,13 @@ function variantsOf({ courseKey, language }: Target, slug: string): string[] {
     .map((f) => path.join(dir, f));
 }
 
+// What a web lesson's failed case says to the student
+function webReason(result: RunTestsResponse): string {
+  const failed = result.cases.find((c) => !c.passed);
+  if (failed?.web) return `: ${failed.name}: ${webFailureText(failed.web)}`;
+  return failed?.error === 'timeout' ? `: ${failed.name ?? `case ${failed.index}`}: timeout` : '';
+}
+
 // Grades each variant and returns how many came out the wrong way.
 async function checkVariants(target: Target, slug: string): Promise<number> {
   const { courseKey, language } = target;
@@ -85,7 +96,7 @@ async function checkVariants(target: Target, slug: string): Promise<number> {
   for (const file of variantsOf(target, slug)) {
     const name = path.basename(file);
     const shouldPass = name.startsWith('accept-');
-    let result: Awaited<ReturnType<typeof runLessonTests>>;
+    let result: RunTestsResponse;
     try {
       result = await runLessonTests(
         `check:${courseKey}:${process.pid}`,
@@ -109,7 +120,7 @@ async function checkVariants(target: Target, slug: string): Promise<number> {
       ? `syntax: ${result.syntaxError}`
       : result.structureFailures.length
         ? `structure: ${JSON.stringify(result.structureFailures)}`
-        : `${result.passedCount}/${result.total}`;
+        : `${result.passedCount}/${result.total}${webReason(result)}`;
     // A reject that doesn't compile is rejected for its typo, not its cheat.
     if (!shouldPass && result.syntaxError) {
       wrong++;
@@ -161,7 +172,7 @@ async function main() {
             `check:${courseKey}:${process.pid}`,
             courseKey,
             slug,
-            solutionCode(dir, slug),
+            solutionCode(dir, slug, courseKey),
             lang,
             language,
           );
