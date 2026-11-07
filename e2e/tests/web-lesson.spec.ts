@@ -25,9 +25,13 @@ test('a web lesson previews a site of several files, sealed off from the lesson'
   page,
 }) => {
   await page.goto('/lesson/web-dev/first-page');
-  await expect(page.getByRole('button', { name: 'index.html', exact: true })).toBeVisible({
-    timeout: 10_000,
-  });
+  // The left side shows the lesson until the student turns to the code
+  await expect(page.getByTestId('lesson')).toBeVisible({ timeout: 10_000 });
+  await page
+    .getByRole('group', { name: 'What the left side shows' })
+    .getByRole('button', { name: 'Code' })
+    .click();
+  await expect(page.getByRole('button', { name: 'index.html', exact: true })).toBeVisible();
 
   await newFile(page, 'style.css');
   await newFile(page, 'js/app.js');
@@ -48,8 +52,7 @@ test('a web lesson previews a site of several files, sealed off from the lesson'
     'index.html',
     '<!DOCTYPE html><link rel="stylesheet" href="style.css"><h1>x</h1><a id="to-crew" href="crew.html">crew</a><script src="js/app.js"></script>',
   );
-  await page.getByRole('button', { name: /Run/ }).first().click();
-
+  // The site follows the files on its own
   const frame = page.frameLocator('iframe[title^="Preview"]');
   await expect(frame.locator('h1')).toHaveText('Station Log', { timeout: 10_000 });
   await expect(frame.locator('h1')).toHaveCSS('color', 'rgb(255, 0, 0)');
@@ -60,11 +63,11 @@ test('a web lesson previews a site of several files, sealed off from the lesson'
 
   await frame.locator('#to-crew').click();
   await expect(frame.locator('#crew')).toHaveText('Crew');
-  await expect(page.getByRole('combobox', { name: 'Page shown' })).toHaveValue('crew.html');
+  await expect(page.getByTitle('Preview of crew.html')).toBeVisible();
 
-  await page.getByRole('combobox', { name: 'Page shown' }).selectOption('index.html');
+  // Opening a page from the files shows it
   await write(page, 'index.html', '<h1>loop</h1><script>while (true) {}</script>');
-  await page.getByRole('button', { name: /Run/ }).first().click();
+  await expect(page.getByTitle('Preview of index.html')).toBeVisible();
   await expect(page.getByText('Paused: a loop ran too long')).toBeVisible({ timeout: 15_000 });
   await expect(log).toContainText('Stopped a loop that ran too long, on line 1 of index.html.');
   // The lesson still answers
