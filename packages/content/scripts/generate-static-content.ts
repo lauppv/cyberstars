@@ -11,7 +11,8 @@
 //                                   a multi-language course has one folder per
 //                                   language, <courseKey>/<language>/, each with
 //                                   the course's visuals put into its lessons
-//                                   (see visuals.ts)
+//                                   (see visuals.ts); a web course also
+//                                   gets its images, <courseKey>/assets/
 //   <public>/projects/<language>/ : each project's steps (<slug>.md), copied
 //                                   from packages/content/projects/
 //
@@ -22,7 +23,8 @@
 // The output is generated, not committed.
 import fs from 'fs';
 import path from 'path';
-import { CODE_LANGUAGES, isMultiLanguage } from '@cyberstars/shared/constants';
+import { CODE_LANGUAGES, WEB_COURSE_KEYS, isMultiLanguage } from '@cyberstars/shared/constants';
+import { isImagePath } from '@cyberstars/shared/webFiles';
 import { courses, lessons } from '../curriculum.js';
 import { lessonTitlesRo } from '../curriculum-ro.js';
 import { courseDir, PROJECTS_DIR } from '../paths.js';
@@ -133,8 +135,28 @@ function copyMarkdown(srcDir: string, destDir: string, fill?: (text: string) => 
   return n;
 }
 
+// A web course's images, which its lessons' sites show read-only: every
+// image under its assets/ folder, at the same path
+function copyAssets(srcDir: string, destDir: string): number {
+  if (!fs.existsSync(srcDir)) return 0;
+  let n = 0;
+  for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+    const src = path.join(srcDir, entry.name);
+    const dest = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      n += copyAssets(src, dest);
+    } else if (isImagePath(entry.name)) {
+      fs.mkdirSync(destDir, { recursive: true });
+      fs.copyFileSync(src, dest);
+      n++;
+    }
+  }
+  return n;
+}
+
 fs.rmSync(LESSONS_OUT, { recursive: true, force: true });
 let copied = 0;
+let assets = 0;
 for (const course of curriculum) {
   const folders = isMultiLanguage(course.key)
     ? CODE_LANGUAGES.map((language) => ({
@@ -152,6 +174,12 @@ for (const course of curriculum) {
         language ? visualFiller(course.key, language, locale) : undefined,
       );
     }
+  }
+  if (WEB_COURSE_KEYS.includes(course.key)) {
+    assets += copyAssets(
+      path.join(courseDir(course.key), 'assets'),
+      path.join(LESSONS_OUT, course.key, 'assets'),
+    );
   }
 }
 // Every project of the catalog needs its steps, and nothing else is published
@@ -176,5 +204,5 @@ if (broken.length) {
 }
 
 console.log(
-  `Generated public/curriculum.json (${curriculum.length} courses) and copied ${copied} markdown files to public/lessons/ and ${projectFiles} to public/projects/.`,
+  `Generated public/curriculum.json (${curriculum.length} courses) and copied ${copied} markdown files and ${assets} images to public/lessons/ and ${projectFiles} to public/projects/.`,
 );

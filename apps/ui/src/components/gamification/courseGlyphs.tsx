@@ -33,6 +33,7 @@ const GLYPHS: Record<string, ReactNode> = {
     </>
   ),
   web: <path d="M-8 -12 L-18 0 L-8 12 M8 -12 L18 0 L8 12 M4 -16 L-4 16" />,
+  'web-dev': <path d="M-8 -12 L-18 0 L-8 12 M8 -12 L18 0 L8 12 M4 -16 L-4 16" />,
 };
 
 // Unknown courses get a star

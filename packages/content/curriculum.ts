@@ -67,6 +67,13 @@ export const courses = [
       'Tree problems from easy to hard, in Python, Java or C: depth, mirror images, binary search trees, levels and paths. Every challenge comes in all three, and you can switch language on any of them.',
     sortOrder: 9,
   },
+  {
+    key: 'web-dev',
+    title: 'Web Development',
+    description:
+      'Build a website of your own, page by page: write each page in HTML, style it with CSS, then bring it to life with JavaScript, and see it change as you type.',
+    sortOrder: 10,
+  },
 ];
 
 export const lessons = [
@@ -1863,6 +1870,14 @@ export const lessons = [
     slug: 'signal-time',
     title: 'Hard · How Long Until the Signal Reaches Everyone',
     sortOrder: 16,
+    hasCodeFile: true,
+  },
+
+  {
+    courseKey: 'web-dev',
+    slug: 'first-page',
+    title: 'Your First Web Page',
+    sortOrder: 1,
     hasCodeFile: true,
   },
 ];

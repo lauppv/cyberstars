@@ -586,7 +586,8 @@
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele.",
       "trees-graphs": "Structurile din spatele folderelor, hărților și rețelelor, predate în Python, Java sau C: fiecare lecție există în toate trei și poți schimba limbajul la oricare dintre ele.",
-      "web": "Construiești pagini web de la zero: structura cu HTML, aspectul cu CSS, apoi le dai viață cu JavaScript."
+      "web": "Construiești pagini web de la zero: structura cu HTML, aspectul cu CSS, apoi le dai viață cu JavaScript.",
+      "web-dev": "Construiești un site al tău, pagină cu pagină: scrii fiecare pagină în HTML, îi dai aspect cu CSS, apoi îi dai viață cu JavaScript și o vezi cum se schimbă pe măsură ce scrii."
     },
     "lessons_few": "lecții",
     "names": {
@@ -599,7 +600,8 @@
       "algo-java": "Algoritmi Java",
       "algo-c": "Algoritmi C",
       "algo-trees-graphs": "Algoritmi pe arbori și grafuri",
-      "web": "Dezvoltare web"
+      "web": "Dezvoltare web",
+      "web-dev": "Dezvoltare web"
     }
   },
   "algorithms": {

@@ -27,6 +27,13 @@ const LANGUAGE_META: Record<string, CourseMeta> = {
     label: 'Web Development',
     langLabel: 'HTML · CSS · JavaScript',
   },
+  // The course under that card, in the card's look
+  'web-dev': {
+    icon: '🌐',
+    color: '#EC4899',
+    label: 'Web Development',
+    langLabel: 'HTML · CSS · JavaScript',
+  },
 };
 
 // The card on the Courses page that holds the web courses (WEB_COURSE_KEYS),
