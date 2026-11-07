@@ -162,10 +162,24 @@ describe('previewPrelude', () => {
     const error = guard().e(12, 'js/app.js') as Error;
     expect(error.message).toBe('Stopped the loop on line 12 of js/app.js');
     expect(last()).toMatchObject({ type: 'loop', file: 'js/app.js', line: 12 });
+    // Until the page gets its turn back every loop stops, a loop around the
+    // stopped one too
+    guard().s(8);
+    expect(guard().t(8)).toBe(true);
+    await new Promise((resolve) => setTimeout(resolve, 0));
     // A loop that starts again starts its clock again
     guard().s(7);
     now.mockReturnValue(2500);
     expect(guard().t(7)).toBe(false);
+    now.mockRestore();
+  });
+
+  it('catches a loop whose turns are slow within a few turns', () => {
+    const now = vi.spyOn(Date, 'now').mockReturnValue(0);
+    guard().s(9);
+    expect(guard().t(9)).toBe(false);
+    now.mockReturnValue(2500);
+    expect(guard().t(9)).toBe(true);
     now.mockRestore();
   });
 

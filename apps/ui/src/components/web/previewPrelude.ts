@@ -76,6 +76,10 @@ export function previewPrelude(config: PreludeConfig): void {
   setInterval(() => {
     beat += 1;
   }, 100);
+  // Once a loop is stopped, every loop is until the page gets its turn
+  // back: a try/catch around the stopped loop can't keep a loop around it
+  // going
+  let stopping = false;
   const start = (id: number) => {
     started[id] = Date.now();
     beats[id] = beat;
@@ -86,9 +90,12 @@ export function previewPrelude(config: PreludeConfig): void {
       turns[id] = 0;
     },
     t(id: number) {
+      if (stopping) return true;
       const turn = (turns[id] = (turns[id] ?? 0) + 1);
-      // Reading the clock every turn would slow every loop down
-      if (turn % 128 !== 0) return false;
+      // Reading the clock every turn would slow every loop down, so it is
+      // read on turns 1, 2, 4 … 64 (a loop whose turns are slow is caught
+      // early), then every 128th
+      if (turn & 127 && turn & (turn - 1)) return false;
       if (beats[id] !== beat) {
         start(id);
         return false;
@@ -96,6 +103,12 @@ export function previewPrelude(config: PreludeConfig): void {
       return Date.now() - (started[id] ?? Date.now()) > config.loopLimitMs;
     },
     e(line: number, file: string) {
+      if (!stopping) {
+        stopping = true;
+        setTimeout(() => {
+          stopping = false;
+        }, 0);
+      }
       post({ type: 'loop', file, line });
       return new Error(config.loopMessage.replace('{line}', String(line)).replace('{file}', file));
     },
