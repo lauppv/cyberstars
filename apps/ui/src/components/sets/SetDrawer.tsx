@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import { courseMeta, courseWash } from '../../constants/courses';
 import { BetaBadge } from '../ui/BetaBadge';
 import { CourseMark } from '../ui/CourseMark';
+import { ProgressBar } from './ProgressBar';
 
 export interface SetDrawerProps {
   setKey: string;
@@ -99,15 +100,12 @@ export function SetDrawer({
         <div className="px-6 py-5 text-[13px] text-[var(--text2)] leading-relaxed border-b border-[var(--border)]">
           {description}
           {progress && (
-            <div className="mt-4">
-              <div className="text-[11px] text-[var(--text3)] mb-1">{progress.label}</div>
-              <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
-                <div
-                  className="h-full rounded-sm transition-[width] duration-400"
-                  style={{ width: `${progress.pct}%`, background: courseMeta(setKey).color }}
-                />
-              </div>
-            </div>
+            <ProgressBar
+              pct={progress.pct}
+              color={courseMeta(setKey).color}
+              label={progress.label}
+              className="mt-4"
+            />
           )}
         </div>
 

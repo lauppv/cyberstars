@@ -13,6 +13,7 @@ import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
 import { courseMeta, courseWash } from '../constants/courses';
 import { CourseMark } from '../components/ui/CourseMark';
+import { ProgressBar } from '../components/sets/ProgressBar';
 import { useGamification } from '../hooks/useGamification';
 import { ArrowRight, Award, BookCheck, Check, Flame } from 'lucide-react';
 import {
@@ -431,17 +432,12 @@ function ContinueCard({
           />
         </button>
       </div>
-      <div className="mt-4">
-        <div className="flex justify-between text-[11px] text-[var(--text3)] mb-1">
-          <span>{t('courses.percentComplete', { pct })}</span>
-        </div>
-        <div className="h-1 bg-[var(--surface2)] rounded-sm overflow-hidden">
-          <div
-            className="h-full rounded-sm transition-[width] duration-400"
-            style={{ width: `${pct}%`, background: color }}
-          />
-        </div>
-      </div>
+      <ProgressBar
+        pct={pct}
+        color={color}
+        label={t('courses.percentComplete', { pct })}
+        className="mt-4"
+      />
       {recent.length > 0 && (
         <div className="mt-5 pt-4 border-t border-[var(--border)]">
           <h3 className="section-label mb-2">{t('home.recentlyAccessed')}</h3>

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Check, ChevronDown, ChevronRight } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
 import { LessonHeading } from '../components/ui/LessonHeading';
+import { ProgressBar } from '../components/sets/ProgressBar';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -132,14 +133,7 @@ function Steps({ project, sections }: { project: Project; sections: { body: stri
           </span>
         )}
       </div>
-      {user && checked && (
-        <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden mb-3">
-          <div
-            className="h-full rounded-sm transition-[width] duration-400"
-            style={{ width: `${(done / total) * 100}%`, background: color }}
-          />
-        </div>
-      )}
+      {user && checked && <ProgressBar pct={(done / total) * 100} color={color} className="mb-3" />}
       {!user && (
         <p className="mt-0 mb-3 text-[12px] text-[var(--text3)]">{t('projects.signInToTrack')}</p>
       )}

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { courseMeta, courseWash } from '../../constants/courses';
 import { BetaBadge } from '../ui/BetaBadge';
 import { CourseMark } from '../ui/CourseMark';
+import { ProgressBar } from './ProgressBar';
 
 export interface SetCardProps {
   // The course or language the card stands for: its colour, mark and wash
@@ -111,15 +112,12 @@ export function SetCard({
         {onOpen && (
           <div className="mt-auto pt-4 flex items-center justify-between">
             {progress && (
-              <div className="flex-1 mr-3">
-                <div className="text-[11px] text-[var(--text3)] mb-1">{progress.label}</div>
-                <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
-                  <div
-                    className="h-full rounded-sm transition-[width] duration-400"
-                    style={{ width: `${progress.pct}%`, background: color }}
-                  />
-                </div>
-              </div>
+              <ProgressBar
+                pct={progress.pct}
+                color={color}
+                label={progress.label}
+                className="flex-1 mr-3"
+              />
             )}
             {progress && onContinue ? (
               <button
