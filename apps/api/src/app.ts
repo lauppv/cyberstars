@@ -2,12 +2,12 @@ import express from 'express';
 import crypto from 'crypto';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import helmet from 'helmet';
 import { config } from './config/index.js';
 import { UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
 import { SESSION_COOKIE } from '@cyberstars-framework/auth/auth';
 import { servePages } from './middleware/pages.js';
+import { securityHeaders } from './middleware/securityHeaders.js';
 import { serveStatic } from './middleware/static.js';
 import { auth } from './services/auth.js';
 import progressRoutes from './routes/progress.routes.js';
@@ -42,26 +42,7 @@ export const app = express();
 /* v8 ignore next -- isProduction is fixed at module load; only the dev/test branch runs under tests. */
 app.set('trust proxy', config.isProduction ? 1 : false);
 
-// Restricted CSP as defence-in-depth: scripts/objects locked to our own origin
-// (plus the unpkg three.js bundle the Laniakea explorer loads at runtime), so a
-// future regression that injects raw HTML can't pull in arbitrary scripts.
-// 'unsafe-inline' stays for styles only: React inline styles and CodeMirror's
-// injected <style> tags need it, and inline styles are not an XSS vector.
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      useDefaults: true,
-      directives: {
-        scriptSrc: ["'self'", 'https://unpkg.com'],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        // The fonts ship with the app, so nothing is fetched from a font host.
-        fontSrc: ["'self'"],
-        imgSrc: ["'self'", 'data:', 'blob:'],
-        connectSrc: ["'self'"],
-      },
-    },
-  }),
-);
+app.use(securityHeaders);
 app.use(cors({ origin: config.allowedOrigins, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
