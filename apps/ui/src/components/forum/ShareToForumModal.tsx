@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import * as forumService from '../../services/forumService';
 import { forumRoutes } from '../../constants/forumRoutes';
-import { RESTRICTED_FORUM_CATEGORIES } from '@cyberstars/shared/constants';
+import { RESTRICTED_FORUM_CATEGORIES, WEB_COURSE_KEYS } from '@cyberstars/shared/constants';
+import { parseWebFiles, serializeWebFiles } from '@cyberstars/shared/webFiles';
 import type { ForumCategoryDTO } from '@cyberstars/shared/forum';
 import { CodeEditor } from '../code/CodeEditor';
 
@@ -64,7 +65,14 @@ export function ShareToForumModal({
     if (!trimmedTitle || !categorySlug || submitting) return;
     setSubmitting(true);
     setError(null);
-    const codeBlock = `\`\`\`${fenceLang}\n${code}\n\`\`\``;
+    // A web lesson's site goes as a block per file, each under its name; the
+    // forum shows them as text, never runs them
+    const codeBlock = WEB_COURSE_KEYS.includes(language)
+      ? parseWebFiles(code)
+          .filter((file) => !file.image)
+          .map((file) => `**${file.path}**\n\n${serializeWebFiles([file])}`)
+          .join('\n\n')
+      : `\`\`\`${fenceLang}\n${code}\n\`\`\``;
     const note = description.trim();
     const content = note ? `${codeBlock}\n\n${note}` : codeBlock;
     try {
