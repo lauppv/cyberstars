@@ -40,14 +40,10 @@ este un obicei sigur atunci când ștergi ceva de care nu ești sigur.
 
 ---
 
-## Misiune: Curăță datele inutile
+## Misiune: Curăță Datele Inutile
 
-Un scan de mentenanță de rutină a semnalat reziduuri care aglomerează spațiul de lucru al stației. Înainte de a șterge ceva, pune la adăpost singurul fișier care contează. Pentru `rm` nu există „undo".
-
-1. Creează un folder `pastreaza` și copiază `misiune.txt` în el ca backup de siguranță.
-2. Inspectează spațiul de lucru înainte de a șterge ceva.
-3. Șterge cele trei fișiere inutile `gunoi.txt`, `temp.log` și `cache.tmp` printr-o **singură** comandă.
+O scanare de mentenanță a găsit fișiere inutile în directorul tău personal. Contează doar fișierul misiunii, iar ștergerea nu are „undo”, așa că pune întâi o copie a lui într-un folder nou `pastreaza`. Apoi scapă de toate celelalte fișiere din directorul tău personal.
 
 **Rezultat așteptat**
 
-Fișierele inutile au dispărut, `misiune.txt` rămâne în directorul tău home, iar o copie de siguranță se află în `pastreaza`.
+Directorul tău personal ține fișierul misiunii și `pastreaza` cu copia lui, nimic altceva.

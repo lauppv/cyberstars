@@ -15,16 +15,22 @@ Folosește `ls` și `tree` între pași pentru a-ți verifica munca.
 
 ---
 
-## Misiune: Schela unei noi misiuni
+## Misiune: Scheletul Noii Misiuni
 
-O nouă misiune de explorare în spațiu îndepărtat a fost aprobată și are nevoie de un director de proiect bine organizat înainte ca echipa științifică să poată începe să încarce datele. De asemenea, trebuie să faci curățenie după reziduurile lăsate de ofițerul din tura anterioară.
+O misiune de explorare în spațiul îndepărtat a fost aprobată, iar echipa științifică are nevoie de folderul proiectului înainte să încarce datele. Ultimul ofițer a lăsat și gunoi în urmă. Când termini, directorul tău personal trebuie să arate așa:
 
-1. Creează un folder numit `proiect`.
-2. În interiorul lui, creează două subfoldere într-un singur pas: `proiect/sursa` și `proiect/documente`.
-3. În `proiect/sursa`, creează un fișier gol numit `principal.sh`.
-4. Copiază fișierul existent `sablon.txt` în `proiect/documente/citeste-ma.txt`.
-5. Șterge fișierul rezidual `gunoi.txt` din directorul tău home.
+```text
+.
+├── proiect
+│   ├── documente
+│   │   └── citeste-ma.txt
+│   └── sursa
+│       └── principal.sh
+└── sablon.txt
+```
+
+`principal.sh` e gol, iar `citeste-ma.txt` e o copie a lui `sablon.txt`, cuvânt cu cuvânt. Nu rămâne nimic altceva.
 
 **Rezultat așteptat**
 
-`proiect/sursa` conține `principal.sh`, `proiect/documente/citeste-ma.txt` conține textul șablonului, iar `gunoi.txt` nu mai există în directorul tău home.
+Desenat ca arbore, directorul tău personal arată exact ca planul de mai sus, iar fișierul citeste-ma spune ce spune șablonul.

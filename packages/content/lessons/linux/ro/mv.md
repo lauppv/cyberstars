@@ -47,15 +47,19 @@ alege-ți numele cu grijă.
 
 ---
 
-## Misiune: Relocare de fișiere
+## Misiune: Mutarea Fișierelor
 
-Sistemul de arhivare al stației este reorganizat. O ciornă trebuie finalizată, niște notițe răzlețe trebuie arhivate, iar folderul de arhivă însuși primește un nume nou. Directorul tău home conține `ciorna.txt`, `notite.txt` și un folder `arhiva`.
+Sistemul de arhivare al stației se reorganizează. Uită-te ce ține directorul tău personal, apoi lasă-l așa, fără să copiezi nimic: fiecare fișier trebuie să fie originalul, mutat.
 
-1. Redenumește `ciorna.txt` în `raport.txt`.
-2. Mută `raport.txt` în folderul `arhiva`.
-3. Mută `notite.txt` în `arhiva` și redenumește-o în `notite-2026.txt` printr-o **singură** comandă.
-4. Redenumește folderul `arhiva` însuși în `registre`.
+```text
+.
+└── registre
+    ├── notite-2026.txt
+    └── raport.txt
+```
+
+`registre` e vechiul folder `arhiva` sub noul lui nume, `raport.txt` e ciorna terminată, iar `notite-2026.txt` sunt notițele răzlețe.
 
 **Rezultat așteptat**
 
-Folderul `registre` conține `raport.txt` și `notite-2026.txt`; vechile nume `ciorna.txt`, `notite.txt` și `arhiva` au dispărut.
+Directorul tău personal ține doar `registre`, cu cele două fișiere de mai sus în el, și niciunul dintre numele vechi nu mai există.

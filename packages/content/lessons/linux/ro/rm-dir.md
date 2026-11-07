@@ -48,15 +48,14 @@ sigur ce conține.
 
 ---
 
-## Misiune: Dezafectează vechile compartimente
+## Misiune: Dezafectează Compartimentele Vechi
 
-Două compartimente de depozitare ale stației sunt programate pentru dezafectare. Folderul `compartiment-gol` a fost deja golit, dar `date-vechi` mai conține fișiere reziduale, iar unul dintre ele, `a.log`, trebuie păstrat înainte ca acel compartiment să fie șters.
+Două compartimente de depozitare se dezafectează: `compartiment-gol`, golit deja, și `date-vechi`, care mai ține jurnale rămase. Uită-te ce e acolo înainte să ștergi ceva.
 
-1. Inspectează spațiul de lucru, apoi uită-te în interiorul lui `date-vechi`, ca să vezi exact ce e acolo înainte să ștergi ceva.
-2. Creează un folder `arhiva` și copiază `date-vechi/a.log` în el ca backup de siguranță.
-3. Șterge folderul gol `compartiment-gol`, metoda sigură, care funcționează doar pe foldere goale.
-4. Șterge folderul `date-vechi` și tot ce se află în el.
+1. Jurnalul `a.log` din `date-vechi` trebuie să supraviețuiască: păstrează o copie a lui într-un folder nou `arhiva`.
+2. Șterge compartimentul gol cu comanda care refuză să șteargă un folder în care mai e ceva, ca o greșeală să nu coste date.
+3. Șterge `date-vechi` cu tot ce mai e în el.
 
 **Rezultat așteptat**
 
-Ambele compartimente au dispărut, `a.log` supraviețuiește în `arhiva`, iar folderul `misiune` rămâne neatins.
+Ambele compartimente au dispărut, `a.log` supraviețuiește în `arhiva`, iar folderul `misiune` e neatins.
