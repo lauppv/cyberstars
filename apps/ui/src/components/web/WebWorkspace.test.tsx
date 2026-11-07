@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { useState } from 'react';
 import { WEB_MAX_FILES, parseWebFiles, serializeWebFiles } from '@cyberstars/shared/webFiles';
 import WebWorkspace from './WebWorkspace';
@@ -24,6 +24,8 @@ function Lesson({ start = SITE, onText }: { start?: string; onText?: (text: stri
       courseKey="web-dev"
       lessonSlug="first-page"
       onConsole={consoleSpy}
+      lesson={<p>The lesson text</p>}
+      actions={<button type="button">Lesson actions</button>}
     />
   );
 }
@@ -68,7 +70,13 @@ describe('WebWorkspace', () => {
   });
 
   it('opens the first page once the files arrive after it mounted', () => {
-    const props = { courseKey: 'web-dev', lessonSlug: 'first-page', onChange: vi.fn() };
+    const props = {
+      courseKey: 'web-dev',
+      lessonSlug: 'first-page',
+      onChange: vi.fn(),
+      lesson: null,
+      actions: null,
+    };
     const { rerender } = render(<WebWorkspace value="" {...props} />);
     expect(screen.queryByRole('tab', { name: 'index.html' })).toBeNull();
     rerender(<WebWorkspace value={SITE} {...props} />);
@@ -197,17 +205,42 @@ describe('WebWorkspace', () => {
   it('moves to the page a link leads to', async () => {
     render(<Lesson />);
     fromPreview(await frame(), { type: 'navigate', path: 'crew.html' });
-    await waitFor(() =>
-      expect(screen.getByRole('combobox', { name: 'Page shown' })).toHaveValue('crew.html'),
-    );
     await waitFor(() => expect(screen.getByTitle('Preview of crew.html')).toBeInTheDocument());
   });
 
-  it('pauses after a loop that ran too long, until Run', async () => {
+  it('shows the page last opened from the files, and only a page', async () => {
+    render(<Lesson />);
+    await frame();
+    fireEvent.click(screen.getByRole('button', { name: 'crew.html' }));
+    await waitFor(() => expect(screen.getByTitle('Preview of crew.html')).toBeInTheDocument());
+    fireEvent.click(screen.getByRole('button', { name: 'style.css' }));
+    fireEvent.click(screen.getByRole('tab', { name: 'index.html' }));
+    await waitFor(() => expect(screen.getByTitle('Preview of index.html')).toBeInTheDocument());
+    fireEvent.click(screen.getByRole('tab', { name: 'style.css' }));
+    expect(screen.getByTitle('Preview of index.html')).toBeInTheDocument();
+  });
+
+  it('switches the left side between the lesson and the code, its actions beside', () => {
+    render(<Lesson />);
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    expect(within(sides).getByRole('button', { name: 'Lesson' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    fireEvent.click(within(sides).getByRole('button', { name: 'Code' }));
+    expect(within(sides).getByRole('button', { name: 'Code' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    expect(screen.getByText('The lesson text')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Lesson actions' })).toBeInTheDocument();
+  });
+
+  it('pauses after a loop that ran too long, until asked to show the page again', async () => {
     render(<Lesson />);
     fromPreview(await frame(), { type: 'loop', file: 'index.html', line: 1 });
-    expect(screen.getByRole('status')).toHaveTextContent('Paused: a loop ran too long');
-    fireEvent.click(screen.getByRole('button', { name: /Run/ }));
+    expect(screen.getByRole('status')).toHaveTextContent('Paused: a loop ran too long.');
+    fireEvent.click(screen.getByRole('button', { name: 'Show the page again' }));
     await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
   });
 

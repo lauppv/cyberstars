@@ -1751,9 +1751,10 @@
     "noFileOpen": "Deschide un fișier din listă ca să-l editezi.",
     "closeTab": "Închide {{name}}",
     "imageReadOnly": "O imagine a lecției: o poți folosi în pagini, dar nu o poți edita.",
-    "preview": "Previzualizare",
-    "page": "Pagina afișată",
-    "paused": "Pe pauză: o buclă a rulat prea mult. Run afișează pagina din nou.",
+    "paused": "Pe pauză: o buclă a rulat prea mult.",
+    "site": "Site",
+    "side": "Ce arată partea din stânga",
+    "showAgain": "Arată pagina din nou",
     "noPage": "Site-ul tău n-are încă nicio pagină. Adaugă un fișier .html ca s-o vezi aici.",
     "previewTitle": "Previzualizarea paginii {{page}}",
     "console": {

@@ -1723,9 +1723,10 @@
     "noFileOpen": "Open a file from the list to edit it.",
     "closeTab": "Close {{name}}",
     "imageReadOnly": "An image of the lesson: use it in your pages, it can't be edited.",
-    "preview": "Preview",
-    "page": "Page shown",
-    "paused": "Paused: a loop ran too long. Run shows the page again.",
+    "paused": "Paused: a loop ran too long.",
+    "site": "Site",
+    "side": "What the left side shows",
+    "showAgain": "Show the page again",
     "noPage": "Your site has no page yet. Add an .html file to see it here.",
     "previewTitle": "Preview of {{page}}",
     "console": {

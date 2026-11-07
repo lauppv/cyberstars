@@ -220,9 +220,8 @@ export function LessonPage() {
   // Dev mode has splits of its own, kept on the device: the statement narrow
   // on the left, the output low under the code
   const devModeChoice = useDevMode();
-  // Only a lesson with an editor has the button, so only there can it be left;
-  // a web lesson's IDE has its own panels
-  const devMode = devModeChoice.on && !isTerminal && !isWeb;
+  // Only a lesson with an editor has the button, so only there can it be left
+  const devMode = devModeChoice.on && !isTerminal;
   const devHSplit = useResizeSplit({
     axis: 'x',
     initial: 25,
@@ -675,6 +674,264 @@ export function LessonPage() {
     );
   }
 
+  // The lesson's text and the latest test run, on the left of every lesson
+  const lessonColumn = (
+    <>
+      {leftTabs.length > 1 && (
+        <PanelTabs
+          aria-label={t('lesson.panelTabs')}
+          className="hidden @2xl:flex shrink-0 px-3"
+          tabs={leftTabs}
+          active={view}
+          onSelect={setLeftView}
+        />
+      )}
+      <div
+        ref={contentRef}
+        data-testid="lesson"
+        onScroll={(e) => {
+          lessonScrollRef.current = e.currentTarget.scrollTop;
+        }}
+        className={`${view === 'lesson' ? 'block' : 'hidden'} flex-1 min-h-0 overflow-y-auto`}
+      >
+        <div className="px-9 py-8">
+          {multiLanguage && (
+            <div className="mb-5">
+              <Segmented
+                value={pickedLanguage}
+                options={CODE_LANGUAGES}
+                onChange={switchCodeLanguage}
+                optionLabel={(language) => courseMeta(language).label}
+                ariaLabel={t('lesson.codeLanguage')}
+              />
+            </div>
+          )}
+          {(() => {
+            const { rest } = parseDifficulty(title);
+            const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
+            return (
+              <LessonHeading
+                title={rest}
+                position={t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
+                  n: currentIndex + 1,
+                  total: lessonList.length,
+                })}
+                xp={
+                  currentIndex >= 0
+                    ? t('common.xpReward', {
+                        xp: xpForLesson(lessonList[currentIndex].sortOrder),
+                      })
+                    : null
+                }
+                done={lessonCompleted}
+                badge={isBeta(category) ? <BetaBadge /> : undefined}
+                completed={lessonCompleted ? t('lesson.completed') : null}
+                difficulty={difficulty ? (difficulty.toLowerCase() as Difficulty) : null}
+                difficultyLabel={difficulty ? t(`lesson.difficulty.${difficulty}`) : undefined}
+              />
+            );
+          })()}
+
+          <div className="lesson-body">
+            <VisualSteps.Provider value={visualSteps}>
+              <MarkdownRenderer content={content} />
+            </VisualSteps.Provider>
+          </div>
+
+          <div className="flex gap-3 mt-10 pb-4">
+            <button
+              data-track="previous-lesson"
+              onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
+              disabled={!prevLesson}
+              className="btn btn-secondary"
+            >
+              {t('lesson.previous')}
+            </button>
+            <button
+              data-track="next-lesson"
+              onClick={goNext}
+              disabled={!nextLesson}
+              className="btn btn-primary"
+            >
+              {t('lesson.next')}
+            </button>
+          </div>
+          {isLoggedIn && (
+            <div className="pb-4">
+              <SendFeedback
+                key={`${category}/${lesson}`}
+                prompt={t('feedback.lesson')}
+                subject={t('feedback.lessonSubject', {
+                  title,
+                  path: `${category}/${lesson}`,
+                })}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+      {view === 'result' && testResults && (
+        <div data-testid="result" className="flex-1 min-h-0 overflow-y-auto">
+          <ResultPanel results={testResults} showRuntime={isAlgo} next={nextAfterPass} />
+        </div>
+      )}
+      {view === 'submissions' && (
+        <div className="flex-1 min-h-0 overflow-y-auto">
+          <SubmissionsPanel
+            showRuntime={isAlgo}
+            list={submissions.list}
+            failed={submissions.failed}
+            onLoad={submissions.load}
+            onRetry={submissions.retry}
+            onLoadCode={loadSubmissionCode}
+          />
+        </div>
+      )}
+    </>
+  );
+  // What the lesson's code can do (save, solution, forum, reset, the tutor)
+  // and how its saving went
+  const actions = (
+    <div className="flex items-center gap-2">
+      {codeSave.saved && (
+        <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
+          {t('lesson.codeSaved')}
+        </span>
+      )}
+      {codeSave.error && (
+        <span role="alert" className="text-[var(--error)] text-[12px] font-semibold">
+          {codeSave.error}
+        </span>
+      )}
+      {lessonCompleted && (
+        <span className="text-[12px] font-semibold text-[var(--success)]">
+          {t('lesson.completed')}
+        </span>
+      )}
+      {/* A web lesson's IDE keeps splits of its own */}
+      {devMode && !isWeb && (
+        <button
+          type="button"
+          data-track="dev-mode-reset"
+          onClick={() => {
+            devHSplit.reset();
+            devVSplit.reset();
+          }}
+          aria-label={t('lesson.devModeReset')}
+          title={t('lesson.devModeReset')}
+          className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
+        >
+          <RotateCcw size={14} aria-hidden="true" />
+        </button>
+      )}
+      {devModeChoice.available && (
+        <button
+          type="button"
+          data-track="dev-mode"
+          onClick={() => {
+            setMenuOpen(false);
+            devModeChoice.toggle();
+          }}
+          aria-pressed={devMode}
+          // One look on and off: only its words tell which it is
+          className="flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border border-[var(--border)] bg-[var(--surface)] text-[var(--accent)] hover:border-[var(--accent)]"
+        >
+          {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
+        </button>
+      )}
+      {!devMode && (
+        <div className="relative" ref={menuRef}>
+          <button
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-haspopup="menu"
+            aria-expanded={menuOpen}
+            aria-label={t('lesson.actions')}
+            className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
+          >
+            <span className="text-[16px] leading-none">⋯</span>
+          </button>
+          {menuOpen && (
+            <div
+              role="menu"
+              className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+            >
+              {tutor?.enabled && (
+                <button
+                  role="menuitem"
+                  data-track="ask-tutor"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    tutor.openLesson({
+                      courseKey: category,
+                      lessonSlug: lesson,
+                      title,
+                    });
+                  }}
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  <TutorFace size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                  {t('lesson.askTutor')}
+                </button>
+              )}
+              {canShowSolution && (
+                <button
+                  role="menuitem"
+                  data-track="show-solution"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setConfirmSolution(true);
+                  }}
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  <Eye size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                  {t('lesson.showSolution')}
+                </button>
+              )}
+              {isLoggedIn && (
+                <button
+                  role="menuitem"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    codeSave.save(userCode);
+                  }}
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  <Save size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                  {t('lesson.save')}
+                </button>
+              )}
+              {isLoggedIn && userCode.trim().length > 0 && (
+                <button
+                  role="menuitem"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setShowShareModal(true);
+                  }}
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  <Share2 size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                  {t('lesson.shareToForum')}
+                </button>
+              )}
+              <button
+                role="menuitem"
+                data-track="reset-code"
+                onClick={() => {
+                  setMenuOpen(false);
+                  if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
+                }}
+                className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+              >
+                <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                {t('lesson.reset')}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <div
       className={`${devMode ? 'fixed inset-0 z-[60] @container bg-[var(--page-bg)]' : 'h-screen bg-transparent'} flex flex-col text-[var(--text)] overflow-hidden`}
@@ -698,388 +955,132 @@ export function LessonPage() {
       {/* The split needs room, so it follows the width the page really has
           (less with the tutor beside it), not the window's; below that the
           panels are tabs that take the full width */}
-      <PanelTabs
-        className="@2xl:hidden bg-[var(--glass)]"
-        fill
-        tabs={[
-          ...leftTabs,
-          {
-            key: 'workspace' as const,
-            label: isTerminal ? t('lesson.tabTerminal') : t('lesson.tabCode'),
-          },
-        ]}
-        active={activeTab === 'workspace' ? 'workspace' : view}
-        onSelect={(key) => {
-          if (key === 'workspace') {
-            setActiveTab('workspace');
-          } else {
-            setActiveTab('lesson');
-            setLeftView(key);
-          }
-        }}
-      />
+      {!isWeb && (
+        <PanelTabs
+          className="@2xl:hidden bg-[var(--glass)]"
+          fill
+          tabs={[
+            ...leftTabs,
+            {
+              key: 'workspace' as const,
+              label: isTerminal ? t('lesson.tabTerminal') : t('lesson.tabCode'),
+            },
+          ]}
+          active={activeTab === 'workspace' ? 'workspace' : view}
+          onSelect={(key) => {
+            if (key === 'workspace') {
+              setActiveTab('workspace');
+            } else {
+              setActiveTab('lesson');
+              setLeftView(key);
+            }
+          }}
+        />
+      )}
 
       <div className="flex flex-1 overflow-hidden justify-center">
         <div ref={bandRef} className={`flex w-full ${devMode ? '' : '@5xl:w-4/5'} overflow-hidden`}>
-          {/* Lesson panel: the lesson, and the latest test run's result */}
-          <div
-            style={{ '--split': `${hSplitShown.size}%` } as CSSProperties}
-            className={`${activeTab === 'lesson' ? 'flex' : 'hidden'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
-          >
-            {leftTabs.length > 1 && (
-              <PanelTabs
-                aria-label={t('lesson.panelTabs')}
-                className="hidden @2xl:flex shrink-0 px-3"
-                tabs={leftTabs}
-                active={view}
-                onSelect={setLeftView}
-              />
-            )}
-            <div
-              ref={contentRef}
-              data-testid="lesson"
-              onScroll={(e) => {
-                lessonScrollRef.current = e.currentTarget.scrollTop;
-              }}
-              className={`${view === 'lesson' ? 'block' : 'hidden'} flex-1 min-h-0 overflow-y-auto`}
-            >
-              <div className="px-9 py-8">
-                {multiLanguage && (
-                  <div className="mb-5">
-                    <Segmented
-                      value={pickedLanguage}
-                      options={CODE_LANGUAGES}
-                      onChange={switchCodeLanguage}
-                      optionLabel={(language) => courseMeta(language).label}
-                      ariaLabel={t('lesson.codeLanguage')}
-                    />
-                  </div>
-                )}
-                {(() => {
-                  const { rest } = parseDifficulty(title);
-                  const { difficulty } = parseDifficulty(lessonList[currentIndex]?.title ?? '');
-                  return (
-                    <LessonHeading
-                      title={rest}
-                      position={t(isAlgo ? 'lesson.algoNofM' : 'lesson.lessonNofM', {
-                        n: currentIndex + 1,
-                        total: lessonList.length,
-                      })}
-                      xp={
-                        currentIndex >= 0
-                          ? t('common.xpReward', {
-                              xp: xpForLesson(lessonList[currentIndex].sortOrder),
-                            })
-                          : null
-                      }
-                      done={lessonCompleted}
-                      badge={isBeta(category) ? <BetaBadge /> : undefined}
-                      completed={lessonCompleted ? t('lesson.completed') : null}
-                      difficulty={difficulty ? (difficulty.toLowerCase() as Difficulty) : null}
-                      difficultyLabel={
-                        difficulty ? t(`lesson.difficulty.${difficulty}`) : undefined
-                      }
-                    />
-                  );
-                })()}
-
-                <div className="lesson-body">
-                  <VisualSteps.Provider value={visualSteps}>
-                    <MarkdownRenderer content={content} />
-                  </VisualSteps.Provider>
+          {isWeb ? (
+            <Suspense
+              fallback={
+                <div className="flex-1 flex items-center justify-center">
+                  <LoadingSpinner />
                 </div>
-
-                <div className="flex gap-3 mt-10 pb-4">
-                  <button
-                    data-track="previous-lesson"
-                    onClick={() => prevLesson && navigate(`/lesson/${category}/${prevLesson.slug}`)}
-                    disabled={!prevLesson}
-                    className="btn btn-secondary"
-                  >
-                    {t('lesson.previous')}
-                  </button>
-                  <button
-                    data-track="next-lesson"
-                    onClick={goNext}
-                    disabled={!nextLesson}
-                    className="btn btn-primary"
-                  >
-                    {t('lesson.next')}
-                  </button>
-                </div>
-                {isLoggedIn && (
-                  <div className="pb-4">
-                    <SendFeedback
-                      key={`${category}/${lesson}`}
-                      prompt={t('feedback.lesson')}
-                      subject={t('feedback.lessonSubject', {
-                        title,
-                        path: `${category}/${lesson}`,
-                      })}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-            {view === 'result' && testResults && (
-              <div data-testid="result" className="flex-1 min-h-0 overflow-y-auto">
-                <ResultPanel results={testResults} showRuntime={isAlgo} next={nextAfterPass} />
-              </div>
-            )}
-            {view === 'submissions' && (
-              <div className="flex-1 min-h-0 overflow-y-auto">
-                <SubmissionsPanel
-                  showRuntime={isAlgo}
-                  list={submissions.list}
-                  failed={submissions.failed}
-                  onLoad={submissions.load}
-                  onRetry={submissions.retry}
-                  onLoadCode={loadSubmissionCode}
-                />
-              </div>
-            )}
-          </div>
-
-          <ResizeHandle
-            axis="x"
-            className="hidden @2xl:block"
-            onPointerDown={hSplitShown.onPointerDown}
-            dragging={hSplitShown.dragging}
-          />
-
-          {/* Right panel: terminal or editor */}
-          {isTerminal ? (
-            <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+              }
             >
-              <TerminalPanel
-                lines={terminal.lines}
-                cwd={terminal.cwd}
-                isReady={terminal.isReady}
-                isExecuting={terminal.isExecuting}
-                onExecute={terminal.execute}
-                onReset={() => {
-                  setTerminalTestResult(null);
-                  setTerminalTestsError(null);
-                  terminal.reset();
-                }}
-                lessonCompleted={lessonCompleted}
-                hasSolution={canShowSolution}
-                onShowSolution={() => setConfirmSolution(true)}
-                hasTests={hasTests}
-                isChecking={isChecking}
-                onRunTests={handleRunTerminalChecks}
-                testResult={terminalTestResult}
-                onCloseTests={() => setTerminalTestResult(null)}
-                nextAfterPass={nextAfterPass}
-                testsError={terminalTestsError}
-                onAskTutor={
-                  tutor?.enabled
-                    ? () => tutor.openLesson({ courseKey: category, lessonSlug: lesson, title })
-                    : undefined
-                }
+              <WebWorkspace
+                key={`${category}/${lesson}`}
+                value={userCode}
+                onChange={setUserCode}
+                courseKey={category}
+                lessonSlug={lesson}
+                onConsole={setWebConsole}
+                lesson={lessonColumn}
+                actions={actions}
               />
-            </div>
+            </Suspense>
           ) : (
-            <div
-              className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
-            >
-              <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
-                <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
-                  <span
-                    className="inline-block w-2 h-2 rounded-full"
-                    style={{ background: courseMeta(editorLanguage).color }}
-                  />
-                  {courseMeta(editorLanguage).langLabel}
-                </div>
-                <div className="flex items-center gap-2">
-                  {codeSave.saved && (
-                    <span className="text-[var(--success)] text-[12px] font-semibold animate-pulse">
-                      {t('lesson.codeSaved')}
-                    </span>
-                  )}
-                  {codeSave.error && (
-                    <span role="alert" className="text-[var(--error)] text-[12px] font-semibold">
-                      {codeSave.error}
-                    </span>
-                  )}
-                  {lessonCompleted && (
-                    <span className="text-[12px] font-semibold text-[var(--success)]">
-                      {t('lesson.completed')}
-                    </span>
-                  )}
-                  {devMode && (
-                    <button
-                      type="button"
-                      data-track="dev-mode-reset"
-                      onClick={() => {
-                        devHSplit.reset();
-                        devVSplit.reset();
-                      }}
-                      aria-label={t('lesson.devModeReset')}
-                      title={t('lesson.devModeReset')}
-                      className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
-                    >
-                      <RotateCcw size={14} aria-hidden="true" />
-                    </button>
-                  )}
-                  {devModeChoice.available && !isWeb && (
-                    <button
-                      type="button"
-                      data-track="dev-mode"
-                      onClick={() => {
-                        setMenuOpen(false);
-                        devModeChoice.toggle();
-                      }}
-                      aria-pressed={devMode}
-                      // One look on and off: only its words tell which it is
-                      className="flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border border-[var(--border)] bg-[var(--surface)] text-[var(--accent)] hover:border-[var(--accent)]"
-                    >
-                      {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
-                    </button>
-                  )}
-                  {!devMode && (
-                    <div className="relative" ref={menuRef}>
-                      <button
-                        onClick={() => setMenuOpen((v) => !v)}
-                        aria-haspopup="menu"
-                        aria-expanded={menuOpen}
-                        aria-label={t('lesson.actions')}
-                        className="w-8 h-8 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
-                      >
-                        <span className="text-[16px] leading-none">⋯</span>
-                      </button>
-                      {menuOpen && (
-                        <div
-                          role="menu"
-                          className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
-                        >
-                          {tutor?.enabled && (
-                            <button
-                              role="menuitem"
-                              data-track="ask-tutor"
-                              onClick={() => {
-                                setMenuOpen(false);
-                                tutor.openLesson({
-                                  courseKey: category,
-                                  lessonSlug: lesson,
-                                  title,
-                                });
-                              }}
-                              className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                            >
-                              <TutorFace
-                                size={16}
-                                strokeWidth={1.75}
-                                className="text-[var(--text3)]"
-                              />
-                              {t('lesson.askTutor')}
-                            </button>
-                          )}
-                          {canShowSolution && (
-                            <button
-                              role="menuitem"
-                              data-track="show-solution"
-                              onClick={() => {
-                                setMenuOpen(false);
-                                setConfirmSolution(true);
-                              }}
-                              className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                            >
-                              <Eye size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
-                              {t('lesson.showSolution')}
-                            </button>
-                          )}
-                          {isLoggedIn && (
-                            <button
-                              role="menuitem"
-                              onClick={() => {
-                                setMenuOpen(false);
-                                codeSave.save(userCode);
-                              }}
-                              className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                            >
-                              <Save size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
-                              {t('lesson.save')}
-                            </button>
-                          )}
-                          {isLoggedIn && userCode.trim().length > 0 && (
-                            <button
-                              role="menuitem"
-                              onClick={() => {
-                                setMenuOpen(false);
-                                setShowShareModal(true);
-                              }}
-                              className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                            >
-                              <Share2
-                                size={16}
-                                strokeWidth={1.75}
-                                className="text-[var(--text3)]"
-                              />
-                              {t('lesson.shareToForum')}
-                            </button>
-                          )}
-                          <button
-                            role="menuitem"
-                            data-track="reset-code"
-                            onClick={() => {
-                              setMenuOpen(false);
-                              if (window.confirm(t('lesson.confirmReset')))
-                                setUserCode(starterCode);
-                            }}
-                            className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-                          >
-                            <RotateCcw
-                              size={16}
-                              strokeWidth={1.75}
-                              className="text-[var(--text3)]"
-                            />
-                            {t('lesson.reset')}
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
+            <>
+              {/* Lesson panel: the lesson, and the latest test run's result */}
+              <div
+                style={{ '--split': `${hSplitShown.size}%` } as CSSProperties}
+                className={`${activeTab === 'lesson' ? 'flex' : 'hidden'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
+              >
+                {lessonColumn}
               </div>
 
-              <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
-                {savedCodeUnknown && (
-                  <div
-                    role="alert"
-                    className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
-                  >
-                    <span className="flex-1 min-w-0">{t('lesson.savedCodeLoadFailed')}</span>
-                    <button
-                      type="button"
-                      onClick={retrySavedCode}
-                      disabled={retryingSavedCode}
-                      className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
-                    >
-                      {t('lesson.savedCodeRetry')}
-                    </button>
-                  </div>
-                )}
-                {isWeb ? (
-                  <Suspense
-                    fallback={
-                      <div className="flex-1 flex items-center justify-center">
-                        <LoadingSpinner />
-                      </div>
+              <ResizeHandle
+                axis="x"
+                className="hidden @2xl:block"
+                onPointerDown={hSplitShown.onPointerDown}
+                dragging={hSplitShown.dragging}
+              />
+
+              {/* Right panel: terminal or editor */}
+              {isTerminal ? (
+                <div
+                  className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+                >
+                  <TerminalPanel
+                    lines={terminal.lines}
+                    cwd={terminal.cwd}
+                    isReady={terminal.isReady}
+                    isExecuting={terminal.isExecuting}
+                    onExecute={terminal.execute}
+                    onReset={() => {
+                      setTerminalTestResult(null);
+                      setTerminalTestsError(null);
+                      terminal.reset();
+                    }}
+                    lessonCompleted={lessonCompleted}
+                    hasSolution={canShowSolution}
+                    onShowSolution={() => setConfirmSolution(true)}
+                    hasTests={hasTests}
+                    isChecking={isChecking}
+                    onRunTests={handleRunTerminalChecks}
+                    testResult={terminalTestResult}
+                    onCloseTests={() => setTerminalTestResult(null)}
+                    nextAfterPass={nextAfterPass}
+                    testsError={terminalTestsError}
+                    onAskTutor={
+                      tutor?.enabled
+                        ? () => tutor.openLesson({ courseKey: category, lessonSlug: lesson, title })
+                        : undefined
                     }
-                  >
-                    <WebWorkspace
-                      key={`${category}/${lesson}`}
-                      value={userCode}
-                      onChange={setUserCode}
-                      courseKey={category}
-                      lessonSlug={lesson}
-                      onConsole={setWebConsole}
-                    />
-                  </Suspense>
-                ) : (
-                  <>
+                  />
+                </div>
+              ) : (
+                <div
+                  className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
+                >
+                  <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
+                    <div className="flex items-center gap-2 text-[12px] font-semibold text-[var(--text2)]">
+                      <span
+                        className="inline-block w-2 h-2 rounded-full"
+                        style={{ background: courseMeta(editorLanguage).color }}
+                      />
+                      {courseMeta(editorLanguage).langLabel}
+                    </div>
+                    {actions}
+                  </div>
+
+                  <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
+                    {savedCodeUnknown && (
+                      <div
+                        role="alert"
+                        className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
+                      >
+                        <span className="flex-1 min-w-0">{t('lesson.savedCodeLoadFailed')}</span>
+                        <button
+                          type="button"
+                          onClick={retrySavedCode}
+                          disabled={retryingSavedCode}
+                          className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+                        >
+                          {t('lesson.savedCodeRetry')}
+                        </button>
+                      </div>
+                    )}
                     <div
                       data-testid="editor"
                       className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"
@@ -1154,10 +1155,10 @@ export function LessonPage() {
                         />
                       </div>
                     </div>
-                  </>
-                )}
-              </div>
-            </div>
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>

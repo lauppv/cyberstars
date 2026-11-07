@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { X } from 'lucide-react';
 import {
@@ -11,19 +11,22 @@ import {
   type WebFile,
 } from '@cyberstars/shared/webFiles';
 import { CodeEditor } from '../code/CodeEditor';
-import { RunButton } from '../code/RunButton';
 import { PanelTabs } from '../judge/PanelTabs';
 import { ResizeHandle } from '../ui/ResizeHandle';
+import { Segmented } from '../ui/Segmented';
 import { useResizeSplit } from '../../hooks/useResizeSplit';
 import { FileTree } from './FileTree';
 import { addFile, addFolder, removePath, renamePath, type Site, type SiteError } from './siteFiles';
 import { assetUrl, useWebPreview, type ConsoleEntry } from './useWebPreview';
 
-// A web lesson's workspace (CYB-109), a small IDE in the spirit of VS Code:
-// the site's files on the left, the open ones in tabs beside them, and under
-// both the preview of a page with its console. On a phone each is a panel
-// of its own. The files travel as one text (packages/shared/webFiles.ts),
-// which the lesson saves, resets and shares like any lesson's code.
+// A web lesson's workspace (CYB-109), a small IDE in the spirit of VS Code.
+// The left side shows the lesson or the code (the site's files, the open ones
+// in tabs beside them, an editor), the right side the site, with its console
+// under it. The site follows the files as they change and shows the page
+// last opened from them, or the one a link led to. On a phone the lesson,
+// the code and the site are each a panel. The files travel as one text
+// (packages/shared/webFiles.ts), which the lesson saves, resets and shares
+// like any lesson's code.
 
 interface WebWorkspaceProps {
   value: string;
@@ -32,9 +35,15 @@ interface WebWorkspaceProps {
   lessonSlug: string;
   // What the console holds, for the tutor
   onConsole?: (text: string) => void;
+  // The lesson's text and its results, which the left side shows by the code
+  lesson: ReactNode;
+  // The lesson's actions (save, solution, forum, reset, the tutor)
+  actions: ReactNode;
 }
 
-type Panel = 'files' | 'code' | 'preview' | 'console';
+type View = 'lesson' | 'code' | 'site';
+// What the left side switches between
+const SIDES = ['lesson', 'code'] as const;
 
 const LEVEL_COLOR: Record<ConsoleEntry['level'], string> = {
   log: 'text-[var(--text)]',
@@ -54,6 +63,8 @@ export default function WebWorkspace({
   courseKey,
   lessonSlug,
   onConsole,
+  lesson,
+  actions,
 }: WebWorkspaceProps) {
   const { t } = useTranslation();
   const files = useMemo(() => parseWebFiles(value), [value]);
@@ -62,23 +73,27 @@ export default function WebWorkspace({
   // first page is open then, whenever its files arrive
   const [tabs, setTabs] = useState<string[] | null>(null);
   const [active, setActive] = useState<string | null>(null);
-  const [panel, setPanel] = useState<Panel>('code');
+  // On a phone the panel shown; from @2xl the left side shows the lesson
+  // unless it is the code, and the site is always on the right
+  const [view, setView] = useState<View>('lesson');
   const [notice, setNotice] = useState<string | null>(null);
   // A change refused at a limit puts the editor back as it was
   const [editorKey, setEditorKey] = useState(0);
   // Taken apart, so the frame's ref is only ever handed to the frame
-  const { pages, page, choosePage, frame, frameRef, entries, clear, paused, run } = useWebPreview({
+  const { page, choosePage, frame, frameRef, entries, clear, paused, run } = useWebPreview({
     files,
     courseKey,
     lessonSlug,
   });
-  const workspaceRef = useRef<HTMLDivElement>(null);
-  const split = useResizeSplit({
+  const bandRef = useRef<HTMLDivElement>(null);
+  const siteRef = useRef<HTMLDivElement>(null);
+  const sides = useResizeSplit({ axis: 'x', initial: 50, min: 28, max: 68, containerRef: bandRef });
+  const siteSplit = useResizeSplit({
     axis: 'y',
-    initial: 50,
-    min: 20,
-    max: 80,
-    containerRef: workspaceRef,
+    initial: 70,
+    min: 30,
+    max: 90,
+    containerRef: siteRef,
   });
 
   // Tabs whose file went away (a reset, a rename, a delete) close
@@ -114,10 +129,15 @@ export default function WebWorkspace({
   };
   const site: Site = { files, folders };
 
+  // A page opened in the editor is the one the site shows
+  const show = (path: string) => {
+    setActive(path);
+    if (extensionOf(path) === 'html') choosePage(path);
+  };
   const open = (path: string) => {
     setTabs(shownTabs.includes(path) ? shownTabs : [...shownTabs, path]);
-    setActive(path);
-    setPanel('code');
+    show(path);
+    setView('code');
   };
   const close = (path: string) => {
     const left = shownTabs.filter((p) => p !== path);
@@ -182,7 +202,7 @@ export default function WebWorkspace({
                   role="tab"
                   aria-selected={selected}
                   title={path}
-                  onClick={() => setActive(path)}
+                  onClick={() => show(path)}
                   className={`pl-3 pr-1 py-1.5 text-[12px] font-mono bg-transparent border-none cursor-pointer whitespace-nowrap ${selected ? 'text-[var(--text)]' : 'text-[var(--text3)] hover:text-[var(--text2)]'}`}
                 >
                   {name}
@@ -238,30 +258,25 @@ export default function WebWorkspace({
 
   const previewPane = (
     <div className="flex flex-col min-h-0 h-full">
-      <div className="flex items-center gap-2 px-2 py-1.5 border-b border-[var(--border)] bg-[var(--glass)]">
-        <RunButton onClick={run} isRunning={false} className="shrink-0" />
-        {pages.length > 0 && (
-          <select
-            aria-label={t('web.page')}
-            value={page ?? ''}
-            onChange={(e) => choosePage(e.target.value)}
-            className="select min-w-0 flex-1 pl-2 pr-7 py-1 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[12px] font-mono text-[var(--text)]"
-          >
-            {pages.map((p) => (
-              <option key={p} value={p}>
-                {p}
-              </option>
-            ))}
-          </select>
-        )}
-      </div>
+      {page && (
+        <div className="shrink-0 px-3 py-1.5 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] font-mono text-[var(--text2)] truncate">
+          {page}
+        </div>
+      )}
       {paused && (
-        <p
+        <div
           role="status"
-          className="shrink-0 m-0 px-3 py-1.5 text-[12px] text-[var(--warning)] border-b border-[var(--border)]"
+          className="shrink-0 flex items-center gap-3 px-3 py-1.5 text-[12px] text-[var(--warning)] border-b border-[var(--border)]"
         >
-          {t('web.paused')}
-        </p>
+          <span className="flex-1 min-w-0">{t('web.paused')}</span>
+          <button
+            type="button"
+            onClick={run}
+            className="shrink-0 px-2 py-0.5 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text)] font-semibold hover:bg-[var(--surface)] cursor-pointer"
+          >
+            {t('web.showAgain')}
+          </button>
+        </div>
       )}
       <div className="flex-1 min-h-0 bg-white">
         {frame && page ? (
@@ -318,48 +333,74 @@ export default function WebWorkspace({
   );
 
   const panelTabs = [
-    { key: 'files' as const, label: t('web.files') },
+    { key: 'lesson' as const, label: t('lesson.tabLesson') },
     { key: 'code' as const, label: t('web.code') },
-    { key: 'preview' as const, label: t('web.preview') },
-    { key: 'console' as const, label: t('web.console.title') },
+    { key: 'site' as const, label: t('web.site') },
   ];
-  // On a phone one panel shows; from @2xl all of them do, laid out
-  const shown = (key: Panel) => `${panel === key ? 'flex' : 'hidden'} @2xl:flex flex-col min-h-0`;
+  // The left side's own choice: the code, else the lesson
+  const side = view === 'code' ? 'code' : 'lesson';
 
   return (
-    <div className="flex-1 min-h-0 flex flex-col">
+    <div className="flex-1 min-w-0 flex flex-col">
       <PanelTabs
-        className="@2xl:hidden shrink-0"
+        className="@2xl:hidden shrink-0 bg-[var(--glass)]"
         fill
         tabs={panelTabs}
-        active={panel}
-        onSelect={setPanel}
+        active={view}
+        onSelect={setView}
       />
-      <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
+      <div ref={bandRef} className="flex-1 min-h-0 flex">
         <div
-          style={{ '--web-split': `${split.size}%` } as CSSProperties}
-          className={`${panel === 'files' || panel === 'code' ? 'flex' : 'hidden'} @2xl:flex flex-1 @2xl:flex-none @2xl:h-[var(--web-split)] min-h-0`}
+          style={{ '--split': `${sides.size}%` } as CSSProperties}
+          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
         >
-          <div
-            className={`${shown('files')} w-full @2xl:w-40 @2xl:shrink-0 @2xl:border-r border-[var(--border)]`}
-          >
-            {tree}
+          <div className="shrink-0 flex items-center justify-between gap-2 px-3 py-2 border-b border-[var(--border)]">
+            <div className="hidden @2xl:block">
+              <Segmented
+                value={side}
+                options={SIDES}
+                onChange={setView}
+                optionLabel={(key) => (key === 'lesson' ? t('lesson.tabLesson') : t('web.code'))}
+                ariaLabel={t('web.side')}
+              />
+            </div>
+            <div className="ml-auto">{actions}</div>
           </div>
-          <div className={`${shown('code')} flex-1 min-w-0`}>{editor}</div>
+          <div className={`${side === 'lesson' ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col`}>
+            {lesson}
+          </div>
+          <div
+            className={`${side === 'code' ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col @2xl:flex-row`}
+          >
+            <div className="shrink-0 max-h-[35%] @2xl:max-h-none w-full @2xl:w-40 border-b @2xl:border-b-0 @2xl:border-r border-[var(--border)] flex flex-col min-h-0">
+              {tree}
+            </div>
+            <div className="flex-1 min-w-0 min-h-0 flex flex-col">{editor}</div>
+          </div>
         </div>
         <ResizeHandle
-          axis="y"
+          axis="x"
           className="hidden @2xl:block"
-          onPointerDown={split.onPointerDown}
-          dragging={split.dragging}
+          onPointerDown={sides.onPointerDown}
+          dragging={sides.dragging}
         />
         <div
-          className={`${panel === 'preview' || panel === 'console' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-h-0 flex-col`}
+          ref={siteRef}
+          className={`${view === 'site' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 min-h-0 flex-col bg-[var(--panel-bg)]`}
         >
-          <div className={`${shown('preview')} flex-1`}>{previewPane}</div>
           <div
-            className={`${shown('console')} flex-1 @2xl:flex-none @2xl:h-[30%] @2xl:border-t border-[var(--border)]`}
+            style={{ '--site-split': `${siteSplit.size}%` } as CSSProperties}
+            className="flex-1 @2xl:flex-none @2xl:h-[var(--site-split)] min-h-0 flex flex-col"
           >
+            {previewPane}
+          </div>
+          <ResizeHandle
+            axis="y"
+            className="hidden @2xl:block"
+            onPointerDown={siteSplit.onPointerDown}
+            dragging={siteSplit.dragging}
+          />
+          <div className="h-[30%] @2xl:h-auto @2xl:flex-1 min-h-0 flex flex-col border-t border-[var(--border)]">
             {consolePane}
           </div>
         </div>

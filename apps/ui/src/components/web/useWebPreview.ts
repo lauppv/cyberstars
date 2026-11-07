@@ -263,7 +263,6 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
   }, [add]);
 
   return {
-    pages,
     page,
     choosePage: setChosenPage,
     frame,
