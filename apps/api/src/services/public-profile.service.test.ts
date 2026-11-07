@@ -24,6 +24,11 @@ vi.mock('./activity.service.js', async (importOriginal) => ({
   ...mockActivityService,
 }));
 vi.mock('./connections.service.js', () => mockConnectionsService);
+// No web course exists yet, so web-js plays a closed course here
+vi.mock('@cyberstars/shared/constants', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@cyberstars/shared/constants')>()),
+  isClosedCourse: (courseKey: string) => courseKey === 'web-js',
+}));
 
 const { getPublicProfile } = await import('./public-profile.service.js');
 
@@ -181,6 +186,22 @@ describe('getPublicProfile', () => {
         { courseKey: 'algo-c', level: 0 },
       ],
     });
+  });
+
+  it('leaves a closed course out of the lessons, the courses and the badges', async () => {
+    mockUserRepo.findById.mockResolvedValue(makeUser());
+    mockProgressRepo.getCompletedByCourse.mockResolvedValue([
+      { courseKey: 'python', slugs: slugs('python', 2) },
+      { courseKey: 'web-js', slugs: slugs('web-js', 11) },
+    ]);
+
+    const p = await getPublicProfile(7, 42);
+    expect(p.stats).toMatchObject({
+      lessonsDone: 2,
+      activeCourses: 1,
+      courses: [{ courseKey: 'python', lessons: slugs('python', 2) }],
+    });
+    expect(p.progress?.badgeList).toEqual([{ courseKey: 'python', level: 0 }]);
   });
 
   it('skips the activity query and drops empty-slug courses from badges when only progress is shown', async () => {

@@ -13,8 +13,8 @@ import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
 import { courseLabel, courseMeta } from '../constants/courses';
 import {
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
+  LISTED_COURSE_KEYS,
+  isClosedCourse,
   progressPct,
   xpForLesson,
   dailyBonusXp,
@@ -75,8 +75,7 @@ export function HomePage() {
   const { progressMap, refresh: refreshProgress } = useAllProgress();
 
   const allNonAlgoCourses = useMemo(() => {
-    const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
-    return allCourses.filter((c) => keys.includes(c.key));
+    return allCourses.filter((c) => LISTED_COURSE_KEYS.includes(c.key));
   }, [allCourses]);
 
   const continueTo = useMemo(() => {
@@ -104,6 +103,7 @@ export function HomePage() {
     if (!isLoggedIn) return [];
     const items: { courseKey: string; slug: string; title: string; lastAccessedAt: string }[] = [];
     for (const [courseKey, p] of Object.entries(progressMap)) {
+      if (isClosedCourse(courseKey)) continue;
       for (const l of p.lessons) {
         if (l.lastAccessedAt) {
           items.push({ courseKey, slug: l.slug, title: l.title, lastAccessedAt: l.lastAccessedAt });

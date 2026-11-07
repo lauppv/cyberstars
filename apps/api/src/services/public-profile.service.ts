@@ -5,15 +5,15 @@ import * as leaderboardService from './leaderboard.service.js';
 import * as connectionsService from './connections.service.js';
 import { computeStreak, listDone, recentActivity } from './activity.service.js';
 import {
+  isClosedCourse,
   levelFromXp,
   levelTitleKey,
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
+  LISTED_COURSE_KEYS,
 } from '@cyberstars/shared/constants';
 import type { PublicProfile, PublicProfileBadge } from '@cyberstars/shared/profile';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 
-const ACTIVE_COURSE_KEYS = new Set<string>([...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
+const ACTIVE_COURSE_KEYS = new Set<string>(LISTED_COURSE_KEYS);
 
 // Earned badges from per-course completion counts, mirroring the client's
 // useGamification: "First Steps" at >=1 lesson (level 0), then one tier per 10
@@ -69,13 +69,15 @@ export async function getPublicProfile(
 
   if (!needStats && !needProgress && !needActivity) return profile;
 
-  const [rank, completed, activityRows, passes] = await Promise.all([
+  const [rank, allCompleted, activityRows, passes] = await Promise.all([
     needStats || needProgress ? leaderboardService.getMyRank(targetId) : Promise.resolve(null),
     needStats || needProgress ? progressRepo.getCompletedByCourse(targetId) : Promise.resolve([]),
     needStats || needActivity ? progressRepo.getActivityDates(targetId) : Promise.resolve([]),
     needStats || needActivity ? laniakeaRepo.listPasses(targetId) : Promise.resolve([]),
   ]);
   const done = listDone(activityRows, passes);
+  // A closed course counts nowhere on a profile: no lessons, course or badge
+  const completed = allCompleted.filter((c) => !isClosedCourse(c.courseKey));
 
   const totalXp = rank?.totalXp ?? 0;
 

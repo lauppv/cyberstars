@@ -1,3 +1,5 @@
+import { PREVIEW_FEATURES } from './features.js';
+
 export function progressPct(completed: number, total: number): number {
   return total > 0 ? Math.round((completed / total) * 100) : 0;
 }
@@ -43,6 +45,25 @@ export const ALL_COURSE_KEYS = [...MAIN_COURSE_KEYS, ...ALGO_COURSE_KEYS] as con
 
 // Terminal courses run in a Linux sandbox, not the /api/code editor pipeline.
 export const TERMINAL_COURSE_KEYS = ['linux'] as const;
+
+// The courses under the Web Development card on the Courses page, each added
+// by the ticket that starts it.
+export const WEB_COURSE_KEYS: readonly string[] = [];
+
+// A web course while Web Development is in preview (PREVIEW_FEATURES): only
+// admins and the founder open its card, and its courses are listed nowhere
+// else. Launching is flipping that flag.
+export function isClosedCourse(courseKey: string): boolean {
+  return PREVIEW_FEATURES.webDevelopment && WEB_COURSE_KEYS.includes(courseKey);
+}
+
+// The courses Home, Progress, profiles, the daily picks, the sitemap and the
+// landing page list (challenge sets have their own lists).
+export const LISTED_COURSE_KEYS: readonly string[] = [
+  ...MAIN_COURSE_KEYS,
+  ...TERMINAL_COURSE_KEYS,
+  ...(PREVIEW_FEATURES.webDevelopment ? [] : WEB_COURSE_KEYS),
+];
 
 // The lesson every new account is walked through before the rest of the app
 // opens up. Passing its tests is what ends the tour (progress.service).

@@ -11,7 +11,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { EmojiPicker } from '../components/ui/EmojiPicker';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { MAIN_COURSE_KEYS, TERMINAL_COURSE_KEYS } from '@cyberstars/shared/constants';
+import { LISTED_COURSE_KEYS } from '@cyberstars/shared/constants';
 import * as profileService from '../services/profileService';
 import { INPUT_CLS } from '../constants/styles';
 
@@ -42,10 +42,9 @@ export function ProfilePage() {
     });
   };
 
-  const activeCourses = allCourses.filter((c) => {
-    const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
-    return keys.includes(c.key) && progressMap[c.key]?.completed > 0;
-  }).length;
+  const activeCourses = allCourses.filter(
+    (c) => LISTED_COURSE_KEYS.includes(c.key) && progressMap[c.key]?.completed > 0,
+  ).length;
 
   const [bio, setBio] = useState(user?.bio ?? '');
   const [status, setStatus] = useState(user?.status ?? '');

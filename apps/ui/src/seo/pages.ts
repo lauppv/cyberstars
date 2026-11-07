@@ -5,12 +5,7 @@
 import i18n from 'i18next';
 import type { Course } from '@cyberstars/shared/lesson';
 import type { AlmanacArticle, AlmanacCard } from '@cyberstars/shared/almanac';
-import {
-  ALGO_COURSE_KEYS,
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
-  baseLanguage,
-} from '@cyberstars/shared/constants';
+import { ALGO_COURSE_KEYS, LISTED_COURSE_KEYS, baseLanguage } from '@cyberstars/shared/constants';
 import { courseLabel, courseTitle } from '../constants/courses';
 import { lessonTitle } from '../services/lessonService';
 import { twinPath, type Lang } from '../i18n';
@@ -127,7 +122,7 @@ function everywhere(path: string): Page['alternates'] {
 
 export function buildPages(source: ContentSource): Page[] {
   const byKey = new Map(source.courses.map((c) => [c.key, c]));
-  const courseKeys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS].filter((k) => byKey.has(k));
+  const courseKeys = LISTED_COURSE_KEYS.filter((k) => byKey.has(k));
   const algoKeys = ALGO_COURSE_KEYS.filter((k) => byKey.has(k));
 
   // Where a lesson or an article lives in each language its text exists in

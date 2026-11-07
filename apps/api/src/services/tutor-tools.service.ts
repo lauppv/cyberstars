@@ -2,6 +2,7 @@ import { courses, lessons } from '@cyberstars/content/curriculum';
 import { lessonTitlesRo } from '@cyberstars/content/curriculum-ro';
 import { isAdmin, type UserRole } from '@cyberstars/shared/auth';
 import { canAccessFeature, type FeatureKey } from '@cyberstars/shared/features';
+import { isClosedCourse } from '@cyberstars/shared/constants';
 import { contentDir, readLocalized } from './paths.js';
 
 // What the tutor can look up while it answers: the lessons and algorithm
@@ -68,10 +69,15 @@ function words(text: string): string[] {
 
 let catalog: CatalogEntry[] | null = null;
 
+// A closed course's lessons and the course itself stay unknown to the tutor
+// until it opens
+const openCourses = courses.filter((c) => !isClosedCourse(c.key));
+const openLessons = lessons.filter((l) => !isClosedCourse(l.courseKey));
+
 function getCatalog(): CatalogEntry[] {
   if (catalog) return catalog;
   const courseTitles = new Map(courses.map((c) => [c.key, c.title]));
-  catalog = lessons.map((l) => {
+  catalog = openLessons.map((l) => {
     const dir = contentDir(l.courseKey);
     const statement = [
       readLocalized(dir, `${l.slug}.md`, 'en'),
@@ -233,7 +239,7 @@ interface AppMap {
 // recommends one by what CyberStars covers and not by what the language is
 // known for elsewhere
 export function listCourses(): CourseInfo[] {
-  return courses.map((c) => ({
+  return openCourses.map((c) => ({
     title: c.title,
     link: c.key.startsWith('algo-')
       ? `/algorithms/${c.key.replace('algo-', '')}`

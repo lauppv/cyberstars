@@ -57,11 +57,12 @@ import { TUTOR_RUN_OUTPUT_MAX_LENGTH, type TutorLessonWork } from '@cyberstars/s
 import * as progressService from '../services/progressService';
 import * as testsService from '../services/testsService';
 import * as terminalService from '../services/terminalService';
-import { courseMeta } from '../constants/courses';
+import { WEB_DEVELOPMENT, courseMeta } from '../constants/courses';
 import {
   TERMINAL_COURSE_KEYS,
   ALGO_COURSE_KEYS,
   MAIN_COURSE_KEYS,
+  WEB_COURSE_KEYS,
   TOUR_LESSON,
   CODE_LANGUAGES,
   isBeta,
@@ -669,7 +670,9 @@ export function LessonPage() {
             lesson: title,
             courseHref: category.startsWith('algo-')
               ? `/algorithms/${category.replace('algo-', '')}`
-              : '/courses',
+              : WEB_COURSE_KEYS.includes(category)
+                ? `/courses/${WEB_DEVELOPMENT}`
+                : '/courses',
           }}
         />
       )}

@@ -3,12 +3,18 @@ import path from 'path';
 import {
   ALL_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
+  WEB_COURSE_KEYS,
   isCodeLanguage,
 } from '@cyberstars/shared/constants';
 import { courseDir } from '@cyberstars/content/paths';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 
-const VALID_COURSE_KEYS = new Set<string>([...ALL_COURSE_KEYS, ...TERMINAL_COURSE_KEYS]);
+// A closed web course is still a real one: its lessons open by their address
+const VALID_COURSE_KEYS = new Set<string>([
+  ...ALL_COURSE_KEYS,
+  ...TERMINAL_COURSE_KEYS,
+  ...WEB_COURSE_KEYS,
+]);
 
 // Single source of truth for "is this a real course key", used by content path
 // resolution and by progress writes/reads to reject garbage course keys.
