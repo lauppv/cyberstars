@@ -166,11 +166,21 @@ describe('execCommand', () => {
     // The student's own command shows as a plain shell, not wrapped in ours
     expect(listed.output).not.toContain('/tmp/.cwd');
 
+    // The tools that go by a process's name find it by the program's name
+    const named = await execCommand(sessionId, 'ps -eo comm=; pidof reactor-monitor', 'user:1');
+    expect(named.output).toContain('nav-computer');
+    expect(named.output).toMatch(/^\d+$/m);
+
+    // What the student writes to a program's pipe never runs
+    await execCommand(sessionId, "echo 'touch /tmp/ran' > /tmp/.program1/pipe", 'user:1');
+    const ran = await execCommand(sessionId, 'ls /tmp/ran', 'user:1');
+    expect(ran.output).toContain('No such file');
+
     // A stubborn one ignores a polite stop, but not a forced one, and stays stopped
-    await execCommand(sessionId, 'kill $(pgrep -f nav-computer)', 'user:1');
+    await execCommand(sessionId, 'pkill nav-computer', 'user:1');
     const asked = await execCommand(sessionId, 'ps -eo args=', 'user:1');
     expect(asked.output).toContain('/usr/bin/nav-computer --frozen');
-    await execCommand(sessionId, 'kill -9 $(pgrep -f nav-computer)', 'user:1');
+    await execCommand(sessionId, 'kill -9 $(pgrep nav-computer)', 'user:1');
     const after = await execCommand(sessionId, 'ps -eo args=', 'user:1');
     expect(after.output).not.toContain('nav-computer');
     expect(after.output).toContain('reactor-monitor');

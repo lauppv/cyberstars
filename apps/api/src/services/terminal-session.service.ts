@@ -239,36 +239,45 @@ function shellQuote(text: string): string {
   return `'${text.replace(/'/g, "'\\''")}'`;
 }
 
-// Starts one of the setup's programs: a shell named after `cmd`, so ps shows
-// that, waiting on a pipe of its own forever. What it does besides is sent
-// down that pipe: ignoring a polite stop, and building a string that holds
-// its memory. Returns its pid.
+// Starts one of the setup's programs: a shell reading its script from a pipe
+// of its own. It runs through a link named after `cmd`'s program, so the
+// process is called that (`pgrep`, `pkill`, `ps -e` and `top` go by it), and
+// `exec -a` gives it `cmd` as its command line (`ps aux`). The script ignores a
+// polite stop when the program is stubborn, builds a string that holds its
+// memory, then reads the pipe forever and throws every line away: the student
+// can write to the pipe too, and nothing they write there may run in a
+// process the cleanup spares. Returns its pid.
 async function startProgram(
   containerId: string,
   i: number,
   program: { cmd: string; memoryMb?: number; stubborn?: boolean },
 ): Promise<string> {
-  const pipe = `/tmp/.program${i}`;
-  const pid = await dockerExec([
-    'exec',
-    containerId,
-    'bash',
-    '-c',
-    `mkfifo ${pipe} && { exec -a ${shellQuote(program.cmd)} bash 0<>${pipe} >/dev/null 2>&1 & } && echo $!`,
-  ]);
-  const lines = [
+  const dir = `/tmp/.program${i}`;
+  const base = program.cmd.trim().split(/\s+/)[0].split('/').pop() ?? '';
+  const name = /^[\w.-]+$/.test(base) ? base : 'program';
+  const script = [
     ...(program.stubborn ? ["trap '' TERM INT HUP"] : []),
     ...(program.memoryMb
       ? [`x=$(head -c ${Math.round(program.memoryMb * 1024 * 1024)} /dev/zero | tr '\\0' a)`]
       : []),
+    'while :; do read -r _; done',
   ];
-  if (lines.length) {
-    await dockerExec(
-      ['exec', '-i', containerId, 'bash', '-c', `cat > ${pipe}`],
-      10_000,
-      lines.join('\n') + '\n',
-    );
-  }
+  // One exec: make the link and the pipe, start the program, print its pid,
+  // then hand it its script (this exec's stdin) through the pipe
+  const pid = await dockerExec(
+    [
+      'exec',
+      '-i',
+      containerId,
+      'bash',
+      '-c',
+      `mkdir ${dir} && ln -s /bin/bash ${dir}/${name} && mkfifo ${dir}/pipe && ` +
+        `{ exec -a ${shellQuote(program.cmd)} ${dir}/${name} 0<>${dir}/pipe >/dev/null 2>&1 & } && ` +
+        `echo $! && cat > ${dir}/pipe`,
+    ],
+    10_000,
+    script.join('\n') + '\n',
+  );
   return pid.trim();
 }
 
