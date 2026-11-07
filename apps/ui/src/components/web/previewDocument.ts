@@ -6,7 +6,8 @@ import { previewPrelude, type PreludeConfig } from './previewPrelude';
 // (public/web-preview.html, CYB-109). The page's own HTML, with:
 //
 // * the prelude first in its head (previewPrelude.ts);
-// * each style sheet of the site in place of its <link>, as a <style>;
+// * each style sheet of the site in place of its <link>, as a <style>, and
+//   in place of its @import;
 // * each script of the site named by a token, which the frame swaps for a
 //   blob: URL it makes from `scripts` (an external script keeps its src, so
 //   `defer` and `async` mean what they mean on a real site);
@@ -126,12 +127,39 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
       return whole;
     });
 
+  // A style sheet of `from` with its @imports of the site's sheets put in
+  // place, wrapped in their media, and its images as data
+  const IMPORT = /@import\s+(?:url\(\s*(['"]?)([^'")]+)\1\s*\)|(['"])([^'"]+)\3)\s*([^;]*);/g;
+  const styleSheet = (css: string, from: string, seen: string[] = [from]): string => {
+    const inlined: string[] = [];
+    const marked = css.replace(
+      IMPORT,
+      (whole, _q, urlRef?: string, _q2?: string, textRef?: string, media = '') => {
+        const path = resolveWebPath(from, urlRef ?? textRef ?? '');
+        if (path === null) return whole;
+        const imported = text.get(path);
+        if (imported === undefined || extensionOf(path) !== 'css') {
+          missed(path, from);
+          return whole;
+        }
+        // Sheets that import each other in a circle are put in once
+        if (seen.includes(path)) return '';
+        const sheet = styleSheet(imported, path, [...seen, path]);
+        inlined.push(media.trim() ? `@media ${media.trim()} {\n${sheet}\n}` : sheet);
+        return `\ue000${inlined.length - 1}\ue001`;
+      },
+    );
+    return styleUrls(marked, from).replace(/\ue000(\d+)\ue001/g, (_m, i: string) => inlined[+i]);
+  };
+  // Nothing in a sheet can close its <style> early
+  const styleText = (css: string) => css.replace(/<\/(style)/gi, '<\\/$1');
+
   const doc = new DOMParser().parseFromString(text.get(page) ?? '', 'text/html');
 
   // The page's own <style>s first: the style sheets put in below have their
   // images done already, from their own folder
   for (const style of Array.from(doc.querySelectorAll('style'))) {
-    if (style.textContent) style.textContent = styleUrls(style.textContent, page);
+    if (style.textContent) style.textContent = styleText(styleSheet(style.textContent, page));
   }
   for (const link of Array.from(doc.querySelectorAll('link[href]'))) {
     const rel = (link.getAttribute('rel') ?? '').toLowerCase().split(/\s+/);
@@ -146,7 +174,7 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
     const style = doc.createElement('style');
     const media = link.getAttribute('media');
     if (media) style.setAttribute('media', media);
-    style.textContent = styleUrls(css, path).replace(/<\/(style)/gi, '<\\/$1');
+    style.textContent = styleText(styleSheet(css, path));
     link.replaceWith(style);
   }
   for (const el of Array.from(doc.querySelectorAll('[style]'))) {

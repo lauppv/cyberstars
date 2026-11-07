@@ -64,6 +64,41 @@ describe('buildPreviewPage', () => {
     ]);
   });
 
+  it("puts a style sheet's @imports of the site's sheets in place", () => {
+    const { doc, missing } = build(
+      [
+        {
+          path: 'index.html',
+          content:
+            '<link rel="stylesheet" href="css/site.css"><style>@import "css/theme.css";</style>',
+        },
+        {
+          path: 'css/site.css',
+          content:
+            '@import url("theme.css");\n@import url(print.css) print;\n@import "gone.css";\n@import url(https://fonts.example/a.css);\nh1 { color: red; }',
+        },
+        {
+          path: 'css/theme.css',
+          content: '@import "site.css"; body { background: url(../sky.png); }',
+        },
+        { path: 'css/print.css', content: 'nav { display: none; }' },
+        { path: 'sky.png', content: '', image: true },
+      ],
+      'index.html',
+      { 'sky.png': 'data:image/png;base64,AAA' },
+    );
+    const [linked, own] = Array.from(doc.querySelectorAll('style'), (s) => s.textContent);
+    expect(linked).toContain('body { background: url("data:image/png;base64,AAA"); }');
+    expect(linked).toContain('@media print {\nnav { display: none; }\n}');
+    expect(linked).toContain('@import "gone.css";');
+    expect(linked).toContain('@import url(https://fonts.example/a.css);');
+    expect(linked).not.toContain('theme.css');
+    // A sheet importing the one that imported it is put in once
+    expect(linked!.match(/h1 \{/g)).toHaveLength(1);
+    expect(own).toContain('body { background: url("data:image/png;base64,AAA"); }');
+    expect(missing).toEqual([{ file: 'css/gone.css', from: 'css/site.css' }]);
+  });
+
   it('keeps a style sheet from closing its <style> early', () => {
     const { doc } = build([
       { path: 'index.html', content: '<link rel="stylesheet" href="a.css"><p>after</p>' },
