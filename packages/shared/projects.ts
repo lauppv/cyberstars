@@ -28,6 +28,60 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    slug: 'grade-book',
+    language: 'python',
+    title: 'Grade Book',
+    difficulty: 'easy',
+    summary:
+      "A teacher's grade book: grades per subject, averages, a ranking, corrections and who passes at the end of term.",
+    steps: [
+      { id: 'class', title: 'The class list' },
+      { id: 'grade', title: 'Record a grade' },
+      { id: 'average', title: "A student's average" },
+      { id: 'subject', title: 'One subject' },
+      { id: 'top', title: 'The ranking' },
+      { id: 'fix', title: 'Fix a mistake' },
+      { id: 'report', title: 'End of term' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'parking-garage',
+    language: 'python',
+    title: 'Parking Garage',
+    difficulty: 'easy',
+    summary:
+      "The attendant's program for a town garage: cars in and out, free spaces, fees by the hour, monthly passes and the takings at closing time.",
+    steps: [
+      { id: 'open', title: 'Open the garage' },
+      { id: 'in', title: 'A car comes in' },
+      { id: 'out', title: 'A car leaves' },
+      { id: 'fees', title: 'Fees' },
+      { id: 'passes', title: 'Monthly passes' },
+      { id: 'status', title: "What's inside" },
+      { id: 'report', title: 'Closing time' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'budget-tracker',
+    language: 'python',
+    title: 'Budget Tracker',
+    difficulty: 'easy',
+    summary:
+      "A monthly budget to type every purchase into: what's left, limits per category with warnings, undo and where the money went.",
+    steps: [
+      { id: 'month', title: "The month's money" },
+      { id: 'spend', title: 'Spend' },
+      { id: 'limits', title: 'Limits' },
+      { id: 'earn', title: 'Extra money' },
+      { id: 'categories', title: 'Where it went' },
+      { id: 'undo', title: 'Undo' },
+      { id: 'summary', title: 'End of the month' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
     slug: 'library-desk',
     language: 'python',
     title: 'Library Desk',
@@ -43,6 +97,25 @@ export const PROJECTS: Project[] = [
       { id: 'fees', title: 'Late fees' },
       { id: 'member', title: 'Member card' },
       { id: 'report', title: 'End-of-day report' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'clinic-queue',
+    language: 'python',
+    title: 'Clinic Queue',
+    difficulty: 'medium',
+    summary:
+      "The front desk of a walk-in clinic: patients lined up by how urgent they are, sent to free doctors, and the day's waiting times.",
+    steps: [
+      { id: 'doctors', title: 'Doctors on duty' },
+      { id: 'arrive', title: 'Arrivals' },
+      { id: 'queue', title: 'The line' },
+      { id: 'next', title: 'Call the next patient' },
+      { id: 'done', title: 'The doctor is free' },
+      { id: 'worse', title: 'Getting worse' },
+      { id: 'leave', title: 'Leaving without being seen' },
+      { id: 'report', title: 'End of the day' },
       { id: 'bad-input', title: 'Survive bad input' },
     ],
   },
