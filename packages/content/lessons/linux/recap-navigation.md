@@ -26,13 +26,8 @@ it whenever you need to know which names you can `cd` into.
 
 ## Mission: The Hidden Vault
 
-Station intelligence reports a hidden vault somewhere deep in the `station` directory. Your job is to navigate the folder structure and find it. Rumor has it the vault is invisible to a basic `ls`.
-
-1. Look at what is in your home directory.
-2. Move into the `station` folder.
-3. From there, move into the `archive` folder.
-4. Inside `archive`, a hidden directory is waiting. Reveal the hidden entries, then move into it.
+Station intelligence reports a vault hidden somewhere inside the `station` directory. The vault is a folder, and a plain listing won't show it. Search the structure folder by folder and finish standing inside the vault.
 
 **Expected result**
 
-Your current location is `/home/student/station/archive/.vault`. You found the vault.
+You stand in the vault, and listing it shows what it keeps.

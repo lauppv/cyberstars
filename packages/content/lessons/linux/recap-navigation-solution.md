@@ -1,12 +1,14 @@
 ```bash
-ls
 cd station
+ls
 cd archive
 ls -a
 cd .vault
-pwd
+ls
 ```
 
 ```text
-/home/student/station/archive/.vault
+archive  comms  engine  log.txt
+.  ..  .vault  old.txt
+codes.txt
 ```

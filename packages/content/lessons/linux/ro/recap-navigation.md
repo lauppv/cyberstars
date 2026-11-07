@@ -27,13 +27,8 @@ fișierelor. Folosește-l ori de câte ori trebuie să știi în ce nume poți i
 
 ## Misiune: Seiful Ascuns
 
-Serviciile de informații ale stației raportează un seif ascuns undeva în adâncul directorului `statie`. Sarcina ta este să navighezi prin structura de foldere și să-l găsești. Se zvonește că seiful este invizibil pentru un simplu `ls`.
-
-1. Vezi ce se află în directorul tău personal.
-2. Intră în folderul `statie`.
-3. De acolo, intră în folderul `arhiva`.
-4. În interiorul lui `arhiva`, te așteaptă un director ascuns. Scoate la iveală intrările ascunse, apoi intră în el.
+Serviciul de informații al stației raportează un seif ascuns undeva în directorul `statie`. Seiful e un folder, iar o listare simplă nu-l arată. Caută prin structură folder cu folder și termină în interiorul seifului.
 
 **Rezultat așteptat**
 
-Locația ta curentă este `/home/student/statie/arhiva/.seif`. Ai găsit seiful.
+Stai în seif, iar listarea lui arată ce păstrează.

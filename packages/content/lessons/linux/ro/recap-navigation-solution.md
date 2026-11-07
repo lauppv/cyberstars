@@ -1,12 +1,14 @@
 ```bash
-ls
 cd statie
+ls
 cd arhiva
 ls -a
 cd .seif
-pwd
+ls
 ```
 
 ```text
-/home/student/statie/arhiva/.seif
+arhiva  comunicatii  jurnal.txt  motor
+.  ..  .seif  vechi.txt
+coduri.txt
 ```

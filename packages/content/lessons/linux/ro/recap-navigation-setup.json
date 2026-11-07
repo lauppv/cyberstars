@@ -1,10 +1,41 @@
 {
   "cwd": "/home/student",
   "files": [
-    { "path": "citeste-ma.txt", "content": "Bun venit la bord, cadet.\n" },
-    { "path": "statie/jurnal.txt", "content": "Statia este online.\n" },
-    { "path": "statie/arhiva/vechi.txt", "content": "Inregistrare arhivata.\n" },
-    { "path": "statie/arhiva/.seif/coduri.txt", "content": "cod seif: 9920\n" }
+    {
+      "path": "citeste-ma.txt",
+      "content": "Bun venit la bord, cadet.\n"
+    },
+    {
+      "path": "statie/jurnal.txt",
+      "content": "Statia este online.\n"
+    },
+    {
+      "path": "statie/comunicatii/radio.txt",
+      "content": "Canalul 4 e linistit.\n"
+    },
+    {
+      "path": "statie/motor/note.txt",
+      "content": "Verifica racirea in fiecare tura.\n"
+    },
+    {
+      "path": "statie/motor/piese/lista.txt",
+      "content": "supapa, pompa, filtru\n"
+    },
+    {
+      "path": "statie/arhiva/vechi.txt",
+      "content": "Inregistrare arhivata.\n"
+    },
+    {
+      "path": "statie/arhiva/.seif/coduri.txt",
+      "content": "cod seif: 9920\n"
+    }
   ],
-  "dirs": ["statie", "statie/arhiva", "statie/arhiva/.seif"]
+  "dirs": [
+    "statie",
+    "statie/comunicatii",
+    "statie/motor",
+    "statie/motor/piese",
+    "statie/arhiva",
+    "statie/arhiva/.seif"
+  ]
 }

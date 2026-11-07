@@ -1,10 +1,41 @@
 {
   "cwd": "/home/student",
   "files": [
-    { "path": "readme.txt", "content": "Welcome aboard, cadet.\n" },
-    { "path": "station/log.txt", "content": "Station online.\n" },
-    { "path": "station/archive/old.txt", "content": "Archived record.\n" },
-    { "path": "station/archive/.vault/codes.txt", "content": "vault code: 9920\n" }
+    {
+      "path": "readme.txt",
+      "content": "Welcome aboard, cadet.\n"
+    },
+    {
+      "path": "station/log.txt",
+      "content": "Station online.\n"
+    },
+    {
+      "path": "station/comms/radio.txt",
+      "content": "Channel 4 is quiet.\n"
+    },
+    {
+      "path": "station/engine/notes.txt",
+      "content": "Check the coolant every shift.\n"
+    },
+    {
+      "path": "station/engine/parts/list.txt",
+      "content": "valve, pump, filter\n"
+    },
+    {
+      "path": "station/archive/old.txt",
+      "content": "Archived record.\n"
+    },
+    {
+      "path": "station/archive/.vault/codes.txt",
+      "content": "vault code: 9920\n"
+    }
   ],
-  "dirs": ["station", "station/archive", "station/archive/.vault"]
+  "dirs": [
+    "station",
+    "station/comms",
+    "station/engine",
+    "station/engine/parts",
+    "station/archive",
+    "station/archive/.vault"
+  ]
 }
