@@ -222,7 +222,7 @@ describe('getPublicProfile', () => {
   it('returns the owner their recent activity by kind, filtered to the window', async () => {
     mockUserRepo.findById.mockResolvedValue(makeUser({ showStats: false, showProgress: false }));
     const recent = new Date();
-    const old = new Date(Date.now() - 200 * 86_400_000); // outside the ~150-day window
+    const old = new Date(Date.now() - 400 * 86_400_000); // outside the ~380-day window
     mockProgressRepo.getActivityDates.mockResolvedValue([
       { courseKey: 'python', completedAt: recent, lastAccessedAt: recent },
       { courseKey: 'algo-c', completedAt: recent, lastAccessedAt: recent },
