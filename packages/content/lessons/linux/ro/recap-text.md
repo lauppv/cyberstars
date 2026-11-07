@@ -13,12 +13,13 @@ transforma date brute într-un raport curat.
 
 ---
 
-## Misiune: Raport activitate echipaj
+## Misiune: Raportul Activității Echipajului
 
-Administratorul stației are nevoie de un rezumat al activității echipajului din `date_brute.csv`. Fișierul conține înregistrări separate prin virgulă (`name,action,count`), dar unele intrări sunt duplicate și nu e sortat. Transformă aceste date brute într-un raport curat, într-un singur pipeline.
+Administratorul stației are nevoie de un rezumat al activității echipajului din `date_brute.csv`, care înregistrează câte o sarcină pe linie: cine a făcut-o, ce fel de sarcină și de câte ori. Nu e sortat, iar numele se repetă. Fă două fișiere, fiecare direct din date:
 
-Extrage doar coloana cu nume (câmpul 1, delimitat prin virgulă) din `date_brute.csv`, sortează acele nume, numără de câte ori apare fiecare și salvează rezultatul în `raport.txt`.
+- `raport.txt`: fiecare membru al echipajului o singură dată, cu câte înregistrări are, cel mai activ primul;
+- `total-scanari.txt`: doar numărul, câte scanări a făcut echipajul în total, adunând ultima coloană a fiecărei înregistrări `scanare`.
 
 **Rezultat așteptat**
 
-Rulând `cat raport.txt` se afișează numele fiecărui membru al echipajului împreună cu un număr: Chen apare de 2 ori, Tanaka de 2 ori, iar Voss de 3 ori.
+`raport.txt` are câte o linie pentru fiecare membru al echipajului cu numărul lui de înregistrări, cel mai activ sus, iar `total-scanari.txt` ține un singur număr.

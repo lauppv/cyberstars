@@ -5,12 +5,20 @@
       "cmd": "cat punte-zbor/greutate-totala.txt",
       "expected": "610"
     },
-    { "kind": "dir_exists", "path": "punte-zbor" }
+    {
+      "kind": "command_output",
+      "cmd": "cat punte-zbor/grele.txt",
+      "expected": "oxigen 120\ncombustibil 300"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "awk\\b.*\\$2.*greutate_marfa\\.txt" },
-    { "kind": "command", "pattern": "awk\\b.*\\$2\\s*>\\s*100" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bawk\\b)(?=.*END)(?=.*greutate_marfa\\.txt)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bawk\\b)(?=.*100)(?=.*greutate_marfa\\.txt)"
+    }
   ]
 }

@@ -39,13 +39,8 @@ Using `|` avoids escaping all those slashes.
 
 ## Mission: Inspection Report Fix
 
-The station just passed its safety re-inspection, but `report.txt` still shows old `FAIL` results from the previous round. The captain wants a clean report on file before the delegation arrives.
-
-1. Use `sed` to replace **all** occurrences of `FAIL` with `PASS` in `report.txt` and display the corrected report.
-2. Save the corrected report into a new file called `report-clean.txt`.
-3. Create a folder called `records` and move `report-clean.txt` into it.
-4. Count how many tests now show `PASS`.
+The station passed its safety re-inspection: every test that failed has been run again and passed. `report.txt` still shows the old results, and the inspection rules say a retested result reads `PASS (retest)`, so the delegation can tell which ones were run twice. Save the corrected report as `records/report-clean.txt`, made from `report.txt`, not typed again.
 
 **Expected result**
 
-`records/report-clean.txt` shows `PASS` on every test line. No `FAIL` entries remain.
+`records/report-clean.txt` has every test that had failed marked `PASS (retest)`, the others as they were, and no `FAIL` left.

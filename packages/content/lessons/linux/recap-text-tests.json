@@ -1,22 +1,29 @@
 {
   "checks": [
     {
-      "kind": "file_exists",
-      "path": "report.txt"
+      "kind": "command_output",
+      "cmd": "head -n 1 report.txt | awk '{print $2, $1}'",
+      "expected": "Voss 3"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "awk '{print $2, $1}' report.txt | sort",
+      "expected": "Chen 2\nTanaka 2\nVoss 3"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat scan-total.txt",
+      "expected": "6"
     }
   ],
   "requires": [
     {
       "kind": "command",
-      "pattern": "cut\\b.*-f\\s*1.*raw_data\\.csv"
+      "pattern": "^(?=.*raw_data\\.csv)(?=.*\\|\\s*uniq\\b)(?=.*-\\S*c)"
     },
     {
       "kind": "command",
-      "pattern": "uniq\\b.*-c"
-    },
-    {
-      "kind": "command",
-      "pattern": ">\\s*report\\.txt"
+      "pattern": "^(?=.*\\bawk\\b)(?=.*scan)(?=.*raw_data\\.csv)"
     }
   ]
 }

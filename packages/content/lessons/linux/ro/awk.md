@@ -46,15 +46,10 @@ print.
 
 ---
 
-## Misiune: Extragere date senzori
+## Misiune: Extragerea Datelor de la Senzori
 
-Inginerii au cerut o citire rapidă a numelor sectoarelor și a valorilor lor de la senzori. Nu au nevoie de coloana cu tipul citirii care încarcă afișajul.
-
-1. Folosește `awk` ca să afișezi **doar coloanele 1 și 3** din `senzori.dat` (sectorul și valoarea), și afișează-le.
-2. Salvează acel extras cu două coloane într-un fișier nou numit `citire.txt`.
-3. Creează un folder numit `jurnal-senzori` și mută `citire.txt` în el.
-4. Sortează citirea salvată numeric, după a doua coloană, astfel încât cea mai mică valoare a senzorului să apară prima.
+Ingineria vrea o citire rapidă din `senzori.dat`: fiecare sector cu valoarea lui, fără coloana care spune ce fel de citire e. Salvează-o ca `jurnal-senzori/citire.txt`, sectorul și valoarea despărțite de un spațiu, cea mai mică valoare întâi.
 
 **Rezultat așteptat**
 
-`jurnal-senzori/citire.txt` conține fiecare nume de sector urmat de valoarea sa numerică, separate printr-un spațiu.
+`jurnal-senzori/citire.txt` ține două coloane, sectorul și valoarea, ordonate de la cea mai mică valoare la cea mai mare.

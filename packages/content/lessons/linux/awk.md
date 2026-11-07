@@ -45,13 +45,8 @@ You can mix literal strings and field variables freely inside the print statemen
 
 ## Mission: Sensor Data Extract
 
-Engineering has requested a quick readout of sector names and their sensor values. They do not need the reading type column cluttering the display.
-
-1. Use `awk` to print **only columns 1 and 3** from `sensors.dat` (sector and value), and display them.
-2. Save that two-column extract into a new file called `readout.txt`.
-3. Create a folder called `sensor-log` and move `readout.txt` into it.
-4. Sort the saved readout numerically by the second column so the lowest sensor value appears first.
+Engineering wants a quick readout of `sensors.dat`: each sector with its value, without the column that says what kind of reading it is. Save it as `sensor-log/readout.txt`, the sector and its value separated by a space, the lowest value first.
 
 **Expected result**
 
-`sensor-log/readout.txt` holds each sector name followed by its numeric value, separated by a space.
+`sensor-log/readout.txt` holds two columns, sector and value, ordered from the lowest value to the highest.
