@@ -41,6 +41,8 @@ interface WebWorkspaceProps {
   actions: ReactNode;
   // Dev mode is on: the IDE keeps splits of its own, saved on the device
   devMode?: boolean;
+  // A note over the whole workspace (the saved code couldn't be loaded)
+  banner?: ReactNode;
 }
 
 type View = 'lesson' | 'code' | 'site';
@@ -68,6 +70,7 @@ export default function WebWorkspace({
   lesson,
   actions,
   devMode = false,
+  banner,
 }: WebWorkspaceProps) {
   const { t } = useTranslation();
   const files = useMemo(() => parseWebFiles(value), [value]);
@@ -385,6 +388,7 @@ export default function WebWorkspace({
         active={view}
         onSelect={setView}
       />
+      {banner}
       <div ref={bandRef} className="flex-1 min-h-0 flex">
         <div
           style={{ '--split': `${sides.size}%` } as CSSProperties}

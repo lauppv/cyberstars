@@ -932,6 +932,24 @@ export function LessonPage() {
     </div>
   );
 
+  // The saved code couldn't be loaded: the starter shows, and Retry asks again
+  const savedCodeAlert = savedCodeUnknown && (
+    <div
+      role="alert"
+      className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
+    >
+      <span className="flex-1 min-w-0">{t('lesson.savedCodeLoadFailed')}</span>
+      <button
+        type="button"
+        onClick={retrySavedCode}
+        disabled={retryingSavedCode}
+        className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+      >
+        {t('lesson.savedCodeRetry')}
+      </button>
+    </div>
+  );
+
   return (
     <div
       className={`${devMode ? 'fixed inset-0 z-[60] @container bg-[var(--page-bg)]' : 'h-screen bg-transparent'} flex flex-col text-[var(--text)] overflow-hidden`}
@@ -997,6 +1015,7 @@ export function LessonPage() {
                 onConsole={setWebConsole}
                 lesson={lessonColumn}
                 actions={actions}
+                banner={savedCodeAlert}
                 devMode={devMode}
               />
             </Suspense>
@@ -1066,22 +1085,7 @@ export function LessonPage() {
                   </div>
 
                   <div ref={workspaceRef} className="flex-1 min-h-0 flex flex-col">
-                    {savedCodeUnknown && (
-                      <div
-                        role="alert"
-                        className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
-                      >
-                        <span className="flex-1 min-w-0">{t('lesson.savedCodeLoadFailed')}</span>
-                        <button
-                          type="button"
-                          onClick={retrySavedCode}
-                          disabled={retryingSavedCode}
-                          className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
-                        >
-                          {t('lesson.savedCodeRetry')}
-                        </button>
-                      </div>
-                    )}
+                    {savedCodeAlert}
                     <div
                       data-testid="editor"
                       className="shrink-0 overflow-auto bg-[rgba(13,17,23,0.3)] max-h-[60%] @2xl:max-h-none @2xl:h-[var(--vsplit)]"

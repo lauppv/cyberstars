@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { WEB_MAX_FILES, parseWebFiles, serializeWebFiles } from '@cyberstars/shared/webFiles';
 import WebWorkspace from './WebWorkspace';
 
@@ -12,7 +12,15 @@ const SITE = serializeWebFiles([
 ]);
 
 // The lesson holds the text, as LessonPage does
-function Lesson({ start = SITE, onText }: { start?: string; onText?: (text: string) => void }) {
+function Lesson({
+  start = SITE,
+  onText,
+  banner,
+}: {
+  start?: string;
+  onText?: (text: string) => void;
+  banner?: ReactNode;
+}) {
   const [text, setText] = useState(start);
   return (
     <WebWorkspace
@@ -26,6 +34,7 @@ function Lesson({ start = SITE, onText }: { start?: string; onText?: (text: stri
       onConsole={consoleSpy}
       lesson={<p>The lesson text</p>}
       actions={<button type="button">Lesson actions</button>}
+      banner={banner}
     />
   );
 }
@@ -58,6 +67,20 @@ function fromPreview(iframe: HTMLIFrameElement, data: Record<string, unknown>) {
 }
 
 describe('WebWorkspace', () => {
+  it("shows the lesson's banner over the lesson, the code and the site alike", async () => {
+    render(<Lesson banner={<p role="alert">Your saved code didn't load</p>} />);
+    await frame();
+    const banner = screen.getByRole('alert');
+    expect(banner).toHaveTextContent("Your saved code didn't load");
+    // Above the sides, so switching between them keeps it in sight
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    fireEvent.click(within(sides).getByRole('button', { name: 'Code' }));
+    expect(screen.getByRole('alert')).toBe(banner);
+    expect(banner.compareDocumentPosition(screen.getByTitle(/Preview of/))).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+  });
+
   it('lists the files, folders first, and opens index.html in a tab', () => {
     render(<Lesson />);
     const tree = screen.getAllByRole('listitem').map((li) => li.firstElementChild!.textContent);
