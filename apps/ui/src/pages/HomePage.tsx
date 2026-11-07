@@ -36,6 +36,10 @@ const TODAY_SEED = Math.floor(Date.now() / 86400000);
 // The dashboard's heatmap covers the year, which fills its row
 const HEATMAP_MONTHS = 12;
 
+// A row's grid by the cards it holds, so a card that isn't there (no lesson
+// to continue, the daily picks not loaded) leaves no empty column
+const ROW_COLS = ['', '', '@3xl:grid-cols-2', '@3xl:grid-cols-3'];
+
 // By an article's category, the same in both languages; its tag is translated
 const CAT_COLORS: Record<string, string> = {
   oss: '#00D68F',
@@ -86,7 +90,7 @@ export function HomePage() {
   const [activityCounts, setActivityCounts] = useState<Record<string, DayCounts>>({});
   const [streak, setStreak] = useState<number | null>(null);
   const { courses: allCourses } = useCurriculum();
-  const { progressMap, refresh: refreshProgress } = useAllProgress();
+  const { progressMap, isLoading: progressLoading, refresh: refreshProgress } = useAllProgress();
 
   const allNonAlgoCourses = useMemo(() => {
     return allCourses.filter((c) => LISTED_COURSE_KEYS.includes(c.key));
@@ -239,7 +243,7 @@ export function HomePage() {
           </h1>
           <div className="space-y-5">
             {/* ── What to do next, and how far along ── */}
-            <div className="grid grid-cols-1 @3xl:grid-cols-3 gap-5">
+            <div className={`grid grid-cols-1 ${continueTo ? ROW_COLS[3] : ''} gap-5`}>
               {continueTo && (
                 <ContinueCard
                   courseKey={continueTo.course.key}
@@ -254,7 +258,11 @@ export function HomePage() {
             </div>
 
             {/* ── Today's picks and Laniakea ── */}
-            <div className="grid grid-cols-1 @3xl:grid-cols-3 gap-5">
+            <div
+              className={`grid grid-cols-1 ${
+                ROW_COLS[[lessonOfTheDay, algoOfTheDay, !progressLoading].filter(Boolean).length]
+              } gap-5`}
+            >
               {lessonOfTheDay && (
                 <OfTheDayCard
                   heading={t('home.lessonOfTheDay')}
