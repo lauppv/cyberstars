@@ -180,7 +180,10 @@ describe('runTerminalTests', () => {
     mockDockerExec.mockResolvedValue('0 P\n1 P\n2 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'chmod-numeric');
     expect(res.status).toBe('passed');
-    expect(res.checks.some((c) => c.messageKey === 'terminalTests.check.file_mode')).toBe(true);
+    const shown = res.checks.filter((c) => c.messageKey === 'terminalTests.check.file_mode');
+    expect(shown.length).toBeGreaterThan(0);
+    // The path only: the expected value can be the mission's answer.
+    for (const c of shown) expect(Object.keys(c.params ?? {})).toEqual(['path']);
   });
 
   it('covers the file_contains check message (stderr)', async () => {
@@ -197,7 +200,10 @@ describe('runTerminalTests', () => {
     mockDockerExec.mockResolvedValue('0 P\n1 P\n');
     const res = await runTerminalTests('user:1', 'sid', 'linux', 'stderr');
     expect(res.status).toBe('passed');
-    expect(res.checks.some((c) => c.messageKey === 'terminalTests.check.file_contains')).toBe(true);
+    const shown = res.checks.filter((c) => c.messageKey === 'terminalTests.check.file_contains');
+    expect(shown.length).toBeGreaterThan(0);
+    // The path only: the expected value can be the mission's answer.
+    for (const c of shown) expect(Object.keys(c.params ?? {})).toEqual(['path']);
   });
 
   it('covers dir_exists (mkdir) and path_absent (rm) checks', async () => {
@@ -273,7 +279,8 @@ describe('runTerminalTests', () => {
       const res = await runTerminalTests('user:1', 'sid', 'linux', slug);
       expect(res.status).toBe('passed');
       const forbid = res.checks.find((c) => c.messageKey === 'terminalTests.forbid.command');
-      expect(forbid?.params?.name).toBe('rm\\s');
+      // Only the command's name, never the pattern that pins it.
+      expect(forbid?.params?.name).toBe('rm');
     });
   });
 

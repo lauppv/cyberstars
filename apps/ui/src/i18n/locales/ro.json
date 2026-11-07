@@ -1422,8 +1422,8 @@
       "path_absent": "{{path}} nu mai există",
       "files_equal": "{{b}} are același conținut ca {{a}}",
       "dirs_equal": "{{b}} este o copie completă a {{a}}",
-      "file_contains": "{{path}} conține „{{text}}”",
-      "file_mode": "{{path}} are permisiunile {{mode}}",
+      "file_contains": "{{path}} conține ce cere misiunea",
+      "file_mode": "{{path}} are permisiunile pe care le cere misiunea",
       "command_output": "Comanda {{cmd}} dă rezultatul așteptat",
       "cwd_is": "Ești în {{path}}"
     },

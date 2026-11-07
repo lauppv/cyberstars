@@ -92,15 +92,24 @@ function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'>
     case 'files_equal':
     case 'dirs_equal':
       return { messageKey: key, params: { a: check.a, b: check.b } };
+    // The text a file must hold and the mode it must have stay out of the
+    // message: either can be the answer the mission asks the student to find.
     case 'file_contains':
-      return { messageKey: key, params: { path: check.path, text: check.text } };
     case 'file_mode':
-      return { messageKey: key, params: { path: check.path, mode: check.mode } };
+      return { messageKey: key, params: { path: check.path } };
     case 'command_output':
       return { messageKey: key, params: { cmd: check.cmd } };
     default:
       return { messageKey: key, params: { path: check.path } };
   }
+}
+
+// What a command rule shows the student: the command's name only, never the
+// pattern that pins its options and files, which would hand over the answer.
+function ruleLabel(rule: TerminalCommandRule): string {
+  if (rule.name) return rule.name;
+  const pattern = rule.pattern ?? '';
+  return pattern.match(/^[a-z][\w-]*/i)?.[0] ?? pattern.replace(/\\/g, '');
 }
 
 function ruleMatches(rule: TerminalCommandRule, history: string[]): boolean {
@@ -206,14 +215,14 @@ async function checkSession(
     results.push({
       passed: ruleMatches(rule, session.history),
       messageKey: 'terminalTests.require.command',
-      params: { name: rule.name ?? rule.pattern ?? '' },
+      params: { name: ruleLabel(rule) },
     });
   }
   for (const rule of spec.forbids ?? []) {
     results.push({
       passed: !ruleMatches(rule, session.history),
       messageKey: 'terminalTests.forbid.command',
-      params: { name: rule.name ?? rule.pattern ?? '' },
+      params: { name: ruleLabel(rule) },
     });
   }
 
