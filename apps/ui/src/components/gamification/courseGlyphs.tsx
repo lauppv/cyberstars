@@ -2,6 +2,9 @@ import type { ReactNode } from 'react';
 import { baseLanguage } from '@cyberstars/shared/constants';
 
 // Course symbol, drawn in a 100x100 box centered on 0,0 with the stroke from the parent
+// The Web Development card and the course under it share a glyph
+const WEB_GLYPH = <path d="M-8 -12 L-18 0 L-8 12 M8 -12 L18 0 L8 12 M4 -16 L-4 16" />;
+
 const GLYPHS: Record<string, ReactNode> = {
   python: (
     <>
@@ -32,8 +35,8 @@ const GLYPHS: Record<string, ReactNode> = {
       <path d="M-2.5 -7.5 L-9.5 5.5 M2.5 -7.5 L9.5 5.5 M-7 10 H7" />
     </>
   ),
-  web: <path d="M-8 -12 L-18 0 L-8 12 M8 -12 L18 0 L8 12 M4 -16 L-4 16" />,
-  'web-dev': <path d="M-8 -12 L-18 0 L-8 12 M8 -12 L18 0 L8 12 M4 -16 L-4 16" />,
+  web: WEB_GLYPH,
+  'web-dev': WEB_GLYPH,
 };
 
 // Unknown courses get a star

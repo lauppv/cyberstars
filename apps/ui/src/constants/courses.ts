@@ -8,6 +8,15 @@ export interface CourseMeta {
   langLabel: string;
 }
 
+// The Web Development card on the Courses page (WEB_DEVELOPMENT), not a
+// course, and the course under it, in the card's look
+const WEB_META: CourseMeta = {
+  icon: '🌐',
+  color: '#EC4899',
+  label: 'Web Development',
+  langLabel: 'HTML · CSS · JavaScript',
+};
+
 const LANGUAGE_META: Record<string, CourseMeta> = {
   python: { icon: '🐍', color: '#3572A5', label: 'Python', langLabel: 'Python 3' },
   java: { icon: '☕', color: '#E76F00', label: 'Java', langLabel: 'Java' },
@@ -20,20 +29,8 @@ const LANGUAGE_META: Record<string, CourseMeta> = {
     label: 'Trees and Graphs',
     langLabel: 'Python · Java · C',
   },
-  // The Web Development card on the Courses page (WEB_DEVELOPMENT), not a course
-  web: {
-    icon: '🌐',
-    color: '#EC4899',
-    label: 'Web Development',
-    langLabel: 'HTML · CSS · JavaScript',
-  },
-  // The course under that card, in the card's look
-  'web-dev': {
-    icon: '🌐',
-    color: '#EC4899',
-    label: 'Web Development',
-    langLabel: 'HTML · CSS · JavaScript',
-  },
+  web: WEB_META,
+  'web-dev': WEB_META,
 };
 
 // The card on the Courses page that holds the web courses (WEB_COURSE_KEYS),
