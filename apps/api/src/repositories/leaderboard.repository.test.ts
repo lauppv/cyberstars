@@ -5,6 +5,12 @@ const mockPrisma = {
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
+// No web course exists yet, so web-js plays a closed one and web-css an open one
+vi.mock('@cyberstars/shared/constants', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@cyberstars/shared/constants')>()),
+  WEB_COURSE_KEYS: ['web-js', 'web-css'],
+  isClosedCourse: (courseKey: string) => courseKey === 'web-js',
+}));
 
 const repo = await import('./leaderboard.repository.js');
 
@@ -19,5 +25,13 @@ describe('getRanked', () => {
     mockPrisma.$queryRaw.mockResolvedValue(rows);
     expect(await repo.getRanked()).toEqual(rows);
     expect(mockPrisma.$queryRaw).toHaveBeenCalledTimes(1);
+  });
+
+  it('counts no lesson of a closed course', async () => {
+    mockPrisma.$queryRaw.mockResolvedValue([]);
+    await repo.getRanked();
+    const query = mockPrisma.$queryRaw.mock.calls[0][0];
+    expect(query.sql).toContain('p.course_key <> ALL(');
+    expect(query.values).toContainEqual(['web-js']);
   });
 });

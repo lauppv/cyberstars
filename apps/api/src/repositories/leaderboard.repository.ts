@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import { WEB_COURSE_KEYS, isClosedCourse } from '@cyberstars/shared/constants';
 
 export interface LeaderboardRow {
   id: number;
@@ -22,12 +23,14 @@ export interface LeaderboardRow {
 // = 10 + (sortOrder - 1), plus the daily-pick bonus round(award * 0.2) for
 // lessons the user was awarded a daily bonus on (DailyPick.bonusAwarded). The
 // join is on (course_key, lesson_slug), since UserLessonProgress has no lessonId,
-// and only completed rows that map to a real lesson count.
+// and only completed rows that map to a real lesson count. A closed course
+// (isClosedCourse) earns no XP here, as in the client's useGamification.
 //
 // Note: the query is built inside the function (not a module-level constant) so
 // Prisma.sql only evaluates when called, so route tests that mock @prisma/client
 // without the Prisma export can import this module without tripping it.
 export async function getRanked(): Promise<LeaderboardRow[]> {
+  const closed = WEB_COURSE_KEYS.filter(isClosedCourse);
   const ranked = Prisma.sql`
     SELECT
       u.id,
@@ -47,6 +50,7 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
       MAX(CASE WHEN l.id IS NOT NULL THEN p.completed_at END) AS reached_at
     FROM users u
     LEFT JOIN user_lesson_progress p ON p.user_id = u.id AND p.completed = true
+      AND p.course_key <> ALL(${closed}::text[])
     LEFT JOIN lessons l ON l.course_key = p.course_key AND l.slug = p.lesson_slug
     GROUP BY u.id, u.name, u.avatar_url
   `;
