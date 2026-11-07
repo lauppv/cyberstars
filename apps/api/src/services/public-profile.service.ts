@@ -4,7 +4,12 @@ import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as leaderboardService from './leaderboard.service.js';
 import * as connectionsService from './connections.service.js';
 import { computeStreak, listDone, recentActivity } from './activity.service.js';
-import { levelFromXp, levelTitleKey, LISTED_COURSE_KEYS } from '@cyberstars/shared/constants';
+import {
+  isClosedCourse,
+  levelFromXp,
+  levelTitleKey,
+  LISTED_COURSE_KEYS,
+} from '@cyberstars/shared/constants';
 import type { PublicProfile, PublicProfileBadge } from '@cyberstars/shared/profile';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 
@@ -64,13 +69,15 @@ export async function getPublicProfile(
 
   if (!needStats && !needProgress && !needActivity) return profile;
 
-  const [rank, completed, activityRows, passes] = await Promise.all([
+  const [rank, allCompleted, activityRows, passes] = await Promise.all([
     needStats || needProgress ? leaderboardService.getMyRank(targetId) : Promise.resolve(null),
     needStats || needProgress ? progressRepo.getCompletedByCourse(targetId) : Promise.resolve([]),
     needStats || needActivity ? progressRepo.getActivityDates(targetId) : Promise.resolve([]),
     needStats || needActivity ? laniakeaRepo.listPasses(targetId) : Promise.resolve([]),
   ]);
   const done = listDone(activityRows, passes);
+  // A closed course counts nowhere on a profile: no lessons, course or badge
+  const completed = allCompleted.filter((c) => !isClosedCourse(c.courseKey));
 
   const totalXp = rank?.totalXp ?? 0;
 
