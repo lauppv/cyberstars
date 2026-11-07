@@ -1,0 +1,25 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "Hello, CyberStars!\nLine two\tends here.\n\n0123456789ABCDEFGHIJKLMNOPQRSTUV0123456789ABCDEFGHIJKLMNOPQRSTUV\n"
+    },
+    {
+      "visible": true,
+      "stdin": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\n"
+    },
+    {
+      "stdin": "Temperature:\t21.5\nHumidity:\t64\nTemperature:\t21.5\nHumidity:\t64\nTemperature:\t21.5\nHumidity:\t64\n"
+    },
+    {
+      "stdin": "00000000000000000000000000000000000000000000000000000000000000001\n"
+    },
+    {
+      "stdin": "xxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyxxxxxxxxxxxxxxxx\n"
+    },
+    {
+      "stdin": "ÄÖ ü€ 🙂\n"
+    }
+  ]
+}

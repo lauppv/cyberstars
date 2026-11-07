@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3\nA1 Water 250 2\nA2 Chips 380 1\nB1 Coffee 420 3\nlist\ncoin 100\ncoin 20\ncoin 100\nbuy A9\nbuy A2\ncoin 100\nbuy A1\ncoin 500\nbuy A2\ncoin 100\ncoin 100\ncoin 100\ncoin 50\nbuy A2\ncoin 500\ncoin 500\nbuy B1\ncoin 50\nrefund\nrefund\nrestock A2 4\nlist\ncoin 500\nbuy B1\nreport\ndance\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "2\nA1 Gum 150 3\nA2 Tea 330 1\ncoin 500\nbuy A2\ncoin 500\nbuy A2\nrefund\ncoin 10\ncoin 10\ncoin 50\nbuy A1\ncoin 100\nbuy A1\nreport\nquit\n"
+    },
+    {
+      "stdin": "2\nX1 Bar 260 5\nX2 Mints 120 1\ncoin 100\ncoin 100\ncoin 100\nbuy X1\ncoin 100\ncoin 100\ncoin 100\nbuy X1\ncoin 100\ncoin 100\ncoin 100\nbuy X1\ncoin 100\ncoin 100\ncoin 100\nbuy X1\ncoin 100\ncoin 100\ncoin 100\nbuy X1\ncoin 100\ncoin 100\ncoin 100\nbuy X1\nlist\nreport\ncoin abc\nrestock X1 two\nrestock Y1 3\nrestock X1 0\nrestock X1 4\nlist\nquit\n"
+    },
+    {
+      "stdin": "3\nA1 Water 250 0\nB1 Juice 400 2\nC1 Cookie 90 9\nlist\nbuy A1\nbuy C1\ncoin 50\ncoin 50\nbuy C1\ncoin 500\nbuy B1\ndance now\nquit\n"
+    }
+  ]
+}

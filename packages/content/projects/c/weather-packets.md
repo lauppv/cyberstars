@@ -1,6 +1,6 @@
 A network of small weather stations sits on hilltops around a national park. They run on a battery and a tiny radio, so every message has to be as short as possible: each station sends its whole report as one 32-bit number, every measurement packed into a few bits. You'll write the receiver at the park's office: it unpacks every report with bit operations, throws out the broken ones, keeps a summary per station, and can pack a report the other way for testing.
 
-You build it one step at a time, in one C file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one C file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run packets your program has never seen. Passing them finishes the project.
 
 The program reads everything with `scanf` and writes everything with `printf`. Commands are words: `scanf("%s", cmd)` reads the next one, and `strcmp` tells which it is. Run it, then type the lines of an example yourself to see what it answers.
 

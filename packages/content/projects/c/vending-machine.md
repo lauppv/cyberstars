@@ -1,6 +1,6 @@
 The snack machine in the hallway of a university building is getting a new brain. The old one ate coins and never gave change. You'll write the program inside the new one: it knows its products and prices, takes coins, gives the snack and the change in real coins from its own coin tubes, and tells the technician what sold.
 
-You build it one step at a time, in one C file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it.
+You build it one step at a time, in one C file. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run machines your program has never seen. Passing them finishes the project.
 
 The program reads everything with `scanf` and writes everything with `printf`. Commands are words: `scanf("%s", cmd)` reads the next one, and `strcmp` tells which it is. Run it, then type the lines of an example yourself to see what it answers.
 

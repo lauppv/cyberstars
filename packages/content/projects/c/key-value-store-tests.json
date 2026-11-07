@@ -1,0 +1,19 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "set tea 4\nset salt 2\nset flour 6\nset tea 5\nget flour\nget rice\ndel salt\nget flour\nget salt\ndump\nset lemon 9\ndump\nstats\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "get anything\ndump\nstats\nset apple 12\nset corn 3\nset corn -4\ndump\ndel apple\ndel apple\nget corn\nquit\n"
+    },
+    {
+      "stdin": "set eggs 30\nset leek 2\nset coffee 1\nset dill 5\nset bread 10\nset rice 20\ndel leek\ndel eggs\nget leek\nset kale 1\nset peach 2\ndump\nstats\nset loooooooooooooong 1\nquit\n"
+    },
+    {
+      "stdin": "set a 1\nset b 2\ndump\ndel a\ndel b\ndump\nstats\njuggle a b\nset a 3\ndump\nquit\n"
+    }
+  ]
+}

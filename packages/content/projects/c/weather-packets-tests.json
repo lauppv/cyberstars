@@ -1,0 +1,16 @@
+{
+  "comparator": "trimmed",
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "packet 399E0060\npacket 359AC0F6\npacket 7BB8A028\npacket 3A3E0000\npacket 3A1C0001\npacket 7BBBC028\npacket 399A4084\nstations\nencode 3 21.5 64 12 0 0\nencode 16 20 50 5 0 0\nencode 3 -4.2 88 30 1 1\npacket zz\nlisten\nquit\n"
+    },
+    {
+      "visible": true,
+      "stdin": "packet 0x00064000\npacket FFFFFFFF\npacket 00000000\nencode 0 -40 0 0 0 0\nencode 15 62.3 100 255 1 1\nencode 15 62.4 100 255 1 1\nstations\nquit\n"
+    },
+    {
+      "stdin": "stations\nencode 5 0 0 0 2 0\nencode 5 1.0\npacket 5641C810\npacket 5641C814\npacket 5641C812\nstations\nquit\n"
+    }
+  ]
+}
