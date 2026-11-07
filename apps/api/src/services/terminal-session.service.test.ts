@@ -16,7 +16,13 @@ vi.mock('fs', async (importOriginal) => {
   return { ...patched, default: patched };
 });
 
-const { loadSetup, createSession, execCommand, destroySession } =
+// One Linux project, so the tests don't hang on the real catalog
+vi.mock('@cyberstars/shared/projects', () => ({
+  findProject: (language: string, slug: string) =>
+    language === 'linux' && slug === 'tidy' ? { slug, language } : undefined,
+}));
+
+const { loadSetup, loadProjectSetup, createSession, execCommand, destroySession } =
   await import('./terminal-session.service.js');
 
 function dockerAvailable(): boolean {
@@ -51,6 +57,29 @@ describe('loadSetup', () => {
     );
     const setup = loadSetup('linux', 'test-lesson');
     expect(setup).toEqual({ cwd: '/home/student/docs', dirs: [], files: [] });
+  });
+});
+
+describe('loadProjectSetup', () => {
+  it('reads a Linux project’s files from beside its steps', () => {
+    mockExistsSync.mockReturnValue(true);
+    mockReadFileSync.mockReturnValue(JSON.stringify({ cwd: '/home/student', dirs: [], files: [] }));
+    expect(loadProjectSetup('tidy')).toEqual({
+      cwd: '/home/student',
+      dirs: [],
+      files: [],
+    });
+    expect(mockReadFileSync.mock.lastCall?.[0]).toMatch(/projects\/linux\/tidy-setup\.json$/);
+  });
+
+  it('is a 404 for a slug that isn’t a Linux project, before any file is read', () => {
+    mockExistsSync.mockClear();
+    for (const slug of ['../lessons/linux/pwd', 'nope']) {
+      expect(() => loadProjectSetup(slug)).toThrow(
+        expect.objectContaining({ statusCode: 404, message: 'Project not found' }),
+      );
+    }
+    expect(mockExistsSync).not.toHaveBeenCalled();
   });
 });
 

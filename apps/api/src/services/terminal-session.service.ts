@@ -6,6 +6,9 @@ import type {
   TerminalSessionInfo,
   TerminalExecResult,
 } from '@cyberstars/shared/terminal';
+import { findProject } from '@cyberstars/shared/projects';
+import { PROJECTS_DIR } from '@cyberstars/content/paths';
+import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { contentDir } from './paths.js';
 import { inLine } from './run-waits.js';
 import { addGuestSandboxSource, makeRoomForGuest } from './guest-sandboxes.js';
@@ -104,14 +107,39 @@ export function loadSetup(
   return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
-export async function createSession(
+// A Linux project's starting files sit beside its steps
+// (packages/content/projects/linux/<slug>-setup.json), English only like the
+// project. A slug outside the catalog is a 404, so no other file is read.
+export function loadProjectSetup(slug: string): TerminalSetup | null {
+  if (!findProject('linux', slug)) throw new AppError(404, 'Project not found');
+  const filePath = path.join(PROJECTS_DIR, 'linux', `${slug}-setup.json`);
+  if (!fs.existsSync(filePath)) return null;
+  return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+}
+
+export function createSession(
   courseKey: string,
   lessonSlug: string,
   ownerKey: string,
   lang?: string,
   guestIp?: string,
 ): Promise<TerminalSessionInfo> {
-  const setup = loadSetup(courseKey, lessonSlug, lang);
+  return startSession(loadSetup(courseKey, lessonSlug, lang), ownerKey, guestIp);
+}
+
+export function createProjectSession(
+  slug: string,
+  ownerKey: string,
+  guestIp?: string,
+): Promise<TerminalSessionInfo> {
+  return startSession(loadProjectSetup(slug), ownerKey, guestIp);
+}
+
+async function startSession(
+  setup: TerminalSetup | null,
+  ownerKey: string,
+  guestIp?: string,
+): Promise<TerminalSessionInfo> {
   const cwd = setup?.cwd ?? '/home/student';
 
   const owned = [...sessions].filter(([, s]) => s.ownerKey === ownerKey);

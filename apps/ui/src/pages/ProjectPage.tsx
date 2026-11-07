@@ -13,10 +13,12 @@ import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
+import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { useAuth } from '../context/AuthContext';
 import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { useCodeExecution } from '../hooks/useCodeExecution';
 import { useResizeSplit } from '../hooks/useResizeSplit';
+import { useTerminalSession } from '../hooks/useTerminalSession';
 import { courseLabel, courseMeta } from '../constants/courses';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { PROJECTS, findProject, splitProjectText, type Project } from '@cyberstars/shared/projects';
@@ -364,9 +366,7 @@ function ProjectView({ project }: { project: Project }) {
             className={`${activeTab === 'workspace' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 flex-col bg-[var(--panel-bg)] overflow-hidden`}
           >
             {project.language === 'linux' ? (
-              <div className="flex-1 flex items-center justify-center p-8 text-[13px] text-[var(--text3)]">
-                {t('projects.terminalSoon')}
-              </div>
+              <ProjectTerminal slug={project.slug} onCommandRun={notifyRunComplete} />
             ) : (
               <>
                 <div className="flex items-center justify-between px-4 py-2.5 bg-[rgba(30,30,40,0.3)] border-b border-[var(--border)]">
@@ -417,5 +417,29 @@ function ProjectView({ project }: { project: Project }) {
         </div>
       </div>
     </div>
+  );
+}
+
+// A Linux project's sandbox, started with the project's files; Reset starts
+// it over, since nothing in it is kept
+function ProjectTerminal({
+  slug,
+  onCommandRun,
+}: {
+  slug: string;
+  onCommandRun: (exitCode: number | undefined) => void;
+}) {
+  // A command counts for the guest's sign-up nudge like a lesson's, as one that went well
+  const commandRun = useCallback(() => onCommandRun(0), [onCommandRun]);
+  const terminal = useTerminalSession('linux', slug, commandRun, 'project');
+  return (
+    <TerminalPanel
+      lines={terminal.lines}
+      cwd={terminal.cwd}
+      isReady={terminal.isReady}
+      isExecuting={terminal.isExecuting}
+      onExecute={terminal.execute}
+      onReset={terminal.reset}
+    />
   );
 }

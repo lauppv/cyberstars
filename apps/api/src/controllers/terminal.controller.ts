@@ -21,14 +21,11 @@ export function guestIpOf(req: Request): string | undefined {
 
 export async function createSession(req: Request, res: Response, next: NextFunction) {
   try {
-    const { courseKey, lessonSlug, lang } = req.body;
-    const session = await sessionService.createSession(
-      courseKey,
-      lessonSlug,
-      resolveOwnerKey(req)!,
-      lang,
-      guestIpOf(req),
-    );
+    const owner = resolveOwnerKey(req)!;
+    const { project, courseKey, lessonSlug, lang } = req.body;
+    const session = project
+      ? await sessionService.createProjectSession(project, owner, guestIpOf(req))
+      : await sessionService.createSession(courseKey, lessonSlug, owner, lang, guestIpOf(req));
     res.json(session);
   } catch (err) {
     next(err);

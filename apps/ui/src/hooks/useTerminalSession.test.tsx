@@ -3,6 +3,7 @@ import { renderHook, act, waitFor } from '@testing-library/react';
 
 const h = vi.hoisted(() => ({
   create: vi.fn(),
+  createProject: vi.fn(),
   exec: vi.fn(),
   destroy: vi.fn(),
 }));
@@ -10,6 +11,7 @@ const h = vi.hoisted(() => ({
 vi.mock('react-i18next', () => ({ useTranslation: () => ({ i18n: { language: 'en' } }) }));
 vi.mock('../services/terminalService', () => ({
   createTerminalSession: (...a: unknown[]) => h.create(...a),
+  createProjectTerminalSession: (...a: unknown[]) => h.createProject(...a),
   execTerminalCommand: (...a: unknown[]) => h.exec(...a),
   destroyTerminalSession: (...a: unknown[]) => h.destroy(...a),
 }));
@@ -19,11 +21,23 @@ import { useTerminalSession } from './useTerminalSession';
 beforeEach(() => {
   vi.clearAllMocks();
   h.create.mockResolvedValue({ sessionId: 's1', cwd: '/home/student', intro: 'welcome' });
+  h.createProject.mockResolvedValue({ sessionId: 'p1', cwd: '/home/student/downloads' });
   h.exec.mockResolvedValue({ output: 'hello', cwd: '/home/student' });
   h.destroy.mockResolvedValue(undefined);
 });
 
 describe('useTerminalSession', () => {
+  it("opens a Linux project's sandbox by its slug", async () => {
+    const { result } = renderHook(() =>
+      useTerminalSession('linux', 'downloads-cleanup', undefined, 'project'),
+    );
+
+    await waitFor(() => expect(result.current.isReady).toBe(true));
+    expect(h.createProject).toHaveBeenCalledWith('downloads-cleanup');
+    expect(h.create).not.toHaveBeenCalled();
+    expect(result.current.cwd).toBe('/home/student/downloads');
+  });
+
   it('fires onCommandRun after a successful command', async () => {
     const onCommandRun = vi.fn();
     const { result } = renderHook(() => useTerminalSession('linux', 'intro', onCommandRun));

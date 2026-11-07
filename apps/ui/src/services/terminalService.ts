@@ -9,6 +9,11 @@ export function createTerminalSession(courseKey: string, lessonSlug: string, lan
   return api.post<TerminalSessionInfo>('/api/terminal/session', { courseKey, lessonSlug, lang });
 }
 
+// A Linux project's sandbox, started with the project's own files
+export function createProjectTerminalSession(project: string) {
+  return api.post<TerminalSessionInfo>('/api/terminal/session', { project });
+}
+
 // `runId` names the command, so the page can ask whether it's waiting for a sandbox
 export function execTerminalCommand(sessionId: string, command: string, runId?: string) {
   return api.post<TerminalExecResult>(

@@ -42,6 +42,23 @@ vi.mock('../hooks/useCodeExecution', () => ({
     sendInput: vi.fn(),
   }),
 }));
+const useTerminal = vi.fn();
+vi.mock('../hooks/useTerminalSession', () => ({
+  useTerminalSession: (...a: unknown[]) => {
+    useTerminal(...a);
+    return {
+      lines: [],
+      cwd: '/home/student',
+      isReady: true,
+      isExecuting: false,
+      execute: vi.fn(),
+      reset: vi.fn(),
+    };
+  },
+}));
+vi.mock('../components/terminal/TerminalPanel', () => ({
+  TerminalPanel: () => <p>Terminal</p>,
+}));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: ({ breadcrumb }: { breadcrumb: { course: string; lesson: string } }) => (
     <p>
@@ -192,12 +209,17 @@ describe('ProjectPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/projects/python/shop');
   });
 
-  it('says the terminal is coming on a Linux project', async () => {
+  it('opens a terminal with the project’s files on a Linux project, no editor', async () => {
     renderPage('/projects/linux/tidy');
-    expect(
-      await screen.findByText('The terminal for Linux projects is coming soon.'),
-    ).toBeInTheDocument();
+    expect(await screen.findByText('Terminal')).toBeInTheDocument();
+    expect(useTerminal).toHaveBeenCalledWith('linux', 'tidy', expect.any(Function), 'project');
     expect(screen.queryByRole('button', { name: /Run/ })).toBeNull();
+  });
+
+  it('starts no terminal on a project in another language', async () => {
+    renderPage();
+    await screen.findByText('Intro text');
+    expect(useTerminal).not.toHaveBeenCalled();
   });
 
   it.each([

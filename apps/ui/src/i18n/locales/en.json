@@ -581,8 +581,7 @@
     "textFailed": "This project couldn't load.",
     "saveFailed": "That tick couldn't be saved. Try again.",
     "signInToTrack": "Sign in to keep track of the steps you've done.",
-    "markStep": "Mark \"{{title}}\" as done",
-    "terminalSoon": "The terminal for Linux projects is coming soon."
+    "markStep": "Mark \"{{title}}\" as done"
   },
   "algorithms": {
     "desc": {
