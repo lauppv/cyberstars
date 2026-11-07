@@ -8,6 +8,7 @@ import type { TutorStarter } from '../../context/tutorStarters';
 import { useUsage } from '../../context/UsageContext';
 import { TutorAnswer } from './TutorAnswer';
 import { TutorHistory } from './TutorHistory';
+import { TutorHero } from './TutorHero';
 import { TutorMark, type TutorMood } from './TutorMark';
 import { TutorStatus } from './TutorStatus';
 
@@ -361,9 +362,11 @@ export function TutorPanel() {
         {tutor.loadFailed && <Note>{t('tutor.loadFailed')}</Note>}
         {empty && !tutor.loading && !tutor.loadFailed && (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 text-center">
-            <TutorMark size="lg" mood={tutor.cheer ? 'happy' : 'idle'} />
-            <h3 className="text-[14px] font-semibold text-[var(--text)]">{emptyTitle}</h3>
-            <p className="text-[13px] text-[var(--text2)]">
+            <TutorHero title={emptyTitle} mood={tutor.cheer ? 'happy' : 'idle'} />
+            <p
+              className="text-[13px] text-[var(--text2)] rise-in"
+              style={{ animationDelay: '0.5s' }}
+            >
               {t(tutor.lesson ? 'tutor.introLesson' : 'tutor.intro')}
             </p>
             <div className="flex flex-col gap-2 w-full mt-2">
@@ -373,7 +376,7 @@ export function TutorPanel() {
                   type="button"
                   onClick={() => ask(t(starter.key, starter.values))}
                   disabled={limited}
-                  style={{ animationDelay: `${0.08 + i * 0.07}s` }}
+                  style={{ animationDelay: `${0.6 + i * 0.07}s` }}
                   className="rise-in group flex items-center gap-2 px-3 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-left text-[13px] text-[var(--text2)] hover:border-[var(--accent)]/50 hover:bg-[var(--accent)]/5 hover:text-[var(--text)] transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="flex-1 min-w-0">{t(starter.key, starter.values)}</span>
