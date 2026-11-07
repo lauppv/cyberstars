@@ -26,24 +26,9 @@
       "expected": "./2022/IMG_20220611_174402.jpg\n./2022/IMG_20220612_090115.jpg\n./2022/IMG_20221224_201933.jpg\n./2023/IMG_20230402_121010.jpg\n./2023/IMG_20230715_183040.jpg\n./2023/IMG_20230716_101522.jpg\n./2023/IMG_20230803_095847.jpg\n./2023/PXL_20230806_160212.jpg\n./2023/PXL_20231031_190455.jpg\n./2024/PXL_20240101_000312.jpg\n./2024/PXL_20240214_131700.jpg\n./2024/PXL_20240722_082236.jpg\n./2024/PXL_20240723_154410.jpg"
     },
     {
-      "kind": "file_mode",
-      "path": "phone/2022",
-      "mode": "555"
-    },
-    {
-      "kind": "file_mode",
-      "path": "phone/2023",
-      "mode": "555"
-    },
-    {
-      "kind": "file_mode",
-      "path": "phone/2024",
-      "mode": "555"
-    },
-    {
-      "kind": "file_mode",
-      "path": "phone/2023/IMG_20230715_183040.jpg",
-      "mode": "444"
+      "kind": "command_output",
+      "cmd": "stat -c %a phone/2022 phone/2023 phone/2024 phone/2023/IMG_20230715_183040.jpg",
+      "expected": "555\n555\n555\n444"
     }
   ],
   "requires": [

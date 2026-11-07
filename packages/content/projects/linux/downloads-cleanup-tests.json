@@ -6,16 +6,9 @@
       "expected": "16"
     },
     {
-      "kind": "path_absent",
-      "path": "downloads/game-setup-9f3a.part"
-    },
-    {
-      "kind": "path_absent",
-      "path": "downloads/video-call-2b7c.part"
-    },
-    {
-      "kind": "path_absent",
-      "path": "downloads/thumbs.tmp"
+      "kind": "command_output",
+      "cmd": "find downloads -name '*.part' -o -name '*.tmp' | wc -l",
+      "expected": "0"
     },
     {
       "kind": "command_output",
@@ -28,8 +21,9 @@
       "expected": "downloads/archives:\nold-photos.zip\ntax-forms.zip\n\ndownloads/documents:\ncv-final.docx\ninvoice-april.pdf\ninvoice-march.pdf\nrecipe-pancakes.txt\n\ndownloads/images:\nbeach-day.jpg\nbirthday-cake.jpg\nscreenshot-login.png\n\ndownloads/music:\npodcast-ep12.mp3\nroad-trip-mix.mp3\n\ndownloads/videos:\nholiday-video.mp4"
     },
     {
-      "kind": "path_absent",
-      "path": "downloads/documents/cv-final-copy.docx"
+      "kind": "command_output",
+      "cmd": "find downloads -name '*-copy*' | wc -l",
+      "expected": "0"
     },
     {
       "kind": "command_output",
