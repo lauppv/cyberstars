@@ -176,6 +176,20 @@ describe('buildPreviewPage', () => {
     expect(new Set(ids).size).toBe(3);
   });
 
+  it("guards the loops of the page's handlers, and leaves the others alone", () => {
+    const { doc } = build([
+      {
+        path: 'index.html',
+        content:
+          '<script>for (;;) {}</script>\n<button onclick="while (true) {}">a</button>\n<p onmouseover="if (x) return false; go()">b</p>',
+      },
+    ]);
+    expect(doc.querySelector('button')!.getAttribute('onclick')).toBe(
+      '{__cyberstars.s(1);while (true) {if(__cyberstars.t(1))throw __cyberstars.e(2,"index.html");}}',
+    );
+    expect(doc.querySelector('p')!.getAttribute('onmouseover')).toBe('if (x) return false; go()');
+  });
+
   it('shows an empty page for a page the site lacks', () => {
     const { doc } = build([{ path: 'index.html', content: '<p>x</p>' }], 'other.html');
     expect(doc.body.textContent).toBe('');

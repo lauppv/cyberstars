@@ -17,6 +17,8 @@ import { parse, type Node } from 'acorn';
 
 export interface GuardOptions {
   module: boolean;
+  // An attribute's handler (onclick="…"), which may `return`
+  handler?: boolean;
   // The name an error in this code gives its place by (the file, or the page)
   label: string;
   // Gives the name to import a specifier by, or null to leave it alone
@@ -79,6 +81,7 @@ export function guardScript(code: string, options: GuardOptions): GuardedScript 
       ecmaVersion: 'latest',
       sourceType: options.module ? 'module' : 'script',
       allowHashBang: true,
+      allowReturnOutsideFunction: options.handler ?? false,
       locations: true,
     }) as unknown as AnyNode;
   } catch {

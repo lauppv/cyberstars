@@ -91,6 +91,14 @@ describe('guardScript', () => {
     expect(run(out.code).error).toBe('loop at index.html:11');
   });
 
+  it("reads a handler as a function's body, so it may return", () => {
+    const code = 'if (!log) return false; while (true) {}';
+    expect(guardScript(code, { module: false, label: 'index.html' }).code).toBe(code);
+    expect(run(guardScript(code, { module: false, handler: true, label: 'a' }).code).error).toBe(
+      'loop at a:1',
+    );
+  });
+
   it('leaves code that does not parse as it is', () => {
     expect(guardScript('while (true {', { module: false, label: 'a.js' })).toEqual({
       code: 'while (true {',

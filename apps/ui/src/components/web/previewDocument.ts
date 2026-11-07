@@ -11,7 +11,8 @@ import { previewPrelude, type PreludeConfig } from './previewPrelude';
 //   blob: URL it makes from `scripts` (an external script keeps its src, so
 //   `defer` and `async` mean what they mean on a real site);
 // * images of the site as data: URLs;
-// * a guard in every loop (scriptGuard.ts).
+// * a guard in every loop (scriptGuard.ts), the loops of its handlers
+//   (onclick="…") too.
 //
 // A reference to a file the site doesn't have is listed in `missing`, for the
 // console to say so.
@@ -184,6 +185,22 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
       script.textContent = guard(code, module, page, page, lineOf(code)).code;
     }
     guardPending();
+  }
+  // A handler's loops name the line the handler is first written on
+  for (const el of Array.from(doc.querySelectorAll('*'))) {
+    for (const attr of Array.from(el.attributes)) {
+      if (!attr.name.toLowerCase().startsWith('on')) continue;
+      const at = source.indexOf(attr.value);
+      const out = guardScript(attr.value, {
+        module: false,
+        handler: true,
+        label: page,
+        firstLoop: loops,
+        firstLine: at < 0 ? 1 : source.slice(0, at).split('\n').length,
+      });
+      loops += out.loops;
+      if (out.loops > 0) el.setAttribute(attr.name, out.code);
+    }
   }
 
   const config: PreludeConfig = {
