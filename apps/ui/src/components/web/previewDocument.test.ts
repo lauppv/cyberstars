@@ -156,6 +156,26 @@ describe('buildPreviewPage', () => {
     expect(missing).toEqual([{ file: 'nope.js', from: 'main.js' }]);
   });
 
+  it('numbers the loops of every file apart, an imported one too', () => {
+    const { doc, scripts } = build([
+      {
+        path: 'index.html',
+        content: '<script type="module" src="main.js"></script><script>for (;;) {}</script>',
+      },
+      { path: 'main.js', content: "import { step } from './util.js';\nwhile (true) { step(); }" },
+      { path: 'util.js', content: 'export function step() { for (const x of [1, 2]) {} }' },
+    ]);
+    const code = [
+      ...scripts.map((s) => s.code),
+      ...Array.from(doc.querySelectorAll('script'))
+        .slice(1)
+        .map((s) => s.textContent ?? ''),
+    ].join('\n');
+    const ids = Array.from(code.matchAll(/__cyberstars\.s\((\d+)\)/g), (m) => m[1]);
+    expect(ids).toHaveLength(3);
+    expect(new Set(ids).size).toBe(3);
+  });
+
   it('shows an empty page for a page the site lacks', () => {
     const { doc } = build([{ path: 'index.html', content: '<p>x</p>' }], 'other.html');
     expect(doc.body.textContent).toBe('');

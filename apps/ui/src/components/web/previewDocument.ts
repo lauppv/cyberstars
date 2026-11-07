@@ -62,6 +62,12 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
     if (!missing.some((m) => m.file === file && m.from === from)) missing.push({ file, from });
   };
   let loops = 0;
+  // The files a script imports, guarded once the script itself is: guarding
+  // one inside another would number both files' loops from the same place
+  const pending: (() => void)[] = [];
+  const guardPending = () => {
+    for (let next = pending.shift(); next; next = pending.shift()) next();
+  };
 
   const guard = (code: string, module: boolean, label: string, from: string, firstLine = 1) => {
     const deps: string[] = [];
@@ -100,9 +106,11 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
     scriptNames[token] = path;
     const script: PreviewScript = { token, code: '', deps: [] };
     scripts.push(script);
-    const guarded = guard(code, module, path, path);
-    script.code = `${guarded.code}\n//# sourceURL=${path}`;
-    script.deps = guarded.deps;
+    pending.push(() => {
+      const guarded = guard(code, module, path, path);
+      script.code = `${guarded.code}\n//# sourceURL=${path}`;
+      script.deps = guarded.deps;
+    });
     return token;
   }
 
@@ -175,6 +183,7 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
       const code = script.textContent;
       script.textContent = guard(code, module, page, page, lineOf(code)).code;
     }
+    guardPending();
   }
 
   const config: PreludeConfig = {
