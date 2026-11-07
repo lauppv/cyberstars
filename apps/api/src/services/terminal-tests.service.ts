@@ -5,6 +5,8 @@ import { dockerExec } from '@cyberstars-framework/sandbox/docker';
 import { getSessionView } from './terminal-session.service.js';
 import { compareOutputs } from './lesson-tests.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
+import { findProject } from '@cyberstars/shared/projects';
+import { PROJECTS_DIR } from '@cyberstars/content/paths';
 import type {
   TerminalCheck,
   TerminalCheckResult,
@@ -123,9 +125,33 @@ export async function runTerminalTests(
 ): Promise<TerminalTestResult> {
   const spec = loadTerminalTestsSpec(courseKey, lessonSlug, lang);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
+  return checkSession(ownerKey, sessionId, spec);
+}
 
+// A Linux project's checks sit beside its steps
+// (packages/content/projects/linux/<slug>-tests.json) and only judge a session
+// started for that project, with its files.
+export async function runProjectTerminalTests(
+  ownerKey: string,
+  sessionId: string,
+  slug: string,
+): Promise<TerminalTestResult> {
+  const file = path.join(PROJECTS_DIR, 'linux', `${slug}-tests.json`);
+  if (!findProject('linux', slug) || !fs.existsSync(file)) {
+    throw new AppError(404, 'This project has no tests');
+  }
+  const spec = JSON.parse(fs.readFileSync(file, 'utf8')) as TerminalTestsSpec;
+  return checkSession(ownerKey, sessionId, spec, slug);
+}
+
+async function checkSession(
+  ownerKey: string,
+  sessionId: string,
+  spec: TerminalTestsSpec,
+  project?: string,
+): Promise<TerminalTestResult> {
   const session = getSessionView(sessionId, ownerKey);
-  if (!session) throw new AppError(404, 'Session not found');
+  if (!session || session.project !== project) throw new AppError(404, 'Session not found');
 
   const checks = spec.checks ?? [];
   const results: TerminalCheckResult[] = new Array(checks.length);

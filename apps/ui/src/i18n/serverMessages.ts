@@ -140,6 +140,7 @@ const RO: Record<string, string> = {
     'Serverul e ocupat acum, încearcă din nou peste câteva clipe',
   'Test run failed, please try again': 'Testele n-au putut rula, încearcă din nou',
   'This lesson has no tests': 'Lecția aceasta nu are teste',
+  'This project has no tests': 'Proiectul acesta nu are teste',
   'A run is already in progress': 'O rulare e deja în curs',
   'Could not start the runner. Please try again.': 'Nu am putut porni rularea. Încearcă din nou.',
   'Invalid submission id': 'Încercare invalidă',

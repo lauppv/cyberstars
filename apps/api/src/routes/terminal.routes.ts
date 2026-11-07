@@ -2,14 +2,28 @@ import { Router, type Request, type Response, type NextFunction } from 'express'
 import { limiter } from '../middleware/rateLimit.js';
 import { optionalAuth } from '../middleware/auth.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
-import { createSessionSchema, execSchema, checkSchema } from '../schemas/terminal.schema.js';
+import {
+  createSessionSchema,
+  execSchema,
+  checkSchema,
+  projectCheckSchema,
+} from '../schemas/terminal.schema.js';
+import { requireFeatureAccess } from '../middleware/features.js';
 import {
   resolveOwnerKey,
   createSession,
   exec,
   checkTests,
+  checkProject,
   destroy,
 } from '../controllers/terminal.controller.js';
+
+// Linux projects are a preview feature: their sandboxes and checks follow its gate
+const projectsGate = requireFeatureAccess('projects');
+function gateProjects(req: Request, res: Response, next: NextFunction): void {
+  if (req.body?.project === undefined) return next();
+  void projectsGate(req, res, next);
+}
 
 // When the per-user terminal exec limit is hit, mirror the editor's wording and
 // tell the user how many seconds remain until the window resets.
@@ -82,6 +96,7 @@ router.post(
   requireOwner,
   guestIpLimiter(30),
   sessionLimiter,
+  gateProjects,
   validateBody(createSessionSchema),
   createSession,
 );
@@ -102,6 +117,16 @@ router.post(
   checkLimiter,
   validateBody(checkSchema),
   checkTests,
+);
+router.post(
+  '/project-check',
+  optionalAuth,
+  requireOwner,
+  projectsGate,
+  guestIpLimiter(60),
+  checkLimiter,
+  validateBody(projectCheckSchema),
+  checkProject,
 );
 router.delete('/session/:sessionId', optionalAuth, requireOwner, destroy);
 

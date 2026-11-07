@@ -34,6 +34,8 @@ interface Session {
   lastActivity: number;
   // The network a guest's session counts against (guest-sandboxes.ts)
   guestIp?: string;
+  // The Linux project the session was started for, whose judge it answers to
+  project?: string;
 }
 
 const sessions = new Map<string, Session>();
@@ -132,13 +134,14 @@ export function createProjectSession(
   ownerKey: string,
   guestIp?: string,
 ): Promise<TerminalSessionInfo> {
-  return startSession(loadProjectSetup(slug), ownerKey, guestIp);
+  return startSession(loadProjectSetup(slug), ownerKey, guestIp, slug);
 }
 
 async function startSession(
   setup: TerminalSetup | null,
   ownerKey: string,
   guestIp?: string,
+  project?: string,
 ): Promise<TerminalSessionInfo> {
   const cwd = setup?.cwd ?? '/home/student';
 
@@ -160,6 +163,7 @@ async function startSession(
     lastOutput: '',
     lastActivity: Date.now(),
     guestIp,
+    project,
   };
   sessions.set(sessionId, session);
   executing.add(sessionId);
@@ -280,6 +284,7 @@ export interface SessionView {
   containerId: string;
   history: string[];
   cwd: string;
+  project?: string;
 }
 
 // Read-only snapshot for the state-check judge (terminal-tests.service). A
@@ -289,7 +294,12 @@ export function getSessionView(sessionId: string, ownerKey: string): SessionView
   const session = sessions.get(sessionId);
   if (!session || session.ownerKey !== ownerKey) return null;
   session.lastActivity = Date.now();
-  return { containerId: session.containerId, history: [...session.history], cwd: session.cwd };
+  return {
+    containerId: session.containerId,
+    history: [...session.history],
+    cwd: session.cwd,
+    project: session.project,
+  };
 }
 
 export async function destroySession(sessionId: string, ownerKey?: string): Promise<void> {

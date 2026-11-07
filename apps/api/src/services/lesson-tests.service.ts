@@ -11,7 +11,9 @@ import { prepareC, type PrepareResult } from './c-analysis.js';
 import { acquireJudgeSlot } from './judge-queue.js';
 import { inLine } from './run-waits.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
-import { readHarness, studentHarness, studentLines, wrapCode } from './harness.js';
+import { readHarness, studentHarness, studentLines, wrapCode, type Harness } from './harness.js';
+import { findProject } from '@cyberstars/shared/projects';
+import { PROJECTS_DIR } from '@cyberstars/content/paths';
 import type {
   LessonTestsSpec,
   RunTestsResponse,
@@ -384,19 +386,97 @@ export async function runLessonTests(
   const spec = loadTestsSpec(courseKey, lessonSlug, lang, language);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
   const runtime = runtimeKey(courseKey, language);
-  const judge = RUNNERS[getRuntime(runtime)?.name ?? ''];
-  if (!judge) throw new AppError(404, 'This lesson has no tests');
-  const solutionCode = loadSolutionCode(courseKey, lessonSlug, lang, language);
   // On a challenge with a hidden part the student wrote only the function, so
   // their program is it wrapped in that part.
   const harness = studentHarness(courseKey, lessonSlug, lang, language, userCode);
-  const program = wrapCode(harness, userCode);
+  return judgeProgram({
+    ownerKey,
+    guestIp,
+    waitKey,
+    spec,
+    runtime,
+    // A multi-language course's lesson is one per language.
+    cacheCourse: runtime === courseKey ? courseKey : `${courseKey}/${runtime}`,
+    slug: lessonSlug,
+    lang,
+    solutionCode: loadSolutionCode(courseKey, lessonSlug, lang, language),
+    program: wrapCode(harness, userCode),
+    harness,
+  });
+}
+
+// A project's tests and reference solution sit beside its steps
+// (packages/content/projects/<language>/<slug>-tests.json and -solution.md),
+// English only, and stay on the server like a lesson's. The whole program is
+// the student's: no hidden part, and only stdin goes in.
+export async function runProjectTests(
+  ownerKey: string,
+  language: string,
+  slug: string,
+  userCode: string,
+  guestIp?: string,
+  waitKey: string | null = null,
+): Promise<RunTestsResponse> {
+  const project = findProject(language, slug);
+  const dir = path.join(PROJECTS_DIR, language);
+  const specFile = path.join(dir, `${slug}-tests.json`);
+  if (!project || project.language === 'linux' || !fs.existsSync(specFile)) {
+    throw new AppError(404, 'This project has no tests');
+  }
+  const md = fs.readFileSync(path.join(dir, `${slug}-solution.md`), 'utf8');
+  const solutionCode = md.match(/```[\w-]*\n([\s\S]*?)```/)?.[1];
+  if (!solutionCode) throw new AppError(500, 'Test run failed, please try again');
+  return judgeProgram({
+    ownerKey,
+    guestIp,
+    waitKey,
+    spec: JSON.parse(fs.readFileSync(specFile, 'utf8')) as LessonTestsSpec,
+    runtime: language,
+    cacheCourse: `project/${language}`,
+    slug,
+    lang: 'en',
+    solutionCode,
+    program: userCode,
+    harness: null,
+  });
+}
+
+interface JudgeRequest {
+  ownerKey: string;
+  guestIp?: string;
+  waitKey: string | null;
+  spec: LessonTestsSpec;
+  // The runtime the program runs in, which picks the runner and the container
+  runtime: string;
+  // What keys the reference cache, with the slug and lang
+  cacheCourse: string;
+  slug: string;
+  lang?: string;
+  solutionCode: string;
+  program: string;
+  // The hidden part the program sits in, whose lines an error mustn't name
+  harness: Harness | null;
+}
+
+async function judgeProgram({
+  ownerKey,
+  guestIp,
+  waitKey,
+  spec,
+  runtime,
+  cacheCourse,
+  slug,
+  lang,
+  solutionCode,
+  program,
+  harness,
+}: JudgeRequest): Promise<RunTestsResponse> {
+  const judge = RUNNERS[getRuntime(runtime)?.name ?? ''];
+  if (!judge) throw new AppError(404, 'This lesson has no tests');
 
   // Cases whose reference output is cached skip our solution; the load test
   // always runs it fresh, next to the student's program, for the runtime.
-  // A multi-language course's lesson is one per language.
-  const cacheCourse = runtime === courseKey ? courseKey : `${courseKey}/${runtime}`;
-  const keys = referenceKeys(spec, cacheCourse, lessonSlug, lang, solutionCode);
+  const keys = referenceKeys(spec, cacheCourse, slug, lang, solutionCode);
   const cached = keys.map((key) => (key ? getReference(key) : undefined));
   const skipSolution = new Set(cached.flatMap((out, index) => (out === undefined ? [] : [index])));
 

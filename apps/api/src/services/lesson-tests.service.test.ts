@@ -56,7 +56,8 @@ vi.mock('./c-analysis.js', () => ({
   prepareC: (...args: unknown[]) => mockPrepareC(...args),
 }));
 
-const { loadTestsSpec, compareOutputs, runLessonTests } = await import('./lesson-tests.service.js');
+const { loadTestsSpec, compareOutputs, runLessonTests, runProjectTests } =
+  await import('./lesson-tests.service.js');
 const { clearReferences } = await import('./reference-cache.js');
 
 const SPEC = {
@@ -1057,5 +1058,36 @@ describe('runLessonTests on a challenge with a hidden part', () => {
     const res = await runLessonTests('user:1', 'algo-trees-graphs', 'max-depth', 'x', 'en', 'c');
 
     expect(res.syntaxError).toBe('line 4: error');
+  });
+});
+
+describe('runProjectTests', () => {
+  it.each([
+    ['a project not in the catalog', 'python', 'nope'],
+    ['a project of another language', 'java', 'library-desk'],
+    ['a Linux project, which the terminal judges', 'linux', 'downloads-cleanup'],
+  ])('404s for %s', async (_, language, slug) => {
+    stubFiles();
+    await expect(runProjectTests('user:1', language, slug, 'x')).rejects.toMatchObject({
+      statusCode: 404,
+    });
+    expect(mockConverse).not.toHaveBeenCalled();
+  });
+
+  it('404s for a project whose tests file is missing', async () => {
+    mockExistsSync.mockReturnValue(false);
+    await expect(runProjectTests('user:1', 'python', 'library-desk', 'x')).rejects.toMatchObject({
+      statusCode: 404,
+    });
+  });
+
+  it('judges the whole program against the reference, case by case, from its own folder', async () => {
+    stubFiles(ONE_CASE);
+    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
+    const res = await runProjectTests('user:1', 'python', 'library-desk', 'print("ok")');
+    expect(res.status).toBe('passed');
+    const read = mockReadFileSync.mock.calls.map((c) => String(c[0]));
+    expect(read.some((f) => /projects\/python\/library-desk-tests\.json$/.test(f))).toBe(true);
+    expect(read.some((f) => /projects\/python\/library-desk-solution\.md$/.test(f))).toBe(true);
   });
 });

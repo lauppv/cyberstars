@@ -25,3 +25,9 @@ export const checkSchema = z.object({
   lessonSlug: z.string().min(1),
   lang: z.enum(['en', 'ro']).optional(),
 });
+
+// A Linux project's checks, on a session started for that project
+export const projectCheckSchema = z.object({
+  sessionId: z.string().uuid(),
+  project: z.string().min(1).max(100),
+});

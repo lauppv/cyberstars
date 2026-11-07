@@ -10,12 +10,15 @@ const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
 vi.mock('@cyberstars-framework/sandbox/docker', () => ({ dockerExec: mockDockerExec }));
 vi.mock('./terminal-session.service.js', () => ({ getSessionView: mockGetSessionView }));
 
-const { loadTerminalTestsSpec, runTerminalTests } = await import('./terminal-tests.service.js');
+const { loadTerminalTestsSpec, runTerminalTests, runProjectTerminalTests } =
+  await import('./terminal-tests.service.js');
 const { contentDir } = await import('./paths.js');
 
 const b64 = (s: string) => Buffer.from(s, 'utf8').toString('base64');
 
-function view(over: Partial<{ containerId: string; history: string[]; cwd: string }> = {}) {
+function view(
+  over: Partial<{ containerId: string; history: string[]; cwd: string; project: string }> = {},
+) {
   return {
     containerId: 'container-abc',
     history: [] as string[],
@@ -325,5 +328,50 @@ describe('runTerminalTests', () => {
         false,
       );
     });
+  });
+});
+
+describe('runProjectTerminalTests', () => {
+  it('throws 404 for a slug that is not a Linux project, before any session lookup', async () => {
+    for (const slug of ['library-desk', 'no-such-project', '../lessons/linux/cd']) {
+      await expect(runProjectTerminalTests('user:1', 'sid', slug)).rejects.toThrow(
+        'This project has no tests',
+      );
+    }
+    expect(mockGetSessionView).not.toHaveBeenCalled();
+  });
+
+  it('judges only a session started for that project', async () => {
+    mockGetSessionView.mockReturnValue(view({ project: 'photo-archive' }));
+    await expect(runProjectTerminalTests('user:1', 'sid', 'downloads-cleanup')).rejects.toThrow(
+      'Session not found',
+    );
+    mockGetSessionView.mockReturnValue(view());
+    await expect(runProjectTerminalTests('user:1', 'sid', 'downloads-cleanup')).rejects.toThrow(
+      'Session not found',
+    );
+    expect(mockDockerExec).not.toHaveBeenCalled();
+  });
+
+  it('runs the project’s checks and command rules on its session', async () => {
+    mockGetSessionView.mockReturnValue(
+      view({ project: 'downloads-cleanup', history: ['mv a b', 'rm c', 'find .'] }),
+    );
+    mockDockerExec.mockResolvedValue('');
+    const res = await runProjectTerminalTests('user:1', 'sid', 'downloads-cleanup');
+    expect(res.status).toBe('failed');
+    expect(mockDockerExec).toHaveBeenCalledOnce();
+    const rules = res.checks.filter((c) => c.messageKey === 'terminalTests.require.command');
+    expect(rules.length).toBeGreaterThan(0);
+    expect(rules.every((c) => c.passed)).toBe(true);
+  });
+});
+
+describe('a lesson check on a project session', () => {
+  it('is refused, so a project’s files never finish a lesson', async () => {
+    mockGetSessionView.mockReturnValue(view({ project: 'downloads-cleanup' }));
+    await expect(runTerminalTests('user:1', 'sid', 'linux', 'cd')).rejects.toThrow(
+      'Session not found',
+    );
   });
 });
