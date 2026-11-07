@@ -144,6 +144,38 @@ describe('CoursesPage', () => {
     }
   });
 
+  it('in production opens Web Development for admins and the founder only', () => {
+    vi.stubEnv('PROD', true);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse, jsCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    for (const role of ['USER', 'MODERATOR', 'ADMIN', 'FOUNDER'] as const) {
+      mockUseAuth.mockReturnValue({
+        isLoggedIn: true,
+        isLoading: false,
+        user: { role },
+      } as unknown as ReturnType<typeof useAuth>);
+      mockNavigate.mockClear();
+      const { unmount } = renderPage();
+      const card = screen.getByText('Web Development').closest('.panel')!;
+      expect(within(card as HTMLElement).getByText('Coming soon')).toBeInTheDocument();
+      fireEvent.click(card);
+      const opens = role === 'ADMIN' || role === 'FOUNDER';
+      expect(card.hasAttribute('aria-disabled')).toBe(!opens);
+      expect(mockNavigate).toHaveBeenCalledTimes(opens ? 1 : 0);
+      unmount();
+
+      const inside = renderPage('/courses/web');
+      expect(screen.queryByText('JavaScript') !== null).toBe(opens);
+      inside.unmount();
+    }
+    mockUseAuth.mockReturnValue({ isLoggedIn: false, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
+  });
+
   it('in development opens Web Development, still marked coming soon', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse, jsCourse],

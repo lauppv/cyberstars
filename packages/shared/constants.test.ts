@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import { PREVIEW_FEATURES } from './features.js';
 import {
   progressPct,
   baseLanguage,
@@ -7,7 +8,6 @@ import {
   ALL_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
   WEB_COURSE_KEYS,
-  WEB_DEVELOPMENT_OPEN,
   LISTED_COURSE_KEYS,
   isClosedCourse,
   xpForLesson,
@@ -129,10 +129,10 @@ describe('web courses', () => {
     }
   });
 
-  it('are closed and listed nowhere until Web Development opens', () => {
+  it('are closed and listed nowhere while Web Development is in preview', () => {
     for (const key of WEB_COURSE_KEYS) {
-      expect(isClosedCourse(key)).toBe(!WEB_DEVELOPMENT_OPEN);
-      expect(LISTED_COURSE_KEYS.includes(key)).toBe(WEB_DEVELOPMENT_OPEN);
+      expect(isClosedCourse(key)).toBe(PREVIEW_FEATURES.webDevelopment);
+      expect(LISTED_COURSE_KEYS.includes(key)).toBe(!PREVIEW_FEATURES.webDevelopment);
     }
   });
 

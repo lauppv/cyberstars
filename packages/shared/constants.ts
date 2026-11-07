@@ -1,3 +1,5 @@
+import { PREVIEW_FEATURES } from './features.js';
+
 export function progressPct(completed: number, total: number): number {
   return total > 0 ? Math.round((completed / total) * 100) : 0;
 }
@@ -48,13 +50,11 @@ export const TERMINAL_COURSE_KEYS = ['linux'] as const;
 // by the ticket that starts it.
 export const WEB_COURSE_KEYS: readonly string[] = [];
 
-// Web Development is closed until it launches: its card opens only in
-// development, and its courses are listed nowhere else. Launching is setting
-// this to true.
-export const WEB_DEVELOPMENT_OPEN = false;
-
+// A web course while Web Development is in preview (PREVIEW_FEATURES): only
+// admins and the founder open its card, and its courses are listed nowhere
+// else. Launching is flipping that flag.
 export function isClosedCourse(courseKey: string): boolean {
-  return !WEB_DEVELOPMENT_OPEN && WEB_COURSE_KEYS.includes(courseKey);
+  return PREVIEW_FEATURES.webDevelopment && WEB_COURSE_KEYS.includes(courseKey);
 }
 
 // The courses Home, Progress, profiles, the daily picks, the sitemap and the
@@ -62,7 +62,7 @@ export function isClosedCourse(courseKey: string): boolean {
 export const LISTED_COURSE_KEYS: readonly string[] = [
   ...MAIN_COURSE_KEYS,
   ...TERMINAL_COURSE_KEYS,
-  ...(WEB_DEVELOPMENT_OPEN ? WEB_COURSE_KEYS : []),
+  ...(PREVIEW_FEATURES.webDevelopment ? [] : WEB_COURSE_KEYS),
 ];
 
 // The lesson every new account is walked through before the rest of the app

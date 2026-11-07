@@ -6,7 +6,8 @@ export type FeatureKey =
   | 'messaging'
   | 'notifications'
   | 'connections'
-  | 'tutorChat';
+  | 'tutorChat'
+  | 'webDevelopment';
 
 // Features that are "preview": live in the code, but on production only ADMINs
 // can reach them; everyone else sees a "Coming Soon" treatment and the routes
@@ -19,6 +20,10 @@ export const PREVIEW_FEATURES: PreviewFlags<FeatureKey> = {
   notifications: false,
   connections: false,
   tutorChat: false,
+  // The Web Development card and its courses (WEB_COURSE_KEYS): while in
+  // preview the card opens for admins and the founder only, and the courses
+  // are listed nowhere else (isClosedCourse)
+  webDevelopment: true,
 };
 
 // Shared access rule (the access package's, over CyberStars' features and its

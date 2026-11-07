@@ -15,11 +15,11 @@ import {
   MAIN_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
   WEB_COURSE_KEYS,
-  WEB_DEVELOPMENT_OPEN,
   CODE_LANGUAGES,
   isBeta,
   isMultiLanguage,
 } from '@cyberstars/shared/constants';
+import { canAccessFeature, PREVIEW_FEATURES } from '@cyberstars/shared/features';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { LoadError } from '../components/ui/LoadError';
 import { CourseMark } from '../components/ui/CourseMark';
@@ -43,7 +43,7 @@ interface CourseData {
 export function CoursesPage() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
   const { courses: serverCourses, isLoading: curriculumLoading } = useCurriculum();
   const {
     progressMap,
@@ -56,10 +56,11 @@ export function CoursesPage() {
   const { course: selectedKey } = useParams<{ course?: string }>();
   const [searchParams] = useSearchParams();
   const legacyOpen = searchParams.get('open');
-  // The Web Development card opens in development, and in production once it
-  // launches; inside it, its courses take the place of the others, and a web
-  // course's syllabus opens over them
-  const webOpen = WEB_DEVELOPMENT_OPEN || !import.meta.env.PROD;
+  // While Web Development is in preview its card opens in production only for
+  // admins and the founder (and for everyone in development); inside it, its
+  // courses take the place of the others, and a web course's syllabus opens
+  // over them
+  const webOpen = canAccessFeature('webDevelopment', user?.role, import.meta.env.PROD);
   const inWeb =
     webOpen && (selectedKey === WEB_DEVELOPMENT || WEB_COURSE_KEYS.includes(selectedKey ?? ''));
   const openCourse = (key: string) => navigate(`/courses/${key}`);
@@ -406,7 +407,7 @@ export function CoursesPage() {
 }
 
 // The Web Development card: Coming soon until it launches, and opening into
-// its courses wherever it is open (in development before the launch)
+// its courses for whoever may open it (admins and the founder before the launch)
 function WebDevelopmentCard({ open, onOpen }: { open: boolean; onOpen: () => void }) {
   const { t } = useTranslation();
   const key = WEB_DEVELOPMENT;
@@ -420,7 +421,7 @@ function WebDevelopmentCard({ open, onOpen }: { open: boolean; onOpen: () => voi
         open
           ? 'group cursor-pointer transition-all hover:border-[var(--course)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_#0004]'
           : 'cursor-default'
-      } ${WEB_DEVELOPMENT_OPEN ? '' : 'opacity-70'}`}
+      } ${PREVIEW_FEATURES.webDevelopment ? 'opacity-70' : ''}`}
       style={{ '--course': color, backgroundImage: courseWash(key) } as CSSProperties}
     >
       <div className="h-1.5 w-full" style={{ background: color }} />
@@ -436,7 +437,7 @@ function WebDevelopmentCard({ open, onOpen }: { open: boolean; onOpen: () => voi
             </div>
             <div className="text-[12px] text-[var(--text3)]">{langLabel}</div>
           </div>
-          {!WEB_DEVELOPMENT_OPEN && (
+          {PREVIEW_FEATURES.webDevelopment && (
             <span className="flex-shrink-0 self-start text-[12px] font-semibold px-2.5 py-0.5 rounded-full border border-[var(--border)] text-[var(--text2)]">
               {t('common.comingSoon')}
             </span>
