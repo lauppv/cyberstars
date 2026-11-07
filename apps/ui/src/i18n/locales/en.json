@@ -581,7 +581,11 @@
     "textFailed": "This project couldn't load.",
     "saveFailed": "That tick couldn't be saved. Try again.",
     "signInToTrack": "Sign in to keep track of the steps you've done.",
-    "markStep": "Mark \"{{title}}\" as done"
+    "markStep": "Mark \"{{title}}\" as done",
+    "finishedTag": "Finished",
+    "passedXp": "Project finished: +{{xp}} XP",
+    "passedGuest": "Every test passes. Sign in to keep the project and its XP.",
+    "showOutput": "Back to output"
   },
   "algorithms": {
     "desc": {

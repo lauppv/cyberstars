@@ -11,12 +11,18 @@ import { courseLabel, courseMeta, courseWash } from '../constants/courses';
 import { useAuth } from '../context/AuthContext';
 import { progressPct } from '@cyberstars/shared/constants';
 import { canAccessFeature } from '@cyberstars/shared/features';
-import { PROJECTS, PROJECT_LANGUAGES, type ProjectCheckDTO } from '@cyberstars/shared/projects';
+import {
+  PROJECTS,
+  PROJECT_LANGUAGES,
+  type ProjectCheckDTO,
+  type ProjectCompletionDTO,
+} from '@cyberstars/shared/projects';
 import * as projectsService from '../services/projectsService';
 import { NotFoundPage } from './NotFoundPage';
 
 // A language's projects as a list, laid out like a challenge list: the
-// difficulty filters on top, each project with how many of its steps are ticked
+// difficulty filters on top, each project with how many of its steps are ticked.
+// Only passing its judge finishes a project; ticks are the student's own notes.
 export function ProjectListPage() {
   const { language = '' } = useParams<{ language: string }>();
   const navigate = useNavigate();
@@ -24,14 +30,17 @@ export function ProjectListPage() {
   const { user } = useAuth();
   const [filter, setFilter] = useState<DifficultyFilter>('all');
   const [checks, setChecks] = useState<ProjectCheckDTO[] | null>(null);
+  const [completions, setCompletions] = useState<ProjectCompletionDTO[]>([]);
   const [failed, setFailed] = useState(false);
   const allowed = canAccessFeature('projects', user?.role, import.meta.env.PROD);
   const known = (PROJECT_LANGUAGES as readonly string[]).includes(language);
 
   const fetchChecks = useCallback(() => {
-    projectsService
-      .getChecks()
-      .then(setChecks)
+    Promise.all([projectsService.getChecks(), projectsService.getCompletions()])
+      .then(([ticks, done]) => {
+        setChecks(ticks);
+        setCompletions(done);
+      })
       .catch(() => setFailed(true));
   }, []);
 
@@ -49,11 +58,15 @@ export function ProjectListPage() {
     for (const c of checks ?? []) {
       if (c.language === language) ticked.set(c.slug, (ticked.get(c.slug) ?? 0) + 1);
     }
-    return PROJECTS.filter((p) => p.language === language).map((p) => {
-      const done = ticked.get(p.slug) ?? 0;
-      return { ...p, done, finished: done === p.steps.length };
-    });
-  }, [checks, language]);
+    const finishedSlugs = new Set(
+      completions.filter((c) => c.language === language).map((c) => c.slug),
+    );
+    return PROJECTS.filter((p) => p.language === language).map((p) => ({
+      ...p,
+      done: ticked.get(p.slug) ?? 0,
+      finished: finishedSlugs.has(p.slug),
+    }));
+  }, [checks, completions, language]);
 
   if (!allowed || !known) return <NotFoundPage />;
 

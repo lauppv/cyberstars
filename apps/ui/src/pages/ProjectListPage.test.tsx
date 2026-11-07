@@ -42,7 +42,7 @@ vi.mock('@cyberstars/shared/projects', async (importOriginal) => {
 });
 vi.mock('../context/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('@cyberstars/shared/features', () => ({ canAccessFeature: vi.fn() }));
-vi.mock('../services/projectsService', () => ({ getChecks: vi.fn() }));
+vi.mock('../services/projectsService', () => ({ getChecks: vi.fn(), getCompletions: vi.fn() }));
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => null }));
 vi.mock('./NotFoundPage', () => ({ NotFoundPage: () => <p>Not found</p> }));
 
@@ -76,6 +76,9 @@ beforeEach(() => {
     { language: 'python', slug: 'bank', stepId: 'a' },
     { language: 'c', slug: 'shell', stepId: 'a' },
   ]);
+  vi.mocked(projectsService.getCompletions).mockResolvedValue([
+    { language: 'python', slug: 'bank', completedAt: '2026-11-08T10:00:00.000Z' },
+  ]);
 });
 
 describe('ProjectListPage', () => {
@@ -90,6 +93,17 @@ describe('ProjectListPage', () => {
     expect(screen.queryByText('Shell')).toBeNull();
     fireEvent.click(shop);
     expect(mockNavigate).toHaveBeenCalledWith('/projects/python/shop');
+  });
+
+  it('finishes a project only by its judge, not by ticking every step', async () => {
+    vi.mocked(projectsService.getChecks).mockResolvedValue([
+      { language: 'python', slug: 'shop', stepId: 'a' },
+      { language: 'python', slug: 'shop', stepId: 'b' },
+    ]);
+    vi.mocked(projectsService.getCompletions).mockResolvedValue([]);
+    renderPage();
+    expect(await screen.findByText('Finished: 0 of 2')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Shop/ })).toHaveTextContent('1Shop2 / 2easy');
   });
 
   it('filters by difficulty, keeping each project’s number', async () => {

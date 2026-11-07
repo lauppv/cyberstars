@@ -4,6 +4,9 @@ import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '@cyberstars/shared/constants';
+import { canAccessFeature } from '@cyberstars/shared/features';
+import { PROJECT_XP, findProject } from '@cyberstars/shared/projects';
+import * as projectsService from '../services/projectsService';
 import { badgeLabel, badgeDescription, badgeMaxLevel } from '../components/gamification/badgeMeta';
 
 interface BadgeDef {
@@ -39,14 +42,38 @@ export interface Gamification {
 
 export function useGamification(): Gamification {
   const { t } = useTranslation();
-  const { isLoggedIn, isLoading: authLoading } = useAuth();
+  const { user, isLoggedIn, isLoading: authLoading } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
-  const [, setTick] = useState(0);
+  const [tick, setTick] = useState(0);
   const forceRefresh = useCallback(() => {
     refresh();
     setTick((t) => t + 1);
   }, [refresh]);
+
+  // Finished projects add their XP on top of the courses'. Only a student the
+  // projects feature lets in has any; a failed read just leaves them out.
+  const [projectXp, setProjectXp] = useState(0);
+  const projectsOpen = isLoggedIn && canAccessFeature('projects', user?.role, import.meta.env.PROD);
+  useEffect(() => {
+    if (!projectsOpen) return;
+    let live = true;
+    projectsService
+      .getCompletions()
+      .then((done) => {
+        if (!live) return;
+        let xp = 0;
+        for (const c of done) {
+          const project = findProject(c.language, c.slug);
+          if (project) xp += PROJECT_XP[project.difficulty];
+        }
+        setProjectXp(xp);
+      })
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, [projectsOpen, tick]);
 
   const isLoading = authLoading || curriculumLoading || (isLoggedIn && progressLoading);
 
@@ -68,6 +95,7 @@ export function useGamification(): Gamification {
       pc[c.key] = { done, total };
     }
 
+    earnedXp += projectsOpen ? projectXp : 0;
     const level = levelFromXp(earnedXp);
     const levelStart = xpForLevel(level);
     const xpIntoLevel = earnedXp - levelStart;
@@ -83,7 +111,7 @@ export function useGamification(): Gamification {
     };
 
     return { totalCompleted: comp, totalLessons: tot, perCourse: pc, xp: xpState };
-  }, [courses, progressMap]);
+  }, [courses, progressMap, projectXp, projectsOpen]);
 
   const badges: BadgeDef[] = useMemo(() => {
     const result: BadgeDef[] = [];
