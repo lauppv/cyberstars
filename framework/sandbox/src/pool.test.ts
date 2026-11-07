@@ -156,6 +156,14 @@ describe('acquireForRun', () => {
     expect(java).toContain('eclipse-temurin:21-jdk-alpine');
   });
 
+  it('gives a language its own process cap when it has one', async () => {
+    const browser = { ...pythonRuntime, name: 'browser', image: 'browser:1', pids: '192' };
+    const own = createPool({ ...OPTIONS, languages: { browser } });
+    await own.acquireForRun('user:web', 'browser');
+    const run = dockerCalls().find((a) => a[0] === 'run')!;
+    expect(run).toEqual(expect.arrayContaining(['--memory=128m', '--pids-limit=192']));
+  });
+
   it("knows only the languages it was given, not an object's own keys", () => {
     expect(pool.runtimeOf('python')).toBe(pythonRuntime);
     expect(pool.runtimeOf('c')).toBeNull();
