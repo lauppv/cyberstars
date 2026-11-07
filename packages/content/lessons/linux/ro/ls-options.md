@@ -55,11 +55,8 @@ Poți scrie `ls -la`, `ls -al` sau `ls -l -a`: toate au același efect.
 
 ## Misiune: Descoperă Fișierele Ascunse
 
-Securitatea stației a semnalat un fișier ascuns undeva în directorul tău personal și vrea totodată o privire detaliată în folderul `rapoarte`. Scanările obișnuite au ratat fișierul ascuns pentru că fișierele ascunse nu apar într-o listare simplă.
-
-1. Listează **toate** elementele de aici (inclusiv pe cele ascunse) în format **long**, printr-o singură comandă.
-2. Apoi inspectează doar folderul `rapoarte` în format long.
+Securitatea stației spune că un fișier se ascunde în directorul tău personal, unde o listare simplă nu-l arată. Vor o singură comandă care listează directorul tău personal cu toate elementele, inclusiv cele ascunse, și care deosebește fișierele de foldere. Apoi vor aceleași detalii pentru ce se află în `rapoarte`, fără să intri acolo.
 
 **Rezultat așteptat**
 
-Vezi fiecare element (inclusiv fișierul ascuns care începe cu `.`) cu detalii care arată care intrări sunt fișiere și care directoare, plus o listare detaliată a ceea ce se află în `rapoarte`.
+Poți numi fișierul ascuns, poți spune care intrări sunt foldere și poți da mărimea fișierului păstrat în `rapoarte`.

@@ -46,10 +46,8 @@ Nu-ți face griji că trebuie să memorezi totul. Terminalul este un loc unde po
 
 ## Misiune: Prima Transmisiune
 
-Sistemul de comunicații al stației tocmai a fost activat și are nevoie de un test de semnal. Sarcina ta este să trimiți primul mesaj de la acest terminal.
-
-Folosește comanda `echo` pentru a transmite exact mesajul: `Centru de comanda online`
+Sistemul de comunicații al stației tocmai a pornit și are nevoie de un test de semnal. Trimite primul mesaj de la acest terminal: terminalul trebuie să afișeze înapoi exact `Centru de comanda online`.
 
 **Rezultat așteptat**
 
-Terminalul afișează `Centru de comanda online`, confirmând că transmisiunea ta a fost recepționată.
+Sub comanda ta apare linia `Centru de comanda online`, cuvânt cu cuvânt.
