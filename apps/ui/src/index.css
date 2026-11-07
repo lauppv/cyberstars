@@ -495,8 +495,8 @@ body {
   animation: spin 1.1s linear infinite;
 }
 /* The empty conversation's mark (TutorHero): a soft light of the accent and
-   the landing page's lavender slowly turning behind it, and a thin arc
-   circling it a little faster */
+   the landing page's lavender standing still behind it (no animated
+   backgrounds), and a thin arc circling it */
 .tutor-aura {
   position: absolute;
   inset: -16px;
@@ -504,7 +504,6 @@ body {
   background: conic-gradient(from 0deg, var(--accent), #a99cf5, transparent 55%, var(--accent));
   filter: blur(18px);
   opacity: 0.35;
-  animation: spin 9s linear infinite;
 }
 .tutor-orbit {
   position: absolute;
@@ -547,7 +546,6 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .tutor-mark-thinking::before,
-  .tutor-aura,
   .tutor-orbit,
   .tutor-streaming > :last-child::after,
   .rise-in {

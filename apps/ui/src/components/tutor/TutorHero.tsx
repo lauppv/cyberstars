@@ -4,7 +4,7 @@ import { TutorMark, type TutorMood } from './TutorMark';
 const REDUCED = '(prefers-reduced-motion: reduce)';
 
 // What greets the student before a conversation starts: the tutor's mark in a
-// soft light that slowly turns, a thin arc circling it, and the greeting
+// soft, still light, a thin arc circling it, and the greeting
 // typed in, quick, in the landing page's gradient. Under reduced motion it all
 // stands still and the greeting shows whole
 export function TutorHero({ title, mood }: { title: string; mood: TutorMood }) {
