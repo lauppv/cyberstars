@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import type { ConversationDTO } from '@cyberstars/shared/messages';
 import { Avatar } from '../ui/Avatar';
+import { Link } from 'react-router';
+import { Inbox } from 'lucide-react';
+import { EmptyState } from '../ui/EmptyState';
 
 export function ConversationList({
   conversations,
@@ -17,9 +20,16 @@ export function ConversationList({
 
   if (conversations.length === 0) {
     return (
-      <div className="px-4 py-10 text-center text-[13px] text-[var(--text3)]">
-        {t('messages.emptyInbox')}
-      </div>
+      <EmptyState
+        icon={Inbox}
+        title={t('messages.emptyInbox')}
+        hint={t('messages.emptyInboxHint')}
+        action={
+          <Link to="/connections" className="btn btn-secondary btn-sm">
+            {t('connections.title')}
+          </Link>
+        }
+      />
     );
   }
 

@@ -17,6 +17,8 @@ import type {
   ConnectionsOverview,
   PendingConnection,
 } from '@cyberstars/shared/connections';
+import { Users } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 /** The server's reason in the page's language, else a general one. */
 function errMsg(err: unknown): string {
@@ -147,9 +149,12 @@ export function ConnectionsPage() {
           ) : loadFailed ? (
             <LoadError text={t('connections.loadFailed')} onRetry={retry} />
           ) : isEmpty ? (
-            <div className="text-center text-[var(--text3)] py-16 panel px-6">
-              {t('connections.empty')}
-            </div>
+            <EmptyState
+              framed
+              icon={Users}
+              title={t('connections.empty')}
+              hint={t('connections.emptyHint')}
+            />
           ) : (
             <>
               {incoming.length > 0 && (

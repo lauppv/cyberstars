@@ -497,16 +497,17 @@
     "lessons_few": "{{count}} lecții",
     "lessons_other": "{{count}} de lecții",
     "loadMore": "Încarcă mai multe",
-    "empty": "Nimeni nu a câștigat XP încă. Termină o lecție ca să ocupi primul loc!",
+    "empty": "Nimeni nu a câștigat XP încă",
     "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu.",
-    "place": "Locul {{rank}}"
+    "place": "Locul {{rank}}",
+    "emptyHint": "Termină o lecție ca să ocupi primul loc."
   },
   "messages": {
     "title": "Mesaje",
-    "emptyInbox": "Nicio conversație încă.",
+    "emptyInbox": "Nicio conversație încă",
     "loadFailed": "Conversațiile tale nu s-au putut încărca.",
     "historyFailed": "Conversația nu s-a putut încărca.",
-    "selectPrompt": "Alege o conversație ca să începi discuția.",
+    "selectPrompt": "Alege o conversație",
     "noMessagesYet": "Niciun mesaj încă",
     "deletedMessage": "Mesaj șters",
     "youPrefix": "Tu: ",
@@ -522,7 +523,8 @@
     "loadOlder": "Încarcă mesaje mai vechi",
     "seen": "Văzut",
     "sent": "Trimis",
-    "actions": "Acțiuni mesaj"
+    "actions": "Acțiuni mesaj",
+    "emptyInboxHint": "Începe una din profilul cuiva sau din conexiunile tale."
   },
   "notif": {
     "title": "Notificări",
@@ -786,9 +788,9 @@
     "submit": "Trimite tichetul",
     "submitted": "Tichet trimis!",
     "yourTickets": "Tichetele tale",
-    "noTickets": "Nu ai deschis încă niciun tichet.",
+    "noTickets": "Nu ai deschis încă niciun tichet",
     "allTickets": "Toate tichetele · Admin",
-    "noTicketsAdmin": "Niciun tichet de la nimeni încă.",
+    "noTicketsAdmin": "Niciun tichet de la nimeni încă",
     "types": {
       "BUG": "Raportare bug",
       "QUESTION": "Întrebare",
@@ -933,7 +935,7 @@
     "cancel": "Anulează",
     "posting": "Se postează...",
     "createThread": "Creează discuția",
-    "noThreads": "Încă nu există discuții. Fii primul care postează!",
+    "noThreads": "Încă nu există discuții",
     "solved": "✓ Rezolvată",
     "loadingThread": "Se încarcă discuția...",
     "threadNotFound": "Discuția nu a fost găsită.",
@@ -980,7 +982,8 @@
     "viewsLower_other": "de vizualizări",
     "postsCount_one": "{{count}} postare",
     "postsCount_few": "{{count}} postări",
-    "postsCount_other": "{{count}} de postări"
+    "postsCount_other": "{{count}} de postări",
+    "noThreadsHint": "Fii primul care postează."
   },
   "almanac": {
     "categories": {
@@ -1464,7 +1467,7 @@
   },
   "connections": {
     "title": "Conexiuni",
-    "empty": "Nicio conexiune încă. Vizitează profilul cuiva ca să te conectezi.",
+    "empty": "Nicio conexiune încă",
     "incoming": "Cereri primite",
     "outgoing": "Cereri trimise",
     "mine": "Conexiunile mele",
@@ -1473,7 +1476,8 @@
     "remove": "Elimină",
     "cancel": "Anulează",
     "pending": "În așteptare",
-    "loadFailed": "Conexiunile tale nu s-au putut încărca."
+    "loadFailed": "Conexiunile tale nu s-au putut încărca.",
+    "emptyHint": "Vizitează profilul cuiva ca să te conectezi."
   },
   "settings": {
     "preferences": "Preferințe",

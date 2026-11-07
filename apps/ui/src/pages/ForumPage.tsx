@@ -19,6 +19,8 @@ import type {
 } from '@cyberstars/shared/forum';
 import { isAdmin, type AuthenticatedUser, type UserRole } from '@cyberstars/shared/auth';
 import './ForumPage.css';
+import { MessagesSquare } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -476,7 +478,11 @@ function CategoryView({
 
       <div className="thread-table">
         {threads.length === 0 ? (
-          <div className="thread-empty">{t('forum.noThreads')}</div>
+          <EmptyState
+            icon={MessagesSquare}
+            title={t('forum.noThreads')}
+            hint={t('forum.noThreadsHint')}
+          />
         ) : (
           threads.map((th) => (
             <div

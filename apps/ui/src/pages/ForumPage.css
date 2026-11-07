@@ -375,13 +375,6 @@
   overflow: hidden;
 }
 
-.thread-empty {
-  padding: 40px 20px;
-  text-align: center;
-  color: var(--text3);
-  font-size: 14px;
-}
-
 .thread-row {
   display: grid;
   grid-template-columns: 32px 1fr 90px 90px 200px;

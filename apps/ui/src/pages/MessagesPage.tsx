@@ -9,6 +9,8 @@ import { LoadError } from '../components/ui/LoadError';
 import { ConversationList } from '../components/messages/ConversationList';
 import { MessageThread } from '../components/messages/MessageThread';
 import { canAccessFeature } from '@cyberstars/shared/features';
+import { MessageSquare } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 export function MessagesPage() {
   const navigate = useNavigate();
@@ -91,8 +93,8 @@ export function MessagesPage() {
                 onBack={() => setSelectedId(null)}
               />
             ) : (
-              <div className="flex-1 flex items-center justify-center text-[13px] text-[var(--text3)] px-6 text-center">
-                {t('messages.selectPrompt')}
+              <div className="flex-1 flex items-center justify-center">
+                <EmptyState icon={MessageSquare} title={t('messages.selectPrompt')} />
               </div>
             )}
           </div>

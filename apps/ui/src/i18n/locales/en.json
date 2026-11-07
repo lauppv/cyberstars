@@ -463,16 +463,17 @@
     "lessons_one": "{{count}} lesson",
     "lessons_other": "{{count}} lessons",
     "loadMore": "Load more",
-    "empty": "No one has earned XP yet. Complete a lesson to claim the top spot!",
+    "empty": "No one has earned XP yet",
     "error": "Could not load the leaderboard. Please try again later.",
-    "place": "Place {{rank}}"
+    "place": "Place {{rank}}",
+    "emptyHint": "Complete a lesson to claim the top spot."
   },
   "messages": {
     "title": "Messages",
-    "emptyInbox": "No conversations yet.",
+    "emptyInbox": "No conversations yet",
     "loadFailed": "Your conversations couldn't be loaded.",
     "historyFailed": "This conversation couldn't be loaded.",
-    "selectPrompt": "Select a conversation to start chatting.",
+    "selectPrompt": "Select a conversation",
     "noMessagesYet": "No messages yet",
     "deletedMessage": "Message deleted",
     "youPrefix": "You: ",
@@ -488,7 +489,8 @@
     "loadOlder": "Load older messages",
     "seen": "Seen",
     "sent": "Sent",
-    "actions": "Message actions"
+    "actions": "Message actions",
+    "emptyInboxHint": "Start one from someone's profile or your connections."
   },
   "notif": {
     "title": "Notifications",
@@ -773,9 +775,9 @@
     "submit": "Submit ticket",
     "submitted": "Ticket submitted!",
     "yourTickets": "Your tickets",
-    "noTickets": "You haven't opened any tickets yet.",
+    "noTickets": "You haven't opened any tickets yet",
     "allTickets": "All tickets · Admin",
-    "noTicketsAdmin": "No tickets from anyone yet.",
+    "noTicketsAdmin": "No tickets from anyone yet",
     "types": {
       "BUG": "Bug report",
       "QUESTION": "Question",
@@ -916,7 +918,7 @@
     "cancel": "Cancel",
     "posting": "Posting...",
     "createThread": "Create Thread",
-    "noThreads": "No threads yet. Be the first to post!",
+    "noThreads": "No threads yet",
     "solved": "✓ Solved",
     "loadingThread": "Loading thread...",
     "threadNotFound": "Thread not found.",
@@ -956,7 +958,8 @@
     "viewsLower_one": "view",
     "viewsLower_other": "views",
     "postsCount_one": "{{count}} post",
-    "postsCount_other": "{{count}} posts"
+    "postsCount_other": "{{count}} posts",
+    "noThreadsHint": "Be the first to post."
   },
   "almanac": {
     "categories": {
@@ -1434,7 +1437,7 @@
   },
   "connections": {
     "title": "Connections",
-    "empty": "No connections yet. Visit someone's profile to connect.",
+    "empty": "No connections yet",
     "incoming": "Received requests",
     "outgoing": "Sent requests",
     "mine": "My connections",
@@ -1443,7 +1446,8 @@
     "remove": "Remove",
     "cancel": "Cancel",
     "pending": "Pending",
-    "loadFailed": "Your connections couldn't be loaded."
+    "loadFailed": "Your connections couldn't be loaded.",
+    "emptyHint": "Visit someone's profile to connect."
   },
   "settings": {
     "preferences": "Preferences",

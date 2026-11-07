@@ -1,7 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { SearchX } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
+import { EmptyState } from '../components/ui/EmptyState';
 import { PageHeader } from '../components/layout/PageHeader';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { SetCard } from '../components/sets/SetCard';
@@ -152,7 +154,7 @@ function ChallengeDrawer({
       onClose={onClose}
     >
       {shown.length === 0 ? (
-        <p className="text-center text-[var(--text3)] text-sm py-6">{t('algoList.noMatch')}</p>
+        <EmptyState icon={SearchX} title={t('algoList.noMatch')} />
       ) : (
         <div className="flex flex-col gap-0.5 pl-1">
           {shown.map((c, i) => (

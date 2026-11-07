@@ -13,6 +13,8 @@ import { CROWNS } from '../components/gamification/crowns';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
 import type { LeaderboardEntry } from '@cyberstars/shared/leaderboard';
+import { Trophy } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 const PAGE_SIZE = 50;
 
@@ -165,7 +167,12 @@ export function LeaderboardPage() {
         ) : error ? (
           <div className="text-center text-[var(--text3)] py-16">{t('leaderboard.error')}</div>
         ) : entries.length === 0 ? (
-          <div className="text-center text-[var(--text3)] py-16">{t('leaderboard.empty')}</div>
+          <EmptyState
+            framed
+            icon={Trophy}
+            title={t('leaderboard.empty')}
+            hint={t('leaderboard.emptyHint')}
+          />
         ) : (
           <>
             <div className="rounded-[var(--radius)] panel overflow-hidden">

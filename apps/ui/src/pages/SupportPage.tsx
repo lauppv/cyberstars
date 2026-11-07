@@ -16,6 +16,8 @@ import type {
 } from '@cyberstars/shared/support';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 import { INPUT_CLS } from '../constants/styles';
+import { LifeBuoy, Inbox } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 const TICKET_TYPE_VALUES: TicketType[] = [
   'BUG',
@@ -210,7 +212,7 @@ export function SupportPage() {
             {myTicketsError ? (
               <LoadError text={myTicketsError} onRetry={refresh} />
             ) : myTickets === null ? null : myTickets.length === 0 ? (
-              <p className="panel p-4 text-[12px] text-[var(--text3)]">{t('support.noTickets')}</p>
+              <EmptyState framed icon={LifeBuoy} title={t('support.noTickets')} />
             ) : (
               <div className="flex flex-col gap-2.5">
                 {myTickets.map((tk) => (
@@ -227,9 +229,7 @@ export function SupportPage() {
               {allTicketsError ? (
                 <LoadError text={allTicketsError} onRetry={refresh} />
               ) : allTickets === null ? null : allTickets.length === 0 ? (
-                <p className="panel p-4 text-[12px] text-[var(--text3)]">
-                  {t('support.noTicketsAdmin')}
-                </p>
+                <EmptyState framed icon={Inbox} title={t('support.noTicketsAdmin')} />
               ) : (
                 <div className="flex flex-col gap-2.5">
                   {allTickets.map((tk) => (

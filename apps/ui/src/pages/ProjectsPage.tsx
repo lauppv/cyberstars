@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { FolderOpen, SearchX } from 'lucide-react';
 import { Topbar } from '../components/layout/Topbar';
+import { EmptyState } from '../components/ui/EmptyState';
 import { PageHeader } from '../components/layout/PageHeader';
 import { PageContainer } from '../components/layout/PageContainer';
 import { SetCard } from '../components/sets/SetCard';
@@ -192,9 +194,10 @@ function ProjectDrawer({
         </div>
       )}
       {shown.length === 0 ? (
-        <p className="text-center text-[var(--text3)] text-sm py-6">
-          {t(count === 0 ? 'projects.noneYet' : 'projects.noMatch')}
-        </p>
+        <EmptyState
+          icon={count === 0 ? FolderOpen : SearchX}
+          title={t(count === 0 ? 'projects.noneYet' : 'projects.noMatch')}
+        />
       ) : (
         <div className="flex flex-col gap-0.5 pl-1">
           {shown.map((p, i) => (
