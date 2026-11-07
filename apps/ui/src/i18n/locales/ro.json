@@ -1420,11 +1420,12 @@
       "dir_exists": "Folderul {{path}} există",
       "path_exists": "{{path}} există",
       "path_absent": "{{path}} nu mai există",
-      "files_equal": "{{b}} are același conținut ca {{a}}",
+      "files_equal": "{{b}} are conținutul cerut de misiune",
       "dirs_equal": "{{b}} este o copie completă a {{a}}",
       "file_contains": "{{path}} conține ce cere misiunea",
       "file_mode": "{{path}} are permisiunile pe care le cere misiunea",
-      "command_output": "Comanda {{cmd}} dă rezultatul așteptat",
+      "command_output": "{{path}} este cum cere misiunea",
+      "command_output_plain": "Rezultatul este cel cerut de misiune",
       "cwd_is": "Ești în {{path}}"
     },
     "require": {

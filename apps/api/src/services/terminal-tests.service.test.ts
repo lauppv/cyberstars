@@ -11,8 +11,14 @@ const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
 vi.mock('@cyberstars-framework/sandbox/docker', () => ({ dockerExec: mockDockerExec }));
 vi.mock('./terminal-session.service.js', () => ({ getSessionView: mockGetSessionView }));
 
-const { loadTerminalTestsSpec, runTerminalTests, runProjectTerminalTests, ruleLabel } =
-  await import('./terminal-tests.service.js');
+const {
+  loadTerminalTestsSpec,
+  runTerminalTests,
+  runProjectTerminalTests,
+  ruleLabel,
+  checkMessage,
+  probedFile,
+} = await import('./terminal-tests.service.js');
 const { contentDir } = await import('./paths.js');
 const { PROJECTS_DIR } = await import('@cyberstars/content/paths');
 
@@ -375,6 +381,34 @@ describe('what a command rule shows', () => {
       }
     }
     expect(wrong).toEqual([]);
+  });
+});
+
+describe('what a check shows', () => {
+  it('shows a probe only by the one file it reads, never its search or count', () => {
+    expect(probedFile("grep -vc '^45.9.148.3 ' report/intruder.txt")).toBe('report/intruder.txt');
+    expect(probedFile('grep -c Fikus shop/clean.csv')).toBe('shop/clean.csv');
+    expect(probedFile('wc -l < report/not-found.txt')).toBe('report/not-found.txt');
+    expect(probedFile("tail -n 1 x/top.txt | awk '{print $11}'")).toBe('x/top.txt');
+    // Several paths can be what the student had to find
+    expect(probedFile('ls phone/2022 phone/2023 phone/2024')).toBeNull();
+    expect(probedFile("ps -eo args= | grep -c '^/usr/bin/nav-computer'")).toBeNull();
+  });
+
+  it('never hands over a probe or the original a copy is checked against', () => {
+    const leaks: string[] = [];
+    for (const { file, spec } of linuxSpecs()) {
+      for (const check of spec.checks ?? []) {
+        const shown = Object.values(checkMessage(check).params ?? {});
+        if (check.kind === 'command_output' && shown.some((v) => v === check.cmd)) {
+          leaks.push(`${path.basename(file)}: ${check.cmd}`);
+        }
+        if (check.kind === 'files_equal' && shown.includes(check.a)) {
+          leaks.push(`${path.basename(file)}: ${check.a}`);
+        }
+      }
+    }
+    expect(leaks).toEqual([]);
   });
 });
 

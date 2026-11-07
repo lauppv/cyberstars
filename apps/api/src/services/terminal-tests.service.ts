@@ -86,10 +86,26 @@ function scriptLine(check: TerminalCheck, i: number): string | null {
   }
 }
 
-function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'> {
+// The file a command_output probe reads, when it reads exactly one: the first
+// command's words that look like a path, quoted text (a search) left out. A
+// probe of several paths can list what the student had to find (the years of
+// the photos), so it names none.
+export function probedFile(cmd: string): string | null {
+  const first = cmd.split(/\||&&|;/)[0].replace(/'[^']*'|"[^"]*"/g, ' ');
+  const paths = first
+    .split(/\s+/)
+    .slice(1)
+    .map((w) => w.replace(/^</, ''))
+    .filter((w) => w && !w.startsWith('-') && (w.includes('/') || /\.\w+$/.test(w)));
+  return paths.length === 1 ? paths[0] : null;
+}
+
+export function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'> {
   const key = `terminalTests.check.${check.kind}`;
   switch (check.kind) {
+    // The copy only: the original can be the file the mission asks to find
     case 'files_equal':
+      return { messageKey: key, params: { b: check.b } };
     case 'dirs_equal':
       return { messageKey: key, params: { a: check.a, b: check.b } };
     // The text a file must hold and the mode it must have stay out of the
@@ -97,8 +113,13 @@ function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'>
     case 'file_contains':
     case 'file_mode':
       return { messageKey: key, params: { path: check.path } };
-    case 'command_output':
-      return { messageKey: key, params: { cmd: check.cmd } };
+    // Never the probe itself, whose search, count or field can be the answer
+    case 'command_output': {
+      const file = probedFile(check.cmd);
+      return file
+        ? { messageKey: key, params: { path: file } }
+        : { messageKey: `${key}_plain`, params: {} };
+    }
     default:
       return { messageKey: key, params: { path: check.path } };
   }
