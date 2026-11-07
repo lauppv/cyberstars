@@ -17,6 +17,7 @@ const TITLES: [string, string][] = [
   ['/progress', 'nav.progress'],
   ['/courses', 'nav.courses'],
   ['/algorithms', 'nav.algorithms'],
+  ['/projects', 'nav.projects'],
   ['/forum', 'nav.forum'],
   ['/almanac', 'nav.almanac'],
   ['/leaderboard', 'nav.leaderboard'],

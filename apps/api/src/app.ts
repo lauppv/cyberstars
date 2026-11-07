@@ -29,6 +29,7 @@ import usageRoutes from './routes/usage.routes.js';
 import laniakeaRoutes from './routes/laniakea.routes.js';
 import visitsRoutes from './routes/visits.routes.js';
 import runsRoutes from './routes/runs.routes.js';
+import projectsRoutes from './routes/projects.routes.js';
 
 export const app = express();
 
@@ -100,6 +101,7 @@ app.use('/api/usage', usageRoutes);
 app.use('/api/laniakea', laniakeaRoutes);
 app.use('/api/visits', visitsRoutes);
 app.use('/api/runs', runsRoutes);
+app.use('/api/projects', projectsRoutes);
 
 // The server's clock, which deploy.sh also asks to know the new backend is up.
 // No auth, no DB, cache-busting headers.

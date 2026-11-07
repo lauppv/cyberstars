@@ -23,6 +23,7 @@ uploads/
 # Generated static lesson content (see scripts/generate-static-content.ts)
 apps/ui/public/lessons/
 apps/ui/public/curriculum.json
+apps/ui/public/projects/
 
 # Deploy-time maintenance flag (created/removed by deploy/deploy.sh on the VPS)
 maintenance.on

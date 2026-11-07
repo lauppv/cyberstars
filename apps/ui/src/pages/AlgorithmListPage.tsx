@@ -11,14 +11,8 @@ import { courseMeta, courseTitle, courseWash } from '../constants/courses';
 import { isBeta, progressPct, xpForLesson } from '@cyberstars/shared/constants';
 import { BetaBadge } from '../components/ui/BetaBadge';
 import { CourseMark } from '../components/ui/CourseMark';
-
-const DIFF_FILTERS = ['all', 'easy', 'medium', 'hard'] as const;
-
-const DIFF_COLORS: Record<string, { bg: string; border: string; text: string }> = {
-  easy: { bg: 'rgba(0,214,143,0.12)', border: 'rgba(0,214,143,0.5)', text: 'var(--success)' },
-  medium: { bg: 'rgba(255,170,0,0.12)', border: 'rgba(255,170,0,0.5)', text: 'var(--warning)' },
-  hard: { bg: 'rgba(255,107,107,0.12)', border: 'rgba(255,107,107,0.5)', text: 'var(--error)' },
-};
+import { DifficultyFilters } from '../components/ui/DifficultyFilters';
+import { DIFF_COLORS, type DifficultyFilter } from '../constants/difficulty';
 
 function parseDifficulty(title: string): { diff: 'easy' | 'medium' | 'hard'; name: string } {
   const m = title.match(/^(Easy|Medium|Hard)\s*·\s*(.+)$/i);
@@ -33,7 +27,7 @@ export function AlgorithmListPage() {
   const { isLoggedIn } = useAuth();
   const { courses, isLoading: curriculumLoading } = useCurriculum();
   const { progressMap, isLoading: progressLoading } = useAllProgress();
-  const [filter, setFilter] = useState<string>('all');
+  const [filter, setFilter] = useState<DifficultyFilter>('all');
 
   const courseKey = `algo-${lang}`;
   const course = courses.find((c) => c.key === courseKey) ?? null;
@@ -126,41 +120,7 @@ export function AlgorithmListPage() {
               </div>
             )}
 
-            {/* Difficulty filters */}
-            <div className="flex gap-1.5">
-              {DIFF_FILTERS.map((d) => {
-                const isActive = filter === d;
-                const dc = d !== 'all' ? DIFF_COLORS[d] : null;
-                const style = dc
-                  ? isActive
-                    ? {
-                        background: dc.bg,
-                        color: dc.text,
-                        border: `1px solid ${dc.text}`,
-                        boxShadow: `0 0 10px ${dc.bg}`,
-                      }
-                    : {
-                        background: 'transparent',
-                        color: dc.text,
-                        border: `1px solid ${dc.border}`,
-                      }
-                  : {
-                      background: isActive ? 'var(--surface2)' : 'var(--bg3)',
-                      color: isActive ? 'var(--text)' : 'var(--text3)',
-                      border: '1px solid transparent',
-                    };
-                return (
-                  <button
-                    key={d}
-                    onClick={() => setFilter(d)}
-                    className="px-3 py-1.5 rounded-full text-[11px] font-semibold cursor-pointer transition-all"
-                    style={style}
-                  >
-                    {t(`algoList.filters.${d}`)}
-                  </button>
-                );
-              })}
-            </div>
+            <DifficultyFilters value={filter} onChange={setFilter} />
           </div>
 
           {/* List */}

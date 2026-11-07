@@ -25,6 +25,8 @@ function renderAt(path: string) {
           <Route path="/algorithms/:lang" element={<span>algorithms</span>} />
           <Route path="/lesson/:category/:lesson" element={<span>lesson</span>} />
           <Route path="/almanac" element={<span>almanac</span>} />
+          <Route path="/projects" element={<span>projects</span>} />
+          <Route path="/projects/:language/:slug" element={<span>project</span>} />
           <Route path="/forum/t/:threadId" element={<span>thread</span>} />
         </Routes>
       </GuestGate>
@@ -38,6 +40,8 @@ describe('GuestGate', () => {
     ['/algorithms/python', 'algorithms'],
     ['/lesson/python/print', 'lesson'],
     ['/almanac', 'almanac'],
+    ['/projects', 'projects'],
+    ['/projects/python/library-desk', 'project'],
   ])('lets a guest open %s', (path, text) => {
     auth = { user: null, isLoading: false };
     renderAt(path);

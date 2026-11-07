@@ -57,10 +57,17 @@ beforeEach(() => {
 });
 
 describe('Sidebar', () => {
-  it('shows a guest only Courses, Algorithms, the Almanac and a sign in link', () => {
+  it('shows a guest only Courses, Algorithms, Projects, the Almanac and a sign in link', () => {
     renderSidebar();
     const links = screen.getAllByRole('link').map((link) => link.textContent);
-    expect(links).toEqual(['CyberStars', 'Courses', 'Algorithms', 'Almanac', 'Sign in']);
+    expect(links).toEqual([
+      'CyberStars',
+      'Courses',
+      'Algorithms',
+      'ProjectsComing soon',
+      'Almanac',
+      'Sign in',
+    ]);
     expect(screen.queryByText('Community')).toBeNull();
   });
 
@@ -158,7 +165,27 @@ describe('Sidebar', () => {
     renderSidebar();
     expect(screen.queryByRole('link', { name: /Messages|Leaderboard|Connections/ })).toBeNull();
     expect(screen.queryByRole('button', { name: 'Tutor' })).toBeNull();
-    expect(screen.getAllByText('Coming soon')).toHaveLength(4);
+    expect(screen.getAllByText('Coming soon')).toHaveLength(5);
+  });
+
+  it.each([
+    ['a student', USER],
+    ['a guest', null],
+  ])('lists Projects as coming soon to %s the feature rule keeps out', (_who, user) => {
+    h.auth = { user };
+    h.canAccess.mockImplementation((key) => key !== 'projects');
+    renderSidebar();
+    expect(h.canAccess).toHaveBeenCalledWith('projects', user?.role, expect.any(Boolean));
+    expect(screen.queryByRole('link', { name: /Projects/ })).toBeNull();
+    expect(screen.getByText('Projects').parentElement).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('opens Projects, still coming soon, to whoever the feature rule lets in', () => {
+    h.auth = { user: { ...USER, role: 'ADMIN' } };
+    renderSidebar();
+    const link = screen.getByRole('link', { name: /Projects/ });
+    expect(link).toHaveAttribute('href', '/projects');
+    expect(link).toHaveTextContent(/^ProjectsComing soon$/);
   });
 
   it('lists the tutor last in the community group and toggles its panel', () => {
