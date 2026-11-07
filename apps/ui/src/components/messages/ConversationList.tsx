@@ -46,7 +46,9 @@ export function ConversationList({
             key={c.id}
             onClick={() => onSelect(c.id)}
             className={`w-full text-left px-3 py-3 flex items-center gap-3 border-b border-[var(--border)] last:border-b-0 transition cursor-pointer bg-transparent border-x-0 border-t-0 hover:bg-[var(--surface)] ${
-              selectedId === c.id ? 'bg-[var(--accent)]/10' : ''
+              selectedId === c.id
+                ? 'bg-[var(--accent)]/10 shadow-[inset_2px_0_0_var(--accent)]'
+                : ''
             }`}
           >
             <Avatar url={c.other.avatarUrl} name={c.other.name} size={40} />
