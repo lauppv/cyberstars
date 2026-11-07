@@ -25,6 +25,7 @@ import {
 } from '@cyberstars/shared/constants';
 import type { Course } from '@cyberstars/shared/lesson';
 import type { CourseProgress } from '@cyberstars/shared/progress';
+import { NotFoundPage } from './NotFoundPage';
 
 function parseDifficulty(title: string): { diff: Difficulty; name: string } {
   const m = title.match(/^(Easy|Medium|Hard)\s*·\s*(.+)$/i);
@@ -52,6 +53,8 @@ export function AlgorithmsPage() {
   const close = useCallback(() => navigate('/algorithms'), [navigate]);
 
   if (curriculumLoading || (isLoggedIn && progressLoading)) return <PageLoading />;
+  // A language with no challenge set, /algorithms/go, is a page that doesn't exist
+  if (lang && !open) return <NotFoundPage />;
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">

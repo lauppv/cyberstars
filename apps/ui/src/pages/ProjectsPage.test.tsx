@@ -161,10 +161,10 @@ describe('ProjectsPage', () => {
     await waitFor(() => expect(screen.queryByRole('alert')).toBeNull());
   });
 
-  it('shows only the cards for a language it doesn’t know', () => {
+  it('is a page that doesn’t exist for a language with no projects', () => {
     renderPage('/projects/rust');
+    expect(screen.getByText('Not found')).toBeInTheDocument();
     expect(screen.queryByRole('dialog')).toBeNull();
-    expect(screen.getByRole('heading', { level: 2, name: /^Python/ })).toBeInTheDocument();
   });
 
   it('is a page that doesn’t exist for someone the gate keeps out', () => {

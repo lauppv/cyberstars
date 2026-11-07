@@ -81,9 +81,9 @@ export function ProjectsPage() {
     [checks],
   );
 
-  if (!allowed) return <NotFoundPage />;
-
   const open = language ? byLanguage.find((l) => l.language === language) : undefined;
+  // A language with no projects, /projects/rust, is a page that doesn't exist
+  if (!allowed || (language && !open)) return <NotFoundPage />;
 
   const tracked = !!user && !!checks;
 

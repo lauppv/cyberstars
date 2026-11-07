@@ -25,6 +25,7 @@ vi.mock('../context/CurriculumContext', () => ({
 }));
 vi.mock('../context/ProgressContext', () => ({ useAllProgress: vi.fn() }));
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => null }));
+vi.mock('./NotFoundPage', () => ({ NotFoundPage: () => <p>Not found</p> }));
 
 const { useAuth } = await import('../context/AuthContext');
 const { useAllProgress } = await import('../context/ProgressContext');
@@ -149,10 +150,10 @@ describe('AlgorithmsPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/algorithms');
   });
 
-  it('shows only the cards for a language with no set', () => {
+  it('is a page that doesn’t exist for a language with no set', () => {
     noProgress();
     renderPage('/algorithms/cobol');
+    expect(screen.getByText('Not found')).toBeInTheDocument();
     expect(screen.queryByRole('dialog')).toBeNull();
-    expect(screen.getByRole('heading', { level: 2, name: 'Python' })).toBeInTheDocument();
   });
 });
