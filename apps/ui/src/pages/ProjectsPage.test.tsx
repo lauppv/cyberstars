@@ -100,6 +100,15 @@ describe('ProjectsPage', () => {
     expect(mockNavigate).toHaveBeenCalledWith('/projects/python/shop');
   });
 
+  it('keeps the bar on a language with every project finished, its button opening the list', async () => {
+    renderPage();
+    expect(await screen.findByText('Finished: 1 of 1')).toBeInTheDocument();
+    // Python's still going; C's one project is finished, so it has no Continue
+    expect(screen.getAllByRole('button', { name: 'Continue' })).toHaveLength(1);
+    fireEvent.click(screen.getAllByRole('button', { name: /View Projects/ })[0]);
+    expect(mockNavigate).toHaveBeenCalledWith('/projects/c');
+  });
+
   it('lists a language’s projects in the drawer with the steps ticked', async () => {
     renderPage('/projects/python');
     const drawer = screen.getByRole('dialog', { name: /Python Projects/ });

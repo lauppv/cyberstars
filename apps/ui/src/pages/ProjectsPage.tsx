@@ -122,7 +122,10 @@ export function ProjectsPage() {
                       }
                     : undefined
                 }
-                onContinue={() => next && navigate(`/projects/${l.language}/${next.slug}`)}
+                // Every project finished: the bar stays, the button opens the list
+                onContinue={
+                  next ? () => navigate(`/projects/${l.language}/${next.slug}`) : undefined
+                }
                 onOpen={() => navigate(`/projects/${l.language}`)}
                 openLabel={t('projects.viewProjects')}
               />

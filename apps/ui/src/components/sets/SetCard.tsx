@@ -96,27 +96,27 @@ export function SetCard({
         )}
         {onOpen && (
           <div className="mt-auto pt-4 flex items-center justify-between">
-            {progress && onContinue ? (
-              <>
-                <div className="flex-1 mr-3">
-                  <div className="text-[11px] text-[var(--text3)] mb-1">{progress.label}</div>
-                  <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
-                    <div
-                      className="h-full rounded-sm transition-[width] duration-400"
-                      style={{ width: `${progress.pct}%`, background: color }}
-                    />
-                  </div>
+            {progress && (
+              <div className="flex-1 mr-3">
+                <div className="text-[11px] text-[var(--text3)] mb-1">{progress.label}</div>
+                <div className="h-1 bg-[var(--bg3)] rounded-sm overflow-hidden">
+                  <div
+                    className="h-full rounded-sm transition-[width] duration-400"
+                    style={{ width: `${progress.pct}%`, background: color }}
+                  />
                 </div>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onContinue();
-                  }}
-                  className="btn btn-primary btn-sm flex-shrink-0"
-                >
-                  {t('courses.continue')}
-                </button>
-              </>
+              </div>
+            )}
+            {progress && onContinue ? (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onContinue();
+                }}
+                className="btn btn-primary btn-sm flex-shrink-0"
+              >
+                {t('courses.continue')}
+              </button>
             ) : (
               <button
                 onClick={(e) => {
