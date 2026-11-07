@@ -47,6 +47,7 @@ function run(files: Record<string, string>, cases: WebTestCase[], stepMs = 3000)
       files,
       stepMs,
       heapMb: 64,
+      height: 800,
       cases: cases.map((c) => ({ page: 'index.html', width: 1280, ...c })),
     }),
   );

@@ -28,7 +28,7 @@ export interface WebTestCase {
   steps: WebStep[];
 }
 
-export interface WebFetchAnswer {
+interface WebFetchAnswer {
   /** 200 by default */
   status?: number;
   body: string;
@@ -43,7 +43,7 @@ interface Labelled {
 }
 
 /** Something the student would do on the page, then the steps after it look again. */
-export type WebAction =
+type WebAction =
   | ({ click: string } & Labelled)
   | ({ fill: string; text: string } & Labelled)
   | ({ press: string; on?: string } & Partial<Labelled>)
@@ -122,7 +122,7 @@ export interface WebObservation {
 
 // ── How a failed check is told ──────────────────────────────────────────────
 
-export type WebFailureKind =
+type WebFailureKind =
   | 'missing'
   | 'text'
   | 'attr'

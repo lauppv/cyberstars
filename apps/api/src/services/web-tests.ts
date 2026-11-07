@@ -5,6 +5,7 @@ import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { isImagePath, isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
 import {
   WEB_DEFAULT_WIDTH,
+  WEB_HEIGHT,
   type WebBox,
   type WebCheck,
   type WebFailure,
@@ -334,6 +335,7 @@ async function runInContainer(
       files,
       stepMs: STEP_MS,
       heapMb: PAGE_HEAP_MB,
+      height: WEB_HEIGHT,
       cases: spec.cases.map((c) => ({
         page: c.page ?? 'index.html',
         width: c.width ?? WEB_DEFAULT_WIDTH,

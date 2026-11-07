@@ -17,7 +17,6 @@ const readline = require('readline');
 const { chromium } = require('playwright-core');
 
 const ORIGIN = 'http://site.test';
-const HEIGHT = 800;
 
 const TYPES = {
   html: 'text/html; charset=utf-8',
@@ -211,7 +210,7 @@ async function runCase(browser, files, testCase, limits) {
   const nav = { pending: false, inflight: 0 };
   let crashed = false;
   const context = await browser.newContext({
-    viewport: { width: testCase.width, height: HEIGHT },
+    viewport: { width: testCase.width, height: limits.height },
     serviceWorkers: 'block',
   });
   try {
