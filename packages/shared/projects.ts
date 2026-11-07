@@ -564,6 +564,95 @@ export const PROJECTS: Project[] = [
       { id: 'cleanup', title: 'Clean up' },
     ],
   },
+  {
+    slug: 'pizza-orders',
+    language: 'java',
+    title: 'Pizza Orders',
+    difficulty: 'easy',
+    summary:
+      'The order program of a pizzeria: a menu in three sizes, orders with extras, a deal for big orders, delivery fees and the best sellers at closing time.',
+    steps: [
+      { id: 'menu', title: 'The menu' },
+      { id: 'sizes', title: 'Three sizes' },
+      { id: 'orders', title: 'Orders' },
+      { id: 'show', title: 'Show an order' },
+      { id: 'deal', title: 'The deal' },
+      { id: 'delivery', title: 'Delivery' },
+      { id: 'report', title: 'Closing time' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'task-board',
+    language: 'java',
+    title: 'Task Board',
+    difficulty: 'easy',
+    summary:
+      "A three-column task board for a small team: tasks with owners, rules for moving them, deadlines, each person's list and a Friday summary.",
+    steps: [
+      { id: 'team', title: 'The team' },
+      { id: 'add', title: 'Add tasks' },
+      { id: 'board', title: 'The board' },
+      { id: 'assign', title: 'Owners' },
+      { id: 'move', title: 'Moving tasks' },
+      { id: 'due', title: 'Deadlines' },
+      { id: 'mine', title: 'My tasks' },
+      { id: 'stats', title: 'Friday summary' },
+    ],
+  },
+  {
+    slug: 'car-rental',
+    language: 'java',
+    title: 'Car Rental',
+    difficulty: 'medium',
+    summary:
+      'A rental office with cars, a van and scooters, each priced its own way through inheritance: rentals, returns, services every 1000 km and a monthly report.',
+    steps: [
+      { id: 'fleet', title: 'The fleet' },
+      { id: 'list', title: "What's on the lot" },
+      { id: 'rent', title: 'Rent' },
+      { id: 'return', title: 'Return and pay' },
+      { id: 'available', title: "What's free" },
+      { id: 'service', title: 'Service' },
+      { id: 'customer', title: 'Customers' },
+      { id: 'report', title: 'The monthly report' },
+    ],
+  },
+  {
+    slug: 'gym-memberships',
+    language: 'java',
+    title: 'Gym Memberships',
+    difficulty: 'medium',
+    summary:
+      'The front desk of a gym: plans with their own hours and prices, check-ins, group classes with a waiting list, plan changes and monthly bills.',
+    steps: [
+      { id: 'members', title: 'Members and plans' },
+      { id: 'in', title: 'Coming in' },
+      { id: 'out', title: 'Going out' },
+      { id: 'classes', title: 'Group classes' },
+      { id: 'cancel', title: 'Cancelling' },
+      { id: 'plan', title: 'Changing plan' },
+      { id: 'bill', title: 'The monthly bill' },
+      { id: 'report', title: "The manager's report" },
+    ],
+  },
+  {
+    slug: 'parcel-tracker',
+    language: 'java',
+    title: 'Parcel Tracker',
+    difficulty: 'medium',
+    summary:
+      "Track parcels between depots: postage by weight, a status that only moves in ways that make sense, failed deliveries, each parcel's journey and late ones.",
+    steps: [
+      { id: 'send', title: 'Send a parcel' },
+      { id: 'statuses', title: 'Statuses' },
+      { id: 'scan', title: 'Scans' },
+      { id: 'track', title: 'Track' },
+      { id: 'failed', title: 'Nobody home' },
+      { id: 'depot', title: "What's at the depot" },
+      { id: 'report', title: 'Late parcels and the report' },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {
