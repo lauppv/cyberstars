@@ -50,13 +50,8 @@ your destination names carefully.
 
 ## Mission: Emergency Backup
 
-A solar storm warning has been issued. Critical station data must be backed up immediately, all gathered in one safe folder before any damage occurs.
-
-1. Create a folder called `backups`.
-2. Copy `mission.txt` into `backups` (keeping its name).
-3. Copy the entire `reports` folder into `backups`. Since it has contents, this needs a recursive copy.
-4. Verify the backup as a tree.
+A solar storm warning has been issued. Before it hits, everything that matters must exist twice: put a copy of the mission file and of the whole `reports` folder, every log inside it included, into a new folder called `backups`. The originals stay where they are.
 
 **Expected result**
 
-`backups` contains a copy of `mission.txt` and a full copy of the `reports` folder with all its logs.
+`backups` holds the mission file and a `reports` folder with the same logs as the original, which is still in your home directory.

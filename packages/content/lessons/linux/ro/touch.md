@@ -43,15 +43,20 @@ la el pur și simplu ca la **„creează un fișier gol"**.
 
 ---
 
-## Misiune: Pregătește fișierele de misiune
+## Misiune: Pregătește Fișierele Misiunii
 
-Comandantul stației are nevoie de fișiere noi pentru briefing-ul de astăzi, plus un loc proaspăt pentru jurnalele zilnice. Directorul tău home are deja pregătit un folder `rapoarte`.
+Comandantul stației are nevoie de fișiere goale pentru briefing-ul de azi și de un loc pentru jurnalele zilnice în folderul `rapoarte` pe care îl ai deja. Când termini, directorul tău personal trebuie să arate așa, cu toate fișierele goale:
 
-1. Creează două fișiere goale `misiune.txt` și `echipaj.txt` în directorul home printr-o **singură** comandă.
-2. Creează un folder nou `jurnale` în interiorul lui `rapoarte`.
-3. Creează două fișiere de jurnal goale în interiorul lui: `rapoarte/jurnale/ziua1.log` și `rapoarte/jurnale/ziua2.log`.
-4. Verifică folderul de jurnale ca arbore.
+```text
+.
+├── echipaj.txt
+├── misiune.txt
+└── rapoarte
+    └── jurnale
+        ├── ziua1.log
+        └── ziua2.log
+```
 
 **Rezultat așteptat**
 
-Listarea afișează `misiune.txt` și `echipaj.txt`, iar arborele lui `rapoarte` afișează `ziua1.log` și `ziua2.log` în interiorul lui `rapoarte/jurnale`.
+Desenat ca arbore, directorul tău personal arată exact ca planul de mai sus.

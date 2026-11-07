@@ -48,15 +48,10 @@ cu grijă numele destinațiilor.
 
 ---
 
-## Misiune: Backup de urgență
+## Misiune: Backup de Urgență
 
-A fost emisă o avertizare de furtună solară. Datele critice ale stației trebuie salvate imediat, toate strânse într-un singur folder sigur, înainte să apară vreo defecțiune.
-
-1. Creează un folder numit `backupuri`.
-2. Copiază `misiune.txt` în `backupuri` (păstrându-i numele).
-3. Copiază întregul folder `rapoarte` în `backupuri`. Fiindcă are conținut, e nevoie de o copiere recursivă.
-4. Verifică backup-ul ca arbore.
+S-a emis o alertă de furtună solară. Înainte să lovească, tot ce contează trebuie să existe de două ori: pune o copie a fișierului misiunii și a întregului folder `rapoarte`, cu toate jurnalele din el, într-un folder nou numit `backupuri`. Originalele rămân unde sunt.
 
 **Rezultat așteptat**
 
-`backupuri` conține o copie a lui `misiune.txt` și o copie completă a folderului `rapoarte` cu toate jurnalele lui.
+`backupuri` ține fișierul misiunii și un folder `rapoarte` cu aceleași jurnale ca originalul, care e tot în directorul tău personal.

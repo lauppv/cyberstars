@@ -53,15 +53,18 @@ Acum există atât `proiecte`, cât și `proiecte/website`.
 
 ---
 
-## Misiune: Construiește un spațiu de lucru
+## Misiune: Construiește un Spațiu de Lucru
 
-Stația are nevoie de o nouă structură de directoare pentru misiunea care urmează. O vei configura de la zero.
+Misiunea care urmează are nevoie de folderele ei, iar intendentul a desenat planul. Directorul tău personal e gol: construiește în el structura asta.
 
-1. Creează un folder numit `misiune`.
-2. În interiorul lui, creează trei foldere frați printr-o **singură** comandă: `misiune/jurnale`, `misiune/date` și `misiune/backupuri`.
-3. Dintr-o singură comandă, creează dintr-odată calea imbricată `misiune/jurnale/ziua1`, inclusiv folderele părinte care nu există încă.
-4. Verifică întreaga structură ca arbore.
+```text
+misiune
+├── backupuri
+├── date
+└── jurnale
+    └── ziua1
+```
 
 **Rezultat așteptat**
 
-Arborele lui `misiune` afișează `jurnale`, `date` și `backupuri`, cu `ziua1` imbricat în interiorul lui `jurnale`.
+Desenat ca arbore, folderul `misiune` arată exact ca planul de mai sus.

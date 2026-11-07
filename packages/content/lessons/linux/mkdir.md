@@ -54,13 +54,16 @@ Now both `projects` and `projects/website` exist.
 
 ## Mission: Build a Workspace
 
-The station needs a new directory structure for the upcoming mission. You will set it up from scratch.
+The upcoming mission needs its own folders, and the quartermaster has drawn the plan. Your home directory is empty: build this structure in it.
 
-1. Create a folder called `mission`.
-2. Inside it, create three sibling folders in a **single** command: `mission/logs`, `mission/data` and `mission/backups`.
-3. In one command, create the nested path `mission/logs/day1` at once, including any parent folders that don't exist yet.
-4. Verify the whole structure as a tree.
+```text
+mission
+├── backups
+├── data
+└── logs
+    └── day1
+```
 
 **Expected result**
 
-The tree of `mission` shows `logs`, `data` and `backups`, with `day1` nested inside `logs`.
+Drawing the `mission` folder as a tree shows exactly the plan above.
