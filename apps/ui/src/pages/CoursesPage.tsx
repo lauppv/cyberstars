@@ -345,7 +345,7 @@ export function CoursesPage() {
                           <div
                             className={`relative z-[1] w-[26px] h-[26px] rounded-full flex items-center justify-center text-[11px] font-semibold flex-shrink-0 border-2 border-[var(--bg2)] transition-all ${
                               ch.done
-                                ? 'bg-[var(--success)] text-white shadow-[0_0_0_2px_var(--bg2),0_0_12px_rgba(0,214,143,0.4)]'
+                                ? 'bg-[var(--success)] text-white shadow-[0_0_0_2px_var(--bg2),0_0_12px_color-mix(in_srgb,var(--success)_40%,transparent)]'
                                 : isNext
                                   ? 'bg-[var(--bg2)] text-[var(--accent)] border-[var(--accent)] ch-next-pulse'
                                   : 'bg-[var(--bg3)] text-[var(--text3)]'

@@ -434,7 +434,7 @@ function OfTheDayCard({
           <span style={{ color: courseMeta(courseKey).color }}>{courseTitle}</span>
         </h3>
         {completed ? (
-          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[rgba(0,214,143,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
+          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[var(--success)]/15 px-2 py-0.5 rounded-full tracking-[0.5px]">
             <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
               <path
                 fillRule="evenodd"
@@ -445,7 +445,7 @@ function OfTheDayCard({
             {t('home.completed')}
           </span>
         ) : (
-          <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
+          <span className="text-[10px] font-semibold text-[var(--warning)] bg-[var(--warning)]/15 px-2 py-0.5 rounded-full tracking-[0.5px]">
             {t('home.recommended')}
           </span>
         )}
