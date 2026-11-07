@@ -384,6 +384,30 @@ describe('what a command rule shows', () => {
   });
 });
 
+describe('the kill lesson', () => {
+  it('takes every way of sending SIGKILL, and nothing politer', () => {
+    for (const lang of ['en', 'ro'] as const) {
+      const rule = loadTerminalTestsSpec('linux', 'kill', lang)!.requires![0];
+      const re = new RegExp(rule.pattern!);
+      for (const ok of [
+        'kill -9 31',
+        'kill -KILL 31',
+        'kill -SIGKILL 31',
+        'kill -s KILL 31',
+        'kill -s SIGKILL 31',
+        'kill -s 9 31',
+        'kill -n 9 31',
+        '/bin/kill --signal KILL 31',
+      ]) {
+        expect(re.test(ok), ok).toBe(true);
+      }
+      for (const no of ['kill 31', 'kill -15 31', 'kill -s TERM 31', 'pkill -9 nav-computer']) {
+        expect(re.test(no), no).toBe(false);
+      }
+    }
+  });
+});
+
 describe('what a check shows', () => {
   it('shows a probe only by the one file it reads, never its search or count', () => {
     expect(probedFile("grep -vc '^45.9.148.3 ' report/intruder.txt")).toBe('report/intruder.txt');

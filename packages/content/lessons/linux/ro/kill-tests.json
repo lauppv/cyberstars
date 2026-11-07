@@ -24,7 +24,7 @@
   "requires": [
     {
       "kind": "command",
-      "pattern": "^(?=.*\\bkill\\b)(?=.*(-9|-KILL|-SIGKILL|-s\\s*KILL)\\b)"
+      "pattern": "^(?=.*\\bkill\\b)(?=.*(-9|-(SIG)?KILL|-[sn]\\s*(9|(SIG)?KILL)|--signal[=\\s]\\s*(9|(SIG)?KILL))\\b)"
     }
   ]
 }
