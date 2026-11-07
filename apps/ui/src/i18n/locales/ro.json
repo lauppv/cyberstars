@@ -21,7 +21,9 @@
     "rules": "Cum păstrăm CyberStars un loc bun pentru învățat.",
     "connections": "Oamenii cu care ești conectat și cererile care așteaptă un răspuns.",
     "profile": "Poza ta, numele și insignele pe care le-ai câștigat.",
-    "admin": "Cum merge platforma și ce le trimiți tuturor."
+    "admin": "Cum merge platforma și ce le trimiți tuturor.",
+    "forum": "Întrebări, răspunsuri și idei de la toți cei care învață aici.",
+    "almanac": "Lecturi scurte despre istoria, oamenii și ideile din spatele informaticii."
   },
   "sidebar": {
     "label": "Navigare principală",

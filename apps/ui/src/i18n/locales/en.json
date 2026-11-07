@@ -22,7 +22,9 @@
     "rules": "How we keep CyberStars a good place to learn.",
     "connections": "The people you're connected with, and the requests waiting for an answer.",
     "profile": "Your picture, your name and the badges you've earned.",
-    "admin": "How the platform is doing, and what to send to everyone."
+    "admin": "How the platform is doing, and what to send to everyone.",
+    "forum": "Questions, answers and ideas from everyone learning here.",
+    "almanac": "Short reads on the history, the people and the ideas behind computing."
   },
   "sidebar": {
     "label": "Main navigation",

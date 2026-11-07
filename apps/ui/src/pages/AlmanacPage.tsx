@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Topbar } from '../components/layout/Topbar';
+import { PageHeader } from '../components/layout/PageHeader';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { StoryModal } from './StoryModal';
 import {
@@ -179,6 +180,7 @@ export function AlmanacPage() {
     <>
       <Topbar />
       <main className="almanac-page">
+        <PageHeader title={t('nav.almanac')} subtitle={t('pages.almanac')} />
         <div className="almanac-filters-bar">
           {!showAllTopics && (
             <button

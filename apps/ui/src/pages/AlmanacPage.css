@@ -1,8 +1,15 @@
 /* ===== Page shell ===== */
 .almanac-page {
-  max-width: 1140px;
+  /* The wide width and margins of PageContainer */
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 36px 28px 60px;
+  padding: 32px 28px 64px;
+}
+
+@media (max-width: 639px) {
+  .almanac-page {
+    padding: 32px 16px 64px;
+  }
 }
 
 /* ===== Filter chips ===== */
