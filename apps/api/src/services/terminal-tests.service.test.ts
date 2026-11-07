@@ -120,29 +120,30 @@ describe('runTerminalTests', () => {
   });
 
   it('compares command_output on the server (decoding base64)', async () => {
-    const expected =
-      'warning: hull temperature rising\nwarning: fuel reserve low\nwarning: comms latency high';
+    const alerts = 'critical: pressure drop deck 7\ncritical: radiation spike lab 3';
+    const healthy = 'ok: oxygen normal\nok: temperature stable\nok: gravity nominal';
     mockGetSessionView.mockReturnValue(
       view({
         history: [
-          'grep warning system.log',
-          'grep error system.log',
-          'cp system.log scan/shift.log',
+          'mkdir report',
+          'grep critical sensors.log > report/alerts.txt',
+          'grep ok sensors.log > report/healthy.txt',
         ],
       }),
     );
-    mockDockerExec.mockResolvedValue(`0 O ${b64(expected + '\n')}\n1 P\n2 P\n`);
-    const res = await runTerminalTests('user:1', 'sid', 'linux', 'grep');
+    mockDockerExec.mockResolvedValue(`0 O ${b64(alerts + '\n')}\n1 O ${b64(healthy + '\n')}\n`);
+    const res = await runTerminalTests('user:1', 'sid', 'linux', 'redirect-out');
     expect(res.status).toBe('passed');
-    expect(
-      res.checks.find((c) => c.messageKey === 'terminalTests.check.command_output')?.passed,
-    ).toBe(true);
+    const outputs = res.checks.filter((c) => c.messageKey === 'terminalTests.check.command_output');
+    expect(outputs.map((c) => c.passed)).toEqual([true, true]);
   });
 
   it('fails command_output when the produced output differs', async () => {
-    mockGetSessionView.mockReturnValue(view({ history: ['grep warning system.log'] }));
+    mockGetSessionView.mockReturnValue(
+      view({ history: ['grep critical sensors.log > report/alerts.txt'] }),
+    );
     mockDockerExec.mockResolvedValue(`0 O ${b64('nothing here')}\n`);
-    const res = await runTerminalTests('user:1', 'sid', 'linux', 'grep');
+    const res = await runTerminalTests('user:1', 'sid', 'linux', 'redirect-out');
     expect(res.status).toBe('failed');
   });
 

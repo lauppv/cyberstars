@@ -1,6 +1,5 @@
 {
   "checks": [
-    { "kind": "dir_exists", "path": "raport" },
     {
       "kind": "command_output",
       "cmd": "cat raport/alerte.txt",
@@ -13,9 +12,13 @@
     }
   ],
   "requires": [
-    { "kind": "command", "pattern": "grep\\b.*critical" },
-    { "kind": "command", "pattern": "grep\\b.*\\bok\\b" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bgrep\\b)(?=.*critical)(?=.*>)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bgrep\\b)(?=.*\\bok\\b)(?=.*>)"
+    }
   ]
 }

@@ -31,21 +31,10 @@ ca să acumulezi date în timp, ca un jurnal de stație care crește cu fiecare 
 
 ---
 
-## Misiune: Actualizarea jurnalului de tură
+## Misiune: Actualizarea Jurnalului de Tură
 
-Ofițerul de gardă ieșit din tură a notat secvența de lansare în `misiune.log`. Tura ta începe acum și trebuie să actualizezi înregistrarea, apoi să depui o copie de siguranță.
-
-1. Adaugă `stare: scuturi nominale` la sfârșitul lui `misiune.log` fără să ștergi intrarea existentă.
-2. Adaugă `stare: echipaj pregatit` la sfârșitul lui `misiune.log` în același fel.
-3. Numără liniile din `misiune.log` ca să confirmi că are acum trei intrări.
-4. Creează un folder numit `arhiva` și copiază `misiune.log` în el sub numele `misiune-backup.log`.
+Ofițerul de gardă care pleacă a început `misiune.log` cu secvența de lansare. Tura ta adaugă două intrări după ea, `stare: scuturi nominale` și apoi `stare: echipaj pregatit`, iar prima intrare trebuie să rămână. Apoi păstrează un backup ca `arhiva/misiune-backup.log`.
 
 **Rezultat așteptat**
 
-`misiune.log` conține toate cele trei linii de stare, iar `arhiva/misiune-backup.log` este o copie identică:
-
-```text
-stare: secventa de lansare initiata
-stare: scuturi nominale
-stare: echipaj pregatit
-```
+`misiune.log` ține cele trei linii de stare în ordine, iar backup-ul e identic cu el.

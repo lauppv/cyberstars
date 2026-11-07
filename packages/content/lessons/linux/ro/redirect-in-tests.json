@@ -1,11 +1,15 @@
 {
   "checks": [
-    { "kind": "command_output", "cmd": "cat suport-viata/numar-echipaj.txt", "expected": "6" },
-    { "kind": "dir_exists", "path": "suport-viata" }
+    {
+      "kind": "command_output",
+      "cmd": "cat suport-viata/numar-echipaj.txt",
+      "expected": "6"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "wc\\b.*-l.*<.*echipaj\\.txt" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bwc\\b)(?=.*<\\s*echipaj\\.txt)"
+    }
   ]
 }

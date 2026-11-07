@@ -47,13 +47,8 @@ anything.
 
 ## Mission: Critical Alert Extraction
 
-The sensor array has been logging readings to `sensors.log`, but the chief engineer wants the important lines split into their own files so the repair crew knows exactly what to fix.
-
-1. Find the lines containing `critical` in `sensors.log` and save that output into a new file called `alerts.txt` instead of printing it to the screen.
-2. Do the same for the healthy readings: capture the lines containing `ok` into a file called `healthy.txt`.
-3. Create a folder called `report` and move both files into it.
-4. Display `report/alerts.txt` to confirm the repair crew's list is correct.
+The sensor array logs its readings to `sensors.log`. The chief engineer wants them split into a `report` folder: `alerts.txt` with every `critical` reading for the repair crew, and `healthy.txt` with every `ok` one. Both files come straight from the log, not typed by hand.
 
 **Expected result**
 
-The `report` folder holds `alerts.txt` (the two critical lines) and `healthy.txt` (the three healthy readings).
+`report/alerts.txt` holds only the critical readings and `report/healthy.txt` only the healthy ones, in the log's order.

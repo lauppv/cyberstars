@@ -44,15 +44,10 @@ orice.
 
 ---
 
-## Misiune: Extragerea alertelor critice
+## Misiune: Extragerea Alertelor Critice
 
-Rețeaua de senzori a înregistrat citiri în `senzori.log`, dar inginerul-șef vrea liniile importante separate în fișiere proprii, ca echipa de reparații să știe exact ce trebuie remediat.
-
-1. Găsește liniile care conțin `critical` în `senzori.log` și salvează acel rezultat într-un fișier nou numit `alerte.txt`, în loc să-l afișezi pe ecran.
-2. Fă la fel pentru citirile sănătoase: capturează liniile care conțin `ok` într-un fișier numit `sanatoase.txt`.
-3. Creează un folder numit `raport` și mută ambele fișiere în el.
-4. Afișează `raport/alerte.txt` ca să confirmi că lista echipei de reparații este corectă.
+Rețeaua de senzori își scrie citirile în `senzori.log`. Inginerul-șef le vrea împărțite într-un folder `raport`: `alerte.txt` cu fiecare citire `critical` pentru echipa de reparații și `sanatoase.txt` cu fiecare citire `ok`. Ambele fișiere vin direct din jurnal, nu scrise de mână.
 
 **Rezultat așteptat**
 
-Folderul `raport` conține `alerte.txt` (cele două linii critice) și `sanatoase.txt` (cele trei citiri sănătoase).
+`raport/alerte.txt` ține doar citirile critice, iar `raport/sanatoase.txt` doar pe cele sănătoase, în ordinea din jurnal.
