@@ -7,9 +7,9 @@ import type { ActivityItem, ActivityKind } from '@cyberstars/shared/profile';
 // it identically.
 
 const MS_PER_DAY = 86_400_000;
-// A little over the heatmap's 20-week span, so days near the left edge still
-// fill in.
-const HEATMAP_WINDOW_DAYS = 150;
+// A little over the year the dashboard's heatmap draws, so days near its left
+// edge still fill in.
+const HEATMAP_WINDOW_DAYS = 380;
 
 export interface Done {
   at: Date;
