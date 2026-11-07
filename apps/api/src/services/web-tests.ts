@@ -42,19 +42,27 @@ const CASE_BUDGET_MS = 20_000;
 // too much memory, long before the container's cap
 const PAGE_HEAP_MB = 128;
 
+// The lesson's spec in the student's language when it has one: its labels
+// are in that language, and so is what a failed check says
+function webSpecFile(
+  courseKey: string,
+  lessonSlug: string,
+  lang?: string,
+): { file: string; lang: 'en' | 'ro' } | null {
+  const base = contentDir(courseKey);
+  const localized = path.join(base, 'ro', `${lessonSlug}-tests.json`);
+  if (lang === 'ro' && fs.existsSync(localized)) return { file: localized, lang: 'ro' };
+  const file = path.join(base, `${lessonSlug}-tests.json`);
+  return fs.existsSync(file) ? { file, lang: 'en' } : null;
+}
+
 export function loadWebTestsSpec(
   courseKey: string,
   lessonSlug: string,
   lang?: string,
 ): WebTestsSpec | null {
-  const base = contentDir(courseKey);
-  const localized = path.join(base, 'ro', `${lessonSlug}-tests.json`);
-  const file =
-    lang === 'ro' && fs.existsSync(localized)
-      ? localized
-      : path.join(base, `${lessonSlug}-tests.json`);
-  if (!fs.existsSync(file)) return null;
-  return JSON.parse(fs.readFileSync(file, 'utf8')) as WebTestsSpec;
+  const found = webSpecFile(courseKey, lessonSlug, lang);
+  return found ? (JSON.parse(fs.readFileSync(found.file, 'utf8')) as WebTestsSpec) : null;
 }
 
 type SiteFile = string | { base64: string };
@@ -226,24 +234,30 @@ function caseBase(testCase: WebTestCase, index: number): TestCaseResult {
   return { index, name: testCase.name, visible: testCase.visible ?? false, passed: false };
 }
 
-// `pages`: the pages the case's site has, so a missing one is said as such
+// `pages`: the pages the case's site has, so a missing one is said as such.
+// `lang`: the spec's, whose labels a failure carries; a Romanian one says so
 export function judgeWebCase(
   testCase: WebTestCase,
   index: number,
   ran: RunnerCase,
   pages: ReadonlySet<string>,
+  lang: 'en' | 'ro' = 'en',
 ): TestCaseResult {
   const base = caseBase(testCase, index);
+  const told = (failure: WebFailure): TestCaseResult => ({
+    ...base,
+    web: lang === 'ro' ? { ...failure, lang } : failure,
+  });
   const page = testCase.page ?? 'index.html';
-  if (!pages.has(page)) return { ...base, web: { kind: 'missing', label: page } };
+  if (!pages.has(page)) return told({ kind: 'missing', label: page });
   const width = testCase.width ?? WEB_DEFAULT_WIDTH;
   for (const [i, step] of testCase.steps.entries()) {
     const seen = ran.steps[i];
     if (!seen) break;
     const failure = judgeStep(step, seen, width);
-    if (failure) return { ...base, web: base.visible ? failure : hide(failure) };
+    if (failure) return told(base.visible ? failure : hide(failure));
   }
-  if (ran.crashed) return { ...base, web: { kind: 'memory' } };
+  if (ran.crashed) return told({ kind: 'memory' });
   if (ran.timedOut) return { ...base, error: 'timeout' };
   // A runner that stopped short without a reason broke
   if (ran.steps.length < testCase.steps.length) failRun();
@@ -277,8 +291,9 @@ export async function runWebLessonTests(
   guestIp?: string,
   waitKey: string | null = null,
 ): Promise<RunTestsResponse> {
-  const spec = loadWebTestsSpec(courseKey, lessonSlug, lang);
-  if (!spec) throw new AppError(404, 'This lesson has no tests');
+  const found = webSpecFile(courseKey, lessonSlug, lang);
+  if (!found) throw new AppError(404, 'This lesson has no tests');
+  const spec = JSON.parse(fs.readFileSync(found.file, 'utf8')) as WebTestsSpec;
   const files = siteFiles(courseKey, code);
 
   if (sandbox.isRunning(ownerKey)) throw new AppError(409, 'A run is already in progress');
@@ -286,7 +301,7 @@ export async function runWebLessonTests(
   try {
     const releaseSandbox = await inLine(waitKey, (onWait) => sandbox.acquireSlot({ onWait }));
     try {
-      return await runInContainer(ownerKey, guestIp, spec, files);
+      return await runInContainer(ownerKey, guestIp, spec, found.lang, files);
     } finally {
       releaseSandbox();
     }
@@ -299,6 +314,7 @@ async function runInContainer(
   ownerKey: string,
   guestIp: string | undefined,
   spec: WebTestsSpec,
+  specLang: 'en' | 'ro',
   files: Record<string, SiteFile>,
 ): Promise<RunTestsResponse> {
   let containerId: string;
@@ -358,7 +374,7 @@ async function runInContainer(
         if (index >= spec.cases.length) failRun();
         const testCase = spec.cases[index];
         const pages = new Set([...Object.keys(files), ...Object.keys(testCase.files ?? {})]);
-        const result = judgeWebCase(testCase, index, message, pages);
+        const result = judgeWebCase(testCase, index, message, pages, specLang);
         cases.push(result);
         if (!result.passed) return 'stop';
         if (index + 1 < spec.cases.length && Date.now() > deadline) {

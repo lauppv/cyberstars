@@ -45,6 +45,12 @@ interface WebWorkspaceProps {
   devMode?: boolean;
   // A note over the whole workspace (the saved code couldn't be loaded)
   banner?: ReactNode;
+  // Run Tests, on a lesson with tests, beside Run over the site
+  runTests?: ReactNode;
+  // Why the last Run Tests got no verdict
+  testsError?: string | null;
+  // Goes up with each verdict, which the lesson side shows
+  verdictShown?: number;
 }
 
 // Whether this device was told what Run is for (RunNotice)
@@ -92,6 +98,9 @@ export default function WebWorkspace({
   actions,
   devMode = false,
   banner,
+  runTests,
+  testsError,
+  verdictShown = 0,
 }: WebWorkspaceProps) {
   const { t } = useTranslation();
   const files = useMemo(() => parseWebFiles(value), [value]);
@@ -104,6 +113,10 @@ export default function WebWorkspace({
   // unless it is the code, and the site is always on the right
   const [view, setView] = useState<View>('lesson');
   const [notice, setNotice] = useState<string | null>(null);
+  // A verdict shows on the lesson side, in its Result tab
+  useEffect(() => {
+    if (verdictShown > 0) setView('lesson');
+  }, [verdictShown]);
   // A change refused at a limit puts the editor back as it was
   const [editorKey, setEditorKey] = useState(0);
   // Taken apart, so the frame's ref is only ever handed to the frame
@@ -460,12 +473,22 @@ export default function WebWorkspace({
             <span className="flex-1 min-w-0 truncate text-[12px] font-mono text-[var(--text2)]">
               {page}
             </span>
+            {testsError && (
+              <span
+                role="alert"
+                title={testsError}
+                className="min-w-0 max-w-[40%] truncate text-[12px] font-semibold text-[var(--error)]"
+              >
+                {testsError}
+              </span>
+            )}
             <RunButton
               onClick={pressRun}
               isRunning={false}
               title={t('web.runTitle')}
               className="shrink-0"
             />
+            {runTests && <div className="shrink-0">{runTests}</div>}
             {wide && devMode && (
               <button
                 type="button"

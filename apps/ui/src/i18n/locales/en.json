@@ -1287,6 +1287,7 @@
     "passed": "Passed",
     "failed": "Failed",
     "timeout": "Your program took too long (10 s limit)",
+    "webTimeout": "Your page didn't respond in time: a loop that never ends, perhaps?",
     "runtimeError": "Your program crashed",
     "input": "Input",
     "expected": "Expected output",
@@ -1356,6 +1357,8 @@
       "wrongAnswer": "Wrong answer",
       "runtimeError": "Runtime error",
       "timeLimit": "Time limit exceeded",
+      "memoryLimit": "Memory limit exceeded",
+      "pageMismatch": "Not as asked yet",
       "checksFailed": "Code checks failed",
       "failed": "Failed"
     },

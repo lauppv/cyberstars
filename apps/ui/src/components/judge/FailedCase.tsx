@@ -1,6 +1,7 @@
 import { Fragment, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { TestCaseResult, TestComparator } from '@cyberstars/shared/tests';
+import { webFailureText } from '@cyberstars/shared/webTests';
 import { CaseInput, Field } from './CaseFields';
 import { caseLabel } from './format';
 import { diffOutputs, type Piece } from './outputDiff';
@@ -57,8 +58,15 @@ export function FailedCase({
         <p className="m-0 text-[13px] text-[var(--text3)]">{t('tests.loadTooLarge')}</p>
       )}
       <CaseInput result={result} />
-      {error === 'timeout' ? (
-        <p className="m-0 text-[13px] text-[var(--error)]">{t('tests.timeout')}</p>
+      {result.web ? (
+        // In the language of the spec its labels come from
+        <p className="m-0 text-[13px] leading-relaxed text-[var(--error)]">
+          {webFailureText(result.web)}
+        </p>
+      ) : error === 'timeout' ? (
+        <p className="m-0 text-[13px] text-[var(--error)]">
+          {t(result.name ? 'tests.webTimeout' : 'tests.timeout')}
+        </p>
       ) : error ? (
         <Field label={t('tests.runtimeError')} tone="text-[var(--error)]">
           {error}

@@ -151,6 +151,12 @@ export interface WebFailure {
   detail?: string;
   /** The window's width, for a layout, a size or fitting the page. */
   width?: number;
+  /**
+   * The language of the spec it came from, whose labels it carries: 'ro' for
+   * a Romanian one, else English. What it says is in that language, so a
+   * lesson not translated yet doesn't mix the two.
+   */
+  lang?: 'ro';
 }
 
 type Lang = 'en' | 'ro';
@@ -194,7 +200,7 @@ const BOUND: Record<Lang, Record<string, string>> = {
 };
 
 /** The failure in the student's words, as the result and the tutor show it. */
-export function webFailureText(f: WebFailure, lang: Lang = 'en'): string {
+export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): string {
   const q = QUOTE[lang];
   const ro = lang === 'ro';
   const label = f.label ?? '';

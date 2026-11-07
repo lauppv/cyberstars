@@ -1315,6 +1315,7 @@
     "passed": "Trecut",
     "failed": "Picat",
     "timeout": "Programul tău a durat prea mult (limită 10 s)",
+    "webTimeout": "Pagina ta n-a răspuns la timp: poate o buclă care nu se mai termină?",
     "runtimeError": "Programul s-a oprit cu o eroare",
     "input": "Date de intrare",
     "expected": "Rezultat așteptat",
@@ -1384,6 +1385,8 @@
       "wrongAnswer": "Răspuns greșit",
       "runtimeError": "Eroare la rulare",
       "timeLimit": "Timp depășit",
+      "memoryLimit": "Memorie depășită",
+      "pageMismatch": "Nu e încă cum se cere",
       "checksFailed": "Verificările pe cod au picat",
       "failed": "Picat"
     },

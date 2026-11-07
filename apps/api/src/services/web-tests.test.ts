@@ -239,6 +239,15 @@ describe('judgeWebCase', () => {
     });
   });
 
+  it('marks a failure from a Romanian spec, whose labels are Romanian', () => {
+    const ran = { steps: [{ count: 0 }] };
+    expect(judgeWebCase(testCase(), 0, ran, pages, 'ro').web).toEqual({
+      kind: 'missing',
+      label: 'a heading',
+      lang: 'ro',
+    });
+  });
+
   it('says a page the site lacks is missing', () => {
     expect(judgeWebCase(testCase({ page: 'crew.html' }), 0, { steps: [] }, pages).web).toEqual({
       kind: 'missing',

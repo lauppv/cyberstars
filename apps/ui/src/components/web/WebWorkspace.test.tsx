@@ -16,10 +16,14 @@ function Lesson({
   start = SITE,
   onText,
   banner,
+  ...rest
 }: {
   start?: string;
   onText?: (text: string) => void;
   banner?: ReactNode;
+  runTests?: ReactNode;
+  testsError?: string | null;
+  verdictShown?: number;
 }) {
   const [text, setText] = useState(start);
   return (
@@ -35,6 +39,7 @@ function Lesson({
       lesson={<p>The lesson text</p>}
       actions={<button type="button">Lesson actions</button>}
       banner={banner}
+      {...rest}
     />
   );
 }
@@ -295,6 +300,22 @@ describe('WebWorkspace', () => {
     fireEvent.keyDown(document, { key: 'Escape' });
     expect(screen.queryByRole('dialog')).toBeNull();
     await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
+  });
+
+  it('puts Run Tests beside Run, with why the last one got no verdict', () => {
+    render(<Lesson runTests={<button type="button">Run Tests</button>} testsError="Busy" />);
+    expect(screen.getByRole('button', { name: 'Run Tests' })).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toHaveTextContent('Busy');
+  });
+
+  it('brings the lesson side up when a verdict comes back', () => {
+    const { rerender } = render(<Lesson verdictShown={0} />);
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    const lesson = within(sides).getByRole('button', { name: 'Lesson' });
+    fireEvent.click(within(sides).getByRole('button', { name: 'Code' }));
+    expect(lesson).toHaveAttribute('aria-pressed', 'false');
+    rerender(<Lesson verdictShown={1} />);
+    expect(lesson).toHaveAttribute('aria-pressed', 'true');
   });
 
   it("keeps the page's localStorage for the lesson, and refuses what isn't storage", async () => {

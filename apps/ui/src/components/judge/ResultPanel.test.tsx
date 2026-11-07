@@ -371,4 +371,61 @@ describe('ResultPanel', () => {
     rerender(<ResultPanel showRuntime={false} results={{ ...base, passedCount: 4 }} next={next} />);
     expect(screen.queryByRole('button', { name: 'Next lesson' })).toBeNull();
   });
+
+  it("names a web lesson's tests and says in words why one failed", () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          total: 4,
+          passedCount: 1,
+          cases: [
+            { index: 0, name: 'The page is in English', visible: true, passed: true },
+            {
+              index: 1,
+              name: 'The tab is named Station Log',
+              visible: true,
+              passed: false,
+              web: {
+                kind: 'text',
+                label: 'a <title>',
+                detail: 'equals',
+                expected: 'Station Log',
+                found: 'Cargo Bay',
+              },
+            },
+          ],
+        }}
+      />,
+    );
+    expect(screen.getByRole('heading', { name: 'Not as asked yet' })).toBeInTheDocument();
+    expect(screen.getByText('1 / 4')).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Test 2: The tab is named Station Log' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Expected a <title> with the text “Station Log”, found “Cargo Bay”.'),
+    ).toBeInTheDocument();
+    // No output to compare, so no output fields
+    expect(screen.queryByText('Expected output')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Passed tests (1)' }));
+    expect(screen.getByText('Test 1: The page is in English')).toBeInTheDocument();
+  });
+
+  it('tells a stuck page and a page out of memory apart', () => {
+    const failed = (extra: object) => ({
+      ...base,
+      cases: [{ index: 0, name: 'Loads', visible: true, passed: false, ...extra }],
+    });
+    const { unmount } = render(
+      <ResultPanel showRuntime={false} results={failed({ error: 'timeout' })} />,
+    );
+    expect(screen.getByRole('heading', { name: 'Time limit exceeded' })).toBeInTheDocument();
+    expect(screen.getByText(/didn't respond in time/)).toBeInTheDocument();
+    unmount();
+    render(<ResultPanel showRuntime={false} results={failed({ web: { kind: 'memory' } })} />);
+    expect(screen.getByRole('heading', { name: 'Memory limit exceeded' })).toBeInTheDocument();
+    expect(screen.getByText('The page used too much memory and was stopped.')).toBeInTheDocument();
+  });
 });
