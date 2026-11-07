@@ -114,9 +114,11 @@ export default function WebWorkspace({
   const [view, setView] = useState<View>('lesson');
   const [notice, setNotice] = useState<string | null>(null);
   // A verdict shows on the lesson side, in its Result tab
-  useEffect(() => {
-    if (verdictShown > 0) setView('lesson');
-  }, [verdictShown]);
+  const [verdictSeen, setVerdictSeen] = useState(verdictShown);
+  if (verdictShown !== verdictSeen) {
+    setVerdictSeen(verdictShown);
+    setView('lesson');
+  }
   // A change refused at a limit puts the editor back as it was
   const [editorKey, setEditorKey] = useState(0);
   // Taken apart, so the frame's ref is only ever handed to the frame
