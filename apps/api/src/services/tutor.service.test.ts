@@ -153,6 +153,21 @@ describe('askTutor', () => {
     expect(empty).not.toContain('go by all of this');
   });
 
+  it('lets a general chat on a Linux lesson or project name a command, never write it', async () => {
+    stream.mockImplementation(() => text(['Ok.']));
+    await collect(askTutor({ ...base, page: '/projects/linux/web-log-detective' }));
+    await collect(
+      askTutor({ ...base, message: 'ce comandă folosesc?', page: '/lesson/linux/cut' }),
+    );
+    await collect(askTutor({ ...base, page: '/lesson/python/for' }));
+
+    const [project, lesson, python] = stream.mock.calls.map((c) => c[0].system as string);
+    expect(project).toContain('you may name the command, its name alone');
+    expect(project).toContain('never say how the commands chain together here');
+    expect(lesson).toContain('poți numi comanda, doar numele ei');
+    expect(python).not.toContain('On Linux the commands are the solution');
+  });
+
   it('passes on each piece of the answer as it comes, then says it is complete', async () => {
     stream.mockReturnValue(text(['  Try the ', 'For lesson.']));
 
@@ -933,7 +948,7 @@ describe('askTutor: a lesson chat', () => {
       const { system, turn } = await lastTurn({ ...linuxAsk, lesson: linux });
 
       expect(system).toContain('the end of their terminal session');
-      expect(system).toContain('never give the commands that complete it');
+      expect(system).toContain('you may name the command, its name alone');
       expect(system).not.toContain('Tests are numbered from 1');
       const work = turn.parts[0].text as string;
       expect(work).toContain(
@@ -966,7 +981,7 @@ describe('askTutor: a lesson chat', () => {
       });
 
       expect(system).toContain('finalul sesiunii din terminal');
-      expect(system).toContain('nu da niciodată comenzile care o rezolvă');
+      expect(system).toContain('poți numi comanda, doar numele ei');
       expect(turn.parts[0].text).toContain('Ultimul Run Tests: picat. Verificările lui:');
     });
   });
