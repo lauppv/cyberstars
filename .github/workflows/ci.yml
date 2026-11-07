@@ -63,7 +63,9 @@ jobs:
       - run: npm run typecheck
 
   test:
-    runs-on: ubuntu-latest
+    # The web judge's runner tests need Playwright's Chromium, which 1.60 has
+    # on Ubuntu 24.04 and not on 26.04 (ubuntu-latest), like the e2e jobs
+    runs-on: ubuntu-24.04
     needs: setup
     steps:
       - uses: actions/checkout@v4
@@ -73,10 +75,8 @@ jobs:
           path: node_modules
           key: deps-${{ github.sha }}-${{ hashFiles('package-lock.json') }}
 
-      # The web judge's runner tests drive a real headless Chromium. The full
-      # one, as the e2e jobs: Playwright has no headless shell for this runner's
-      # Ubuntu, and launches the full one headless instead
-      - run: npx playwright install chromium
+      # The web judge's runner tests drive a real headless Chromium
+      - run: npx playwright install --only-shell chromium
       - name: Run tests with coverage
         run: npm run test:coverage
 
