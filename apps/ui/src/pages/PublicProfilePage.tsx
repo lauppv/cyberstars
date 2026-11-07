@@ -400,10 +400,7 @@ export function PublicProfilePage() {
                   <button onClick={() => navigate('/profile')} className="btn btn-primary">
                     {t('publicProfile.editProfile')}
                   </button>
-                  <button
-                    onClick={() => navigate('/settings')}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
-                  >
+                  <button onClick={() => navigate('/settings')} className="btn btn-secondary">
                     {t('publicProfile.settings')}
                   </button>
                 </>
@@ -422,7 +419,7 @@ export function PublicProfilePage() {
                     <button
                       onClick={sendConnectionRequest}
                       disabled={connecting}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
+                      className="btn btn-secondary"
                     >
                       {t('publicProfile.connect')}
                     </button>
@@ -433,10 +430,7 @@ export function PublicProfilePage() {
                     </span>
                   )}
                   {canConnect && relation === 'pending_incoming' && (
-                    <button
-                      onClick={() => navigate('/connections')}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
-                    >
+                    <button onClick={() => navigate('/connections')} className="btn btn-secondary">
                       {t('publicProfile.respondRequest')}
                     </button>
                   )}
