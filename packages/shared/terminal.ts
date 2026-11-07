@@ -57,6 +57,8 @@ export type TerminalCheck =
 /**
  * Command-trace rule matched against session.history: `name` matches a command
  * used as a word; `pattern` is a raw regex on a history line (pin the args).
+ * With both, the pattern decides and `name` is the command the student is told
+ * to use: needed when the pattern doesn't open with that command.
  */
 export interface TerminalCommandRule {
   kind: 'command';

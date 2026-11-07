@@ -9,6 +9,7 @@
   "requires": [
     {
       "kind": "command",
+      "name": "sort",
       "pattern": "^(?=.*evenimente\\.log)(?=.*\\balert\\b)(?=.*\\|\\s*sort\\b)(?=.*\\|\\s*head\\b)(?=.*>)"
     }
   ]

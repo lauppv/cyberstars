@@ -14,6 +14,7 @@
   "requires": [
     {
       "kind": "command",
+      "name": "wc",
       "pattern": "^(?=.*transmisii\\.log)(?=.*mayday)(?=.*\\|\\s*wc\\b)"
     }
   ]

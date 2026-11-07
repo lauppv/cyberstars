@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterAll } from 'vitest';
 import fs from 'fs';
 import path from 'path';
+import type { TerminalTestsSpec } from '@cyberstars/shared/terminal';
 
 const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
   mockDockerExec: vi.fn(),
@@ -10,9 +11,29 @@ const { mockDockerExec, mockGetSessionView } = vi.hoisted(() => ({
 vi.mock('@cyberstars-framework/sandbox/docker', () => ({ dockerExec: mockDockerExec }));
 vi.mock('./terminal-session.service.js', () => ({ getSessionView: mockGetSessionView }));
 
-const { loadTerminalTestsSpec, runTerminalTests, runProjectTerminalTests } =
+const { loadTerminalTestsSpec, runTerminalTests, runProjectTerminalTests, ruleLabel } =
   await import('./terminal-tests.service.js');
 const { contentDir } = await import('./paths.js');
+const { PROJECTS_DIR } = await import('@cyberstars/content/paths');
+
+// Every Linux lesson's tests, EN and RO, and every Linux project's (the
+// fixtures the tests below write for a moment left out)
+function linuxSpecs(): { file: string; spec: TerminalTestsSpec }[] {
+  const dirs = [
+    contentDir('linux'),
+    path.join(contentDir('linux'), 'ro'),
+    path.join(PROJECTS_DIR, 'linux'),
+  ];
+  return dirs.flatMap((dir) =>
+    fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith('-tests.json') && !f.startsWith('zz-'))
+      .map((f) => ({
+        file: path.join(dir, f),
+        spec: JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as TerminalTestsSpec,
+      })),
+  );
+}
 
 const b64 = (s: string) => Buffer.from(s, 'utf8').toString('base64');
 
@@ -339,6 +360,21 @@ describe('runTerminalTests', () => {
         false,
       );
     });
+  });
+});
+
+describe('what a command rule shows', () => {
+  it('names a command, never a file or a word the pattern searches for', () => {
+    const wrong: string[] = [];
+    for (const { file, spec } of linuxSpecs()) {
+      for (const rule of [...(spec.requires ?? []), ...(spec.forbids ?? [])]) {
+        const label = ruleLabel(rule);
+        const command = /^[a-z][\w-]*$/.test(label) || label === '>' || label === '>>';
+        const fileName = rule.pattern?.includes(`${label}\\.`);
+        if (!command || fileName) wrong.push(`${path.basename(file)}: ${label}`);
+      }
+    }
+    expect(wrong).toEqual([]);
   });
 });
 

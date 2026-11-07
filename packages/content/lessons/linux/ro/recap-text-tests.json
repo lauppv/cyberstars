@@ -19,6 +19,7 @@
   "requires": [
     {
       "kind": "command",
+      "name": "uniq",
       "pattern": "^(?=.*date_brute\\.csv)(?=.*\\|\\s*uniq\\b)(?=.*-\\S*c)"
     },
     {

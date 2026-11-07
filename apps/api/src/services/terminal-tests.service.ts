@@ -106,7 +106,8 @@ function checkMessage(check: TerminalCheck): Omit<TerminalCheckResult, 'passed'>
 
 // What a command rule shows the student: the command's name only, never the
 // pattern that pins its options and files, which would hand over the answer.
-function ruleLabel(rule: TerminalCommandRule): string {
+// A pattern that doesn't open with its command carries it as `name`.
+export function ruleLabel(rule: TerminalCommandRule): string {
   if (rule.name) return rule.name;
   // A pattern may open with lookaheads that take the arguments in any order,
   // `^(?=.*\bhead\b)(?=.*\b5\b)`: the first word it asks for is the command.

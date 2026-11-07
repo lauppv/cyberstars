@@ -9,10 +9,12 @@
   "requires": [
     {
       "kind": "command",
+      "name": "sort",
       "pattern": "^(?=.*\\bWARN\\b)(?=.*telemetry\\.raw)(?=.*\\|\\s*sort\\b)(?=.*>>)"
     },
     {
       "kind": "command",
+      "name": "sort",
       "pattern": "^(?=.*\\bERR\\b)(?=.*telemetry\\.raw)(?=.*\\|\\s*sort\\b)(?=.*>>)"
     }
   ]
