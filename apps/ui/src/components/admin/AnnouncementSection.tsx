@@ -100,11 +100,7 @@ export function AnnouncementSection({ className }: { className: string }) {
             {t('admin.announcement.sent', { count: sent })}
           </span>
         )}
-        <button
-          onClick={openPreview}
-          disabled={!text.trim()}
-          className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-        >
+        <button onClick={openPreview} disabled={!text.trim()} className="btn btn-primary">
           {t('admin.announcement.send')}
         </button>
       </div>
@@ -146,7 +142,7 @@ export function AnnouncementSection({ className }: { className: string }) {
       {preview &&
         createPortal(
           <div
-            className="fixed inset-0 bg-black/65 z-[100] flex items-center justify-center p-4 animate-fade-in"
+            className="fixed inset-0 overlay z-[100] flex items-center justify-center p-4"
             onMouseDown={close}
           >
             <div
@@ -154,7 +150,7 @@ export function AnnouncementSection({ className }: { className: string }) {
               aria-modal="true"
               aria-label={t('admin.announcement.confirmTitle')}
               onMouseDown={(e) => e.stopPropagation()}
-              className="w-full max-w-[420px] bg-[var(--bg2)] border border-[var(--border)] rounded-xl px-6 py-5"
+              className="w-full max-w-[420px] bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)] px-6 py-5"
             >
               <div className="text-base font-bold">{t('admin.announcement.confirmTitle')}</div>
               <p className="mt-1 mb-4 text-[12px] text-[var(--text3)]">
@@ -173,17 +169,10 @@ export function AnnouncementSection({ className }: { className: string }) {
                 </p>
               )}
               <div className="mt-5 flex items-center justify-end gap-2">
-                <button
-                  onClick={close}
-                  className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-                >
+                <button onClick={close} className="btn btn-secondary">
                   {t('admin.announcement.cancel')}
                 </button>
-                <button
-                  onClick={send}
-                  disabled={sending}
-                  className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-                >
+                <button onClick={send} disabled={sending} className="btn btn-primary">
                   {sending ? t('admin.announcement.sending') : t('admin.announcement.send')}
                 </button>
               </div>

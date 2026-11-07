@@ -10,6 +10,12 @@
     "almanac": "Almanah",
     "laniakea": "Laniakea"
   },
+  "pages": {
+    "homeTitle": "Bine ai revenit, {{name}}",
+    "homeTitleNoName": "Bine ai revenit",
+    "homeNewTitle": "Bun venit, {{name}}",
+    "homeNewTitleNoName": "Bun venit"
+  },
   "sidebar": {
     "label": "Navigare principală",
     "community": "Comunitate",
@@ -190,9 +196,9 @@
     "continueWhereLeftOff": "Continuă de unde ai rămas",
     "recentlyAccessed": "Accesate recent",
     "fromAlmanac": "Din Almanah",
-    "viewAll": "Vezi tot →",
+    "viewAll": "Vezi tot",
     "readTime": "{{time}} de citit",
-    "readMore": "Citește →",
+    "readMore": "Citește",
     "activity": "Activitate",
     "dayTue": "Mar",
     "dayThu": "Joi",
@@ -214,17 +220,12 @@
     "minAgo": "acum {{count}} min",
     "lessonOfTheDay": "Lecția zilei",
     "algoOfTheDay": "Algoritmul zilei",
-    "recommended": "Recomandat",
-    "dailyXp": "{{xp}} XP",
-    "dailyBonus": "+{{pct}}%",
-    "continueJourney": "Continuă-ți călătoria în {{course}} cu această lecție.",
-    "algoChallengeToday": "Antrenează-ți mintea cu provocarea de azi.",
     "completed": "Finalizată",
     "completedLessonToday": "Ai finalizat lecția de azi.",
     "completedAlgoToday": "Ai rezolvat provocarea de azi.",
     "review": "Revizuiește",
-    "startLesson": "Începe lecția →",
-    "solveChallenge": "Rezolvă provocarea →",
+    "startLesson": "Începe lecția",
+    "solveChallenge": "Rezolvă provocarea",
     "marketing": {
       "title": "Învață să programezi <1>gratuit</1>",
       "subtitle": "<1>Python</1>, <3>Java</3>, <5>C</5> și <7>Linux</7>, direct în browser.",
@@ -258,7 +259,9 @@
       "ready_few": "{{count}} planete gata de cucerit",
       "ready_other": "{{count}} de planete gata de cucerit",
       "fly": "Zbori în Laniakea"
-    }
+    },
+    "dailyBonusToday": "+{{pct}}% azi",
+    "levelShort": "Nivel"
   },
   "landing": {
     "hero": {
@@ -479,16 +482,18 @@
     "lessons_few": "{{count}} lecții",
     "lessons_other": "{{count}} de lecții",
     "loadMore": "Încarcă mai multe",
-    "empty": "Nimeni nu a câștigat XP încă. Termină o lecție ca să ocupi primul loc!",
+    "empty": "Nimeni nu a câștigat XP încă",
     "error": "Clasamentul nu a putut fi încărcat. Încearcă din nou mai târziu.",
-    "place": "Locul {{rank}}"
+    "place": "Locul {{rank}}",
+    "emptyHint": "Termină o lecție ca să ocupi primul loc."
   },
   "messages": {
+    "conversations": "Conversații",
     "title": "Mesaje",
-    "emptyInbox": "Nicio conversație încă.",
+    "emptyInbox": "Nicio conversație încă",
     "loadFailed": "Conversațiile tale nu s-au putut încărca.",
     "historyFailed": "Conversația nu s-a putut încărca.",
-    "selectPrompt": "Alege o conversație ca să începi discuția.",
+    "selectPrompt": "Alege o conversație",
     "noMessagesYet": "Niciun mesaj încă",
     "deletedMessage": "Mesaj șters",
     "youPrefix": "Tu: ",
@@ -504,7 +509,8 @@
     "loadOlder": "Încarcă mesaje mai vechi",
     "seen": "Văzut",
     "sent": "Trimis",
-    "actions": "Acțiuni mesaj"
+    "actions": "Acțiuni mesaj",
+    "emptyInboxHint": "Începe una din profilul cuiva sau din conexiunile tale."
   },
   "notif": {
     "title": "Notificări",
@@ -568,6 +574,7 @@
     "percentComplete": "{{pct}}% finalizat",
     "continue": "Continuă",
     "viewSyllabus": "Vezi programa",
+    "viewCourses": "Vezi cursurile",
     "chapters": "Capitole",
     "descriptions": {
       "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, cu trei proiecte mici la final.",
@@ -593,8 +600,7 @@
       "algo-c": "Algoritmi C",
       "algo-trees-graphs": "Algoritmi pe arbori și grafuri",
       "web": "Dezvoltare web"
-    },
-    "subtitle": "Alege un limbaj și învață-l scriind cod adevărat, direct în browser."
+    }
   },
   "algorithms": {
     "desc": {
@@ -602,8 +608,7 @@
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
       "algo-c": "Probleme de C aproape de hardware: tablouri, pointeri, memorie dinamică, o listă înlănțuită și merge sort, apoi concurență reală cu fork, pipe-uri, thread-uri, mutex-uri și semafoare.",
       "algo-trees-graphs": "Probleme cu arbori de la ușor la greu, în Python, Java sau C: adâncime, imagini în oglindă, arbori binari de căutare, niveluri și drumuri. Fiecare problemă există în toate trei și poți schimba limbajul la oricare dintre ele."
-    },
-    "subtitle": "Exersează pe probleme de la ușor la greu, în limbajul pe care îl înveți."
+    }
   },
   "progress": {
     "courses": "Cursuri",
@@ -617,7 +622,6 @@
     "loadFailed": "Progresul tău nu s-a putut încărca, așa că unele cursuri pot părea neîncepute."
   },
   "algoList": {
-    "courseNotFound": "Cursul nu a fost găsit.",
     "challenges_one": "{{count}} provocare",
     "challenges_other": "{{count}} de provocări",
     "filters": {
@@ -632,7 +636,12 @@
       "hard": "greu"
     },
     "noMatch": "Nicio provocare nu corespunde acestui filtru.",
-    "challenges_few": "{{count}} provocări"
+    "challenges_few": "{{count}} provocări",
+    "viewChallenges": "Vezi provocările",
+    "challengesLabel": "Provocări",
+    "challengeNoun_one": "provocare",
+    "challengeNoun_few": "provocări",
+    "challengeNoun_other": "de provocări"
   },
   "auth": {
     "showPassword": "Arată parola",
@@ -763,9 +772,9 @@
     "submit": "Trimite tichetul",
     "submitted": "Tichet trimis!",
     "yourTickets": "Tichetele tale",
-    "noTickets": "Nu ai deschis încă niciun tichet.",
+    "noTickets": "Nu ai deschis încă niciun tichet",
     "allTickets": "Toate tichetele · Admin",
-    "noTicketsAdmin": "Niciun tichet de la nimeni încă.",
+    "noTicketsAdmin": "Niciun tichet de la nimeni încă",
     "types": {
       "BUG": "Raportare bug",
       "QUESTION": "Întrebare",
@@ -910,7 +919,7 @@
     "cancel": "Anulează",
     "posting": "Se postează...",
     "createThread": "Creează discuția",
-    "noThreads": "Încă nu există discuții. Fii primul care postează!",
+    "noThreads": "Încă nu există discuții",
     "solved": "✓ Rezolvată",
     "loadingThread": "Se încarcă discuția...",
     "threadNotFound": "Discuția nu a fost găsită.",
@@ -957,7 +966,8 @@
     "viewsLower_other": "de vizualizări",
     "postsCount_one": "{{count}} postare",
     "postsCount_few": "{{count}} postări",
-    "postsCount_other": "{{count}} de postări"
+    "postsCount_other": "{{count}} de postări",
+    "noThreadsHint": "Fii primul care postează."
   },
   "almanac": {
     "categories": {
@@ -1065,8 +1075,6 @@
   },
   "usage": {
     "title": "Utilizare",
-    "pageTitle": "Utilizare",
-    "pageSubtitle": "Cât ai folosit din fiecare alocare în fereastra ei curentă și când se reîncarcă.",
     "about": "Fiecare alocare se reîncarcă toată odată, când i se termină fereastra. O fereastră începe prima dată când folosești funcția după ce s-a încheiat cea dinainte: 24 de ore pentru Arată soluția, 5 ore pentru tutore. Un mesaj către tutore contează dublu când răspunsul e lung, așa că o sesiune are între 15 și 30 de mesaje. Sunt ajutoare opționale; poți termina orice lecție și fără ele.",
     "signInPrompt": "Autentifică-te ca să-ți vezi utilizarea.",
     "solution": "Arată soluția",
@@ -1441,7 +1449,7 @@
   },
   "connections": {
     "title": "Conexiuni",
-    "empty": "Nicio conexiune încă. Vizitează profilul cuiva ca să te conectezi.",
+    "empty": "Nicio conexiune încă",
     "incoming": "Cereri primite",
     "outgoing": "Cereri trimise",
     "mine": "Conexiunile mele",
@@ -1450,7 +1458,8 @@
     "remove": "Elimină",
     "cancel": "Anulează",
     "pending": "În așteptare",
-    "loadFailed": "Conexiunile tale nu s-au putut încărca."
+    "loadFailed": "Conexiunile tale nu s-au putut încărca.",
+    "emptyHint": "Vizitează profilul cuiva ca să te conectezi."
   },
   "settings": {
     "preferences": "Preferințe",

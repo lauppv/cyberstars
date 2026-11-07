@@ -414,7 +414,7 @@ describe('CategoryView', () => {
   it('tells a person when the category has no threads yet', async () => {
     mocked.getThreads.mockResolvedValue({ category, threads: [] });
     renderAt('/forum/c/python-help');
-    expect(await screen.findByText('No threads yet. Be the first to post!')).toBeInTheDocument();
+    expect(await screen.findByText('No threads yet')).toBeInTheDocument();
   });
 
   it('marks pinned, locked and solved threads and abbreviates large view counts', async () => {

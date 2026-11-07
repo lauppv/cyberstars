@@ -8,6 +8,7 @@ import { CROWNS } from '../components/gamification/crowns';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { useCurriculum } from '../context/CurriculumContext';
@@ -241,7 +242,7 @@ export function PublicProfilePage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
+      <PageContainer width="narrow">
         {loading ? (
           <div className="flex items-center justify-center py-16">
             <LoadingSpinner />
@@ -396,16 +397,10 @@ export function PublicProfilePage() {
             <div className="pt-5 flex items-center gap-3">
               {profile.isSelf ? (
                 <>
-                  <button
-                    onClick={() => navigate('/profile')}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition"
-                  >
+                  <button onClick={() => navigate('/profile')} className="btn btn-primary">
                     {t('publicProfile.editProfile')}
                   </button>
-                  <button
-                    onClick={() => navigate('/settings')}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
-                  >
+                  <button onClick={() => navigate('/settings')} className="btn btn-secondary">
                     {t('publicProfile.settings')}
                   </button>
                 </>
@@ -415,7 +410,7 @@ export function PublicProfilePage() {
                     <button
                       onClick={startConversation}
                       disabled={messaging}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                      className="btn btn-primary"
                     >
                       {t('publicProfile.sendMessage')}
                     </button>
@@ -424,7 +419,7 @@ export function PublicProfilePage() {
                     <button
                       onClick={sendConnectionRequest}
                       disabled={connecting}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition disabled:opacity-50"
+                      className="btn btn-secondary"
                     >
                       {t('publicProfile.connect')}
                     </button>
@@ -435,10 +430,7 @@ export function PublicProfilePage() {
                     </span>
                   )}
                   {canConnect && relation === 'pending_incoming' && (
-                    <button
-                      onClick={() => navigate('/connections')}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--accent)]/10 text-[var(--accent)] text-[13px] font-semibold cursor-pointer hover:bg-[var(--accent)]/20 transition"
-                    >
+                    <button onClick={() => navigate('/connections')} className="btn btn-secondary">
                       {t('publicProfile.respondRequest')}
                     </button>
                   )}
@@ -457,7 +449,7 @@ export function PublicProfilePage() {
             )}
           </div>
         )}
-      </main>
+      </PageContainer>
     </div>
   );
 }

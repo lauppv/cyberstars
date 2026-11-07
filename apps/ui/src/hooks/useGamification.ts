@@ -3,7 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
-import { levelFromXp, xpForLevel, levelTitleKey, xpForCourse } from '@cyberstars/shared/constants';
+import {
+  isClosedCourse,
+  levelFromXp,
+  xpForLevel,
+  levelTitleKey,
+  xpForCourse,
+} from '@cyberstars/shared/constants';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { PROJECT_XP, findProject } from '@cyberstars/shared/projects';
 import * as projectsService from '../services/projectsService';
@@ -43,7 +49,9 @@ export interface Gamification {
 export function useGamification(): Gamification {
   const { t } = useTranslation();
   const { user, isLoggedIn, isLoading: authLoading } = useAuth();
-  const { courses, isLoading: curriculumLoading } = useCurriculum();
+  const { courses: curriculum, isLoading: curriculumLoading } = useCurriculum();
+  // A closed course earns no badge and adds to no total until it opens
+  const courses = useMemo(() => curriculum.filter((c) => !isClosedCourse(c.key)), [curriculum]);
   const { progressMap, isLoading: progressLoading, refresh } = useAllProgress();
   const [tick, setTick] = useState(0);
   const forceRefresh = useCallback(() => {

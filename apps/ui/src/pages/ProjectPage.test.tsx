@@ -27,7 +27,10 @@ vi.mock('@cyberstars/shared/projects', async (importOriginal) => {
   };
 });
 vi.mock('../context/AuthContext', () => ({ useAuth: vi.fn() }));
-vi.mock('@cyberstars/shared/features', () => ({ canAccessFeature: vi.fn() }));
+vi.mock('@cyberstars/shared/features', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@cyberstars/shared/features')>()),
+  canAccessFeature: vi.fn(),
+}));
 vi.mock('../services/projectsService', () => ({
   getChecks: vi.fn(),
   setCheck: vi.fn(),

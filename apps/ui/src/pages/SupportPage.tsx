@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { LoadError } from '../components/ui/LoadError';
 import * as supportService from '../services/supportService';
 import type {
@@ -15,6 +15,8 @@ import type {
 } from '@cyberstars/shared/support';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 import { INPUT_CLS } from '../constants/styles';
+import { LifeBuoy, Inbox } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 const TICKET_TYPE_VALUES: TicketType[] = [
   'BUG',
@@ -117,21 +119,14 @@ export function SupportPage() {
   };
 
   if (isLoading || !user) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   if (openTicket) {
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
-        <main className="flex-1 flex justify-center px-6 py-10">
+        <PageContainer width="narrow">
           <TicketConversation
             ticket={openTicket}
             isAdmin={isAdmin}
@@ -142,7 +137,7 @@ export function SupportPage() {
             }}
             onStatusChange={(s) => changeStatus(openTicket.id, s)}
           />
-        </main>
+        </PageContainer>
       </div>
     );
   }
@@ -150,11 +145,11 @@ export function SupportPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[560px]">
+      <PageContainer width="narrow">
+        <div>
           {/* New ticket form */}
           <div className="panel p-5 mb-8">
-            <h2 className="text-[14px] font-semibold mb-4">{t('support.newTicket')}</h2>
+            <h2 className="section-label mb-4">{t('support.newTicket')}</h2>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -165,7 +160,7 @@ export function SupportPage() {
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as TicketType)}
-                className={INPUT_CLS + ' cursor-pointer'}
+                className={`${INPUT_CLS} select pr-8`}
               >
                 {TICKET_TYPE_VALUES.map((v) => (
                   <option key={v} value={v}>
@@ -191,7 +186,7 @@ export function SupportPage() {
                 <button
                   type="submit"
                   disabled={submitting || !subject.trim() || !message.trim()}
-                  className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn btn-primary"
                 >
                   {submitting ? t('support.sending') : t('support.submit')}
                 </button>
@@ -211,13 +206,11 @@ export function SupportPage() {
 
           {/* My tickets */}
           <div className="mb-8">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-3">
-              {t('support.yourTickets')}
-            </h2>
+            <h2 className="section-label mb-3">{t('support.yourTickets')}</h2>
             {myTicketsError ? (
               <LoadError text={myTicketsError} onRetry={refresh} />
             ) : myTickets === null ? null : myTickets.length === 0 ? (
-              <p className="panel p-4 text-[12px] text-[var(--text3)]">{t('support.noTickets')}</p>
+              <EmptyState framed icon={LifeBuoy} title={t('support.noTickets')} />
             ) : (
               <div className="flex flex-col gap-2.5">
                 {myTickets.map((tk) => (
@@ -230,15 +223,11 @@ export function SupportPage() {
           {/* Admin view */}
           {isAdmin && (
             <div>
-              <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--accent)] mb-3">
-                {t('support.allTickets')}
-              </h2>
+              <h2 className="section-label text-[var(--accent)] mb-3">{t('support.allTickets')}</h2>
               {allTicketsError ? (
                 <LoadError text={allTicketsError} onRetry={refresh} />
               ) : allTickets === null ? null : allTickets.length === 0 ? (
-                <p className="panel p-4 text-[12px] text-[var(--text3)]">
-                  {t('support.noTicketsAdmin')}
-                </p>
+                <EmptyState framed icon={Inbox} title={t('support.noTicketsAdmin')} />
               ) : (
                 <div className="flex flex-col gap-2.5">
                   {allTickets.map((tk) => (
@@ -249,7 +238,7 @@ export function SupportPage() {
             </div>
           )}
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }
@@ -358,7 +347,7 @@ function TicketConversation({
   };
 
   return (
-    <div className="w-full max-w-[600px] flex flex-col gap-4">
+    <div className="flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center gap-3">
         <button
@@ -380,7 +369,7 @@ function TicketConversation({
           <select
             value={ticket.status}
             onChange={(e) => void changeStatus(e.target.value as TicketStatus)}
-            className="text-[11px] font-semibold bg-[var(--bg2)] border border-[var(--border)] rounded px-2 py-1 outline-none cursor-pointer"
+            className="select text-[11px] font-semibold bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-sm)] pl-2 pr-7 py-1 outline-none"
             style={{ color: statusColor }}
           >
             {(Object.keys(STATUS_COLOR) as TicketStatus[]).map((s) => (
@@ -460,11 +449,7 @@ function TicketConversation({
             placeholder={t('support.replyPlaceholder')}
             className={INPUT_CLS + ' flex-1'}
           />
-          <button
-            type="submit"
-            disabled={sending || !reply.trim()}
-            className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-          >
+          <button type="submit" disabled={sending || !reply.trim()} className="btn btn-primary">
             {sending ? '...' : t('support.send')}
           </button>
         </form>

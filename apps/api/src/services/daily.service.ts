@@ -2,8 +2,7 @@ import * as dailyRepo from '../repositories/daily.repository.js';
 import * as curriculumRepo from '../repositories/curriculum.repository.js';
 import { hasTestsFile } from './paths.js';
 import {
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
+  LISTED_COURSE_KEYS,
   ALGO_COURSE_KEYS,
   DAILY_BONUS_RATIO,
   dateKey,
@@ -12,7 +11,7 @@ import type { DailyKind, DailyPickDto, DailyResponse } from '@cyberstars/shared/
 
 // Courses each kind draws from; mirrors the client's home-page grouping.
 const POOLS: Record<DailyKind, readonly string[]> = {
-  lesson: [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS],
+  lesson: LISTED_COURSE_KEYS,
   algo: [...ALGO_COURSE_KEYS],
 };
 

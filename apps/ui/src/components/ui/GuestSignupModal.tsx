@@ -24,14 +24,14 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 bg-black/65 z-[120] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 overlay z-[120] flex items-center justify-center p-4"
       onMouseDown={onClose}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="guest-signup-title"
-        className="w-full max-w-[480px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[480px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between px-6 py-4 border-b border-[var(--border)]">
@@ -63,11 +63,7 @@ export function GuestSignupModal({ onClose }: { onClose: () => void }) {
         </div>
 
         <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-[var(--border)]">
-          <button
-            data-track="signup-prompt-later"
-            onClick={onClose}
-            className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] font-semibold cursor-pointer border border-[var(--border)] bg-transparent text-[var(--text3)] hover:text-[var(--text)] hover:border-[var(--text3)] transition"
-          >
+          <button data-track="signup-prompt-later" onClick={onClose} className="btn btn-secondary">
             {t('guestSignup.later')}
           </button>
           <button

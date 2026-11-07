@@ -62,11 +62,7 @@ export function SubmissionsPanel({
     return (
       <div className="px-6 py-6 text-[13px] text-[var(--text2)]">
         <p>{t('tests.submissions.loadError')}</p>
-        <button
-          type="button"
-          onClick={onRetry}
-          className="mt-3 px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
-        >
+        <button type="button" onClick={onRetry} className="btn btn-secondary mt-3">
           {t('tests.submissions.retry')}
         </button>
       </div>
@@ -209,7 +205,7 @@ function SubmissionView({
               <button
                 type="button"
                 onClick={() => onLoadCode(detail.code, detail.language)}
-                className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--surface)] text-[var(--text)] text-[13px] font-semibold hover:border-[var(--accent)] hover:text-[var(--accent)] transition cursor-pointer"
+                className="btn btn-secondary"
               >
                 {t('tests.submissions.loadCode')}
               </button>

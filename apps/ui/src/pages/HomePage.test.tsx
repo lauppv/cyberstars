@@ -31,6 +31,15 @@ vi.mock('../hooks/useGamification', () => ({
   useGamification: vi.fn(() => ({
     totalCompleted: 10,
     totalLessons: 50,
+    xp: {
+      earnedXp: 40,
+      totalXp: 1000,
+      level: 1,
+      titleKey: 'level.title.1',
+      xpIntoLevel: 40,
+      xpForLevelSpan: 100,
+      xpPct: 40,
+    },
     badges: [],
     perCourse: {},
     isLoading: false,
@@ -56,6 +65,11 @@ vi.mock('../components/notifications/DashboardNotices', () => ({
 }));
 vi.mock('../services/dailyService', () => ({
   fetchDaily: vi.fn(() => Promise.resolve(null)),
+}));
+// No web course exists yet, so web-js plays a closed course here
+vi.mock('@cyberstars/shared/constants', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('@cyberstars/shared/constants')>()),
+  isClosedCourse: (courseKey: string) => courseKey === 'web-js',
 }));
 vi.mock('../services/profileService', () => ({
   getActivity: vi.fn(() => Promise.resolve({ streak: 0, lastActiveAt: null, activity: [] })),
@@ -196,6 +210,50 @@ describe('HomePage', () => {
     expect(screen.queryByTestId('landing')).toBeNull();
   });
 
+  it('welcomes a student back by their first name', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    renderPage();
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Welcome back, Alice' }),
+    ).toBeInTheDocument();
+  });
+
+  it('shows the level only once the progress is in', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: true,
+      refresh: vi.fn(),
+    });
+    const { rerender } = renderPage();
+    expect(screen.queryByRole('img', { name: 'Level 1, 40%' })).toBeNull();
+    expect(screen.queryByText('Cadet')).toBeNull();
+
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    rerender(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole('img', { name: 'Level 1, 40%' })).toBeInTheDocument();
+    expect(screen.getByText('Cadet')).toBeInTheDocument();
+  });
+
+  it('welcomes a new account, not back, on its first day', () => {
+    mockUseAuth.mockReturnValue({
+      ...loggedInAuth,
+      user: { ...loggedInAuth.user!, createdAt: new Date(Date.now() - 60_000).toISOString() },
+    });
+    renderPage();
+    expect(screen.getByRole('heading', { level: 1, name: 'Welcome, Alice' })).toBeInTheDocument();
+  });
+
   it('shows continue where you left off section', () => {
     mockUseAuth.mockReturnValue(loggedInAuth);
     mockUseCurriculum.mockReturnValue({
@@ -281,6 +339,80 @@ describe('HomePage', () => {
     expect(screen.getByText('Recently accessed')).toBeInTheDocument();
     // At least one of the entries renders with an "ago" timestamp string.
     expect(screen.getAllByText(/ago$/i).length).toBeGreaterThan(0);
+  });
+
+  it('lists no recent lesson of a closed course', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    const lesson = (slug: string, title: string) => ({
+      slug,
+      title,
+      completed: false,
+      completedAt: null,
+      lastAccessedAt: new Date(Date.now() - 60_000).toISOString(),
+    });
+    const course = (courseKey: string, lessons: ReturnType<typeof lesson>[]) => ({
+      courseKey,
+      earnedXp: 0,
+      totalXp: 0,
+      completed: 0,
+      total: lessons.length,
+      lessons,
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: course('python', [lesson('intro', 'Intro')]),
+        'web-js': course('web-js', [lesson('arrays', 'Arrays')]),
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    expect(screen.getAllByText('Intro').length).toBeGreaterThan(0);
+    expect(screen.queryByText('Arrays')).not.toBeInTheDocument();
+  });
+
+  it('keeps the challenge opened last in Recently accessed and leaves out the Continue lesson', () => {
+    mockUseAuth.mockReturnValue(loggedInAuth);
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    const lesson = (slug: string, title: string, minutesAgo: number) => ({
+      slug,
+      title,
+      completed: false,
+      completedAt: null,
+      lastAccessedAt: new Date(Date.now() - minutesAgo * 60_000).toISOString(),
+    });
+    const course = (courseKey: string, lessons: ReturnType<typeof lesson>[]) => ({
+      courseKey,
+      earnedXp: 0,
+      totalXp: 0,
+      completed: 0,
+      total: lessons.length,
+      lessons,
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: course('python', [lesson('intro', 'Intro', 2), lesson('booleans', 'Booleans', 9)]),
+        'algo-python': course('algo-python', [lesson('two-sum', 'Two Sum', 1)]),
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage();
+    const recent = screen.getByText('Recently accessed').parentElement!;
+    expect(within(recent).getByText('Two Sum')).toBeInTheDocument();
+    expect(within(recent).getByText('Booleans')).toBeInTheDocument();
+    expect(within(recent).queryByText('Intro')).not.toBeInTheDocument();
   });
 
   it('continue section navigates on click', () => {
@@ -416,11 +548,11 @@ describe('HomePage', () => {
     renderPage();
     const heading = await screen.findByText('Lesson of the Day');
     expect(screen.getByText('Algorithm of the Day')).toBeInTheDocument();
-    // the course sits on the heading line, in its own colour
-    expect(heading).toHaveTextContent('Lesson of the Day · Python');
-    expect(within(heading).getByText('Python')).toHaveStyle({ color: '#3572A5' });
-    // the "not completed" branch shows the recommended badge
-    expect(screen.getAllByText('Recommended').length).toBeGreaterThanOrEqual(1);
+    // each names its course under the heading and offers the day's bonus
+    const card = heading.closest('.panel') as HTMLElement;
+    expect(within(card).getByText('Python')).toBeInTheDocument();
+    expect(within(card).getByText(/\+20% today/)).toBeInTheDocument();
+    expect(screen.queryByText('Recommended')).toBeNull();
   });
 
   it('shows the completed state and review CTA for a done daily pick', async () => {

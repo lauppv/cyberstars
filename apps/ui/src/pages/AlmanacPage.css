@@ -1,8 +1,15 @@
 /* ===== Page shell ===== */
 .almanac-page {
-  max-width: 1140px;
+  /* The wide width and margins of PageContainer */
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 36px 28px 60px;
+  padding: 32px 28px 64px;
+}
+
+@media (max-width: 639px) {
+  .almanac-page {
+    padding: 32px 16px 64px;
+  }
 }
 
 /* ===== Filter chips ===== */
@@ -101,7 +108,7 @@
 
 /* ===== Hero featured ===== */
 .almanac-hero {
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--panel-bg);
@@ -223,7 +230,7 @@
 .almanac-article {
   background: var(--panel-bg);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
   transition: all 0.25s;
@@ -259,7 +266,7 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   padding: 4px 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   letter-spacing: 1px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   z-index: 2;
@@ -275,7 +282,7 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   padding: 4px 10px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   letter-spacing: 0.5px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   z-index: 2;
@@ -350,7 +357,7 @@
 .side-card {
   background: var(--panel-bg);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   padding: 22px;
   position: relative;
   overflow: hidden;
@@ -575,8 +582,12 @@
 /* Quote of day */
 .quote-card {
   padding: 24px;
-  background: linear-gradient(135deg, rgba(0, 214, 143, 0.08) 0%, rgba(108, 92, 231, 0.06) 100%);
-  border: 1px solid rgba(0, 214, 143, 0.18);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--success) 8%, transparent) 0%,
+    rgba(108, 92, 231, 0.06) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--success) 18%, transparent);
 }
 
 .quote-mark {
@@ -615,7 +626,9 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(0, 0, 0, 0.7);
+  /* The same dimmed, blurred page as every window's .overlay */
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -640,7 +653,7 @@
   overflow-y: auto;
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   box-shadow:
     0 24px 80px rgba(0, 0, 0, 0.6),
     0 0 0 1px var(--border);
@@ -699,7 +712,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 18px 18px 0 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .story-modal-art-grad {
@@ -717,7 +730,7 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   padding: 4px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   letter-spacing: 1.2px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   z-index: 2;
@@ -733,7 +746,7 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   padding: 4px 12px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   letter-spacing: 0.5px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   z-index: 2;
@@ -816,7 +829,7 @@
 .pg-btn {
   min-width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   background: var(--glass);
   color: var(--text2);

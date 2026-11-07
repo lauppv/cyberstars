@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { LoadError } from '../components/ui/LoadError';
 import { Avatar } from '../components/ui/Avatar';
@@ -15,6 +16,8 @@ import type {
   ConnectionsOverview,
   PendingConnection,
 } from '@cyberstars/shared/connections';
+import { Users } from 'lucide-react';
+import { EmptyState } from '../components/ui/EmptyState';
 
 /** The server's reason in the page's language, else a general one. */
 function errMsg(err: unknown): string {
@@ -59,7 +62,7 @@ function Section({
 }) {
   return (
     <section className="rounded-[var(--radius)] panel px-6 py-5">
-      <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-2">
+      <h2 className="section-label mb-2">
         {title} <span className="text-[var(--accent)] tabular-nums">({count})</span>
       </h2>
       <div className="divide-y divide-[var(--border)]">{children}</div>
@@ -130,8 +133,8 @@ export function ConnectionsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[520px] flex flex-col gap-5">
+      <PageContainer width="narrow">
+        <div className="flex flex-col gap-5">
           {!loading && actionError && (
             <div role="alert" className="panel px-6 py-3 text-[12px] text-[var(--error)]">
               {actionError}
@@ -144,9 +147,12 @@ export function ConnectionsPage() {
           ) : loadFailed ? (
             <LoadError text={t('connections.loadFailed')} onRetry={retry} />
           ) : isEmpty ? (
-            <div className="text-center text-[var(--text3)] py-16 panel px-6">
-              {t('connections.empty')}
-            </div>
+            <EmptyState
+              framed
+              icon={Users}
+              title={t('connections.empty')}
+              hint={t('connections.emptyHint')}
+            />
           ) : (
             <>
               {incoming.length > 0 && (
@@ -163,7 +169,7 @@ export function ConnectionsPage() {
                         <button
                           disabled={busy === c.id}
                           onClick={() => act(c.id, connectionsService.accept)}
-                          className="px-3 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                          className="btn btn-primary btn-sm"
                         >
                           {t('connections.accept')}
                         </button>
@@ -231,7 +237,7 @@ export function ConnectionsPage() {
             </>
           )}
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

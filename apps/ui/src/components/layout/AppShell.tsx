@@ -127,7 +127,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             e.preventDefault();
             setToggled(false);
           }}
-          className="md:hidden fixed inset-0 z-40 bg-black/50 border-none cursor-default"
+          className="md:hidden fixed inset-0 z-40 overlay border-none cursor-default"
         />
       )}
       <Sidebar state={state} onNavigate={leave} />

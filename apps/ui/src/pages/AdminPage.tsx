@@ -5,6 +5,7 @@ import { useCurriculum } from '../context/CurriculumContext';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
@@ -73,27 +74,16 @@ export function AdminPage() {
   };
 
   if (isLoading || !isAdmin) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[960px]">
+      <PageContainer>
+        <div>
           <div className="mb-8 flex justify-end">
-            <button
-              onClick={refresh}
-              disabled={refreshing}
-              className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[13px] font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-            >
+            <button onClick={refresh} disabled={refreshing} className="btn btn-primary">
               {refreshing ? t('admin.refreshing') : t('admin.refresh')}
             </button>
           </div>
@@ -260,7 +250,7 @@ export function AdminPage() {
             </p>
           )}
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

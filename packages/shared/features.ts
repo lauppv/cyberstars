@@ -7,6 +7,7 @@ export type FeatureKey =
   | 'notifications'
   | 'connections'
   | 'tutorChat'
+  | 'webDevelopment'
   | 'projects';
 
 // Features that are "preview": live in the code, but on production only ADMINs
@@ -20,6 +21,10 @@ export const PREVIEW_FEATURES: PreviewFlags<FeatureKey> = {
   notifications: false,
   connections: false,
   tutorChat: false,
+  // The Web Development card and its courses (WEB_COURSE_KEYS): while in
+  // preview the card opens for admins and the founder only, and the courses
+  // are listed nowhere else (isClosedCourse)
+  webDevelopment: true,
   projects: true,
 };
 

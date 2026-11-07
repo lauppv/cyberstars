@@ -4,17 +4,21 @@ import { useTranslation } from 'react-i18next';
 import type { TFunction } from 'i18next';
 import { useAuth, wasSignedIn } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { ActivityHeatmap } from '../components/gamification/ActivityHeatmap';
 import { bucketByLocalDay, type DayCounts } from '../components/gamification/heatmap-utils';
 import * as profileService from '../services/profileService';
 import { useCurriculum } from '../context/CurriculumContext';
 import { useAllProgress } from '../context/ProgressContext';
 import type { Course } from '@cyberstars/shared/lesson';
-import { courseLabel, courseMeta } from '../constants/courses';
+import { courseMeta, courseWash } from '../constants/courses';
+import { CourseMark } from '../components/ui/CourseMark';
+import { ProgressBar } from '../components/sets/ProgressBar';
+import { useGamification } from '../hooks/useGamification';
+import { ArrowRight, Award, BookCheck, Check, Flame } from 'lucide-react';
 import {
-  MAIN_COURSE_KEYS,
-  TERMINAL_COURSE_KEYS,
+  LISTED_COURSE_KEYS,
+  isClosedCourse,
   progressPct,
   xpForLesson,
   dailyBonusXp,
@@ -29,6 +33,13 @@ import { fetchDaily } from '../services/dailyService';
 import type { DailyResponse } from '@cyberstars/shared/daily';
 
 const TODAY_SEED = Math.floor(Date.now() / 86400000);
+
+// The dashboard's heatmap covers the year, which fills its row
+const HEATMAP_MONTHS = 12;
+
+// A row's grid by the cards it holds, so a card that isn't there (no lesson
+// to continue, the daily picks not loaded) leaves no empty column
+const ROW_COLS = ['', '', '@3xl:grid-cols-2', '@3xl:grid-cols-3'];
 
 // By an article's category, the same in both languages; its tag is translated
 const CAT_COLORS: Record<string, string> = {
@@ -62,6 +73,13 @@ interface ResolvedPick {
   xp: number;
 }
 
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+// Whether the account was made in the last 24 hours
+function isFirstDay(createdAt: string): boolean {
+  return Date.now() - new Date(createdAt).getTime() < DAY_MS;
+}
+
 export function HomePage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -71,12 +89,12 @@ export function HomePage() {
   const [almanacHighlights, setAlmanacHighlights] = useState<AlmanacArticle[] | null>(null);
   const [daily, setDaily] = useState<DailyResponse | null>(null);
   const [activityCounts, setActivityCounts] = useState<Record<string, DayCounts>>({});
+  const [streak, setStreak] = useState<number | null>(null);
   const { courses: allCourses } = useCurriculum();
-  const { progressMap, refresh: refreshProgress } = useAllProgress();
+  const { progressMap, isLoading: progressLoading, refresh: refreshProgress } = useAllProgress();
 
   const allNonAlgoCourses = useMemo(() => {
-    const keys = [...MAIN_COURSE_KEYS, ...TERMINAL_COURSE_KEYS] as readonly string[];
-    return allCourses.filter((c) => keys.includes(c.key));
+    return allCourses.filter((c) => LISTED_COURSE_KEYS.includes(c.key));
   }, [allCourses]);
 
   const continueTo = useMemo(() => {
@@ -104,6 +122,7 @@ export function HomePage() {
     if (!isLoggedIn) return [];
     const items: { courseKey: string; slug: string; title: string; lastAccessedAt: string }[] = [];
     for (const [courseKey, p] of Object.entries(progressMap)) {
+      if (isClosedCourse(courseKey)) continue;
       for (const l of p.lessons) {
         if (l.lastAccessedAt) {
           items.push({ courseKey, slug: l.slug, title: l.title, lastAccessedAt: l.lastAccessedAt });
@@ -111,8 +130,12 @@ export function HomePage() {
       }
     }
     items.sort((a, b) => b.lastAccessedAt.localeCompare(a.lastAccessedAt));
-    return items.slice(0, 4);
-  }, [isLoggedIn, progressMap]);
+    // Beside Continue, so its lesson isn't listed again; a challenge opened
+    // last stays, since Continue only goes to a course
+    return items
+      .filter((l) => !(l.courseKey === continueTo?.course.key && l.slug === continueTo.slug))
+      .slice(0, 3);
+  }, [isLoggedIn, progressMap, continueTo]);
 
   // The lesson/algo of the day are owned by the server (persisted per user per
   // day in the daily_picks table), so each is a single locked-in item that
@@ -153,7 +176,9 @@ export function HomePage() {
     profileService
       .getActivity()
       .then((a) => {
-        if (!cancelled) setActivityCounts(bucketByLocalDay(a.activity));
+        if (cancelled) return;
+        setActivityCounts(bucketByLocalDay(a.activity));
+        setStreak(a.streak);
       })
       .catch(() => {});
     return () => {
@@ -200,112 +225,77 @@ export function HomePage() {
   if (isLoading && !wasSignedIn()) return <LandingPage />;
 
   if (isLoading) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   if (isLoggedIn && user) {
+    const firstName = user.name?.trim().split(/\s+/)[0];
+    // A new account is welcomed, not welcomed back, on its first day
+    const greeting = isFirstDay(user.createdAt) ? 'homeNew' : 'home';
     return (
       <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
         <Topbar />
 
-        <main className="flex-1 px-4 sm:px-6 py-8">
-          <div className="max-w-[1040px] mx-auto space-y-6">
-            {/* ── Continue Where You Left Off + Activity ── */}
-            <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
+        <PageContainer>
+          <h1 className="m-0 mb-6 text-2xl font-bold tracking-[-0.4px]">
+            {firstName
+              ? t(`pages.${greeting}Title`, { name: firstName })
+              : t(`pages.${greeting}TitleNoName`)}
+          </h1>
+          <div className="space-y-5">
+            {/* ── What to do next, and how far along ── */}
+            <div className={`grid grid-cols-1 ${continueTo ? ROW_COLS[3] : ''} gap-5`}>
               {continueTo && (
-                <div className="p-5 panel rounded-[var(--radius)] flex flex-col">
-                  <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)] mb-3.5">
-                    {t('home.continueWhereLeftOff')}
-                  </h3>
-                  <button
-                    onClick={() => navigate(`/lesson/${continueTo.course.key}/${continueTo.slug}`)}
-                    className="w-full text-left flex items-center gap-3 p-3 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer group"
-                  >
-                    <div className="flex-1 min-w-0">
-                      <span className="inline-block px-2 py-0.5 text-[10px] font-semibold tracking-[0.5px] rounded-full bg-[var(--accent)]/15 text-[var(--accent)] mb-1">
-                        {continueTo.course.title}
-                      </span>
-                      <div className="font-semibold text-[14px] truncate">{continueTo.title}</div>
-                    </div>
-                  </button>
-
-                  {recentLessons.length > 1 && (
-                    <>
-                      <div className="border-t border-[var(--border)] my-3" />
-                      <h4 className="text-[10px] font-semibold tracking-[0.5px] text-[var(--text3)] mb-2">
-                        {t('home.recentlyAccessed')}
-                      </h4>
-                      <div className="flex flex-col gap-1.5">
-                        {recentLessons.slice(1, 4).map((l, i) => {
-                          return (
-                            <button
-                              key={i}
-                              onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
-                              className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] hover:bg-[var(--accent)]/5 transition cursor-pointer text-left"
-                            >
-                              <div className="flex-1 min-w-0">
-                                <div className="text-[12px] font-semibold truncate">{l.title}</div>
-                                <div className="text-[10px] text-[var(--text3)]">
-                                  {courseLabel(l.courseKey, t)} ·{' '}
-                                  {formatTimeAgo(l.lastAccessedAt, t)}
-                                </div>
-                              </div>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </>
-                  )}
-                </div>
+                <ContinueCard
+                  courseKey={continueTo.course.key}
+                  courseTitle={continueTo.course.title}
+                  slug={continueTo.slug}
+                  title={continueTo.title}
+                  pct={continueTo.pct}
+                  recent={recentLessons}
+                />
               )}
-
-              <ActivityHeatmap activityCounts={activityCounts} />
+              <StatsCard streak={streak} loading={progressLoading} />
             </div>
 
-            <LaniakeaCard />
+            {/* ── Today's picks and Laniakea ── */}
+            <div
+              className={`grid grid-cols-1 ${
+                ROW_COLS[[lessonOfTheDay, algoOfTheDay, !progressLoading].filter(Boolean).length]
+              } gap-5`}
+            >
+              {lessonOfTheDay && (
+                <OfTheDayCard
+                  heading={t('home.lessonOfTheDay')}
+                  courseKey={lessonOfTheDay.courseKey}
+                  courseTitle={lessonOfTheDay.courseTitle}
+                  slug={lessonOfTheDay.slug}
+                  title={lessonOfTheDay.title}
+                  completed={lessonOfTheDay.completed}
+                  xp={lessonOfTheDay.xp}
+                  bonusRatio={daily?.bonusRatio ?? 0}
+                  completedText={t('home.completedLessonToday')}
+                  cta={t('home.startLesson')}
+                />
+              )}
+              {algoOfTheDay && (
+                <OfTheDayCard
+                  heading={t('home.algoOfTheDay')}
+                  courseKey={algoOfTheDay.courseKey}
+                  courseTitle={algoOfTheDay.courseTitle}
+                  slug={algoOfTheDay.slug}
+                  title={algoOfTheDay.title}
+                  completed={algoOfTheDay.completed}
+                  xp={algoOfTheDay.xp}
+                  bonusRatio={daily?.bonusRatio ?? 0}
+                  completedText={t('home.completedAlgoToday')}
+                  cta={t('home.solveChallenge')}
+                />
+              )}
+              <LaniakeaCard />
+            </div>
 
-            {/* ── Lesson + Algo of the Day ── */}
-            {(lessonOfTheDay || algoOfTheDay) && (
-              <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-5">
-                {lessonOfTheDay && (
-                  <OfTheDayCard
-                    heading={t('home.lessonOfTheDay')}
-                    courseKey={lessonOfTheDay.courseKey}
-                    courseTitle={lessonOfTheDay.courseTitle}
-                    slug={lessonOfTheDay.slug}
-                    title={lessonOfTheDay.title}
-                    completed={lessonOfTheDay.completed}
-                    xp={lessonOfTheDay.xp}
-                    bonusRatio={daily?.bonusRatio ?? 0}
-                    subtitle={t('home.continueJourney', { course: lessonOfTheDay.courseTitle })}
-                    completedText={t('home.completedLessonToday')}
-                    cta={t('home.startLesson')}
-                  />
-                )}
-                {algoOfTheDay && (
-                  <OfTheDayCard
-                    heading={t('home.algoOfTheDay')}
-                    courseKey={algoOfTheDay.courseKey}
-                    courseTitle={algoOfTheDay.courseTitle}
-                    slug={algoOfTheDay.slug}
-                    title={algoOfTheDay.title}
-                    completed={algoOfTheDay.completed}
-                    xp={algoOfTheDay.xp}
-                    bonusRatio={daily?.bonusRatio ?? 0}
-                    subtitle={t('home.algoChallengeToday')}
-                    completedText={t('home.completedAlgoToday')}
-                    cta={t('home.solveChallenge')}
-                  />
-                )}
-              </div>
-            )}
+            <ActivityHeatmap activityCounts={activityCounts} months={HEATMAP_MONTHS} />
 
             {/* ── Almanac Highlights ── */}
             {almanacHighlights?.length !== 0 && (
@@ -314,9 +304,14 @@ export function HomePage() {
                   <SectionHeader noMargin>{t('home.fromAlmanac')}</SectionHeader>
                   <button
                     onClick={() => navigate('/almanac')}
-                    className="text-xs text-[var(--accent)] font-medium hover:underline cursor-pointer"
+                    className="group inline-flex items-center gap-1 text-xs text-[var(--accent)] font-medium bg-transparent border-none cursor-pointer"
                   >
                     {t('home.viewAll')}
+                    <ArrowRight
+                      size={12}
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
                   </button>
                 </div>
                 <div className="grid grid-cols-1 @xl:grid-cols-3 gap-3.5">
@@ -325,7 +320,7 @@ export function HomePage() {
                       return (
                         <div
                           key={i}
-                          className="p-5 panel rounded-[var(--radius)] animate-pulse h-[168px]"
+                          className="p-5 panel rounded-[var(--radius-lg)] animate-pulse h-[168px]"
                         />
                       );
                     }
@@ -334,7 +329,7 @@ export function HomePage() {
                       <button
                         key={i}
                         onClick={() => setAlmanacStory(a)}
-                        className="text-left p-5 panel rounded-[var(--radius)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
+                        className="text-left p-5 panel rounded-[var(--radius-lg)] hover:border-[var(--accent)] hover:-translate-y-0.5 transition cursor-pointer flex flex-col"
                       >
                         <div className="flex items-center gap-1.5 text-[9px] font-semibold tracking-[0.8px] mb-2">
                           <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
@@ -350,8 +345,9 @@ export function HomePage() {
                           <span className="text-[11px] text-[var(--text3)]">
                             {t('home.readTime', { time: a.readTime })}
                           </span>
-                          <span className="text-[11px] font-semibold text-[var(--accent)]">
+                          <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--accent)]">
                             {t('home.readMore')}
+                            <ArrowRight size={11} aria-hidden="true" />
                           </span>
                         </div>
                       </button>
@@ -361,7 +357,7 @@ export function HomePage() {
               </section>
             )}
           </div>
-        </main>
+        </PageContainer>
 
         {almanacStory && <StoryModal story={almanacStory} onClose={() => setAlmanacStory(null)} />}
         {/* The admins' announcements and polls, once a story read here is closed */}
@@ -377,13 +373,7 @@ export function HomePage() {
 /* ── Helper Components ── */
 
 function SectionHeader({ children, noMargin }: { children: React.ReactNode; noMargin?: boolean }) {
-  return (
-    <h2
-      className={`text-[11px] font-semibold tracking-[1px] text-[var(--text3)] ${noMargin ? '' : 'mb-3'}`}
-    >
-      {children}
-    </h2>
-  );
+  return <h2 className={`section-label ${noMargin ? '' : 'mb-3'}`}>{children}</h2>;
 }
 
 function formatTimeAgo(iso: string, t: TFunction): string {
@@ -394,6 +384,198 @@ function formatTimeAgo(iso: string, t: TFunction): string {
   if (hours < 24) return t('home.hourAgo', { count: hours });
   const days = Math.floor(hours / 24);
   return t('home.dayAgo', { count: days });
+}
+
+/* ── Continue ── */
+
+// The lesson the student opened last, big, with how far along its course is
+// and Continue; the few opened before it in a short list under it
+function ContinueCard({
+  courseKey,
+  courseTitle,
+  slug,
+  title,
+  pct,
+  recent,
+}: {
+  courseKey: string;
+  courseTitle: string;
+  slug: string;
+  title: string;
+  pct: number;
+  recent: { courseKey: string; slug: string; title: string; lastAccessedAt: string }[];
+}) {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { color } = courseMeta(courseKey);
+  return (
+    <div
+      className="@3xl:col-span-2 p-5 panel rounded-[var(--radius-lg)] flex flex-col"
+      style={{ backgroundImage: courseWash(courseKey) }}
+    >
+      <h2 className="section-label mb-4">{t('home.continueWhereLeftOff')}</h2>
+      <div className="flex items-center gap-4">
+        <CourseMark courseKey={courseKey} size={44} />
+        <div className="flex-1 min-w-0">
+          <div className="text-[12px] text-[var(--text3)]">{courseTitle}</div>
+          <div className="text-[18px] font-bold tracking-[-0.3px] truncate">{title}</div>
+        </div>
+        <button
+          onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
+          className="btn btn-primary flex-shrink-0 group"
+        >
+          {t('courses.continue')}
+          <ArrowRight
+            size={14}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </button>
+      </div>
+      <ProgressBar
+        pct={pct}
+        color={color}
+        label={t('courses.percentComplete', { pct })}
+        className="mt-4"
+      />
+      {recent.length > 0 && (
+        <div className="mt-5 pt-4 border-t border-[var(--border)]">
+          <h3 className="section-label mb-2">{t('home.recentlyAccessed')}</h3>
+          <div className="grid grid-cols-1 @xl:grid-cols-3 gap-2">
+            {recent.map((l) => (
+              <button
+                key={`${l.courseKey}/${l.slug}`}
+                onClick={() => navigate(`/lesson/${l.courseKey}/${l.slug}`)}
+                className="flex items-center gap-2.5 p-2 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--accent)]/5 transition cursor-pointer text-left text-[var(--text)] min-w-0"
+              >
+                <CourseMark courseKey={l.courseKey} size={24} />
+                <div className="flex-1 min-w-0">
+                  <div className="text-[12px] font-semibold truncate">{l.title}</div>
+                  <div className="text-[10px] text-[var(--text3)] truncate">
+                    {formatTimeAgo(l.lastAccessedAt, t)}
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Where the student stands ── */
+
+// The level as a ring that fills toward the next one, its title and the XP
+// still to go, then the days in a row, the lessons done and the badges on one
+// line; the whole picture is on Progress. Until the progress is in it shows
+// dashes, not the level 1 and zeros it would count from nothing
+function StatsCard({ streak, loading }: { streak: number | null; loading: boolean }) {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const g = useGamification();
+  const stats = [
+    { icon: Flame, value: streak ?? '-', label: t('profile.streak') },
+    { icon: BookCheck, value: loading ? '-' : g.totalCompleted, label: t('profile.lessonsDone') },
+    {
+      icon: Award,
+      value: loading ? '-' : g.badges.filter((b) => b.earned).length,
+      label: t('profile.badges'),
+    },
+  ];
+  return (
+    <div className="p-5 panel rounded-[var(--radius-lg)] flex flex-col">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="section-label">{t('nav.progress')}</h2>
+        <button
+          onClick={() => navigate('/progress')}
+          className="group inline-flex items-center gap-1 text-xs text-[var(--accent)] font-medium bg-transparent border-none cursor-pointer"
+        >
+          {t('home.viewAll')}
+          <ArrowRight
+            size={12}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </button>
+      </div>
+      <div className="flex-1 flex items-center gap-4 py-2">
+        <LevelRing level={loading ? null : g.xp.level} pct={loading ? 0 : g.xp.xpPct} />
+        <div className="min-w-0">
+          <div className="text-[16px] font-bold tracking-[-0.2px] truncate">
+            {loading ? '-' : t(g.xp.titleKey)}
+          </div>
+          <div className="mt-0.5 text-[12px] text-[var(--text3)]">
+            {loading
+              ? t('common.loading')
+              : t('profile.levelProgress', {
+                  current: g.xp.xpIntoLevel,
+                  needed: g.xp.xpForLevelSpan,
+                  next: g.xp.level + 1,
+                })}
+          </div>
+        </div>
+      </div>
+      <div className="pt-3">
+        <div className="grid grid-cols-3 border-t border-[var(--border)] pt-4">
+          {stats.map(({ icon: Icon, value, label }, i) => (
+            <div
+              key={label}
+              className={`flex flex-col items-center text-center px-1 ${i > 0 ? 'border-l border-[var(--border)]' : ''}`}
+            >
+              <div className="flex items-center gap-1.5">
+                <Icon size={14} className="text-[var(--accent)]" aria-hidden="true" />
+                <span className="text-[17px] font-bold leading-none tabular-nums">{value}</span>
+              </div>
+              <div className="mt-1.5 text-[10px] text-[var(--text3)] leading-tight">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// A ring around the level's number, filled as far as the student is toward
+// the next level; empty, with a dash, while the level isn't known yet
+function LevelRing({ level, pct }: { level: number | null; pct: number }) {
+  const { t } = useTranslation();
+  const r = 27;
+  const c = 2 * Math.PI * r;
+  return (
+    <div
+      className="relative w-[72px] h-[72px] flex-shrink-0"
+      role="img"
+      aria-label={
+        level === null ? t('common.loading') : `${t('level.label', { n: level })}, ${pct}%`
+      }
+    >
+      <svg viewBox="0 0 64 64" className="w-full h-full -rotate-90" aria-hidden="true">
+        <circle cx="32" cy="32" r={r} fill="none" stroke="var(--surface2)" strokeWidth="5" />
+        <circle
+          cx="32"
+          cy="32"
+          r={r}
+          fill="none"
+          stroke="var(--accent)"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={c * (1 - Math.min(Math.max(pct, 0), 100) / 100)}
+          className="transition-[stroke-dashoffset] duration-700"
+        />
+      </svg>
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center"
+        aria-hidden="true"
+      >
+        <span className="text-[20px] font-bold leading-none">{level ?? '-'}</span>
+        <span className="mt-0.5 text-[8px] font-semibold tracking-[0.5px] text-[var(--text3)]">
+          {t('home.levelShort')}
+        </span>
+      </div>
+    </div>
+  );
 }
 
 /* ── Lesson / Algo of the Day ── */
@@ -407,7 +589,6 @@ function OfTheDayCard({
   completed,
   xp,
   bonusRatio,
-  subtitle,
   completedText,
   cta,
 }: {
@@ -419,62 +600,53 @@ function OfTheDayCard({
   completed: boolean;
   xp: number;
   bonusRatio: number;
-  subtitle: string;
   completedText: string;
   cta: string;
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <div className="p-5 panel rounded-[var(--radius)] flex flex-col flex-1">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[11px] font-semibold tracking-[1px] text-[var(--text3)]">
-          {heading}
-          <span aria-hidden> · </span>
-          <span style={{ color: courseMeta(courseKey).color }}>{courseTitle}</span>
-        </h3>
-        {completed ? (
-          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[rgba(0,214,143,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
-            <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor" aria-hidden>
-              <path
-                fillRule="evenodd"
-                d="M16.7 5.3a1 1 0 0 1 0 1.4l-7.5 7.5a1 1 0 0 1-1.4 0l-3.5-3.5a1 1 0 1 1 1.4-1.4l2.8 2.8 6.8-6.8a1 1 0 0 1 1.4 0Z"
-                clipRule="evenodd"
-              />
-            </svg>
+    <div className="p-5 panel rounded-[var(--radius-lg)] flex flex-col">
+      <div className="flex items-center justify-between gap-2 mb-4">
+        <h3 className="section-label">{heading}</h3>
+        {completed && (
+          <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--success)] bg-[var(--success)]/15 px-2 py-0.5 rounded-full">
+            <Check size={11} strokeWidth={3} aria-hidden="true" />
             {t('home.completed')}
           </span>
-        ) : (
-          <span className="text-[10px] font-semibold text-[var(--warning)] bg-[rgba(255,170,0,0.12)] px-2 py-0.5 rounded-full tracking-[0.5px]">
-            {t('home.recommended')}
-          </span>
         )}
       </div>
-      <div className="flex-1">
-        {!completed && (
-          <div className="flex items-center gap-2 mb-2.5">
-            <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[var(--accent)] bg-[var(--accent)]/12 px-2 py-0.5 rounded-full tracking-[0.5px]">
-              {t('home.dailyXp', { xp })}
-              {bonusRatio > 0 && (
-                <span className="text-[var(--text3)]">
-                  {' '}
-                  ({t('home.dailyBonus', { pct: Math.round(bonusRatio * 100) })})
-                </span>
-              )}
+      <div className="flex items-center gap-3">
+        <CourseMark courseKey={courseKey} size={36} />
+        <div className="flex-1 min-w-0">
+          <div className="text-[11px] text-[var(--text3)] truncate">{courseTitle}</div>
+          <div className="text-[14px] font-bold leading-snug line-clamp-2">{title}</div>
+        </div>
+      </div>
+      <div className="mt-auto pt-5 flex items-center justify-between gap-2">
+        <span
+          className={`text-[11px] font-semibold ${completed ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
+        >
+          {completed ? completedText : t('common.xpReward', { xp })}
+          {!completed && bonusRatio > 0 && (
+            <span className="font-medium text-[var(--text3)]">
+              {' · '}
+              {t('home.dailyBonusToday', { pct: Math.round(bonusRatio * 100) })}
             </span>
-          </div>
-        )}
-        <div className="text-base font-bold tracking-[-0.2px] leading-tight mb-1.5">{title}</div>
-        <p className="text-[13px] text-[var(--text2)] leading-relaxed mb-4">
-          {completed ? completedText : subtitle}
-        </p>
+          )}
+        </span>
+        <button
+          onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
+          className="btn btn-secondary btn-sm flex-shrink-0 group"
+        >
+          {completed ? t('home.review') : cta}
+          <ArrowRight
+            size={12}
+            aria-hidden="true"
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        </button>
       </div>
-      <button
-        onClick={() => navigate(`/lesson/${courseKey}/${slug}`)}
-        className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--accent)] text-white rounded-[var(--radius-sm)] text-xs font-semibold hover:brightness-110 transition cursor-pointer self-start"
-      >
-        {completed ? t('home.review') : cta}
-      </button>
     </div>
   );
 }

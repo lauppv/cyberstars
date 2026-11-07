@@ -228,6 +228,7 @@ export function TerminalPanel({
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               disabled={isExecuting}
+              data-plain
               className="flex-1 bg-transparent border-none outline-none text-[var(--text)] font-mono text-[13px] caret-[var(--accent)]"
               spellCheck={false}
               autoComplete="off"

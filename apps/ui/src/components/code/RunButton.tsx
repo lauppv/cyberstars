@@ -12,14 +12,16 @@ export function RunButton({ onClick, isRunning, onStop, className = '' }: RunBut
   const { t } = useTranslation();
   if (isRunning && onStop) {
     // Its own element, not Run's turned over, so the focus doesn't stay on it:
-    // the Enter that ends an answer to input() must not stop the program.
+    // the Enter that ends an answer to input() must not stop the program. A tint
+    // of the error's red in Run's own shape, so it reads as stop without shouting
+    // and the toolbar doesn't jump when it swaps.
     return (
       <button
         key="stop"
         data-track="stop-run"
         onClick={onStop}
         title={t('code.stopTitle')}
-        className={`px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--error)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 transition cursor-pointer ${className}`}
+        className={`px-[15px] py-[5px] rounded-[var(--radius-sm)] border border-[var(--error)]/40 bg-[var(--error)]/10 text-[var(--error)] font-semibold text-[13px] flex items-center gap-1.5 hover:bg-[var(--error)]/20 transition cursor-pointer ${className}`}
       >
         {t('code.stop')}
       </button>

@@ -5,6 +5,7 @@ import { useCurriculum } from '../../context/CurriculumContext';
 import { TutorMark } from '../tutor/TutorMark';
 import { CodeStill } from './CodeStill';
 import { curriculumCounts } from './curriculumCounts';
+import { DIFF_COLORS } from '../../constants/difficulty';
 
 // The pictures for "what's inside", one per place a visitor can go. They are
 // drawn with the app's own pieces and real data, so there are no screenshots
@@ -49,11 +50,7 @@ export function CoursesPicture() {
 
 // Real Python challenges as the algorithm list shows them: the number, or a
 // tick once solved, the title and the difficulty in its colour
-const DIFFICULTY = {
-  easy: { bg: 'rgba(0,214,143,0.12)', text: 'var(--success)' },
-  medium: { bg: 'rgba(255,170,0,0.12)', text: 'var(--warning)' },
-  hard: { bg: 'rgba(255,107,107,0.12)', text: 'var(--error)' },
-};
+const DIFFICULTY = DIFF_COLORS;
 
 // slug, English title (until the curriculum is in), difficulty, solved
 const CHALLENGES: [string, string, keyof typeof DIFFICULTY, boolean][] = [

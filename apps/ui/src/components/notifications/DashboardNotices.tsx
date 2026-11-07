@@ -9,10 +9,8 @@ import { PollVote } from './PollVote';
 import { NOTICE_TYPES, NOTICES_MAX } from '@cyberstars/shared/notifications';
 import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
 
-const secondary =
-  'text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] font-semibold hover:text-[var(--text)] transition cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed';
-const primary =
-  'text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold hover:brightness-110 transition cursor-pointer';
+const secondary = 'btn btn-secondary';
+const primary = 'btn btn-primary';
 
 // The announcements and polls the admins and the founder sent, opened over the
 // dashboard one at a time, oldest first: on arrival there, and at once when one
@@ -113,12 +111,12 @@ export function DashboardNotices({ held = false }: { held?: boolean }) {
   // A portal, so the sticky topbar's stacking can't keep it under the page. A
   // click beside it doesn't close it, only the X or Done
   return createPortal(
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overlay">
       <div
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="w-full max-w-[560px] max-h-[85vh] flex flex-col bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[560px] max-h-[85vh] flex flex-col bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
       >
         <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-[var(--border)]">
           <div className="min-w-0">

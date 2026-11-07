@@ -1,8 +1,9 @@
 /* ===== Forum page shell ===== */
 .forum-page {
-  max-width: 1080px;
+  /* The wide width and margins of PageContainer */
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 28px 28px 60px;
+  padding: 32px 28px 64px;
 }
 
 .forum-loading {
@@ -16,48 +17,6 @@
   display: flex;
   justify-content: flex-end;
   margin-top: 22px;
-}
-
-/* ===== Buttons ===== */
-.forum-btn {
-  padding: 9px 18px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-}
-
-.forum-btn-primary {
-  background: var(--accent);
-  color: #fff;
-}
-
-.forum-btn-primary:hover {
-  filter: brightness(1.1);
-}
-
-.forum-btn-primary:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  filter: none;
-}
-
-.forum-btn-ghost {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
-.forum-btn-ghost:hover {
-  border-color: var(--accent);
-  color: var(--accent);
 }
 
 /* ===== Stats strip ===== */
@@ -204,7 +163,7 @@
 .cat-icon {
   width: 46px;
   height: 46px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,7 +324,7 @@
 .cat-banner-icon {
   width: 56px;
   height: 56px;
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -414,13 +373,6 @@
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
   overflow: hidden;
-}
-
-.thread-empty {
-  padding: 40px 20px;
-  text-align: center;
-  color: var(--text3);
-  font-size: 14px;
 }
 
 .thread-row {
@@ -534,13 +486,13 @@
   font-size: 9px;
   font-weight: 700;
   padding: 2px 7px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   letter-spacing: 0.5px;
   line-height: 1.4;
 }
 
 .badge-solved {
-  background: rgba(0, 214, 143, 0.15);
+  background: color-mix(in srgb, var(--success) 15%, transparent);
   color: var(--success);
 }
 
@@ -718,8 +670,8 @@
   align-items: center;
   gap: 10px;
   padding: 10px 14px;
-  background: rgba(0, 214, 143, 0.08);
-  border: 1px solid rgba(0, 214, 143, 0.3);
+  background: color-mix(in srgb, var(--success) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 30%, transparent);
   border-radius: var(--radius-sm);
   margin-bottom: 14px;
   font-size: 12px;
@@ -754,7 +706,7 @@
   align-items: center;
   gap: 5px;
   padding: 4px 10px;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   background: rgba(30, 30, 40, 0.15);
   border: 1px solid var(--border);
   font-size: 11px;
@@ -800,7 +752,7 @@
   display: flex;
   gap: 2px;
   padding: 6px;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   background: var(--popover);
   border: 1px solid var(--accent);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -813,7 +765,7 @@
   font-size: 18px;
   line-height: 1;
   padding: 4px 5px;
-  border-radius: 8px;
+  border-radius: var(--radius);
   transition: transform 0.12s;
 }
 
@@ -848,7 +800,7 @@
 .solution-btn {
   border-color: var(--success);
   color: var(--success);
-  background: rgba(0, 214, 143, 0.06);
+  background: color-mix(in srgb, var(--success) 6%, transparent);
 }
 
 /* ===== Composer ===== */
@@ -932,11 +884,13 @@
 }
 
 /* ===== Responsive ===== */
-@media (max-width: 900px) {
+@media (max-width: 639px) {
   .forum-page {
-    padding: 18px 14px 48px;
+    padding: 32px 16px 64px;
   }
+}
 
+@media (max-width: 900px) {
   .forum-page-actions {
     justify-content: stretch;
   }
@@ -992,7 +946,7 @@
 .role-badge {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.6px;
@@ -1013,8 +967,8 @@
 
 .role-badge.role-mod {
   color: #2ee6a8;
-  background: rgba(0, 214, 143, 0.14);
-  border-color: rgba(0, 214, 143, 0.4);
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  border-color: color-mix(in srgb, var(--success) 40%, transparent);
 }
 
 .role-badge.role-user {
@@ -1025,9 +979,12 @@
 
 .role-select {
   margin-top: 2px;
-  padding: 3px 6px;
+  padding: 3px 24px 3px 6px;
+  appearance: none;
+  background: var(--bg2)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%237c7c88' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 7px center;
   border-radius: var(--radius-sm);
-  background: var(--bg2);
   border: 1px solid var(--border);
   color: var(--text2);
   font-family: var(--font);

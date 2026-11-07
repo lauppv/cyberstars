@@ -1,6 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import type { ConversationDTO } from '@cyberstars/shared/messages';
 import { Avatar } from '../ui/Avatar';
+import { Link } from 'react-router';
+import { Inbox } from 'lucide-react';
+import { EmptyState } from '../ui/EmptyState';
 
 export function ConversationList({
   conversations,
@@ -17,9 +20,16 @@ export function ConversationList({
 
   if (conversations.length === 0) {
     return (
-      <div className="px-4 py-10 text-center text-[13px] text-[var(--text3)]">
-        {t('messages.emptyInbox')}
-      </div>
+      <EmptyState
+        icon={Inbox}
+        title={t('messages.emptyInbox')}
+        hint={t('messages.emptyInboxHint')}
+        action={
+          <Link to="/connections" className="btn btn-secondary btn-sm">
+            {t('connections.title')}
+          </Link>
+        }
+      />
     );
   }
 
@@ -36,7 +46,9 @@ export function ConversationList({
             key={c.id}
             onClick={() => onSelect(c.id)}
             className={`w-full text-left px-3 py-3 flex items-center gap-3 border-b border-[var(--border)] last:border-b-0 transition cursor-pointer bg-transparent border-x-0 border-t-0 hover:bg-[var(--surface)] ${
-              selectedId === c.id ? 'bg-[var(--accent)]/10' : ''
+              selectedId === c.id
+                ? 'bg-[var(--accent)]/10 shadow-[inset_2px_0_0_var(--accent)]'
+                : ''
             }`}
           >
             <Avatar url={c.other.avatarUrl} name={c.other.name} size={40} />

@@ -113,7 +113,7 @@ export function Topbar({
           <button
             data-track="sign-in"
             onClick={() => navigate('/getstarted')}
-            className="h-7 px-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-medium border-none hover:brightness-110 transition cursor-pointer"
+            className="btn btn-primary btn-sm"
           >
             {t('topbar.signIn')}
           </button>

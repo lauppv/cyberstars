@@ -91,7 +91,7 @@ export function InterestsPage() {
             data-track="interests-continue"
             onClick={save}
             disabled={!picked.length || saving}
-            className="w-full px-6 py-3 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-sm font-semibold hover:brightness-110 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn btn-primary btn-lg w-full"
           >
             {t('interests.continue')}
           </button>

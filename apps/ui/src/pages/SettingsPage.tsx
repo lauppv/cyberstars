@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
-import { LoadingSpinner } from '../components/ui/LoadingSpinner';
+import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS, switchLanguage } from '../i18n';
 import * as profileService from '../services/profileService';
@@ -207,26 +207,17 @@ export function SettingsPage() {
   };
 
   if (isLoading || !user) {
-    return (
-      <div className="h-screen flex flex-col bg-transparent">
-        <Topbar />
-        <div className="flex-1 flex items-center justify-center">
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
+    return <PageLoading />;
   }
 
   return (
     <div className="min-h-screen flex flex-col bg-transparent text-[var(--text)]">
       <Topbar />
-      <main className="flex-1 flex justify-center px-6 py-10">
-        <div className="w-full max-w-[520px] flex flex-col gap-5">
+      <PageContainer width="narrow">
+        <div className="flex flex-col gap-5">
           {/* Preferences */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
-              {t('settings.preferences')}
-            </h2>
+            <h2 className="section-label mb-4">{t('settings.preferences')}</h2>
             <div className="flex items-center justify-between gap-4 py-2">
               <span className="text-[13px] text-[var(--text)]">{t('settings.language')}</span>
               <Segmented
@@ -241,9 +232,7 @@ export function SettingsPage() {
 
           {/* Privacy */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-1">
-              {t('settings.privacy')}
-            </h2>
+            <h2 className="section-label mb-1">{t('settings.privacy')}</h2>
             <p className="text-[11px] text-[var(--text3)] mb-2">{t('settings.privacyHint')}</p>
             <div className="divide-y divide-[var(--border)]">
               <Toggle
@@ -283,9 +272,7 @@ export function SettingsPage() {
 
           {/* Account */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
-            <h2 className="text-[13px] font-semibold tracking-[1px] text-[var(--text3)] mb-4">
-              {t('settings.account')}
-            </h2>
+            <h2 className="section-label mb-4">{t('settings.account')}</h2>
 
             {/* Email change */}
             <div className="pb-5 border-b border-[var(--border)]">
@@ -324,7 +311,7 @@ export function SettingsPage() {
                     <button
                       type="submit"
                       disabled={emailSaving || emailCode.length !== 6}
-                      className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                      className="btn btn-primary btn-sm"
                     >
                       {emailSaving ? '...' : t('profile.emailConfirm')}
                     </button>
@@ -389,7 +376,7 @@ export function SettingsPage() {
                   <button
                     type="submit"
                     disabled={emailSaving || !emailPw || !newEmail}
-                    className="self-start px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                    className="btn btn-primary btn-sm self-start"
                   >
                     {emailSaving ? '...' : t('profile.emailSendCode')}
                   </button>
@@ -491,7 +478,7 @@ export function SettingsPage() {
                   <button
                     type="submit"
                     disabled={pwdSaving || !currentPassword || !newPassword || !confirmPassword}
-                    className="px-4 py-2 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white text-[12px] font-semibold cursor-pointer border-none hover:brightness-110 transition disabled:opacity-50"
+                    className="btn btn-primary btn-sm"
                   >
                     {pwdSaving ? '...' : t('profile.changePassword')}
                   </button>
@@ -507,7 +494,7 @@ export function SettingsPage() {
             </div>
           </section>
         </div>
-      </main>
+      </PageContainer>
     </div>
   );
 }

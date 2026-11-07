@@ -83,11 +83,11 @@ export function ShareToForumModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black/65 z-[100] flex items-center justify-center p-4 animate-fade-in"
+      className="fixed inset-0 overlay z-[100] flex items-center justify-center p-4"
       onMouseDown={onClose}
     >
       <div
-        className="w-full max-w-[600px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-xl"
+        className="w-full max-w-[600px] max-h-[85vh] overflow-y-auto bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius-lg)]"
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)] sticky top-0 bg-[var(--bg2)] z-[1]">
@@ -123,7 +123,7 @@ export function ShareToForumModal({
             <select
               value={categorySlug}
               onChange={(e) => setCategorySlug(e.target.value)}
-              className="w-full px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[14px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition cursor-pointer"
+              className="select w-full pl-3 pr-8 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[14px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition cursor-pointer"
             >
               {categories.map((c) => (
                 <option key={c.slug} value={c.slug}>
@@ -158,10 +158,7 @@ export function ShareToForumModal({
           {error && <div className="text-[13px] text-[var(--error)]">{error}</div>}
 
           <div className="flex items-center justify-end gap-2 pt-1">
-            <button
-              onClick={onClose}
-              className="text-[13px] px-4 py-2 rounded-[var(--radius-sm)] bg-transparent border border-[var(--border)] text-[var(--text2)] font-semibold hover:text-[var(--text)] transition cursor-pointer"
-            >
+            <button onClick={onClose} className="btn btn-secondary">
               {t('forum.share.cancel')}
             </button>
             <button

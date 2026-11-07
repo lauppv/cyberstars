@@ -148,7 +148,7 @@ export function GuestVisits({
           value={source}
           onChange={(e) => setSource(e.target.value)}
           aria-label={t('admin.sources')}
-          className="px-2 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-[var(--glass)] text-[var(--text2)] cursor-pointer"
+          className="select pl-2 pr-7 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-[var(--glass)] text-[var(--text2)]"
         >
           <option value="">{t('admin.allSources')}</option>
           {options.map((key) => (
@@ -186,7 +186,7 @@ export function GuestVisits({
         <button
           onClick={() => more(next)}
           disabled={loadingMore}
-          className="mt-3 px-2.5 py-1 rounded-[var(--radius-sm)] text-[12px] border border-[var(--border)] bg-transparent text-[var(--text2)] hover:text-[var(--text)] cursor-pointer transition disabled:opacity-60 disabled:cursor-not-allowed"
+          className="btn btn-secondary btn-sm mt-3"
         >
           {t('admin.showMore')}
         </button>
