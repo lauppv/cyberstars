@@ -317,7 +317,7 @@ export function AuthPage() {
                     type="submit"
                     data-track={SUBMIT_TRACK[mode]}
                     disabled={loading}
-                    className="btn btn-primary btn-lg w-full relative overflow-hidden disabled:pointer-events-none"
+                    className="btn btn-primary btn-lg w-full relative overflow-hidden disabled:opacity-80 disabled:pointer-events-none"
                     style={!loading ? { boxShadow: undefined } : undefined}
                   >
                     {loading ? (
