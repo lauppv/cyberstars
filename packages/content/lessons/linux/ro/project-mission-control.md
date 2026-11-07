@@ -9,40 +9,20 @@ organizat și un raport final generat **înainte să înceapă următorul schimb
 
 ---
 
-## Misiune: Reorganizarea centrului de comandă
+## Misiune: Reorganizarea Centrului de Comandă
 
-Un ofițer din schimbul anterior a lăsat Centrul de Comandă în haos: fișiere noi
-aruncate în `intrari/`, nimic sortat, permisiuni larg deschise și niciun raport
-de stare pentru comandă. Căpitanul vrea asta reparat înainte de următoarea
-rotație de echipaj. Ai uneltele. Du treaba la capăt.
+Un ofițer din tura anterioară a lăsat Centrul de Comandă în haos: totul aruncat în `intrari/`, nimic sortat, setările de securitate deschise oricui și niciun raport pentru comandă. Căpitanul vrea totul reparat înainte de următoarea rotație a echipajului. Nimeni nu-ți spune cum; ai uneltele.
 
-1. **Sortează intrările.** Mută toate fișierele `.log` din `intrari/` în
-   `jurnale/`. Mută toate fișierele `.conf` din `intrari/` în `config/`.
+Ordinele căpitanului:
 
-2. **Caută problemele critice.** Folosește `grep -r` pentru a căuta în întreg
-   directorul `jurnale/` cuvântul `CRITICAL`. Redirecționează liniile găsite în
-   `rapoarte/probleme-critice.txt`.
+- Jurnalele stau în `jurnale/`, iar fișierele de configurare în `config/`. Notițele personale ale ofițerului rămân în `intrari/`, singure.
+- `rapoarte/probleme-critice.txt`: fiecare linie `CRITICAL` din toate jurnalele, fiecare cu jurnalul din care vine.
+- `rapoarte/config-sortat.txt`: fiecare setare din toate fișierele de configurare, într-o singură listă alfabetică.
+- `config/securitate.conf` ține datele de acces: doar proprietarul lui îl poate citi sau modifica, iar nimeni altcineva nu primește nimic.
+- `rapoarte/rezumat-misiune.txt`: data și ora curentă pe prima linie, `Stare: complet` pe a doua.
 
-3. **Construiește un manifest de configurare.** Folosește `cat` pentru a
-   combina toate fișierele `.conf` din `config/` și trimite prin pipe către
-   `sort`, salvând rezultatul în `rapoarte/config-sortat.txt`.
-
-4. **Blochează securitatea.** Fișierul `config/securitate.conf` conține
-   credențiale sensibile de acces. Setează permisiunile astfel încât doar
-   proprietarul să le poată citi și scrie, fără acces pentru grup sau ceilalți.
-   Folosește `chmod 600`.
-
-5. **Depune raportul final.** Creează `rapoarte/rezumat-misiune.txt` care
-   conține data curentă pe prima linie (folosește `date >`) și textul
-   `Stare: complet` pe a doua linie (folosește `echo >>` pentru a adăuga).
-
-6. **Verifică-ți munca.** Rulează `ls rapoarte/` pentru a confirma că toate cele
-   trei fișiere de raport sunt la locul lor.
+Tot ce e în rapoarte vine direct din fișiere și din sistem, nu scris de mână, în afară de linia de stare.
 
 **Rezultat așteptat**
 
-`intrari/` ar trebui să conțină doar `notite-vechi.txt`. Directorul `jurnale/`
-găzduiește cele trei fișiere `.log`, `config/` găzduiește cele trei fișiere
-`.conf` (cu `securitate.conf` blocat la `600`), iar `rapoarte/` conține
-`probleme-critice.txt`, `config-sortat.txt` și `rezumat-misiune.txt`. Stația
-contează pe tine, cadet.
+`intrari/` ține doar notițele, fiecare jurnal și fișier de configurare e în folderul lui, `securitate.conf` e închis pentru oricine în afară de proprietar, iar cele trei rapoarte spun ce a cerut căpitanul. Stația contează pe tine, cadet.

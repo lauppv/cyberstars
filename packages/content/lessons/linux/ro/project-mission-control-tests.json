@@ -1,12 +1,39 @@
 {
   "checks": [
     {
-      "kind": "file_exists",
-      "path": "jurnale/reactor.log"
+      "kind": "command_output",
+      "cmd": "ls intrari",
+      "expected": "notite-vechi.txt"
     },
     {
-      "kind": "file_exists",
-      "path": "config/securitate.conf"
+      "kind": "command_output",
+      "cmd": "ls jurnale",
+      "expected": "comunicatii.log\nnavigatie.log\nreactor.log"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "ls config",
+      "expected": "retea.conf\nsecuritate.conf\nsuport-vital.conf"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "grep -c CRITICAL rapoarte/probleme-critice.txt",
+      "expected": "2"
+    },
+    {
+      "kind": "file_contains",
+      "path": "rapoarte/probleme-critice.txt",
+      "text": "reactor.log"
+    },
+    {
+      "kind": "file_contains",
+      "path": "rapoarte/probleme-critice.txt",
+      "text": "navigatie.log"
+    },
+    {
+      "kind": "command_output",
+      "cmd": "cat rapoarte/config-sortat.txt",
+      "expected": "access_level=restricted\nauth_method=biometric\nbandwidth=1000Mbps\nco2_scrubber=active\ndns=10.0.0.2\nencryption=AES256\nfirewall=enabled\ngateway=10.0.0.1\nhumidity=45%\noxygen_target=21%\nprotocol=TCP\ntemperature=22C"
     },
     {
       "kind": "file_mode",
@@ -14,36 +41,28 @@
       "mode": "600"
     },
     {
-      "kind": "file_contains",
-      "path": "rapoarte/probleme-critice.txt",
-      "text": "CRITICAL"
+      "kind": "command_output",
+      "cmd": "head -n 1 rapoarte/rezumat-misiune.txt | grep -c ' 20[0-9][0-9]$'",
+      "expected": "1"
     },
     {
-      "kind": "file_exists",
-      "path": "rapoarte/config-sortat.txt"
-    },
-    {
-      "kind": "file_contains",
-      "path": "rapoarte/rezumat-misiune.txt",
-      "text": "Stare: complet"
-    },
-    {
-      "kind": "file_exists",
-      "path": "intrari/notite-vechi.txt"
-    },
-    {
-      "kind": "path_absent",
-      "path": "intrari/reactor.log"
+      "kind": "command_output",
+      "cmd": "tail -n 1 rapoarte/rezumat-misiune.txt",
+      "expected": "Stare: complet"
     }
   ],
   "requires": [
     {
       "kind": "command",
-      "name": "chmod"
+      "pattern": "^(?=.*\\bgrep\\b)(?=.* -\\S*r)(?=.*CRITICAL)"
     },
     {
       "kind": "command",
-      "pattern": "grep\\b.*-r"
+      "pattern": "^(?=.*\\bsort\\b)(?=.*>)"
+    },
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bdate\\b)(?=.*>)"
     }
   ]
 }
