@@ -386,6 +386,96 @@ export const PROJECTS: Project[] = [
       { id: 'end', title: 'When it was over' },
     ],
   },
+  {
+    slug: 'vending-machine',
+    language: 'c',
+    title: 'Vending Machine',
+    difficulty: 'easy',
+    summary:
+      "The brain of a snack machine: products and prices, coins in, the snack and the change out in real coins from its own tubes, and the technician's report.",
+    steps: [
+      { id: 'load', title: 'Load the products' },
+      { id: 'list', title: 'Show the products' },
+      { id: 'coin', title: 'Insert coins' },
+      { id: 'buy', title: 'Buy' },
+      { id: 'change', title: 'Change, in real coins' },
+      { id: 'refund', title: 'Changed my mind' },
+      { id: 'technician', title: "The technician's visit" },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'laundromat',
+    language: 'c',
+    title: 'Laundromat',
+    difficulty: 'easy',
+    summary:
+      "The counter program of a self-service laundromat: prepaid cards, machines started and finished on the clock, laundry left inside, breakdowns and the night's takings.",
+    steps: [
+      { id: 'machines', title: 'The machines' },
+      { id: 'cards', title: 'Prepaid cards' },
+      { id: 'start', title: 'Start a machine' },
+      { id: 'status', title: "What's running" },
+      { id: 'collect', title: 'Collecting the laundry' },
+      { id: 'broken', title: 'Out of order' },
+      { id: 'report', title: 'The night report' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'greenhouse-monitor',
+    language: 'c',
+    title: 'Greenhouse Monitor',
+    difficulty: 'easy',
+    summary:
+      "Watch a greenhouse's sensors: readings checked against safe ranges, alarms when something stays wrong, the latest readings, a trend and a CSV export.",
+    steps: [
+      { id: 'sensors', title: 'The sensors' },
+      { id: 'read', title: 'Take a reading' },
+      { id: 'stats', title: 'Statistics' },
+      { id: 'alarm', title: 'The alarm' },
+      { id: 'history', title: 'The latest readings' },
+      { id: 'trend', title: 'The trend' },
+      { id: 'report', title: 'The report' },
+      { id: 'export', title: 'Save to a file' },
+    ],
+  },
+  {
+    slug: 'airline-checkin',
+    language: 'c',
+    title: 'Airline Check-in',
+    difficulty: 'medium',
+    summary:
+      'The check-in desk of a regional flight: booking codes, a seat map, bag fees, and the boarding order that fills the plane fastest.',
+    steps: [
+      { id: 'flight', title: 'The flight' },
+      { id: 'checkin', title: 'Check in' },
+      { id: 'seat', title: 'Choose a seat' },
+      { id: 'map', title: 'The seat map' },
+      { id: 'bags', title: 'Bags' },
+      { id: 'boarding', title: 'Boarding order' },
+      { id: 'report', title: 'The desk report' },
+      { id: 'bad-input', title: 'Survive bad input' },
+    ],
+  },
+  {
+    slug: 'line-editor',
+    language: 'c',
+    title: 'Line Editor',
+    difficulty: 'medium',
+    summary:
+      'A line editor that holds a text file in memory line by line: add, insert, delete and replace lines, undo the last change, search, and save to disk.',
+    steps: [
+      { id: 'append', title: 'Append and print' },
+      { id: 'memory', title: 'Only the memory each line needs' },
+      { id: 'insert', title: 'Insert' },
+      { id: 'delete', title: 'Delete' },
+      { id: 'replace', title: 'Replace' },
+      { id: 'undo', title: 'Undo' },
+      { id: 'find', title: 'Find and count' },
+      { id: 'files', title: 'Save and open' },
+    ],
+  },
 ];
 
 export function findProject(language: string, slug: string): Project | undefined {
