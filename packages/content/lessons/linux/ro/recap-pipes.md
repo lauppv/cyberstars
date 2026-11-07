@@ -17,13 +17,19 @@ Regula de aur: **fiecare comandă face o singură treabă**. Pipe-urile leagă t
 
 ---
 
-## Misiune: Raportul de telemetrie
+## Misiune: Raportul de Telemetrie
 
-Puntea de inginerie tocmai a aruncat telemetrie brută în `telemetrie.raw`. Inginerul-șef are nevoie de o listă curată și sortată a tuturor avertismentelor, depusă la dosar înainte de următoarea revizie de sisteme.
+Puntea de inginerie a descărcat telemetria brută în `telemetrie.raw`: linii `OK`, `WARN` și `ERR`, toate amestecate. Inginerul-șef vrea `raport.txt`, așezat exact așa:
 
-1. Construiește un pipeline care găsește toate liniile care conțin `WARN` în `telemetrie.raw`, le sortează alfabetic și salvează rezultatul într-un fișier nou `avertismente_sortat.txt`.
-2. Adaugă linia `-- sfarsit de raport --` la sfârșitul lui `avertismente_sortat.txt`, fără a șterge ce se află deja acolo.
+```text
+RAPORT TELEMETRIE
+(fiecare linie WARN, în ordine alfabetică)
+(fiecare linie ERR, în ordine alfabetică)
+-- sfarsit de raport --
+```
+
+Titlul și linia de final le scrii tu; toate celelalte linii vin direct din telemetrie, niciodată scrise de mână.
 
 **Rezultat așteptat**
 
-Rulând `cat avertismente_sortat.txt`, vei vedea trei linii `WARN` sortate, urmate de `-- sfarsit de raport --`.
+`raport.txt` începe cu titlul, listează avertismentele și apoi erorile, fiecare grup sortat, și se termină cu linia de final.

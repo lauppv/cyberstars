@@ -44,15 +44,10 @@ fluxul 2 acolo unde merge fluxul 1".
 
 ---
 
-## Misiune: Investigația fișierului fantomă
+## Misiune: Investigarea Fișierului Fantomă
 
-Senzorii stației au semnalat o referință la un fișier numit `fantoma.txt` care s-ar putea să nu mai existe. Trebuie să verifici ambele fișiere, dar mesajul de eroare îți aglomerează consola principală și vrei să-l depui deoparte.
-
-1. Rulează `ls raport.txt fantoma.txt` ca să verifici ambele fișiere, dar captează **doar eroarea** într-un fișier numit `erori.log`. Rezultatul normal trebuie să rămână pe ecran.
-2. Afișează `erori.log` ca să citești eroarea captată.
-3. Creează un folder numit `jurnale` și mută `erori.log` în el.
-4. Caută în jurnalul captat cuvintele `No such` ca să confirmi că defecțiunea a fost înregistrată.
+Senzorii stației au semnalat o referință la `fantoma.txt`, un fișier care poate nu mai există. Verifică `raport.txt` și `fantoma.txt` într-o singură listare. Ce găsește listarea rămâne pe ecran; orice eroare merge în schimb în `jurnale/erori.log` și niciodată pe ecran.
 
 **Rezultat așteptat**
 
-`jurnale/erori.log` conține eroarea „No such file" pentru `fantoma.txt`.
+Pe ecran apare doar `raport.txt`, iar `jurnale/erori.log` ține plângerea despre `fantoma.txt`.

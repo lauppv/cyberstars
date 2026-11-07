@@ -18,11 +18,17 @@ The golden rule: **each command does one job**. Pipes connect the jobs into a wo
 
 ## Mission: Telemetry Report
 
-The engineering deck just dumped raw telemetry into `telemetry.raw`. The chief engineer needs a clean, sorted list of all warnings filed away before the next systems review.
+The engineering deck dumped raw telemetry into `telemetry.raw`: `OK`, `WARN` and `ERR` lines, all mixed up. The chief engineer wants `report.txt`, laid out exactly like this:
 
-1. Build a pipeline that finds all lines containing `WARN` in `telemetry.raw`, sorts them alphabetically, and saves the result into a new file `warnings_sorted.txt`.
-2. Add the line `-- end of report --` to the end of `warnings_sorted.txt`, without erasing what is already there.
+```text
+TELEMETRY REPORT
+(every WARN line, in alphabetical order)
+(every ERR line, in alphabetical order)
+-- end of report --
+```
+
+The heading and the closing line are yours to write; every other line comes straight from the telemetry, never typed by hand.
 
 **Expected result**
 
-Running `cat warnings_sorted.txt` shows three sorted `WARN` lines followed by `-- end of report --`.
+`report.txt` starts with the heading, lists the warnings and then the errors, each group sorted, and ends with the closing line.

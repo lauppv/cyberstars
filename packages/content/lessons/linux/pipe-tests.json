@@ -5,12 +5,16 @@
       "cmd": "cat command-center/distress.txt",
       "expected": "mayday: engine failure pod 9\nmayday: oxygen leak sector 4\nmayday: collision warning asteroid belt"
     },
-    { "kind": "dir_exists", "path": "command-center" }
+    {
+      "kind": "command_output",
+      "cmd": "cat command-center/count.txt",
+      "expected": "3"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "cat\\b.*transmissions\\.log\\s*\\|\\s*grep\\b.*mayday" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "wc\\b.*-l" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*transmissions\\.log)(?=.*mayday)(?=.*\\|\\s*wc\\b)"
+    }
   ]
 }

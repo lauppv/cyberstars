@@ -1,12 +1,19 @@
 {
   "checks": [
-    { "kind": "file_contains", "path": "jurnale/erori.log", "text": "No such file" },
-    { "kind": "dir_exists", "path": "jurnale" }
+    {
+      "kind": "file_contains",
+      "path": "jurnale/erori.log",
+      "text": "No such file"
+    },
+    {
+      "kind": "dir_exists",
+      "path": "jurnale"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "2>" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "grep\\b.*No such" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bls\\b)(?=.*raport\\.txt)(?=.*fantoma\\.txt)(?=.*2>)"
+    }
   ]
 }

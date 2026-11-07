@@ -1,12 +1,19 @@
 {
   "checks": [
-    { "kind": "file_contains", "path": "logs/errors.log", "text": "No such file" },
-    { "kind": "dir_exists", "path": "logs" }
+    {
+      "kind": "file_contains",
+      "path": "logs/errors.log",
+      "text": "No such file"
+    },
+    {
+      "kind": "dir_exists",
+      "path": "logs"
+    }
   ],
   "requires": [
-    { "kind": "command", "pattern": "2>" },
-    { "kind": "command", "name": "mkdir" },
-    { "kind": "command", "name": "mv" },
-    { "kind": "command", "pattern": "grep\\b.*No such" }
+    {
+      "kind": "command",
+      "pattern": "^(?=.*\\bls\\b)(?=.*report\\.txt)(?=.*ghost\\.txt)(?=.*2>)"
+    }
   ]
 }
