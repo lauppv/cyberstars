@@ -267,6 +267,36 @@ describe('WebWorkspace', () => {
     await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
   });
 
+  it('says once on the device what Run is for, then draws the page again', async () => {
+    render(<Lesson />);
+    const first = await frame();
+    fromPreview(first, { type: 'loop', file: 'index.html', line: 1 });
+    fireEvent.click(screen.getByRole('button', { name: '▶ Run' }));
+    const card = screen.getByRole('dialog', { name: 'Your page updates by itself' });
+    expect(card).toHaveTextContent('Press Run only when the page didn');
+    // Nothing is drawn until the card is closed
+    expect(screen.getByRole('status')).toHaveTextContent('Paused');
+    fireEvent.click(within(card).getByRole('button', { name: 'Got it' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
+    expect(localStorage.getItem('cyberstars.webRunNotice.seen')).toBe('1');
+
+    // The next press draws the page again from scratch at once
+    const before = await frame();
+    fireEvent.click(screen.getByRole('button', { name: '▶ Run' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await waitFor(() => expect(screen.getByTitle(/Preview of/)).not.toBe(before));
+  });
+
+  it('closes the card on Escape and still draws the page', async () => {
+    render(<Lesson />);
+    fromPreview(await frame(), { type: 'loop', file: 'index.html', line: 1 });
+    fireEvent.click(screen.getByRole('button', { name: '▶ Run' }));
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
+  });
+
   it("keeps the page's localStorage for the lesson, and refuses what isn't storage", async () => {
     render(<Lesson />);
     const iframe = await frame();

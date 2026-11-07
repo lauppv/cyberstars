@@ -1756,6 +1756,12 @@
     "site": "Site",
     "side": "Ce arată partea din stânga",
     "showAgain": "Arată pagina din nou",
+    "runTitle": "Desenează pagina din nou (Ctrl + Enter)",
+    "runNotice": {
+      "title": "Pagina se actualizează singură",
+      "body": "Orice modificare apare în pagină la o clipă după ce te oprești din scris, fără să apeși vreun buton. Apasă Rulează doar dacă pagina nu s-a schimbat după o modificare: o desenează din nou de la zero.",
+      "ok": "Am înțeles"
+    },
     "noPage": "Site-ul tău n-are încă nicio pagină. Adaugă un fișier .html ca s-o vezi aici.",
     "previewTitle": "Previzualizarea paginii {{page}}",
     "console": {

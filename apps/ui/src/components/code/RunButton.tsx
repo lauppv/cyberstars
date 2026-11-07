@@ -6,9 +6,11 @@ interface RunButtonProps {
   // While running the button turns into Stop, the student's Ctrl+C
   onStop?: () => void;
   className?: string;
+  // What the button says on hover, when it does something else than run code
+  title?: string;
 }
 
-export function RunButton({ onClick, isRunning, onStop, className = '' }: RunButtonProps) {
+export function RunButton({ onClick, isRunning, onStop, className = '', title }: RunButtonProps) {
   const { t } = useTranslation();
   if (isRunning && onStop) {
     // Its own element, not Run's turned over, so the focus doesn't stay on it:
@@ -34,7 +36,7 @@ export function RunButton({ onClick, isRunning, onStop, className = '' }: RunBut
       data-track="run"
       onClick={onClick}
       disabled={isRunning}
-      title={t('code.runTitle')}
+      title={title ?? t('code.runTitle')}
       className={`px-[15px] py-[5px] rounded-[var(--radius-sm)] border border-[var(--output)]/45 bg-[var(--output)]/15 text-[var(--output)] font-semibold text-[13px] flex items-center gap-1.5 hover:bg-[var(--output)]/25 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer ${className}`}
     >
       {isRunning ? (
