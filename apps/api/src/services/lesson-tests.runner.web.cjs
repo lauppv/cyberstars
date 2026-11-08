@@ -55,6 +55,14 @@ function reply() {
 }
 
 class StepTimeout extends Error {}
+class PageCrash extends Error {}
+
+// Chromium says a page ran out of its JavaScript heap on its stderr
+// ("V8 javascript OOM"). Its renderer is meant to die then, which Playwright
+// reports as a crash, but on some hosts (GitHub's runners) it stays up at full
+// CPU and no crash ever comes, so the case would read as a timeout. The line is
+// taken as the crash. Cases run one at a time, so it is the open case's page.
+const outOfMemory = { listener: null };
 
 function within(promise, ms) {
   let timer;
@@ -221,6 +229,16 @@ async function runCase(browser, files, testCase, limits) {
   const seen = { logs: [], errors: [] };
   const nav = { pending: false, inflight: 0 };
   let crashed = false;
+  let onCrash;
+  const crash = new Promise((_, reject) => {
+    onCrash = () => {
+      crashed = true;
+      reject(new PageCrash());
+    };
+  });
+  crash.catch(() => {});
+  // A step ends at once when its page runs out of memory
+  const guarded = (work) => within(Promise.race([work, crash]), limits.stepMs);
   const context = await browser.newContext({
     viewport: { width: testCase.width, height: limits.height },
     serviceWorkers: 'block',
@@ -234,9 +252,8 @@ async function runCase(browser, files, testCase, limits) {
       else seen.logs.push(text);
     });
     page.on('pageerror', (error) => seen.errors.push(error.message));
-    page.on('crash', () => {
-      crashed = true;
-    });
+    page.on('crash', onCrash);
+    outOfMemory.listener = onCrash;
     page.on('request', (request) => {
       nav.inflight += 1;
       if (request.isNavigationRequest() && request.frame() === page.mainFrame()) nav.pending = true;
@@ -250,19 +267,15 @@ async function runCase(browser, files, testCase, limits) {
       nav.pending = false;
     });
     try {
-      await within(
+      await guarded(
         page
           .goto(`${ORIGIN}/${testCase.page}`, { waitUntil: 'load', timeout: limits.stepMs })
           .then(() => settle(page, nav, limits.stepMs)),
-        limits.stepMs,
       );
       for (const step of testCase.steps) {
         const isAction = ACTIONS.some((key) => key in step);
         steps.push(
-          await within(
-            isAction ? act(page, step, nav, limits.stepMs) : observe(page, step, seen),
-            limits.stepMs,
-          ),
+          await guarded(isAction ? act(page, step, nav, limits.stepMs) : observe(page, step, seen)),
         );
       }
     } catch (err) {
@@ -274,8 +287,21 @@ async function runCase(browser, files, testCase, limits) {
     }
     return crashed ? { steps, crashed: true } : { steps };
   } finally {
+    outOfMemory.listener = null;
     // A page stuck in a loop may never close; the run ends after it anyway
     await within(context.close(), 2000).catch(() => {});
+  }
+}
+
+// The browser is started as a server, so its stderr is ours to read, and
+// driven over a connection to it
+async function launch(args) {
+  try {
+    // The headless shell (the image's) or, where an OS has none, the full
+    // browser in its headless mode
+    return await chromium.launchServer({ args });
+  } catch {
+    return await chromium.launchServer({ args, channel: 'chromium' });
   }
 }
 
@@ -283,18 +309,18 @@ async function main() {
   const payload = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
   // The container is the sandbox: Chromium's own needs privileges it hasn't
   const args = ['--no-sandbox', `--js-flags=--max-old-space-size=${payload.heapMb}`];
+  let server;
   let browser;
   try {
-    browser = await chromium.launch({ args });
-  } catch {
-    // The headless shell (the image's) or, where an OS has none, the full
-    // browser in its headless mode
-    try {
-      browser = await chromium.launch({ args, channel: 'chromium' });
-    } catch (err) {
-      print({ launchError: String(err && err.message) });
-      return;
-    }
+    server = await launch(args);
+    readline.createInterface({ input: server.process().stderr }).on('line', (line) => {
+      if (outOfMemory.listener && line.includes('V8 javascript OOM')) outOfMemory.listener();
+    });
+    browser = await chromium.connect(server.wsEndpoint());
+  } catch (err) {
+    if (server) await within(server.close(), 2000).catch(() => {});
+    print({ launchError: String(err && err.message) });
+    return;
   }
   print({ ready: true });
   for (const testCase of payload.cases) {
@@ -303,6 +329,7 @@ async function main() {
     if ((await reply()) !== 'next') break;
   }
   await within(browser.close(), 2000).catch(() => {});
+  await within(server.close(), 2000).catch(() => {});
 }
 
 main().then(
