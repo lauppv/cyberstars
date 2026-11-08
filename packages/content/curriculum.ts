@@ -1880,6 +1880,21 @@ export const lessons = [
     sortOrder: 1,
     hasCodeFile: true,
   },
+  { courseKey: 'web-dev', slug: 'headings', title: 'Headings', sortOrder: 2 },
+  {
+    courseKey: 'web-dev',
+    slug: 'paragraphs-and-line-breaks',
+    title: 'Paragraphs and Line Breaks',
+    sortOrder: 3,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'bold-italic-and-friends',
+    title: 'Bold, Italic and Friends',
+    sortOrder: 4,
+  },
+  { courseKey: 'web-dev', slug: 'comments', title: 'Comments', sortOrder: 5 },
+  { courseKey: 'web-dev', slug: 'links', title: 'Links', sortOrder: 6 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -1887,7 +1902,22 @@ export const lessons = [
 // every one of its lessons, once (curriculum.test.ts); a course left out here
 // is one list, as the shorter courses are. The Romanian names are in
 // curriculum-ro.ts, `partTitlesRo`.
-export const courseParts: Record<string, { key: string; title: string; lessons: string[] }[]> = {};
+export const courseParts: Record<string, { key: string; title: string; lessons: string[] }[]> = {
+  'web-dev': [
+    {
+      key: 'station-home',
+      title: 'Station Home',
+      lessons: [
+        'first-page',
+        'headings',
+        'paragraphs-and-line-breaks',
+        'bold-italic-and-friends',
+        'comments',
+        'links',
+      ],
+    },
+  ],
+};
 
 // The lessons of a web course that start from their own files alone, by course
 // key: the project at the end of a part, built from an empty folder. Every

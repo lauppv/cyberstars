@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "name": "The page keeps one biggest heading",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "text": "h1",
+          "equals": "Welcome aboard",
+          "label": "the biggest heading (<h1>)"
+        }
+      ]
+    },
+    {
+      "name": "Two sections follow it",
+      "visible": true,
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "About the Station",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "text": "h2",
+          "equals": "Today on Board",
+          "label": "a section heading (<h2>)"
+        }
+      ]
+    },
+    {
+      "name": "The shifts sit one level down",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h2 ~ h3",
+          "atLeast": 2,
+          "label": "shift headings (<h3>) after a section heading"
+        },
+        {
+          "text": "h3",
+          "nonEmpty": true,
+          "label": "a shift heading (<h3>)"
+        }
+      ]
+    },
+    {
+      "name": "Each shift says who works it",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h3 + p",
+          "atLeast": 2,
+          "label": "paragraphs (<p>) right under a shift heading"
+        }
+      ]
+    }
+  ]
+}

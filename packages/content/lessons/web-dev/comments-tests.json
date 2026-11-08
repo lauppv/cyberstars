@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "name": "The fine print with the fee is gone from the page",
+      "visible": true,
+      "steps": [
+        {
+          "count": "small",
+          "equals": 0,
+          "label": "pieces of fine print (<small>)"
+        }
+      ]
+    },
+    {
+      "name": "Everything after it still shows",
+      "visible": true,
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "Today on Board",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "text": "p strong",
+          "equals": "Hatch 3 stays closed",
+          "label": "the warning (<strong>)"
+        },
+        {
+          "exists": "p sub",
+          "label": "the water paragraph (<sub>)"
+        },
+        {
+          "count": "h2 ~ h3",
+          "atLeast": 2,
+          "label": "shift headings (<h3>)"
+        }
+      ]
+    },
+    {
+      "name": "Everything before it still shows",
+      "visible": true,
+      "steps": [
+        {
+          "text": "h1",
+          "equals": "Welcome aboard",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "text": "h2",
+          "equals": "About the Station",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "text": "p",
+          "contains": "Orbital Station 7 Docking Ring B Low Earth Orbit",
+          "label": "the address"
+        }
+      ]
+    }
+  ]
+}
