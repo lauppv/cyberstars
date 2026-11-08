@@ -7,7 +7,7 @@
         {
           "text": "h2#today",
           "equals": "Today on Board",
-          "label": "a section heading (<h2>) with id=\"today\""
+          "label": "the heading Today on Board with id=\"today\""
         }
       ]
     },
@@ -35,15 +35,15 @@
       "steps": [
         {
           "exists": "a[href^=\"https://\"]",
-          "label": "a link (<a>) with a full address starting with https://"
+          "label": "a link to another site, by its full address"
         },
         {
           "exists": "a[href^=\"https://\"][target=\"_blank\"]",
-          "label": "target=\"_blank\" on that link, so it opens in a new tab"
+          "label": "that link opening in a new tab"
         },
         {
           "exists": "a[href^=\"https://\"][target=\"_blank\"][rel~=\"noopener\"]",
-          "label": "rel=\"noopener\" on that link"
+          "label": "that link opening safely"
         },
         {
           "text": "a[href^=\"https://\"]",

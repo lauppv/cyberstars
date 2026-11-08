@@ -25,7 +25,7 @@
       "steps": [
         {
           "contrast": "h1, h2, h3",
-          "atLeast": 4.5,
+          "atLeast": 3,
           "on": "dark",
           "every": true,
           "label": "a heading"

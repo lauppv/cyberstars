@@ -7,12 +7,12 @@
         {
           "text": "h2#visiting",
           "equals": "Visiting Hours",
-          "label": "a section heading (<h2>) with id=\"visiting\""
+          "label": "the section heading Visiting Hours with id=\"visiting\""
         },
         {
           "count": "h1",
           "equals": 1,
-          "label": "biggest headings (<h1>)"
+          "label": "biggest headings"
         }
       ]
     },
@@ -28,18 +28,18 @@
         {
           "count": "#visiting + p > br",
           "atLeast": 2,
-          "label": "line breaks (<br>) in the hours"
+          "label": "line breaks in the hours"
         }
       ]
     },
     {
-      "name": "The badge rule is marked as important",
+      "name": "The badge rule can't be missed",
       "visible": true,
       "steps": [
         {
           "text": "p strong",
           "equals": "Visitors must wear a badge",
-          "label": "an important part (<strong>) in a paragraph"
+          "label": "the badge rule, marked as important"
         }
       ]
     },

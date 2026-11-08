@@ -38,7 +38,7 @@ When you set one, check the other. Text that's hard to tell from its background 
 
 ## Measuring contrast
 
-How far apart two colors look is measured as a **contrast ratio**, from `1:1` (the same color) to `21:1` (black on white). The accessibility guidelines ask for at least **`4.5:1`** for ordinary text. Some pairs, for a feel of it:
+How far apart two colors look is measured as a **contrast ratio**, from `1:1` (the same color) to `21:1` (black on white). The accessibility guidelines ask for at least **`4.5:1`** for normal text. Big, bold text, like a heading, is easier to read, so for it **`3:1`** is enough. Some pairs, to get a feel for it:
 
 | Text      | Background | Ratio |                                    |
 | --------- | ---------- | ----- | ---------------------------------- |
@@ -60,7 +60,7 @@ A color you set on one element doesn't follow when you change the page around it
 At night the station dims its lights, and the crew reads the home page on the corridor screens. A white page glares in the dark.
 
 - Turn the page dark: a dark background, with light text on it.
-- Every text on the page must stay readable on it, at a contrast of at least 4.5:1: the headings, the paragraphs, the links, the small numbers below and above the line, the warnings. Some of them got their color for a white page; find them.
+- Every text on the page must stay readable on it, at a contrast of at least 4.5:1, or 3:1 for the headings: the paragraphs, the headings, the links, the small numbers below and above the line, the warnings. Some of them got their color for a white page; find them.
 - The warnings keep standing out from the other paragraphs, and **Today on Board** from the other section headings.
 
 The colors are yours: try them in `hsl()` first, it's the quickest way to find a pair that reads.

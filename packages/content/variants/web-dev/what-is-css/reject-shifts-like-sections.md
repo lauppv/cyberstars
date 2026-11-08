@@ -73,10 +73,10 @@ h1 {
 }
 
 h2 {
-  color: blue;
+  color: steelblue;
 }
 
 h3 {
-  color: slategray;
+  color: steelblue;
 }
 ```
