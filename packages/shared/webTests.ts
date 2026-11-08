@@ -249,8 +249,12 @@ export interface WebFailure {
 
 type Lang = 'en' | 'ro';
 
-// How the browser reports `transparent`
-const TRANSPARENT = 'rgba(0, 0, 0, 0)';
+// How the browser reports a few colors a beginner knows by name
+const COLOR_NAMES: Record<string, string> = {
+  'rgba(0, 0, 0, 0)': 'transparent',
+  'rgb(0, 0, 0)': 'black',
+  'rgb(255, 255, 255)': 'white',
+};
 
 const QUOTE: Record<Lang, (s: string) => string> = {
   en: (s) => `“${s}”`,
@@ -338,8 +342,8 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
     }
     case 'style': {
       if (f.compare === 'not') {
-        // The browser reports a see-through color as numbers; it's said as CSS does
-        const said = (v: string | null) => (v === TRANSPARENT ? 'transparent' : v);
+        // The browser reports a color as numbers; a few are said by their names
+        const said = (v: string | null) => (v !== null && COLOR_NAMES[v]) || v;
         return ro
           ? `Se aștepta ${label} cu ${f.detail} diferit de ${said(expected)}, dar are ${f.detail}: ${said(found)}.`
           : `Expected ${label} with ${f.detail} other than ${said(expected)}, found ${f.detail}: ${said(found)}.`;

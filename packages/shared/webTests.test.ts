@@ -102,6 +102,16 @@ describe('webFailureText', () => {
     ).toBe(
       'Expected a card with background-color other than transparent, found background-color: transparent.',
     );
+    expect(
+      say({
+        kind: 'style',
+        label: 'a heading',
+        detail: 'color',
+        compare: 'not',
+        expected: 'rgb(0, 0, 0)',
+        found: 'rgb(0, 0, 0)',
+      }),
+    ).toBe('Expected a heading with color other than black, found color: black.');
     expect(say({ kind: 'contrast', label: 'a warning', expected: '4.5', found: '2.38' })).toBe(
       'Expected a warning readable on its background, a contrast of at least 4.5:1, found 2.38:1.',
     );
