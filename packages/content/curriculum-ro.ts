@@ -376,6 +376,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'for-of': 'for...of',
     functions: 'Funcții',
     'return-values': 'Valori returnate',
+    'creating-and-removing-elements': 'Crearea și ștergerea elementelor',
+    'textcontent-and-innerhtml': 'textContent și innerHTML',
+    'crew-js-recap': 'Recapitulare JavaScript',
+    'cargo-ledger-project': 'Proiect: registrul de marfă',
   },
 };
 

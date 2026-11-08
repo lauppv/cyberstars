@@ -1,0 +1,126 @@
+{
+  "cases": [
+    {
+      "name": "The crew list has its two buttons",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "button#add-rookie",
+          "equals": "Add a rookie",
+          "label": "the button (<button id=\"add-rookie\">)"
+        },
+        {
+          "text": "button#remove-last",
+          "equals": "Remove the last",
+          "label": "the button (<button id=\"remove-last\">)"
+        }
+      ]
+    },
+    {
+      "name": "A rookie joins the end of the list",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "text": "#crew > li:last-child",
+          "equals": "Rookie 1",
+          "label": "the last item of the crew list"
+        },
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "text": "#crew > li:last-child",
+          "equals": "Rookie 2",
+          "label": "the last item of the crew list"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The last one can be removed",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "click": "button#remove-last",
+          "label": "the button Remove the last"
+        },
+        {
+          "text": "#crew > li:last-child",
+          "equals": "Rookie 1",
+          "label": "the last item of the crew list"
+        }
+      ]
+    },
+    {
+      "name": "The roster follows every change",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "text": "p#roster",
+          "contains": "to Rookie 1",
+          "label": "the roster"
+        }
+      ]
+    },
+    {
+      "name": "The roster counts again",
+      "visible": false,
+      "page": "crew.html",
+      "files": {
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <ul id=\"crew\">\n      <li>Ada</li>\n      <li>Bram</li>\n      <li>Chen</li>\n      <li>Dara</li>\n      <li>Eli</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <button type=\"button\" id=\"add-rookie\">Add a rookie</button>\n    <button type=\"button\" id=\"remove-last\">Remove the last</button>\n    <p id=\"latest\"></p>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">10</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Bram</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">20</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Chen</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">31</span></p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n    <p id=\"watch-time\"></p>\n    <button type=\"button\" id=\"roll-call-button\">Roll call</button>\n    <ol id=\"roll-call\"></ol>\n    <p id=\"roll-summary\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p id=\"intercom\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p>Launch countdown from <span id=\"countdown-from\">4</span></p>\n    <p id=\"countdown\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "count": "#crew > li",
+          "equals": 6,
+          "label": "crew members"
+        },
+        {
+          "text": "p#roster",
+          "equals": "6 crew members, from Ada to Rookie 1",
+          "label": "the roster"
+        },
+        {
+          "click": "button#remove-last",
+          "label": "the button Remove the last"
+        },
+        {
+          "click": "button#remove-last",
+          "label": "the button Remove the last"
+        },
+        {
+          "text": "p#roster",
+          "equals": "4 crew members, from Ada to Dara",
+          "label": "the roster"
+        }
+      ]
+    }
+  ]
+}

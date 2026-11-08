@@ -1999,6 +1999,25 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'for-of', title: 'for...of', sortOrder: 38 },
   { courseKey: 'web-dev', slug: 'functions', title: 'Functions', sortOrder: 39 },
   { courseKey: 'web-dev', slug: 'return-values', title: 'Return Values', sortOrder: 40 },
+  {
+    courseKey: 'web-dev',
+    slug: 'creating-and-removing-elements',
+    title: 'Creating and Removing Elements',
+    sortOrder: 41,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'textcontent-and-innerhtml',
+    title: 'textContent and innerHTML',
+    sortOrder: 42,
+  },
+  { courseKey: 'web-dev', slug: 'crew-js-recap', title: 'JavaScript Recap', sortOrder: 43 },
+  {
+    courseKey: 'web-dev',
+    slug: 'cargo-ledger-project',
+    title: 'Project: Cargo Ledger',
+    sortOrder: 44,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2058,6 +2077,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'for-of',
         'functions',
         'return-values',
+        'creating-and-removing-elements',
+        'textcontent-and-innerhtml',
+        'crew-js-recap',
+        'cargo-ledger-project',
       ],
     },
   ],
@@ -2068,7 +2091,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
 // other lesson of a web course carries on from the student's site in the
 // closest earlier lesson not listed here (CYB-119).
 export const freshStartLessons: Record<string, string[]> = {
-  'web-dev': ['crew-profile-project'],
+  'web-dev': ['crew-profile-project', 'cargo-ledger-project'],
 };
 
 type LessonEntry = { courseKey: string; slug: string; sortOrder: number };
