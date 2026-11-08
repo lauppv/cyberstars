@@ -51,7 +51,7 @@ function openUserSocket(cookie: string) {
 const frame = {
   channel: 'notification' as const,
   type: 'unread-count' as const,
-  payload: { unreadCount: 1 },
+  payload: { unreadCount: 1, sections: { forum: [], support: [], connections: 0, laniakea: 0 } },
 };
 
 describe('Sessions after a password change', () => {

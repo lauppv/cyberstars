@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import { NOTICES_MAX } from '@cyberstars/shared/notifications';
+import { NOTICES_MAX, NOTIFICATION_SECTIONS } from '@cyberstars/shared/notifications';
+import type { NotificationSection } from '@cyberstars/shared/notifications';
 
 // Lenient query params (like the leaderboard): bad values fall back to defaults
 // and take is clamped, so a hand-edited URL can't 400 the list.
@@ -19,4 +20,10 @@ export const markReadSchema = z.object({
 // What the dashboard's window showed, as many as it opens with at most
 export const markShownSchema = z.object({
   ids: z.array(z.number().int().positive()).min(1).max(NOTICES_MAX),
+});
+
+// A sidebar row's page was opened, or one thread or ticket of it
+export const markSectionReadSchema = z.object({
+  section: z.enum(NOTIFICATION_SECTIONS as [NotificationSection, ...NotificationSection[]]),
+  entityId: z.number().int().positive().optional(),
 });

@@ -17,14 +17,62 @@ export type NotificationType =
 export const ANNOUNCEMENT_MAX_LENGTH = 2000;
 
 // Repeat events on the same entity fold into one unread row instead of
-// spamming. Shared because both sides need the same rule: the server collapses
-// on insert, the client drops the superseded unread row when the replacement
-// arrives over the socket. An event that carries its own count, like the open
-// Laniakea recaps, replaces the old count instead of adding one to it.
+// spamming; the server collapses on insert. An event that carries its own
+// count, like the open Laniakea recaps, replaces the old count instead of
+// adding one to it. None of them is a bell row, so the client only ever sees
+// the counts they make
 export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
   'FORUM_REPLY',
   'LANIAKEA_RECAP',
 ]);
+
+// The bell keeps only what comes from the team: announcements, polls, and the
+// written poll answers the admins read. Everything else belongs to a page and
+// shows as a count on that page's sidebar row
+export const BELL_TYPES = ['ANNOUNCEMENT', 'POLL', 'POLL_ANSWER'] as const;
+export type BellNotificationType = (typeof BELL_TYPES)[number];
+
+export function isBellType(type: NotificationType): type is BellNotificationType {
+  return (BELL_TYPES as readonly NotificationType[]).includes(type);
+}
+
+// The sidebar rows that count their own notifications, and which types each
+// one counts. Every type is in the bell or in exactly one of these
+export type NotificationSection = 'forum' | 'support' | 'connections' | 'laniakea';
+
+export const SECTION_TYPES: Record<NotificationSection, readonly NotificationType[]> = {
+  forum: ['FORUM_REPLY', 'FORUM_SOLUTION'],
+  support: ['SUPPORT_TICKET_NEW', 'SUPPORT_REPLY', 'SUPPORT_STATUS'],
+  connections: ['CONNECTION_REQUEST', 'CONNECTION_ACCEPTED'],
+  laniakea: ['LANIAKEA_RECAP'],
+};
+
+export const NOTIFICATION_SECTIONS = Object.keys(SECTION_TYPES) as NotificationSection[];
+
+// A thread or a ticket with something unread, newest first; its title is the
+// one snapshotted when the notification was made
+export interface SectionEntity {
+  entityId: number;
+  title: string;
+}
+
+// What each sidebar row has unread. The forum and support list their threads
+// and tickets, so the page can point at them; connections count the unread
+// requests and acceptances; laniakea is how many recaps the notification told
+// of, 0 once read
+export interface UnreadSections {
+  forum: SectionEntity[];
+  support: SectionEntity[];
+  connections: number;
+  laniakea: number;
+}
+
+export const EMPTY_SECTIONS: UnreadSections = {
+  forum: [],
+  support: [],
+  connections: 0,
+  laniakea: 0,
+};
 
 // What the admins and the founder send to everyone, which the dashboard opens
 // in a window as well as listing it in the bell
@@ -64,9 +112,17 @@ export interface NotificationDTO {
   createdAt: string;
 }
 
+// One page of the bell; unreadCount is the bell's own, sections are the
+// sidebar's
 export interface NotificationsPage {
   items: NotificationDTO[];
   unreadCount: number;
+  sections: UnreadSections;
+}
+
+export interface UnreadState {
+  unreadCount: number;
+  sections: UnreadSections;
 }
 
 // Frames pushed over the shared per-user socket (/ws/user). The socket carries
@@ -74,5 +130,5 @@ export interface NotificationsPage {
 // client-side on `channel`.
 export type UserSocketFrame =
   | { channel: 'notification'; type: 'new'; payload: NotificationDTO }
-  | { channel: 'notification'; type: 'unread-count'; payload: { unreadCount: number } }
+  | { channel: 'notification'; type: 'unread-count'; payload: UnreadState }
   | DmSocketFrame;

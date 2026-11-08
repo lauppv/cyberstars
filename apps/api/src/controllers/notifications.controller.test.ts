@@ -8,11 +8,14 @@ const mockService = {
   markOneRead: vi.fn(),
   getNotices: vi.fn(),
   markShown: vi.fn(),
+  markSectionRead: vi.fn(),
 };
 vi.mock('../services/notifications.service.js', () => mockService);
 
-const { getNotifications, markRead, markOneRead, getNotices, markShown } =
+const { getNotifications, markRead, markOneRead, getNotices, markShown, markSectionRead } =
   await import('./notifications.controller.js');
+
+const NO_SECTIONS = { forum: [], support: [], connections: 0, laniakea: 0 };
 
 function mockReq(overrides: Partial<Request> = {}): Request {
   return { params: {}, body: {}, query: {}, user: { id: 10 }, ...overrides } as unknown as Request;
@@ -29,17 +32,17 @@ beforeEach(() => vi.clearAllMocks());
 
 describe('getNotifications', () => {
   it('returns the page using clamped query defaults', async () => {
-    mockService.getPage.mockResolvedValue({ items: [], unreadCount: 0 });
+    mockService.getPage.mockResolvedValue({ items: [], unreadCount: 0, sections: NO_SECTIONS });
     const res = mockRes();
     const next = vi.fn();
     await getNotifications(mockReq({ query: {} }), res, next);
     expect(mockService.getPage).toHaveBeenCalledWith(10, 20, undefined);
-    expect(res.json).toHaveBeenCalledWith({ items: [], unreadCount: 0 });
+    expect(res.json).toHaveBeenCalledWith({ items: [], unreadCount: 0, sections: NO_SECTIONS });
     expect(next).not.toHaveBeenCalled();
   });
 
   it('passes take and before through', async () => {
-    mockService.getPage.mockResolvedValue({ items: [], unreadCount: 0 });
+    mockService.getPage.mockResolvedValue({ items: [], unreadCount: 0, sections: NO_SECTIONS });
     await getNotifications(mockReq({ query: { take: '5', before: '100' } }), mockRes(), vi.fn());
     expect(mockService.getPage).toHaveBeenCalledWith(10, 5, 100);
   });
@@ -110,6 +113,30 @@ describe('markShown', () => {
     mockService.markShown.mockRejectedValue(new Error('boom'));
     const next = vi.fn();
     await markShown(mockReq({ body: { ids: [3] } }), mockRes(), next);
+    expect(next).toHaveBeenCalledWith(expect.any(Error));
+  });
+});
+
+describe('markSectionRead', () => {
+  it('reads one thread of a section and answers 204', async () => {
+    mockService.markSectionRead.mockResolvedValue(undefined);
+    const res = mockRes();
+    await markSectionRead(mockReq({ body: { section: 'forum', entityId: 7 } }), res, vi.fn());
+    expect(mockService.markSectionRead).toHaveBeenCalledWith(10, 'forum', 7);
+    expect(res.status).toHaveBeenCalledWith(204);
+    expect(res.end).toHaveBeenCalled();
+  });
+
+  it('reads a whole section when no entity is given', async () => {
+    mockService.markSectionRead.mockResolvedValue(undefined);
+    await markSectionRead(mockReq({ body: { section: 'connections' } }), mockRes(), vi.fn());
+    expect(mockService.markSectionRead).toHaveBeenCalledWith(10, 'connections', undefined);
+  });
+
+  it('forwards errors to next', async () => {
+    mockService.markSectionRead.mockRejectedValue(new Error('boom'));
+    const next = vi.fn();
+    await markSectionRead(mockReq({ body: { section: 'support', entityId: 3 } }), mockRes(), next);
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });

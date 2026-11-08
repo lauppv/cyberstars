@@ -1,4 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { NotificationType } from '@prisma/client';
+import { BELL_TYPES, SECTION_TYPES } from '@cyberstars/shared/notifications';
+import type { UnreadSections } from '@cyberstars/shared/notifications';
 
 const mockRepo = {
   findUnreadFor: vi.fn(),
@@ -15,6 +18,8 @@ const mockRepo = {
   listAnnouncements: vi.fn(),
   listNotices: vi.fn(),
   markShown: vi.fn(),
+  listUnreadSections: vi.fn(),
+  markSectionRead: vi.fn(),
 };
 const mockWs = { pushToUser: vi.fn(), isUserOnline: vi.fn() };
 
@@ -32,7 +37,15 @@ const {
   redactExcerpt,
   getNotices,
   markShown,
+  markSectionRead,
 } = await import('./notifications.service.js');
+
+const NO_SECTIONS: UnreadSections = { forum: [], support: [], connections: 0, laniakea: 0 };
+
+// The unread-count frame's payload: the bell's count and the sidebar's
+function state(unreadCount: number, sections: UnreadSections = NO_SECTIONS) {
+  return { unreadCount, sections };
+}
 
 function row(over: Partial<Record<string, unknown>> = {}) {
   return {
@@ -56,22 +69,37 @@ beforeEach(() => {
   mockRepo.findUnreadFor.mockResolvedValue(null);
   mockRepo.pruneOverCap.mockResolvedValue(undefined);
   mockRepo.countUnread.mockResolvedValue(3);
+  mockRepo.listUnreadSections.mockResolvedValue([]);
 });
 
 describe('notifications.service notify', () => {
-  it('creates a row and pushes new + unread-count frames to each recipient', async () => {
-    await notify({ recipientIds: [10, 11], actorId: 2, type: 'FORUM_REPLY', entityId: 5 });
+  it('creates a bell row and pushes new + unread-count frames to each recipient', async () => {
+    mockRepo.create.mockResolvedValue(row({ type: 'POLL_ANSWER', data: { text: 'Yes' } }));
+    await notify({ recipientIds: [10, 11], actorId: 2, type: 'POLL_ANSWER', entityId: 5 });
     expect(mockRepo.create).toHaveBeenCalledTimes(2);
     expect(mockRepo.pruneOverCap).toHaveBeenCalledWith(10, 100);
     expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
       channel: 'notification',
       type: 'new',
-      payload: expect.objectContaining({ id: 1, type: 'FORUM_REPLY' }),
+      payload: expect.objectContaining({ id: 1, type: 'POLL_ANSWER' }),
     });
     expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
       channel: 'notification',
       type: 'unread-count',
-      payload: { unreadCount: 3 },
+      payload: state(3),
+    });
+  });
+
+  it('pushes only the counts for a sidebar row, never a bell row', async () => {
+    mockRepo.listUnreadSections.mockResolvedValue([
+      { type: 'FORUM_REPLY', entityId: 5, data: { title: 'Thread', count: 1 } },
+    ]);
+    await notify({ recipientIds: [10], actorId: 2, type: 'FORUM_REPLY', entityId: 5 });
+    expect(mockWs.pushToUser).toHaveBeenCalledTimes(1);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
+      channel: 'notification',
+      type: 'unread-count',
+      payload: state(3, { ...NO_SECTIONS, forum: [{ entityId: 5, title: 'Thread' }] }),
     });
   });
 
@@ -137,7 +165,10 @@ describe('notifications.service notify', () => {
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
     expect(await notify({ recipientIds: [10, 11], type: 'FORUM_REPLY', entityId: 5 })).toBe(1);
     expect(mockRepo.create).toHaveBeenCalledTimes(2);
-    expect(mockWs.pushToUser).toHaveBeenCalledWith(11, expect.objectContaining({ type: 'new' }));
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(
+      11,
+      expect.objectContaining({ type: 'unread-count' }),
+    );
     spy.mockRestore();
   });
 });
@@ -180,6 +211,80 @@ describe('notifications.service getPage', () => {
   });
 });
 
+describe('where each notification type shows', () => {
+  it('puts every type in the bell or in exactly one sidebar section', () => {
+    const placed = [...BELL_TYPES, ...Object.values(SECTION_TYPES).flat()];
+    expect([...placed].sort()).toEqual(Object.values(NotificationType).sort());
+  });
+});
+
+describe('notifications.service unread sections', () => {
+  it('folds the unread sidebar rows into what each row shows', async () => {
+    mockRepo.list.mockResolvedValue([]);
+    mockRepo.listUnreadSections.mockResolvedValue([
+      { type: 'LANIAKEA_RECAP', entityId: 0, data: { count: 4 } },
+      { type: 'FORUM_SOLUTION', entityId: 7, data: { title: 'Loops' } },
+      { type: 'SUPPORT_REPLY', entityId: 3, data: { title: 'Login' } },
+      { type: 'CONNECTION_ACCEPTED', entityId: 12, data: null },
+      { type: 'FORUM_REPLY', entityId: 7, data: { title: 'Loops', count: 2 } },
+      { type: 'FORUM_REPLY', entityId: 2, data: { title: 'Arrays' } },
+      { type: 'SUPPORT_STATUS', entityId: 3, data: { title: 'Login' } },
+      { type: 'CONNECTION_REQUEST', entityId: 11, data: null },
+      { type: 'LANIAKEA_RECAP', entityId: 0, data: { count: 1 } },
+    ]);
+    const page = await getPage(10, 20);
+    expect(mockRepo.listUnreadSections).toHaveBeenCalledWith(10);
+    expect(page.sections).toEqual({
+      forum: [
+        { entityId: 7, title: 'Loops' },
+        { entityId: 2, title: 'Arrays' },
+      ],
+      support: [{ entityId: 3, title: 'Login' }],
+      connections: 2,
+      laniakea: 4,
+    });
+  });
+
+  it('falls back to an empty title and a single recap when the data lacks them', async () => {
+    mockRepo.list.mockResolvedValue([]);
+    mockRepo.listUnreadSections.mockResolvedValue([
+      { type: 'SUPPORT_TICKET_NEW', entityId: 3, data: null },
+      { type: 'LANIAKEA_RECAP', entityId: 0, data: {} },
+    ]);
+    const page = await getPage(10, 20);
+    expect(page.sections.support).toEqual([{ entityId: 3, title: '' }]);
+    expect(page.sections.laniakea).toBe(1);
+  });
+
+  it('markSectionRead reads the section by its types and pushes the counts', async () => {
+    mockRepo.markSectionRead.mockResolvedValue(2);
+    mockRepo.countUnread.mockResolvedValue(1);
+    await markSectionRead(10, 'forum', 7);
+    expect(mockRepo.markSectionRead).toHaveBeenCalledWith(10, ['FORUM_REPLY', 'FORUM_SOLUTION'], 7);
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
+      channel: 'notification',
+      type: 'unread-count',
+      payload: state(1),
+    });
+  });
+
+  it('markSectionRead reads a whole section when no entity is given', async () => {
+    mockRepo.markSectionRead.mockResolvedValue(1);
+    await markSectionRead(10, 'connections');
+    expect(mockRepo.markSectionRead).toHaveBeenCalledWith(
+      10,
+      ['CONNECTION_REQUEST', 'CONNECTION_ACCEPTED'],
+      undefined,
+    );
+  });
+
+  it('markSectionRead pushes nothing when nothing was unread', async () => {
+    mockRepo.markSectionRead.mockResolvedValue(0);
+    await markSectionRead(10, 'support', 3);
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+});
+
 describe('notifications.service notices', () => {
   it('shapes the rows the dashboard still has to show, in their order', async () => {
     mockRepo.listNotices.mockResolvedValue([
@@ -212,7 +317,7 @@ describe('notifications.service mark helpers', () => {
     expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
       channel: 'notification',
       type: 'unread-count',
-      payload: { unreadCount: 0 },
+      payload: state(0),
     });
   });
 
@@ -224,7 +329,7 @@ describe('notifications.service mark helpers', () => {
     expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
       channel: 'notification',
       type: 'unread-count',
-      payload: { unreadCount: 2 },
+      payload: state(2),
     });
   });
 
@@ -234,7 +339,7 @@ describe('notifications.service mark helpers', () => {
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
   });
 
-  it('markEntityRead pushes a fresh count when a bell entry was cleared', async () => {
+  it('markEntityRead pushes fresh counts when a row was cleared', async () => {
     mockRepo.markReadByEntity.mockResolvedValue(1);
     mockRepo.countUnread.mockResolvedValue(4);
     await markEntityRead(10, 'CONNECTION_REQUEST', 5);
@@ -242,7 +347,7 @@ describe('notifications.service mark helpers', () => {
     expect(mockWs.pushToUser).toHaveBeenCalledWith(10, {
       channel: 'notification',
       type: 'unread-count',
-      payload: { unreadCount: 4 },
+      payload: state(4),
     });
   });
 
@@ -281,7 +386,7 @@ describe('notifications.service announce', () => {
     expect(mockWs.pushToUser).toHaveBeenCalledWith(11, {
       channel: 'notification',
       type: 'unread-count',
-      payload: { unreadCount: 3 },
+      payload: state(3),
     });
   });
 

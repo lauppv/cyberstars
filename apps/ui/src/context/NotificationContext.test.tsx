@@ -1,6 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
-import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
+import type {
+  NotificationDTO,
+  UnreadSections,
+  UserSocketFrame,
+} from '@cyberstars/shared/notifications';
 
 const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, user: { id: 1, role: 'USER' } as { id: number; role: string } | null },
@@ -9,6 +13,7 @@ const h = vi.hoisted(() => ({
     getNotifications: vi.fn(),
     markRead: vi.fn(),
     markOneRead: vi.fn(),
+    markSectionRead: vi.fn(),
   },
   frameHandler: null as ((f: UserSocketFrame) => void) | null,
 }));
@@ -30,10 +35,10 @@ import { NotificationProvider, useNotifications } from './NotificationContext';
 function notif(over: Partial<NotificationDTO> = {}): NotificationDTO {
   return {
     id: 100,
-    type: 'FORUM_REPLY',
+    type: 'ANNOUNCEMENT',
     actor: { id: 2, name: 'Ben', avatarUrl: null },
     entityId: 5,
-    data: { title: 'T' },
+    data: { text: 'T' },
     readAt: null,
     createdAt: '2026-07-17T11:00:00.000Z',
     ...over,
@@ -52,6 +57,9 @@ function Probe() {
     markAllRead,
     markOneRead,
     noteRead,
+    sections,
+    clearSection,
+    markSectionRead,
   } = useNotifications();
   return (
     <div>
@@ -67,8 +75,31 @@ function Probe() {
       <button onClick={() => markOneRead(100)}>one</button>
       <button onClick={() => noteRead(100)}>note</button>
       <span data-testid="read">{items.map((n) => n.readAt ?? 'unread').join(',')}</span>
+      <span data-testid="forum">{sections.forum.map((e) => e.entityId).join(',')}</span>
+      <span data-testid="support">{sections.support.map((e) => e.entityId).join(',')}</span>
+      <span data-testid="connections">{sections.connections}</span>
+      <span data-testid="laniakea">{sections.laniakea}</span>
+      <button onClick={() => markSectionRead('forum', 7)}>read thread</button>
+      <button onClick={() => markSectionRead('connections')}>read connections</button>
+      <button onClick={() => clearSection('laniakea')}>clear laniakea</button>
     </div>
   );
+}
+
+const NO_SECTIONS: UnreadSections = { forum: [], support: [], connections: 0, laniakea: 0 };
+const SOME_SECTIONS: UnreadSections = {
+  forum: [
+    { entityId: 7, title: 'Loops' },
+    { entityId: 8, title: 'Lists' },
+  ],
+  support: [{ entityId: 3, title: 'Login' }],
+  connections: 2,
+  laniakea: 4,
+};
+
+// A page of the bell as the server sends it
+function page(items: NotificationDTO[], unreadCount: number, sections = NO_SECTIONS) {
+  return { items, unreadCount, sections };
 }
 
 function renderProvider() {
@@ -90,9 +121,10 @@ beforeEach(() => {
   h.frameHandler = null;
   h.auth = { isLoggedIn: true, user: { id: 1, role: 'USER' } };
   h.canAccess.mockReturnValue(true);
-  h.service.getNotifications.mockResolvedValue({ items: [notif({ id: 100 })], unreadCount: 1 });
+  h.service.getNotifications.mockResolvedValue(page([notif({ id: 100 })], 1));
   h.service.markRead.mockResolvedValue(undefined);
   h.service.markOneRead.mockResolvedValue(undefined);
+  h.service.markSectionRead.mockResolvedValue(undefined);
 });
 
 describe('NotificationContext', () => {
@@ -112,35 +144,89 @@ describe('NotificationContext', () => {
   it('updates the unread count from a socket frame', async () => {
     renderProvider();
     await screen.findByTestId('count');
-    dispatch({ channel: 'notification', type: 'unread-count', payload: { unreadCount: 7 } });
-    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('7'));
-  });
-
-  it('hoists a new notification and drops the unread row it collapsed', async () => {
-    renderProvider();
-    await screen.findByTestId('count');
-    // Same collapsible type + entity, unread: the incoming frame is a
-    // replacement row (fresh id), so the superseded copy disappears.
-    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 101 }) });
-    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101'));
-    // A different entity is unrelated, so both stay.
-    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 102, entityId: 6 }) });
-    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('102,101'));
-  });
-
-  it('keeps same-entity unread rows for non-collapsible types', async () => {
-    h.service.getNotifications.mockResolvedValue({
-      items: [notif({ id: 100, type: 'SUPPORT_REPLY' })],
-      unreadCount: 1,
-    });
-    renderProvider();
-    await screen.findByTestId('count');
     dispatch({
       channel: 'notification',
-      type: 'new',
-      payload: notif({ id: 101, type: 'SUPPORT_REPLY' }),
+      type: 'unread-count',
+      payload: { unreadCount: 7, sections: SOME_SECTIONS },
     });
+    await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('7'));
+    expect(screen.getByTestId('forum')).toHaveTextContent('7,8');
+    expect(screen.getByTestId('connections')).toHaveTextContent('2');
+  });
+
+  it('hoists a new bell row on top and never lists the same one twice', async () => {
+    renderProvider();
+    await screen.findByTestId('count');
+    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 101 }) });
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101,100'));
+    dispatch({ channel: 'notification', type: 'new', payload: notif({ id: 101 }) });
+    expect(screen.getByTestId('ids')).toHaveTextContent(/^101,100$/);
+  });
+
+  it("loads the sidebar's sections with the first page", async () => {
+    h.service.getNotifications.mockResolvedValue(page([], 0, SOME_SECTIONS));
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('forum')).toHaveTextContent('7,8'));
+    expect(screen.getByTestId('support')).toHaveTextContent('3');
+    expect(screen.getByTestId('connections')).toHaveTextContent('2');
+    expect(screen.getByTestId('laniakea')).toHaveTextContent('4');
+  });
+
+  it('markSectionRead clears one thread here and tells the server', async () => {
+    h.service.getNotifications.mockResolvedValue(page([], 0, SOME_SECTIONS));
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('forum')).toHaveTextContent('7,8'));
+    fireEvent.click(screen.getByText('read thread'));
+    expect(screen.getByTestId('forum')).toHaveTextContent(/^8$/);
+    expect(h.service.markSectionRead).toHaveBeenCalledWith('forum', 7);
+  });
+
+  it('markSectionRead clears a counted section and tells the server', async () => {
+    h.service.getNotifications.mockResolvedValue(page([], 0, SOME_SECTIONS));
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('connections')).toHaveTextContent('2'));
+    fireEvent.click(screen.getByText('read connections'));
+    expect(screen.getByTestId('connections')).toHaveTextContent('0');
+    expect(h.service.markSectionRead).toHaveBeenCalledWith('connections', undefined);
+  });
+
+  it('markSectionRead tells the server even before the first page is here', async () => {
+    h.service.getNotifications.mockImplementation(() => new Promise(() => {}));
+    renderProvider();
+    fireEvent.click(screen.getByText('read thread'));
+    expect(h.service.markSectionRead).toHaveBeenCalledWith('forum', 7);
+  });
+
+  it('markSectionRead does nothing while notifications are off', async () => {
+    h.auth = { isLoggedIn: false, user: null };
+    renderProvider();
+    fireEvent.click(screen.getByText('read thread'));
+    expect(h.service.markSectionRead).not.toHaveBeenCalled();
+  });
+
+  it('clearSection only clears here', async () => {
+    h.service.getNotifications.mockResolvedValue(page([], 0, SOME_SECTIONS));
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('laniakea')).toHaveTextContent('4'));
+    fireEvent.click(screen.getByText('clear laniakea'));
+    expect(screen.getByTestId('laniakea')).toHaveTextContent('0');
+    expect(h.service.markSectionRead).not.toHaveBeenCalled();
+  });
+
+  it('forgets the sections when the feature turns off', async () => {
+    h.service.getNotifications.mockResolvedValue(page([], 0, SOME_SECTIONS));
+    const { rerender } = renderProvider();
+    await waitFor(() => expect(screen.getByTestId('connections')).toHaveTextContent('2'));
+    h.auth = { isLoggedIn: false, user: null };
+    rerender(
+      <UserSocketProvider>
+        <NotificationProvider>
+          <Probe />
+        </NotificationProvider>
+      </UserSocketProvider>,
+    );
+    await waitFor(() => expect(screen.getByTestId('connections')).toHaveTextContent('0'));
+    expect(screen.getByTestId('forum')).toHaveTextContent('');
   });
 
   it('ignores non-notification frames', async () => {
@@ -151,16 +237,10 @@ describe('NotificationContext', () => {
   });
 
   it('loadMore appends the next page and updates hasMore', async () => {
-    h.service.getNotifications.mockResolvedValueOnce({
-      items: [notif({ id: 100 })],
-      unreadCount: 1,
-    });
+    h.service.getNotifications.mockResolvedValueOnce(page([notif({ id: 100 })], 1));
     renderProvider();
     await screen.findByTestId('count');
-    h.service.getNotifications.mockResolvedValueOnce({
-      items: [notif({ id: 90 })],
-      unreadCount: 1,
-    });
+    h.service.getNotifications.mockResolvedValueOnce(page([notif({ id: 90 })], 1));
     fireEvent.click(screen.getByText('more'));
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('100,90'));
     expect(h.service.getNotifications).toHaveBeenLastCalledWith(20, 100);
@@ -181,7 +261,7 @@ describe('NotificationContext', () => {
     dispatch({
       channel: 'notification',
       type: 'new',
-      payload: notif({ id: 60, type: 'SUPPORT_REPLY', entityId: 7 }),
+      payload: notif({ id: 60, type: 'POLL', entityId: 7 }),
     });
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('60,100'));
     fireEvent.click(screen.getByText('all'));
@@ -189,7 +269,7 @@ describe('NotificationContext', () => {
   });
 
   it('markAllRead is a no-op when nothing is unread', async () => {
-    h.service.getNotifications.mockResolvedValue({ items: [notif({ id: 100 })], unreadCount: 0 });
+    h.service.getNotifications.mockResolvedValue(page([notif({ id: 100 })], 0));
     renderProvider();
     await screen.findByTestId('count');
     fireEvent.click(screen.getByText('all'));
@@ -205,10 +285,9 @@ describe('NotificationContext', () => {
   });
 
   it('markOneRead is a no-op for an already-read item', async () => {
-    h.service.getNotifications.mockResolvedValue({
-      items: [notif({ id: 100, readAt: '2026-07-17T12:00:00.000Z' })],
-      unreadCount: 0,
-    });
+    h.service.getNotifications.mockResolvedValue(
+      page([notif({ id: 100, readAt: '2026-07-17T12:00:00.000Z' })], 0),
+    );
     renderProvider();
     await screen.findByTestId('count');
     fireEvent.click(screen.getByText('one'));
@@ -216,10 +295,9 @@ describe('NotificationContext', () => {
   });
 
   it('noteRead shows one read and leaves the count and the server alone', async () => {
-    h.service.getNotifications.mockResolvedValue({
-      items: [notif({ id: 100 }), notif({ id: 99, readAt: '2026-07-17T12:00:00.000Z' })],
-      unreadCount: 1,
-    });
+    h.service.getNotifications.mockResolvedValue(
+      page([notif({ id: 100 }), notif({ id: 99, readAt: '2026-07-17T12:00:00.000Z' })], 1),
+    );
     renderProvider();
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('2'));
     fireEvent.click(screen.getByText('note'));
@@ -231,10 +309,7 @@ describe('NotificationContext', () => {
   });
 
   it('markOneRead is a no-op when the id is not in the list', async () => {
-    h.service.getNotifications.mockResolvedValue({
-      items: [notif({ id: 200 })],
-      unreadCount: 1,
-    });
+    h.service.getNotifications.mockResolvedValue(page([notif({ id: 200 })], 1));
     renderProvider();
     await screen.findByTestId('count');
     fireEvent.click(screen.getByText('one'));
@@ -260,11 +335,11 @@ describe('NotificationContext', () => {
     let first: (v: unknown) => void = () => {};
     h.service.getNotifications
       .mockImplementationOnce(() => new Promise((resolve) => (first = resolve)))
-      .mockResolvedValueOnce({ items: [notif({ id: 101 })], unreadCount: 3 });
+      .mockResolvedValueOnce(page([notif({ id: 101 })], 3));
     renderProvider();
     fireEvent.click(screen.getByText('reload'));
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('101'));
-    await act(async () => first({ items: [notif({ id: 1 })], unreadCount: 9 }));
+    await act(async () => first(page([notif({ id: 1 })], 9)));
     expect(screen.getByTestId('ids')).toHaveTextContent('101');
     expect(screen.getByTestId('unread')).toHaveTextContent('3');
   });
@@ -279,10 +354,7 @@ describe('NotificationContext', () => {
     );
     expect(screen.getByTestId('ids')).toHaveTextContent('100');
 
-    h.service.getNotifications.mockResolvedValueOnce({
-      items: [notif({ id: 90 })],
-      unreadCount: 1,
-    });
+    h.service.getNotifications.mockResolvedValueOnce(page([notif({ id: 90 })], 1));
     fireEvent.click(screen.getByText('more'));
     await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('100,90'));
     expect(screen.getByTestId('moreError')).toHaveTextContent('');
@@ -305,7 +377,7 @@ describe('NotificationContext', () => {
         </NotificationProvider>
       </UserSocketProvider>,
     );
-    await act(async () => retry({ items: [notif({ id: 100 })], unreadCount: 1 }));
+    await act(async () => retry(page([notif({ id: 100 })], 1)));
     expect(screen.getByTestId('count')).toHaveTextContent('0');
     expect(screen.getByTestId('unread')).toHaveTextContent('0');
   });

@@ -2,8 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import i18next from 'i18next';
 import { useNotifications } from '../../context/NotificationContext';
-import { forumRoutes } from '../../constants/forumRoutes';
-import type { NotificationDTO, NotificationType } from '@cyberstars/shared/notifications';
+import type { NotificationDTO } from '@cyberstars/shared/notifications';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -17,51 +16,19 @@ function timeAgo(iso: string): string {
   return new Date(iso).toLocaleDateString(i18next.language);
 }
 
-const ICONS: Record<NotificationType, string> = {
-  FORUM_REPLY: '💬',
-  FORUM_SOLUTION: '✅',
-  SUPPORT_TICKET_NEW: '🎫',
-  SUPPORT_REPLY: '🎫',
-  SUPPORT_STATUS: '🔖',
-  CONNECTION_REQUEST: '🤝',
-  CONNECTION_ACCEPTED: '🌟',
-  LANIAKEA_RECAP: '🪐',
-  ANNOUNCEMENT: '📣',
-  POLL: '📊',
-  POLL_ANSWER: '📝',
-};
-
+// The bell lists only announcements, polls and, for the admins, written poll
+// answers; everything else counts on its sidebar row
 function describe(n: NotificationDTO): string {
   const t = i18next.t;
-  const name = n.actor?.name ?? t('notif.someone');
-  const title = n.data?.title ?? '';
-  const count = n.data?.count ?? 1;
   switch (n.type) {
-    case 'FORUM_REPLY':
-      return t('notif.forumReply', { count, name, title });
-    case 'FORUM_SOLUTION':
-      return t('notif.forumSolution', { name, title });
-    case 'SUPPORT_TICKET_NEW':
-      return t('notif.ticketNew', { title });
-    case 'SUPPORT_REPLY':
-      return t('notif.ticketReply', { title });
-    case 'SUPPORT_STATUS':
-      return t('notif.status', {
-        title,
-        status: n.data?.status ? t(`support.status.${n.data.status}`) : '',
-      });
-    case 'CONNECTION_REQUEST':
-      return t('notif.connectionRequest', { name });
-    case 'CONNECTION_ACCEPTED':
-      return t('notif.connectionAccepted', { name });
-    case 'LANIAKEA_RECAP':
-      return t('notif.laniakeaRecap', { count });
     case 'ANNOUNCEMENT':
       return t('notif.announcement', { text: n.data?.text ?? '' });
     case 'POLL':
       return t('notif.poll', { text: n.data?.text ?? '' });
     case 'POLL_ANSWER':
-      return t('notif.pollAnswer', { title, text: n.data?.text ?? '' });
+      return t('notif.pollAnswer', { title: n.data?.title ?? '', text: n.data?.text ?? '' });
+    default:
+      return '';
   }
 }
 
@@ -127,34 +94,12 @@ export function NotificationDropdown({
     markOneRead,
   } = useNotifications();
 
-  const targetFor = (n: NotificationDTO): string | null => {
-    switch (n.type) {
-      case 'FORUM_REPLY':
-      case 'FORUM_SOLUTION':
-        return forumRoutes.thread(n.entityId);
-      case 'SUPPORT_TICKET_NEW':
-      case 'SUPPORT_REPLY':
-      case 'SUPPORT_STATUS':
-        return `/support?ticket=${n.entityId}`;
-      case 'CONNECTION_REQUEST':
-      case 'CONNECTION_ACCEPTED':
-        return '/connections';
-      case 'LANIAKEA_RECAP':
-        return '/laniakea';
-      case 'POLL_ANSWER':
-        return '/admin';
-      case 'ANNOUNCEMENT':
-      case 'POLL':
-        return null;
-    }
-  };
-
   const onItemClick = (n: NotificationDTO) => {
     markOneRead(n.id);
     onClose();
-    const to = targetFor(n);
-    // An announcement or a poll has no page of its own, it opens in a window over this one
-    if (to) navigate(to);
+    // A written answer waits whole on the admin page; an announcement or a poll
+    // has no page of its own, it opens in a window over this one
+    if (n.type === 'POLL_ANSWER') navigate('/admin');
     else if (n.type === 'POLL') onPoll(n);
     else onAnnouncement(n);
   };

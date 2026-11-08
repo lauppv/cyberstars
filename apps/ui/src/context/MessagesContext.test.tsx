@@ -181,7 +181,14 @@ describe('MessagesContext', () => {
   it('ignores non-dm frames', async () => {
     renderProvider();
     await screen.findByTestId('count');
-    dispatch({ channel: 'notification', type: 'unread-count', payload: { unreadCount: 5 } });
+    dispatch({
+      channel: 'notification',
+      type: 'unread-count',
+      payload: {
+        unreadCount: 5,
+        sections: { forum: [], support: [], connections: 0, laniakea: 0 },
+      },
+    });
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
   });
 

@@ -227,7 +227,11 @@ describe('Laniakea recaps in the bell', () => {
     });
   }
 
-  const bell = async (agent: Agent) => (await agent.get('/api/notifications').expect(200)).body;
+  const page = async (agent: Agent) => (await agent.get('/api/notifications').expect(200)).body;
+  // How many recaps the Laniakea row in the sidebar says are open
+  const recaps = async (agent: Agent) => (await page(agent)).sections.laniakea;
+  const recapRows = (userId: number) =>
+    prisma.notification.findMany({ where: { userId, type: 'LANIAKEA_RECAP' } });
 
   // A student who has done the lessons of every planet above
   const doneAll = () => student([...FIRST_STEPS, 'lists', 'bubble-sort', 'if-else']);
@@ -238,28 +242,23 @@ describe('Laniakea recaps in the bell', () => {
     await planets(userId, now);
 
     expect(await tellOpenRecaps(new Date(now))).toBe(1);
-    let page = await bell(agent);
-    expect(page.unreadCount).toBe(1);
-    expect(page.items[0]).toMatchObject({
-      type: 'LANIAKEA_RECAP',
-      entityId: 0,
-      data: { count: 2 },
-    });
+    expect(await recaps(agent)).toBe(2);
+    // It counts on the sidebar's row, never in the bell
+    const bell = await page(agent);
+    expect(bell.items).toHaveLength(0);
+    expect(bell.unreadCount).toBe(0);
 
     // An hour on, nothing new opened and it was told today
     expect(await tellOpenRecaps(new Date(now + HOUR))).toBe(0);
 
     await agent.post('/api/laniakea/seen').expect(204);
-    page = await bell(agent);
-    expect(page.unreadCount).toBe(0);
+    expect(await recaps(agent)).toBe(0);
     const player = await prisma.laniakeaPlayer.findUniqueOrThrow({ where: { userId } });
     expect(player.seenAt).not.toBeNull();
 
     // Bubble Sort's recap opens after the visit: a new notification counts all three
     expect(await tellOpenRecaps(new Date(now + 2 * DAY_MS))).toBe(1);
-    page = await bell(agent);
-    expect(page.unreadCount).toBe(1);
-    expect(page.items[0].data).toEqual({ count: 3 });
+    expect(await recaps(agent)).toBe(3);
   });
 
   it('tells nothing of recaps open when the student last opened the game', async () => {
@@ -269,7 +268,7 @@ describe('Laniakea recaps in the bell', () => {
     await agent.post('/api/laniakea/seen').expect(204);
 
     expect(await tellOpenRecaps(new Date(now + HOUR))).toBe(0);
-    expect((await bell(agent)).items).toHaveLength(0);
+    expect(await recapRows(userId)).toHaveLength(0);
   });
 
   it('replaces an unread notification from an earlier day instead of adding one', async () => {
@@ -279,10 +278,11 @@ describe('Laniakea recaps in the bell', () => {
 
     await tellOpenRecaps(new Date(now));
     await tellOpenRecaps(new Date(now + 2 * DAY_MS));
-    const page = await bell(agent);
-    expect(page.items).toHaveLength(1);
-    expect(page.unreadCount).toBe(1);
-    expect(page.items[0].data).toEqual({ count: 3 });
+    const rows = await recapRows(userId);
+    expect(rows).toHaveLength(1);
+    expect(rows[0].readAt).toBeNull();
+    expect(rows[0].data).toEqual({ count: 3 });
+    expect(await recaps(agent)).toBe(3);
   });
 
   it('leaves out a row whose lesson is no longer a planet', async () => {
@@ -300,19 +300,19 @@ describe('Laniakea recaps in the bell', () => {
       },
     });
     expect(await tellOpenRecaps(new Date(now))).toBe(1);
-    expect((await bell(agent)).items[0].data).toEqual({ count: 2 });
+    expect(await recaps(agent)).toBe(2);
   });
 
   it('tells nothing while the game is locked for the student', async () => {
-    const { agent, userId } = await student(['print', 'lists', 'bubble-sort']);
+    const { userId } = await student(['print', 'lists', 'bubble-sort']);
     const now = Date.now();
     await planets(userId, now);
     expect(await tellOpenRecaps(new Date(now))).toBe(0);
-    expect((await bell(agent)).items).toHaveLength(0);
+    expect(await recapRows(userId)).toHaveLength(0);
   });
 
   it('tells nothing of a recap the student already passed', async () => {
-    const { agent, userId } = await doneAll();
+    const { userId } = await doneAll();
     const now = Date.now();
     // Passed its 1-day recap an hour ago, so the next opens in two days
     await prisma.laniakeaPlanet.create({
@@ -325,7 +325,7 @@ describe('Laniakea recaps in the bell', () => {
       },
     });
     expect(await tellOpenRecaps(new Date(now))).toBe(0);
-    expect((await bell(agent)).items).toHaveLength(0);
+    expect(await recapRows(userId)).toHaveLength(0);
   });
 });
 
