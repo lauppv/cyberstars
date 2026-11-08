@@ -23,15 +23,16 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // starterCode: the code we ship as teachers, in the current language (Reset
-  // target, and what a pristine editor follows on a language switch). savedCode:
-  // the user's own code, if any; language-agnostic, never auto-translated.
-  const [starterCode, setStarterCode] = useState('');
-  // A web lesson's start comes in two versions (CYB-119): the course's site so
-  // far with the lesson's new files, and the student's own passing site with
-  // them (null without one). The starter is the student's when there is one.
+  // courseStarter: the code we ship as teachers, in the current language; on a
+  // web lesson the course's site so far with the lesson's new files (CYB-119).
+  // passedStarter: a web lesson's start from the student's own passing site
+  // instead, null without one. starterCode is the student's when there is one
+  // (Reset target, and what a pristine editor follows on a language switch).
+  // savedCode: the user's own code, if any; language-agnostic, never
+  // auto-translated.
   const [courseStarter, setCourseStarter] = useState('');
   const [passedStarter, setPassedStarter] = useState<string | null>(null);
+  const starterCode = passedStarter ?? courseStarter;
   const [savedCode, setSavedCode] = useState<string | null>(null);
   // The request for the user's saved code failed: null savedCode then means
   // "not known", not "nothing saved".
@@ -97,7 +98,6 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
       if (cancelled) return;
       setCourseStarter(starter);
       setPassedStarter(passed);
-      setStarterCode(passed ?? starter);
 
       let saved: string | null = null;
       let failed = false;
