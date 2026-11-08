@@ -34,6 +34,6 @@ The pattern above, a total that starts at 0 and grows by one value per round, is
 
 ## Mission: Logged Hours
 
-- On every crew card, add a paragraph with the hours that crew member worked this week, the number in a span in the class `hours`: `Hours this week: <span class="hours">36</span>`. Pick the numbers yourself.
+- On every crew card, add a paragraph with the hours that crew member worked this week, the number in a span in the class `worked`: `Hours this week: <span class="worked">36</span>`. Pick the numbers yourself.
 - After the box of cards, add an empty paragraph with the id `hours-total`.
 - In `crew.js`, with a `for...of` loop over the hours on the page, work out the total and the average, rounded to a whole number, and write them in that paragraph: `Hours this week: 142, about 36 per crew member`.

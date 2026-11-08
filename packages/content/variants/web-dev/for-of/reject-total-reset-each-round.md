@@ -322,25 +322,25 @@ nextShift.addEventListener("click", () => {
       <div class="card">
         <h3>Mara Vega</h3>
         <p>Job: <span class="role">Commander</span></p>
-        <p>Hours this week: <span class="hours">40</span></p>
+        <p>Hours this week: <span class="worked">40</span></p>
         <p class="bio">Twenty years in orbit, three of them in charge of this station. Knows every bolt by its first name and still checks the airlocks herself before bed.</p>
       </div>
       <div class="card">
         <h3>Tomas Okafor</h3>
         <p>Job: <span class="role">Engineer</span></p>
-        <p>Hours this week: <span class="hours">38</span></p>
+        <p>Hours this week: <span class="worked">38</span></p>
         <p class="bio">Keeps the power on and the water clean. Spends his free time building a clock out of spare parts that has never once shown the right time.</p>
       </div>
       <div class="card">
         <h3>Ines Lindqvist</h3>
         <p>Job: <span class="role">Pilot</span></p>
-        <p>Hours this week: <span class="hours">36</span></p>
+        <p>Hours this week: <span class="worked">36</span></p>
         <p class="bio">Flies the supply runs and the rescue drills. Holds the station record for the softest docking, and reminds everyone of it at dinner.</p>
       </div>
       <div class="card">
         <h3>Kenji Arano</h3>
         <p>Job: <span class="role">Botanist</span></p>
-        <p>Hours this week: <span class="hours">28</span></p>
+        <p>Hours this week: <span class="worked">28</span></p>
         <p class="bio">Grows the tomatoes, the beans and the only flowers for four hundred kilometres. Talks to the plants, and claims they answer.</p>
       </div>
     </div>
@@ -406,7 +406,7 @@ for (let i = 0; i < crewItems.length; i++) {
 }
 
 // Hours this week, from the cards
-const hourSpans = document.querySelectorAll(".hours");
+const hourSpans = document.querySelectorAll(".worked");
 let totalHours = 0;
 for (const span of hourSpans) {
   totalHours = Number(span.textContent);
