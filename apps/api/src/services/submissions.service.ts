@@ -3,7 +3,7 @@ import * as repo from '../repositories/submissions.repository.js';
 import { assertValidCourse } from './paths.js';
 import { loadTestsSpec } from './lesson-tests.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { isCodeLanguage, type CodeLanguage } from '@cyberstars/shared/constants';
+import { WEB_COURSE_KEYS, isCodeLanguage, type CodeLanguage } from '@cyberstars/shared/constants';
 import type {
   RunTestsResponse,
   StructureFailure,
@@ -13,7 +13,8 @@ import type {
 } from '@cyberstars/shared/tests';
 
 // Attempts kept per user and lesson; older ones are pruned on every insert so
-// the table stays bounded on the 1GB VPS.
+// the table stays bounded on the 1GB VPS. A web lesson keeps its newest
+// passing attempt besides.
 const HISTORY_CAP = 20;
 
 function toSummary(row: repo.SubmissionSummaryRow): SubmissionSummary {
@@ -77,6 +78,8 @@ export async function record(
       failedCase: failedCase as unknown as Prisma.InputJsonValue | null,
     },
     HISTORY_CAP,
+    // A web lesson's next lesson starts from its newest passing site
+    WEB_COURSE_KEYS.includes(courseKey),
   );
   return toSummary(row);
 }

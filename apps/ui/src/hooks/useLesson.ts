@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { CodeLanguage } from '@cyberstars/shared/constants';
+import { WEB_COURSE_KEYS, type CodeLanguage } from '@cyberstars/shared/constants';
 import * as lessonService from '../services/lessonService';
 import * as progressService from '../services/progressService';
+import { fetchWebLessonStart } from '../services/webLessonService';
 import { useAuth } from '../context/AuthContext';
 
 const DEFAULT_CODE: Record<string, string> = {
@@ -22,10 +23,19 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
   const lang = i18n.language === 'ro' ? 'ro' : 'en';
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // starterCode: the code we ship as teachers, in the current language (Reset
-  // target, and what a pristine editor follows on a language switch). savedCode:
-  // the user's own code, if any; language-agnostic, never auto-translated.
-  const [starterCode, setStarterCode] = useState('');
+  // courseStarter: the code we ship as teachers, in the current language; on a
+  // web lesson the course's site so far with the lesson's new files (CYB-119).
+  // passedStarter: a web lesson's start from the student's own passing site
+  // instead, null without one. starterCode is the student's when there is one
+  // (Reset target, and what a pristine editor follows on a language switch).
+  // savedCode: the user's own code, if any; language-agnostic, never
+  // auto-translated.
+  const [courseStarter, setCourseStarter] = useState('');
+  const [passedStarter, setPassedStarter] = useState<string | null>(null);
+  const starterCode = passedStarter ?? courseStarter;
+  // A web lesson's start couldn't be read: its starter is then only the
+  // lesson's own files, without the site from the lessons before.
+  const [startFailed, setStartFailed] = useState(false);
   const [savedCode, setSavedCode] = useState<string | null>(null);
   // The request for the user's saved code failed: null savedCode then means
   // "not known", not "nothing saved".
@@ -56,43 +66,54 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
     setError(null); // eslint-disable-line react-hooks/set-state-in-effect
     if (!switchingLanguage) setIsLoading(true);
 
-    const loadLesson = async () => {
+    // The lesson's text, its starter and the student's saved code don't wait
+    // on each other, so they're asked for together
+    const loadText = lessonService
+      .fetchLesson(courseKey, lessonSlug, lang, language)
+      .catch(() => null);
+    // Always resolve the starter so Reset has a target even when saved code exists.
+    const loadStarter = async () => {
+      let failed = false;
+      if (WEB_COURSE_KEYS.includes(courseKey)) {
+        try {
+          return { ...(await fetchWebLessonStart(courseKey, lessonSlug, lang)), failed };
+        } catch {
+          // The lesson's own files are the closest there is to its start,
+          // and the page says the rest is missing
+          failed = true;
+        }
+      }
       try {
-        const lesson = await lessonService.fetchLesson(courseKey, lessonSlug, lang, language);
-        if (cancelled) return;
+        const own = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
+        return { course: own, passed: null, failed };
+      } catch {
+        const course = DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '';
+        return { course, passed: null, failed };
+      }
+    };
+    const loadSaved = isLoggedIn
+      ? progressService.getSavedCode(courseKey, lessonSlug, language).then(
+          (res) => ({ code: res.code, failed: false }),
+          () => ({ code: null, failed: true }),
+        )
+      : Promise.resolve({ code: null, failed: false });
+
+    const loadLesson = async () => {
+      const [lesson, starter, saved] = await Promise.all([loadText, loadStarter(), loadSaved]);
+      if (cancelled) return;
+      if (lesson) {
         setTitle(lesson.title);
         setContent(lesson.content);
-      } catch {
-        if (cancelled) return;
+      } else {
         setError(t('lesson.notFound'));
         setTitle(t('lesson.notFound'));
         setContent('');
       }
-
-      // Always resolve the starter so Reset has a target even when saved code exists.
-      let starter: string;
-      try {
-        starter = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
-      } catch {
-        starter = DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '';
-      }
-      if (cancelled) return;
-      setStarterCode(starter);
-
-      let saved: string | null = null;
-      let failed = false;
-      if (isLoggedIn) {
-        try {
-          const res = await progressService.getSavedCode(courseKey, lessonSlug, language);
-          if (cancelled) return;
-          saved = res.code;
-        } catch {
-          if (cancelled) return;
-          failed = true;
-        }
-      }
-      setSavedCode(saved);
-      setSavedCodeFailed(failed);
+      setCourseStarter(starter.course);
+      setPassedStarter(starter.passed);
+      setStartFailed(starter.failed);
+      setSavedCode(saved.code);
+      setSavedCodeFailed(saved.failed);
       setShownLanguage(language);
       setIsLoading(false);
     };
@@ -114,10 +135,25 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
     return res.code;
   }, [courseKey, lessonSlug, shownLanguage]);
 
+  // Asks again for a web lesson's start that failed to load; a failure throws
+  // and leaves the lesson's own files as its starter.
+  const reloadStart = useCallback(async () => {
+    const key = loadedRef.current;
+    const start = await fetchWebLessonStart(courseKey, lessonSlug, lang);
+    if (loadedRef.current !== key) return;
+    setCourseStarter(start.course);
+    setPassedStarter(start.passed);
+    setStartFailed(false);
+  }, [courseKey, lessonSlug, lang]);
+
   return {
     title,
     content,
     starterCode,
+    courseStarter,
+    passedStarter,
+    startFailed,
+    reloadStart,
     savedCode,
     savedCodeFailed,
     reloadSavedCode,

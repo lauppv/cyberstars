@@ -1888,3 +1888,34 @@ export const lessons = [
 // is one list, as the shorter courses are. The Romanian names are in
 // curriculum-ro.ts, `partTitlesRo`.
 export const courseParts: Record<string, { key: string; title: string; lessons: string[] }[]> = {};
+
+// The lessons of a web course that start from their own files alone, by course
+// key: the project at the end of a part, built from an empty folder. Every
+// other lesson of a web course carries on from the student's site in the
+// closest earlier lesson not listed here (CYB-119).
+export const freshStartLessons: Record<string, string[]> = {};
+
+type LessonEntry = { courseKey: string; slug: string; sortOrder: number };
+
+// The lesson whose site a lesson of a web course carries on from: the closest
+// earlier one, in the course's order, that doesn't start from its own files.
+// Null for the course's first lesson, a lesson that starts from its own files
+// and a slug the course doesn't have.
+export function carriedFrom(
+  courseKey: string,
+  slug: string,
+  list: readonly LessonEntry[] = lessons,
+  fresh: Record<string, string[]> = freshStartLessons,
+): string | null {
+  const own = fresh[courseKey] ?? [];
+  if (own.includes(slug)) return null;
+  const inOrder = list
+    .filter((l) => l.courseKey === courseKey)
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((l) => l.slug);
+  const at = inOrder.indexOf(slug);
+  for (let i = at - 1; i >= 0; i--) {
+    if (!own.includes(inOrder[i])) return inOrder[i];
+  }
+  return null;
+}

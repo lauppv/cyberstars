@@ -89,3 +89,56 @@ test('Run says once what it is for, then draws the page again', async ({ page })
   await expect(card).toHaveCount(0);
   await expect(page.getByTitle('Preview of index.html')).toBeVisible();
 });
+
+// CYB-119: a web lesson starts from the student's passing site with the
+// lesson's new files, and Reset goes back to it or to the course's version.
+// The course has one web lesson so far, so the start is answered here.
+test("a web lesson starts from the student's site, and Reset offers both versions", async ({
+  page,
+}) => {
+  const site = (h1: string) =>
+    `\`\`\`html index.html\n<h1>${h1}</h1>\n\`\`\`\n\n\`\`\`html crew.html\n<h2>Crew</h2>\n\`\`\``;
+  await page.route('**/api/lessons/web-dev/first-page/start*', (route) =>
+    route.fulfill({ json: { course: site('Course'), passed: site('Mine') } }),
+  );
+  await page.goto('/lesson/web-dev/first-page');
+  const frame = page.frameLocator('iframe[title^="Preview"]');
+  await expect(frame.locator('h1')).toHaveText('Mine', { timeout: 10_000 });
+  await page
+    .getByRole('group', { name: 'What the left side shows' })
+    .getByRole('button', { name: 'Code' })
+    .click();
+  await expect(page.getByRole('button', { name: 'crew.html', exact: true })).toBeVisible();
+
+  page.on('dialog', (dialog) => dialog.accept());
+  await page.getByRole('button', { name: 'Actions' }).click();
+  await page.getByRole('menuitem', { name: "Reset to the course's site" }).click();
+  await expect(frame.locator('h1')).toHaveText('Course', { timeout: 10_000 });
+
+  await page.getByRole('button', { name: 'Actions' }).click();
+  await page.getByRole('menuitem', { name: 'Reset to your site' }).click();
+  await expect(frame.locator('h1')).toHaveText('Mine', { timeout: 10_000 });
+});
+
+// A start that fails to load says so over the IDE, and Try again brings it in
+test("a web lesson says when its start didn't load, and Try again brings it in", async ({
+  page,
+}) => {
+  let fail = true;
+  await page.route('**/api/lessons/web-dev/first-page/start*', (route) =>
+    fail
+      ? route.abort()
+      : route.fulfill({
+          json: { course: '```html index.html\n<h1>Course</h1>\n```', passed: null },
+        }),
+  );
+  await page.goto('/lesson/web-dev/first-page');
+  const alert = page.getByRole('alert').filter({ hasText: "couldn't be loaded" });
+  await expect(alert).toBeVisible({ timeout: 10_000 });
+  fail = false;
+  await alert.getByRole('button', { name: 'Try again' }).click();
+  await expect(alert).toHaveCount(0);
+  await expect(page.frameLocator('iframe[title^="Preview"]').locator('h1')).toHaveText('Course', {
+    timeout: 10_000,
+  });
+});

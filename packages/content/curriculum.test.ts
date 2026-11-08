@@ -1,5 +1,10 @@
+import fs from 'fs';
+import path from 'path';
 import { describe, it, expect } from 'vitest';
-import { courseParts, courses, lessons } from './curriculum.js';
+import { WEB_COURSE_KEYS } from '@cyberstars/shared/constants';
+import { parseWebFiles, startWebSite } from '@cyberstars/shared/webFiles';
+import { carriedFrom, courseParts, courses, freshStartLessons, lessons } from './curriculum.js';
+import { courseDir } from './paths.js';
 
 describe('courseParts', () => {
   it('splits only courses the curriculum has', () => {
@@ -30,5 +35,80 @@ describe('courseParts', () => {
         courseKey,
       ).toEqual([]);
     }
+  });
+});
+
+describe('freshStartLessons', () => {
+  it('names only lessons of a web course', () => {
+    for (const [courseKey, slugs] of Object.entries(freshStartLessons)) {
+      expect(WEB_COURSE_KEYS, courseKey).toContain(courseKey);
+      const known = new Set(lessons.filter((l) => l.courseKey === courseKey).map((l) => l.slug));
+      expect(
+        slugs.filter((slug) => !known.has(slug)),
+        courseKey,
+      ).toEqual([]);
+    }
+  });
+});
+
+describe('carriedFrom', () => {
+  const list = [
+    { courseKey: 'web', slug: 'one', sortOrder: 1 },
+    { courseKey: 'web', slug: 'project', sortOrder: 3 },
+    { courseKey: 'web', slug: 'two', sortOrder: 2 },
+    { courseKey: 'web', slug: 'three', sortOrder: 4 },
+    { courseKey: 'other', slug: 'zero', sortOrder: 0 },
+  ];
+  const fresh = { web: ['project'] };
+
+  it("is the lesson before, in the course's order", () => {
+    expect(carriedFrom('web', 'two', list, fresh)).toBe('one');
+  });
+
+  it('skips a lesson that starts from its own files', () => {
+    expect(carriedFrom('web', 'three', list, fresh)).toBe('two');
+  });
+
+  it("is null for the first lesson, one that starts from its own files and one the course hasn't", () => {
+    expect(carriedFrom('web', 'one', list, fresh)).toBeNull();
+    expect(carriedFrom('web', 'project', list, fresh)).toBeNull();
+    expect(carriedFrom('web', 'zero', list, fresh)).toBeNull();
+  });
+});
+
+// The course's version a web lesson starts from: the reference site of the
+// lesson it carries on from with the files it adds
+describe("a web lesson's start", () => {
+  const webLessons = lessons.filter((l) => WEB_COURSE_KEYS.includes(l.courseKey));
+  // A Romanian file where there is one, as the server reads it, else the English
+  const read = (courseKey: string, name: string, lang: 'en' | 'ro' = 'en') => {
+    const ro = path.join(courseDir(courseKey), 'ro', name);
+    if (lang === 'ro' && fs.existsSync(ro)) return fs.readFileSync(ro, 'utf8');
+    const file = path.join(courseDir(courseKey), name);
+    return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
+  };
+
+  it('has the reference site of the lesson it carries on from', () => {
+    const missing = webLessons
+      .map((l) => ({ l, from: carriedFrom(l.courseKey, l.slug) }))
+      .filter(({ l, from }) => from && read(l.courseKey, `${from}-solution.md`) === null)
+      .map(({ l, from }) => `${l.courseKey}/${l.slug} ← ${from}`);
+    expect(missing).toEqual([]);
+  });
+
+  it("fits a site's limits, in English and in Romanian", () => {
+    const over = (['en', 'ro'] as const).flatMap((lang) =>
+      webLessons
+        .filter((l) => {
+          const from = carriedFrom(l.courseKey, l.slug);
+          const site = from
+            ? parseWebFiles(read(l.courseKey, `${from}-solution.md`, lang) ?? '')
+            : [];
+          const added = parseWebFiles(read(l.courseKey, `${l.slug}-code.md`, lang) ?? '');
+          return startWebSite(site, added) === null;
+        })
+        .map((l) => `${lang}: ${l.courseKey}/${l.slug}`),
+    );
+    expect(over).toEqual([]);
   });
 });

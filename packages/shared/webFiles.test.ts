@@ -5,6 +5,9 @@ import {
   parseWebFiles,
   resolveWebPath,
   serializeWebFiles,
+  startWebSite,
+  WEB_MAX_FILES,
+  WEB_MAX_LENGTH,
   type WebFile,
 } from './webFiles.js';
 
@@ -98,6 +101,37 @@ describe('parseWebFiles and serializeWebFiles', () => {
   it('reads an empty text as no files', () => {
     expect(parseWebFiles('')).toEqual([]);
     expect(serializeWebFiles([])).toBe('');
+  });
+});
+
+describe('startWebSite', () => {
+  const site: WebFile[] = [
+    { path: 'index.html', content: '<h1>Mine</h1>' },
+    { path: 'style.css', content: 'h1 { color: teal; }' },
+  ];
+
+  it('keeps the site and adds the new files after it', () => {
+    const text = startWebSite(site, [{ path: 'crew.html', content: '' }]);
+    expect(parseWebFiles(text!)).toEqual([...site, { path: 'crew.html', content: '' }]);
+  });
+
+  it('never replaces a file the site already has', () => {
+    const text = startWebSite(site, [{ path: 'index.html', content: '' }]);
+    expect(parseWebFiles(text!)).toEqual(site);
+  });
+
+  it('starts a lesson with nothing before it from its own files', () => {
+    expect(startWebSite([], site)).toBe(serializeWebFiles(site));
+  });
+
+  it('gives nothing when the start would go past the limits', () => {
+    const many = Array.from({ length: WEB_MAX_FILES }, (_, i) => ({
+      path: `p${i}.txt`,
+      content: '',
+    }));
+    expect(startWebSite(many, [{ path: 'one-more.txt', content: '' }])).toBeNull();
+    const big = [{ path: 'big.txt', content: 'x'.repeat(WEB_MAX_LENGTH - 100) }];
+    expect(startWebSite(big, [{ path: 'more.txt', content: 'y'.repeat(200) }])).toBeNull();
   });
 });
 

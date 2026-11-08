@@ -81,6 +81,27 @@ describe('record', () => {
         failedCase: failed,
       },
       20,
+      false,
+    );
+  });
+
+  it("keeps a web lesson's newest passing attempt past the cap", async () => {
+    mockRepo.createAndPrune.mockResolvedValue({ ...summaryRow, code: 'x' });
+    const result: RunTestsResponse = {
+      status: 'passed',
+      comparator: 'trimmed',
+      structureFailures: [],
+      cases: [],
+      total: 1,
+      passedCount: 1,
+    };
+
+    await service.record(7, 'web-dev', 'first-page', 'en', 'web-dev' as never, 'site', result);
+
+    expect(mockRepo.createAndPrune).toHaveBeenCalledWith(
+      expect.objectContaining({ courseKey: 'web-dev' }),
+      20,
+      true,
     );
   });
 
@@ -107,6 +128,7 @@ describe('record', () => {
         failedCase: null,
       }),
       20,
+      false,
     );
   });
 });

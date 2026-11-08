@@ -123,6 +123,10 @@ export function LessonPage() {
     title: loadedTitle,
     content,
     starterCode,
+    courseStarter,
+    passedStarter,
+    startFailed,
+    reloadStart,
     savedCode,
     savedCodeFailed,
     reloadSavedCode,
@@ -159,6 +163,7 @@ export function LessonPage() {
   );
   const { autoSave, savedCodeUnknown } = codeSave;
   const [retryingSavedCode, setRetryingSavedCode] = useState(false);
+  const [retryingStart, setRetryingStart] = useState(false);
   const submissions = useSubmissions(category, lesson);
   const { add: addSubmission } = submissions;
   const gamification = useGamification();
@@ -668,6 +673,19 @@ export function LessonPage() {
     }
   }, [reloadSavedCode, userCode, starterCode, t]);
 
+  // A web lesson's start that failed to load, once it comes: the starter it
+  // brings is the Reset target, and an editor still on the old one follows it.
+  const retryStart = useCallback(async () => {
+    setRetryingStart(true);
+    try {
+      await reloadStart();
+    } catch {
+      // still missing: the notice stays up with its Try again
+    } finally {
+      setRetryingStart(false);
+    }
+  }, [reloadStart]);
+
   if (isLoading) {
     return (
       <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
@@ -795,6 +813,33 @@ export function LessonPage() {
       )}
     </>
   );
+  // Reset's ways back: a web lesson after a passing site of the student's
+  // offers that site or the course's version, each with the lesson's new
+  // files (CYB-119); any other lesson its starter
+  const resetTargets =
+    passedStarter !== null && passedStarter !== courseStarter
+      ? [
+          {
+            track: 'reset-code-own',
+            label: 'lesson.resetOwnSite',
+            confirm: 'lesson.confirmResetOwnSite',
+            code: passedStarter,
+          },
+          {
+            track: 'reset-code-course',
+            label: 'lesson.resetCourseSite',
+            confirm: 'lesson.confirmResetCourseSite',
+            code: courseStarter,
+          },
+        ]
+      : [
+          {
+            track: 'reset-code',
+            label: 'lesson.reset',
+            confirm: 'lesson.confirmReset',
+            code: starterCode,
+          },
+        ];
   // What the lesson's code can do (save, solution, forum, reset, the tutor)
   // and how its saving went
   const actions = (
@@ -859,7 +904,8 @@ export function LessonPage() {
           {menuOpen && (
             <div
               role="menu"
-              className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+              // Wider for a web lesson's two Resets, so each stays on one line
+              className={`absolute right-0 mt-2 ${resetTargets.length > 1 ? 'w-64' : 'w-52'} bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up`}
             >
               {tutor?.enabled && (
                 <button
@@ -919,18 +965,21 @@ export function LessonPage() {
                   {t('lesson.shareToForum')}
                 </button>
               )}
-              <button
-                role="menuitem"
-                data-track="reset-code"
-                onClick={() => {
-                  setMenuOpen(false);
-                  if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
-                }}
-                className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-              >
-                <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
-                {t('lesson.reset')}
-              </button>
+              {resetTargets.map((target) => (
+                <button
+                  key={target.track}
+                  role="menuitem"
+                  data-track={target.track}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (window.confirm(t(target.confirm))) setUserCode(target.code);
+                  }}
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                  {t(target.label)}
+                </button>
+              ))}
             </div>
           )}
         </div>
@@ -939,6 +988,23 @@ export function LessonPage() {
   );
 
   // The saved code couldn't be loaded: the starter shows, and Retry asks again
+  // A web lesson whose start didn't load shows only its own files (CYB-119)
+  const startAlert = startFailed && (
+    <div
+      role="alert"
+      className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
+    >
+      <span className="flex-1 min-w-0">{t('lesson.webStartLoadFailed')}</span>
+      <button
+        type="button"
+        onClick={retryStart}
+        disabled={retryingStart}
+        className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+      >
+        {t('lesson.savedCodeRetry')}
+      </button>
+    </div>
+  );
   const savedCodeAlert = savedCodeUnknown && (
     <div
       role="alert"
@@ -1021,7 +1087,12 @@ export function LessonPage() {
                 onConsole={setWebConsole}
                 lesson={lessonColumn}
                 actions={actions}
-                banner={savedCodeAlert}
+                banner={
+                  <>
+                    {startAlert}
+                    {savedCodeAlert}
+                  </>
+                }
                 devMode={devMode}
                 runTests={
                   hasTests ? (

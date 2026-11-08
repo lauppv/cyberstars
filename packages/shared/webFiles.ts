@@ -125,6 +125,18 @@ export function serializeWebFiles(files: WebFile[]): string {
     .join('\n\n');
 }
 
+// The text a lesson of a course built as one site starts from (CYB-119): the
+// site so far with the files the lesson adds. A lesson never changes a file of
+// the site, so a new file whose path the site already has is left out. Null
+// when the result would go past a site's limits.
+export function startWebSite(site: WebFile[], added: WebFile[]): string | null {
+  const have = new Set(site.map((f) => f.path));
+  const files = [...site, ...added.filter((f) => !have.has(f.path))];
+  if (files.length > WEB_MAX_FILES) return null;
+  const text = serializeWebFiles(files);
+  return text.length > WEB_MAX_LENGTH ? null : text;
+}
+
 function decoded(part: string): string {
   try {
     return decodeURIComponent(part);
