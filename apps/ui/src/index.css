@@ -124,6 +124,72 @@ body {
   color: transparent;
 }
 
+/* The landing page's algorithm films (AlgorithmLoops). Each plays on a stage:
+   a faint dot grid under a soft purple light. The lesson drawings change
+   colour at once, which suits a step taken by a click; a film running on
+   its own glides instead: a box or a node takes its new colour over the
+   move, and what is looked at or done glows. Positions keep their own
+   motion (the swap's keyframes, the tween), so opacity and transform stay
+   out of the SVG's transitions. Unlayered, so it wins over the utilities. */
+.algo-stage {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 50%, rgba(108, 92, 231, 0.14), transparent 70%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.2px) 0 0 / 18px 18px;
+}
+.algo-films div[data-box],
+.algo-films div[data-pointer],
+.algo-films span[data-lit] {
+  transition:
+    opacity 0.5s,
+    background-color 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease,
+    box-shadow 0.45s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.algo-films div[data-box] {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 60%);
+}
+.algo-films div[data-state='compared'] {
+  box-shadow:
+    0 0 0 3px rgba(108, 92, 231, 0.18),
+    0 8px 22px -6px rgba(108, 92, 231, 0.75);
+}
+.algo-films div[data-state='sorted'] {
+  box-shadow: 0 6px 18px -8px rgba(59, 167, 118, 0.8);
+}
+.algo-films svg circle,
+.algo-films svg rect,
+.algo-films svg line,
+.algo-films svg path,
+.algo-films svg text {
+  transition:
+    fill 0.45s ease,
+    stroke 0.45s ease,
+    stroke-width 0.45s ease,
+    filter 0.45s ease;
+}
+.algo-films svg [data-state='focused'],
+.algo-films svg [data-state='seen'] {
+  filter: drop-shadow(0 0 6px rgba(108, 92, 231, 0.75));
+}
+.algo-films svg [data-state='done'] {
+  filter: drop-shadow(0 0 5px rgba(59, 167, 118, 0.6));
+}
+.algo-films svg [data-lit] {
+  filter: drop-shadow(0 0 3px rgba(108, 92, 231, 0.8));
+}
+/* The thin line under a film's name that fills as it plays, round after round */
+.algo-progress {
+  transition: width 0.95s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .algo-films *,
+  .algo-progress {
+    transition: none !important;
+  }
+}
+
 #root {
   height: 100%;
   isolation: isolate;
