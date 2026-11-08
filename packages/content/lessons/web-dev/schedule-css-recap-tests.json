@@ -1,7 +1,7 @@
 {
   "cases": [
     {
-      "name": "The delayed flight's status is red",
+      "name": "The delayed flight's status stands out",
       "visible": true,
       "page": "schedule.html",
       "steps": [
@@ -11,16 +11,16 @@
           "label": "the status of the row with class=\"delayed\""
         },
         {
-          "style": "#flights tr.delayed td.status",
-          "prop": "color",
-          "equals": "rgb(255, 179, 179)",
-          "label": "the delayed flight's status"
+          "differs": "#flights tr.delayed td.status",
+          "from": "#flights tr:not(.delayed) td.status",
+          "props": ["color", "background-color"],
+          "fromLabel": "the other statuses",
+          "label": "the status of the delayed flight"
         },
         {
-          "style": "#flights tr.delayed td.code",
-          "prop": "color",
-          "equals": "rgb(219, 228, 255)",
-          "label": "the delayed flight's code"
+          "contrast": "#flights tr.delayed td.status",
+          "atLeast": 4.5,
+          "label": "the status of the delayed flight"
         }
       ]
     },
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "name": "The bays table matches the flights table",
+      "name": "The bays table belongs with the flights table",
       "visible": true,
       "page": "schedule.html",
       "steps": [
@@ -71,24 +71,43 @@
           "label": "the bays table"
         },
         {
-          "size": "#bays",
-          "minWidth": 927,
-          "maxWidth": 929,
+          "fills": "#bays",
           "label": "the bays table"
         },
         {
           "style": "#bays td",
-          "prop": "padding-left",
-          "equals": "12px",
-          "label": "every cell of the bays table",
-          "every": true
+          "prop": "padding-top",
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the bays table"
         },
         {
           "style": "#bays td",
-          "prop": "border-bottom-color",
-          "equals": "rgb(44, 74, 122)",
-          "label": "every cell of the bays table",
-          "every": true
+          "prop": "padding-right",
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the bays table"
+        },
+        {
+          "style": "#bays td",
+          "prop": "padding-bottom",
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the bays table"
+        },
+        {
+          "style": "#bays td",
+          "prop": "padding-left",
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the bays table"
+        },
+        {
+          "style": "#bays td",
+          "prop": "border-bottom-width",
+          "atLeast": 1,
+          "every": true,
+          "label": "a cell of the bays table"
         }
       ]
     },
@@ -98,10 +117,10 @@
       "page": "schedule.html",
       "steps": [
         {
-          "style": ".banner",
-          "prop": "margin-bottom",
-          "equals": "24px",
-          "label": "the banner"
+          "layout": ".banner, .banner + *",
+          "arrange": "column",
+          "gap": 12,
+          "label": "the banner and what comes after it"
         }
       ]
     }

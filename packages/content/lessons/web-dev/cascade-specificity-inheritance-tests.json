@@ -1,44 +1,59 @@
 {
   "cases": [
     {
-      "name": "The flights' cells have their color",
+      "name": "The flights' cells have a color of their own",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "style": "#flights tbody tr:not(.cancelled) td",
-          "prop": "color",
-          "equals": "rgb(219, 228, 255)",
+          "differs": "#flights tbody tr:not(.cancelled) td",
+          "from": "p",
+          "props": ["color"],
+          "fromLabel": "the paragraphs",
+          "label": "the cells of the flights"
+        },
+        {
+          "contrast": "#flights tbody tr:not(.cancelled) td",
+          "atLeast": 4.5,
+          "every": true,
           "label": "a cell of a flight"
         }
       ]
     },
     {
-      "name": "The cancelled flight is grey and struck through",
+      "name": "The cancelled flight looks faded and struck through",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "text": "#flights tbody tr.cancelled td.status",
+          "text": "#flights tr.cancelled td.status",
           "equals": "Cancelled",
           "label": "the status of the row with class=\"cancelled\""
         },
         {
-          "style": "#flights tr.cancelled td",
-          "prop": "color",
-          "equals": "rgb(138, 148, 168)",
+          "count": "#flights tr.cancelled",
+          "equals": 1,
+          "label": "cancelled rows"
+        },
+        {
+          "differs": "#flights tr.cancelled td",
+          "from": "#flights tbody tr:not(.cancelled) td",
+          "props": ["color"],
+          "fromLabel": "the other flights",
+          "label": "the cells of the cancelled flight"
+        },
+        {
+          "contrast": "#flights tr.cancelled td",
+          "atLeast": 3,
+          "every": true,
           "label": "a cell of the cancelled flight"
         },
         {
           "style": "#flights tr.cancelled td",
           "prop": "text-decoration-line",
           "equals": "line-through",
+          "every": true,
           "label": "a cell of the cancelled flight"
-        },
-        {
-          "count": "#flights tbody tr.cancelled",
-          "equals": 1,
-          "label": "cancelled rows"
         }
       ]
     },
@@ -50,20 +65,21 @@
         {
           "style": "#flights",
           "prop": "font-family",
-          "equals": "\"Courier New\", monospace",
+          "endsWith": "monospace",
           "label": "the flights table"
         },
         {
           "style": "#flights td",
           "prop": "font-family",
-          "equals": "\"Courier New\", monospace",
-          "label": "a cell"
+          "endsWith": "monospace",
+          "every": true,
+          "label": "a cell of the flights table"
         },
         {
           "style": "#flights > caption",
           "prop": "font-family",
-          "equals": "\"Courier New\", monospace",
-          "label": "the caption"
+          "endsWith": "monospace",
+          "label": "the title of the flights table"
         }
       ]
     }

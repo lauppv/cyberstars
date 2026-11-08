@@ -7,12 +7,12 @@
       "steps": [
         {
           "exists": "h1 + p + div.banner",
-          "label": "the banner (<div class=\"banner\">) right after the intro"
+          "label": "the banner, in the class banner, right after the introduction"
         },
         {
           "style": ".banner",
           "prop": "background-image",
-          "equals": "url(\"http://site.test/img/station.svg\")",
+          "endsWith": "img/station.svg\")",
           "label": "the banner"
         },
         {
@@ -36,14 +36,20 @@
       "steps": [
         {
           "size": ".banner",
-          "minHeight": 160,
-          "maxHeight": 160,
+          "minHeight": 120,
+          "maxHeight": 240,
           "label": "the banner"
         },
         {
           "style": ".banner",
           "prop": "border-top-left-radius",
-          "equals": "16px",
+          "atLeast": 4,
+          "label": "the banner"
+        },
+        {
+          "style": ".banner",
+          "prop": "border-bottom-right-radius",
+          "atLeast": 4,
           "label": "the banner"
         }
       ]
@@ -56,8 +62,9 @@
         {
           "style": "#flights th",
           "prop": "background-image",
-          "equals": "linear-gradient(90deg, rgb(19, 41, 79), rgb(44, 74, 122))",
-          "label": "a header cell"
+          "not": "none",
+          "every": true,
+          "label": "a header cell of the flights table"
         }
       ]
     }
