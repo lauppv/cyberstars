@@ -117,6 +117,8 @@ export function VisitorsSection({
   const [data, setData] = useState<AdminVisitsDTO | null>(null);
   const [failed, setFailed] = useState(false);
   const [counted, setCountedHere] = useState(isCounted);
+  // The day (or week) picked on either chart, shown on both.
+  const [active, setActive] = useState<number | null>(null);
 
   function toggleCounted() {
     setCounted(!counted);
@@ -183,18 +185,23 @@ export function VisitorsSection({
           !failed && <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
         ) : (
           <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* One over the other, so each has the card's width for its dates. */}
+            <div className="flex flex-col gap-6">
               <DailyChart
                 days={points}
                 field="visitors"
                 title={t(weekly ? 'admin.visitorsAWeek' : 'admin.visitorsADay')}
                 weekly={weekly}
+                active={active}
+                onActive={setActive}
               />
               <DailyChart
                 days={points}
                 field="newAccounts"
                 title={t(weekly ? 'admin.newAccountsAWeek' : 'admin.newAccountsADay')}
                 weekly={weekly}
+                active={active}
+                onActive={setActive}
               />
             </div>
             <table className="sr-only">
