@@ -388,7 +388,7 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       const [left, right] = (found ?? '').split(' ');
       return ro
         ? `Se aștepta ca ${label} să stea la mijloc în părintele său la o fereastră de ${w}px, dar are ${left}px în stânga și ${right}px în dreapta.`
-        : `Expected ${label} centered in its parent in a window ${w}px wide, found it ${left}px from the left and ${right}px from the right.`;
+        : `Expected ${label} centered in its parent in a window ${w}px wide, found ${left}px of room on the left and ${right}px on the right.`;
     }
     case 'outline':
       if (f.detail === 'h1') {

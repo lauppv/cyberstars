@@ -119,7 +119,7 @@ describe('webFailureText', () => {
       'Expected the cards at least 12px apart in a window 1280px wide, found two only 0px apart.',
     );
     expect(say({ kind: 'centered', label: 'the column', found: '0 304', width: 1280 })).toBe(
-      'Expected the column centered in its parent in a window 1280px wide, found it 0px from the left and 304px from the right.',
+      'Expected the column centered in its parent in a window 1280px wide, found 0px of room on the left and 304px on the right.',
     );
     expect(say({ kind: 'centered', label: 'the column', detail: 'full', width: 375 })).toBe(
       'Expected the column centered in its parent in a window 375px wide, found it as wide as its parent.',
