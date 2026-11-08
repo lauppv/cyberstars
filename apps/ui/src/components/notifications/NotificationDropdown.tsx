@@ -20,7 +20,6 @@ function timeAgo(iso: string): string {
 const ICONS: Record<NotificationType, string> = {
   FORUM_REPLY: '💬',
   FORUM_SOLUTION: '✅',
-  FORUM_REACTION: '❤️',
   SUPPORT_TICKET_NEW: '🎫',
   SUPPORT_REPLY: '🎫',
   SUPPORT_STATUS: '🔖',
@@ -42,8 +41,6 @@ function describe(n: NotificationDTO): string {
       return t('notif.forumReply', { count, name, title });
     case 'FORUM_SOLUTION':
       return t('notif.forumSolution', { name, title });
-    case 'FORUM_REACTION':
-      return t('notif.forumReaction', { name, title });
     case 'SUPPORT_TICKET_NEW':
       return t('notif.ticketNew', { title });
     case 'SUPPORT_REPLY':
@@ -134,7 +131,6 @@ export function NotificationDropdown({
     switch (n.type) {
       case 'FORUM_REPLY':
       case 'FORUM_SOLUTION':
-      case 'FORUM_REACTION':
         return forumRoutes.thread(n.entityId);
       case 'SUPPORT_TICKET_NEW':
       case 'SUPPORT_REPLY':

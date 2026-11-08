@@ -500,7 +500,6 @@
     "forumReply_few": "{{count}} răspunsuri noi la „{{title}}”",
     "forumReply_other": "{{count}} de răspunsuri noi la „{{title}}”",
     "forumSolution": "{{name}} a marcat răspunsul tău drept soluție la „{{title}}”",
-    "forumReaction": "{{name}} a reacționat la postarea ta din „{{title}}”",
     "ticketNew": "Tichet nou de suport: „{{title}}”",
     "ticketReply": "Răspuns nou la tichetul „{{title}}”",
     "status": "Tichetul „{{title}}” este acum {{status}}",

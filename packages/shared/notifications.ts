@@ -3,7 +3,6 @@ import type { DmSocketFrame } from './messages.js';
 export type NotificationType =
   | 'FORUM_REPLY'
   | 'FORUM_SOLUTION'
-  | 'FORUM_REACTION'
   | 'SUPPORT_TICKET_NEW'
   | 'SUPPORT_REPLY'
   | 'SUPPORT_STATUS'
@@ -24,7 +23,6 @@ export const ANNOUNCEMENT_MAX_LENGTH = 2000;
 // Laniakea recaps, replaces the old count instead of adding one to it.
 export const COLLAPSIBLE_TYPES: ReadonlySet<NotificationType> = new Set([
   'FORUM_REPLY',
-  'FORUM_REACTION',
   'LANIAKEA_RECAP',
 ]);
 

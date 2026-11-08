@@ -75,16 +75,14 @@ describe('NotificationDropdown copy', () => {
     expect(screen.getByText('Someone replied to "Thread"')).toBeInTheDocument();
   });
 
-  it('renders solution, reaction, ticket, reply and status copy', () => {
+  it('renders solution, ticket, reply and status copy', () => {
     renderWith([
       n({ id: 1, type: 'FORUM_SOLUTION' }),
-      n({ id: 2, type: 'FORUM_REACTION' }),
       n({ id: 4, type: 'SUPPORT_TICKET_NEW' }),
       n({ id: 5, type: 'SUPPORT_REPLY' }),
       n({ id: 6, type: 'SUPPORT_STATUS', data: { title: 'Thread', status: 'RESOLVED' } }),
     ]);
     expect(screen.getByText(/marked your reply as the solution/)).toBeInTheDocument();
-    expect(screen.getByText(/reacted to your post/)).toBeInTheDocument();
     expect(screen.getByText('New support ticket: "Thread"')).toBeInTheDocument();
     expect(screen.getByText('New reply on ticket "Thread"')).toBeInTheDocument();
     expect(screen.getByText('Ticket "Thread" is now Resolved')).toBeInTheDocument();

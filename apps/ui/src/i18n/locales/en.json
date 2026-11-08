@@ -466,7 +466,6 @@
     "forumReply_one": "{{name}} replied to \"{{title}}\"",
     "forumReply_other": "{{count}} new replies on \"{{title}}\"",
     "forumSolution": "{{name}} marked your reply as the solution on \"{{title}}\"",
-    "forumReaction": "{{name}} reacted to your post in \"{{title}}\"",
     "ticketNew": "New support ticket: \"{{title}}\"",
     "ticketReply": "New reply on ticket \"{{title}}\"",
     "status": "Ticket \"{{title}}\" is now {{status}}",
