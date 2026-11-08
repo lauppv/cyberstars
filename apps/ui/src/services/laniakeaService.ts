@@ -14,7 +14,7 @@ export function answerQuiz(slug: string, index: number, choice: number) {
   return api.post<QuizAnswerResult>(`/api/laniakea/${slug}/quiz/answer`, { index, choice });
 }
 
-// The game is open: the recaps on its board need no word in the bell.
+// The game is open: the recaps on its board need no count on the sidebar.
 export function markSeen() {
   return api.post<void>('/api/laniakea/seen');
 }

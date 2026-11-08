@@ -31,6 +31,7 @@ import { BrandMark } from '../ui/BrandMark';
 import { TutorFace } from '../tutor/TutorFace';
 import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
+import { useNotifications } from '../../context/NotificationContext';
 import { useTutor } from '../../context/TutorContext';
 import { useGamification } from '../../hooks/useGamification';
 import { useAllProgress } from '../../context/ProgressContext';
@@ -157,7 +158,7 @@ function TutorItem({ onNavigate }: { onNavigate: () => void }) {
 
 // Laniakea opens after the first Python lessons, First steps; until then its row
 // says how many are left, and the page itself says what the game is.
-function LaniakeaItem({ onNavigate }: { onNavigate: () => void }) {
+function LaniakeaItem({ badge, onNavigate }: { badge: number; onNavigate: () => void }) {
   const { t } = useTranslation();
   const { progressMap, isLoading } = useAllProgress();
   const { done } = firstSteps(progressMap[LANIAKEA_COURSE]?.lessons ?? []);
@@ -169,6 +170,7 @@ function LaniakeaItem({ onNavigate }: { onNavigate: () => void }) {
       label={t('nav.laniakea')}
       tag={<BetaBadge hint={t('laniakea.betaHint')} />}
       note={!isLoading && left > 0 ? t('sidebar.laniakeaLeft', { count: left }) : undefined}
+      badge={badge}
       onNavigate={onNavigate}
     />
   );
@@ -309,6 +311,8 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
   const { t } = useTranslation();
   const { user } = useAuth();
   const { enabled: messagesEnabled, totalUnread } = useMessages();
+  // What each row has unread; announcements and polls stay in the bell
+  const { sections } = useNotifications();
   const isProd = import.meta.env.PROD;
 
   return (
@@ -359,7 +363,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             <LockedItem icon={FolderKanban} label={t('nav.projects')} />
           )}
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
-          {user && <LaniakeaItem onNavigate={onNavigate} />}
+          {user && <LaniakeaItem badge={sections.laniakea} onNavigate={onNavigate} />}
         </Section>
 
         {user && (
@@ -368,6 +372,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
               to="/forum"
               icon={MessagesSquare}
               label={t('nav.forum')}
+              badge={sections.forum.length}
               onNavigate={onNavigate}
             />
             {messagesEnabled ? (
@@ -386,6 +391,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
                 to="/connections"
                 icon={Users}
                 label={t('connections.title')}
+                badge={sections.connections}
                 onNavigate={onNavigate}
               />
             ) : (
@@ -418,6 +424,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
               to="/support"
               icon={LifeBuoy}
               label={t('topbar.support')}
+              badge={sections.support.length}
               onNavigate={onNavigate}
             />
             <NavItem

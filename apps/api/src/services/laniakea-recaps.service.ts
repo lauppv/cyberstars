@@ -7,8 +7,8 @@ import { dayMs, onBoard } from './laniakea.service.js';
 import { quizSlugs } from './laniakea-quiz.js';
 import { today } from './visits.service.js';
 
-// Laniakea's recaps in the bell (CYB-98). A student whose recaps opened after
-// they last opened the game, and after the bell last told them, gets one
+// Laniakea's recaps on the sidebar (CYB-98). A student whose recaps opened after
+// they last opened the game, and after the last notification told them, gets one
 // notification counting every recap open now on their board, at most once a
 // day in Romania.
 // The game board shows the recaps, so opening it reads the notification.
@@ -65,7 +65,7 @@ export async function tellOpenRecaps(now = new Date()): Promise<number> {
   const quizzes = new Set(quizSlugs());
   let told = 0;
   for (const userId of maybe) {
-    // One student failing must not keep the bell from the rest.
+    // One student failing must not keep the notification from the rest.
     try {
       const lessons = new Set(done.get(userId)?.map((r) => r.lessonSlug));
       const shown = byUser.get(userId)!.filter((p) => onBoard(p.lessonSlug, lessons, quizzes));
@@ -88,8 +88,8 @@ export async function tellOpenRecaps(now = new Date()): Promise<number> {
   return told;
 }
 
-// The student opened the game: the board shows the recaps open, so the bell
-// has nothing to add about them.
+// The student opened the game: the board shows the recaps open, so the
+// sidebar's Laniakea row has nothing to add about them.
 export async function markSeen(userId: number, now = new Date()): Promise<void> {
   await laniakeaRepo.markSeen(userId, now);
   await notificationsService.markEntityRead(userId, 'LANIAKEA_RECAP', ENTITY);

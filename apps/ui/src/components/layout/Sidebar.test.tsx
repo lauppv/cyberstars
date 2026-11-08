@@ -10,6 +10,12 @@ const h = vi.hoisted(() => ({
     user: null as null | { name: string; email: string; role: string; avatarUrl: string | null },
   },
   messages: { enabled: true, totalUnread: 0 },
+  sections: {
+    forum: [] as { entityId: number; title: string }[],
+    support: [] as { entityId: number; title: string }[],
+    connections: 0,
+    laniakea: 0,
+  },
   tutor: { open: false, toggle: vi.fn() },
   progress: { progressMap: {} as Record<string, unknown>, isLoading: false },
 }));
@@ -22,6 +28,9 @@ vi.mock('../../context/AuthContext', () => ({
   useAuth: () => ({ ...h.auth, logout: h.logout }),
 }));
 vi.mock('../../context/MessagesContext', () => ({ useMessages: () => h.messages }));
+vi.mock('../../context/NotificationContext', () => ({
+  useNotifications: () => ({ sections: h.sections }),
+}));
 vi.mock('../../context/TutorContext', () => ({ useTutor: () => h.tutor }));
 vi.mock('../../context/ProgressContext', () => ({ useAllProgress: () => h.progress }));
 vi.mock('../../hooks/useGamification', () => ({
@@ -51,6 +60,7 @@ beforeEach(() => {
   h.canAccess.mockReturnValue(true);
   h.auth = { user: null };
   h.messages = { enabled: true, totalUnread: 0 };
+  h.sections = { forum: [], support: [], connections: 0, laniakea: 0 };
   h.tutor = { open: false, toggle: vi.fn() };
   h.progress = { progressMap: {}, isLoading: false };
   h.logout.mockResolvedValue(undefined);
@@ -156,6 +166,32 @@ describe('Sidebar', () => {
     expect(screen.getByRole('link', { name: 'Connections' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Settings' })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Support' })).toBeInTheDocument();
+  });
+
+  it('counts on each row what it has unread, never announcements or polls', () => {
+    h.auth = { user: USER };
+    h.sections = {
+      forum: [
+        { entityId: 7, title: 'Loops' },
+        { entityId: 8, title: 'Lists' },
+      ],
+      support: [{ entityId: 3, title: 'Login' }],
+      connections: 12,
+      laniakea: 4,
+    };
+    renderSidebar();
+    expect(screen.getByRole('link', { name: /Forum/ })).toHaveTextContent(/^Forum2$/);
+    expect(screen.getByRole('link', { name: /Support/ })).toHaveTextContent(/^Support1$/);
+    expect(screen.getByRole('link', { name: /Connections/ })).toHaveTextContent('9+');
+    expect(screen.getByRole('link', { name: /Laniakea/ })).toHaveTextContent(/4$/);
+  });
+
+  it('shows no count on a row with nothing unread', () => {
+    h.auth = { user: USER };
+    renderSidebar();
+    expect(screen.getByRole('link', { name: 'Forum' })).toHaveTextContent(/^Forum$/);
+    expect(screen.getByRole('link', { name: 'Support' })).toHaveTextContent(/^Support$/);
+    expect(screen.getByRole('link', { name: 'Connections' })).toHaveTextContent(/^Connections$/);
   });
 
   it('keeps gated features in place but leads nowhere', () => {

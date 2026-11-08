@@ -1,7 +1,7 @@
 // DTOs for the connection ("connect with another player") system. A connection
 // is a directed request (requester -> addressee) that becomes mutual once
 // accepted. The DB is the source of truth; the shared /ws/user socket only
-// carries the bell notifications that announce a request / acceptance.
+// carries the notifications that count a request / acceptance on the sidebar.
 
 export interface ConnectionUser {
   id: number;
