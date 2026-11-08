@@ -3,9 +3,14 @@ import type { KeyboardEvent, PointerEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { VisitDay } from '@cyberstars/shared/visits';
 import { axisTicks } from './axisTicks';
+import { timeAxis } from './timeAxis';
 
-const H = 150;
-const PAD = { top: 12, right: 12, bottom: 22, left: 30 };
+const H = 176;
+// The bottom holds two rows of dates: the days (or months) and under them the
+// month (or year) they're in.
+const PAD = { top: 12, right: 16, bottom: 38, left: 30 };
+const TICK_Y = H - PAD.bottom + 16;
+const CONTEXT_Y = H - PAD.bottom + 31;
 const PLOT_H = H - PAD.top - PAD.bottom;
 
 // The chart is drawn at its real width, so the axis text stays 10px on a phone
@@ -36,21 +41,25 @@ function shortDay(day: string, lang: string, withYear = false) {
 
 // One series a day (or a week, with weekly) over the range, as a 2px line over
 // a faint wash. The pointer or the arrow keys pick a point, and the readout
-// shows both visitors and new accounts for it, whichever chart you're on.
+// shows its number. The point picked is the parent's, so the charts stacked
+// one over the other follow it together.
 export function DailyChart({
   days,
   field,
   title,
   weekly = false,
+  active: picked,
+  onActive: setActive,
 }: {
   days: VisitDay[];
   field: 'visitors' | 'newAccounts';
   title: string;
   weekly?: boolean;
+  active: number | null;
+  onActive: (i: number | null) => void;
 }) {
   const { t, i18n } = useTranslation();
-  const [active, setActive] = useState<number | null>(null);
-  const [ref, W] = useWidth(440);
+  const [ref, W] = useWidth(640);
   const PLOT_W = W - PAD.left - PAD.right;
 
   const ticks = axisTicks(Math.max(...days.map((d) => d[field])));
@@ -60,6 +69,14 @@ export function DailyChart({
   const points = days.map((d, i) => `${x(i)},${y(d[field])}`).join(' ');
   const area = `${x(0)},${y(0)} ${points} ${x(days.length - 1)},${y(0)}`;
   const last = days.length - 1;
+  // A point picked on a longer range is no point of this one.
+  const active = picked !== null && picked <= last ? picked : null;
+  const axis = timeAxis(
+    days.map((d) => d.day),
+    weekly,
+    PLOT_W,
+    i18n.language,
+  );
 
   const pick = (e: PointerEvent<SVGRectElement>) => {
     const box = e.currentTarget.getBoundingClientRect();
@@ -109,18 +126,38 @@ export function DailyChart({
             </text>
           </g>
         ))}
-        {[0, last].map((i) => (
-          <text
-            key={i}
-            x={x(i)}
-            y={H - 6}
-            textAnchor={i === 0 ? 'start' : 'end'}
-            fontSize={10}
-            fill="var(--text3)"
-          >
-            {shortDay(days[i].day, i18n.language, weekly)}
-          </text>
+        {axis.ticks.map(({ i, label }) => (
+          <g key={i}>
+            <line
+              x1={x(i)}
+              x2={x(i)}
+              y1={PAD.top + PLOT_H}
+              y2={PAD.top + PLOT_H + 3}
+              stroke="var(--border)"
+              strokeWidth={1}
+            />
+            <text x={x(i)} y={TICK_Y} textAnchor="middle" fontSize={10} fill="var(--text3)">
+              {label}
+            </text>
+          </g>
         ))}
+        {axis.context.map(({ i, label }) => {
+          // A name that starts too near the right edge ends at it instead.
+          const atEnd = x(i) + 36 > W;
+          return (
+            <text
+              key={i}
+              x={atEnd ? W - 2 : x(i)}
+              y={CONTEXT_Y}
+              textAnchor={atEnd ? 'end' : 'start'}
+              fontSize={10}
+              fontWeight={600}
+              fill="var(--text2)"
+            >
+              {label}
+            </text>
+          );
+        })}
         <polygon points={area} fill="var(--accent)" fillOpacity={0.1} />
         <polyline
           points={points}
@@ -173,15 +210,11 @@ export function DailyChart({
               : shortDay(shown.day, i18n.language)}
           </div>
           <div>
-            <strong className="tabular-nums">{shown.visitors}</strong>{' '}
+            <strong className="tabular-nums">{shown[field]}</strong>{' '}
             <span className="text-[var(--text2)]">
-              {t('admin.visitorsWord', { count: shown.visitors })}
-            </span>
-          </div>
-          <div>
-            <strong className="tabular-nums">{shown.newAccounts}</strong>{' '}
-            <span className="text-[var(--text2)]">
-              {t('admin.newAccountsWord', { count: shown.newAccounts })}
+              {t(field === 'visitors' ? 'admin.visitorsWord' : 'admin.newAccountsWord', {
+                count: shown[field],
+              })}
             </span>
           </div>
         </div>

@@ -72,6 +72,18 @@ describe('VisitorsSection', () => {
     expect(screen.getByText('5 presses · 2 visits')).toBeInTheDocument();
   });
 
+  it('stacks the charts and picks the same day on both', async () => {
+    render(<VisitorsSection chartsClassName="" className="" reload={0} />);
+    const visitors = await screen.findByRole('img', { name: 'Visitors a day' });
+    fireEvent.keyDown(visitors, { key: 'ArrowLeft' });
+    expect(screen.getAllByRole('status').map((s) => s.textContent)).toEqual([
+      expect.stringContaining('3 visitors'),
+      expect.stringContaining('0 new accounts'),
+    ]);
+    fireEvent.blur(visitors);
+    expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  });
+
   it('charts a week a point past 3 months', async () => {
     const days = Array.from({ length: 14 }, (_, i) => ({
       day: `2026-${i < 7 ? '05' : '06'}-0${(i % 7) + 1}`,
