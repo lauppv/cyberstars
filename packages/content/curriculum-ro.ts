@@ -342,6 +342,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'bold-italic-and-friends': 'Bold, italic și altele',
     comments: 'Comentarii',
     links: 'Linkuri',
+    'images-and-alt': 'Imagini și alt',
+    'home-html-recap': 'Recapitulare HTML',
+    'what-is-css': 'Ce este CSS',
+    selectors: 'Selectori de tip, clasă și id',
   },
 };
 

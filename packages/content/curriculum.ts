@@ -1895,6 +1895,27 @@ export const lessons = [
   },
   { courseKey: 'web-dev', slug: 'comments', title: 'Comments', sortOrder: 5 },
   { courseKey: 'web-dev', slug: 'links', title: 'Links', sortOrder: 6 },
+  {
+    courseKey: 'web-dev',
+    slug: 'images-and-alt',
+    title: 'Images and alt',
+    sortOrder: 7,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'home-html-recap', title: 'HTML Recap', sortOrder: 8 },
+  {
+    courseKey: 'web-dev',
+    slug: 'what-is-css',
+    title: 'What Is CSS',
+    sortOrder: 9,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'selectors',
+    title: 'Type, Class and Id Selectors',
+    sortOrder: 10,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -1914,6 +1935,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'bold-italic-and-friends',
         'comments',
         'links',
+        'images-and-alt',
+        'home-html-recap',
+        'what-is-css',
+        'selectors',
       ],
     },
   ],

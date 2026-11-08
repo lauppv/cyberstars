@@ -1,0 +1,83 @@
+{
+  "cases": [
+    {
+      "name": "The page links style.css",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"], head link[rel=\"stylesheet\"][href=\"./style.css\"]",
+          "label": "a <link rel=\"stylesheet\" href=\"style.css\"> in the <head>"
+        }
+      ]
+    },
+    {
+      "name": "The biggest heading is midnightblue",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(25, 25, 112)",
+          "label": "the biggest heading (<h1>)"
+        }
+      ]
+    },
+    {
+      "name": "The section headings are steelblue",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h2",
+          "prop": "color",
+          "equals": "rgb(70, 130, 180)",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "style": "h2#today",
+          "prop": "color",
+          "equals": "rgb(70, 130, 180)",
+          "label": "the section heading Today on Board"
+        }
+      ]
+    },
+    {
+      "name": "The shift headings are slategray",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h3",
+          "prop": "color",
+          "equals": "rgb(112, 128, 144)",
+          "label": "a shift heading (<h3>)"
+        }
+      ]
+    },
+    {
+      "name": "The colors come from style.css",
+      "visible": false,
+      "files": {
+        "style.css": "h1 { color: rgb(1, 2, 3); }\nh2 { color: rgb(4, 5, 6); }\nh3 { color: rgb(7, 8, 9); }\n"
+      },
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(1, 2, 3)",
+          "label": "the biggest heading's color"
+        },
+        {
+          "style": "h2",
+          "prop": "color",
+          "equals": "rgb(4, 5, 6)",
+          "label": "a section heading's color"
+        },
+        {
+          "style": "h3",
+          "prop": "color",
+          "equals": "rgb(7, 8, 9)",
+          "label": "a shift heading's color"
+        }
+      ]
+    }
+  ]
+}

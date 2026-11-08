@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "name": "Visiting Hours is a section of its own",
+      "visible": true,
+      "steps": [
+        {
+          "text": "h2#visiting",
+          "equals": "Visiting Hours",
+          "label": "a section heading (<h2>) with id=\"visiting\""
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        }
+      ]
+    },
+    {
+      "name": "The hours follow it on three lines",
+      "visible": true,
+      "steps": [
+        {
+          "text": "#visiting + p",
+          "contains": "Monday to Friday: 10:00 to 16:00 Saturday: 10:00 to 12:00 Sunday: closed",
+          "label": "the paragraph right under Visiting Hours"
+        },
+        {
+          "count": "#visiting + p > br",
+          "atLeast": 2,
+          "label": "line breaks (<br>) in the hours"
+        }
+      ]
+    },
+    {
+      "name": "The badge rule is marked as important",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p strong",
+          "equals": "Visitors must wear a badge",
+          "label": "an important part (<strong>) in a paragraph"
+        }
+      ]
+    },
+    {
+      "name": "A link next to Jump to today leads there",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p:has(a[href=\"#today\"]) a[href=\"#visiting\"]",
+          "equals": "Visiting hours",
+          "label": "a link to #visiting in the paragraph with Jump to today"
+        },
+        {
+          "click": "a[href=\"#visiting\"]",
+          "label": "the link to #visiting"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    },
+    {
+      "name": "The rest of the page is still there",
+      "visible": true,
+      "steps": [
+        {
+          "text": "h2#today",
+          "equals": "Today on Board",
+          "label": "the section heading Today on Board"
+        },
+        {
+          "exists": "img[src$=\"img/station.svg\"]",
+          "label": "the station's picture"
+        },
+        {
+          "exists": "a[href=\"mailto:crew@station.example\"]",
+          "label": "the link to write to the crew"
+        }
+      ]
+    }
+  ]
+}

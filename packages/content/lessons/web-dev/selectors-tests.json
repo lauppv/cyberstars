@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "name": "Both warnings are in the class warning",
+      "visible": true,
+      "steps": [
+        {
+          "count": "p.warning",
+          "atLeast": 2,
+          "label": "paragraphs in the class warning (<p class=\"warning\">)"
+        },
+        {
+          "exists": "p.warning strong",
+          "label": "a warning with its important part"
+        }
+      ]
+    },
+    {
+      "name": "The warnings are firebrick, the rest isn't",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p.warning",
+          "prop": "color",
+          "equals": "rgb(178, 34, 34)",
+          "label": "a warning"
+        },
+        {
+          "style": "p:not(.warning)",
+          "prop": "color",
+          "equals": "rgb(0, 0, 0)",
+          "label": "a paragraph that isn't a warning"
+        }
+      ]
+    },
+    {
+      "name": "Today on Board is darkgreen, the other sections steelblue",
+      "visible": true,
+      "steps": [
+        {
+          "style": "#today",
+          "prop": "color",
+          "equals": "rgb(0, 100, 0)",
+          "label": "the heading with id=\"today\""
+        },
+        {
+          "style": "h2:not(#today)",
+          "prop": "color",
+          "equals": "rgb(70, 130, 180)",
+          "label": "another section heading (<h2>)"
+        }
+      ]
+    },
+    {
+      "name": "The text below and above the line is teal",
+      "visible": true,
+      "steps": [
+        {
+          "style": "sub",
+          "prop": "color",
+          "equals": "rgb(0, 128, 128)",
+          "label": "the text below the line (<sub>)"
+        },
+        {
+          "style": "sup",
+          "prop": "color",
+          "equals": "rgb(0, 128, 128)",
+          "label": "the text above the line (<sup>)"
+        }
+      ]
+    },
+    {
+      "name": "The colors come from style.css",
+      "visible": false,
+      "files": {
+        "style.css": ".warning { color: rgb(1, 2, 3); }\n#today { color: rgb(4, 5, 6); }\n"
+      },
+      "steps": [
+        {
+          "style": "p.warning",
+          "prop": "color",
+          "equals": "rgb(1, 2, 3)",
+          "label": "a warning's color"
+        },
+        {
+          "style": "#today",
+          "prop": "color",
+          "equals": "rgb(4, 5, 6)",
+          "label": "the color of Today on Board"
+        }
+      ]
+    }
+  ]
+}
