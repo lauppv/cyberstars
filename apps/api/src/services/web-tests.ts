@@ -315,6 +315,18 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
       width,
     };
   }
+  if ('fills' in step) {
+    const [box, parent] = boxes;
+    if (!box || !parent) return { kind: 'missing', label };
+    if (box.width >= parent.width - 1) return null;
+    return {
+      kind: 'fills',
+      label,
+      expected: String(Math.round(parent.width)),
+      found: String(Math.round(box.width)),
+      width,
+    };
+  }
   if ('centered' in step) {
     const [box, parent] = boxes;
     if (!box || !parent) return { kind: 'missing', label };

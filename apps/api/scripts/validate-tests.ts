@@ -382,6 +382,7 @@ const WEB_CHECKS = [
   'differs',
   'layout',
   'centered',
+  'fills',
   'size',
   'fits',
   'outline',
@@ -407,6 +408,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   differs: ['from', 'props', 'fromLabel', 'label'],
   layout: ['arrange', 'gap', 'align', 'label'],
   centered: ['label'],
+  fills: ['label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
   outline: [],
@@ -428,6 +430,7 @@ const NEEDS_LABEL = new Set([
   'differs',
   'layout',
   'centered',
+  'fills',
   'size',
 ]);
 const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);

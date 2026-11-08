@@ -157,6 +157,7 @@ async function observe(page, step, seen) {
     step.differs ??
     step.layout ??
     step.centered ??
+    step.fills ??
     step.size;
   const elements = page.locator(`css=${selector}`);
   const count = await elements.count();
@@ -203,8 +204,9 @@ async function observe(page, step, seen) {
   }
   // The elements' box together, then the first one's parent's content box
   // (inside its padding)
-  if ('centered' in step) {
-    const boxes = await elements.evaluateAll((els) => {
+  if ('centered' in step || 'fills' in step) {
+    const boxes = await elements.evaluateAll((all, one) => {
+      const els = one ? all.slice(0, 1) : all;
       const rects = els.map((el) => el.getBoundingClientRect());
       const left = Math.min(...rects.map((r) => r.left));
       const top = Math.min(...rects.map((r) => r.top));
@@ -229,7 +231,7 @@ async function observe(page, step, seen) {
           height: p.height,
         },
       ];
-    });
+    }, 'fills' in step);
     return { count, boxes };
   }
   const boxes = await elements.evaluateAll(

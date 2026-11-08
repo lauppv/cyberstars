@@ -149,6 +149,11 @@ describe('webFailureText', () => {
     expect(say({ kind: 'centered', label: 'the column', detail: 'full', width: 375 })).toBe(
       'Expected the column centered in its parent in a window 375px wide, found it as wide as its parent.',
     );
+    expect(
+      say({ kind: 'fills', label: 'the table', expected: '928', found: '410', width: 1280 }),
+    ).toBe(
+      'Expected the table as wide as its parent (928px) in a window 1280px wide, found it 410px wide.',
+    );
     expect(say({ kind: 'outline', detail: 'h1', found: '2' })).toBe(
       'Expected the page to have one biggest heading (h1), found 2.',
     );

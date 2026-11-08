@@ -303,6 +303,8 @@ describe.skipIf(!hasBrowser())('web runner', () => {
       outline,
       links,
       leftLinks,
+      fullTitle,
+      narrowBox,
     ] = verdicts(files, [
       one([{ style: '.card', prop: 'padding-left', atLeast: 12, every: true, ...card }]),
       one([{ style: '.card', prop: 'padding-left', atMost: 8, ...card }]),
@@ -344,6 +346,8 @@ describe.skipIf(!hasBrowser())('web runner', () => {
       one([{ outline: true }]),
       one([{ centered: 'nav:not(.left) a', label: 'the links' }]),
       one([{ centered: 'nav.left a', label: 'the links' }]),
+      one([{ fills: 'main > h1', label: 'the title' }]),
+      one([{ fills: '.off', label: 'the box' }]),
     ]);
     expect(room.passed).toBe(true);
     expect(tooMuch.web).toMatchObject({ kind: 'style', compare: 'atMost', found: '16px' });
@@ -364,6 +368,8 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     // Links taken together: in the middle of their bar, or at its start
     expect(links.passed).toBe(true);
     expect(leftLinks.web).toMatchObject({ kind: 'centered', found: expect.stringMatching(/^0 /) });
+    expect(fullTitle.passed).toBe(true);
+    expect(narrowBox.web).toMatchObject({ kind: 'fills', found: '200' });
   });
 
   it("reads a :hover rule after hover, and a pseudo-element's content and look", () => {

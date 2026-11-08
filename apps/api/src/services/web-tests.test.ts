@@ -370,6 +370,23 @@ describe('judgeStep', () => {
     expect(judge(step, at(8, 1264))).toMatchObject({ kind: 'centered', detail: 'full' });
   });
 
+  it('tells an element as wide as its parent from a narrower one', () => {
+    const step = { fills: 'table', label: 'the table' } as const;
+    const parent = { x: 8, y: 0, width: 928, height: 900 };
+    const at = (width: number) => ({
+      count: 1,
+      boxes: [{ x: 8, y: 0, width, height: 200 }, parent],
+    });
+    expect(judge(step, at(928))).toBeNull();
+    expect(judge(step, at(410))).toEqual({
+      kind: 'fills',
+      label: 'the table',
+      expected: '928',
+      found: '410',
+      width: 1280,
+    });
+  });
+
   it('wants one h1 and no heading level skipped', () => {
     const h = (...levels: number[]) => ({
       headings: levels.map((level, i) => ({ level, text: `Heading ${i}` })),

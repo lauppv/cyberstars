@@ -244,6 +244,7 @@ describe('auditWebSpec', () => {
           label: 'the warnings',
         },
         { centered: 'main', label: 'the column' },
+        { fills: 'table', label: 'the table' },
         { outline: true },
         { size: '.card', maxWidth: 300, label: 'a card' },
         { click: 'a', label: 'the link' },

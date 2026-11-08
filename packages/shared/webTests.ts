@@ -116,6 +116,8 @@ export type WebCheck =
    * are narrower than the first one's parent's content and centered across it.
    */
   | ({ centered: string } & Labelled)
+  /** The first element is as wide as its parent's content: a table across its column. */
+  | ({ fills: string } & Labelled)
   /** The first element's size in px. */
   | ({
       size: string;
@@ -209,6 +211,7 @@ type WebFailureKind =
   | 'gap'
   | 'align'
   | 'centered'
+  | 'fills'
   | 'size'
   | 'contrast'
   | 'differs'
@@ -410,6 +413,10 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         ? `Se aștepta ca ${label} să stea la mijloc în părintele său la o fereastră de ${w}px, dar are ${left}px în stânga și ${right}px în dreapta.`
         : `Expected ${label} centered in its parent in a window ${w}px wide, found ${left}px of room on the left and ${right}px on the right.`;
     }
+    case 'fills':
+      return ro
+        ? `Se aștepta ca ${label} să fie lat cât părintele său (${expected}px) la o fereastră de ${w}px, dar are ${found}px.`
+        : `Expected ${label} as wide as its parent (${expected}px) in a window ${w}px wide, found it ${found}px wide.`;
     case 'outline':
       if (f.detail === 'h1') {
         return ro
