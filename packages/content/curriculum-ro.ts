@@ -363,6 +363,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'nested-lists': 'Liste imbricate',
     'div-and-span': 'div și span',
     'crew-html-recap': 'Recapitulare HTML',
+    'box-model': 'Modelul cutiei',
+    'box-sizing-and-sizes': 'box-sizing și dimensiuni',
+    'margins-and-centering': 'Margini și centrare',
+    display: 'display',
   },
 };
 

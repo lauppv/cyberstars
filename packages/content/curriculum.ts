@@ -1965,6 +1965,20 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'nested-lists', title: 'Nested Lists', sortOrder: 25 },
   { courseKey: 'web-dev', slug: 'div-and-span', title: 'div and span', sortOrder: 26 },
   { courseKey: 'web-dev', slug: 'crew-html-recap', title: 'HTML Recap', sortOrder: 27 },
+  { courseKey: 'web-dev', slug: 'box-model', title: 'The Box Model', sortOrder: 28 },
+  {
+    courseKey: 'web-dev',
+    slug: 'box-sizing-and-sizes',
+    title: 'box-sizing and Sizes',
+    sortOrder: 29,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'margins-and-centering',
+    title: 'Margins and Centering',
+    sortOrder: 30,
+  },
+  { courseKey: 'web-dev', slug: 'display', title: 'display', sortOrder: 31 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2005,7 +2019,17 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
     {
       key: 'crew-directory',
       title: 'Crew Directory',
-      lessons: ['paths', 'lists', 'nested-lists', 'div-and-span', 'crew-html-recap'],
+      lessons: [
+        'paths',
+        'lists',
+        'nested-lists',
+        'div-and-span',
+        'crew-html-recap',
+        'box-model',
+        'box-sizing-and-sizes',
+        'margins-and-centering',
+        'display',
+      ],
     },
   ],
 };

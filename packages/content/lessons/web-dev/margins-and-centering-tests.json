@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "name": "The home page sits in a centered column",
+      "visible": true,
+      "steps": [
+        {
+          "size": "body",
+          "maxWidth": 960,
+          "minWidth": 960,
+          "label": "the page's body"
+        },
+        {
+          "style": "body",
+          "prop": "margin-left",
+          "equals": "160px",
+          "label": "the page's body, in a window 1280px wide"
+        },
+        {
+          "style": "body",
+          "prop": "margin-right",
+          "equals": "160px",
+          "label": "the page's body, in a window 1280px wide"
+        },
+        {
+          "style": "body",
+          "prop": "margin-top",
+          "equals": "0px",
+          "label": "the page's body"
+        }
+      ]
+    },
+    {
+      "name": "The column keeps its text off the edges",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "padding-left",
+          "equals": "16px",
+          "label": "the page's body"
+        },
+        {
+          "style": "body",
+          "prop": "padding-right",
+          "equals": "16px",
+          "label": "the page's body"
+        }
+      ]
+    },
+    {
+      "name": "The crew page shares the column, the cards centered in it",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "body",
+          "prop": "margin-left",
+          "equals": "160px",
+          "label": "the body of crew.html"
+        },
+        {
+          "style": "#cards",
+          "prop": "margin-left",
+          "equals": "14px",
+          "label": "the box of cards, 900px in a column 928px wide"
+        },
+        {
+          "style": "#cards",
+          "prop": "margin-right",
+          "equals": "14px",
+          "label": "the box of cards"
+        }
+      ]
+    },
+    {
+      "name": "On a phone the column takes the whole width",
+      "visible": true,
+      "width": 375,
+      "page": "crew.html",
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "style": "body",
+          "prop": "margin-left",
+          "equals": "0px",
+          "label": "the body of crew.html, in a window 375px wide"
+        }
+      ]
+    }
+  ]
+}
