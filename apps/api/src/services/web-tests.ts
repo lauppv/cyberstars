@@ -279,9 +279,11 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     return wrongWay ? { kind: 'contrast', label, detail: 'on', expected: step.on } : null;
   }
   if ('differs' in step) {
+    // Alike: an element with every prop the same as one other element's, not
+    // each prop matched by some other element or another
     const others = seen.others ?? [];
     const alike = (seen.rows ?? []).some((row) =>
-      row.every((value, i) => others.some((other) => other[i] === value)),
+      others.some((other) => row.every((value, i) => other[i] === value)),
     );
     if (!alike) return null;
     return { kind: 'differs', label, other: step.fromLabel, detail: step.props.join(', ') };

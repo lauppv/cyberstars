@@ -312,6 +312,15 @@ describe('judgeStep', () => {
       other: 'the other paragraphs',
       detail: 'color, font-weight',
     });
+    // Its color is one paragraph's and its weight another's, but it looks like
+    // neither of them
+    expect(
+      judge(step, {
+        count: 1,
+        rows: [['grey', '700']],
+        others: [...others, ['grey', '400'], ['white', '700']],
+      }),
+    ).toBeNull();
     // With nothing to differ from, they differ
     expect(judge(step, { count: 1, rows: [['white', '400']], others: [] })).toBeNull();
   });
