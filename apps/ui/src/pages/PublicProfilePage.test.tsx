@@ -457,7 +457,7 @@ describe('PublicProfilePage', () => {
     await screen.findByText('Nova');
     const crown = screen.getByTestId('profile-crown');
     expect(crown).toHaveAttribute('title', 'Place 5');
-    expect(crown.querySelector('[data-crown="imperial"]')).not.toBeNull();
+    expect(crown.querySelector('[data-crown="5"]')).not.toBeNull();
   });
 
   it('gives no crown past the top ten', async () => {
