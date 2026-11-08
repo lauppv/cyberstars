@@ -221,15 +221,10 @@ async function observe(page, step, seen) {
   }
   // Each element's values of the props, then each of the others'
   if ('differs' in step) {
-    const read = (els, [props, max]) =>
-      els.slice(0, max).map((el) => {
-        const style = getComputedStyle(el);
-        return props.map((prop) => style.getPropertyValue(prop).trim());
-      });
-    const rows = await elements.evaluateAll(read, [step.props, MAX_ELEMENTS]);
-    const others = await page
-      .locator(`css=${step.from}`)
-      .evaluateAll(read, [step.props, MAX_ELEMENTS]);
+    const [rows, others] = await Promise.all([
+      elements.evaluateAll(differsRows, [step.props, MAX_ELEMENTS]),
+      page.locator(`css=${step.from}`).evaluateAll(differsRows, [step.props, MAX_ELEMENTS]),
+    ]);
     return { count, rows, others };
   }
   // The elements' box together, then the first one's parent's content box
@@ -273,6 +268,43 @@ async function observe(page, step, seen) {
     'size' in step ? 1 : MAX_ELEMENTS,
   );
   return { count, boxes };
+}
+
+// Run in the page: each element's values of the props, as a differs check
+// compares them. Its background-color is the background that shows behind it:
+// its own and those of its ancestors, from it up to the first that hides what
+// is under it (a solid color or a picture), or the white canvas. So a row
+// colored on its cells (`tr td`) or a cell colored on its row (`tr`, `thead
+// tr`) reads as it looks, and a page colored on <html> is that color behind
+// <body>. A see-through layer counts as itself over the ones under it
+function differsRows(els, [props, max]) {
+  const alpha = (color) => {
+    const rgba = /^rgba\(.*,\s*([\d.]+)\)$/.exec(color);
+    if (rgba) return Number(rgba[1]);
+    const slash = /\/\s*([\d.]+)(%?)\s*\)$/.exec(color);
+    if (slash) return Number(slash[1]) / (slash[2] ? 100 : 1);
+    return color === 'transparent' ? 0 : 1;
+  };
+  const shown = (el) => {
+    const layers = [];
+    for (let node = el; node; node = node.parentElement) {
+      const style = getComputedStyle(node);
+      const image = style.backgroundImage;
+      const color = style.backgroundColor;
+      if (image !== 'none') return [...layers, image].join(' over ');
+      const a = alpha(color);
+      if (a === 0) continue;
+      layers.push(color);
+      if (a === 1) return layers.join(' over ');
+    }
+    return [...layers, 'canvas'].join(' over ');
+  };
+  return els.slice(0, max).map((el) => {
+    const style = getComputedStyle(el);
+    return props.map((prop) =>
+      prop === 'background-color' ? shown(el) : style.getPropertyValue(prop).trim(),
+    );
+  });
 }
 
 // Run in the page: each element's text color against the colors behind it,

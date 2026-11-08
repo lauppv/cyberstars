@@ -110,8 +110,8 @@
       "visible": true,
       "steps": [
         {
-          "differs": "#launches tbody tr:nth-child(even)",
-          "from": "#launches tbody tr:nth-child(odd)",
+          "differs": "#launches tbody tr:nth-child(even) td:first-child",
+          "from": "#launches tbody tr:nth-child(odd) td:first-child",
           "props": ["background-color"],
           "fromLabel": "the odd launches",
           "label": "the even launches"
@@ -127,8 +127,8 @@
           "label": "the third launch"
         },
         {
-          "differs": "#launches tbody tr:nth-child(3)",
-          "from": "#launches tbody tr:not(:nth-child(3))",
+          "differs": "#launches tbody tr:nth-child(3) td:first-child",
+          "from": "#launches tbody tr:not(:nth-child(3)) td:first-child",
           "props": ["background-color"],
           "fromLabel": "the other launches",
           "label": "the third launch, under the mouse"
@@ -138,8 +138,8 @@
           "label": "the fourth launch"
         },
         {
-          "differs": "#launches tbody tr:nth-child(4)",
-          "from": "#launches tbody tr:not(:nth-child(4))",
+          "differs": "#launches tbody tr:nth-child(4) td:first-child",
+          "from": "#launches tbody tr:not(:nth-child(4)) td:first-child",
           "props": ["background-color"],
           "fromLabel": "the other launches",
           "label": "the fourth launch, striped and under the mouse"

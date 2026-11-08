@@ -507,6 +507,38 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(plain.web).toMatchObject({ kind: 'style', found: 'rgba(0, 0, 0, 0)' });
   });
 
+  it("compares the background that shows behind each element, its own or a parent's", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        html { background: #0b1d3a; }
+        nav { background: #0b1d3a; }
+        tbody tr:nth-child(even) td { background: #13294f; }
+        thead tr { background: #2c4a7a; }
+      </style></head><body>
+        <nav>Bar</nav>
+        <table><thead><tr><th>A</th></tr></thead>
+        <tbody><tr><td>1</td></tr><tr><td>2</td></tr><tr><td>3</td></tr></tbody></table>
+      </body></html>`,
+    };
+    const unlike = (differs: string, from: string): WebTestCase => ({
+      name: 'x',
+      visible: true,
+      steps: [
+        { differs, from, props: ['background-color'], fromLabel: 'the others', label: 'these' },
+      ],
+    });
+    const [bar, stripes, head] = verdicts(files, [
+      unlike('nav', 'body'),
+      unlike('tbody tr:nth-child(even) td', 'tbody tr:nth-child(odd) td'),
+      unlike('th', 'td'),
+    ]);
+    // The page's color sits on <html>, the bar's is the same
+    expect(bar.web).toMatchObject({ kind: 'differs' });
+    // Colored on the cells, or on the header's row
+    expect(stripes.passed).toBe(true);
+    expect(head.passed).toBe(true);
+  });
+
   it('stops a page stuck in an endless loop, like a timeout', () => {
     const [stuck] = verdicts(
       { 'index.html': '<h1>Hi</h1><script>while (true) {}</script>' },

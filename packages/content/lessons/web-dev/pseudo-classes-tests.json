@@ -6,8 +6,8 @@
       "page": "schedule.html",
       "steps": [
         {
-          "differs": "#flights tbody tr:nth-child(even)",
-          "from": "#flights tbody tr:nth-child(odd)",
+          "differs": "#flights tbody tr:nth-child(even) td:first-child",
+          "from": "#flights tbody tr:nth-child(odd) td:first-child",
           "props": ["background-color"],
           "fromLabel": "the odd rows",
           "label": "the even rows"
@@ -30,8 +30,8 @@
           "label": "the third flight"
         },
         {
-          "differs": "#flights tbody tr:nth-child(3)",
-          "from": "#flights tbody tr:not(:nth-child(3))",
+          "differs": "#flights tbody tr:nth-child(3) td:first-child",
+          "from": "#flights tbody tr:not(:nth-child(3)) td:first-child",
           "props": ["background-color"],
           "fromLabel": "the other rows",
           "label": "the third flight, under the mouse"
@@ -41,8 +41,8 @@
           "label": "the fourth flight"
         },
         {
-          "differs": "#flights tbody tr:nth-child(4)",
-          "from": "#flights tbody tr:not(:nth-child(4))",
+          "differs": "#flights tbody tr:nth-child(4) td:first-child",
+          "from": "#flights tbody tr:not(:nth-child(4)) td:first-child",
           "props": ["background-color"],
           "fromLabel": "the other rows",
           "label": "the fourth flight, under the mouse"
