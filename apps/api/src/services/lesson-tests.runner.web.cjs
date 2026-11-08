@@ -226,11 +226,15 @@ async function settle(page, nav, stepMs) {
     else break;
   }
   await page.waitForTimeout(30);
-  await page.evaluate(() => {
-    for (const animation of document.getAnimations()) {
-      if (animation instanceof CSSTransition) animation.finish();
-    }
-  });
+  // A page that moves on just now takes its transitions with it: the next
+  // step waits for or reads the new page
+  await page
+    .evaluate(() => {
+      for (const animation of document.getAnimations()) {
+        if (animation instanceof CSSTransition) animation.finish();
+      }
+    })
+    .catch(() => {});
 }
 
 async function runCase(browser, files, testCase, limits) {
