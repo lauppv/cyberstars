@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { lessons } from './curriculum.js';
-import { lessonTitlesRo } from './curriculum-ro.js';
+import { courseParts, lessons } from './curriculum.js';
+import { lessonTitlesRo, partTitlesRo } from './curriculum-ro.js';
 
 describe('lessonTitlesRo', () => {
   it('titles every lesson, so a new one needs its Romanian title here', () => {
@@ -25,5 +25,29 @@ describe('lessonTitlesRo', () => {
       return difficulty && !lessonTitlesRo[l.courseKey][l.slug].startsWith(`${difficulty} · `);
     });
     expect(lost.map((l) => `${l.courseKey}/${l.slug}`)).toEqual([]);
+  });
+});
+
+describe('partTitlesRo', () => {
+  const parts = Object.entries(courseParts).flatMap(([course, list]) =>
+    list.map((part) => `${course}/${part.key}`),
+  );
+
+  it('names every part of a course, so a new one needs its Romanian name here', () => {
+    const unnamed = parts.filter((key) => {
+      const [course, part] = key.split('/');
+      return !partTitlesRo[course]?.[part];
+    });
+    expect(unnamed).toEqual([]);
+  });
+
+  it('names only parts the curriculum has', () => {
+    const known = new Set(parts);
+    const unknown = Object.entries(partTitlesRo).flatMap(([course, titles]) =>
+      Object.keys(titles)
+        .map((part) => `${course}/${part}`)
+        .filter((key) => !known.has(key)),
+    );
+    expect(unknown).toEqual([]);
   });
 });

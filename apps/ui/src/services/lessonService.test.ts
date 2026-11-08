@@ -188,4 +188,25 @@ describe('localizeCurriculum', () => {
     expect(course.title).toBe('Python Algorithms');
     expect(course.lessons[1].title).toBe('Medium · Caesar Cipher');
   });
+
+  it("names a course's parts in the page's language, English where a name has no translation", () => {
+    const parted = [
+      {
+        ...courses[0],
+        parts: [
+          { key: 'start', title: 'Warm-up', titleRo: 'Încălzire', lessons: ['two-sum'] },
+          { key: 'more', title: 'More', lessons: ['caesar-cipher', 'fibonacci'] },
+        ],
+      },
+    ];
+    expect(lessonService.localizeCurriculum(parted, 'ro')[0].parts).toEqual([
+      { key: 'start', title: 'Încălzire', titleRo: 'Încălzire', lessons: ['two-sum'] },
+      { key: 'more', title: 'More', lessons: ['caesar-cipher', 'fibonacci'] },
+    ]);
+    expect(lessonService.localizeCurriculum(parted, 'en')[0].parts?.[0].title).toBe('Warm-up');
+  });
+
+  it('gives a course without parts none', () => {
+    expect(lessonService.localizeCurriculum(courses, 'ro')[0]).not.toHaveProperty('parts');
+  });
 });

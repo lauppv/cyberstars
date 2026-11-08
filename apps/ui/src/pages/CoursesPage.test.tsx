@@ -444,6 +444,79 @@ describe('CoursesPage', () => {
     expect(screen.getByText('Booleans')).toBeDefined();
   });
 
+  it("groups a course's chapters by part, each with its progress, numbered across the course", () => {
+    mockUseAuth.mockReturnValue({ isLoggedIn: true, isLoading: false } as ReturnType<
+      typeof useAuth
+    >);
+    mockUseCurriculum.mockReturnValue({
+      courses: [
+        {
+          ...pythonCourse,
+          lessons: [...pythonCourse.lessons, { slug: 'lists', title: 'Lists', sortOrder: 3 }],
+          parts: [
+            { key: 'basics', title: 'The Basics', lessons: ['intro', 'booleans'] },
+            { key: 'data', title: 'Data', lessons: ['lists'] },
+          ],
+        },
+      ],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {
+        python: {
+          courseKey: 'python',
+          earnedXp: 0,
+          totalXp: 0,
+          completed: 1,
+          total: 3,
+          lessons: [
+            {
+              slug: 'intro',
+              title: 'Intro',
+              completed: true,
+              completedAt: null,
+              lastAccessedAt: null,
+            },
+          ],
+        },
+      },
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage('/courses/python');
+    const parts = screen.getAllByRole('heading', { level: 4 });
+    expect(parts.map((h) => h.textContent)).toEqual(['The Basics', 'Data']);
+    const [basics, data] = parts.map((h) => h.closest('section')!);
+    expect(basics).toHaveTextContent('1 / 2');
+    expect(data).toHaveTextContent('0 / 1');
+    expect(within(basics).getByText('✓')).toBeInTheDocument();
+    expect(within(basics).getByText('Booleans').closest('a')).toHaveClass('ch-is-next');
+    expect(within(data).getByText('3')).toBeInTheDocument();
+    expect(within(data).getByText('Lists').closest('a')?.getAttribute('href')).toBe(
+      '/lesson/python/lists',
+    );
+  });
+
+  it("keeps a course without parts as one list, with no part's name over it", () => {
+    mockUseCurriculum.mockReturnValue({
+      courses: [pythonCourse],
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    mockUseAllProgress.mockReturnValue({
+      progressMap: {},
+      failedCourses: new Set(),
+      isLoading: false,
+      refresh: vi.fn(),
+    });
+    renderPage('/courses/python');
+    expect(screen.queryByRole('heading', { level: 4 })).toBeNull();
+    expect(screen.getByText('Intro').closest('a')).toHaveClass('ch-is-next');
+    expect(screen.getByText('Booleans').closest('a')).not.toHaveClass('ch-is-next');
+  });
+
   it('the old ?open= address shows the course on its own page', () => {
     mockUseCurriculum.mockReturnValue({
       courses: [pythonCourse],

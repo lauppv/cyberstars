@@ -26,6 +26,15 @@ import {
 import { canAccessFeature, PREVIEW_FEATURES } from '@cyberstars/shared/features';
 import { LoadError } from '../components/ui/LoadError';
 
+// A lesson in a course's list, numbered by its place in the whole course
+interface Chapter {
+  name: string;
+  slug: string;
+  number: number;
+  xp: number;
+  done: boolean;
+}
+
 interface CourseData {
   key: string;
   icon: string;
@@ -38,7 +47,9 @@ interface CourseData {
   totalXp: number;
   progress: number;
   desc: string;
-  chapters: { name: string; slug: string; sortOrder: number; xp: number; done: boolean }[];
+  chapters: Chapter[];
+  // A long course's parts, each with its own chapters; null for one list
+  parts: { key: string; name: string; chapters: Chapter[] }[] | null;
   continueSlug?: string;
 }
 
@@ -79,6 +90,14 @@ export function CoursesPage() {
       .map((course) => {
         const p = progressMap[course.key];
         const doneSet = new Set((p?.lessons ?? []).filter((l) => l.completed).map((l) => l.slug));
+        const chapters: Chapter[] = course.lessons.map((l, i) => ({
+          name: l.title,
+          slug: l.slug,
+          number: i + 1,
+          xp: xpForLesson(l.sortOrder),
+          done: doneSet.has(l.slug),
+        }));
+        const bySlug = new Map(chapters.map((ch) => [ch.slug, ch]));
         return {
           key: course.key,
           icon: courseMeta(course.key).icon,
@@ -92,13 +111,13 @@ export function CoursesPage() {
           totalXp: xpForCourse(course.lessons.length),
           progress: progressPct(p?.completed ?? 0, p?.total ?? course.lessons.length),
           desc: t(`courses.descriptions.${course.key}`, { defaultValue: course.description }),
-          chapters: course.lessons.map((l) => ({
-            name: l.title,
-            slug: l.slug,
-            sortOrder: l.sortOrder,
-            xp: xpForLesson(l.sortOrder),
-            done: doneSet.has(l.slug),
-          })),
+          chapters,
+          parts:
+            course.parts?.map((part) => ({
+              key: part.key,
+              name: part.title,
+              chapters: part.lessons.flatMap((slug) => bySlug.get(slug) ?? []),
+            })) ?? null,
           continueSlug: continueSlug(course.lessons, p?.lessons),
         };
       });
@@ -192,15 +211,48 @@ export function CoursesPage() {
 }
 
 // A course's chapters in order on a track that fills as they are done, the
-// next one to do ringed in the accent
+// next one to do ringed in the accent; a course with parts shows each part's
+// name and how many of its chapters are done over a track of its own
 function CourseChapters({ course }: { course: CourseData }) {
   const { t } = useTranslation();
-  const total = course.chapters.length;
-  const nextIdx = course.chapters.findIndex((ch) => !ch.done);
+  const next = course.chapters.find((ch) => !ch.done)?.slug;
+  if (!course.parts)
+    return <ChapterTrack courseKey={course.key} chapters={course.chapters} next={next} />;
+  return (
+    <div className="flex flex-col gap-5">
+      {course.parts.map((part) => (
+        <section key={part.key}>
+          <div className="flex items-baseline justify-between gap-3 px-1 mb-1.5">
+            <h4 className="m-0 text-[13px] font-semibold text-[var(--text)]">{part.name}</h4>
+            <span className="text-xs text-[var(--text3)] flex-shrink-0">
+              {t('courses.partDone', {
+                done: part.chapters.filter((ch) => ch.done).length,
+                total: part.chapters.length,
+              })}
+            </span>
+          </div>
+          <ChapterTrack courseKey={course.key} chapters={part.chapters} next={next} />
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function ChapterTrack({
+  courseKey,
+  chapters,
+  next,
+}: {
+  courseKey: string;
+  chapters: Chapter[];
+  next?: string;
+}) {
+  const { t } = useTranslation();
+  const total = chapters.length;
   const segs: { cls: string; top: number; height: number; delay: number }[] = [];
   for (let i = 0; i < total - 1; i++) {
-    const a = course.chapters[i].done;
-    const b = course.chapters[i + 1].done;
+    const a = chapters[i].done;
+    const b = chapters[i + 1].done;
     segs.push({
       cls: a && b ? 'seg-filled' : a ? 'seg-half' : '',
       top: (i / (total - 1)) * 100,
@@ -225,16 +277,16 @@ function CourseChapters({ course }: { course: CourseData }) {
             />
           ))}
       </div>
-      {course.chapters.map((ch, i) => (
+      {chapters.map((ch) => (
         <SetRow
           key={ch.slug}
-          to={`/lesson/${course.key}/${ch.slug}`}
-          number={i + 1}
+          to={`/lesson/${courseKey}/${ch.slug}`}
+          number={ch.number}
           title={ch.name}
           done={ch.done}
-          next={i === nextIdx}
+          next={ch.slug === next}
           trailing={t('common.xpReward', { xp: ch.xp })}
-          order={i}
+          order={ch.number - 1}
         />
       ))}
     </div>

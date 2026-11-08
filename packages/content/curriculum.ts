@@ -1881,3 +1881,10 @@ export const lessons = [
     hasCodeFile: true,
   },
 ];
+
+// A long course split into parts, by course key: each part's name and the
+// slugs of its lessons, in the course's order. Together a course's parts hold
+// every one of its lessons, once (curriculum.test.ts); a course left out here
+// is one list, as the shorter courses are. The Romanian names are in
+// curriculum-ro.ts, `partTitlesRo`.
+export const courseParts: Record<string, { key: string; title: string; lessons: string[] }[]> = {};
