@@ -35,7 +35,7 @@ function Row({
       }`}
     >
       <span
-        className="w-12 h-9 flex justify-center items-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
+        className="w-14 h-9 flex justify-center items-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
         title={t('leaderboard.place', { rank: entry.rank })}
       >
         {crowned ? (
