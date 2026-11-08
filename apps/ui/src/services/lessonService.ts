@@ -97,18 +97,22 @@ export function fetchCurriculum(): Promise<Course[]> {
   return getJson<Course[]>('/curriculum.json');
 }
 
-// A lesson's title in the page's language, English where there is no other
-export function lessonTitle(lesson: LessonMeta, lang: string): string {
+// A lesson's title, or a part's name, in the page's language, English where
+// there is no other
+export function lessonTitle(lesson: Pick<LessonMeta, 'title' | 'titleRo'>, lang: string): string {
   return lang === 'ro' ? (lesson.titleRo ?? lesson.title) : lesson.title;
 }
 
-// The curriculum as the page shows it: course names and lesson titles in its
-// language, so no page has to pick them itself
+// The curriculum as the page shows it: course names, lesson titles and the
+// names of a course's parts in its language, so no page has to pick them itself
 export function localizeCurriculum(courses: Course[], lang: string): Course[] {
   const t = i18next.getFixedT(lang);
   return courses.map((course) => ({
     ...course,
     title: courseTitle(course.key, t),
     lessons: course.lessons.map((lesson) => ({ ...lesson, title: lessonTitle(lesson, lang) })),
+    ...(course.parts && {
+      parts: course.parts.map((part) => ({ ...part, title: lessonTitle(part, lang) })),
+    }),
   }));
 }

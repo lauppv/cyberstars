@@ -538,6 +538,7 @@
     "viewSyllabus": "View Syllabus",
     "viewCourses": "View Courses",
     "chapters": "Chapters",
+    "partDone": "{{done}} / {{total}}",
     "descriptions": {
       "python": "The best place to start if you've never coded. From print and variables to functions, lists and dictionaries, then searching, sorting and recursion, ending with three small projects.",
       "c": "How a program really works underneath: pointers, memory you manage by hand, structs and files, then processes, pipes, threads and semaphores, ending with a mini shell of your own.",

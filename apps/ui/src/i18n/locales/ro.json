@@ -576,6 +576,7 @@
     "viewSyllabus": "Vezi programa",
     "viewCourses": "Vezi cursurile",
     "chapters": "Capitole",
+    "partDone": "{{done}} / {{total}}",
     "descriptions": {
       "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, cu trei proiecte mici la final.",
       "c": "Cum funcționează un program pe dedesubt: pointeri, memorie gestionată de mână, structuri și fișiere, apoi procese, pipe-uri, thread-uri și semafoare, cu un mini shell construit de tine la final.",
