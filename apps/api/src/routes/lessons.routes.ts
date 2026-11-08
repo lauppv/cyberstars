@@ -4,10 +4,11 @@ import { optionalAuth } from '../middleware/auth.js';
 import { getWebLessonStart } from '../controllers/lessons.controller.js';
 
 // One read per web lesson opened (and per language switch): a few files and at
-// most one database lookup. Guests open lessons too, so it goes by IP.
+// most one database lookup. Guests open lessons too, so it goes by IP, with
+// room for a whole class behind one school IP.
 const startLimiter = limiter({
   windowMs: 60_000,
-  limit: 120,
+  limit: 300,
 });
 
 const router = Router();

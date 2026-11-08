@@ -119,3 +119,26 @@ test("a web lesson starts from the student's site, and Reset offers both version
   await page.getByRole('menuitem', { name: 'Reset to your site' }).click();
   await expect(frame.locator('h1')).toHaveText('Mine', { timeout: 10_000 });
 });
+
+// A start that fails to load says so over the IDE, and Try again brings it in
+test("a web lesson says when its start didn't load, and Try again brings it in", async ({
+  page,
+}) => {
+  let fail = true;
+  await page.route('**/api/lessons/web-dev/first-page/start*', (route) =>
+    fail
+      ? route.abort()
+      : route.fulfill({
+          json: { course: '```html index.html\n<h1>Course</h1>\n```', passed: null },
+        }),
+  );
+  await page.goto('/lesson/web-dev/first-page');
+  const alert = page.getByRole('alert').filter({ hasText: "couldn't be loaded" });
+  await expect(alert).toBeVisible({ timeout: 10_000 });
+  fail = false;
+  await alert.getByRole('button', { name: 'Try again' }).click();
+  await expect(alert).toHaveCount(0);
+  await expect(page.frameLocator('iframe[title^="Preview"]').locator('h1')).toHaveText('Course', {
+    timeout: 10_000,
+  });
+});

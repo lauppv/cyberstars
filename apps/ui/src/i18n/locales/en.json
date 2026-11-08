@@ -1020,6 +1020,7 @@
     "codeSaved": "Code saved!",
     "savedCodeLoadFailed": "Your saved code couldn't be loaded, so the editor shows the lesson's starting code.",
     "savedCodeRetry": "Try again",
+    "webStartLoadFailed": "The site from your earlier lessons couldn't be loaded, so this lesson shows only its own files.",
     "confirmReplaceSaved": "Your saved code couldn't be loaded. Saving now replaces it with the code in the editor. Save anyway?",
     "confirmLoadSaved": "Your saved code has loaded. Put it in the editor instead of the code there now?",
     "showSolution": "Show Solution",

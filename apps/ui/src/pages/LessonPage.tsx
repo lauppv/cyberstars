@@ -125,6 +125,8 @@ export function LessonPage() {
     starterCode,
     courseStarter,
     passedStarter,
+    startFailed,
+    reloadStart,
     savedCode,
     savedCodeFailed,
     reloadSavedCode,
@@ -161,6 +163,7 @@ export function LessonPage() {
   );
   const { autoSave, savedCodeUnknown } = codeSave;
   const [retryingSavedCode, setRetryingSavedCode] = useState(false);
+  const [retryingStart, setRetryingStart] = useState(false);
   const submissions = useSubmissions(category, lesson);
   const { add: addSubmission } = submissions;
   const gamification = useGamification();
@@ -670,6 +673,19 @@ export function LessonPage() {
     }
   }, [reloadSavedCode, userCode, starterCode, t]);
 
+  // A web lesson's start that failed to load, once it comes: the starter it
+  // brings is the Reset target, and an editor still on the old one follows it.
+  const retryStart = useCallback(async () => {
+    setRetryingStart(true);
+    try {
+      await reloadStart();
+    } catch {
+      // still missing: the notice stays up with its Try again
+    } finally {
+      setRetryingStart(false);
+    }
+  }, [reloadStart]);
+
   if (isLoading) {
     return (
       <div className="h-screen flex flex-col bg-transparent text-[var(--text)]">
@@ -972,6 +988,23 @@ export function LessonPage() {
   );
 
   // The saved code couldn't be loaded: the starter shows, and Retry asks again
+  // A web lesson whose start didn't load shows only its own files (CYB-119)
+  const startAlert = startFailed && (
+    <div
+      role="alert"
+      className="shrink-0 flex items-center gap-3 px-4 py-2 border-b border-[var(--border)] bg-[var(--glass)] text-[12px] text-[var(--error)]"
+    >
+      <span className="flex-1 min-w-0">{t('lesson.webStartLoadFailed')}</span>
+      <button
+        type="button"
+        onClick={retryStart}
+        disabled={retryingStart}
+        className="shrink-0 px-3 py-1 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text)] font-semibold hover:bg-[var(--surface)] disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
+      >
+        {t('lesson.savedCodeRetry')}
+      </button>
+    </div>
+  );
   const savedCodeAlert = savedCodeUnknown && (
     <div
       role="alert"
@@ -1054,7 +1087,12 @@ export function LessonPage() {
                 onConsole={setWebConsole}
                 lesson={lessonColumn}
                 actions={actions}
-                banner={savedCodeAlert}
+                banner={
+                  <>
+                    {startAlert}
+                    {savedCodeAlert}
+                  </>
+                }
                 devMode={devMode}
                 runTests={
                   hasTests ? (

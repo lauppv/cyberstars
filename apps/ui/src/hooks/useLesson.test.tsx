@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { useEffect, useRef, useState } from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { act, render, screen, waitFor } from '@testing-library/react';
 import { renderHook } from '@testing-library/react';
 import { useLesson } from './useLesson';
 
@@ -98,14 +98,32 @@ describe('useLesson', () => {
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.starterCode).toBe('course site');
     expect(result.current.passedStarter).toBeNull();
+    expect(result.current.startFailed).toBe(false);
   });
 
-  it("falls back to a web lesson's own files when its start can't be read", async () => {
+  it("falls back to a web lesson's own files when its start can't be read, and says so", async () => {
     mockFetchWebStart.mockRejectedValue(new Error('offline'));
     const { result } = renderHook(() => useLesson('web-dev', 'crew'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
     expect(result.current.starterCode).toBe('starter crew');
     expect(result.current.passedStarter).toBeNull();
+    expect(result.current.startFailed).toBe(true);
+
+    // Try again brings the start in
+    mockFetchWebStart.mockResolvedValue({ course: 'course site', passed: 'my site' });
+    await act(() => result.current.reloadStart());
+    expect(result.current.startFailed).toBe(false);
+    expect(result.current.starterCode).toBe('my site');
+    expect(result.current.courseStarter).toBe('course site');
+  });
+
+  it('keeps the notice when the start fails to load again', async () => {
+    mockFetchWebStart.mockRejectedValue(new Error('offline'));
+    const { result } = renderHook(() => useLesson('web-dev', 'crew'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    await expect(act(() => result.current.reloadStart())).rejects.toThrow('offline');
+    expect(result.current.startFailed).toBe(true);
+    expect(result.current.starterCode).toBe('starter crew');
   });
 
   it("asks for the starter and the saved code without waiting for the lesson's text", async () => {

@@ -33,6 +33,9 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
   const [courseStarter, setCourseStarter] = useState('');
   const [passedStarter, setPassedStarter] = useState<string | null>(null);
   const starterCode = passedStarter ?? courseStarter;
+  // A web lesson's start couldn't be read: its starter is then only the
+  // lesson's own files, without the site from the lessons before.
+  const [startFailed, setStartFailed] = useState(false);
   const [savedCode, setSavedCode] = useState<string | null>(null);
   // The request for the user's saved code failed: null savedCode then means
   // "not known", not "nothing saved".
@@ -70,18 +73,22 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
       .catch(() => null);
     // Always resolve the starter so Reset has a target even when saved code exists.
     const loadStarter = async () => {
+      let failed = false;
       if (WEB_COURSE_KEYS.includes(courseKey)) {
         try {
-          return await fetchWebLessonStart(courseKey, lessonSlug, lang);
+          return { ...(await fetchWebLessonStart(courseKey, lessonSlug, lang)), failed };
         } catch {
-          // The lesson's own files are the closest there is to its start
+          // The lesson's own files are the closest there is to its start,
+          // and the page says the rest is missing
+          failed = true;
         }
       }
       try {
         const own = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
-        return { course: own, passed: null };
+        return { course: own, passed: null, failed };
       } catch {
-        return { course: DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '', passed: null };
+        const course = DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '';
+        return { course, passed: null, failed };
       }
     };
     const loadSaved = isLoggedIn
@@ -104,6 +111,7 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
       }
       setCourseStarter(starter.course);
       setPassedStarter(starter.passed);
+      setStartFailed(starter.failed);
       setSavedCode(saved.code);
       setSavedCodeFailed(saved.failed);
       setShownLanguage(language);
@@ -127,12 +135,25 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
     return res.code;
   }, [courseKey, lessonSlug, shownLanguage]);
 
+  // Asks again for a web lesson's start that failed to load; a failure throws
+  // and leaves the lesson's own files as its starter.
+  const reloadStart = useCallback(async () => {
+    const key = loadedRef.current;
+    const start = await fetchWebLessonStart(courseKey, lessonSlug, lang);
+    if (loadedRef.current !== key) return;
+    setCourseStarter(start.course);
+    setPassedStarter(start.passed);
+    setStartFailed(false);
+  }, [courseKey, lessonSlug, lang]);
+
   return {
     title,
     content,
     starterCode,
     courseStarter,
     passedStarter,
+    startFailed,
+    reloadStart,
     savedCode,
     savedCodeFailed,
     reloadSavedCode,
