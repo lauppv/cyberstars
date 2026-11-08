@@ -12,7 +12,7 @@
         {
           "text": "button#next-shift",
           "equals": "Next shift",
-          "label": "the button"
+          "label": "the button with id=\"next-shift\""
         }
       ]
     },
@@ -69,23 +69,23 @@
       "steps": [
         {
           "click": "button#next-shift",
-          "label": "the button"
+          "label": "the button with id=\"next-shift\""
         },
         {
           "click": "button#next-shift",
-          "label": "the button"
+          "label": "the button with id=\"next-shift\""
         },
         {
           "click": "button#next-shift",
-          "label": "the button"
+          "label": "the button with id=\"next-shift\""
         },
         {
           "click": "button#next-shift",
-          "label": "the button"
+          "label": "the button with id=\"next-shift\""
         },
         {
           "click": "button#next-shift",
-          "label": "the button"
+          "label": "the button with id=\"next-shift\""
         },
         {
           "text": "p#shift",

@@ -149,7 +149,7 @@
         },
         {
           "click": "button#salute",
-          "label": "the button"
+          "label": "the button with id=\"salute\""
         },
         {
           "text": "p#greeting",

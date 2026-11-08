@@ -8,11 +8,11 @@
         {
           "text": "button#roll-call-button",
           "equals": "Roll call",
-          "label": "the button (<button id=\"roll-call-button\">)"
+          "label": "the button with id=\"roll-call-button\""
         },
         {
           "exists": "ol#roll-call",
-          "label": "the roll call (<ol id=\"roll-call\">)"
+          "label": "the roll call"
         }
       ]
     },
@@ -38,7 +38,7 @@
         {
           "text": "p#roll-summary",
           "contains": " present",
-          "label": "the summary (<p id=\"roll-summary\">)"
+          "label": "the summary"
         },
         {
           "noErrors": true

@@ -8,12 +8,12 @@
         {
           "text": "button#call-dinner",
           "equals": "Call to dinner",
-          "label": "the button"
+          "label": "the button with id=\"call-dinner\""
         },
         {
           "text": "button#call-bridge",
           "equals": "Call to the bridge",
-          "label": "the button"
+          "label": "the button with id=\"call-bridge\""
         },
         {
           "exists": "p#intercom",
