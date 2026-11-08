@@ -185,8 +185,8 @@ async function observe(page, step, seen) {
     return { count, values };
   }
   if ('contrast' in step) {
-    const ratios = await elements.evaluateAll(contrastRatios, step.every ? MAX_ELEMENTS : 1);
-    return { count, ratios };
+    const read = await elements.evaluateAll(contrastRatios, step.every ? MAX_ELEMENTS : 1);
+    return { count, ratios: read.map((r) => r.ratio), darker: read.map((r) => r.darker) };
   }
   // Each element's values of the props, then each of the others'
   if ('differs' in step) {
@@ -230,7 +230,7 @@ async function observe(page, step, seen) {
 }
 
 // Run in the page: each element's text color against the colors behind it,
-// as WCAG's contrast ratio. A color the page wrote in any notation (a name,
+// as WCAG's contrast ratio, and whether the background is the darker one. A color the page wrote in any notation (a name,
 // hsl(), oklch()) is read back as sRGB through a canvas; the backgrounds of
 // the element and its ancestors are laid over the white canvas from the root
 // down, and the text over them, so a see-through color counts as it shows.
@@ -269,7 +269,10 @@ function contrastRatios(els, max) {
     for (const layer of layers.reverse()) background = over(layer, background);
     const text = over(rgba(getComputedStyle(el).color), background);
     const [light, dark] = [luminance(text), luminance(background)].sort((x, y) => y - x);
-    return Math.round(((light + 0.05) / (dark + 0.05)) * 100) / 100;
+    return {
+      ratio: Math.round(((light + 0.05) / (dark + 0.05)) * 100) / 100,
+      darker: luminance(background) < luminance(text),
+    };
   });
 }
 

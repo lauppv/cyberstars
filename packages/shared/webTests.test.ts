@@ -120,6 +120,9 @@ describe('webFailureText', () => {
     ).toBe(
       'Expected headings that never skip a level, found an h4 right after an h2: “Night Shift”.',
     );
+    expect(say({ kind: 'contrast', label: 'the page', detail: 'on', expected: 'dark' })).toBe(
+      'Expected the page light on a dark background, found it the other way round.',
+    );
     expect(
       say({ kind: 'contrast', label: 'un avertisment', expected: '4.5', found: '2.38' }, 'ro'),
     ).toBe(

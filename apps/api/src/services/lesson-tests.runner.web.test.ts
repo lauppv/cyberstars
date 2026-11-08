@@ -303,9 +303,17 @@ describe.skipIf(!hasBrowser())('web runner', () => {
       one([{ style: '.card', prop: 'padding-left', atLeast: 12, every: true, ...card }]),
       one([{ style: '.card', prop: 'padding-left', atMost: 8, ...card }]),
       one([{ style: '.card', prop: 'border-top-style', not: 'none', ...card }]),
-      one([{ contrast: 'main > h1, .warning', atLeast: 4.5, every: true, label: 'the text' }]),
+      one([
+        {
+          contrast: 'main > h1, .warning',
+          atLeast: 4.5,
+          on: 'dark',
+          every: true,
+          label: 'the text',
+        },
+      ]),
       one([{ contrast: '.grey', atLeast: 4.5, label: 'the faint line' }]),
-      one([{ contrast: '.black', atLeast: 21, label: 'the ink' }]),
+      one([{ contrast: '.black', atLeast: 21, on: 'light', label: 'the ink' }]),
       one([{ contrast: '.on-veil', atLeast: 4.5, label: 'the veiled line' }]),
       one([
         {

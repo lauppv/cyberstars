@@ -90,10 +90,11 @@ export type WebCheck =
   /**
    * The element's text reads on the background behind it: the contrast ratio
    * of its color and the background colors under it (WCAG's, from 1 to 21) is
-   * at least `atLeast`, 4.5 for text. Background images aren't looked at, only
-   * the colors. With `every`, every element's (up to 50).
+   * at least `atLeast`, 4.5 for text, and with `on`, the background is the
+   * `dark` one (light text) or the `light` one. Background images aren't
+   * looked at, only the colors. With `every`, every element's (up to 50).
    */
-  | ({ contrast: string; atLeast: number; every?: true } & Labelled)
+  | ({ contrast: string; atLeast: number; on?: 'dark' | 'light'; every?: true } & Labelled)
   /**
    * Every element of `differs` looks unlike every element of `from` in at least
    * one of `props`: a warning stands out from the other paragraphs by its
@@ -175,8 +176,9 @@ export interface WebObservation {
   /** Texts, attribute or style values of the elements (an attribute missing is null). */
   values?: (string | null)[];
   boxes?: WebBox[];
-  /** A contrast check's: each element's contrast ratio with its background. */
+  /** A contrast check's: each element's contrast ratio with its background, and whether that background is the darker of the two. */
   ratios?: number[];
+  darker?: boolean[];
   /** A differs check's: each element's values of its props, then each other element's. */
   rows?: string[][];
   others?: string[][];
@@ -352,6 +354,12 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         : `Expected ${label} with ${f.detail}: ${expected}, found ${f.detail}: ${found}.`;
     }
     case 'contrast':
+      if (f.detail === 'on') {
+        const dark = expected === 'dark';
+        return ro
+          ? `Se aștepta ca ${label} să aibă text ${dark ? 'deschis pe fundal închis' : 'închis pe fundal deschis'}, dar are invers.`
+          : `Expected ${label} ${dark ? 'light on a dark background' : 'dark on a light background'}, found it the other way round.`;
+      }
       return ro
         ? `Se aștepta ca ${label} să se citească pe fundalul său, cu un contrast de cel puțin ${expected}:1, dar contrastul e ${found}:1.`
         : `Expected ${label} readable on its background, a contrast of at least ${expected}:1, found ${found}:1.`;

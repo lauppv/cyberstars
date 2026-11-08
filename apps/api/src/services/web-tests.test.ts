@@ -253,6 +253,14 @@ describe('judgeStep', () => {
       expected: '4.5',
       found: '2.38',
     });
+    const onDark = { ...step, on: 'dark' } as const;
+    expect(judge(onDark, { count: 2, ratios: [12, 9], darker: [true, true] })).toBeNull();
+    expect(judge(onDark, { count: 2, ratios: [12, 9], darker: [true, false] })).toEqual({
+      kind: 'contrast',
+      label: 'a paragraph',
+      detail: 'on',
+      expected: 'dark',
+    });
   });
 
   it('passes elements that differ from the others in at least one property', () => {

@@ -403,7 +403,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   text: ['equals', 'contains', 'nonEmpty', 'label'],
   attr: ['name', 'equals', 'ignoreCase', 'label'],
   style: ['prop', 'equals', 'not', 'atLeast', 'atMost', 'pseudo', 'every', 'label'],
-  contrast: ['atLeast', 'every', 'label'],
+  contrast: ['atLeast', 'on', 'every', 'label'],
   differs: ['from', 'props', 'fromLabel', 'label'],
   layout: ['arrange', 'gap', 'label'],
   centered: ['label'],
@@ -491,6 +491,9 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
     }
     if (step.every !== undefined && step.every !== true) {
       return "a contrast step's every is true or left out";
+    }
+    if (step.on !== undefined && step.on !== 'dark' && step.on !== 'light') {
+      return "a contrast step's on is dark or light";
     }
   }
   if (own === 'differs') {

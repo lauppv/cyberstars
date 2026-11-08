@@ -233,7 +233,7 @@ describe('auditWebSpec', () => {
           every: true,
           label: 'a card',
         },
-        { contrast: 'p', atLeast: 4.5, every: true, label: 'a paragraph' },
+        { contrast: 'p', atLeast: 4.5, on: 'dark', every: true, label: 'a paragraph' },
         {
           differs: '.warning',
           from: 'p:not(.warning)',

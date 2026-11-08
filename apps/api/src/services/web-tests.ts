@@ -268,8 +268,11 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
   }
   if ('contrast' in step) {
     const low = (seen.ratios ?? []).find((ratio) => ratio < step.atLeast);
-    if (low === undefined) return null;
-    return { kind: 'contrast', label, expected: String(step.atLeast), found: String(low) };
+    if (low !== undefined) {
+      return { kind: 'contrast', label, expected: String(step.atLeast), found: String(low) };
+    }
+    const wrongWay = step.on && (seen.darker ?? []).some((dark) => dark !== (step.on === 'dark'));
+    return wrongWay ? { kind: 'contrast', label, detail: 'on', expected: step.on } : null;
   }
   if ('differs' in step) {
     const others = seen.others ?? [];
