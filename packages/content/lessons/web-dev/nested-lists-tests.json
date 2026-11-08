@@ -8,12 +8,12 @@
         {
           "text": "h2",
           "equals": "Decks",
-          "label": "a section heading (<h2>)"
+          "label": "a section heading"
         },
         {
           "count": "ul.decks > li",
           "atLeast": 3,
-          "label": "decks (<li>) in a list with class=\"decks\""
+          "label": "decks in a list with class=\"decks\""
         }
       ]
     },

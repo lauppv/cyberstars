@@ -1,13 +1,13 @@
-The station's home page is done. Part 2 adds a second page, the **Crew Directory**, and the first thing two pages need is a way from one to the other.
+The station's home page is done. Part 2 adds a second page, the **Crew Directory**. The first thing two pages need is a way to get from one to the other.
 
 ## Paths
 
-A link's `href` and an image's `src` say where a file is. You've written two kinds:
+A link's `href` and a picture's `src` say where a file is. You've written two kinds:
 
-- a **full address**, `https://en.wikipedia.org/wiki/Space_station`: another site, named in full;
-- a **relative path**, `img/station.svg`: a file of your own site, found **from the page that names it**.
+- a **full address**, like `https://en.wikipedia.org/wiki/Space_station`: another site, written out in full;
+- a **relative path**, like `img/station.svg`: a file of your own site, found **starting from the page that names it**.
 
-A relative path is read like directions from where you stand:
+Read a relative path like directions from where you are standing:
 
 ```text
 index.html            ← you are here
@@ -16,15 +16,15 @@ img/station.svg       → "img/station.svg"
 bays/cargo.html       → "bays/cargo.html"
 ```
 
-From `bays/cargo.html`, the way back to the home page climbs one folder up first: `../index.html`. `..` means "the folder above".
+From `bays/cargo.html`, the way back to the home page first goes up one folder: `../index.html`. `..` means "the folder above".
 
-A path starting with `/`, like `/crew.html`, starts from the site's **root**, the top folder, wherever the page is. It works once a site is on a web server, but not when you open the files straight from your disk, so relative paths are the safer habit.
+A path that starts with `/`, like `/crew.html`, starts from the site's **root**, the top folder, wherever the page is. That works once a site is on a web server, but not when you open the files straight from your computer. Relative paths are the safer habit.
 
-Keep file names simple: lowercase letters, digits and `-`, no spaces. `Crew Directory.html` is a different file from `crew directory.html` on most servers, and the space turns into `%20` in the address.
+Keep file names simple: small letters, digits and `-`, and no spaces. On most servers, `Crew Directory.html` and `crew directory.html` are two different files, and a space turns into `%20` in the address.
 
 ## A way around: nav
 
-Every page of a site usually starts with the same set of links, its **navigation**. HTML has an element for it:
+Most sites start every page with the same few links: the **navigation**. HTML has an element for it:
 
 ```html
 <nav>
@@ -33,15 +33,17 @@ Every page of a site usually starts with the same set of links, its **navigation
 </nav>
 ```
 
-`<nav>` changes nothing on screen, but tells a screen reader "these are the site's main links", so a visitor can jump straight to them, or past them.
+`<nav>` changes nothing on the screen. But it tells a screen reader "these are the site's main links", so a visitor can jump straight to them, or skip past them.
 
 ## The second page
 
-This lesson brought an empty `crew.html`. It's a page like `index.html`, with its own skeleton, its own `<title>`, and the same `style.css`: one style sheet, two pages, one look.
+This lesson added an empty `crew.html`. It's a page like `index.html`, with its own frame and its own `<title>`, and it uses the same `style.css`: one style sheet, two pages, one look.
 
 ---
 
 ## Mission: Second Deck
 
-- Write `crew.html` as a complete page, in English, able to show any letter, with **Crew Directory** on its tab, linked to the same `style.css`. Its biggest heading is **Crew Directory**, with a paragraph of your own under it.
-- At the very top of the body of **both** pages, add a navigation with two links: **Home**, to `index.html`, and **Crew**, to `crew.html`.
+The station gets a second page, the crew directory.
+
+- Write `crew.html` as a complete page, like your home page: English, able to show any letter, **Crew Directory** on its tab and as its title, with a paragraph of your own under the title. It looks like the home page, from the same style sheet.
+- A visitor on either page should reach the other in one click. At the very top of **both** pages, add the site's navigation, with a link **Home** to the home page and a link **Crew** to the crew page.

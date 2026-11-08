@@ -1,17 +1,13 @@
-Your crew page has a navigation, lists, lists in lists and cards. One more piece, and it uses all of them.
+Your crew page has a navigation, lists, lists inside lists, and cards. One more section, and it uses all of them, with no steps to follow.
 
-Worth keeping in mind:
-
-- **Paths are directions from the page that names them**: `crew.html` next to it, `img/station.svg` in a folder, `../index.html` one folder up.
-- **A link can lead to an id on another page**: the page's path, then `#` and the id, like `bays.html#loading`.
-- **`ul` when order doesn't matter, `ol` when it does**, and only `li` elements directly inside either.
-- **A nested list goes inside an item**, after its text.
-- **`div` and `span` mean nothing**; reach for them when no element says what the box is.
+One new thing you'll need: a link can lead to an element on **another** page. Write that page's path, then `#` and the element's id: `bays.html#loading` opens `bays.html` and jumps straight to the element with the id `loading`.
 
 ---
 
 ## Mission: Duty Board
 
-- On `crew.html`, after the cards, a section heading **Duty Board** with the id `duty`.
-- Right under it, the day's duties in order, at least three. Under at least one duty, inside its item, a list of the crew members on it.
-- In the navigation of **both** pages, a third link, **Duty**, that leads straight to the duty board on the crew page.
+Every morning the crew checks who does what. On `crew.html`, after the cards:
+
+- a section called **Duty Board**, with the id `duty`;
+- right under its title, the day's duties, at least three, in the order they're done. For at least one duty, list the crew members who work on it, inside that duty;
+- from **both** pages, a visitor should reach the duty board in one click: add a third link to both navigations, **Duty**, that goes straight to it.
