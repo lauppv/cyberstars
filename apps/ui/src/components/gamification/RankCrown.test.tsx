@@ -19,17 +19,25 @@ describe('RankCrown', () => {
       const [above, below] = [CROWNS[place - 1], CROWNS[place]];
       if (below.violetBand) expect(above.violetBand).toBe(true);
       if (below.violetTips) expect(above.violetTips).toBe(true);
-      if (below.ermine) expect(above.ermine).toBe(true);
+      if (below.regalia) expect(above.regalia).toBe(true);
       if (below.aura) expect(above.aura).toBeDefined();
-      if (below.shape === 'closed') expect(above.shape).toBe('closed');
+      if (below.shape === 'spiky') expect(above.shape).toBe('spiky');
     }
   });
 
   it('grows a little with each place up', () => {
-    const sizes = CROWNS.map((_, i) => Number(svg(i + 1).getAttribute('width')));
+    const sizes = CROWNS.map((_, i) => Number(svg(i + 1).getAttribute('height')));
     expect(sizes[0]).toBe(34);
     expect(sizes[9]).toBe(28);
     expect(sizes).toEqual([...sizes].sort((a, b) => b - a));
+  });
+
+  it('sets the orb and the sceptre beside places 1 to 3 only, in a wider box', () => {
+    const held = CROWNS.map((_, i) => svg(i + 1).querySelector('[data-regalia]') !== null);
+    expect(held).toEqual([true, true, true, false, false, false, false, false, false, false]);
+    const wide = svg(3);
+    expect(Number(wide.getAttribute('width'))).toBeGreaterThan(Number(wide.getAttribute('height')));
+    expect(svg(4).getAttribute('width')).toBe(svg(4).getAttribute('height'));
   });
 
   it('puts the brand star on the top crown only', () => {
