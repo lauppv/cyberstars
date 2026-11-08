@@ -9,6 +9,7 @@ vi.mock('../../context/CurriculumContext', () => ({
     courses: [
       { key: 'python', title: 'Python', description: '', lessons: lessons(60) },
       { key: 'linux', title: 'Linux', description: '', lessons: lessons(55) },
+      { key: 'trees-graphs', title: 'Trees and Graphs', description: '', lessons: lessons(12) },
       { key: 'algo-c', title: 'C Algorithms', description: '', lessons: lessons(32) },
     ],
     isLoading: false,
@@ -66,10 +67,17 @@ describe('FeaturesSection', () => {
 
   it('draws the courses from the curriculum, with their real lesson counts', () => {
     renderSection();
-    const picture = parts().getByRole('img', { name: /Python, Java, C and Linux/ });
+    const picture = parts().getByRole('img', { name: /Each course with its number of lessons/ });
     expect(picture).toHaveTextContent('Python60 lessons');
     expect(picture).toHaveTextContent('Linux55 lessons');
     expect(picture).not.toHaveTextContent('C Algorithms');
+  });
+
+  it('lists Trees and Graphs among the courses, marked Beta', () => {
+    renderSection();
+    expect(parts().getByText(/then Trees and Graphs in all three languages/)).toBeDefined();
+    const picture = parts().getByRole('img', { name: /Each course with its number of lessons/ });
+    expect(picture).toHaveTextContent('Trees and GraphsBeta12 lessons');
   });
 
   it('lists real challenges from easy to hard, the first ones solved', () => {

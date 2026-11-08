@@ -16,20 +16,34 @@ function Box({ label, children }: { label: string; children: ReactNode }) {
   );
 }
 
-// Every live course with its real lesson count, longest bar for the most
+// Every listed course with its real lesson count, in the page's language,
+// longest bar for the most; a course still being built is marked Beta. The
+// picture grows when a launch adds a course, rather than cutting it off
 export function CoursesPicture() {
   const { t } = useTranslation();
   const { courses } = useCurriculum();
   const rows = useMemo(() => curriculumCounts(courses).perCourse, [courses]);
   const most = Math.max(1, ...rows.map((r) => r.lessons));
   return (
-    <Box label={t('landing.features.courses.picture')}>
-      <ul className="m-0 p-0 list-none flex flex-col gap-4">
+    <Box label={t('landing.features.courses.picture')} height="min-h-[220px]">
+      <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
         {rows.map((r) => (
           <li key={r.key}>
-            <div className="flex items-baseline justify-between text-[13px] mb-1.5">
-              <span className="font-semibold">{r.label}</span>
-              <span className="text-[var(--text3)]">
+            <div className="flex items-center justify-between gap-2 text-[13px] leading-4 mb-1.5">
+              <span className="flex items-center gap-1.5 min-w-0">
+                <span className="font-semibold truncate">
+                  {t(`courses.names.${r.key}`, { defaultValue: r.label })}
+                </span>
+                {r.beta && (
+                  <span
+                    title={t('common.betaHint')}
+                    className="px-1.5 rounded-full border border-[var(--border)] text-[10px] leading-[14px] font-semibold text-[var(--text2)]"
+                  >
+                    {t('common.beta')}
+                  </span>
+                )}
+              </span>
+              <span className="text-[var(--text3)] flex-shrink-0">
                 {r.lessons} {t('courses.lessons', { count: r.lessons })}
               </span>
             </div>

@@ -337,8 +337,8 @@
       "title": "What's inside",
       "courses": {
         "title": "Courses",
-        "text": "Python, Java, C and Linux, from your first print to processes and threads, one short lesson at a time.",
-        "picture": "Python, Java, C and Linux, with the number of lessons in each."
+        "text": "Python, Java, C and Linux, from your first print to processes and threads, then Trees and Graphs in all three languages.",
+        "picture": "Each course with its number of lessons: Python, Java, C, Trees and Graphs, marked Beta, and Linux."
       },
       "algorithms": {
         "title": "Algorithm challenges",
