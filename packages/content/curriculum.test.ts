@@ -80,7 +80,10 @@ describe('carriedFrom', () => {
 // lesson it carries on from with the files it adds
 describe("a web lesson's start", () => {
   const webLessons = lessons.filter((l) => WEB_COURSE_KEYS.includes(l.courseKey));
-  const read = (courseKey: string, name: string) => {
+  // A Romanian file where there is one, as the server reads it, else the English
+  const read = (courseKey: string, name: string, lang: 'en' | 'ro' = 'en') => {
+    const ro = path.join(courseDir(courseKey), 'ro', name);
+    if (lang === 'ro' && fs.existsSync(ro)) return fs.readFileSync(ro, 'utf8');
     const file = path.join(courseDir(courseKey), name);
     return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null;
   };
@@ -93,15 +96,19 @@ describe("a web lesson's start", () => {
     expect(missing).toEqual([]);
   });
 
-  it("fits a site's limits", () => {
-    const over = webLessons
-      .filter((l) => {
-        const from = carriedFrom(l.courseKey, l.slug);
-        const site = from ? parseWebFiles(read(l.courseKey, `${from}-solution.md`) ?? '') : [];
-        const added = parseWebFiles(read(l.courseKey, `${l.slug}-code.md`) ?? '');
-        return startWebSite(site, added) === null;
-      })
-      .map((l) => `${l.courseKey}/${l.slug}`);
+  it("fits a site's limits, in English and in Romanian", () => {
+    const over = (['en', 'ro'] as const).flatMap((lang) =>
+      webLessons
+        .filter((l) => {
+          const from = carriedFrom(l.courseKey, l.slug);
+          const site = from
+            ? parseWebFiles(read(l.courseKey, `${from}-solution.md`, lang) ?? '')
+            : [];
+          const added = parseWebFiles(read(l.courseKey, `${l.slug}-code.md`, lang) ?? '');
+          return startWebSite(site, added) === null;
+        })
+        .map((l) => `${lang}: ${l.courseKey}/${l.slug}`),
+    );
     expect(over).toEqual([]);
   });
 });
