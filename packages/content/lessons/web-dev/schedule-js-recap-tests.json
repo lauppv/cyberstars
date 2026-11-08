@@ -8,12 +8,12 @@
         {
           "text": "span#station-time",
           "equals": "09:00",
-          "label": "the station time (<span id=\"station-time\">)"
+          "label": "the station time"
         },
         {
           "text": "p#next-departure",
           "equals": "Next departure: SL-102 to Mars Relay at 09:45",
-          "label": "the next departure (<p id=\"next-departure\">)"
+          "label": "the next departure"
         },
         {
           "noErrors": true
@@ -36,9 +36,16 @@
           "label": "rows with class=\"next\""
         },
         {
-          "style": "#flights tbody tr.next td",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
+          "differs": "#flights tbody tr.next td",
+          "from": "#flights tbody tr:not(.next) td",
+          "props": ["color", "background-color", "font-weight"],
+          "fromLabel": "the other rows",
+          "label": "the cells of the next departure"
+        },
+        {
+          "contrast": "#flights tbody tr.next td",
+          "atLeast": 4.5,
+          "every": true,
           "label": "a cell of the next departure"
         }
       ]
