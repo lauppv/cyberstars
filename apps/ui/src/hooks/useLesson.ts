@@ -63,56 +63,49 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
     setError(null); // eslint-disable-line react-hooks/set-state-in-effect
     if (!switchingLanguage) setIsLoading(true);
 
-    const loadLesson = async () => {
-      try {
-        const lesson = await lessonService.fetchLesson(courseKey, lessonSlug, lang, language);
-        if (cancelled) return;
-        setTitle(lesson.title);
-        setContent(lesson.content);
-      } catch {
-        if (cancelled) return;
-        setError(t('lesson.notFound'));
-        setTitle(t('lesson.notFound'));
-        setContent('');
-      }
-
-      // Always resolve the starter so Reset has a target even when saved code exists.
-      let starter: string | null = null;
-      let passed: string | null = null;
+    // The lesson's text, its starter and the student's saved code don't wait
+    // on each other, so they're asked for together
+    const loadText = lessonService
+      .fetchLesson(courseKey, lessonSlug, lang, language)
+      .catch(() => null);
+    // Always resolve the starter so Reset has a target even when saved code exists.
+    const loadStarter = async () => {
       if (WEB_COURSE_KEYS.includes(courseKey)) {
         try {
-          const start = await fetchWebLessonStart(courseKey, lessonSlug, lang);
-          starter = start.course;
-          passed = start.passed;
+          return await fetchWebLessonStart(courseKey, lessonSlug, lang);
         } catch {
           // The lesson's own files are the closest there is to its start
         }
       }
-      if (starter === null) {
-        try {
-          starter = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
-        } catch {
-          starter = DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '';
-        }
+      try {
+        const own = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
+        return { course: own, passed: null };
+      } catch {
+        return { course: DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '', passed: null };
       }
-      if (cancelled) return;
-      setCourseStarter(starter);
-      setPassedStarter(passed);
+    };
+    const loadSaved = isLoggedIn
+      ? progressService.getSavedCode(courseKey, lessonSlug, language).then(
+          (res) => ({ code: res.code, failed: false }),
+          () => ({ code: null, failed: true }),
+        )
+      : Promise.resolve({ code: null, failed: false });
 
-      let saved: string | null = null;
-      let failed = false;
-      if (isLoggedIn) {
-        try {
-          const res = await progressService.getSavedCode(courseKey, lessonSlug, language);
-          if (cancelled) return;
-          saved = res.code;
-        } catch {
-          if (cancelled) return;
-          failed = true;
-        }
+    const loadLesson = async () => {
+      const [lesson, starter, saved] = await Promise.all([loadText, loadStarter(), loadSaved]);
+      if (cancelled) return;
+      if (lesson) {
+        setTitle(lesson.title);
+        setContent(lesson.content);
+      } else {
+        setError(t('lesson.notFound'));
+        setTitle(t('lesson.notFound'));
+        setContent('');
       }
-      setSavedCode(saved);
-      setSavedCodeFailed(failed);
+      setCourseStarter(starter.course);
+      setPassedStarter(starter.passed);
+      setSavedCode(saved.code);
+      setSavedCodeFailed(saved.failed);
       setShownLanguage(language);
       setIsLoading(false);
     };

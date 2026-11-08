@@ -206,7 +206,8 @@ describe('useLesson', () => {
 
 /**
  * Leaving a lesson mid-load must not write the old lesson's data into the new
- * one; every await is guarded by a cancellation check.
+ * one: the text, the starter and the saved code are asked for together, and
+ * nothing of them is written once the lesson is left.
  */
 describe('useLesson cancellation', () => {
   function deferred<T>() {
@@ -230,8 +231,9 @@ describe('useLesson cancellation', () => {
     d.resolve({ title: 'Intro', content: '# Hello', slug: 'py-1' } as never);
     await flush();
 
-    expect(mockFetchCode).not.toHaveBeenCalled();
     expect(result.current.title).toBe('');
+    expect(result.current.starterCode).toBe('');
+    expect(result.current.isLoading).toBe(true);
   });
 
   it('stops after the lesson rejects', async () => {
@@ -243,8 +245,8 @@ describe('useLesson cancellation', () => {
     d.reject(new Error('404'));
     await flush();
 
-    expect(mockFetchCode).not.toHaveBeenCalled();
     expect(result.current.error).toBeNull();
+    expect(result.current.isLoading).toBe(true);
   });
 
   it('stops after the starter code resolves', async () => {
@@ -258,8 +260,9 @@ describe('useLesson cancellation', () => {
     d.resolve('print(1)');
     await flush();
 
-    expect(mockGetSaved).not.toHaveBeenCalled();
     expect(result.current.starterCode).toBe('');
+    expect(result.current.savedCode).toBeNull();
+    expect(result.current.isLoading).toBe(true);
   });
 
   it('stops after the saved code resolves', async () => {

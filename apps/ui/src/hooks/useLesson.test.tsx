@@ -108,6 +108,19 @@ describe('useLesson', () => {
     expect(result.current.passedStarter).toBeNull();
   });
 
+  it("asks for the starter and the saved code without waiting for the lesson's text", async () => {
+    let finish: (lesson: { title: string; content: string }) => void = () => {};
+    mockFetchLesson.mockReturnValue(new Promise((resolve) => (finish = resolve)));
+    mockFetchWebStart.mockResolvedValue({ course: 'course site', passed: null });
+    const { result } = renderHook(() => useLesson('web-dev', 'crew'));
+    await waitFor(() => expect(mockGetSavedCode).toHaveBeenCalled());
+    expect(mockFetchWebStart).toHaveBeenCalled();
+    expect(result.current.isLoading).toBe(true);
+    finish({ title: 'Crew', content: 'text' });
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.title).toBe('Crew');
+  });
+
   it('never asks a code lesson for a web start', async () => {
     const { result } = renderHook(() => useLesson('python', 'print'));
     await waitFor(() => expect(result.current.isLoading).toBe(false));
