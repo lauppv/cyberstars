@@ -404,19 +404,11 @@
       "title": "Întrebări",
       "account": {
         "q": "Am nevoie de cont?",
-        "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont ridică limita de zece rulări, îți salvează progresul și îți deschide forumul și tutorele AI."
-      },
-      "free": {
-        "q": "E gratuit?",
-        "a": "Da. Nu există plan plătit și nu ai nevoie de card, iar codul CyberStars e public pe GitHub, deci oricine îl poate verifica."
+        "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont ridică limita de zece rulări, îți salvează progresul și îți deschide tutorele AI."
       },
       "start": {
         "q": "Cu ce limbaj să încep?",
         "a": "Python, dacă n-ai mai programat."
-      },
-      "install": {
-        "q": "Trebuie să instalez ceva?",
-        "a": "Nu. Totul rulează în browser."
       },
       "phone": {
         "q": "Merge pe telefon?",
