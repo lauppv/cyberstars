@@ -7,7 +7,6 @@ import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
-import { RankRegalia } from '../components/gamification/RankRegalia';
 import { CROWNS } from '../components/gamification/crowns';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as leaderboardService from '../services/leaderboardService';
@@ -26,7 +25,7 @@ function Row({
   isMe: boolean;
   t: (k: string, o?: Record<string, unknown>) => string;
 }) {
-  // A crown and the podium's insignia have to be earned, so a place at 0 XP shows its number
+  // A crown has to be earned, so a place at 0 XP shows its number
   const crowned = entry.rank <= CROWNS.length && entry.totalXp > 0;
   return (
     <Link
@@ -35,21 +34,18 @@ function Row({
         isMe ? 'bg-[var(--accent)]/10' : ''
       }`}
     >
-      {/* As tall as the avatar, so the podium's insignia overhangs into the padding */}
       <span
         className="w-12 h-9 flex justify-center items-center tabular-nums font-bold text-[15px] text-[var(--text2)] flex-shrink-0"
         title={t('leaderboard.place', { rank: entry.rank })}
       >
         {crowned ? (
-          <RankRegalia rank={entry.rank}>
-            {/* The place's number on the crown's corner, so nobody has to count the rows */}
-            <span className="relative inline-flex">
-              <RankCrown rank={entry.rank} />
-              <span className="absolute -bottom-1 -right-2 min-w-4 h-4 px-1 rounded-full flex items-center justify-center text-[10px] leading-none font-bold text-[var(--text)] bg-[var(--panel-bg)] border border-[var(--border)]">
-                {entry.rank}
-              </span>
+          // The place's number on the crown's corner, so nobody has to count the rows
+          <span className="relative inline-flex">
+            <RankCrown rank={entry.rank} />
+            <span className="absolute -bottom-1 -right-2 min-w-4 h-4 px-1 rounded-full flex items-center justify-center text-[10px] leading-none font-bold text-[var(--text)] bg-[var(--panel-bg)] border border-[var(--border)]">
+              {entry.rank}
             </span>
-          </RankRegalia>
+          </span>
         ) : (
           entry.rank
         )}
