@@ -24,6 +24,8 @@ async function writeIndex(page: import('@playwright/test').Page, text: string) {
 test('Run Tests grades the site in a browser and says why it failed', async ({
   authedPage: page,
 }) => {
+  // The card recommending dev mode lies over the site's top right
+  await page.addInitScript(() => sessionStorage.setItem('cyberstars.devModeHint', 'closed'));
   await page.goto('/lesson/web-dev/first-page');
   await page
     .getByRole('group', { name: 'What the left side shows' })
