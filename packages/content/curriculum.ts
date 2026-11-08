@@ -1916,6 +1916,10 @@ export const lessons = [
     title: 'Type, Class and Id Selectors',
     sortOrder: 10,
   },
+  { courseKey: 'web-dev', slug: 'colors', title: 'Colors', sortOrder: 11 },
+  { courseKey: 'web-dev', slug: 'text-and-fonts', title: 'Text and Fonts', sortOrder: 12 },
+  { courseKey: 'web-dev', slug: 'units', title: 'Units', sortOrder: 13 },
+  { courseKey: 'web-dev', slug: 'home-css-recap', title: 'CSS Recap', sortOrder: 14 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -1939,6 +1943,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'home-html-recap',
         'what-is-css',
         'selectors',
+        'colors',
+        'text-and-fonts',
+        'units',
+        'home-css-recap',
       ],
     },
   ],

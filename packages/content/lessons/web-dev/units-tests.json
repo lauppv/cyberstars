@@ -1,0 +1,90 @@
+{
+  "cases": [
+    {
+      "name": "The text and the headings have their sizes",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "font-size",
+          "equals": "18px",
+          "label": "the page (<body>)"
+        },
+        {
+          "style": "h1",
+          "prop": "font-size",
+          "equals": "40px",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "style": "h2",
+          "prop": "font-size",
+          "equals": "24px",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "style": "p.address",
+          "prop": "font-size",
+          "equals": "16.2px",
+          "label": "the address"
+        }
+      ]
+    },
+    {
+      "name": "The sizes follow the visitor's own font size",
+      "visible": false,
+      "files": {
+        "zoomed.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"zoom.css\" />\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n  </body>\n</html>\n",
+        "zoom.css": "html { font-size: 20px; }\n"
+      },
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "font-size",
+          "equals": "50px",
+          "label": "the biggest heading, for a visitor whose font size is 20px"
+        }
+      ],
+      "page": "zoomed.html"
+    },
+    {
+      "name": "The page fits a phone",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "size": "img[src$=\"img/divider.svg\"]",
+          "maxWidth": 375,
+          "label": "the divider"
+        },
+        {
+          "size": "img[src$=\"img/station.svg\"]",
+          "minWidth": 319,
+          "maxWidth": 321,
+          "minHeight": 199,
+          "maxHeight": 201,
+          "label": "the station's picture, at its own size"
+        }
+      ]
+    },
+    {
+      "name": "Pictures keep their shape when they shrink",
+      "visible": true,
+      "width": 320,
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "size": "img[src$=\"img/station.svg\"]",
+          "maxWidth": 305,
+          "maxHeight": 192,
+          "label": "the station's picture, shrunk with its height"
+        }
+      ]
+    }
+  ]
+}

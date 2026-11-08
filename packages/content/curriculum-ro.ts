@@ -346,6 +346,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'home-html-recap': 'Recapitulare HTML',
     'what-is-css': 'Ce este CSS',
     selectors: 'Selectori de tip, clasă și id',
+    colors: 'Culori',
+    'text-and-fonts': 'Text și fonturi',
+    units: 'Unități de măsură',
+    'home-css-recap': 'Recapitulare CSS',
   },
 };
 
