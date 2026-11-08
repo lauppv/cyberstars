@@ -13,7 +13,7 @@ Worth keeping in mind:
 ## Mission: Status Colors
 
 - The delayed flight's row gets the class `delayed`. Its status cell: text in `#ffb3b3`.
-- Every status cell of the flights table: `bold`.
+- Every status cell of the flights table: `bold`, and no other cell.
 - The cancelled flight's status starts with `✕ ` (the sign, then a space), added by CSS.
 - The docking bays table looks like the flights table: the whole width, borders collapsed, its cells padded `8px 12px` with a `1px solid #2c4a7a` bottom border.
 - The banner keeps `24px` of room under it.

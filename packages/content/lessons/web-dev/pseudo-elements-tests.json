@@ -9,14 +9,16 @@
           "pseudo": "::after",
           "prop": "content",
           "equals": "\" ↗\"",
-          "label": "the end of a link to another site"
+          "label": "the end of every link to another site",
+          "every": true
         },
         {
           "style": "p.jumps a",
           "pseudo": "::after",
           "prop": "content",
           "equals": "none",
-          "label": "the end of a jump link"
+          "label": "the end of every jump link",
+          "every": true
         }
       ]
     },
@@ -29,7 +31,8 @@
           "pseudo": "::before",
           "prop": "content",
           "equals": "\"⚠ \"",
-          "label": "the start of a warning"
+          "label": "the start of every warning",
+          "every": true
         },
         {
           "text": "p.warning strong",
@@ -48,42 +51,48 @@
           "pseudo": "::after",
           "prop": "content",
           "equals": "\"\"",
-          "label": "the bar after a section heading"
+          "label": "the bar after every section heading",
+          "every": true
         },
         {
           "style": "h2",
           "pseudo": "::after",
           "prop": "display",
           "equals": "block",
-          "label": "the bar after a section heading"
+          "label": "the bar after every section heading",
+          "every": true
         },
         {
           "style": "h2",
           "pseudo": "::after",
           "prop": "width",
           "equals": "48px",
-          "label": "the bar after a section heading"
+          "label": "the bar after every section heading",
+          "every": true
         },
         {
           "style": "h2",
           "pseudo": "::after",
           "prop": "height",
           "equals": "3px",
-          "label": "the bar after a section heading"
+          "label": "the bar after every section heading",
+          "every": true
         },
         {
           "style": "h2",
           "pseudo": "::after",
           "prop": "margin-top",
           "equals": "6px",
-          "label": "the bar after a section heading"
+          "label": "the bar after every section heading",
+          "every": true
         },
         {
           "style": "h2",
           "pseudo": "::after",
           "prop": "background-color",
           "equals": "rgb(255, 209, 102)",
-          "label": "the bar after a section heading"
+          "label": "the bar after every section heading",
+          "every": true
         }
       ]
     }

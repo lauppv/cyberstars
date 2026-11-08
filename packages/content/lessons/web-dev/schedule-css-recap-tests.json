@@ -33,13 +33,15 @@
           "style": "#flights td.status",
           "prop": "font-weight",
           "equals": "700",
-          "label": "a status cell"
+          "label": "every status cell",
+          "every": true
         },
         {
-          "style": "#flights td.code",
+          "style": "#flights td:not(.status)",
           "prop": "font-weight",
           "equals": "400",
-          "label": "a code cell"
+          "label": "every other cell",
+          "every": true
         },
         {
           "style": "#flights tr.cancelled td.status",
@@ -78,13 +80,15 @@
           "style": "#bays td",
           "prop": "padding-left",
           "equals": "12px",
-          "label": "a cell of the bays table"
+          "label": "every cell of the bays table",
+          "every": true
         },
         {
           "style": "#bays td",
           "prop": "border-bottom-color",
           "equals": "rgb(44, 74, 122)",
-          "label": "a cell of the bays table"
+          "label": "every cell of the bays table",
+          "every": true
         }
       ]
     },
