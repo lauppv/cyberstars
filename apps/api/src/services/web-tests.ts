@@ -293,12 +293,25 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
       return { kind: 'layout', label, expected: step.arrange, found, width };
     }
     const least = step.gap === undefined ? Infinity : Math.min(...gaps(boxes, step.arrange));
-    if (step.gap === undefined || least >= step.gap - 0.5) return null;
+    if (step.gap !== undefined && least < step.gap - 0.5) {
+      return {
+        kind: 'gap',
+        label,
+        expected: String(step.gap),
+        found: String(Math.round(least)),
+        width,
+      };
+    }
+    if (step.align === undefined) return null;
+    // Tops of a row, left edges of a column
+    const edges = boxes.map((b) => (step.arrange === 'row' ? b.y : b.x));
+    const spread = Math.max(...edges) - Math.min(...edges);
+    if (spread <= 1) return null;
     return {
-      kind: 'gap',
+      kind: 'align',
       label,
-      expected: String(step.gap),
-      found: String(Math.round(least)),
+      expected: step.arrange,
+      found: String(Math.round(spread)),
       width,
     };
   }

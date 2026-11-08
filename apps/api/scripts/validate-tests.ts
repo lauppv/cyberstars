@@ -405,7 +405,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   style: ['prop', 'equals', 'not', 'endsWith', 'atLeast', 'atMost', 'pseudo', 'every', 'label'],
   contrast: ['atLeast', 'on', 'every', 'label'],
   differs: ['from', 'props', 'fromLabel', 'label'],
-  layout: ['arrange', 'gap', 'label'],
+  layout: ['arrange', 'gap', 'align', 'label'],
   centered: ['label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
@@ -526,6 +526,9 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
     !(typeof step.gap === 'number' && step.gap > 0)
   ) {
     return "a layout step's gap is a number of px above 0";
+  }
+  if (own === 'layout' && step.align !== undefined && step.align !== 'start') {
+    return "a layout step's align is start or left out";
   }
   if (
     own === 'size' &&

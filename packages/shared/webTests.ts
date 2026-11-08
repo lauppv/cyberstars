@@ -106,9 +106,11 @@ export type WebCheck =
   | ({ differs: string; from: string; props: readonly string[]; fromLabel: string } & Labelled)
   /**
    * The elements stand in a row (side by side) or a column (one under the
-   * other), with at least `gap` px between each one and the next.
+   * other), with at least `gap` px between each one and the next, and with
+   * `align: 'start'` lined up at their tops (a row) or their left edges (a
+   * column).
    */
-  | ({ layout: string; arrange: 'row' | 'column'; gap?: number } & Labelled)
+  | ({ layout: string; arrange: 'row' | 'column'; gap?: number; align?: 'start' } & Labelled)
   /**
    * The elements, taken together (the box round them all: a menu's links),
    * are narrower than the first one's parent's content and centered across it.
@@ -205,6 +207,7 @@ type WebFailureKind =
   | 'count'
   | 'layout'
   | 'gap'
+  | 'align'
   | 'centered'
   | 'size'
   | 'contrast'
@@ -390,6 +393,12 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se așteptau ${label} la cel puțin ${expected}px unul de altul la o fereastră de ${w}px, dar între două sunt doar ${found}px.`
         : `Expected ${label} at least ${expected}px apart in a window ${w}px wide, found two only ${found}px apart.`;
+    case 'align': {
+      const edge = expected === 'row' ? (ro ? 'sus' : 'tops') : ro ? 'stânga' : 'left edges';
+      return ro
+        ? `Se așteptau ${label} aliniate ${expected === 'row' ? 'sus' : 'la stânga'} la o fereastră de ${w}px, dar sunt la ${found}px unul de altul.`
+        : `Expected ${label} lined up at their ${edge} in a window ${w}px wide, found them ${found}px apart.`;
+    }
     case 'centered': {
       if (f.detail === 'full') {
         return ro

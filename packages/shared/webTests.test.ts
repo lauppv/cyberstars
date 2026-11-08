@@ -138,6 +138,11 @@ describe('webFailureText', () => {
     expect(say({ kind: 'gap', label: 'the cards', expected: '12', found: '0', width: 1280 })).toBe(
       'Expected the cards at least 12px apart in a window 1280px wide, found two only 0px apart.',
     );
+    expect(
+      say({ kind: 'align', label: 'the cards', expected: 'row', found: '30', width: 1280 }),
+    ).toBe(
+      'Expected the cards lined up at their tops in a window 1280px wide, found them 30px apart.',
+    );
     expect(say({ kind: 'centered', label: 'the column', found: '0 304', width: 1280 })).toBe(
       'Expected the column centered in its parent in a window 1280px wide, found 0px of room on the left and 304px on the right.',
     );

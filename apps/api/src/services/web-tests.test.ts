@@ -335,6 +335,22 @@ describe('judgeStep', () => {
       width: 1280,
     });
     expect(judge({ ...step, arrange: 'row' }, column(12))).toMatchObject({ kind: 'layout' });
+    const tops = { layout: '.card', arrange: 'row', align: 'start', label: 'the cards' } as const;
+    const row = (second: number) => ({
+      count: 2,
+      boxes: [
+        { x: 0, y: 0, width: 100, height: 50 },
+        { x: 116, y: second, width: 100, height: 80 },
+      ],
+    });
+    expect(judge(tops, row(0.5))).toBeNull();
+    expect(judge(tops, row(30))).toEqual({
+      kind: 'align',
+      label: 'the cards',
+      expected: 'row',
+      found: '30',
+      width: 1280,
+    });
   });
 
   it('tells an element centered in its parent from one off center or as wide', () => {

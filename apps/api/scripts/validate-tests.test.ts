@@ -224,6 +224,7 @@ describe('auditWebSpec', () => {
         { style: 'h1', pseudo: '::before', prop: 'content', equals: '"★"', label: 'its mark' },
         { layout: '.card', arrange: 'row', label: 'the cards' },
         { layout: '.card', arrange: 'column', gap: 12, label: 'the cards' },
+        { layout: '.card', arrange: 'row', align: 'start', label: 'the cards' },
         { style: '.card', prop: 'border-top-style', not: 'none', label: 'a card' },
         { style: 'body', prop: 'font-family', endsWith: 'sans-serif', label: 'the page' },
         {
