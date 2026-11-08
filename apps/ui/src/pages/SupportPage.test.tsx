@@ -8,6 +8,16 @@ const route = vi.hoisted(() => ({ search: '', setSearchParams: vi.fn() }));
 vi.mock('react-router', () => ({
   useSearchParams: () => [new URLSearchParams(route.search), route.setSearchParams],
 }));
+const notif = vi.hoisted(() => ({
+  support: [] as { entityId: number; title: string }[],
+  markSectionRead: vi.fn(),
+}));
+vi.mock('../context/NotificationContext', () => ({
+  useNotifications: () => ({
+    sections: { forum: [], support: notif.support, connections: 0, laniakea: 0 },
+    markSectionRead: notif.markSectionRead,
+  }),
+}));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
@@ -70,6 +80,7 @@ const GENERAL = 'Something went wrong. Please try again.';
 beforeEach(() => {
   vi.clearAllMocks();
   route.search = '';
+  notif.support = [];
   signIn(student);
   mockGetMyTickets.mockResolvedValue([ticket]);
   mockGetAllTickets.mockResolvedValue([{ ...ticket, authorName: 'Nova' }]);
@@ -86,6 +97,34 @@ async function openTicket() {
 }
 
 describe('SupportPage', () => {
+  describe('what is new', () => {
+    it('marks a ticket with something new in both lists, and only that one', async () => {
+      signIn(admin);
+      const other = { ...ticket, id: 8, subject: 'Typo in lesson' };
+      mockGetMyTickets.mockResolvedValue([ticket, other]);
+      mockGetAllTickets.mockResolvedValue([{ ...ticket, authorName: 'Nova' }]);
+      notif.support = [{ entityId: 7, title: 'Run is stuck' }];
+      render(<SupportPage />);
+      await waitFor(() => expect(screen.getAllByText('Run is stuck')).toHaveLength(2));
+      expect(screen.getAllByText('New')).toHaveLength(2);
+      const typo = screen.getByText('Typo in lesson').parentElement!;
+      expect(typo).not.toHaveTextContent('New');
+    });
+
+    it('reads what was new on a ticket once it opens', async () => {
+      notif.support = [{ entityId: 7, title: 'Run is stuck' }];
+      await openTicket();
+      expect(notif.markSectionRead).toHaveBeenCalledTimes(1);
+      expect(notif.markSectionRead).toHaveBeenCalledWith('support', 7);
+    });
+
+    it('reads nothing while only the lists show', async () => {
+      render(<SupportPage />);
+      await screen.findByText('Run is stuck');
+      expect(notif.markSectionRead).not.toHaveBeenCalled();
+    });
+  });
+
   describe('the ticket form', () => {
     function fillForm() {
       fireEvent.change(screen.getByPlaceholderText('Subject'), {
@@ -231,7 +270,7 @@ describe('SupportPage', () => {
     });
   });
 
-  describe('a ticket opened from its notification', () => {
+  describe('a ticket opened from a link', () => {
     it("opens the student's own ticket and drops the id from the address", async () => {
       route.search = 'ticket=7';
       render(<SupportPage />);

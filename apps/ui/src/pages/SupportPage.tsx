@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
+import { useNotifications } from '../context/NotificationContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { LoadError } from '../components/ui/LoadError';
@@ -58,6 +59,10 @@ export function SupportPage() {
   const [openTicket, setOpenTicket] = useState<SupportTicketDTO | null>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const wanted = Number(searchParams.get('ticket'));
+  // Tickets with a reply, a new status or, for the admins, that are new, not
+  // opened yet; the sidebar's Support row counts them
+  const { sections } = useNotifications();
+  const fresh = new Set(sections.support.map((e) => e.entityId));
 
   const refresh = useCallback(() => {
     supportService
@@ -81,8 +86,8 @@ export function SupportPage() {
     if (isLoggedIn) refresh();
   }, [isLoggedIn, refresh]);
 
-  // A ticket's notification links here with ?ticket=<id>: open it once a list
-  // that can hold it is in, then drop the id so Back shows the lists
+  // A link with ?ticket=<id> opens that ticket once a list that can hold it is
+  // in, then drops the id so Back shows the lists
   useEffect(() => {
     if (!wanted) return;
     const tk = myTickets?.find((x) => x.id === wanted) ?? allTickets?.find((x) => x.id === wanted);
@@ -214,7 +219,12 @@ export function SupportPage() {
             ) : (
               <div className="flex flex-col gap-2.5">
                 {myTickets.map((tk) => (
-                  <TicketRow key={tk.id} ticket={tk} onClick={() => setOpenTicket(tk)} />
+                  <TicketRow
+                    key={tk.id}
+                    ticket={tk}
+                    fresh={fresh.has(tk.id)}
+                    onClick={() => setOpenTicket(tk)}
+                  />
                 ))}
               </div>
             )}
@@ -231,7 +241,13 @@ export function SupportPage() {
               ) : (
                 <div className="flex flex-col gap-2.5">
                   {allTickets.map((tk) => (
-                    <TicketRow key={tk.id} ticket={tk} admin onClick={() => setOpenTicket(tk)} />
+                    <TicketRow
+                      key={tk.id}
+                      ticket={tk}
+                      admin
+                      fresh={fresh.has(tk.id)}
+                      onClick={() => setOpenTicket(tk)}
+                    />
                   ))}
                 </div>
               )}
@@ -246,10 +262,13 @@ export function SupportPage() {
 function TicketRow({
   ticket,
   admin,
+  fresh,
   onClick,
 }: {
   ticket: SupportTicketDTO;
   admin?: boolean;
+  // Something on it this person hasn't seen yet
+  fresh: boolean;
   onClick: () => void;
 }) {
   const { t } = useTranslation();
@@ -261,14 +280,21 @@ function TicketRow({
     >
       <div className="flex items-center justify-between gap-2 mb-1">
         <span className="text-[12px] font-semibold">{t(`support.types.${ticket.type}`)}</span>
-        <span
-          className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-          style={{
-            color,
-            background: `color-mix(in srgb, ${color} 16%, transparent)`,
-          }}
-        >
-          {t(`support.status.${ticket.status}`)}
+        <span className="flex items-center gap-1.5">
+          {fresh && (
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[var(--accent)] text-white">
+              {t('support.newActivity')}
+            </span>
+          )}
+          <span
+            className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
+            style={{
+              color,
+              background: `color-mix(in srgb, ${color} 16%, transparent)`,
+            }}
+          >
+            {t(`support.status.${ticket.status}`)}
+          </span>
         </span>
       </div>
       <div className="text-[13px] font-semibold mb-0.5">{ticket.subject}</div>
@@ -303,6 +329,12 @@ function TicketConversation({
   const [statusError, setStatusError] = useState('');
   const bottomRef = useRef<HTMLDivElement>(null);
   const statusColor = STATUS_COLOR[ticket.status];
+  const { markSectionRead } = useNotifications();
+
+  // Opening the ticket reads what was new on it
+  useEffect(() => {
+    markSectionRead('support', ticket.id);
+  }, [ticket.id, markSectionRead]);
 
   const loadMessages = useCallback(() => {
     supportService

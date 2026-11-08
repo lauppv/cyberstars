@@ -759,7 +759,8 @@
     "replyPlaceholder": "Scrie un răspuns...",
     "send": "Trimite",
     "you": "Tu",
-    "admin": "admin"
+    "admin": "admin",
+    "newActivity": "Nou"
   },
   "feedback": {
     "lesson": "Crezi că ar trebui să schimbăm ceva la lecția asta? Spune-ne și ajută comunitatea să crească",
