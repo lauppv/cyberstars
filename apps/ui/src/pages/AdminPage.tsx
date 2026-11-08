@@ -100,10 +100,10 @@ export function AdminPage() {
             </div>
           ) : stats ? (
             <div className="grid grid-cols-1 @2xl:grid-cols-3 gap-5">
-              {/* Users, in one row with the visitors charts */}
-              <section className={CARD_CLS}>
+              {/* Users, on its own row above the visitors charts */}
+              <section className={CARD_CLS + ' @2xl:col-span-3'}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
-                <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                   <Stat label={t('admin.totalUsers')} value={stats.users.total} />
                   <Stat label={t('admin.active')} value={stats.users.active} />
                   <Stat label={t('admin.new7')} value={stats.users.newLast7Days} />
@@ -119,7 +119,7 @@ export function AdminPage() {
               </section>
 
               <VisitorsSection
-                chartsClassName={CARD_CLS + ' @2xl:col-span-2'}
+                chartsClassName={CARD_CLS + ' @2xl:col-span-3'}
                 className={CARD_CLS + ' @2xl:col-span-3'}
                 reload={reloads}
               />
