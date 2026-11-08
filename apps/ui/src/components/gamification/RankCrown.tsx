@@ -1,11 +1,14 @@
 import { useId } from 'react';
-import { CROWNS, VELVET, VIOLET, type CrownShape } from './crowns';
+import { CROWNS, VIOLET, type CrownShape } from './crowns';
 import { metalGradient } from './metalGradient';
 
 // Drawn in a 32x32 box, every crown standing on the same band from y 22.6 to 27.6
 const BASE = 23.5;
 
-// The brand star from public/favicon.svg, shrunk onto the top crown
+// The orb and the sceptre stand outside that box, so a crown with them gets a wider one
+const REGALIA_BOX = { x: -8, width: 46 };
+
+// The brand star from public/favicon.svg, shrunk onto the top crown's middle spike
 const STAR = [
   [32, 4],
   [39, 24],
@@ -18,7 +21,7 @@ const STAR = [
   [4, 24],
   [25, 24],
 ]
-  .map(([x, y]) => `${(16 + (x - 32) * 0.155).toFixed(2)},${(5.4 + (y - 32) * 0.155).toFixed(2)}`)
+  .map(([x, y]) => `${(16 + (x - 32) * 0.155).toFixed(2)},${(4.6 + (y - 32) * 0.155).toFixed(2)}`)
   .join(' ');
 
 // Twelve gold rays round the top crown, every other one shorter
@@ -34,11 +37,21 @@ function spread(n: number, from: number, to: number) {
   return Array.from({ length: n }, (_, i) => from + ((to - from) * i) / (n - 1));
 }
 
-const SHAPES: Record<CrownShape, { xs: number[]; tops: number[]; valley: number }> = {
-  low: { xs: spread(3, 4.5, 27.5), tops: [15, 13, 15], valley: 19.5 },
-  open: { xs: spread(5, 4, 28), tops: [11.5, 10, 8.5, 10, 11.5], valley: 17 },
-  spire: { xs: spread(5, 4, 28), tops: [11.5, 10, 6.5, 10, 11.5], valley: 17 },
-  closed: { xs: spread(5, 4.5, 27.5), tops: [17, 16, 15, 16, 17], valley: 20 },
+// `spire` is the point that wears the big stone instead of a ball
+const SHAPES: Record<
+  CrownShape,
+  { xs: number[]; tops: number[]; valley: number; spire?: number; tip: number }
+> = {
+  low: { xs: spread(3, 4.5, 27.5), tops: [15, 13, 15], valley: 19.5, tip: 2.4 },
+  open: { xs: spread(5, 4, 28), tops: [11.5, 10, 8.5, 10, 11.5], valley: 17, tip: 2.4 },
+  spire: { xs: spread(5, 4, 28), tops: [11.5, 10, 6.5, 10, 11.5], valley: 17, spire: 2, tip: 2.4 },
+  spiky: {
+    xs: spread(7, 4, 28),
+    tops: [12.5, 10, 8.5, 6.5, 8.5, 10, 12.5],
+    valley: 18.5,
+    spire: 3,
+    tip: 1.75,
+  },
 };
 
 // A row of points as one outline from the band's left edge to its right
@@ -54,6 +67,54 @@ function gem(x: number, y: number, r: number) {
   return `M${x} ${y - r} L${x + r * 0.75} ${y} L${x} ${y + r} L${x - r * 0.75} ${y} Z`;
 }
 
+// The orb with its cross on the left of the crown, the sceptre with its violet stone on the right
+function Regalia({ metal, stone, edge }: { metal: string; stone: string; edge: string }) {
+  const [ox, oy, r] = [-3.4, 25.4, 4.3];
+  const sx = 35.2;
+  return (
+    <g data-regalia="">
+      <path
+        d={`M${ox} ${oy - r - 3.8} V${oy - r + 0.2} M${ox - 1.5} ${oy - r - 2.4} H${ox + 1.5}`}
+        stroke={metal}
+        strokeWidth="1.3"
+        strokeLinecap="round"
+      />
+      <circle cx={ox} cy={oy} r={r} fill={metal} stroke={edge} strokeWidth="0.9" />
+      <path
+        d={`M${ox - r} ${oy} H${ox + r} M${ox} ${oy - r} V${oy}`}
+        stroke={edge}
+        strokeWidth="0.8"
+      />
+      <circle cx={ox} cy={oy} r="1.3" fill={stone} stroke={VIOLET.dark} strokeWidth="0.4" />
+
+      <rect
+        x={sx - 0.95}
+        y="8.6"
+        width="1.9"
+        height="22"
+        rx="0.9"
+        fill={metal}
+        stroke={edge}
+        strokeWidth="0.6"
+      />
+      <path
+        d={`M${sx - 2.4} 9.4 H${sx + 2.4}`}
+        stroke={metal}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <circle cx={sx} cy="31" r="1.3" fill={metal} stroke={edge} strokeWidth="0.5" />
+      <circle cx={sx} cy="5.9" r="2.7" fill={stone} stroke={VIOLET.dark} strokeWidth="0.6" />
+      <path
+        d={`M${sx} 0.4 V2.9 M${sx - 1.1} 1.5 H${sx + 1.1}`}
+        stroke={metal}
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+    </g>
+  );
+}
+
 // A crown for places 1 to CROWNS.length, each the one below it with one more thing, and a little bigger
 export function RankCrown({ rank }: { rank: number }) {
   // useId's separators (colons in older React) don't belong in url(#...)
@@ -61,21 +122,23 @@ export function RankCrown({ rank }: { rank: number }) {
   const place = Math.min(Math.max(rank, 1), CROWNS.length);
   const crown = CROWNS[place - 1];
   const { metal, shape } = crown;
-  const { xs, tops, valley } = SHAPES[shape];
+  const { xs, tops, valley, spire, tip } = SHAPES[shape];
   const size = Math.round(28 + ((CROWNS.length - place) * 6) / (CROWNS.length - 1));
+  const box = crown.regalia ? REGALIA_BOX : { x: 0, width: 32 };
   const [M, V] = [`url(#${id}m)`, `url(#${id}v)`];
   const auraTone = crown.aura === 'gold' ? '#f2c23a' : VIOLET.mid;
-  // The spire's middle point wears its big stone instead of a ball
-  const tipped = xs
-    .map((x, i) => ({ x, y: tops[i] }))
-    .filter((_, i) => shape !== 'spire' || i !== 2);
 
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" data-crown={place}>
+    <svg
+      width={Math.round((size * box.width) / 32)}
+      height={size}
+      viewBox={`${box.x} 0 ${box.width} 32`}
+      aria-hidden="true"
+      data-crown={place}
+    >
       <defs>
         {metalGradient(`${id}m`, metal)}
         {metalGradient(`${id}v`, VIOLET)}
-        {metalGradient(`${id}k`, VELVET)}
         <radialGradient id={`${id}h`}>
           <stop offset="0.35" stopColor={auraTone} stopOpacity="0.75" />
           <stop offset="1" stopColor={auraTone} stopOpacity="0" />
@@ -87,23 +150,7 @@ export function RankCrown({ rank }: { rank: number }) {
         <path d={RAYS} stroke={M} strokeWidth="1.5" strokeLinecap="round" />
       )}
 
-      {shape === 'closed' && (
-        <>
-          <path
-            d="M5.5 22.8 Q5.5 8 16 8 Q26.5 8 26.5 22.8 Z"
-            fill={`url(#${id}k)`}
-            stroke={VELVET.dark}
-            strokeWidth="0.8"
-          />
-          <path d="M16 8.6 V19" stroke={M} strokeWidth="2.6" strokeLinecap="round" />
-          <path
-            d="M5.9 22.8 Q5.9 8.7 16 8.6 Q26.1 8.7 26.1 22.8"
-            fill="none"
-            stroke={M}
-            strokeWidth="2.2"
-          />
-        </>
-      )}
+      {crown.regalia && <Regalia metal={M} stone={V} edge={metal.dark} />}
 
       <path
         d={points(xs, tops, valley)}
@@ -112,9 +159,10 @@ export function RankCrown({ rank }: { rank: number }) {
         strokeWidth="1"
         strokeLinejoin="round"
       />
-      {shape === 'spire' && (
+      {/* The middle spire wears its big stone, or the brand star on the top crown */}
+      {spire !== undefined && crown.crest !== 'star' && (
         <path
-          d={gem(16, 5.2, 3.6)}
+          d={gem(16, tops[spire] - 1.6, shape === 'spiky' ? 3.1 : 3.6)}
           fill={V}
           stroke={VIOLET.dark}
           strokeWidth="0.7"
@@ -122,17 +170,19 @@ export function RankCrown({ rank }: { rank: number }) {
         />
       )}
       {crown.violetTips &&
-        tipped.map(({ x, y }) => (
-          <circle
-            key={x}
-            cx={x}
-            cy={y}
-            r={shape === 'closed' ? 1.9 : 2.4}
-            fill={V}
-            stroke={VIOLET.dark}
-            strokeWidth="0.6"
-          />
-        ))}
+        xs.map((x, i) =>
+          i === spire ? null : (
+            <circle
+              key={x}
+              cx={x}
+              cy={tops[i]}
+              r={tip}
+              fill={V}
+              stroke={VIOLET.dark}
+              strokeWidth="0.6"
+            />
+          ),
+        )}
 
       <rect
         x="4.5"
@@ -144,29 +194,15 @@ export function RankCrown({ rank }: { rank: number }) {
         stroke={metal.dark}
         strokeWidth="1"
       />
-
-      {crown.ermine && (
-        <>
-          <rect
-            x="5"
-            y="27.4"
-            width="22"
-            height="3.8"
-            rx="1.6"
-            fill="#ffffff"
-            stroke="#8d88a6"
-            strokeWidth="0.6"
-          />
-          <path
-            d={[10, 16, 22].map((x) => `M${x} 28.2 L${x - 0.9} 30.3 L${x + 0.9} 30.3 Z`).join(' ')}
-            fill="#14121f"
-          />
-        </>
+      {shape === 'spiky' && (
+        <path
+          d={[8.5, 16, 23.5].map((x) => gem(x, 25.1, 1.5)).join(' ')}
+          fill={M}
+          stroke={metal.dark}
+          strokeWidth="0.4"
+        />
       )}
 
-      {crown.crest === 'orb' && (
-        <circle cx="16" cy="5.6" r="3" fill={M} stroke={metal.dark} strokeWidth="0.9" />
-      )}
       {crown.crest === 'star' && (
         <polygon
           points={STAR}

@@ -5,8 +5,8 @@ export interface Tone {
 }
 
 // The outlines every crown is drawn from: low with three points (10), five points (9 to 6),
-// five points with a tall middle spire (5 and 4), and closed under a velvet dome (3 to 1)
-export type CrownShape = 'low' | 'open' | 'spire' | 'closed';
+// five points with a tall middle spire (5), and seven sharp spikes round a middle spire (4 to 1)
+export type CrownShape = 'low' | 'open' | 'spire' | 'spiky';
 
 export interface CrownStyle {
   metal: Tone;
@@ -15,8 +15,9 @@ export interface CrownStyle {
   violetBand?: boolean;
   // A big violet ball on every point
   violetTips?: boolean;
-  crest?: 'orb' | 'star';
-  ermine?: boolean;
+  // The orb on the left and the sceptre on the right, beside the crown
+  regalia?: boolean;
+  crest?: 'star';
   aura?: 'gold' | 'stars';
 }
 
@@ -25,38 +26,29 @@ const BRONZE: Tone = { dark: '#5e3519', mid: '#b0683a', light: '#e3a877' };
 const SILVER: Tone = { dark: '#555b66', mid: '#b2b8c2', light: '#eef0f4' };
 const GOLD: Tone = { dark: '#8a5c08', mid: '#e8b23a', light: '#fff0b3' };
 
-// The brand violet of every stone and the band, and the darker one of the velvet
+// The brand violet of every stone and the band
 export const VIOLET: Tone = { dark: '#3a2da0', mid: '#6c5ce7', light: '#b7aefc' };
-export const VELVET: Tone = { dark: '#211760', mid: '#3d2f9e', light: '#6c5ce7' };
 
 // Leaderboard crowns for places 1 to 10. Read from the bottom up, each is the one below it
 // with a single change, and within one metal every change is a new outline or a big patch of
 // violet, so two crowns of the same metal still tell apart at the crown's real size.
 export const CROWNS: CrownStyle[] = [
-  // 1: the brand star instead of the orb, a violet aura with gold rays
+  // 1: the brand star on the middle spike, a violet aura with gold rays
   {
     metal: GOLD,
-    shape: 'closed',
+    shape: 'spiky',
     violetBand: true,
     violetTips: true,
+    regalia: true,
     crest: 'star',
-    ermine: true,
     aura: 'stars',
   },
-  // 2: white ermine under the band and a gold aura
-  {
-    metal: GOLD,
-    shape: 'closed',
-    violetBand: true,
-    violetTips: true,
-    crest: 'orb',
-    ermine: true,
-    aura: 'gold',
-  },
-  // 3: closes under a violet velvet dome with an orb on top
-  { metal: GOLD, shape: 'closed', violetBand: true, violetTips: true, crest: 'orb' },
-  // 4: gold
-  { metal: GOLD, shape: 'spire', violetBand: true, violetTips: true },
+  // 2: a gold aura behind
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, regalia: true, aura: 'gold' },
+  // 3: the orb and the sceptre beside it
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, regalia: true },
+  // 4: gold, with seven sharp spikes
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true },
   // 5: a tall middle spire with a big violet stone
   { metal: SILVER, shape: 'spire', violetBand: true, violetTips: true },
   // 6: violet balls on the points

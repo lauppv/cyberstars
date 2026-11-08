@@ -173,7 +173,7 @@ export function TutorPicture() {
   const shown = useTimesShown(ref);
   return (
     <Box label={t('landing.features.tutor.picture')} height="min-h-[220px]">
-      <div ref={ref} className="max-w-[360px] mx-auto">
+      <div ref={ref} className="max-w-[360px] mx-auto pt-6">
         <div key={shown} className="flex flex-col items-center gap-2.5 text-center">
           <TutorHero title={t('tutor.emptyTitle')} mood="idle" titleAs="p" />
           <p

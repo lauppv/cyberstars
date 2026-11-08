@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CHAPTERS, currentChapter } from './chapters';
 import { scrollToSection } from './scrollToSection';
+import { PICTURE_CHANGED } from './PinnedStory';
 
 // Linear's rail at the left edge of the page: a dash for each chapter, the
 // one being read longer and brighter. Over the rail every chapter shows its
@@ -24,10 +25,12 @@ export function ChapterRail() {
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    window.addEventListener(PICTURE_CHANGED, onScroll);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      window.removeEventListener(PICTURE_CHANGED, onScroll);
     };
   }, []);
 
