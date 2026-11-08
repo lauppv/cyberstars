@@ -228,10 +228,16 @@ async function observe(page, step, seen) {
     return { count, rows, others };
   }
   // The elements' box together, then the first one's parent's content box
-  // (inside its padding)
+  // (inside its padding). An element that takes no room (display: none, a
+  // hidden skip link) isn't on the page to center, unless none takes any
   if ('centered' in step || 'fills' in step) {
     const boxes = await elements.evaluateAll((all, one) => {
-      const els = one ? all.slice(0, 1) : all;
+      const takesRoom = all.filter((el) => {
+        const r = el.getBoundingClientRect();
+        return r.width > 0 || r.height > 0;
+      });
+      const shown = takesRoom.length ? takesRoom : all;
+      const els = one ? shown.slice(0, 1) : shown;
       const rects = els.map((el) => el.getBoundingClientRect());
       const left = Math.min(...rects.map((r) => r.left));
       const top = Math.min(...rects.map((r) => r.top));

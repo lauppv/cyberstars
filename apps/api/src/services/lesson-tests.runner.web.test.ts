@@ -539,6 +539,18 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(head.passed).toBe(true);
   });
 
+  it('centers the elements that take room, a hidden one left out', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body style="margin: 0">
+        <nav style="text-align: center"><a href="#main" style="display: none">Skip</a><a href="#">Home</a> <a href="#">Crew</a></nav>
+      </body></html>`,
+    };
+    const [links] = verdicts(files, [
+      { name: 'x', visible: true, steps: [{ centered: 'nav a', label: 'the links' }] },
+    ]);
+    expect(links.passed).toBe(true);
+  });
+
   it('stops a page stuck in an endless loop, like a timeout', () => {
     const [stuck] = verdicts(
       { 'index.html': '<h1>Hi</h1><script>while (true) {}</script>' },
