@@ -42,7 +42,7 @@ function Row({
           // The place's number on the crown's corner, so nobody has to count the rows
           <span className="relative inline-flex">
             <RankCrown rank={entry.rank} />
-            <span className="absolute -bottom-1 -right-2 min-w-4 h-4 px-1 rounded-full flex items-center justify-center text-[10px] leading-none font-bold text-[var(--text)] bg-[var(--panel-bg)] border border-[var(--border)]">
+            <span className="absolute -bottom-1.5 -right-3 min-w-4 h-4 px-1 rounded-full flex items-center justify-center text-[10px] leading-none font-bold text-[var(--text)] bg-[var(--panel-bg)] border border-[var(--border)]">
               {entry.rank}
             </span>
           </span>
