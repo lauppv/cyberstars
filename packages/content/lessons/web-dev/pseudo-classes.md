@@ -29,7 +29,7 @@ A pseudo-class counts as much as a class when rules compete. So `tr:hover` and `
 
 ## Mission: Live Board
 
-- In the body of the flights table, every even row gets a background of `#13294f`.
+- In the body of the flights table, every even row gets a background of `#13294f`, the odd ones none.
 - A body row under the mouse gets `#1d3b6e`, whatever its stripe.
 - A navigation link under the mouse turns `#ffd166`.
 - Any link that has the keyboard's focus gets an outline of `3px solid #ffd166`.

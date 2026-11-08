@@ -6,22 +6,18 @@
       "page": "schedule.html",
       "steps": [
         {
-          "style": "#flights tbody tr:nth-child(2)",
+          "style": "#flights tbody tr:nth-child(even)",
           "prop": "background-color",
           "equals": "rgb(19, 41, 79)",
-          "label": "the second flight"
+          "every": true,
+          "label": "every even flight"
         },
         {
-          "style": "#flights tbody tr:nth-child(4)",
-          "prop": "background-color",
-          "equals": "rgb(19, 41, 79)",
-          "label": "the fourth flight"
-        },
-        {
-          "style": "#flights tbody tr:nth-child(1)",
+          "style": "#flights tbody tr:nth-child(odd)",
           "prop": "background-color",
           "equals": "rgba(0, 0, 0, 0)",
-          "label": "the first flight"
+          "every": true,
+          "label": "every odd flight"
         }
       ]
     },
@@ -85,25 +81,29 @@
       "visible": true,
       "steps": [
         {
-          "press": "Tab"
+          "press": "Tab",
+          "on": "nav a[href=\"crew.html\"]"
         },
         {
-          "style": "nav a:first-child",
+          "press": "Shift+Tab"
+        },
+        {
+          "style": "nav a[href=\"crew.html\"]",
           "prop": "outline-style",
           "equals": "solid",
-          "label": "the first link, reached with Tab"
+          "label": "the link Crew, reached with the keyboard"
         },
         {
-          "style": "nav a:first-child",
+          "style": "nav a[href=\"crew.html\"]",
           "prop": "outline-width",
           "equals": "3px",
-          "label": "the first link, reached with Tab"
+          "label": "the link Crew, reached with the keyboard"
         },
         {
-          "style": "nav a:first-child",
+          "style": "nav a[href=\"crew.html\"]",
           "prop": "outline-color",
           "equals": "rgb(255, 209, 102)",
-          "label": "the first link, reached with Tab"
+          "label": "the link Crew, reached with the keyboard"
         }
       ]
     }
