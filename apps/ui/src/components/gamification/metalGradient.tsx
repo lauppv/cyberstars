@@ -1,6 +1,6 @@
 import type { Tone } from './crowns';
 
-// A diagonal light-to-dark gradient, how every crown and regalia piece shows its material
+// A diagonal light-to-dark gradient, how every crown shows its metal and its stones
 export function metalGradient(id: string, tone: Tone) {
   return (
     <linearGradient id={id} x1="0" y1="0" x2="0.6" y2="1">

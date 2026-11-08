@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
-import { RankRegalia } from '../components/gamification/RankRegalia';
 import { CROWNS } from '../components/gamification/crowns';
 import { useAuth } from '../context/AuthContext';
 import { useMessages } from '../context/MessagesContext';
@@ -274,9 +273,7 @@ export function PublicProfilePage() {
                   title={t('leaderboard.place', { rank: profile.progress.rank })}
                   data-testid="profile-crown"
                 >
-                  <RankRegalia rank={profile.progress.rank}>
-                    <RankCrown rank={profile.progress.rank} />
-                  </RankRegalia>
+                  <RankCrown rank={profile.progress.rank} />
                 </span>
               )}
             </div>

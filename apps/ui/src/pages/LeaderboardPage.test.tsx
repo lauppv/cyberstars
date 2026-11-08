@@ -84,7 +84,7 @@ describe('LeaderboardPage', () => {
     expect(ada.querySelector('svg linearGradient')).not.toBeNull();
     expect(ada.querySelector('[title="Place 1"]')).toHaveTextContent('1');
     expect(bo.querySelector('[title="Place 2"] svg')).not.toBeNull();
-    expect(ada.querySelector('[title="Place 1"] [data-regalia="1"]')).not.toBeNull();
+    expect(ada.querySelector('[title="Place 1"] [data-crown="1"]')).not.toBeNull();
   });
 
   it('keeps the crowns for places that earned XP, so a tie at 0 XP gets none', async () => {
