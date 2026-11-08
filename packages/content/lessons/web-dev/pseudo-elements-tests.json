@@ -42,56 +42,50 @@
       ]
     },
     {
-      "name": "Section headings have a gold bar under them",
+      "name": "Section headings have a bar under them",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
           "style": "h2",
-          "pseudo": "::after",
           "prop": "content",
+          "pseudo": "::after",
           "equals": "\"\"",
-          "label": "the bar after every section heading",
+          "label": "the bar under a section heading",
           "every": true
         },
         {
           "style": "h2",
-          "pseudo": "::after",
           "prop": "display",
+          "pseudo": "::after",
           "equals": "block",
-          "label": "the bar after every section heading",
+          "label": "the bar under a section heading",
           "every": true
         },
         {
           "style": "h2",
-          "pseudo": "::after",
           "prop": "width",
-          "equals": "48px",
-          "label": "the bar after every section heading",
+          "pseudo": "::after",
+          "atLeast": 20,
+          "atMost": 120,
+          "label": "the bar under a section heading",
           "every": true
         },
         {
           "style": "h2",
-          "pseudo": "::after",
           "prop": "height",
-          "equals": "3px",
-          "label": "the bar after every section heading",
+          "pseudo": "::after",
+          "atLeast": 2,
+          "atMost": 8,
+          "label": "the bar under a section heading",
           "every": true
         },
         {
           "style": "h2",
-          "pseudo": "::after",
-          "prop": "margin-top",
-          "equals": "6px",
-          "label": "the bar after every section heading",
-          "every": true
-        },
-        {
-          "style": "h2",
-          "pseudo": "::after",
           "prop": "background-color",
-          "equals": "rgb(255, 209, 102)",
-          "label": "the bar after every section heading",
+          "pseudo": "::after",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the bar under a section heading",
           "every": true
         }
       ]

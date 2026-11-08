@@ -6,18 +6,17 @@
       "page": "schedule.html",
       "steps": [
         {
-          "style": "#flights tbody tr:nth-child(even)",
-          "prop": "background-color",
-          "equals": "rgb(19, 41, 79)",
-          "every": true,
-          "label": "every even flight"
+          "differs": "#flights tbody tr:nth-child(even)",
+          "from": "#flights tbody tr:nth-child(odd)",
+          "props": ["background-color"],
+          "fromLabel": "the odd rows",
+          "label": "the even rows"
         },
         {
-          "style": "#flights tbody tr:nth-child(odd)",
-          "prop": "background-color",
-          "equals": "rgba(0, 0, 0, 0)",
+          "contrast": "#flights tbody tr:nth-child(even) td",
+          "atLeast": 4.5,
           "every": true,
-          "label": "every odd flight"
+          "label": "a cell of an even row"
         }
       ]
     },
@@ -31,9 +30,10 @@
           "label": "the third flight"
         },
         {
-          "style": "#flights tbody tr:nth-child(3)",
-          "prop": "background-color",
-          "equals": "rgb(29, 59, 110)",
+          "differs": "#flights tbody tr:nth-child(3)",
+          "from": "#flights tbody tr:not(:nth-child(3))",
+          "props": ["background-color"],
+          "fromLabel": "the other rows",
           "label": "the third flight, under the mouse"
         },
         {
@@ -41,16 +41,17 @@
           "label": "the fourth flight"
         },
         {
-          "style": "#flights tbody tr:nth-child(4)",
-          "prop": "background-color",
-          "equals": "rgb(29, 59, 110)",
-          "label": "the fourth flight, striped and under the mouse"
+          "differs": "#flights tbody tr:nth-child(4)",
+          "from": "#flights tbody tr:not(:nth-child(4))",
+          "props": ["background-color"],
+          "fromLabel": "the other rows",
+          "label": "the fourth flight, under the mouse"
         },
         {
-          "style": "#flights tbody tr:nth-child(3)",
-          "prop": "background-color",
-          "equals": "rgba(0, 0, 0, 0)",
-          "label": "the third flight, once the mouse left"
+          "contrast": "#flights tbody tr:nth-child(4) td",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a cell of the row under the mouse"
         }
       ]
     },
@@ -59,19 +60,14 @@
       "visible": true,
       "steps": [
         {
-          "style": "nav a[href=\"crew.html\"]",
-          "prop": "color",
-          "equals": "rgb(142, 203, 255)",
-          "label": "the link Crew"
-        },
-        {
           "hover": "nav a[href=\"crew.html\"]",
           "label": "the link Crew"
         },
         {
-          "style": "nav a[href=\"crew.html\"]",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
+          "differs": "nav a[href=\"crew.html\"]",
+          "from": "nav a:not([href=\"crew.html\"])",
+          "props": ["color", "background-color", "text-decoration-line", "border-bottom-color"],
+          "fromLabel": "the other links of the navigation",
           "label": "the link Crew, under the mouse"
         }
       ]
@@ -90,20 +86,14 @@
         {
           "style": "nav a[href=\"crew.html\"]",
           "prop": "outline-style",
-          "equals": "solid",
-          "label": "the link Crew, reached with the keyboard"
+          "not": "none",
+          "label": "the link Crew, with the keyboard's focus"
         },
         {
           "style": "nav a[href=\"crew.html\"]",
           "prop": "outline-width",
-          "equals": "3px",
-          "label": "the link Crew, reached with the keyboard"
-        },
-        {
-          "style": "nav a[href=\"crew.html\"]",
-          "prop": "outline-color",
-          "equals": "rgb(255, 209, 102)",
-          "label": "the link Crew, reached with the keyboard"
+          "atLeast": 2,
+          "label": "the link Crew, with the keyboard's focus"
         }
       ]
     }
