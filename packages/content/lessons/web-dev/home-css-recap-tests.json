@@ -1,0 +1,109 @@
+{
+  "cases": [
+    {
+      "name": "The hours are a card of their own",
+      "visible": true,
+      "steps": [
+        {
+          "text": "#visiting + p.hours",
+          "contains": "Monday to Friday",
+          "label": "the hours (<p class=\"hours\">) right under Visiting Hours"
+        },
+        {
+          "style": "p.hours",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "the hours"
+        },
+        {
+          "style": "p.hours",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the hours"
+        }
+      ]
+    },
+    {
+      "name": "The hours are set like a station terminal",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p.hours",
+          "prop": "font-family",
+          "equals": "\"Courier New\", monospace",
+          "label": "the hours"
+        },
+        {
+          "style": "p.hours",
+          "prop": "font-size",
+          "equals": "16px",
+          "label": "the hours"
+        }
+      ]
+    },
+    {
+      "name": "The jump links sit centered, a little smaller",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p.jumps a[href=\"#today\"]",
+          "label": "the jump links' paragraph (<p class=\"jumps\">)"
+        },
+        {
+          "style": "p.jumps",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the jump links' paragraph"
+        },
+        {
+          "style": "p.jumps",
+          "prop": "font-size",
+          "equals": "14px",
+          "label": "the jump links' paragraph"
+        }
+      ]
+    },
+    {
+      "name": "Visiting Hours is gold",
+      "visible": true,
+      "steps": [
+        {
+          "style": "#visiting",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the heading Visiting Hours"
+        },
+        {
+          "style": "h2:not(#visiting):not(#today)",
+          "prop": "color",
+          "equals": "rgb(147, 191, 236)",
+          "label": "the heading About the Station"
+        }
+      ]
+    },
+    {
+      "name": "The rest keeps its look",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "style": "p.warning",
+          "prop": "color",
+          "equals": "rgb(255, 179, 179)",
+          "label": "a warning"
+        },
+        {
+          "style": "p:not(.hours):not(.jumps):not(.warning):not(.address)",
+          "prop": "font-family",
+          "equals": "Verdana, Geneva, sans-serif",
+          "label": "an ordinary paragraph"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "name": "The cards have rounded corners and a shadow",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "border-top-left-radius",
+          "equals": "12px",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-bottom-right-radius",
+          "equals": "12px",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "box-shadow",
+          "equals": "rgba(0, 0, 0, 0.4) 0px 4px 12px 0px",
+          "label": "a card"
+        }
+      ]
+    },
+    {
+      "name": "The pictures have rounded corners",
+      "visible": true,
+      "steps": [
+        {
+          "style": "img",
+          "prop": "border-top-left-radius",
+          "equals": "16px",
+          "label": "a picture of the home page"
+        }
+      ]
+    },
+    {
+      "name": "The navigation's links are underlined in gold",
+      "visible": true,
+      "steps": [
+        {
+          "style": "nav a",
+          "prop": "border-bottom-width",
+          "equals": "2px",
+          "label": "a link of the navigation"
+        },
+        {
+          "style": "nav a",
+          "prop": "border-bottom-style",
+          "equals": "solid",
+          "label": "a link of the navigation"
+        },
+        {
+          "style": "nav a",
+          "prop": "border-bottom-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "a link of the navigation"
+        },
+        {
+          "style": "nav a",
+          "prop": "border-top-width",
+          "equals": "0px",
+          "label": "the top of a link of the navigation"
+        }
+      ]
+    }
+  ]
+}

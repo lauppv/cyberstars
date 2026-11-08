@@ -221,9 +221,11 @@ describe('auditWebSpec', () => {
         { text: 'h1', equals: 'Hi', label: 'the heading' },
         { attr: 'html', name: 'lang', equals: 'en', label: 'the page' },
         { style: 'h1', prop: 'color', equals: 'rgb(0, 0, 0)', label: 'the heading' },
+        { style: 'h1', pseudo: '::before', prop: 'content', equals: '"★"', label: 'its mark' },
         { layout: '.card', arrange: 'row', label: 'the cards' },
         { size: '.card', maxWidth: 300, label: 'a card' },
         { click: 'a', label: 'the link' },
+        { hover: 'a', label: 'the link' },
         { fill: 'input', text: 'Ada', label: 'the name box' },
         { press: 'Enter' },
         { submit: 'form', label: 'the form' },
@@ -238,7 +240,11 @@ describe('auditWebSpec', () => {
   });
 
   it('refuses a step the judge does not know, or without what it needs', () => {
-    expect(one([{ hover: 'a' }])).toEqual([expect.stringMatching(/none of the known keys/)]);
+    expect(one([{ focus: 'a' }])).toEqual([expect.stringMatching(/none of the known keys/)]);
+    expect(one([{ hover: 'a' }])).toEqual([expect.stringMatching(/without a label/)]);
+    expect(
+      one([{ style: 'h1', pseudo: '::marker', prop: 'color', equals: 'red', label: 'x' }]),
+    ).toEqual([expect.stringMatching(/pseudo is one of ::before, ::after/)]);
     expect(one([{ exists: 'h1' }])).toEqual([expect.stringMatching(/without a label/)]);
     expect(one([{ text: 'h1', label: 'x' }])).toEqual([expect.stringMatching(/exactly one of/)]);
     expect(one([{ text: 'h1', equals: 'a', contains: 'a', label: 'x' }])).toEqual([

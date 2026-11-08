@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "name": "The banner shows the station",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "exists": "h1 + p + div.banner",
+          "label": "the banner (<div class=\"banner\">) right after the intro"
+        },
+        {
+          "style": ".banner",
+          "prop": "background-image",
+          "equals": "url(\"http://site.test/img/station.svg\")",
+          "label": "the banner"
+        },
+        {
+          "style": ".banner",
+          "prop": "background-size",
+          "equals": "cover",
+          "label": "the banner"
+        },
+        {
+          "style": ".banner",
+          "prop": "background-position",
+          "equals": "50% 50%",
+          "label": "the banner"
+        }
+      ]
+    },
+    {
+      "name": "It has its size and corners",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "size": ".banner",
+          "minHeight": 160,
+          "maxHeight": 160,
+          "label": "the banner"
+        },
+        {
+          "style": ".banner",
+          "prop": "border-top-left-radius",
+          "equals": "16px",
+          "label": "the banner"
+        }
+      ]
+    },
+    {
+      "name": "The header cells have a gradient",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights th",
+          "prop": "background-image",
+          "equals": "linear-gradient(90deg, rgb(19, 41, 79), rgb(44, 74, 122))",
+          "label": "a header cell"
+        }
+      ]
+    }
+  ]
+}

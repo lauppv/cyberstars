@@ -1,0 +1,160 @@
+{
+  "cases": [
+    {
+      "name": "The rows get their classes from their status",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#flights tbody tr.cancelled td.status",
+          "equals": "Cancelled",
+          "label": "the status of the row with class=\"cancelled\""
+        },
+        {
+          "text": "#flights tbody tr.delayed td.status",
+          "equals": "Delayed",
+          "label": "the status of the row with class=\"delayed\""
+        },
+        {
+          "count": "#flights tbody tr.cancelled, #flights tbody tr.delayed",
+          "equals": 2,
+          "label": "rows with a status class"
+        }
+      ]
+    },
+    {
+      "name": "The script gives the classes, not the HTML",
+      "visible": false,
+      "page": "schedule.html",
+      "files": {
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"code\">SL-104</td>\n          <td class=\"destination\">Lunar Gateway</td>\n          <td class=\"departs\">11:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-103</td>\n          <td class=\"destination\">Europa Outpost</td>\n          <td class=\"departs\">07:15</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-104</td>\n          <td class=\"destination\">Lunar Gateway</td>\n          <td class=\"departs\">11:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-102</td>\n          <td class=\"destination\">Mars Relay</td>\n          <td class=\"departs\">09:45</td>\n          <td class=\"status\">On time</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "count": "#flights tbody tr.cancelled",
+          "equals": 2,
+          "label": "cancelled rows"
+        },
+        {
+          "count": "#flights tbody tr.delayed",
+          "equals": 1,
+          "label": "delayed rows"
+        }
+      ]
+    },
+    {
+      "name": "The button hides the cancelled flights",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "attr": "button#hide-cancelled",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the button (<button id=\"hide-cancelled\">), before any click"
+        },
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "exists": "table#flights.hide-cancelled",
+          "label": "the flights table with class=\"hide-cancelled\""
+        },
+        {
+          "style": "#flights tbody tr.cancelled",
+          "prop": "display",
+          "equals": "none",
+          "label": "every cancelled flight",
+          "every": true
+        },
+        {
+          "style": "#flights tbody tr.delayed",
+          "prop": "display",
+          "equals": "table-row",
+          "label": "every delayed flight",
+          "every": true
+        },
+        {
+          "attr": "button#hide-cancelled",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the button, pressed"
+        },
+        {
+          "text": "button#hide-cancelled",
+          "equals": "Show cancelled",
+          "label": "the button, pressed"
+        }
+      ]
+    },
+    {
+      "name": "The button hides every cancelled flight",
+      "visible": false,
+      "page": "schedule.html",
+      "files": {
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"code\">SL-104</td>\n          <td class=\"destination\">Lunar Gateway</td>\n          <td class=\"departs\">11:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-103</td>\n          <td class=\"destination\">Europa Outpost</td>\n          <td class=\"departs\">07:15</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-104</td>\n          <td class=\"destination\">Lunar Gateway</td>\n          <td class=\"departs\">11:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-102</td>\n          <td class=\"destination\">Mars Relay</td>\n          <td class=\"departs\">09:45</td>\n          <td class=\"status\">On time</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "style": "#flights tbody tr.cancelled",
+          "prop": "display",
+          "equals": "none",
+          "label": "every cancelled flight",
+          "every": true
+        },
+        {
+          "count": "#flights tbody tr.cancelled",
+          "equals": 2,
+          "label": "cancelled rows"
+        },
+        {
+          "style": "#flights tbody tr:not(.cancelled)",
+          "prop": "display",
+          "equals": "table-row",
+          "label": "every flight still running",
+          "every": true
+        }
+      ]
+    },
+    {
+      "name": "A second click brings them back",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "style": "#flights tbody tr.cancelled",
+          "prop": "display",
+          "equals": "table-row",
+          "label": "the cancelled flight"
+        },
+        {
+          "attr": "button#hide-cancelled",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the button"
+        },
+        {
+          "text": "button#hide-cancelled",
+          "equals": "Hide cancelled",
+          "label": "the button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

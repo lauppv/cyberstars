@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "name": "The supplies are on the crew page",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "Supplies",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "text": "span#tanks",
+          "equals": "13",
+          "label": "the tanks (<span id=\"tanks\">)"
+        },
+        {
+          "text": "span#tank-hours",
+          "equals": "30",
+          "label": "the hours a tank lasts (<span id=\"tank-hours\">)"
+        }
+      ]
+    },
+    {
+      "name": "crew.js is linked, deferred",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "head script[src=\"crew.js\"][defer], head script[src=\"./crew.js\"][defer]",
+          "label": "a <script src=\"crew.js\" defer> in the <head> of crew.html"
+        }
+      ]
+    },
+    {
+      "name": "The oxygen lasts 16 days and 6 hours",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "p#oxygen",
+          "equals": "Oxygen for 16 days and 6 hours",
+          "label": "the oxygen paragraph (<p id=\"oxygen\">)"
+        },
+        {
+          "logged": "390"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The sentence follows the numbers",
+      "visible": false,
+      "page": "crew.html",
+      "files": {
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#oxygen",
+          "equals": "Oxygen for 5 days and 20 hours",
+          "label": "the oxygen paragraph"
+        },
+        {
+          "logged": "140"
+        }
+      ]
+    }
+  ]
+}

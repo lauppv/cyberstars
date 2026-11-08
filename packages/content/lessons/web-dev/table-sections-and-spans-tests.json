@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "name": "The table has its caption",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#flights > caption",
+          "equals": "Departures today",
+          "label": "the caption of the flights table"
+        }
+      ]
+    },
+    {
+      "name": "The headers are in the head, each naming its column",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "count": "#flights > thead > tr > th[scope=\"col\"]",
+          "equals": 4,
+          "label": "column headers (<th scope=\"col\">) in a <thead>"
+        }
+      ]
+    },
+    {
+      "name": "The flights are in the body",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "count": "#flights > tbody > tr",
+          "atLeast": 4,
+          "label": "flights in a <tbody>"
+        },
+        {
+          "count": "#flights > tbody th",
+          "equals": 0,
+          "label": "header cells in the body"
+        }
+      ]
+    },
+    {
+      "name": "The foot has one cell across the table",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#flights > tfoot > tr > :is(td, th)[colspan=\"4\"]",
+          "equals": "All times in station time",
+          "label": "a cell four columns wide (colspan=\"4\") in a <tfoot>"
+        },
+        {
+          "count": "#flights > tfoot > tr > *",
+          "equals": 1,
+          "label": "cells in the foot's row"
+        }
+      ]
+    }
+  ]
+}

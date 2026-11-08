@@ -1,0 +1,127 @@
+{
+  "cases": [
+    {
+      "name": "The counter starts at Shift 1",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p#shift",
+          "equals": "Shift 1",
+          "label": "the shift paragraph (<p id=\"shift\">)"
+        },
+        {
+          "text": "button#next-shift",
+          "equals": "Next shift",
+          "label": "the button (<button id=\"next-shift\">)"
+        }
+      ]
+    },
+    {
+      "name": "Each click moves to the next shift",
+      "visible": true,
+      "steps": [
+        {
+          "click": "button#next-shift",
+          "label": "the button Next shift"
+        },
+        {
+          "text": "p#shift",
+          "equals": "Shift 2",
+          "label": "the shift, after one click"
+        },
+        {
+          "click": "button#next-shift",
+          "label": "the button Next shift"
+        },
+        {
+          "text": "p#shift",
+          "equals": "Shift 3",
+          "label": "the shift, after two clicks"
+        }
+      ]
+    },
+    {
+      "name": "Each new shift is logged",
+      "visible": true,
+      "steps": [
+        {
+          "click": "button#next-shift",
+          "label": "the button Next shift"
+        },
+        {
+          "logged": "Shift 2 begins"
+        },
+        {
+          "click": "button#next-shift",
+          "label": "the button Next shift"
+        },
+        {
+          "logged": "Shift 3 begins"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "It counts on and on",
+      "visible": false,
+      "steps": [
+        {
+          "click": "button#next-shift",
+          "label": "the button"
+        },
+        {
+          "click": "button#next-shift",
+          "label": "the button"
+        },
+        {
+          "click": "button#next-shift",
+          "label": "the button"
+        },
+        {
+          "click": "button#next-shift",
+          "label": "the button"
+        },
+        {
+          "click": "button#next-shift",
+          "label": "the button"
+        },
+        {
+          "text": "p#shift",
+          "equals": "Shift 6",
+          "label": "the shift after five clicks"
+        }
+      ]
+    },
+    {
+      "name": "The script writes the first shift",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Station Log</title>\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n    <p id=\"status\"></p>\n    <button type=\"button\" id=\"wake\">Wake the crew</button>\n    <p id=\"shift\"></p>\n    <button type=\"button\" id=\"next-shift\">Next shift</button>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#shift",
+          "equals": "Shift 1",
+          "label": "the shift paragraph"
+        }
+      ]
+    },
+    {
+      "name": "The earlier buttons still work",
+      "visible": true,
+      "steps": [
+        {
+          "click": "button#wake",
+          "label": "the button Wake the crew"
+        },
+        {
+          "text": "p#status",
+          "equals": "Crew awake",
+          "label": "the status"
+        }
+      ]
+    }
+  ]
+}

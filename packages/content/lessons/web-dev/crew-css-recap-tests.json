@@ -1,0 +1,130 @@
+{
+  "cases": [
+    {
+      "name": "The duty board is a panel",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "#duty + ol.duties",
+          "label": "the duties (<ol class=\"duties\">) right under Duty Board"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "padding-top",
+          "equals": "16px",
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "padding-right",
+          "equals": "16px",
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "padding-left",
+          "equals": "40px",
+          "label": "the duties"
+        }
+      ]
+    },
+    {
+      "name": "It has a gold bar on its left and round corners on its right",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "ol.duties",
+          "prop": "border-left-width",
+          "equals": "4px",
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "border-left-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "border-right-width",
+          "equals": "0px",
+          "label": "the right side of the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "border-top-right-radius",
+          "equals": "12px",
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "border-top-left-radius",
+          "equals": "0px",
+          "label": "the top left corner of the duties"
+        }
+      ]
+    },
+    {
+      "name": "It is centered, at most 600px wide",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "ol.duties",
+          "maxWidth": 600,
+          "minWidth": 600,
+          "label": "the duties"
+        },
+        {
+          "style": "ol.duties",
+          "prop": "margin-left",
+          "equals": "164px",
+          "label": "the duties, 600px in a column 928px wide"
+        }
+      ]
+    },
+    {
+      "name": "The navigation is a bar with its links in the middle",
+      "visible": true,
+      "steps": [
+        {
+          "style": "nav",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "the navigation"
+        },
+        {
+          "style": "nav",
+          "prop": "border-top-left-radius",
+          "equals": "12px",
+          "label": "the navigation"
+        },
+        {
+          "style": "nav",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the navigation"
+        }
+      ]
+    },
+    {
+      "name": "The duty board fits a phone",
+      "visible": true,
+      "page": "crew.html",
+      "width": 375,
+      "steps": [
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

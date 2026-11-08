@@ -1,0 +1,100 @@
+{
+  "cases": [
+    {
+      "name": "Links to other sites end with an arrow",
+      "visible": true,
+      "steps": [
+        {
+          "style": "a[href^=\"https://\"]",
+          "pseudo": "::after",
+          "prop": "content",
+          "equals": "\" ↗\"",
+          "label": "the end of every link to another site",
+          "every": true
+        },
+        {
+          "style": "p.jumps a",
+          "pseudo": "::after",
+          "prop": "content",
+          "equals": "none",
+          "label": "the end of every jump link",
+          "every": true
+        }
+      ]
+    },
+    {
+      "name": "Warnings start with a sign",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p.warning",
+          "pseudo": "::before",
+          "prop": "content",
+          "equals": "\"⚠ \"",
+          "label": "the start of every warning",
+          "every": true
+        },
+        {
+          "text": "p.warning strong",
+          "nonEmpty": true,
+          "label": "a warning's important part, still in the HTML"
+        }
+      ]
+    },
+    {
+      "name": "Section headings have a gold bar under them",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "h2",
+          "pseudo": "::after",
+          "prop": "content",
+          "equals": "\"\"",
+          "label": "the bar after every section heading",
+          "every": true
+        },
+        {
+          "style": "h2",
+          "pseudo": "::after",
+          "prop": "display",
+          "equals": "block",
+          "label": "the bar after every section heading",
+          "every": true
+        },
+        {
+          "style": "h2",
+          "pseudo": "::after",
+          "prop": "width",
+          "equals": "48px",
+          "label": "the bar after every section heading",
+          "every": true
+        },
+        {
+          "style": "h2",
+          "pseudo": "::after",
+          "prop": "height",
+          "equals": "3px",
+          "label": "the bar after every section heading",
+          "every": true
+        },
+        {
+          "style": "h2",
+          "pseudo": "::after",
+          "prop": "margin-top",
+          "equals": "6px",
+          "label": "the bar after every section heading",
+          "every": true
+        },
+        {
+          "style": "h2",
+          "pseudo": "::after",
+          "prop": "background-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the bar after every section heading",
+          "every": true
+        }
+      ]
+    }
+  ]
+}

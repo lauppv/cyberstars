@@ -1,0 +1,97 @@
+{
+  "cases": [
+    {
+      "name": "crew.html is a page of its own",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag of crew.html"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head> of crew.html"
+        },
+        {
+          "text": "head > title",
+          "equals": "Crew Directory",
+          "label": "a <title> in the <head> of crew.html"
+        },
+        {
+          "text": "h1",
+          "equals": "Crew Directory",
+          "label": "the biggest heading (<h1>) of crew.html"
+        },
+        {
+          "text": "h1 ~ p",
+          "nonEmpty": true,
+          "label": "a paragraph (<p>) under it"
+        }
+      ]
+    },
+    {
+      "name": "crew.html shares the station's look",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"], head link[rel=\"stylesheet\"][href=\"./style.css\"]",
+          "label": "a <link rel=\"stylesheet\" href=\"style.css\"> in the <head> of crew.html"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the body of crew.html"
+        }
+      ]
+    },
+    {
+      "name": "The home page leads to the crew",
+      "visible": true,
+      "steps": [
+        {
+          "text": "body > nav:first-child a[href=\"crew.html\"]",
+          "equals": "Crew",
+          "label": "a link Crew to crew.html in a <nav> at the top of the home page"
+        },
+        {
+          "click": "nav a[href=\"crew.html\"]",
+          "label": "the link Crew"
+        },
+        {
+          "at": "crew.html"
+        }
+      ]
+    },
+    {
+      "name": "The crew page leads back home",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "body > nav:first-child a[href=\"index.html\"]",
+          "equals": "Home",
+          "label": "a link Home to index.html in a <nav> at the top of crew.html"
+        },
+        {
+          "exists": "nav a[href=\"crew.html\"]",
+          "label": "the link Crew in the same navigation"
+        },
+        {
+          "click": "nav a[href=\"index.html\"]",
+          "label": "the link Home"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    }
+  ]
+}

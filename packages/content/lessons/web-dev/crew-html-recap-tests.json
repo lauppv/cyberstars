@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "name": "The duty board has its section",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "h2#duty",
+          "equals": "Duty Board",
+          "label": "a section heading (<h2>) with id=\"duty\""
+        }
+      ]
+    },
+    {
+      "name": "The duties come in order, with the crew on them",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "count": "#duty + ol > li",
+          "atLeast": 3,
+          "label": "duties (<li>) in an ordered list right under Duty Board"
+        },
+        {
+          "count": "#duty + ol > li > ul > li, #duty + ol > li > ol > li",
+          "atLeast": 1,
+          "label": "crew members listed inside a duty's item"
+        }
+      ]
+    },
+    {
+      "name": "The home page leads to the duty board",
+      "visible": true,
+      "steps": [
+        {
+          "text": "nav a[href=\"crew.html#duty\"]",
+          "equals": "Duty",
+          "label": "a link Duty to crew.html#duty in the home page's navigation"
+        },
+        {
+          "click": "nav a[href=\"crew.html#duty\"]",
+          "label": "the link Duty"
+        },
+        {
+          "at": "crew.html"
+        },
+        {
+          "exists": "h2#duty",
+          "label": "the duty board on the page reached"
+        }
+      ]
+    },
+    {
+      "name": "The crew page leads to it too",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "nav a[href=\"crew.html#duty\"], nav a[href=\"#duty\"]",
+          "label": "a link Duty in the crew page's navigation"
+        },
+        {
+          "exists": "nav a[href=\"index.html\"]",
+          "label": "the link Home"
+        },
+        {
+          "count": "#cards > .card",
+          "atLeast": 4,
+          "label": "crew cards"
+        }
+      ]
+    }
+  ]
+}

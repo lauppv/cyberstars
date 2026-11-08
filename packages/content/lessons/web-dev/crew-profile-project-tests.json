@@ -1,0 +1,165 @@
+{
+  "cases": [
+    {
+      "name": "The page has its skeleton",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "equals": "Crew Profile",
+          "label": "a <title> in the <head>"
+        }
+      ]
+    },
+    {
+      "name": "The name is the one biggest heading, the job under it",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "text": "h1",
+          "nonEmpty": true,
+          "label": "the name (<h1>)"
+        },
+        {
+          "text": "p.role",
+          "nonEmpty": true,
+          "label": "the job (<p class=\"role\">)"
+        }
+      ]
+    },
+    {
+      "name": "The page has sections, an important part and an email link",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h2",
+          "atLeast": 2,
+          "label": "section headings (<h2>)"
+        },
+        {
+          "exists": "strong",
+          "label": "an important part (<strong>)"
+        },
+        {
+          "exists": "a[href^=\"mailto:\"]",
+          "label": "a link that writes an email (mailto:)"
+        }
+      ]
+    },
+    {
+      "name": "style.css gives it its look",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head link[rel=\"stylesheet\"][href$=\"style.css\"]",
+          "label": "a <link rel=\"stylesheet\" href=\"style.css\"> in the <head>"
+        },
+        {
+          "style": "h1",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the name"
+        },
+        {
+          "style": "p.role",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "the job"
+        }
+      ]
+    },
+    {
+      "name": "The text grows with the visitor's font size",
+      "visible": false,
+      "files": {
+        "zoom.css": "html { font-size: 32px; }\n",
+        "zoomed.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"zoom.css\" />\n  </head>\n  <body>\n    <h1>Ada Okafor</h1>\n    <p class=\"role\">Pilot</p>\n  </body>\n</html>\n"
+      },
+      "page": "zoomed.html",
+      "steps": [
+        {
+          "size": "h1",
+          "minHeight": 40,
+          "label": "the name, for a visitor whose font size is 32px"
+        },
+        {
+          "size": "p.role",
+          "minHeight": 30,
+          "label": "the job, for a visitor whose font size is 32px"
+        }
+      ]
+    },
+    {
+      "name": "It fits a phone",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The salute button greets you by name",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head script[src$=\"script.js\"][defer]",
+          "label": "a <script src=\"script.js\" defer> in the <head>"
+        },
+        {
+          "exists": "p#greeting",
+          "label": "the greeting (<p id=\"greeting\">)"
+        },
+        {
+          "click": "button#salute",
+          "label": "the button (<button id=\"salute\">)"
+        },
+        {
+          "text": "p#greeting",
+          "contains": "salutes you!",
+          "label": "the greeting, after the click"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The salute reads the name from the page",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Profile</title>\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Bram Vega</h1>\n    <p class=\"role\">Pilot</p>\n    <button type=\"button\" id=\"salute\">Salute</button>\n    <p id=\"greeting\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "click": "button#salute",
+          "label": "the salute button"
+        },
+        {
+          "text": "p#greeting",
+          "equals": "Bram Vega salutes you!",
+          "label": "the greeting"
+        }
+      ]
+    }
+  ]
+}
