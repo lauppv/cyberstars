@@ -82,6 +82,55 @@ describe('Submission history', () => {
     expect(await prisma.lessonSubmission.count({ where: { userId } })).toBe(21);
   });
 
+  it("keeps a web lesson's newest passing attempt past the cap, and carries it on", async () => {
+    const { agent: a, email } = await createAuthenticatedAgent();
+    const userId = await userIdFor(email);
+    const site = '```html index.html\n<h1>Mine</h1>\n```';
+
+    const old = await record(
+      userId,
+      'web-dev',
+      'first-page',
+      'en',
+      'web-dev' as never,
+      'old',
+      verdict(3),
+    );
+    const passed = await record(
+      userId,
+      'web-dev',
+      'first-page',
+      'en',
+      'web-dev' as never,
+      site,
+      verdict(3),
+    );
+    const ids: number[] = [];
+    for (let i = 0; i < 22; i++) {
+      ids.push(
+        (
+          await record(
+            userId,
+            'web-dev',
+            'first-page',
+            'en',
+            'web-dev' as never,
+            `${i}`,
+            verdict(1),
+          )
+        ).id,
+      );
+    }
+
+    const res = await a.get('/api/tests/web-dev/first-page/submissions').expect(200);
+    expect(res.body.map((s: { id: number }) => s.id)).toEqual([
+      ...ids.slice(2).reverse(),
+      passed.id,
+    ]);
+    expect(res.body.map((s: { id: number }) => s.id)).not.toContain(old.id);
+    // A code lesson keeps its 20, passing or not (above)
+  });
+
   it('opens an attempt with its code and the case it stopped on', async () => {
     const { agent: a, email } = await createAuthenticatedAgent();
     const userId = await userIdFor(email);
