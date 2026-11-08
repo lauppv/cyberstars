@@ -914,7 +914,8 @@
     "viewsLower_other": "views",
     "postsCount_one": "{{count}} post",
     "postsCount_other": "{{count}} posts",
-    "noThreadsHint": "Be the first to post."
+    "noThreadsHint": "Be the first to post.",
+    "news": "New for you"
   },
   "almanac": {
     "categories": {

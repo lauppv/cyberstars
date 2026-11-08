@@ -62,6 +62,43 @@
   display: block;
 }
 
+/* ===== New for you: threads with an unread reply or solution ===== */
+.forum-news-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.forum-news-row:last-child {
+  border-bottom: none;
+}
+
+.forum-news-row:hover {
+  background: rgba(34, 34, 46, 0.15);
+}
+
+.forum-news-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.forum-news-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
 /* ===== Category groups ===== */
 .forum-group {
   margin-bottom: 22px;

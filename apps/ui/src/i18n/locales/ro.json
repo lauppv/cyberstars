@@ -933,7 +933,8 @@
     "postsCount_one": "{{count}} postare",
     "postsCount_few": "{{count}} postări",
     "postsCount_other": "{{count}} de postări",
-    "noThreadsHint": "Fii primul care postează."
+    "noThreadsHint": "Fii primul care postează.",
+    "news": "Noutăți pentru tine"
   },
   "almanac": {
     "categories": {
