@@ -1,0 +1,131 @@
+{
+  "cases": [
+    {
+      "name": "schedule.html is a page like the others",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag of schedule.html"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in its <head>"
+        },
+        {
+          "text": "head > title",
+          "equals": "Flight Schedule",
+          "label": "a <title> in its <head>"
+        },
+        {
+          "text": "h1",
+          "equals": "Flight Schedule",
+          "label": "its biggest heading (<h1>)"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "its body, styled by style.css"
+        }
+      ]
+    },
+    {
+      "name": "Every page leads to the schedule",
+      "visible": true,
+      "steps": [
+        {
+          "text": "nav a[href=\"schedule.html\"]",
+          "equals": "Schedule",
+          "label": "a link Schedule in the home page's navigation"
+        },
+        {
+          "click": "nav a[href=\"schedule.html\"]",
+          "label": "the link Schedule"
+        },
+        {
+          "at": "schedule.html"
+        },
+        {
+          "exists": "nav a[href=\"crew.html\"]",
+          "label": "the link Crew on the schedule"
+        },
+        {
+          "click": "nav a[href=\"crew.html\"]",
+          "label": "the link Crew"
+        },
+        {
+          "at": "crew.html"
+        },
+        {
+          "exists": "nav a[href=\"schedule.html\"]",
+          "label": "the link Schedule on the crew page"
+        }
+      ]
+    },
+    {
+      "name": "The flights are a table with four headers",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "exists": "table#flights",
+          "label": "a table with id=\"flights\""
+        },
+        {
+          "count": "#flights tr:first-child > th",
+          "equals": 4,
+          "label": "header cells (<th>) in its first row"
+        },
+        {
+          "text": "#flights th:nth-child(1)",
+          "equals": "Flight",
+          "label": "the first header"
+        },
+        {
+          "text": "#flights th:nth-child(2)",
+          "equals": "Destination",
+          "label": "the second header"
+        },
+        {
+          "text": "#flights th:nth-child(3)",
+          "equals": "Departs",
+          "label": "the third header"
+        },
+        {
+          "text": "#flights th:nth-child(4)",
+          "equals": "Status",
+          "label": "the fourth header"
+        }
+      ]
+    },
+    {
+      "name": "At least four flights, four cells each",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "count": "#flights tr:has(> td)",
+          "atLeast": 4,
+          "label": "flights (rows of <td>)"
+        },
+        {
+          "count": "#flights tr:has(> td):not(:has(> td:nth-child(4)))",
+          "equals": 0,
+          "label": "flights with fewer than four cells"
+        },
+        {
+          "count": "#flights tr:has(> td:nth-child(5))",
+          "equals": 0,
+          "label": "flights with more than four cells"
+        }
+      ]
+    }
+  ]
+}

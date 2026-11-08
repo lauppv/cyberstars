@@ -3,5 +3,11 @@
   "singleQuote": true,
   "tabWidth": 2,
   "printWidth": 100,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": "packages/content/lessons/web-dev/**/*.md",
+      "options": { "embeddedLanguageFormatting": "off" }
+    }
+  ]
 }

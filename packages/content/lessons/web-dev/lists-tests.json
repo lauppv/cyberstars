@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "name": "The crew is an unordered list",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "Crew",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "exists": "ul#crew",
+          "label": "an unordered list with id=\"crew\" (<ul id=\"crew\">)"
+        },
+        {
+          "count": "ul#crew > li",
+          "atLeast": 4,
+          "label": "crew members (<li>) in the list"
+        },
+        {
+          "text": "ul#crew > li",
+          "nonEmpty": true,
+          "label": "a crew member's name"
+        }
+      ]
+    },
+    {
+      "name": "The morning routine is an ordered list",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "Morning Routine",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "count": "h2 + ol > li",
+          "atLeast": 3,
+          "label": "steps (<li>) in an ordered list (<ol>) right under a section heading"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "name": "The page is set in Verdana, with room between lines",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "font-family",
+          "equals": "Verdana, Geneva, sans-serif",
+          "label": "the page (<body>)"
+        },
+        {
+          "style": "p",
+          "prop": "font-family",
+          "equals": "Verdana, Geneva, sans-serif",
+          "label": "a paragraph"
+        },
+        {
+          "style": "body",
+          "prop": "line-height",
+          "equals": "25.6px",
+          "label": "the page (<body>)"
+        }
+      ]
+    },
+    {
+      "name": "The biggest heading is centered",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the biggest heading (<h1>)"
+        }
+      ]
+    },
+    {
+      "name": "The section headings spread their letters",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h2",
+          "prop": "letter-spacing",
+          "equals": "2px",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "style": "#today",
+          "prop": "letter-spacing",
+          "equals": "2px",
+          "label": "the heading Today on Board"
+        }
+      ]
+    },
+    {
+      "name": "The shift headings show in capitals",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h3",
+          "prop": "text-transform",
+          "equals": "uppercase",
+          "label": "a shift heading (<h3>)"
+        }
+      ]
+    },
+    {
+      "name": "The address is in italics",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p.address",
+          "contains": "Orbital Station 7 Docking Ring B Low Earth Orbit",
+          "label": "the address (<p class=\"address\">)"
+        },
+        {
+          "style": "p.address",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "the address"
+        }
+      ]
+    }
+  ]
+}

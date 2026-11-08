@@ -7,7 +7,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import type { WebTestCase } from '@cyberstars/shared/webTests';
+import { WEB_ACTION_KEYS, type WebTestCase } from '@cyberstars/shared/webTests';
 import { judgeWebCase } from './web-tests.js';
 
 const RUNNER = path.join(import.meta.dirname, 'lesson-tests.runner.web.cjs');
@@ -48,6 +48,7 @@ function run(files: Record<string, string>, cases: WebTestCase[], stepMs = 3000)
       stepMs,
       heapMb: 64,
       height: 800,
+      actions: WEB_ACTION_KEYS,
       cases: cases.map((c) => ({ page: 'index.html', width: 1280, ...c })),
     }),
   );
@@ -257,6 +258,97 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     const [desktop, phone] = verdicts(files, cases);
     expect(desktop.passed).toBe(true);
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
+  });
+
+  it("reads a :hover rule after hover, and a pseudo-element's content and look", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        a { color: rgb(0, 0, 255); }
+        a:hover { color: rgb(255, 0, 0); }
+        h1::before { content: "★ "; color: rgb(0, 128, 0); }
+      </style></head><body><h1>Station Log</h1><a href="#">Crew</a></body></html>`,
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'Hover and a mark',
+        visible: true,
+        steps: [
+          { style: 'a', prop: 'color', equals: 'rgb(0, 0, 255)', label: 'the link' },
+          { hover: 'a', label: 'the link' },
+          { style: 'a', prop: 'color', equals: 'rgb(255, 0, 0)', label: 'the link' },
+          {
+            style: 'h1',
+            pseudo: '::before',
+            prop: 'content',
+            equals: '"★ "',
+            label: 'the mark before the heading',
+          },
+          {
+            style: 'h1',
+            pseudo: '::before',
+            prop: 'color',
+            equals: 'rgb(0, 128, 0)',
+            label: 'the mark before the heading',
+          },
+          {
+            style: 'h1',
+            pseudo: '::after',
+            prop: 'content',
+            equals: 'none',
+            label: 'nothing after',
+          },
+        ],
+      },
+      {
+        name: 'Hover over nothing',
+        visible: true,
+        steps: [{ hover: '.card', label: 'a crew card' }],
+      },
+    ];
+    const [styled, nothing] = verdicts(files, cases);
+    expect(styled.passed).toBe(true);
+    expect(nothing.web).toEqual({ kind: 'missing', label: 'a crew card' });
+  });
+
+  it('reads a style a transition is moving to as where it ends', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        tr { background-color: rgb(0, 0, 0); transition: background-color 2s; }
+        tr:hover { background-color: rgb(200, 100, 50); }
+        button { color: rgb(0, 0, 0); transition: color 2s linear; }
+        .on { color: rgb(255, 255, 255); }
+      </style></head><body><table><tr><td>A</td></tr></table>
+      <button onclick="this.classList.add('on')">Go</button></body></html>`,
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'Transitions',
+        visible: true,
+        steps: [
+          { hover: 'tr', label: 'the row' },
+          { style: 'tr', prop: 'background-color', equals: 'rgb(200, 100, 50)', label: 'the row' },
+          { click: 'button', label: 'the button' },
+          { style: 'button', prop: 'color', equals: 'rgb(255, 255, 255)', label: 'the button' },
+        ],
+      },
+    ];
+    expect(verdicts(files, cases)[0].passed).toBe(true);
+  });
+
+  it("checks every element's style with every, the first one's without", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        h2:first-of-type::after { content: "~"; }
+      </style></head><body><h2>A</h2><h2>B</h2></body></html>`,
+    };
+    const after = { style: 'h2', pseudo: '::after', prop: 'content', equals: '"~"' } as const;
+    const cases: WebTestCase[] = [
+      { name: 'First', visible: true, steps: [{ ...after, label: 'a heading' }] },
+      { name: 'Every', visible: true, steps: [{ ...after, every: true, label: 'a heading' }] },
+    ];
+    const [first, every] = verdicts(files, cases);
+    expect(first.passed).toBe(true);
+    expect(every.web).toMatchObject({ kind: 'style', detail: '::after content', found: 'none' });
   });
 
   it('stops a page stuck in an endless loop, like a timeout', () => {

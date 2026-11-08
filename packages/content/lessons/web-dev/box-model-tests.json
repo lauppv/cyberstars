@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "name": "Each card has its background and padding",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "padding-top",
+          "equals": "16px",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "padding-left",
+          "equals": "16px",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "padding-bottom",
+          "equals": "16px",
+          "label": "a card"
+        }
+      ]
+    },
+    {
+      "name": "Each card has its border",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "border-top-width",
+          "equals": "2px",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-right-style",
+          "equals": "solid",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-bottom-color",
+          "equals": "rgb(44, 74, 122)",
+          "label": "a card"
+        }
+      ]
+    },
+    {
+      "name": "The cards keep their distance",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "margin-bottom",
+          "equals": "24px",
+          "label": "a card"
+        }
+      ]
+    }
+  ]
+}

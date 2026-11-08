@@ -1,0 +1,109 @@
+{
+  "cases": [
+    {
+      "name": "The delayed flight's status is red",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#flights tbody tr.delayed td.status",
+          "equals": "Delayed",
+          "label": "the status of the row with class=\"delayed\""
+        },
+        {
+          "style": "#flights tr.delayed td.status",
+          "prop": "color",
+          "equals": "rgb(255, 179, 179)",
+          "label": "the delayed flight's status"
+        },
+        {
+          "style": "#flights tr.delayed td.code",
+          "prop": "color",
+          "equals": "rgb(219, 228, 255)",
+          "label": "the delayed flight's code"
+        }
+      ]
+    },
+    {
+      "name": "Every status is bold, the cancelled one marked",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights td.status",
+          "prop": "font-weight",
+          "equals": "700",
+          "label": "every status cell",
+          "every": true
+        },
+        {
+          "style": "#flights td:not(.status)",
+          "prop": "font-weight",
+          "equals": "400",
+          "label": "every other cell",
+          "every": true
+        },
+        {
+          "style": "#flights tr.cancelled td.status",
+          "pseudo": "::before",
+          "prop": "content",
+          "equals": "\"✕ \"",
+          "label": "the start of the cancelled flight's status"
+        },
+        {
+          "style": "#flights tr.delayed td.status",
+          "pseudo": "::before",
+          "prop": "content",
+          "equals": "none",
+          "label": "the start of the delayed flight's status"
+        }
+      ]
+    },
+    {
+      "name": "The bays table matches the flights table",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#bays",
+          "prop": "border-collapse",
+          "equals": "collapse",
+          "label": "the bays table"
+        },
+        {
+          "size": "#bays",
+          "minWidth": 927,
+          "maxWidth": 929,
+          "label": "the bays table"
+        },
+        {
+          "style": "#bays td",
+          "prop": "padding-left",
+          "equals": "12px",
+          "label": "every cell of the bays table",
+          "every": true
+        },
+        {
+          "style": "#bays td",
+          "prop": "border-bottom-color",
+          "equals": "rgb(44, 74, 122)",
+          "label": "every cell of the bays table",
+          "every": true
+        }
+      ]
+    },
+    {
+      "name": "The banner keeps its distance",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": ".banner",
+          "prop": "margin-bottom",
+          "equals": "24px",
+          "label": "the banner"
+        }
+      ]
+    }
+  ]
+}

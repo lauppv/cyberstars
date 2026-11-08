@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { courseDir } from '@cyberstars/content/paths';
-import type { WebStep, WebTestCase } from '@cyberstars/shared/webTests';
+import { WEB_ACTION_KEYS, type WebStep, type WebTestCase } from '@cyberstars/shared/webTests';
 
 const { mockDockerExec, mockConverse, mockKillLeftovers } = vi.hoisted(() => ({
   mockDockerExec: vi.fn(),
@@ -57,6 +57,10 @@ describe('judgeStep', () => {
     expect(judge({ click: '#add', label: 'the Add button' }, { ok: false })).toEqual({
       kind: 'missing',
       label: 'the Add button',
+    });
+    expect(judge({ hover: '.card', label: 'a crew card' }, { ok: false })).toEqual({
+      kind: 'missing',
+      label: 'a crew card',
     });
     expect(judge({ open: 'crew.html' }, { ok: true })).toBeNull();
     expect(judge({ wait: 100 }, { ok: true })).toBeNull();
@@ -134,6 +138,31 @@ describe('judgeStep', () => {
       kind: 'style',
       detail: 'display',
       found: 'block',
+    });
+  });
+
+  it("reads only the first element's style, every one's with every", () => {
+    const first = { style: 'a', prop: 'color', equals: 'red', label: 'a link' } as const;
+    expect(judge(first, { count: 2, values: ['red', 'blue'] })).toBeNull();
+    const every = { ...first, every: true } as const;
+    expect(judge(every, { count: 2, values: ['red', 'red'] })).toBeNull();
+    expect(judge(every, { count: 3, values: ['red', 'blue', 'green'] })).toMatchObject({
+      kind: 'style',
+      found: 'blue',
+    });
+  });
+
+  it("says a pseudo-element's style is the pseudo-element's", () => {
+    const step = {
+      style: 'td',
+      pseudo: '::before',
+      prop: 'content',
+      equals: '"✕ "',
+      label: 'the start of a status',
+    } as const;
+    expect(judge(step, { count: 1, values: ['none'] })).toMatchObject({
+      detail: '::before content',
+      found: 'none',
     });
   });
 
@@ -326,6 +355,7 @@ describe('runWebLessonTests', () => {
     const payload = JSON.parse(mockDockerExec.mock.calls[1][2]);
     expect(payload.files['index.html']).toContain('<title>Station Log</title>');
     expect(payload.cases[0]).toMatchObject({ page: 'index.html', width: 1280 });
+    expect(payload.actions).toEqual([...WEB_ACTION_KEYS]);
     expect(mockConverse.mock.calls[0][0]).toEqual([
       'exec',
       '-i',

@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "name": "The station's picture is on the page",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "img[src=\"img/station.svg\"], img[src=\"./img/station.svg\"]",
+          "label": "the station's picture (<img src=\"img/station.svg\">)"
+        }
+      ]
+    },
+    {
+      "name": "It says what it shows",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "img[src$=\"img/station.svg\"][alt]:not([alt=\"\"]):not([alt=\" \"])",
+          "label": "words in the alt of the station's picture"
+        }
+      ]
+    },
+    {
+      "name": "It keeps its room while it loads",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "img[src$=\"img/station.svg\"]",
+          "name": "width",
+          "equals": "320",
+          "label": "the station's picture"
+        },
+        {
+          "attr": "img[src$=\"img/station.svg\"]",
+          "name": "height",
+          "equals": "200",
+          "label": "the station's picture"
+        }
+      ]
+    },
+    {
+      "name": "The divider is only decoration",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "img[src=\"img/divider.svg\"], img[src=\"./img/divider.svg\"]",
+          "label": "the divider (<img src=\"img/divider.svg\">)"
+        },
+        {
+          "exists": "img[src$=\"img/divider.svg\"][alt=\"\"]",
+          "label": "an empty alt (alt=\"\") on the divider"
+        }
+      ]
+    }
+  ]
+}

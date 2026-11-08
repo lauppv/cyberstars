@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "name": "The latest arrival is named in bold",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "#latest",
+          "contains": "Latest arrival: ",
+          "label": "the latest arrival (<p id=\"latest\">)"
+        },
+        {
+          "text": "#latest > strong",
+          "nonEmpty": true,
+          "label": "the name, important (<strong>), in the latest arrival"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "It follows the list",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "button#add-rookie",
+          "label": "the button Add a rookie"
+        },
+        {
+          "text": "#latest > strong",
+          "equals": "Rookie 1",
+          "label": "the latest arrival's name"
+        },
+        {
+          "count": "#latest > strong",
+          "equals": 1,
+          "label": "names in the latest arrival, after a rookie came"
+        }
+      ]
+    },
+    {
+      "name": "It names the last crew member",
+      "visible": false,
+      "page": "crew.html",
+      "files": {
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <ul id=\"crew\">\n      <li>Ada</li>\n      <li>Bram</li>\n      <li>Chen</li>\n      <li>Dara</li>\n      <li>Eli</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <button type=\"button\" id=\"add-rookie\">Add a rookie</button>\n    <button type=\"button\" id=\"remove-last\">Remove the last</button>\n    <p id=\"latest\"></p>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">10</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Bram</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">20</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Chen</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">31</span></p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n    <p id=\"watch-time\"></p>\n    <button type=\"button\" id=\"roll-call-button\">Roll call</button>\n    <ol id=\"roll-call\"></ol>\n    <p id=\"roll-summary\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p id=\"intercom\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p>Launch countdown from <span id=\"countdown-from\">4</span></p>\n    <p id=\"countdown\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#latest",
+          "equals": "Latest arrival: Eli",
+          "label": "the latest arrival"
+        },
+        {
+          "text": "#latest > strong",
+          "equals": "Eli",
+          "label": "the name"
+        }
+      ]
+    },
+    {
+      "name": "A name is shown as written, never run",
+      "visible": false,
+      "page": "crew.html",
+      "files": {
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <ul id=\"crew\">\n      <li>Ada</li>\n      <li>Bram</li>\n      <li>&lt;img src=x onerror=\"document.body.classList.add('xss-ran')\"&gt;</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <button type=\"button\" id=\"add-rookie\">Add a rookie</button>\n    <button type=\"button\" id=\"remove-last\">Remove the last</button>\n    <p id=\"latest\"></p>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">10</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Bram</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">20</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>&lt;img src=x onerror=\"document.body.classList.add('xss-ran')\"&gt;</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">31</span></p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n    <p id=\"watch-time\"></p>\n    <button type=\"button\" id=\"roll-call-button\">Roll call</button>\n    <ol id=\"roll-call\"></ol>\n    <p id=\"roll-summary\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p id=\"intercom\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p>Launch countdown from <span id=\"countdown-from\">4</span></p>\n    <p id=\"countdown\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "wait": 300
+        },
+        {
+          "count": "body.xss-ran",
+          "equals": 0,
+          "label": "names whose code ran"
+        },
+        {
+          "text": "#latest > strong",
+          "equals": "<img src=x onerror=\"document.body.classList.add('xss-ran')\">",
+          "label": "the name"
+        },
+        {
+          "count": "#latest img",
+          "equals": 0,
+          "label": "pictures made from a name"
+        }
+      ]
+    }
+  ]
+}

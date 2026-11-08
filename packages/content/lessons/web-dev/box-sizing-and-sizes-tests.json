@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "name": "Every element counts its border in its width",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "box-sizing",
+          "equals": "border-box",
+          "label": "a card"
+        },
+        {
+          "style": "h1",
+          "prop": "box-sizing",
+          "equals": "border-box",
+          "label": "the biggest heading"
+        },
+        {
+          "style": "ul#crew",
+          "prop": "box-sizing",
+          "equals": "border-box",
+          "label": "the crew list"
+        }
+      ]
+    },
+    {
+      "name": "The home page does too",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p",
+          "prop": "box-sizing",
+          "equals": "border-box",
+          "label": "a paragraph of the home page"
+        }
+      ]
+    },
+    {
+      "name": "Each card is 260px wide, border included",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": ".card",
+          "minWidth": 260,
+          "maxWidth": 260,
+          "label": "a card"
+        },
+        {
+          "size": ".card",
+          "minHeight": 140,
+          "label": "a card"
+        }
+      ]
+    },
+    {
+      "name": "A card with a lot to say grows taller",
+      "visible": false,
+      "page": "crew.html",
+      "files": {
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>One line.</p>\n        <p>Two lines.</p>\n        <p>Three lines.</p>\n        <p>Four lines.</p>\n        <p>Five lines.</p>\n      </div>\n    </div>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "size": ".card",
+          "minHeight": 200,
+          "label": "a card with five paragraphs"
+        }
+      ]
+    },
+    {
+      "name": "The box of cards stops at 900px",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#cards",
+          "prop": "max-width",
+          "equals": "900px",
+          "label": "the box of cards (#cards)"
+        }
+      ]
+    }
+  ]
+}

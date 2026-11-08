@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "name": "Today on Board has the id today",
+      "visible": true,
+      "steps": [
+        {
+          "text": "h2#today",
+          "equals": "Today on Board",
+          "label": "a section heading (<h2>) with id=\"today\""
+        }
+      ]
+    },
+    {
+      "name": "A link jumps to it",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p a[href=\"#today\"]",
+          "equals": "Jump to today",
+          "label": "a link to #today in a paragraph"
+        },
+        {
+          "click": "a[href=\"#today\"]",
+          "label": "the link to #today"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    },
+    {
+      "name": "A link leads to another site, in a new tab, safely",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "a[href^=\"https://\"]",
+          "label": "a link (<a>) with a full address starting with https://"
+        },
+        {
+          "exists": "a[href^=\"https://\"][target=\"_blank\"]",
+          "label": "target=\"_blank\" on that link, so it opens in a new tab"
+        },
+        {
+          "exists": "a[href^=\"https://\"][target=\"_blank\"][rel~=\"noopener\"]",
+          "label": "rel=\"noopener\" on that link"
+        },
+        {
+          "text": "a[href^=\"https://\"]",
+          "nonEmpty": true,
+          "label": "words on that link"
+        }
+      ]
+    },
+    {
+      "name": "A link writes to the crew",
+      "visible": true,
+      "steps": [
+        {
+          "text": "a[href=\"mailto:crew@station.example\"]",
+          "equals": "Write to the crew",
+          "label": "a link to mailto:crew@station.example"
+        }
+      ]
+    }
+  ]
+}

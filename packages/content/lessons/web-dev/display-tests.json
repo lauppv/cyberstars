@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "name": "The cards stand side by side on a wide screen",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "display",
+          "equals": "inline-block",
+          "label": "a card"
+        },
+        {
+          "layout": "#cards > .card:nth-child(-n+3)",
+          "arrange": "row",
+          "label": "the first three cards"
+        },
+        {
+          "style": ".card",
+          "prop": "vertical-align",
+          "equals": "top",
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "margin-right",
+          "equals": "16px",
+          "label": "a card"
+        }
+      ]
+    },
+    {
+      "name": "They stack on a phone",
+      "visible": true,
+      "page": "crew.html",
+      "width": 375,
+      "steps": [
+        {
+          "layout": "#cards > .card:nth-child(-n+3)",
+          "arrange": "column",
+          "label": "the first three cards"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The navigation's links are padded boxes",
+      "visible": true,
+      "steps": [
+        {
+          "style": "nav a",
+          "prop": "display",
+          "equals": "inline-block",
+          "label": "a link of the navigation"
+        },
+        {
+          "style": "nav a",
+          "prop": "padding-top",
+          "equals": "8px",
+          "label": "a link of the navigation"
+        },
+        {
+          "style": "nav a",
+          "prop": "padding-left",
+          "equals": "12px",
+          "label": "a link of the navigation"
+        },
+        {
+          "size": "nav a",
+          "minHeight": 40,
+          "label": "a link of the navigation, padding included"
+        }
+      ]
+    }
+  ]
+}

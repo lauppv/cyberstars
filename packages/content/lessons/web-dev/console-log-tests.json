@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "name": "The station says it's online",
+      "visible": true,
+      "steps": [
+        {
+          "logged": "Station Log online"
+        }
+      ]
+    },
+    {
+      "name": "It logs its orbit time",
+      "visible": true,
+      "steps": [
+        {
+          "logged": "92"
+        }
+      ]
+    },
+    {
+      "name": "It logs the crew on board",
+      "visible": true,
+      "steps": [
+        {
+          "logged": "Crew on board: 6"
+        }
+      ]
+    },
+    {
+      "name": "The script runs without errors, the gold line still there",
+      "visible": true,
+      "steps": [
+        {
+          "noErrors": true
+        },
+        {
+          "style": "body",
+          "prop": "border-top-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the page's body"
+        }
+      ]
+    }
+  ]
+}

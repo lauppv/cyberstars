@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "name": "A button wakes the crew",
+      "visible": true,
+      "steps": [
+        {
+          "text": "button#wake",
+          "equals": "Wake the crew",
+          "label": "the button (<button id=\"wake\">)"
+        }
+      ]
+    },
+    {
+      "name": "Before the click, all systems are normal",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p#status",
+          "equals": "Welcome aboard: all systems normal",
+          "label": "the status, before any click"
+        }
+      ]
+    },
+    {
+      "name": "The click wakes the crew",
+      "visible": true,
+      "steps": [
+        {
+          "click": "button#wake",
+          "label": "the button Wake the crew"
+        },
+        {
+          "text": "p#status",
+          "equals": "Crew awake",
+          "label": "the status, after the click"
+        },
+        {
+          "logged": "Wake-up call sent"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

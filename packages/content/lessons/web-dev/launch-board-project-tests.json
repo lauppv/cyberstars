@@ -1,0 +1,272 @@
+{
+  "cases": [
+    {
+      "name": "The page has its skeleton",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "equals": "Launch Board",
+          "label": "a <title> in the <head>"
+        },
+        {
+          "text": "h1",
+          "equals": "Launch Board",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings"
+        }
+      ]
+    },
+    {
+      "name": "The launches are a proper table",
+      "visible": true,
+      "steps": [
+        {
+          "text": "table#launches > caption",
+          "nonEmpty": true,
+          "label": "the caption of a table with id=\"launches\""
+        },
+        {
+          "count": "#launches > thead > tr > th[scope=\"col\"]",
+          "equals": 4,
+          "label": "column headers in its <thead>"
+        },
+        {
+          "text": "#launches thead th:nth-child(4)",
+          "equals": "Status",
+          "label": "its fourth header"
+        },
+        {
+          "count": "#launches > tbody > tr",
+          "atLeast": 5,
+          "label": "launches in its <tbody>"
+        },
+        {
+          "count": "#launches tbody tr:not(:has(> td.rocket + td.pad + td.time + td.status))",
+          "equals": 0,
+          "label": "launches whose cells aren't rocket, pad, time, status"
+        }
+      ]
+    },
+    {
+      "name": "The table has its look",
+      "visible": true,
+      "steps": [
+        {
+          "style": "#launches",
+          "prop": "border-collapse",
+          "equals": "collapse",
+          "label": "the table"
+        },
+        {
+          "style": "#launches td.status",
+          "prop": "font-weight",
+          "equals": "700",
+          "label": "every status cell",
+          "every": true
+        },
+        {
+          "style": "#launches td:not(.status)",
+          "prop": "font-weight",
+          "equals": "400",
+          "label": "every other cell",
+          "every": true
+        },
+        {
+          "style": "#launches tr.scrubbed td",
+          "prop": "text-decoration-line",
+          "equals": "line-through",
+          "label": "every cell of a scrubbed launch",
+          "every": true
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "Zebra rows, and a row lights up under the mouse",
+      "visible": true,
+      "steps": [
+        {
+          "style": "#launches tbody tr:nth-child(odd)",
+          "prop": "background-color",
+          "equals": "rgba(0, 0, 0, 0)",
+          "every": true,
+          "label": "every odd launch"
+        },
+        {
+          "style": "#launches tbody tr:nth-child(even)",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "every": true,
+          "label": "every even launch"
+        },
+        {
+          "hover": "#launches tbody tr:nth-child(3)",
+          "label": "the third launch"
+        },
+        {
+          "style": "#launches tbody tr:nth-child(3)",
+          "prop": "background-color",
+          "equals": "rgb(29, 59, 110)",
+          "label": "the third launch, under the mouse"
+        },
+        {
+          "hover": "#launches tbody tr:nth-child(4)",
+          "label": "the fourth launch"
+        },
+        {
+          "style": "#launches tbody tr:nth-child(4)",
+          "prop": "background-color",
+          "equals": "rgb(29, 59, 110)",
+          "label": "the fourth launch, striped and under the mouse"
+        }
+      ]
+    },
+    {
+      "name": "Every row gets its status class",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head script[src$=\"script.js\"][defer]",
+          "label": "a <script src=\"script.js\" defer> in the <head>"
+        },
+        {
+          "count": "#launches tbody tr:not(.scheduled):not(.scrubbed):not(.launched)",
+          "equals": 0,
+          "label": "launches without a status class"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The summary and the next launch are written",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p#summary",
+          "contains": " scheduled, ",
+          "label": "the summary (<p id=\"summary\">)"
+        },
+        {
+          "text": "p#next-launch",
+          "contains": "Next launch: ",
+          "label": "the next launch (<p id=\"next-launch\">)"
+        }
+      ]
+    },
+    {
+      "name": "They follow the board",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Launch Board</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Launch Board</h1>\n    <p id=\"summary\"></p>\n    <p id=\"next-launch\"></p>\n    <button type=\"button\" id=\"hide-scrubbed\" aria-pressed=\"false\">Hide scrubbed</button>\n    <table id=\"launches\">\n      <caption>Launches today</caption>\n      <thead>\n        <tr>\n          <th scope=\"col\">Rocket</th>\n          <th scope=\"col\">Pad</th>\n          <th scope=\"col\">Time</th>\n          <th scope=\"col\">Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"rocket\">Kestrel</td>\n          <td class=\"pad\">Pad 1</td>\n          <td class=\"time\">11:40</td>\n          <td class=\"status\">Scheduled</td>\n        </tr>\n        <tr>\n          <td class=\"rocket\">Falcon</td>\n          <td class=\"pad\">Pad 2</td>\n          <td class=\"time\">09:15</td>\n          <td class=\"status\">Scheduled</td>\n        </tr>\n        <tr>\n          <td class=\"rocket\">Heron</td>\n          <td class=\"pad\">Pad 1</td>\n          <td class=\"time\">07:30</td>\n          <td class=\"status\">Launched</td>\n        </tr>\n        <tr>\n          <td class=\"rocket\">Albatross</td>\n          <td class=\"pad\">Pad 3</td>\n          <td class=\"time\">10:05</td>\n          <td class=\"status\">Scrubbed</td>\n        </tr>\n        <tr>\n          <td class=\"rocket\">Swift</td>\n          <td class=\"pad\">Pad 2</td>\n          <td class=\"time\">13:20</td>\n          <td class=\"status\">Scheduled</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#summary",
+          "equals": "3 scheduled, 1 scrubbed, 1 launched",
+          "label": "the summary"
+        },
+        {
+          "text": "p#next-launch",
+          "equals": "Next launch: Falcon at 09:15",
+          "label": "the next launch"
+        }
+      ]
+    },
+    {
+      "name": "With nothing scheduled",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Launch Board</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Launch Board</h1>\n    <p id=\"summary\"></p>\n    <p id=\"next-launch\"></p>\n    <button type=\"button\" id=\"hide-scrubbed\" aria-pressed=\"false\">Hide scrubbed</button>\n    <table id=\"launches\">\n      <caption>Launches today</caption>\n      <thead>\n        <tr>\n          <th scope=\"col\">Rocket</th>\n          <th scope=\"col\">Pad</th>\n          <th scope=\"col\">Time</th>\n          <th scope=\"col\">Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"rocket\">Heron</td>\n          <td class=\"pad\">Pad 1</td>\n          <td class=\"time\">07:30</td>\n          <td class=\"status\">Launched</td>\n        </tr>\n        <tr>\n          <td class=\"rocket\">Albatross</td>\n          <td class=\"pad\">Pad 3</td>\n          <td class=\"time\">10:05</td>\n          <td class=\"status\">Scrubbed</td>\n        </tr>\n        <tr>\n          <td class=\"rocket\">Puffin</td>\n          <td class=\"pad\">Pad 4</td>\n          <td class=\"time\">06:00</td>\n          <td class=\"status\">Scrubbed</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#summary",
+          "equals": "0 scheduled, 2 scrubbed, 1 launched",
+          "label": "the summary"
+        },
+        {
+          "text": "p#next-launch",
+          "equals": "No launch scheduled",
+          "label": "the next launch"
+        },
+        {
+          "count": "#launches tbody tr.scrubbed",
+          "equals": 2,
+          "label": "scrubbed rows"
+        }
+      ]
+    },
+    {
+      "name": "The button hides the scrubbed launches",
+      "visible": true,
+      "steps": [
+        {
+          "text": "button#hide-scrubbed",
+          "equals": "Hide scrubbed",
+          "label": "the button (<button id=\"hide-scrubbed\">)"
+        },
+        {
+          "attr": "button#hide-scrubbed",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the button, before any click"
+        },
+        {
+          "click": "button#hide-scrubbed",
+          "label": "the button Hide scrubbed"
+        },
+        {
+          "style": "#launches tbody tr.scrubbed",
+          "prop": "display",
+          "equals": "none",
+          "label": "every scrubbed launch",
+          "every": true
+        },
+        {
+          "attr": "button#hide-scrubbed",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the button, pressed"
+        },
+        {
+          "text": "button#hide-scrubbed",
+          "equals": "Show scrubbed",
+          "label": "the button, pressed"
+        },
+        {
+          "click": "button#hide-scrubbed",
+          "label": "the button Hide scrubbed"
+        },
+        {
+          "style": "#launches tbody tr.scrubbed",
+          "prop": "display",
+          "equals": "table-row",
+          "label": "every scrubbed launch, shown again",
+          "every": true
+        }
+      ]
+    }
+  ]
+}

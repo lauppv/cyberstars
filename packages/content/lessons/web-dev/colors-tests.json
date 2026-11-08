@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "name": "The page is dark, its text light",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "style": "body",
+          "prop": "color",
+          "equals": "rgb(240, 244, 255)",
+          "label": "the page (<body>)"
+        },
+        {
+          "style": "p:not(.warning)",
+          "prop": "color",
+          "equals": "rgb(240, 244, 255)",
+          "label": "a paragraph that isn't a warning"
+        }
+      ]
+    },
+    {
+      "name": "The headings are readable on it",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "style": "h2:not(#today)",
+          "prop": "color",
+          "equals": "rgb(147, 191, 236)",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "style": "#today",
+          "prop": "color",
+          "equals": "rgb(123, 211, 137)",
+          "label": "the heading Today on Board"
+        },
+        {
+          "style": "h3",
+          "prop": "color",
+          "equals": "rgb(200, 210, 230)",
+          "label": "a shift heading (<h3>)"
+        }
+      ]
+    },
+    {
+      "name": "The warnings glow red",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p.warning",
+          "prop": "color",
+          "equals": "rgb(255, 179, 179)",
+          "label": "a warning"
+        },
+        {
+          "style": "p.warning",
+          "prop": "background-color",
+          "equals": "rgba(255, 80, 80, 0.2)",
+          "label": "a warning"
+        }
+      ]
+    },
+    {
+      "name": "Links and the small numbers keep their colors",
+      "visible": true,
+      "steps": [
+        {
+          "style": "a",
+          "prop": "color",
+          "equals": "rgb(142, 203, 255)",
+          "label": "a link (<a>)"
+        },
+        {
+          "style": "sub",
+          "prop": "color",
+          "equals": "rgb(0, 128, 128)",
+          "label": "the text below the line (<sub>)"
+        }
+      ]
+    }
+  ]
+}

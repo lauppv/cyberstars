@@ -1,0 +1,181 @@
+{
+  "cases": [
+    {
+      "name": "The page has its skeleton",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "equals": "Cargo Ledger",
+          "label": "a <title> in the <head>"
+        },
+        {
+          "text": "h1",
+          "equals": "Cargo Ledger",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        }
+      ]
+    },
+    {
+      "name": "The crates are a list with their weights",
+      "visible": true,
+      "steps": [
+        {
+          "count": "ul#cargo > li",
+          "atLeast": 4,
+          "label": "crates (<li>) in the list with id=\"cargo\""
+        },
+        {
+          "count": "ul#cargo > li:not(:has(span.item)), ul#cargo > li:not(:has(span.weight))",
+          "equals": 0,
+          "label": "crates without their contents (<span class=\"item\">) or weight (<span class=\"weight\">)"
+        }
+      ]
+    },
+    {
+      "name": "The totals are written",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head script[src$=\"script.js\"][defer]",
+          "label": "a <script src=\"script.js\" defer> in the <head>"
+        },
+        {
+          "text": "p#total",
+          "contains": "Total: ",
+          "label": "the total (<p id=\"total\">)"
+        },
+        {
+          "text": "p#total",
+          "contains": " crates",
+          "label": "the total"
+        },
+        {
+          "text": "p#average",
+          "contains": "Average: ",
+          "label": "the average (<p id=\"average\">)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "They add up the weights on the page",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Cargo Ledger</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Cargo Ledger</h1>\n    <ul id=\"cargo\">\n      <li><span class=\"item\">A</span>: <span class=\"weight\">10</span> kg</li>\n      <li><span class=\"item\">B</span>: <span class=\"weight\">20</span> kg</li>\n      <li><span class=\"item\">C</span>: <span class=\"weight\">31</span> kg</li>\n      <li><span class=\"item\">D</span>: <span class=\"weight\">40</span> kg</li>\n      <li><span class=\"item\">E</span>: <span class=\"weight\">50</span> kg</li>\n    </ul>\n    <p id=\"total\"></p>\n    <p id=\"average\"></p>\n    <button type=\"button\" id=\"new-crate\">New crate</button>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#total",
+          "equals": "Total: 151 kg in 5 crates",
+          "label": "the total"
+        },
+        {
+          "text": "p#average",
+          "equals": "Average: 30 kg",
+          "label": "the average"
+        }
+      ]
+    },
+    {
+      "name": "A new crate joins the ledger",
+      "visible": true,
+      "steps": [
+        {
+          "click": "button#new-crate",
+          "label": "the button New crate"
+        },
+        {
+          "text": "ul#cargo > li:last-child .item",
+          "equals": "Spare parts",
+          "label": "the new crate's contents"
+        },
+        {
+          "text": "ul#cargo > li:last-child .weight",
+          "equals": "25",
+          "label": "the new crate's weight"
+        }
+      ]
+    },
+    {
+      "name": "The totals follow the new crate",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Cargo Ledger</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Cargo Ledger</h1>\n    <ul id=\"cargo\">\n      <li><span class=\"item\">A</span>: <span class=\"weight\">10</span> kg</li>\n      <li><span class=\"item\">B</span>: <span class=\"weight\">20</span> kg</li>\n      <li><span class=\"item\">C</span>: <span class=\"weight\">31</span> kg</li>\n      <li><span class=\"item\">D</span>: <span class=\"weight\">40</span> kg</li>\n    </ul>\n    <p id=\"total\"></p>\n    <p id=\"average\"></p>\n    <button type=\"button\" id=\"new-crate\">New crate</button>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "click": "button#new-crate",
+          "label": "the button New crate"
+        },
+        {
+          "click": "button#new-crate",
+          "label": "the button New crate"
+        },
+        {
+          "text": "p#total",
+          "equals": "Total: 151 kg in 6 crates",
+          "label": "the total after two new crates"
+        },
+        {
+          "text": "p#average",
+          "equals": "Average: 25 kg",
+          "label": "the average after two new crates"
+        }
+      ]
+    },
+    {
+      "name": "The ledger sits in a centered column",
+      "visible": true,
+      "steps": [
+        {
+          "style": "ul#cargo",
+          "prop": "box-sizing",
+          "equals": "border-box",
+          "label": "the list"
+        },
+        {
+          "size": "body",
+          "maxWidth": 640,
+          "label": "the page's body"
+        },
+        {
+          "style": "body",
+          "prop": "margin-left",
+          "equals": "320px",
+          "label": "the page's body, in a window 1280px wide"
+        }
+      ]
+    },
+    {
+      "name": "It fits a phone",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}
