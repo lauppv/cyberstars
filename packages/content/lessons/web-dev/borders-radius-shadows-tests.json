@@ -8,19 +8,36 @@
         {
           "style": ".card",
           "prop": "border-top-left-radius",
-          "equals": "12px",
+          "atLeast": 4,
+          "every": true,
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-top-right-radius",
+          "atLeast": 4,
+          "every": true,
           "label": "a card"
         },
         {
           "style": ".card",
           "prop": "border-bottom-right-radius",
-          "equals": "12px",
+          "atLeast": 4,
+          "every": true,
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-bottom-left-radius",
+          "atLeast": 4,
+          "every": true,
           "label": "a card"
         },
         {
           "style": ".card",
           "prop": "box-shadow",
-          "equals": "rgba(0, 0, 0, 0.4) 0px 4px 12px 0px",
+          "not": "none",
+          "every": true,
           "label": "a card"
         }
       ]
@@ -32,31 +49,35 @@
         {
           "style": "img",
           "prop": "border-top-left-radius",
-          "equals": "16px",
+          "atLeast": 4,
+          "every": true,
+          "label": "a picture of the home page"
+        },
+        {
+          "style": "img",
+          "prop": "border-bottom-right-radius",
+          "atLeast": 4,
+          "every": true,
           "label": "a picture of the home page"
         }
       ]
     },
     {
-      "name": "The navigation's links are underlined in gold",
+      "name": "The navigation's links have a line along their bottom only",
       "visible": true,
       "steps": [
         {
           "style": "nav a",
           "prop": "border-bottom-width",
-          "equals": "2px",
+          "atLeast": 1,
+          "every": true,
           "label": "a link of the navigation"
         },
         {
           "style": "nav a",
           "prop": "border-bottom-style",
-          "equals": "solid",
-          "label": "a link of the navigation"
-        },
-        {
-          "style": "nav a",
-          "prop": "border-bottom-color",
-          "equals": "rgb(255, 209, 102)",
+          "not": "none",
+          "every": true,
           "label": "a link of the navigation"
         },
         {
@@ -64,6 +85,12 @@
           "prop": "border-top-width",
           "equals": "0px",
           "label": "the top of a link of the navigation"
+        },
+        {
+          "style": "nav a",
+          "prop": "border-left-width",
+          "equals": "0px",
+          "label": "the left side of a link of the navigation"
         }
       ]
     }
