@@ -1,31 +1,19 @@
-Part 2 taught you boxes and layout, lists, and a script that counts, loops, uses functions and builds elements. Your second project puts them together in a page of its own, from an empty folder: the cargo bay's ledger.
+Part 2 taught you boxes and layout, lists, and scripts that count, loop, use functions and build elements. Your second project puts them together in a page of its own, starting from an empty folder: the cargo bay's ledger.
 
-As before, there's no example: everything you need is in the lessons of parts 1 and 2.
+Like last time, there's no example. Everything you need is in the lessons of parts 1 and 2.
 
 ## Your files
 
 Make three files with **New file**: `index.html`, `style.css` and `script.js`.
 
-## What the page holds
+## The brief
 
-**The page**
+The cargo master writes down every crate that comes on board, and wants a page that does the sums for her.
 
-- in English, able to show any letter, with **Cargo Ledger** on its tab and its one biggest heading;
-- a list with the id `cargo` of at least four crates. Each item names what's in it, in a span in the class `item`, and its weight in kilograms, a number in a span in the class `weight`: `<span class="item">Water</span>: <span class="weight">120</span> kg`;
-- an empty paragraph with the id `total` and another with the id `average`;
-- a button with the id `new-crate` that says **New crate**.
+- It's an English page that can show any letter, called **Cargo Ledger** on its tab and as its only title.
+- The crates are a list with the id `cargo`, at least four of them. Each one names what's inside, in an element in the class `item`, and its weight in kilograms, a number in an element in the class `weight`, both inside their line: **Water: 120 kg**.
+- Under the list, a paragraph with the id `total` sums it up, like `Total: 450 kg in 4 crates`, and a paragraph with the id `average` gives the average weight, rounded to a whole number: `Average: 113 kg`. Both follow the numbers on the page: change a weight in the HTML, and they change too.
+- A button with the id `new-crate` that says **New crate** adds a crate of `Spare parts` weighing `25` kg at the end of the list, built the safe way. Both paragraphs follow.
+- The look comes from `style.css`: every element counts its border in its width, the content sits in a column in the middle of the window, at most `640px` wide, and the list looks like a panel of its own, with a background, room inside, a frame and rounded corners. Everything is easy to read, and nothing sticks out on a phone.
 
-**The look**, in `style.css`
-
-- every element counts its border in its width;
-- the content in a centered column at most `640px` wide;
-- the list as a panel: a background, padding, a border and rounded corners of your choice;
-- nothing to scroll sideways on a phone.
-
-**The script**, in `script.js`, deferred
-
-- the total paragraph says the total weight and how many crates there are: `Total: 450 kg in 4 crates`;
-- the average paragraph, the average weight rounded to a whole number: `Average: 113 kg`;
-- a click on **New crate** adds a crate of `Spare parts` weighing `25` kg at the end of the list, built the safe way, and both paragraphs follow.
-
-The numbers come from the page: change a weight in the HTML and the paragraphs follow it.
+Run the tests whenever you like: they tell you what's still missing.

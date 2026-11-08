@@ -25,12 +25,12 @@
         {
           "text": "h1",
           "equals": "Cargo Ledger",
-          "label": "the biggest heading (<h1>)"
+          "label": "the biggest heading"
         },
         {
           "count": "h1",
           "equals": 1,
-          "label": "biggest headings (<h1>)"
+          "label": "biggest headings"
         }
       ]
     },
@@ -41,12 +41,12 @@
         {
           "count": "ul#cargo > li",
           "atLeast": 4,
-          "label": "crates (<li>) in the list with id=\"cargo\""
+          "label": "crates in the list with id=\"cargo\""
         },
         {
           "count": "ul#cargo > li:not(:has(span.item)), ul#cargo > li:not(:has(span.weight))",
           "equals": 0,
-          "label": "crates without their contents (<span class=\"item\">) or weight (<span class=\"weight\">)"
+          "label": "crates without their contents (class item) or weight (class weight)"
         }
       ]
     },
@@ -56,12 +56,12 @@
       "steps": [
         {
           "exists": "head script[src$=\"script.js\"][defer]",
-          "label": "a <script src=\"script.js\" defer> in the <head>"
+          "label": "a script.js in the head that waits for the whole page"
         },
         {
           "text": "p#total",
           "contains": "Total: ",
-          "label": "the total (<p id=\"total\">)"
+          "label": "the total"
         },
         {
           "text": "p#total",
@@ -71,7 +71,7 @@
         {
           "text": "p#average",
           "contains": "Average: ",
-          "label": "the average (<p id=\"average\">)"
+          "label": "the average"
         },
         {
           "noErrors": true
@@ -152,7 +152,7 @@
           "style": "ul#cargo",
           "prop": "box-sizing",
           "equals": "border-box",
-          "label": "the list"
+          "label": "the list of crates"
         },
         {
           "size": "body",
@@ -160,10 +160,51 @@
           "label": "the page's body"
         },
         {
-          "style": "body",
-          "prop": "margin-left",
-          "equals": "320px",
-          "label": "the page's body, in a window 1280px wide"
+          "centered": "body",
+          "label": "the page's body"
+        }
+      ]
+    },
+    {
+      "name": "The list is a panel of its own",
+      "visible": true,
+      "steps": [
+        {
+          "style": "ul#cargo",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the list of crates"
+        },
+        {
+          "differs": "ul#cargo",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "the list of crates"
+        },
+        {
+          "style": "ul#cargo",
+          "prop": "padding-top",
+          "atLeast": 8,
+          "label": "the list of crates"
+        },
+        {
+          "style": "ul#cargo",
+          "prop": "border-top-width",
+          "atLeast": 1,
+          "label": "the list of crates"
+        },
+        {
+          "style": "ul#cargo",
+          "prop": "border-top-left-radius",
+          "atLeast": 4,
+          "label": "the list of crates"
+        },
+        {
+          "contrast": "ul#cargo li",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a crate"
         }
       ]
     },
