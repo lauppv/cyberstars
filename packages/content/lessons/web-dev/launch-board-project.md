@@ -12,14 +12,14 @@ Make `index.html`, `style.css` and `script.js` with **New file**.
 
 - in English, able to show any letter, with **Launch Board** on its tab and as its one biggest heading;
 - a table with the id `launches` and a caption, its header row in a `thead` with **Rocket**, **Pad**, **Time** and **Status**, each naming its column;
-- in its `tbody`, at least five launches, each cell in the class of its column: `rocket`, `pad`, `time` and `status`. A time is written like `09:15`, a status is `Scheduled`, `Scrubbed` or `Launched`;
+- in its `tbody`, at least five launches, at least one of each status, each cell in the class of its column: `rocket`, `pad`, `time` and `status`. A time is written like `09:15`, a status is `Scheduled`, `Scrubbed` or `Launched`;
 - empty paragraphs with the ids `summary` and `next-launch`, and a button with the id `hide-scrubbed` that says **Hide scrubbed**, not pressed.
 
 **The look**, in `style.css`
 
 - the table spans the column, its borders collapsed;
-- every even row of its body has a background of `#13294f`, and a row under the mouse `#1d3b6e`, striped or not;
-- every status cell is bold;
+- every even row of its body has a background of `#13294f`, the odd ones none, and a row under the mouse `#1d3b6e`, striped or not;
+- every status cell is bold, and no other cell;
 - a scrubbed row's cells are struck through.
 
 **The script**, in `script.js`, deferred

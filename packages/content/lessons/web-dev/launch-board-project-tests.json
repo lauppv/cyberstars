@@ -79,19 +79,22 @@
           "style": "#launches td.status",
           "prop": "font-weight",
           "equals": "700",
-          "label": "a status cell"
+          "label": "every status cell",
+          "every": true
         },
         {
-          "style": "#launches td.rocket",
+          "style": "#launches td:not(.status)",
           "prop": "font-weight",
           "equals": "400",
-          "label": "a rocket cell"
+          "label": "every other cell",
+          "every": true
         },
         {
           "style": "#launches tr.scrubbed td",
           "prop": "text-decoration-line",
           "equals": "line-through",
-          "label": "a cell of a scrubbed launch"
+          "label": "every cell of a scrubbed launch",
+          "every": true
         },
         {
           "fits": true
@@ -103,16 +106,18 @@
       "visible": true,
       "steps": [
         {
-          "style": "#launches tbody tr:nth-child(1)",
+          "style": "#launches tbody tr:nth-child(odd)",
           "prop": "background-color",
           "equals": "rgba(0, 0, 0, 0)",
-          "label": "the first launch"
+          "every": true,
+          "label": "every odd launch"
         },
         {
-          "style": "#launches tbody tr:nth-child(2)",
+          "style": "#launches tbody tr:nth-child(even)",
           "prop": "background-color",
           "equals": "rgb(19, 41, 79)",
-          "label": "the second launch"
+          "every": true,
+          "label": "every even launch"
         },
         {
           "hover": "#launches tbody tr:nth-child(3)",
@@ -236,7 +241,8 @@
           "style": "#launches tbody tr.scrubbed",
           "prop": "display",
           "equals": "none",
-          "label": "a scrubbed launch"
+          "label": "every scrubbed launch",
+          "every": true
         },
         {
           "attr": "button#hide-scrubbed",
@@ -257,7 +263,8 @@
           "style": "#launches tbody tr.scrubbed",
           "prop": "display",
           "equals": "table-row",
-          "label": "a scrubbed launch, shown again"
+          "label": "every scrubbed launch, shown again",
+          "every": true
         }
       ]
     }
