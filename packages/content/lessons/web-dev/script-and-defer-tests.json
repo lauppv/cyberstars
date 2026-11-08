@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "name": "script.js is linked in the head, deferred",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head script[src=\"script.js\"], head script[src=\"./script.js\"]",
+          "label": "a <script src=\"script.js\"> in the <head>"
+        },
+        {
+          "exists": "head script[src$=\"script.js\"][defer]",
+          "label": "defer on that script"
+        }
+      ]
+    },
+    {
+      "name": "The script draws a gold line along the top",
+      "visible": true,
+      "steps": [
+        {
+          "noErrors": true
+        },
+        {
+          "style": "body",
+          "prop": "border-top-width",
+          "equals": "6px",
+          "label": "the page's body"
+        },
+        {
+          "style": "body",
+          "prop": "border-top-style",
+          "equals": "solid",
+          "label": "the page's body"
+        },
+        {
+          "style": "body",
+          "prop": "border-top-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the page's body"
+        }
+      ]
+    },
+    {
+      "name": "The line comes from script.js",
+      "visible": false,
+      "files": {
+        "script.js": "document.body.style.borderTop = \"3px dashed rgb(1, 2, 3)\";\n"
+      },
+      "steps": [
+        {
+          "style": "body",
+          "prop": "border-top-color",
+          "equals": "rgb(1, 2, 3)",
+          "label": "the page's top border"
+        }
+      ]
+    },
+    {
+      "name": "Without the script, there is no line",
+      "visible": false,
+      "files": {
+        "script.js": "// nothing\n"
+      },
+      "steps": [
+        {
+          "style": "body",
+          "prop": "border-top-width",
+          "equals": "0px",
+          "label": "the page's top border"
+        }
+      ]
+    }
+  ]
+}

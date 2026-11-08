@@ -350,6 +350,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'text-and-fonts': 'Text și fonturi',
     units: 'Unități de măsură',
     'home-css-recap': 'Recapitulare CSS',
+    'script-and-defer': 'Eticheta script și defer',
+    'console-log': 'console.log și consola',
+    'let-and-const': 'let și const',
+    'strings-and-template-literals': 'Stringuri și template literals',
   },
 };
 

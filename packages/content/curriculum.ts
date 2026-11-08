@@ -1920,6 +1920,26 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'text-and-fonts', title: 'Text and Fonts', sortOrder: 12 },
   { courseKey: 'web-dev', slug: 'units', title: 'Units', sortOrder: 13 },
   { courseKey: 'web-dev', slug: 'home-css-recap', title: 'CSS Recap', sortOrder: 14 },
+  {
+    courseKey: 'web-dev',
+    slug: 'script-and-defer',
+    title: 'The Script Tag and defer',
+    sortOrder: 15,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'console-log',
+    title: 'console.log and the Console',
+    sortOrder: 16,
+  },
+  { courseKey: 'web-dev', slug: 'let-and-const', title: 'let and const', sortOrder: 17 },
+  {
+    courseKey: 'web-dev',
+    slug: 'strings-and-template-literals',
+    title: 'Strings and Template Literals',
+    sortOrder: 18,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -1947,6 +1967,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'text-and-fonts',
         'units',
         'home-css-recap',
+        'script-and-defer',
+        'console-log',
+        'let-and-const',
+        'strings-and-template-literals',
       ],
     },
   ],

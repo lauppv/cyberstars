@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "name": "The crew grows to 8",
+      "visible": true,
+      "steps": [
+        {
+          "logged": "Crew on board: 8"
+        }
+      ]
+    },
+    {
+      "name": "The orbit time is logged",
+      "visible": true,
+      "steps": [
+        {
+          "logged": "Minutes per orbit: 92"
+        }
+      ]
+    },
+    {
+      "name": "The script runs to its end without errors",
+      "visible": true,
+      "steps": [
+        {
+          "noErrors": true
+        },
+        {
+          "logged": "Station Log online"
+        }
+      ]
+    }
+  ]
+}
