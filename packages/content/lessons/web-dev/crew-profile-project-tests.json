@@ -31,17 +31,17 @@
         {
           "count": "h1",
           "equals": 1,
-          "label": "biggest headings (<h1>)"
+          "label": "biggest headings"
         },
         {
           "text": "h1",
           "nonEmpty": true,
-          "label": "the name (<h1>)"
+          "label": "the name, as the page's title"
         },
         {
           "text": "p.role",
           "nonEmpty": true,
-          "label": "the job (<p class=\"role\">)"
+          "label": "the job"
         }
       ]
     },
@@ -52,15 +52,15 @@
         {
           "count": "h2",
           "atLeast": 2,
-          "label": "section headings (<h2>)"
+          "label": "section headings"
         },
         {
           "exists": "strong",
-          "label": "an important part (<strong>)"
+          "label": "an important part"
         },
         {
           "exists": "a[href^=\"mailto:\"]",
-          "label": "a link that writes an email (mailto:)"
+          "label": "a link that writes an email"
         }
       ]
     },
@@ -70,7 +70,7 @@
       "steps": [
         {
           "exists": "head link[rel=\"stylesheet\"][href$=\"style.css\"]",
-          "label": "a <link rel=\"stylesheet\" href=\"style.css\"> in the <head>"
+          "label": "a link to style.css in the head"
         },
         {
           "style": "h1",
@@ -83,6 +83,24 @@
           "prop": "font-style",
           "equals": "italic",
           "label": "the job"
+        }
+      ]
+    },
+    {
+      "name": "The text reads well",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "h1, h2",
+          "atLeast": 3,
+          "every": true,
+          "label": "a heading"
+        },
+        {
+          "contrast": "p",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a paragraph"
         }
       ]
     },
@@ -123,15 +141,15 @@
       "steps": [
         {
           "exists": "head script[src$=\"script.js\"][defer]",
-          "label": "a <script src=\"script.js\" defer> in the <head>"
+          "label": "a script.js in the head that waits for the whole page"
         },
         {
           "exists": "p#greeting",
-          "label": "the greeting (<p id=\"greeting\">)"
+          "label": "the greeting"
         },
         {
           "click": "button#salute",
-          "label": "the button (<button id=\"salute\">)"
+          "label": "the button"
         },
         {
           "text": "p#greeting",

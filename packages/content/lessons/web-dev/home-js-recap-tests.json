@@ -7,12 +7,12 @@
         {
           "text": "p#shift",
           "equals": "Shift 1",
-          "label": "the shift paragraph (<p id=\"shift\">)"
+          "label": "the shift paragraph"
         },
         {
           "text": "button#next-shift",
           "equals": "Next shift",
-          "label": "the button (<button id=\"next-shift\">)"
+          "label": "the button"
         }
       ]
     },

@@ -7,7 +7,7 @@
         {
           "text": "button#wake",
           "equals": "Wake the crew",
-          "label": "the button (<button id=\"wake\">)"
+          "label": "the button"
         }
       ]
     },
