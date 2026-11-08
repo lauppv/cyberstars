@@ -25,8 +25,8 @@ import fs from 'fs';
 import path from 'path';
 import { CODE_LANGUAGES, WEB_COURSE_KEYS, isMultiLanguage } from '@cyberstars/shared/constants';
 import { isImagePath } from '@cyberstars/shared/webFiles';
-import { courses, lessons } from '../curriculum.js';
-import { lessonTitlesRo } from '../curriculum-ro.js';
+import { courseParts, courses, lessons } from '../curriculum.js';
+import { lessonTitlesRo, partTitlesRo } from '../curriculum-ro.js';
 import { courseDir, PROJECTS_DIR } from '../paths.js';
 import { PROJECTS } from '@cyberstars/shared/projects';
 import { visualFiller } from '../visuals.js';
@@ -89,6 +89,19 @@ const curriculum = [...courses]
           ? { hasSolution: true }
           : {}),
       })),
+    // A long course's parts, each with its Romanian name beside the English one
+    ...(courseParts[course.key]
+      ? {
+          parts: courseParts[course.key].map((part) => ({
+            key: part.key,
+            title: part.title,
+            ...(partTitlesRo[course.key]?.[part.key]
+              ? { titleRo: partTitlesRo[course.key][part.key] }
+              : {}),
+            lessons: part.lessons,
+          })),
+        }
+      : {}),
   }));
 
 fs.mkdirSync(PUBLIC_DIR, { recursive: true });

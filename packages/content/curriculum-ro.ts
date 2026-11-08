@@ -339,3 +339,7 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'first-page': 'Prima ta pagină web',
   },
 };
+
+// The names of a course's parts in Romanian, by course and part key, the same
+// way: every part has one (curriculum-ro.test.ts).
+export const partTitlesRo: Record<string, Record<string, string>> = {};
