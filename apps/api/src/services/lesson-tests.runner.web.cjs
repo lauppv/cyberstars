@@ -137,9 +137,27 @@ async function observe(page, step, seen) {
   if ('logged' in step) return { logs: [...seen.logs] };
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };
+  if ('outline' in step) {
+    const headings = await page.evaluate(() =>
+      [...document.querySelectorAll('h1, h2, h3, h4, h5, h6')].map((h) => ({
+        level: Number(h.tagName[1]),
+        text: (h.innerText ?? h.textContent ?? '').replace(/\s+/g, ' ').trim(),
+      })),
+    );
+    return { headings };
+  }
 
   const selector =
-    step.exists ?? step.count ?? step.text ?? step.attr ?? step.style ?? step.layout ?? step.size;
+    step.exists ??
+    step.count ??
+    step.text ??
+    step.attr ??
+    step.style ??
+    step.contrast ??
+    step.differs ??
+    step.layout ??
+    step.centered ??
+    step.size;
   const elements = page.locator(`css=${selector}`);
   const count = await elements.count();
   if ('exists' in step || 'count' in step || count === 0) return { count };
@@ -166,6 +184,40 @@ async function observe(page, step, seen) {
     );
     return { count, values };
   }
+  if ('contrast' in step) {
+    const ratios = await elements.evaluateAll(contrastRatios, step.every ? MAX_ELEMENTS : 1);
+    return { count, ratios };
+  }
+  // Each element's values of the props, then each of the others'
+  if ('differs' in step) {
+    const read = (els, [props, max]) =>
+      els.slice(0, max).map((el) => {
+        const style = getComputedStyle(el);
+        return props.map((prop) => style.getPropertyValue(prop).trim());
+      });
+    const rows = await elements.evaluateAll(read, [step.props, MAX_ELEMENTS]);
+    const others = await page
+      .locator(`css=${step.from}`)
+      .evaluateAll(read, [step.props, MAX_ELEMENTS]);
+    return { count, rows, others };
+  }
+  // The element's box, then its parent's content box (inside its padding)
+  if ('centered' in step) {
+    const boxes = await elements.first().evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      const parent = el.parentElement ?? document.documentElement;
+      const p = parent.getBoundingClientRect();
+      const s = getComputedStyle(parent);
+      const px = (prop) => parseFloat(s.getPropertyValue(prop)) || 0;
+      const left = px('border-left-width') + px('padding-left');
+      const right = px('border-right-width') + px('padding-right');
+      return [
+        { x: r.x, y: r.y + window.scrollY, width: r.width, height: r.height },
+        { x: p.x + left, y: p.y + window.scrollY, width: p.width - left - right, height: p.height },
+      ];
+    });
+    return { count, boxes };
+  }
   const boxes = await elements.evaluateAll(
     (els, max) =>
       els.slice(0, max).map((el) => {
@@ -175,6 +227,50 @@ async function observe(page, step, seen) {
     'size' in step ? 1 : MAX_ELEMENTS,
   );
   return { count, boxes };
+}
+
+// Run in the page: each element's text color against the colors behind it,
+// as WCAG's contrast ratio. A color the page wrote in any notation (a name,
+// hsl(), oklch()) is read back as sRGB through a canvas; the backgrounds of
+// the element and its ancestors are laid over the white canvas from the root
+// down, and the text over them, so a see-through color counts as it shows.
+function contrastRatios(els, max) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1;
+  canvas.height = 1;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const rgba = (color) => {
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillStyle = '#000';
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+    return { r, g, b, a: a / 255 };
+  };
+  const over = (top, under) => ({
+    r: top.r * top.a + under.r * (1 - top.a),
+    g: top.g * top.a + under.g * (1 - top.a),
+    b: top.b * top.a + under.b * (1 - top.a),
+    a: 1,
+  });
+  const luminance = ({ r, g, b }) => {
+    const lin = (c) => {
+      const v = c / 255;
+      return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+    };
+    return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  };
+  return els.slice(0, max).map((el) => {
+    const layers = [];
+    for (let node = el; node; node = node.parentElement) {
+      layers.push(rgba(getComputedStyle(node).backgroundColor));
+    }
+    let background = { r: 255, g: 255, b: 255, a: 1 };
+    for (const layer of layers.reverse()) background = over(layer, background);
+    const text = over(rgba(getComputedStyle(el).color), background);
+    const [light, dark] = [luminance(text), luminance(background)].sort((x, y) => y - x);
+    return Math.round(((light + 0.05) / (dark + 0.05)) * 100) / 100;
+  });
 }
 
 // An action, and the page it may lead to: a link, a form or a script that

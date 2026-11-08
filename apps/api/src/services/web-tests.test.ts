@@ -214,6 +214,142 @@ describe('judgeStep', () => {
     });
   });
 
+  it('passes a style that is anything but a value, or a length within bounds', () => {
+    const not = { style: '.card', prop: 'border-top-style', not: 'none', label: 'a card' } as const;
+    expect(judge(not, { count: 1, values: ['dashed'] })).toBeNull();
+    expect(judge(not, { count: 1, values: ['none'] })).toEqual({
+      kind: 'style',
+      label: 'a card',
+      detail: 'border-top-style',
+      expected: 'none',
+      compare: 'not',
+      found: 'none',
+    });
+    const room = {
+      style: '.card',
+      prop: 'padding-top',
+      atLeast: 8,
+      atMost: 40,
+      every: true,
+      label: 'a card',
+    } as const;
+    expect(judge(room, { count: 2, values: ['8px', '12.5px'] })).toBeNull();
+    expect(judge(room, { count: 2, values: ['12px', '4px'] })).toMatchObject({
+      compare: 'atLeast',
+      expected: '8',
+      found: '4px',
+    });
+    expect(judge(room, { count: 1, values: ['64px'] })).toMatchObject({ compare: 'atMost' });
+    // A value that isn't a length in px misses any bound
+    expect(judge(room, { count: 1, values: ['auto'] })).toMatchObject({ compare: 'atLeast' });
+  });
+
+  it('compares each contrast ratio with the least one', () => {
+    const step = { contrast: 'p', atLeast: 4.5, every: true, label: 'a paragraph' } as const;
+    expect(judge(step, { count: 2, ratios: [12.1, 4.5] })).toBeNull();
+    expect(judge(step, { count: 2, ratios: [12.1, 2.38] })).toEqual({
+      kind: 'contrast',
+      label: 'a paragraph',
+      expected: '4.5',
+      found: '2.38',
+    });
+  });
+
+  it('passes elements that differ from the others in at least one property', () => {
+    const step = {
+      differs: '.warning',
+      from: 'p:not(.warning)',
+      props: ['color', 'font-weight'],
+      fromLabel: 'the other paragraphs',
+      label: 'the warnings',
+    } as const;
+    const others = [
+      ['white', '400'],
+      ['grey', '400'],
+    ];
+    expect(
+      judge(step, {
+        count: 2,
+        rows: [
+          ['red', '400'],
+          ['white', '700'],
+        ],
+        others,
+      }),
+    ).toBeNull();
+    expect(
+      judge(step, {
+        count: 2,
+        rows: [
+          ['red', '400'],
+          ['grey', '400'],
+        ],
+        others,
+      }),
+    ).toEqual({
+      kind: 'differs',
+      label: 'the warnings',
+      other: 'the other paragraphs',
+      detail: 'color, font-weight',
+    });
+    // With nothing to differ from, they differ
+    expect(judge(step, { count: 1, rows: [['white', '400']], others: [] })).toBeNull();
+  });
+
+  it('asks for room between the elements along their row or column', () => {
+    const step = { layout: '.card', arrange: 'column', gap: 12, label: 'the cards' } as const;
+    const column = (gap: number) => ({
+      count: 3,
+      boxes: [
+        { x: 0, y: 0, width: 100, height: 50 },
+        { x: 0, y: 66, width: 100, height: 50 },
+        { x: 0, y: 116 + gap, width: 100, height: 50 },
+      ],
+    });
+    expect(judge(step, column(12))).toBeNull();
+    expect(judge(step, column(0))).toEqual({
+      kind: 'gap',
+      label: 'the cards',
+      expected: '12',
+      found: '0',
+      width: 1280,
+    });
+    expect(judge({ ...step, arrange: 'row' }, column(12))).toMatchObject({ kind: 'layout' });
+  });
+
+  it('tells an element centered in its parent from one off center or as wide', () => {
+    const step = { centered: 'main', label: 'the column' } as const;
+    const parent = { x: 8, y: 0, width: 1264, height: 900 };
+    const at = (x: number, width: number) => ({
+      count: 1,
+      boxes: [{ x, y: 0, width, height: 900 }, parent],
+    });
+    expect(judge(step, at(160, 960))).toBeNull();
+    expect(judge(step, at(8, 960))).toEqual({
+      kind: 'centered',
+      label: 'the column',
+      found: '0 304',
+      width: 1280,
+    });
+    expect(judge(step, at(8, 1264))).toMatchObject({ kind: 'centered', detail: 'full' });
+  });
+
+  it('wants one h1 and no heading level skipped', () => {
+    const h = (...levels: number[]) => ({
+      headings: levels.map((level, i) => ({ level, text: `Heading ${i}` })),
+    });
+    expect(judge({ outline: true }, h(1, 2, 3, 3, 2, 3))).toBeNull();
+    expect(judge({ outline: true }, h(1, 2, 4))).toEqual({
+      kind: 'outline',
+      detail: 'skip',
+      expected: 'h2',
+      other: 'h4',
+      found: 'Heading 2',
+    });
+    expect(judge({ outline: true }, h(2, 3))).toMatchObject({ detail: 'h1', found: '0' });
+    expect(judge({ outline: true }, h(1, 2, 1))).toMatchObject({ detail: 'h1', found: '2' });
+  });
+
   it('reads the console and the page shown', () => {
     expect(judge({ logged: 'ready' }, { logs: ['start', ' ready '] })).toBeNull();
     expect(judge({ logged: 'ready' }, { logs: ['start'] })).toEqual({

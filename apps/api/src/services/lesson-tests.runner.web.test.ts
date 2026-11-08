@@ -260,6 +260,95 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
   });
 
+  it('reads the effect of a style: room, contrast, a look of its own, the middle, the outline', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        body { margin: 0; background: #0b1d3a; color: #f0f4ff; }
+        main { max-width: 600px; margin: 0 auto; padding: 0 16px; }
+        .off { width: 200px; margin-left: 10px; }
+        .card { padding: 1rem; margin-bottom: 12px; border: 2px dashed oklch(70% 0.1 250); }
+        .tight { margin-bottom: 0; }
+        .warning { color: hsl(0, 100%, 85%); }
+        .paper { background: white; }
+        .grey { color: #777; }
+        .black { color: black; }
+        .veil { background: rgba(255, 255, 255, 0.5); }
+      </style></head><body><main>
+        <h1>Station</h1><h2>Crew</h2><h4>Night</h4>
+        <div class="card">A</div><div class="card">B</div><div class="card tight">C</div><div class="card">D</div>
+        <p class="warning">Hatch 3</p><p>Plain</p>
+        <div class="paper"><p class="grey">Faint</p><p class="black">Ink</p></div>
+        <div class="veil"><p class="on-veil">Veiled</p></div>
+        <div class="off">Off</div>
+      </main></body></html>`,
+    };
+    const one = (steps: WebTestCase['steps']): WebTestCase => ({ name: 'x', visible: true, steps });
+    const card = { label: 'a card' };
+    const [
+      room,
+      tooMuch,
+      border,
+      readable,
+      faint,
+      ink,
+      veiled,
+      differs,
+      alike,
+      gapOk,
+      gapLow,
+      centered,
+      off,
+      outline,
+    ] = verdicts(files, [
+      one([{ style: '.card', prop: 'padding-left', atLeast: 12, every: true, ...card }]),
+      one([{ style: '.card', prop: 'padding-left', atMost: 8, ...card }]),
+      one([{ style: '.card', prop: 'border-top-style', not: 'none', ...card }]),
+      one([{ contrast: 'main > h1, .warning', atLeast: 4.5, every: true, label: 'the text' }]),
+      one([{ contrast: '.grey', atLeast: 4.5, label: 'the faint line' }]),
+      one([{ contrast: '.black', atLeast: 21, label: 'the ink' }]),
+      one([{ contrast: '.on-veil', atLeast: 4.5, label: 'the veiled line' }]),
+      one([
+        {
+          differs: '.warning',
+          from: 'main > p:not(.warning)',
+          props: ['color', 'font-weight'],
+          fromLabel: 'the other paragraphs',
+          label: 'the warning',
+        },
+      ]),
+      one([
+        {
+          differs: '.warning',
+          from: 'main > p',
+          props: ['color'],
+          fromLabel: 'every paragraph',
+          label: 'the warning',
+        },
+      ]),
+      one([{ layout: 'main > div.card:nth-of-type(-n+2)', arrange: 'column', gap: 12, ...card }]),
+      one([{ layout: '.card', arrange: 'column', gap: 12, label: 'the cards' }]),
+      one([{ centered: 'main', label: 'the column' }]),
+      one([{ centered: '.off', label: 'the box' }]),
+      one([{ outline: true }]),
+    ]);
+    expect(room.passed).toBe(true);
+    expect(tooMuch.web).toMatchObject({ kind: 'style', compare: 'atMost', found: '16px' });
+    expect(border.passed).toBe(true);
+    expect(readable.passed).toBe(true);
+    // #777 on white is 4.48:1, just under
+    expect(faint.web).toMatchObject({ kind: 'contrast', found: '4.48' });
+    expect(ink.passed).toBe(true);
+    // White over half-white over the dark page: light on light
+    expect(veiled.web).toMatchObject({ kind: 'contrast' });
+    expect(differs.passed).toBe(true);
+    expect(alike.web).toMatchObject({ kind: 'differs' });
+    expect(gapOk.passed).toBe(true);
+    expect(gapLow.web).toMatchObject({ kind: 'gap', found: '0' });
+    expect(centered.passed).toBe(true);
+    expect(off.web).toMatchObject({ kind: 'centered', found: expect.stringMatching(/^10 /) });
+    expect(outline.web).toMatchObject({ kind: 'outline', other: 'h4', found: 'Night' });
+  });
+
   it("reads a :hover rule after hover, and a pseudo-element's content and look", () => {
     const files = {
       'index.html': `<!DOCTYPE html><html><head><style>

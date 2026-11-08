@@ -378,9 +378,13 @@ const WEB_CHECKS = [
   'text',
   'attr',
   'style',
+  'contrast',
+  'differs',
   'layout',
+  'centered',
   'size',
   'fits',
+  'outline',
   'logged',
   'noErrors',
   'at',
@@ -398,10 +402,14 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   count: ['equals', 'atLeast', 'label'],
   text: ['equals', 'contains', 'nonEmpty', 'label'],
   attr: ['name', 'equals', 'ignoreCase', 'label'],
-  style: ['prop', 'equals', 'pseudo', 'every', 'label'],
-  layout: ['arrange', 'label'],
+  style: ['prop', 'equals', 'not', 'atLeast', 'atMost', 'pseudo', 'every', 'label'],
+  contrast: ['atLeast', 'every', 'label'],
+  differs: ['from', 'props', 'fromLabel', 'label'],
+  layout: ['arrange', 'gap', 'label'],
+  centered: ['label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
+  outline: [],
   logged: [],
   noErrors: [],
   at: [],
@@ -416,7 +424,10 @@ const NEEDS_LABEL = new Set([
   'text',
   'attr',
   'style',
+  'contrast',
+  'differs',
   'layout',
+  'centered',
   'size',
 ]);
 const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);
@@ -435,6 +446,7 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   const value = step[own];
   switch (own) {
     case 'fits':
+    case 'outline':
     case 'noErrors':
       return value === true ? null : `${own} must be true`;
     case 'wait':
@@ -462,8 +474,31 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
     if (ways.length !== 1) return 'a text step needs exactly one of equals, contains, nonEmpty';
   }
   if (own === 'attr' && !isText(step.name)) return 'an attr step without the attribute name';
-  if (own === 'style' && (!isText(step.prop) || typeof step.equals !== 'string')) {
-    return 'a style step needs prop and equals';
+  if (own === 'style') {
+    if (!isText(step.prop)) return 'a style step needs prop';
+    const bounds = ['atLeast', 'atMost'].filter((k) => k in step);
+    const ways = ['equals', 'not'].filter((k) => k in step).length + (bounds.length ? 1 : 0);
+    if (ways !== 1) return 'a style step needs exactly one of equals, not, or atLeast/atMost';
+    if ('equals' in step && typeof step.equals !== 'string') return "a style step's equals is text";
+    if ('not' in step && typeof step.not !== 'string') return "a style step's not is text";
+    if (bounds.some((k) => typeof step[k] !== 'number'))
+      return "a style step's bounds are px numbers";
+  }
+  if (own === 'contrast') {
+    const least = step.atLeast;
+    if (typeof least !== 'number' || least < 1 || least > 21) {
+      return "a contrast step's atLeast is a ratio from 1 to 21";
+    }
+    if (step.every !== undefined && step.every !== true) {
+      return "a contrast step's every is true or left out";
+    }
+  }
+  if (own === 'differs') {
+    if (!isText(step.from)) return 'a differs step needs from, a selector';
+    if (!isText(step.fromLabel)) return 'a differs step needs fromLabel';
+    if (!Array.isArray(step.props) || step.props.length === 0 || !step.props.every(isText)) {
+      return 'a differs step needs props, a list of style properties';
+    }
   }
   if (
     own === 'style' &&
@@ -477,6 +512,13 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   }
   if (own === 'layout' && step.arrange !== 'row' && step.arrange !== 'column') {
     return 'a layout step arranges in a row or a column';
+  }
+  if (
+    own === 'layout' &&
+    step.gap !== undefined &&
+    !(typeof step.gap === 'number' && step.gap > 0)
+  ) {
+    return "a layout step's gap is a number of px above 0";
   }
   if (
     own === 'size' &&
