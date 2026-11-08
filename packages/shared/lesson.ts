@@ -35,6 +35,15 @@ export interface Course {
   parts?: CoursePart[];
 }
 
+// What a web lesson starts from (CYB-119, GET /api/lessons/:course/:slug/start):
+// `course` the course's version of the site so far with the lesson's new
+// files, `passed` the student's own newest passing site with them, or null
+// with none (a guest, a skipped lesson, the course's first lesson).
+export interface WebLessonStart {
+  course: string;
+  passed: string | null;
+}
+
 // The lesson an editor Run belongs to, sent with the code so that a challenge
 // with a hidden part (<slug>-harness.md) runs the student's function inside it.
 export interface RunLesson {

@@ -11,6 +11,7 @@ import { securityHeaders } from './middleware/securityHeaders.js';
 import { serveStatic } from './middleware/static.js';
 import { auth } from './services/auth.js';
 import progressRoutes from './routes/progress.routes.js';
+import lessonsRoutes from './routes/lessons.routes.js';
 import forumRoutes from './routes/forum.routes.js';
 import terminalRoutes from './routes/terminal.routes.js';
 import supportRoutes from './routes/support.routes.js';
@@ -64,6 +65,7 @@ app.use((req, res, next) => {
 
 app.use('/auth', auth.router);
 app.use('/api/progress', progressRoutes);
+app.use('/api/lessons', lessonsRoutes);
 app.use('/api/forum', forumRoutes);
 app.use('/api/terminal', terminalRoutes);
 app.use('/api/support', supportRoutes);
