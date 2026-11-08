@@ -1,13 +1,21 @@
 import type { ComponentType } from 'react';
-import { AlgorithmsPicture, CoursesPicture, LinuxPicture, TutorPicture } from './FeaturePictures';
+import {
+  AlgorithmsPicture,
+  CoursesPicture,
+  LinuxPicture,
+  TutorPicture,
+  WebPicture,
+} from './FeaturePictures';
 
 // The parts of CyberStars the landing page shows under What's inside, in order,
-// each with its picture. Messages, connections and the leaderboard stay off it.
+// each with its picture. Messages, connections and the leaderboard stay off it;
+// Web Development comes last, marked Coming soon until it launches.
 export const FEATURES: [string, ComponentType][] = [
   ['courses', CoursesPicture],
   ['algorithms', AlgorithmsPicture],
   ['linux', LinuxPicture],
   ['tutor', TutorPicture],
+  ['web', WebPicture],
 ];
 
 // The id a row is scrolled to by, from the chapters at the side of the page

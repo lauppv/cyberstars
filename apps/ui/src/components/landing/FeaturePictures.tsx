@@ -201,3 +201,81 @@ export function TutorPicture() {
     </Box>
   );
 }
+
+// A tag in an HTML line, with its attributes, coloured as the editor's oneDark
+// colours one
+const HTML_TAG = /(<[!/]?[A-Za-z][^>]*>)/;
+
+function HtmlLine({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(HTML_TAG).map((part, i) =>
+        HTML_TAG.test(part) ? (
+          <span key={i} className="text-[#e06c75]">
+            {part}
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
+const panel = 'min-w-0 rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden';
+const panelHead =
+  'flex items-center h-7 border-b border-[var(--border)] font-mono text-[11px] text-[var(--text3)]';
+
+// A web lesson's editor: the site's files as tabs, index.html open with a
+// heading and a paragraph in the page's language, and next to it the page
+// they draw, white and in the browser's own type as a page without CSS is.
+// Side by side where the picture has room, one under the other on a phone.
+export function WebPicture() {
+  const { t, i18n } = useTranslation();
+  const heading = t('landing.features.web.heading');
+  const paragraph = t('landing.features.web.paragraph');
+  const lines = [
+    '<!DOCTYPE html>',
+    `<html lang="${i18n.language === 'ro' ? 'ro' : 'en'}">`,
+    '  <body>',
+    `    <h1>${heading}</h1>`,
+    `    <p>${paragraph}</p>`,
+    '  </body>',
+    '</html>',
+  ];
+  return (
+    <Box label={t('landing.features.web.picture')} height="min-h-[220px]">
+      <div className="@container">
+        <div className="flex flex-col @sm:flex-row gap-3 @sm:h-[188px]">
+          <div className={`${panel} @sm:flex-[1.2] flex flex-col`}>
+            <div className={panelHead}>
+              <span className="px-2.5 h-full flex items-center border-r border-[var(--border)] bg-[var(--surface)] text-[var(--text)]">
+                index.html
+              </span>
+              <span className="px-2.5">style.css</span>
+            </div>
+            <pre className="m-0 py-2.5 flex-1 overflow-hidden font-mono text-[11px] leading-[1.7] text-[#abb2bf] bg-[rgba(13,17,23,0.3)]">
+              {lines.map((line, i) => (
+                <div key={i} className="flex">
+                  <span className="w-7 pr-2 text-right text-[var(--text3)] select-none flex-shrink-0">
+                    {i + 1}
+                  </span>
+                  <span className="whitespace-pre">
+                    <HtmlLine text={line} />
+                  </span>
+                </div>
+              ))}
+            </pre>
+          </div>
+          <div className={`${panel} @sm:flex-1 flex flex-col`}>
+            <div className={`${panelHead} px-2.5`}>index.html</div>
+            <div className="flex-1 p-3 bg-white text-black font-serif">
+              <div className="text-[20px] font-bold leading-tight mb-2">{heading}</div>
+              <div className="text-[12px] leading-snug">{paragraph}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Box>
+  );
+}

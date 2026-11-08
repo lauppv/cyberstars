@@ -386,6 +386,13 @@
         "title": "Un tutore AI",
         "text": "Îți arată ideea și te lasă să găsești singur rezolvarea, fără să-ți dea răspunsul.",
         "picture": "Chatul tutorelui înainte să începi o conversație: fața lui într-un arc care se rotește, Cu ce te ajut? scris pe loc și trei întrebări cu care să începi."
+      },
+      "web": {
+        "title": "Dezvoltare web",
+        "text": "Îți construiești propriul site, pagină cu pagină, în HTML, CSS și JavaScript, și îl vezi cum se schimbă pe măsură ce scrii.",
+        "heading": "Bine ai venit la bord",
+        "paragraph": "Stația înconjoară Pământul o dată la 92 de minute.",
+        "picture": "Editorul lecțiilor web: index.html cu un titlu și un paragraf, iar lângă el pagina pe care o desenează, Bine ai venit la bord."
       }
     },
     "free": {

@@ -40,6 +40,7 @@ describe('FeaturesSection', () => {
       'Algorithm challenges',
       'Linux terminal',
       'An AI tutor',
+      'Web Development',
     ]);
     for (const r of items) {
       expect(within(r).getAllByRole('img')).toHaveLength(1);
@@ -53,6 +54,7 @@ describe('FeaturesSection', () => {
     const pinned = Array.from(document.querySelectorAll('[data-picture]'));
     expect(pinned.map((p) => p.getAttribute('aria-hidden'))).toEqual([
       'false',
+      'true',
       'true',
       'true',
       'true',
@@ -105,6 +107,17 @@ describe('FeaturesSection', () => {
     expect(picture).toHaveTextContent('Give me a nudge');
     expect(within(picture).queryByRole('button')).toBeNull();
     expect(within(picture).queryByRole('heading')).toBeNull();
+  });
+
+  it('marks Web Development Coming soon, its picture a page and the site it draws', () => {
+    renderSection();
+    const row = parts().getByRole('heading', { name: 'Web Development' }).closest('li')!;
+    expect(within(row).getByText('Coming soon')).toBeDefined();
+    const picture = within(row).getByRole('img', { name: /The web lesson's editor/ });
+    expect(picture).toHaveTextContent('index.html');
+    expect(picture).toHaveTextContent('<html lang="en">');
+    expect(picture).toHaveTextContent('<h1>Welcome aboard</h1>');
+    expect(picture).toHaveTextContent('</html>index.htmlWelcome aboardThe station orbits');
   });
 
   it('presents none of the preview features', () => {

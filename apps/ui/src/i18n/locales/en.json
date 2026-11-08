@@ -354,6 +354,13 @@
         "title": "An AI tutor",
         "text": "It points you at the idea and lets you find the fix yourself, without handing you the answer.",
         "picture": "The tutor's chat before a conversation starts: its face circled by a turning arc, How can I help? typed in, and three questions to start with."
+      },
+      "web": {
+        "title": "Web Development",
+        "text": "Build a website of your own, page by page, in HTML, CSS and JavaScript, and watch it change as you type.",
+        "heading": "Welcome aboard",
+        "paragraph": "The station orbits the Earth every 92 minutes.",
+        "picture": "The web lesson's editor: index.html with a heading and a paragraph, and the page it draws next to it, Welcome aboard."
       }
     },
     "free": {
