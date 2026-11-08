@@ -35,17 +35,17 @@
         {
           "text": "h2",
           "equals": "Docking Bays",
-          "label": "a section heading (<h2>)"
+          "label": "a section heading"
         },
         {
           "text": "table#bays > caption",
           "equals": "Docking bays",
-          "label": "the caption of a table with id=\"bays\""
+          "label": "the title a screen reader reads for the table with id=\"bays\""
         },
         {
           "count": "#bays > thead > tr > th[scope=\"col\"]",
           "equals": 3,
-          "label": "column headers in its <thead>"
+          "label": "column headers in the head of the table"
         },
         {
           "text": "#bays thead th:nth-child(1)",
@@ -60,7 +60,7 @@
         {
           "count": "#bays > tbody > tr",
           "atLeast": 3,
-          "label": "rows in its <tbody>"
+          "label": "rows in the body of the table"
         }
       ]
     },
@@ -71,7 +71,7 @@
       "steps": [
         {
           "exists": "#bays tbody td[rowspan=\"2\"]",
-          "label": "a bay cell two rows tall (rowspan=\"2\")"
+          "label": "a bay cell two rows tall"
         },
         {
           "exists": "#bays tbody tr:has(> td[rowspan=\"2\"]) + tr:not(:has(> td:nth-child(3)))",

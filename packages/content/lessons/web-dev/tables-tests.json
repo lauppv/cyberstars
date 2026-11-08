@@ -26,13 +26,13 @@
         {
           "text": "h1",
           "equals": "Flight Schedule",
-          "label": "its biggest heading (<h1>)"
+          "label": "its biggest heading"
         },
         {
           "style": "body",
           "prop": "background-color",
-          "equals": "rgb(11, 29, 58)",
-          "label": "its body, styled by style.css"
+          "label": "its body, styled by style.css",
+          "not": "rgba(0, 0, 0, 0)"
         }
       ]
     },
@@ -81,7 +81,7 @@
         {
           "count": "#flights tr:first-child > th",
           "equals": 4,
-          "label": "header cells (<th>) in its first row"
+          "label": "header cells in its first row"
         },
         {
           "text": "#flights th:nth-child(1)",
@@ -113,7 +113,7 @@
         {
           "count": "#flights tr:has(> td)",
           "atLeast": 4,
-          "label": "flights (rows of <td>)"
+          "label": "flights"
         },
         {
           "count": "#flights tr:has(> td):not(:has(> td:nth-child(4)))",

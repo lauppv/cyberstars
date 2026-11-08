@@ -1,4 +1,4 @@
-Your table works. A few more elements make it clearer, to the visitor and to a screen reader, and let one cell cover several.
+Your table works. A few more elements make it clearer, for the visitor and for a screen reader, and let one cell stretch over several.
 
 ## Head, body and foot
 
@@ -25,26 +25,26 @@ Your table works. A few more elements make it clearer, to the visitor and to a s
 </table>
 ```
 
-- `caption` is the table's title, right after `<table>`. A screen reader announces it first, so the visitor knows what the table is before the cells start.
-- `thead` holds the header rows, `tbody` the data, `tfoot` the summary or notes at the end. They group rows; CSS and JavaScript can pick each group.
-- `scope="col"` on a header says it names its **column**; `scope="row"` names a row. It tells a screen reader which cells a header belongs to.
+- `caption` is the table's title, right after `<table>`. A screen reader reads it first, so the visitor knows what the table is about before the cells start.
+- `thead` holds the header rows, `tbody` the data, and `tfoot` the summary or notes at the end. They group rows, and CSS and JavaScript can pick each group.
+- `scope="col"` on a header says it names its **column**, and `scope="row"` says it names a row. It tells a screen reader which cells belong to a header.
 
 ## Spanning cells
 
 A cell can stretch over several:
 
 - `colspan="2"`: as wide as two columns;
-- `rowspan="2"`: as tall as two rows. The row below then has one cell fewer, since that place is taken.
+- `rowspan="2"`: as tall as two rows. The row below then has one cell fewer, because that place is already taken.
 
-Count carefully: in every row, each cell counts as many columns as its `colspan`, and the totals must match.
+Count carefully: in every row, each cell counts for as many columns as its `colspan`, and every row must add up to the same total.
 
 ---
 
 ## Mission: A Proper Board
 
-Rework your flights table:
+A visitor who can't see the screen will hear your departures table read out loud. Make it easy to follow:
 
-- a caption: **Departures today**;
-- the header row in a `thead`, each of its headers naming its column with `scope`;
-- the flights in a `tbody`;
-- a `tfoot` with one row of a single cell, as wide as all four columns, that says **All times in station time**.
+- Before any cell, they should hear what the table is: **Departures today**.
+- The row that names the columns is set apart from the flights, and each of its cells says that it names its column.
+- The flights are grouped together as the table's data.
+- At the very bottom, a note that stretches across the whole width of the table, in one cell: **All times in station time**.
