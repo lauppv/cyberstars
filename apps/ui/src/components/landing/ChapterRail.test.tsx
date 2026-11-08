@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { CHAPTERS, currentChapter } from './chapters';
 import { ChapterRail } from './ChapterRail';
+import { PICTURE_CHANGED } from './PinnedStory';
 
 // Every chapter on the page, each 1000px below the one before
 function chapters(scrolled: number) {
@@ -46,6 +47,13 @@ describe('currentChapter', () => {
     expect(currentChapter(ids, 1000)).toBe(ids[2]);
   });
 
+  it('names a part of What\'s inside only once its picture is on screen', () => {
+    scrollTo(5700);
+    expect(currentChapter(ids, 1000)).toBe('feature-web');
+    document.getElementById('feature-web')!.setAttribute('data-waiting', '');
+    expect(currentChapter(ids, 1000)).toBe('feature-tutor');
+  });
+
   it('takes the last chapter at the very bottom, which never reaches that line', () => {
     const height = CHAPTERS.length * 1000 + 2000;
     scrollTo(height - 1000, height);
@@ -69,6 +77,18 @@ describe('ChapterRail', () => {
     expect(container.querySelector('[aria-current]')).toHaveTextContent(
       'Watch an algorithm, step by step',
     );
+  });
+
+  it('looks again when the picture of What\'s inside changes, without a scroll', () => {
+    scrollTo(5700);
+    document.getElementById('feature-web')!.setAttribute('data-waiting', '');
+    const { container } = render(<ChapterRail />);
+    expect(container.querySelector('[aria-current]')).toHaveTextContent('An AI tutor');
+    document.getElementById('feature-web')!.removeAttribute('data-waiting');
+    act(() => {
+      window.dispatchEvent(new Event(PICTURE_CHANGED));
+    });
+    expect(container.querySelector('[aria-current]')).toHaveTextContent('Web Development');
   });
 
   it('goes to a chapter on a click', () => {

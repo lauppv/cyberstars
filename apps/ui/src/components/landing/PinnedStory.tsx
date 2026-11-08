@@ -40,10 +40,16 @@ function prefersReducedMotion(): boolean {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 }
 
+// Sent when another part's picture comes up, so the chapters at the side of
+// the page can look again
+export const PICTURE_CHANGED = 'story-picture-changed';
+
 function Pinned({ parts }: { parts: StoryPart[] }) {
   const [active, setActive] = useState(0);
   const [still, setStill] = useState(false);
   const blocks = useRef<(HTMLDivElement | null)[]>([]);
+  const rows = useRef<(HTMLDivElement | null)[]>([]);
+  const shown = useRef(0);
 
   useEffect(() => {
     if (prefersReducedMotion()) {
@@ -54,13 +60,23 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
     const update = () => {
       frame = 0;
       const vh = window.innerHeight;
+      let next = shown.current;
       blocks.current.forEach((el, i) => {
         if (!el) return;
         const r = el.getBoundingClientRect();
         const o = opacityAt((vh - r.top) / (r.height + vh));
         el.style.opacity = String(o);
-        if (o > 0.5) setActive(i);
+        if (o > 0.5) next = i;
       });
+      // A part whose picture hasn't come up yet says so, written here and not
+      // on the next render, so the chapters never name a part before its
+      // picture is the one on screen
+      rows.current.forEach((row, i) => row?.toggleAttribute('data-waiting', i > next));
+      if (next !== shown.current) {
+        shown.current = next;
+        setActive(next);
+        window.dispatchEvent(new Event(PICTURE_CHANGED));
+      }
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -79,7 +95,14 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
     <div className={`flex flex-col gap-12 ${lead}`}>
       {parts.map((part, i) =>
         i % 2 === side ? (
-          <div key={part.key} id={part.id} className="h-screen flex flex-col justify-center">
+          <div
+            key={part.key}
+            id={part.id}
+            ref={(el) => {
+              rows.current[i] = el;
+            }}
+            className="h-screen flex flex-col justify-center"
+          >
             <div
               ref={(el) => {
                 blocks.current[i] = el;
