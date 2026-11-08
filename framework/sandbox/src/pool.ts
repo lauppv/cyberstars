@@ -13,7 +13,7 @@ export interface PoolOptions {
   // idle one
   maxContainers: number;
   // Each container's caps, as Docker takes them; a language may set its own
-  // memory
+  // memory and processes
   memory: string;
   pids: string;
   cpus: string;
@@ -86,7 +86,7 @@ export function createPool(options: PoolOptions) {
         `--label=${options.label}`,
         '--network=none',
         `--memory=${runtime.memory ?? options.memory}`,
-        `--pids-limit=${options.pids}`,
+        `--pids-limit=${runtime.pids ?? options.pids}`,
         `--cpus=${options.cpus}`,
         ...hardeningArgs(options.uid),
         '-w',

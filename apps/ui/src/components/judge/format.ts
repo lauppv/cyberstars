@@ -50,6 +50,8 @@ type Verdict =
   | 'wrongAnswer'
   | 'runtimeError'
   | 'timeLimit'
+  | 'memoryLimit'
+  | 'pageMismatch'
   | 'checksFailed'
   | 'failed';
 
@@ -66,6 +68,8 @@ export function verdictOf(run: {
   const failed = run.failedCase;
   if (failed) {
     if (failed.error === 'timeout') return 'timeLimit';
+    // A web lesson's page, checked in a browser rather than by its output
+    if (failed.web) return failed.web.kind === 'memory' ? 'memoryLimit' : 'pageMismatch';
     if (failed.error) return 'runtimeError';
     return 'wrongAnswer';
   }
@@ -86,7 +90,9 @@ export function timeAgo(iso: string, t: TFunction): string {
 }
 
 // "Test 3", or "Test 3 (hidden)" for a case the student can't see in the lesson.
+// A web lesson's case says what it looks at: "Test 2: The tab is named Station Log".
 export function caseLabel(result: TestCaseResult, t: TFunction): string {
   const note = result.load ? t('tests.loadTest') : result.visible ? null : t('tests.hidden');
-  return `${t('tests.caseN', { n: result.index + 1 })}${note ? ` (${note})` : ''}`;
+  const name = result.name ? `: ${result.name}` : '';
+  return `${t('tests.caseN', { n: result.index + 1 })}${name}${note ? ` (${note})` : ''}`;
 }

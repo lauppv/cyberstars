@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ChevronRight } from 'lucide-react';
+import { Check, ChevronRight } from 'lucide-react';
 import type { TestCaseResult } from '@cyberstars/shared/tests';
 import { CaseInput, Field } from './CaseFields';
 import { caseLabel } from './format';
@@ -47,24 +47,42 @@ export function PassedCases({ cases }: { cases: TestCaseResult[] }) {
     <section>
       <Disclosure title={t('tests.passedCases', { count: passed.length })} strong>
         <ul className="flex flex-col gap-1 list-none m-0 p-0">
-          {passed.map((c) => (
-            <li key={c.index}>
-              <Disclosure title={caseLabel(c, t)}>
-                <div className="flex flex-col gap-3 pb-2">
-                  {c.load && (
-                    <p className="m-0 text-[13px] text-[var(--text3)]">{t('tests.loadTooLarge')}</p>
-                  )}
-                  <CaseInput result={c} />
-                  {c.expected !== undefined && (
-                    <Field label={t('tests.expected')}>{c.expected || '∅'}</Field>
-                  )}
-                  {c.actual !== undefined && (
-                    <Field label={t('tests.actual')}>{c.actual || '∅'}</Field>
-                  )}
-                </div>
-              </Disclosure>
-            </li>
-          ))}
+          {passed.map((c) =>
+            // A web lesson's case has no input or output to open on, only what it looked at
+            c.name ? (
+              <li
+                key={c.index}
+                className="flex items-center gap-1.5 py-1 text-[13px] text-[var(--text2)]"
+              >
+                <Check
+                  size={16}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                  className="shrink-0 text-[var(--success)]"
+                />
+                {caseLabel(c, t)}
+              </li>
+            ) : (
+              <li key={c.index}>
+                <Disclosure title={caseLabel(c, t)}>
+                  <div className="flex flex-col gap-3 pb-2">
+                    {c.load && (
+                      <p className="m-0 text-[13px] text-[var(--text3)]">
+                        {t('tests.loadTooLarge')}
+                      </p>
+                    )}
+                    <CaseInput result={c} />
+                    {c.expected !== undefined && (
+                      <Field label={t('tests.expected')}>{c.expected || '∅'}</Field>
+                    )}
+                    {c.actual !== undefined && (
+                      <Field label={t('tests.actual')}>{c.actual || '∅'}</Field>
+                    )}
+                  </div>
+                </Disclosure>
+              </li>
+            ),
+          )}
         </ul>
       </Disclosure>
     </section>

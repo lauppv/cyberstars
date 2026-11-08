@@ -1004,6 +1004,45 @@ describe('askTutor: a lesson chat', () => {
     expect(work).toContain('```\nlog: hello\n```');
   });
 
+  it("tells a web lesson's failed test by its name and in words, as the student read it", async () => {
+    const site = '```html index.html\n<title>Cargo Bay</title>\n```';
+    const { turn } = await lastTurn({
+      ...ask,
+      page: '/lesson/web-dev/first-page',
+      lesson: {
+        courseKey: 'web-dev',
+        lessonSlug: 'first-page',
+        code: site,
+        runOutput: '',
+        verdict: {
+          ...failedVerdict,
+          code: site,
+          language: 'web-dev' as never,
+          failedCase: {
+            index: 1,
+            name: 'The tab is named Station Log',
+            visible: false,
+            passed: false,
+            web: {
+              kind: 'text',
+              label: 'a <title>',
+              detail: 'equals',
+              found: 'Cargo Bay',
+              hidden: true,
+            },
+          },
+        },
+      },
+    });
+    const work = turn.parts[0].text as string;
+    expect(work).toContain('Test 2: The tab is named Station Log (hidden) failed.');
+    expect(work).toContain(
+      'What it says:\n```\nA <title>: not what the mission asks. The page has “Cargo Bay”.\n```',
+    );
+    // A hidden test gives the tutor nothing more than the student saw
+    expect(work).not.toContain('Station Log”');
+  });
+
   it('refuses a lesson it cannot read before calling the model', async () => {
     tools.lessonStatement.mockReturnValue(null);
 

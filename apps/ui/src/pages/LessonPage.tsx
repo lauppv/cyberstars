@@ -39,6 +39,7 @@ import { PanelTabs, type PanelTab } from '../components/judge/PanelTabs';
 import { ResultPanel } from '../components/judge/ResultPanel';
 import { SubmissionsPanel } from '../components/judge/SubmissionsPanel';
 import { SolutionModal } from '../components/code/SolutionModal';
+import { RunTestsButton } from '../components/judge/RunTestsButton';
 import { SolutionConfirmModal } from '../components/code/SolutionConfirmModal';
 import { ShareToForumModal } from '../components/forum/ShareToForumModal';
 import { SendFeedback } from '../components/support/SendFeedback';
@@ -174,6 +175,8 @@ export function LessonPage() {
   const [toastData, setToastData] = useState({ title: '', tutor: false });
   const [solution, setSolution] = useState<string | null>(null);
   const [confirmSolution, setConfirmSolution] = useState(false);
+  // Counts the verdicts come back, so a web lesson's workspace shows its lesson side
+  const [verdictShown, setVerdictShown] = useState(0);
   const [showShareModal, setShowShareModal] = useState(false);
   const [optimisticCompleted, setOptimisticCompleted] = useState<boolean | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -521,9 +524,11 @@ export function LessonPage() {
       setTestResults(results);
       setFailedRuns((n) => (results.status === 'passed' ? 0 : n + 1));
       if (results.submission) addSubmission(results.submission);
-      // The verdict opens in the lesson panel, which a phone has to bring up.
+      // The verdict opens in the lesson panel, which a phone has to bring up
+      // (a web lesson's workspace brings up its lesson side).
       setLeftView('result');
       setActiveTab('lesson');
+      setVerdictShown((n) => n + 1);
       // The server marks the lesson complete on a passing verdict (see
       // tests.controller). Reflect it optimistically, then refresh from the DB.
       if (results.status === 'passed' && isLoggedIn) {
@@ -784,6 +789,7 @@ export function LessonPage() {
             onLoad={submissions.load}
             onRetry={submissions.retry}
             onLoadCode={loadSubmissionCode}
+            web={isWeb}
           />
         </div>
       )}
@@ -1017,6 +1023,13 @@ export function LessonPage() {
                 actions={actions}
                 banner={savedCodeAlert}
                 devMode={devMode}
+                runTests={
+                  hasTests ? (
+                    <RunTestsButton onClick={handleRunTests} isTesting={isTesting} />
+                  ) : undefined
+                }
+                testsError={testsError}
+                verdictShown={verdictShown}
               />
             </Suspense>
           ) : (
@@ -1117,21 +1130,11 @@ export function LessonPage() {
                       >
                         <RunButton onClick={handleRun} isRunning={isRunning} onStop={stopRun} />
                         {hasTests ? (
-                          <button
-                            data-track="run-tests"
+                          <RunTestsButton
                             onClick={handleRunTests}
-                            disabled={isTesting || isRunning}
-                            className="px-4 py-1.5 rounded-[var(--radius-sm)] bg-[var(--accent)] text-white font-semibold text-[13px] flex items-center gap-1.5 hover:brightness-110 disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer"
-                          >
-                            {isTesting ? (
-                              <>
-                                <span className="inline-block w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                {t('tests.running')}
-                              </>
-                            ) : (
-                              <>{t('tests.run')}</>
-                            )}
-                          </button>
+                            isTesting={isTesting}
+                            disabled={isRunning}
+                          />
                         ) : (
                           isMainCourse && (
                             <span title={t('tests.comingSoon')} className="inline-flex">

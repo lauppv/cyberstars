@@ -4,5 +4,7 @@ node_modules
 apps/api/prisma/migrations
 packages/content/lessons/**/*-code.md
 packages/content/algorithms/**/*-code.md
+# A web lesson's variants are written as a student would, not as Prettier would
+packages/content/variants/web-dev
 public/lessons
 public/curriculum.json

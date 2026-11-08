@@ -4,7 +4,7 @@ import { WebSocketServer, type WebSocket } from 'ws';
 import { ipKeyGenerator } from 'express-rate-limit';
 import { config } from '../config/index.js';
 import { programForRun } from './harness.js';
-import { languageOf } from '../runtimes/registry.js';
+import { isEditorLanguage, languageOf } from '../runtimes/registry.js';
 import { sandbox } from './sandbox.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
@@ -148,6 +148,12 @@ export function handleConnection(ws: WebSocket, req: IncomingMessage, userId: nu
       return;
     }
     if (msg.type !== 'run' || typeof msg.code !== 'string' || typeof msg.language !== 'string') {
+      return;
+    }
+    // A web lesson's page shows in its preview: only its judge uses a sandbox
+    if (!isEditorLanguage(languageOf(msg.language))) {
+      ws.send(JSON.stringify({ type: 'stderr', data: 'Language not supported.\n' }));
+      ws.send(JSON.stringify({ type: 'exit', code: 1 }));
       return;
     }
     if (isGuest && guestRunsRemaining(rateKey) <= 0) {

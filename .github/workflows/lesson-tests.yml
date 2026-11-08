@@ -49,9 +49,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node-and-deps
-      - run: docker pull "$IMAGE"
+      # The web judge's image is the app's own, built from the repo
+      - run: if [ -n "$BUILD" ]; then docker build -t "$IMAGE" "$BUILD"; else docker pull "$IMAGE"; fi
         env:
           IMAGE: ${{ matrix.image }}
+          BUILD: ${{ matrix.build }}
       # Unquoted on purpose: one argument per target.
       - run: npm run check:tests -- $TARGETS
         env:

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronLeft, CircleCheck, CircleX } from 'lucide-react';
 import type { SubmissionDetail, SubmissionSummary } from '@cyberstars/shared/tests';
 import type { CodeLanguage } from '@cyberstars/shared/constants';
+import { extensionOf, parseWebFiles } from '@cyberstars/shared/webFiles';
 import * as testsService from '../../services/testsService';
 import { CodeEditor } from '../code/CodeEditor';
 import { LoadingSpinner } from '../ui/LoadingSpinner';
@@ -26,6 +27,8 @@ interface SubmissionsPanelProps {
   onRetry: () => void;
   // With the language the code ran in.
   onLoadCode: (code: string, language: CodeLanguage) => void;
+  // A web lesson's attempt is a site, shown file by file
+  web?: boolean;
 }
 
 // The signed-in student's attempts on this lesson: a list, newest first, and
@@ -37,6 +40,7 @@ export function SubmissionsPanel({
   onLoad,
   onRetry,
   onLoadCode,
+  web = false,
 }: SubmissionsPanelProps) {
   const { t } = useTranslation();
   const [openId, setOpenId] = useState<number | null>(null);
@@ -54,6 +58,7 @@ export function SubmissionsPanel({
         showRuntime={showRuntime}
         onBack={() => setOpenId(null)}
         onLoadCode={onLoadCode}
+        web={web}
       />
     );
   }
@@ -149,11 +154,13 @@ function SubmissionView({
   showRuntime,
   onBack,
   onLoadCode,
+  web,
 }: {
   id: number;
   showRuntime: boolean;
   onBack: () => void;
   onLoadCode: (code: string, language: CodeLanguage) => void;
+  web: boolean;
 }) {
   const { t } = useTranslation();
   const [detail, setDetail] = useState<SubmissionDetail | null>(null);
@@ -210,12 +217,44 @@ function SubmissionView({
                 {t('tests.submissions.loadCode')}
               </button>
             </div>
-            <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[rgba(13,17,23,0.3)] overflow-auto">
-              <CodeEditor value={detail.code} language={detail.language} fontSize="13px" readOnly />
-            </div>
+            {web ? (
+              <SiteFiles code={detail.code} />
+            ) : (
+              <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[rgba(13,17,23,0.3)] overflow-auto">
+                <CodeEditor
+                  value={detail.code}
+                  language={detail.language}
+                  fontSize="13px"
+                  readOnly
+                />
+              </div>
+            )}
           </section>
         </>
       )}
+    </div>
+  );
+}
+
+// A site judged, each file under its path; the lesson's images aren't the
+// student's, so they're left out
+function SiteFiles({ code }: { code: string }) {
+  const files = parseWebFiles(code).filter((f) => !f.image);
+  return (
+    <div className="flex flex-col gap-4">
+      {files.map((file) => (
+        <div key={file.path} className="flex flex-col gap-1.5">
+          <h4 className="m-0 text-[12px] font-mono font-normal text-[var(--text2)]">{file.path}</h4>
+          <div className="rounded-[var(--radius-sm)] border border-[var(--border)] bg-[rgba(13,17,23,0.3)] overflow-auto">
+            <CodeEditor
+              value={file.content}
+              language={extensionOf(file.path)}
+              fontSize="13px"
+              readOnly
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

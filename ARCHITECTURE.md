@@ -267,7 +267,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 
 ## Code execution
 
-Code runs in Docker on the server, never in the browser: `python:3.10-slim`, `gcc:latest` and `eclipse-temurin:21-jdk-alpine`, plus `cyberstars-linux-sandbox` for the terminal.
+Code runs in Docker on the server, never in the browser: `python:3.10-slim`, `gcc:latest` and `eclipse-temurin:21-jdk-alpine`, plus `cyberstars-linux-sandbox` for the terminal and `cyberstars-web-sandbox` (Node and a headless Chromium, `apps/api/src/runtimes/web-sandbox`) for the web judge.
 
 - **One container per owner**, on the language they last ran (a Java lesson and a Java challenge share it), reused across runs and swapped on a language change, dropped after 15 minutes idle or when the global cap (`CODE_MAX_CONTAINERS`) needs room. The sandbox package (`framework/sandbox`) does it; the app creates it once with its languages, label and limits (`apps/api/src/services/sandbox.ts`, limits in `config/sandbox.ts`).
 - **Locked down**: no network, 128 MB, 64 processes, no capabilities, a read-only root, an unprivileged uid (`SANDBOX_UID`), and tmpfs for `/work` and `/tmp`. Docker always gets an argument array, never a shell string.

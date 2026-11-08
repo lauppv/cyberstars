@@ -10,7 +10,10 @@
 //      in the paired solution injects nothing, so the "hidden" cases all run on
 //      the same values and a hardcoded output passes. Every inject key (and
 //      every structure `requires` name) must appear in the paired solution.
-//   3. Hidden parts: a challenge's <slug>-harness.md wraps the student's
+//   3. A web lesson's tests (CYB-110) have the shape the web judge reads, and
+//      every page a case opens is in the lesson's site: a step the runner
+//      doesn't know would be judged as passed or break the run.
+//   4. Hidden parts: a challenge's <slug>-harness.md wraps the student's
 //      function, so structure rules and injection would see the hidden code
 //      too (a required loop found in the input reading): a lesson with one has
 //      neither. Its solution is only the function, so it must define the one
@@ -29,7 +32,18 @@ import { contentDir } from '../src/services/paths.js';
 import { parseC, collectInjectionSites } from '../src/services/c-analysis.js';
 import { defines, readHarness, type Harness } from '../src/services/harness.js';
 import type { LessonTestsSpec } from '@cyberstars/shared/tests';
-import { CODE_LANGUAGES, MULTI_LANGUAGE_COURSE_KEYS } from '@cyberstars/shared/constants';
+import {
+  CODE_LANGUAGES,
+  MULTI_LANGUAGE_COURSE_KEYS,
+  WEB_COURSE_KEYS,
+} from '@cyberstars/shared/constants';
+import { isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
+import {
+  WEB_MAX_WAIT_MS,
+  WEB_MAX_WIDTH,
+  WEB_MIN_WIDTH,
+  type WebTestsSpec,
+} from '@cyberstars/shared/webTests';
 
 // A multi-language course is checked once per language, as <course>/<language>.
 const CODE_JUDGE_COURSES = [
@@ -352,6 +366,201 @@ async function checkPaired(
   }
 }
 
+// A web lesson's spec: the steps the runner and the server know, each with
+// what it needs, and pages the site has (`sitePaths`, the reference's files)
+export const MAX_WEB_CASES = 30;
+
+const WEB_ACTIONS = ['click', 'fill', 'press', 'submit', 'open', 'wait'] as const;
+const WEB_CHECKS = [
+  'exists',
+  'count',
+  'text',
+  'attr',
+  'style',
+  'layout',
+  'size',
+  'fits',
+  'logged',
+  'noErrors',
+  'at',
+] as const;
+// The keys each step may carry beside its own
+const WEB_STEP_KEYS: Record<string, string[]> = {
+  click: ['label'],
+  fill: ['text', 'label'],
+  press: ['on', 'label'],
+  submit: ['label'],
+  open: [],
+  wait: [],
+  exists: ['label'],
+  count: ['equals', 'atLeast', 'label'],
+  text: ['equals', 'contains', 'nonEmpty', 'label'],
+  attr: ['name', 'equals', 'ignoreCase', 'label'],
+  style: ['prop', 'equals', 'label'],
+  layout: ['arrange', 'label'],
+  size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
+  fits: [],
+  logged: [],
+  noErrors: [],
+  at: [],
+};
+const NEEDS_LABEL = new Set([
+  'click',
+  'fill',
+  'submit',
+  'exists',
+  'count',
+  'text',
+  'attr',
+  'style',
+  'layout',
+  'size',
+]);
+const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);
+
+const isText = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '';
+const isPage = (v: unknown): v is string => isText(v) && isValidWebPath(v) && v.endsWith('.html');
+
+function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): string | null {
+  const keys = Object.keys(step);
+  // fill names its text in `text` too, so it is told by its own key first
+  const own = 'fill' in step ? 'fill' : [...WEB_ACTIONS, ...WEB_CHECKS].find((k) => k in step);
+  if (!own) return `a step with none of the known keys: ${JSON.stringify(step)}`;
+  const extra = keys.filter((k) => k !== own && !WEB_STEP_KEYS[own].includes(k));
+  if (extra.length) return `a ${own} step with keys it doesn't take: ${extra.join(', ')}`;
+  if (NEEDS_LABEL.has(own) && !isText(step.label)) return `a ${own} step without a label`;
+  const value = step[own];
+  switch (own) {
+    case 'fits':
+    case 'noErrors':
+      return value === true ? null : `${own} must be true`;
+    case 'wait':
+      return typeof value === 'number' && value > 0 && value <= WEB_MAX_WAIT_MS
+        ? null
+        : `wait must be a number of ms up to ${WEB_MAX_WAIT_MS}`;
+    case 'open':
+    case 'at':
+      if (!isPage(value)) return `${own} must name an .html page of the site`;
+      return sitePaths.has(value) ? null : `${own} names ${value}, which the site doesn't have`;
+    case 'logged':
+      return isText(value) ? null : 'logged must name a line';
+    case 'press':
+      return isText(value) ? null : 'press must name a key';
+    default:
+      break;
+  }
+  if (!isText(value)) return `a ${own} step without a selector`;
+  if (own === 'fill' && typeof step.text !== 'string') return 'a fill step without its text';
+  if (own === 'count' && step.equals === undefined && step.atLeast === undefined) {
+    return 'a count step needs equals or atLeast';
+  }
+  if (own === 'text') {
+    const ways = ['equals', 'contains', 'nonEmpty'].filter((k) => k in step);
+    if (ways.length !== 1) return 'a text step needs exactly one of equals, contains, nonEmpty';
+  }
+  if (own === 'attr' && !isText(step.name)) return 'an attr step without the attribute name';
+  if (own === 'style' && (!isText(step.prop) || typeof step.equals !== 'string')) {
+    return 'a style step needs prop and equals';
+  }
+  if (own === 'layout' && step.arrange !== 'row' && step.arrange !== 'column') {
+    return 'a layout step arranges in a row or a column';
+  }
+  if (
+    own === 'size' &&
+    !['minWidth', 'maxWidth', 'minHeight', 'maxHeight'].some((k) => k in step)
+  ) {
+    return 'a size step needs a bound';
+  }
+  return null;
+}
+
+export function auditWebSpec(spec: WebTestsSpec, sitePaths: Set<string>): string[] {
+  const messages: string[] = [];
+  const cases = Array.isArray(spec.cases) ? spec.cases : [];
+  if (cases.length === 0) messages.push('no cases');
+  if (cases.length > MAX_WEB_CASES) {
+    messages.push(`${cases.length} cases exceeds the web limit of ${MAX_WEB_CASES}`);
+  }
+  for (const [i, c] of cases.entries()) {
+    const at = `case ${i}`;
+    const extra = Object.keys(c).filter((k) => !CASE_KEYS.has(k));
+    if (extra.length) messages.push(`${at}: keys a case doesn't take: ${extra.join(', ')}`);
+    if (!isText(c.name)) messages.push(`${at}: no name`);
+    const files = c.files ?? {};
+    const pages = new Set([...sitePaths, ...Object.keys(files)]);
+    for (const [file, content] of Object.entries(files)) {
+      if (!isValidWebPath(file) || typeof content !== 'string') {
+        messages.push(`${at}: ${file} is not a text file a site may hold`);
+      }
+    }
+    const page = c.page ?? 'index.html';
+    if (!isPage(page)) messages.push(`${at}: page ${page} is not an .html page`);
+    else if (!pages.has(page)) messages.push(`${at}: opens ${page}, which the site doesn't have`);
+    if (
+      c.width !== undefined &&
+      (!Number.isInteger(c.width) || c.width < WEB_MIN_WIDTH || c.width > WEB_MAX_WIDTH)
+    ) {
+      messages.push(`${at}: width ${c.width} is not between ${WEB_MIN_WIDTH} and ${WEB_MAX_WIDTH}`);
+    }
+    for (const [url, answer] of Object.entries(c.fetch ?? {})) {
+      if (!/^https?:\/\//.test(url) || typeof answer?.body !== 'string') {
+        messages.push(`${at}: fetch answer for ${url} needs a whole http(s) address and a body`);
+      }
+    }
+    if (!Array.isArray(c.steps) || c.steps.length === 0) {
+      messages.push(`${at}: no steps`);
+      continue;
+    }
+    for (const [j, step] of c.steps.entries()) {
+      const problem = auditWebStep(step as Record<string, unknown>, pages);
+      if (problem) messages.push(`${at}, step ${j}: ${problem}`);
+    }
+  }
+  return messages;
+}
+
+// Every web course's tested lessons: a solution, the spec's shape, and a RO
+// solution, which has its own words, graded against a RO spec
+function checkWebCourses(problems: Problem[]): void {
+  for (const courseKey of WEB_COURSE_KEYS) {
+    const baseDir = contentDir(courseKey);
+    const roDir = path.join(baseDir, 'ro');
+    const roSlugs = new Set(listTestedSlugs(roDir));
+    for (const [dir, slugs, where] of [
+      [baseDir, listTestedSlugs(baseDir), ''],
+      [roDir, [...roSlugs], 'ro/'],
+    ] as const) {
+      for (const slug of slugs) {
+        const solution = path.join(dir, `${slug}-solution.md`);
+        if (!fs.existsSync(solution)) {
+          problems.push({
+            courseKey,
+            slug,
+            message: `${where}${slug}: tests file has no solution`,
+          });
+          continue;
+        }
+        const site = new Set(parseWebFiles(fs.readFileSync(solution, 'utf8')).map((f) => f.path));
+        const spec = JSON.parse(
+          fs.readFileSync(path.join(dir, `${slug}${TESTS_SUFFIX}`), 'utf8'),
+        ) as WebTestsSpec;
+        for (const message of auditWebSpec(spec, site)) {
+          problems.push({ courseKey, slug, message: `${where}${slug}: ${message}` });
+        }
+      }
+    }
+    for (const slug of listTestedSlugs(baseDir)) {
+      if (fs.existsSync(path.join(roDir, `${slug}-solution.md`)) && !roSlugs.has(slug)) {
+        problems.push({
+          courseKey,
+          slug,
+          message: `${slug}: ro/${slug}-solution.md has no ro/${slug}-tests.json; the RO site would be graded on the English words`,
+        });
+      }
+    }
+  }
+}
+
 export async function collectProblems(): Promise<Problem[]> {
   const problems: Problem[] = [];
 
@@ -420,6 +629,7 @@ export async function collectProblems(): Promise<Problem[]> {
     }
   }
 
+  checkWebCourses(problems);
   return problems;
 }
 
@@ -427,7 +637,7 @@ export async function collectProblems(): Promise<Problem[]> {
 async function main(): Promise<void> {
   const problems = await collectProblems();
   if (problems.length === 0) {
-    const count = CODE_JUDGE_COURSES.length;
+    const count = CODE_JUDGE_COURSES.length + WEB_COURSE_KEYS.length;
     console.log(
       `validate-tests: OK, all inject keys resolve and locales are paired (${count} courses).`,
     );

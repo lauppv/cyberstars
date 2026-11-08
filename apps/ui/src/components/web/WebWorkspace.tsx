@@ -11,12 +11,14 @@ import {
   type WebFile,
 } from '@cyberstars/shared/webFiles';
 import { CodeEditor } from '../code/CodeEditor';
+import { RunButton } from '../code/RunButton';
 import { PanelTabs } from '../judge/PanelTabs';
 import { ResizeHandle } from '../ui/ResizeHandle';
 import { Segmented } from '../ui/Segmented';
 import { useResizeSplit } from '../../hooks/useResizeSplit';
 import { FileTree } from './FileTree';
 import { addFile, addFolder, removePath, renamePath, type Site, type SiteError } from './siteFiles';
+import { RunNotice } from './RunNotice';
 import { assetUrl, useWebPreview, type ConsoleEntry } from './useWebPreview';
 
 // A web lesson's workspace (CYB-109), a small IDE in the spirit of VS Code.
@@ -43,6 +45,31 @@ interface WebWorkspaceProps {
   devMode?: boolean;
   // A note over the whole workspace (the saved code couldn't be loaded)
   banner?: ReactNode;
+  // Run Tests, on a lesson with tests, beside Run over the site
+  runTests?: ReactNode;
+  // Why the last Run Tests got no verdict
+  testsError?: string | null;
+  // Goes up with each verdict, which the lesson side shows
+  verdictShown?: number;
+}
+
+// Whether this device was told what Run is for (RunNotice)
+const SEEN_KEY = 'cyberstars.webRunNotice.seen';
+
+function runNoticeSeen(): boolean {
+  try {
+    return localStorage.getItem(SEEN_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+function markRunNoticeSeen(): void {
+  try {
+    localStorage.setItem(SEEN_KEY, '1');
+  } catch {
+    // ignore (private mode / storage disabled)
+  }
 }
 
 type View = 'lesson' | 'code' | 'site';
@@ -71,6 +98,9 @@ export default function WebWorkspace({
   actions,
   devMode = false,
   banner,
+  runTests,
+  testsError,
+  verdictShown = 0,
 }: WebWorkspaceProps) {
   const { t } = useTranslation();
   const files = useMemo(() => parseWebFiles(value), [value]);
@@ -83,6 +113,12 @@ export default function WebWorkspace({
   // unless it is the code, and the site is always on the right
   const [view, setView] = useState<View>('lesson');
   const [notice, setNotice] = useState<string | null>(null);
+  // A verdict shows on the lesson side, in its Result tab
+  const [verdictSeen, setVerdictSeen] = useState(verdictShown);
+  if (verdictShown !== verdictSeen) {
+    setVerdictSeen(verdictShown);
+    setView('lesson');
+  }
   // A change refused at a limit puts the editor back as it was
   const [editorKey, setEditorKey] = useState(0);
   // Taken apart, so the frame's ref is only ever handed to the frame
@@ -91,6 +127,17 @@ export default function WebWorkspace({
     courseKey,
     lessonSlug,
   });
+  // Run draws the page again, for when it didn't follow the files by itself;
+  // the first press on a device says so first
+  const [runNotice, setRunNotice] = useState(false);
+  const pressRun = () => {
+    if (runNoticeSeen()) {
+      run();
+      return;
+    }
+    markRunNoticeSeen();
+    setRunNotice(true);
+  };
   const bandRef = useRef<HTMLDivElement>(null);
   const siteRef = useRef<HTMLDivElement>(null);
   // Dev mode keeps its own splits on the device, as on any lesson
@@ -428,6 +475,22 @@ export default function WebWorkspace({
             <span className="flex-1 min-w-0 truncate text-[12px] font-mono text-[var(--text2)]">
               {page}
             </span>
+            {testsError && (
+              <span
+                role="alert"
+                title={testsError}
+                className="min-w-0 max-w-[40%] truncate text-[12px] font-semibold text-[var(--error)]"
+              >
+                {testsError}
+              </span>
+            )}
+            <RunButton
+              onClick={pressRun}
+              isRunning={false}
+              title={t('web.runTitle')}
+              className="shrink-0"
+            />
+            {runTests && <div className="shrink-0">{runTests}</div>}
             {wide && devMode && (
               <button
                 type="button"
@@ -462,6 +525,14 @@ export default function WebWorkspace({
           </div>
         </div>
       </div>
+      {runNotice && (
+        <RunNotice
+          onClose={() => {
+            setRunNotice(false);
+            run();
+          }}
+        />
+      )}
     </div>
   );
 }

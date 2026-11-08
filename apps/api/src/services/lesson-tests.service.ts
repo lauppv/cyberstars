@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
+import { WEB_COURSE_KEYS, codeLanguageOf, isMultiLanguage } from '@cyberstars/shared/constants';
 import { contentDir } from './paths.js';
 import { dockerExec, dockerConverse, killLeftovers } from '@cyberstars-framework/sandbox/docker';
 import { sandbox } from './sandbox.js';
@@ -13,6 +13,7 @@ import { inLine } from './run-waits.js';
 import { getReference, putReference, referenceKey } from './reference-cache.js';
 import { readHarness, studentHarness, studentLines, wrapCode, type Harness } from './harness.js';
 import { findProject } from '@cyberstars/shared/projects';
+import { runWebLessonTests } from './web-tests.js';
 import { PROJECTS_DIR } from '@cyberstars/content/paths';
 import type {
   LessonTestsSpec,
@@ -383,6 +384,10 @@ export async function runLessonTests(
   // Where the run counts as waiting while it's in a line (run-waits.ts)
   waitKey: string | null = null,
 ): Promise<RunTestsResponse> {
+  // A web lesson's site is graded in a browser (web-tests.ts)
+  if (WEB_COURSE_KEYS.includes(courseKey)) {
+    return runWebLessonTests(ownerKey, courseKey, lessonSlug, userCode, lang, guestIp, waitKey);
+  }
   const spec = loadTestsSpec(courseKey, lessonSlug, lang, language);
   if (!spec) throw new AppError(404, 'This lesson has no tests');
   const runtime = runtimeKey(courseKey, language);

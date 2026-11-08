@@ -6,6 +6,7 @@ export interface LanguageRuntime {
   sourceFile: string;
   compileCmd?: string;
   runCmd: string;
-  // This language's memory cap, in place of the sandbox's own
+  // This language's memory and process caps, in place of the sandbox's own
   memory?: string;
+  pids?: string;
 }

@@ -1287,6 +1287,7 @@
     "passed": "Passed",
     "failed": "Failed",
     "timeout": "Your program took too long (10 s limit)",
+    "webTimeout": "Your page didn't respond in time: a loop that never ends, perhaps?",
     "runtimeError": "Your program crashed",
     "input": "Input",
     "expected": "Expected output",
@@ -1356,6 +1357,8 @@
       "wrongAnswer": "Wrong answer",
       "runtimeError": "Runtime error",
       "timeLimit": "Time limit exceeded",
+      "memoryLimit": "Memory limit exceeded",
+      "pageMismatch": "Not as asked yet",
       "checksFailed": "Code checks failed",
       "failed": "Failed"
     },
@@ -1728,6 +1731,12 @@
     "site": "Site",
     "side": "What the left side shows",
     "showAgain": "Show the page again",
+    "runTitle": "Draw the page again (Ctrl + Enter)",
+    "runNotice": {
+      "title": "Your page updates by itself",
+      "body": "Every change you make shows in the page a moment after you stop typing, with no button to press. Press Run only when the page didn't change after an edit: it draws the page again from scratch.",
+      "ok": "Got it"
+    },
     "noPage": "Your site has no page yet. Add an .html file to see it here.",
     "previewTitle": "Preview of {{page}}",
     "console": {

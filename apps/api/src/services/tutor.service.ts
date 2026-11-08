@@ -9,6 +9,7 @@ import {
 } from '@cyberstars/shared/constants';
 import type { TutorFinish, TutorStreamEvent, TutorTerminalCheck } from '@cyberstars/shared/tutor';
 import type { StructureFailure, SubmissionDetail, TestCaseResult } from '@cyberstars/shared/tests';
+import { webFailureText } from '@cyberstars/shared/webTests';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import {
   converseStream,
@@ -421,6 +422,7 @@ const WORK_LABELS = {
     stdin: 'Input typed in (stdin):',
     expected: 'Expected output:',
     actual: 'Their output:',
+    why: 'What it says:',
     error: 'Error:',
     terminal: 'The end of their terminal session, each command after its $ prompt:',
     noTerminal: 'They have not typed a command since opening the lesson.',
@@ -450,6 +452,7 @@ const WORK_LABELS = {
     stdin: 'Intrarea tastată (stdin):',
     expected: 'Output-ul așteptat:',
     actual: 'Output-ul lui:',
+    why: 'Ce spune:',
     error: 'Eroare:',
     terminal: 'Finalul sesiunii lui din terminal, fiecare comandă după promptul ei $:',
     noTerminal: 'Nu a tastat nicio comandă de când a deschis lecția.',
@@ -468,9 +471,12 @@ function describeRule(failure: StructureFailure): string {
 
 function describeCase(c: TestCaseResult, l: Labels): string[] {
   const notes = [c.load ? l.load : !c.visible && l.hidden].filter(Boolean);
+  // A web lesson's test says what it looks at, and why it failed in words
+  const name = c.name ? `: ${c.name}` : '';
   const lines = [
-    `${l.test(c.index + 1)}${notes.length ? ` (${notes.join(', ')})` : ''} ${l.failedTest}`,
+    `${l.test(c.index + 1)}${name}${notes.length ? ` (${notes.join(', ')})` : ''} ${l.failedTest}`,
   ];
+  if (c.web) lines.push(l.why, fenced(webFailureText(c.web)));
   if (c.inject) {
     const values = Object.entries(c.inject).map(([k, v]) => `${k} = ${JSON.stringify(v)}`);
     lines.push(l.input, fenced(clip(values.join('\n'))));

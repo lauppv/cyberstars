@@ -133,6 +133,45 @@ describe('SubmissionsPanel', () => {
     expect(screen.getAllByRole('button')).toHaveLength(2);
   });
 
+  it("shows a web lesson's attempt file by file, with why its test failed", async () => {
+    const site = [
+      '```html index.html',
+      '<h1>Hi</h1>',
+      '```',
+      '```css css/style.css',
+      'h1 { color: red; }',
+      '```',
+      '```image img/logo.png',
+      '```',
+      '',
+    ].join('\n');
+    getSubmission.mockResolvedValue({
+      ...detail,
+      code: site,
+      language: 'web-dev' as never,
+      failedCase: {
+        index: 1,
+        name: 'The tab is named Station Log',
+        visible: true,
+        passed: false,
+        web: { kind: 'missing', label: 'a <title> in the <head>' },
+      },
+    });
+    const h = handlers();
+    render(<SubmissionsPanel showRuntime={false} list={list} failed={false} web {...h} />);
+    fireEvent.click(screen.getAllByRole('button')[1]);
+
+    expect(await screen.findByRole('heading', { name: 'Not as asked yet' })).toBeInTheDocument();
+    expect(screen.getByText('Test 2: The tab is named Station Log')).toBeInTheDocument();
+    expect(screen.getByText('Expected a <title> in the <head>, found none.')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'index.html' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'css/style.css' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: 'img/logo.png' })).not.toBeInTheDocument();
+    await waitFor(() => expect(document.querySelectorAll('.cm-content')).toHaveLength(2));
+    fireEvent.click(screen.getByRole('button', { name: 'Load into editor' }));
+    expect(h.onLoadCode).toHaveBeenCalledWith(site, 'web-dev');
+  });
+
   it('says so when an attempt cannot be opened', async () => {
     getSubmission.mockRejectedValue(new Error('404'));
     render(<SubmissionsPanel showRuntime list={list} failed={false} {...handlers()} />);

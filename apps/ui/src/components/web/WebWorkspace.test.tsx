@@ -16,10 +16,14 @@ function Lesson({
   start = SITE,
   onText,
   banner,
+  ...rest
 }: {
   start?: string;
   onText?: (text: string) => void;
   banner?: ReactNode;
+  runTests?: ReactNode;
+  testsError?: string | null;
+  verdictShown?: number;
 }) {
   const [text, setText] = useState(start);
   return (
@@ -35,6 +39,7 @@ function Lesson({
       lesson={<p>The lesson text</p>}
       actions={<button type="button">Lesson actions</button>}
       banner={banner}
+      {...rest}
     />
   );
 }
@@ -265,6 +270,52 @@ describe('WebWorkspace', () => {
     expect(screen.getByRole('status')).toHaveTextContent('Paused: a loop ran too long.');
     fireEvent.click(screen.getByRole('button', { name: 'Show the page again' }));
     await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
+  });
+
+  it('says once on the device what Run is for, then draws the page again', async () => {
+    render(<Lesson />);
+    const first = await frame();
+    fromPreview(first, { type: 'loop', file: 'index.html', line: 1 });
+    fireEvent.click(screen.getByRole('button', { name: '▶ Run' }));
+    const card = screen.getByRole('dialog', { name: 'Your page updates by itself' });
+    expect(card).toHaveTextContent('Press Run only when the page didn');
+    // Nothing is drawn until the card is closed
+    expect(screen.getByRole('status')).toHaveTextContent('Paused');
+    fireEvent.click(within(card).getByRole('button', { name: 'Got it' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
+    expect(localStorage.getItem('cyberstars.webRunNotice.seen')).toBe('1');
+
+    // The next press draws the page again from scratch at once
+    const before = await frame();
+    fireEvent.click(screen.getByRole('button', { name: '▶ Run' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await waitFor(() => expect(screen.getByTitle(/Preview of/)).not.toBe(before));
+  });
+
+  it('closes the card on Escape and still draws the page', async () => {
+    render(<Lesson />);
+    fromPreview(await frame(), { type: 'loop', file: 'index.html', line: 1 });
+    fireEvent.click(screen.getByRole('button', { name: '▶ Run' }));
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(screen.queryByRole('dialog')).toBeNull();
+    await waitFor(() => expect(screen.queryByRole('status')).toBeNull());
+  });
+
+  it('puts Run Tests beside Run, with why the last one got no verdict', () => {
+    render(<Lesson runTests={<button type="button">Run Tests</button>} testsError="Busy" />);
+    expect(screen.getByRole('button', { name: 'Run Tests' })).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toHaveTextContent('Busy');
+  });
+
+  it('brings the lesson side up when a verdict comes back', () => {
+    const { rerender } = render(<Lesson verdictShown={0} />);
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    const lesson = within(sides).getByRole('button', { name: 'Lesson' });
+    fireEvent.click(within(sides).getByRole('button', { name: 'Code' }));
+    expect(lesson).toHaveAttribute('aria-pressed', 'false');
+    rerender(<Lesson verdictShown={1} />);
+    expect(lesson).toHaveAttribute('aria-pressed', 'true');
   });
 
   it("keeps the page's localStorage for the lesson, and refuses what isn't storage", async () => {
