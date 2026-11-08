@@ -1,4 +1,4 @@
-**About the Station** is still empty. You already know `<p>`; this lesson is about what the browser does with the spaces and the new lines you type.
+**About the Station** is still empty. You already know `<p>`. This lesson is about what the browser does with the spaces and the new lines you type.
 
 ## The browser ignores your Enter
 
@@ -10,9 +10,9 @@ Type this in a page:
 crates.</p>
 ```
 
-The browser shows **The cargo bay holds forty crates.** on one line, with one space between the words. In HTML any run of spaces, tabs and new lines counts as **a single space**. That's what lets you indent your code however you like: the browser doesn't care.
+The browser shows **The cargo bay holds forty crates.** on one line, with one space between the words. In HTML, many spaces, tabs and new lines in a row count as **one space**. That's why you can indent your code however you like: the browser doesn't care.
 
-So pressing Enter twice in the editor doesn't make a gap on the page. A new block of text is a new **paragraph**, and the browser leaves the room between paragraphs itself:
+So pressing Enter twice in the editor doesn't make a gap on the page. A new block of text is a new **paragraph**, and the browser puts some room between paragraphs by itself:
 
 ```html
 <p>The cargo bay holds forty crates.</p>
@@ -21,33 +21,27 @@ So pressing Enter twice in the editor doesn't make a gap on the page. A new bloc
 
 ## Line breaks
 
-Some lines belong together and still need a line each: an address, a poem, the lines of a label. For them there is `<br>`, a **line break** inside a paragraph:
+Sometimes a few lines belong together, but each one needs its own line. Think of a poem, or the label on a crate. For that there is `<br>`, a **line break** inside a paragraph:
 
 ```html
 <p>
-  Cargo Bay 2<br />
-  Lower Ring<br />
-  Station Hub
+  FRAGILE<br />
+  Glass tubes for the lab<br />
+  This side up
 </p>
 ```
 
-`<br>` holds nothing, so it has no closing tag. It's an **empty element**, like `<meta>`. You'll see it written `<br>` and `<br />`; both mean the same.
+`<br>` holds nothing, so it has no closing tag. It's an **empty element**, like `<meta>`. You'll see it written as `<br>` or `<br />`. Both mean the same.
 
-Don't use `<br>` to make room between blocks. Two `<br>` in a row for a gap is the same mistake as pressing Enter twice: it's two paragraphs pretending to be one. A screen reader announces paragraphs one by one, so a fake one reads as a mess. Spacing has its own tool, CSS, which comes soon.
+Don't use `<br>` to make space between blocks of text. Two `<br>` in a row to make a gap is the same mistake as pressing Enter twice: it's two paragraphs pretending to be one. A screen reader reads a page paragraph by paragraph, so a fake paragraph sounds like a mess. Space between things has its own tool, CSS, which comes soon.
 
 ---
 
 ## Mission: Station Address
 
-Under **About the Station**, add:
+Under **About the Station**:
 
-- two paragraphs of your own about the station: what it does, who lives there, anything you like;
-- after them, the station's address in **one** paragraph, on three lines:
+- write two paragraphs of your own about the station: what it does, who lives there, anything you like;
+- after them, write the station's address, so a visitor can copy it onto an envelope. The address is **Orbital Station 7, Docking Ring B, Low Earth Orbit**, and on an envelope each part goes on its own line, without the commas.
 
-```text
-Orbital Station 7
-Docking Ring B
-Low Earth Orbit
-```
-
-Check the preview: three lines, one under the other, in a single paragraph.
+The address is one thing, so it stays one paragraph. Check the preview: it should look like the address on a letter.

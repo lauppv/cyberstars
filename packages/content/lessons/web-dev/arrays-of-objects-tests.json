@@ -21,7 +21,7 @@
         {
           "text": "p#destinations",
           "equals": "Destinations: Moon Base, Mars Relay, Europa Outpost, Lunar Gateway, Orbital Yard",
-          "label": "the destinations (<p id=\"destinations\">)"
+          "label": "the destinations"
         }
       ]
     },

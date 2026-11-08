@@ -69,6 +69,112 @@ describe('webFailureText', () => {
     expect(say({ kind: 'memory' })).toBe('The page used too much memory and was stopped.');
   });
 
+  it('says how an effect missed: a bound, a contrast, a look, room, the middle, the outline', () => {
+    expect(
+      say({
+        kind: 'style',
+        label: 'a card',
+        detail: 'padding-top',
+        compare: 'atLeast',
+        expected: '8',
+        found: '0px',
+      }),
+    ).toBe('Expected a card with padding-top of at least 8px, found padding-top: 0px.');
+    expect(
+      say({
+        kind: 'style',
+        label: 'a card',
+        detail: 'border-top-style',
+        compare: 'not',
+        expected: 'none',
+        found: 'none',
+      }),
+    ).toBe('Expected a card with border-top-style other than none, found border-top-style: none.');
+    expect(
+      say({
+        kind: 'style',
+        label: 'a card',
+        detail: 'background-color',
+        compare: 'not',
+        expected: 'rgba(0, 0, 0, 0)',
+        found: 'rgba(0, 0, 0, 0)',
+      }),
+    ).toBe(
+      'Expected a card with background-color other than transparent, found background-color: transparent.',
+    );
+    expect(
+      say({
+        kind: 'style',
+        label: 'a heading',
+        detail: 'color',
+        compare: 'not',
+        expected: 'rgb(0, 0, 0)',
+        found: 'rgb(0, 0, 0)',
+      }),
+    ).toBe('Expected a heading with color other than black, found color: black.');
+    expect(
+      say({
+        kind: 'style',
+        label: 'the page',
+        detail: 'font-family',
+        compare: 'endsWith',
+        expected: 'sans-serif',
+        found: 'Verdana',
+      }),
+    ).toBe('Expected the page with font-family ending in sans-serif, found font-family: Verdana.');
+    expect(say({ kind: 'contrast', label: 'a warning', expected: '4.5', found: '2.38' })).toBe(
+      'Expected a warning readable on its background, a contrast of at least 4.5:1, found 2.38:1.',
+    );
+    expect(
+      say({
+        kind: 'differs',
+        label: 'the warnings',
+        other: 'the other paragraphs',
+        detail: 'color, font-weight',
+      }),
+    ).toBe(
+      'Expected the warnings to look unlike the other paragraphs (by color, font-weight), found one that looks the same.',
+    );
+    expect(say({ kind: 'gap', label: 'the cards', expected: '12', found: '0', width: 1280 })).toBe(
+      'Expected the cards at least 12px apart in a window 1280px wide, found two only 0px apart.',
+    );
+    expect(
+      say({ kind: 'align', label: 'the cards', expected: 'row', found: '30', width: 1280 }),
+    ).toBe(
+      'Expected the cards lined up at their tops in a window 1280px wide, found them 30px apart.',
+    );
+    expect(say({ kind: 'centered', label: 'the column', found: '0 304', width: 1280 })).toBe(
+      'Expected the column centered in its parent in a window 1280px wide, found 0px of room on the left and 304px on the right.',
+    );
+    expect(say({ kind: 'centered', label: 'the column', detail: 'full', width: 375 })).toBe(
+      'Expected the column centered in its parent in a window 375px wide, found it as wide as its parent.',
+    );
+    expect(
+      say({ kind: 'fills', label: 'the table', expected: '928', found: '410', width: 1280 }),
+    ).toBe(
+      'Expected the table as wide as its parent (928px) in a window 1280px wide, found it 410px wide.',
+    );
+    expect(say({ kind: 'outline', detail: 'h1', found: '2' })).toBe(
+      'Expected the page to have one biggest heading (h1), found 2.',
+    );
+    expect(
+      say({ kind: 'outline', detail: 'skip', expected: 'h2', other: 'h4', found: 'Night Shift' }),
+    ).toBe(
+      'Expected headings that never skip a level, found an h4 right after an h2: “Night Shift”.',
+    );
+    expect(say({ kind: 'contrast', label: 'the page', detail: 'on', expected: 'dark' })).toBe(
+      'Expected the page light on a dark background, found it the other way round.',
+    );
+    expect(
+      say({ kind: 'contrast', label: 'un avertisment', expected: '4.5', found: '2.38' }, 'ro'),
+    ).toBe(
+      'Se aștepta ca un avertisment să se citească pe fundalul său, cu un contrast de cel puțin 4.5:1, dar contrastul e 2.38:1.',
+    );
+    expect(say({ kind: 'contrast', label: 'a warning', found: '2.38', hidden: true })).toBe(
+      'A warning: not what the mission asks. The page has “2.38”.',
+    );
+  });
+
   it('on a hidden case says only what the page had', () => {
     expect(
       say({ kind: 'text', label: 'a crew member', detail: 'equals', found: 'Ada', hidden: true }),

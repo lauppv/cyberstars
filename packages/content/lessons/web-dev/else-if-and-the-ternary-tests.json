@@ -8,7 +8,7 @@
         {
           "text": "p#first-flight-note",
           "equals": "Go to the gate",
-          "label": "the note (<p id=\"first-flight-note\">)"
+          "label": "the note"
         }
       ]
     },
@@ -20,7 +20,7 @@
         {
           "text": "p#flight-count",
           "equals": "5 flights today",
-          "label": "the count (<p id=\"flight-count\">)"
+          "label": "the count"
         },
         {
           "noErrors": true

@@ -28,7 +28,7 @@
       ]
     },
     {
-      "name": "The script runs without errors, the gold line still there",
+      "name": "The script runs without errors, the line on top still there",
       "visible": true,
       "steps": [
         {
@@ -36,8 +36,8 @@
         },
         {
           "style": "body",
-          "prop": "border-top-color",
-          "equals": "rgb(255, 209, 102)",
+          "prop": "border-top-width",
+          "atLeast": 4,
           "label": "the page's body"
         }
       ]

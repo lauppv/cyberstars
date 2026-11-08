@@ -6,58 +6,71 @@
       "steps": [
         {
           "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"], head link[rel=\"stylesheet\"][href=\"./style.css\"]",
-          "label": "a <link rel=\"stylesheet\" href=\"style.css\"> in the <head>"
+          "label": "a link to style.css in the head"
         }
       ]
     },
     {
-      "name": "The biggest heading is midnightblue",
+      "name": "Each kind of heading has a color",
       "visible": true,
       "steps": [
         {
           "style": "h1",
           "prop": "color",
-          "equals": "rgb(25, 25, 112)",
-          "label": "the biggest heading (<h1>)"
-        }
-      ]
-    },
-    {
-      "name": "The section headings are steelblue",
-      "visible": true,
-      "steps": [
+          "not": "rgb(0, 0, 0)",
+          "every": true,
+          "label": "the biggest heading"
+        },
         {
           "style": "h2",
           "prop": "color",
-          "equals": "rgb(70, 130, 180)",
-          "label": "a section heading (<h2>)"
+          "not": "rgb(0, 0, 0)",
+          "every": true,
+          "label": "a section heading"
         },
-        {
-          "style": "h2#today",
-          "prop": "color",
-          "equals": "rgb(70, 130, 180)",
-          "label": "the section heading Today on Board"
-        }
-      ]
-    },
-    {
-      "name": "The shift headings are slategray",
-      "visible": true,
-      "steps": [
         {
           "style": "h3",
           "prop": "color",
-          "equals": "rgb(112, 128, 144)",
-          "label": "a shift heading (<h3>)"
+          "not": "rgb(0, 0, 0)",
+          "every": true,
+          "label": "a shift heading"
         }
       ]
     },
     {
-      "name": "The colors come from style.css",
-      "visible": false,
-      "files": {
-        "style.css": "h1 { color: rgb(1, 2, 3); }\nh2 { color: rgb(4, 5, 6); }\nh3 { color: rgb(7, 8, 9); }\n"
-      },
+      "name": "The three kinds look different",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "h1",
+          "from": "h2, h3",
+          "props": ["color"],
+          "fromLabel": "the other headings",
+          "label": "the biggest heading"
+        },
+        {
+          "differs": "h2",
+          "from": "h3",
+          "props": ["color"],
+          "fromLabel": "the shift headings",
+          "label": "the section headings"
+        }
+      ]
+    },
+    {
+      "name": "Every heading reads on the white page",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "h1, h2, h3",
+          "atLeast": 3,
+          "every": true,
+          "label": "a heading"
+        }
+      ]
+    },
+    {
+      "name": "The colors come from style.css, for every heading of a kind",
       "steps": [
         {
           "style": "h1",
@@ -69,15 +82,20 @@
           "style": "h2",
           "prop": "color",
           "equals": "rgb(4, 5, 6)",
+          "every": true,
           "label": "a section heading's color"
         },
         {
           "style": "h3",
           "prop": "color",
           "equals": "rgb(7, 8, 9)",
+          "every": true,
           "label": "a shift heading's color"
         }
-      ]
+      ],
+      "files": {
+        "style.css": "h1 { color: rgb(1, 2, 3); }\nh2 { color: rgb(4, 5, 6); }\nh3 { color: rgb(7, 8, 9); }\n"
+      }
     }
   ]
 }

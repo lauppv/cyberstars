@@ -4,48 +4,28 @@
       "name": "The page keeps one biggest heading",
       "visible": true,
       "steps": [
-        {
-          "count": "h1",
-          "equals": 1,
-          "label": "biggest headings (<h1>)"
-        },
-        {
-          "text": "h1",
-          "equals": "Welcome aboard",
-          "label": "the biggest heading (<h1>)"
-        }
+        { "count": "h1", "equals": 1, "label": "biggest headings" },
+        { "text": "h1", "equals": "Welcome aboard", "label": "the biggest heading" }
       ]
     },
     {
       "name": "Two sections follow it",
       "visible": true,
       "steps": [
-        {
-          "text": "h2",
-          "equals": "About the Station",
-          "label": "a section heading (<h2>)"
-        },
-        {
-          "text": "h2",
-          "equals": "Today on Board",
-          "label": "a section heading (<h2>)"
-        }
+        { "text": "h2", "equals": "About the Station", "label": "a section heading" },
+        { "text": "h2", "equals": "Today on Board", "label": "a section heading" }
       ]
     },
     {
-      "name": "The shifts sit one level down",
+      "name": "The shifts sit inside Today on Board",
       "visible": true,
       "steps": [
         {
-          "count": "h2 ~ h3",
+          "count": "h2:last-of-type ~ h3",
           "atLeast": 2,
-          "label": "shift headings (<h3>) after a section heading"
+          "label": "shift headings one level under Today on Board"
         },
-        {
-          "text": "h3",
-          "nonEmpty": true,
-          "label": "a shift heading (<h3>)"
-        }
+        { "text": "h3", "nonEmpty": true, "label": "a shift heading" }
       ]
     },
     {
@@ -55,9 +35,14 @@
         {
           "count": "h3 + p",
           "atLeast": 2,
-          "label": "paragraphs (<p>) right under a shift heading"
+          "label": "paragraphs right under a shift heading"
         }
       ]
+    },
+    {
+      "name": "The outline never skips a level",
+      "visible": true,
+      "steps": [{ "outline": true }]
     }
   ]
 }

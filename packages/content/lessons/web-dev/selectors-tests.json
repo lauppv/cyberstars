@@ -7,7 +7,7 @@
         {
           "count": "p.warning",
           "atLeast": 2,
-          "label": "paragraphs in the class warning (<p class=\"warning\">)"
+          "label": "paragraphs in the class warning"
         },
         {
           "exists": "p.warning strong",
@@ -16,56 +16,58 @@
       ]
     },
     {
-      "name": "The warnings are firebrick, the rest isn't",
+      "name": "The warnings have a color no other paragraph has",
       "visible": true,
       "steps": [
         {
-          "style": "p.warning",
-          "prop": "color",
-          "equals": "rgb(178, 34, 34)",
+          "differs": "p.warning",
+          "from": "p:not(.warning)",
+          "props": ["color"],
+          "fromLabel": "the other paragraphs",
+          "label": "the warnings"
+        },
+        {
+          "contrast": "p.warning",
+          "atLeast": 4.5,
+          "every": true,
           "label": "a warning"
-        },
-        {
-          "style": "p:not(.warning)",
-          "prop": "color",
-          "equals": "rgb(0, 0, 0)",
-          "label": "a paragraph that isn't a warning"
         }
       ]
     },
     {
-      "name": "Today on Board is darkgreen, the other sections steelblue",
+      "name": "Today on Board stands out from the other sections",
       "visible": true,
       "steps": [
         {
-          "style": "#today",
-          "prop": "color",
-          "equals": "rgb(0, 100, 0)",
-          "label": "the heading with id=\"today\""
+          "differs": "#today",
+          "from": "h2:not(#today)",
+          "props": ["color"],
+          "fromLabel": "the other section headings",
+          "label": "the heading Today on Board"
         },
         {
-          "style": "h2:not(#today)",
-          "prop": "color",
-          "equals": "rgb(70, 130, 180)",
-          "label": "another section heading (<h2>)"
+          "contrast": "#today",
+          "atLeast": 3,
+          "label": "the heading Today on Board"
         }
       ]
     },
     {
-      "name": "The text below and above the line is teal",
+      "name": "The small numbers stand out from the text",
       "visible": true,
       "steps": [
         {
-          "style": "sub",
-          "prop": "color",
-          "equals": "rgb(0, 128, 128)",
-          "label": "the text below the line (<sub>)"
+          "differs": "sub, sup",
+          "from": "p",
+          "props": ["color"],
+          "fromLabel": "the paragraphs around them",
+          "label": "the numbers below and above the line"
         },
         {
-          "style": "sup",
-          "prop": "color",
-          "equals": "rgb(0, 128, 128)",
-          "label": "the text above the line (<sup>)"
+          "contrast": "sub, sup",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a number below or above the line"
         }
       ]
     },

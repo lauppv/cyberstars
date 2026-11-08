@@ -7,7 +7,7 @@
         {
           "text": "p em",
           "nonEmpty": true,
-          "label": "a stressed word (<em>) in a paragraph"
+          "label": "a stressed word in a paragraph"
         }
       ]
     },
@@ -18,18 +18,18 @@
         {
           "text": "p strong",
           "equals": "Hatch 3 stays closed",
-          "label": "an important part (<strong>) in a paragraph"
+          "label": "the warning"
         }
       ]
     },
     {
-      "name": "H2O has its 2 below the line",
+      "name": "H2O is written as scientists write it",
       "visible": true,
       "steps": [
         {
           "text": "p sub",
           "equals": "2",
-          "label": "text below the line (<sub>)"
+          "label": "the 2 of H2O"
         },
         {
           "text": "p:has(sub)",
@@ -39,13 +39,13 @@
       ]
     },
     {
-      "name": "The height has its 5 above the line",
+      "name": "The height is written as a power of ten",
       "visible": true,
       "steps": [
         {
           "text": "p sup",
           "equals": "5",
-          "label": "text above the line (<sup>)"
+          "label": "the 5 of 10⁵"
         },
         {
           "text": "p:has(sup)",
@@ -55,13 +55,13 @@
       ]
     },
     {
-      "name": "The docking fee is fine print",
+      "name": "The docking fee is a side note",
       "visible": true,
       "steps": [
         {
           "text": "p small",
           "equals": "Docking fee: 20 credits a day.",
-          "label": "fine print (<small>) in a paragraph"
+          "label": "the docking fee"
         }
       ]
     }

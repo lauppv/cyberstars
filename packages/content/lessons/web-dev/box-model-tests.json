@@ -1,73 +1,90 @@
 {
   "cases": [
     {
-      "name": "Each card has its background and padding",
+      "name": "Each card shows against the page",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
           "style": ".card",
           "prop": "background-color",
-          "equals": "rgb(19, 41, 79)",
+          "not": "rgba(0, 0, 0, 0)",
+          "every": true,
           "label": "a card"
         },
         {
-          "style": ".card",
-          "prop": "padding-top",
-          "equals": "16px",
-          "label": "a card"
+          "differs": ".card",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "the cards"
         },
+        { "contrast": ".card", "atLeast": 4.5, "every": true, "label": "a card's text" }
+      ]
+    },
+    {
+      "name": "Each card has room inside",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        { "style": ".card", "prop": "padding-top", "atLeast": 8, "every": true, "label": "a card" },
         {
           "style": ".card",
-          "prop": "padding-left",
-          "equals": "16px",
+          "prop": "padding-right",
+          "atLeast": 8,
+          "every": true,
           "label": "a card"
         },
         {
           "style": ".card",
           "prop": "padding-bottom",
-          "equals": "16px",
+          "atLeast": 8,
+          "every": true,
           "label": "a card"
-        }
+        },
+        { "style": ".card", "prop": "padding-left", "atLeast": 8, "every": true, "label": "a card" }
       ]
     },
     {
-      "name": "Each card has its border",
+      "name": "Each card has a frame all the way round",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
           "style": ".card",
           "prop": "border-top-width",
-          "equals": "2px",
+          "atLeast": 1,
+          "every": true,
           "label": "a card"
         },
         {
           "style": ".card",
-          "prop": "border-right-style",
-          "equals": "solid",
+          "prop": "border-right-width",
+          "atLeast": 1,
+          "every": true,
           "label": "a card"
         },
         {
           "style": ".card",
-          "prop": "border-bottom-color",
-          "equals": "rgb(44, 74, 122)",
+          "prop": "border-bottom-width",
+          "atLeast": 1,
+          "every": true,
+          "label": "a card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-left-width",
+          "atLeast": 1,
+          "every": true,
           "label": "a card"
         }
       ]
     },
     {
-      "name": "The cards keep their distance",
+      "name": "No two cards touch",
       "visible": true,
       "page": "crew.html",
-      "steps": [
-        {
-          "style": ".card",
-          "prop": "margin-bottom",
-          "equals": "24px",
-          "label": "a card"
-        }
-      ]
+      "steps": [{ "layout": "#cards .card", "arrange": "column", "gap": 12, "label": "the cards" }]
     }
   ]
 }

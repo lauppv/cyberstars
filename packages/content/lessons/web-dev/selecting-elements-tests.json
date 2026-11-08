@@ -7,7 +7,7 @@
         {
           "text": "p#status",
           "equals": "Welcome aboard: all systems normal",
-          "label": "the status paragraph (<p id=\"status\">)"
+          "label": "the status paragraph"
         }
       ]
     },

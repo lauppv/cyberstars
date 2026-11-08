@@ -81,7 +81,8 @@ const CARDS = `<!DOCTYPE html><html><head><style>
 
 const STACKED = `<!DOCTYPE html><html><body><div class="card">A</div><div class="card">B</div></body></html>`;
 
-describe.skipIf(!hasBrowser())('web runner', () => {
+// Every test drives a real Chromium, a case at a time: past vitest's 5s on a busy CI runner
+describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
   it('tells cards side by side from cards one under the other, by window width', () => {
     const cases: WebTestCase[] = [
       {
@@ -260,6 +261,118 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
   });
 
+  it('reads the effect of a style: room, contrast, a look of its own, the middle, the outline', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        body { margin: 0; background: #0b1d3a; color: #f0f4ff; }
+        main { max-width: 600px; margin: 0 auto; padding: 0 16px; }
+        .off { width: 200px; margin-left: 10px; }
+        .card { padding: 1rem; margin-bottom: 12px; border: 2px dashed oklch(70% 0.1 250); }
+        .tight { margin-bottom: 0; }
+        .warning { color: hsl(0, 100%, 85%); }
+        .paper { background: white; }
+        .grey { color: #777; }
+        .black { color: black; }
+        .veil { background: rgba(255, 255, 255, 0.5); }
+      </style></head><body><main>
+        <h1>Station</h1><h2>Crew</h2><h4>Night</h4>
+        <div class="card">A</div><div class="card">B</div><div class="card tight">C</div><div class="card">D</div>
+        <p class="warning">Hatch 3</p><p>Plain</p>
+        <div class="paper"><p class="grey">Faint</p><p class="black">Ink</p></div>
+        <div class="veil"><p class="on-veil">Veiled</p></div>
+        <div class="off">Off</div>
+        <nav style="text-align: center"><a href="#">Home</a> <a href="#">Crew</a></nav>
+        <nav class="left"><a href="#">Home</a> <a href="#">Crew</a></nav>
+      </main></body></html>`,
+    };
+    const one = (steps: WebTestCase['steps']): WebTestCase => ({ name: 'x', visible: true, steps });
+    const card = { label: 'a card' };
+    const [
+      room,
+      tooMuch,
+      border,
+      readable,
+      faint,
+      ink,
+      veiled,
+      differs,
+      alike,
+      gapOk,
+      gapLow,
+      centered,
+      off,
+      outline,
+      links,
+      leftLinks,
+      fullTitle,
+      narrowBox,
+    ] = verdicts(files, [
+      one([{ style: '.card', prop: 'padding-left', atLeast: 12, every: true, ...card }]),
+      one([{ style: '.card', prop: 'padding-left', atMost: 8, ...card }]),
+      one([{ style: '.card', prop: 'border-top-style', not: 'none', ...card }]),
+      one([
+        {
+          contrast: 'main > h1, .warning',
+          atLeast: 4.5,
+          on: 'dark',
+          every: true,
+          label: 'the text',
+        },
+      ]),
+      one([{ contrast: '.grey', atLeast: 4.5, label: 'the faint line' }]),
+      one([{ contrast: '.black', atLeast: 21, on: 'light', label: 'the ink' }]),
+      one([{ contrast: '.on-veil', atLeast: 4.5, label: 'the veiled line' }]),
+      one([
+        {
+          differs: '.warning',
+          from: 'main > p:not(.warning)',
+          props: ['color', 'font-weight'],
+          fromLabel: 'the other paragraphs',
+          label: 'the warning',
+        },
+      ]),
+      one([
+        {
+          differs: '.warning',
+          from: 'main > p',
+          props: ['color'],
+          fromLabel: 'every paragraph',
+          label: 'the warning',
+        },
+      ]),
+      one([{ layout: 'main > div.card:nth-of-type(-n+2)', arrange: 'column', gap: 12, ...card }]),
+      one([{ layout: '.card', arrange: 'column', gap: 12, label: 'the cards' }]),
+      one([{ centered: 'main', label: 'the column' }]),
+      one([{ centered: '.off', label: 'the box' }]),
+      one([{ outline: true }]),
+      one([{ centered: 'nav:not(.left) a', label: 'the links' }]),
+      one([{ centered: 'nav.left a', label: 'the links' }]),
+      one([{ fills: 'main > h1', label: 'the title' }]),
+      one([{ fills: '.off', label: 'the box' }]),
+    ]);
+    expect(room.passed).toBe(true);
+    expect(tooMuch.web).toMatchObject({ kind: 'style', compare: 'atMost', found: '16px' });
+    expect(border.passed).toBe(true);
+    expect(readable.passed).toBe(true);
+    // #777 on white is 4.48:1, just under
+    expect(faint.web).toMatchObject({ kind: 'contrast', found: '4.48' });
+    expect(ink.passed).toBe(true);
+    // White over half-white over the dark page: light on light
+    expect(veiled.web).toMatchObject({ kind: 'contrast' });
+    expect(differs.passed).toBe(true);
+    expect(alike.web).toMatchObject({ kind: 'differs' });
+    expect(gapOk.passed).toBe(true);
+    expect(gapLow.web).toMatchObject({ kind: 'gap', found: '0' });
+    expect(centered.passed).toBe(true);
+    expect(off.web).toMatchObject({ kind: 'centered', found: expect.stringMatching(/^10 /) });
+    expect(outline.web).toMatchObject({ kind: 'outline', other: 'h4', found: 'Night' });
+    // Links taken together: in the middle of their bar, or at its start
+    expect(links.passed).toBe(true);
+    expect(leftLinks.web).toMatchObject({ kind: 'centered', found: expect.stringMatching(/^0 /) });
+    expect(fullTitle.passed).toBe(true);
+    expect(narrowBox.web).toMatchObject({ kind: 'fills', found: '200' });
+  });
+
   it("reads a :hover rule after hover, and a pseudo-element's content and look", () => {
     const files = {
       'index.html': `<!DOCTYPE html><html><head><style>
@@ -349,6 +462,93 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     const [first, every] = verdicts(files, cases);
     expect(first.passed).toBe(true);
     expect(every.web).toMatchObject({ kind: 'style', detail: '::after content', found: 'none' });
+  });
+
+  it("reads a corner's radius as a length: a percentage of the box, an ellipse's smaller radius", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        .round { width: 100px; height: 100px; border-radius: 50%; }
+        .oval { width: 200px; height: 100px; border-radius: 12px / 8px; }
+        .hair { width: 100px; height: 100px; border-radius: 2%; }
+      </style></head><body>
+        <div class="round"></div><div class="oval"></div><div class="hair"></div>
+      </body></html>`,
+    };
+    const corner = (style: string, atLeast: number): WebTestCase => ({
+      name: 'x',
+      visible: true,
+      steps: [{ style, prop: 'border-top-left-radius', atLeast, label: 'a box' }],
+    });
+    const [round, oval, hair] = verdicts(files, [
+      corner('.round', 50),
+      corner('.oval', 8),
+      corner('.hair', 4),
+    ]);
+    // Half of 100px across and down
+    expect(round.passed).toBe(true);
+    // As round as its smaller radius, 8px
+    expect(oval.passed).toBe(true);
+    expect(hair.web).toMatchObject({ kind: 'style', found: '2px' });
+  });
+
+  it('reads a transparent background color under a gradient as the gradient', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        .faded { background: linear-gradient(#13294f, #2c4a7a); }
+      </style></head><body><div class="faded">Panel</div><p>Plain</p></body></html>`,
+    };
+    const filled = (style: string): WebTestCase => ({
+      name: 'x',
+      visible: true,
+      steps: [{ style, prop: 'background-color', not: 'rgba(0, 0, 0, 0)', label: 'a box' }],
+    });
+    const [panel, plain] = verdicts(files, [filled('.faded'), filled('p')]);
+    expect(panel.passed).toBe(true);
+    expect(plain.web).toMatchObject({ kind: 'style', found: 'rgba(0, 0, 0, 0)' });
+  });
+
+  it("compares the background that shows behind each element, its own or a parent's", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        html { background: #0b1d3a; }
+        nav { background: #0b1d3a; }
+        tbody tr:nth-child(even) td { background: #13294f; }
+        thead tr { background: #2c4a7a; }
+      </style></head><body>
+        <nav>Bar</nav>
+        <table><thead><tr><th>A</th></tr></thead>
+        <tbody><tr><td>1</td></tr><tr><td>2</td></tr><tr><td>3</td></tr></tbody></table>
+      </body></html>`,
+    };
+    const unlike = (differs: string, from: string): WebTestCase => ({
+      name: 'x',
+      visible: true,
+      steps: [
+        { differs, from, props: ['background-color'], fromLabel: 'the others', label: 'these' },
+      ],
+    });
+    const [bar, stripes, head] = verdicts(files, [
+      unlike('nav', 'body'),
+      unlike('tbody tr:nth-child(even) td', 'tbody tr:nth-child(odd) td'),
+      unlike('th', 'td'),
+    ]);
+    // The page's color sits on <html>, the bar's is the same
+    expect(bar.web).toMatchObject({ kind: 'differs' });
+    // Colored on the cells, or on the header's row
+    expect(stripes.passed).toBe(true);
+    expect(head.passed).toBe(true);
+  });
+
+  it('centers the elements that take room, a hidden one left out', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body style="margin: 0">
+        <nav style="text-align: center"><a href="#main" style="display: none">Skip</a><a href="#">Home</a> <a href="#">Crew</a></nav>
+      </body></html>`,
+    };
+    const [links] = verdicts(files, [
+      { name: 'x', visible: true, steps: [{ centered: 'nav a', label: 'the links' }] },
+    ]);
+    expect(links.passed).toBe(true);
   });
 
   it('stops a page stuck in an endless loop, like a timeout', () => {

@@ -1,4 +1,4 @@
-Your rows get their `delayed` and `cancelled` classes from the HTML, written by hand. But the status is right there in each row: the script can read it and give each row its class itself. Then a status changed in one place, the cell, changes the row's look too.
+Your rows get their `delayed` and `cancelled` classes from the HTML, typed by hand. But the status is right there in each row: the script can read it and give each row its class by itself. Then, when a status changes in one place, the cell, the row's look changes too.
 
 ## Attributes
 
@@ -10,7 +10,7 @@ link.hasAttribute("target"); // false
 link.removeAttribute("title");
 ```
 
-`getAttribute` reads any attribute as a string (or `null` when it's missing), `setAttribute` writes one.
+`getAttribute` reads any attribute as a string (or `null` when it's missing), and `setAttribute` writes one.
 
 ## classList
 
@@ -23,11 +23,11 @@ row.classList.toggle("selected"); // add if missing, remove if there
 row.classList.contains("selected"); // true or false
 ```
 
-That's the usual way for a script to change a page's look: the script says **what** an element is now, with a class, and CSS says **how** that looks. Setting `style` properties from the script mixes the two and is harder to change later.
+That's the usual way for a script to change how a page looks. The script says **what** an element is now, with a class, and CSS says **how** that looks. Setting `style` properties from the script mixes the two, and is harder to change later.
 
 ## A button that stays pressed
 
-A button that switches something on and off should say whether it's on. `aria-pressed` does that for a screen reader: `"true"` when pressed, `"false"` when not. Keep it in step with what the button does:
+A button that switches something on and off should say whether it's on. `aria-pressed` tells a screen reader: `"true"` when it's pressed, `"false"` when it isn't. Keep it matching what the button does:
 
 ```js
 button.setAttribute("aria-pressed", String(isOn));
@@ -37,6 +37,8 @@ button.setAttribute("aria-pressed", String(isOn));
 
 ## Mission: Status Classes
 
-- Take the `delayed` and `cancelled` classes off the rows in the HTML. In `schedule.js`, give every row whose status is `Delayed` the class `delayed`, and every `Cancelled` one the class `cancelled`, read from its status cell.
-- Over the flights table, add a button with the id `hide-cancelled` that says **Hide cancelled**, with `aria-pressed="false"`.
-- A click toggles the class `hide-cancelled` on the flights table; in your CSS, a cancelled row inside a table with that class isn't shown at all. The button then says **Show cancelled** and is pressed; a second click brings everything back.
+The rows' classes should follow their status by themselves.
+
+- Take the `delayed` and `cancelled` classes off the rows in your HTML. Your script gives every row whose status says `Delayed` the class `delayed`, and every row whose status says `Cancelled` the class `cancelled`, so the look from your style sheet still shows.
+- Over the flights table, add a button with the id `hide-cancelled` that says **Hide cancelled**, and tells a screen reader it isn't pressed.
+- A click hides every cancelled flight. Do it with a class on the table, `hide-cancelled`, and a rule in your style sheet, not with styles from the script. The button then says **Show cancelled** and tells a screen reader it's pressed. A second click brings everything back, and so on.

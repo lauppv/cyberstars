@@ -25,7 +25,7 @@
         {
           "text": "h1",
           "equals": "Launch Board",
-          "label": "the biggest heading (<h1>)"
+          "label": "the biggest heading"
         },
         {
           "count": "h1",
@@ -41,12 +41,12 @@
         {
           "text": "table#launches > caption",
           "nonEmpty": true,
-          "label": "the caption of a table with id=\"launches\""
+          "label": "the title a screen reader reads for the table with id=\"launches\""
         },
         {
           "count": "#launches > thead > tr > th[scope=\"col\"]",
           "equals": 4,
-          "label": "column headers in its <thead>"
+          "label": "column headers, each naming its column, in the head of the table"
         },
         {
           "text": "#launches thead th:nth-child(4)",
@@ -56,7 +56,7 @@
         {
           "count": "#launches > tbody > tr",
           "atLeast": 5,
-          "label": "launches in its <tbody>"
+          "label": "launches in the body of the table"
         },
         {
           "count": "#launches tbody tr:not(:has(> td.rocket + td.pad + td.time + td.status))",
@@ -73,6 +73,10 @@
           "style": "#launches",
           "prop": "border-collapse",
           "equals": "collapse",
+          "label": "the table"
+        },
+        {
+          "fills": "#launches",
           "label": "the table"
         },
         {
@@ -106,27 +110,27 @@
       "visible": true,
       "steps": [
         {
-          "style": "#launches tbody tr:nth-child(odd)",
-          "prop": "background-color",
-          "equals": "rgba(0, 0, 0, 0)",
-          "every": true,
-          "label": "every odd launch"
+          "differs": "#launches tbody tr:nth-child(even) td:first-child",
+          "from": "#launches tbody tr:nth-child(odd) td:first-child",
+          "props": ["background-color"],
+          "fromLabel": "the odd launches",
+          "label": "the even launches"
         },
         {
-          "style": "#launches tbody tr:nth-child(even)",
-          "prop": "background-color",
-          "equals": "rgb(19, 41, 79)",
+          "contrast": "#launches tbody tr td",
+          "atLeast": 4.5,
           "every": true,
-          "label": "every even launch"
+          "label": "a cell of a launch"
         },
         {
           "hover": "#launches tbody tr:nth-child(3)",
           "label": "the third launch"
         },
         {
-          "style": "#launches tbody tr:nth-child(3)",
-          "prop": "background-color",
-          "equals": "rgb(29, 59, 110)",
+          "differs": "#launches tbody tr:nth-child(3) td:first-child",
+          "from": "#launches tbody tr:not(:nth-child(3)) td:first-child",
+          "props": ["background-color"],
+          "fromLabel": "the other launches",
           "label": "the third launch, under the mouse"
         },
         {
@@ -134,9 +138,10 @@
           "label": "the fourth launch"
         },
         {
-          "style": "#launches tbody tr:nth-child(4)",
-          "prop": "background-color",
-          "equals": "rgb(29, 59, 110)",
+          "differs": "#launches tbody tr:nth-child(4) td:first-child",
+          "from": "#launches tbody tr:not(:nth-child(4)) td:first-child",
+          "props": ["background-color"],
+          "fromLabel": "the other launches",
           "label": "the fourth launch, striped and under the mouse"
         }
       ]
@@ -147,7 +152,7 @@
       "steps": [
         {
           "exists": "head script[src$=\"script.js\"][defer]",
-          "label": "a <script src=\"script.js\" defer> in the <head>"
+          "label": "a script.js in the head that waits for the whole page"
         },
         {
           "count": "#launches tbody tr:not(.scheduled):not(.scrubbed):not(.launched)",
@@ -166,12 +171,12 @@
         {
           "text": "p#summary",
           "contains": " scheduled, ",
-          "label": "the summary (<p id=\"summary\">)"
+          "label": "the summary"
         },
         {
           "text": "p#next-launch",
           "contains": "Next launch: ",
-          "label": "the next launch (<p id=\"next-launch\">)"
+          "label": "the next launch"
         }
       ]
     },
@@ -225,7 +230,7 @@
         {
           "text": "button#hide-scrubbed",
           "equals": "Hide scrubbed",
-          "label": "the button (<button id=\"hide-scrubbed\">)"
+          "label": "the button with id=\"hide-scrubbed\""
         },
         {
           "attr": "button#hide-scrubbed",

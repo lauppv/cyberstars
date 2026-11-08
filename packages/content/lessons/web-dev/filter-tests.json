@@ -8,7 +8,7 @@
         {
           "text": "p#on-time",
           "equals": "On time: SL-102, SL-105",
-          "label": "the flights on time (<p id=\"on-time\">)"
+          "label": "the flights on time"
         },
         {
           "noErrors": true
@@ -16,11 +16,22 @@
       ]
     },
     {
+      "name": "The flights before 10:00 are named",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "p#before-ten",
+          "equals": "Before 10:00: SL-101 to Moon Base, SL-102 to Mars Relay, SL-103 to Europa Outpost",
+          "label": "the flights before 10:00"
+        }
+      ]
+    },
+    {
       "name": "Only On time counts",
-      "visible": false,
       "page": "schedule.html",
       "files": {
-        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"code\">SL-901</td>\n          <td class=\"destination\">Ceres Dock</td>\n          <td class=\"departs\">08:00</td>\n          <td class=\"status\">On time</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-902</td>\n          <td class=\"destination\">Ceres Dock</td>\n          <td class=\"departs\">09:00</td>\n          <td class=\"status\">Not On time</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-101</td>\n          <td class=\"destination\">Moon Base</td>\n          <td class=\"departs\">08:30</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"code\">SL-901</td>\n          <td class=\"destination\">Ceres</td>\n          <td class=\"departs\">12:00</td>\n          <td class=\"status\">On time</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-902</td>\n          <td class=\"destination\">Titan</td>\n          <td class=\"departs\">06:00</td>\n          <td class=\"status\">On time soon</td>\n        </tr>\n        <tr class=\"delayed\">\n          <td class=\"code\">SL-903</td>\n          <td class=\"destination\">Io</td>\n          <td class=\"departs\">13:00</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"before-ten\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
       },
       "steps": [
         {
@@ -31,17 +42,35 @@
       ]
     },
     {
-      "name": "With none, none",
-      "visible": false,
+      "name": "Cancelled flights and 10:00 itself stay out",
       "page": "schedule.html",
       "files": {
-        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"code\">SL-101</td>\n          <td class=\"destination\">Moon Base</td>\n          <td class=\"departs\">08:30</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n        <tr class=\"delayed\">\n          <td class=\"code\">SL-103</td>\n          <td class=\"destination\">Europa Outpost</td>\n          <td class=\"departs\">07:15</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr class=\"delayed\">\n          <td class=\"code\">SL-701</td>\n          <td class=\"destination\">Phobos</td>\n          <td class=\"departs\">09:59</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n        <tr class=\"cancelled\">\n          <td class=\"code\">SL-702</td>\n          <td class=\"destination\">Vesta</td>\n          <td class=\"departs\">08:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-703</td>\n          <td class=\"destination\">Pallas</td>\n          <td class=\"departs\">10:00</td>\n          <td class=\"status\">On time</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-704</td>\n          <td class=\"destination\">Hygiea</td>\n          <td class=\"departs\">00:05</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"before-ten\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#before-ten",
+          "equals": "Before 10:00: SL-701 to Phobos, SL-704 to Hygiea",
+          "label": "the flights before 10:00"
+        }
+      ]
+    },
+    {
+      "name": "With none, none",
+      "page": "schedule.html",
+      "files": {
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr class=\"cancelled\">\n          <td class=\"code\">SL-801</td>\n          <td class=\"destination\">Deimos</td>\n          <td class=\"departs\">07:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-802</td>\n          <td class=\"destination\">Ceres</td>\n          <td class=\"departs\">15:30</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"before-ten\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
       },
       "steps": [
         {
           "text": "p#on-time",
           "equals": "On time: none",
           "label": "the flights on time"
+        },
+        {
+          "text": "p#before-ten",
+          "equals": "Before 10:00: none",
+          "label": "the flights before 10:00"
         }
       ]
     }

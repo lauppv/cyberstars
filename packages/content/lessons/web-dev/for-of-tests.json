@@ -8,7 +8,7 @@
         {
           "count": "#cards > .card:not(:has(span.worked))",
           "equals": 0,
-          "label": "cards without their hours (<span class=\"worked\">)"
+          "label": "cards without their hours"
         }
       ]
     },
@@ -20,7 +20,7 @@
         {
           "text": "p#hours-total",
           "contains": "Hours this week: ",
-          "label": "the hours total (<p id=\"hours-total\">)"
+          "label": "the hours total"
         },
         {
           "text": "p#hours-total",

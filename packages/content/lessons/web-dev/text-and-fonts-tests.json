@@ -1,38 +1,46 @@
 {
   "cases": [
     {
-      "name": "The page is set in Verdana, with room between lines",
+      "name": "The page is set in a plain font every browser can show",
       "visible": true,
       "steps": [
         {
           "style": "body",
           "prop": "font-family",
-          "equals": "Verdana, Geneva, sans-serif",
-          "label": "the page (<body>)"
+          "endsWith": "sans-serif",
+          "label": "the page"
         },
         {
           "style": "p",
           "prop": "font-family",
-          "equals": "Verdana, Geneva, sans-serif",
+          "endsWith": "sans-serif",
+          "every": true,
           "label": "a paragraph"
-        },
-        {
-          "style": "body",
-          "prop": "line-height",
-          "equals": "25.6px",
-          "label": "the page (<body>)"
         }
       ]
     },
     {
-      "name": "The biggest heading is centered",
+      "name": "The lines of text have room between them",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p",
+          "prop": "line-height",
+          "atLeast": 22.4,
+          "every": true,
+          "label": "a paragraph"
+        }
+      ]
+    },
+    {
+      "name": "The biggest heading is in the middle",
       "visible": true,
       "steps": [
         {
           "style": "h1",
           "prop": "text-align",
           "equals": "center",
-          "label": "the biggest heading (<h1>)"
+          "label": "the biggest heading"
         }
       ]
     },
@@ -43,14 +51,9 @@
         {
           "style": "h2",
           "prop": "letter-spacing",
-          "equals": "2px",
-          "label": "a section heading (<h2>)"
-        },
-        {
-          "style": "#today",
-          "prop": "letter-spacing",
-          "equals": "2px",
-          "label": "the heading Today on Board"
+          "atLeast": 1,
+          "every": true,
+          "label": "a section heading"
         }
       ]
     },
@@ -62,7 +65,8 @@
           "style": "h3",
           "prop": "text-transform",
           "equals": "uppercase",
-          "label": "a shift heading (<h3>)"
+          "every": true,
+          "label": "a shift heading"
         }
       ]
     },
@@ -73,7 +77,7 @@
         {
           "text": "p.address",
           "contains": "Orbital Station 7 Docking Ring B Low Earth Orbit",
-          "label": "the address (<p class=\"address\">)"
+          "label": "the address, in the class address"
         },
         {
           "style": "p.address",

@@ -1,6 +1,6 @@
-Every website you have ever opened is made of **web pages**, and a web page is just a **text file**. Your browser reads that file and turns it into what you see: headings, paragraphs, pictures, buttons.
+Every website you have ever opened is made of **web pages**, and a web page is just a **text file**. Your browser reads that file and turns it into what you see: headings, text, pictures, buttons.
 
-The language of that file is **HTML**. It doesn't compute anything like Python or C. It **describes** what is on the page: "this is a heading", "this is a paragraph".
+The file is written in a language called **HTML**. HTML doesn't do math like Python or C. It only **describes** what is on the page: "this is a heading", "this is a paragraph".
 
 ## Tags
 
@@ -10,42 +10,42 @@ HTML describes things with **tags**. A tag is a word between `<` and `>`:
 <h1>Cargo Bay</h1>
 ```
 
-Here `<h1>` is the **opening tag** and `</h1>` the **closing tag**: the same word, with a `/` in front. Everything between them is what the tag describes. `h1` means "the biggest heading of the page", so the browser draws **Cargo Bay** large and bold.
+`<h1>` is the **opening tag**. `</h1>` is the **closing tag**: the same word, with a `/` in front. The text between them is what the tag is about. `h1` means "the biggest heading of the page", so the browser shows **Cargo Bay** big and bold.
 
-An opening tag, its closing tag and what sits between them make an **element**. Another one:
+An opening tag, its closing tag and everything between them make an **element**. Here is another one:
 
 ```html
 <p>Crates are stacked by weight, the heaviest at the bottom.</p>
 ```
 
-`p` stands for **paragraph**: a block of ordinary text.
+`p` is short for **paragraph**: a block of normal text.
 
-## The skeleton of a page
+## The frame of a page
 
-A real page puts its elements inside a fixed frame, the same on every page:
+Every real page puts its elements inside the same frame:
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Cargo Bay</title>
+    <title>Soute</title>
   </head>
   <body>
-    <h1>Cargo Bay</h1>
-    <p>Crates are stacked by weight, the heaviest at the bottom.</p>
+    <h1>Soute</h1>
+    <p>Les caisses lourdes vont en bas.</p>
   </body>
 </html>
 ```
 
-Line by line:
+This page is in French. Line by line:
 
-- `<!DOCTYPE html>` tells the browser "this is a modern HTML page". It isn't a tag and has no closing part.
-- `<html lang="en">` holds the whole page. `lang="en"` is an **attribute**: extra information written inside the opening tag, here that the page is in English.
-- `<head>` holds information **about** the page, which isn't drawn on it. `<meta charset="UTF-8">` lets the page show any letter, like ă or é, and `<title>` is the name on the browser's tab.
+- `<!DOCTYPE html>` tells the browser "this is a modern HTML page". It isn't a tag and it never closes.
+- `<html>` holds the whole page. `lang="fr"` is an **attribute**: extra information written inside an opening tag. This one says the page is in French. English is `en`, Romanian is `ro`.
+- `<head>` holds information **about** the page. Nothing in it is shown on the page itself. `<meta charset="UTF-8">` lets the page show any letter, like ă, é or ß. `<title>` is the name you see on the browser's tab.
 - `<body>` holds everything you **see** on the page.
 
-Notice how elements sit **inside** other elements, like boxes in boxes: `<title>` inside `<head>`, `<head>` inside `<html>`. The spaces at the start of the lines change nothing for the browser. They are there for you, so you can see at a glance what sits inside what.
+Elements sit **inside** other elements, like boxes inside boxes: `<title>` is inside `<head>`, and `<head>` is inside `<html>`. The spaces at the start of the lines don't matter to the browser. They are there for you, so you can see at a glance what is inside what.
 
 ## Your workspace
 
@@ -53,20 +53,20 @@ On the right you have a small editor of your own:
 
 - the **files** of your site, on the left of the editor. For now there is one, `index.html`, the page a browser opens first;
 - the **editor**, where you write the file you picked;
-- the **preview**, which shows your page and changes a moment after you stop typing. If it ever doesn't, **Run** over it, or **Ctrl+Enter** in the editor (**⌘+Enter** on a Mac), draws it again from scratch;
+- the **preview**, which shows your page and updates a moment after you stop typing. If it ever doesn't, press **Run** above it, or **Ctrl+Enter** in the editor (**⌘+Enter** on a Mac);
 - the **console** under the preview. You'll need it once your page runs JavaScript.
 
-Try it: type `<h1>Hello</h1>` in `index.html` and look at the preview. Change the word and look again. Then break something on purpose, like leaving out the `</h1>`, and see what the browser does. Experimenting is the fastest way to learn.
+Try it: type `<h1>Hello</h1>` in `index.html` and look at the preview. Change the word and look again. Then break something on purpose, like deleting the `</h1>`, and see what the browser does. Trying things out is the fastest way to learn.
 
 ---
 
 ## Mission: Station Log
 
-Your station needs its first page. In `index.html`, write a complete page with the skeleton above:
+Your space station needs its first page. Write `index.html` yourself, from the first line to the last:
 
-- the page is in English (`lang="en"`) and can show any letter (`charset="UTF-8"`);
-- the name on the browser's tab is **Station Log**;
-- the page shows a biggest heading with the text **Welcome aboard**;
+- the page is in English, and it can show any letter;
+- the browser's tab says **Station Log**;
+- the page starts with its biggest heading: **Welcome aboard**;
 - under the heading, a paragraph with a sentence of your own about the station.
 
-Write it yourself rather than copying the example: typing every tag is how you'll remember them.
+Don't copy the example: type every tag. That's how you'll remember them.

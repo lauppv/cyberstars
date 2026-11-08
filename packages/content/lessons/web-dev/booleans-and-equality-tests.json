@@ -19,7 +19,7 @@
         {
           "text": "#flights + p#boarding-now",
           "equals": "First flight boarding: true",
-          "label": "the boarding paragraph (<p id=\"boarding-now\">) under the flights table"
+          "label": "the boarding paragraph under the flights table"
         }
       ]
     },

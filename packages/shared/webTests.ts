@@ -71,18 +71,58 @@ export type WebCheck =
   /**
    * The first element's computed style, as the browser reports it, or that of
    * its ::before or ::after (`pseudo`), whose `content` keeps its quotes: `"★"`.
-   * With `every`, that of every element (up to 50), for a mission that says
-   * "every link", so a rule that styles only the first one fails.
+   * It `equals` a value, is anything `not` this one, `endsWith` a text (a
+   * font list's generic family: `sans-serif`), or, for a length (the
+   * browser reports it in px), is `atLeast` and/or `atMost` so many px: a
+   * mission that asks for room, not for 16px. A corner's radius is read as
+   * a length too: a percentage of the box ("50%"), and an elliptical corner
+   * as its smaller radius. A `background-color` left transparent under a
+   * gradient or a picture reads as that picture. With `every`, that of every
+   * element (up to 50), for a mission that says "every link", so a rule that
+   * styles only the first one fails.
    */
   | ({
       style: string;
       prop: string;
-      equals: string;
+      equals?: string;
+      not?: string;
+      endsWith?: string;
+      atLeast?: number;
+      atMost?: number;
       pseudo?: WebPseudo;
       every?: true;
     } & Labelled)
-  /** The elements stand in a row (side by side) or a column (one under the other). */
-  | ({ layout: string; arrange: 'row' | 'column' } & Labelled)
+  /**
+   * The element's text reads on the background behind it: the contrast ratio
+   * of its color and the background colors under it (WCAG's, from 1 to 21) is
+   * at least `atLeast`, 4.5 for text, and with `on`, the background is the
+   * `dark` one (light text) or the `light` one. Background images aren't
+   * looked at, only the colors. With `every`, every element's (up to 50).
+   */
+  | ({ contrast: string; atLeast: number; on?: 'dark' | 'light'; every?: true } & Labelled)
+  /**
+   * Every element of `differs` looks unlike every element of `from` in at least
+   * one of `props`: a warning stands out from the other paragraphs by its
+   * color, its background or its weight, whichever the student picked. Its
+   * `background-color` is the background that shows behind it, its own or
+   * an ancestor's (a cell colored on its row), a gradient or a picture too.
+   * `fromLabel` names the others ("the other paragraphs").
+   */
+  | ({ differs: string; from: string; props: readonly string[]; fromLabel: string } & Labelled)
+  /**
+   * The elements stand in a row (side by side) or a column (one under the
+   * other), with at least `gap` px between each one and the next, and with
+   * `align: 'start'` lined up at their tops (a row) or their left edges (a
+   * column).
+   */
+  | ({ layout: string; arrange: 'row' | 'column'; gap?: number; align?: 'start' } & Labelled)
+  /**
+   * The elements, taken together (the box round them all: a menu's links),
+   * are narrower than the first one's parent's content and centered across it.
+   */
+  | ({ centered: string } & Labelled)
+  /** The first element is as wide as its parent's content: a table across its column. */
+  | ({ fills: string } & Labelled)
   /** The first element's size in px. */
   | ({
       size: string;
@@ -93,6 +133,8 @@ export type WebCheck =
     } & Labelled)
   /** The page fits the window's width, with nothing to scroll sideways. */
   | { fits: true }
+  /** The page's headings: one h1, and none more than a level below the heading before it. */
+  | { outline: true }
   /** The page's scripts logged this line (spaces at the ends aside). */
   | { logged: string }
   /** Nothing thrown and nothing logged with console.error so far. */
@@ -148,6 +190,14 @@ export interface WebObservation {
   /** Texts, attribute or style values of the elements (an attribute missing is null). */
   values?: (string | null)[];
   boxes?: WebBox[];
+  /** A contrast check's: each element's contrast ratio with its background, and whether that background is the darker of the two. */
+  ratios?: number[];
+  darker?: boolean[];
+  /** A differs check's: each element's values of its props, then each other element's. */
+  rows?: string[][];
+  others?: string[][];
+  /** An outline check's: the page's headings in order. */
+  headings?: { level: number; text: string }[];
   scrollWidth?: number;
   logs?: string[];
   errors?: string[];
@@ -163,7 +213,14 @@ type WebFailureKind =
   | 'style'
   | 'count'
   | 'layout'
+  | 'gap'
+  | 'align'
+  | 'centered'
+  | 'fills'
   | 'size'
+  | 'contrast'
+  | 'differs'
+  | 'outline'
   | 'fits'
   | 'logged'
   | 'errors'
@@ -183,6 +240,16 @@ export interface WebFailure {
    * count, equals or atLeast.
    */
   detail?: string;
+  /**
+   * How a style was compared, when not by `equals`: `not`, `atLeast` or
+   * `atMost` (a length in px).
+   */
+  compare?: 'not' | 'endsWith' | 'atLeast' | 'atMost';
+  /**
+   * What the element was held against: a differs check's others ("the other
+   * paragraphs"), or the level of the heading that skips one (`h4`).
+   */
+  other?: string;
   /** The window's width, for a layout, a size or fitting the page. */
   width?: number;
   /**
@@ -194,6 +261,13 @@ export interface WebFailure {
 }
 
 type Lang = 'en' | 'ro';
+
+// How the browser reports a few colors a beginner knows by name
+const COLOR_NAMES: Record<string, string> = {
+  'rgba(0, 0, 0, 0)': 'transparent',
+  'rgb(0, 0, 0)': 'black',
+  'rgb(255, 255, 255)': 'white',
+};
 
 const QUOTE: Record<Lang, (s: string) => string> = {
   en: (s) => `“${s}”`,
@@ -279,10 +353,84 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         ? `Se aștepta ${label} cu ${want}, dar are ${had}.`
         : `Expected ${label} with ${want}, found ${had}.`;
     }
-    case 'style':
+    case 'style': {
+      if (f.compare === 'not') {
+        // The browser reports a color as numbers; a few are said by their names
+        const said = (v: string | null) => (v !== null && COLOR_NAMES[v]) || v;
+        return ro
+          ? `Se aștepta ${label} cu ${f.detail} diferit de ${said(expected)}, dar are ${f.detail}: ${said(found)}.`
+          : `Expected ${label} with ${f.detail} other than ${said(expected)}, found ${f.detail}: ${said(found)}.`;
+      }
+      if (f.compare === 'endsWith') {
+        return ro
+          ? `Se aștepta ${label} cu ${f.detail} terminat în ${expected}, dar are ${f.detail}: ${found}.`
+          : `Expected ${label} with ${f.detail} ending in ${expected}, found ${f.detail}: ${found}.`;
+      }
+      if (f.compare) {
+        const least = f.compare === 'atLeast';
+        const bound = ro
+          ? least
+            ? 'de cel puțin'
+            : 'de cel mult'
+          : least
+            ? 'at least'
+            : 'at most';
+        return ro
+          ? `Se aștepta ${label} cu ${f.detail} ${bound} ${expected}px, dar are ${f.detail}: ${found}.`
+          : `Expected ${label} with ${f.detail} of ${bound} ${expected}px, found ${f.detail}: ${found}.`;
+      }
       return ro
         ? `Se aștepta ${label} cu ${f.detail}: ${expected}, dar are ${f.detail}: ${found}.`
         : `Expected ${label} with ${f.detail}: ${expected}, found ${f.detail}: ${found}.`;
+    }
+    case 'contrast':
+      if (f.detail === 'on') {
+        const dark = expected === 'dark';
+        return ro
+          ? `Se aștepta ca ${label} să aibă text ${dark ? 'deschis pe fundal închis' : 'închis pe fundal deschis'}, dar are invers.`
+          : `Expected ${label} ${dark ? 'light on a dark background' : 'dark on a light background'}, found it the other way round.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să se citească pe fundalul său, cu un contrast de cel puțin ${expected}:1, dar contrastul e ${found}:1.`
+        : `Expected ${label} readable on its background, a contrast of at least ${expected}:1, found ${found}:1.`;
+    case 'differs':
+      return ro
+        ? `Se aștepta ca ${label} să arate altfel decât ${f.other} (prin ${f.detail}), dar nu toate se deosebesc.`
+        : `Expected ${label} to look unlike ${f.other} (by ${f.detail}), found one that looks the same.`;
+    case 'gap':
+      return ro
+        ? `Se așteptau ${label} la cel puțin ${expected}px unul de altul la o fereastră de ${w}px, dar între două sunt doar ${found}px.`
+        : `Expected ${label} at least ${expected}px apart in a window ${w}px wide, found two only ${found}px apart.`;
+    case 'align': {
+      const edge = expected === 'row' ? (ro ? 'sus' : 'tops') : ro ? 'stânga' : 'left edges';
+      return ro
+        ? `Se așteptau ${label} aliniate ${expected === 'row' ? 'sus' : 'la stânga'} la o fereastră de ${w}px, dar sunt la ${found}px unul de altul.`
+        : `Expected ${label} lined up at their ${edge} in a window ${w}px wide, found them ${found}px apart.`;
+    }
+    case 'centered': {
+      if (f.detail === 'full') {
+        return ro
+          ? `Se aștepta ca ${label} să stea la mijloc în părintele său la o fereastră de ${w}px, dar îl ocupă pe tot.`
+          : `Expected ${label} centered in its parent in a window ${w}px wide, found it as wide as its parent.`;
+      }
+      const [left, right] = (found ?? '').split(' ');
+      return ro
+        ? `Se aștepta ca ${label} să stea la mijloc în părintele său la o fereastră de ${w}px, dar are ${left}px în stânga și ${right}px în dreapta.`
+        : `Expected ${label} centered in its parent in a window ${w}px wide, found ${left}px of room on the left and ${right}px on the right.`;
+    }
+    case 'fills':
+      return ro
+        ? `Se aștepta ca ${label} să fie lat cât părintele său (${expected}px) la o fereastră de ${w}px, dar are ${found}px.`
+        : `Expected ${label} as wide as its parent (${expected}px) in a window ${w}px wide, found it ${found}px wide.`;
+    case 'outline':
+      if (f.detail === 'h1') {
+        return ro
+          ? `Se aștepta ca pagina să aibă un singur titlu principal (h1), dar are ${found}.`
+          : `Expected the page to have one biggest heading (h1), found ${found}.`;
+      }
+      return ro
+        ? `Se aștepta ca titlurile să nu sară niciun nivel, dar după un ${expected} vine direct un ${f.other}: ${q(found ?? '')}.`
+        : `Expected headings that never skip a level, found an ${f.other} right after an ${expected}: ${q(found ?? '')}.`;
     case 'count': {
       // `label` names the elements in the plural: "crew cards: 3"
       const want =

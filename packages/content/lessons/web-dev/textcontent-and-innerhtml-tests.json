@@ -8,12 +8,12 @@
         {
           "text": "#latest",
           "contains": "Latest arrival: ",
-          "label": "the latest arrival (<p id=\"latest\">)"
+          "label": "the latest arrival"
         },
         {
           "text": "#latest > strong",
           "nonEmpty": true,
-          "label": "the name, important (<strong>), in the latest arrival"
+          "label": "the name, marked as important, in the latest arrival"
         },
         {
           "noErrors": true

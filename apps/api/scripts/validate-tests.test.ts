@@ -223,6 +223,29 @@ describe('auditWebSpec', () => {
         { style: 'h1', prop: 'color', equals: 'rgb(0, 0, 0)', label: 'the heading' },
         { style: 'h1', pseudo: '::before', prop: 'content', equals: '"★"', label: 'its mark' },
         { layout: '.card', arrange: 'row', label: 'the cards' },
+        { layout: '.card', arrange: 'column', gap: 12, label: 'the cards' },
+        { layout: '.card', arrange: 'row', align: 'start', label: 'the cards' },
+        { style: '.card', prop: 'border-top-style', not: 'none', label: 'a card' },
+        { style: 'body', prop: 'font-family', endsWith: 'sans-serif', label: 'the page' },
+        {
+          style: '.card',
+          prop: 'padding-top',
+          atLeast: 8,
+          atMost: 40,
+          every: true,
+          label: 'a card',
+        },
+        { contrast: 'p', atLeast: 4.5, on: 'dark', every: true, label: 'a paragraph' },
+        {
+          differs: '.warning',
+          from: 'p:not(.warning)',
+          props: ['color', 'background-color'],
+          fromLabel: 'the other paragraphs',
+          label: 'the warnings',
+        },
+        { centered: 'main', label: 'the column' },
+        { fills: 'table', label: 'the table' },
+        { outline: true },
         { size: '.card', maxWidth: 300, label: 'a card' },
         { click: 'a', label: 'the link' },
         { hover: 'a', label: 'the link' },
@@ -257,6 +280,28 @@ describe('auditWebSpec', () => {
       expect.stringMatching(/row or a column/),
     ]);
     expect(one([{ size: '.c', label: 'x' }])).toEqual([expect.stringMatching(/needs a bound/)]);
+    expect(one([{ style: 'h1', prop: 'color', label: 'x' }])).toEqual([
+      expect.stringMatching(/exactly one of equals, not, endsWith, or atLeast/),
+    ]);
+    expect(one([{ style: 'h1', prop: 'margin', equals: '0px', atLeast: 2, label: 'x' }])).toEqual([
+      expect.stringMatching(/exactly one of equals, not, endsWith, or atLeast/),
+    ]);
+    expect(one([{ style: 'h1', prop: 'margin', atLeast: '8px', label: 'x' }])).toEqual([
+      expect.stringMatching(/bounds are px numbers/),
+    ]);
+    expect(one([{ contrast: 'p', atLeast: 30, label: 'x' }])).toEqual([
+      expect.stringMatching(/ratio from 1 to 21/),
+    ]);
+    expect(one([{ differs: 'p', from: 'h1', props: [], fromLabel: 'y', label: 'x' }])).toEqual([
+      expect.stringMatching(/needs props/),
+    ]);
+    expect(one([{ differs: 'p', props: ['color'], fromLabel: 'y', label: 'x' }])).toEqual([
+      expect.stringMatching(/needs from/),
+    ]);
+    expect(one([{ layout: '.c', arrange: 'row', gap: 0, label: 'x' }])).toEqual([
+      expect.stringMatching(/gap is a number of px above 0/),
+    ]);
+    expect(one([{ outline: 'yes' }])).toEqual([expect.stringMatching(/outline must be true/)]);
     expect(one([{ wait: 10_000 }])).toEqual([expect.stringMatching(/wait must be/)]);
     expect(one([{ exists: 'h1', label: 'x', equal: 'typo' }])).toEqual([
       expect.stringMatching(/keys it doesn't take: equal/),

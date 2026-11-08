@@ -6,7 +6,7 @@
       "steps": [
         {
           "exists": "img[src=\"img/station.svg\"], img[src=\"./img/station.svg\"]",
-          "label": "the station's picture (<img src=\"img/station.svg\">)"
+          "label": "the station's picture, img/station.svg"
         }
       ]
     },
@@ -44,11 +44,11 @@
       "steps": [
         {
           "exists": "img[src=\"img/divider.svg\"], img[src=\"./img/divider.svg\"]",
-          "label": "the divider (<img src=\"img/divider.svg\">)"
+          "label": "the divider, img/divider.svg"
         },
         {
           "exists": "img[src$=\"img/divider.svg\"][alt=\"\"]",
-          "label": "an empty alt (alt=\"\") on the divider"
+          "label": "a divider a screen reader skips"
         }
       ]
     }

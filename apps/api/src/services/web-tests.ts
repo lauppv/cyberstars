@@ -105,6 +105,59 @@ function arrangement(boxes: WebBox[]): 'row' | 'column' | 'mixed' | 'one' {
   return column ? 'column' : 'mixed';
 }
 
+// The room between each element and the next, along the way they stand
+function gaps(boxes: WebBox[], arrange: 'row' | 'column'): number[] {
+  return boxes
+    .slice(1)
+    .map((next, i) =>
+      arrange === 'row'
+        ? next.x - (boxes[i].x + boxes[i].width)
+        : next.y - (boxes[i].y + boxes[i].height),
+    );
+}
+
+// How a style value misses the step: not the value it `equals`, the one it's
+// `not`, or a length outside its bounds (one that isn't a length misses them)
+function styleMiss(
+  step: Extract<WebCheck, { style: string }>,
+  value: string,
+): Pick<WebFailure, 'expected' | 'compare'> | null {
+  if (step.equals !== undefined) return value === step.equals ? null : { expected: step.equals };
+  if (step.not !== undefined) {
+    return value !== step.not ? null : { expected: step.not, compare: 'not' };
+  }
+  if (step.endsWith !== undefined) {
+    return value.endsWith(step.endsWith) ? null : { expected: step.endsWith, compare: 'endsWith' };
+  }
+  const px = /^-?[\d.]+px$/.test(value) ? parseFloat(value) : NaN;
+  if (step.atLeast !== undefined && !(px >= step.atLeast - 0.5)) {
+    return { expected: String(step.atLeast), compare: 'atLeast' };
+  }
+  if (step.atMost !== undefined && !(px <= step.atMost + 0.5)) {
+    return { expected: String(step.atMost), compare: 'atMost' };
+  }
+  return null;
+}
+
+// One h1, and no heading more than a level below the one before it
+function outlineFailure(headings: { level: number; text: string }[]): WebFailure | null {
+  const ones = headings.filter((h) => h.level === 1).length;
+  if (ones !== 1) return { kind: 'outline', detail: 'h1', found: String(ones) };
+  for (const [i, h] of headings.entries()) {
+    const before = headings[i - 1];
+    if (before && h.level > before.level + 1) {
+      return {
+        kind: 'outline',
+        detail: 'skip',
+        expected: `h${before.level}`,
+        other: `h${h.level}`,
+        found: h.text,
+      };
+    }
+  }
+  return null;
+}
+
 const BOUNDS = ['minWidth', 'maxWidth', 'minHeight', 'maxHeight'] as const;
 
 function sizeFailure(
@@ -144,6 +197,7 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
   if ('at' in step) {
     return seen.page === step.at ? null : { kind: 'at', expected: step.at, found: seen.page };
   }
+  if ('outline' in step) return outlineFailure(seen.headings ?? []);
 
   const label = step.label;
   const count = seen.count ?? 0;
@@ -205,21 +259,89 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
       : { kind: 'attr', label, detail: step.name, expected: step.equals, found: value };
   }
   if ('style' in step) {
-    // The first element's, or with `every` the first one that differs
+    // The first element's, or with `every` the first one that misses
     const all = values.length ? values : [''];
     const read = (step.every ? all : all.slice(0, 1)).map((v) => (v ?? '').trim());
-    const value = read.find((v) => v !== step.equals);
-    if (value === undefined) return null;
     // A pseudo-element's style says so: "::before content"
     const detail = step.pseudo ? `${step.pseudo} ${step.prop}` : step.prop;
-    return { kind: 'style', label, detail, expected: step.equals, found: value };
+    for (const value of read) {
+      const missed = styleMiss(step, value);
+      if (missed) return { kind: 'style', label, detail, found: value, ...missed };
+    }
+    return null;
+  }
+  if ('contrast' in step) {
+    const low = (seen.ratios ?? []).find((ratio) => ratio < step.atLeast);
+    if (low !== undefined) {
+      return { kind: 'contrast', label, expected: String(step.atLeast), found: String(low) };
+    }
+    const wrongWay = step.on && (seen.darker ?? []).some((dark) => dark !== (step.on === 'dark'));
+    return wrongWay ? { kind: 'contrast', label, detail: 'on', expected: step.on } : null;
+  }
+  if ('differs' in step) {
+    // Alike: an element with every prop the same as one other element's, not
+    // each prop matched by some other element or another
+    const others = seen.others ?? [];
+    const alike = (seen.rows ?? []).some((row) =>
+      others.some((other) => row.every((value, i) => other[i] === value)),
+    );
+    if (!alike) return null;
+    return { kind: 'differs', label, other: step.fromLabel, detail: step.props.join(', ') };
   }
   const boxes = seen.boxes ?? [];
   if ('layout' in step) {
     const found = arrangement(boxes);
-    return found === step.arrange
-      ? null
-      : { kind: 'layout', label, expected: step.arrange, found, width };
+    if (found !== step.arrange) {
+      return { kind: 'layout', label, expected: step.arrange, found, width };
+    }
+    const least = step.gap === undefined ? Infinity : Math.min(...gaps(boxes, step.arrange));
+    if (step.gap !== undefined && least < step.gap - 0.5) {
+      return {
+        kind: 'gap',
+        label,
+        expected: String(step.gap),
+        found: String(Math.round(least)),
+        width,
+      };
+    }
+    if (step.align === undefined) return null;
+    // Tops of a row, left edges of a column
+    const edges = boxes.map((b) => (step.arrange === 'row' ? b.y : b.x));
+    const spread = Math.max(...edges) - Math.min(...edges);
+    if (spread <= 1) return null;
+    return {
+      kind: 'align',
+      label,
+      expected: step.arrange,
+      found: String(Math.round(spread)),
+      width,
+    };
+  }
+  if ('fills' in step) {
+    const [box, parent] = boxes;
+    if (!box || !parent) return { kind: 'missing', label };
+    if (box.width >= parent.width - 1) return null;
+    return {
+      kind: 'fills',
+      label,
+      expected: String(Math.round(parent.width)),
+      found: String(Math.round(box.width)),
+      width,
+    };
+  }
+  if ('centered' in step) {
+    const [box, parent] = boxes;
+    if (!box || !parent) return { kind: 'missing', label };
+    if (box.width >= parent.width - 0.5) return { kind: 'centered', label, detail: 'full', width };
+    const left = box.x - parent.x;
+    const right = parent.x + parent.width - (box.x + box.width);
+    if (Math.abs(left - right) <= 1) return null;
+    return {
+      kind: 'centered',
+      label,
+      found: `${Math.round(left)} ${Math.round(right)}`,
+      width,
+    };
   }
   const failed = boxes[0] ? sizeFailure(step, boxes[0]) : null;
   return failed ? { kind: 'size', label, width, ...failed } : null;

@@ -8,7 +8,7 @@
         {
           "text": "#flights > caption",
           "equals": "Departures today",
-          "label": "the caption of the flights table"
+          "label": "the title a screen reader reads for the flights table"
         }
       ]
     },
@@ -20,7 +20,7 @@
         {
           "count": "#flights > thead > tr > th[scope=\"col\"]",
           "equals": 4,
-          "label": "column headers (<th scope=\"col\">) in a <thead>"
+          "label": "column headers, each naming its column, in the head of the table"
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "count": "#flights > tbody > tr",
           "atLeast": 4,
-          "label": "flights in a <tbody>"
+          "label": "flights in the body of the table"
         },
         {
           "count": "#flights > tbody th",
@@ -49,7 +49,7 @@
         {
           "text": "#flights > tfoot > tr > :is(td, th)[colspan=\"4\"]",
           "equals": "All times in station time",
-          "label": "a cell four columns wide (colspan=\"4\") in a <tfoot>"
+          "label": "a cell four columns wide in the foot of the table"
         },
         {
           "count": "#flights > tfoot > tr > *",

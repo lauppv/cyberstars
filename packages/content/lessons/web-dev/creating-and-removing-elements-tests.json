@@ -8,12 +8,12 @@
         {
           "text": "button#add-rookie",
           "equals": "Add a rookie",
-          "label": "the button (<button id=\"add-rookie\">)"
+          "label": "the button with id=\"add-rookie\""
         },
         {
           "text": "button#remove-last",
           "equals": "Remove the last",
-          "label": "the button (<button id=\"remove-last\">)"
+          "label": "the button with id=\"remove-last\""
         }
       ]
     },

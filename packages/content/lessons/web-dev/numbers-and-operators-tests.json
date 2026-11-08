@@ -8,17 +8,17 @@
         {
           "text": "h2",
           "equals": "Supplies",
-          "label": "a section heading (<h2>)"
+          "label": "a section heading"
         },
         {
           "text": "span#tanks",
           "equals": "13",
-          "label": "the tanks (<span id=\"tanks\">)"
+          "label": "the tanks"
         },
         {
           "text": "span#tank-hours",
           "equals": "30",
-          "label": "the hours a tank lasts (<span id=\"tank-hours\">)"
+          "label": "the hours a tank lasts"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "steps": [
         {
           "exists": "head script[src=\"crew.js\"][defer], head script[src=\"./crew.js\"][defer]",
-          "label": "a <script src=\"crew.js\" defer> in the <head> of crew.html"
+          "label": "a crew.js in the head of crew.html that waits for the whole page"
         }
       ]
     },
@@ -41,7 +41,7 @@
         {
           "text": "p#oxygen",
           "equals": "Oxygen for 16 days and 6 hours",
-          "label": "the oxygen paragraph (<p id=\"oxygen\">)"
+          "label": "the oxygen paragraph"
         },
         {
           "logged": "390"

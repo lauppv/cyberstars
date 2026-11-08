@@ -1,16 +1,9 @@
-Three pages, linked to each other, with headings, paragraphs, pictures, lists, cards and now tables. This recap adds a second table to the schedule, and gets the first ready for what's coming.
-
-Worth keeping in mind:
-
-- **`tr` for rows, `th` for headers, `td` for data**, and as many cells per row as there are columns, counting spans.
-- **`caption`, `thead`, `tbody`, `tfoot`** say what the parts of a table are.
-- **`scope`** ties a header to its column or row.
-- **`colspan` and `rowspan`** stretch a cell; the row below a `rowspan` has one cell fewer.
-- **Classes name what an element is**, so CSS and JavaScript can find it later.
+Three pages, linked to each other, with headings, paragraphs, pictures, lists, cards and now tables. This recap adds a second table to the schedule, and gets the first one ready for what's coming. There are no steps to follow: decide yourself which elements each part needs.
 
 ---
 
 ## Mission: Docking Bays
 
-- In the flights table, give every data cell of the body a class saying which column it's in: `code`, `destination`, `departs` and `status`. CSS and JavaScript will use them in the next lessons.
-- Under the flights table, a section heading **Docking Bays** and a second table with the id `bays`, its caption **Docking bays**, a header row of **Bay**, **Time** and **Ship** in a `thead`, and in a `tbody` at least three rows. One bay serves two ships in a row: its cell covers the two rows.
+- The next lessons style and read the flights table cell by cell, so every data cell of its body needs a class that says which column it's in: `code`, `destination`, `departs` and `status`.
+- Under the flights table, a section called **Docking Bays**, with a second table, with the id `bays`, that a screen reader introduces as **Docking bays**. Its columns are **Bay**, **Time** and **Ship**, set apart from at least three rows of data.
+- One bay serves two ships in a row. Write that bay's name only once, in a cell as tall as both rows.

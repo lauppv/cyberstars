@@ -24,12 +24,12 @@
         {
           "count": "#cards > .card:not(:has(h3))",
           "equals": 0,
-          "label": "cards without a name in a third-level heading (<h3>)"
+          "label": "cards without a name as a heading one level below the sections"
         },
         {
           "count": "#cards > .card:not(:has(p span.role))",
           "equals": 0,
-          "label": "cards without a job in a <span class=\"role\"> inside a paragraph"
+          "label": "cards without a job in the class role inside a paragraph"
         },
         {
           "text": ".card h3",
@@ -40,6 +40,9 @@
           "text": ".card span.role",
           "nonEmpty": true,
           "label": "a crew member's job"
+        },
+        {
+          "outline": true
         }
       ]
     },
@@ -52,7 +55,7 @@
           "style": ".card span.role",
           "prop": "display",
           "equals": "inline",
-          "label": "a job (<span class=\"role\">)"
+          "label": "a job"
         },
         {
           "style": ".card",

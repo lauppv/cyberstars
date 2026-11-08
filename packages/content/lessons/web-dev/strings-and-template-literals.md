@@ -1,8 +1,8 @@
-Most of what a page shows is text, so most of what its scripts handle is **strings**.
+Most of what a page shows is text. So most of what its scripts work with are **strings**.
 
 ## Joining strings
 
-`+` between two strings glues them together:
+`+` between two strings sticks them together:
 
 ```js
 const bay = "Cargo Bay";
@@ -13,11 +13,11 @@ console.log("Welcome to " + bay);
 Welcome to Cargo Bay
 ```
 
-Mind the space: `"Welcome to" + bay` gives `Welcome toCargo Bay`. With numbers, `+` adds; with a string and a number, it glues: `"Bay " + 2` is `"Bay 2"`.
+Watch the space: `"Welcome to" + bay` gives `Welcome toCargo Bay`. With two numbers, `+` adds them. With a string and a number, it sticks them together: `"Bay " + 2` is `"Bay 2"`.
 
 ## Template literals
 
-Gluing many pieces with `+` gets hard to read. A **template literal** is a string between backticks, `` ` ``, with values dropped right into it:
+Sticking many pieces together with `+` gets hard to read. A **template literal** is a string between backticks, `` ` ``, with values put right inside it:
 
 ```js
 const crates = 40;
@@ -28,11 +28,11 @@ console.log(`${bay} holds ${crates} crates`);
 Cargo Bay holds 40 crates
 ```
 
-`${ }` takes any value, or a calculation: `` `${crates * 2} after the delivery` ``. It works only between backticks: in `"..."` or `'...'`, `${bay}` is just those six characters.
+`${ }` can hold any value, or a calculation: `` `${crates * 2} after the delivery` ``. It only works between backticks. Inside `"..."` or `'...'`, `${bay}` is just those six characters.
 
 ## What a string knows
 
-A string carries facts and tools of its own, reached with a dot:
+A string has its own facts and tools. You reach them with a dot:
 
 ```js
 bay.length; // 9, the number of characters, spaces included
@@ -40,20 +40,26 @@ bay.toUpperCase(); // "CARGO BAY"
 bay.toLowerCase(); // "cargo bay"
 ```
 
-`length` is a fact, so no parentheses; `toUpperCase()` is a tool, a **method**, so it has them. The original string doesn't change: `toUpperCase()` gives back a new one.
+`length` is a fact, so it has no parentheses. `toUpperCase()` is a tool, called a **method**, so it has them. The original string doesn't change: `toUpperCase()` gives you a new one.
 
 ## Quotes inside quotes
 
-A string in double quotes can hold single ones, and the other way round: `"Bay 2's door"`. Backticks hold both.
+A string in double quotes can hold single quotes, and the other way round: `"Bay 2's door"`. Backticks can hold both.
 
 ---
 
 ## Mission: Greeting Board
 
-Under the crew count, in `script.js`:
+The station might get a new name one day. When it does, the greeting screen should change by editing **one** line of your script. Under the crew count, in `script.js`, keep the station's name, `Station Log`, once, and build every one of these console lines from it:
 
-- a constant with the station's name, `Station Log`;
-- with a template literal and that constant, log `Welcome aboard Station Log`;
-- log how many characters the name has, read from the constant;
-- log the name in capitals, made from the constant;
-- with a template literal and your minutes constant, log `One orbit takes 92 minutes`.
+```text
+Welcome aboard Station Log
+11
+STATION LOG
+```
+
+The `11` is how many characters the name has, and the last line is the name in capital letters. Then one more line, built from your minutes per orbit:
+
+```text
+One orbit takes 92 minutes
+```

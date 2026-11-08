@@ -26,12 +26,12 @@
         {
           "text": "h1",
           "equals": "Crew Directory",
-          "label": "the biggest heading (<h1>) of crew.html"
+          "label": "the biggest heading of crew.html"
         },
         {
           "text": "h1 ~ p",
           "nonEmpty": true,
-          "label": "a paragraph (<p>) under it"
+          "label": "a paragraph under it"
         }
       ]
     },
@@ -42,13 +42,13 @@
       "steps": [
         {
           "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"], head link[rel=\"stylesheet\"][href=\"./style.css\"]",
-          "label": "a <link rel=\"stylesheet\" href=\"style.css\"> in the <head> of crew.html"
+          "label": "a link to style.css in the head of crew.html"
         },
         {
           "style": "body",
           "prop": "background-color",
-          "equals": "rgb(11, 29, 58)",
-          "label": "the body of crew.html"
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the body of crew.html, colored by style.css"
         }
       ]
     },
@@ -59,7 +59,7 @@
         {
           "text": "body > nav:first-child a[href=\"crew.html\"]",
           "equals": "Crew",
-          "label": "a link Crew to crew.html in a <nav> at the top of the home page"
+          "label": "a link Crew to crew.html in the navigation at the top of the home page"
         },
         {
           "click": "nav a[href=\"crew.html\"]",
@@ -78,7 +78,7 @@
         {
           "text": "body > nav:first-child a[href=\"index.html\"]",
           "equals": "Home",
-          "label": "a link Home to index.html in a <nav> at the top of crew.html"
+          "label": "a link Home to index.html in the navigation at the top of crew.html"
         },
         {
           "exists": "nav a[href=\"crew.html\"]",

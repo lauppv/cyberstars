@@ -1,4 +1,4 @@
-One object is one flight. A whole schedule is an **array of objects**: the most common shape of data on the web. A list of products, of messages, of users: each an object, all in an array.
+One object is one flight. A whole schedule is an **array of objects**: the most common shape of data on the web. A list of products, of messages, of users: each one an object, all of them in an array.
 
 ## Building one
 
@@ -12,7 +12,7 @@ crates[1].name; // "Seeds"
 crates.length; // 2
 ```
 
-`crates[1]` is an object, so `.name` reads its property. Loops work as with any array:
+`crates[1]` is an object, so `.name` reads its property. Loops work like with any array:
 
 ```js
 for (const crate of crates) {
@@ -22,7 +22,7 @@ for (const crate of crates) {
 
 ## From the page
 
-When the data is on the page, a function can read it into an array of objects once, and the rest of the script works with the objects instead of digging through cells each time:
+When the data is on the page, a function can read it into an array of objects once. Then the rest of the script works with the objects, instead of digging through the cells every time:
 
 ```js
 function readCrates() {
@@ -37,12 +37,13 @@ function readCrates() {
 }
 ```
 
-Turn numbers into numbers as you read them, and every later step can count on it.
+Turn numbers into real numbers as you read them, and every later step can rely on it.
 
 ---
 
 ## Mission: Destinations
 
-- Write a function that reads every flight of the table's body into an array of objects, with `code`, `destination`, `departs` and `status`, and returns it. Keep the array in a constant.
-- Log how many flights it read: `5 flights read`.
-- Under the next flight, add an empty paragraph with the id `destinations`, and write in it every destination, in the table's order, joined with `, `: `Destinations: Moon Base, Mars Relay, ...`.
+The next lessons ask many questions about the flights. Read the table once, so every question can work with the flights instead of with cells.
+
+- Your script reads every flight of the table's body, with its `code`, `destination`, `departs` and `status`, and keeps them all. The console says how many it read: `5 flights read`.
+- Under the next flight, add an empty paragraph with the id `destinations`. It lists every destination, in the table's order, with `, ` between them: `Destinations: Moon Base, Mars Relay, ...`.

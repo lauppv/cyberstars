@@ -1,30 +1,14 @@
-You've built the whole skeleton of a page: headings in order, paragraphs and line breaks, words that stand out, comments, links and pictures. This mission puts them together, the way a real page asks for them: all at once.
+You've built the whole frame of a page: headings in order, paragraphs and line breaks, words that stand out, comments, links and pictures. This mission puts them all together, the way a real page needs them: at once, with no steps to follow.
 
-Before you start, a few things worth checking as you go:
-
-- **One `h1`**, then levels without gaps. A new section of the page is a new `h2`.
-- **Text lives in paragraphs**, and `<br>` only breaks lines that belong together.
-- **`strong` and `em` say what the words mean**, not how they look.
-- **An `id` is unique** on the page, and a link to it starts with `#`.
-- **Every picture has an `alt`**, empty only for decoration.
-
-When something doesn't look right, check the tags close in the order they opened, and that every comment ends with `-->`.
+Read what the visitors need, then decide yourself which elements give it to them. If something looks wrong in the preview, check that your tags close in the order they opened, and that every comment ends with `-->`.
 
 ---
 
 ## Mission: Visiting Hours
 
-The station opens to visitors. Give them a section of their own.
+The station is opening to visitors. They need a section of their own on your home page, after the shifts and before your email link, called **Visiting Hours**. Give it the id `visiting`.
 
-- After the shifts and before your email link, add a section heading **Visiting Hours**, with the id `visiting`.
-- Right under it, the hours in one paragraph, on three lines:
-
-```text
-Monday to Friday: 10:00 to 16:00
-Saturday: 10:00 to 12:00
-Sunday: closed
-```
-
-- Under the hours, a paragraph that says **Visitors must wear a badge**, marked as important.
-- In the paragraph with your **Jump to today** link, add a second link that says **Visiting hours** and jumps to the new section.
-- Above the new section, leave a comment for the crew saying what it holds.
+- Right under the title, the opening hours, as on a sign by the door, each day on its own line: **Monday to Friday: 10:00 to 16:00**, **Saturday: 10:00 to 12:00**, **Sunday: closed**.
+- Under the hours, one rule a visitor must not miss: **Visitors must wear a badge**.
+- A visitor at the top of the page should get there in one click, from a link that says **Visiting hours**, right next to your **Jump to today** link.
+- The crew should find the section quickly in the file, with a note above it saying what it holds.

@@ -8,7 +8,7 @@
         {
           "count": "#cards > .card:not(:has(p.bio))",
           "equals": 0,
-          "label": "cards without a bio (<p class=\"bio\">)"
+          "label": "cards without a bio, in the class bio"
         },
         {
           "text": ".card p.bio",
@@ -18,20 +18,20 @@
       ]
     },
     {
-      "name": "A long bio scrolls inside its card",
+      "name": "A long bio can be read inside its card",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
           "style": ".bio",
-          "prop": "max-height",
-          "equals": "108px",
-          "label": "a bio (6em of 18px text)"
+          "prop": "overflow-y",
+          "not": "visible",
+          "label": "a bio"
         },
         {
           "style": ".bio",
           "prop": "overflow-y",
-          "equals": "auto",
+          "not": "hidden",
           "label": "a bio"
         }
       ]
@@ -46,8 +46,8 @@
       "steps": [
         {
           "size": ".bio",
-          "maxHeight": 109,
-          "label": "a bio of 25 sentences"
+          "maxHeight": 175,
+          "label": "a bio of 25 sentences, in 18px text"
         }
       ]
     },

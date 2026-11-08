@@ -1,20 +1,21 @@
 {
   "cases": [
     {
-      "name": "Links to other sites are gold",
+      "name": "Links to other sites look different",
       "visible": true,
       "steps": [
         {
-          "style": "a[href^=\"https://\"]",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
-          "label": "a link to another site"
+          "differs": "a[href^=\"https://\"]",
+          "from": "a:not([href^=\"https://\"]):not([href^=\"mailto:\"])",
+          "props": ["color"],
+          "fromLabel": "the links inside the site",
+          "label": "the links to other sites"
         },
         {
-          "style": "p.jumps a",
-          "prop": "color",
-          "equals": "rgb(142, 203, 255)",
-          "label": "a jump link"
+          "contrast": "a[href^=\"https://\"]",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a link to another site"
         }
       ]
     },
@@ -26,6 +27,7 @@
           "style": "a[href^=\"mailto:\"]",
           "prop": "text-decoration-style",
           "equals": "dotted",
+          "every": true,
           "label": "an email link"
         },
         {
@@ -40,21 +42,22 @@
       "name": "New links follow without a class",
       "visible": false,
       "files": {
-        "links.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <p><a href=\"https://example.com/new\">New</a> <a href=\"mailto:new@station.example\">Mail</a></p>\n  </body>\n</html>\n"
+        "links.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <p><a href=\"https://example.com/new\">New</a> <a href=\"mailto:new@station.example\">Mail</a> <a href=\"crew.html\">Crew</a></p>\n  </body>\n</html>\n"
       },
       "page": "links.html",
       "steps": [
         {
-          "style": "a[href^=\"https://\"]",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
-          "label": "another link to another site"
+          "differs": "a[href^=\"https://\"]",
+          "from": "a[href=\"crew.html\"]",
+          "props": ["color"],
+          "fromLabel": "a link inside the site",
+          "label": "a new link to another site"
         },
         {
           "style": "a[href^=\"mailto:\"]",
           "prop": "text-decoration-style",
           "equals": "dotted",
-          "label": "another email link"
+          "label": "a new email link"
         }
       ]
     },

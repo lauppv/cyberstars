@@ -1,7 +1,7 @@
 {
   "cases": [
     {
-      "name": "The flights table is full width, its borders collapsed",
+      "name": "The flights table is full width, one line between cells",
       "visible": true,
       "page": "schedule.html",
       "steps": [
@@ -12,47 +12,77 @@
           "label": "the flights table"
         },
         {
-          "size": "#flights",
-          "minWidth": 927,
-          "maxWidth": 929,
-          "label": "the flights table, in a column 928px wide"
+          "fills": "#flights",
+          "label": "the flights table"
         }
       ]
     },
     {
-      "name": "Its headers and cells are styled through the table",
+      "name": "Its headers stand out from its data",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "style": "#flights th",
-          "prop": "background-color",
-          "equals": "rgb(19, 41, 79)",
-          "label": "a header cell"
+          "differs": "#flights th",
+          "from": "#flights td",
+          "props": ["background-color", "color"],
+          "fromLabel": "the data cells",
+          "label": "the header cells"
         },
+        {
+          "contrast": "#flights th",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a header cell"
+        }
+      ]
+    },
+    {
+      "name": "Every cell has room and a line under it",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
         {
           "style": "#flights td",
           "prop": "padding-top",
-          "equals": "8px",
-          "label": "a cell of the table"
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the flights table"
+        },
+        {
+          "style": "#flights td",
+          "prop": "padding-right",
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the flights table"
+        },
+        {
+          "style": "#flights td",
+          "prop": "padding-bottom",
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the flights table"
         },
         {
           "style": "#flights td",
           "prop": "padding-left",
-          "equals": "12px",
-          "label": "a cell of the table"
+          "atLeast": 4,
+          "every": true,
+          "label": "a cell of the flights table"
         },
         {
           "style": "#flights td",
-          "prop": "border-bottom-color",
-          "equals": "rgb(44, 74, 122)",
-          "label": "a cell of the table"
+          "prop": "border-bottom-width",
+          "atLeast": 1,
+          "every": true,
+          "label": "a cell of the flights table"
         },
         {
           "style": "#flights th",
           "prop": "padding-left",
-          "equals": "12px",
-          "label": "a header cell"
+          "atLeast": 4,
+          "every": true,
+          "label": "a header cell of the flights table"
         }
       ]
     },
@@ -70,21 +100,22 @@
       ]
     },
     {
-      "name": "The paragraph right after the title is an intro",
+      "name": "The paragraph right after the title is an introduction",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "style": "h1 + p",
-          "prop": "font-size",
-          "equals": "20px",
-          "label": "the paragraph right after the biggest heading"
+          "differs": "h1 + p",
+          "from": "p:not(h1 + p)",
+          "props": ["font-size"],
+          "fromLabel": "the other paragraphs",
+          "label": "the paragraph right after the title"
         },
         {
-          "style": "#crew + p",
+          "style": "h1 + p",
           "prop": "font-size",
-          "equals": "18px",
-          "label": "another paragraph"
+          "atLeast": 19,
+          "label": "the paragraph right after the title"
         }
       ]
     },
@@ -96,6 +127,7 @@
           "style": "nav > a",
           "prop": "font-weight",
           "equals": "700",
+          "every": true,
           "label": "a link of the navigation"
         },
         {

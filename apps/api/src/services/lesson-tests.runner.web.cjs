@@ -137,9 +137,28 @@ async function observe(page, step, seen) {
   if ('logged' in step) return { logs: [...seen.logs] };
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };
+  if ('outline' in step) {
+    const headings = await page.evaluate(() =>
+      [...document.querySelectorAll('h1, h2, h3, h4, h5, h6')].map((h) => ({
+        level: Number(h.tagName[1]),
+        text: (h.innerText ?? h.textContent ?? '').replace(/\s+/g, ' ').trim(),
+      })),
+    );
+    return { headings };
+  }
 
   const selector =
-    step.exists ?? step.count ?? step.text ?? step.attr ?? step.style ?? step.layout ?? step.size;
+    step.exists ??
+    step.count ??
+    step.text ??
+    step.attr ??
+    step.style ??
+    step.contrast ??
+    step.differs ??
+    step.layout ??
+    step.centered ??
+    step.fills ??
+    step.size;
   const elements = page.locator(`css=${selector}`);
   const count = await elements.count();
   if ('exists' in step || 'count' in step || count === 0) return { count };
@@ -159,12 +178,92 @@ async function observe(page, step, seen) {
   }
   // The first element's style, or with `every` each one's
   if ('style' in step) {
+    const bounded = step.atLeast !== undefined || step.atMost !== undefined;
     const values = await elements.evaluateAll(
-      (els, [prop, pseudo, max]) =>
-        els.slice(0, max).map((el) => getComputedStyle(el, pseudo).getPropertyValue(prop)),
-      [step.prop, step.pseudo ?? null, step.every ? MAX_ELEMENTS : 1],
+      (els, [prop, pseudo, max, bounded]) =>
+        els.slice(0, max).map((el) => {
+          const style = getComputedStyle(el, pseudo);
+          const value = style.getPropertyValue(prop);
+          // A background color left transparent under a gradient or a picture
+          // isn't a missing background: it reads as the picture
+          if (prop === 'background-color' && value === 'rgba(0, 0, 0, 0)') {
+            const image = style.getPropertyValue('background-image');
+            if (image !== 'none') return image;
+          }
+          // A corner's radius as a length: a percentage is of the box's width
+          // across and its height down ("50%" on a square makes a circle), an
+          // elliptical corner ("12px 8px") is as round as its smaller radius.
+          // Not a pseudo-element's, whose box isn't the element's. The
+          // browser scaling down radii too big for their side is left out:
+          // it only ever takes a big radius down
+          if (bounded && !pseudo && /^border-.+-radius$/.test(prop)) {
+            const box = el.getBoundingClientRect();
+            const parts = value.trim().split(/\s+/);
+            const px = [0, 1].map((i) => {
+              const part = parts[i] ?? parts[0];
+              const size = i === 0 ? box.width : box.height;
+              if (part.endsWith('%')) return (parseFloat(part) / 100) * size;
+              return part.endsWith('px') ? parseFloat(part) : NaN;
+            });
+            if (px.every((n) => Number.isFinite(n))) {
+              return `${Math.round(Math.min(...px) * 100) / 100}px`;
+            }
+          }
+          return value;
+        }),
+      [step.prop, step.pseudo ?? null, step.every ? MAX_ELEMENTS : 1, bounded],
     );
     return { count, values };
+  }
+  if ('contrast' in step) {
+    const read = await elements.evaluateAll(contrastRatios, step.every ? MAX_ELEMENTS : 1);
+    return { count, ratios: read.map((r) => r.ratio), darker: read.map((r) => r.darker) };
+  }
+  // Each element's values of the props, then each of the others'
+  if ('differs' in step) {
+    const [rows, others] = await Promise.all([
+      elements.evaluateAll(differsRows, [step.props, MAX_ELEMENTS]),
+      page.locator(`css=${step.from}`).evaluateAll(differsRows, [step.props, MAX_ELEMENTS]),
+    ]);
+    return { count, rows, others };
+  }
+  // The elements' box together, then the first one's parent's content box
+  // (inside its padding). An element that takes no room (display: none, a
+  // hidden skip link) isn't on the page to center, unless none takes any
+  if ('centered' in step || 'fills' in step) {
+    const boxes = await elements.evaluateAll((all, one) => {
+      const takesRoom = all.filter((el) => {
+        const r = el.getBoundingClientRect();
+        return r.width > 0 || r.height > 0;
+      });
+      const shown = takesRoom.length ? takesRoom : all;
+      const els = one ? shown.slice(0, 1) : shown;
+      const rects = els.map((el) => el.getBoundingClientRect());
+      const left = Math.min(...rects.map((r) => r.left));
+      const top = Math.min(...rects.map((r) => r.top));
+      const r = {
+        x: left,
+        y: top,
+        width: Math.max(...rects.map((r) => r.right)) - left,
+        height: Math.max(...rects.map((r) => r.bottom)) - top,
+      };
+      const parent = els[0].parentElement ?? document.documentElement;
+      const p = parent.getBoundingClientRect();
+      const s = getComputedStyle(parent);
+      const px = (prop) => parseFloat(s.getPropertyValue(prop)) || 0;
+      const inLeft = px('border-left-width') + px('padding-left');
+      const inRight = px('border-right-width') + px('padding-right');
+      return [
+        { x: r.x, y: r.y + window.scrollY, width: r.width, height: r.height },
+        {
+          x: p.x + inLeft,
+          y: p.y + window.scrollY,
+          width: p.width - inLeft - inRight,
+          height: p.height,
+        },
+      ];
+    }, 'fills' in step);
+    return { count, boxes };
   }
   const boxes = await elements.evaluateAll(
     (els, max) =>
@@ -175,6 +274,90 @@ async function observe(page, step, seen) {
     'size' in step ? 1 : MAX_ELEMENTS,
   );
   return { count, boxes };
+}
+
+// Run in the page: each element's values of the props, as a differs check
+// compares them. Its background-color is the background that shows behind it:
+// its own and those of its ancestors, from it up to the first that hides what
+// is under it (a solid color or a picture), or the white canvas. So a row
+// colored on its cells (`tr td`) or a cell colored on its row (`tr`, `thead
+// tr`) reads as it looks, and a page colored on <html> is that color behind
+// <body>. A see-through layer counts as itself over the ones under it
+function differsRows(els, [props, max]) {
+  const alpha = (color) => {
+    const rgba = /^rgba\(.*,\s*([\d.]+)\)$/.exec(color);
+    if (rgba) return Number(rgba[1]);
+    const slash = /\/\s*([\d.]+)(%?)\s*\)$/.exec(color);
+    if (slash) return Number(slash[1]) / (slash[2] ? 100 : 1);
+    return color === 'transparent' ? 0 : 1;
+  };
+  const shown = (el) => {
+    const layers = [];
+    for (let node = el; node; node = node.parentElement) {
+      const style = getComputedStyle(node);
+      const image = style.backgroundImage;
+      const color = style.backgroundColor;
+      if (image !== 'none') return [...layers, image].join(' over ');
+      const a = alpha(color);
+      if (a === 0) continue;
+      layers.push(color);
+      if (a === 1) return layers.join(' over ');
+    }
+    return [...layers, 'canvas'].join(' over ');
+  };
+  return els.slice(0, max).map((el) => {
+    const style = getComputedStyle(el);
+    return props.map((prop) =>
+      prop === 'background-color' ? shown(el) : style.getPropertyValue(prop).trim(),
+    );
+  });
+}
+
+// Run in the page: each element's text color against the colors behind it,
+// as WCAG's contrast ratio, and whether the background is the darker one. A color the page wrote in any notation (a name,
+// hsl(), oklch()) is read back as sRGB through a canvas; the backgrounds of
+// the element and its ancestors are laid over the white canvas from the root
+// down, and the text over them, so a see-through color counts as it shows.
+function contrastRatios(els, max) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1;
+  canvas.height = 1;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  const rgba = (color) => {
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillStyle = '#000';
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+    return { r, g, b, a: a / 255 };
+  };
+  const over = (top, under) => ({
+    r: top.r * top.a + under.r * (1 - top.a),
+    g: top.g * top.a + under.g * (1 - top.a),
+    b: top.b * top.a + under.b * (1 - top.a),
+    a: 1,
+  });
+  const luminance = ({ r, g, b }) => {
+    const lin = (c) => {
+      const v = c / 255;
+      return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+    };
+    return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+  };
+  return els.slice(0, max).map((el) => {
+    const layers = [];
+    for (let node = el; node; node = node.parentElement) {
+      layers.push(rgba(getComputedStyle(node).backgroundColor));
+    }
+    let background = { r: 255, g: 255, b: 255, a: 1 };
+    for (const layer of layers.reverse()) background = over(layer, background);
+    const text = over(rgba(getComputedStyle(el).color), background);
+    const [light, dark] = [luminance(text), luminance(background)].sort((x, y) => y - x);
+    return {
+      ratio: Math.round(((light + 0.05) / (dark + 0.05)) * 100) / 100,
+      darker: luminance(background) < luminance(text),
+    };
+  });
 }
 
 // An action, and the page it may lead to: a link, a form or a script that

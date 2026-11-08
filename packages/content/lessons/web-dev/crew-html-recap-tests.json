@@ -8,7 +8,7 @@
         {
           "text": "h2#duty",
           "equals": "Duty Board",
-          "label": "a section heading (<h2>) with id=\"duty\""
+          "label": "a section heading with id=\"duty\""
         }
       ]
     },
@@ -20,7 +20,7 @@
         {
           "count": "#duty + ol > li",
           "atLeast": 3,
-          "label": "duties (<li>) in an ordered list right under Duty Board"
+          "label": "duties, in order, right under Duty Board"
         },
         {
           "count": "#duty + ol > li > ul > li, #duty + ol > li > ol > li",

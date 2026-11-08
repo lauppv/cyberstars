@@ -1,4 +1,4 @@
-A boolean on its own only answers a question. With `if`, the program **acts** on the answer: one thing when it's true, another when it's false.
+A boolean on its own only answers a question. With `if`, the program **does something** with the answer: one thing when it's true, another when it's false.
 
 ## if and else
 
@@ -12,7 +12,7 @@ if (crates > 50) {
 }
 ```
 
-The condition goes in parentheses. When it's `true`, the first block runs; otherwise the `else` block does. Exactly one of the two runs, never both. The `else` part is optional: without it, nothing happens when the condition is false.
+The condition goes in parentheses. When it's `true`, the first block runs. Otherwise, the `else` block runs. Exactly one of the two runs, never both. The `else` part is optional: without it, nothing happens when the condition is false.
 
 ## Conditions
 
@@ -27,11 +27,13 @@ if (isOpen && crates < 50) {
 
 ## Truthy and falsy
 
-An `if` also takes values that aren't booleans. `0`, `""` (an empty string), `null`, `undefined` and `NaN` count as false, they're **falsy**; everything else counts as true. That's handy: `if (element)` is true when `querySelector` found something. But it can surprise you, since `0` crates is falsy, so prefer a clear comparison when you mean a number.
+An `if` also takes values that aren't booleans. `0`, `""` (an empty string), `null`, `undefined` and `NaN` count as false: they're called **falsy**. Everything else counts as true. That's handy: `if (element)` is true when `querySelector` found something. But it can surprise you, because `0` crates is falsy too. When you mean a number, write a clear comparison.
 
 ---
 
 ## Mission: Gate Message
 
+The screen at the gate tells passengers what to do.
+
 - Under the boarding paragraph, add an empty paragraph with the id `gate-message`.
-- If the first flight is boarding, it says `Now boarding: ` and that flight's code, `Now boarding: SL-101`. Otherwise it says `No flight is boarding yet`.
+- When the first flight is boarding, it says `Now boarding: ` and that flight's code: `Now boarding: SL-101`. When it isn't, it says `No flight is boarding yet`. Both must work, whatever the table holds.
