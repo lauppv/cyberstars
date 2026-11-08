@@ -491,6 +491,22 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(hair.web).toMatchObject({ kind: 'style', found: '2px' });
   });
 
+  it('reads a transparent background color under a gradient as the gradient', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        .faded { background: linear-gradient(#13294f, #2c4a7a); }
+      </style></head><body><div class="faded">Panel</div><p>Plain</p></body></html>`,
+    };
+    const filled = (style: string): WebTestCase => ({
+      name: 'x',
+      visible: true,
+      steps: [{ style, prop: 'background-color', not: 'rgba(0, 0, 0, 0)', label: 'a box' }],
+    });
+    const [panel, plain] = verdicts(files, [filled('.faded'), filled('p')]);
+    expect(panel.passed).toBe(true);
+    expect(plain.web).toMatchObject({ kind: 'style', found: 'rgba(0, 0, 0, 0)' });
+  });
+
   it('stops a page stuck in an endless loop, like a timeout', () => {
     const [stuck] = verdicts(
       { 'index.html': '<h1>Hi</h1><script>while (true) {}</script>' },

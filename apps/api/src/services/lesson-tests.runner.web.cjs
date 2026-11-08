@@ -184,6 +184,12 @@ async function observe(page, step, seen) {
         els.slice(0, max).map((el) => {
           const style = getComputedStyle(el, pseudo);
           const value = style.getPropertyValue(prop);
+          // A background color left transparent under a gradient or a picture
+          // isn't a missing background: it reads as the picture
+          if (prop === 'background-color' && value === 'rgba(0, 0, 0, 0)') {
+            const image = style.getPropertyValue('background-image');
+            if (image !== 'none') return image;
+          }
           // A corner's radius as a length: a percentage is of the box's width
           // across and its height down ("50%" on a square makes a circle), an
           // elliptical corner ("12px 8px") is as round as its smaller radius.
