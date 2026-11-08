@@ -143,15 +143,15 @@ a {
 }
 
 .card {
-  background-color: #13294f;
+  background-color: #0b1d3a;
   padding: 16px;
   border: 2px solid #2c4a7a;
-  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```
 

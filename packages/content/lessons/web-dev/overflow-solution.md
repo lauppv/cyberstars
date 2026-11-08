@@ -186,7 +186,7 @@ h3 {
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```
 

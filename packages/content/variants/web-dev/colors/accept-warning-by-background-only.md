@@ -90,16 +90,15 @@ a {
 }
 
 .warning {
-  color: #ffb3b3;
-  background-color: rgb(255, 80, 80);
+  background-color: hsl(350, 60%, 25%);
 }
 
 #today {
-  color: #7bd389;
+  background-color: rgb(30, 70, 50);
 }
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```

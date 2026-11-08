@@ -32,23 +32,35 @@ Add a fourth amount, the **alpha**, from 0 (invisible) to 1 (solid), and the col
 
 ## Text and background
 
-`color` is the color of the text; `background-color` the color behind it. Set the background on `body` and the whole page takes it.
+`color` is the color of the text; `background-color` the color behind it. Set the background on `body` and the whole page takes it: every element inherits the text color too, unless a rule of its own gives it another.
 
-When you set one, check the other. Text that's hard to tell from its background is hard to read for everyone, and impossible for many: people with weak sight, a phone in the sun. Dark text on a light background, or light on dark, keeps a strong **contrast**. Gray on gray doesn't.
+When you set one, check the other. Text that's hard to tell from its background is hard to read for everyone, and impossible for many: people with weak sight, a phone in the sun.
 
-Links have the browser's blue, made for a white page. On a dark one, give them a color of their own.
+## Measuring contrast
+
+How far apart two colors look is measured as a **contrast ratio**, from `1:1` (the same color) to `21:1` (black on white). The accessibility guidelines ask for at least **`4.5:1`** for ordinary text. Some pairs, for a feel of it:
+
+| Text      | Background | Ratio |                                    |
+| --------- | ---------- | ----- | ---------------------------------- |
+| `#000000` | `#ffffff`  | 21:1  | as far as it goes                  |
+| `#767676` | `#ffffff`  | 4.5:1 | just enough                        |
+| `#999999` | `#ffffff`  | 2.8:1 | too faint                          |
+| `#0000ee` | `#1a1a1a`  | 1.9:1 | the browser's links on a dark page |
+
+You don't have to work it out by hand. In the browser's developer tools (right-click, **Inspect**), click a color square in the styles of an element: the picker shows the text's contrast ratio against its background, with a tick when it passes.
+
+`hsl()` makes a good pair easy to aim for: keep the background's lightness low and the text's high, or the other way round. Two colors with a similar lightness hardly ever read well, whatever their hues.
+
+A color you set on one element doesn't follow when you change the page around it. Turn the background dark, and every color that was picked for a white page, including the browser's own blue for links, has to be looked at again.
 
 ---
 
-## Mission: Night Shift Colors
+## Mission: Night Shift
 
-The station runs on night lighting. Turn your page dark, keeping everything readable:
+At night the station dims its lights, and the crew reads the home page on the corridor screens. A white page glares in the dark.
 
-- the page's background `#0b1d3a`, and its text `#f0f4ff`;
-- the biggest heading `#ffd166`;
-- the section headings `hsl(210, 70%, 75%)`, and **Today on Board** `#7bd389`;
-- the shift headings `rgb(200, 210, 230)`;
-- the warnings: their text `#ffb3b3`, on a background of `rgba(255, 80, 80, 0.2)`;
-- links `#8ecbff`.
+- Turn the page dark: a dark background, with light text on it.
+- Every text on the page must stay readable on it, at a contrast of at least 4.5:1: the headings, the paragraphs, the links, the small numbers below and above the line, the warnings. Some of them got their color for a white page; find them.
+- The warnings keep standing out from the other paragraphs, and **Today on Board** from the other section headings.
 
-Keep teal for the text below and above the line.
+The colors are yours: try them in `hsl()` first, it's the quickest way to find a pair that reads.

@@ -74,7 +74,7 @@ body {
 }
 
 h1 {
-  color: ffd166;
+  color: #ffd166;
 }
 
 h2 {
@@ -89,17 +89,12 @@ a {
   color: #8ecbff;
 }
 
-.warning {
-  color: #ffb3b3;
-  background-color: rgba(255, 80, 80, 0.2);
-}
-
 #today {
   color: #7bd389;
 }
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```

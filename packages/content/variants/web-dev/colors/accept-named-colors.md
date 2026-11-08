@@ -69,37 +69,37 @@
 
 ```css style.css
 body {
-  background-color: #0b1d3a;
-  color: #f0f4ff;
+  background-color: black;
+  color: white;
 }
 
 h1 {
-  color: #ffd166;
+  color: gold;
 }
 
 h2 {
-  color: hsl(210, 70%, 40%);
+  color: lightskyblue;
 }
 
 h3 {
-  color: rgb(200, 210, 230);
+  color: silver;
 }
 
 a {
-  color: #8ecbff;
+  color: aquamarine;
 }
 
 .warning {
-  color: #ffb3b3;
-  background-color: rgba(255, 80, 80, 0.2);
+  color: black;
+  background-color: salmon;
 }
 
 #today {
-  color: #7bd389;
+  color: lightgreen;
 }
 
 sub,
 sup {
-  color: teal;
+  color: khaki;
 }
 ```

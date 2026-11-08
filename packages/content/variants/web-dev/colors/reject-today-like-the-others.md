@@ -94,12 +94,8 @@ a {
   background-color: rgba(255, 80, 80, 0.2);
 }
 
-#today {
-  color: darkgreen;
-}
-
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```

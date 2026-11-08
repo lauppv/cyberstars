@@ -144,19 +144,13 @@ a {
 
 .card {
   background-color: #13294f;
-  padding-top: 16px;
-  padding-right: 16px;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #2c4a7a;
-  margin-bottom: 24px;
+  padding: 16px;
+  border: 2px solid #2c4a7a;
 }
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```
 

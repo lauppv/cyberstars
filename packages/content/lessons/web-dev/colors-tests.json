@@ -5,88 +5,94 @@
       "visible": true,
       "steps": [
         {
-          "style": "body",
-          "prop": "background-color",
-          "equals": "rgb(11, 29, 58)",
-          "label": "the page (<body>)"
+          "contrast": "body",
+          "atLeast": 4.5,
+          "on": "dark",
+          "label": "the page's text"
         },
         {
-          "style": "body",
-          "prop": "color",
-          "equals": "rgb(240, 244, 255)",
-          "label": "the page (<body>)"
-        },
-        {
-          "style": "p:not(.warning)",
-          "prop": "color",
-          "equals": "rgb(240, 244, 255)",
-          "label": "a paragraph that isn't a warning"
+          "contrast": "p:not(.warning)",
+          "atLeast": 4.5,
+          "on": "dark",
+          "every": true,
+          "label": "a paragraph"
         }
       ]
     },
     {
-      "name": "The headings are readable on it",
+      "name": "The headings read on the dark",
       "visible": true,
       "steps": [
         {
-          "style": "h1",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
-          "label": "the biggest heading (<h1>)"
+          "contrast": "h1, h2, h3",
+          "atLeast": 4.5,
+          "on": "dark",
+          "every": true,
+          "label": "a heading"
+        }
+      ]
+    },
+    {
+      "name": "The links read on the dark",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "a",
+          "atLeast": 4.5,
+          "on": "dark",
+          "every": true,
+          "label": "a link"
+        }
+      ]
+    },
+    {
+      "name": "The warnings stand out, and read",
+      "visible": true,
+      "steps": [
+        {
+          "differs": ".warning",
+          "from": "p:not(.warning)",
+          "props": ["color", "background-color"],
+          "fromLabel": "the other paragraphs",
+          "label": "the warnings"
         },
         {
-          "style": "h2:not(#today)",
-          "prop": "color",
-          "equals": "rgb(147, 191, 236)",
-          "label": "a section heading (<h2>)"
+          "contrast": ".warning",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a warning"
+        }
+      ]
+    },
+    {
+      "name": "The small numbers and stressed words read on the dark",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "sub, sup",
+          "atLeast": 4.5,
+          "on": "dark",
+          "every": true,
+          "label": "a number below or above the line"
         },
         {
-          "style": "#today",
-          "prop": "color",
-          "equals": "rgb(123, 211, 137)",
+          "contrast": "em, strong",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a stressed or important word"
+        }
+      ]
+    },
+    {
+      "name": "Today on Board stands out from the other sections",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "#today",
+          "from": "h2:not(#today)",
+          "props": ["color", "background-color"],
+          "fromLabel": "the other section headings",
           "label": "the heading Today on Board"
-        },
-        {
-          "style": "h3",
-          "prop": "color",
-          "equals": "rgb(200, 210, 230)",
-          "label": "a shift heading (<h3>)"
-        }
-      ]
-    },
-    {
-      "name": "The warnings glow red",
-      "visible": true,
-      "steps": [
-        {
-          "style": "p.warning",
-          "prop": "color",
-          "equals": "rgb(255, 179, 179)",
-          "label": "a warning"
-        },
-        {
-          "style": "p.warning",
-          "prop": "background-color",
-          "equals": "rgba(255, 80, 80, 0.2)",
-          "label": "a warning"
-        }
-      ]
-    },
-    {
-      "name": "Links and the small numbers keep their colors",
-      "visible": true,
-      "steps": [
-        {
-          "style": "a",
-          "prop": "color",
-          "equals": "rgb(142, 203, 255)",
-          "label": "a link (<a>)"
-        },
-        {
-          "style": "sub",
-          "prop": "color",
-          "equals": "rgb(0, 128, 128)",
-          "label": "the text below the line (<sub>)"
         }
       ]
     }

@@ -9,12 +9,21 @@ From the inside out:
 3. **Border**: a line around the padding.
 4. **Margin**: room outside the border, between this box and its neighbors. It's always see-through.
 
+A sign on a hatch shows the first three. Its words get room inside the sign, and a line goes round it:
+
 ```css
-.crate {
-  background-color: #2b2b2b;
-  padding: 12px;
-  border: 3px solid orange;
-  margin-bottom: 20px;
+.hatch-sign {
+  background-color: #5a1010;
+  padding: 6px;
+  border: 4px double gold;
+}
+```
+
+The fourth, margin, is the room a box keeps from the boxes around it. Pictures in a gallery keep their distance like this:
+
+```css
+.photo {
+  margin-right: 30px;
 }
 ```
 
@@ -42,9 +51,11 @@ One surprise you'll meet there: when two boxes stand one above the other, their 
 
 ## Mission: Card Frames
 
-On the crew page, every card becomes a framed panel:
+On the crew page, the cards run into one another: you can't tell where one crew member ends and the next begins, and the words sit right on the edges. Make every card a panel of its own:
 
-- a background of `#13294f`;
-- `16px` of padding on every side;
-- a border `2px solid #2c4a7a`;
-- `24px` of room under each card, before the next one.
+- a background of its own, so the card shows against the page, with its text still readable on it;
+- room inside, at least `8px` on every side, so no word touches the card's edge;
+- a frame you can see all the way round;
+- room between one card and the next, at least `12px`, so no two cards touch.
+
+How much room, and which colors, is up to you. Open **Inspect** on a card to see its layers while you work.

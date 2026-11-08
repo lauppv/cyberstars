@@ -69,12 +69,12 @@
 
 ```css style.css
 body {
-  background-color: rgb(11, 29, 58);
+  background-color: #0b1d3a;
   color: #f0f4ff;
 }
 
 h1 {
-  color: #FFD166;
+  color: #ffd166;
 }
 
 h2 {
@@ -91,7 +91,7 @@ a {
 
 .warning {
   color: #ffb3b3;
-  background-color: rgb(255 80 80 / 20%);
+  background-color: rgba(255, 80, 80, 0.2);
 }
 
 #today {

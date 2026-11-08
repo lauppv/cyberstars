@@ -69,40 +69,37 @@
 
 ```css style.css
 body {
-  color: #f0f4ff;
-}
-
-p {
-  background-color: #0b1d3a;
+  background-color: #ffffff;
+  color: #1a1a1a;
 }
 
 h1 {
-  color: #ffd166;
+  color: #7a4b00;
 }
 
 h2 {
-  color: hsl(210, 70%, 75%);
+  color: hsl(210, 70%, 30%);
 }
 
 h3 {
-  color: rgb(200, 210, 230);
+  color: rgb(60, 70, 90);
 }
 
 a {
-  color: #8ecbff;
+  color: #0b4f9c;
 }
 
 .warning {
-  color: #ffb3b3;
+  color: #8b0000;
   background-color: rgba(255, 80, 80, 0.2);
 }
 
 #today {
-  color: #7bd389;
+  color: #1e6b2a;
 }
 
 sub,
 sup {
-  color: teal;
+  color: #00605a;
 }
 ```
