@@ -390,6 +390,11 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'cascade-specificity-inheritance': 'Cascadă, specificitate, moștenire',
     'backgrounds-and-gradients': 'Fundaluri și gradienți',
     'schedule-css-recap': 'Recapitulare CSS',
+    'booleans-and-equality': 'Booleene, == și ===',
+    'if-else': 'If/Else',
+    'else-if-and-the-ternary': 'Else if și operatorul ternar',
+    'while-loops': 'Bucle while',
+    'break-and-continue': 'break și continue',
   },
 };
 

@@ -2048,6 +2048,27 @@ export const lessons = [
     sortOrder: 53,
   },
   { courseKey: 'web-dev', slug: 'schedule-css-recap', title: 'CSS Recap', sortOrder: 54 },
+  {
+    courseKey: 'web-dev',
+    slug: 'booleans-and-equality',
+    title: 'Booleans, == and ===',
+    sortOrder: 55,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'if-else', title: 'If/Else', sortOrder: 56 },
+  {
+    courseKey: 'web-dev',
+    slug: 'else-if-and-the-ternary',
+    title: 'Else If and the Ternary',
+    sortOrder: 57,
+  },
+  { courseKey: 'web-dev', slug: 'while-loops', title: 'While Loops', sortOrder: 58 },
+  {
+    courseKey: 'web-dev',
+    slug: 'break-and-continue',
+    title: 'Break and Continue',
+    sortOrder: 59,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2127,6 +2148,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'cascade-specificity-inheritance',
         'backgrounds-and-gradients',
         'schedule-css-recap',
+        'booleans-and-equality',
+        'if-else',
+        'else-if-and-the-ternary',
+        'while-loops',
+        'break-and-continue',
       ],
     },
   ],
