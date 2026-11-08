@@ -385,6 +385,11 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'schedule-html-recap': 'Recapitulare HTML',
     combinators: 'Combinatori',
     'attribute-selectors': 'Selectori de atribute',
+    'pseudo-classes': 'Pseudo-clase',
+    'pseudo-elements': 'Pseudo-elemente',
+    'cascade-specificity-inheritance': 'Cascadă, specificitate, moștenire',
+    'backgrounds-and-gradients': 'Fundaluri și gradienți',
+    'schedule-css-recap': 'Recapitulare CSS',
   },
 };
 

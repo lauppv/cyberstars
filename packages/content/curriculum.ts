@@ -2033,6 +2033,21 @@ export const lessons = [
     title: 'Attribute Selectors',
     sortOrder: 49,
   },
+  { courseKey: 'web-dev', slug: 'pseudo-classes', title: 'Pseudo-classes', sortOrder: 50 },
+  { courseKey: 'web-dev', slug: 'pseudo-elements', title: 'Pseudo-elements', sortOrder: 51 },
+  {
+    courseKey: 'web-dev',
+    slug: 'cascade-specificity-inheritance',
+    title: 'Cascade, Specificity, Inheritance',
+    sortOrder: 52,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'backgrounds-and-gradients',
+    title: 'Backgrounds and Gradients',
+    sortOrder: 53,
+  },
+  { courseKey: 'web-dev', slug: 'schedule-css-recap', title: 'CSS Recap', sortOrder: 54 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2107,6 +2122,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'schedule-html-recap',
         'combinators',
         'attribute-selectors',
+        'pseudo-classes',
+        'pseudo-elements',
+        'cascade-specificity-inheritance',
+        'backgrounds-and-gradients',
+        'schedule-css-recap',
       ],
     },
   ],

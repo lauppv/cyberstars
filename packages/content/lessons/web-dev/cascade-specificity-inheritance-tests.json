@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "name": "The flights' cells have their color",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights tbody tr:not(.cancelled) td",
+          "prop": "color",
+          "equals": "rgb(219, 228, 255)",
+          "label": "a cell of a flight"
+        }
+      ]
+    },
+    {
+      "name": "The cancelled flight is grey and struck through",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#flights tbody tr.cancelled td.status",
+          "equals": "Cancelled",
+          "label": "the status of the row with class=\"cancelled\""
+        },
+        {
+          "style": "#flights tr.cancelled td",
+          "prop": "color",
+          "equals": "rgb(138, 148, 168)",
+          "label": "a cell of the cancelled flight"
+        },
+        {
+          "style": "#flights tr.cancelled td",
+          "prop": "text-decoration-line",
+          "equals": "line-through",
+          "label": "a cell of the cancelled flight"
+        },
+        {
+          "count": "#flights tbody tr.cancelled",
+          "equals": 1,
+          "label": "cancelled rows"
+        }
+      ]
+    },
+    {
+      "name": "The table passes its font down",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights",
+          "prop": "font-family",
+          "equals": "\"Courier New\", monospace",
+          "label": "the flights table"
+        },
+        {
+          "style": "#flights td",
+          "prop": "font-family",
+          "equals": "\"Courier New\", monospace",
+          "label": "a cell"
+        },
+        {
+          "style": "#flights > caption",
+          "prop": "font-family",
+          "equals": "\"Courier New\", monospace",
+          "label": "the caption"
+        }
+      ]
+    }
+  ]
+}

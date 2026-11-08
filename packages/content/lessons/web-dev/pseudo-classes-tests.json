@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "name": "The flights have zebra stripes",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights tbody tr:nth-child(2)",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "the second flight"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(4)",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "the fourth flight"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(1)",
+          "prop": "background-color",
+          "equals": "rgba(0, 0, 0, 0)",
+          "label": "the first flight"
+        }
+      ]
+    },
+    {
+      "name": "A row lights up under the mouse",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "hover": "#flights tbody tr:nth-child(3)",
+          "label": "the third flight"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(3)",
+          "prop": "background-color",
+          "equals": "rgb(29, 59, 110)",
+          "label": "the third flight, under the mouse"
+        },
+        {
+          "hover": "#flights tbody tr:nth-child(4)",
+          "label": "the fourth flight"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(4)",
+          "prop": "background-color",
+          "equals": "rgb(29, 59, 110)",
+          "label": "the fourth flight, striped and under the mouse"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(3)",
+          "prop": "background-color",
+          "equals": "rgba(0, 0, 0, 0)",
+          "label": "the third flight, once the mouse left"
+        }
+      ]
+    },
+    {
+      "name": "A navigation link lights up under the mouse",
+      "visible": true,
+      "steps": [
+        {
+          "style": "nav a[href=\"crew.html\"]",
+          "prop": "color",
+          "equals": "rgb(142, 203, 255)",
+          "label": "the link Crew"
+        },
+        {
+          "hover": "nav a[href=\"crew.html\"]",
+          "label": "the link Crew"
+        },
+        {
+          "style": "nav a[href=\"crew.html\"]",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the link Crew, under the mouse"
+        }
+      ]
+    },
+    {
+      "name": "The keyboard's focus is easy to see",
+      "visible": true,
+      "steps": [
+        {
+          "press": "Tab"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-style",
+          "equals": "solid",
+          "label": "the first link, reached with Tab"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-width",
+          "equals": "3px",
+          "label": "the first link, reached with Tab"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the first link, reached with Tab"
+        }
+      ]
+    }
+  ]
+}
