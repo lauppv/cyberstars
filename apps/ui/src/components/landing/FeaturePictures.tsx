@@ -1,16 +1,26 @@
-import { useMemo, type ReactNode } from 'react';
+import { useMemo, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ArrowRight } from 'lucide-react';
 import { useCurriculum } from '../../context/CurriculumContext';
-import { TutorMark } from '../tutor/TutorMark';
+import { TutorHero } from '../tutor/TutorHero';
+import { useTimesShown } from './useTimesShown';
 import { curriculumCounts } from './curriculumCounts';
 import { DIFF_COLORS } from '../../constants/difficulty';
 
 // The pictures for "what's inside", one per place a visitor can go. They are
 // drawn with the app's own pieces and real data, so there are no screenshots
 // to go stale and no editor to load.
-function Box({ label, children }: { label: string; children: ReactNode }) {
+function Box({
+  label,
+  height = 'h-[220px]',
+  children,
+}: {
+  label: string;
+  height?: string;
+  children: ReactNode;
+}) {
   return (
-    <div role="img" aria-label={label} className="h-[220px] overflow-hidden p-4 text-left">
+    <div role="img" aria-label={label} className={`${height} overflow-hidden p-4 text-left`}>
       {children}
     </div>
   );
@@ -149,43 +159,44 @@ export function LinuxPicture() {
   );
 }
 
-const TUTOR_TURNS: ['student' | 'tutor', string][] = [
-  ['student', 'question'],
-  ['tutor', 'answer'],
-  ['student', 'followUp'],
-  ['tutor', 'followUpAnswer'],
-];
+// What the tutor offers to start with on a lesson the student hasn't begun
+const TUTOR_STARTERS = ['tutor.start.task', 'tutor.start.broken', 'tutor.start.nudge'];
 
-// A student stuck on a loop talking it through with the tutor, laid out like
-// the tutor panel: each answer points at the idea and leaves the fix to them.
-// A picture narrower than 576px has room for the first question and answer only.
+// The tutor's chat before a conversation starts, as the panel shows it: its
+// face circled by the turning arc, the greeting typed in, the line under it
+// and three questions to start with, which here lead nowhere. The greeting
+// types in again each time the picture comes into view, rather than once
+// unseen when the page loads. Under reduced motion it all stands still.
 export function TutorPicture() {
   const { t } = useTranslation();
+  const ref = useRef<HTMLDivElement>(null);
+  const shown = useTimesShown(ref);
   return (
-    <Box label={t('landing.features.tutor.picture')}>
-      <div className="@container max-w-[640px] mx-auto flex flex-col gap-3">
-        {TUTOR_TURNS.map(([who, key], i) =>
-          who === 'student' ? (
-            <div
-              key={key}
-              className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] ${
-                i >= 2 ? 'hidden @xl:block' : ''
-              }`}
-            >
-              {t(`landing.features.tutor.${key}`)}
-            </div>
-          ) : (
-            <div
-              key={key}
-              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden @xl:flex' : 'flex'}`}
-            >
-              <TutorMark size="sm" />
-              <p className="pt-0.5 text-[13px] leading-relaxed">
-                {t(`landing.features.tutor.${key}`)}
-              </p>
-            </div>
-          ),
-        )}
+    <Box label={t('landing.features.tutor.picture')} height="min-h-[220px]">
+      <div ref={ref} className="max-w-[360px] mx-auto">
+        <div key={shown} className="flex flex-col items-center gap-2.5 text-center">
+          <TutorHero title={t('tutor.emptyTitle')} mood="idle" titleAs="p" />
+          <p
+            className="m-0 text-[13px] text-[var(--text2)] rise-in"
+            style={{ animationDelay: '0.5s' }}
+          >
+            {t('tutor.intro')}
+          </p>
+          <div className="flex flex-col gap-2 w-full">
+            {TUTOR_STARTERS.map((key, i) => (
+              <div key={key} className="rise-in" style={{ animationDelay: `${0.6 + i * 0.07}s` }}>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] text-left text-[13px] text-[var(--text2)]">
+                  <span className="flex-1 min-w-0">{t(key)}</span>
+                  <ArrowRight
+                    size={14}
+                    aria-hidden="true"
+                    className="flex-shrink-0 text-[var(--text3)]"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Box>
   );

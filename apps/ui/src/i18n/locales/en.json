@@ -353,11 +353,7 @@
       "tutor": {
         "title": "An AI tutor",
         "text": "It points you at the idea and lets you find the fix yourself, without handing you the answer.",
-        "question": "Why does my loop print 0, 1, 2 and not 1, 2, 3?",
-        "answer": "range(3) starts counting at 0, so you get three numbers ending at 2. range can also take a number to start from: which one would give you 1, 2, 3?",
-        "followUp": "So range(1, 3)?",
-        "followUpAnswer": "Close. range stops just before its second number, so range(1, 3) gives 1 and 2. What would the stop need to be for 3 to make it in?",
-        "picture": "A student asks why their loop prints 0, 1, 2 instead of 1, 2, 3. The tutor explains that range starts at 0, and when the student tries range(1, 3), that range stops just before its second number, leaving the last step to them."
+        "picture": "The tutor's chat before a conversation starts: its face circled by a turning arc, How can I help? typed in, and three questions to start with."
       }
     },
     "free": {

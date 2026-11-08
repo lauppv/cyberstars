@@ -94,14 +94,17 @@ describe('FeaturesSection', () => {
     expect(picture).toHaveTextContent('mission.txt reports tools');
   });
 
-  it('shows the tutor pointing at the idea without the fix', () => {
+  it("shows the tutor's chat before a conversation starts, its questions leading nowhere", () => {
     renderSection();
-    const picture = parts().getByRole('img', { name: /tutor explains that range starts at 0/ });
-    expect(picture).toHaveTextContent('Why does my loop print 0, 1, 2 and not 1, 2, 3?');
-    expect(picture).toHaveTextContent('which one would give you 1, 2, 3?');
-    expect(picture).toHaveTextContent('So range(1, 3)?');
-    expect(picture).toHaveTextContent('What would the stop need to be for 3 to make it in?');
-    expect(picture).not.toHaveTextContent('range(1, 4)');
+    const picture = parts().getByRole('img', { name: /before a conversation starts/ });
+    expect(picture.querySelector('.tutor-orbit')).not.toBeNull();
+    expect(within(picture).getByLabelText('How can I help?')).toBeDefined();
+    expect(picture).toHaveTextContent('The tutor helps you get there on your own.');
+    expect(picture).toHaveTextContent('Explain the task to me');
+    expect(picture).toHaveTextContent("Why doesn't my code work?");
+    expect(picture).toHaveTextContent('Give me a nudge');
+    expect(within(picture).queryByRole('button')).toBeNull();
+    expect(within(picture).queryByRole('heading')).toBeNull();
   });
 
   it('presents none of the preview features', () => {

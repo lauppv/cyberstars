@@ -6,8 +6,17 @@ const REDUCED = '(prefers-reduced-motion: reduce)';
 // What greets the student before a conversation starts: the tutor's mark in a
 // soft, still light, a thin arc circling it, and the greeting
 // typed in, quick, in the landing page's gradient. Under reduced motion it all
-// stands still and the greeting shows whole
-export function TutorHero({ title, mood }: { title: string; mood: TutorMood }) {
+// stands still and the greeting shows whole. The landing page's picture of it
+// says the greeting as a plain line, since it isn't a heading there
+export function TutorHero({
+  title,
+  mood,
+  titleAs = 'h3',
+}: {
+  title: string;
+  mood: TutorMood;
+  titleAs?: 'h3' | 'p';
+}) {
   return (
     <div className="flex flex-col items-center gap-4">
       <div className="relative w-14 h-14 flex items-center justify-center">
@@ -15,12 +24,12 @@ export function TutorHero({ title, mood }: { title: string; mood: TutorMood }) {
         <span className="tutor-orbit" aria-hidden="true" />
         <TutorMark size="xl" mood={mood} />
       </div>
-      <TypedTitle text={title} />
+      <TypedTitle text={title} as={titleAs} />
     </div>
   );
 }
 
-function TypedTitle({ text }: { text: string }) {
+function TypedTitle({ text, as: Tag }: { text: string; as: 'h3' | 'p' }) {
   const [shown, setShown] = useState(0);
 
   useEffect(() => {
@@ -41,7 +50,7 @@ function TypedTitle({ text }: { text: string }) {
 
   const typing = shown < text.length;
   return (
-    <h3 className="relative m-0 text-[16px] font-semibold" aria-label={text}>
+    <Tag className="relative m-0 text-[16px] font-semibold" aria-label={text}>
       {/* The whole greeting holds the room, so nothing moves while it types */}
       <span className="invisible" aria-hidden="true">
         {text}
@@ -50,6 +59,6 @@ function TypedTitle({ text }: { text: string }) {
         {text.slice(0, shown)}
         {typing && <span className="tutor-type-caret" />}
       </span>
-    </h3>
+    </Tag>
   );
 }
