@@ -30,9 +30,11 @@ describe('Faq', () => {
     expect(screen.queryByRole('region')).toBeNull();
   });
 
-  it('asks four questions, none about the forum, and none the page answers already', () => {
+  it('asks six questions, free and nothing to install first, none about the forum', () => {
     render(<Faq />);
     expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual([
+      'Is it free?',
+      'Do I need to install anything?',
       'Do I need an account?',
       'Which language should I start with?',
       'Does it work on a phone?',
