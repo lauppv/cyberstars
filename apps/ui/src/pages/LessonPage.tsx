@@ -123,6 +123,8 @@ export function LessonPage() {
     title: loadedTitle,
     content,
     starterCode,
+    courseStarter,
+    passedStarter,
     savedCode,
     savedCodeFailed,
     reloadSavedCode,
@@ -795,6 +797,33 @@ export function LessonPage() {
       )}
     </>
   );
+  // Reset's ways back: a web lesson after a passing site of the student's
+  // offers that site or the course's version, each with the lesson's new
+  // files (CYB-119); any other lesson its starter
+  const resetTargets =
+    passedStarter !== null && passedStarter !== courseStarter
+      ? [
+          {
+            track: 'reset-code-own',
+            label: 'lesson.resetOwnSite',
+            confirm: 'lesson.confirmResetOwnSite',
+            code: passedStarter,
+          },
+          {
+            track: 'reset-code-course',
+            label: 'lesson.resetCourseSite',
+            confirm: 'lesson.confirmResetCourseSite',
+            code: courseStarter,
+          },
+        ]
+      : [
+          {
+            track: 'reset-code',
+            label: 'lesson.reset',
+            confirm: 'lesson.confirmReset',
+            code: starterCode,
+          },
+        ];
   // What the lesson's code can do (save, solution, forum, reset, the tutor)
   // and how its saving went
   const actions = (
@@ -859,7 +888,8 @@ export function LessonPage() {
           {menuOpen && (
             <div
               role="menu"
-              className="absolute right-0 mt-2 w-52 bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up"
+              // Wider for a web lesson's two Resets, so each stays on one line
+              className={`absolute right-0 mt-2 ${resetTargets.length > 1 ? 'w-64' : 'w-52'} bg-[var(--bg2)] border border-[var(--border)] rounded-[var(--radius)] shadow-[0_8px_32px_#0008] overflow-hidden z-50 fade-in-up`}
             >
               {tutor?.enabled && (
                 <button
@@ -919,18 +949,21 @@ export function LessonPage() {
                   {t('lesson.shareToForum')}
                 </button>
               )}
-              <button
-                role="menuitem"
-                data-track="reset-code"
-                onClick={() => {
-                  setMenuOpen(false);
-                  if (window.confirm(t('lesson.confirmReset'))) setUserCode(starterCode);
-                }}
-                className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
-              >
-                <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
-                {t('lesson.reset')}
-              </button>
+              {resetTargets.map((target) => (
+                <button
+                  key={target.track}
+                  role="menuitem"
+                  data-track={target.track}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (window.confirm(t(target.confirm))) setUserCode(target.code);
+                  }}
+                  className="w-full flex items-center gap-2.5 text-left px-4 py-2.5 text-[13px] text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border-none"
+                >
+                  <RotateCcw size={16} strokeWidth={1.75} className="text-[var(--text3)]" />
+                  {t(target.label)}
+                </button>
+              ))}
             </div>
           )}
         </div>
