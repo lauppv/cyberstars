@@ -123,8 +123,9 @@ a {
 }
 
 nav {
-  background-color: #13294f;
-  border-radius: 12px;
+  background-color: hsl(220, 40%, 22%);
+  border-radius: 8px;
+  padding: 4px;
   text-align: center;
 }
 
@@ -190,12 +191,20 @@ h3 {
 }
 
 .duties {
-  background-color: #13294f;
-  padding: 16px;
-  border-left: 4px solid #ffd166;
-  border-radius: 0 12px 12px 0;
-  max-width: 600px;
-  margin: 16px auto;
+  background-color: rgb(50, 30, 20);
+  padding-top: 0.75rem;
+  padding-right: 1rem;
+  padding-bottom: 0.75rem;
+  padding-left: 2.5rem;
+  border-left-width: 6px;
+  border-left-style: double;
+  border-left-color: orange;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 80%;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #cards {
@@ -205,7 +214,7 @@ h3 {
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```
 

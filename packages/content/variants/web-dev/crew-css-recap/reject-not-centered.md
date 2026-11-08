@@ -195,6 +195,7 @@ h3 {
   border-left: 4px solid #ffd166;
   border-radius: 0 12px 12px 0;
   max-width: 600px;
+  margin: 16px 0;
 }
 
 #cards {
@@ -204,7 +205,7 @@ h3 {
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```
 

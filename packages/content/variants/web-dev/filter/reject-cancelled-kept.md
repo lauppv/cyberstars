@@ -313,7 +313,7 @@ nav > a {
 
 sub,
 sup {
-  color: teal;
+  color: #5fd3c6;
 }
 ```
 
@@ -677,6 +677,7 @@ document.querySelector("#roll-call-button").addEventListener("click", () => {
     <p id="next-flight"></p>
     <p id="destinations"></p>
     <p id="on-time"></p>
+    <p id="before-ten"></p>
 
     <h2>Docking Bays</h2>
     <table id="bays">
@@ -818,5 +819,12 @@ for (const flight of onTime) {
   onTimeCodes.push(flight.code);
 }
 document.querySelector("#on-time").textContent =
-  "On time: SL-102, SL-105";
+  `On time: ${onTimeCodes.length > 0 ? onTimeCodes.join(", ") : "none"}`;
+
+// Before 10:00: HH:MM times compare as text, digit by digit
+const beforeTen = flights
+  .filter((flight) => flight.departs < "10:00")
+  .map((flight) => `${flight.code} to ${flight.destination}`);
+document.querySelector("#before-ten").textContent =
+  `Before 10:00: ${beforeTen.length > 0 ? beforeTen.join(", ") : "none"}`;
 ```

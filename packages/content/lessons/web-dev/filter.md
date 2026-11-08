@@ -31,9 +31,15 @@ Arrays have more methods that take a function:
 const heavyNames = crates.filter((c) => c.weight > 100).map((c) => c.name);
 ```
 
+The function `filter` calls can hold any condition that gives a boolean, a whole `&&` or `||` included. Whatever it returns for an item decides whether that item stays.
+
 ---
 
-## Mission: On Time
+## Mission: Gate Screens
 
-- Under the destinations, add an empty paragraph with the id `on-time`.
-- With `filter`, pick the flights whose status is exactly `On time`, and write their codes in the paragraph, joined with `, `: `On time: SL-102, SL-105`. With none, `On time: none`.
+Passengers waiting at the gate don't read the whole board. Their screens show two lines, under the destinations:
+
+- a paragraph with the id `on-time`: the codes of the flights leaving on time, in the board's order, `On time: SL-102, SL-105`. With none, `On time: none`;
+- under it, a paragraph with the id `before-ten`: the flights that still leave before 10:00, so any status but cancelled, each as its code and destination, `Before 10:00: SL-101 to Moon Base, SL-102 to Mars Relay, SL-103 to Europa Outpost`. With none, `Before 10:00: none`.
+
+Both lines follow the table, whatever flights it holds. The board writes every time as `HH:MM`, two digits for the hour and two for the minutes: think about what that lets you do when you compare two times.

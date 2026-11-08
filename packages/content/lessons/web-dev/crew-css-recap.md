@@ -1,17 +1,16 @@
-Your crew page now has real boxes: framed, sized, centered, side by side, rounded and lifted. Use all of it on the last two pieces that still look plain.
+Your crew page now has real boxes: framed, sized, centered, side by side, rounded and lifted. Two pieces of it still look plain, and this time there are no steps to follow: everything you need is in the lessons of this stage, from the box model to shadows. Picture the result first, then pick the tools that get you there.
 
-Worth keeping in mind:
-
-- **Content, padding, border, margin**, from the inside out. Padding takes the background; margin is always see-through.
-- **`border-box`** makes `width` the whole box, so padding never makes it grow.
-- **`margin: 0 auto`** centers a box narrower than its parent; `text-align: center` centers what's inside.
-- **`inline-block`** for boxes in a row that wraps, **`none`** for gone.
-- **`overflow: auto`** scrolls only when it must.
-- **Four values go round from the top**: top, right, bottom, left, for padding, margin and corners alike.
+When something doesn't sit where you expect, **Inspect** it: the developer tools show each box's content, padding, border and margin, and which of your rules gave them.
 
 ---
 
 ## Mission: Duty Board Look
 
-- Put the duty board's list in the class `duties`. Give it a background of `#13294f`, `16px` of padding on every side but the left, which gets `40px` so the numbers keep their room, a `4px solid #ffd166` border on its left side only, corners rounded `12px` on the right side only, a width of at most `600px`, and center it.
-- Give the navigation a background of `#13294f`, corners rounded `12px`, and center its links.
+The duty board is the list the crew reads every morning before their shift. Make it look like a notice pinned by the hatch:
+
+- the list in the class `duties`, a panel of its own against the page, its text readable on it;
+- a strong line, at least `3px` thick, down its left side only, and its corners rounded on the other side, away from the line;
+- room round its text, and its numbers inside the panel, clear of the line;
+- never wider than `600px`, an easy line to read, and centered in the page's column. On a phone it still fits without scrolling sideways.
+
+Then the navigation: make it a bar of its own, with rounded corners and its links in the middle of it.
