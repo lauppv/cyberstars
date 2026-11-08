@@ -8,7 +8,7 @@
         {
           "text": "#crew + p#roster",
           "contains": " crew members, from ",
-          "label": "the roster paragraph (<p id=\"roster\">) right after the crew list"
+          "label": "the roster paragraph right after the crew list"
         }
       ]
     },

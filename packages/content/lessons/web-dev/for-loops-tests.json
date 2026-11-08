@@ -8,12 +8,12 @@
         {
           "text": "p#countdown",
           "equals": "10 9 8 7 6 5 4 3 2 1 Liftoff!",
-          "label": "the countdown paragraph (<p id=\"countdown\">)"
+          "label": "the countdown paragraph"
         },
         {
           "text": "span#countdown-from",
           "equals": "10",
-          "label": "the number to count down from (<span id=\"countdown-from\">)"
+          "label": "the number to count down from"
         }
       ]
     },
