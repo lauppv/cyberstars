@@ -45,6 +45,8 @@ interface Labelled {
 /** Something the student would do on the page, then the steps after it look again. */
 type WebAction =
   | ({ click: string } & Labelled)
+  /** Puts the mouse over the element, so the checks after it see its :hover rules. */
+  | ({ hover: string } & Labelled)
   | ({ fill: string; text: string } & Labelled)
   | ({ press: string; on?: string } & Partial<Labelled>)
   | ({ submit: string } & Labelled)
@@ -66,8 +68,11 @@ export type WebCheck =
   | ({ text: string; equals?: string; contains?: string; nonEmpty?: true } & Labelled)
   /** The first element's attribute: `equals` its value, or only present without it. */
   | ({ attr: string; name: string; equals?: string; ignoreCase?: true } & Labelled)
-  /** The first element's computed style, as the browser reports it. */
-  | ({ style: string; prop: string; equals: string } & Labelled)
+  /**
+   * The first element's computed style, as the browser reports it, or that of
+   * its ::before or ::after (`pseudo`), whose `content` keeps its quotes: `"★"`.
+   */
+  | ({ style: string; prop: string; equals: string; pseudo?: WebPseudo } & Labelled)
   /** The elements stand in a row (side by side) or a column (one under the other). */
   | ({ layout: string; arrange: 'row' | 'column' } & Labelled)
   /** The first element's size in px. */
@@ -88,6 +93,9 @@ export type WebCheck =
   | { at: string };
 
 export type WebStep = WebAction | WebCheck;
+
+export const WEB_PSEUDO_ELEMENTS = ['::before', '::after'] as const;
+type WebPseudo = (typeof WEB_PSEUDO_ELEMENTS)[number];
 
 export const WEB_DEFAULT_WIDTH = 1280;
 export const WEB_HEIGHT = 800;

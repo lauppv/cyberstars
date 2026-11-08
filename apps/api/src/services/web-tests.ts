@@ -121,7 +121,7 @@ function sizeFailure(
 
 // Why the step failed, or null when the page is as the mission asks
 export function judgeStep(step: WebStep, seen: WebObservation, width: number): WebFailure | null {
-  if ('click' in step || 'fill' in step || 'submit' in step || 'press' in step) {
+  if ('click' in step || 'hover' in step || 'fill' in step || 'submit' in step || 'press' in step) {
     if (seen.ok !== false) return null;
     return { kind: 'missing', label: step.label ?? ('on' in step ? step.on : undefined) };
   }

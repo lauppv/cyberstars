@@ -259,6 +259,56 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
   });
 
+  it("reads a :hover rule after hover, and a pseudo-element's content and look", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        a { color: rgb(0, 0, 255); }
+        a:hover { color: rgb(255, 0, 0); }
+        h1::before { content: "★ "; color: rgb(0, 128, 0); }
+      </style></head><body><h1>Station Log</h1><a href="#">Crew</a></body></html>`,
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'Hover and a mark',
+        visible: true,
+        steps: [
+          { style: 'a', prop: 'color', equals: 'rgb(0, 0, 255)', label: 'the link' },
+          { hover: 'a', label: 'the link' },
+          { style: 'a', prop: 'color', equals: 'rgb(255, 0, 0)', label: 'the link' },
+          {
+            style: 'h1',
+            pseudo: '::before',
+            prop: 'content',
+            equals: '"★ "',
+            label: 'the mark before the heading',
+          },
+          {
+            style: 'h1',
+            pseudo: '::before',
+            prop: 'color',
+            equals: 'rgb(0, 128, 0)',
+            label: 'the mark before the heading',
+          },
+          {
+            style: 'h1',
+            pseudo: '::after',
+            prop: 'content',
+            equals: 'none',
+            label: 'nothing after',
+          },
+        ],
+      },
+      {
+        name: 'Hover over nothing',
+        visible: true,
+        steps: [{ hover: '.card', label: 'a crew card' }],
+      },
+    ];
+    const [styled, nothing] = verdicts(files, cases);
+    expect(styled.passed).toBe(true);
+    expect(nothing.web).toEqual({ kind: 'missing', label: 'a crew card' });
+  });
+
   it('stops a page stuck in an endless loop, like a timeout', () => {
     const [stuck] = verdicts(
       { 'index.html': '<h1>Hi</h1><script>while (true) {}</script>' },

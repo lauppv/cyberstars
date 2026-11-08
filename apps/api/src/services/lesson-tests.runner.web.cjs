@@ -160,7 +160,10 @@ async function observe(page, step, seen) {
   if ('style' in step) {
     const value = await elements
       .first()
-      .evaluate((el, prop) => getComputedStyle(el).getPropertyValue(prop), step.prop);
+      .evaluate(
+        (el, [prop, pseudo]) => getComputedStyle(el, pseudo).getPropertyValue(prop),
+        [step.prop, step.pseudo ?? null],
+      );
     return { count, values: [value] };
   }
   const boxes = await elements.evaluateAll(
@@ -187,12 +190,13 @@ async function act(page, step, nav, stepMs) {
     await settle(page, nav, stepMs);
     return { ok: true };
   }
-  const selector = step.click ?? step.fill ?? step.submit ?? step.on;
+  const selector = step.click ?? step.hover ?? step.fill ?? step.submit ?? step.on;
   if (selector !== undefined) {
     const element = page.locator(`css=${selector}`);
     if ((await element.count()) === 0) return { ok: false };
     const first = element.first();
     if ('click' in step) await first.click({ timeout: stepMs });
+    else if ('hover' in step) await first.hover({ timeout: stepMs });
     else if ('fill' in step) await first.fill(step.text, { timeout: stepMs });
     else if ('submit' in step) {
       await first.evaluate((form) => {
@@ -222,7 +226,7 @@ async function settle(page, nav, stepMs) {
   await page.waitForTimeout(30);
 }
 
-const ACTIONS = ['click', 'fill', 'press', 'submit', 'open', 'wait'];
+const ACTIONS = ['click', 'hover', 'fill', 'press', 'submit', 'open', 'wait'];
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];

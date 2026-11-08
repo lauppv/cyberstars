@@ -58,6 +58,10 @@ describe('judgeStep', () => {
       kind: 'missing',
       label: 'the Add button',
     });
+    expect(judge({ hover: '.card', label: 'a crew card' }, { ok: false })).toEqual({
+      kind: 'missing',
+      label: 'a crew card',
+    });
     expect(judge({ open: 'crew.html' }, { ok: true })).toBeNull();
     expect(judge({ wait: 100 }, { ok: true })).toBeNull();
   });

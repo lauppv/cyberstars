@@ -42,6 +42,7 @@ import {
   WEB_MAX_WAIT_MS,
   WEB_MAX_WIDTH,
   WEB_MIN_WIDTH,
+  WEB_PSEUDO_ELEMENTS,
   type WebTestsSpec,
 } from '@cyberstars/shared/webTests';
 
@@ -370,7 +371,7 @@ async function checkPaired(
 // what it needs, and pages the site has (`sitePaths`, the reference's files)
 export const MAX_WEB_CASES = 30;
 
-const WEB_ACTIONS = ['click', 'fill', 'press', 'submit', 'open', 'wait'] as const;
+const WEB_ACTIONS = ['click', 'hover', 'fill', 'press', 'submit', 'open', 'wait'] as const;
 const WEB_CHECKS = [
   'exists',
   'count',
@@ -387,6 +388,7 @@ const WEB_CHECKS = [
 // The keys each step may carry beside its own
 const WEB_STEP_KEYS: Record<string, string[]> = {
   click: ['label'],
+  hover: ['label'],
   fill: ['text', 'label'],
   press: ['on', 'label'],
   submit: ['label'],
@@ -396,7 +398,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   count: ['equals', 'atLeast', 'label'],
   text: ['equals', 'contains', 'nonEmpty', 'label'],
   attr: ['name', 'equals', 'ignoreCase', 'label'],
-  style: ['prop', 'equals', 'label'],
+  style: ['prop', 'equals', 'pseudo', 'label'],
   layout: ['arrange', 'label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
@@ -406,6 +408,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
 };
 const NEEDS_LABEL = new Set([
   'click',
+  'hover',
   'fill',
   'submit',
   'exists',
@@ -461,6 +464,13 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   if (own === 'attr' && !isText(step.name)) return 'an attr step without the attribute name';
   if (own === 'style' && (!isText(step.prop) || typeof step.equals !== 'string')) {
     return 'a style step needs prop and equals';
+  }
+  if (
+    own === 'style' &&
+    step.pseudo !== undefined &&
+    !(WEB_PSEUDO_ELEMENTS as readonly unknown[]).includes(step.pseudo)
+  ) {
+    return `a style step's pseudo is one of ${WEB_PSEUDO_ELEMENTS.join(', ')}`;
   }
   if (own === 'layout' && step.arrange !== 'row' && step.arrange !== 'column') {
     return 'a layout step arranges in a row or a column';
