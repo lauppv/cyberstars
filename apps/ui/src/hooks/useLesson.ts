@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { CodeLanguage } from '@cyberstars/shared/constants';
+import { WEB_COURSE_KEYS, type CodeLanguage } from '@cyberstars/shared/constants';
 import * as lessonService from '../services/lessonService';
 import * as progressService from '../services/progressService';
+import { fetchWebLessonStart } from '../services/webLessonService';
 import { useAuth } from '../context/AuthContext';
 
 const DEFAULT_CODE: Record<string, string> = {
@@ -26,6 +27,11 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
   // target, and what a pristine editor follows on a language switch). savedCode:
   // the user's own code, if any; language-agnostic, never auto-translated.
   const [starterCode, setStarterCode] = useState('');
+  // A web lesson's start comes in two versions (CYB-119): the course's site so
+  // far with the lesson's new files, and the student's own passing site with
+  // them (null without one). The starter is the student's when there is one.
+  const [courseStarter, setCourseStarter] = useState('');
+  const [passedStarter, setPassedStarter] = useState<string | null>(null);
   const [savedCode, setSavedCode] = useState<string | null>(null);
   // The request for the user's saved code failed: null savedCode then means
   // "not known", not "nothing saved".
@@ -70,14 +76,28 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
       }
 
       // Always resolve the starter so Reset has a target even when saved code exists.
-      let starter: string;
-      try {
-        starter = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
-      } catch {
-        starter = DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '';
+      let starter: string | null = null;
+      let passed: string | null = null;
+      if (WEB_COURSE_KEYS.includes(courseKey)) {
+        try {
+          const start = await fetchWebLessonStart(courseKey, lessonSlug, lang);
+          starter = start.course;
+          passed = start.passed;
+        } catch {
+          // The lesson's own files are the closest there is to its start
+        }
+      }
+      if (starter === null) {
+        try {
+          starter = await lessonService.fetchLessonCode(courseKey, lessonSlug, lang, language);
+        } catch {
+          starter = DEFAULT_CODE[(language ?? courseKey).toLowerCase()] || '';
+        }
       }
       if (cancelled) return;
-      setStarterCode(starter);
+      setCourseStarter(starter);
+      setPassedStarter(passed);
+      setStarterCode(passed ?? starter);
 
       let saved: string | null = null;
       let failed = false;
@@ -118,6 +138,8 @@ export function useLesson(courseKey: string, lessonSlug: string, language?: Code
     title,
     content,
     starterCode,
+    courseStarter,
+    passedStarter,
     savedCode,
     savedCodeFailed,
     reloadSavedCode,

@@ -15,10 +15,17 @@ vi.mock('react-i18next', () => {
   return { useTranslation: () => ({ t, i18n: i18nState }) };
 });
 
-const { mockFetchLesson, mockFetchLessonCode, mockGetSavedCode } = vi.hoisted(() => ({
-  mockFetchLesson: vi.fn(),
-  mockFetchLessonCode: vi.fn(),
-  mockGetSavedCode: vi.fn(),
+const { mockFetchLesson, mockFetchLessonCode, mockGetSavedCode, mockFetchWebStart } = vi.hoisted(
+  () => ({
+    mockFetchLesson: vi.fn(),
+    mockFetchLessonCode: vi.fn(),
+    mockGetSavedCode: vi.fn(),
+    mockFetchWebStart: vi.fn(),
+  }),
+);
+
+vi.mock('../services/webLessonService', () => ({
+  fetchWebLessonStart: (...args: unknown[]) => mockFetchWebStart(...args),
 }));
 
 vi.mock('../services/lessonService', () => ({
@@ -71,6 +78,40 @@ describe('useLesson', () => {
     expect(result.current.title).toBe('Title print');
     expect(result.current.starterCode).toBe('starter print');
     expect(result.current.savedCode).toBe('saved print');
+  });
+
+  it("starts a web lesson from the student's passing site, keeping the course's version", async () => {
+    mockFetchWebStart.mockResolvedValue({ course: 'course site', passed: 'my site' });
+    const { result } = renderHook(() => useLesson('web-dev', 'crew'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(mockFetchWebStart).toHaveBeenCalledWith('web-dev', 'crew', 'en');
+    expect(mockFetchLessonCode).not.toHaveBeenCalled();
+    expect(result.current.starterCode).toBe('my site');
+    expect(result.current.courseStarter).toBe('course site');
+    expect(result.current.passedStarter).toBe('my site');
+    expect(result.current.savedCode).toBe('saved crew');
+  });
+
+  it("starts a web lesson from the course's version without a passing site", async () => {
+    mockFetchWebStart.mockResolvedValue({ course: 'course site', passed: null });
+    const { result } = renderHook(() => useLesson('web-dev', 'crew'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.starterCode).toBe('course site');
+    expect(result.current.passedStarter).toBeNull();
+  });
+
+  it("falls back to a web lesson's own files when its start can't be read", async () => {
+    mockFetchWebStart.mockRejectedValue(new Error('offline'));
+    const { result } = renderHook(() => useLesson('web-dev', 'crew'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(result.current.starterCode).toBe('starter crew');
+    expect(result.current.passedStarter).toBeNull();
+  });
+
+  it('never asks a code lesson for a web start', async () => {
+    const { result } = renderHook(() => useLesson('python', 'print'));
+    await waitFor(() => expect(result.current.isLoading).toBe(false));
+    expect(mockFetchWebStart).not.toHaveBeenCalled();
   });
 
   it('requests the ro locale when the UI language is Romanian', async () => {
