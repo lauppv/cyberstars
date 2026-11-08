@@ -37,6 +37,14 @@ describe('MaintenanceScreen', () => {
     expect(await screen.findByRole('alertdialog')).toHaveTextContent("We're applying an update");
   });
 
+  it("speaks both languages on an English page, as nginx's page does", () => {
+    renderScreen();
+    act(() => setMaintenance(true));
+    const screenText = screen.getByRole('alertdialog');
+    expect(screenText).toHaveTextContent("We're applying an update");
+    expect(screenText).toHaveTextContent('Aplicăm un update');
+  });
+
   it('asks every few seconds and goes away once the backend answers', async () => {
     vi.useFakeTimers();
     const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(deploy());
