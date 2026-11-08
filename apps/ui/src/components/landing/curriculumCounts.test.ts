@@ -28,10 +28,22 @@ describe('curriculumCounts', () => {
     expect(counts).toEqual({
       languages: ['Python', 'Java', 'C', 'Linux'],
       perCourse: [
-        { key: 'python', label: 'Python', color: courseMeta('python').color, lessons: 60 },
-        { key: 'java', label: 'Java', color: courseMeta('java').color, lessons: 49 },
-        { key: 'c', label: 'C', color: courseMeta('c').color, lessons: 47 },
-        { key: 'linux', label: 'Linux', color: courseMeta('linux').color, lessons: 55 },
+        {
+          key: 'python',
+          label: 'Python',
+          color: courseMeta('python').color,
+          lessons: 60,
+          beta: false,
+        },
+        { key: 'java', label: 'Java', color: courseMeta('java').color, lessons: 49, beta: false },
+        { key: 'c', label: 'C', color: courseMeta('c').color, lessons: 47, beta: false },
+        {
+          key: 'linux',
+          label: 'Linux',
+          color: courseMeta('linux').color,
+          lessons: 55,
+          beta: false,
+        },
       ],
       courses: 4,
       lessons: 211,
@@ -39,11 +51,15 @@ describe('curriculumCounts', () => {
     });
   });
 
-  it('leaves a Beta course out until it is whole', () => {
-    const counts = curriculumCounts([course('python', 60), course('trees-graphs', 1)]);
+  it('counts a Beta course only once it is whole, but lists it, marked', () => {
+    const counts = curriculumCounts([course('python', 60), course('trees-graphs', 12)]);
     expect(counts.courses).toBe(1);
     expect(counts.lessons).toBe(60);
-    expect(counts.perCourse.map((c) => c.key)).toEqual(['python']);
+    expect(counts.languages).toEqual(['Python']);
+    expect(counts.perCourse.map((c) => [c.key, c.lessons, c.beta])).toEqual([
+      ['python', 60, false],
+      ['trees-graphs', 12, true],
+    ]);
   });
 
   it('claims nothing before the curriculum has loaded', () => {

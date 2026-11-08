@@ -72,7 +72,12 @@ describe('AlgorithmLoops', () => {
   const film = (name: RegExp) => screen.getByRole('img', { name });
   // A film sets its next timer once a frame is drawn, so the frames go by one at a time
   const play = (frames: number) => {
-    for (let i = 0; i < frames; i++) act(() => vi.advanceTimersByTime(800));
+    for (let i = 0; i < frames; i++) act(() => vi.advanceTimersByTime(950));
+  };
+  // The last frame rests, then the film fades out for 350 ms and starts over
+  const startOver = () => {
+    act(() => vi.advanceTimersByTime(950));
+    act(() => vi.advanceTimersByTime(350));
   };
 
   it('plays the four films side by side, with no words under them', () => {
@@ -88,19 +93,33 @@ describe('AlgorithmLoops', () => {
     expect(screen.queryByText('Is 5 > 3?')).toBeNull();
   });
 
-  it('moves a frame every move and 200 ms, round and round', () => {
+  it('moves a frame every move and 250 ms, round and round', () => {
     render(<AlgorithmLoops />);
-    act(() => vi.advanceTimersByTime(799));
+    act(() => vi.advanceTimersByTime(949));
     expect(screen.queryByText(/^j = \d$/)).toBeNull();
     act(() => vi.advanceTimersByTime(1));
     expect(pointer()).toBe('j = 0');
     play(2);
     expect(pointer()).toBe('j = 1');
     const frames = arrayFrames(bubbleSortVisual([5, 3, 8, 1, 2], t)).length;
-    play(frames - 3);
+    play(frames - 4);
+    startOver();
     expect(screen.queryByText(/^j = \d$/)).toBeNull();
     play(1);
     expect(pointer()).toBe('j = 0');
+  });
+
+  it('fades out at the end of a round, rather than jumping back to the start', () => {
+    render(<AlgorithmLoops />);
+    const sorting = film(/^Bubble sort putting/);
+    const frames = arrayFrames(bubbleSortVisual([5, 3, 8, 1, 2], t)).length;
+    play(frames - 1);
+    expect(sorting).toHaveStyle({ opacity: '1' });
+    act(() => vi.advanceTimersByTime(950));
+    expect(sorting).toHaveStyle({ opacity: '0' });
+    expect(screen.queryByText(/^j = \d$/)).toBeNull();
+    act(() => vi.advanceTimersByTime(350));
+    expect(sorting).toHaveStyle({ opacity: '1' });
   });
 
   it('plays each film at its own length', () => {
@@ -110,7 +129,7 @@ describe('AlgorithmLoops', () => {
     const frames = treeFrames(searchTreeVisual([8, 3, 10, 1, 6, 14], t)).length;
     play(frames - 1);
     expect(trees.textContent).toContain('8310');
-    play(1);
+    startOver();
     expect(trees.textContent).toBe('');
   });
 
@@ -149,7 +168,7 @@ describe('AlgorithmLoops', () => {
     act(() => vi.advanceTimersByTime(60_000));
     expect(screen.queryByText(/^j = \d$/)).toBeNull();
     act(() => report([{ isIntersecting: true }]));
-    act(() => vi.advanceTimersByTime(800));
+    act(() => vi.advanceTimersByTime(950));
     expect(pointer()).toBe('j = 0');
     act(() => report([{ isIntersecting: false }]));
     act(() => vi.advanceTimersByTime(60_000));

@@ -40,9 +40,13 @@ const EDGES: [number, number][] = [
 ];
 
 const BOX = 56;
-// A move takes as long as the lessons' Fast, then the picture rests a moment before the next
-const MOVE_MS = 600;
-const HOLD_MS = MOVE_MS + 200;
+// A move glides a little slower than the lessons' Fast, then the picture rests a moment before
+// the next, the colours changing over the move (index.css, .algo-films)
+const MOVE_MS = 700;
+const HOLD_MS = MOVE_MS + 250;
+// At the end of a round the film fades out, starts over unseen and fades back in, rather than
+// jumping back to its first frame
+const FADE_MS = 350;
 
 function prefersReducedMotion(): boolean {
   return typeof window !== 'undefined'
@@ -50,7 +54,8 @@ function prefersReducedMotion(): boolean {
     : false;
 }
 
-// One film: its frames one after another, round and round, while it may play
+// One film: its frames one after another, round and round, while it may play. The line under its
+// name fills as the round goes, and the round ends in a fade rather than a jump back
 function Film({
   name,
   frames,
@@ -64,22 +69,46 @@ function Film({
 }) {
   const { t } = useTranslation();
   const [step, setStep] = useState(0);
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
     if (!playing) return;
-    const id = setTimeout(() => setStep((s) => (s + 1) % frames), HOLD_MS);
-    return () => clearTimeout(id);
+    if (step < frames - 1) {
+      const id = setTimeout(() => setStep(step + 1), HOLD_MS);
+      return () => clearTimeout(id);
+    }
+    // The last frame rests, then the film fades out, starts over and fades in
+    const out = setTimeout(() => setFading(true), HOLD_MS);
+    const back = setTimeout(() => {
+      setStep(0);
+      setFading(false);
+    }, HOLD_MS + FADE_MS);
+    return () => {
+      clearTimeout(out);
+      clearTimeout(back);
+    };
   }, [playing, step, frames]);
 
   return (
-    <div data-film={name} className="panel p-4 sm:p-5 flex flex-col">
-      <span className="text-[13px] font-semibold text-[var(--text3)]">
-        {t(`landing.loops.${name}`)}
-      </span>
+    <div data-film={name} className="panel overflow-hidden flex flex-col">
+      <div className="px-4 sm:px-5 pt-4 flex items-center gap-3">
+        <span className="text-[13px] font-semibold text-[var(--text2)]">
+          {t(`landing.loops.${name}`)}
+        </span>
+        <span className="flex-1 h-px bg-[var(--border)] overflow-hidden" aria-hidden="true">
+          <span
+            className={`algo-progress block h-full bg-gradient-to-r from-[var(--accent)] to-[#a99cf5] ${
+              step === 0 ? '!transition-none' : ''
+            }`}
+            style={{ width: `${(step / Math.max(1, frames - 1)) * 100}%` }}
+          />
+        </span>
+      </div>
       <div
         role="img"
         aria-label={t(`landing.${name}.picture`)}
-        className="flex-1 flex flex-col justify-center text-left"
+        className="algo-stage flex-1 flex flex-col justify-center text-left px-4 sm:px-5 pb-2 m-2 mt-3 rounded-[var(--radius)] transition-opacity motion-reduce:transition-none"
+        style={{ opacity: fading ? 0 : 1, transitionDuration: `${FADE_MS}ms` }}
       >
         {children(step)}
       </div>
@@ -146,7 +175,7 @@ export function AlgorithmLoops() {
               )}
             </button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="algo-films grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Film name="sorting" frames={sorting.frames.length} playing={go}>
               {(step) => (
                 <ArrayView

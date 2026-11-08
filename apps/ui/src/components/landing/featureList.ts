@@ -2,22 +2,25 @@ import type { ComponentType } from 'react';
 import {
   AlgorithmsPicture,
   CoursesPicture,
-  ForumPicture,
-  GamePicture,
   LinuxPicture,
   TutorPicture,
+  WebPicture,
 } from './FeaturePictures';
 
 // The parts of CyberStars the landing page shows under What's inside, in order,
-// each with its picture. Messages, connections and the leaderboard stay off it.
+// each with its picture. Messages, connections and the leaderboard stay off it;
+// Web Development comes last, marked Coming soon until it launches.
 export const FEATURES: [string, ComponentType][] = [
   ['courses', CoursesPicture],
   ['algorithms', AlgorithmsPicture],
   ['linux', LinuxPicture],
-  ['forum', ForumPicture],
-  ['laniakea', GamePicture],
   ['tutor', TutorPicture],
+  ['web', WebPicture],
 ];
+
+// The parts whose picture needs more room than the middle column: Web
+// Development's code and site side by side
+export const WIDE_PICTURES = new Set(['web']);
 
 // The id a row is scrolled to by, from the chapters at the side of the page
 export const featureId = (key: string) => `feature-${key}`;

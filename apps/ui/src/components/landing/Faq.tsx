@@ -4,7 +4,8 @@ import { ChevronDown } from 'lucide-react';
 import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
 
-const FAQ_KEYS = ['account', 'free', 'start', 'install', 'phone', 'romanian'] as const;
+// Free and nothing to install are said by the hero and the free band already
+const FAQ_KEYS = ['account', 'start', 'phone', 'romanian'] as const;
 
 // One question open at a time. Each question is a real button carrying its
 // expanded state, so the keyboard and screen readers work with nothing extra.

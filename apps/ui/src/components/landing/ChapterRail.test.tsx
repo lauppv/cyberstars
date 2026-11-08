@@ -74,7 +74,7 @@ describe('ChapterRail', () => {
   it('goes to a chapter on a click', () => {
     scrollTo(0);
     render(<ChapterRail />);
-    fireEvent.click(screen.getByRole('button', { name: 'The forum' }));
-    expect(document.getElementById('feature-forum')!.scrollIntoView).toHaveBeenCalled();
+    fireEvent.click(screen.getByRole('button', { name: 'Linux terminal' }));
+    expect(document.getElementById('feature-linux')!.scrollIntoView).toHaveBeenCalled();
   });
 });

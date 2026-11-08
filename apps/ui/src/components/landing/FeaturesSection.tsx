@@ -1,25 +1,21 @@
 import { useTranslation } from 'react-i18next';
-import { FIRST_STEPS_LESSONS } from '@cyberstars/shared/laniakea';
+import { PREVIEW_FEATURES } from '@cyberstars/shared/features';
 import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
 import { PinnedStory } from './PinnedStory';
-import { BetaBadge } from '../ui/BetaBadge';
-import { FEATURES, featureId } from './featureList';
-
-const chip =
-  'px-2 py-0.5 rounded-full bg-[var(--glass)] text-[11px] text-[var(--text3)] whitespace-nowrap';
+import { FEATURES, WIDE_PICTURES, featureId } from './featureList';
 
 function Words({ part }: { part: string }) {
   const { t } = useTranslation();
   return (
     <>
-      {part === 'laniakea' && (
-        <div className="flex flex-wrap items-center gap-2 mb-3">
-          <BetaBadge hint={t('laniakea.betaHint')} />
-          <span className={chip}>
-            {t('landing.features.laniakea.note', { count: FIRST_STEPS_LESSONS })}
-          </span>
-        </div>
+      {part === 'web' && PREVIEW_FEATURES.webDevelopment && (
+        <span
+          title={t('common.comingSoonHint')}
+          className="inline-flex mb-3 px-2 py-0.5 rounded-full border border-[var(--border)] text-[11px] font-semibold text-[var(--text2)]"
+        >
+          {t('common.comingSoon')}
+        </span>
       )}
       <h3 className="text-[24px] sm:text-[28px] font-bold tracking-[-0.4px] leading-[1.15] m-0 mb-2">
         {t(`landing.features.${part}.title`)}
@@ -31,8 +27,8 @@ function Words({ part }: { part: string }) {
 
 // What's inside, told like How it works above: each part's picture held in
 // the middle while its name and a sentence rise past it, the same pictures
-// drawn from the app's own pieces. Laniakea says it is Beta and opens after the
-// first Python lessons.
+// drawn from the app's own pieces. Web Development says Coming soon while it
+// is a preview feature, and stops saying it once launched.
 export function FeaturesSection() {
   const { t } = useTranslation();
   return (
@@ -45,6 +41,7 @@ export function FeaturesSection() {
           parts={FEATURES.map(([key, Picture]) => ({
             key,
             id: featureId(key),
+            wide: WIDE_PICTURES.has(key),
             words: <Words part={key} />,
             picture: (
               <div className="panel overflow-hidden">

@@ -21,13 +21,28 @@ describe('Faq', () => {
       'ten-run limit',
     );
 
-    fireEvent.click(question(/install/));
+    fireEvent.click(question(/Romanian/));
     expect(question(/need an account/)).toHaveAttribute('aria-expanded', 'false');
     expect(screen.getAllByRole('region')).toHaveLength(1);
-    expect(screen.getByRole('region', { name: 'Do I need to install anything?' })).toBeDefined();
+    expect(screen.getByRole('region', { name: 'Is it in Romanian?' })).toBeDefined();
 
-    fireEvent.click(question(/install/));
+    fireEvent.click(question(/Romanian/));
     expect(screen.queryByRole('region')).toBeNull();
+  });
+
+  it('asks four questions, none about the forum, and none the page answers already', () => {
+    render(<Faq />);
+    expect(screen.getAllByRole('button').map((b) => b.textContent)).toEqual([
+      'Do I need an account?',
+      'Which language should I start with?',
+      'Does it work on a phone?',
+      'Is it in Romanian?',
+    ]);
+    fireEvent.click(question(/need an account/));
+    expect(screen.getByRole('region')).toHaveTextContent(
+      'An account lifts the ten-run limit, saves your progress and opens the AI tutor.',
+    );
+    expect(document.body.textContent).not.toMatch(/forum/i);
   });
 
   it('ties each answer to its question for screen readers', () => {

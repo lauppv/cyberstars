@@ -9,6 +9,7 @@ vi.mock('../../context/CurriculumContext', () => ({
     courses: [
       { key: 'python', title: 'Python', description: '', lessons: lessons(60) },
       { key: 'linux', title: 'Linux', description: '', lessons: lessons(55) },
+      { key: 'trees-graphs', title: 'Trees and Graphs', description: '', lessons: lessons(12) },
       { key: 'algo-c', title: 'C Algorithms', description: '', lessons: lessons(32) },
     ],
     isLoading: false,
@@ -38,9 +39,8 @@ describe('FeaturesSection', () => {
       'Courses',
       'Algorithm challenges',
       'Linux terminal',
-      'The forum',
-      'Laniakea, a space game',
       'An AI tutor',
+      'Web Development',
     ]);
     for (const r of items) {
       expect(within(r).getAllByRole('img')).toHaveLength(1);
@@ -58,22 +58,8 @@ describe('FeaturesSection', () => {
       'true',
       'true',
       'true',
-      'true',
     ]);
-    expect(document.getElementById('feature-forum')).toHaveTextContent('The forum');
-  });
-
-  it('marks Laniakea Beta and says in a line what it is and that it opens after the first Python lessons', () => {
-    renderSection();
-    const row = parts().getByRole('heading', { name: 'Laniakea, a space game' }).closest('li')!;
-    expect(row).toHaveTextContent('After the first 6 Python lessons');
-    expect(within(row).getByText('Beta')).toBeDefined();
-    expect(
-      within(row).getByText(
-        'Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it.',
-      ),
-    ).toBeDefined();
-    expect(within(row).getByRole('img', { name: /ringed in blue/ })).toHaveTextContent('5 + 3');
+    expect(document.getElementById('feature-tutor')).toHaveTextContent('An AI tutor');
   });
 
   it('never says free: only the hero and the free band do', () => {
@@ -83,10 +69,17 @@ describe('FeaturesSection', () => {
 
   it('draws the courses from the curriculum, with their real lesson counts', () => {
     renderSection();
-    const picture = parts().getByRole('img', { name: /Python, Java, C and Linux/ });
+    const picture = parts().getByRole('img', { name: /Each course with its number of lessons/ });
     expect(picture).toHaveTextContent('Python60 lessons');
     expect(picture).toHaveTextContent('Linux55 lessons');
     expect(picture).not.toHaveTextContent('C Algorithms');
+  });
+
+  it('lists Trees and Graphs among the courses, marked Beta', () => {
+    renderSection();
+    expect(parts().getByText(/then Trees and Graphs in all three languages/)).toBeDefined();
+    const picture = parts().getByRole('img', { name: /Each course with its number of lessons/ });
+    expect(picture).toHaveTextContent('Trees and GraphsBeta12 lessons');
   });
 
   it('lists real challenges from easy to hard, the first ones solved', () => {
@@ -103,26 +96,37 @@ describe('FeaturesSection', () => {
     expect(picture).toHaveTextContent('mission.txt reports tools');
   });
 
-  it("answers Maria21's question in the forum", () => {
+  it("shows the tutor's chat before a conversation starts, its questions leading nowhere", () => {
     renderSection();
-    const picture = parts().getByRole('img', { name: /Maria21/ });
-    expect(picture).toHaveTextContent('Maria21How do I print my name 3 times?');
-    expect(picture).toHaveTextContent('Marco Hoeger');
-    expect(picture).toHaveTextContent('print("Maria")');
+    const picture = parts().getByRole('img', { name: /before a conversation starts/ });
+    expect(picture.querySelector('.tutor-orbit')).not.toBeNull();
+    expect(within(picture).getByLabelText('How can I help?')).toBeDefined();
+    expect(picture).toHaveTextContent('The tutor helps you get there on your own.');
+    expect(picture).toHaveTextContent('Explain the task to me');
+    expect(picture).toHaveTextContent("Why doesn't my code work?");
+    expect(picture).toHaveTextContent('Give me a nudge');
+    expect(within(picture).queryByRole('button')).toBeNull();
+    expect(within(picture).queryByRole('heading')).toBeNull();
   });
 
-  it('shows the tutor pointing at the idea without the fix', () => {
+  it('marks Web Development Coming soon, its picture a page and the site it draws', () => {
     renderSection();
-    const picture = parts().getByRole('img', { name: /tutor explains that range starts at 0/ });
-    expect(picture).toHaveTextContent('Why does my loop print 0, 1, 2 and not 1, 2, 3?');
-    expect(picture).toHaveTextContent('which one would give you 1, 2, 3?');
-    expect(picture).toHaveTextContent('So range(1, 3)?');
-    expect(picture).toHaveTextContent('What would the stop need to be for 3 to make it in?');
-    expect(picture).not.toHaveTextContent('range(1, 4)');
+    const row = parts().getByRole('heading', { name: 'Web Development' }).closest('li')!;
+    expect(within(row).getByText('Coming soon')).toBeDefined();
+    const picture = within(row).getByRole('img', { name: /A web lesson as the student has it/ });
+    expect(picture).toHaveTextContent('index.htmlstyle.cssscript.js');
+    expect(picture).toHaveTextContent('openDoors.addEventListener("click"');
+    expect(picture).toHaveTextContent('Welcome aboard');
+    expect(picture).toHaveTextContent('Doors openOpen the doors');
   });
 
   it('presents none of the preview features', () => {
     renderSection();
     expect(screen.queryByText(/messag|connection|leaderboard/i)).toBeNull();
+  });
+
+  it('names neither the forum nor Laniakea', () => {
+    renderSection();
+    expect(document.body.textContent).not.toMatch(/forum|laniakea|planet/i);
   });
 });

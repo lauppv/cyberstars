@@ -1,37 +1,59 @@
-import { useMemo, type ReactNode } from 'react';
+import { useMemo, useRef, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CircleCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useCurriculum } from '../../context/CurriculumContext';
-import { TutorMark } from '../tutor/TutorMark';
-import { CodeStill } from './CodeStill';
+import { TutorHero } from '../tutor/TutorHero';
+import { useTimesShown } from './useTimesShown';
 import { curriculumCounts } from './curriculumCounts';
 import { DIFF_COLORS } from '../../constants/difficulty';
 
 // The pictures for "what's inside", one per place a visitor can go. They are
 // drawn with the app's own pieces and real data, so there are no screenshots
 // to go stale and no editor to load.
-function Box({ label, children }: { label: string; children: ReactNode }) {
+function Box({
+  label,
+  height = 'h-[220px]',
+  children,
+}: {
+  label: string;
+  height?: string;
+  children: ReactNode;
+}) {
   return (
-    <div role="img" aria-label={label} className="h-[220px] overflow-hidden p-4 text-left">
+    <div role="img" aria-label={label} className={`${height} overflow-hidden p-4 text-left`}>
       {children}
     </div>
   );
 }
 
-// Every live course with its real lesson count, longest bar for the most
+// Every listed course with its real lesson count, in the page's language,
+// longest bar for the most; a course still being built is marked Beta. The
+// picture grows when a launch adds a course, rather than cutting it off
 export function CoursesPicture() {
   const { t } = useTranslation();
   const { courses } = useCurriculum();
   const rows = useMemo(() => curriculumCounts(courses).perCourse, [courses]);
   const most = Math.max(1, ...rows.map((r) => r.lessons));
   return (
-    <Box label={t('landing.features.courses.picture')}>
-      <ul className="m-0 p-0 list-none flex flex-col gap-4">
+    <Box label={t('landing.features.courses.picture')} height="min-h-[220px]">
+      <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
         {rows.map((r) => (
           <li key={r.key}>
-            <div className="flex items-baseline justify-between text-[13px] mb-1.5">
-              <span className="font-semibold">{r.label}</span>
-              <span className="text-[var(--text3)]">
+            <div className="flex items-center justify-between gap-2 text-[13px] leading-4 mb-1.5">
+              <span className="flex items-center gap-1.5 min-w-0">
+                <span className="font-semibold truncate">
+                  {t(`courses.names.${r.key}`, { defaultValue: r.label })}
+                </span>
+                {r.beta && (
+                  <span
+                    title={t('common.betaHint')}
+                    className="px-1.5 rounded-full border border-[var(--border)] text-[10px] leading-[14px] font-semibold text-[var(--text2)]"
+                  >
+                    {t('common.beta')}
+                  </span>
+                )}
+              </span>
+              <span className="text-[var(--text3)] flex-shrink-0">
                 {r.lessons} {t('courses.lessons', { count: r.lessons })}
               </span>
             </div>
@@ -137,158 +159,181 @@ export function LinuxPicture() {
   );
 }
 
-function Avatar({ initials, color }: { initials: string; color: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[11px] font-semibold text-white"
-      style={{ background: color }}
-    >
-      {initials}
-    </span>
-  );
-}
+// What the tutor offers to start with on a lesson the student hasn't begun
+const TUTOR_STARTERS = ['tutor.start.task', 'tutor.start.broken', 'tutor.start.nudge'];
 
-const FORUM_CODE = `for i in range(3):
-    print("Maria")`;
-
-// A beginner's question and the answer that solved it, laid out like a forum thread
-export function ForumPicture() {
-  const { t } = useTranslation();
-  return (
-    <Box label={t('landing.features.forum.picture')}>
-      <div className="flex flex-col gap-3">
-        <div className="flex gap-2.5">
-          <Avatar initials="M" color="#3572A5" />
-          <div className="min-w-0 flex-1">
-            <div className="text-[12px] text-[var(--text3)] mb-1">Maria21</div>
-            <div className="text-[13px]">{t('landing.features.forum.question')}</div>
-          </div>
-        </div>
-        <div className="flex gap-2.5">
-          <Avatar initials="MH" color="#6c5ce7" />
-          <div className="min-w-0 flex-1">
-            <div className="text-[12px] text-[var(--text3)] mb-1 flex items-center gap-1.5">
-              Marco Hoeger
-              <span className="inline-flex items-center gap-1 text-[var(--success)]">
-                <CircleCheck size={12} strokeWidth={2} aria-hidden="true" />
-                {t('landing.features.forum.solved')}
-              </span>
-            </div>
-            <div className="text-[13px] mb-1.5">{t('landing.features.forum.answer')}</div>
-            <div className="rounded-[var(--radius-sm)] border border-[var(--border)]">
-              <CodeStill code={FORUM_CODE} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </Box>
-  );
-}
-
-const TUTOR_TURNS: ['student' | 'tutor', string][] = [
-  ['student', 'question'],
-  ['tutor', 'answer'],
-  ['student', 'followUp'],
-  ['tutor', 'followUpAnswer'],
-];
-
-// A student stuck on a loop talking it through with the tutor, laid out like
-// the tutor panel: each answer points at the idea and leaves the fix to them.
-// A picture narrower than 576px has room for the first question and answer only.
+// The tutor's chat before a conversation starts, as the panel shows it: its
+// face circled by the turning arc, the greeting typed in, the line under it
+// and three questions to start with, which here lead nowhere. The greeting
+// types in again each time the picture comes into view, rather than once
+// unseen when the page loads. Under reduced motion it all stands still.
 export function TutorPicture() {
   const { t } = useTranslation();
+  const ref = useRef<HTMLDivElement>(null);
+  const shown = useTimesShown(ref);
   return (
-    <Box label={t('landing.features.tutor.picture')}>
-      <div className="@container max-w-[640px] mx-auto flex flex-col gap-3">
-        {TUTOR_TURNS.map(([who, key], i) =>
-          who === 'student' ? (
-            <div
-              key={key}
-              className={`self-end max-w-[85%] px-3 py-2 rounded-[var(--radius)] bg-[var(--accent)]/15 text-[13px] ${
-                i >= 2 ? 'hidden @xl:block' : ''
-              }`}
-            >
-              {t(`landing.features.tutor.${key}`)}
-            </div>
-          ) : (
-            <div
-              key={key}
-              className={`max-w-[85%] items-start gap-2.5 ${i >= 2 ? 'hidden @xl:flex' : 'flex'}`}
-            >
-              <TutorMark size="sm" />
-              <p className="pt-0.5 text-[13px] leading-relaxed">
-                {t(`landing.features.tutor.${key}`)}
-              </p>
-            </div>
-          ),
-        )}
+    <Box label={t('landing.features.tutor.picture')} height="min-h-[220px]">
+      <div ref={ref} className="max-w-[360px] mx-auto">
+        <div key={shown} className="flex flex-col items-center gap-2.5 text-center">
+          <TutorHero title={t('tutor.emptyTitle')} mood="idle" titleAs="p" />
+          <p
+            className="m-0 text-[13px] text-[var(--text2)] rise-in"
+            style={{ animationDelay: '0.5s' }}
+          >
+            {t('tutor.intro')}
+          </p>
+          <div className="flex flex-col gap-2 w-full">
+            {TUTOR_STARTERS.map((key, i) => (
+              <div key={key} className="rise-in" style={{ animationDelay: `${0.6 + i * 0.07}s` }}>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] text-left text-[13px] text-[var(--text2)]">
+                  <span className="flex-1 min-w-0">{t(key)}</span>
+                  <ArrowRight
+                    size={14}
+                    aria-hidden="true"
+                    className="flex-shrink-0 text-[var(--text3)]"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Box>
   );
 }
 
-// Laniakea: planets in the dark, the student's own ringed in blue, one still
-// to conquer ringed in white, the rest grey, next to a question from a test.
-const GAME_PLANETS: { x: number; y: number; r: number; fill: string; ring?: string }[] = [
-  { x: 52, y: 120, r: 22, fill: '#6a5040', ring: '#4da3ff' },
-  { x: 120, y: 64, r: 14, fill: '#2a78c4', ring: '#4da3ff' },
-  { x: 168, y: 140, r: 18, fill: '#8a5fd0', ring: '#e6ebff' },
-  { x: 214, y: 70, r: 10, fill: '#55607a' },
-  { x: 236, y: 160, r: 8, fill: '#55607a' },
-];
+// A web lesson's code coloured as the editor's oneDark colours it: keywords
+// purple, strings and template literals green, the rest plain
+const JS_TOKEN = /(`[^`]*`|"[^"]*")|\b(const|let|for|of|if|else|function|return)\b|(\s+|.)/g;
 
-export function GamePicture() {
+function JsLine({ text }: { text: string }) {
+  return (
+    <>
+      {[...text.matchAll(JS_TOKEN)].map((m, i) =>
+        m[1] ? (
+          <span key={i} className="text-[#98c379]">
+            {m[0]}
+          </span>
+        ) : m[2] ? (
+          <span key={i} className="text-[#c678dd]">
+            {m[0]}
+          </span>
+        ) : (
+          m[0]
+        ),
+      )}
+    </>
+  );
+}
+
+// The lesson texts' own example of a click (selecting-elements, first-click),
+// no mission's solution, on the station's home page as the course builds it
+const SITE_SCRIPT = `const bayStatus = document.querySelector("#bay-status");
+bayStatus.textContent = "Doors closed";
+
+const openDoors = document.querySelector("#open-doors");
+
+openDoors.addEventListener("click", () => {
+  console.log("Doors opening");
+  bayStatus.textContent = "Doors open";
+});`;
+
+// The course's own picture of the station (web-dev/assets/img/station.svg)
+function StationImage() {
+  return (
+    <svg
+      viewBox="0 0 320 200"
+      className="block w-full max-w-[170px] mx-auto rounded-[10px]"
+      aria-hidden="true"
+    >
+      <rect width="320" height="200" rx="16" fill="#101a33" />
+      <g fill="#ffffff">
+        <circle cx="24" cy="30" r="1.5" />
+        <circle cx="70" cy="170" r="1.2" />
+        <circle cx="290" cy="40" r="1.6" />
+        <circle cx="250" cy="176" r="1.2" />
+        <circle cx="150" cy="22" r="1" />
+        <circle cx="300" cy="120" r="1" />
+      </g>
+      <ellipse cx="160" cy="100" rx="70" ry="22" fill="none" stroke="#7aa7d9" strokeWidth="6" />
+      <g fill="#3d6fb6" stroke="#9cc3ee" strokeWidth="2">
+        <rect x="30" y="80" width="56" height="40" rx="3" />
+        <rect x="234" y="80" width="56" height="40" rx="3" />
+      </g>
+      <g stroke="#9cc3ee" strokeWidth="1.5">
+        <line x1="58" y1="80" x2="58" y2="120" />
+        <line x1="30" y1="100" x2="86" y2="100" />
+        <line x1="262" y1="80" x2="262" y2="120" />
+        <line x1="234" y1="100" x2="290" y2="100" />
+      </g>
+      <rect x="86" y="96" width="148" height="8" fill="#9cc3ee" />
+      <circle cx="160" cy="100" r="26" fill="#ffd166" stroke="#fff3cc" strokeWidth="3" />
+      <circle cx="160" cy="100" r="9" fill="#101a33" />
+    </svg>
+  );
+}
+
+const panel =
+  'min-w-0 flex flex-col rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden';
+const panelHead =
+  'flex-shrink-0 flex items-center h-7 border-b border-[var(--border)] font-mono text-[11px] text-[var(--text3)]';
+
+// A web lesson as the student has it: the code on the left, script.js open
+// among the site's files, and on the right the page it runs on, the
+// station's home page in the course's colours, after the click. Side by side
+// where the picture has room (the pinned story lends it the empty column
+// beside it), one under the other on a phone. The site stays in English,
+// like the course.
+export function WebPicture() {
   const { t } = useTranslation();
   return (
-    <Box label={t('landing.features.laniakea.picture')}>
-      <div className="flex gap-4 h-full">
-        <svg
-          viewBox="0 0 260 190"
-          className="flex-1 min-w-0 h-full rounded-[var(--radius-sm)] bg-[#05050d]"
-          aria-hidden="true"
-        >
-          {[...Array(40)].map((_, i) => (
-            <circle
-              key={i}
-              cx={(i * 53) % 260}
-              cy={(i * 37) % 190}
-              r={i % 3 === 0 ? 0.9 : 0.5}
-              fill="#cfd9ff"
-              opacity={0.6}
-            />
-          ))}
-          {GAME_PLANETS.map((p) => (
-            <g key={`${p.x}-${p.y}`}>
-              {p.ring === '#4da3ff' && (
-                <circle cx={p.x} cy={p.y} r={p.r * 2.2} fill="#4da3ff" opacity={0.12} />
-              )}
-              <circle cx={p.x} cy={p.y} r={p.r} fill={p.fill} />
-              {p.ring && (
-                <ellipse
-                  cx={p.x}
-                  cy={p.y}
-                  rx={p.r * 1.8}
-                  ry={p.r * 0.55}
-                  fill="none"
-                  stroke={p.ring}
-                  strokeWidth={1.6}
-                  opacity={p.ring === '#4da3ff' ? 0.9 : 0.45}
-                />
-              )}
-            </g>
-          ))}
-        </svg>
-        <div className="hidden sm:flex flex-col gap-2 w-[180px] flex-shrink-0 text-[12px]">
-          <div className="text-[var(--text3)]">{t('landing.features.laniakea.question')}</div>
-          <div className="rounded-[var(--radius-sm)] border border-[var(--border)]">
-            <CodeStill code={'print("5 + 3")'} />
+    <Box label={t('landing.features.web.picture')} height="min-h-[220px]">
+      <div className="@container">
+        <div className="flex flex-col @2xl:flex-row gap-3 @2xl:h-[300px]">
+          <div className={`${panel} @2xl:flex-[1.4]`}>
+            <div className={panelHead}>
+              <span className="px-2.5">index.html</span>
+              <span className="px-2.5">style.css</span>
+              <span className="px-2.5 h-full flex items-center border-x border-[var(--border)] bg-[var(--surface)] text-[var(--text)]">
+                script.js
+              </span>
+            </div>
+            <pre className="m-0 py-2.5 flex-1 overflow-hidden font-mono text-[10.5px] min-[400px]:text-[11px] leading-[1.7] text-[#abb2bf] bg-[rgba(13,17,23,0.3)]">
+              {SITE_SCRIPT.split('\n').map((line, i) => (
+                <div key={i} className="flex">
+                  <span className="w-7 pr-2 text-right text-[var(--text3)] select-none flex-shrink-0">
+                    {i + 1}
+                  </span>
+                  <span className="whitespace-pre">
+                    <JsLine text={line} />
+                  </span>
+                </div>
+              ))}
+            </pre>
           </div>
-          <div className="px-2 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] font-mono">
-            8
-          </div>
-          <div className="px-2 py-1.5 rounded-[var(--radius-sm)] border border-[var(--success)] text-[var(--success)] font-mono">
-            5 + 3
+          <div className={`${panel} @2xl:flex-1`}>
+            <div className={`${panelHead} px-2.5`}>index.html</div>
+            <div
+              className="flex-1 overflow-hidden px-3 pt-2 pb-3 bg-[#0b1d3a] text-[#f0f4ff] text-[10.5px] leading-[1.5]"
+              style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
+            >
+              <div className="flex justify-center gap-1 rounded-[7px] bg-[#13294f] text-[#8ecbff]">
+                {['Home', 'Crew', 'Duty', 'Schedule'].map((link) => (
+                  <span key={link} className="px-1.5 py-1 underline border-b-2 border-[#ffd166]">
+                    {link}
+                  </span>
+                ))}
+              </div>
+              <div className="my-2 text-center text-[20px] font-bold text-[#ffd166]">
+                Welcome aboard
+              </div>
+              <StationImage />
+              <p className="mt-2 mb-1.5">The station orbits the Earth every 92 minutes.</p>
+              <p className="m-0 mb-1.5">Doors open</p>
+              <span className="inline-block px-1.5 py-px rounded-[3px] border border-[#767676] bg-[#efefef] text-black text-[10px]">
+                Open the doors
+              </span>
+            </div>
           </div>
         </div>
       </div>

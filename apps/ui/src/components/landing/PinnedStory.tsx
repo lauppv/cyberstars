@@ -2,13 +2,22 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Reveal } from './Reveal';
 
 // One part of a pinned story: its words, its picture, and on a wide screen
-// the id the chapters at the side of the page scroll to.
+// the id the chapters at the side of the page scroll to. A `wide` picture
+// needs more than the middle column: on a wide screen it spreads over the
+// side column its words leave empty, and below 1024px it takes the full width.
 export interface StoryPart {
   key: string;
   id?: string;
   words: ReactNode;
   picture: ReactNode;
+  wide?: boolean;
 }
+
+// Words, the pinned picture in a 440px column, words
+const MIDDLE = 'lg:grid-cols-[minmax(0,1fr)_440px_minmax(0,1fr)] lg:gap-x-12';
+// A wide picture spans the middle column, the gap and the side column beside
+// it: half the story's width (cqw, the grid is the container) plus half of 440
+const WIDE = 'w-[calc(50cqw+220px)]';
 
 // kenvo-site's pinned gesture (its ProblemPinned), without framer-motion: the
 // picture sits pinned in the middle column while each part's words scroll
@@ -86,7 +95,7 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
   );
 
   return (
-    <div className="hidden lg:grid lg:grid-cols-[minmax(0,1fr)_440px_minmax(0,1fr)] lg:items-start lg:gap-x-12">
+    <div className={`hidden lg:grid ${MIDDLE} lg:items-start @container`}>
       {column(0, 'pt-[60vh]')}
       {/* self-stretch gives the sticky picture the whole section to travel */}
       <div className="self-stretch">
@@ -97,7 +106,7 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
                 key={part.key}
                 data-picture={part.key}
                 aria-hidden={active !== i}
-                className={`absolute inset-0 flex items-center ${still ? '' : 'transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]'} ${active === i ? 'opacity-100' : 'opacity-0'}`}
+                className={`absolute inset-y-0 ${part.wide ? `${WIDE} ${i % 2 === 0 ? 'left-0' : 'right-0'}` : 'inset-x-0'} flex items-center ${still ? '' : 'transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]'} ${active === i ? 'opacity-100' : 'opacity-0'}`}
               >
                 <div className="w-full">{part.picture}</div>
               </div>
@@ -118,7 +127,7 @@ function Stacked({ parts }: { parts: StoryPart[] }) {
       {parts.map((part) => (
         <li key={part.key} className="flex flex-col gap-5">
           <Reveal>{part.words}</Reveal>
-          <Reveal delay={80} className="w-full max-w-[560px]">
+          <Reveal delay={80} className={`w-full ${part.wide ? '' : 'max-w-[560px]'}`}>
             {part.picture}
           </Reveal>
         </li>
