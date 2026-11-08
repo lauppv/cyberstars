@@ -51,7 +51,7 @@
           "attr": "button#hide-cancelled",
           "name": "aria-pressed",
           "equals": "false",
-          "label": "the button (<button id=\"hide-cancelled\">), before any click"
+          "label": "the button, before any click"
         },
         {
           "click": "button#hide-cancelled",
@@ -144,12 +144,12 @@
           "attr": "button#hide-cancelled",
           "name": "aria-pressed",
           "equals": "false",
-          "label": "the button"
+          "label": "the button with id=\"hide-cancelled\""
         },
         {
           "text": "button#hide-cancelled",
           "equals": "Hide cancelled",
-          "label": "the button"
+          "label": "the button with id=\"hide-cancelled\""
         },
         {
           "noErrors": true

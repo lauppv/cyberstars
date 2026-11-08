@@ -8,7 +8,7 @@
         {
           "text": "p#last-departure",
           "equals": "Last departure: SL-104 at 11:00",
-          "label": "the last departure (<p id=\"last-departure\">)"
+          "label": "the last departure"
         }
       ]
     },
@@ -32,7 +32,7 @@
         {
           "text": "button#sort-by-time",
           "equals": "Sort by time",
-          "label": "the button (<button id=\"sort-by-time\">)"
+          "label": "the button"
         },
         {
           "click": "button#sort-by-time",
