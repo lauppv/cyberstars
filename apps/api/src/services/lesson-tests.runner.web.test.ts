@@ -81,7 +81,8 @@ const CARDS = `<!DOCTYPE html><html><head><style>
 
 const STACKED = `<!DOCTYPE html><html><body><div class="card">A</div><div class="card">B</div></body></html>`;
 
-describe.skipIf(!hasBrowser())('web runner', () => {
+// Every test drives a real Chromium, a case at a time: past vitest's 5s on a busy CI runner
+describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
   it('tells cards side by side from cards one under the other, by window width', () => {
     const cases: WebTestCase[] = [
       {
