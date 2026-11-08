@@ -354,6 +354,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'console-log': 'console.log și consola',
     'let-and-const': 'let și const',
     'strings-and-template-literals': 'Stringuri și template literals',
+    'selecting-elements': 'Selectarea elementelor și textContent',
+    'first-click': 'Primul tău click',
+    'home-js-recap': 'Recapitulare JavaScript',
+    'crew-profile-project': 'Proiect: profilul unui membru al echipajului',
   },
 };
 

@@ -1940,6 +1940,20 @@ export const lessons = [
     title: 'Strings and Template Literals',
     sortOrder: 18,
   },
+  {
+    courseKey: 'web-dev',
+    slug: 'selecting-elements',
+    title: 'Selecting Elements and textContent',
+    sortOrder: 19,
+  },
+  { courseKey: 'web-dev', slug: 'first-click', title: 'Your First Click', sortOrder: 20 },
+  { courseKey: 'web-dev', slug: 'home-js-recap', title: 'JavaScript Recap', sortOrder: 21 },
+  {
+    courseKey: 'web-dev',
+    slug: 'crew-profile-project',
+    title: 'Project: Crew Profile Page',
+    sortOrder: 22,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -1971,6 +1985,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'console-log',
         'let-and-const',
         'strings-and-template-literals',
+        'selecting-elements',
+        'first-click',
+        'home-js-recap',
+        'crew-profile-project',
       ],
     },
   ],
@@ -1980,7 +1998,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
 // key: the project at the end of a part, built from an empty folder. Every
 // other lesson of a web course carries on from the student's site in the
 // closest earlier lesson not listed here (CYB-119).
-export const freshStartLessons: Record<string, string[]> = {};
+export const freshStartLessons: Record<string, string[]> = {
+  'web-dev': ['crew-profile-project'],
+};
 
 type LessonEntry = { courseKey: string; slug: string; sortOrder: number };
 

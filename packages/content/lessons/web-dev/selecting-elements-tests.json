@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "name": "The status says all systems are normal",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p#status",
+          "equals": "Welcome aboard: all systems normal",
+          "label": "the status paragraph (<p id=\"status\">)"
+        }
+      ]
+    },
+    {
+      "name": "The script reads the biggest heading",
+      "visible": true,
+      "steps": [
+        {
+          "logged": "Welcome aboard"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The status sits right under the jump links",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p.jumps + p#status",
+          "label": "the status paragraph right after the jump links"
+        }
+      ]
+    },
+    {
+      "name": "The status follows the heading",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Station Log</title>\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Night Watch Deck</h1>\n    <p class=\"jumps\"><a href=\"#today\">Jump to today</a></p>\n    <p id=\"status\"></p>\n    <h2 id=\"today\">Today on Board</h2>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "p#status",
+          "equals": "Night Watch Deck: all systems normal",
+          "label": "the status"
+        }
+      ]
+    }
+  ]
+}
