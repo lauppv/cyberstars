@@ -72,6 +72,22 @@ describe('VisitorsSection', () => {
     expect(screen.getByText('5 presses · 2 visits')).toBeInTheDocument();
   });
 
+  it('puts the card it is given under the new accounts chart, above the pages', async () => {
+    render(
+      <VisitorsSection
+        chartsClassName=""
+        className=""
+        reload={0}
+        afterCharts={<section>Code execution (live)</section>}
+      />,
+    );
+    const pages = await screen.findByText('/lesson/python/print');
+    const card = screen.getByText('Code execution (live)');
+    const chart = screen.getByRole('img', { name: 'New accounts a day' });
+    expect(chart.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(card.compareDocumentPosition(pages) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it('stacks the charts and picks the same day on both', async () => {
     render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     const visitors = await screen.findByRole('img', { name: 'Visitors a day' });

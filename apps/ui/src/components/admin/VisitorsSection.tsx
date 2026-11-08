@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VISIT_RANGES } from '@cyberstars/shared/visits';
 import type {
@@ -102,15 +102,18 @@ function PlacementFunnelTable({ funnel }: { funnel: PlacementFunnel }) {
 
 // Who visits and where they come from, counted by our own API (CYB-65). It
 // loads on its own so the range switch doesn't redo the rest of the page.
-// Two cards: the charts sit in the top row by the users card, the rest below.
+// Two cards: the charts, then the top pages, sources and clicks. `afterCharts`
+// is the admin page's own card that goes between them.
 export function VisitorsSection({
   chartsClassName,
   className,
   reload,
+  afterCharts,
 }: {
   chartsClassName: string;
   className: string;
   reload: number;
+  afterCharts?: ReactNode;
 }) {
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
@@ -228,6 +231,8 @@ export function VisitorsSection({
           </div>
         )}
       </section>
+
+      {afterCharts}
 
       <section className={className}>
         {data && (
