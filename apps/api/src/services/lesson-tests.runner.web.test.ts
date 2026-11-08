@@ -464,6 +464,33 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(every.web).toMatchObject({ kind: 'style', detail: '::after content', found: 'none' });
   });
 
+  it("reads a corner's radius as a length: a percentage of the box, an ellipse's smaller radius", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        .round { width: 100px; height: 100px; border-radius: 50%; }
+        .oval { width: 200px; height: 100px; border-radius: 12px / 8px; }
+        .hair { width: 100px; height: 100px; border-radius: 2%; }
+      </style></head><body>
+        <div class="round"></div><div class="oval"></div><div class="hair"></div>
+      </body></html>`,
+    };
+    const corner = (style: string, atLeast: number): WebTestCase => ({
+      name: 'x',
+      visible: true,
+      steps: [{ style, prop: 'border-top-left-radius', atLeast, label: 'a box' }],
+    });
+    const [round, oval, hair] = verdicts(files, [
+      corner('.round', 50),
+      corner('.oval', 8),
+      corner('.hair', 4),
+    ]);
+    // Half of 100px across and down
+    expect(round.passed).toBe(true);
+    // As round as its smaller radius, 8px
+    expect(oval.passed).toBe(true);
+    expect(hair.web).toMatchObject({ kind: 'style', found: '2px' });
+  });
+
   it('stops a page stuck in an endless loop, like a timeout', () => {
     const [stuck] = verdicts(
       { 'index.html': '<h1>Hi</h1><script>while (true) {}</script>' },

@@ -178,10 +178,34 @@ async function observe(page, step, seen) {
   }
   // The first element's style, or with `every` each one's
   if ('style' in step) {
+    const bounded = step.atLeast !== undefined || step.atMost !== undefined;
     const values = await elements.evaluateAll(
-      (els, [prop, pseudo, max]) =>
-        els.slice(0, max).map((el) => getComputedStyle(el, pseudo).getPropertyValue(prop)),
-      [step.prop, step.pseudo ?? null, step.every ? MAX_ELEMENTS : 1],
+      (els, [prop, pseudo, max, bounded]) =>
+        els.slice(0, max).map((el) => {
+          const style = getComputedStyle(el, pseudo);
+          const value = style.getPropertyValue(prop);
+          // A corner's radius as a length: a percentage is of the box's width
+          // across and its height down ("50%" on a square makes a circle), an
+          // elliptical corner ("12px 8px") is as round as its smaller radius.
+          // Not a pseudo-element's, whose box isn't the element's. The
+          // browser scaling down radii too big for their side is left out:
+          // it only ever takes a big radius down
+          if (bounded && !pseudo && /^border-.+-radius$/.test(prop)) {
+            const box = el.getBoundingClientRect();
+            const parts = value.trim().split(/\s+/);
+            const px = [0, 1].map((i) => {
+              const part = parts[i] ?? parts[0];
+              const size = i === 0 ? box.width : box.height;
+              if (part.endsWith('%')) return (parseFloat(part) / 100) * size;
+              return part.endsWith('px') ? parseFloat(part) : NaN;
+            });
+            if (px.every((n) => Number.isFinite(n))) {
+              return `${Math.round(Math.min(...px) * 100) / 100}px`;
+            }
+          }
+          return value;
+        }),
+      [step.prop, step.pseudo ?? null, step.every ? MAX_ELEMENTS : 1, bounded],
     );
     return { count, values };
   }
