@@ -20,7 +20,7 @@
         {
           "text": "#hours-total + p#watch-time",
           "contains": "Total watch time: ",
-          "label": "the watch time (<p id=\"watch-time\">) right after the hours total"
+          "label": "the watch time right after the hours total"
         },
         {
           "text": "p#watch-time",

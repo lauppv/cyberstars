@@ -8,16 +8,16 @@
         {
           "text": "button#call-dinner",
           "equals": "Call to dinner",
-          "label": "the button (<button id=\"call-dinner\">)"
+          "label": "the button"
         },
         {
           "text": "button#call-bridge",
           "equals": "Call to the bridge",
-          "label": "the button (<button id=\"call-bridge\">)"
+          "label": "the button"
         },
         {
           "exists": "p#intercom",
-          "label": "the intercom paragraph (<p id=\"intercom\">)"
+          "label": "the intercom paragraph"
         }
       ]
     },
