@@ -399,6 +399,9 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'arrays-of-objects': 'Array-uri de obiecte',
     filter: 'filter',
     sort: 'sort și comparatorul',
+    'attributes-and-classlist': 'Atribute și classList',
+    'schedule-js-recap': 'Recapitulare JavaScript',
+    'launch-board-project': 'Proiect: panoul de lansări',
   },
 };
 

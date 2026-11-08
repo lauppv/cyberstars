@@ -2078,6 +2078,19 @@ export const lessons = [
   },
   { courseKey: 'web-dev', slug: 'filter', title: 'filter', sortOrder: 62 },
   { courseKey: 'web-dev', slug: 'sort', title: 'sort and Its Comparator', sortOrder: 63 },
+  {
+    courseKey: 'web-dev',
+    slug: 'attributes-and-classlist',
+    title: 'Attributes and classList',
+    sortOrder: 64,
+  },
+  { courseKey: 'web-dev', slug: 'schedule-js-recap', title: 'JavaScript Recap', sortOrder: 65 },
+  {
+    courseKey: 'web-dev',
+    slug: 'launch-board-project',
+    title: 'Project: Launch Board',
+    sortOrder: 66,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2166,6 +2179,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'arrays-of-objects',
         'filter',
         'sort',
+        'attributes-and-classlist',
+        'schedule-js-recap',
+        'launch-board-project',
       ],
     },
   ],
@@ -2176,7 +2192,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
 // other lesson of a web course carries on from the student's site in the
 // closest earlier lesson not listed here (CYB-119).
 export const freshStartLessons: Record<string, string[]> = {
-  'web-dev': ['crew-profile-project', 'cargo-ledger-project'],
+  'web-dev': ['crew-profile-project', 'cargo-ledger-project', 'launch-board-project'],
 };
 
 type LessonEntry = { courseKey: string; slug: string; sortOrder: number };
