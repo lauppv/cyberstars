@@ -15,12 +15,12 @@
       height="200"
     />
     <p>The station orbits the Earth every 92 minutes.</p>
-    <p class="jumps"><a href="#today">Jump to today</a> · <a href="#visiting">Visiting hours</a></p>
+    <p><a href="#today">Jump to today</a> · <a href="#visiting">Visiting hours</a></p>
 
     <h2>About the Station</h2>
     <p>Six crew members live here, with a greenhouse full of tomatoes.</p>
     <p>Cargo ships dock twice a month, and <em>every</em> docking is logged on this page.</p>
-    <p class="address">
+    <p>
       Orbital Station 7<br />
       Docking Ring B<br />
       Low Earth Orbit
@@ -47,7 +47,7 @@
 
     <!-- Visiting Hours: when guests may come aboard, and the badge rule -->
     <h2 id="visiting">Visiting Hours</h2>
-    <p class="hours">
+    <p>
       Monday to Friday: 10:00 to 16:00<br />
       Saturday: 10:00 to 12:00<br />
       Sunday: closed
@@ -68,67 +68,24 @@
 ```
 
 ```css style.css
-body {
-  background-color: #0b1d3a;
-  color: #f0f4ff;
-  font-family: Verdana, Geneva, sans-serif;
-  line-height: 1.6;
-  font-size: 1.125rem;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
 h1 {
-  color: #ffd166;
-  text-align: center;
-  font-size: 2.5rem;
+  color: midnightblue;
 }
 
 h2 {
-  color: hsl(210, 70%, 75%);
-  letter-spacing: 2px;
-  font-size: 1.5rem;
+  color: steelblue;
 }
 
 h3 {
-  color: rgb(200, 210, 230);
-  text-transform: uppercase;
-}
-
-a {
-  color: #8ecbff;
+  color: slategray;
 }
 
 .warning {
-  color: #ffb3b3;
-  background-color: rgba(255, 80, 80, 0.2);
+  color: black;
 }
 
 #today {
-  color: #7bd389;
-}
-
-.address {
-  font-style: italic;
-  font-size: 0.9em;
-}
-
-.jumps {
-  text-align: center;
-  font-size: 0.875rem;
-}
-
-.hours {
-  background-color: #13294f;
-  color: #ffd166;
-  font-family: "Courier New", monospace;
-}
-
-#visiting {
-  color: #ffd166;
+  color: darkgreen;
 }
 
 sub,
