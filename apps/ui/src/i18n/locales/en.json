@@ -279,7 +279,7 @@
     },
     "loops": {
       "title": "Watch an algorithm, step by step",
-      "text": "Lessons show you how an algorithm works, one move at a time.",
+      "text": "Lessons show you how an algorithm works, one move at a time, and stop to ask you what comes next.",
       "sorting": "Sorting",
       "lists": "Lists",
       "trees": "Trees",

@@ -310,7 +310,7 @@
     },
     "loops": {
       "title": "Urmărește un algoritm, pas cu pas",
-      "text": "Lecțiile îți arată cum lucrează un algoritm, mutare cu mutare.",
+      "text": "Lecțiile îți arată cum lucrează un algoritm, mutare cu mutare, și se opresc să te întrebe ce urmează.",
       "sorting": "Sortare",
       "lists": "Liste",
       "trees": "Arbori",
