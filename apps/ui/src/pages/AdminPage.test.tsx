@@ -1,10 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
+import type { ReactNode } from 'react';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => <nav>Topbar</nav> }));
-vi.mock('../components/admin/VisitorsSection', () => ({ VisitorsSection: () => null }));
+vi.mock('../components/admin/VisitorsSection', () => ({
+  VisitorsSection: ({ afterCharts }: { afterCharts?: ReactNode }) => afterCharts ?? null,
+}));
 vi.mock('../components/admin/MissedQuestions', () => ({ MissedQuestions: () => null }));
 vi.mock('../components/admin/AnnouncementSection', () => ({
   AnnouncementSection: () => <section>Announcement</section>,
