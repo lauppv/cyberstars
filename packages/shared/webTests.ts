@@ -43,7 +43,7 @@ interface Labelled {
 }
 
 /** Something the student would do on the page, then the steps after it look again. */
-type WebAction =
+export type WebAction =
   | ({ click: string } & Labelled)
   /** Puts the mouse over the element, so the checks after it see its :hover rules. */
   | ({ hover: string } & Labelled)
@@ -71,8 +71,16 @@ export type WebCheck =
   /**
    * The first element's computed style, as the browser reports it, or that of
    * its ::before or ::after (`pseudo`), whose `content` keeps its quotes: `"★"`.
+   * With `every`, that of every element (up to 50), for a mission that says
+   * "every link", so a rule that styles only the first one fails.
    */
-  | ({ style: string; prop: string; equals: string; pseudo?: WebPseudo } & Labelled)
+  | ({
+      style: string;
+      prop: string;
+      equals: string;
+      pseudo?: WebPseudo;
+      every?: true;
+    } & Labelled)
   /** The elements stand in a row (side by side) or a column (one under the other). */
   | ({ layout: string; arrange: 'row' | 'column' } & Labelled)
   /** The first element's size in px. */
@@ -93,6 +101,24 @@ export type WebCheck =
   | { at: string };
 
 export type WebStep = WebAction | WebCheck;
+
+/**
+ * The keys that make a step an action. The validator, the server's judge and
+ * the runner (handed it in its payload) all tell an action by this list.
+ */
+export const WEB_ACTION_KEYS = [
+  'click',
+  'hover',
+  'fill',
+  'press',
+  'submit',
+  'open',
+  'wait',
+] as const;
+
+export function isWebAction(step: WebStep): step is WebAction {
+  return WEB_ACTION_KEYS.some((key) => key in step);
+}
 
 export const WEB_PSEUDO_ELEMENTS = ['::before', '::after'] as const;
 type WebPseudo = (typeof WEB_PSEUDO_ELEMENTS)[number];

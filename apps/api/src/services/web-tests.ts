@@ -4,8 +4,10 @@ import { dockerConverse, dockerExec, killLeftovers } from '@cyberstars-framework
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { isImagePath, isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
 import {
+  WEB_ACTION_KEYS,
   WEB_DEFAULT_WIDTH,
   WEB_HEIGHT,
+  isWebAction,
   type WebBox,
   type WebCheck,
   type WebFailure,
@@ -121,11 +123,11 @@ function sizeFailure(
 
 // Why the step failed, or null when the page is as the mission asks
 export function judgeStep(step: WebStep, seen: WebObservation, width: number): WebFailure | null {
-  if ('click' in step || 'hover' in step || 'fill' in step || 'submit' in step || 'press' in step) {
-    if (seen.ok !== false) return null;
+  if (isWebAction(step)) {
+    // open and wait can't miss; the others name an element the page may lack
+    if (seen.ok !== false || 'open' in step || 'wait' in step) return null;
     return { kind: 'missing', label: step.label ?? ('on' in step ? step.on : undefined) };
   }
-  if ('open' in step || 'wait' in step) return null;
   if ('fits' in step) {
     const scroll = seen.scrollWidth ?? 0;
     return scroll <= width + 1 ? null : { kind: 'fits', found: String(scroll), width };
@@ -203,10 +205,14 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
       : { kind: 'attr', label, detail: step.name, expected: step.equals, found: value };
   }
   if ('style' in step) {
-    const value = (values[0] ?? '').trim();
-    return value === step.equals
-      ? null
-      : { kind: 'style', label, detail: step.prop, expected: step.equals, found: value };
+    // The first element's, or with `every` the first one that differs
+    const all = values.length ? values : [''];
+    const read = (step.every ? all : all.slice(0, 1)).map((v) => (v ?? '').trim());
+    const value = read.find((v) => v !== step.equals);
+    if (value === undefined) return null;
+    // A pseudo-element's style says so: "::before content"
+    const detail = step.pseudo ? `${step.pseudo} ${step.prop}` : step.prop;
+    return { kind: 'style', label, detail, expected: step.equals, found: value };
   }
   const boxes = seen.boxes ?? [];
   if ('layout' in step) {
@@ -336,6 +342,7 @@ async function runInContainer(
       stepMs: STEP_MS,
       heapMb: PAGE_HEAP_MB,
       height: WEB_HEIGHT,
+      actions: WEB_ACTION_KEYS,
       cases: spec.cases.map((c) => ({
         page: c.page ?? 'index.html',
         width: c.width ?? WEB_DEFAULT_WIDTH,

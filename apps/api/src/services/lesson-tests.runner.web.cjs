@@ -157,14 +157,14 @@ async function observe(page, step, seen) {
   if ('attr' in step) {
     return { count, values: [await elements.first().getAttribute(step.name)] };
   }
+  // The first element's style, or with `every` each one's
   if ('style' in step) {
-    const value = await elements
-      .first()
-      .evaluate(
-        (el, [prop, pseudo]) => getComputedStyle(el, pseudo).getPropertyValue(prop),
-        [step.prop, step.pseudo ?? null],
-      );
-    return { count, values: [value] };
+    const values = await elements.evaluateAll(
+      (els, [prop, pseudo, max]) =>
+        els.slice(0, max).map((el) => getComputedStyle(el, pseudo).getPropertyValue(prop)),
+      [step.prop, step.pseudo ?? null, step.every ? MAX_ELEMENTS : 1],
+    );
+    return { count, values };
   }
   const boxes = await elements.evaluateAll(
     (els, max) =>
@@ -214,7 +214,9 @@ async function act(page, step, nav, stepMs) {
 // Waits until the page has nothing left to load: a navigation the action
 // started (it shows up as a request first) and every file or fetch answer its
 // scripts asked for, then a moment for what they do with them. All of it is
-// served from memory, so it takes milliseconds
+// served from memory, so it takes milliseconds. A CSS transition the step
+// started (a row fading to its :hover color) is then taken to its end, so the
+// checks after it read the style the page settles on, not one on the way
 async function settle(page, nav, stepMs) {
   const until = Date.now() + stepMs;
   await page.waitForTimeout(30);
@@ -224,9 +226,12 @@ async function settle(page, nav, stepMs) {
     else break;
   }
   await page.waitForTimeout(30);
+  await page.evaluate(() => {
+    for (const animation of document.getAnimations()) {
+      if (animation instanceof CSSTransition) animation.finish();
+    }
+  });
 }
-
-const ACTIONS = ['click', 'hover', 'fill', 'press', 'submit', 'open', 'wait'];
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
@@ -277,7 +282,7 @@ async function runCase(browser, files, testCase, limits) {
           .then(() => settle(page, nav, limits.stepMs)),
       );
       for (const step of testCase.steps) {
-        const isAction = ACTIONS.some((key) => key in step);
+        const isAction = limits.actions.some((key) => key in step);
         steps.push(
           await guarded(isAction ? act(page, step, nav, limits.stepMs) : observe(page, step, seen)),
         );

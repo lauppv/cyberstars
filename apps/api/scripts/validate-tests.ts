@@ -39,6 +39,7 @@ import {
 } from '@cyberstars/shared/constants';
 import { isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
 import {
+  WEB_ACTION_KEYS,
   WEB_MAX_WAIT_MS,
   WEB_MAX_WIDTH,
   WEB_MIN_WIDTH,
@@ -371,7 +372,6 @@ async function checkPaired(
 // what it needs, and pages the site has (`sitePaths`, the reference's files)
 export const MAX_WEB_CASES = 30;
 
-const WEB_ACTIONS = ['click', 'hover', 'fill', 'press', 'submit', 'open', 'wait'] as const;
 const WEB_CHECKS = [
   'exists',
   'count',
@@ -398,7 +398,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   count: ['equals', 'atLeast', 'label'],
   text: ['equals', 'contains', 'nonEmpty', 'label'],
   attr: ['name', 'equals', 'ignoreCase', 'label'],
-  style: ['prop', 'equals', 'pseudo', 'label'],
+  style: ['prop', 'equals', 'pseudo', 'every', 'label'],
   layout: ['arrange', 'label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
@@ -427,7 +427,7 @@ const isPage = (v: unknown): v is string => isText(v) && isValidWebPath(v) && v.
 function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): string | null {
   const keys = Object.keys(step);
   // fill names its text in `text` too, so it is told by its own key first
-  const own = 'fill' in step ? 'fill' : [...WEB_ACTIONS, ...WEB_CHECKS].find((k) => k in step);
+  const own = 'fill' in step ? 'fill' : [...WEB_ACTION_KEYS, ...WEB_CHECKS].find((k) => k in step);
   if (!own) return `a step with none of the known keys: ${JSON.stringify(step)}`;
   const extra = keys.filter((k) => k !== own && !WEB_STEP_KEYS[own].includes(k));
   if (extra.length) return `a ${own} step with keys it doesn't take: ${extra.join(', ')}`;
@@ -471,6 +471,9 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
     !(WEB_PSEUDO_ELEMENTS as readonly unknown[]).includes(step.pseudo)
   ) {
     return `a style step's pseudo is one of ${WEB_PSEUDO_ELEMENTS.join(', ')}`;
+  }
+  if (own === 'style' && step.every !== undefined && step.every !== true) {
+    return "a style step's every is true or left out";
   }
   if (own === 'layout' && step.arrange !== 'row' && step.arrange !== 'column') {
     return 'a layout step arranges in a row or a column';
