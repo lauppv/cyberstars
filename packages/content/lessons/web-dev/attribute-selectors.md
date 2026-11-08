@@ -1,4 +1,4 @@
-A selector can also pick elements by their **attributes**: what's written inside their opening tags.
+A selector can also pick elements by their **attributes**: what's written inside their opening tag.
 
 ## Attribute selectors
 
@@ -10,19 +10,21 @@ img[src$=".svg"] { }           /* src ends with ".svg" */
 a[href*="station"] { }         /* href contains "station" */
 ```
 
-- `[name]`: the attribute is there, whatever its value.
+- `[name]`: the element has the attribute, whatever its value.
 - `[name="value"]`: exactly that value.
-- `^=` starts with, `$=` ends with, `*=` contains.
+- `^=` means starts with, `$=` ends with, `*=` contains.
 
-They're perfect for things the HTML already says. Your links to other sites all start with `https://`, your email links with `mailto:`: style them by that, and every new link of that kind is styled without anyone remembering a class.
+They're perfect for things the HTML already says. Style elements by what their attributes say, and every new element of that kind gets the style too, without anyone having to remember a class.
 
-Values go in quotes. An attribute selector counts as much as a class when two rules compete.
+Put the values in quotes. When two rules compete, an attribute selector counts as much as a class.
 
 ---
 
 ## Mission: Telling Links Apart
 
-- Links to other sites, whose address starts with `https://`, are `#ffd166`.
-- Email links, starting with `mailto:`, are underlined with a dotted line.
-- Column headers, those with `scope="col"`, line up their text on the left.
-- A table cell that spans several columns is in italics.
+Visitors should see what a link does before they click it. Style the links by what their addresses say, so every new link gets its look by itself:
+
+- Links that lead to another site look different from the links inside your own site, and stay easy to read.
+- Links that start an email are underlined with a dotted line. The other links keep a solid one.
+- On the schedule, the headers that name a column line their text up on the left.
+- A table cell that stretches over several columns is in italics. The other cells aren't.
