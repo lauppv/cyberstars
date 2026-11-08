@@ -107,7 +107,10 @@ export type WebCheck =
    * other), with at least `gap` px between each one and the next.
    */
   | ({ layout: string; arrange: 'row' | 'column'; gap?: number } & Labelled)
-  /** The first element is narrower than its parent's content and centered across it. */
+  /**
+   * The elements, taken together (the box round them all: a menu's links),
+   * are narrower than the first one's parent's content and centered across it.
+   */
   | ({ centered: string } & Labelled)
   /** The first element's size in px. */
   | ({

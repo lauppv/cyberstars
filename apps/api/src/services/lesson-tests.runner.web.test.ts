@@ -280,6 +280,8 @@ describe.skipIf(!hasBrowser())('web runner', () => {
         <div class="paper"><p class="grey">Faint</p><p class="black">Ink</p></div>
         <div class="veil"><p class="on-veil">Veiled</p></div>
         <div class="off">Off</div>
+        <nav style="text-align: center"><a href="#">Home</a> <a href="#">Crew</a></nav>
+        <nav class="left"><a href="#">Home</a> <a href="#">Crew</a></nav>
       </main></body></html>`,
     };
     const one = (steps: WebTestCase['steps']): WebTestCase => ({ name: 'x', visible: true, steps });
@@ -299,6 +301,8 @@ describe.skipIf(!hasBrowser())('web runner', () => {
       centered,
       off,
       outline,
+      links,
+      leftLinks,
     ] = verdicts(files, [
       one([{ style: '.card', prop: 'padding-left', atLeast: 12, every: true, ...card }]),
       one([{ style: '.card', prop: 'padding-left', atMost: 8, ...card }]),
@@ -338,6 +342,8 @@ describe.skipIf(!hasBrowser())('web runner', () => {
       one([{ centered: 'main', label: 'the column' }]),
       one([{ centered: '.off', label: 'the box' }]),
       one([{ outline: true }]),
+      one([{ centered: 'nav:not(.left) a', label: 'the links' }]),
+      one([{ centered: 'nav.left a', label: 'the links' }]),
     ]);
     expect(room.passed).toBe(true);
     expect(tooMuch.web).toMatchObject({ kind: 'style', compare: 'atMost', found: '16px' });
@@ -355,6 +361,9 @@ describe.skipIf(!hasBrowser())('web runner', () => {
     expect(centered.passed).toBe(true);
     expect(off.web).toMatchObject({ kind: 'centered', found: expect.stringMatching(/^10 /) });
     expect(outline.web).toMatchObject({ kind: 'outline', other: 'h4', found: 'Night' });
+    // Links taken together: in the middle of their bar, or at its start
+    expect(links.passed).toBe(true);
+    expect(leftLinks.web).toMatchObject({ kind: 'centered', found: expect.stringMatching(/^0 /) });
   });
 
   it("reads a :hover rule after hover, and a pseudo-element's content and look", () => {

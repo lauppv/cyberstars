@@ -201,19 +201,33 @@ async function observe(page, step, seen) {
       .evaluateAll(read, [step.props, MAX_ELEMENTS]);
     return { count, rows, others };
   }
-  // The element's box, then its parent's content box (inside its padding)
+  // The elements' box together, then the first one's parent's content box
+  // (inside its padding)
   if ('centered' in step) {
-    const boxes = await elements.first().evaluate((el) => {
-      const r = el.getBoundingClientRect();
-      const parent = el.parentElement ?? document.documentElement;
+    const boxes = await elements.evaluateAll((els) => {
+      const rects = els.map((el) => el.getBoundingClientRect());
+      const left = Math.min(...rects.map((r) => r.left));
+      const top = Math.min(...rects.map((r) => r.top));
+      const r = {
+        x: left,
+        y: top,
+        width: Math.max(...rects.map((r) => r.right)) - left,
+        height: Math.max(...rects.map((r) => r.bottom)) - top,
+      };
+      const parent = els[0].parentElement ?? document.documentElement;
       const p = parent.getBoundingClientRect();
       const s = getComputedStyle(parent);
       const px = (prop) => parseFloat(s.getPropertyValue(prop)) || 0;
-      const left = px('border-left-width') + px('padding-left');
-      const right = px('border-right-width') + px('padding-right');
+      const inLeft = px('border-left-width') + px('padding-left');
+      const inRight = px('border-right-width') + px('padding-right');
       return [
         { x: r.x, y: r.y + window.scrollY, width: r.width, height: r.height },
-        { x: p.x + left, y: p.y + window.scrollY, width: p.width - left - right, height: p.height },
+        {
+          x: p.x + inLeft,
+          y: p.y + window.scrollY,
+          width: p.width - inLeft - inRight,
+          height: p.height,
+        },
       ];
     });
     return { count, boxes };
