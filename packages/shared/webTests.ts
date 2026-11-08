@@ -74,7 +74,10 @@ export type WebCheck =
    * It `equals` a value, is anything `not` this one, `endsWith` a text (a
    * font list's generic family: `sans-serif`), or, for a length (the
    * browser reports it in px), is `atLeast` and/or `atMost` so many px: a
-   * mission that asks for room, not for 16px. With `every`, that of every
+   * mission that asks for room, not for 16px. A corner's radius is read as
+   * a length too: a percentage of the box ("50%"), and an elliptical corner
+   * as its smaller radius. A `background-color` left transparent under a
+   * gradient or a picture reads as that picture. With `every`, that of every
    * element (up to 50), for a mission that says "every link", so a rule that
    * styles only the first one fails.
    */
@@ -100,7 +103,9 @@ export type WebCheck =
   /**
    * Every element of `differs` looks unlike every element of `from` in at least
    * one of `props`: a warning stands out from the other paragraphs by its
-   * color, its background or its weight, whichever the student picked.
+   * color, its background or its weight, whichever the student picked. Its
+   * `background-color` is the background that shows behind it, its own or
+   * an ancestor's (a cell colored on its row), a gradient or a picture too.
    * `fromLabel` names the others ("the other paragraphs").
    */
   | ({ differs: string; from: string; props: readonly string[]; fromLabel: string } & Labelled)
