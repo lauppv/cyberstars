@@ -47,7 +47,7 @@ describe('currentChapter', () => {
     expect(currentChapter(ids, 1000)).toBe(ids[2]);
   });
 
-  it('names a part of What\'s inside only once its picture is on screen', () => {
+  it("names a part of What's inside only once its picture is on screen", () => {
     scrollTo(5700);
     expect(currentChapter(ids, 1000)).toBe('feature-web');
     document.getElementById('feature-web')!.setAttribute('data-waiting', '');
@@ -79,7 +79,7 @@ describe('ChapterRail', () => {
     );
   });
 
-  it('looks again when the picture of What\'s inside changes, without a scroll', () => {
+  it("looks again when the picture of What's inside changes, without a scroll", () => {
     scrollTo(5700);
     document.getElementById('feature-web')!.setAttribute('data-waiting', '');
     const { container } = render(<ChapterRail />);
