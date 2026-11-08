@@ -113,11 +113,11 @@ describe('FeaturesSection', () => {
     renderSection();
     const row = parts().getByRole('heading', { name: 'Web Development' }).closest('li')!;
     expect(within(row).getByText('Coming soon')).toBeDefined();
-    const picture = within(row).getByRole('img', { name: /The web lesson's editor/ });
-    expect(picture).toHaveTextContent('index.html');
-    expect(picture).toHaveTextContent('<html lang="en">');
-    expect(picture).toHaveTextContent('<h1>Welcome aboard</h1>');
-    expect(picture).toHaveTextContent('</html>index.htmlWelcome aboardThe station orbits');
+    const picture = within(row).getByRole('img', { name: /A web lesson as the student has it/ });
+    expect(picture).toHaveTextContent('index.htmlstyle.cssscript.js');
+    expect(picture).toHaveTextContent('openDoors.addEventListener("click"');
+    expect(picture).toHaveTextContent('Welcome aboard');
+    expect(picture).toHaveTextContent('Doors openOpen the doors');
   });
 
   it('presents none of the preview features', () => {

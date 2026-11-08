@@ -202,76 +202,137 @@ export function TutorPicture() {
   );
 }
 
-// A tag in an HTML line, with its attributes, coloured as the editor's oneDark
-// colours one
-const HTML_TAG = /(<[!/]?[A-Za-z][^>]*>)/;
+// A web lesson's code coloured as the editor's oneDark colours it: keywords
+// purple, strings and template literals green, the rest plain
+const JS_TOKEN = /(`[^`]*`|"[^"]*")|\b(const|let|for|of|if|else|function|return)\b|(\s+|.)/g;
 
-function HtmlLine({ text }: { text: string }) {
+function JsLine({ text }: { text: string }) {
   return (
     <>
-      {text.split(HTML_TAG).map((part, i) =>
-        HTML_TAG.test(part) ? (
-          <span key={i} className="text-[#e06c75]">
-            {part}
+      {[...text.matchAll(JS_TOKEN)].map((m, i) =>
+        m[1] ? (
+          <span key={i} className="text-[#98c379]">
+            {m[0]}
+          </span>
+        ) : m[2] ? (
+          <span key={i} className="text-[#c678dd]">
+            {m[0]}
           </span>
         ) : (
-          part
+          m[0]
         ),
       )}
     </>
   );
 }
 
-const panel = 'min-w-0 rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden';
-const panelHead =
-  'flex items-center h-7 border-b border-[var(--border)] font-mono text-[11px] text-[var(--text3)]';
+// The lesson texts' own example of a click (selecting-elements, first-click),
+// no mission's solution, on the station's home page as the course builds it
+const SITE_SCRIPT = `const bayStatus = document.querySelector("#bay-status");
+bayStatus.textContent = "Doors closed";
 
-// A web lesson's editor: the site's files as tabs, index.html open with a
-// heading and a paragraph in the page's language, and next to it the page
-// they draw, white and in the browser's own type as a page without CSS is.
-// Side by side where the picture has room, one under the other on a phone.
+const openDoors = document.querySelector("#open-doors");
+
+openDoors.addEventListener("click", () => {
+  console.log("Doors opening");
+  bayStatus.textContent = "Doors open";
+});`;
+
+// The course's own picture of the station (web-dev/assets/img/station.svg)
+function StationImage() {
+  return (
+    <svg
+      viewBox="0 0 320 200"
+      className="block w-full max-w-[170px] mx-auto rounded-[10px]"
+      aria-hidden="true"
+    >
+      <rect width="320" height="200" rx="16" fill="#101a33" />
+      <g fill="#ffffff">
+        <circle cx="24" cy="30" r="1.5" />
+        <circle cx="70" cy="170" r="1.2" />
+        <circle cx="290" cy="40" r="1.6" />
+        <circle cx="250" cy="176" r="1.2" />
+        <circle cx="150" cy="22" r="1" />
+        <circle cx="300" cy="120" r="1" />
+      </g>
+      <ellipse cx="160" cy="100" rx="70" ry="22" fill="none" stroke="#7aa7d9" strokeWidth="6" />
+      <g fill="#3d6fb6" stroke="#9cc3ee" strokeWidth="2">
+        <rect x="30" y="80" width="56" height="40" rx="3" />
+        <rect x="234" y="80" width="56" height="40" rx="3" />
+      </g>
+      <g stroke="#9cc3ee" strokeWidth="1.5">
+        <line x1="58" y1="80" x2="58" y2="120" />
+        <line x1="30" y1="100" x2="86" y2="100" />
+        <line x1="262" y1="80" x2="262" y2="120" />
+        <line x1="234" y1="100" x2="290" y2="100" />
+      </g>
+      <rect x="86" y="96" width="148" height="8" fill="#9cc3ee" />
+      <circle cx="160" cy="100" r="26" fill="#ffd166" stroke="#fff3cc" strokeWidth="3" />
+      <circle cx="160" cy="100" r="9" fill="#101a33" />
+    </svg>
+  );
+}
+
+const panel =
+  'min-w-0 flex flex-col rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden';
+const panelHead =
+  'flex-shrink-0 flex items-center h-7 border-b border-[var(--border)] font-mono text-[11px] text-[var(--text3)]';
+
+// A web lesson as the student has it: the code on the left, script.js open
+// among the site's files, and on the right the page it runs on, the
+// station's home page in the course's colours, after the click. Side by side
+// where the picture has room (the pinned story lends it the empty column
+// beside it), one under the other on a phone. The site stays in English,
+// like the course.
 export function WebPicture() {
-  const { t, i18n } = useTranslation();
-  const heading = t('landing.features.web.heading');
-  const paragraph = t('landing.features.web.paragraph');
-  const lines = [
-    '<!DOCTYPE html>',
-    `<html lang="${i18n.language === 'ro' ? 'ro' : 'en'}">`,
-    '  <body>',
-    `    <h1>${heading}</h1>`,
-    `    <p>${paragraph}</p>`,
-    '  </body>',
-    '</html>',
-  ];
+  const { t } = useTranslation();
   return (
     <Box label={t('landing.features.web.picture')} height="min-h-[220px]">
       <div className="@container">
-        <div className="flex flex-col @sm:flex-row gap-3 @sm:h-[188px]">
-          <div className={`${panel} @sm:flex-[1.2] flex flex-col`}>
+        <div className="flex flex-col @2xl:flex-row gap-3 @2xl:h-[300px]">
+          <div className={`${panel} @2xl:flex-[1.4]`}>
             <div className={panelHead}>
-              <span className="px-2.5 h-full flex items-center border-r border-[var(--border)] bg-[var(--surface)] text-[var(--text)]">
-                index.html
-              </span>
+              <span className="px-2.5">index.html</span>
               <span className="px-2.5">style.css</span>
+              <span className="px-2.5 h-full flex items-center border-x border-[var(--border)] bg-[var(--surface)] text-[var(--text)]">
+                script.js
+              </span>
             </div>
-            <pre className="m-0 py-2.5 flex-1 overflow-hidden font-mono text-[11px] leading-[1.7] text-[#abb2bf] bg-[rgba(13,17,23,0.3)]">
-              {lines.map((line, i) => (
+            <pre className="m-0 py-2.5 flex-1 overflow-hidden font-mono text-[10.5px] min-[400px]:text-[11px] leading-[1.7] text-[#abb2bf] bg-[rgba(13,17,23,0.3)]">
+              {SITE_SCRIPT.split('\n').map((line, i) => (
                 <div key={i} className="flex">
                   <span className="w-7 pr-2 text-right text-[var(--text3)] select-none flex-shrink-0">
                     {i + 1}
                   </span>
                   <span className="whitespace-pre">
-                    <HtmlLine text={line} />
+                    <JsLine text={line} />
                   </span>
                 </div>
               ))}
             </pre>
           </div>
-          <div className={`${panel} @sm:flex-1 flex flex-col`}>
+          <div className={`${panel} @2xl:flex-1`}>
             <div className={`${panelHead} px-2.5`}>index.html</div>
-            <div className="flex-1 p-3 bg-white text-black font-serif">
-              <div className="text-[20px] font-bold leading-tight mb-2">{heading}</div>
-              <div className="text-[12px] leading-snug">{paragraph}</div>
+            <div
+              className="flex-1 overflow-hidden px-3 pt-2 pb-3 bg-[#0b1d3a] text-[#f0f4ff] text-[10.5px] leading-[1.5]"
+              style={{ fontFamily: 'Verdana, Geneva, sans-serif' }}
+            >
+              <div className="flex justify-center gap-1 rounded-[7px] bg-[#13294f] text-[#8ecbff]">
+                {['Home', 'Crew', 'Duty', 'Schedule'].map((link) => (
+                  <span key={link} className="px-1.5 py-1 underline border-b-2 border-[#ffd166]">
+                    {link}
+                  </span>
+                ))}
+              </div>
+              <div className="my-2 text-center text-[20px] font-bold text-[#ffd166]">
+                Welcome aboard
+              </div>
+              <StationImage />
+              <p className="mt-2 mb-1.5">The station orbits the Earth every 92 minutes.</p>
+              <p className="m-0 mb-1.5">Doors open</p>
+              <span className="inline-block px-1.5 py-px rounded-[3px] border border-[#767676] bg-[#efefef] text-black text-[10px]">
+                Open the doors
+              </span>
             </div>
           </div>
         </div>

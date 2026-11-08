@@ -358,9 +358,7 @@
       "web": {
         "title": "Web Development",
         "text": "Build a website of your own, page by page, in HTML, CSS and JavaScript, and watch it change as you type.",
-        "heading": "Welcome aboard",
-        "paragraph": "The station orbits the Earth every 92 minutes.",
-        "picture": "The web lesson's editor: index.html with a heading and a paragraph, and the page it draws next to it, Welcome aboard."
+        "picture": "A web lesson as the student has it: script.js on the left opening the docking bay's doors on a click, and on the right the station's home page it runs on, with the station's picture, saying Doors open."
       }
     },
     "free": {

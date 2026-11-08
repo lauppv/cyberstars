@@ -3,7 +3,7 @@ import { PREVIEW_FEATURES } from '@cyberstars/shared/features';
 import { Reveal } from './Reveal';
 import { SectionHeading } from './SectionHeading';
 import { PinnedStory } from './PinnedStory';
-import { FEATURES, featureId } from './featureList';
+import { FEATURES, WIDE_PICTURES, featureId } from './featureList';
 
 function Words({ part }: { part: string }) {
   const { t } = useTranslation();
@@ -41,6 +41,7 @@ export function FeaturesSection() {
           parts={FEATURES.map(([key, Picture]) => ({
             key,
             id: featureId(key),
+            wide: WIDE_PICTURES.has(key),
             words: <Words part={key} />,
             picture: (
               <div className="panel overflow-hidden">

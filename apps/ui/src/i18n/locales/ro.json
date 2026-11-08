@@ -390,9 +390,7 @@
       "web": {
         "title": "Dezvoltare web",
         "text": "Îți construiești propriul site, pagină cu pagină, în HTML, CSS și JavaScript, și îl vezi cum se schimbă pe măsură ce scrii.",
-        "heading": "Bine ai venit la bord",
-        "paragraph": "Stația înconjoară Pământul o dată la 92 de minute.",
-        "picture": "Editorul lecțiilor web: index.html cu un titlu și un paragraf, iar lângă el pagina pe care o desenează, Bine ai venit la bord."
+        "picture": "O lecție web așa cum o are studentul: în stânga script.js, care deschide ușile docului la un clic, iar în dreapta pagina principală a stației pe care rulează, cu imaginea stației, unde scrie Doors open."
       }
     },
     "free": {

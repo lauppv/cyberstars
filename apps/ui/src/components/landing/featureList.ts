@@ -18,5 +18,9 @@ export const FEATURES: [string, ComponentType][] = [
   ['web', WebPicture],
 ];
 
+// The parts whose picture needs more room than the middle column: Web
+// Development's code and site side by side
+export const WIDE_PICTURES = new Set(['web']);
+
 // The id a row is scrolled to by, from the chapters at the side of the page
 export const featureId = (key: string) => `feature-${key}`;
