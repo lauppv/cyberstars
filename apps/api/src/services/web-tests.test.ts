@@ -240,6 +240,18 @@ describe('judgeStep', () => {
       found: '4px',
     });
     expect(judge(room, { count: 1, values: ['64px'] })).toMatchObject({ compare: 'atMost' });
+    const font = {
+      style: 'body',
+      prop: 'font-family',
+      endsWith: 'sans-serif',
+      label: 'the page',
+    } as const;
+    expect(judge(font, { count: 1, values: ['Verdana, sans-serif'] })).toBeNull();
+    expect(judge(font, { count: 1, values: ['Verdana'] })).toMatchObject({
+      compare: 'endsWith',
+      expected: 'sans-serif',
+      found: 'Verdana',
+    });
     // A value that isn't a length in px misses any bound
     expect(judge(room, { count: 1, values: ['auto'] })).toMatchObject({ compare: 'atLeast' });
   });

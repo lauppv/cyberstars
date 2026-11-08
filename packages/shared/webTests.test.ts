@@ -112,6 +112,16 @@ describe('webFailureText', () => {
         found: 'rgb(0, 0, 0)',
       }),
     ).toBe('Expected a heading with color other than black, found color: black.');
+    expect(
+      say({
+        kind: 'style',
+        label: 'the page',
+        detail: 'font-family',
+        compare: 'endsWith',
+        expected: 'sans-serif',
+        found: 'Verdana',
+      }),
+    ).toBe('Expected the page with font-family ending in sans-serif, found font-family: Verdana.');
     expect(say({ kind: 'contrast', label: 'a warning', expected: '4.5', found: '2.38' })).toBe(
       'Expected a warning readable on its background, a contrast of at least 4.5:1, found 2.38:1.',
     );

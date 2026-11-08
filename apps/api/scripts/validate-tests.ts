@@ -402,7 +402,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   count: ['equals', 'atLeast', 'label'],
   text: ['equals', 'contains', 'nonEmpty', 'label'],
   attr: ['name', 'equals', 'ignoreCase', 'label'],
-  style: ['prop', 'equals', 'not', 'atLeast', 'atMost', 'pseudo', 'every', 'label'],
+  style: ['prop', 'equals', 'not', 'endsWith', 'atLeast', 'atMost', 'pseudo', 'every', 'label'],
   contrast: ['atLeast', 'on', 'every', 'label'],
   differs: ['from', 'props', 'fromLabel', 'label'],
   layout: ['arrange', 'gap', 'label'],
@@ -477,10 +477,14 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   if (own === 'style') {
     if (!isText(step.prop)) return 'a style step needs prop';
     const bounds = ['atLeast', 'atMost'].filter((k) => k in step);
-    const ways = ['equals', 'not'].filter((k) => k in step).length + (bounds.length ? 1 : 0);
-    if (ways !== 1) return 'a style step needs exactly one of equals, not, or atLeast/atMost';
+    const ways =
+      ['equals', 'not', 'endsWith'].filter((k) => k in step).length + (bounds.length ? 1 : 0);
+    if (ways !== 1) {
+      return 'a style step needs exactly one of equals, not, endsWith, or atLeast/atMost';
+    }
     if ('equals' in step && typeof step.equals !== 'string') return "a style step's equals is text";
     if ('not' in step && typeof step.not !== 'string') return "a style step's not is text";
+    if ('endsWith' in step && !isText(step.endsWith)) return "a style step's endsWith is text";
     if (bounds.some((k) => typeof step[k] !== 'number'))
       return "a style step's bounds are px numbers";
   }

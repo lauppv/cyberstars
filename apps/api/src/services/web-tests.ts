@@ -123,8 +123,12 @@ function styleMiss(
   value: string,
 ): Pick<WebFailure, 'expected' | 'compare'> | null {
   if (step.equals !== undefined) return value === step.equals ? null : { expected: step.equals };
-  if (step.not !== undefined)
+  if (step.not !== undefined) {
     return value !== step.not ? null : { expected: step.not, compare: 'not' };
+  }
+  if (step.endsWith !== undefined) {
+    return value.endsWith(step.endsWith) ? null : { expected: step.endsWith, compare: 'endsWith' };
+  }
   const px = /^-?[\d.]+px$/.test(value) ? parseFloat(value) : NaN;
   if (step.atLeast !== undefined && !(px >= step.atLeast - 0.5)) {
     return { expected: String(step.atLeast), compare: 'atLeast' };

@@ -71,7 +71,8 @@ export type WebCheck =
   /**
    * The first element's computed style, as the browser reports it, or that of
    * its ::before or ::after (`pseudo`), whose `content` keeps its quotes: `"★"`.
-   * It `equals` a value, is anything `not` this one, or, for a length (the
+   * It `equals` a value, is anything `not` this one, `endsWith` a text (a
+   * font list's generic family: `sans-serif`), or, for a length (the
    * browser reports it in px), is `atLeast` and/or `atMost` so many px: a
    * mission that asks for room, not for 16px. With `every`, that of every
    * element (up to 50), for a mission that says "every link", so a rule that
@@ -82,6 +83,7 @@ export type WebCheck =
       prop: string;
       equals?: string;
       not?: string;
+      endsWith?: string;
       atLeast?: number;
       atMost?: number;
       pseudo?: WebPseudo;
@@ -231,7 +233,7 @@ export interface WebFailure {
    * How a style was compared, when not by `equals`: `not`, `atLeast` or
    * `atMost` (a length in px).
    */
-  compare?: 'not' | 'atLeast' | 'atMost';
+  compare?: 'not' | 'endsWith' | 'atLeast' | 'atMost';
   /**
    * What the element was held against: a differs check's others ("the other
    * paragraphs"), or the level of the heading that skips one (`h4`).
@@ -347,6 +349,11 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         return ro
           ? `Se aștepta ${label} cu ${f.detail} diferit de ${said(expected)}, dar are ${f.detail}: ${said(found)}.`
           : `Expected ${label} with ${f.detail} other than ${said(expected)}, found ${f.detail}: ${said(found)}.`;
+      }
+      if (f.compare === 'endsWith') {
+        return ro
+          ? `Se aștepta ${label} cu ${f.detail} terminat în ${expected}, dar are ${f.detail}: ${found}.`
+          : `Expected ${label} with ${f.detail} ending in ${expected}, found ${f.detail}: ${found}.`;
       }
       if (f.compare) {
         const least = f.compare === 'atLeast';

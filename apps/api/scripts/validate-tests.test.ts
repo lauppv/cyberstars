@@ -225,6 +225,7 @@ describe('auditWebSpec', () => {
         { layout: '.card', arrange: 'row', label: 'the cards' },
         { layout: '.card', arrange: 'column', gap: 12, label: 'the cards' },
         { style: '.card', prop: 'border-top-style', not: 'none', label: 'a card' },
+        { style: 'body', prop: 'font-family', endsWith: 'sans-serif', label: 'the page' },
         {
           style: '.card',
           prop: 'padding-top',
@@ -278,10 +279,10 @@ describe('auditWebSpec', () => {
     ]);
     expect(one([{ size: '.c', label: 'x' }])).toEqual([expect.stringMatching(/needs a bound/)]);
     expect(one([{ style: 'h1', prop: 'color', label: 'x' }])).toEqual([
-      expect.stringMatching(/exactly one of equals, not, or atLeast/),
+      expect.stringMatching(/exactly one of equals, not, endsWith, or atLeast/),
     ]);
     expect(one([{ style: 'h1', prop: 'margin', equals: '0px', atLeast: 2, label: 'x' }])).toEqual([
-      expect.stringMatching(/exactly one of equals, not, or atLeast/),
+      expect.stringMatching(/exactly one of equals, not, endsWith, or atLeast/),
     ]);
     expect(one([{ style: 'h1', prop: 'margin', atLeast: '8px', label: 'x' }])).toEqual([
       expect.stringMatching(/bounds are px numbers/),
