@@ -38,8 +38,6 @@ describe('FeaturesSection', () => {
       'Courses',
       'Algorithm challenges',
       'Linux terminal',
-      'The forum',
-      'Laniakea, a space game',
       'An AI tutor',
     ]);
     for (const r of items) {
@@ -57,23 +55,8 @@ describe('FeaturesSection', () => {
       'true',
       'true',
       'true',
-      'true',
-      'true',
     ]);
-    expect(document.getElementById('feature-forum')).toHaveTextContent('The forum');
-  });
-
-  it('marks Laniakea Beta and says in a line what it is and that it opens after the first Python lessons', () => {
-    renderSection();
-    const row = parts().getByRole('heading', { name: 'Laniakea, a space game' }).closest('li')!;
-    expect(row).toHaveTextContent('After the first 6 Python lessons');
-    expect(within(row).getByText('Beta')).toBeDefined();
-    expect(
-      within(row).getByText(
-        'Every Python lesson you finish becomes a planet. Fly to it and pass a 10-question test on the lesson to conquer it.',
-      ),
-    ).toBeDefined();
-    expect(within(row).getByRole('img', { name: /ringed in blue/ })).toHaveTextContent('5 + 3');
+    expect(document.getElementById('feature-tutor')).toHaveTextContent('An AI tutor');
   });
 
   it('never says free: only the hero and the free band do', () => {
@@ -103,14 +86,6 @@ describe('FeaturesSection', () => {
     expect(picture).toHaveTextContent('mission.txt reports tools');
   });
 
-  it("answers Maria21's question in the forum", () => {
-    renderSection();
-    const picture = parts().getByRole('img', { name: /Maria21/ });
-    expect(picture).toHaveTextContent('Maria21How do I print my name 3 times?');
-    expect(picture).toHaveTextContent('Marco Hoeger');
-    expect(picture).toHaveTextContent('print("Maria")');
-  });
-
   it('shows the tutor pointing at the idea without the fix', () => {
     renderSection();
     const picture = parts().getByRole('img', { name: /tutor explains that range starts at 0/ });
@@ -124,5 +99,10 @@ describe('FeaturesSection', () => {
   it('presents none of the preview features', () => {
     renderSection();
     expect(screen.queryByText(/messag|connection|leaderboard/i)).toBeNull();
+  });
+
+  it('names neither the forum nor Laniakea', () => {
+    renderSection();
+    expect(document.body.textContent).not.toMatch(/forum|laniakea|planet/i);
   });
 });

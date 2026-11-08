@@ -382,14 +382,6 @@
         "text": "Un terminal adevărat chiar în pagină, cu misiuni de rezolvat pe o mașină doar a ta.",
         "picture": "Un terminal Linux: pwd, ls și ls rapoarte, fiecare cu rezultatul lui."
       },
-      "forum": {
-        "title": "Forumul",
-        "text": "Întreabă când te-ai blocat și ajută când nu; răspunsul care a mers e marcat drept soluție.",
-        "question": "Cum îmi afișez numele de 3 ori?",
-        "answer": "Cu o buclă for:",
-        "solved": "Rezolvat",
-        "picture": "Maria21 întreabă cum își afișează numele de trei ori, iar Marco Hoeger îi răspunde cu o buclă for."
-      },
       "tutor": {
         "title": "Un tutore AI",
         "text": "Îți arată ideea și te lasă să găsești singur rezolvarea, fără să-ți dea răspunsul.",
@@ -398,15 +390,6 @@
         "followUp": "Deci range(1, 3)?",
         "followUpAnswer": "Aproape. range se oprește chiar înainte de al doilea număr, așa că range(1, 3) îți dă 1 și 2. Cât ar trebui să fie oprirea ca să intre și 3?",
         "picture": "Un student întreabă de ce bucla lui afișează 0, 1, 2 în loc de 1, 2, 3. Tutorele explică că range începe de la 0, iar când studentul încearcă range(1, 3), că range se oprește chiar înainte de al doilea număr, lăsându-i lui ultimul pas."
-      },
-      "laniakea": {
-        "title": "Laniakea, un joc în spațiu",
-        "text": "Fiecare lecție de Python pe care o termini devine o planetă. Zbori până la ea și treci un test de 10 întrebări despre lecție ca s-o cucerești.",
-        "note_one": "După prima lecție de Python",
-        "note_few": "După primele {{count}} lecții de Python",
-        "note_other": "După primele {{count}} de lecții de Python",
-        "question": "Ce afișează?",
-        "picture": "Planete în spațiu, două cu inel albastru, ale elevului, și una cu inel alb, încă de cucerit, lângă o întrebare de test despre ce afișează print(\"5 + 3\"), cu 5 + 3 marcat corect."
       }
     },
     "free": {
