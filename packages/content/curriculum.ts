@@ -1954,6 +1954,17 @@ export const lessons = [
     title: 'Project: Crew Profile Page',
     sortOrder: 22,
   },
+  {
+    courseKey: 'web-dev',
+    slug: 'paths',
+    title: 'Relative and Absolute Paths',
+    sortOrder: 23,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'lists', title: 'Lists', sortOrder: 24 },
+  { courseKey: 'web-dev', slug: 'nested-lists', title: 'Nested Lists', sortOrder: 25 },
+  { courseKey: 'web-dev', slug: 'div-and-span', title: 'div and span', sortOrder: 26 },
+  { courseKey: 'web-dev', slug: 'crew-html-recap', title: 'HTML Recap', sortOrder: 27 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -1990,6 +2001,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'home-js-recap',
         'crew-profile-project',
       ],
+    },
+    {
+      key: 'crew-directory',
+      title: 'Crew Directory',
+      lessons: ['paths', 'lists', 'nested-lists', 'div-and-span', 'crew-html-recap'],
     },
   ],
 };

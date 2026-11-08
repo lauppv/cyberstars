@@ -358,6 +358,11 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'first-click': 'Primul tău click',
     'home-js-recap': 'Recapitulare JavaScript',
     'crew-profile-project': 'Proiect: profilul unui membru al echipajului',
+    paths: 'Căi relative și absolute',
+    lists: 'Liste',
+    'nested-lists': 'Liste imbricate',
+    'div-and-span': 'div și span',
+    'crew-html-recap': 'Recapitulare HTML',
   },
 };
 
@@ -366,5 +371,6 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
 export const partTitlesRo: Record<string, Record<string, string>> = {
   'web-dev': {
     'station-home': 'Pagina principală a stației',
+    'crew-directory': 'Lista echipajului',
   },
 };

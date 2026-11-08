@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "name": "The decks are a list",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "Decks",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "count": "ul.decks > li",
+          "atLeast": 3,
+          "label": "decks (<li>) in a list with class=\"decks\""
+        }
+      ]
+    },
+    {
+      "name": "Each deck holds a list of its rooms",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "count": "ul.decks > li:not(:has(> ul, > ol))",
+          "equals": 0,
+          "label": "decks without a list of rooms inside their item"
+        },
+        {
+          "count": "ul.decks > li > ul > li, ul.decks > li > ol > li",
+          "atLeast": 6,
+          "label": "rooms in the decks' lists"
+        },
+        {
+          "count": "ul.decks > li:has(> ul > li:nth-child(2), > ol > li:nth-child(2))",
+          "atLeast": 3,
+          "label": "decks with at least two rooms"
+        }
+      ]
+    },
+    {
+      "name": "The lists hold only items",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "count": "ul > ul, ul > ol, ol > ul, ol > ol",
+          "equals": 0,
+          "label": "lists placed straight in a list, outside an item"
+        }
+      ]
+    }
+  ]
+}
