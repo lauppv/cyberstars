@@ -1005,6 +1005,12 @@
     "devModeOff": "Dev mode: off",
     "devModeOn": "Dev mode: on",
     "devModeReset": "Put the panels back to their first sizes",
+    "devModeHint": {
+      "label": "Dev mode tip",
+      "text": "We recommend dev mode for this course: the lesson, the code and the site get the whole window.",
+      "ok": "Got it",
+      "never": "Don't show me again"
+    },
     "solutionConfirmTitle": "Show the solution?",
     "solutionConfirmBody": "Try to solve it yourself first. You learn more from the struggle. Revealing the solution uses one of your daily reveals.",
     "solutionConfirmCta": "Reveal solution",
