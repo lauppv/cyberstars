@@ -13,6 +13,10 @@ vi.mock('react-router', async (importOriginal) => {
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: { id: 1, role: 'USER' }, isLoading: false }),
 }));
+const notif = vi.hoisted(() => ({ markSectionRead: vi.fn() }));
+vi.mock('../context/NotificationContext', () => ({
+  useNotifications: () => ({ markSectionRead: notif.markSectionRead }),
+}));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
@@ -60,6 +64,13 @@ afterEach(async () => {
 });
 
 describe('ConnectionsPage', () => {
+  it("reads the sidebar's Connections row once the page opens", async () => {
+    renderPage();
+    await screen.findByText('Nova');
+    expect(notif.markSectionRead).toHaveBeenCalledTimes(1);
+    expect(notif.markSectionRead).toHaveBeenCalledWith('connections');
+  });
+
   it('lists received requests, connections and sent requests', async () => {
     renderPage();
     expect(await screen.findByText('Nova')).toBeDefined();
