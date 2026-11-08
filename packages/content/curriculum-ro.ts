@@ -371,6 +371,11 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'borders-radius-shadows': 'Borduri, colțuri rotunjite, umbre',
     'crew-css-recap': 'Recapitulare CSS',
     'numbers-and-operators': 'Numere și operatori',
+    arrays: 'Array-uri',
+    'for-loops': 'Bucle for',
+    'for-of': 'for...of',
+    functions: 'Funcții',
+    'return-values': 'Valori returnate',
   },
 };
 

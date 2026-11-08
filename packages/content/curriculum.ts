@@ -1994,6 +1994,11 @@ export const lessons = [
     sortOrder: 35,
     hasCodeFile: true,
   },
+  { courseKey: 'web-dev', slug: 'arrays', title: 'Arrays', sortOrder: 36 },
+  { courseKey: 'web-dev', slug: 'for-loops', title: 'For Loops', sortOrder: 37 },
+  { courseKey: 'web-dev', slug: 'for-of', title: 'for...of', sortOrder: 38 },
+  { courseKey: 'web-dev', slug: 'functions', title: 'Functions', sortOrder: 39 },
+  { courseKey: 'web-dev', slug: 'return-values', title: 'Return Values', sortOrder: 40 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2048,6 +2053,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'borders-radius-shadows',
         'crew-css-recap',
         'numbers-and-operators',
+        'arrays',
+        'for-loops',
+        'for-of',
+        'functions',
+        'return-values',
       ],
     },
   ],
