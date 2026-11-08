@@ -1979,6 +1979,21 @@ export const lessons = [
     sortOrder: 30,
   },
   { courseKey: 'web-dev', slug: 'display', title: 'display', sortOrder: 31 },
+  { courseKey: 'web-dev', slug: 'overflow', title: 'overflow', sortOrder: 32 },
+  {
+    courseKey: 'web-dev',
+    slug: 'borders-radius-shadows',
+    title: 'Borders, Radius, Shadows',
+    sortOrder: 33,
+  },
+  { courseKey: 'web-dev', slug: 'crew-css-recap', title: 'CSS Recap', sortOrder: 34 },
+  {
+    courseKey: 'web-dev',
+    slug: 'numbers-and-operators',
+    title: 'Numbers and Operators',
+    sortOrder: 35,
+    hasCodeFile: true,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2029,6 +2044,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'box-sizing-and-sizes',
         'margins-and-centering',
         'display',
+        'overflow',
+        'borders-radius-shadows',
+        'crew-css-recap',
+        'numbers-and-operators',
       ],
     },
   ],

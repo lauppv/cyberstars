@@ -367,6 +367,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'box-sizing-and-sizes': 'box-sizing și dimensiuni',
     'margins-and-centering': 'Margini și centrare',
     display: 'display',
+    overflow: 'overflow',
+    'borders-radius-shadows': 'Borduri, colțuri rotunjite, umbre',
+    'crew-css-recap': 'Recapitulare CSS',
+    'numbers-and-operators': 'Numere și operatori',
   },
 };
 
