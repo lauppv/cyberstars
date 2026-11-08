@@ -374,12 +374,7 @@ export async function toggleReaction(
 
     const post = await prisma.forumPost.findUnique({
       where: { id: postId },
-      select: {
-        deleted: true,
-        authorId: true,
-        threadId: true,
-        thread: { select: { title: true, category: { select: { slug: true } } } },
-      },
+      select: { deleted: true },
     });
     if (!post) throw new AppError(404, 'Post not found');
     if (post.deleted) throw new AppError(403, 'Cannot react to a deleted post');
@@ -392,19 +387,8 @@ export async function toggleReaction(
       await prisma.forumReaction.delete({ where: { id: existing.id } });
       res.json({ active: false });
     } else {
+      // A reaction tells its author nothing; only replies and solutions do
       await prisma.forumReaction.create({ data: { postId, userId, emoji } });
-
-      // Notify the post author (only on add; removing a reaction is silent;
-      // self-reactions are excluded inside notify). Collapsible per thread so
-      // toggling on/off can't spam the author's bell.
-      void notificationsService.notify({
-        recipientIds: [post.authorId],
-        actorId: userId,
-        type: 'FORUM_REACTION',
-        entityId: post.threadId,
-        data: { title: post.thread.title, categorySlug: post.thread.category.slug },
-      });
-
       res.json({ active: true });
     }
   } catch (err) {

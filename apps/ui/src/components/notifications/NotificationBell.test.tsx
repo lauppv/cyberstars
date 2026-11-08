@@ -25,13 +25,15 @@ import { UserSocketProvider } from '../../context/UserSocketContext';
 import { NotificationProvider } from '../../context/NotificationContext';
 import { NotificationBell } from '../layout/NotificationBell';
 
+const NO_SECTIONS = { forum: [], support: [], connections: 0, laniakea: 0 };
+
 function notif(over: Partial<NotificationDTO> = {}): NotificationDTO {
   return {
     id: 1,
-    type: 'FORUM_REPLY',
+    type: 'POLL_ANSWER',
     entityId: 5,
-    data: { title: 'Cosmic thread' },
-    actor: { name: 'Ada', avatarUrl: null },
+    data: { title: 'Next course?', text: 'More C' },
+    actor: null,
     readAt: null,
     createdAt: new Date().toISOString(),
     ...over,
@@ -52,7 +54,11 @@ beforeEach(() => {
   vi.clearAllMocks();
   h.frameHandler = null;
   h.authState = { isLoggedIn: true, user: { role: 'USER' } };
-  mockService.getNotifications.mockResolvedValue({ items: [notif()], unreadCount: 1 });
+  mockService.getNotifications.mockResolvedValue({
+    items: [notif()],
+    unreadCount: 1,
+    sections: NO_SECTIONS,
+  });
   mockService.markRead.mockResolvedValue({ ok: true });
   mockService.markOneRead.mockResolvedValue({ ok: true });
 });
@@ -68,11 +74,15 @@ describe('NotificationBell', () => {
     renderBell();
     expect(await screen.findByText('1')).toBeInTheDocument();
     fireEvent.click(screen.getByRole('button', { name: 'Notifications' }));
-    expect(await screen.findByText(/Ada replied to/)).toBeInTheDocument();
+    expect(await screen.findByText(/More C/)).toBeInTheDocument();
   });
 
   it('caps the badge at 9+', async () => {
-    mockService.getNotifications.mockResolvedValue({ items: [notif()], unreadCount: 12 });
+    mockService.getNotifications.mockResolvedValue({
+      items: [notif()],
+      unreadCount: 12,
+      sections: NO_SECTIONS,
+    });
     renderBell();
     expect(await screen.findByText('9+')).toBeInTheDocument();
   });
@@ -85,12 +95,12 @@ describe('NotificationBell', () => {
     await waitFor(() => expect(screen.queryByText('1')).not.toBeInTheDocument());
   });
 
-  it('marks one read and deep-links a forum notification to the thread URL', async () => {
+  it('marks one read and takes a written poll answer to the admin page', async () => {
     renderBell();
     fireEvent.click(await screen.findByRole('button', { name: 'Notifications' }));
-    fireEvent.click(await screen.findByText(/Ada replied to/));
+    fireEvent.click(await screen.findByText(/More C/));
     expect(mockService.markOneRead).toHaveBeenCalledWith(1);
-    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/5');
+    expect(mockNavigate).toHaveBeenCalledWith('/admin');
   });
 
   it('applies live unread-count and new frames from the socket', async () => {
@@ -99,20 +109,24 @@ describe('NotificationBell', () => {
     h.frameHandler?.({
       channel: 'notification',
       type: 'unread-count',
-      payload: { unreadCount: 4 },
+      payload: { unreadCount: 4, sections: NO_SECTIONS },
     });
     expect(await screen.findByText('4')).toBeInTheDocument();
     h.frameHandler?.({
       channel: 'notification',
       type: 'new',
-      payload: notif({ id: 2, actor: { name: 'Bo', avatarUrl: null } }),
+      payload: notif({ id: 2, data: { title: 'Next course?', text: 'More Rust' } }),
     });
     fireEvent.click(screen.getByRole('button', { name: 'Notifications' }));
-    expect(await screen.findByText(/Bo replied to/)).toBeInTheDocument();
+    expect(await screen.findByText(/More Rust/)).toBeInTheDocument();
   });
 
   it('shows the empty state when there are no notifications', async () => {
-    mockService.getNotifications.mockResolvedValue({ items: [], unreadCount: 0 });
+    mockService.getNotifications.mockResolvedValue({
+      items: [],
+      unreadCount: 0,
+      sections: NO_SECTIONS,
+    });
     renderBell();
     fireEvent.click(await screen.findByRole('button', { name: 'Notifications' }));
     expect(await screen.findByText("You're all caught up.")).toBeInTheDocument();
@@ -122,6 +136,7 @@ describe('NotificationBell', () => {
     mockService.getNotifications.mockResolvedValue({
       items: [notif({ readAt: null })],
       unreadCount: 0,
+      sections: NO_SECTIONS,
     });
     renderBell();
     await screen.findByRole('button', { name: 'Notifications' });
@@ -130,10 +145,15 @@ describe('NotificationBell', () => {
 
   it('paginates via load more using the last id as the cursor', async () => {
     const first = Array.from({ length: 20 }, (_, i) => notif({ id: 100 - i }));
-    mockService.getNotifications.mockResolvedValueOnce({ items: first, unreadCount: 20 });
+    mockService.getNotifications.mockResolvedValueOnce({
+      items: first,
+      unreadCount: 20,
+      sections: NO_SECTIONS,
+    });
     mockService.getNotifications.mockResolvedValueOnce({
       items: [notif({ id: 80 })],
       unreadCount: 20,
+      sections: NO_SECTIONS,
     });
     renderBell();
     fireEvent.click(await screen.findByRole('button', { name: 'Notifications' }));
@@ -145,11 +165,12 @@ describe('NotificationBell', () => {
     mockService.getNotifications.mockResolvedValue({
       items: [notif({ readAt: new Date().toISOString() })],
       unreadCount: 0,
+      sections: NO_SECTIONS,
     });
     renderBell();
     fireEvent.click(await screen.findByRole('button', { name: 'Notifications' }));
-    fireEvent.click(await screen.findByText(/Ada replied to/));
+    fireEvent.click(await screen.findByText(/More C/));
     expect(mockService.markOneRead).not.toHaveBeenCalled();
-    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/5');
+    expect(mockNavigate).toHaveBeenCalledWith('/admin');
   });
 });

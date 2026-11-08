@@ -1,11 +1,19 @@
 import * as repo from '../repositories/notifications.repository.js';
 import { isUserOnline, pushToUser } from './ws-user.js';
-import { COLLAPSIBLE_TYPES } from '@cyberstars/shared/notifications';
+import {
+  COLLAPSIBLE_TYPES,
+  NOTIFICATION_SECTIONS,
+  SECTION_TYPES,
+  isBellType,
+} from '@cyberstars/shared/notifications';
 import type {
   NotificationData,
   NotificationDTO,
+  NotificationSection,
   NotificationsPage,
   NotificationType,
+  UnreadSections,
+  UnreadState,
 } from '@cyberstars/shared/notifications';
 import type { AnnouncementDTO } from '@cyberstars/shared/admin';
 
@@ -26,6 +34,41 @@ function shape(row: repo.NotificationRow): NotificationDTO {
     readAt: row.readAt ? row.readAt.toISOString() : null,
     createdAt: row.createdAt.toISOString(),
   };
+}
+
+const SECTION_OF = new Map<NotificationType, NotificationSection>(
+  NOTIFICATION_SECTIONS.flatMap((section) => SECTION_TYPES[section].map((t) => [t, section])),
+);
+
+// Folds the unread sidebar rows, newest first, into what each row shows. A
+// thread or ticket is listed once however many of its rows are unread
+function toSections(rows: repo.UnreadSectionRow[]): UnreadSections {
+  const sections: UnreadSections = { forum: [], support: [], connections: 0, laniakea: 0 };
+  for (const row of rows) {
+    const data = (row.data as NotificationData | null) ?? {};
+    const section = SECTION_OF.get(row.type);
+    if (section === 'forum' || section === 'support') {
+      const list = sections[section];
+      if (!list.some((e) => e.entityId === row.entityId)) {
+        list.push({ entityId: row.entityId, title: data.title ?? '' });
+      }
+    } else if (section === 'connections') {
+      sections.connections++;
+    } else if (section === 'laniakea' && sections.laniakea === 0) {
+      // The recaps collapse into one unread row; the newest one's count is current
+      sections.laniakea = data.count ?? 1;
+    }
+  }
+  return sections;
+}
+
+// The bell's unread count and the sidebar's, as the client keeps them
+async function unreadState(userId: number): Promise<UnreadState> {
+  const [unreadCount, rows] = await Promise.all([
+    repo.countUnread(userId),
+    repo.listUnreadSections(userId),
+  ]);
+  return { unreadCount, sections: toSections(rows) };
 }
 
 export interface NotifyInput {
@@ -67,13 +110,12 @@ export async function notify(input: NotifyInput): Promise<number> {
     try {
       const row = await upsertFor(userId, input);
       await repo.pruneOverCap(userId, RETENTION_CAP);
-      const unreadCount = await repo.countUnread(userId);
-      pushToUser(userId, { channel: 'notification', type: 'new', payload: shape(row) });
-      pushToUser(userId, {
-        channel: 'notification',
-        type: 'unread-count',
-        payload: { unreadCount },
-      });
+      const state = await unreadState(userId);
+      // Only the bell lists rows; a sidebar row only needs the new counts
+      if (isBellType(row.type)) {
+        pushToUser(userId, { channel: 'notification', type: 'new', payload: shape(row) });
+      }
+      pushToUser(userId, { channel: 'notification', type: 'unread-count', payload: state });
       delivered++;
     } catch (err) {
       console.error(`[notifications] notify failed for user ${userId}:`, err);
@@ -88,13 +130,9 @@ export async function pushLive(rows: repo.NotificationRow[]): Promise<void> {
   for (const row of rows) {
     if (!isUserOnline(row.userId)) continue;
     try {
-      const unreadCount = await repo.countUnread(row.userId);
+      const state = await unreadState(row.userId);
       pushToUser(row.userId, { channel: 'notification', type: 'new', payload: shape(row) });
-      pushToUser(row.userId, {
-        channel: 'notification',
-        type: 'unread-count',
-        payload: { unreadCount },
-      });
+      pushToUser(row.userId, { channel: 'notification', type: 'unread-count', payload: state });
     } catch (err) {
       console.error(`[notifications] live push failed for user ${row.userId}:`, err);
     }
@@ -144,11 +182,8 @@ export async function getPage(
   take: number,
   before?: number,
 ): Promise<NotificationsPage> {
-  const [rows, unreadCount] = await Promise.all([
-    repo.list(userId, take, before),
-    repo.countUnread(userId),
-  ]);
-  return { items: rows.map(shape), unreadCount };
+  const [rows, state] = await Promise.all([repo.list(userId, take, before), unreadState(userId)]);
+  return { items: rows.map(shape), ...state };
 }
 
 // The announcements and polls the dashboard's window still has to show, oldest first
@@ -161,12 +196,12 @@ export async function markShown(userId: number, ids: number[]): Promise<void> {
   await repo.markShown(userId, ids);
 }
 
-// Push the authoritative unread count after a read mutation, so every tab of
+// Push the authoritative unread counts after a read mutation, so every tab of
 // the user (including the one that made the request, whose optimistic zero may
-// be wrong if it missed rows) converges on the true badge value.
+// be wrong if it missed rows) converges on the true badge values.
 async function pushUnreadCount(userId: number): Promise<void> {
-  const unreadCount = await repo.countUnread(userId);
-  pushToUser(userId, { channel: 'notification', type: 'unread-count', payload: { unreadCount } });
+  const payload = await unreadState(userId);
+  pushToUser(userId, { channel: 'notification', type: 'unread-count', payload });
 }
 
 export async function markRead(userId: number, upToId: number): Promise<number> {
@@ -176,8 +211,8 @@ export async function markRead(userId: number, upToId: number): Promise<number> 
 }
 
 // Auto-read the notification tied to a source entity (e.g. responding to a
-// connection request clears its CONNECTION_REQUEST bell entry). Pushes a fresh
-// unread count so the badge updates live. Fire-and-forget; never throws.
+// connection request clears its CONNECTION_REQUEST row). Pushes fresh unread
+// counts so the badges update live. Fire-and-forget; never throws.
 export async function markEntityRead(
   userId: number,
   type: NotificationType,
@@ -194,4 +229,15 @@ export async function markEntityRead(
 export async function markOneRead(userId: number, id: number): Promise<void> {
   const count = await repo.markOneRead(userId, id);
   if (count > 0) await pushUnreadCount(userId);
+}
+
+// The person is on a sidebar row's page, or on one thread or ticket of it, so
+// its notifications are read. Pushes the counts only when something changed
+export async function markSectionRead(
+  userId: number,
+  section: NotificationSection,
+  entityId?: number,
+): Promise<void> {
+  const cleared = await repo.markSectionRead(userId, SECTION_TYPES[section], entityId);
+  if (cleared > 0) await pushUnreadCount(userId);
 }

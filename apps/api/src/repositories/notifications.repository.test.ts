@@ -27,12 +27,16 @@ const repo = await import('./notifications.repository.js');
 beforeEach(() => vi.clearAllMocks());
 
 describe('list', () => {
-  it('lists newest-first without a cursor', async () => {
+  it("lists the bell's rows newest-first without a cursor", async () => {
     mockPrisma.notification.findMany.mockResolvedValue([{ id: 3 }]);
     const rows = await repo.list(10, 20);
     expect(rows).toEqual([{ id: 3 }]);
     expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
-      expect.objectContaining({ where: { userId: 10 }, orderBy: { id: 'desc' }, take: 20 }),
+      expect.objectContaining({
+        where: { userId: 10, type: { in: ['ANNOUNCEMENT', 'POLL', 'POLL_ANSWER'] } },
+        orderBy: { id: 'desc' },
+        take: 20,
+      }),
     );
   });
 
@@ -40,7 +44,13 @@ describe('list', () => {
     mockPrisma.notification.findMany.mockResolvedValue([]);
     await repo.list(10, 20, 50);
     expect(mockPrisma.notification.findMany).toHaveBeenCalledWith(
-      expect.objectContaining({ where: { userId: 10, id: { lt: 50 } } }),
+      expect.objectContaining({
+        where: {
+          userId: 10,
+          type: { in: ['ANNOUNCEMENT', 'POLL', 'POLL_ANSWER'] },
+          id: { lt: 50 },
+        },
+      }),
     );
   });
 });
@@ -100,11 +110,39 @@ describe('markShown', () => {
 });
 
 describe('countUnread', () => {
-  it('counts unread rows for the user', async () => {
+  it("counts the bell's unread rows for the user", async () => {
     mockPrisma.notification.count.mockResolvedValue(4);
     expect(await repo.countUnread(10)).toBe(4);
     expect(mockPrisma.notification.count).toHaveBeenCalledWith({
-      where: { userId: 10, readAt: null },
+      where: { userId: 10, readAt: null, type: { in: ['ANNOUNCEMENT', 'POLL', 'POLL_ANSWER'] } },
+    });
+  });
+});
+
+describe('listUnreadSections', () => {
+  it("lists the sidebar's unread rows newest first, with only what they show", async () => {
+    const rows = [{ type: 'FORUM_REPLY', entityId: 5, data: { title: 'T' } }];
+    mockPrisma.notification.findMany.mockResolvedValue(rows);
+    expect(await repo.listUnreadSections(10)).toEqual(rows);
+    expect(mockPrisma.notification.findMany).toHaveBeenCalledWith({
+      where: {
+        userId: 10,
+        readAt: null,
+        type: {
+          in: [
+            'FORUM_REPLY',
+            'FORUM_SOLUTION',
+            'SUPPORT_TICKET_NEW',
+            'SUPPORT_REPLY',
+            'SUPPORT_STATUS',
+            'CONNECTION_REQUEST',
+            'CONNECTION_ACCEPTED',
+            'LANIAKEA_RECAP',
+          ],
+        },
+      },
+      orderBy: { id: 'desc' },
+      select: { type: true, entityId: true, data: true },
     });
   });
 });
@@ -208,12 +246,48 @@ describe('collapse', () => {
 });
 
 describe('markReadUpTo', () => {
-  it('marks unread rows up to the id read and returns the count', async () => {
+  it("marks the bell's unread rows up to the id read and returns the count", async () => {
     mockPrisma.notification.updateMany.mockResolvedValue({ count: 3 });
     expect(await repo.markReadUpTo(10, 99)).toBe(3);
     expect(mockPrisma.notification.updateMany).toHaveBeenCalledWith(
-      expect.objectContaining({ where: { userId: 10, id: { lte: 99 }, readAt: null } }),
+      expect.objectContaining({
+        where: {
+          userId: 10,
+          id: { lte: 99 },
+          readAt: null,
+          type: { in: ['ANNOUNCEMENT', 'POLL', 'POLL_ANSWER'] },
+        },
+      }),
     );
+  });
+});
+
+describe('markSectionRead', () => {
+  it("marks one thread's unread rows of the section's types", async () => {
+    mockPrisma.notification.updateMany.mockResolvedValue({ count: 2 });
+    expect(await repo.markSectionRead(10, ['FORUM_REPLY', 'FORUM_SOLUTION'], 7)).toBe(2);
+    expect(mockPrisma.notification.updateMany).toHaveBeenCalledWith({
+      where: {
+        userId: 10,
+        type: { in: ['FORUM_REPLY', 'FORUM_SOLUTION'] },
+        readAt: null,
+        entityId: 7,
+      },
+      data: { readAt: expect.any(Date) },
+    });
+  });
+
+  it('marks the whole section when no entity is given', async () => {
+    mockPrisma.notification.updateMany.mockResolvedValue({ count: 1 });
+    await repo.markSectionRead(10, ['CONNECTION_REQUEST', 'CONNECTION_ACCEPTED']);
+    expect(mockPrisma.notification.updateMany).toHaveBeenCalledWith({
+      where: {
+        userId: 10,
+        type: { in: ['CONNECTION_REQUEST', 'CONNECTION_ACCEPTED'] },
+        readAt: null,
+      },
+      data: { readAt: expect.any(Date) },
+    });
   });
 });
 

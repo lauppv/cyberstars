@@ -26,9 +26,9 @@ import { NotificationDropdown } from './NotificationDropdown';
 function n(over: Partial<NotificationDTO> = {}): NotificationDTO {
   return {
     id: 1,
-    type: 'FORUM_REPLY',
+    type: 'ANNOUNCEMENT',
     entityId: 5,
-    data: { title: 'Thread' },
+    data: { text: 'Hello' },
     actor: { name: 'Ada', avatarUrl: null },
     readAt: null,
     createdAt: new Date().toISOString(),
@@ -60,74 +60,19 @@ beforeEach(() => {
 });
 
 describe('NotificationDropdown copy', () => {
-  it('renders a single forum reply with the actor name', () => {
-    renderWith([n()]);
-    expect(screen.getByText('Ada replied to "Thread"')).toBeInTheDocument();
-  });
-
-  it('renders a collapsed forum reply with the count', () => {
-    renderWith([n({ data: { title: 'Thread', count: 3 } })]);
-    expect(screen.getByText('3 new replies on "Thread"')).toBeInTheDocument();
-  });
-
-  it('falls back to "Someone" when the actor was deleted', () => {
-    renderWith([n({ actor: null })]);
-    expect(screen.getByText('Someone replied to "Thread"')).toBeInTheDocument();
-  });
-
-  it('renders solution, reaction, ticket, reply and status copy', () => {
+  it('lists only what the bell keeps, the rest counts on the sidebar', () => {
     renderWith([
-      n({ id: 1, type: 'FORUM_SOLUTION' }),
-      n({ id: 2, type: 'FORUM_REACTION' }),
-      n({ id: 4, type: 'SUPPORT_TICKET_NEW' }),
-      n({ id: 5, type: 'SUPPORT_REPLY' }),
-      n({ id: 6, type: 'SUPPORT_STATUS', data: { title: 'Thread', status: 'RESOLVED' } }),
+      n({ id: 1 }),
+      n({ id: 2, type: 'POLL', data: { text: 'Next course?' } }),
+      n({ id: 3, type: 'POLL_ANSWER', actor: null, data: { title: 'Next?', text: 'More C' } }),
     ]);
-    expect(screen.getByText(/marked your reply as the solution/)).toBeInTheDocument();
-    expect(screen.getByText(/reacted to your post/)).toBeInTheDocument();
-    expect(screen.getByText('New support ticket: "Thread"')).toBeInTheDocument();
-    expect(screen.getByText('New reply on ticket "Thread"')).toBeInTheDocument();
-    expect(screen.getByText('Ticket "Thread" is now Resolved')).toBeInTheDocument();
-  });
-
-  it('counts the open Laniakea recaps', () => {
-    renderWith([
-      n({ id: 1, type: 'LANIAKEA_RECAP', entityId: 0, actor: null, data: { count: 1 } }),
-      n({ id: 2, type: 'LANIAKEA_RECAP', entityId: 0, actor: null, data: { count: 3 } }),
-    ]);
-    expect(screen.getByText('A Laniakea recap is open')).toBeInTheDocument();
-    expect(screen.getByText('3 Laniakea recaps are open')).toBeInTheDocument();
+    expect(screen.getByText('Official announcement: Hello')).toBeInTheDocument();
+    expect(screen.getByText('Poll: Next course?')).toBeInTheDocument();
+    expect(screen.getByText('Answer to "Next?": More C')).toBeInTheDocument();
   });
 });
 
 describe('NotificationDropdown routing', () => {
-  it('routes a forum notification to the thread URL', () => {
-    renderWith([n({ type: 'FORUM_REPLY', entityId: 7 })]);
-    fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/forum/t/7');
-  });
-
-  it.each(['SUPPORT_TICKET_NEW', 'SUPPORT_REPLY', 'SUPPORT_STATUS'] as const)(
-    'opens the ticket of a %s',
-    (type) => {
-      renderWith([n({ type, entityId: 12 })]);
-      fireEvent.click(screen.getByRole('menuitem'));
-      expect(mockNavigate).toHaveBeenCalledWith('/support?ticket=12');
-    },
-  );
-
-  it('routes a connection request to /connections', () => {
-    renderWith([n({ type: 'CONNECTION_REQUEST' })]);
-    fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/connections');
-  });
-
-  it('routes a Laniakea recap to the game', () => {
-    renderWith([n({ type: 'LANIAKEA_RECAP', entityId: 0, data: { count: 2 } })]);
-    fireEvent.click(screen.getByRole('menuitem'));
-    expect(mockNavigate).toHaveBeenCalledWith('/laniakea');
-  });
-
   it('opens an announcement in a window instead of a page, and reads it', () => {
     const item = n({ id: 4, type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'New course' } });
     renderWith([item]);
@@ -192,12 +137,6 @@ describe('NotificationDropdown announcement', () => {
     expect(screen.queryByText('View')).toBeNull();
     expect(screen.queryByText('Vote')).toBeNull();
   });
-
-  it('leaves the View button off every other row', () => {
-    renderWith([n()]);
-    expect(screen.getByText('Ada replied to "Thread"')).not.toHaveClass('line-clamp-2');
-    expect(screen.queryByText('View')).toBeNull();
-  });
 });
 
 describe('NotificationDropdown pagination', () => {
@@ -225,7 +164,7 @@ describe('NotificationDropdown pagination', () => {
   it('keeps the failed load in view above live rows', () => {
     renderWith([n()], { loadFailed: true });
     expect(screen.getByRole('alert')).toHaveTextContent("Your notifications couldn't be loaded.");
-    expect(screen.getByText('Ada replied to "Thread"')).toBeInTheDocument();
+    expect(screen.getByText('Official announcement: Hello')).toBeInTheDocument();
   });
 
   it('says why loading more failed and keeps the button', () => {

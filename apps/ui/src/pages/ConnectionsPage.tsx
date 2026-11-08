@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { useAuth } from '../context/AuthContext';
+import { useNotifications } from '../context/NotificationContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -100,6 +101,13 @@ export function ConnectionsPage() {
     }
     load().finally(() => setLoading(false));
   }, [authLoading, canAccess, navigate, load]);
+
+  // The page lists the requests and connections, so the sidebar's
+  // Connections row has nothing left to tell
+  const { markSectionRead } = useNotifications();
+  useEffect(() => {
+    if (!authLoading && canAccess) markSectionRead('connections');
+  }, [authLoading, canAccess, markSectionRead]);
 
   const retry = () => {
     setActionError(null);

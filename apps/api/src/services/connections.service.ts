@@ -91,7 +91,7 @@ export async function accept(userId: number, connectionId: number): Promise<void
     type: 'CONNECTION_ACCEPTED',
     entityId: row.id,
   });
-  // Clear the request's own bell entry for the addressee now that it's handled.
+  // Read the request's own notification for the addressee now that it's handled.
   void notificationsService.markEntityRead(userId, 'CONNECTION_REQUEST', row.id);
 }
 

@@ -25,7 +25,7 @@ function fakeSocket(open = true) {
 const frame = {
   channel: 'notification' as const,
   type: 'unread-count' as const,
-  payload: { unreadCount: 2 },
+  payload: { unreadCount: 2, sections: { forum: [], support: [], connections: 0, laniakea: 0 } },
 };
 
 beforeEach(() => clearUserSockets());

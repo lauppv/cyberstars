@@ -496,19 +496,6 @@
     "retry": "Încearcă din nou",
     "loadFailed": "Notificările nu s-au putut încărca.",
     "someone": "Cineva",
-    "forumReply_one": "{{name}} a răspuns la „{{title}}”",
-    "forumReply_few": "{{count}} răspunsuri noi la „{{title}}”",
-    "forumReply_other": "{{count}} de răspunsuri noi la „{{title}}”",
-    "forumSolution": "{{name}} a marcat răspunsul tău drept soluție la „{{title}}”",
-    "forumReaction": "{{name}} a reacționat la postarea ta din „{{title}}”",
-    "ticketNew": "Tichet nou de suport: „{{title}}”",
-    "ticketReply": "Răspuns nou la tichetul „{{title}}”",
-    "status": "Tichetul „{{title}}” este acum {{status}}",
-    "connectionRequest": "{{name}} vrea să se conecteze cu tine",
-    "connectionAccepted": "{{name}} ți-a acceptat cererea de conexiune",
-    "laniakeaRecap_one": "Ai o recapitulare deschisă în Laniakea",
-    "laniakeaRecap_few": "Ai {{count}} recapitulări deschise în Laniakea",
-    "laniakeaRecap_other": "Ai {{count}} de recapitulări deschise în Laniakea",
     "announcement": "Anunț oficial: {{text}}",
     "announcementTitle": "Anunț oficial",
     "poll": "Sondaj: {{text}}",
@@ -772,7 +759,8 @@
     "replyPlaceholder": "Scrie un răspuns...",
     "send": "Trimite",
     "you": "Tu",
-    "admin": "admin"
+    "admin": "admin",
+    "newActivity": "Nou"
   },
   "feedback": {
     "lesson": "Crezi că ar trebui să schimbăm ceva la lecția asta? Spune-ne și ajută comunitatea să crească",
@@ -946,7 +934,8 @@
     "postsCount_one": "{{count}} postare",
     "postsCount_few": "{{count}} postări",
     "postsCount_other": "{{count}} de postări",
-    "noThreadsHint": "Fii primul care postează."
+    "noThreadsHint": "Fii primul care postează.",
+    "news": "Noutăți pentru tine"
   },
   "almanac": {
     "categories": {

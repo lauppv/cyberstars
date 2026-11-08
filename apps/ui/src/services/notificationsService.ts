@@ -1,5 +1,9 @@
 import { api } from './apiClient';
-import type { NotificationDTO, NotificationsPage } from '@cyberstars/shared/notifications';
+import type {
+  NotificationDTO,
+  NotificationSection,
+  NotificationsPage,
+} from '@cyberstars/shared/notifications';
 
 export function getNotifications(take = 20, before?: number) {
   const q = new URLSearchParams({ take: String(take) });
@@ -9,6 +13,11 @@ export function getNotifications(take = 20, before?: number) {
 
 export function markRead(upToId: number) {
   return api.post<{ ok: boolean }>('/api/notifications/read', { upToId });
+}
+
+// A sidebar row's page is open, or one thread or ticket of it
+export function markSectionRead(section: NotificationSection, entityId?: number) {
+  return api.post<void>('/api/notifications/sections/read', { section, entityId });
 }
 
 export function markOneRead(id: number) {

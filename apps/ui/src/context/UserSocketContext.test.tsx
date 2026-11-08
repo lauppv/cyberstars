@@ -21,7 +21,7 @@ import { UserSocketProvider, useUserSocketFrames } from './UserSocketContext';
 const frame: UserSocketFrame = {
   channel: 'notification',
   type: 'unread-count',
-  payload: { unreadCount: 3 },
+  payload: { unreadCount: 3, sections: { forum: [], support: [], connections: 0, laniakea: 0 } },
 };
 
 // Records every frame it receives so a test can assert delivery.

@@ -29,7 +29,10 @@ vi.mock('../../services/laniakeaService', () => ({
 }));
 vi.mock('./scene/loadThree', () => ({ loadThree: h.loadThree }));
 vi.mock('../../context/NotificationContext', () => ({
-  useNotifications: () => ({ items: [], noteRead: vi.fn() }),
+  useNotifications: () => ({
+    sections: { forum: [], support: [], connections: 0, laniakea: 0 },
+    clearSection: vi.fn(),
+  }),
 }));
 vi.mock('./scene/explorer', () => ({ createExplorer: h.createExplorer }));
 vi.mock('../../context/CurriculumContext', () => ({

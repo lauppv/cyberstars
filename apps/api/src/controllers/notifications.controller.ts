@@ -43,6 +43,19 @@ export async function markRead(req: Request, res: Response, next: NextFunction):
   }
 }
 
+export async function markSectionRead(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    await notificationsService.markSectionRead(req.user!.id, req.body.section, req.body.entityId);
+    res.status(204).end();
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function markOneRead(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const id = parseInt(req.params.id as string);

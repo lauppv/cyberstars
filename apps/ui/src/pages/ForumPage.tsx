@@ -7,6 +7,7 @@ import { UserLink } from '../components/ui/UserLink';
 import { ForumPostContent } from '../components/forum/ForumPostContent';
 import { CategoryModal } from '../components/forum/CategoryModal';
 import { useAuth } from '../context/AuthContext';
+import { useNotifications } from '../context/NotificationContext';
 import { forumRoutes } from '../constants/forumRoutes';
 import { RESTRICTED_FORUM_CATEGORIES } from '@cyberstars/shared/constants';
 import * as forumService from '../services/forumService';
@@ -145,6 +146,9 @@ function ForumIndex({
   const [error, setError] = useState<string | null>(null);
   // null = closed; { category: undefined } = create; { category } = edit.
   const [modal, setModal] = useState<{ category?: ForumCategoryDTO } | null>(null);
+  // Threads with a reply or a solution this person hasn't opened yet; the
+  // sidebar's Forum row counts them
+  const news = useNotifications().sections.forum;
 
   const isStaff = user.role !== 'USER';
 
@@ -204,6 +208,28 @@ function ForumIndex({
     <main className="forum-page">
       <div className="forum-content">
         <div>
+          {news.length > 0 && (
+            <section className="forum-group" aria-labelledby="forum-news-title">
+              <div className="forum-group-header">
+                <div id="forum-news-title" className="forum-group-title">
+                  {t('forum.news')}
+                </div>
+                <div className="forum-group-line" />
+              </div>
+              <div className="cat-table">
+                {news.map((e) => (
+                  <Link
+                    key={e.entityId}
+                    to={forumRoutes.thread(e.entityId)}
+                    className="forum-news-row"
+                  >
+                    <span className="forum-news-dot" aria-hidden="true" />
+                    <span className="forum-news-title">{e.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
           {Object.entries(groups).map(([groupName, cats]) => (
             <div className="forum-group" key={groupName}>
               <div className="forum-group-header">
@@ -539,6 +565,13 @@ function ThreadView({ threadId, user }: { threadId: number; user: AuthenticatedU
   const [replyContent, setReplyContent] = useState('');
   const [posting, setPosting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
+  const { markSectionRead } = useNotifications();
+
+  // Opening the thread reads what was new in it, even when it no longer loads,
+  // so a deleted thread can't keep the sidebar's Forum row counting
+  useEffect(() => {
+    markSectionRead('forum', threadId);
+  }, [threadId, markSectionRead]);
 
   const loadThread = useCallback(() => {
     forumService

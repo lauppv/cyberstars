@@ -14,6 +14,16 @@ let authUser: AuthenticatedUser | null = null;
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: authUser, isLoggedIn: authUser != null, isLoading: false }),
 }));
+const notif = vi.hoisted(() => ({
+  forum: [] as { entityId: number; title: string }[],
+  markSectionRead: vi.fn(),
+}));
+vi.mock('../context/NotificationContext', () => ({
+  useNotifications: () => ({
+    sections: { forum: notif.forum, support: [], connections: 0, laniakea: 0 },
+    markSectionRead: notif.markSectionRead,
+  }),
+}));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,
 }));
@@ -166,6 +176,7 @@ function clickRow(label: string, rowClass: string) {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  notif.forum = [];
   authUser = makeUser('USER');
   mocked.getCategories.mockResolvedValue([category]);
   mocked.getThreads.mockResolvedValue({ category, threads: [threadSummary] });
@@ -208,6 +219,24 @@ describe('ForumPage routing', () => {
     await waitFor(() => expect(mocked.getThreads).toHaveBeenCalledWith('python-help'));
   });
 
+  it('reads what was new in a thread once it opens', async () => {
+    renderAt('/forum/t/5');
+    await waitFor(() => expect(notif.markSectionRead).toHaveBeenCalledWith('forum', 5));
+    expect(notif.markSectionRead).toHaveBeenCalledTimes(1);
+  });
+
+  it('reads a thread that no longer loads too, so its count goes', async () => {
+    mocked.getThread.mockRejectedValue(new Error('Not found'));
+    renderAt('/forum/t/5');
+    await waitFor(() => expect(notif.markSectionRead).toHaveBeenCalledWith('forum', 5));
+  });
+
+  it('reads nothing on the index or a category', async () => {
+    renderAt('/forum/c/python-help');
+    await screen.findByText('Loops confuse me');
+    expect(notif.markSectionRead).not.toHaveBeenCalled();
+  });
+
   it('falls back to the index for a malformed thread id', async () => {
     renderAt('/forum/t/not-a-number');
     expect(await screen.findByText('Python Help')).toBeInTheDocument();
@@ -227,6 +256,28 @@ describe('ForumPage routing', () => {
 });
 
 describe('ForumIndex', () => {
+  it('lists the threads with something new for this person above the categories', async () => {
+    notif.forum = [
+      { entityId: 5, title: 'Loops confuse me' },
+      { entityId: 8, title: 'Lists' },
+    ];
+    renderAt('/forum');
+    const news = await screen.findByRole('region', { name: 'New for you' });
+    const links = within(news).getAllByRole('link');
+    expect(links.map((l) => [l.textContent, l.getAttribute('href')])).toEqual([
+      ['Loops confuse me', '/forum/t/5'],
+      ['Lists', '/forum/t/8'],
+    ]);
+    fireEvent.click(links[0]);
+    await waitFor(() => expect(mocked.getThread).toHaveBeenCalledWith(5));
+  });
+
+  it('shows no news box when nothing is new', async () => {
+    renderAt('/forum');
+    await screen.findByText('Python Help');
+    expect(screen.queryByRole('region', { name: 'New for you' })).toBeNull();
+  });
+
   it('shows a loading state until the categories resolve', () => {
     mocked.getCategories.mockReturnValue(new Promise(() => {}));
     renderAt('/forum');

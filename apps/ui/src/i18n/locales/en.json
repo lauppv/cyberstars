@@ -463,17 +463,6 @@
     "retry": "Try again",
     "loadFailed": "Your notifications couldn't be loaded.",
     "someone": "Someone",
-    "forumReply_one": "{{name}} replied to \"{{title}}\"",
-    "forumReply_other": "{{count}} new replies on \"{{title}}\"",
-    "forumSolution": "{{name}} marked your reply as the solution on \"{{title}}\"",
-    "forumReaction": "{{name}} reacted to your post in \"{{title}}\"",
-    "ticketNew": "New support ticket: \"{{title}}\"",
-    "ticketReply": "New reply on ticket \"{{title}}\"",
-    "status": "Ticket \"{{title}}\" is now {{status}}",
-    "connectionRequest": "{{name}} wants to connect with you",
-    "connectionAccepted": "{{name}} accepted your connection request",
-    "laniakeaRecap_one": "A Laniakea recap is open",
-    "laniakeaRecap_other": "{{count}} Laniakea recaps are open",
     "announcement": "Official announcement: {{text}}",
     "announcementTitle": "Official announcement",
     "poll": "Poll: {{text}}",
@@ -762,7 +751,8 @@
     "replyPlaceholder": "Type a reply...",
     "send": "Send",
     "you": "You",
-    "admin": "admin"
+    "admin": "admin",
+    "newActivity": "New"
   },
   "feedback": {
     "lesson": "Think we should change something in this lesson? Tell us and help the community grow",
@@ -925,7 +915,8 @@
     "viewsLower_other": "views",
     "postsCount_one": "{{count}} post",
     "postsCount_other": "{{count}} posts",
-    "noThreadsHint": "Be the first to post."
+    "noThreadsHint": "Be the first to post.",
+    "news": "New for you"
   },
   "almanac": {
     "categories": {

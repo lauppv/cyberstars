@@ -784,13 +784,8 @@ describe('toggleReaction', () => {
     expect(res.json).toHaveBeenCalledWith({ active: false });
   });
 
-  it('adds new reaction and notifies the post author', async () => {
-    mockPrisma.forumPost.findUnique.mockResolvedValue({
-      deleted: false,
-      authorId: 9,
-      threadId: 7,
-      thread: { title: 'T', category: { slug: 'general' } },
-    });
+  it('adds new reaction without notifying the post author', async () => {
+    mockPrisma.forumPost.findUnique.mockResolvedValue({ deleted: false });
     mockPrisma.forumReaction.findUnique.mockResolvedValue(null);
     mockPrisma.forumReaction.create.mockResolvedValue({});
     const res = mockRes();
@@ -804,13 +799,7 @@ describe('toggleReaction', () => {
       vi.fn(),
     );
     expect(res.json).toHaveBeenCalledWith({ active: true });
-    expect(mockNotifications.notify).toHaveBeenCalledWith({
-      recipientIds: [9],
-      actorId: 1,
-      type: 'FORUM_REACTION',
-      entityId: 7,
-      data: { title: 'T', categorySlug: 'general' },
-    });
+    expect(mockNotifications.notify).not.toHaveBeenCalled();
   });
 
   it('returns 400 for a non-numeric post ID', async () => {

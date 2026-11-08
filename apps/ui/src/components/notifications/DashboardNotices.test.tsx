@@ -230,7 +230,6 @@ describe('DashboardNotices', () => {
   it('leaves the other notifications to the bell', async () => {
     renderNotices();
     await waitFor(() => expect(h.service.getNotices).toHaveBeenCalledTimes(1));
-    await frame(notice(9, { type: 'FORUM_REPLY' }));
     await frame(notice(10, { type: 'POLL_ANSWER' }));
     expect(h.service.getNotices).toHaveBeenCalledTimes(1);
   });

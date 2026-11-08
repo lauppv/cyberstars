@@ -5,8 +5,13 @@ import { useAuth } from './AuthContext';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { useUserSocketFrames } from './UserSocketContext';
 import * as notificationsService from '../services/notificationsService';
-import { COLLAPSIBLE_TYPES } from '@cyberstars/shared/notifications';
-import type { NotificationDTO, UserSocketFrame } from '@cyberstars/shared/notifications';
+import { EMPTY_SECTIONS } from '@cyberstars/shared/notifications';
+import type {
+  NotificationDTO,
+  NotificationSection,
+  UnreadSections,
+  UserSocketFrame,
+} from '@cyberstars/shared/notifications';
 
 const PAGE_SIZE = 20;
 
@@ -17,8 +22,17 @@ function errMsg(err: unknown): string {
 
 interface NotificationContextValue {
   enabled: boolean;
+  // The bell's rows and unread count
   items: NotificationDTO[];
   unreadCount: number;
+  // What each sidebar row has unread
+  sections: UnreadSections;
+  // Shows a section read here at once, all of it or one thread or ticket; the
+  // server's push brings the true counts
+  clearSection: (section: NotificationSection, entityId?: number) => void;
+  // The page of a section, or one thread or ticket of it, is open: clears it
+  // here and tells the server
+  markSectionRead: (section: NotificationSection, entityId?: number) => void;
   loading: boolean;
   hasMore: boolean;
   // The list didn't load; kept until a load works, live rows or not.
@@ -46,6 +60,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
 
   const [items, setItems] = useState<NotificationDTO[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [sections, setSections] = useState<UnreadSections>(EMPTY_SECTIONS);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -67,6 +82,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
         if (load !== loads.current) return;
         setItems(page.items);
         setUnreadCount(page.unreadCount);
+        setSections(page.sections);
         setHasMore(page.items.length === PAGE_SIZE);
         setMoreError(null);
       })
@@ -90,6 +106,7 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     if (!enabled) {
       setItems([]); // eslint-disable-line react-hooks/set-state-in-effect
       setUnreadCount(0);
+      setSections(EMPTY_SECTIONS);
       setHasMore(false);
       setLoadFailed(false);
       setMoreError(null);
@@ -103,24 +120,12 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     if (frame.channel !== 'notification') return;
     if (frame.type === 'unread-count') {
       setUnreadCount(frame.payload.unreadCount);
+      setSections(frame.payload.sections);
     } else if (frame.type === 'new') {
+      // Only bell rows come as 'new', and none of them collapse, so a row is
+      // only ever new or the same one again
       const incoming = frame.payload;
-      // A collapsed event arrives as a REPLACEMENT row (fresh id). The unread
-      // row it superseded was deleted server-side, so drop our copy of it too.
-      const collapsible = COLLAPSIBLE_TYPES.has(incoming.type);
-      setItems((prev) => [
-        incoming,
-        ...prev.filter(
-          (n) =>
-            n.id !== incoming.id &&
-            !(
-              collapsible &&
-              !n.readAt &&
-              n.type === incoming.type &&
-              n.entityId === incoming.entityId
-            ),
-        ),
-      ]);
+      setItems((prev) => [incoming, ...prev.filter((n) => n.id !== incoming.id)]);
     }
   }, []);
   useUserSocketFrames(onFrame);
@@ -166,6 +171,28 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     [items],
   );
 
+  const clearSection = useCallback((section: NotificationSection, entityId?: number) => {
+    setSections((prev) => {
+      if (section === 'forum' || section === 'support') {
+        const left =
+          entityId === undefined ? [] : prev[section].filter((e) => e.entityId !== entityId);
+        return left.length === prev[section].length ? prev : { ...prev, [section]: left };
+      }
+      return prev[section] === 0 ? prev : { ...prev, [section]: 0 };
+    });
+  }, []);
+
+  const markSectionRead = useCallback(
+    (section: NotificationSection, entityId?: number) => {
+      if (!enabled) return;
+      clearSection(section, entityId);
+      // Sent even when nothing shows unread here: the first page may still be
+      // on its way, and the server pushes counts only when it read something
+      notificationsService.markSectionRead(section, entityId).catch(() => {});
+    },
+    [enabled, clearSection],
+  );
+
   const noteRead = useCallback((id: number) => {
     const now = new Date().toISOString();
     setItems((prev) => prev.map((n) => (n.id === id && !n.readAt ? { ...n, readAt: now } : n)));
@@ -177,6 +204,9 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
         enabled,
         items,
         unreadCount,
+        sections,
+        clearSection,
+        markSectionRead,
         loading,
         hasMore,
         loadFailed,

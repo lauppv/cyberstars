@@ -1,6 +1,11 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
-import { NOTICE_TYPES, NOTICES_MAX } from '@cyberstars/shared/notifications';
+import {
+  BELL_TYPES,
+  NOTICE_TYPES,
+  NOTICES_MAX,
+  SECTION_TYPES,
+} from '@cyberstars/shared/notifications';
 import type { NotificationData, NotificationType } from '@cyberstars/shared/notifications';
 
 export const actorInclude = { actor: { select: { name: true, avatarUrl: true } } };
@@ -23,9 +28,12 @@ function jsonData(
   return data ? (data as Prisma.InputJsonValue) : Prisma.JsonNull;
 }
 
+const SECTION_TYPE_LIST = Object.values(SECTION_TYPES).flat();
+
+// The bell's rows only; the rest are counted on the sidebar
 export function list(userId: number, take: number, before?: number): Promise<NotificationRow[]> {
   return prisma.notification.findMany({
-    where: { userId, ...(before ? { id: { lt: before } } : {}) },
+    where: { userId, type: { in: [...BELL_TYPES] }, ...(before ? { id: { lt: before } } : {}) },
     orderBy: { id: 'desc' },
     take,
     include: actorInclude,
@@ -62,8 +70,25 @@ export async function markShown(userId: number, ids: number[]): Promise<number> 
   return res.count;
 }
 
+// What the bell has unread
 export function countUnread(userId: number): Promise<number> {
-  return prisma.notification.count({ where: { userId, readAt: null } });
+  return prisma.notification.count({
+    where: { userId, readAt: null, type: { in: [...BELL_TYPES] } },
+  });
+}
+
+export type UnreadSectionRow = Prisma.NotificationGetPayload<{
+  select: { type: true; entityId: true; data: true };
+}>;
+
+// Every unread row the sidebar counts, newest first. Bounded by the per-user
+// retention cap, so it never grows past that
+export function listUnreadSections(userId: number): Promise<UnreadSectionRow[]> {
+  return prisma.notification.findMany({
+    where: { userId, readAt: null, type: { in: SECTION_TYPE_LIST } },
+    orderBy: { id: 'desc' },
+    select: { type: true, entityId: true, data: true },
+  });
 }
 
 export function findUnreadFor(
@@ -175,9 +200,10 @@ export async function clearExcerpt(
   );
 }
 
+// The bell's "mark all read", so it leaves the sidebar's counts alone
 export async function markReadUpTo(userId: number, upToId: number): Promise<number> {
   const res = await prisma.notification.updateMany({
-    where: { userId, id: { lte: upToId }, readAt: null },
+    where: { userId, id: { lte: upToId }, readAt: null, type: { in: [...BELL_TYPES] } },
     data: { readAt: new Date() },
   });
   return res.count;
@@ -192,6 +218,25 @@ export async function markReadByEntity(
 ): Promise<number> {
   const res = await prisma.notification.updateMany({
     where: { userId, type, entityId, readAt: null },
+    data: { readAt: new Date() },
+  });
+  return res.count;
+}
+
+// Mark a sidebar section read: all of it, or only what is about one thread or
+// ticket. Scoped by userId and to the section's types
+export async function markSectionRead(
+  userId: number,
+  types: readonly NotificationType[],
+  entityId?: number,
+): Promise<number> {
+  const res = await prisma.notification.updateMany({
+    where: {
+      userId,
+      type: { in: [...types] },
+      readAt: null,
+      ...(entityId !== undefined ? { entityId } : {}),
+    },
     data: { readAt: new Date() },
   });
   return res.count;

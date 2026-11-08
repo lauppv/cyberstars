@@ -21,7 +21,7 @@ class MockWebSocket {
 const frame: UserSocketFrame = {
   channel: 'notification',
   type: 'unread-count',
-  payload: { unreadCount: 5 },
+  payload: { unreadCount: 5, sections: { forum: [], support: [], connections: 0, laniakea: 0 } },
 };
 
 beforeEach(() => {
