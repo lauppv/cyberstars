@@ -7,7 +7,7 @@
         {
           "count": "small",
           "equals": 0,
-          "label": "pieces of fine print (<small>)"
+          "label": "pieces of fine print"
         }
       ]
     },
@@ -18,21 +18,21 @@
         {
           "text": "h2",
           "equals": "Today on Board",
-          "label": "a section heading (<h2>)"
+          "label": "a section heading"
         },
         {
           "text": "p strong",
           "equals": "Hatch 3 stays closed",
-          "label": "the warning (<strong>)"
+          "label": "the warning"
         },
         {
           "exists": "p sub",
-          "label": "the water paragraph (<sub>)"
+          "label": "the water paragraph"
         },
         {
           "count": "h2 ~ h3",
           "atLeast": 2,
-          "label": "shift headings (<h3>)"
+          "label": "shift headings"
         }
       ]
     },
@@ -43,12 +43,12 @@
         {
           "text": "h1",
           "equals": "Welcome aboard",
-          "label": "the biggest heading (<h1>)"
+          "label": "the biggest heading"
         },
         {
           "text": "h2",
           "equals": "About the Station",
-          "label": "a section heading (<h2>)"
+          "label": "a section heading"
         },
         {
           "text": "p",
