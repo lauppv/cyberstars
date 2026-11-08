@@ -8,7 +8,7 @@
         {
           "text": "p#first-delay",
           "equals": "First delay: SL-103",
-          "label": "the first delay (<p id=\"first-delay\">)"
+          "label": "the first delay"
         }
       ]
     },
@@ -20,7 +20,7 @@
         {
           "text": "p#active-count",
           "equals": "Active flights: 4",
-          "label": "the active count (<p id=\"active-count\">)"
+          "label": "the active count"
         },
         {
           "noErrors": true

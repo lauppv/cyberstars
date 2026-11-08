@@ -8,7 +8,7 @@
         {
           "text": "p#next-flight",
           "equals": "SL-101 to Moon Base at 08:30",
-          "label": "the next flight (<p id=\"next-flight\">)"
+          "label": "the next flight"
         }
       ]
     },
