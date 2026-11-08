@@ -15,6 +15,8 @@ export interface StoryPart {
 
 // Words, the pinned picture in a 440px column, words
 const MIDDLE = 'lg:grid-cols-[minmax(0,1fr)_440px_minmax(0,1fr)] lg:gap-x-12';
+// The room after the last part, at the foot of both columns
+const TAIL = 'pb-[120px]';
 // A wide picture spans the middle column, the gap and the side column beside
 // it: half the story's width (cqw, the grid is the container) plus half of 440
 const WIDE = 'w-[calc(50cqw+220px)]';
@@ -91,8 +93,11 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
     };
   }, []);
 
+  // Both columns end with TAIL of room, so the story runs on past its last
+  // part's words and that part's picture stays pinned about as long as the
+  // others, rather than leaving with the page as soon as its words are centred
   const column = (side: 0 | 1, lead: string) => (
-    <div className={`flex flex-col gap-12 ${lead}`}>
+    <div className={`flex flex-col gap-12 ${lead} ${TAIL}`}>
       {parts.map((part, i) =>
         i % 2 === side ? (
           <div
