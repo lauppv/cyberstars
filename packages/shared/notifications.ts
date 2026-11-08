@@ -51,7 +51,7 @@ export const NOTIFICATION_SECTIONS = Object.keys(SECTION_TYPES) as NotificationS
 
 // A thread or a ticket with something unread, newest first; its title is the
 // one snapshotted when the notification was made
-export interface SectionEntity {
+interface SectionEntity {
   entityId: number;
   title: string;
 }
