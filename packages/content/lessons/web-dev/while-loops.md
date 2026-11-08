@@ -1,31 +1,33 @@
-A `for` loop is for a known number of rounds: every item, ten to one. Sometimes you don't know how many rounds it will take, only when to stop. That's a `while` loop.
+A `for` loop is for a number of rounds you know: every item, ten down to one. Sometimes you don't know how many rounds it will take, only when to stop. That's what a `while` loop is for.
 
 ## while
 
 ```js
-let crates = 40;
-let trips = 0;
-while (crates > 0) {
-  crates -= 12; // a cart carries 12
-  trips++;
+let signal = 3;
+let relays = 0;
+while (signal < 1000) {
+  signal = signal * 2; // each relay doubles the signal
+  relays++;
 }
-console.log(`${trips} trips`); // 4 trips
+console.log(`${relays} relays`); // 9 relays
 ```
 
-Before each round, the condition is checked; while it's true, the block runs again. Nobody had to work out 40 / 12 and round it up: the loop simply keeps going until the crates are gone.
+The condition is checked before each round. While it's true, the block runs again. Nobody had to work out how many times 3 must double to pass 1000: the loop simply keeps going until it does.
 
-The block **must** change something the condition depends on, here `crates`, or the condition stays true forever. In the preview, a loop running past two seconds is stopped; in a real browser, the tab freezes.
+The block **must** change something the condition depends on, here `signal`, or the condition stays true forever. In the preview, a loop that runs for more than two seconds is stopped. In a real browser, the tab freezes.
 
 ## for or while
 
-- **`for`** when you know the rounds in advance: each item, a count.
-- **`while`** when you know the stopping point but not the count: until the fuel runs out, until the target is reached.
+- **`for`** when you know the number of rounds in advance: each item, a count.
+- **`while`** when you know when to stop, but not how many rounds: until the fuel runs out, until the target is reached.
 
-Any `for` loop can be written as a `while`, and the other way round; pick the one that says what you mean.
+Any `for` loop can be written as a `while`, and the other way round. Pick the one that says best what you mean.
 
 ---
 
 ## Mission: Fuel Gauge
 
-- Under the flight count, add `<p>Fuel: <span id="fuel-start">100</span> units, burning <span id="burn-rate">15</span> a minute</p>` and an empty paragraph with the id `fuel`.
-- With a `while` loop, burn the fuel minute by minute until none is left, counting the minutes, and write `Fuel lasts 7 minutes` in the fuel paragraph. The last minute counts even if it burns less than a full minute's worth.
+Pilots want to know how long the fuel lasts.
+
+- Under the flight count, add a sentence that says how much fuel there is and how fast it burns: **Fuel: 100 units, burning 15 a minute**, with the two numbers in elements with the ids `fuel-start` and `burn-rate`. Under it, an empty paragraph with the id `fuel`.
+- The fuel paragraph says how many minutes the fuel lasts: `Fuel lasts 7 minutes`. Burn it minute by minute until none is left. The last minute counts, even if it burns less than a full minute's worth. When the numbers on the page change, the answer changes too.

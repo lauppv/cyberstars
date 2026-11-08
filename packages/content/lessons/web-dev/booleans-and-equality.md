@@ -1,4 +1,4 @@
-The schedule gets a script of its own, and its first questions are yes-or-no ones: is the first flight boarding? Is a delay showing? JavaScript answers with **booleans**.
+The schedule gets a script of its own, and its first questions have yes-or-no answers: is the first flight boarding? Is there a delay? JavaScript answers with **booleans**.
 
 ## true and false
 
@@ -11,7 +11,7 @@ A **boolean** is one of two values: `true` or `false`. Comparisons give them:
 "Bay 2" !== "Bay 3"; // true
 ```
 
-`===` asks "is this exactly the same?", and `!==` "is it different?".
+`===` asks "is this exactly the same?", and `!==` asks "is it different?".
 
 ## === and ==
 
@@ -23,7 +23,7 @@ JavaScript also has `==`, a looser equals that converts values before comparing:
 "" == 0; // true, surprisingly
 ```
 
-Those conversions are full of surprises. Always use `===` and `!==`, and convert yourself, with `Number()`, when you mean to.
+Those changes are full of surprises. Always use `===` and `!==`, and change the type yourself, with `Number()`, when you need to.
 
 ## and, or, not
 
@@ -36,15 +36,23 @@ const crates = 40;
 crates > 10 && crates < 50; // true: both hold
 ```
 
-Booleans can be kept in variables like any value. Name them as questions: `isBoarding`, `hasDelays`.
+You can keep booleans in variables like any other value. Give them names that sound like questions: `isBoarding`, `hasDelays`.
 
-This lesson brought an empty `schedule.js`.
+This lesson added an empty `schedule.js`.
 
 ---
 
 ## Mission: Boarding Check
 
-- Link `schedule.js` to `schedule.html`, deferred. Under the flights table, add an empty paragraph with the id `boarding-now`.
-- In `schedule.js`, read the status of the first flight in the table's body, and keep in a variable whether it is exactly `Boarding`.
-- Write in the paragraph `First flight boarding: ` and that boolean: `First flight boarding: true` on your schedule.
-- Log `Loose:` and the result of `"7" == 7`, then `Strict:` and the result of `"7" === 7`.
+The gate staff want to know straight away if the first flight is boarding.
+
+- Link `schedule.js` to `schedule.html`, so it runs once the page has been read. Under the flights table, add an empty paragraph with the id `boarding-now`.
+- It answers with `true` or `false` whether the first flight in the table's body has the status `Boarding`, exactly: `First flight boarding: true` on your schedule. When the table changes, the answer changes with it.
+- To see the difference between the two kinds of equals, the console shows:
+
+```text
+Loose: true
+Strict: false
+```
+
+The first line is the result of `"7" == 7`, the second of `"7" === 7`. Let JavaScript work them out: don't type `true` and `false` yourself.

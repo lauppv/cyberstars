@@ -8,7 +8,7 @@
         {
           "text": "p#gate-message",
           "equals": "Now boarding: SL-101",
-          "label": "the gate message (<p id=\"gate-message\">)"
+          "label": "the gate message"
         },
         {
           "noErrors": true

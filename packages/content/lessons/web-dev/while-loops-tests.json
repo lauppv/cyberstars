@@ -8,17 +8,17 @@
         {
           "text": "span#fuel-start",
           "equals": "100",
-          "label": "the fuel at the start (<span id=\"fuel-start\">)"
+          "label": "the fuel at the start"
         },
         {
           "text": "span#burn-rate",
           "equals": "15",
-          "label": "the fuel burnt a minute (<span id=\"burn-rate\">)"
+          "label": "the fuel burnt a minute"
         },
         {
           "text": "p#fuel",
           "equals": "Fuel lasts 7 minutes",
-          "label": "the fuel gauge (<p id=\"fuel\">)"
+          "label": "the fuel gauge"
         },
         {
           "noErrors": true
