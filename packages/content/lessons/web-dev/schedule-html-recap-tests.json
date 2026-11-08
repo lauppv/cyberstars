@@ -1,0 +1,83 @@
+{
+  "cases": [
+    {
+      "name": "Every flight cell says its column",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "count": "#flights tbody tr:not(:has(> td.code:nth-child(1)))",
+          "equals": 0,
+          "label": "flights whose first cell isn't class=\"code\""
+        },
+        {
+          "count": "#flights tbody tr:not(:has(> td.destination:nth-child(2)))",
+          "equals": 0,
+          "label": "flights whose second cell isn't class=\"destination\""
+        },
+        {
+          "count": "#flights tbody tr:not(:has(> td.departs:nth-child(3)))",
+          "equals": 0,
+          "label": "flights whose third cell isn't class=\"departs\""
+        },
+        {
+          "count": "#flights tbody tr:not(:has(> td.status:nth-child(4)))",
+          "equals": 0,
+          "label": "flights whose fourth cell isn't class=\"status\""
+        }
+      ]
+    },
+    {
+      "name": "The bays have a table of their own",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "h2",
+          "equals": "Docking Bays",
+          "label": "a section heading (<h2>)"
+        },
+        {
+          "text": "table#bays > caption",
+          "equals": "Docking bays",
+          "label": "the caption of a table with id=\"bays\""
+        },
+        {
+          "count": "#bays > thead > tr > th[scope=\"col\"]",
+          "equals": 3,
+          "label": "column headers in its <thead>"
+        },
+        {
+          "text": "#bays thead th:nth-child(1)",
+          "equals": "Bay",
+          "label": "its first header"
+        },
+        {
+          "text": "#bays thead th:nth-child(3)",
+          "equals": "Ship",
+          "label": "its third header"
+        },
+        {
+          "count": "#bays > tbody > tr",
+          "atLeast": 3,
+          "label": "rows in its <tbody>"
+        }
+      ]
+    },
+    {
+      "name": "One bay covers two rows",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "exists": "#bays tbody td[rowspan=\"2\"]",
+          "label": "a bay cell two rows tall (rowspan=\"2\")"
+        },
+        {
+          "exists": "#bays tbody tr:has(> td[rowspan=\"2\"]) + tr:not(:has(> td:nth-child(3)))",
+          "label": "the row under it, with one cell fewer"
+        }
+      ]
+    }
+  ]
+}

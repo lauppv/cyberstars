@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "name": "Links to other sites are gold",
+      "visible": true,
+      "steps": [
+        {
+          "style": "a[href^=\"https://\"]",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "a link to another site"
+        },
+        {
+          "style": "p.jumps a",
+          "prop": "color",
+          "equals": "rgb(142, 203, 255)",
+          "label": "a jump link"
+        }
+      ]
+    },
+    {
+      "name": "Email links have a dotted line",
+      "visible": true,
+      "steps": [
+        {
+          "style": "a[href^=\"mailto:\"]",
+          "prop": "text-decoration-style",
+          "equals": "dotted",
+          "label": "an email link"
+        },
+        {
+          "style": "p.jumps a",
+          "prop": "text-decoration-style",
+          "equals": "solid",
+          "label": "a jump link"
+        }
+      ]
+    },
+    {
+      "name": "New links follow without a class",
+      "visible": false,
+      "files": {
+        "links.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <p><a href=\"https://example.com/new\">New</a> <a href=\"mailto:new@station.example\">Mail</a></p>\n  </body>\n</html>\n"
+      },
+      "page": "links.html",
+      "steps": [
+        {
+          "style": "a[href^=\"https://\"]",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "another link to another site"
+        },
+        {
+          "style": "a[href^=\"mailto:\"]",
+          "prop": "text-decoration-style",
+          "equals": "dotted",
+          "label": "another email link"
+        }
+      ]
+    },
+    {
+      "name": "Column headers line up left, spanning cells are italic",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "th[scope=\"col\"]",
+          "prop": "text-align",
+          "equals": "left",
+          "label": "a column header"
+        },
+        {
+          "style": "td[colspan]",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "a cell that spans columns"
+        },
+        {
+          "style": "#flights tbody td",
+          "prop": "font-style",
+          "equals": "normal",
+          "label": "an ordinary cell"
+        }
+      ]
+    }
+  ]
+}

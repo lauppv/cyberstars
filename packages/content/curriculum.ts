@@ -2018,6 +2018,21 @@ export const lessons = [
     title: 'Project: Cargo Ledger',
     sortOrder: 44,
   },
+  { courseKey: 'web-dev', slug: 'tables', title: 'Tables', sortOrder: 45, hasCodeFile: true },
+  {
+    courseKey: 'web-dev',
+    slug: 'table-sections-and-spans',
+    title: 'Table Head, Body and Spans',
+    sortOrder: 46,
+  },
+  { courseKey: 'web-dev', slug: 'schedule-html-recap', title: 'HTML Recap', sortOrder: 47 },
+  { courseKey: 'web-dev', slug: 'combinators', title: 'Combinators', sortOrder: 48 },
+  {
+    courseKey: 'web-dev',
+    slug: 'attribute-selectors',
+    title: 'Attribute Selectors',
+    sortOrder: 49,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2081,6 +2096,17 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'textcontent-and-innerhtml',
         'crew-js-recap',
         'cargo-ledger-project',
+      ],
+    },
+    {
+      key: 'flight-schedule',
+      title: 'Flight Schedule',
+      lessons: [
+        'tables',
+        'table-sections-and-spans',
+        'schedule-html-recap',
+        'combinators',
+        'attribute-selectors',
       ],
     },
   ],

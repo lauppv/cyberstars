@@ -380,6 +380,11 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'textcontent-and-innerhtml': 'textContent și innerHTML',
     'crew-js-recap': 'Recapitulare JavaScript',
     'cargo-ledger-project': 'Proiect: registrul de marfă',
+    tables: 'Tabele',
+    'table-sections-and-spans': 'Antet, corp și celule întinse',
+    'schedule-html-recap': 'Recapitulare HTML',
+    combinators: 'Combinatori',
+    'attribute-selectors': 'Selectori de atribute',
   },
 };
 
@@ -389,5 +394,6 @@ export const partTitlesRo: Record<string, Record<string, string>> = {
   'web-dev': {
     'station-home': 'Pagina principală a stației',
     'crew-directory': 'Lista echipajului',
+    'flight-schedule': 'Orarul zborurilor',
   },
 };
