@@ -21,9 +21,16 @@ async function write(page: Page, name: string, text: string) {
   await page.keyboard.insertText(text);
 }
 
+// The card recommending dev mode lies over the site's top right; the tests
+// that aren't about it close it for their session before the lesson loads
+async function skipDevModeHint(page: Page) {
+  await page.addInitScript(() => sessionStorage.setItem('cyberstars.devModeHint', 'closed'));
+}
+
 test('a web lesson previews a site of several files, sealed off from the lesson', async ({
   page,
 }) => {
+  await skipDevModeHint(page);
   await page.goto('/lesson/web-dev/first-page');
   // The left side shows the lesson until the student turns to the code
   await expect(page.getByTestId('lesson')).toBeVisible({ timeout: 10_000 });
@@ -77,6 +84,7 @@ test('a web lesson previews a site of several files, sealed off from the lesson'
 });
 
 test('Run says once what it is for, then draws the page again', async ({ page }) => {
+  await skipDevModeHint(page);
   await page.goto('/lesson/web-dev/first-page');
   await expect(page.getByTitle('Preview of index.html')).toBeVisible({ timeout: 10_000 });
   await page.getByRole('button', { name: '▶ Run' }).click();
@@ -101,6 +109,7 @@ test("a web lesson starts from the student's site, and Reset offers both version
   await page.route('**/api/lessons/web-dev/first-page/start*', (route) =>
     route.fulfill({ json: { course: site('Course'), passed: site('Mine') } }),
   );
+  await skipDevModeHint(page);
   await page.goto('/lesson/web-dev/first-page');
   const frame = page.frameLocator('iframe[title^="Preview"]');
   await expect(frame.locator('h1')).toHaveText('Mine', { timeout: 10_000 });
@@ -132,6 +141,7 @@ test("a web lesson says when its start didn't load, and Try again brings it in",
           json: { course: '```html index.html\n<h1>Course</h1>\n```', passed: null },
         }),
   );
+  await skipDevModeHint(page);
   await page.goto('/lesson/web-dev/first-page');
   const alert = page.getByRole('alert').filter({ hasText: "couldn't be loaded" });
   await expect(alert).toBeVisible({ timeout: 10_000 });
@@ -141,4 +151,48 @@ test("a web lesson says when its start didn't load, and Try again brings it in",
   await expect(page.frameLocator('iframe[title^="Preview"]').locator('h1')).toHaveText('Course', {
     timeout: 10_000,
   });
+});
+
+// A web lesson recommends dev mode under its button once a session; Got it
+// closes it until the tab is opened again, Don't show me again for good
+test('a web lesson recommends dev mode once a session, until told not to', async ({
+  page,
+  context,
+}) => {
+  const hint = (p: Page) => p.getByRole('dialog', { name: 'Dev mode tip' });
+  await page.goto('/lesson/web-dev/first-page');
+  await expect(hint(page)).toContainText('We recommend dev mode for this course', {
+    timeout: 10_000,
+  });
+  await hint(page).getByRole('button', { name: 'Got it' }).click();
+  await expect(hint(page)).toHaveCount(0);
+  await page.reload();
+  await expect(page.getByRole('button', { name: 'Dev mode: off' })).toBeVisible({
+    timeout: 10_000,
+  });
+  await expect(hint(page)).toHaveCount(0);
+
+  // A tab opened again is a new session; pressing Dev mode closes the card
+  // for it too, and it stays closed once dev mode is off again
+  const again = await context.newPage();
+  await again.goto('/lesson/web-dev/first-page');
+  await expect(hint(again)).toBeVisible({ timeout: 10_000 });
+  await again.getByRole('button', { name: 'Dev mode: off' }).click();
+  await expect(hint(again)).toHaveCount(0);
+  await again.getByRole('button', { name: 'Dev mode: on' }).click();
+  await expect(again.getByRole('button', { name: 'Dev mode: off' })).toBeVisible();
+  await expect(hint(again)).toHaveCount(0);
+
+  const third = await context.newPage();
+  await third.goto('/lesson/web-dev/first-page');
+  await expect(hint(third)).toBeVisible({ timeout: 10_000 });
+  await hint(third).getByRole('button', { name: "Don't show me again" }).click();
+  await expect(hint(third)).toHaveCount(0);
+
+  const later = await context.newPage();
+  await later.goto('/lesson/web-dev/first-page');
+  await expect(later.getByRole('button', { name: 'Dev mode: off' })).toBeVisible({
+    timeout: 10_000,
+  });
+  await expect(hint(later)).toHaveCount(0);
 });

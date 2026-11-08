@@ -53,6 +53,8 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { useResizeSplit } from '../hooks/useResizeSplit';
 import { useDevMode } from '../hooks/useDevMode';
+import { useDevModeHint } from '../hooks/useDevModeHint';
+import { DevModeHint } from '../components/web/DevModeHint';
 import { useSubmissions } from '../hooks/useSubmissions';
 import { setRunWait, withRunWait } from '../hooks/useRunWait';
 import type { LessonMeta, RunLesson } from '@cyberstars/shared/lesson';
@@ -230,6 +232,10 @@ export function LessonPage() {
   const devModeChoice = useDevMode();
   // Only a lesson with an editor has the button, so only there can it be left
   const devMode = devModeChoice.on && !isTerminal;
+  // A web lesson recommends dev mode once a session, until the student says
+  // not to again
+  const devModeHint = useDevModeHint();
+  const devModeHintShown = isWeb && devModeChoice.available && !devMode && devModeHint.open;
   const devHSplit = useResizeSplit({
     axis: 'x',
     initial: 25,
@@ -876,19 +882,25 @@ export function LessonPage() {
         </button>
       )}
       {devModeChoice.available && (
-        <button
-          type="button"
-          data-track="dev-mode"
-          onClick={() => {
-            setMenuOpen(false);
-            devModeChoice.toggle();
-          }}
-          aria-pressed={devMode}
-          // One look on and off: only its words tell which it is
-          className="flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border border-[var(--border)] bg-[var(--surface)] text-[var(--accent)] hover:border-[var(--accent)]"
-        >
-          {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
-        </button>
+        <div className="relative">
+          <button
+            type="button"
+            data-track="dev-mode"
+            onClick={() => {
+              setMenuOpen(false);
+              if (devModeHintShown) devModeHint.close();
+              devModeChoice.toggle();
+            }}
+            aria-pressed={devMode}
+            // One look on and off: only its words tell which it is
+            className="flex h-8 px-3 items-center rounded-[var(--radius-sm)] text-[12px] font-semibold transition cursor-pointer border border-[var(--border)] bg-[var(--surface)] text-[var(--accent)] hover:border-[var(--accent)]"
+          >
+            {t(devMode ? 'lesson.devModeOn' : 'lesson.devModeOff')}
+          </button>
+          {devModeHintShown && (
+            <DevModeHint onClose={devModeHint.close} onCloseForGood={devModeHint.closeForGood} />
+          )}
+        </div>
       )}
       {!devMode && (
         <div className="relative" ref={menuRef}>

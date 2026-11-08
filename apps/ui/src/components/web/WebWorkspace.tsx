@@ -140,6 +140,7 @@ export default function WebWorkspace({
   };
   const bandRef = useRef<HTMLDivElement>(null);
   const siteRef = useRef<HTMLDivElement>(null);
+  const codeRef = useRef<HTMLDivElement>(null);
   // Dev mode keeps its own splits on the device, as on any lesson
   const plainSides = useResizeSplit({
     axis: 'x',
@@ -171,8 +172,26 @@ export default function WebWorkspace({
     containerRef: siteRef,
     storageKey: 'cyberstars.devMode.webSite',
   });
+  // The files beside the editor start at 10rem, the floor the layout keeps
+  // so a file's name stays readable, and a drag only widens them
+  const plainFiles = useResizeSplit({
+    axis: 'x',
+    initial: 15,
+    min: 15,
+    max: 60,
+    containerRef: codeRef,
+  });
+  const devFiles = useResizeSplit({
+    axis: 'x',
+    initial: 15,
+    min: 15,
+    max: 60,
+    containerRef: codeRef,
+    storageKey: 'cyberstars.devMode.webFiles',
+  });
   const sides = devMode ? devSides : plainSides;
   const siteSplit = devMode ? devSite : plainSite;
+  const filesSplit = devMode ? devFiles : plainFiles;
   // Whether the sides stand next to each other (the band is @2xl wide): the
   // actions sit at the far right then, over the site, and on a phone over
   // the lesson and the code, so one of them is always at hand
@@ -370,7 +389,7 @@ export default function WebWorkspace({
             title={t('web.previewTitle', { page: page })}
             // While a divider is dragged the frame lets the pointer through:
             // over it, the moves would go to the page and the drag would stop
-            className={`w-full h-full border-none block ${sides.dragging || siteSplit.dragging ? 'pointer-events-none' : ''}`}
+            className={`w-full h-full border-none block ${sides.dragging || siteSplit.dragging || filesSplit.dragging ? 'pointer-events-none' : ''}`}
           />
         ) : (
           !page && <p className="m-0 px-4 py-3 text-[13px] text-[#444]">{t('web.noPage')}</p>
@@ -453,11 +472,21 @@ export default function WebWorkspace({
             {lesson}
           </div>
           <div
+            ref={codeRef}
             className={`${side === 'code' ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col @2xl:flex-row`}
           >
-            <div className="shrink-0 max-h-[35%] @2xl:max-h-none w-full @2xl:w-40 border-b @2xl:border-b-0 @2xl:border-r border-[var(--border)] flex flex-col min-h-0">
+            <div
+              style={{ '--files': `${filesSplit.size}%` } as CSSProperties}
+              className="shrink-0 max-h-[35%] @2xl:max-h-none w-full @2xl:w-[var(--files)] @2xl:min-w-40 border-b @2xl:border-b-0 border-[var(--border)] flex flex-col min-h-0"
+            >
               {tree}
             </div>
+            <ResizeHandle
+              axis="x"
+              className="hidden @2xl:block"
+              onPointerDown={filesSplit.onPointerDown}
+              dragging={filesSplit.dragging}
+            />
             <div className="flex-1 min-w-0 min-h-0 flex flex-col">{editor}</div>
           </div>
         </div>
@@ -498,6 +527,7 @@ export default function WebWorkspace({
                 onClick={() => {
                   devSides.reset();
                   devSite.reset();
+                  devFiles.reset();
                 }}
                 aria-label={t('lesson.devModeReset')}
                 title={t('lesson.devModeReset')}
