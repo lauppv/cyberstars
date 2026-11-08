@@ -1,15 +1,15 @@
-To the browser, every element is a **box**, a rectangle, even a single word in a `<span>`. Laying out a page is deciding how big those boxes are and how far apart. It starts with what a box is made of.
+For the browser, every element is a **box**: a rectangle, even a single word in a `<span>`. Laying out a page means deciding how big those boxes are and how far apart they are. It starts with what a box is made of.
 
 ## Four layers
 
 From the inside out:
 
 1. **Content**: the text or picture itself.
-2. **Padding**: room between the content and the border, inside the box. It takes the box's background.
+2. **Padding**: space between the content and the border, inside the box. It has the box's background color.
 3. **Border**: a line around the padding.
-4. **Margin**: room outside the border, between this box and its neighbors. It's always see-through.
+4. **Margin**: space outside the border, between this box and the boxes next to it. It's always see-through.
 
-A sign on a hatch shows the first three. Its words get room inside the sign, and a line goes round it:
+A sign on a hatch shows the first three. Its words get some space inside the sign, and a line goes around it:
 
 ```css
 .hatch-sign {
@@ -19,7 +19,7 @@ A sign on a hatch shows the first three. Its words get room inside the sign, and
 }
 ```
 
-The fourth, margin, is the room a box keeps from the boxes around it. Pictures in a gallery keep their distance like this:
+The fourth, margin, is the space a box keeps from the boxes around it. Pictures in a gallery keep their distance like this:
 
 ```css
 .photo {
@@ -27,7 +27,7 @@ The fourth, margin, is the room a box keeps from the boxes around it. Pictures i
 }
 ```
 
-`border` takes three values at once: its width, its style (`solid`, `dashed`, `dotted`...) and its color. Without a style, there is no border at all.
+`border` takes three values at once: its width, its style (`solid`, `dashed`, `dotted`...) and its color. Without a style, there's no border at all.
 
 ## One side or all four
 
@@ -39,13 +39,13 @@ padding: 12px 24px; /* top and bottom, then left and right */
 padding: 4px 8px 12px 16px; /* top, right, bottom, left */
 ```
 
-Four values go round like a clock's hand, from the top.
+Four values go around like a clock's hand, starting at the top.
 
 ## Seeing the boxes
 
-In any browser, right-click an element and pick **Inspect**: the developer tools draw its box, padding in one color, margin in another, with every size written next to it. When a page's spacing puzzles you, that's the first place to look.
+In any browser, right-click an element and pick **Inspect**. The developer tools draw its box, with the padding in one color and the margin in another, and every size written next to it. When the spacing on a page confuses you, look there first.
 
-One surprise you'll meet there: when two boxes stand one above the other, their vertical margins don't add up; the bigger one wins. A heading with a margin of 20px under a paragraph with 16px are 20px apart, not 36px.
+One surprise you'll see there: when two boxes stand one above the other, their margins between them don't add up. The bigger one wins. A heading with a 20px margin under a paragraph with a 16px margin are 20px apart, not 36px.
 
 ---
 
