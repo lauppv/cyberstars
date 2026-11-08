@@ -2069,6 +2069,15 @@ export const lessons = [
     title: 'Break and Continue',
     sortOrder: 59,
   },
+  { courseKey: 'web-dev', slug: 'objects', title: 'Objects', sortOrder: 60 },
+  {
+    courseKey: 'web-dev',
+    slug: 'arrays-of-objects',
+    title: 'Arrays of Objects',
+    sortOrder: 61,
+  },
+  { courseKey: 'web-dev', slug: 'filter', title: 'filter', sortOrder: 62 },
+  { courseKey: 'web-dev', slug: 'sort', title: 'sort and Its Comparator', sortOrder: 63 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2153,6 +2162,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'else-if-and-the-ternary',
         'while-loops',
         'break-and-continue',
+        'objects',
+        'arrays-of-objects',
+        'filter',
+        'sort',
       ],
     },
   ],

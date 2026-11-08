@@ -395,6 +395,10 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'else-if-and-the-ternary': 'Else if și operatorul ternar',
     'while-loops': 'Bucle while',
     'break-and-continue': 'break și continue',
+    objects: 'Obiecte',
+    'arrays-of-objects': 'Array-uri de obiecte',
+    filter: 'filter',
+    sort: 'sort și comparatorul',
   },
 };
 
