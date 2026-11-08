@@ -346,6 +346,7 @@ describe('WebWorkspace', () => {
   it("keeps dev mode's splits on the device, with a way back to the first sizes", () => {
     localStorage.setItem('cyberstars.devMode.webSides', '40');
     localStorage.setItem('cyberstars.devMode.webSite', '55');
+    localStorage.setItem('cyberstars.devMode.webFiles', '35');
     const props = {
       courseKey: 'web-dev',
       lessonSlug: 'first-page',
@@ -355,22 +356,23 @@ describe('WebWorkspace', () => {
       actions: <button type="button">Lesson actions</button>,
     };
     const split = () =>
-      ['--split', '--site-split']
+      ['--split', '--site-split', '--files']
         .map((v) => document.querySelector(`[style*="${v}"]`)!.getAttribute('style'))
         .join(' ');
     const { rerender } = render(<WebWorkspace {...props} />);
-    expect(split()).toBe('--split: 50%; --site-split: 70%;');
+    expect(split()).toBe('--split: 50%; --site-split: 70%; --files: 15%;');
     expect(
       screen.queryByRole('button', { name: 'Put the panels back to their first sizes' }),
     ).toBeNull();
 
     rerender(<WebWorkspace {...props} devMode />);
-    expect(split()).toBe('--split: 40%; --site-split: 55%;');
+    expect(split()).toBe('--split: 40%; --site-split: 55%; --files: 35%;');
     fireEvent.click(
       screen.getByRole('button', { name: 'Put the panels back to their first sizes' }),
     );
-    expect(split()).toBe('--split: 50%; --site-split: 70%;');
+    expect(split()).toBe('--split: 50%; --site-split: 70%; --files: 15%;');
     expect(localStorage.getItem('cyberstars.devMode.webSides')).toBeNull();
+    expect(localStorage.getItem('cyberstars.devMode.webFiles')).toBeNull();
     // The actions stand once, at the far right over the site
     expect(screen.getAllByRole('button', { name: 'Lesson actions' })).toHaveLength(1);
   });

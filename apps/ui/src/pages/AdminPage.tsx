@@ -100,10 +100,10 @@ export function AdminPage() {
             </div>
           ) : stats ? (
             <div className="grid grid-cols-1 @2xl:grid-cols-3 gap-5">
-              {/* Users, in one row with the visitors charts */}
-              <section className={CARD_CLS}>
+              {/* Users, on its own row above the visitors charts */}
+              <section className={CARD_CLS + ' @2xl:col-span-3'}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
-                <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
                   <Stat label={t('admin.totalUsers')} value={stats.users.total} />
                   <Stat label={t('admin.active')} value={stats.users.active} />
                   <Stat label={t('admin.new7')} value={stats.users.newLast7Days} />
@@ -118,42 +118,43 @@ export function AdminPage() {
                 </div>
               </section>
 
+              {/* Code execution (live) sits right under the new accounts chart */}
               <VisitorsSection
-                chartsClassName={CARD_CLS + ' @2xl:col-span-2'}
+                chartsClassName={CARD_CLS + ' @2xl:col-span-3'}
                 className={CARD_CLS + ' @2xl:col-span-3'}
                 reload={reloads}
-              />
-
-              {/* Code execution (live) */}
-              <section className={CARD_CLS + ' @2xl:col-span-3'}>
-                <h2 className="text-[14px] font-semibold mb-4">{t('admin.codeExec')}</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                  <Stat
-                    label={t('admin.activeContainers')}
-                    value={`${stats.codeExec.activeContainers}/${stats.codeExec.maxContainers}`}
-                  />
-                  <Stat label={t('admin.runningNow')} value={stats.codeExec.runningNow} />
-                  <Stat
-                    label={t('admin.busySandboxes')}
-                    value={`${stats.codeExec.busySlots}/${stats.codeExec.maxBusySlots}`}
-                  />
-                  <Stat label={t('admin.openSessions')} value={stats.codeExec.openSessions} />
-                </div>
-                <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
-                  <div className="text-[var(--text3)] mb-1">{t('admin.perLanguage')}</div>
-                  {Object.keys(stats.codeExec.perLanguage).length === 0 ? (
-                    <span className="text-[var(--text3)]">{t('admin.noData')}</span>
-                  ) : (
-                    <div className="flex flex-wrap gap-x-4 gap-y-1">
-                      {Object.entries(stats.codeExec.perLanguage).map(([lang, n]) => (
-                        <span key={lang}>
-                          {lang} {n}
-                        </span>
-                      ))}
+                afterCharts={
+                  <section className={CARD_CLS + ' @2xl:col-span-3'}>
+                    <h2 className="text-[14px] font-semibold mb-4">{t('admin.codeExec')}</h2>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                      <Stat
+                        label={t('admin.activeContainers')}
+                        value={`${stats.codeExec.activeContainers}/${stats.codeExec.maxContainers}`}
+                      />
+                      <Stat label={t('admin.runningNow')} value={stats.codeExec.runningNow} />
+                      <Stat
+                        label={t('admin.busySandboxes')}
+                        value={`${stats.codeExec.busySlots}/${stats.codeExec.maxBusySlots}`}
+                      />
+                      <Stat label={t('admin.openSessions')} value={stats.codeExec.openSessions} />
                     </div>
-                  )}
-                </div>
-              </section>
+                    <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
+                      <div className="text-[var(--text3)] mb-1">{t('admin.perLanguage')}</div>
+                      {Object.keys(stats.codeExec.perLanguage).length === 0 ? (
+                        <span className="text-[var(--text3)]">{t('admin.noData')}</span>
+                      ) : (
+                        <div className="flex flex-wrap gap-x-4 gap-y-1">
+                          {Object.entries(stats.codeExec.perLanguage).map(([lang, n]) => (
+                            <span key={lang}>
+                              {lang} {n}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </section>
+                }
+              />
 
               {/* Progress */}
               <section className={CARD_CLS + ' @2xl:col-span-3'}>

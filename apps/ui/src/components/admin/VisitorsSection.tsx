@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VISIT_RANGES } from '@cyberstars/shared/visits';
 import type {
@@ -102,21 +102,26 @@ function PlacementFunnelTable({ funnel }: { funnel: PlacementFunnel }) {
 
 // Who visits and where they come from, counted by our own API (CYB-65). It
 // loads on its own so the range switch doesn't redo the rest of the page.
-// Two cards: the charts sit in the top row by the users card, the rest below.
+// Two cards: the charts, then the top pages, sources and clicks. `afterCharts`
+// is the admin page's own card that goes between them.
 export function VisitorsSection({
   chartsClassName,
   className,
   reload,
+  afterCharts,
 }: {
   chartsClassName: string;
   className: string;
   reload: number;
+  afterCharts?: ReactNode;
 }) {
   const { t } = useTranslation();
   const [range, setRange] = useState<VisitRange>(VISIT_RANGES[0]);
   const [data, setData] = useState<AdminVisitsDTO | null>(null);
   const [failed, setFailed] = useState(false);
   const [counted, setCountedHere] = useState(isCounted);
+  // The day (or week) picked on either chart, shown on both.
+  const [active, setActive] = useState<number | null>(null);
 
   function toggleCounted() {
     setCounted(!counted);
@@ -183,18 +188,23 @@ export function VisitorsSection({
           !failed && <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>
         ) : (
           <div aria-busy={loading} className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* One over the other, so each has the card's width for its dates. */}
+            <div className="flex flex-col gap-6">
               <DailyChart
                 days={points}
                 field="visitors"
                 title={t(weekly ? 'admin.visitorsAWeek' : 'admin.visitorsADay')}
                 weekly={weekly}
+                active={active}
+                onActive={setActive}
               />
               <DailyChart
                 days={points}
                 field="newAccounts"
                 title={t(weekly ? 'admin.newAccountsAWeek' : 'admin.newAccountsADay')}
                 weekly={weekly}
+                active={active}
+                onActive={setActive}
               />
             </div>
             <table className="sr-only">
@@ -221,6 +231,8 @@ export function VisitorsSection({
           </div>
         )}
       </section>
+
+      {afterCharts}
 
       <section className={className}>
         {data && (

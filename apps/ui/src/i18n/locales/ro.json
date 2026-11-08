@@ -1051,6 +1051,12 @@
     "devModeOff": "Mod dev: oprit",
     "devModeOn": "Mod dev: pornit",
     "devModeReset": "Pune panourile înapoi la mărimile de la început",
+    "devModeHint": {
+      "label": "Sfat despre modul dev",
+      "text": "Pentru cursul ăsta recomandăm modul dev: lecția, codul și site-ul primesc toată fereastra.",
+      "ok": "Am înțeles",
+      "never": "Nu mai arăta"
+    },
     "solutionConfirmTitle": "Vezi soluția?",
     "solutionConfirmBody": "Încearcă întâi să rezolvi singur. Înveți mai mult din efort. Fiecare soluție pe care o vezi se scade din cele pe care le poți vedea într-o zi.",
     "solutionConfirmCta": "Dezvăluie soluția",
