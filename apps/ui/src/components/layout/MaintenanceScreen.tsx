@@ -13,9 +13,12 @@ const TYPE = "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-
 
 // The maintenance page, over the app instead of in its place: reading carries on
 // through a deploy, but the first run or page change meets this, and the page
-// underneath keeps what it holds. It goes away once the backend answers again
+// underneath keeps what it holds. It goes away once the backend answers again.
+// In both languages whatever the page's, English then Romanian, as nginx's page
 export function MaintenanceScreen() {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const en = i18n.getFixedT('en');
+  const ro = i18n.getFixedT('ro');
   const { pathname } = useLocation();
   const on = useMaintenance();
   const shownPath = useRef(pathname);
@@ -42,6 +45,7 @@ export function MaintenanceScreen() {
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="maintenance-title"
+        lang="en"
         className="max-w-[460px]"
       >
         <div
@@ -52,9 +56,15 @@ export function MaintenanceScreen() {
           id="maintenance-title"
           className="m-0 mb-3 text-[1.5rem] font-bold tracking-[0.2px] text-[#e7e7ef]"
         >
-          {t('maintenance.title')}
+          {en('maintenance.title')}
         </h1>
-        <p className="m-0 leading-[1.6] text-[#9a9ab0]">{t('maintenance.body')}</p>
+        <p className="m-0 leading-[1.6] text-[#9a9ab0]">{en('maintenance.body')}</p>
+        <div lang="ro" className="mt-[22px] border-t border-[rgba(108,92,231,0.2)] pt-[18px]">
+          <h2 className="m-0 mb-3 text-[1.15rem] font-bold tracking-[0.2px] text-[rgba(231,231,239,0.85)]">
+            {ro('maintenance.title')}
+          </h2>
+          <p className="m-0 leading-[1.6] text-[rgba(154,154,176,0.8)]">{ro('maintenance.body')}</p>
+        </div>
       </div>
     </div>
   );
