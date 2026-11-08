@@ -15,6 +15,8 @@ export interface StoryPart {
 
 // Words, the pinned picture in a 440px column, words
 const MIDDLE = 'lg:grid-cols-[minmax(0,1fr)_440px_minmax(0,1fr)] lg:gap-x-12';
+// The room after the last part, at the foot of both columns
+const TAIL = 'pb-[120px]';
 // A wide picture spans the middle column, the gap and the side column beside
 // it: half the story's width (cqw, the grid is the container) plus half of 440
 const WIDE = 'w-[calc(50cqw+220px)]';
@@ -40,10 +42,16 @@ function prefersReducedMotion(): boolean {
   return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 }
 
+// Sent when another part's picture comes up, so the chapters at the side of
+// the page can look again
+export const PICTURE_CHANGED = 'story-picture-changed';
+
 function Pinned({ parts }: { parts: StoryPart[] }) {
   const [active, setActive] = useState(0);
   const [still, setStill] = useState(false);
   const blocks = useRef<(HTMLDivElement | null)[]>([]);
+  const rows = useRef<(HTMLDivElement | null)[]>([]);
+  const shown = useRef(0);
 
   useEffect(() => {
     if (prefersReducedMotion()) {
@@ -54,13 +62,23 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
     const update = () => {
       frame = 0;
       const vh = window.innerHeight;
+      let next = shown.current;
       blocks.current.forEach((el, i) => {
         if (!el) return;
         const r = el.getBoundingClientRect();
         const o = opacityAt((vh - r.top) / (r.height + vh));
         el.style.opacity = String(o);
-        if (o > 0.5) setActive(i);
+        if (o > 0.5) next = i;
       });
+      // A part whose picture hasn't come up yet says so, written here and not
+      // on the next render, so the chapters never name a part before its
+      // picture is the one on screen
+      rows.current.forEach((row, i) => row?.toggleAttribute('data-waiting', i > next));
+      if (next !== shown.current) {
+        shown.current = next;
+        setActive(next);
+        window.dispatchEvent(new Event(PICTURE_CHANGED));
+      }
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
@@ -75,11 +93,21 @@ function Pinned({ parts }: { parts: StoryPart[] }) {
     };
   }, []);
 
+  // Both columns end with TAIL of room, so the story runs on past its last
+  // part's words and that part's picture stays pinned about as long as the
+  // others, rather than leaving with the page as soon as its words are centred
   const column = (side: 0 | 1, lead: string) => (
-    <div className={`flex flex-col gap-12 ${lead}`}>
+    <div className={`flex flex-col gap-12 ${lead} ${TAIL}`}>
       {parts.map((part, i) =>
         i % 2 === side ? (
-          <div key={part.key} id={part.id} className="h-screen flex flex-col justify-center">
+          <div
+            key={part.key}
+            id={part.id}
+            ref={(el) => {
+              rows.current[i] = el;
+            }}
+            className="h-screen flex flex-col justify-center"
+          >
             <div
               ref={(el) => {
                 blocks.current[i] = el;

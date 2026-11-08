@@ -400,13 +400,33 @@
     },
     "faq": {
       "title": "Întrebări",
+      "free": {
+        "q": "E gratuit?",
+        "a": "Da. Nu există plan plătit și nu ai nevoie de card, iar codul CyberStars e public pe GitHub, deci oricine îl poate verifica."
+      },
+      "install": {
+        "q": "Trebuie să instalez ceva?",
+        "a": "Nu. Totul rulează în browser."
+      },
       "account": {
         "q": "Am nevoie de cont?",
         "a": "Nu. Citești, scrii și rulezi cod fără cont. Un cont ridică limita de zece rulări, îți salvează progresul și îți deschide tutorele AI."
       },
+      "beginner": {
+        "q": "N-am mai programat. E pentru mine?",
+        "a": "Da. Fiecare curs începe de la prima linie de cod, cu lecții scurte și exemple pe care le poți rula."
+      },
       "start": {
         "q": "Cu ce limbaj să încep?",
         "a": "Python, dacă n-ai mai programat."
+      },
+      "tests": {
+        "q": "De unde știu că îmi merge codul?",
+        "a": "Rulează testele. Îți verifică codul și îți arată care n-au trecut. Provocările de algoritmi au și teste ascunse."
+      },
+      "solution": {
+        "q": "Pot vedea soluția dacă mă blochez?",
+        "a": "Da, cu un cont, de trei ori pe zi. Încearcă întâi singur sau cere-i tutorelui AI un indiciu."
       },
       "phone": {
         "q": "Merge pe telefon?",
