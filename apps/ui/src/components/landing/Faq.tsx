@@ -6,7 +6,17 @@ import { SectionHeading } from './SectionHeading';
 
 // Free and nothing to install open the list: the hero and the free band say
 // them too, but they are what a visitor asks first
-const FAQ_KEYS = ['free', 'install', 'account', 'start', 'phone', 'romanian'] as const;
+const FAQ_KEYS = [
+  'free',
+  'install',
+  'account',
+  'beginner',
+  'start',
+  'tests',
+  'solution',
+  'phone',
+  'romanian',
+] as const;
 
 // One question open at a time. Each question is a real button carrying its
 // expanded state, so the keyboard and screen readers work with nothing extra.
