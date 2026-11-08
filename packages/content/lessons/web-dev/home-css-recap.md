@@ -1,21 +1,14 @@
-Your home page has a style sheet of its own now: colors that hold up at night, a font, sizes that follow the visitor. Time to use all of it at once.
+Your home page has its own style sheet now: colors that work at night, a font, and sizes that grow with the visitor's settings. Time to use all of it at once, without steps to follow.
 
-A few things to keep in mind:
-
-- **A rule is a selector and declarations**: `selector { property: value; }`. A missing `;` or `}` breaks the declarations after it, so when a style doesn't show, look just before it.
-- **Type, class or id**: every `p`, every `.warning`, the one `#today`. A class is the one you'll reach for most.
-- **The more specific rule wins**: an id over a class, a class over a tag's name.
-- **Colors come in pairs**: whenever you set a text color or a background, check the other still reads well against it.
-- **`rem` for text, `px` for thin lines, `%` for room.**
+Think first about how the result should look, then pick the selectors and properties that get you there. If a style doesn't show up, look just before it in your file: a missing `;` or `}` breaks everything after it. And whenever you set a text color or a background, check that the other one still works with it.
 
 ---
 
 ## Mission: Visitor Card
 
-Make the Visiting Hours stand out like a card at the station's door.
+The visiting hours should look like a small card on the station's door, the kind of sign a computer prints.
 
-- Put the paragraph with the hours in the class `hours`. Give it a background of `#13294f`, text in `#ffd166`, the font `"Courier New", monospace` and a size of `1rem`.
-- Put the paragraph with your jump links in the class `jumps`, centered, its text `0.875rem`.
-- The heading **Visiting Hours** in `#ffd166`, like the biggest heading.
-
-The rest of the page keeps the look it has.
+- Put the paragraph with the hours in the class `hours`: later lessons use it. Give it a background of its own, so it shows against the page, with text that's easy to read on it.
+- Set the hours in a font where every letter is equally wide, like on a station terminal. Only the hours: the other paragraphs keep their font.
+- The heading **Visiting Hours** should stand out from the other section headings.
+- Put the paragraph with your jump links in the class `jumps`, and place it in the middle of the page.

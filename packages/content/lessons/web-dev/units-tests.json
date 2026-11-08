@@ -7,45 +7,71 @@
         {
           "style": "body",
           "prop": "font-size",
-          "equals": "18px",
-          "label": "the page (<body>)"
+          "atLeast": 17,
+          "atMost": 24,
+          "label": "the page"
         },
         {
           "style": "h1",
           "prop": "font-size",
-          "equals": "40px",
-          "label": "the biggest heading (<h1>)"
+          "atLeast": 32,
+          "label": "the biggest heading"
         },
         {
           "style": "h2",
           "prop": "font-size",
-          "equals": "24px",
-          "label": "a section heading (<h2>)"
-        },
-        {
-          "style": "p.address",
-          "prop": "font-size",
-          "equals": "16.2px",
-          "label": "the address"
+          "atLeast": 20,
+          "atMost": 31.9,
+          "every": true,
+          "label": "a section heading"
         }
       ]
     },
     {
-      "name": "The sizes follow the visitor's own font size",
-      "visible": false,
+      "name": "The sizes grow with the visitor's own text size",
+      "visible": true,
+      "page": "zoomed.html",
       "files": {
-        "zoomed.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"zoom.css\" />\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n  </body>\n</html>\n",
-        "zoom.css": "html { font-size: 20px; }\n"
+        "zoomed.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"zoom.css\" />\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n    <h2>Today on Board</h2>\n    <p>Text</p>\n  </body>\n</html>\n",
+        "zoom.css": "html { font-size: 24px; }\n"
       },
       "steps": [
         {
+          "style": "body",
+          "prop": "font-size",
+          "atLeast": 25.5,
+          "label": "the page, for a visitor whose text size is 24px"
+        },
+        {
           "style": "h1",
           "prop": "font-size",
-          "equals": "50px",
-          "label": "the biggest heading, for a visitor whose font size is 20px"
+          "atLeast": 48,
+          "label": "the biggest heading, for a visitor whose text size is 24px"
+        },
+        {
+          "style": "h2",
+          "prop": "font-size",
+          "atLeast": 30,
+          "label": "a section heading, for a visitor whose text size is 24px"
         }
-      ],
-      "page": "zoomed.html"
+      ]
+    },
+    {
+      "name": "The address is smaller than the text around it",
+      "visible": true,
+      "page": "small.html",
+      "files": {
+        "small.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <div style=\"font-size: 10px\">\n      <p>Small print box</p>\n      <p class=\"address\">Orbital Station 7</p>\n    </div>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "style": "p.address",
+          "prop": "font-size",
+          "atMost": 9.9,
+          "atLeast": 7,
+          "label": "the address, in a box whose text is 10px"
+        }
+      ]
     },
     {
       "name": "The page fits a phone",

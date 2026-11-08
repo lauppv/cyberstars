@@ -7,18 +7,24 @@
         {
           "text": "#visiting + p.hours",
           "contains": "Monday to Friday",
-          "label": "the hours (<p class=\"hours\">) right under Visiting Hours"
+          "label": "the hours, in the class hours, right under Visiting Hours"
         },
         {
           "style": "p.hours",
           "prop": "background-color",
-          "equals": "rgb(19, 41, 79)",
+          "not": "rgba(0, 0, 0, 0)",
           "label": "the hours"
         },
         {
-          "style": "p.hours",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
+          "differs": "p.hours",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "the hours"
+        },
+        {
+          "contrast": "p.hours",
+          "atLeast": 4.5,
           "label": "the hours"
         }
       ]
@@ -30,78 +36,47 @@
         {
           "style": "p.hours",
           "prop": "font-family",
-          "equals": "\"Courier New\", monospace",
+          "endsWith": "monospace",
           "label": "the hours"
         },
         {
-          "style": "p.hours",
-          "prop": "font-size",
-          "equals": "16px",
-          "label": "the hours"
+          "differs": "p:not(.hours)",
+          "from": "p.hours",
+          "props": ["font-family"],
+          "fromLabel": "the hours",
+          "label": "the other paragraphs"
         }
       ]
     },
     {
-      "name": "The jump links sit centered, a little smaller",
+      "name": "Visiting Hours stands out from the other sections",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "#visiting",
+          "from": "h2:not(#visiting)",
+          "props": ["color", "background-color"],
+          "fromLabel": "the other section headings",
+          "label": "the heading Visiting Hours"
+        },
+        {
+          "contrast": "#visiting",
+          "atLeast": 3,
+          "label": "the heading Visiting Hours"
+        }
+      ]
+    },
+    {
+      "name": "The jump links sit in the middle",
       "visible": true,
       "steps": [
         {
           "exists": "p.jumps a[href=\"#today\"]",
-          "label": "the jump links' paragraph (<p class=\"jumps\">)"
+          "label": "the jump links' paragraph, in the class jumps"
         },
         {
-          "style": "p.jumps",
-          "prop": "text-align",
-          "equals": "center",
-          "label": "the jump links' paragraph"
-        },
-        {
-          "style": "p.jumps",
-          "prop": "font-size",
-          "equals": "14px",
-          "label": "the jump links' paragraph"
-        }
-      ]
-    },
-    {
-      "name": "Visiting Hours is gold",
-      "visible": true,
-      "steps": [
-        {
-          "style": "#visiting",
-          "prop": "color",
-          "equals": "rgb(255, 209, 102)",
-          "label": "the heading Visiting Hours"
-        },
-        {
-          "style": "h2:not(#visiting):not(#today)",
-          "prop": "color",
-          "equals": "rgb(147, 191, 236)",
-          "label": "the heading About the Station"
-        }
-      ]
-    },
-    {
-      "name": "The rest keeps its look",
-      "visible": true,
-      "steps": [
-        {
-          "style": "body",
-          "prop": "background-color",
-          "equals": "rgb(11, 29, 58)",
-          "label": "the page (<body>)"
-        },
-        {
-          "style": "p.warning",
-          "prop": "color",
-          "equals": "rgb(255, 179, 179)",
-          "label": "a warning"
-        },
-        {
-          "style": "p:not(.hours):not(.jumps):not(.warning):not(.address)",
-          "prop": "font-family",
-          "equals": "Verdana, Geneva, sans-serif",
-          "label": "an ordinary paragraph"
+          "centered": "p.jumps a",
+          "label": "the jump links"
         }
       ]
     }
