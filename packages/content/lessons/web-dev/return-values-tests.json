@@ -1,54 +1,33 @@
 {
   "cases": [
     {
-      "name": "The oxygen still lasts 16 days and 6 hours",
+      "name": "The page says how many full days of oxygen there are",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "text": "p#oxygen",
-          "equals": "Oxygen for 16 days and 6 hours",
-          "label": "the oxygen paragraph"
+          "exists": "#oxygen ~ p#oxygen-days",
+          "label": "a paragraph with the id oxygen-days under #oxygen"
+        },
+        {
+          "text": "#oxygen-days",
+          "equals": "Oxygen for 5 full days",
+          "label": "the paragraph #oxygen-days"
         }
       ]
     },
     {
-      "name": "The crew's week is in days and hours",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "text": "#hours-total + p#watch-time",
-          "contains": "Total watch time: ",
-          "label": "the watch time right after the hours total"
-        },
-        {
-          "text": "p#watch-time",
-          "contains": " days and ",
-          "label": "the watch time"
-        },
-        {
-          "noErrors": true
-        }
-      ]
-    },
-    {
-      "name": "Both follow the numbers on the page",
+      "name": "From the numbers on the page",
       "visible": false,
       "page": "crew.html",
       "files": {
-        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <ul id=\"crew\">\n      <li>Ada</li>\n      <li>Bram</li>\n      <li>Chen</li>\n      <li>Dara</li>\n      <li>Eli</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <button type=\"button\" id=\"add-rookie\">Add a rookie</button>\n    <button type=\"button\" id=\"remove-last\">Remove the last</button>\n    <p id=\"latest\"></p>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">10</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Bram</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">20</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Chen</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">31</span></p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n    <p id=\"watch-time\"></p>\n    <button type=\"button\" id=\"roll-call-button\">Roll call</button>\n    <ol id=\"roll-call\"></ol>\n    <p id=\"roll-summary\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p id=\"intercom\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p>Launch countdown from <span id=\"countdown-from\">4</span></p>\n    <p id=\"countdown\"></p>\n  </body>\n</html>\n"
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"check.js\" defer></script>\n    <script src=\"crew.js\" defer></script>\n    <script src=\"countdown.js\" defer></script>\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n    </nav>\n    <h1>Crew Directory</h1>\n    <p>Everyone who lives and works on the station, and where to find them.</p>\n    <p id=\"status\"></p>\n    <button type=\"button\" id=\"wake\">Wake the crew</button>\n    <button type=\"button\" id=\"on-duty\">Who's on duty?</button>\n    <p id=\"duty-today\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">4</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p id=\"oxygen-days\"></p>\n    <button type=\"button\" id=\"alarm\">Sound the alarm</button>\n    <p id=\"intercom\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p>Meet our commander, <a href=\"people/vega.html\">Mara Vega</a>.</p>\n    <p><a href=\"#duty\">See today's duties</a></p>\n    <p><a href=\"index.html\">Back to the home page</a></p>\n\n    <h2>Crew</h2>\n    <ul id=\"crew\">\n      <li>Mara Vega</li>\n      <li>Tomas Okafor</li>\n      <li>Ines Lindqvist</li>\n      <li>Kenji Arano</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <p id=\"everyone\"></p>\n\n    <h2>Morning Routine</h2>\n    <ol>\n      <li>Check the oxygen readings</li>\n      <li>Water the greenhouse</li>\n      <li>Report to the commander</li>\n    </ol>\n\n    <h2>Decks</h2>\n    <ul class=\"decks\">\n      <li>\n        Upper Deck\n        <ul>\n          <li>Bridge</li>\n          <li>Observatory</li>\n        </ul>\n      </li>\n      <li>\n        Living Deck\n        <ul>\n          <li>Galley</li>\n          <li>Sleeping pods</li>\n          <li>Gym</li>\n        </ul>\n      </li>\n      <li>\n        Lower Deck\n        <ul>\n          <li>Cargo bay</li>\n          <li>Greenhouse</li>\n        </ul>\n      </li>\n    </ul>\n\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Mara Vega</h3>\n        <p>Job: <span class=\"role\">Commander</span></p>\n        <p>Hours this week: <span class=\"worked\">12</span></p>\n        <p class=\"bio\">Twenty years in orbit, three of them in charge of this station. Knows every bolt by its first name, still checks the airlocks herself before bed, and has never once been late for a docking.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Tomas Okafor</h3>\n        <p>Job: <span class=\"role\">Engineer</span></p>\n        <p>Hours this week: <span class=\"worked\">18</span></p>\n        <p class=\"bio\">Keeps the power on and the water clean. Spends his free time building a clock out of spare parts that has never once shown the right time, and says that is the point.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Ines Lindqvist</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">9</span></p>\n        <p class=\"bio\">Flies the supply runs and the rescue drills. Holds the station record for the softest docking, and reminds everyone of it at dinner, every dinner, without fail.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Kenji Arano</h3>\n        <p>Job: <span class=\"role\">Botanist</span></p>\n        <p>Hours this week: <span class=\"worked\">22</span></p>\n        <p class=\"bio\">Grows the tomatoes, the beans and the only flowers for four hundred kilometres. Talks to the plants every morning, and claims that they answer.</p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n\n    <h2 id=\"duty\">Duty Board</h2>\n    <ol class=\"duties\">\n      <li>\n        Inspect the solar panels\n        <ul>\n          <li>Tomas Okafor</li>\n          <li>Ines Lindqvist</li>\n        </ul>\n      </li>\n      <li>Harvest the greenhouse</li>\n      <li>Log the day's dockings</li>\n    </ol>\n  </body>\n</html>"
       },
       "steps": [
         {
-          "text": "p#watch-time",
-          "equals": "Total watch time: 2 days and 13 hours",
-          "label": "the watch time"
-        },
-        {
-          "text": "p#oxygen",
-          "equals": "Oxygen for 5 days and 20 hours",
-          "label": "the oxygen"
+          "text": "#oxygen-days",
+          "equals": "Oxygen for 3 full days",
+          "label": "the paragraph #oxygen-days"
         }
       ]
     }

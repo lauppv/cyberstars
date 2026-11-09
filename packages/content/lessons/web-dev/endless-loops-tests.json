@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "name": "countdown.js loads from the head",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "head script[src=\"countdown.js\"][defer]",
+          "label": "a <script> for countdown.js in the <head>, with defer"
+        }
+      ]
+    },
+    {
+      "name": "The cool-down counts 3, 2, 1, then switches the engines off",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Cooling: 3"
+        },
+        {
+          "logged": "Cooling: 2"
+        },
+        {
+          "logged": "Cooling: 1"
+        },
+        {
+          "logged": "Engines off"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

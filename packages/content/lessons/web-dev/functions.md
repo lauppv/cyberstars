@@ -1,45 +1,67 @@
-By now you've written the same few lines more than once: find an element, write in it, log it. A **function** gives a piece of code a name, so you write it once and run it whenever you want.
+A microwave has a "popcorn" button. You don't type in the power and the minutes each time: someone set it up once, gave it a name, and now one press does it all. In a program, a set of steps with a name of its own is a **function**.
 
-## Making and calling one
+## Making a function
 
 ```js
-function openBay(bay) {
-  console.log(`Opening ${bay}`);
-  document.querySelector("#bay-status").textContent = `${bay} is open`;
+function showWelcome() {
+  document.querySelector("#note").textContent = "Welcome to the club!";
+  console.log("Welcome shown");
 }
-
-openBay("Cargo Bay");
-openBay("Fuel Bay");
 ```
 
-- `function openBay(bay) { ... }` makes the function. Nothing runs yet.
-- `bay` is a **parameter**: a name for a value the function gets each time it's used.
-- `openBay("Cargo Bay")` **calls** it: the code inside runs, with `bay` holding `"Cargo Bay"`. The second call runs it again, with `"Fuel Bay"`.
+- `function` says "here's a new function";
+- `showWelcome` is its name, made like a variable's name, in camelCase. Function names usually start with a verb: they **do** something;
+- `()` after the name: always there;
+- between `{` and `}`: the steps.
 
-A function can take several parameters, with commas between them, or none at all: `function closeAll() { ... }`.
+Making a function doesn't run it. It's like setting up the popcorn button: nothing pops yet.
 
-## Why bother
+## Calling it
 
-- **Once, not everywhere.** To change how a message is shown, you change one function, not ten copies.
-- **A name says what it does.** `openBay("Cargo Bay")` reads like a sentence.
-- **Smaller pieces.** A long script made of small named functions is easier to read and to fix.
-
-## Functions you've already written
-
-The `() => { ... }` you gave `addEventListener` is a function too. It's called an **arrow function**: shorter, and without a name. You can call a named function from inside it:
+To run the steps, you **call** the function, with its name and brackets:
 
 ```js
-button.addEventListener("click", () => {
-  openBay("Cargo Bay");
-});
+showWelcome();
 ```
+
+Now the note says "Welcome to the club!" and the console says "Welcome shown". Call it again, and the steps run again.
+
+## A function for a click
+
+Remember `() => { ... }` in `addEventListener`? That was a function too, one with no name. You can give the click a named function instead:
+
+```js
+document.querySelector("#hello").addEventListener("click", showWelcome);
+```
+
+No brackets after `showWelcome` here: you're handing the function to the button, for it to call **later**, on each click. With brackets, `showWelcome()` would run it right now instead.
+
+## Break it on purpose
+
+Hand it over with brackets:
+
+```js
+button.addEventListener("click", showWelcome());
+```
+
+The welcome shows at once, when the page opens, and clicks do nothing. The brackets called it immediately, and the button got nothing to call later.
 
 ---
 
-## Mission: Intercom
+## Mission: The alarm
 
-The crew page gets an intercom: buttons that send a message to the whole station.
+The crew directory gets an alarm button.
 
-- On `crew.html`, after the hours total, add two buttons, with the ids `call-dinner` and `call-bridge`, that say **Call to dinner** and **Call to the bridge**, and an empty paragraph with the id `intercom`.
-- **Call to dinner** sends `Dinner is served in the galley`, and **Call to the bridge** sends `All crew to the bridge`. Sending a message shows it in the intercom paragraph, and logs it after `Intercom: `, like `Intercom: All crew to the bridge`.
-- Both buttons send their message the same way, so write how a message is sent only once.
+**Example**: under the oxygen line, a button says `Sound the alarm`. Click it, and a paragraph under it says:
+
+```text
+Alarm! All crew to the bridge
+```
+
+And the console shows `Alarm sounded`.
+
+- A button with the id `alarm`, and under it an empty paragraph with the id `intercom`.
+- A function, named by you, writes `Alarm! All crew to the bridge` in `#intercom` and logs `Alarm sounded`.
+- A click on the button calls that function. Before the click, nothing is written.
+
+Psst, hand the function to the button without brackets :)
