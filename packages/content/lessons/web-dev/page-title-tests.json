@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {
+      "name": "The tab has a name",
+      "visible": true,
+      "steps": [
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        }
+      ]
+    }
+  ]
+}

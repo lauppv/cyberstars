@@ -1,72 +1,79 @@
-Every website you have ever opened is made of **web pages**, and a web page is just a **text file**. Your browser reads that file and turns it into what you see: headings, text, pictures, buttons.
+Every website you have ever opened is made of **web pages**. And a web page is just a **text file**, like a note on your phone. Your browser reads that file and turns it into what you see: headings, text, pictures, buttons.
 
-The file is written in a language called **HTML**. HTML doesn't do math like Python or C. It only **describes** what is on the page: "this is a heading", "this is a paragraph".
+The file is written in a language called **HTML**. HTML doesn't do math like a calculator. It only **says what each piece of the page is**: "this is a heading", "this is some text".
 
-## Tags
+Think of a school notebook. You write the title of a lesson bigger, and underline it, so anyone can tell it's a title. HTML does the same with **tags**.
 
-HTML describes things with **tags**. A tag is a word between `<` and `>`:
+## A tag
 
-```html
-<h1>Cargo Bay</h1>
-```
-
-`<h1>` is the **opening tag**. `</h1>` is the **closing tag**: the same word, with a `/` in front. The text between them is what the tag is about. `h1` means "the biggest heading of the page", so the browser shows **Cargo Bay** big and bold.
-
-An opening tag, its closing tag and everything between them make an **element**. Here is another one:
+A tag is a word between `<` and `>`. Here is the tag for the biggest heading of a page:
 
 ```html
-<p>Crates are stacked by weight, the heaviest at the bottom.</p>
+<h1>My Favourite Games</h1>
 ```
 
-`p` is short for **paragraph**: a block of normal text.
+`h1` is short for **heading 1**, the most important heading. The page shows:
 
-## The frame of a page
+```text
+My Favourite Games        (big and bold)
+```
 
-Every real page puts its elements inside the same frame:
+Look at the two tags around the words:
+
+- `<h1>` is the **opening tag**. It says "a heading starts here".
+- `</h1>` is the **closing tag**. It's the same word with a `/` in front. It says "the heading ends here".
+
+The opening tag, the words and the closing tag together make an **element**: one piece of the page.
+
+## The editor and the preview
+
+On the right you have your own small editor:
+
+- the **files** of your site are on the left. For now there is one, `index.html`, the page a browser opens first;
+- the **editor** is where you type;
+- the **preview** shows your page. It updates a moment after you stop typing.
+
+Type this in `index.html` and look at the preview:
 
 ```html
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Soute</title>
-  </head>
-  <body>
-    <h1>Soute</h1>
-    <p>Les caisses lourdes vont en bas.</p>
-  </body>
-</html>
+<h1>Hello</h1>
 ```
 
-This page is in French. Line by line:
+Now change `Hello` to your name. The preview changes too. That's the whole loop: type, look, change, look again.
 
-- `<!DOCTYPE html>` tells the browser "this is a modern HTML page". It isn't a tag and it never closes.
-- `<html>` holds the whole page. `lang="fr"` is an **attribute**: extra information written inside an opening tag. This one says the page is in French. English is `en`, Romanian is `ro`.
-- `<head>` holds information **about** the page. Nothing in it is shown on the page itself. `<meta charset="UTF-8">` lets the page show any letter, like ă, é or ß. `<title>` is the name you see on the browser's tab.
-- `<body>` holds everything you **see** on the page.
+## Break it on purpose
 
-Elements sit **inside** other elements, like boxes inside boxes: `<title>` is inside `<head>`, and `<head>` is inside `<html>`. The spaces at the start of the lines don't matter to the browser. They are there for you, so you can see at a glance what is inside what.
+What if you forget the `/` in the closing tag?
 
-## Your workspace
+```html
+<h1>Hello<h1>
+```
 
-On the right you have a small editor of your own:
+The browser thinks you opened a second heading and never closed either. On this page you may not see much change, but as soon as you write more under it, everything after it turns into a big heading too. Try it, then put the `/` back.
 
-- the **files** of your site, on the left of the editor. For now there is one, `index.html`, the page a browser opens first;
-- the **editor**, where you write the file you picked;
-- the **preview**, which shows your page and updates a moment after you stop typing. If it ever doesn't, press **Run** above it, or **Ctrl+Enter** in the editor (**⌘+Enter** on a Mac);
-- the **console** under the preview. You'll need it once your page runs JavaScript.
+What if you leave the tags out?
 
-Try it: type `<h1>Hello</h1>` in `index.html` and look at the preview. Change the word and look again. Then break something on purpose, like deleting the `</h1>`, and see what the browser does. Trying things out is the fastest way to learn.
+```html
+Hello
+```
+
+The word still shows, but small and plain. Without the tag, the browser has no idea it's meant to be a heading.
 
 ---
 
-## Mission: Station Log
+## Mission: Name your station
 
-Your space station needs its first page. Write `index.html` yourself, from the first line to the last:
+You are building the home page of a space station, one lesson at a time. Every lesson adds something to it.
 
-- the page is in English, and it can show any letter;
-- the browser's tab says **Station Log**;
-- the page starts with its biggest heading: **Welcome aboard**;
-- under the heading, a paragraph with a sentence of your own about the station.
+Your `index.html` is empty. Write the page's biggest heading, with a welcome to your station in your own words.
 
-Don't copy the example: type every tag. That's how you'll remember them.
+**Example**: your page would show something like this:
+
+```text
+Welcome to Orion Station        (big and bold)
+```
+
+- The page has a heading made with `<h1>`.
+- The heading has your own words in it.
+
+Psst, don't forget the `/` in the closing tag :)
