@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "name": "A link starts an email to the crew",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "a[href^=\"mailto:\"]",
+          "name": "href",
+          "equals": "mailto:crew@station.example",
+          "label": "an email link"
+        },
+        {
+          "text": "a[href^=\"mailto:\"]",
+          "nonEmpty": true,
+          "label": "the email link"
+        }
+      ]
+    }
+  ]
+}

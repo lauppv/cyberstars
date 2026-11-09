@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "name": "Today on Board has the id today",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "h2#today",
+          "label": "the Today on Board heading (<h2 id=\"today\">)"
+        }
+      ]
+    },
+    {
+      "name": "A link above the first part jumps to it",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p:not(h2 ~ p) > a[href=\"#today\"]",
+          "label": "a link to #today, above the first part"
+        }
+      ]
+    }
+  ]
+}

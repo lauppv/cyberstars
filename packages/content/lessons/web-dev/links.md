@@ -1,59 +1,70 @@
-The web is called a web because pages lead to one another. What takes you from one page to the next is a **link**.
+The web is called a web because pages lead to one another, like threads in a spider's web. You read about a game, click its name, and you're on the game's own site. What takes you there is a **link**.
 
-## The anchor
+## The `<a>` tag
 
-A link is an `a` element. The `a` is short for **anchor**. Its `href` attribute says where the link leads, and the text between the tags is what the visitor clicks:
+A link is an `a` element. The `a` stands for **anchor**:
 
 ```html
-<a href="https://en.wikipedia.org/wiki/Mars">Read about Mars</a>
+<a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a>
 ```
 
-`https://en.wikipedia.org/wiki/Mars` is a **full address**: it starts with `https://`, then the name of the site, then the page on it. Use a full address whenever you link to another site. Links between the pages of your own site come in the next part.
+It has two parts:
 
-A link is inline, like `<strong>`, so it goes inside a paragraph or a heading.
+- the `href` attribute says **where** the link leads. Here it's a **full address**: it starts with `https://`, then the site's name, then the page on it;
+- the words between the tags are what the visitor **sees and clicks**.
+
+The page shows:
+
+```text
+Read about chess        (blue and underlined)
+```
+
+Browsers show links blue and underlined, so people know they can click them.
+
+A link is **inline**, like `<strong>`: it goes inside a paragraph, as part of a sentence:
+
+```html
+<p>New to the game? <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a> before you start.</p>
+```
+
+In your preview, a link to another site doesn't open. The console tells you where it would go instead. On a real website, it opens the page.
 
 ## Words that say where it leads
 
-The words of a link should make sense on their own: **Read about Mars**, not **click here**. A screen reader can list all the links of a page without the sentences around them, so the visitor can pick one. Ten links all called **click here** tell them nothing. Search engines read link words too.
-
-## In a new tab
-
-`target="_blank"` opens the link in a new tab, so your page stays open in its own tab. Always add `rel="noopener"` next to it:
+Compare these two:
 
 ```html
-<a href="https://en.wikipedia.org/wiki/Mars" target="_blank" rel="noopener">Read about Mars</a>
+<p>To learn the rules, <a href="https://en.wikipedia.org/wiki/Chess">click here</a>.</p>
+<p>Learn the <a href="https://en.wikipedia.org/wiki/Chess">rules of chess</a>.</p>
 ```
 
-Without `noopener`, the page in the new tab can reach back to your tab and send it somewhere else, for example to a fake copy of your site that asks for a password. New browsers protect you anyway, but old ones don't, and writing it shows clearly what you meant.
+Both work. But a screen reader can list all the links on a page, without the sentences around them. Ten links all called "click here" tell the listener nothing. "Rules of chess" says exactly where it goes. Search engines read link words too.
 
-## An email
+## Break it on purpose
 
-An address that starts with `mailto:` opens the visitor's email app with a new message to that address:
+Leave out the `https://`:
 
 ```html
-<a href="mailto:cargo@station.example">Write to the cargo bay</a>
+<a href="en.wikipedia.org/wiki/Chess">Read about chess</a>
 ```
 
-## A jump inside the page
+Now the browser doesn't know it's another site. It looks for a file called `en.wikipedia.org` inside **your** site, and finds nothing. Links to other sites always need the full address.
 
-The `id` attribute gives an element its own name on the page. No two elements of a page can have the same id, and an id has no spaces. A link to `#` followed by that name jumps to the element:
-
-```html
-<a href="#loading">Loading times</a>
-...
-<h2 id="loading">Loading Times</h2>
-```
-
-You'll see `id` again soon: CSS and JavaScript use it to find an element.
-
-In the preview, links to other sites don't open: the console tells you where they would go. Jumps inside the page work like in any browser.
+Forget the closing `</a>` and everything after it turns into one long link. Try it, then close it.
 
 ---
 
-## Mission: Station Links
+## Mission: Learn more
 
-Your page should take visitors where they want to go:
+Your `index.html` has its About the Station part. Some visitors want to know how real space stations work. Send them somewhere to read about it.
 
-- Someone on a phone doesn't want to scroll past everything to see what's happening today. Right under your first paragraph, add a link that says **Jump to today** and takes them straight to **Today on Board**. Give that heading the id `today`: later lessons use it.
-- In **About the Station**, link to a page about space of your choice on another site. A visitor who follows it shouldn't lose your page, and your page should stay safe.
-- At the end of the page, a link that says **Write to the crew** and starts an email to `crew@station.example`.
+**Example**: your page would show something like this:
+
+```text
+Curious how real stations work? Read about space stations        ("Read about space stations" is a link)
+```
+
+- A paragraph has a link to a page on another site, with a full address that starts with `https://`.
+- The link's words say where it leads.
+
+Psst, the address goes in `href`, the words to click go between the tags :)

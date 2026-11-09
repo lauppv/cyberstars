@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "name": "The link to another site opens a new tab",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "p a[href^=\"https://\"]",
+          "name": "target",
+          "equals": "_blank",
+          "label": "the link to another site"
+        }
+      ]
+    },
+    {
+      "name": "The new tab has no way back to your page",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p a[href^=\"https://\"][rel~=\"noopener\" i]",
+          "label": "the link to another site with rel=\"noopener\""
+        }
+      ]
+    }
+  ]
+}

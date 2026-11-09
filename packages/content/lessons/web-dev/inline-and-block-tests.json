@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "name": "One paragraph highlights three things",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p:has(> mark ~ mark ~ mark)",
+          "label": "a paragraph with three highlighted parts (<mark>)"
+        }
+      ]
+    },
+    {
+      "name": "The highlighted things stand on one line",
+      "visible": true,
+      "steps": [
+        {
+          "layout": "p:has(> mark ~ mark ~ mark) > mark",
+          "arrange": "row",
+          "label": "the highlighted parts"
+        }
+      ]
+    }
+  ]
+}
