@@ -1,62 +1,77 @@
-Arrays hold many values. A **loop** does something with each of them, or repeats something a number of times, without writing it again and again.
+"Write 'I will not talk in class' 100 times." A computer would love that punishment. Repeating something is what computers are best at, and a **loop** is how you ask for it, without writing the same line 100 times.
 
-## The for loop
+## A `for` loop
 
 ```js
 for (let i = 1; i <= 3; i++) {
-  console.log(`Crate ${i} loaded`);
+  console.log("Lap", i);
 }
 ```
 
 ```text
-Crate 1 loaded
-Crate 2 loaded
-Crate 3 loaded
+Lap 1
+Lap 2
+Lap 3
 ```
 
-The three parts in the parentheses, separated by `;`:
+The lines between `{` and `}` run again and again. The first line says how many times, in three parts separated by `;`:
 
-1. `let i = 1`: start a counter, once, before anything else;
-2. `i <= 3`: check this before each round, and keep going while it's true;
-3. `i++`: add 1 to the counter after each round. `i--` takes 1 away.
+1. `let i = 1`: **start** with a counter, `i`, at 1;
+2. `i <= 3`: **keep going** while `i` is smaller than or equal to 3. `<=` means "smaller than or equal to";
+3. `i++`: **after each lap**, add 1 to `i`. `i++` is short for `i = i + 1`.
 
-The code between the braces runs once in every round. `<=` means "less than or equal to". The comparisons are `<`, `>`, `<=` and `>=`.
+So: `i` is 1, the lap runs; `i` becomes 2, it runs; `i` becomes 3, it runs; `i` becomes 4, and 4 isn't `<= 3`, so the loop stops.
 
-## Through an array
+## Counting down
 
-The counter works perfectly as an index: start at 0, and stop before the length.
-
-```js
-const bays = ["Cargo", "Fuel", "Seeds"];
-for (let i = 0; i < bays.length; i++) {
-  console.log(`Bay ${i + 1}: ${bays[i]}`);
-}
-```
-
-Write `i < bays.length`, not `<=`, because the last index is one less than the length. Being off by one is the most common loop mistake of all.
-
-## Building a string
-
-A loop can build a string one piece at a time. `+=` adds to what a variable already holds:
+The counter can go the other way:
 
 ```js
-let line = "";
 for (let i = 3; i >= 1; i--) {
-  line += i + " ";
+  console.log(i);
 }
-console.log(line); // "3 2 1 "
+console.log("Go!");
 ```
 
-## A loop that never ends
+```text
+3
+2
+1
+Go!
+```
 
-If the condition never becomes false, the loop runs forever and the page freezes. Here, the preview stops a loop after two seconds and tells you where it was. In a real browser, the tab just hangs. Check that your counter really moves towards the end.
+Start at 3, keep going while `i >= 1` (bigger than or equal to 1), and `i--` takes 1 away each lap. The `Go!` line is after the `}`, so it runs once, when the loop is done.
+
+## Break it on purpose
+
+Use `<` instead of `<=`:
+
+```js
+for (let i = 1; i < 3; i++) {
+  console.log("Lap", i);
+}
+```
+
+Only 2 laps: when `i` is 3, `3 < 3` is false, so lap 3 never runs. "Less than" or "less than or equal": one character, one lap.
 
 ---
 
-## Mission: Countdown
+## Mission: Launch countdown
 
-Launches need a countdown on the crew page.
+The station's shuttle launches from a countdown.
 
-- On `crew.html`, after the oxygen paragraph, add a sentence that says where the countdown starts: **Launch countdown from 10**, with the number in an element with the id `countdown-from`. Under it, an empty paragraph with the id `countdown`.
-- The countdown paragraph shows every number from the starting one down to 1, each followed by a space, then `Liftoff!`: `10 9 8 7 6 5 4 3 2 1 Liftoff!`. Change the start on the page, and the countdown changes with it.
-- For the crew's records, the console lists every crew member from the crew list with their place in it, starting at 1: `Crew 1: Mara Vega`, `Crew 2: Tomas Okafor`...
+**Example**: when `crew.html` opens, the console shows, among its other lines:
+
+```text
+5
+4
+3
+2
+1
+Liftoff!
+```
+
+- The console shows the numbers 5, 4, 3, 2 and 1, each on its line, written by one loop.
+- After them, it shows `Liftoff!`, once.
+
+Psst, a line after the loop's `}` runs only once :)

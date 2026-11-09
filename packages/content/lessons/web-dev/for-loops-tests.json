@@ -1,56 +1,31 @@
 {
   "cases": [
     {
-      "name": "The countdown runs from 10 to Liftoff",
+      "name": "The countdown runs from 5 to 1",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "text": "p#countdown",
-          "equals": "10 9 8 7 6 5 4 3 2 1 Liftoff!",
-          "label": "the countdown paragraph"
+          "logged": "5"
         },
         {
-          "text": "span#countdown-from",
-          "equals": "10",
-          "label": "the number to count down from"
+          "logged": "3"
+        },
+        {
+          "logged": "2"
+        },
+        {
+          "logged": "1"
         }
       ]
     },
     {
-      "name": "It starts from the number on the page",
-      "visible": false,
+      "name": "Then Liftoff!",
+      "visible": true,
       "page": "crew.html",
-      "files": {
-        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <ul id=\"crew\">\n      <li>Ada</li>\n      <li>Bram</li>\n      <li>Chen</li>\n      <li>Dara</li>\n      <li>Eli</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <button type=\"button\" id=\"add-rookie\">Add a rookie</button>\n    <button type=\"button\" id=\"remove-last\">Remove the last</button>\n    <p id=\"latest\"></p>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">10</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Bram</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">20</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Chen</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">31</span></p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n    <p id=\"watch-time\"></p>\n    <button type=\"button\" id=\"roll-call-button\">Roll call</button>\n    <ol id=\"roll-call\"></ol>\n    <p id=\"roll-summary\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p id=\"intercom\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p>Launch countdown from <span id=\"countdown-from\">4</span></p>\n    <p id=\"countdown\"></p>\n  </body>\n</html>\n"
-      },
       "steps": [
         {
-          "text": "p#countdown",
-          "equals": "4 3 2 1 Liftoff!",
-          "label": "the countdown"
-        }
-      ]
-    },
-    {
-      "name": "Every crew member is logged with their place",
-      "visible": false,
-      "page": "crew.html",
-      "files": {
-        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <h1>Crew Directory</h1>\n    <ul id=\"crew\">\n      <li>Ada</li>\n      <li>Bram</li>\n      <li>Chen</li>\n      <li>Dara</li>\n      <li>Eli</li>\n    </ul>\n    <p id=\"roster\"></p>\n    <button type=\"button\" id=\"add-rookie\">Add a rookie</button>\n    <button type=\"button\" id=\"remove-last\">Remove the last</button>\n    <p id=\"latest\"></p>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">10</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Bram</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">20</span></p>\n      </div>\n      <div class=\"card\">\n        <h3>Chen</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p>Hours this week: <span class=\"worked\">31</span></p>\n      </div>\n    </div>\n    <p id=\"hours-total\"></p>\n    <p id=\"watch-time\"></p>\n    <button type=\"button\" id=\"roll-call-button\">Roll call</button>\n    <ol id=\"roll-call\"></ol>\n    <p id=\"roll-summary\"></p>\n    <button type=\"button\" id=\"call-dinner\">Call to dinner</button>\n    <button type=\"button\" id=\"call-bridge\">Call to the bridge</button>\n    <p id=\"intercom\"></p>\n    <p>Oxygen tanks: <span id=\"tanks\">7</span>, each lasting <span id=\"tank-hours\">20</span> hours.</p>\n    <p id=\"oxygen\"></p>\n    <p>Launch countdown from <span id=\"countdown-from\">4</span></p>\n    <p id=\"countdown\"></p>\n  </body>\n</html>\n"
-      },
-      "steps": [
-        {
-          "logged": "Crew 1: Ada"
-        },
-        {
-          "logged": "Crew 2: Bram"
-        },
-        {
-          "logged": "Crew 5: Eli"
-        },
-        {
-          "noErrors": true
+          "logged": "Liftoff!"
         }
       ]
     }
