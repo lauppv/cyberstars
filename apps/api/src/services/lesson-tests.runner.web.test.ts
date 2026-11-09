@@ -261,6 +261,19 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
   });
 
+  it('tells a page that starts with <!DOCTYPE html> from one without', () => {
+    const files = {
+      'index.html': '<!DOCTYPE html><html><body><h1>Station Log</h1></body></html>',
+      'old.html': '<html><body><h1>Station Log</h1></body></html>',
+    };
+    const [modern, old] = verdicts(files, [
+      { name: 'Modern', visible: true, steps: [{ doctype: true }] },
+      { name: 'Old', visible: true, page: 'old.html', steps: [{ doctype: true }] },
+    ]);
+    expect(modern.passed).toBe(true);
+    expect(old.web).toMatchObject({ kind: 'doctype' });
+  });
+
   it('reads the effect of a style: room, contrast, a look of its own, the middle, the outline', () => {
     const files = {
       'index.html': `<!DOCTYPE html><html><head><style>

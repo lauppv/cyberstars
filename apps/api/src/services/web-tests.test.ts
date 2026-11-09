@@ -214,6 +214,11 @@ describe('judgeStep', () => {
     });
   });
 
+  it('passes a page the browser shows as a modern one, after <!DOCTYPE html>', () => {
+    expect(judge({ doctype: true }, { standards: true })).toBeNull();
+    expect(judge({ doctype: true }, { standards: false })).toEqual({ kind: 'doctype' });
+  });
+
   it('passes a style that is anything but a value, or a length within bounds', () => {
     const not = { style: '.card', prop: 'border-top-style', not: 'none', label: 'a card' } as const;
     expect(judge(not, { count: 1, values: ['dashed'] })).toBeNull();

@@ -134,6 +134,9 @@ async function observe(page, step, seen) {
   if ('fits' in step) {
     return { scrollWidth: await page.evaluate(() => document.documentElement.scrollWidth) };
   }
+  if ('doctype' in step) {
+    return { standards: await page.evaluate(() => document.compatMode === 'CSS1Compat') };
+  }
   if ('logged' in step) return { logs: [...seen.logs] };
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };

@@ -385,6 +385,7 @@ const WEB_CHECKS = [
   'fills',
   'size',
   'fits',
+  'doctype',
   'outline',
   'logged',
   'noErrors',
@@ -411,6 +412,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   fills: ['label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
+  doctype: [],
   outline: [],
   logged: [],
   noErrors: [],
@@ -449,6 +451,7 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   const value = step[own];
   switch (own) {
     case 'fits':
+    case 'doctype':
     case 'outline':
     case 'noErrors':
       return value === true ? null : `${own} must be true`;

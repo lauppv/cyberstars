@@ -185,6 +185,7 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     const scroll = seen.scrollWidth ?? 0;
     return scroll <= width + 1 ? null : { kind: 'fits', found: String(scroll), width };
   }
+  if ('doctype' in step) return seen.standards ? null : { kind: 'doctype' };
   if ('logged' in step) {
     const logs = seen.logs ?? [];
     if (logs.some((line) => line.trim() === step.logged.trim())) return null;

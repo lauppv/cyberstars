@@ -133,6 +133,8 @@ export type WebCheck =
     } & Labelled)
   /** The page fits the window's width, with nothing to scroll sideways. */
   | { fits: true }
+  /** The page starts with `<!DOCTYPE html>`, so the browser shows it as a modern page. */
+  | { doctype: true }
   /** The page's headings: one h1, and none more than a level below the heading before it. */
   | { outline: true }
   /** The page's scripts logged this line (spaces at the ends aside). */
@@ -199,6 +201,8 @@ export interface WebObservation {
   /** An outline check's: the page's headings in order. */
   headings?: { level: number; text: string }[];
   scrollWidth?: number;
+  /** A doctype check's: whether the browser shows the page as a modern one (`document.compatMode`). */
+  standards?: boolean;
   logs?: string[];
   errors?: string[];
   page?: string;
@@ -222,6 +226,7 @@ type WebFailureKind =
   | 'differs'
   | 'outline'
   | 'fits'
+  | 'doctype'
   | 'logged'
   | 'errors'
   | 'at'
@@ -464,6 +469,10 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca pagina să încapă în ${w}px fără derulare în lateral, dar e lată de ${found}px.`
         : `Expected the page to fit ${w}px without scrolling sideways, found it ${found}px wide.`;
+    case 'doctype':
+      return ro
+        ? 'Se aștepta ca pagina să înceapă cu <!DOCTYPE html>, dar nu începe așa.'
+        : 'Expected the page to start with <!DOCTYPE html>, found it missing.';
     case 'logged':
       return ro
         ? `Se aștepta în consolă ${q(expected)}, dar ${found ? `are ${q(found)}` : 'consola e goală'}.`
