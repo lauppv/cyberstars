@@ -1,20 +1,40 @@
-You've built a whole home page, one piece at a time, with a lesson next to you for each one. Now build a page on your own, from nothing: a profile of one crew member. This is your own project, outside the station site, so nothing here touches the pages you've built.
+No new theory: this project uses everything from the first part, HTML and CSS. You've built a whole home page, one piece at a time, with a lesson next to you for each one. Now you build a page on your own, from an empty folder: the profile of one crew member.
 
-There's no example to follow this time. Everything you need is in the lessons before this one, so open them again whenever you're not sure.
+This is a project of its own, outside the station site, so nothing here touches the pages you've built. Whenever you're not sure how to do a step, open the lesson it comes from again.
 
 ## Your files
 
-The folder starts empty. Make three files with **New file**: `index.html` for the page, `style.css` for its look and `script.js` for its script.
+The folder starts empty. Make two files with **New file**: `index.html` for the page and `style.css` for its look.
 
-## The brief
+## The steps
 
-New crew members arrive on the station every month, and the others want to know who they are. Pick a crew member, real or made up, and make their profile page:
+New crew members arrive every month, and the others want to know who they are. Pick a crew member, real or made up, and build their profile in this order:
 
-- It's an English page that can show any letter, and the browser's tab says **Crew Profile**.
-- Their name is the title of the page. Right under it, their job on board, in a paragraph in the class `role`, in italics.
-- At least two sections, each with its own heading, about whatever you like: their skills, their last mission, their favorite place on the station. Somewhere, one thing a visitor must not miss.
-- A way to write them an email.
-- The look comes from `style.css`: the name in the middle, colors and a font of your choice, easy to read, text that grows when a visitor makes their browser's text bigger, and nothing to scroll sideways on a phone.
-- A button with the id `salute`. A click on it writes, in a paragraph with the id `greeting`, the name from the page's title followed by ` salutes you!`. For **Ada Okafor**, that's `Ada Okafor salutes you!`. If the name on the page changes, so does the greeting. The script waits for the whole page before it runs.
+1. **The frame.** `index.html` starts with `<!DOCTYPE html>`, says it's in English, can show any letter, and its tab is named **Crew Profile**.
+2. **The name.** The crew member's name is the page's one biggest heading.
+3. **The job.** Right under the name, a paragraph with their job on board, with the class `role`.
+4. **Two parts.** At least two parts about them, each with its own heading one level under the name: their skills, their last mission, their favourite place on the station, whatever you like.
+5. **Something important.** Somewhere in those parts, one thing a visitor must not miss, in `<strong>`.
+6. **An email link.** A link that starts an email to them.
+7. **The style sheet.** `style.css` is linked from the head, and every rule of the page's look is in it.
+8. **Centered and slanted.** The name is centered, and the job is in italic.
+9. **Colors.** Colors and fonts of your choice, with every paragraph at a contrast of at least 4.5:1 and every heading at least 3:1.
+10. **Sizes.** Text sizes in `rem`, so the page grows when a visitor makes their browser's text bigger.
+11. **A phone.** On a phone 375 pixels wide, nothing scrolls sideways.
 
-Run the tests whenever you like: they tell you what's still missing.
+**Example**: a finished profile could show something like this:
+
+```text
+Ada Okafor                       (big, centered)
+Chief engineer, Docking Ring B   (italic)
+
+Skills
+Fixes solar panels in the dark and speaks four languages.
+
+Last Mission
+Forty hours outside the station to replace a cracked antenna.   (the first part in bold)
+
+Write to Ada                     (a link)
+```
+
+Run the tests whenever you like: they tell you which steps are still missing.

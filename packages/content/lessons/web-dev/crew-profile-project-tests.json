@@ -1,14 +1,15 @@
 {
   "cases": [
     {
-      "name": "The page has its skeleton",
+      "name": "The frame: doctype, English, any letter, the tab",
       "visible": true,
       "steps": [
         {
-          "attr": "html",
-          "name": "lang",
-          "equals": "en",
-          "label": "the <html> tag"
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
         },
         {
           "attr": "head meta[charset]",
@@ -36,41 +37,45 @@
         {
           "text": "h1",
           "nonEmpty": true,
-          "label": "the name, as the page's title"
+          "label": "the name"
         },
         {
-          "text": "p.role",
+          "text": "h1 + p.role",
           "nonEmpty": true,
-          "label": "the job"
+          "label": "the job, right under the name (<p class=\"role\">)"
         }
       ]
     },
     {
-      "name": "The page has sections, an important part and an email link",
+      "name": "Two parts, something important and an email link",
       "visible": true,
       "steps": [
         {
-          "count": "h2",
+          "count": "h1 ~ h2",
           "atLeast": 2,
-          "label": "section headings"
+          "label": "part headings (<h2>)"
         },
         {
-          "exists": "strong",
-          "label": "an important part"
+          "outline": true
+        },
+        {
+          "text": "h2 ~ p strong",
+          "nonEmpty": true,
+          "label": "something important (<strong>) in a part"
         },
         {
           "exists": "a[href^=\"mailto:\"]",
-          "label": "a link that writes an email"
+          "label": "a link that starts an email"
         }
       ]
     },
     {
-      "name": "style.css gives it its look",
+      "name": "style.css gives the page its look",
       "visible": true,
       "steps": [
         {
-          "exists": "head link[rel=\"stylesheet\"][href$=\"style.css\"]",
-          "label": "a link to style.css in the head"
+          "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"]",
+          "label": "a <link> to style.css in the <head>"
         },
         {
           "style": "h1",
@@ -87,6 +92,21 @@
       ]
     },
     {
+      "name": "Every rule is in style.css",
+      "visible": false,
+      "files": {
+        "style.css": "h1 { color: rgb(1, 2, 3); }"
+      },
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(1, 2, 3)",
+          "label": "the name"
+        }
+      ]
+    },
+    {
       "name": "The text reads well",
       "visible": true,
       "steps": [
@@ -94,13 +114,13 @@
           "contrast": "h1, h2",
           "atLeast": 3,
           "every": true,
-          "label": "a heading"
+          "label": "every heading"
         },
         {
           "contrast": "p",
           "atLeast": 4.5,
           "every": true,
-          "label": "a paragraph"
+          "label": "every paragraph"
         }
       ]
     },
@@ -132,50 +152,6 @@
       "steps": [
         {
           "fits": true
-        }
-      ]
-    },
-    {
-      "name": "The salute button greets you by name",
-      "visible": true,
-      "steps": [
-        {
-          "exists": "head script[src$=\"script.js\"][defer]",
-          "label": "a script.js in the head that waits for the whole page"
-        },
-        {
-          "exists": "p#greeting",
-          "label": "the greeting"
-        },
-        {
-          "click": "button#salute",
-          "label": "the button with id=\"salute\""
-        },
-        {
-          "text": "p#greeting",
-          "contains": "salutes you!",
-          "label": "the greeting, after the click"
-        },
-        {
-          "noErrors": true
-        }
-      ]
-    },
-    {
-      "name": "The salute reads the name from the page",
-      "visible": false,
-      "files": {
-        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Profile</title>\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Bram Vega</h1>\n    <p class=\"role\">Pilot</p>\n    <button type=\"button\" id=\"salute\">Salute</button>\n    <p id=\"greeting\"></p>\n  </body>\n</html>\n"
-      },
-      "steps": [
-        {
-          "click": "button#salute",
-          "label": "the salute button"
-        },
-        {
-          "text": "p#greeting",
-          "equals": "Bram Vega salutes you!",
-          "label": "the greeting"
         }
       ]
     }
