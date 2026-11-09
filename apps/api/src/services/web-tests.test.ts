@@ -38,7 +38,9 @@ const { judgeStep, judgeWebCase, runWebLessonTests, loadWebTestsSpec } =
   await import('./web-tests.js');
 const { runLessonTests } = await import('./lesson-tests.service.js');
 
-const SOLUTION = fs.readFileSync(path.join(courseDir('web-dev'), 'first-page-solution.md'), 'utf8');
+// A lesson of three cases, the second and third of one and two steps
+const LESSON = 'more-text-tags';
+const SOLUTION = fs.readFileSync(path.join(courseDir('web-dev'), `${LESSON}-solution.md`), 'utf8');
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -212,6 +214,16 @@ describe('judgeStep', () => {
       found: '900',
       width: 375,
     });
+  });
+
+  it('passes pictures whose files all loaded', () => {
+    const step = { loaded: 'img', label: 'the station picture' } as const;
+    expect(judge(step, { count: 2, values: ['yes', 'yes'] })).toBeNull();
+    expect(judge(step, { count: 2, values: ['yes', 'no'] })).toEqual({
+      kind: 'loaded',
+      label: 'the station picture',
+    });
+    expect(judge(step, { count: 0 })).toEqual({ kind: 'missing', label: 'the station picture' });
   });
 
   it('passes a page the browser shows as a modern one, after <!DOCTYPE html>', () => {
@@ -522,37 +534,40 @@ function stubRunner(header: object, lines: object[]) {
   return replies;
 }
 
-// What the first lesson's runner reports for its reference site
+// What the lesson's runner reports for its reference site
 const PASSING = [
   {
     steps: [
-      { count: 1, values: ['en'] },
-      { count: 1, values: ['UTF-8'] },
+      { count: 1, values: ['2'] },
+      { count: 1, values: ['Water left: 900 litres of H2O.'] },
     ],
   },
-  { steps: [{ count: 1, values: ['Station Log'] }] },
-  { steps: [{ count: 1, values: ['Welcome aboard'] }] },
-  { steps: [{ count: 1, values: ['The station orbits the Earth every 92 minutes.'] }] },
+  { steps: [{ count: 1, values: ['5'] }] },
+  {
+    steps: [
+      { count: 1, values: ['Docking fee: 20 credits a day.'] },
+      { count: 1, values: ['Friday'] },
+    ],
+  },
 ];
 
 describe('runWebLessonTests', () => {
   it('loads the spec of a web lesson, with no Romanian one yet', () => {
-    expect(loadWebTestsSpec('web-dev', 'first-page')?.cases.length).toBe(4);
-    expect(loadWebTestsSpec('web-dev', 'first-page', 'ro')?.cases.length).toBe(4);
+    expect(loadWebTestsSpec('web-dev', LESSON)?.cases.length).toBe(3);
+    expect(loadWebTestsSpec('web-dev', LESSON, 'ro')?.cases.length).toBe(3);
     expect(loadWebTestsSpec('web-dev', 'nope')).toBeNull();
   });
 
   it("runs the site in the owner's web sandbox and passes it", async () => {
     const replies = stubRunner({ ready: true }, PASSING);
-    const result = await runWebLessonTests('user:1', 'web-dev', 'first-page', SOLUTION);
-    expect(result).toMatchObject({ status: 'passed', passedCount: 4, total: 4 });
+    const result = await runWebLessonTests('user:1', 'web-dev', LESSON, SOLUTION);
+    expect(result).toMatchObject({ status: 'passed', passedCount: 3, total: 3 });
     expect(result.cases.map((c) => c.name)).toEqual([
-      'The page is in English and can show any letter',
-      'The tab is named Station Log',
-      'The biggest heading says Welcome aboard',
-      'A paragraph of your own follows the heading',
+      "Water's formula has its 2 low",
+      'A power is up high',
+      'A side note is small and a word is highlighted',
     ]);
-    expect(replies).toEqual(['next', 'next', 'next', 'next']);
+    expect(replies).toEqual(['next', 'next', 'next']);
     expect(mockAcquire).toHaveBeenCalledWith('user:1', 'web', undefined);
     // The runner, then the payload: the site and the steps, no expected value
     const payload = JSON.parse(mockDockerExec.mock.calls[1][2]);
@@ -574,25 +589,25 @@ describe('runWebLessonTests', () => {
   it('stops at the first failing case and says why', async () => {
     const replies = stubRunner({ ready: true }, [
       PASSING[0],
-      { steps: [{ count: 1, values: ['Cargo Bay'] }] },
+      { steps: [{ count: 1, values: [''] }] },
     ]);
-    const result = await runWebLessonTests('user:1', 'web-dev', 'first-page', SOLUTION);
-    expect(result).toMatchObject({ status: 'failed', passedCount: 1, total: 4 });
-    expect(result.cases[1].web).toMatchObject({ kind: 'text', found: 'Cargo Bay' });
+    const result = await runWebLessonTests('user:1', 'web-dev', LESSON, SOLUTION);
+    expect(result).toMatchObject({ status: 'failed', passedCount: 1, total: 3 });
+    expect(result.cases[1].web).toMatchObject({ kind: 'text', detail: 'nonEmpty', found: '' });
     expect(replies).toEqual(['next', 'stop']);
   });
 
   it('serves a lesson image from the course assets and leaves out a path it may not have', async () => {
     stubRunner({ ready: true }, PASSING);
     const site = `${SOLUTION}\`\`\`image img/none.png\n\`\`\`\n\`\`\`html ../evil.html\nx\n\`\`\`\n`;
-    await runWebLessonTests('user:1', 'web-dev', 'first-page', site);
+    await runWebLessonTests('user:1', 'web-dev', LESSON, site);
     const payload = JSON.parse(mockDockerExec.mock.calls[1][2]);
     expect(Object.keys(payload.files)).toEqual(['index.html']);
   });
 
   it('drops the sandbox when the browser does not start', async () => {
     stubRunner({ launchError: 'no browser' }, []);
-    await expect(runWebLessonTests('user:1', 'web-dev', 'first-page', SOLUTION)).rejects.toThrow(
+    await expect(runWebLessonTests('user:1', 'web-dev', LESSON, SOLUTION)).rejects.toThrow(
       'Test run failed',
     );
     expect(mockDestroy).toHaveBeenCalledWith('user:1');
@@ -601,7 +616,7 @@ describe('runWebLessonTests', () => {
 
   it('refuses a second run of the same owner and a lesson without tests', async () => {
     mockIsRunning.mockReturnValue(true);
-    await expect(runWebLessonTests('user:1', 'web-dev', 'first-page', SOLUTION)).rejects.toThrow(
+    await expect(runWebLessonTests('user:1', 'web-dev', LESSON, SOLUTION)).rejects.toThrow(
       'A run is already in progress',
     );
     await expect(runWebLessonTests('user:1', 'web-dev', 'nope', SOLUTION)).rejects.toThrow(
@@ -611,7 +626,7 @@ describe('runWebLessonTests', () => {
 
   it('is what Run Tests runs on a web course', async () => {
     stubRunner({ ready: true }, PASSING);
-    const result = await runLessonTests('guest:g', 'web-dev', 'first-page', SOLUTION, 'en');
+    const result = await runLessonTests('guest:g', 'web-dev', LESSON, SOLUTION, 'en');
     expect(result.status).toBe('passed');
     expect(mockAcquire).toHaveBeenCalledWith('guest:g', 'web', undefined);
   });

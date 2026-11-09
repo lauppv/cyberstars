@@ -318,6 +318,9 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
       width,
     };
   }
+  if ('loaded' in step) {
+    return (seen.values ?? []).every((v) => v === 'yes') ? null : { kind: 'loaded', label };
+  }
   if ('fills' in step) {
     const [box, parent] = boxes;
     if (!box || !parent) return { kind: 'missing', label };

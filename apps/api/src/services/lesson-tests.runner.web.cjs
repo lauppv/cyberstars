@@ -161,6 +161,7 @@ async function observe(page, step, seen) {
     step.layout ??
     step.centered ??
     step.fills ??
+    step.loaded ??
     step.size;
   const elements = page.locator(`css=${selector}`);
   const count = await elements.count();
@@ -172,6 +173,15 @@ async function observe(page, step, seen) {
         els
           .slice(0, max)
           .map((el) => (el.innerText ?? el.textContent ?? '').replace(/\s+/g, ' ').trim()),
+      MAX_ELEMENTS,
+    );
+    return { count, values };
+  }
+  // Whether each picture's file was found and drawn
+  if ('loaded' in step) {
+    const values = await elements.evaluateAll(
+      (els, max) =>
+        els.slice(0, max).map((el) => (el.complete && el.naturalWidth > 0 ? 'yes' : 'no')),
       MAX_ELEMENTS,
     );
     return { count, values };

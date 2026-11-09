@@ -383,6 +383,7 @@ const WEB_CHECKS = [
   'layout',
   'centered',
   'fills',
+  'loaded',
   'size',
   'fits',
   'doctype',
@@ -410,6 +411,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   layout: ['arrange', 'gap', 'align', 'label'],
   centered: ['label'],
   fills: ['label'],
+  loaded: ['label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
   doctype: [],
@@ -433,6 +435,7 @@ const NEEDS_LABEL = new Set([
   'layout',
   'centered',
   'fills',
+  'loaded',
   'size',
 ]);
 const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);

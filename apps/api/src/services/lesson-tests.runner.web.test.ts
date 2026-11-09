@@ -261,6 +261,23 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
   });
 
+  it('tells a picture whose file loaded from one whose file is missing, whatever its size', () => {
+    const svg = encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>',
+    );
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <img class="ok" src="data:image/svg+xml,${svg}" alt="A dot">
+        <img class="lost" src="img/gone.svg" alt="A dot" width="240" height="150"></body></html>`,
+    };
+    const [ok, lost] = verdicts(files, [
+      { name: 'Found', visible: true, steps: [{ loaded: '.ok', label: 'the dot' }] },
+      { name: 'Lost', visible: true, steps: [{ loaded: '.lost', label: 'the dot' }] },
+    ]);
+    expect(ok.passed).toBe(true);
+    expect(lost.web).toMatchObject({ kind: 'loaded' });
+  });
+
   it('tells a page that starts with <!DOCTYPE html> from one without', () => {
     const files = {
       'index.html': '<!DOCTYPE html><html><body><h1>Station Log</h1></body></html>',

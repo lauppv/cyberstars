@@ -57,6 +57,9 @@ describe('webFailureText', () => {
     expect(say({ kind: 'fits', found: '900', width: 375 })).toBe(
       'Expected the page to fit 375px without scrolling sideways, found it 900px wide.',
     );
+    expect(say({ kind: 'loaded', label: 'the station picture' })).toBe(
+      'Expected the station picture to show, found its file missing: check its path.',
+    );
     expect(say({ kind: 'doctype' })).toBe(
       'Expected the page to start with <!DOCTYPE html>, found it missing.',
     );
