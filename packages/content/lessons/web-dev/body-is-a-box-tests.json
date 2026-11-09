@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "name": "On a wide screen the body is at most 960 pixels wide",
+      "visible": true,
+      "width": 1600,
+      "steps": [
+        {
+          "size": "body",
+          "maxWidth": 960,
+          "label": "the body"
+        }
+      ]
+    },
+    {
+      "name": "It sits in the middle of the window",
+      "visible": true,
+      "width": 1600,
+      "steps": [
+        {
+          "centered": "body",
+          "label": "the body"
+        }
+      ]
+    },
+    {
+      "name": "Nothing slides sideways on a phone",
+      "visible": true,
+      "width": 320,
+      "steps": [
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The crew directory sits in the column too",
+      "visible": true,
+      "width": 1600,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "body",
+          "maxWidth": 960,
+          "label": "the body"
+        },
+        {
+          "centered": "body",
+          "label": "the body"
+        }
+      ]
+    }
+  ]
+}

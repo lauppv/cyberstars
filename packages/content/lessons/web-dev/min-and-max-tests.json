@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "name": "Every card is at least 140 pixels tall",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "#cards > .card:nth-child(1)",
+          "minHeight": 140,
+          "label": "card 1"
+        },
+        {
+          "size": "#cards > .card:nth-child(2)",
+          "minHeight": 140,
+          "label": "card 2"
+        },
+        {
+          "size": "#cards > .card:nth-child(3)",
+          "minHeight": 140,
+          "label": "card 3"
+        },
+        {
+          "size": "#cards > .card:nth-child(4)",
+          "minHeight": 140,
+          "label": "card 4"
+        }
+      ]
+    },
+    {
+      "name": "The duty list is at most 600 pixels wide",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "#duty + ol",
+          "maxWidth": 600,
+          "label": "the duty list"
+        }
+      ]
+    }
+  ]
+}

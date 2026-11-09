@@ -1,46 +1,47 @@
-On a wide screen, your pages go from one edge to the other. A line of text as long as the whole window is hard to follow: your eyes get lost on the way back to the start of the next line. Most sites keep their content in a column in the middle. Here's how.
+Hang a picture in the middle of a wall: you measure the empty wall on the left and on the right, and make them equal. CSS can do that measuring for you.
 
-## Centering a box
+## `margin: 0 auto`
+
+A box with a width narrower than its space can be centered with `auto` margins on the left and right:
 
 ```css
-.manifest {
-  max-width: 600px;
+.notice {
+  max-width: 500px;
   margin: 0 auto;
 }
 ```
 
-- `max-width` keeps the box narrower than the window, when the window is wide.
-- `margin: 0 auto` means no margin on the top and bottom, and **`auto`** on the left and right. The browser shares the free space equally between the two sides, so the box sits in the middle.
+`0 auto` is the two-value shorthand: `0` for the top and bottom, `auto` for the left and right. `auto` means "the browser works it out": it takes the space left over and shares it equally between the two sides. The box ends up in the middle.
 
-It works on block boxes that are narrower than their parent. In a narrow window, the box simply takes the whole width, and there's no free space to share.
+On a phone, where there's no space left over, each `auto` is 0 and the box simply takes the full width.
 
-## Centering text is something else
+## It needs a width
 
-`text-align: center` centers the **text inside** a box, but it doesn't move the box. `margin: 0 auto` moves the **box**, and the text inside stays on the left. Often you want one of them, sometimes both.
+`auto` margins only center a box that's **narrower** than its space. A paragraph with no width takes the full width already, so there's nothing left over to share, and nothing moves.
 
-## Padding on the sides
+So it's always a pair: a `width` or `max-width`, and `margin: 0 auto`.
 
-A box exactly as wide as a phone's screen puts its text right against the edges. A little padding on the left and right keeps it away from them:
+## Break it on purpose
+
+Write `margin: auto 0` instead:
 
 ```css
-.manifest {
-  padding: 0 16px;
+.notice {
+  max-width: 500px;
+  margin: auto 0;
 }
 ```
 
-With `border-box`, that padding stays inside the box's `max-width`.
-
-## The body is a box too
-
-If you center the `body` itself, every page of the site gets the column at once, because everything sits inside it.
+The notice sits on the left again. Now `auto` is on the top and bottom, and the left and right are 0. Two values: the first for top and bottom, the second for left and right.
 
 ---
 
-## Mission: Center Column
+## Mission: The duty board in the middle
 
-Both pages should be easy to read on a wide screen and on a phone.
+Your duty board stops at 600 pixels, but it sits on the left with empty space on its right.
 
-- On a wide screen, the content of both pages sits in one column in the middle of the window, never wider than `960px`, starting right at the top of the window.
-- The text never touches the edges of the column: keep some room on its left and right, at least `8px`.
-- On the crew page, the box of cards sits in the middle of that column.
-- On a phone, the column takes the whole width, and nothing sticks out.
+**Example**: on a wide screen, the duty board sits in the middle of the page, with as much empty space on its left as on its right.
+
+- The duty list is centered across the page.
+
+Psst, `auto` margins on the left and right share the space out :)

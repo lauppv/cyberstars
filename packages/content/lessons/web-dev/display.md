@@ -1,35 +1,52 @@
-You've met two kinds of box. **Block** boxes, like paragraphs and divs, start on a new line and take the whole width. **Inline** boxes, like links and spans, sit inside a line of text. The `display` property decides which kind an element is, and you can change it.
+You've seen two kinds of elements: blocks, which take a whole row, and inline ones, which sit inside a line. That's not fixed forever. With one property, you can change what kind of box an element is.
 
-## The main values
+Think of tiles on a bathroom wall. Each tile is a little box with its own size, but they sit side by side in rows, and wrap to the next row when the wall ends. That's the third kind of box.
 
-- `display: block`: a new line, the whole width, and `width`, `height`, `margin` and `padding` all work.
-- `display: inline`: sits in the line. `width` and `height` are ignored, and padding on the top and bottom doesn't push the lines apart.
-- `display: inline-block`: sits in the line like a word, **and** takes a width, a height and padding like a block. The boxes stand side by side, and go on to the next line when the row is full.
-- `display: none`: the element is gone, as if it weren't in the HTML. It takes no space, and a screen reader doesn't read it either.
+## `display`
 
 ```css
-.tag {
+.member {
   display: inline-block;
-  padding: 4px 10px;
-  margin-right: 8px;
+  width: 200px;
 }
 ```
 
-Inline-block boxes line up like words, so they keep the space a word would have between them: the spaces and new lines between their tags in the HTML. And like words, they line up at the bottom of their line, unless you say otherwise: `vertical-align: top` lines them up at their tops.
+The values you'll use:
 
-CSS has stronger tools for putting boxes in rows and grids, `flex` and `grid`, which come in a later part. `inline-block` is the simple one, and it's enough for a row of cards that wraps.
+- `block`: a row of its own, full width, like `<p>` or `<div>`;
+- `inline`: inside the line, as wide as its words, like `<span>`. Width and height don't work on it;
+- `inline-block`: sits in the line like a word, side by side with the others, **but** keeps its width, height, padding and margins, like a tile;
+- `none`: not shown at all, and takes no room. The element is still in your HTML.
 
-## Bigger targets
+## Side by side
 
-A link is inline, so padding doesn't make it any taller to tap. As an `inline-block` with padding, the whole padded box becomes the link, and it's easier to hit with a finger.
+With `display: inline-block`, the member boxes line up in a row like tiles. When the row is full, the next one wraps onto a new row.
 
-To pick only the navigation's links, and not every link of the page, write two names with a space between them: `nav a` means every `a` inside a `nav`. Part 3 tells you more about selectors like this one.
+They line up along the bottom of their text by default, so boxes of different heights look uneven. `vertical-align: top` lines up their tops instead:
+
+```css
+.member {
+  display: inline-block;
+  vertical-align: top;
+  width: 200px;
+}
+```
+
+## Break it on purpose
+
+Make the member boxes `display: inline`. Their width is ignored, their padding spills over the lines around them, and they look like a mess of words. A box that should keep its size, but sit in a row, is `inline-block`.
+
+Then try `display: none` on one: it disappears completely, and the others close up the gap.
 
 ---
 
-## Mission: Side by Side
+## Mission: Cards in a row
 
-The crew directory has a long column of cards. On a wide screen, there's room for several in a row.
+On `crew.html`, your cards are stacked one under the other, each with lots of empty space on its right.
 
-- On a wide screen, the cards stand side by side, at least `12px` apart, lined up at their tops even when one card holds more text than the others. On a phone, they stand one under the other, and nothing sticks out.
-- The navigation's links are small and hard to tap on a phone. Make each one a target at least `40px` tall, still side by side.
+**Example**: on a wide screen, the cards sit side by side, in rows, their tops lined up.
+
+- The first two cards stand side by side.
+- Their tops are lined up.
+
+Psst, a box that sits in a row but keeps its size is `inline-block` :)

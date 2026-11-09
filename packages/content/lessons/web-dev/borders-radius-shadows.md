@@ -1,50 +1,48 @@
-Your cards have frames. Three properties make a frame look like it was made with care: rounded corners, a border on one side only, and a shadow.
+Look at the buttons and cards in the apps on your phone. Hardly any have sharp corners: they're slightly rounded, like a bank card or a phone itself. Rounded corners feel softer and friendlier.
 
-## Rounded corners
+## `border-radius`
 
 ```css
-.crate {
-  border-radius: 8px;
+.member {
+  border-radius: 12px;
 }
 ```
 
-`border-radius` rounds the corners: the bigger the number, the rounder they get. It works with or without a border, on the background too, and on pictures. Like `padding`, it takes one value for all corners, or four, starting at the top left and going round: `border-radius: 0 12px 12px 0` rounds only the right side. `50%` on a square makes a circle.
+Each corner of the box becomes a curve. The number is the size of the curve: the bigger it is, the rounder the corner.
 
-## One side
+It rounds everything: the background, the border, and the box's shadow, as you'll see soon. A box with no background or border doesn't show any change, since there's nothing to round.
 
-`border-top`, `border-right`, `border-bottom` and `border-left` set the border of one side only:
+## Values to try
+
+- `4px`: barely rounded, like a ticket;
+- `12px`: a soft card;
+- `50%`: on a square box, a full circle. Half the box's size rounds each corner all the way.
+
+## One corner at a time
+
+Each corner has its own property, like `border-top-left-radius`, or four values in one, going round the clock from the top left:
 
 ```css
-.selected {
-  border-left: 4px solid orange;
+.tab {
+  border-radius: 12px 12px 0 0;
 }
 ```
 
-A line under a link, a bar down the side of a quote: often one side is all you need.
+Rounded at the top, square at the bottom, like a folder's tab.
 
-## Shadows
+## Break it on purpose
 
-```css
-.crate {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-```
-
-`box-shadow` draws a shadow behind the box. Its values, in order:
-
-1. how far to the right the shadow moves (`0`);
-2. how far down it moves (`2px`, as if the light came from above);
-3. how blurry its edge is (`6px`);
-4. its color, almost always a see-through black.
-
-A soft shadow makes a card look lifted off the page. A hard, dark one looks old-fashioned, so keep shadows gentle.
+Give a card a huge radius: `border-radius: 200px`. The card turns into a pill, and the text near its corners now sits outside the rounded shape, cut by the curve. Round, but not too round: the padding should still be bigger than the curve.
 
 ---
 
-## Mission: Polish
+## Mission: Soft corners
 
-Time to make the site look finished.
+Your cards and your duty board are boxes with sharp corners.
 
-- Every crew card gets rounded corners and a soft shadow, so it looks lifted off the page.
-- Every picture on the home page gets rounded corners too.
-- The navigation's links get a line along their bottom only, in a color of your choice, like a tab you can click.
+**Example**: every card and the duty board have softly rounded corners.
+
+- Every card's corners are rounded by at least 8 pixels.
+- The duty list's corners are rounded by at least 8 pixels.
+
+Psst, `border-radius` rounds all four corners at once :)

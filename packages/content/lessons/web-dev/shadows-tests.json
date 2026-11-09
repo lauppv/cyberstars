@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "name": "Every card has a shadow",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "box-shadow",
+          "every": true,
+          "not": "none",
+          "label": "every card"
+        }
+      ]
+    }
+  ]
+}

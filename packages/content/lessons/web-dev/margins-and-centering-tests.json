@@ -1,77 +1,13 @@
 {
   "cases": [
     {
-      "name": "The home page sits in a column in the middle",
-      "visible": true,
-      "steps": [
-        {
-          "size": "body",
-          "maxWidth": 960,
-          "label": "the page's body"
-        },
-        {
-          "centered": "body",
-          "label": "the page's body"
-        },
-        {
-          "style": "body",
-          "prop": "margin-top",
-          "equals": "0px",
-          "label": "the page's body"
-        }
-      ]
-    },
-    {
-      "name": "The column keeps its text off the edges",
-      "visible": true,
-      "steps": [
-        {
-          "style": "body",
-          "prop": "padding-left",
-          "atLeast": 8,
-          "label": "the page's body"
-        },
-        {
-          "style": "body",
-          "prop": "padding-right",
-          "atLeast": 8,
-          "label": "the page's body"
-        }
-      ]
-    },
-    {
-      "name": "The crew page shares the column, the cards in its middle",
+      "name": "The duty list is centered across the page",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "size": "body",
-          "maxWidth": 960,
-          "label": "the body of crew.html"
-        },
-        {
-          "centered": "body",
-          "label": "the body of crew.html"
-        },
-        {
-          "centered": "#cards",
-          "label": "the box of cards"
-        }
-      ]
-    },
-    {
-      "name": "On a phone the column takes the whole width",
-      "visible": true,
-      "page": "crew.html",
-      "width": 375,
-      "steps": [
-        {
-          "fits": true
-        },
-        {
-          "size": "body",
-          "minWidth": 374,
-          "label": "the body of crew.html, in a window 375px wide"
+          "centered": "#duty + ol",
+          "label": "the duty list"
         }
       ]
     }

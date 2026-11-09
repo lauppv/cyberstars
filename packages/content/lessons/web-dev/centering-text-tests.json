@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "name": "The home page's menu links are centered",
+      "visible": true,
+      "steps": [
+        {
+          "centered": "nav a",
+          "label": "the menu's links"
+        }
+      ]
+    },
+    {
+      "name": "The crew directory's menu links are centered",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "centered": "nav a",
+          "label": "the menu's links"
+        }
+      ]
+    }
+  ]
+}
