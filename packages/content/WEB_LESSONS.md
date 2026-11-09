@@ -13,7 +13,7 @@ A lesson teaches one thing. If you need a second heading to teach something new,
 - Bad: `first-page` teaches tags, elements, attributes, `<!DOCTYPE>`, `<head>`, `<meta charset>`, `<title>`, `<body>`, nesting and the workspace, all at once.
 - Good: one lesson for "a tag and its closing tag", one for "the frame of a page", one for "the tab's title", and so on.
 
-A lesson may *use* everything taught before. It *introduces* one idea.
+A lesson may _use_ everything taught before. It _introduces_ one idea.
 
 ## 2. Start from something the student already knows
 
