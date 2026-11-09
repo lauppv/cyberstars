@@ -1,46 +1,68 @@
-There's a second way to put content in an element, and it's the one you'll see most online. It's also the most dangerous line a beginner can write.
+`textContent` writes plain words. Every character shows exactly as typed: write `<strong>Hi</strong>`, and the page shows the tags themselves, angle brackets and all. Sometimes you want the tags to **work**, so a word comes out bold.
 
-## innerHTML
+## `innerHTML`
 
-```js
-const note = document.querySelector("#note");
-note.innerHTML = "Bay 2 is <strong>closed</strong>";
-```
-
-`textContent` puts **text** in, exactly as written: the visitor would see `<strong>` with its angle brackets. `innerHTML` reads what you give it as **HTML**: the visitor sees **closed** in bold. That's handy for HTML you wrote yourself.
-
-## Why it's dangerous
-
-Now imagine the text comes from somewhere else: a name a visitor typed, a list someone else edited, an answer from a server. Someone types this as their name:
-
-```html
-<img src="x" onerror="alert('Your account is mine')" />
-```
-
-With `textContent`, the page just shows those characters, and nothing bad happens. With `innerHTML`, the browser builds a real picture, fails to load it, and runs the `onerror` code: **someone else's JavaScript runs on your page**, and it can do anything your page can do. On a real site, it can read what the visitor types, send their data away, or pretend to be them. This attack is called **cross-site scripting**, or XSS, and it's one of the most common security holes on the web.
-
-## The safe way
-
-Any text that doesn't come from your own code goes in with `textContent`. When it needs HTML around it, build that HTML with `createElement`, and put the text in with `textContent`:
+`innerHTML` is like `textContent`, but whatever you put in is read as **HTML**:
 
 ```js
-const name = document.querySelector("#manifest li").textContent;
-const strong = document.createElement("strong");
-strong.textContent = name; // never parsed as HTML
-note.textContent = "First crate: ";
-note.append(strong);
+document.querySelector("#note").innerHTML = "<strong>Sam</strong> joined the club";
 ```
 
-The rule to keep: **`innerHTML` only with HTML you wrote yourself, never with text that came from anywhere else.**
+```text
+Sam joined the club        ("Sam" in bold)
+```
+
+The browser builds a real `<strong>` element inside `#note`, as if you'd written it in the HTML file.
+
+Compare with `textContent`:
+
+```js
+document.querySelector("#note").textContent = "<strong>Sam</strong> joined the club";
+```
+
+```text
+<strong>Sam</strong> joined the club
+```
+
+The tags show as plain characters. Nothing is bold.
+
+## Reading it
+
+Reading `innerHTML` gives the HTML inside the element, tags included:
+
+```js
+console.log(document.querySelector("#note").innerHTML);
+```
+
+```text
+<strong>Sam</strong> joined the club
+```
+
+While `textContent` gives only the words: `Sam joined the club`.
+
+## Break it on purpose
+
+Forget to close a tag:
+
+```js
+note.innerHTML = "<strong>Sam joined the club";
+```
+
+The browser closes it for you at the end, so the whole sentence turns bold. As in an HTML file, close what you open.
 
 ---
 
-## Mission: Latest Arrival
+## Mission: Latest arrival
 
-The crew page welcomes whoever joined last.
+The crew directory says who arrived last, with their name in bold.
 
-- On `crew.html`, after the two crew buttons, add an empty paragraph with the id `latest`.
-- It says `Latest arrival: ` followed by the last name of the crew list, with that name marked as important.
-- It follows the list: after **Add a rookie**, it names the new rookie.
+**Example**: under the rookie buttons, after a click on `Add a rookie`, a paragraph says:
 
-The names come from the page, and one day anyone may be able to edit that list. So treat them like text from a stranger: whatever a name holds, the page must show it exactly as written, and never run it.
+```text
+Rookie 1 just arrived        ("Rookie 1" in bold)
+```
+
+- A paragraph with the id `latest`, under the rookie buttons.
+- Each click on `Add a rookie` writes in it the new rookie's name in a `<strong>`, followed by ` just arrived`.
+
+Psst, tags only work with `innerHTML` :)

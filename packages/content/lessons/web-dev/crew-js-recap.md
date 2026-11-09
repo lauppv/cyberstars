@@ -1,14 +1,29 @@
-Your crew page's script reads numbers from the page, adds them up, loops over lists, uses functions and builds new elements, safely. One last mission puts all of it to work, with no steps to follow.
+No new theory, just a challenge that uses this part's JavaScript: loops, functions, `createElement` and `append`, and reading the page.
 
-Plan it before you write it: what happens when the page opens, what happens on a click, and what has to happen on a second click. When something goes wrong, log the values you're not sure about.
+This time nobody tells you which lines to write. Read what the crew needs, and put it together yourself.
+
+If nothing happens, open the console. If a list doesn't keep up, look for an old snapshot.
 
 ---
 
-## Mission: Roll Call
+## Mission: Roll call
 
-Before every launch, the commander calls the roll.
+Every morning, the commander presses a button to call the roll.
 
-- On `crew.html`, after the watch time, add a button with the id `roll-call-button` that says **Roll call**, an empty numbered list with the id `roll-call`, and an empty paragraph with the id `roll-summary`.
-- A click on the button fills the list from the crew **cards**: one item per card, with the card's name and then its job in parentheses, like `Mara Vega (Commander)`.
-- The commander may call the roll again and again: a second click starts the list over, so no card is ever listed twice.
-- The summary says how many answered, like `4 present`.
+**Example**: under the welcome list, a button says `Roll call`. A click fills a numbered list under it with every name of the crew list, each followed by ` - present`, and a paragraph under that says how many answered:
+
+```text
+1. Mara Vega - present
+2. Tomas Okafor - present
+3. Ines Lindqvist - present
+4. Kenji Arano - present
+
+4 crew members answered
+```
+
+- A button with the id `roll-call-button`, an empty numbered list with the id `roll-call`, and an empty paragraph with the id `roll-summary`.
+- A click fills `#roll-call` with an item for every name of the crew list at that moment, in order: the name followed by ` - present`.
+- `#roll-summary` then says how many items `#roll-call` has, followed by ` crew members answered`.
+- A second click doesn't add the names twice: the list starts again from empty.
+
+Psst, `textContent = ""` empties an element :)
