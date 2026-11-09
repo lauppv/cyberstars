@@ -53,6 +53,7 @@ export type PreviewMessage =
   | { type: 'navigate'; path: string }
   | { type: 'outsideLink'; href: string }
   | { type: 'formSent'; fields: string }
+  | { type: 'title'; text: string }
   | { type: 'storage'; data: Record<string, string> };
 
 // The most a page keeps in localStorage, in characters of keys and values
@@ -319,6 +320,11 @@ export function previewPrelude(config: PreludeConfig): void {
       fields.push(`${key}=${typeof value === 'string' ? value : value.name}`);
     });
     post({ type: 'formSent', fields: line([fields.join('&')]) });
+  });
+
+  // ── The page's title, which the IDE shows over the site like a tab ─────
+  document.addEventListener('DOMContentLoaded', () => {
+    post({ type: 'title', text: document.title.slice(0, TEXT_LIMIT) });
   });
 
   post({ type: 'ready' });

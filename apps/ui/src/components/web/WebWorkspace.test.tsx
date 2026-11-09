@@ -264,6 +264,14 @@ describe('WebWorkspace', () => {
     expect(screen.getByRole('button', { name: 'Lesson actions' })).toBeInTheDocument();
   });
 
+  it("shows the page's title over the site, as a browser's tab would", async () => {
+    render(<Lesson />);
+    const name = screen.getByTestId('web-page-name');
+    expect(name).toHaveTextContent(/^index\.html$/);
+    fromPreview(await frame(), { type: 'title', text: 'Station Log' });
+    expect(name).toHaveTextContent('Station Log · index.html');
+  });
+
   it('pauses after a loop that ran too long, until asked to show the page again', async () => {
     render(<Lesson />);
     fromPreview(await frame(), { type: 'loop', file: 'index.html', line: 1 });
