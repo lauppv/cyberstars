@@ -1,49 +1,75 @@
-Typing a number straight into `console.log` is fine once. But a program needs to keep values, give them names and change them. That's what **variables** are for.
+Think of a labelled jar in the kitchen: "Sugar". You don't have to remember what's inside, the label tells you. And whenever a recipe says "a spoon of sugar", you know which jar to open.
 
-## const
+Programs keep values in labelled jars too. A label and its value is a **variable**.
 
-```js
-const baysTotal = 4;
-console.log("Bays:", baysTotal);
-```
-
-`const` makes a **constant**: a name, `baysTotal`, for a value, `4`. Wherever the program says `baysTotal`, it means 4. A constant can't get another value later. If you try, the script stops with an error.
-
-## let
+## `const`
 
 ```js
-let cratesInBay = 40;
-cratesInBay = cratesInBay - 5;
-console.log("Crates left:", cratesInBay);
+const members = 12;
+console.log("Members:", members);
 ```
 
 ```text
-Crates left: 35
+Members: 12
 ```
 
-`let` makes a **variable**: a name whose value can change. Read the second line from right to left: take the value of `cratesInBay`, take away 5, and put the result back into `cratesInBay`. Here `=` doesn't mean "equals". It means "now holds".
+`const` makes a name, `members`, for a value, `12`. From then on, wherever the script says `members`, it means 12. You write the name without quotes: `members` is the jar, `"members"` would be the word "members".
 
-You write `let` or `const` only once, when you make the name. After that, you use the name alone.
+The `=` here doesn't mean "is equal to" like in maths. It means "put this value in that name".
 
-## Which one
+## Why bother?
 
-Use `const`, unless the value will change. Then use `let`. When code uses `const` a lot, you can see at a glance which values never change.
+A value used in several places only needs changing once:
 
-In older code you'll see `var`. It's an old version of `let` that behaves in surprising ways. Don't use it.
+```js
+const club = "Game Club";
+console.log("Welcome to the", club);
+console.log("Thanks for visiting the", club);
+```
 
-## Names
+Rename the club in one line, and both messages change.
 
-A name is made of letters, digits, `_` and `$`, and it can't start with a digit. When a name has several words, you join them and start each new word with a capital letter: `cratesInBay`, `baysTotal`. That's called **camelCase**. Pick names that say what the value is: `cratesInBay` is much better than `c` or `x2`.
+## A constant stays the same
+
+`const` is short for **constant**: the value can never change. Try to put another value in it, and the script stops:
+
+```js
+const members = 12;
+members = 13;
+```
+
+```text
+TypeError: Assignment to constant variable.
+```
+
+For values that do change, there's another word, which you'll meet in the next lesson.
+
+## Break it on purpose
+
+Use the name before it's made:
+
+```js
+console.log(club);
+const club = "Game Club";
+```
+
+An error: the script reads from top to bottom, and on line 1 the jar doesn't exist yet. Make the name first, use it after.
 
 ---
 
-## Mission: Crew Count
+## Mission: Station numbers
 
-The number of people on board changes whenever a ship docks. Under your system check, in `script.js`:
+The station has a few numbers that never change. Keep them in `crew.js`, each under a name.
 
-- Keep the number of crew on board in your script. It starts at 6.
-- Then a ship docks with two new crew members. Raise the count by 2, starting from the value it already has: don't type 8 yourself.
-- Log the new count, so the console shows `Crew on board: 8`.
-- Keep the minutes one orbit takes, 92, too. That value never changes. Log `Minutes per orbit: 92`.
+**Example**: when `crew.html` opens, the console shows, among its other lines:
 
-Pick `let` or `const` for each value. If you pick wrong, the console will tell you.
+```text
+Minutes per orbit: 92
+Crew on board: 4
+```
+
+- The console shows `Minutes per orbit: 92`.
+- The console shows `Crew on board: 4`.
+- Each number is kept under a name with `const`, and the line that logs it uses the name.
+
+Psst, the name goes without quotes when you use it :)

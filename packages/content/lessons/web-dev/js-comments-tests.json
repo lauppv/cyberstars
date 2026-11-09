@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "name": "No message box opens",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "alerted": "Crew directory ready",
+          "none": true
+        }
+      ]
+    },
+    {
+      "name": "crew.js still reports to the console",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Crew directory loaded"
+        }
+      ]
+    }
+  ]
+}

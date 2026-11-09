@@ -1,52 +1,23 @@
 {
   "cases": [
     {
-      "name": "script.js is linked in the head, deferred",
+      "name": "crew.html loads crew.js at the end of its body",
       "visible": true,
+      "page": "crew.html",
       "steps": [
         {
-          "exists": "head script[src=\"script.js\"], head script[src=\"./script.js\"]",
-          "label": "a script.js linked from the head"
-        },
-        {
-          "exists": "head script[src$=\"script.js\"][defer]",
-          "label": "that script waiting for the whole page (defer)"
+          "exists": "body > script[src=\"crew.js\"]",
+          "label": "a <script> for crew.js in the <body>"
         }
       ]
     },
     {
-      "name": "The script draws a line along the top",
+      "name": "A message box greets the visitor",
       "visible": true,
+      "page": "crew.html",
       "steps": [
         {
-          "noErrors": true
-        },
-        {
-          "style": "body",
-          "prop": "border-top-width",
-          "atLeast": 4,
-          "label": "the page's body"
-        },
-        {
-          "style": "body",
-          "prop": "border-top-style",
-          "not": "none",
-          "label": "the page's body"
-        }
-      ]
-    },
-    {
-      "name": "Without the script, there is no line",
-      "visible": false,
-      "files": {
-        "script.js": "// nothing\n"
-      },
-      "steps": [
-        {
-          "style": "body",
-          "prop": "border-top-width",
-          "equals": "0px",
-          "label": "the page's top border"
+          "alerted": "Crew directory ready"
         }
       ]
     }

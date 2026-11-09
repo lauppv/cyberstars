@@ -1,17 +1,9 @@
 {
   "cases": [
     {
-      "name": "The crew grows to 8",
+      "name": "The console shows the minutes per orbit",
       "visible": true,
-      "steps": [
-        {
-          "logged": "Crew on board: 8"
-        }
-      ]
-    },
-    {
-      "name": "The orbit time is logged",
-      "visible": true,
+      "page": "crew.html",
       "steps": [
         {
           "logged": "Minutes per orbit: 92"
@@ -19,14 +11,12 @@
       ]
     },
     {
-      "name": "The script runs to its end without errors",
+      "name": "The console shows the crew on board",
       "visible": true,
+      "page": "crew.html",
       "steps": [
         {
-          "noErrors": true
-        },
-        {
-          "logged": "Station Log online"
+          "logged": "Crew on board: 4"
         }
       ]
     }
