@@ -1,140 +1,37 @@
 {
   "cases": [
     {
-      "name": "The flights table is full width, one line between cells",
+      "name": "Every cell of the flight table has room inside",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "style": "#flights",
-          "prop": "border-collapse",
-          "equals": "collapse",
-          "label": "the flights table"
-        },
-        {
-          "fills": "#flights",
-          "label": "the flights table"
-        }
-      ]
-    },
-    {
-      "name": "Its headers stand out from its data",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "differs": "#flights th",
-          "from": "#flights td",
-          "props": ["background-color", "color"],
-          "fromLabel": "the data cells",
-          "label": "the header cells"
-        },
-        {
-          "contrast": "#flights th",
-          "atLeast": 4.5,
+          "style": "#flights td, #flights th",
+          "prop": "padding-left",
           "every": true,
-          "label": "a header cell"
-        }
-      ]
-    },
-    {
-      "name": "Every cell has room and a line under it",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "style": "#flights td",
-          "prop": "padding-top",
-          "atLeast": 4,
-          "every": true,
-          "label": "a cell of the flights table"
+          "atLeast": 8,
+          "label": "every cell of #flights"
         },
         {
-          "style": "#flights td",
+          "style": "#flights td, #flights th",
           "prop": "padding-right",
-          "atLeast": 4,
           "every": true,
-          "label": "a cell of the flights table"
-        },
-        {
-          "style": "#flights td",
-          "prop": "padding-bottom",
-          "atLeast": 4,
-          "every": true,
-          "label": "a cell of the flights table"
-        },
-        {
-          "style": "#flights td",
-          "prop": "padding-left",
-          "atLeast": 4,
-          "every": true,
-          "label": "a cell of the flights table"
-        },
-        {
-          "style": "#flights td",
-          "prop": "border-bottom-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a cell of the flights table"
-        },
-        {
-          "style": "#flights th",
-          "prop": "padding-left",
-          "atLeast": 4,
-          "every": true,
-          "label": "a header cell of the flights table"
+          "atLeast": 8,
+          "label": "every cell of #flights"
         }
       ]
     },
     {
-      "name": "Other tables keep their own look",
+      "name": "The docking bays table's cells don't change",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
           "style": "#bays td",
           "prop": "padding-left",
-          "equals": "1px",
-          "label": "a cell of the bays table"
-        }
-      ]
-    },
-    {
-      "name": "The paragraph right after the title is an introduction",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "differs": "h1 + p",
-          "from": "p:not(h1 + p)",
-          "props": ["font-size"],
-          "fromLabel": "the other paragraphs",
-          "label": "the paragraph right after the title"
-        },
-        {
-          "style": "h1 + p",
-          "prop": "font-size",
-          "atLeast": 19,
-          "label": "the paragraph right after the title"
-        }
-      ]
-    },
-    {
-      "name": "Only the navigation's own links are bold",
-      "visible": true,
-      "steps": [
-        {
-          "style": "nav > a",
-          "prop": "font-weight",
-          "equals": "700",
           "every": true,
-          "label": "a link of the navigation"
-        },
-        {
-          "style": "p.jumps a",
-          "prop": "font-weight",
-          "equals": "400",
-          "label": "a jump link"
+          "atMost": 2,
+          "label": "every cell of #bays"
         }
       ]
     }

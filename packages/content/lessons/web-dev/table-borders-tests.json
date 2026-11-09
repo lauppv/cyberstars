@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "name": "The flight table's cells share their borders",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights",
+          "prop": "border-collapse",
+          "equals": "collapse",
+          "label": "the flight table"
+        }
+      ]
+    },
+    {
+      "name": "Every cell has a line along its bottom",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights td, #flights th",
+          "prop": "border-bottom-style",
+          "every": true,
+          "not": "none",
+          "label": "every cell of #flights"
+        }
+      ]
+    }
+  ]
+}

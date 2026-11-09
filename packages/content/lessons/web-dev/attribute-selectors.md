@@ -1,30 +1,56 @@
-A selector can also pick elements by their **attributes**: what's written inside their opening tag.
+At the airport, every bag with a "fragile" sticker goes on a special trolley. The handlers don't care whose bag it is: only that it has the sticker. CSS can pick elements the same way: by an **attribute** they have.
 
-## Attribute selectors
+## `[attribute]`
+
+Square brackets pick elements by their attributes:
 
 ```css
-[title] { }                   /* has a title attribute */
-input[type="email"] { }        /* type is exactly "email" */
-a[href^="https://"] { }        /* href starts with "https://" */
-img[src$=".svg"] { }           /* src ends with ".svg" */
-a[href*="station"] { }         /* href contains "station" */
+a[target] {
+  font-style: italic;
+}
 ```
 
-- `[name]`: the element has the attribute, whatever its value.
-- `[name="value"]`: exactly that value.
-- `^=` means starts with, `$=` ends with, `*=` contains.
+"Every `a` that **has** a `target` attribute", whatever its value.
 
-They're perfect for things the HTML already says. Style elements by what their attributes say, and every new element of that kind gets the style too, without anyone having to remember a class.
+## `[attribute="value"]`
 
-Put the values in quotes. When two rules compete, an attribute selector counts as much as a class.
+With a value, only elements whose attribute is exactly that:
+
+```css
+a[target="_blank"] {
+  text-decoration: underline;
+}
+```
+
+Links that open a new tab are underlined, so visitors know before they click.
+
+A few more ways to match:
+
+- `a[href^="https"]`: `href` **starts with** `https`: links to other sites;
+- `a[href$=".pdf"]`: `href` **ends with** `.pdf`;
+- `img[alt=""]`: pictures with an empty `alt`, the decorative ones.
+
+## Break it on purpose
+
+Forget the quotes and the exact value:
+
+```css
+a[target="blank"] {
+  text-decoration: underline;
+}
+```
+
+Nothing is underlined: your links say `_blank`, with the underscore. An attribute selector matches the value exactly, letter for letter.
 
 ---
 
-## Mission: Telling Links Apart
+## Mission: Links that leave
 
-Visitors should see what a link does before they click it. Style the links by what their addresses say, so every new link gets its look by itself:
+On the home page, the link about space stations opens another site in a new tab. Visitors should know before they click.
 
-- Links that lead to another site look different from the links inside your own site, and stay easy to read.
-- Links that start an email are underlined with a dotted line. The other links keep a solid one.
-- On the schedule, the headers that name a column line their text up on the left.
-- A table cell that stretches over several columns is in italics. The other cells aren't.
+**Example**: the link to the other site is underlined. The other links of the page stay without a line.
+
+- Every link that opens a new tab is underlined.
+- The other links have no underline.
+
+Psst, the links that open a new tab are the ones with `target="_blank"` :)

@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "name": "Even rows have a background of their own",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "differs": "#flights tbody tr:nth-child(even)",
+          "from": "#flights tbody tr:nth-child(odd)",
+          "props": ["background-color"],
+          "fromLabel": "the odd rows",
+          "label": "the even rows of the flight table"
+        }
+      ]
+    }
+  ]
+}

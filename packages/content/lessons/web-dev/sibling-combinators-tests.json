@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "name": "The introduction is in italic",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "h1 + p",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "the paragraph right after the biggest heading"
+        }
+      ]
+    },
+    {
+      "name": "The crew directory's other paragraphs aren't",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "h1 + p",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "the paragraph right after the biggest heading"
+        },
+        {
+          "style": "body > p:not(h1 + p)",
+          "prop": "font-style",
+          "every": true,
+          "equals": "normal",
+          "label": "every other paragraph"
+        }
+      ]
+    }
+  ]
+}
