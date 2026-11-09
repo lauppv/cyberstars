@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "name": "The first row labels the four columns",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "count": "#flights tr:first-child > th[scope=\"col\"]",
+          "equals": 4,
+          "label": "column headers (<th scope=\"col\">) in the first row"
+        },
+        {
+          "text": "#flights tr:first-child > th:first-child",
+          "equals": "Flight",
+          "label": "the first header"
+        },
+        {
+          "text": "#flights tr:first-child > th:last-child",
+          "equals": "Status",
+          "label": "the last header"
+        }
+      ]
+    }
+  ]
+}

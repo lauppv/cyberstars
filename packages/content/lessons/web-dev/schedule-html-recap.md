@@ -1,9 +1,16 @@
-Three pages, linked to each other, with headings, paragraphs, pictures, lists, cards and now tables. This recap adds a second table to the schedule, and gets the first one ready for what's coming. There are no steps to follow: decide yourself which elements each part needs.
+No new theory, just a challenge that uses this part's HTML and the classes from part 1.
+
+Soon, a script will read the flight table: the time of each flight, its status. It will need a way to find each kind of cell. Read what it needs, and give it to it.
 
 ---
 
-## Mission: Docking Bays
+## Mission: Cells with names
 
-- The next lessons style and read the flights table cell by cell, so every data cell of its body needs a class that says which column it's in: `code`, `destination`, `departs` and `status`.
-- Under the flights table, a section called **Docking Bays**, with a second table, with the id `bays`, that a screen reader introduces as **Docking bays**. Its columns are **Bay**, **Time** and **Ship**, set apart from at least three rows of data.
-- One bay serves two ships in a row. Write that bay's name only once, in a cell as tall as both rows.
+Every cell of a flight row should say what it holds, so CSS and JavaScript can find it.
+
+**Example**: the table looks exactly as before.
+
+- In every row of the table's body, the first cell has the class `code`, the second `destination`, the third `departs` and the fourth `status`. Later lessons use these names.
+- The five flights stay in the same order.
+
+Psst, the same class on every cell of a column :)

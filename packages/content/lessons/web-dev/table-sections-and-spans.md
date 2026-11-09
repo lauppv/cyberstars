@@ -1,50 +1,53 @@
-Your table works. A few more elements make it clearer, for the visitor and for a screen reader, and let one cell stretch over several.
+A report has a title on top, a header, the body of the text, and a footer at the bottom of the page. Long tables are built the same way, in sections, so the browser and screen readers know which part is which.
 
-## Head, body and foot
+## A title: `<caption>`
 
 ```html
 <table>
-  <caption>Cargo, Bay 2</caption>
+  <caption>Club scores, March</caption>
+  ...
+</table>
+```
+
+`<caption>` is the table's title. It goes first, right after `<table>`, and the browser shows it centered above the table. A screen reader reads it first, so the listener knows what the table is about before the numbers start.
+
+## Three sections
+
+```html
+<table>
+  <caption>Club scores, March</caption>
   <thead>
-    <tr>
-      <th scope="col">Crate</th>
-      <th scope="col">Weight</th>
-    </tr>
+    <tr><th scope="col">Name</th><th scope="col">Points</th></tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Water</td>
-      <td>120 kg</td>
-    </tr>
+    <tr><td>Sam</td><td>12</td></tr>
+    <tr><td>Lea</td><td>9</td></tr>
   </tbody>
   <tfoot>
-    <tr>
-      <td colspan="2">Weighed this morning</td>
-    </tr>
+    <tr><td>Total</td><td>21</td></tr>
   </tfoot>
 </table>
 ```
 
-- `caption` is the table's title, right after `<table>`. A screen reader reads it first, so the visitor knows what the table is about before the cells start.
-- `thead` holds the header rows, `tbody` the data, and `tfoot` the summary or notes at the end. They group rows, and CSS and JavaScript can pick each group.
-- `scope="col"` on a header says it names its **column**, and `scope="row"` says it names a row. It tells a screen reader which cells belong to a header.
+- `<thead>`: the header rows, with the labels;
+- `<tbody>`: the body, the rows of data;
+- `<tfoot>`: the footer, for totals or a note.
 
-## Spanning cells
+On the screen they look like plain rows. But the sections let CSS style each part, and JavaScript find the data rows alone: "every row of the `tbody`". When a long table is printed, the browser can repeat the `thead` on every page.
 
-A cell can stretch over several:
+## Break it on purpose
 
-- `colspan="2"`: as wide as two columns;
-- `rowspan="2"`: as tall as two rows. The row below then has one cell fewer, because that place is already taken.
-
-Count carefully: in every row, each cell counts for as many columns as its `colspan`, and every row must add up to the same total.
+Put the caption at the end of the table, after `</tbody>`. It may still show on top in some browsers, but the HTML is wrong, and a screen reader may read it last, after all the numbers. The caption always comes first.
 
 ---
 
-## Mission: A Proper Board
+## Mission: Sections
 
-A visitor who can't see the screen will hear your departures table read out loud. Make it easy to follow:
+The flight table needs a title and its sections.
 
-- Before any cell, they should hear what the table is: **Departures today**.
-- The row that names the columns is set apart from the flights, and each of its cells says that it names its column.
-- The flights are grouped together as the table's data.
-- At the very bottom, a note that stretches across the whole width of the table, in one cell: **All times in station time**.
+**Example**: the table now shows a title above it, like `Departures today`, then the labels, the five flights, and a last row with a note like `All times in station time`.
+
+- `#flights` has a caption, as its title.
+- Its header row is in a `<thead>`, the five flights in a `<tbody>`, and a last row with a note of your own in a `<tfoot>`.
+
+Psst, the caption goes right after `<table>` :)
