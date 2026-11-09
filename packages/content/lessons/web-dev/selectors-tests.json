@@ -1,94 +1,26 @@
 {
   "cases": [
     {
-      "name": "Both warnings are in the class warning",
+      "name": "Both warnings have the class warning",
       "visible": true,
       "steps": [
         {
           "count": "p.warning",
           "atLeast": 2,
-          "label": "paragraphs in the class warning"
-        },
-        {
-          "exists": "p.warning strong",
-          "label": "a warning with its important part"
+          "label": "warning paragraphs (<p class=\"warning\">)"
         }
       ]
     },
     {
-      "name": "The warnings have a color no other paragraph has",
+      "name": "Warnings have a color the other paragraphs don't have",
       "visible": true,
       "steps": [
         {
-          "differs": "p.warning",
+          "differs": ".warning",
           "from": "p:not(.warning)",
           "props": ["color"],
           "fromLabel": "the other paragraphs",
           "label": "the warnings"
-        },
-        {
-          "contrast": "p.warning",
-          "atLeast": 4.5,
-          "every": true,
-          "label": "a warning"
-        }
-      ]
-    },
-    {
-      "name": "Today on Board stands out from the other sections",
-      "visible": true,
-      "steps": [
-        {
-          "differs": "#today",
-          "from": "h2:not(#today)",
-          "props": ["color"],
-          "fromLabel": "the other section headings",
-          "label": "the heading Today on Board"
-        },
-        {
-          "contrast": "#today",
-          "atLeast": 3,
-          "label": "the heading Today on Board"
-        }
-      ]
-    },
-    {
-      "name": "The small numbers stand out from the text",
-      "visible": true,
-      "steps": [
-        {
-          "differs": "sub, sup",
-          "from": "p",
-          "props": ["color"],
-          "fromLabel": "the paragraphs around them",
-          "label": "the numbers below and above the line"
-        },
-        {
-          "contrast": "sub, sup",
-          "atLeast": 4.5,
-          "every": true,
-          "label": "a number below or above the line"
-        }
-      ]
-    },
-    {
-      "name": "The colors come from style.css",
-      "visible": false,
-      "files": {
-        "style.css": ".warning { color: rgb(1, 2, 3); }\n#today { color: rgb(4, 5, 6); }\n"
-      },
-      "steps": [
-        {
-          "style": "p.warning",
-          "prop": "color",
-          "equals": "rgb(1, 2, 3)",
-          "label": "a warning's color"
-        },
-        {
-          "style": "#today",
-          "prop": "color",
-          "equals": "rgb(4, 5, 6)",
-          "label": "the color of Today on Board"
         }
       ]
     }

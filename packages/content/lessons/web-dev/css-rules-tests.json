@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "name": "Every part heading has a color of your own",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h2",
+          "prop": "color",
+          "every": true,
+          "not": "rgb(0, 0, 0)",
+          "label": "every part heading (<h2>)"
+        }
+      ]
+    },
+    {
+      "name": "Every part heading is underlined",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h2",
+          "prop": "text-decoration-line",
+          "every": true,
+          "equals": "underline",
+          "label": "every part heading (<h2>)"
+        }
+      ]
+    }
+  ]
+}

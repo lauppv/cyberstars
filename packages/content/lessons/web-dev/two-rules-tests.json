@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "name": "The Hatch 3 warning is urgent",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p.warning.urgent",
+          "label": "a warning with the class urgent too (<p class=\"warning urgent\">)"
+        }
+      ]
+    },
+    {
+      "name": "An urgent warning has a color the other warnings don't have",
+      "visible": true,
+      "steps": [
+        {
+          "differs": ".warning.urgent",
+          "from": ".warning:not(.urgent)",
+          "props": ["color"],
+          "fromLabel": "the other warnings",
+          "label": "the urgent warning"
+        }
+      ]
+    }
+  ]
+}

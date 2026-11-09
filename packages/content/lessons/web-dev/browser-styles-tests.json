@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "name": "Every link has no underline",
+      "visible": true,
+      "steps": [
+        {
+          "style": "a",
+          "prop": "text-decoration-line",
+          "every": true,
+          "equals": "none",
+          "label": "every link"
+        }
+      ]
+    },
+    {
+      "name": "Every link has your own color, not the browser's blue",
+      "visible": true,
+      "steps": [
+        {
+          "style": "a",
+          "prop": "color",
+          "every": true,
+          "not": "rgb(0, 0, 238)",
+          "label": "every link"
+        }
+      ]
+    },
+    {
+      "name": "Links still look different from the text around them",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "p a",
+          "from": "p",
+          "props": ["color"],
+          "fromLabel": "the paragraphs around them",
+          "label": "the links in paragraphs"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "name": "Today on Board has a color of its own",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "h2#today",
+          "from": "h2:not(#today)",
+          "props": ["color"],
+          "fromLabel": "the other part headings",
+          "label": "Today on Board (#today)"
+        }
+      ]
+    }
+  ]
+}
