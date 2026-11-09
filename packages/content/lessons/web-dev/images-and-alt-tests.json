@@ -9,8 +9,7 @@
           "label": "the station picture (img/station.svg) right under the heading"
         },
         {
-          "size": "img[src=\"img/station.svg\"]",
-          "minWidth": 200,
+          "loaded": "img[src=\"img/station.svg\"]",
           "label": "the station picture"
         }
       ]

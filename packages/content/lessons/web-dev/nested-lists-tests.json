@@ -1,53 +1,35 @@
 {
   "cases": [
     {
-      "name": "The decks are a list",
+      "name": "The Decks part has a list of decks",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "text": "h2",
-          "equals": "Decks",
-          "label": "a section heading"
+          "exists": "h2 + ul.decks",
+          "label": "a list with the class decks right under a part heading"
         },
         {
-          "count": "ul.decks > li",
+          "count": ".decks > li",
           "atLeast": 3,
-          "label": "decks in a list with class=\"decks\""
+          "label": "decks"
         }
       ]
     },
     {
-      "name": "Each deck holds a list of its rooms",
+      "name": "Every deck lists its rooms inside it",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "count": "ul.decks > li:not(:has(> ul, > ol))",
-          "equals": 0,
-          "label": "decks without a list of rooms inside their item"
-        },
-        {
-          "count": "ul.decks > li > ul > li, ul.decks > li > ol > li",
-          "atLeast": 6,
-          "label": "rooms in the decks' lists"
-        },
-        {
-          "count": "ul.decks > li:has(> ul > li:nth-child(2), > ol > li:nth-child(2))",
+          "count": ".decks > li:has(> :is(ul, ol) > li + li)",
           "atLeast": 3,
-          "label": "decks with at least two rooms"
-        }
-      ]
-    },
-    {
-      "name": "The lists hold only items",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
+          "label": "decks with at least two rooms in a list inside them"
+        },
         {
-          "count": "ul > ul, ul > ol, ol > ul, ol > ol",
+          "count": ".decks > ul, .decks > ol",
           "equals": 0,
-          "label": "lists placed straight in a list, outside an item"
+          "label": "lists sitting between the decks"
         }
       ]
     }

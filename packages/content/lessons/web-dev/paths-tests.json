@@ -1,95 +1,57 @@
 {
   "cases": [
     {
-      "name": "crew.html is a page of its own",
+      "name": "The commander's page is in the people folder",
       "visible": true,
-      "page": "crew.html",
+      "page": "people/vega.html",
       "steps": [
         {
-          "attr": "html",
-          "name": "lang",
-          "equals": "en",
-          "label": "the <html> tag of crew.html"
-        },
-        {
-          "attr": "head meta[charset]",
-          "name": "charset",
-          "equals": "UTF-8",
-          "ignoreCase": true,
-          "label": "a <meta> tag in the <head> of crew.html"
-        },
-        {
           "text": "head > title",
-          "equals": "Crew Directory",
-          "label": "a <title> in the <head> of crew.html"
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
         },
         {
           "text": "h1",
-          "equals": "Crew Directory",
-          "label": "the biggest heading of crew.html"
-        },
-        {
-          "text": "h1 ~ p",
           "nonEmpty": true,
-          "label": "a paragraph under it"
+          "label": "the biggest heading"
         }
       ]
     },
     {
-      "name": "crew.html shares the station's look",
+      "name": "It uses the site's style.css and shows the station",
       "visible": true,
-      "page": "crew.html",
+      "page": "people/vega.html",
       "steps": [
-        {
-          "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"], head link[rel=\"stylesheet\"][href=\"./style.css\"]",
-          "label": "a link to style.css in the head of crew.html"
-        },
         {
           "style": "body",
           "prop": "background-color",
-          "not": "rgba(0, 0, 0, 0)",
-          "label": "the body of crew.html, colored by style.css"
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "loaded": "img[src$=\"station.svg\"]",
+          "label": "the station picture (img/station.svg)"
         }
       ]
     },
     {
-      "name": "The home page leads to the crew",
-      "visible": true,
-      "steps": [
-        {
-          "text": "body > nav:first-child a[href=\"crew.html\"]",
-          "equals": "Crew",
-          "label": "a link Crew to crew.html in the navigation at the top of the home page"
-        },
-        {
-          "click": "nav a[href=\"crew.html\"]",
-          "label": "the link Crew"
-        },
-        {
-          "at": "crew.html"
-        }
-      ]
-    },
-    {
-      "name": "The crew page leads back home",
+      "name": "crew.html links to it, and it links back",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "text": "body > nav:first-child a[href=\"index.html\"]",
-          "equals": "Home",
-          "label": "a link Home to index.html in the navigation at the top of crew.html"
+          "click": "a[href=\"people/vega.html\"]",
+          "label": "the link to people/vega.html"
         },
         {
-          "exists": "nav a[href=\"crew.html\"]",
-          "label": "the link Crew in the same navigation"
+          "at": "people/vega.html"
         },
         {
-          "click": "nav a[href=\"index.html\"]",
-          "label": "the link Home"
+          "click": "a[href$=\"crew.html\"]",
+          "label": "the link back to crew.html"
         },
         {
-          "at": "index.html"
+          "at": "crew.html"
         }
       ]
     }

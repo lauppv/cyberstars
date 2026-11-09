@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "name": "The morning routine is a numbered list",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "count": "h2 + ol > li:not(:empty)",
+          "atLeast": 3,
+          "label": "steps in a numbered list (<ol>) right under a part heading"
+        }
+      ]
+    }
+  ]
+}

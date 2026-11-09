@@ -1,45 +1,18 @@
 {
   "cases": [
     {
-      "name": "The crew is a list",
+      "name": "A Crew part has the crew list",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "text": "h2",
-          "equals": "Crew",
-          "label": "a section heading"
+          "exists": "h2 + ul#crew",
+          "label": "a list with the id crew right under a part heading (<h2>)"
         },
         {
-          "exists": "ul#crew",
-          "label": "a list with id=\"crew\" whose order doesn't matter"
-        },
-        {
-          "count": "ul#crew > li",
+          "count": "#crew > li:not(:empty)",
           "atLeast": 4,
           "label": "crew members in the list"
-        },
-        {
-          "text": "ul#crew > li",
-          "nonEmpty": true,
-          "label": "a crew member's name"
-        }
-      ]
-    },
-    {
-      "name": "The morning routine is a list in order",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "text": "h2",
-          "equals": "Morning Routine",
-          "label": "a section heading"
-        },
-        {
-          "count": "h2 + ol > li",
-          "atLeast": 3,
-          "label": "steps in a list whose order matters, right under a section heading"
         }
       ]
     }

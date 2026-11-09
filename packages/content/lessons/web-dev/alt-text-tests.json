@@ -19,8 +19,7 @@
           "label": "the divider (img/divider.svg) between two parts"
         },
         {
-          "size": "img[src=\"img/divider.svg\"]",
-          "minWidth": 200,
+          "loaded": "img[src=\"img/divider.svg\"]",
           "label": "the divider"
         },
         {

@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "name": "Every job is in a span with the class role",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "count": "#cards > .card:has(p > span.role:not(:empty))",
+          "atLeast": 4,
+          "label": "cards with the job in <span class=\"role\">"
+        }
+      ]
+    },
+    {
+      "name": "The job stays on its line",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".role",
+          "prop": "display",
+          "every": true,
+          "equals": "inline",
+          "label": "every job"
+        }
+      ]
+    }
+  ]
+}
