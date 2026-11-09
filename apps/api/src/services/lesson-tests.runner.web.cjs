@@ -130,7 +130,33 @@ async function answer(route, files, answers) {
 
 const MAX_ELEMENTS = 50;
 
+// A console value written as the preview's console writes it (previewPrelude.ts),
+// so a mission's line reads the same in both: an element as <h1>, a list as
+// [1, "two"], an object as {name: "Ana"}. Runs in the page.
+function showValue(value) {
+  const show = (v, depth) => {
+    if (typeof v === 'string') return depth === 0 ? v : JSON.stringify(v);
+    if (v === undefined) return 'undefined';
+    if (typeof v === 'function') return `function ${v.name || ''}()`;
+    if (typeof v === 'symbol' || typeof v === 'bigint') return String(v);
+    if (v === null || typeof v !== 'object') return String(v);
+    if (v instanceof Error) return `${v.name}: ${v.message}`;
+    if (v instanceof Element) return `<${v.tagName.toLowerCase()}>`;
+    if (depth > 3) return Array.isArray(v) ? '[…]' : '{…}';
+    if (Array.isArray(v)) return `[${v.map((x) => show(x, depth + 1)).join(', ')}]`;
+    const entries = Object.keys(v).map((key) => `${key}: ${show(v[key], depth + 1)}`);
+    return `{${entries.join(', ')}}`;
+  };
+  try {
+    return show(value, 0);
+  } catch {
+    return String(value);
+  }
+}
+
 async function observe(page, step, seen) {
+  // Console lines still being written out
+  await Promise.all(seen.writing);
   if ('fits' in step) {
     return { scrollWidth: await page.evaluate(() => document.documentElement.scrollWidth) };
   }
@@ -436,7 +462,7 @@ async function settle(page, nav, stepMs) {
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
-  const seen = { logs: [], errors: [], dialogs: [] };
+  const seen = { logs: [], errors: [], dialogs: [], writing: [] };
   const nav = { pending: false, inflight: 0 };
   let crashed = false;
   let onCrash;
@@ -457,9 +483,18 @@ async function runCase(browser, files, testCase, limits) {
     await serve(context, files, testCase.fetch ?? {});
     const page = await context.newPage();
     page.on('console', (message) => {
-      const text = message.text();
-      if (message.type() === 'error') seen.errors.push(text);
-      else seen.logs.push(text);
+      const list = message.type() === 'error' ? seen.errors : seen.logs;
+      // Its place now, so lines keep their order; its text once each value is written
+      const at = list.push(message.text()) - 1;
+      const args = message.args();
+      if (args.length === 0) return;
+      seen.writing.push(
+        Promise.all(args.map((arg) => arg.evaluate(showValue)))
+          .then((parts) => {
+            list[at] = parts.join(' ');
+          })
+          .catch(() => {}),
+      );
     });
     page.on('pageerror', (error) => seen.errors.push(error.message));
     // A message box is noted and closed, as a visitor would

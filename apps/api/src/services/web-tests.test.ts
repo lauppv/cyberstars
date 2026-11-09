@@ -224,6 +224,17 @@ describe('judgeStep', () => {
       found: 'Hello',
     });
     expect(judge({ alerted: 'Hi crew' }, {})).toMatchObject({ found: null });
+    expect(judge({ alerted: 'Hi crew', none: true }, { dialogs: ['Hello'] })).toBeNull();
+    expect(judge({ alerted: 'Hi crew', none: true }, { dialogs: ['Hi crew'] })).toEqual({
+      kind: 'alerted',
+      detail: 'none',
+      expected: 'Hi crew',
+    });
+    expect(judge({ logged: 'ready', none: true }, { logs: ['ready'] })).toMatchObject({
+      kind: 'logged',
+      detail: 'none',
+    });
+    expect(judge({ logged: 'ready', none: true }, { logs: [] })).toBeNull();
   });
 
   it('passes pictures whose files all loaded', () => {

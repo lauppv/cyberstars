@@ -417,8 +417,8 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   fits: [],
   doctype: [],
   outline: [],
-  logged: [],
-  alerted: [],
+  logged: ['none'],
+  alerted: ['none'],
   noErrors: [],
   at: [],
 };

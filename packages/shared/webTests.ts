@@ -139,10 +139,10 @@ export type WebCheck =
   | { doctype: true }
   /** The page's headings: one h1, and none more than a level below the heading before it. */
   | { outline: true }
-  /** The page's scripts logged this line (spaces at the ends aside). */
-  | { logged: string }
-  /** The page's scripts showed a message box (`alert`) with this text (spaces at the ends aside). */
-  | { alerted: string }
+  /** The page's scripts logged this line (spaces at the ends aside), or with `none` never did. */
+  | { logged: string; none?: true }
+  /** The page's scripts showed a message box (`alert`) with this text (spaces at the ends aside), or with `none` never did. */
+  | { alerted: string; none?: true }
   /** Nothing thrown and nothing logged with console.error so far. */
   | { noErrors: true }
   /** The page shown now is this one (after a link, a form or `open`). */
@@ -486,10 +486,20 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         ? 'Se aștepta ca pagina să înceapă cu <!DOCTYPE html>, dar nu începe așa.'
         : 'Expected the page to start with <!DOCTYPE html>, found it missing.';
     case 'logged':
+      if (f.detail === 'none') {
+        return ro
+          ? `Se aștepta ca în consolă să nu mai apară ${q(expected)}, dar apare.`
+          : `Expected the console not to show ${q(expected)} any more, found it there.`;
+      }
       return ro
         ? `Se aștepta în consolă ${q(expected)}, dar ${found ? `are ${q(found)}` : 'consola e goală'}.`
         : `Expected the console to show ${q(expected)}, found ${found ? q(found) : 'nothing'}.`;
     case 'alerted':
+      if (f.detail === 'none') {
+        return ro
+          ? `Se aștepta să nu se mai deschidă fereastra cu mesajul ${q(expected)}, dar se deschide.`
+          : `Expected no message box saying ${q(expected)} any more, found one.`;
+      }
       return ro
         ? `Se aștepta o fereastră cu mesajul ${q(expected)}, dar ${found ? `are ${q(found)}` : 'nu s-a deschis niciuna'}.`
         : `Expected a message box saying ${q(expected)}, found ${found ? q(found) : 'none'}.`;

@@ -60,6 +60,9 @@ describe('webFailureText', () => {
     expect(say({ kind: 'loaded', label: 'the station picture' })).toBe(
       'Expected the station picture to show, found its file missing: check its path.',
     );
+    expect(say({ kind: 'logged', detail: 'none', expected: 'ready' })).toBe(
+      'Expected the console not to show “ready” any more, found it there.',
+    );
     expect(say({ kind: 'alerted', expected: 'Hi crew', found: null })).toBe(
       'Expected a message box saying “Hi crew”, found none.',
     );

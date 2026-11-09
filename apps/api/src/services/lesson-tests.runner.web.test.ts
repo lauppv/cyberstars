@@ -278,6 +278,21 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(lost.web).toMatchObject({ kind: 'loaded' });
   });
 
+  it('writes console values as the preview does: an element, a list, an object', () => {
+    const files = {
+      'index.html':
+        '<!DOCTYPE html><html><body><h1>Crew</h1><script>console.log(document.querySelector("h1")); console.log("crew", [1, "two"], { name: "Ana" }); console.log(4);</script></body></html>',
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Console',
+        visible: true,
+        steps: [{ logged: '<h1>' }, { logged: 'crew [1, "two"] {name: "Ana"}' }, { logged: '4' }],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
   it('notes a message box and closes it, so the page goes on', () => {
     const files = {
       'index.html':
