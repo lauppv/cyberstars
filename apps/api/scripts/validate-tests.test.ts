@@ -266,7 +266,7 @@ describe('auditWebSpec', () => {
     expect(one([{ focus: 'a' }])).toEqual([expect.stringMatching(/none of the known keys/)]);
     expect(one([{ hover: 'a' }])).toEqual([expect.stringMatching(/without a label/)]);
     expect(
-      one([{ style: 'h1', pseudo: '::marker', prop: 'color', equals: 'red', label: 'x' }]),
+      one([{ style: 'h1', pseudo: '::selection', prop: 'color', equals: 'red', label: 'x' }]),
     ).toEqual([expect.stringMatching(/pseudo is one of ::before, ::after/)]);
     expect(one([{ exists: 'h1' }])).toEqual([expect.stringMatching(/without a label/)]);
     expect(one([{ text: 'h1', label: 'x' }])).toEqual([expect.stringMatching(/exactly one of/)]);

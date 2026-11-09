@@ -70,7 +70,7 @@ export type WebCheck =
   | ({ attr: string; name: string; equals?: string; ignoreCase?: true } & Labelled)
   /**
    * The first element's computed style, as the browser reports it, or that of
-   * its ::before or ::after (`pseudo`), whose `content` keeps its quotes: `"★"`.
+   * its ::before, ::after, ::first-letter or ::marker (`pseudo`), whose `content` keeps its quotes: `"★"`.
    * It `equals` a value, is anything `not` this one, `endsWith` a text (a
    * font list's generic family: `sans-serif`), or, for a length (the
    * browser reports it in px), is `atLeast` and/or `atMost` so many px: a
@@ -168,7 +168,7 @@ export function isWebAction(step: WebStep): step is WebAction {
   return WEB_ACTION_KEYS.some((key) => key in step);
 }
 
-export const WEB_PSEUDO_ELEMENTS = ['::before', '::after'] as const;
+export const WEB_PSEUDO_ELEMENTS = ['::before', '::after', '::first-letter', '::marker'] as const;
 type WebPseudo = (typeof WEB_PSEUDO_ELEMENTS)[number];
 
 export const WEB_DEFAULT_WIDTH = 1280;

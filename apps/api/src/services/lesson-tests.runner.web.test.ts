@@ -293,6 +293,38 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(run.passed).toBe(true);
   });
 
+  it("reads a first letter's and a list marker's style", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        p::first-letter { font-size: 40px; } li::marker { color: rgb(255, 209, 102); }
+      </style></head><body><p>Hello</p><ul><li>One</li></ul></body></html>`,
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Pseudo',
+        visible: true,
+        steps: [
+          {
+            style: 'p',
+            prop: 'font-size',
+            pseudo: '::first-letter',
+            atLeast: 40,
+            label: 'the first letter',
+          },
+          {
+            style: 'li',
+            prop: 'color',
+            pseudo: '::marker',
+            equals: 'rgb(255, 209, 102)',
+            label: 'the bullet',
+          },
+          { style: 'p', prop: 'font-size', atMost: 20, label: 'the paragraph' },
+        ],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
   it('notes a message box and closes it, so the page goes on', () => {
     const files = {
       'index.html':
