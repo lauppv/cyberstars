@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "name": "The duty list has a background of its own",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "differs": "#duty + ol",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "the duty list"
+        }
+      ]
+    },
+    {
+      "name": "It has room at the top and bottom",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#duty + ol",
+          "prop": "padding-top",
+          "atLeast": 8,
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "padding-bottom",
+          "atLeast": 8,
+          "label": "the duty list"
+        }
+      ]
+    },
+    {
+      "name": "It has more room on the left than the right",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#duty + ol",
+          "prop": "padding-left",
+          "atLeast": 32,
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "padding-right",
+          "atMost": 24,
+          "label": "the duty list"
+        }
+      ]
+    }
+  ]
+}

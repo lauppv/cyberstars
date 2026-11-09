@@ -1,52 +1,57 @@
-You set a box's size with `width` and `height`. But there's a catch in what they measure, and almost every modern site fixes it with one rule.
+A paragraph takes the whole width of the page, whatever its text. That's fine for long text. But a card for one person, stretched across a huge screen, looks like a banner. Sometimes a box needs a size of its own.
 
-## What width measures
+## `width` and `height`
 
 ```css
-.crate {
-  width: 200px;
-  padding: 20px;
-  border: 5px solid orange;
+.member {
+  width: 250px;
 }
 ```
 
-How wide is that crate on the screen? Not 200 pixels, but 250. Normally `width` is only the width of the **content**, and the padding and border go around it: 200 + 20 + 20 + 5 + 5. Change the padding, and the box grows. Ask for half the page, `width: 50%`, add some padding, and two halves don't fit side by side any more.
+Each member box is now 250 pixels wide, however wide the page is. Its text wraps to fit.
 
-## border-box
+`height` sets how tall a box is:
 
 ```css
-.crate {
-  box-sizing: border-box;
+.banner {
+  height: 120px;
 }
 ```
 
-With `box-sizing: border-box`, `width` is the whole box, border included. The crate is 200 pixels wide, and the padding takes its space from the inside. That's how most people think about a box, so most sites switch every element to it, at the top of their style sheet:
+Use `height` with care. Most boxes should be as tall as what they hold, which is what they do by themselves. A fixed height on a box of text is a trap: write more text, and it no longer fits.
+
+## Pixels or percent
+
+`width` takes `%` too: a share of the space the box sits in.
 
 ```css
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+.member {
+  width: 50%;
 }
 ```
 
-`*` picks every element. `*::before` and `*::after` pick things CSS can add to an element. You'll meet them in part 3. For now, just copy them along.
+Half of the space around it, whatever the screen. On a wide screen the box is wide, on a phone it's narrow.
 
-## Limits rather than sizes
+## Break it on purpose
 
-A fixed `height` is almost never a good idea. Text that doesn't fit spills out of its box, and a visitor with bigger text gets a broken page. Let the height follow the content, and set limits instead:
+Give a box of text a small height:
 
-- `max-width`: never wider than this, but narrower if there's less space. Great for text: lines longer than about 70 letters are hard to read.
-- `min-width`, `min-height`: never smaller than this, but bigger if the content needs it.
-- `max-height`: never taller than this.
+```css
+.member {
+  height: 30px;
+}
+```
+
+The text doesn't shrink: it spills out under the box, over whatever comes next. The box is 30 pixels tall as you asked, and the text doesn't care. Take the height away, and the box grows to hold it again.
 
 ---
 
-## Mission: Measured Cards
+## Mission: Card size
 
-The crew cards should all have the same size, whatever they hold.
+Your cards stretch across the whole page. A card for one person doesn't need to be that wide.
 
-- Make every element of both pages count its padding and border inside its width.
-- Every card is the same width, between `200px` and `320px`, border included. Changing a card's padding must not change its width.
-- A card is at least `120px` tall, so even a short one looks like a card. A card with more to say grows taller.
-- On a very wide screen, the box of cards stops growing at `900px`. On a phone, it still fits the screen.
+**Example**: each card is narrower, about the width of a postcard, and its text wraps inside it.
+
+- Every card is between 200 and 300 pixels wide.
+
+Psst, leave the height alone: the card grows with its text :)

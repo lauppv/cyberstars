@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "name": "The home page heading sits right under the menu",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "margin-top",
+          "equals": "0px",
+          "label": "the biggest heading"
+        }
+      ]
+    },
+    {
+      "name": "So does the crew directory heading",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "margin-top",
+          "equals": "0px",
+          "label": "the biggest heading"
+        }
+      ]
+    }
+  ]
+}

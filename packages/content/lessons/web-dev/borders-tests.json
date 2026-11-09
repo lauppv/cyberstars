@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "name": "Every card has a border all around",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "border-top-style",
+          "every": true,
+          "not": "none",
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-right-style",
+          "every": true,
+          "not": "none",
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-bottom-style",
+          "every": true,
+          "not": "none",
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-left-style",
+          "every": true,
+          "not": "none",
+          "label": "every card"
+        }
+      ]
+    },
+    {
+      "name": "The border is at least 1 pixel thick",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "border-top-width",
+          "every": true,
+          "atLeast": 1,
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-right-width",
+          "every": true,
+          "atLeast": 1,
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-bottom-width",
+          "every": true,
+          "atLeast": 1,
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "border-left-width",
+          "every": true,
+          "atLeast": 1,
+          "label": "every card"
+        }
+      ]
+    }
+  ]
+}

@@ -5,57 +5,49 @@
     <meta charset="UTF-8" />
     <title>Station Log</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <nav>
       <a href="index.html">Home</a>
       <a href="crew.html">Crew</a>
-      <a href="crew.html#duty">Duty</a>
     </nav>
     <h1>Welcome aboard</h1>
-    <img
-      src="img/station.svg"
-      alt="A gold station hub inside a blue ring, with a solar panel on each side"
-      width="320"
-      height="200"
+    <img src="img/station.svg" alt="A gold station hub inside a blue ring, with a solar panel on each side"
+      width="240"
+      height="150"
     />
-    <p>The station orbits the Earth every 92 minutes.</p>
+    <p>The station goes round the Earth every 92 minutes.</p>
+    <p>Six people live here, with a greenhouse full of tomatoes.</p>
     <p class="jumps"><a href="#today">Jump to today</a> · <a href="#visiting">Visiting hours</a></p>
-    <p id="status"></p>
-    <button type="button" id="wake">Wake the crew</button>
-    <p id="shift"></p>
-    <button type="button" id="next-shift">Next shift</button>
+    <p><a href="crew.html">Meet the crew</a></p>
 
     <h2>About the Station</h2>
-    <p>Six crew members live here, with a greenhouse full of tomatoes.</p>
-    <p>Cargo ships dock twice a month, and <em>every</em> docking is logged on this page.</p>
+    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>
     <p class="address">
       Orbital Station 7<br />
       Docking Ring B<br />
       Low Earth Orbit
     </p>
-    <!-- <p><small>Docking fee: 20 credits a day.</small></p> -->
+    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>
     <p>
       Curious how real stations work?
-      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">
-        Read about space stations
-      </a>
+      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">Read about space stations</a>
     </p>
+    <h3>The Greenhouse</h3>
+    <p>Tomatoes, beans and basil grow under blue lamps.</p>
 
-    <img src="img/divider.svg" alt="" width="600" height="24" />
+    <img src="img/divider.svg" alt="" />
 
-    <!-- Today on Board: warnings, supplies and who works each shift -->
     <h2 id="today">Today on Board</h2>
-    <p class="warning"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
+    <p class="warning urgent"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
     <p>Water left: 900 litres of H<sub>2</sub>O.</p>
     <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>
-    <h3>Morning Shift</h3>
+    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>
+    <h3 class="shift">Morning Shift</h3>
     <p>Commander Vega and engineer Okafor.</p>
-    <h3>Night Shift</h3>
+    <h3 class="shift">Night Shift</h3>
     <p>Pilot Lindqvist, alone with the stars.</p>
 
-    <!-- Visiting Hours: when guests may come aboard, and the badge rule -->
     <h2 id="visiting">Visiting Hours</h2>
     <p class="hours">
       Monday to Friday: 10:00 to 16:00<br />
@@ -63,6 +55,11 @@
       Sunday: closed
     </p>
     <p class="warning"><strong>Visitors must wear a badge</strong> at all times.</p>
+
+    <h2>Station Rules</h2>
+    <p>Wear your badge at all times.</p>
+    <p>Close every hatch behind you.</p>
+    <p>No running in the greenhouse.</p>
 
     <p><a href="mailto:crew@station.example">Write to the crew</a></p>
   </body>
@@ -80,10 +77,64 @@
 ```css style.css
 body {
   background-color: #0b1d3a;
-  color: #f0f4ff;
   font-family: Verdana, Geneva, sans-serif;
+}
+
+h1 {
+  color: #ffd166;
+  font-family: Georgia, "Times New Roman", serif;
+  margin-top: 0;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+h2 {
+  color: #8ecbff;
+  text-decoration: underline;
+  letter-spacing: 2px;
+}
+
+a {
+  color: #5fd3c6;
+  text-decoration: none;
+}
+
+.warning {
+  color: #ffb3b3;
+  background-color: rgb(255, 80, 80, 0.2);
+}
+
+#today {
+  color: #7bd389;
+}
+
+.shift {
+  color: #a9c1dc;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.urgent {
+  color: #ffd166;
+}
+
+p {
+  color: #f0f4ff;
   line-height: 1.6;
   font-size: 1.125rem;
+}
+
+h3 {
+  color: #c5e1a5;
+}
+
+.address {
+  color: rgb(169, 193, 220);
+  font-style: italic;
+}
+
+.jumps {
+  text-align: center;
 }
 
 img {
@@ -91,117 +142,25 @@ img {
   height: auto;
 }
 
-h1 {
-  color: #ffd166;
-  text-align: center;
-  font-size: 2.5rem;
-}
-
-h2 {
-  color: hsl(210, 70%, 75%);
-  letter-spacing: 2px;
-  font-size: 1.5rem;
-}
-
-h3 {
-  color: rgb(200, 210, 230);
-  text-transform: uppercase;
-}
-
-a {
-  color: #8ecbff;
-}
-
-.warning {
-  color: #ffb3b3;
-  background-color: rgba(255, 80, 80, 0.2);
-}
-
-#today {
-  color: #7bd389;
-}
-
-.address {
-  font-style: italic;
-  font-size: 0.9em;
-}
-
-.jumps {
-  text-align: center;
-  font-size: 0.875rem;
-}
-
 .hours {
   background-color: #13294f;
   color: #ffd166;
   font-family: "Courier New", monospace;
-  font-size: 1rem;
-}
-
-#visiting {
-  color: #ffd166;
+  text-align: center;
 }
 
 .card {
   background-color: #13294f;
-  padding: 16px 0;
+  padding: 16px;
   border: 2px solid #2c4a7a;
   margin-bottom: 24px;
+  width: 18%;
 }
 
-sub,
-sup {
-  color: #5fd3c6;
+.duties {
+  background-color: #13294f;
+  padding: 16px 16px 16px 40px;
 }
-```
-
-```js script.js
-// A gold line along the top of the page
-document.body.style.borderTop = "6px solid #ffd166";
-
-// System check
-console.log("Station Log online");
-console.log(92);
-console.log("Crew on board:", 6);
-
-// Crew count
-const minutesPerOrbit = 92;
-let crewOnBoard = 6;
-crewOnBoard = crewOnBoard + 2;
-console.log("Crew on board:", crewOnBoard);
-console.log("Minutes per orbit:", minutesPerOrbit);
-
-// Greeting board
-const stationName = "Station Log";
-console.log(`Welcome aboard ${stationName}`);
-console.log(stationName.length);
-console.log(stationName.toUpperCase());
-console.log(`One orbit takes ${minutesPerOrbit} minutes`);
-
-// Live status, read from the biggest heading
-const title = document.querySelector("h1");
-console.log(title.textContent);
-const status = document.querySelector("#status");
-status.textContent = `${title.textContent}: all systems normal`;
-
-// Wake-up call
-const wake = document.querySelector("#wake");
-wake.addEventListener("click", () => {
-  status.textContent = "Crew awake";
-  console.log("Wake-up call sent");
-});
-
-// Shift counter
-let shiftNumber = 1;
-const shift = document.querySelector("#shift");
-shift.textContent = `Shift ${shiftNumber}`;
-
-const nextShift = document.querySelector("#next-shift");
-nextShift.addEventListener("click", () => {
-  shiftNumber = shiftNumber + 1;
-  shift.textContent = `Shift ${shiftNumber}`;
-  console.log(`Shift ${shiftNumber} begins`);
-});
 ```
 
 ```html crew.html
@@ -216,10 +175,12 @@ nextShift.addEventListener("click", () => {
     <nav>
       <a href="index.html">Home</a>
       <a href="crew.html">Crew</a>
-      <a href="crew.html#duty">Duty</a>
     </nav>
     <h1>Crew Directory</h1>
     <p>Everyone who lives and works on the station, and where to find them.</p>
+    <p>Meet our commander, <a href="people/vega.html">Mara Vega</a>.</p>
+    <p><a href="#duty">See today's duties</a></p>
+    <p><a href="index.html">Back to the home page</a></p>
 
     <h2>Crew</h2>
     <ul id="crew">
@@ -282,7 +243,7 @@ nextShift.addEventListener("click", () => {
     </div>
 
     <h2 id="duty">Duty Board</h2>
-    <ol>
+    <ol class="duties">
       <li>
         Inspect the solar panels
         <ul>
@@ -293,6 +254,32 @@ nextShift.addEventListener("click", () => {
       <li>Harvest the greenhouse</li>
       <li>Log the day's dockings</li>
     </ol>
+  </body>
+</html>
+```
+
+```html people/vega.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mara Vega</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../crew.html">Crew</a>
+    </nav>
+    <h1>Commander Mara Vega</h1>
+    <img
+      src="../img/station.svg"
+      alt="The station she commands: a gold hub inside a blue ring"
+      width="240"
+      height="150"
+    />
+    <p>Twenty years in orbit, three of them in charge of this station.</p>
+    <p><a href="../crew.html">Back to the crew directory</a></p>
   </body>
 </html>
 ```

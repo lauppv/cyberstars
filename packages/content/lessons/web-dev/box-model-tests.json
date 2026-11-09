@@ -1,90 +1,53 @@
 {
   "cases": [
     {
-      "name": "Each card shows against the page",
+      "name": "Every card has a background of its own",
       "visible": true,
       "page": "crew.html",
       "steps": [
-        {
-          "style": ".card",
-          "prop": "background-color",
-          "not": "rgba(0, 0, 0, 0)",
-          "every": true,
-          "label": "a card"
-        },
         {
           "differs": ".card",
           "from": "body",
           "props": ["background-color"],
           "fromLabel": "the page",
-          "label": "the cards"
-        },
-        { "contrast": ".card", "atLeast": 4.5, "every": true, "label": "a card's text" }
-      ]
-    },
-    {
-      "name": "Each card has room inside",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        { "style": ".card", "prop": "padding-top", "atLeast": 8, "every": true, "label": "a card" },
-        {
-          "style": ".card",
-          "prop": "padding-right",
-          "atLeast": 8,
-          "every": true,
-          "label": "a card"
-        },
-        {
-          "style": ".card",
-          "prop": "padding-bottom",
-          "atLeast": 8,
-          "every": true,
-          "label": "a card"
-        },
-        { "style": ".card", "prop": "padding-left", "atLeast": 8, "every": true, "label": "a card" }
-      ]
-    },
-    {
-      "name": "Each card has a frame all the way round",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "style": ".card",
-          "prop": "border-top-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a card"
-        },
-        {
-          "style": ".card",
-          "prop": "border-right-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a card"
-        },
-        {
-          "style": ".card",
-          "prop": "border-bottom-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a card"
-        },
-        {
-          "style": ".card",
-          "prop": "border-left-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a card"
+          "label": "every card"
         }
       ]
     },
     {
-      "name": "No two cards touch",
+      "name": "Every card has room inside it",
       "visible": true,
       "page": "crew.html",
-      "steps": [{ "layout": "#cards .card", "arrange": "column", "gap": 12, "label": "the cards" }]
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "padding-top",
+          "every": true,
+          "atLeast": 12,
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "padding-right",
+          "every": true,
+          "atLeast": 12,
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "padding-bottom",
+          "every": true,
+          "atLeast": 12,
+          "label": "every card"
+        },
+        {
+          "style": ".card",
+          "prop": "padding-left",
+          "every": true,
+          "atLeast": 12,
+          "label": "every card"
+        }
+      ]
     }
   ]
 }
