@@ -1,82 +1,48 @@
 {
   "cases": [
     {
-      "name": "Visiting Hours is a section of its own",
+      "name": "Visiting Hours is a part between Today on Board and the rules",
       "visible": true,
       "steps": [
         {
           "text": "h2#visiting",
-          "equals": "Visiting Hours",
-          "label": "the section heading Visiting Hours with id=\"visiting\""
+          "nonEmpty": true,
+          "label": "the Visiting Hours heading (<h2 id=\"visiting\">)"
         },
         {
-          "count": "h1",
-          "equals": 1,
-          "label": "biggest headings"
+          "exists": "h2#today ~ h2#visiting:has(~ h2)",
+          "label": "Visiting Hours after Today on Board, with the rules part after it"
         }
       ]
     },
     {
-      "name": "The hours follow it on three lines",
+      "name": "The hours show right under the heading, a day on each line",
       "visible": true,
       "steps": [
         {
-          "text": "#visiting + p",
-          "contains": "Monday to Friday: 10:00 to 16:00 Saturday: 10:00 to 12:00 Sunday: closed",
-          "label": "the paragraph right under Visiting Hours"
-        },
-        {
-          "count": "#visiting + p > br",
-          "atLeast": 2,
-          "label": "line breaks in the hours"
+          "exists": "h2#visiting + p:has(> br ~ br)",
+          "label": "a paragraph right under Visiting Hours, on three lines or more"
         }
       ]
     },
     {
-      "name": "The badge rule can't be missed",
+      "name": "A rule follows the hours, its important words in <strong>",
       "visible": true,
       "steps": [
         {
-          "text": "p strong",
-          "equals": "Visitors must wear a badge",
-          "label": "the badge rule, marked as important"
+          "text": "h2#visiting + p + p strong",
+          "nonEmpty": true,
+          "label": "important words (<strong>) in the paragraph after the hours"
         }
       ]
     },
     {
-      "name": "A link next to Jump to today leads there",
+      "name": "A link next to Jump to today leads to Visiting Hours",
       "visible": true,
       "steps": [
         {
-          "text": "p:has(a[href=\"#today\"]) a[href=\"#visiting\"]",
-          "equals": "Visiting hours",
-          "label": "a link to #visiting in the paragraph with Jump to today"
-        },
-        {
-          "click": "a[href=\"#visiting\"]",
-          "label": "the link to #visiting"
-        },
-        {
-          "at": "index.html"
-        }
-      ]
-    },
-    {
-      "name": "The rest of the page is still there",
-      "visible": true,
-      "steps": [
-        {
-          "text": "h2#today",
-          "equals": "Today on Board",
-          "label": "the section heading Today on Board"
-        },
-        {
-          "exists": "img[src$=\"img/station.svg\"]",
-          "label": "the station's picture"
-        },
-        {
-          "exists": "a[href=\"mailto:crew@station.example\"]",
-          "label": "the link to write to the crew"
+          "exists": "p:has(> a[href=\"#today\"]) > a[href=\"#visiting\"]",
+          "label": "a link to #visiting in the paragraph of the link to #today"
         }
       ]
     }

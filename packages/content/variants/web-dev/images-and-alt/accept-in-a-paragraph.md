@@ -7,42 +7,40 @@
   </head>
   <body>
     <h1>Welcome aboard</h1>
-    <img
-      src="img/station.svg"
-      alt=""
-      width="320"
-      height="200"
-    />
-    <p>The station orbits the Earth every 92 minutes.</p>
+    <p><img src="img/station.svg" /></p>
+    <p>The station goes round the Earth every 92 minutes.</p>
+    <p>Six people live here, with a greenhouse full of tomatoes.</p>
     <p><a href="#today">Jump to today</a></p>
 
     <h2>About the Station</h2>
-    <p>Six crew members live here, with a greenhouse full of tomatoes.</p>
-    <p>Cargo ships dock twice a month, and <em>every</em> docking is logged on this page.</p>
+    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>
     <p>
       Orbital Station 7<br />
       Docking Ring B<br />
       Low Earth Orbit
     </p>
-    <!-- <p><small>Docking fee: 20 credits a day.</small></p> -->
+    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>
     <p>
       Curious how real stations work?
-      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">
-        Read about space stations
-      </a>
+      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">Read about space stations</a>
     </p>
+    <h3>The Greenhouse</h3>
+    <p>Tomatoes, beans and basil grow under blue lamps.</p>
 
-    <img src="img/divider.svg" alt="" width="600" height="24" />
-
-    <!-- Today on Board: warnings, supplies and who works each shift -->
     <h2 id="today">Today on Board</h2>
     <p><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
     <p>Water left: 900 litres of H<sub>2</sub>O.</p>
     <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>
+    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>
     <h3>Morning Shift</h3>
     <p>Commander Vega and engineer Okafor.</p>
     <h3>Night Shift</h3>
     <p>Pilot Lindqvist, alone with the stars.</p>
+
+    <h2>Station Rules</h2>
+    <p>Wear your badge at all times.</p>
+    <p>Close every hatch behind you.</p>
+    <p>No running in the greenhouse.</p>
 
     <p><a href="mailto:crew@station.example">Write to the crew</a></p>
   </body>
@@ -50,9 +48,5 @@
 ```
 
 ```image img/station.svg
-
-```
-
-```image img/divider.svg
 
 ```

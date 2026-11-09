@@ -1,36 +1,70 @@
-A page of words is a good start. Now your station gets a picture.
+A page with only words is like a school project with no pictures glued in. A photo or a drawing says in a second what takes a paragraph to describe.
 
-## The image element
+## The `<img>` tag
 
-A picture is an `img` element. Like `<br>`, it holds nothing, so it has no closing tag. Everything it needs goes in its attributes:
+A picture is an `img` element, short for **image**:
 
 ```html
-<img src="img/crate.svg" alt="A wooden crate with a red cargo stamp" width="160" height="120" />
+<img src="img/cat.svg" />
 ```
 
-- `src`, the **source**, says which file to show. `img/crate.svg` is a **path**: the file `crate.svg` in the folder `img`, next to the page. You'll learn more about paths in the next part.
-- `alt` is the **alternative text**: what the picture shows, in words.
-- `width` and `height` are its size in pixels.
+`src`, short for **source**, says which picture file to show. Here it's `img/cat.svg`: the file `cat.svg` inside a folder called `img`, next to your page.
 
-Look at the files of your site: this lesson added a folder `img` with two pictures, `station.svg` and `divider.svg`. They come with the course, so you can use them but not change them.
+The page shows the picture right where the tag is.
 
-## Why alt matters
+Like `<br>` and `<meta>`, `<img>` has no closing tag: there are no words to put inside a picture.
 
-A screen reader can't see a picture, so it reads the `alt` out loud. A search engine reads it to learn what the picture is about. And when a picture doesn't load, because of a slow connection or a wrong path, the browser shows the `alt` in its place.
+## Where the picture goes
 
-Good alt text says what the picture shows, the way you'd describe it to a friend on the phone: **A gold hub with two solar panels**, not **image** or **station.svg**.
+An image is **inline**, like a word: it sits in the line of text where you put it. Most of the time you want it on a line of its own, so put it between paragraphs:
 
-Some pictures are only decoration: a line, a swirl, a pattern. Hearing "decorative line" again and again helps nobody. Give them an **empty** alt, `alt=""`, and a screen reader skips the picture. Leaving out `alt` completely is different: then a screen reader may read the file's name out loud instead.
+```html
+<h1>Our Cat</h1>
+<img src="img/cat.svg" />
+<p>Her name is Pixel and she sleeps all day.</p>
+```
 
-## Width and height
+The heading, then the picture, then the paragraph, one under the other.
 
-The browser only knows how big a picture is once the file arrives. Without `width` and `height`, it gives the picture no space at first. Then, when the picture loads, it pushes the text down, just as the visitor starts reading. If you write the picture's real size, the space is kept from the start.
+## Your pictures
 
-A picture is inline, like a link: it sits in a line of text, unless it's alone between blocks.
+Look at the files on the left of your editor: there's a new folder, `img`, with a picture in it, `station.svg`, a drawing of the space station. This course gives you its pictures, so you don't need to make your own. You can't change them, but you can show them on your pages as often as you like.
+
+## Break it on purpose
+
+Write the path wrong:
+
+```html
+<img src="img/stations.svg" />
+```
+
+The browser looks for `stations.svg`, finds nothing, and shows a small broken picture icon instead, or nothing at all. The name must match the file's name exactly, including the folder, the dot and the capital letters.
+
+Leave out the folder and it breaks too:
+
+```html
+<img src="station.svg" />
+```
+
+The file is inside `img`, so the path must say `img/` first.
 
 ---
 
-## Mission: Station Portrait
+## Mission: A picture of the station
 
-- Right under your biggest heading, show `img/station.svg`. Describe it for a visitor who can't see it, in your own words. The picture is 320 pixels wide and 200 tall, and the text under it shouldn't jump when it loads.
-- Between the end of **About the Station** and the heading **Today on Board**, show `img/divider.svg`. It's only decoration, so a screen reader should skip it.
+Your `index.html` starts with a heading and a couple of paragraphs. Visitors should see the station as soon as they arrive.
+
+**Example**: the top of your page would show something like this:
+
+```text
+Welcome aboard
+
+(the drawing of the station)
+
+The station goes round the Earth every 92 minutes.
+```
+
+- The picture `img/station.svg` shows on the page.
+- It's right under the heading, before the first paragraph.
+
+Psst, the picture is in the `img` folder, so the path starts with `img/` :)

@@ -1,14 +1,30 @@
-You've built the whole frame of a page: headings in order, paragraphs and line breaks, words that stand out, comments, links and pictures. This mission puts them all together, the way a real page needs them: at once, with no steps to follow.
+No new theory, just a challenge that uses what you've learned so far: headings at the right level, paragraphs and line breaks, `<strong>`, comments, jump links and `id`.
 
-Read what the visitors need, then decide yourself which elements give it to them. If something looks wrong in the preview, check that your tags close in the order they opened, and that every comment ends with `-->`.
+You know every piece already. This time nobody tells you which tag to use for what: read what the visitors need, and pick the tags yourself.
+
+If something looks wrong in the preview, check two things first: does every tag close, in the order it opened? Does every comment end with `-->`?
 
 ---
 
 ## Mission: Visiting Hours
 
-The station is opening to visitors. They need a section of their own on your home page, after the shifts and before your email link, called **Visiting Hours**. Give it the id `visiting`.
+The station is opening to visitors. They need a part of their own on your home page: Visiting Hours. It goes after Today on Board and before the Station Rules.
 
-- Right under the title, the opening hours, as on a sign by the door, each day on its own line: **Monday to Friday: 10:00 to 16:00**, **Saturday: 10:00 to 12:00**, **Sunday: closed**.
-- Under the hours, one rule a visitor must not miss: **Visitors must wear a badge**.
-- A visitor at the top of the page should get there in one click, from a link that says **Visiting hours**, right next to your **Jump to today** link.
-- The crew should find the section quickly in the file, with a note above it saying what it holds.
+**Example**: that part of your page would show something like this:
+
+```text
+Visiting Hours
+
+Monday to Friday: 10:00 to 16:00
+Saturday: 10:00 to 12:00
+Sunday: closed
+
+Visitors must wear a badge at all times.      ("Visitors must wear a badge" in bold)
+```
+
+- A new part with the heading Visiting Hours, at the same level as Today on Board, with the id `visiting`.
+- Under the heading, the opening hours in one paragraph, each day on its own line: at least three lines.
+- Right after the hours, a paragraph with a rule visitors must not miss, its important words in `<strong>`.
+- In the same paragraph as your Jump to today link, a second link that jumps to Visiting Hours.
+
+Psst, two ids on one page must never be the same :)

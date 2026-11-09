@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "name": "The station picture says what it shows",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "img[src=\"img/station.svg\"][alt]:not([alt=\"\"])",
+          "label": "the station picture with alt words"
+        }
+      ]
+    },
+    {
+      "name": "The divider shows between two parts, as decoration",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "h2 ~ img[src=\"img/divider.svg\"]:has(~ h2)",
+          "label": "the divider (img/divider.svg) between two parts"
+        },
+        {
+          "size": "img[src=\"img/divider.svg\"]",
+          "minWidth": 200,
+          "label": "the divider"
+        },
+        {
+          "attr": "img[src=\"img/divider.svg\"]",
+          "name": "alt",
+          "equals": "",
+          "label": "the divider"
+        }
+      ]
+    }
+  ]
+}
