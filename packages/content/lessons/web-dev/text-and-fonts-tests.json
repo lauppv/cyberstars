@@ -1,89 +1,27 @@
 {
   "cases": [
     {
-      "name": "The page is set in a plain font every browser can show",
-      "visible": true,
-      "steps": [
-        {
-          "style": "body",
-          "prop": "font-family",
-          "endsWith": "sans-serif",
-          "label": "the page"
-        },
-        {
-          "style": "p",
-          "prop": "font-family",
-          "endsWith": "sans-serif",
-          "every": true,
-          "label": "a paragraph"
-        }
-      ]
-    },
-    {
-      "name": "The lines of text have room between them",
+      "name": "The page's text is in a list that ends with sans-serif",
       "visible": true,
       "steps": [
         {
           "style": "p",
-          "prop": "line-height",
-          "atLeast": 22.4,
-          "every": true,
-          "label": "a paragraph"
+          "prop": "font-family",
+          "endsWith": "sans-serif",
+          "label": "the paragraphs"
         }
       ]
     },
     {
-      "name": "The biggest heading is in the middle",
+      "name": "The biggest heading has a font of its own",
       "visible": true,
       "steps": [
         {
-          "style": "h1",
-          "prop": "text-align",
-          "equals": "center",
+          "differs": "h1",
+          "from": "p",
+          "props": ["font-family"],
+          "fromLabel": "the paragraphs",
           "label": "the biggest heading"
-        }
-      ]
-    },
-    {
-      "name": "The section headings spread their letters",
-      "visible": true,
-      "steps": [
-        {
-          "style": "h2",
-          "prop": "letter-spacing",
-          "atLeast": 1,
-          "every": true,
-          "label": "a section heading"
-        }
-      ]
-    },
-    {
-      "name": "The shift headings show in capitals",
-      "visible": true,
-      "steps": [
-        {
-          "style": "h3",
-          "prop": "text-transform",
-          "equals": "uppercase",
-          "every": true,
-          "label": "a shift heading"
-        }
-      ]
-    },
-    {
-      "name": "The address is in italics",
-      "visible": true,
-      "steps": [
-        {
-          "text": "p.address",
-          "contains": "Orbital Station 7 Docking Ring B Low Earth Orbit",
-          "label": "the address, in the class address"
-        },
-        {
-          "style": "p.address",
-          "prop": "font-style",
-          "equals": "italic",
-          "label": "the address"
         }
       ]
     }

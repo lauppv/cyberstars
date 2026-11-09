@@ -1,56 +1,62 @@
-Your page has its colors. Now for its letters: which font, how thick, how far apart.
+Look at a birthday card, a road sign and a comic book. The letters look completely different: curly, plain, hand-drawn. Each style of letters is a **font**, and the font changes how a page feels before anyone reads a word.
 
-## Fonts
+## `font-family`
 
-`font-family` picks the font. You give it a list:
+`font-family` picks the font:
 
 ```css
 body {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Verdana;
 }
 ```
 
-The browser uses the first font in the list that the visitor's computer has. A font isn't sent with your page unless you send it, so the list is your plan B and plan C. The last name is a **generic family**. Every browser has a font for it:
+The `body` holds everything you see, so everything on the page takes this font. You'll learn exactly why in a later lesson.
 
-- `serif`: letters with little feet, like in a printed book;
-- `sans-serif`: letters without feet, plain and clear on a screen;
-- `monospace`: every letter equally wide, like code.
+A font name with spaces goes in quotes: `font-family: "Times New Roman";`.
 
-A font name with spaces goes in quotes. Set the font on `body`, and every element inside gets it too, unless a rule gives it another one.
+## A list, not one font
 
-## Weight, style and spacing
+Here's the catch: a font only shows if the visitor's device has it. Verdana is on almost every computer, but not on every phone. If it's missing, the browser falls back to its own default, and your page looks different from what you planned.
+
+So you give a **list**, best first:
 
 ```css
-.label {
-  font-weight: bold; /* or a number: 400 normal, 700 bold */
-  font-style: italic;
-  letter-spacing: 1px; /* room between letters */
-  text-transform: uppercase; /* capitals on screen, whatever the HTML says */
-}
-p {
-  line-height: 1.5; /* lines 1.5 times as tall as the letters */
+body {
+  font-family: Verdana, Geneva, sans-serif;
 }
 ```
 
-`line-height` changes more than anything else how easy a page is to read: text with space between its lines is less tiring for the eyes. Write it as a plain number, without a unit. The number is multiplied by the font's size.
+The browser tries Verdana. If the device doesn't have it, it tries Geneva. If it has neither, it takes any `sans-serif` font it has.
 
-`text-transform: uppercase` only changes how the text looks. The HTML keeps its own letters, and a screen reader reads them as they are written.
+The last word is a **generic family**, a kind of font every device has:
 
-## Lining up
+- `sans-serif`: plain letters, with no little feet at the ends, like this text;
+- `serif`: letters with little feet, like in a printed book;
+- `monospace`: every letter the same width, like code.
 
-`text-align` lines up text inside its box: `left`, `right`, `center` or `justify`. Center a title, or maybe a short line. A long centered paragraph is hard to read, because every line starts in a different place.
+Always end your list with one of them. Then, whatever happens, the page gets the right **kind** of font.
 
-`text-decoration` draws lines on text. Links are underlined by default, and `text-decoration: none` removes the line. Before you do that to a link, make sure it still looks like a link, at least by its color. Otherwise visitors won't know they can click it.
+## Break it on purpose
+
+Pick a font almost nobody has, with no fallback:
+
+```css
+body {
+  font-family: Papyrus;
+}
+```
+
+On your computer it may look as you wanted. On a phone without Papyrus, the browser shows its default font instead, often a `serif` one, and your page looks like a newspaper. Add `, sans-serif` at the end and it falls back to the right kind.
 
 ---
 
-## Mission: Station Type
+## Mission: The station's fonts
 
-The corridor screens are far from where the crew walks. Make your page easy to read from a distance:
+Your page is still in the browser's default font.
 
-- The whole page in a plain font without little feet. Not every computer has the same fonts, so give a list that always ends in a font every browser has.
-- Room between the lines of the text: lines at least 1.4 times as tall as the letters.
-- The biggest heading in the middle of the page.
-- The section headings with their letters spread a little apart.
-- The shift headings in capital letters, without retyping them.
-- The address in italics. Put its paragraph in the class `address`: later lessons use it.
+**Example**: the paragraphs show in a plain font like Verdana, and the biggest heading in a font with little feet, like Georgia.
+
+- The page's text is in a list of fonts that ends with `sans-serif`.
+- The biggest heading is in a different font from the paragraphs.
+
+Psst, a font name with spaces needs quotes :)

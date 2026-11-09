@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "name": "The paragraphs are between 1rem and 1.25rem",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p",
+          "prop": "font-size",
+          "every": true,
+          "atLeast": 16,
+          "atMost": 20,
+          "label": "every paragraph"
+        }
+      ]
+    },
+    {
+      "name": "The biggest heading is at least 2rem",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "font-size",
+          "atLeast": 32,
+          "label": "the biggest heading"
+        }
+      ]
+    },
+    {
+      "name": "The text grows with the visitor's setting",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Station Log</title>\n    <style>\n      html { font-size: 24px; }\n    </style>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n    <img src=\"img/station.svg\" alt=\"A gold station hub inside a blue ring, with a solar panel on each side\"\n      width=\"240\"\n      height=\"150\"\n    />\n    <p>The station goes round the Earth every 92 minutes.</p>\n    <p>Six people live here, with a greenhouse full of tomatoes.</p>\n    <p class=\"jumps\"><a href=\"#today\">Jump to today</a> · <a href=\"#visiting\">Visiting hours</a></p>\n\n    <h2>About the Station</h2>\n    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>\n    <p class=\"address\">\n      Orbital Station 7<br />\n      Docking Ring B<br />\n      Low Earth Orbit\n    </p>\n    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>\n    <p>\n      Curious how real stations work?\n      <a href=\"https://en.wikipedia.org/wiki/Space_station\" target=\"_blank\" rel=\"noopener\">Read about space stations</a>\n    </p>\n    <h3>The Greenhouse</h3>\n    <p>Tomatoes, beans and basil grow under blue lamps.</p>\n\n    <img src=\"img/divider.svg\" alt=\"\" />\n\n    <h2 id=\"today\">Today on Board</h2>\n    <p class=\"warning urgent\"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>\n    <p>Water left: 900 litres of H<sub>2</sub>O.</p>\n    <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>\n    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>\n    <h3 class=\"shift\">Morning Shift</h3>\n    <p>Commander Vega and engineer Okafor.</p>\n    <h3 class=\"shift\">Night Shift</h3>\n    <p>Pilot Lindqvist, alone with the stars.</p>\n\n    <h2 id=\"visiting\">Visiting Hours</h2>\n    <p>\n      Monday to Friday: 10:00 to 16:00<br />\n      Saturday: 10:00 to 12:00<br />\n      Sunday: closed\n    </p>\n    <p class=\"warning\"><strong>Visitors must wear a badge</strong> at all times.</p>\n\n    <h2>Station Rules</h2>\n    <p>Wear your badge at all times.</p>\n    <p>Close every hatch behind you.</p>\n    <p>No running in the greenhouse.</p>\n\n    <p><a href=\"mailto:crew@station.example\">Write to the crew</a></p>\n  </body>\n</html>"
+      },
+      "steps": [
+        {
+          "style": "p",
+          "prop": "font-size",
+          "every": true,
+          "atLeast": 24,
+          "atMost": 30,
+          "label": "every paragraph, with the setting at 24 pixels"
+        },
+        {
+          "style": "h1",
+          "prop": "font-size",
+          "atLeast": 48,
+          "label": "the biggest heading, with the setting at 24 pixels"
+        }
+      ]
+    }
+  ]
+}

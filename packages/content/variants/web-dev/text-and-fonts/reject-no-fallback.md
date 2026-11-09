@@ -8,44 +8,41 @@
   </head>
   <body>
     <h1>Welcome aboard</h1>
-    <img
-      src="img/station.svg"
-      alt="A gold station hub inside a blue ring, with a solar panel on each side"
-      width="320"
-      height="200"
+    <img src="img/station.svg" alt="A gold station hub inside a blue ring, with a solar panel on each side"
+      width="240"
+      height="150"
     />
-    <p>The station orbits the Earth every 92 minutes.</p>
+    <p>The station goes round the Earth every 92 minutes.</p>
+    <p>Six people live here, with a greenhouse full of tomatoes.</p>
     <p><a href="#today">Jump to today</a> · <a href="#visiting">Visiting hours</a></p>
 
     <h2>About the Station</h2>
-    <p>Six crew members live here, with a greenhouse full of tomatoes.</p>
-    <p>Cargo ships dock twice a month, and <em>every</em> docking is logged on this page.</p>
+    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>
     <p class="address">
       Orbital Station 7<br />
       Docking Ring B<br />
       Low Earth Orbit
     </p>
-    <!-- <p><small>Docking fee: 20 credits a day.</small></p> -->
+    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>
     <p>
       Curious how real stations work?
-      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">
-        Read about space stations
-      </a>
+      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">Read about space stations</a>
     </p>
+    <h3>The Greenhouse</h3>
+    <p>Tomatoes, beans and basil grow under blue lamps.</p>
 
-    <img src="img/divider.svg" alt="" width="600" height="24" />
+    <img src="img/divider.svg" alt="" />
 
-    <!-- Today on Board: warnings, supplies and who works each shift -->
     <h2 id="today">Today on Board</h2>
-    <p class="warning"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
+    <p class="warning urgent"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
     <p>Water left: 900 litres of H<sub>2</sub>O.</p>
     <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>
-    <h3>Morning Shift</h3>
+    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>
+    <h3 class="shift">Morning Shift</h3>
     <p>Commander Vega and engineer Okafor.</p>
-    <h3>Night Shift</h3>
+    <h3 class="shift">Night Shift</h3>
     <p>Pilot Lindqvist, alone with the stars.</p>
 
-    <!-- Visiting Hours: when guests may come aboard, and the badge rule -->
     <h2 id="visiting">Visiting Hours</h2>
     <p>
       Monday to Friday: 10:00 to 16:00<br />
@@ -53,6 +50,11 @@
       Sunday: closed
     </p>
     <p class="warning"><strong>Visitors must wear a badge</strong> at all times.</p>
+
+    <h2>Station Rules</h2>
+    <p>Wear your badge at all times.</p>
+    <p>Close every hatch behind you.</p>
+    <p>No running in the greenhouse.</p>
 
     <p><a href="mailto:crew@station.example">Write to the crew</a></p>
   </body>
@@ -70,45 +72,50 @@
 ```css style.css
 body {
   background-color: #0b1d3a;
-  color: #f0f4ff;
   font-family: Verdana;
-  line-height: 1.6;
 }
 
 h1 {
   color: #ffd166;
-  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 h2 {
-  color: hsl(210, 70%, 75%);
-  letter-spacing: 2px;
-}
-
-h3 {
-  color: rgb(200, 210, 230);
-  text-transform: uppercase;
+  color: #8ecbff;
+  text-decoration: underline;
 }
 
 a {
-  color: #8ecbff;
+  color: #5fd3c6;
+  text-decoration: none;
 }
 
 .warning {
   color: #ffb3b3;
-  background-color: rgba(255, 80, 80, 0.2);
+  background-color: rgb(255, 80, 80, 0.2);
 }
 
 #today {
   color: #7bd389;
 }
 
-.address {
-  font-style: italic;
+.shift {
+  color: #a9c1dc;
 }
 
-sub,
-sup {
-  color: teal;
+.urgent {
+  color: #ffd166;
+}
+
+p {
+  color: #f0f4ff;
+}
+
+h3 {
+  color: #c5e1a5;
+}
+
+.address {
+  color: rgb(169, 193, 220);
 }
 ```

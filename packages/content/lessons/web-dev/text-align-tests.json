@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "name": "The biggest heading is centered",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the biggest heading"
+        }
+      ]
+    },
+    {
+      "name": "The jump links are centered",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p.jumps:has(a[href=\"#today\"])",
+          "label": "the paragraph with the jump links (<p class=\"jumps\">)"
+        },
+        {
+          "style": "p.jumps",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the paragraph with the jump links"
+        }
+      ]
+    }
+  ]
+}

@@ -1,82 +1,54 @@
 {
   "cases": [
     {
-      "name": "The hours are a card of their own",
+      "name": "The hours have the class hours",
       "visible": true,
       "steps": [
         {
-          "text": "#visiting + p.hours",
-          "contains": "Monday to Friday",
-          "label": "the hours, in the class hours, right under Visiting Hours"
-        },
+          "exists": "h2#visiting + p.hours",
+          "label": "the hours, right under Visiting Hours (<p class=\"hours\">)"
+        }
+      ]
+    },
+    {
+      "name": "The hours stand on a panel of their own",
+      "visible": true,
+      "steps": [
         {
-          "style": "p.hours",
-          "prop": "background-color",
-          "not": "rgba(0, 0, 0, 0)",
-          "label": "the hours"
-        },
-        {
-          "differs": "p.hours",
-          "from": "body",
+          "differs": ".hours",
+          "from": "p:not(.hours):not(.warning)",
           "props": ["background-color"],
-          "fromLabel": "the page",
-          "label": "the hours"
-        },
-        {
-          "contrast": "p.hours",
-          "atLeast": 4.5,
+          "fromLabel": "the other paragraphs",
           "label": "the hours"
         }
       ]
     },
     {
-      "name": "The hours are set like a station terminal",
+      "name": "The hours are in a monospace font, centered",
       "visible": true,
       "steps": [
         {
-          "style": "p.hours",
+          "style": ".hours",
           "prop": "font-family",
           "endsWith": "monospace",
           "label": "the hours"
         },
         {
-          "differs": "p:not(.hours)",
-          "from": "p.hours",
-          "props": ["font-family"],
-          "fromLabel": "the hours",
-          "label": "the other paragraphs"
+          "style": ".hours",
+          "prop": "text-align",
+          "equals": "center",
+          "label": "the hours"
         }
       ]
     },
     {
-      "name": "Visiting Hours stands out from the other sections",
+      "name": "The hours read easily",
       "visible": true,
       "steps": [
         {
-          "differs": "#visiting",
-          "from": "h2:not(#visiting)",
-          "props": ["color", "background-color"],
-          "fromLabel": "the other section headings",
-          "label": "the heading Visiting Hours"
-        },
-        {
-          "contrast": "#visiting",
-          "atLeast": 3,
-          "label": "the heading Visiting Hours"
-        }
-      ]
-    },
-    {
-      "name": "The jump links sit in the middle",
-      "visible": true,
-      "steps": [
-        {
-          "exists": "p.jumps a[href=\"#today\"]",
-          "label": "the jump links' paragraph, in the class jumps"
-        },
-        {
-          "centered": "p.jumps a",
-          "label": "the jump links"
+          "contrast": ".hours",
+          "atLeast": 4.5,
+          "label": "the hours"
         }
       ]
     }
