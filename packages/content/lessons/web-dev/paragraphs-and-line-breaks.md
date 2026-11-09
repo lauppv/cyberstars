@@ -1,47 +1,90 @@
-**About the Station** is still empty. You already know `<p>`. This lesson is about what the browser does with the spaces and the new lines you type.
+Write a text message and press Enter three times between two words. The message shows three empty lines, just as you typed them. You'd expect a web page to do the same. It doesn't.
 
-## The browser ignores your Enter
+## The browser squeezes spaces
 
-Type this in a page:
-
-```html
-<p>The cargo bay
-   holds      forty
-crates.</p>
-```
-
-The browser shows **The cargo bay holds forty crates.** on one line, with one space between the words. In HTML, many spaces, tabs and new lines in a row count as **one space**. That's why you can indent your code however you like: the browser doesn't care.
-
-So pressing Enter twice in the editor doesn't make a gap on the page. A new block of text is a new **paragraph**, and the browser puts some room between paragraphs by itself:
+Try this in your editor:
 
 ```html
-<p>The cargo bay holds forty crates.</p>
-<p>Two more bays are being built on the lower ring.</p>
+<p>I    like      chess.</p>
 ```
 
-## Line breaks
+The page shows:
 
-Sometimes a few lines belong together, but each one needs its own line. Think of a poem, or the label on a crate. For that there is `<br>`, a **line break** inside a paragraph:
+```text
+I like chess.
+```
+
+All those spaces became one. Now press Enter in the middle:
+
+```html
+<p>I like
+chess
+and cards.</p>
+```
+
+```text
+I like chess and cards.
+```
+
+Still one line. To the browser, an Enter is just another space, and any number of spaces in a row count as one.
+
+That's on purpose. It means you can lay out your HTML file however you like, with spaces at the start of lines and empty lines between parts, and the page doesn't change. Your file stays easy to read.
+
+## So how do you get new lines?
+
+With tags. Every `<p>` starts on a new line, so if you want things on separate lines, make them separate paragraphs:
+
+```html
+<p>Clean your room.</p>
+<p>Feed the cat.</p>
+<p>Do your homework.</p>
+```
+
+```text
+Clean your room.
+
+Feed the cat.
+
+Do your homework.
+```
+
+## Break it on purpose
+
+Write the same three lines in **one** paragraph, each on its own line in the file:
 
 ```html
 <p>
-  FRAGILE<br />
-  Glass tubes for the lab<br />
-  This side up
+  Clean your room.
+  Feed the cat.
+  Do your homework.
 </p>
 ```
 
-`<br>` holds nothing, so it has no closing tag. It's an **empty element**, like `<meta>`. You'll see it written as `<br>` or `<br />`. Both mean the same.
+```text
+Clean your room. Feed the cat. Do your homework.
+```
 
-Don't use `<br>` to make space between blocks of text. Two `<br>` in a row to make a gap is the same mistake as pressing Enter twice: it's two paragraphs pretending to be one. A screen reader reads a page paragraph by paragraph, so a fake paragraph sounds like a mess. Space between things has its own tool, CSS, which comes soon.
+They run together into one line. The Enters you typed are gone.
 
 ---
 
-## Mission: Station Address
+## Mission: Station rules
 
-Under **About the Station**:
+Your `index.html` has its parts. Add one more part at the very end of the page: the rules everyone on board must follow.
 
-- write two paragraphs of your own about the station: what it does, who lives there, anything you like;
-- after them, write the station's address, so a visitor can copy it onto an envelope. The address is **Orbital Station 7, Docking Ring B, Low Earth Orbit**, and on an envelope each part goes on its own line, without the commas.
+**Example**: the end of your page would show something like this, each rule on its own line:
 
-The address is one thing, so it stays one paragraph. Check the preview: it should look like the address on a letter.
+```text
+Station Rules
+
+Wear your badge at all times.
+
+Close every hatch behind you.
+
+No running in the greenhouse.
+```
+
+- The page ends with a new part: an `<h2>` heading, then its rules.
+- There are three rules, and each one shows on its own line on the page.
+
+Psst, pressing Enter in the file doesn't start a new line on the page :)

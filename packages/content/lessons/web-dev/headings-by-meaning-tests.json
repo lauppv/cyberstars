@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "name": "The first part has a smaller part inside it",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "h2 ~ h3:has(~ h2)",
+          "label": "a smaller heading (<h3>) inside the first part"
+        }
+      ]
+    },
+    {
+      "name": "The headings make a good outline",
+      "visible": true,
+      "steps": [
+        {
+          "outline": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,40 +1,12 @@
 {
   "cases": [
     {
-      "name": "Two paragraphs of yours open About the Station",
+      "name": "The page ends with a part of three rules, each on its own line",
       "visible": true,
       "steps": [
         {
-          "text": "h2 + p",
-          "nonEmpty": true,
-          "label": "a paragraph right under About the Station"
-        },
-        {
-          "text": "h2 + p + p",
-          "nonEmpty": true,
-          "label": "a second paragraph under it"
-        }
-      ]
-    },
-    {
-      "name": "The address follows them, in one paragraph",
-      "visible": true,
-      "steps": [
-        {
-          "text": "h2 + p + p + p",
-          "contains": "Orbital Station 7 Docking Ring B Low Earth Orbit",
-          "label": "a third paragraph, the address"
-        }
-      ]
-    },
-    {
-      "name": "The address stands on three lines",
-      "visible": true,
-      "steps": [
-        {
-          "count": "h2 + p + p + p > br",
-          "atLeast": 2,
-          "label": "line breaks in the address"
+          "exists": "body > h2:nth-last-child(4) + p:not(:empty) + p:not(:empty) + p:not(:empty)",
+          "label": "a last part at the end of the page: an <h2> heading, then three paragraphs (<p>)"
         }
       ]
     }

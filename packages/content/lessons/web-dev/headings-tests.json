@@ -1,48 +1,31 @@
 {
   "cases": [
     {
-      "name": "The page keeps one biggest heading",
-      "visible": true,
-      "steps": [
-        { "count": "h1", "equals": 1, "label": "biggest headings" },
-        { "text": "h1", "equals": "Welcome aboard", "label": "the biggest heading" }
-      ]
-    },
-    {
-      "name": "Two sections follow it",
-      "visible": true,
-      "steps": [
-        { "text": "h2", "equals": "About the Station", "label": "a section heading" },
-        { "text": "h2", "equals": "Today on Board", "label": "a section heading" }
-      ]
-    },
-    {
-      "name": "The shifts sit inside Today on Board",
+      "name": "The page has two parts with <h2> headings",
       "visible": true,
       "steps": [
         {
-          "count": "h2:last-of-type ~ h3",
+          "count": "h1 ~ h2",
           "atLeast": 2,
-          "label": "shift headings one level under Today on Board"
-        },
-        { "text": "h3", "nonEmpty": true, "label": "a shift heading" }
-      ]
-    },
-    {
-      "name": "Each shift says who works it",
-      "visible": true,
-      "steps": [
-        {
-          "count": "h3 + p",
-          "atLeast": 2,
-          "label": "paragraphs right under a shift heading"
+          "label": "part headings (<h2>) under the biggest heading"
         }
       ]
     },
     {
-      "name": "The outline never skips a level",
+      "name": "The second part has smaller parts with <h3> headings",
       "visible": true,
-      "steps": [{ "outline": true }]
+      "steps": [
+        {
+          "count": "h2 ~ h2 ~ h3",
+          "atLeast": 2,
+          "label": "smaller headings (<h3>) inside the second part"
+        },
+        {
+          "count": "h3 + p:not(:empty)",
+          "atLeast": 2,
+          "label": "paragraphs right under a smaller heading (<h3>)"
+        }
+      ]
     }
   ]
 }

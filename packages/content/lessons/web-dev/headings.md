@@ -1,53 +1,93 @@
-Your page has one heading and one paragraph. A real page has more to say, so it splits its text into **sections**. Each section has its own heading, like the chapters of a book.
+Open a school textbook. There's the book's title on the cover, then chapters, and inside each chapter smaller sections. You can tell them apart at a glance: the bigger the heading, the bigger the part it starts.
+
+A web page has the same kind of levels. You already know the biggest one, `<h1>`. There are five more.
 
 ## Six levels
 
-HTML has six heading tags, from `h1` to `h6`. The number is the heading's **level**: `h1` is the title of the whole page, `h2` is the title of a section, `h3` is the title of a part inside that section, and so on.
+```html
+<h1>My Favourite Games</h1>
+<h2>Board Games</h2>
+<h3>Chess</h3>
+<h4>Openings</h4>
+<h5>The Italian Game</h5>
+<h6>Its first move</h6>
+```
 
-Before you write them, sketch the page's outline, like the table of contents of a book. Here is the outline of a ship's manual:
+The page shows six headings, each one a bit smaller than the one above:
 
 ```text
-Ship's Manual
-  Engines
-    Starting the Engines
-    Stopping the Engines
-    When an Engine Fails
-      Warning Lights
-  Fuel
+My Favourite Games      (biggest)
+Board Games
+Chess
+Openings
+The Italian Game
+Its first move          (smallest)
 ```
 
-Each step to the right is one level down. The HTML follows the outline, one heading at a time:
+The number is the **level**: `h1` is level 1, the whole page; `h2` starts a big part of it; `h3` a smaller part inside an `h2`, and so on down to `h6`. Most pages only need the first three.
+
+## Headings with text under them
+
+A heading starts a part, and the text of that part comes after it:
 
 ```html
-<h1>Ship's Manual</h1>
-<h2>Engines</h2>
-<h3>Starting the Engines</h3>
-<p>Turn the main key, then wait for the green light.</p>
-<h3>Stopping the Engines</h3>
-<h3>When an Engine Fails</h3>
-<h4>Warning Lights</h4>
-<h2>Fuel</h2>
+<h1>My Favourite Games</h1>
+
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
+
+<h3>Chess</h3>
+<p>I play with my grandpa every Sunday.</p>
+
+<h3>Monopoly</h3>
+<p>Our games last for hours.</p>
+
+<h2>Video Games</h2>
+<p>Only at weekends.</p>
 ```
 
-**Fuel** is an `h2` again: it stands next to **Engines**, not inside it, so the outline steps back up. A section can have no parts, like **Fuel**, or several, like **Engines**. `h5` and `h6` go even deeper, but most pages never need them.
+Read it like a table of contents:
 
-## Pick by meaning, not by size
+```text
+My Favourite Games
+  Board Games
+    Chess
+    Monopoly
+  Video Games
+```
 
-The browser shows `h1` biggest, and each level after it a bit smaller. You might want to pick a heading because of its size, but don't: that size is only the browser's choice, and later you'll set it yourself with CSS. Pick the level by **where the heading sits** in the outline.
+Chess and Monopoly are both `h3`, because both are parts of Board Games. Video Games is an `h2` again, because it's a new big part, next to Board Games, not inside it.
 
-This matters to more people than you'd think. A **screen reader** is a program that reads a page out loud for a blind visitor. It lists the headings, so the visitor can jump straight to a section. Search engines read headings too, to learn what the page is about. Both trust the levels, so follow three rules:
+The empty lines between the parts don't show on the page. They just make the file easier to read.
 
-- **one `h1`** per page, the page's title;
-- **no skipped levels**: under an `h2` comes an `h3`, never an `h4` straight away;
-- **headings are for titles only**. Text that should just look big isn't a heading.
+## Break it on purpose
+
+Make Video Games an `h3`:
+
+```html
+<h3>Video Games</h3>
+```
+
+On the page it just looks a bit smaller. But now the page says Video Games is part of Board Games, which isn't true. Someone who listens to the page with a screen reader, and jumps from heading to heading, gets the wrong idea of how the page is built.
 
 ---
 
-## Mission: Station Map
+## Mission: Parts of the station
 
-A visitor who can't see the screen will hear your home page through a screen reader, jumping from heading to heading. Give it an outline they can find their way in. Keep your biggest heading and your paragraph, and under them add the station's sections, in this order:
+Your `index.html` has the heading and a couple of paragraphs. Give the page some parts.
 
-- **About the Station**, nothing in it yet;
-- **Today on Board**, which holds today's two shifts. Name the shifts yourself, like **Morning Shift** and **Night Shift**, and under each shift's title, a paragraph saying who works it.
+**Example**: read as a table of contents, your page would look something like this:
 
-Sketch the outline first, then pick each heading's level from where it sits in it. The preview should read like a table of contents.
+```text
+Welcome aboard
+  About the Station
+  Today on Board
+    Morning Shift
+    Night Shift
+```
+
+- Under your paragraphs, at least two parts, each starting with an `<h2>` heading.
+- The second part has at least two smaller parts inside it, each starting with an `<h3>` heading.
+- Each `<h3>` has a paragraph right under it.
+
+Psst, a part inside another one gets the next level down :)

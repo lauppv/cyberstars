@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "name": "The first part has the address on three lines",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "h2 ~ p:has(> br ~ br):has(~ h2 ~ h2)",
+          "label": "a paragraph in the first part, broken into three lines or more"
+        }
+      ]
+    }
+  ]
+}

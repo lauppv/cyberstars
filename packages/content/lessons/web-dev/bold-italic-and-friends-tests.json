@@ -1,67 +1,24 @@
 {
   "cases": [
     {
-      "name": "A word of yours is stressed",
+      "name": "A warning has its important words in <strong>",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p strong",
+          "nonEmpty": true,
+          "label": "important words (<strong>) in a paragraph"
+        }
+      ]
+    },
+    {
+      "name": "A word is stressed with <em>",
       "visible": true,
       "steps": [
         {
           "text": "p em",
           "nonEmpty": true,
-          "label": "a stressed word in a paragraph"
-        }
-      ]
-    },
-    {
-      "name": "The warning is marked as important",
-      "visible": true,
-      "steps": [
-        {
-          "text": "p strong",
-          "equals": "Hatch 3 stays closed",
-          "label": "the warning"
-        }
-      ]
-    },
-    {
-      "name": "H2O is written as scientists write it",
-      "visible": true,
-      "steps": [
-        {
-          "text": "p sub",
-          "equals": "2",
-          "label": "the 2 of H2O"
-        },
-        {
-          "text": "p:has(sub)",
-          "contains": "H2O",
-          "label": "the paragraph with the water"
-        }
-      ]
-    },
-    {
-      "name": "The height is written as a power of ten",
-      "visible": true,
-      "steps": [
-        {
-          "text": "p sup",
-          "equals": "5",
-          "label": "the 5 of 10⁵"
-        },
-        {
-          "text": "p:has(sup)",
-          "contains": "105 metres",
-          "label": "the paragraph with the height"
-        }
-      ]
-    },
-    {
-      "name": "The docking fee is a side note",
-      "visible": true,
-      "steps": [
-        {
-          "text": "p small",
-          "equals": "Docking fee: 20 credits a day.",
-          "label": "the docking fee"
+          "label": "a stressed word (<em>) in a paragraph"
         }
       ]
     }
