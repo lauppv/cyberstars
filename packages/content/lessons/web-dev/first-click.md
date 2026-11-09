@@ -1,39 +1,59 @@
-A page that changes by itself is nice. But what JavaScript is really for is a page that answers the visitor. It starts with a click.
+A doorbell does nothing until someone presses it. Then it rings. Most of what happens on a web page works like that: nothing until the visitor does something, a click, a tap, a key. Then the page reacts.
 
 ## A button
 
+First, something to click. HTML has a tag for it:
+
 ```html
-<button type="button" id="open-doors">Open the doors</button>
+<button type="button" id="hello">Say hello</button>
+<p id="answer"></p>
 ```
 
-A `<button>` is made to be pressed. Use one whenever something should happen on a click, not a `<div>` or a `<p>` made to look like a button. A real button can be reached with the Tab key and pressed with Enter or Space, and a screen reader says it's a button. `type="button"` means it's a plain button, not one that sends a form. Forms come later.
+A button on its own does nothing when clicked. `type="button"` says it's a plain button. You'll meet other kinds with forms, later.
 
-## Listening for the click
+## `addEventListener`
+
+A click is an **event**: something that happens. You ask an element to listen for it, and say what to do when it happens:
 
 ```js
-const openDoors = document.querySelector("#open-doors");
+const button = document.querySelector("#hello");
+const answer = document.querySelector("#answer");
 
-openDoors.addEventListener("click", () => {
-  console.log("Doors opening");
-  bayStatus.textContent = "Doors open";
+button.addEventListener("click", () => {
+  answer.textContent = "Hello there!";
 });
 ```
 
-Something that happens on the page (a click, a key pressed, the window resized) is called an **event**. `addEventListener` asks an element to run some code every time an event happens to it. It takes two things:
+Read it like a sentence: "button, listen for a click, and when it happens, do this". The `() => { ... }` is the "do this" part: a little block of lines that doesn't run now, but **later**, every time the button is clicked.
 
-- the event's name, `"click"`;
-- the code to run, written as `() => { ... }`: a small piece of code saved for later. The browser runs what's between the braces every time the button is clicked, and not before.
+When the page opens, nothing happens. Click the button, and the paragraph says "Hello there!".
 
-That piece of code is called a **function**. Part 2 explains functions fully. For now, read `() => { ... }` as "when it happens, do this".
+## Break it on purpose
 
-The line with `addEventListener` runs once, when the script starts. It only gets things ready. Nothing inside the braces runs until the first click.
+Spell the event wrong:
+
+```js
+button.addEventListener("clik", () => {
+  answer.textContent = "Hello there!";
+});
+```
+
+No error, and nothing happens on a click. The button is now listening for an event called "clik", which never happens. Event names are exact: `"click"`.
 
 ---
 
-## Mission: Wake-up Call
+## Mission: Wake the crew
 
-The night shift sleeps in the crew quarters. Give the home page a way to wake them.
+The morning alarm on the crew directory is a button.
 
-- Under the status paragraph, add a button with the id `wake` that says **Wake the crew**.
-- After a click on it, the status says `Crew awake`, and the console shows `Wake-up call sent`.
-- Until someone clicks, the status still says all systems are normal.
+**Example**: under the status line, a button says `Wake the crew`. Click it, and the status line changes to:
+
+```text
+The crew is awake
+```
+
+- `crew.html` has a button with the id `wake`, saying `Wake the crew`.
+- A click on it writes `The crew is awake` in the status line, `#status`.
+- Before the click, the status line still says `Directory checked`.
+
+Psst, the lines inside `() => { }` run on the click, not before :)

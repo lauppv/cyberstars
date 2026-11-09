@@ -1,65 +1,86 @@
-Most of what a page shows is text. So most of what its scripts work with are **strings**.
+On a name badge at a party, someone writes your first name, a space, and your last name. Two pieces of text stuck together. Programs stick text together all the time: a greeting and a name, a label and a number.
 
-## Joining strings
+## Strings
 
-`+` between two strings sticks them together:
+A piece of text in JavaScript is a **string**, written in quotes, double or single:
 
 ```js
-const bay = "Cargo Bay";
-console.log("Welcome to " + bay);
+const firstName = "Sam";
+const lastName = 'Green';
+```
+
+Both kinds work the same. Just start and end with the same kind.
+
+## Joining with `+`
+
+`+` between two strings sticks them together into one:
+
+```js
+const fullName = firstName + " " + lastName;
+console.log(fullName);
 ```
 
 ```text
-Welcome to Cargo Bay
+Sam Green
 ```
 
-Watch the space: `"Welcome to" + bay` gives `Welcome toCargo Bay`. With two numbers, `+` adds them. With a string and a number, it sticks them together: `"Bay " + 2` is `"Bay 2"`.
+Notice the `" "` in the middle: a string with just a space in it. Without it, you'd get `SamGreen`. JavaScript never adds a space by itself.
 
-## Template literals
-
-Sticking many pieces together with `+` gets hard to read. A **template literal** is a string between backticks, `` ` ``, with values put right inside it:
+You can join a label and a variable the same way:
 
 ```js
-const crates = 40;
-console.log(`${bay} holds ${crates} crates`);
+console.log("Member: " + fullName);
 ```
 
 ```text
-Cargo Bay holds 40 crates
+Member: Sam Green
 ```
 
-`${ }` can hold any value, or a calculation: `` `${crates * 2} after the delivery` ``. It only works between backticks. Inside `"..."` or `'...'`, `${bay}` is just those six characters.
+## Strings and numbers
 
-## What a string knows
-
-A string has its own facts and tools. You reach them with a dot:
+`+` also adds numbers. So what happens when you mix them?
 
 ```js
-bay.length; // 9, the number of characters, spaces included
-bay.toUpperCase(); // "CARGO BAY"
-bay.toLowerCase(); // "cargo bay"
+console.log("Table " + 4);
+console.log(2 + 2);
+console.log("2" + "2");
 ```
 
-`length` is a fact, so it has no parentheses. `toUpperCase()` is a tool, called a **method**, so it has them. The original string doesn't change: `toUpperCase()` gives you a new one.
+```text
+Table 4
+4
+22
+```
 
-## Quotes inside quotes
+With a string on either side, `+` joins: the number becomes text and is stuck on. With two numbers, it adds. `"2" + "2"` is two strings, so you get `22`, not 4. Keep an eye on quotes.
 
-A string in double quotes can hold single quotes, and the other way round: `"Bay 2's door"`. Backticks can hold both.
+## Break it on purpose
+
+Forget the space:
+
+```js
+console.log("Member:" + fullName);
+```
+
+```text
+Member:Sam Green
+```
+
+Squashed together. Spaces only appear where you put them, inside the quotes.
 
 ---
 
-## Mission: Greeting Board
+## Mission: A new arrival
 
-The station might get a new name one day. When it does, the greeting screen should change by editing **one** line of your script. Under the crew count, in `script.js`, keep the station's name, `Station Log`, once, and build every one of these console lines from it:
+A new crew member arrives: her first name is `Lena` and her last name is `Park`.
 
-```text
-Welcome aboard Station Log
-11
-STATION LOG
-```
-
-The `11` is how many characters the name has, and the last line is the name in capital letters. Then one more line, built from your minutes per orbit:
+**Example**: when `crew.html` opens, the console shows, among its other lines:
 
 ```text
-One orbit takes 92 minutes
+New arrival: Lena Park
 ```
+
+- In `crew.js`, her first name and her last name are kept under two names.
+- The console shows `New arrival: Lena Park`, joined from those two with `+`.
+
+Psst, a space is a string too: `" "` :)

@@ -1,125 +1,37 @@
 {
   "cases": [
     {
-      "name": "The counter starts at Shift 1",
+      "name": "A click says who is on duty",
       "visible": true,
+      "page": "crew.html",
       "steps": [
         {
-          "text": "p#shift",
-          "equals": "Shift 1",
-          "label": "the shift paragraph"
+          "click": "button#on-duty",
+          "label": "the button Who's on duty?"
         },
         {
-          "text": "button#next-shift",
-          "equals": "Next shift",
-          "label": "the button with id=\"next-shift\""
+          "text": "#duty-today",
+          "contains": " is on duty today",
+          "label": "the paragraph #duty-today"
         }
       ]
     },
     {
-      "name": "Each click moves to the next shift",
-      "visible": true,
-      "steps": [
-        {
-          "click": "button#next-shift",
-          "label": "the button Next shift"
-        },
-        {
-          "text": "p#shift",
-          "equals": "Shift 2",
-          "label": "the shift, after one click"
-        },
-        {
-          "click": "button#next-shift",
-          "label": "the button Next shift"
-        },
-        {
-          "text": "p#shift",
-          "equals": "Shift 3",
-          "label": "the shift, after two clicks"
-        }
-      ]
-    },
-    {
-      "name": "Each new shift is logged",
-      "visible": true,
-      "steps": [
-        {
-          "click": "button#next-shift",
-          "label": "the button Next shift"
-        },
-        {
-          "logged": "Shift 2 begins"
-        },
-        {
-          "click": "button#next-shift",
-          "label": "the button Next shift"
-        },
-        {
-          "logged": "Shift 3 begins"
-        },
-        {
-          "noErrors": true
-        }
-      ]
-    },
-    {
-      "name": "It counts on and on",
+      "name": "It names the first card",
       "visible": false,
-      "steps": [
-        {
-          "click": "button#next-shift",
-          "label": "the button with id=\"next-shift\""
-        },
-        {
-          "click": "button#next-shift",
-          "label": "the button with id=\"next-shift\""
-        },
-        {
-          "click": "button#next-shift",
-          "label": "the button with id=\"next-shift\""
-        },
-        {
-          "click": "button#next-shift",
-          "label": "the button with id=\"next-shift\""
-        },
-        {
-          "click": "button#next-shift",
-          "label": "the button with id=\"next-shift\""
-        },
-        {
-          "text": "p#shift",
-          "equals": "Shift 6",
-          "label": "the shift after five clicks"
-        }
-      ]
-    },
-    {
-      "name": "The script writes the first shift",
-      "visible": false,
+      "page": "crew.html",
       "files": {
-        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Station Log</title>\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n    <p id=\"status\"></p>\n    <button type=\"button\" id=\"wake\">Wake the crew</button>\n    <p id=\"shift\"></p>\n    <button type=\"button\" id=\"next-shift\">Next shift</button>\n  </body>\n</html>\n"
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"check.js\" defer></script>\n    <script src=\"crew.js\" defer></script>\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n    </nav>\n    <h1>Crew Directory</h1>\n    <p>Everyone who lives and works on the station, and where to find them.</p>\n    <p id=\"status\"></p>\n    <button type=\"button\" id=\"wake\">Wake the crew</button>\n    <button type=\"button\" id=\"on-duty\">Who's on duty?</button>\n    <p id=\"duty-today\"></p>\n    <p>Meet our commander, <a href=\"people/vega.html\">Mara Vega</a>.</p>\n    <p><a href=\"#duty\">See today's duties</a></p>\n    <p><a href=\"index.html\">Back to the home page</a></p>\n\n    <h2>Crew</h2>\n    <ul id=\"crew\">\n      <li>Mara Vega</li>\n      <li>Tomas Okafor</li>\n      <li>Ines Lindqvist</li>\n      <li>Kenji Arano</li>\n    </ul>\n\n    <h2>Morning Routine</h2>\n    <ol>\n      <li>Check the oxygen readings</li>\n      <li>Water the greenhouse</li>\n      <li>Report to the commander</li>\n    </ol>\n\n    <h2>Decks</h2>\n    <ul class=\"decks\">\n      <li>\n        Upper Deck\n        <ul>\n          <li>Bridge</li>\n          <li>Observatory</li>\n        </ul>\n      </li>\n      <li>\n        Living Deck\n        <ul>\n          <li>Galley</li>\n          <li>Sleeping pods</li>\n          <li>Gym</li>\n        </ul>\n      </li>\n      <li>\n        Lower Deck\n        <ul>\n          <li>Cargo bay</li>\n          <li>Greenhouse</li>\n        </ul>\n      </li>\n    </ul>\n\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada Okafor</h3>\n        <p>Job: <span class=\"role\">Commander</span></p>\n        <p class=\"bio\">Twenty years in orbit, three of them in charge of this station. Knows every bolt by its first name, still checks the airlocks herself before bed, and has never once been late for a docking.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Tomas Okafor</h3>\n        <p>Job: <span class=\"role\">Engineer</span></p>\n        <p class=\"bio\">Keeps the power on and the water clean. Spends his free time building a clock out of spare parts that has never once shown the right time, and says that is the point.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Ines Lindqvist</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p class=\"bio\">Flies the supply runs and the rescue drills. Holds the station record for the softest docking, and reminds everyone of it at dinner, every dinner, without fail.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Kenji Arano</h3>\n        <p>Job: <span class=\"role\">Botanist</span></p>\n        <p class=\"bio\">Grows the tomatoes, the beans and the only flowers for four hundred kilometres. Talks to the plants every morning, and claims that they answer.</p>\n      </div>\n    </div>\n\n    <h2 id=\"duty\">Duty Board</h2>\n    <ol class=\"duties\">\n      <li>\n        Inspect the solar panels\n        <ul>\n          <li>Tomas Okafor</li>\n          <li>Ines Lindqvist</li>\n        </ul>\n      </li>\n      <li>Harvest the greenhouse</li>\n      <li>Log the day's dockings</li>\n    </ol>\n  </body>\n</html>"
       },
       "steps": [
         {
-          "text": "p#shift",
-          "equals": "Shift 1",
-          "label": "the shift paragraph"
-        }
-      ]
-    },
-    {
-      "name": "The earlier buttons still work",
-      "visible": true,
-      "steps": [
-        {
-          "click": "button#wake",
-          "label": "the button Wake the crew"
+          "click": "button#on-duty",
+          "label": "the button Who's on duty?"
         },
         {
-          "text": "p#status",
-          "equals": "Crew awake",
-          "label": "the status"
+          "text": "#duty-today",
+          "equals": "Ada Okafor is on duty today",
+          "label": "the paragraph #duty-today"
         }
       ]
     }

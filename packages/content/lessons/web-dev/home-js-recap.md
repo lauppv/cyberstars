@@ -1,14 +1,23 @@
-Your page now has a script that talks to the console, keeps values, builds strings, finds elements and answers a click. This mission needs all of that, and there are no steps to follow this time.
+No new theory, just a challenge that uses this part's first JavaScript: `querySelector`, `textContent`, template literals and a click.
 
-Work out what has to happen when the page opens, and what has to happen on each click. If something doesn't work, the console is your friend: log the values you're not sure about, and read the red lines.
+This time nobody tells you which lines to write. Read what the crew needs, and put the pieces together yourself.
+
+If nothing happens, open the console: a red line tells you where the script stopped. A `null` means a selector found nothing.
 
 ---
 
-## Mission: Shift Counter
+## Mission: Who's on duty?
 
-The station works in shifts, and the crew wants a counter on the home page that shows which shift it is.
+The crew wants a button that says who's on duty today: the person on the first card.
 
-- Under the wake-up button, add an empty paragraph with the id `shift` and a button with the id `next-shift` that says **Next shift**.
-- When the page opens, the paragraph says `Shift 1`. The script writes it, not the HTML.
-- Each click moves to the next shift, `Shift 2`, `Shift 3` and so on, for as long as the crew keeps clicking, and the console says `Shift 2 begins`, `Shift 3 begins`...
-- The wake-up button still works.
+**Example**: under the wake button, a button says `Who's on duty?`. Click it, and a paragraph under it says:
+
+```text
+Mara Vega is on duty today
+```
+
+- A button with the id `on-duty`, and under it an empty paragraph with the id `duty-today`.
+- A click on the button writes, in `#duty-today`, the name from the first card's heading, followed by ` is on duty today`.
+- The name is read from the card when the button is clicked: if the first card's name changes, so does the sentence.
+
+Psst, a selector can pick the heading inside the first card, as in CSS :)
