@@ -216,6 +216,16 @@ describe('judgeStep', () => {
     });
   });
 
+  it('passes a message box with the text asked for', () => {
+    expect(judge({ alerted: 'Hi crew' }, { dialogs: ['Hello', ' Hi crew '] })).toBeNull();
+    expect(judge({ alerted: 'Hi crew' }, { dialogs: ['Hello'] })).toEqual({
+      kind: 'alerted',
+      expected: 'Hi crew',
+      found: 'Hello',
+    });
+    expect(judge({ alerted: 'Hi crew' }, {})).toMatchObject({ found: null });
+  });
+
   it('passes pictures whose files all loaded', () => {
     const step = { loaded: 'img', label: 'the station picture' } as const;
     expect(judge(step, { count: 2, values: ['yes', 'yes'] })).toBeNull();

@@ -278,6 +278,21 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(lost.web).toMatchObject({ kind: 'loaded' });
   });
 
+  it('notes a message box and closes it, so the page goes on', () => {
+    const files = {
+      'index.html':
+        '<!DOCTYPE html><html><body><p id="after"></p><script>alert("Hi crew"); document.querySelector("#after").textContent = "on";</script></body></html>',
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Box',
+        visible: true,
+        steps: [{ alerted: 'Hi crew' }, { text: '#after', equals: 'on', label: 'the line' }],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
   it('tells a page that starts with <!DOCTYPE html> from one without', () => {
     const files = {
       'index.html': '<!DOCTYPE html><html><body><h1>Station Log</h1></body></html>',

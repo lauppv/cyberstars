@@ -138,6 +138,7 @@ async function observe(page, step, seen) {
     return { standards: await page.evaluate(() => document.compatMode === 'CSS1Compat') };
   }
   if ('logged' in step) return { logs: [...seen.logs] };
+  if ('alerted' in step) return { dialogs: [...seen.dialogs] };
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };
   if ('outline' in step) {
@@ -435,7 +436,7 @@ async function settle(page, nav, stepMs) {
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
-  const seen = { logs: [], errors: [] };
+  const seen = { logs: [], errors: [], dialogs: [] };
   const nav = { pending: false, inflight: 0 };
   let crashed = false;
   let onCrash;
@@ -461,6 +462,11 @@ async function runCase(browser, files, testCase, limits) {
       else seen.logs.push(text);
     });
     page.on('pageerror', (error) => seen.errors.push(error.message));
+    // A message box is noted and closed, as a visitor would
+    page.on('dialog', (dialog) => {
+      seen.dialogs.push(dialog.message());
+      dialog.dismiss().catch(() => {});
+    });
     page.on('crash', onCrash);
     outOfMemory.listener = onCrash;
     page.on('request', (request) => {

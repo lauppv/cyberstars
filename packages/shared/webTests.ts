@@ -141,6 +141,8 @@ export type WebCheck =
   | { outline: true }
   /** The page's scripts logged this line (spaces at the ends aside). */
   | { logged: string }
+  /** The page's scripts showed a message box (`alert`) with this text (spaces at the ends aside). */
+  | { alerted: string }
   /** Nothing thrown and nothing logged with console.error so far. */
   | { noErrors: true }
   /** The page shown now is this one (after a link, a form or `open`). */
@@ -206,6 +208,8 @@ export interface WebObservation {
   /** A doctype check's: whether the browser shows the page as a modern one (`document.compatMode`). */
   standards?: boolean;
   logs?: string[];
+  /** An alerted check's: the message boxes shown so far. */
+  dialogs?: string[];
   errors?: string[];
   page?: string;
 }
@@ -231,6 +235,7 @@ type WebFailureKind =
   | 'fits'
   | 'doctype'
   | 'logged'
+  | 'alerted'
   | 'errors'
   | 'at'
   | 'memory';
@@ -484,6 +489,10 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta în consolă ${q(expected)}, dar ${found ? `are ${q(found)}` : 'consola e goală'}.`
         : `Expected the console to show ${q(expected)}, found ${found ? q(found) : 'nothing'}.`;
+    case 'alerted':
+      return ro
+        ? `Se aștepta o fereastră cu mesajul ${q(expected)}, dar ${found ? `are ${q(found)}` : 'nu s-a deschis niciuna'}.`
+        : `Expected a message box saying ${q(expected)}, found ${found ? q(found) : 'none'}.`;
     case 'errors':
       return ro
         ? `Se aștepta ca pagina să meargă fără erori, dar are: ${found}`

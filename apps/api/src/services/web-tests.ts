@@ -191,6 +191,11 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     if (logs.some((line) => line.trim() === step.logged.trim())) return null;
     return { kind: 'logged', expected: step.logged, found: logs.at(-1) ?? null };
   }
+  if ('alerted' in step) {
+    const dialogs = seen.dialogs ?? [];
+    if (dialogs.some((line) => line.trim() === step.alerted.trim())) return null;
+    return { kind: 'alerted', expected: step.alerted, found: dialogs.at(-1) ?? null };
+  }
   if ('noErrors' in step) {
     const errors = seen.errors ?? [];
     return errors.length === 0 ? null : { kind: 'errors', found: errors[0] };

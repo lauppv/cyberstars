@@ -389,6 +389,7 @@ const WEB_CHECKS = [
   'doctype',
   'outline',
   'logged',
+  'alerted',
   'noErrors',
   'at',
 ] as const;
@@ -417,6 +418,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   doctype: [],
   outline: [],
   logged: [],
+  alerted: [],
   noErrors: [],
   at: [],
 };
@@ -467,7 +469,8 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
       if (!isPage(value)) return `${own} must name an .html page of the site`;
       return sitePaths.has(value) ? null : `${own} names ${value}, which the site doesn't have`;
     case 'logged':
-      return isText(value) ? null : 'logged must name a line';
+    case 'alerted':
+      return isText(value) ? null : `${own} must name a line`;
     case 'press':
       return isText(value) ? null : 'press must name a key';
     default:
