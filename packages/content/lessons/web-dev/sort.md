@@ -1,45 +1,92 @@
-The schedule lists flights in the order they were added, not in the order they leave. Time to sort them.
+Line up a class by height: you compare two pupils at a time, and swap them if the taller one is in front. Do that enough, and the whole line is in order. `sort` does exactly that, and you tell it how to compare two items.
 
-## sort and its comparator
+## `sort` with a comparator
 
 ```js
-const weights = [120, 45, 200];
-weights.sort((a, b) => a - b); // [45, 120, 200]
+function youngestFirst(a, b) {
+  return a - b;
+}
+
+const ages = [13, 9, 15, 11];
+ages.sort(youngestFirst);
+console.log(ages);
 ```
 
-`sort` takes a **comparator**: a function that gets two items, `a` and `b`, and returns a number:
+```text
+[9, 11, 13, 15]
+```
+
+The function you give `sort` is the **comparator**. `sort` calls it again and again, each time with two items, `a` and `b`, and it answers with a number:
 
 - **negative**: `a` goes first;
 - **positive**: `b` goes first;
-- **zero**: leave them as they are.
+- **0**: they're equal, leave them.
 
-For numbers, `a - b` does exactly that, smallest first. `b - a` sorts the biggest first.
+`a - b` is negative when `a` is smaller, so smaller ages come first. `b - a` would sort the other way, biggest first.
 
-Without a comparator, `sort` compares the items **as strings**: `[120, 45, 200].sort()` gives `[120, 200, 45]`, because "1" comes before "2", and "2" before "4". Always give a comparator for numbers.
+## Sorting strings
 
-For strings, `a.localeCompare(b)` returns the right negative, zero or positive number, in alphabetical order. Times written as `HH:MM`, with two digits each, sort correctly as strings: `"07:15"` comes before `"10:20"`.
-
-```js
-crates.sort((a, b) => a.name.localeCompare(b.name));
-```
-
-## sort changes the array
-
-Unlike `filter`, `sort` changes the order of the array **itself**, and returns that same array. To keep the original order too, sort a copy: `[...crates]` makes a new array with the same items.
+Strings can't be taken away from each other, so compare them, and answer with a ternary:
 
 ```js
-const byWeight = [...crates].sort((a, b) => a.weight - b.weight);
+function alphabetical(a, b) {
+  return a < b ? -1 : 1;
+}
+
+const names = ["Ola", "Sam", "Lea"];
+names.sort(alphabetical);
+console.log(names);
 ```
 
-## Reordering the page
+```text
+["Lea", "Ola", "Sam"]
+```
 
-`append` **moves** an element that's already on the page. So to reorder rows, sort the row elements, then append each one, in order, to their parent. They end up in the sorted order.
+Times like `"08:30"` sort the same way, since they compare like the clock.
+
+## On objects
+
+Compare a property of each:
+
+```js
+function mostPointsFirst(a, b) {
+  return b.points - a.points;
+}
+players.sort(mostPointsFirst);
+```
+
+The player with the most points comes first.
+
+## Break it on purpose
+
+Sort numbers without a comparator:
+
+```js
+const ages = [9, 13, 100];
+ages.sort();
+console.log(ages);
+```
+
+```text
+[100, 13, 9]
+```
+
+Without a comparator, `sort` compares the items as **text**, character by character, and `"1"` comes before `"9"`. Numbers always need a comparator.
 
 ---
 
-## Mission: Departure Order
+## Mission: The last departure
 
-The control room wants the flights in the order they leave.
+The schedule says which flight leaves last today.
 
-- Under the on-time flights, add an empty paragraph with the id `last-departure`. It names the last flight to leave today: `Last departure: SL-104 at 11:00`. Working this out must not change the order of your flights for the rest of the script.
-- Over the flights table, add a button with the id `sort-by-time` that says **Sort by time**. A click puts the table's rows in order of departure time, the earliest first.
+**Example**: under `#on-time`, a paragraph says:
+
+```text
+Last departure: SL-104 at 11:00
+```
+
+- A paragraph with the id `last-departure`.
+- The script sorts `flights` by departure time, earliest first, with a comparator.
+- The paragraph says `Last departure: `, the code of the last flight after sorting, `at` and its time.
+
+Psst, compare the `departs` of `a` and `b` :)
