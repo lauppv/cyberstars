@@ -19,7 +19,7 @@
         {
           "style": ".banner",
           "prop": "background-image",
-          "endsWith": "station.svg\")",
+          "endsWith": "/img/station.svg\")",
           "label": "the banner"
         },
         {
