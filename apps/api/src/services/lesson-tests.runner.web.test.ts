@@ -293,6 +293,28 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(run.passed).toBe(true);
   });
 
+  it('keeps up with a busy console, a page that moves on and a too long line', () => {
+    const files = {
+      'index.html':
+        '<!DOCTYPE html><html><body><h1 id="go">Go</h1><script>for (let i = 0; i < 5000; i++) console.log("Line", i); console.log("x".repeat(2100)); document.querySelector("#go").onclick = () => { console.log(document.querySelector("h1")); location.href = "next.html"; };</script></body></html>',
+      'next.html': '<!DOCTYPE html><html><body><p>Next</p></body></html>',
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Console',
+        visible: true,
+        steps: [
+          { logged: 'Line 4999' },
+          { logged: `${'x'.repeat(2000)}…` },
+          { click: '#go', label: 'the heading' },
+          { at: 'next.html' },
+          { logged: '<h1>' },
+        ],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
   it("reads a first letter's and a list marker's style", () => {
     const files = {
       'index.html': `<!DOCTYPE html><html><head><style>
