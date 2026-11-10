@@ -323,8 +323,21 @@ export function previewPrelude(config: PreludeConfig): void {
   });
 
   // ── The page's title, which the IDE shows over the site like a tab ─────
+  // Sent again whenever a script changes it, as a browser's tab follows it
+  let title: string | null = null;
+  const sendTitle = () => {
+    const text = document.title.slice(0, TEXT_LIMIT);
+    if (text === title) return;
+    title = text;
+    post({ type: 'title', text });
+  };
   document.addEventListener('DOMContentLoaded', () => {
-    post({ type: 'title', text: document.title.slice(0, TEXT_LIMIT) });
+    sendTitle();
+    new MutationObserver(sendTitle).observe(document.head, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
   });
 
   post({ type: 'ready' });
