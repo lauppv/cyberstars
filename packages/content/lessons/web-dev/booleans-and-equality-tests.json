@@ -1,71 +1,36 @@
 {
   "cases": [
     {
-      "name": "schedule.js is linked, deferred",
+      "name": "schedule.js loads from the head",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "exists": "head script[src=\"schedule.js\"][defer], head script[src=\"./schedule.js\"][defer]",
-          "label": "a <script src=\"schedule.js\" defer> in the <head> of schedule.html"
+          "exists": "head script[src=\"schedule.js\"][defer]",
+          "label": "a <script> for schedule.js in the <head>, with defer"
         }
       ]
     },
     {
-      "name": "The first flight is boarding",
+      "name": "The console says whether the first flight leaves before 10:00",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "text": "#flights + p#boarding-now",
-          "equals": "First flight boarding: true",
-          "label": "the boarding paragraph under the flights table"
+          "logged": "First flight leaves before 10:00: true"
         }
       ]
     },
     {
-      "name": "The two equals are logged",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "logged": "Loose: true"
-        },
-        {
-          "logged": "Strict: false"
-        },
-        {
-          "noErrors": true
-        }
-      ]
-    },
-    {
-      "name": "It reads the first flight's status",
+      "name": "It reads the first flight on the board",
       "visible": false,
       "page": "schedule.html",
       "files": {
-        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr class=\"delayed\">\n          <td class=\"code\">SL-103</td>\n          <td class=\"destination\">Europa Outpost</td>\n          <td class=\"departs\">07:15</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n        <tr>\n          <td class=\"code\">SL-101</td>\n          <td class=\"destination\">Moon Base</td>\n          <td class=\"departs\">08:30</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"board.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n      <a href=\"schedule.html\">Schedule</a>\n    </nav>\n    <h1>Flight Schedule</h1>\n    <p>Every departure from the station today.</p>\n    <div class=\"banner\"></div>\n\n    <table id=\"flights\">\n      <caption>Departures today</caption>\n      <thead>\n        <tr>\n          <th scope=\"col\">Flight</th>\n          <th scope=\"col\">Destination</th>\n          <th scope=\"col\">Departs</th>\n          <th scope=\"col\">Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr class=\"boarding\">\n          <td class=\"code\">SL-101</td>\n          <td class=\"destination\">Moon Base</td>\n          <td class=\"departs\">11:15</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n        <tr class=\"on-time\">\n          <td class=\"code\">SL-102</td>\n          <td class=\"destination\">Mars Relay</td>\n          <td class=\"departs\">09:45</td>\n          <td class=\"status\">On time</td>\n        </tr>\n        <tr class=\"delayed\">\n          <td class=\"code\">SL-103</td>\n          <td class=\"destination\">Europa Outpost</td>\n          <td class=\"departs\">07:15</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n        <tr class=\"cancelled\">\n          <td class=\"code\">SL-104</td>\n          <td class=\"destination\">Lunar Gateway</td>\n          <td class=\"departs\">11:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr class=\"on-time\">\n          <td class=\"code\">SL-105</td>\n          <td class=\"destination\">Orbital Yard</td>\n          <td class=\"departs\">10:20</td>\n          <td class=\"status\">On time</td>\n        </tr>\n      </tbody>\n      <tfoot>\n        <tr>\n          <td colspan=\"4\">All times in station time</td>\n        </tr>\n      </tfoot>\n    </table>\n\n    <h2>Docking Bays</h2>\n    <table id=\"bays\">\n      <caption>Docking bays</caption>\n      <thead>\n        <tr>\n          <th scope=\"col\">Bay</th>\n          <th scope=\"col\">Time</th>\n          <th scope=\"col\">Ship</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td rowspan=\"2\">Bay 1</td>\n          <td>08:00</td>\n          <td>Kestrel</td>\n        </tr>\n        <tr>\n          <td>13:00</td>\n          <td>Heron</td>\n        </tr>\n        <tr>\n          <td>Bay 2</td>\n          <td>10:30</td>\n          <td>Albatross</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>"
       },
       "steps": [
         {
-          "text": "p#boarding-now",
-          "equals": "First flight boarding: false",
-          "label": "the boarding paragraph"
-        }
-      ]
-    },
-    {
-      "name": "Only Boarding counts",
-      "visible": false,
-      "page": "schedule.html",
-      "files": {
-        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <h1>Flight Schedule</h1>\n    <p>Station time: <span id=\"station-time\">09:00</span></p>\n    <p id=\"next-departure\"></p>\n    <button type=\"button\" id=\"sort-by-time\">Sort by time</button>\n    <button type=\"button\" id=\"hide-cancelled\" aria-pressed=\"false\">Hide cancelled</button>\n    <table id=\"flights\">\n      <thead>\n        <tr><th scope=\"col\">Flight</th><th scope=\"col\">Destination</th><th scope=\"col\">Departs</th><th scope=\"col\">Status</th></tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"code\">SL-201</td>\n          <td class=\"destination\">Moon Base</td>\n          <td class=\"departs\">08:00</td>\n          <td class=\"status\">Boarding soon</td>\n        </tr>\n      </tbody>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"first-flight-note\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">100</span> units, burning <span id=\"burn-rate\">15</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"first-delay\"></p>\n    <p id=\"active-count\"></p>\n    <p id=\"next-flight\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"on-time\"></p>\n    <p id=\"last-departure\"></p>\n  </body>\n</html>\n"
-      },
-      "steps": [
-        {
-          "text": "p#boarding-now",
-          "equals": "First flight boarding: false",
-          "label": "the boarding paragraph"
+          "logged": "First flight leaves before 10:00: false"
         }
       ]
     }

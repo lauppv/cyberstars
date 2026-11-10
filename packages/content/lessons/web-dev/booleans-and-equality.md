@@ -1,58 +1,85 @@
-The schedule gets a script of its own, and its first questions have yes-or-no answers: is the first flight boarding? Is there a delay? JavaScript answers with **booleans**.
+"Is it raining?" "Are you older than 12?" "Is the shop open?" Some questions only have two answers: yes or no. Programs ask questions like that all the time, and JavaScript has a value for each answer: `true` and `false`.
 
-## true and false
+## Booleans
 
-A **boolean** is one of two values: `true` or `false`. Comparisons give them:
-
-```js
-40 > 25; // true
-40 <= 25; // false
-"Bay 2" === "Bay 2"; // true
-"Bay 2" !== "Bay 3"; // true
-```
-
-`===` asks "is this exactly the same?", and `!==` asks "is it different?".
-
-## === and ==
-
-JavaScript also has `==`, a looser equals that converts values before comparing:
+`true` and `false` are values, like numbers and strings. They're called **booleans**. No quotes: `true` is a boolean, `"true"` is just a word.
 
 ```js
-"7" == 7; // true: the string is turned into a number first
-"7" === 7; // false: a string isn't a number
-"" == 0; // true, surprisingly
+const doorOpen = true;
+console.log(doorOpen);
 ```
 
-Those changes are full of surprises. Always use `===` and `!==`, and change the type yourself, with `Number()`, when you need to.
+```text
+true
+```
 
-## and, or, not
+## Comparisons give a boolean
 
-- `a && b`, **and**: true only when both are.
-- `a || b`, **or**: true when at least one is.
-- `!a`, **not**: turns true into false and back.
+A comparison asks a question, and its answer is `true` or `false`:
 
 ```js
-const crates = 40;
-crates > 10 && crates < 50; // true: both hold
+console.log(12 > 8);
+console.log(12 < 8);
+console.log(12 >= 12);
+console.log(5 <= 3);
 ```
 
-You can keep booleans in variables like any other value. Give them names that sound like questions: `isBoarding`, `hasDelays`.
+```text
+true
+false
+true
+false
+```
 
-This lesson added an empty `schedule.js`.
+- `>` bigger than, `<` smaller than;
+- `>=` bigger than or equal, `<=` smaller than or equal.
+
+You've already used them in `for` loops: `i <= 3` is a question asked before every lap.
+
+## Comparing strings
+
+Strings can be compared too, letter by letter, like words in a dictionary:
+
+```js
+console.log("apple" < "banana");
+console.log("08:30" < "10:00");
+```
+
+```text
+true
+true
+```
+
+Times written as two digits, a colon and two digits compare just like the clock: `"08:30"` comes before `"10:00"`. That only works when every time has its leading zero: `"8:30"` would come **after** `"10:00"`, because the character `8` comes after `1`.
+
+## Break it on purpose
+
+Compare a number from the page without `Number()`:
+
+```js
+console.log("9" > "10");
+```
+
+```text
+true
+```
+
+As strings, `"9"` comes after `"1"`, so `"9"` is "bigger". Numbers from the page must become numbers before they're compared.
 
 ---
 
-## Mission: Boarding Check
+## Mission: Before ten
 
-The gate staff want to know straight away if the first flight is boarding.
+Your site gets one more script, `schedule.js`, for the schedule page. Its first job: tell whether the first flight on the board leaves before 10:00.
 
-- Link `schedule.js` to `schedule.html`, so it runs once the page has been read. Under the flights table, add an empty paragraph with the id `boarding-now`.
-- It answers with `true` or `false` whether the first flight in the table's body has the status `Boarding`, exactly: `First flight boarding: true` on your schedule. When the table changes, the answer changes with it.
-- To see the difference between the two kinds of equals, the console shows:
+**Example**: when `schedule.html` opens, the console shows:
 
 ```text
-Loose: true
-Strict: false
+First flight leaves before 10:00: true
 ```
 
-The first line is the result of `"7" == 7`, the second of `"7" === 7`. Let JavaScript work them out: don't type `true` and `false` yourself.
+- `schedule.html` loads `schedule.js` from its head, with `defer`.
+- The console shows `First flight leaves before 10:00: ` followed by `true` or `false`.
+- The answer comes from the departure time in the first row of the flight table: change it to `11:15`, and the console says `false`.
+
+Psst, the times have their leading zeros, so they compare like the clock :)

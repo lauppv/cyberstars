@@ -1,37 +1,76 @@
-Some questions have more than two answers. A flight can be on time, boarding, delayed or cancelled.
+At a traffic light, there are three choices, not two: green, go; amber, slow down; red, stop. When there are more than two answers, one `if` and one `else` aren't enough. You need a chain.
 
-## else if
+## `else if`
 
 ```js
-if (crates > 50) {
-  console.log("Full");
-} else if (crates > 20) {
-  console.log("Half full");
-} else if (crates > 0) {
-  console.log("Almost empty");
+const light = "amber";
+if (light === "green") {
+  console.log("Go");
+} else if (light === "amber") {
+  console.log("Slow down");
 } else {
-  console.log("Empty");
+  console.log("Stop");
 }
 ```
 
-The conditions are checked from the top, and the **first** one that's true runs its block. The rest are skipped. So the order matters: with 60 crates, `crates > 20` is true too, but `crates > 50` comes first. The last `else` catches everything that no condition matched.
-
-## The ternary operator
-
-For choosing between two **values**, there's a short form:
-
-```js
-const label = crates === 1 ? "crate" : "crates";
-console.log(`${crates} ${label}`);
+```text
+Slow down
 ```
 
-`condition ? valueIfTrue : valueIfFalse`. It gives back one of the two values, so it fits inside a template literal or after an `=`. Use it for short choices like this one. Anything longer is easier to read as an `if`.
+The questions are asked from the top, one after another:
+
+1. Is it green? No.
+2. Is it amber? Yes: "Slow down". The rest is skipped.
+
+As soon as one answer is `true`, its block runs and the chain ends. If none is true, the final `else` runs. You can have as many `else if`s as you need.
+
+## The order matters
+
+```js
+const score = 95;
+if (score >= 50) {
+  console.log("Passed");
+} else if (score >= 90) {
+  console.log("Top marks");
+}
+```
+
+```text
+Passed
+```
+
+95 is "at least 90", but the first question, "at least 50?", already said yes, so the second one is never asked. Put the most specific question first.
+
+## Break it on purpose
+
+Write two separate `if`s instead of a chain:
+
+```js
+if (light === "green") {
+  console.log("Go");
+}
+if (light === "amber") {
+  console.log("Slow down");
+} else {
+  console.log("Stop");
+}
+```
+
+With a green light, you get "Go" **and** "Stop": the second `if` is a new question, and its `else` runs because the light isn't amber. In a chain, only one block ever runs.
 
 ---
 
-## Mission: Flight Notes
+## Mission: Gate message
 
-Two more lines for the gate screen. Under the gate message, add empty paragraphs with the ids `first-flight-note` and `flight-count`.
+The schedule page tells passengers of the first flight what to do.
 
-- The first one gives passengers advice by the first flight's status: `On schedule` for `On time`, `Go to the gate` for `Boarding`, `Running late` for `Delayed`, `Grounded` for `Cancelled`, and `Check the board` for anything else.
-- The second says how many flights are in the table's body, and gets its English right: `5 flights today`, but `1 flight today`.
+**Example**: under `#boarding-now`, a paragraph says what passengers of the first flight should do:
+
+```text
+Go to gate 3
+```
+
+- Under `#boarding-now`, a paragraph with the id `gate-message`.
+- It depends on the first row's status: `Boarding` gives `Go to gate 3`, `Delayed` gives `Please wait`, `Cancelled` gives `Ask at the desk`, and any other status gives `Check the board`.
+
+Psst, one chain, one `else` at the end :)

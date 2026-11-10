@@ -1,39 +1,80 @@
-A boolean on its own only answers a question. With `if`, the program **does something** with the answer: one thing when it's true, another when it's false.
+"If it's colder than 15 degrees, I take a jumper. Otherwise, a t-shirt is enough." You make choices like that every day, without thinking. A program can make them too: do one thing **if** something is true, and another thing **else**.
 
-## if and else
+## `if`
 
 ```js
-const crates = 40;
+const temperature = 12;
+if (temperature < 15) {
+  console.log("Take a jumper");
+}
+```
 
-if (crates > 50) {
-  console.log("The bay is full");
+```text
+Take a jumper
+```
+
+The question goes in the brackets after `if`. When its answer is `true`, the lines between `{` and `}` run. When it's `false`, they're skipped.
+
+## `else`
+
+`else` says what to do when the answer is `false`:
+
+```js
+const temperature = 20;
+if (temperature < 15) {
+  console.log("Take a jumper");
 } else {
-  console.log("There's room for more");
+  console.log("A t-shirt is enough");
 }
 ```
 
-The condition goes in parentheses. When it's `true`, the first block runs. Otherwise, the `else` block runs. Exactly one of the two runs, never both. The `else` part is optional: without it, nothing happens when the condition is false.
+```text
+A t-shirt is enough
+```
 
-## Conditions
+Exactly one of the two blocks runs, never both, never neither.
 
-Anything that gives a boolean can be a condition: a comparison, a boolean variable, a combination with `&&` and `||`.
+## On the page
+
+The question can come from the page, and the answer go back to it:
 
 ```js
-const isOpen = status === "Open";
-if (isOpen && crates < 50) {
-  console.log("Bring the crates in");
+const open = document.querySelector("#open").textContent === "Yes";
+if (open) {
+  document.querySelector("#note").textContent = "Come on in!";
+} else {
+  document.querySelector("#note").textContent = "See you tomorrow";
 }
 ```
 
-## Truthy and falsy
+## Break it on purpose
 
-An `if` also takes values that aren't booleans. `0`, `""` (an empty string), `null`, `undefined` and `NaN` count as false: they're called **falsy**. Everything else counts as true. That's handy: `if (element)` is true when `querySelector` found something. But it can surprise you, because `0` crates is falsy too. When you mean a number, write a clear comparison.
+Put a `;` after the brackets:
+
+```js
+if (temperature < 15); {
+  console.log("Take a jumper");
+}
+```
+
+"Take a jumper" shows even at 30 degrees. The `;` ends the `if` right there, with nothing to do, and the block after it is just a block that always runs. No `;` between an `if`'s brackets and its `{`.
 
 ---
 
-## Mission: Gate Message
+## Mission: Now boarding
 
-The screen at the gate tells passengers what to do.
+The schedule page says which flight is boarding now.
 
-- Under the boarding paragraph, add an empty paragraph with the id `gate-message`.
-- When the first flight is boarding, it says `Now boarding: ` and that flight's code: `Now boarding: SL-101`. When it isn't, it says `No flight is boarding yet`. Both must work, whatever the table holds.
+**Example**: under the flight table, a paragraph says:
+
+```text
+Now boarding: SL-101
+```
+
+And when the first flight isn't boarding, it says `Nobody is boarding yet`.
+
+- Under the flight table, a paragraph with the id `boarding-now`.
+- If the first row's status is `Boarding`, it says `Now boarding: ` and that row's flight code.
+- Else, it says `Nobody is boarding yet`.
+
+Psst, exactly one of the two blocks runs :)
