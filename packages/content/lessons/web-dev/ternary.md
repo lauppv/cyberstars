@@ -45,19 +45,19 @@ const word = count === 1 ? "flights" : "flight";
 
 ---
 
-## Mission: How many flights
+## Mission: How many cancelled
 
-The schedule page says how many flights there are today, in good English.
+The schedule page says how many flights are cancelled, in good English.
 
 **Example**: under the gate message, a paragraph says:
 
 ```text
-5 flights today
+1 flight cancelled
 ```
 
-And with only one flight on the board, `1 flight today`.
+And with two cancelled flights on the board, `2 flights cancelled`.
 
 - Under `#gate-message`, a paragraph with the id `flight-count`.
-- It says how many rows the flight table's body has, then `flight` or `flights`, then ` today`.
+- It says how many rows of the flight table's body have the class `cancelled`, then `flight` or `flights`, then ` cancelled`.
 
 Psst, the value for `true` comes right after the `?` :)

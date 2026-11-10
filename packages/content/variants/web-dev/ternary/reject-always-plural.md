@@ -777,6 +777,6 @@ if (firstStatus === "Boarding") {
   gateMessage.textContent = "Check the board";
 }
 
-const flightTotal = document.querySelectorAll("#flights tbody tr").length;
-document.querySelector("#flight-count").textContent = `${flightTotal} flights today`;
+const cancelledTotal = document.querySelectorAll("#flights tbody tr.cancelled").length;
+document.querySelector("#flight-count").textContent = `${cancelledTotal} flights cancelled`;
 ```

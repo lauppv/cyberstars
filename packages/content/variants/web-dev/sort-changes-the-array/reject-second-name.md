@@ -785,8 +785,8 @@ if (firstStatus === "Boarding") {
   gateMessage.textContent = "Check the board";
 }
 
-const flightTotal = document.querySelectorAll("#flights tbody tr").length;
-document.querySelector("#flight-count").textContent = `${flightTotal} ${flightTotal === 1 ? "flight" : "flights"} today`;
+const cancelledTotal = document.querySelectorAll("#flights tbody tr.cancelled").length;
+document.querySelector("#flight-count").textContent = `${cancelledTotal} ${cancelledTotal === 1 ? "flight" : "flights"} cancelled`;
 
 const fuelStart = Number(document.querySelector("#fuel-start").textContent);
 const burnRate = Number(document.querySelector("#burn-rate").textContent);
