@@ -42,22 +42,36 @@
       "steps": [
         {
           "differs": "#flights tbody tr:nth-child(1) td.status",
-          "from": "#flights tbody tr:nth-child(2) td.status, #flights tbody tr:nth-child(3) td.status, #flights tbody tr:nth-child(4) td.status",
+          "from": "#flights tbody tr:nth-child(3) td.status, #flights tbody tr:nth-child(5) td.status",
           "props": ["color", "background-color"],
-          "fromLabel": "the other statuses",
+          "fromLabel": "the On time and Delayed statuses",
           "label": "the Boarding status"
         },
         {
-          "differs": "#flights tbody tr:nth-child(2) td.status",
-          "from": "#flights tbody tr:nth-child(3) td.status, #flights tbody tr:nth-child(4) td.status",
+          "differs": "#flights tbody tr:nth-child(1) td.status",
+          "from": "#flights tbody tr:nth-child(4) td.status",
+          "props": ["color"],
+          "fromLabel": "the Cancelled status",
+          "label": "the Boarding status"
+        },
+        {
+          "differs": "#flights tbody tr:nth-child(5) td.status",
+          "from": "#flights tbody tr:nth-child(3) td.status",
           "props": ["color", "background-color"],
-          "fromLabel": "the Delayed and Cancelled statuses",
+          "fromLabel": "the Delayed status",
+          "label": "the On time status"
+        },
+        {
+          "differs": "#flights tbody tr:nth-child(2) td.status",
+          "from": "#flights tbody tr:nth-child(4) td.status",
+          "props": ["color", "background-color"],
+          "fromLabel": "the Cancelled status",
           "label": "the On time status"
         },
         {
           "differs": "#flights tbody tr:nth-child(3) td.status",
           "from": "#flights tbody tr:nth-child(4) td.status",
-          "props": ["color", "background-color"],
+          "props": ["color"],
           "fromLabel": "the Cancelled status",
           "label": "the Delayed status"
         }
