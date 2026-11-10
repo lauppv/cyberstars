@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "name": "Every cell of the flight table is in a monospace font",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights td, #flights th",
+          "prop": "font-family",
+          "every": true,
+          "endsWith": "monospace",
+          "label": "every cell of #flights"
+        }
+      ]
+    },
+    {
+      "name": "The rest of the page keeps its font",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "h1 + p",
+          "prop": "font-family",
+          "endsWith": "sans-serif",
+          "label": "the introduction"
+        }
+      ]
+    }
+  ]
+}

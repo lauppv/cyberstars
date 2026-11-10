@@ -1,43 +1,65 @@
-A **pseudo-element** is a piece of an element that CSS can style as if it were an element of its own, even though it isn't in the HTML. Pseudo-elements start with two colons.
+On a shop's price tags, a little star shows before every special offer. Nobody types the star into each price: it's added by the tag's design. CSS can add a little something before or after an element too, without touching your HTML.
 
-## ::before and ::after
+## `::before` and `::after`
+
+A **pseudo-element** is a piece CSS adds to an element as if it were there. It's written with two colons:
 
 ```css
-.fragile::before {
-  content: "⚠ ";
+.offer::before {
+  content: "★ ";
 }
 ```
 
-`::before` adds a box at the very start of the element's content, and `::after` at the very end. The `content` property says what's in it: text in quotes, or `""`, an empty string, for a box that's only there to be styled. Without `content`, nothing shows up at all.
+```html
+<p class="offer">Two for one on Fridays</p>
+```
+
+```text
+★ Two for one on Fridays
+```
+
+`::before` adds something at the very start, inside the element, before its own text. `::after` adds it at the very end.
+
+`content` says what to add, in quotes. It's required: without `content`, nothing shows at all.
+
+## Style it like an element
+
+The added piece can have a style of its own:
 
 ```css
-h3::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  background-color: orange;
+.offer::before {
+  content: "★ ";
+  color: gold;
 }
 ```
 
-That draws a short bar under every `h3`, without any element in the HTML for it.
+The star is gold, the rest of the text keeps its color.
 
-Use them for **decoration**: icons, marks, lines. Some screen readers read `content` text and some don't, and it can't be selected or copied. So anything that carries meaning belongs in the HTML.
+## Only for decoration
 
-## A few others
+The added text isn't in your HTML, and some screen readers skip it. So use it only for decoration: a little sign, an arrow, a quote mark. Anything people need to read goes in the HTML.
 
-- `::first-letter` and `::first-line`: the first letter or the first line of a block.
-- `::marker`: a list item's bullet or number.
-- `::placeholder`: the grey hint text in an empty box you type in.
+## Break it on purpose
 
-You met `*::before, *::after` in your `box-sizing` rule. Now you know what they pick.
+Leave out `content`:
+
+```css
+.offer::before {
+  color: gold;
+}
+```
+
+No star, and no error. A `::before` without `content` doesn't exist. Even an empty one needs `content: ""`.
 
 ---
 
-## Mission: Marks
+## Mission: A plane on the board
 
-Small marks help visitors without changing the HTML. Add them with CSS only:
+The flight table's caption should look like the title of a departures board.
 
-- Every link to another site ends with ` ↗` (a space, then the arrow), so visitors know it leaves the station's site. The other links get no arrow.
-- Every warning starts with `⚠ ` (the sign, then a space).
-- Under every section heading, a short bar in a color of your choice, between `20px` and `120px` wide and between `2px` and `8px` tall, standing on its own line under the heading's text.
+**Example**: the caption of the flight table shows a small plane sign before its words, like `✈ Departures today`.
+
+- The flight table's caption has something added before it with `::before`, in its `content`.
+- The caption's own words stay in the HTML, as they are.
+
+Psst, no `content`, no `::before` :)

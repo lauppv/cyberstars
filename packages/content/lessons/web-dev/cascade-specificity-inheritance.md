@@ -1,44 +1,57 @@
-You've seen rules compete: an id beating a type, a later rule beating an earlier one. Here's the whole story, called the **cascade**: how the browser decides which value an element gets when several rules want to set it.
+Your parents say "be home by 9". Your grandmother, who's babysitting tonight, says "be home by 8". Whose rule counts? Usually the more **specific** one: the one meant for this evening, not every evening. When two CSS rules disagree about one element, the browser picks the more specific one too.
 
-## 1. Specificity
+## Specificity: a score
 
-The more exactly a selector names an element, the stronger it is. Count three things in it:
+Every selector gets a score from what it's made of:
 
-- **ids**: `#flights`;
-- **classes, attributes and pseudo-classes**: `.warning`, `[scope="col"]`, `:hover`;
-- **types and pseudo-elements**: `td`, `::after`.
+- an **id**, like `#scores`: the biggest weight;
+- a **class**, like `.tip`, or a pseudo-class like `:hover`: a medium weight;
+- a **tag**, like `td`: the smallest.
 
-Compare the counts from left to right: one id beats any number of classes, and one class beats any number of types.
+```css
+#scores td {
+  color: white;
+}
 
-| Selector                   | ids | classes | types |
-| -------------------------- | --- | ------- | ----- |
-| `td`                       | 0   | 0       | 1     |
-| `.cancelled td`            | 0   | 1       | 1     |
-| `#flights td`              | 1   | 0       | 1     |
-| `#flights tr.cancelled td` | 1   | 1       | 2     |
+.winner td {
+  color: gold;
+}
+```
 
-So `.cancelled td` loses to `#flights td`, even if it comes later. A `style` attribute beats them all.
+```html
+<table id="scores">
+  <tr class="winner"><td>Sam</td><td>12</td></tr>
+</table>
+```
 
-## 2. Order
+Both rules are about Sam's cells. `#scores td` has an id and a tag. `.winner td` has a class and a tag. An id beats any number of classes, so the cells stay **white**, even though the gold rule comes later.
 
-When two selectors are equally strong, the one that comes **later** wins: later in the file, or in a later style sheet.
+## Winning
 
-## 3. Inheritance
+To make the winner gold, the gold rule needs a higher score:
 
-Some properties, mostly about text, pass from an element to everything inside it: `color`, `font-family`, `font-size`, `line-height`, `text-align`. That's why a font set on `body` shows up everywhere. Others, about the box, don't pass down: `border`, `padding`, `margin`, `background`. A border on a table doesn't give every cell a border.
+```css
+#scores .winner td {
+  color: gold;
+}
+```
 
-A value passed down from a parent is the weakest of all. Any rule that picks the element itself, even a plain `td`, beats it.
+An id, a class and a tag: more than an id and a tag. Now Sam's row is gold.
 
-## !important
+## Break it on purpose
 
-`color: red !important;` jumps over all of this. It looks like an easy way out, but it makes the next fix harder, because only another `!important` can beat it. When a rule doesn't work, make its selector a little more exact instead.
+Make it even more specific than it needs to be, everywhere: `body #scores tbody tr.winner td`. It works, but next time you want to change a winner's cell, you'll need an even longer selector to beat it. Keep selectors as short as they can be: just enough to win.
 
 ---
 
-## Mission: Grounded
+## Mission: Cancelled in red
 
-The schedule needs to show at a glance which flight won't leave.
+The cancelled flight should stand out in the table. But the flight table's cells already have a rule with an id in it.
 
-- Every data cell of the flights table gets a text color of its own, different from the paragraphs' and easy to read.
-- Put the cancelled flight's row in the class `cancelled`: later lessons use it. Its cells look faded next to the other flights, but stay readable, and their text is struck through. Your rule has to win against the rule above.
-- The whole flights table, its cells and its title too, is set in a font where every letter is equally wide. Set it once, on the table, and let everything inside get it from there.
+**Example**: the row of SL-104, the cancelled flight, shows its words in a light red, while the other flights keep their color.
+
+- The flight table's cells get a text color of your own, from your `#flights td` rule.
+- The row of the cancelled flight has the class `cancelled`. Later lessons use this name.
+- Its cells have a text color the other flights' cells don't have.
+
+Psst, a class alone can't beat an id :)
