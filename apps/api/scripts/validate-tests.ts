@@ -470,7 +470,10 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
       return sitePaths.has(value) ? null : `${own} names ${value}, which the site doesn't have`;
     case 'logged':
     case 'alerted':
-      return isText(value) ? null : `${own} must name a line`;
+      if (!isText(value)) return `${own} must name a line`;
+      return step.none === undefined || step.none === true
+        ? null
+        : `a ${own} step's none is true or left out`;
     case 'press':
       return isText(value) ? null : 'press must name a key';
     default:

@@ -269,6 +269,9 @@ describe('auditWebSpec', () => {
       one([{ style: 'h1', pseudo: '::selection', prop: 'color', equals: 'red', label: 'x' }]),
     ).toEqual([expect.stringMatching(/pseudo is one of ::before, ::after/)]);
     expect(one([{ exists: 'h1' }])).toEqual([expect.stringMatching(/without a label/)]);
+    expect(one([{ logged: 'ready', none: 'false' }])).toEqual([
+      expect.stringMatching(/none is true or left out/),
+    ]);
     expect(one([{ text: 'h1', label: 'x' }])).toEqual([expect.stringMatching(/exactly one of/)]);
     expect(one([{ text: 'h1', equals: 'a', contains: 'a', label: 'x' }])).toEqual([
       expect.stringMatching(/exactly one of/),
