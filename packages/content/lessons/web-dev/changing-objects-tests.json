@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "name": "The next flight has a new time",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "logged": "New time: 10:05"
+        }
+      ]
+    },
+    {
+      "name": "And a gate",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "logged": "Gate: 3"
+        }
+      ]
+    }
+  ]
+}

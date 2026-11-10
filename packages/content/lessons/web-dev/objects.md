@@ -1,43 +1,72 @@
-A flight isn't one value: it's a code, a destination, a time and a status, all belonging together. An **object** keeps them together, each one under its own name.
+A contact on your phone isn't one value: it's a name, a number, a birthday, all about the same person. You could keep each in its own variable, but they belong together. JavaScript keeps things that belong together in an **object**.
 
 ## Making an object
 
+An object is written in curly brackets, with a **name** and a **value** for each piece, separated by commas:
+
 ```js
-const crate = {
-  name: "Water",
-  weight: 120,
-  fragile: false,
+const friend = {
+  name: "Sam",
+  age: 13,
+  city: "Bristol",
 };
 ```
 
-Curly braces, and inside them **properties**: a name, a colon and a value, with commas between them. The values can be anything: strings, numbers, booleans, arrays, even other objects.
+Each `name: value` pair is a **property**. The names have no quotes, the values are any values you like: strings, numbers, booleans.
 
-## Reading and changing
+## Reading a property
+
+A dot, then the property's name:
 
 ```js
-crate.name; // "Water"
-crate["weight"]; // 120
-crate.weight = 115; // change it
-crate.bay = 2; // add a new property
+console.log(friend.name);
+console.log(`${friend.name} is ${friend.age}`);
 ```
 
-The **dot** is the usual way. **Square brackets** take the name as a string, which is useful when the name is kept in a variable: `crate[field]`. A property that doesn't exist reads as `undefined`.
+```text
+Sam
+Sam is 13
+```
 
-Like an array, a `const` object can still change inside. `const` only means the name always points to the same object.
+You've used dots like this before: `name.length`, `element.textContent`. A string and an element are objects too, with properties of their own.
 
-## Why bother
+## Logging it all
 
-`crate.weight` says what it is. With separate variables like `crateName`, `crateWeight` and `crateFragile`, nothing ties them together, and giving a crate to a function means giving it three things. An object is one thing you can pass around, return or keep in an array.
+```js
+console.log(friend);
+```
 
-You've been using objects all along: `document`, `console`, `Math` and every element are objects, with properties (`textContent`, `length`) and methods (`log`, `querySelector`).
+```text
+{name: "Sam", age: 13, city: "Bristol"}
+```
+
+## Break it on purpose
+
+Ask for a property that isn't there:
+
+```js
+console.log(friend.phone);
+```
+
+```text
+undefined
+```
+
+No error, just `undefined`, "nothing there". A typo in a property's name gives the same `undefined`, which can be hard to spot: check the spelling.
 
 ---
 
-## Mission: Next Flight
+## Mission: The next flight
 
-The gate screen describes the first flight in one sentence.
+The schedule's script keeps the next flight's details together, in one object.
 
-- Under the active count, add an empty paragraph with the id `next-flight`.
-- Keep the first flight of the table together in your script, with its `code`, `destination`, `departs` and `status` read from its cells.
-- The paragraph says `SL-101 to Moon Base at 08:30`, built from those four values, and follows the table.
-- The console shows `Status: Boarding`, the flight's status. Try reading it with square brackets this time.
+**Example**: when `schedule.html` opens, the console shows:
+
+```text
+Next flight: SL-102 to Mars Relay at 09:45
+```
+
+- In `schedule.js`, one object holds the flight's `code`, `destination` and `departs`: `SL-102`, `Mars Relay` and `09:45`.
+- The console shows `Next flight: SL-102 to Mars Relay at 09:45`, read from the object's properties.
+
+Psst, a dot reads a property :)
