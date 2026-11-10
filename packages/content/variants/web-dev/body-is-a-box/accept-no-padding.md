@@ -79,6 +79,7 @@ body {
   background-color: #0b1d3a;
   max-width: 900px;
   margin: 0 auto;
+  color: #f0f4ff;
   font-family: Verdana, Geneva, sans-serif;
 }
 

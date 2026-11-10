@@ -37,14 +37,11 @@ A dark background needs light text, and a light background dark text. Change one
 ```css
 body {
   background-color: #0b1d3a;
-}
-
-p {
   color: #f0f4ff;
 }
 ```
 
-Now the paragraphs are almost white on night blue: easy to read.
+A `color` on the `body` is taken by everything inside it that has no color of its own: paragraphs, lists, table cells. You'll see exactly why in a later lesson. An element with a rule of its own, like your paragraphs, keeps that rule's color, so check those too.
 
 ## Break it on purpose
 
@@ -67,7 +64,8 @@ The station's designer has a night palette: night blue, `#0b1d3a`, for the page,
 **Example**: the whole page is night blue, the paragraphs are almost white, and the two warnings stand on a strip of their own color. Some headings and links may be hard to read for now. You'll fix them in the next lesson.
 
 - The page's background is `#0b1d3a`.
-- Paragraphs that aren't warnings or the address are `#f0f4ff`.
+- The page's text, given on the `body`, is `#f0f4ff`.
+- Paragraphs that aren't warnings or the address are `#f0f4ff` too.
 - The warnings have a background the other paragraphs don't have.
 
 Psst, the page's background goes on the `body` :)

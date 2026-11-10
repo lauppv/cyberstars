@@ -81,6 +81,7 @@ body {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
+  color: #f0f4ff;
   font-family: Verdana, Geneva, sans-serif;
 }
 

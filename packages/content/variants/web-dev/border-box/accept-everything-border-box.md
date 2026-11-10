@@ -81,6 +81,7 @@
 
 body {
   background-color: #0b1d3a;
+  color: #f0f4ff;
   font-family: Verdana, Geneva, sans-serif;
 }
 

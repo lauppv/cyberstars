@@ -13,6 +13,18 @@
       ]
     },
     {
+      "name": "The page's text is light, given on the body",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "color",
+          "equals": "rgb(240, 244, 255)",
+          "label": "the page (<body>)"
+        }
+      ]
+    },
+    {
       "name": "The paragraphs are light",
       "visible": true,
       "steps": [

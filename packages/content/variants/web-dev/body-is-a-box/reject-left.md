@@ -80,6 +80,7 @@ body {
   box-sizing: border-box;
   max-width: 960px;
   padding: 0 16px;
+  color: #f0f4ff;
   font-family: Verdana, Geneva, sans-serif;
 }
 
