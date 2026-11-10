@@ -1,49 +1,77 @@
-Sometimes a loop doesn't need to finish, or needs to skip a round. Two words let you do that.
+Looking for your keys, you check your pockets one by one. As soon as you find them, you stop: no need to search the rest. A loop can stop early too, the moment it has found what it's looking for.
 
-## break
+## `break`
 
-`break` ends the loop at once, wherever it is:
+`break` ends the loop at once, whatever lap it's on:
 
 ```js
-const weights = [40, 130, 85, 210, 0, 60];
-let firstHeavy = "none";
-for (const weight of weights) {
-  if (weight > 100) {
-    firstHeavy = weight;
+const bags = ["books", "snacks", "keys", "gloves"];
+for (const bag of bags) {
+  console.log("Checking", bag);
+  if (bag === "keys") {
+    console.log("Found them!");
     break;
   }
 }
-console.log(firstHeavy); // 130
 ```
 
-Once the first heavy crate is found, there's no point looking any further. Without `break`, the loop would go on, and `firstHeavy` would end up as the **last** heavy crate, 210.
+```text
+Checking books
+Checking snacks
+Checking keys
+Found them!
+```
 
-## continue
+"gloves" is never checked: the loop stopped at the keys. The script carries on with whatever comes after the loop.
 
-`continue` ends **this round** and goes on with the next:
+## Remembering what you found
+
+Often you want to know afterwards **what** was found, or whether anything was. Make a name before the loop, and fill it when you find it:
 
 ```js
-let count = 0;
-for (const weight of weights) {
-  if (weight === 0) {
-    continue;
+let found = "nothing";
+for (const bag of bags) {
+  if (bag === "keys") {
+    found = bag;
+    break;
   }
-  count++;
 }
-console.log(count); // 5
+console.log(found);
 ```
 
-Empty crates, weighing 0, are skipped: everything after `continue` in the block doesn't run for them.
+If no bag is "keys", the loop runs to the end without breaking, and `found` is still `"nothing"`.
 
-Both work in `for`, `for...of` and `while` loops. Use them when they make the loop clearer: "stop here", "skip this one". When a plain `if` around the code reads just as well, use the `if`.
+## Break it on purpose
+
+Put the `break` outside the `if`:
+
+```js
+for (const bag of bags) {
+  if (bag === "keys") {
+    found = bag;
+  }
+  break;
+}
+```
+
+Only the first bag is ever checked. `break` stops the loop wherever it runs, so it belongs inside the `if`, where the thing is found.
 
 ---
 
-## Mission: Board Scan
+## Mission: The first delay
 
-Two quick answers for the control room. Under the fuel gauge, add empty paragraphs with the ids `first-delay` and `active-count`.
+Passengers want to know at a glance whether anything is delayed.
 
-- The first one names the first delayed flight in the table: `First delay: SL-103`. When no flight is delayed, `First delay: none`. There's no need to look past the first one.
-- The second counts the flights that aren't cancelled: `Active flights: 4`.
+**Example**: under `#reserve`, a paragraph says:
 
-Both follow whatever the table holds.
+```text
+First delay: SL-103
+```
+
+And with no delayed flight on the board, it says `No delays`.
+
+- A paragraph with the id `first-delay`.
+- A loop goes through the flight table's rows from the top. At the first one whose status is `Delayed`, it notes that row's flight code and stops.
+- The paragraph says `First delay: ` and that code, or `No delays` if no row was delayed.
+
+Psst, `break` goes inside the `if` :)

@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "name": "The page lists the destinations",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#destinations",
+          "equals": "Destinations: Moon Base. Mars Relay. Europa Outpost. Lunar Gateway. Orbital Yard.",
+          "label": "the paragraph #destinations"
+        }
+      ]
+    },
+    {
+      "name": "And when the reserve is reached",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "#reserve",
+          "equals": "Reserve reached after 5 minutes",
+          "label": "the paragraph #reserve"
+        }
+      ]
+    },
+    {
+      "name": "Both follow the page",
+      "visible": false,
+      "page": "schedule.html",
+      "files": {
+        "schedule.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Flight Schedule</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"board.css\" />\n    <script src=\"schedule.js\" defer></script>\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n      <a href=\"schedule.html\">Schedule</a>\n    </nav>\n    <h1>Flight Schedule</h1>\n    <p>Every departure from the station today.</p>\n    <div class=\"banner\"></div>\n\n    <table id=\"flights\">\n      <caption>Departures today</caption>\n      <thead>\n        <tr>\n          <th scope=\"col\">Flight</th>\n          <th scope=\"col\">Destination</th>\n          <th scope=\"col\">Departs</th>\n          <th scope=\"col\">Status</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr class=\"boarding\">\n          <td class=\"code\">SL-101</td>\n          <td class=\"destination\">Titan Dock</td>\n          <td class=\"departs\">08:30</td>\n          <td class=\"status\">Boarding</td>\n        </tr>\n        <tr class=\"on-time\">\n          <td class=\"code\">SL-102</td>\n          <td class=\"destination\">Mars Relay</td>\n          <td class=\"departs\">09:45</td>\n          <td class=\"status\">On time</td>\n        </tr>\n        <tr class=\"delayed\">\n          <td class=\"code\">SL-103</td>\n          <td class=\"destination\">Europa Outpost</td>\n          <td class=\"departs\">07:15</td>\n          <td class=\"status\">Delayed</td>\n        </tr>\n        <tr class=\"cancelled\">\n          <td class=\"code\">SL-104</td>\n          <td class=\"destination\">Lunar Gateway</td>\n          <td class=\"departs\">11:00</td>\n          <td class=\"status\">Cancelled</td>\n        </tr>\n        <tr class=\"on-time\">\n          <td class=\"code\">SL-105</td>\n          <td class=\"destination\">Orbital Yard</td>\n          <td class=\"departs\">10:20</td>\n          <td class=\"status\">On time</td>\n        </tr>\n      </tbody>\n      <tfoot>\n        <tr>\n          <td colspan=\"4\">All times in station time</td>\n        </tr>\n      </tfoot>\n    </table>\n    <p id=\"boarding-now\"></p>\n    <p id=\"gate-message\"></p>\n    <p id=\"flight-count\"></p>\n    <p>Fuel: <span id=\"fuel-start\">60</span> units, burning <span id=\"burn-rate\">10</span> a minute</p>\n    <p id=\"fuel\"></p>\n    <p id=\"destinations\"></p>\n    <p id=\"reserve\"></p>\n\n    <h2>Docking Bays</h2>\n    <table id=\"bays\">\n      <caption>Docking bays</caption>\n      <thead>\n        <tr>\n          <th scope=\"col\">Bay</th>\n          <th scope=\"col\">Time</th>\n          <th scope=\"col\">Ship</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td rowspan=\"2\">Bay 1</td>\n          <td>08:00</td>\n          <td>Kestrel</td>\n        </tr>\n        <tr>\n          <td>13:00</td>\n          <td>Heron</td>\n        </tr>\n        <tr>\n          <td>Bay 2</td>\n          <td>10:30</td>\n          <td>Albatross</td>\n        </tr>\n      </tbody>\n    </table>\n  </body>\n</html>"
+      },
+      "steps": [
+        {
+          "text": "#destinations",
+          "equals": "Destinations: Titan Dock. Mars Relay. Europa Outpost. Lunar Gateway. Orbital Yard.",
+          "label": "the paragraph #destinations"
+        },
+        {
+          "text": "#reserve",
+          "equals": "Reserve reached after 4 minutes",
+          "label": "the paragraph #reserve"
+        }
+      ]
+    }
+  ]
+}
