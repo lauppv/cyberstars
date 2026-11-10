@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "name": "The header cells stand on a gradient",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights th",
+          "prop": "background-image",
+          "every": true,
+          "not": "none",
+          "label": "every header cell"
+        }
+      ]
+    },
+    {
+      "name": "The flights' cells don't",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights td",
+          "prop": "background-image",
+          "every": true,
+          "equals": "none",
+          "label": "every cell of the flights"
+        }
+      ]
+    }
+  ]
+}

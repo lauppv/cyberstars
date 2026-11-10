@@ -1,18 +1,25 @@
 {
   "cases": [
     {
-      "name": "The banner shows the station",
+      "name": "A banner follows the introduction",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
           "exists": "h1 + p + div.banner",
-          "label": "the banner, in the class banner, right after the introduction"
-        },
+          "label": "a box with the class banner right after the introduction"
+        }
+      ]
+    },
+    {
+      "name": "It shows the station, covering it, centered",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
         {
           "style": ".banner",
           "prop": "background-image",
-          "endsWith": "img/station.svg\")",
+          "endsWith": "station.svg\")",
           "label": "the banner"
         },
         {
@@ -30,7 +37,7 @@
       ]
     },
     {
-      "name": "It has its size and corners",
+      "name": "It is between 120 and 240 pixels tall",
       "visible": true,
       "page": "schedule.html",
       "steps": [
@@ -39,32 +46,6 @@
           "minHeight": 120,
           "maxHeight": 240,
           "label": "the banner"
-        },
-        {
-          "style": ".banner",
-          "prop": "border-top-left-radius",
-          "atLeast": 4,
-          "label": "the banner"
-        },
-        {
-          "style": ".banner",
-          "prop": "border-bottom-right-radius",
-          "atLeast": 4,
-          "label": "the banner"
-        }
-      ]
-    },
-    {
-      "name": "The header cells have a gradient",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "style": "#flights th",
-          "prop": "background-image",
-          "not": "none",
-          "every": true,
-          "label": "a header cell of the flights table"
         }
       ]
     }

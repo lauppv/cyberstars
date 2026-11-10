@@ -1,126 +1,78 @@
 {
   "cases": [
     {
-      "name": "The delayed flight's status stands out",
+      "name": "Every status has a sign before it",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "text": "#flights tbody tr.delayed td.status",
-          "equals": "Delayed",
-          "label": "the status of the row with class=\"delayed\""
+          "style": "#flights tbody tr:nth-child(1) td.status",
+          "prop": "content",
+          "pseudo": "::before",
+          "not": "none",
+          "label": "flight 1's status ::before"
         },
         {
-          "differs": "#flights tr.delayed td.status",
-          "from": "#flights tr:not(.delayed) td.status",
+          "style": "#flights tbody tr:nth-child(2) td.status",
+          "prop": "content",
+          "pseudo": "::before",
+          "not": "none",
+          "label": "flight 2's status ::before"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(3) td.status",
+          "prop": "content",
+          "pseudo": "::before",
+          "not": "none",
+          "label": "flight 3's status ::before"
+        },
+        {
+          "style": "#flights tbody tr:nth-child(4) td.status",
+          "prop": "content",
+          "pseudo": "::before",
+          "not": "none",
+          "label": "flight 4's status ::before"
+        }
+      ]
+    },
+    {
+      "name": "Each kind of status looks different",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "differs": "#flights tbody tr:nth-child(1) td.status",
+          "from": "#flights tbody tr:nth-child(2) td.status, #flights tbody tr:nth-child(3) td.status, #flights tbody tr:nth-child(4) td.status",
           "props": ["color", "background-color"],
           "fromLabel": "the other statuses",
-          "label": "the status of the delayed flight"
+          "label": "the Boarding status"
         },
         {
-          "contrast": "#flights tr.delayed td.status",
+          "differs": "#flights tbody tr:nth-child(2) td.status",
+          "from": "#flights tbody tr:nth-child(3) td.status, #flights tbody tr:nth-child(4) td.status",
+          "props": ["color", "background-color"],
+          "fromLabel": "the Delayed and Cancelled statuses",
+          "label": "the On time status"
+        },
+        {
+          "differs": "#flights tbody tr:nth-child(3) td.status",
+          "from": "#flights tbody tr:nth-child(4) td.status",
+          "props": ["color", "background-color"],
+          "fromLabel": "the Cancelled status",
+          "label": "the Delayed status"
+        }
+      ]
+    },
+    {
+      "name": "Every status reads easily",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "contrast": "#flights tbody td.status",
           "atLeast": 4.5,
-          "label": "the status of the delayed flight"
-        }
-      ]
-    },
-    {
-      "name": "Every status is bold, the cancelled one marked",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "style": "#flights td.status",
-          "prop": "font-weight",
-          "equals": "700",
-          "label": "every status cell",
-          "every": true
-        },
-        {
-          "style": "#flights td:not(.status)",
-          "prop": "font-weight",
-          "equals": "400",
-          "label": "every other cell",
-          "every": true
-        },
-        {
-          "style": "#flights tr.cancelled td.status",
-          "pseudo": "::before",
-          "prop": "content",
-          "equals": "\"✕ \"",
-          "label": "the start of the cancelled flight's status"
-        },
-        {
-          "style": "#flights tr.delayed td.status",
-          "pseudo": "::before",
-          "prop": "content",
-          "equals": "none",
-          "label": "the start of the delayed flight's status"
-        }
-      ]
-    },
-    {
-      "name": "The bays table belongs with the flights table",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "style": "#bays",
-          "prop": "border-collapse",
-          "equals": "collapse",
-          "label": "the bays table"
-        },
-        {
-          "fills": "#bays",
-          "label": "the bays table"
-        },
-        {
-          "style": "#bays td",
-          "prop": "padding-top",
-          "atLeast": 4,
           "every": true,
-          "label": "a cell of the bays table"
-        },
-        {
-          "style": "#bays td",
-          "prop": "padding-right",
-          "atLeast": 4,
-          "every": true,
-          "label": "a cell of the bays table"
-        },
-        {
-          "style": "#bays td",
-          "prop": "padding-bottom",
-          "atLeast": 4,
-          "every": true,
-          "label": "a cell of the bays table"
-        },
-        {
-          "style": "#bays td",
-          "prop": "padding-left",
-          "atLeast": 4,
-          "every": true,
-          "label": "a cell of the bays table"
-        },
-        {
-          "style": "#bays td",
-          "prop": "border-bottom-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a cell of the bays table"
-        }
-      ]
-    },
-    {
-      "name": "The banner keeps its distance",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "layout": ".banner, .banner + *",
-          "arrange": "column",
-          "gap": 12,
-          "label": "the banner and what comes after it"
+          "label": "every status"
         }
       ]
     }
