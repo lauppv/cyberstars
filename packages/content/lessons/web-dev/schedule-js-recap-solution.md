@@ -5,58 +5,50 @@
     <meta charset="UTF-8" />
     <title>Station Log</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
     <nav>
       <a href="index.html">Home</a>
       <a href="crew.html">Crew</a>
-      <a href="crew.html#duty">Duty</a>
       <a href="schedule.html">Schedule</a>
     </nav>
     <h1>Welcome aboard</h1>
-    <img
-      src="img/station.svg"
-      alt="A gold station hub inside a blue ring, with a solar panel on each side"
-      width="320"
-      height="200"
+    <img src="img/station.svg" alt="A gold station hub inside a blue ring, with a solar panel on each side"
+      width="240"
+      height="150"
     />
-    <p>The station orbits the Earth every 92 minutes.</p>
+    <p>The station goes round the Earth every 92 minutes.</p>
+    <p>Six people live here, with a greenhouse full of tomatoes.</p>
     <p class="jumps"><a href="#today">Jump to today</a> · <a href="#visiting">Visiting hours</a></p>
-    <p id="status"></p>
-    <button type="button" id="wake">Wake the crew</button>
-    <p id="shift"></p>
-    <button type="button" id="next-shift">Next shift</button>
+    <p><a href="crew.html">Meet the crew</a></p>
 
     <h2>About the Station</h2>
-    <p>Six crew members live here, with a greenhouse full of tomatoes.</p>
-    <p>Cargo ships dock twice a month, and <em>every</em> docking is logged on this page.</p>
+    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>
     <p class="address">
       Orbital Station 7<br />
       Docking Ring B<br />
       Low Earth Orbit
     </p>
-    <!-- <p><small>Docking fee: 20 credits a day.</small></p> -->
+    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>
     <p>
       Curious how real stations work?
-      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">
-        Read about space stations
-      </a>
+      <a href="https://en.wikipedia.org/wiki/Space_station" target="_blank" rel="noopener">Read about space stations</a>
     </p>
+    <h3>The Greenhouse</h3>
+    <p>Tomatoes, beans and basil grow under blue lamps.</p>
 
-    <img src="img/divider.svg" alt="" width="600" height="24" />
+    <img src="img/divider.svg" alt="" />
 
-    <!-- Today on Board: warnings, supplies and who works each shift -->
     <h2 id="today">Today on Board</h2>
-    <p class="warning"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
+    <p class="warning urgent"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>
     <p>Water left: 900 litres of H<sub>2</sub>O.</p>
     <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>
-    <h3>Morning Shift</h3>
+    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>
+    <h3 class="shift">Morning Shift</h3>
     <p>Commander Vega and engineer Okafor.</p>
-    <h3>Night Shift</h3>
+    <h3 class="shift">Night Shift</h3>
     <p>Pilot Lindqvist, alone with the stars.</p>
 
-    <!-- Visiting Hours: when guests may come aboard, and the badge rule -->
     <h2 id="visiting">Visiting Hours</h2>
     <p class="hours">
       Monday to Friday: 10:00 to 16:00<br />
@@ -64,6 +56,11 @@
       Sunday: closed
     </p>
     <p class="warning"><strong>Visitors must wear a badge</strong> at all times.</p>
+
+    <h2>Station Rules</h2>
+    <p>Wear your badge at all times.</p>
+    <p>Close every hatch behind you.</p>
+    <p>No running in the greenhouse.</p>
 
     <p><a href="mailto:crew@station.example">Write to the crew</a></p>
   </body>
@@ -79,90 +76,83 @@
 ```
 
 ```css style.css
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 body {
   background-color: #0b1d3a;
-  color: #f0f4ff;
-  font-family: Verdana, Geneva, sans-serif;
-  line-height: 1.6;
-  font-size: 1.125rem;
+  box-sizing: border-box;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
+  color: #f0f4ff;
+  font-family: Verdana, Geneva, sans-serif;
 }
 
 h1 {
   color: #ffd166;
+  font-family: Georgia, "Times New Roman", serif;
+  margin-top: 0;
   text-align: center;
   font-size: 2.5rem;
 }
 
 h2 {
-  color: hsl(210, 70%, 75%);
+  color: #8ecbff;
+  text-decoration: underline;
   letter-spacing: 2px;
-  font-size: 1.5rem;
-}
-
-h3 {
-  color: rgb(200, 210, 230);
-  text-transform: uppercase;
 }
 
 a {
-  color: #8ecbff;
-}
-
-nav {
-  background-color: #13294f;
-  border-radius: 12px;
-  text-align: center;
-}
-
-nav a {
-  display: inline-block;
-  padding: 8px 12px;
-  border-bottom: 2px solid #ffd166;
+  color: #5fd3c6;
+  text-decoration: none;
 }
 
 .warning {
   color: #ffb3b3;
-  background-color: rgba(255, 80, 80, 0.2);
+  background-color: rgb(255, 80, 80, 0.2);
 }
 
 #today {
   color: #7bd389;
 }
 
+.shift {
+  color: #a9c1dc;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.urgent {
+  color: #ffd166;
+}
+
+p {
+  color: #f0f4ff;
+  line-height: 1.6;
+  font-size: 1.125rem;
+}
+
+h3 {
+  color: #c5e1a5;
+}
+
 .address {
+  color: rgb(169, 193, 220);
   font-style: italic;
-  font-size: 0.9em;
 }
 
 .jumps {
   text-align: center;
-  font-size: 0.875rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .hours {
   background-color: #13294f;
   color: #ffd166;
   font-family: "Courier New", monospace;
-  font-size: 1rem;
-}
-
-#visiting {
-  color: #ffd166;
+  text-align: center;
 }
 
 .card {
@@ -171,207 +161,139 @@ nav a {
   border: 2px solid #2c4a7a;
   margin-bottom: 24px;
   width: 260px;
+  box-sizing: border-box;
   min-height: 140px;
   display: inline-block;
   vertical-align: top;
   margin-right: 16px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.5);
+}
+
+.duties {
+  background-color: #13294f;
+  padding: 16px 16px 16px 40px;
+  box-sizing: border-box;
+  max-width: 600px;
+  margin: 16px auto;
+  border-left: 4px solid #ffd166;
+  border-radius: 0 12px 12px 0;
+}
+
+nav {
+  text-align: center;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 12px;
 }
 
 .bio {
-  max-height: 6em;
+  max-height: 100px;
   overflow-y: auto;
 }
 
-h3 {
+.card h3 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-#flights,
-#bays {
-  width: 100%;
+.role {
+  background-color: #2c4a7a;
+  color: #ffd166;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+#flights td {
+  padding: 8px 12px;
+  color: #c9d6ea;
+}
+
+#flights th {
+  padding: 8px 12px;
+  background-image: linear-gradient(90deg, #13294f, #2c4a7a);
+}
+
+.decks > li {
+  margin-bottom: 12px;
+}
+
+h1 + p {
+  font-style: italic;
+}
+
+#flights {
   border-collapse: collapse;
   font-family: "Courier New", monospace;
 }
 
-#flights td {
-  color: #dbe4ff;
-}
-
-#flights.hide-cancelled tr.cancelled {
-  display: none;
-}
-
-#flights tr.next td {
-  color: #ffd166;
-}
-
-#flights tr.cancelled td {
-  color: #8a94a8;
-  text-decoration: line-through;
-}
-
-#flights td.status {
-  font-weight: bold;
-}
-
-#flights tr.delayed td.status {
-  color: #ffb3b3;
-}
-
-#flights tr.cancelled td.status::before {
-  content: "✕ ";
-}
-
-#flights th {
-  background-color: #13294f;
-  background-image: linear-gradient(90deg, #13294f, #2c4a7a);
-}
-
-.banner {
-  height: 160px;
-  background-image: url("img/station.svg");
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-  margin-bottom: 24px;
-}
-
-#flights th,
 #flights td,
-#bays th,
-#bays td {
-  padding: 8px 12px;
+#flights th {
   border-bottom: 1px solid #2c4a7a;
+}
+
+a[target="_blank"] {
+  text-decoration: underline;
+}
+
+#flights tbody tr:hover {
+  background-color: #1e3a5f;
+}
+
+a:focus {
+  outline: 3px solid #ffd166;
 }
 
 #flights tbody tr:nth-child(even) {
   background-color: #13294f;
 }
 
-#flights tbody tr:hover {
-  background-color: #1d3b6e;
+#flights caption::before {
+  content: "✈ ";
 }
 
-nav a:hover {
+#crew li::marker {
   color: #ffd166;
 }
 
-a:focus-visible {
-  outline: 3px solid #ffd166;
+h1 + p::first-letter {
+  font-size: 2em;
 }
 
-a[href^="https://"]::after {
-  content: " ↗";
-}
-
-.warning::before {
-  content: "⚠ ";
-}
-
-h2::after {
-  content: "";
-  display: block;
-  width: 48px;
-  height: 3px;
-  margin-top: 6px;
-  background-color: #ffd166;
-}
-
-h1 + p {
-  font-size: 1.25rem;
-}
-
-a[href^="https://"] {
+#flights .delayed td {
   color: #ffd166;
 }
 
-a[href^="mailto:"] {
-  text-decoration-style: dotted;
+#flights .cancelled td {
+  color: #ff8a80;
 }
 
-th[scope="col"] {
-  text-align: left;
+.banner {
+  background-image: url("img/station.svg");
+  background-size: cover;
+  background-position: center;
+  height: 160px;
+  border-radius: 12px;
 }
 
-td[colspan] {
-  font-style: italic;
+#flights td.status::before {
+  content: "● ";
 }
 
-nav > a {
-  font-weight: bold;
+#flights .boarding td.status {
+  color: #7bd389;
 }
 
-.duties {
-  background-color: #13294f;
-  padding: 16px 16px 16px 40px;
-  border-left: 4px solid #ffd166;
-  border-radius: 0 12px 12px 0;
-  max-width: 600px;
-  margin: 16px auto;
+#flights .on-time td.status {
+  color: #8ecbff;
 }
 
-#cards {
-  max-width: 900px;
-  margin: 0 auto;
+.hide-cancelled .cancelled {
+  display: none;
 }
-
-sub,
-sup {
-  color: #5fd3c6;
-}
-```
-
-```js script.js
-// A gold line along the top of the page
-document.body.style.borderTop = "6px solid #ffd166";
-
-// System check
-console.log("Station Log online");
-console.log(92);
-console.log("Crew on board:", 6);
-
-// Crew count
-const minutesPerOrbit = 92;
-let crewOnBoard = 6;
-crewOnBoard = crewOnBoard + 2;
-console.log("Crew on board:", crewOnBoard);
-console.log("Minutes per orbit:", minutesPerOrbit);
-
-// Greeting board
-const stationName = "Station Log";
-console.log(`Welcome aboard ${stationName}`);
-console.log(stationName.length);
-console.log(stationName.toUpperCase());
-console.log(`One orbit takes ${minutesPerOrbit} minutes`);
-
-// Live status, read from the biggest heading
-const title = document.querySelector("h1");
-console.log(title.textContent);
-const status = document.querySelector("#status");
-status.textContent = `${title.textContent}: all systems normal`;
-
-// Wake-up call
-const wake = document.querySelector("#wake");
-wake.addEventListener("click", () => {
-  status.textContent = "Crew awake";
-  console.log("Wake-up call sent");
-});
-
-// Shift counter
-let shiftNumber = 1;
-const shift = document.querySelector("#shift");
-shift.textContent = `Shift ${shiftNumber}`;
-
-const nextShift = document.querySelector("#next-shift");
-nextShift.addEventListener("click", () => {
-  shiftNumber = shiftNumber + 1;
-  shift.textContent = `Shift ${shiftNumber}`;
-  console.log(`Shift ${shiftNumber} begins`);
-});
 ```
 
 ```html crew.html
@@ -381,17 +303,32 @@ nextShift.addEventListener("click", () => {
     <meta charset="UTF-8" />
     <title>Crew Directory</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="check.js" defer></script>
     <script src="crew.js" defer></script>
+    <script src="countdown.js" defer></script>
   </head>
   <body>
     <nav>
       <a href="index.html">Home</a>
       <a href="crew.html">Crew</a>
-      <a href="crew.html#duty">Duty</a>
       <a href="schedule.html">Schedule</a>
     </nav>
     <h1>Crew Directory</h1>
     <p>Everyone who lives and works on the station, and where to find them.</p>
+    <p id="status"></p>
+    <button type="button" id="wake">Wake the crew</button>
+    <button type="button" id="on-duty">Who's on duty?</button>
+    <p id="duty-today"></p>
+    <p>Oxygen tanks: <span id="tanks">7</span>, each lasting <span id="tank-hours">20</span> hours.</p>
+    <p id="oxygen"></p>
+    <p id="oxygen-days"></p>
+    <button type="button" id="alarm">Sound the alarm</button>
+    <p id="intercom"></p>
+    <button type="button" id="call-dinner">Call to dinner</button>
+    <button type="button" id="call-bridge">Call to the bridge</button>
+    <p>Meet our commander, <a href="people/vega.html">Mara Vega</a>.</p>
+    <p><a href="#duty">See today's duties</a></p>
+    <p><a href="index.html">Back to the home page</a></p>
 
     <h2>Crew</h2>
     <ul id="crew">
@@ -401,9 +338,14 @@ nextShift.addEventListener("click", () => {
       <li>Kenji Arano</li>
     </ul>
     <p id="roster"></p>
+    <p id="everyone"></p>
     <button type="button" id="add-rookie">Add a rookie</button>
     <button type="button" id="remove-last">Remove the last</button>
     <p id="latest"></p>
+    <p id="welcome-list"></p>
+    <button type="button" id="roll-call-button">Roll call</button>
+    <ol id="roll-call"></ol>
+    <p id="roll-summary"></p>
 
     <h2>Morning Routine</h2>
     <ol>
@@ -442,36 +384,29 @@ nextShift.addEventListener("click", () => {
       <div class="card">
         <h3>Mara Vega</h3>
         <p>Job: <span class="role">Commander</span></p>
-        <p>Hours this week: <span class="worked">40</span></p>
-        <p class="bio">Twenty years in orbit, three of them in charge of this station. Knows every bolt by its first name and still checks the airlocks herself before bed.</p>
+        <p>Hours this week: <span class="worked">12</span></p>
+        <p class="bio">Twenty years in orbit, three of them in charge of this station. Knows every bolt by its first name, still checks the airlocks herself before bed, and has never once been late for a docking.</p>
       </div>
       <div class="card">
         <h3>Tomas Okafor</h3>
         <p>Job: <span class="role">Engineer</span></p>
-        <p>Hours this week: <span class="worked">38</span></p>
-        <p class="bio">Keeps the power on and the water clean. Spends his free time building a clock out of spare parts that has never once shown the right time.</p>
+        <p>Hours this week: <span class="worked">18</span></p>
+        <p class="bio">Keeps the power on and the water clean. Spends his free time building a clock out of spare parts that has never once shown the right time, and says that is the point.</p>
       </div>
       <div class="card">
         <h3>Ines Lindqvist</h3>
         <p>Job: <span class="role">Pilot</span></p>
-        <p>Hours this week: <span class="worked">36</span></p>
-        <p class="bio">Flies the supply runs and the rescue drills. Holds the station record for the softest docking, and reminds everyone of it at dinner.</p>
+        <p>Hours this week: <span class="worked">9</span></p>
+        <p class="bio">Flies the supply runs and the rescue drills. Holds the station record for the softest docking, and reminds everyone of it at dinner, every dinner, without fail.</p>
       </div>
       <div class="card">
         <h3>Kenji Arano</h3>
         <p>Job: <span class="role">Botanist</span></p>
-        <p>Hours this week: <span class="worked">28</span></p>
-        <p class="bio">Grows the tomatoes, the beans and the only flowers for four hundred kilometres. Talks to the plants, and claims they answer.</p>
+        <p>Hours this week: <span class="worked">22</span></p>
+        <p class="bio">Grows the tomatoes, the beans and the only flowers for four hundred kilometres. Talks to the plants every morning, and claims that they answer.</p>
       </div>
     </div>
     <p id="hours-total"></p>
-    <p id="watch-time"></p>
-    <button type="button" id="roll-call-button">Roll call</button>
-    <ol id="roll-call"></ol>
-    <p id="roll-summary"></p>
-    <button type="button" id="call-dinner">Call to dinner</button>
-    <button type="button" id="call-bridge">Call to the bridge</button>
-    <p id="intercom"></p>
 
     <h2 id="duty">Duty Board</h2>
     <ol class="duties">
@@ -485,125 +420,227 @@ nextShift.addEventListener("click", () => {
       <li>Harvest the greenhouse</li>
       <li>Log the day's dockings</li>
     </ol>
+  </body>
+</html>
+```
 
-    <h2>Supplies</h2>
-    <p>Oxygen tanks: <span id="tanks">13</span>, each lasting <span id="tank-hours">30</span> hours.</p>
-    <p id="oxygen"></p>
-    <p>Launch countdown from <span id="countdown-from">10</span></p>
-    <p id="countdown"></p>
+```html people/vega.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mara Vega</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../crew.html">Crew</a>
+      <a href="../schedule.html">Schedule</a>
+    </nav>
+    <h1>Commander Mara Vega</h1>
+    <img
+      src="../img/station.svg"
+      alt="The station she commands: a gold hub inside a blue ring"
+      width="240"
+      height="150"
+    />
+    <p>Twenty years in orbit, three of them in charge of this station.</p>
+    <p><a href="../crew.html">Back to the crew directory</a></p>
   </body>
 </html>
 ```
 
 ```js crew.js
-// Oxygen check
-const tanks = Number(document.querySelector("#tanks").textContent);
-const tankHours = Number(document.querySelector("#tank-hours").textContent);
-const oxygenHours = tanks * tankHours;
-console.log(oxygenHours);
+// The crew directory's script: it greets the crew and reports to the console
+// alert("Crew directory ready");
+console.log("Crew directory loaded");
+console.log(4);
 
-function daysAndHours(hours) {
-  const days = Math.floor(hours / 24);
-  return `${days} days and ${hours % 24} hours`;
-}
+const minutesPerOrbit = 92;
+let crewCount = 4;
+console.log("Minutes per orbit:", minutesPerOrbit);
+console.log("Crew on board:", crewCount);
 
-document.querySelector("#oxygen").textContent = `Oxygen for ${daysAndHours(oxygenHours)}`;
+// A supply ship docks with two new crew members
+crewCount = crewCount + 2;
+console.log("Crew on board:", crewCount);
 
-// Roster facts, from the crew list
-const crewItems = document.querySelectorAll("#crew li");
+const oxygenTanks = 7;
+const hoursPerTank = 20;
+console.log("Oxygen tanks:", oxygenTanks);
+console.log("Hours per tank:", hoursPerTank);
+
+const newFirstName = "Lena";
+const newLastName = "Park";
+console.log("New arrival: " + newFirstName + " " + newLastName);
+
+const crewNumber = 7;
+console.log(`Welcome aboard, ${newFirstName} ${newLastName}! You are crew member ${crewNumber}.`);
+
+const newFullName = `${newFirstName} ${newLastName}`;
+console.log("Badge: " + newFullName.toUpperCase());
+console.log("Letters in the name:", newFullName.length);
+
+console.log(`Lena says: "Hi everyone, I'm so happy to be here!"`);
+
+const crewList = document.querySelector("#crew");
+console.log(crewList);
+const dutyHeading = document.querySelector("#duty");
+console.log(dutyHeading);
+
+const status = document.querySelector("#status");
+status.textContent = "Directory checked";
+console.log(document.querySelector("h1").textContent);
+
+const wakeButton = document.querySelector("#wake");
+wakeButton.addEventListener("click", () => {
+  status.textContent = "The crew is awake";
+});
+
+const onDutyButton = document.querySelector("#on-duty");
+const dutyToday = document.querySelector("#duty-today");
+onDutyButton.addEventListener("click", () => {
+  const name = document.querySelector("#cards .card h3").textContent;
+  dutyToday.textContent = `${name} is on duty today`;
+});
+
+const oxygenHours = oxygenTanks * hoursPerTank;
+console.log(`Oxygen lasts ${oxygenHours} hours`);
+console.log("Hours past the last full day:", oxygenHours % 24);
+console.log("Full days of oxygen:", Math.floor(oxygenHours / 24));
+console.log("Tanks for 31 days:", Math.ceil((31 * 24) / hoursPerTank));
+
+const tanksOnPage = Number(document.querySelector("#tanks").textContent);
+const hoursOnPage = Number(document.querySelector("#tank-hours").textContent);
+document.querySelector("#oxygen").textContent = `Oxygen lasts ${tanksOnPage * hoursOnPage} hours`;
+
+const shifts = ["Morning", "Day", "Night"];
+console.log("First shift:", shifts[0]);
+console.log("Last shift:", shifts[shifts.length - 1]);
+
+shifts.push("Evening");
+console.log("Shifts:", shifts.length);
+const cancelled = shifts.pop();
+console.log("Cancelled:", cancelled);
+console.log("Shifts:", shifts.length);
 
 function updateRoster() {
-  const items = document.querySelectorAll("#crew li");
-  const firstName = items[0].textContent;
-  const lastName = items[items.length - 1].textContent;
-  document.querySelector("#roster").textContent =
-    `${items.length} crew members, from ${firstName} to ${lastName}`;
-
-  // The last name is text from the page: never parsed as HTML
-  const latest = document.querySelector("#latest");
-  const name = document.createElement("strong");
-  name.textContent = lastName;
-  latest.textContent = "Latest arrival: ";
-  latest.append(name);
+  const crewCountOnPage = document.querySelectorAll("#crew li").length;
+  document.querySelector("#roster").textContent = `${crewCountOnPage} crew members on board`;
 }
 
 updateRoster();
 
-const shifts = ["Morning", "Day", "Night"];
-shifts.push("Dawn");
-console.log(shifts.join(", "));
-console.log(shifts.length);
-
-// Countdown
-const countFrom = Number(document.querySelector("#countdown-from").textContent);
-let countdown = "";
-for (let i = countFrom; i >= 1; i--) {
-  countdown += i + " ";
+for (let i = 5; i >= 1; i--) {
+  console.log(i);
 }
-countdown += "Liftoff!";
-document.querySelector("#countdown").textContent = countdown;
+console.log("Liftoff!");
 
-// Every crew member, numbered
+const crewItems = document.querySelectorAll("#crew li");
 for (let i = 0; i < crewItems.length; i++) {
-  console.log(`Crew ${i + 1}: ${crewItems[i].textContent}`);
+  console.log(`Present: ${crewItems[i].textContent}`);
 }
 
-// Hours this week, from the cards
-const hourSpans = document.querySelectorAll(".worked");
-let totalHours = 0;
-for (const span of hourSpans) {
-  totalHours += Number(span.textContent);
+let everyone = "";
+for (let i = 0; i < crewItems.length; i++) {
+  everyone = everyone + `${crewItems[i].textContent}. `;
 }
-const averageHours = Math.round(totalHours / hourSpans.length);
-document.querySelector("#hours-total").textContent =
-  `Hours this week: ${totalHours}, about ${averageHours} per crew member`;
+document.querySelector("#everyone").textContent = everyone;
 
-// Intercom
+for (const role of document.querySelectorAll(".role")) {
+  console.log(`Job: ${role.textContent}`);
+}
+
+function crewHours() {
+  let total = 0;
+  for (const worked of document.querySelectorAll(".worked")) {
+    total = total + Number(worked.textContent);
+  }
+  return total;
+}
+
+document.querySelector("#hours-total").textContent = `Crew hours this week: ${crewHours()}`;
+
+function soundAlarm() {
+  document.querySelector("#intercom").textContent = "Alarm! All crew to the bridge";
+  console.log("Alarm sounded");
+}
+
+document.querySelector("#alarm").addEventListener("click", soundAlarm);
+
 function announce(message) {
   document.querySelector("#intercom").textContent = message;
-  console.log(`Intercom: ${message}`);
 }
 
 document.querySelector("#call-dinner").addEventListener("click", () => {
-  announce("Dinner is served in the galley");
+  announce("Dinner is ready");
 });
 document.querySelector("#call-bridge").addEventListener("click", () => {
-  announce("All crew to the bridge");
+  announce("Report to the bridge");
 });
-document.querySelector("#watch-time").textContent = `Total watch time: ${daysAndHours(totalHours)}`;
 
-// New arrivals
+function fullDays(hours) {
+  return Math.floor(hours / 24);
+}
+
+document.querySelector("#oxygen-days").textContent = `Oxygen for ${fullDays(tanksOnPage * hoursOnPage)} full days`;
+
+console.log("Average hours per crew member:", crewHours() / document.querySelectorAll(".worked").length);
+
 let rookies = 0;
 document.querySelector("#add-rookie").addEventListener("click", () => {
-  rookies++;
-  const item = document.createElement("li");
-  item.textContent = `Rookie ${rookies}`;
-  document.querySelector("#crew").append(item);
+  rookies = rookies + 1;
+  const rookie = document.createElement("li");
+  rookie.textContent = `Rookie ${rookies}`;
+  document.querySelector("#crew").append(rookie);
   updateRoster();
+  document.querySelector("#latest").innerHTML = `<strong>Rookie ${rookies}</strong> just arrived`;
 });
+
 document.querySelector("#remove-last").addEventListener("click", () => {
   document.querySelector("#crew li:last-child").remove();
   updateRoster();
 });
 
-// Roll call, from the cards
-function presentText(count) {
-  return `${count} present`;
+const welcomeList = document.querySelector("#welcome-list");
+welcomeList.textContent = "Welcome: ";
+for (const member of document.querySelectorAll("#crew li")) {
+  const strong = document.createElement("strong");
+  strong.textContent = member.textContent;
+  welcomeList.append(strong, "! ");
 }
 
-document.querySelector("#roll-call-button").addEventListener("click", () => {
-  const list = document.querySelector("#roll-call");
-  list.textContent = "";
-  const cards = document.querySelectorAll(".card");
-  for (const card of cards) {
-    const item = document.createElement("li");
-    const name = card.querySelector("h3").textContent;
-    const role = card.querySelector(".role").textContent;
-    item.textContent = `${name} (${role})`;
-    list.append(item);
+function callRoll() {
+  const rollCall = document.querySelector("#roll-call");
+  rollCall.textContent = "";
+  for (const member of document.querySelectorAll("#crew li")) {
+    const answer = document.createElement("li");
+    answer.textContent = `${member.textContent} - present`;
+    rollCall.append(answer);
   }
-  document.querySelector("#roll-summary").textContent = presentText(cards.length);
-});
+  const answered = document.querySelectorAll("#roll-call li").length;
+  document.querySelector("#roll-summary").textContent = `${answered} crew members answered`;
+}
+
+document.querySelector("#roll-call-button").addEventListener("click", callRoll);
+```
+
+```js check.js
+// System check: each line reports one part of the station
+console.log("Oxygen: OK");
+console.log("Water: OK");
+console.log("Power: OK");
+console.log("Doors: OK");
+console.log("All systems go");
+```
+
+```js countdown.js
+// Engine cool-down: counts down from 3, then switches the engines off
+for (let i = 3; i >= 1; i--) {
+  console.log(`Cooling: ${i}`);
+}
+console.log("Engines off");
 ```
 
 ```html schedule.html
@@ -613,21 +650,20 @@ document.querySelector("#roll-call-button").addEventListener("click", () => {
     <meta charset="UTF-8" />
     <title>Flight Schedule</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="board.css" />
     <script src="schedule.js" defer></script>
   </head>
   <body>
     <nav>
       <a href="index.html">Home</a>
       <a href="crew.html">Crew</a>
-      <a href="crew.html#duty">Duty</a>
       <a href="schedule.html">Schedule</a>
     </nav>
     <h1>Flight Schedule</h1>
     <p>Every departure from the station today.</p>
     <div class="banner"></div>
-
     <p>Station time: <span id="station-time">09:00</span></p>
-    <p id="next-departure"></p>
+
     <button type="button" id="sort-by-time">Sort by time</button>
     <button type="button" id="hide-cancelled" aria-pressed="false">Hide cancelled</button>
     <table id="flights">
@@ -641,13 +677,13 @@ document.querySelector("#roll-call-button").addEventListener("click", () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="boarding">
           <td class="code">SL-101</td>
           <td class="destination">Moon Base</td>
           <td class="departs">08:30</td>
           <td class="status">Boarding</td>
         </tr>
-        <tr>
+        <tr class="on-time">
           <td class="code">SL-102</td>
           <td class="destination">Mars Relay</td>
           <td class="departs">09:45</td>
@@ -665,7 +701,7 @@ document.querySelector("#roll-call-button").addEventListener("click", () => {
           <td class="departs">11:00</td>
           <td class="status">Cancelled</td>
         </tr>
-        <tr>
+        <tr class="on-time">
           <td class="code">SL-105</td>
           <td class="destination">Orbital Yard</td>
           <td class="departs">10:20</td>
@@ -680,17 +716,16 @@ document.querySelector("#roll-call-button").addEventListener("click", () => {
     </table>
     <p id="boarding-now"></p>
     <p id="gate-message"></p>
-    <p id="first-flight-note"></p>
     <p id="flight-count"></p>
     <p>Fuel: <span id="fuel-start">100</span> units, burning <span id="burn-rate">15</span> a minute</p>
     <p id="fuel"></p>
+    <p id="destinations"></p>
+    <p id="reserve"></p>
     <p id="first-delay"></p>
     <p id="active-count"></p>
-    <p id="next-flight"></p>
-    <p id="destinations"></p>
     <p id="on-time"></p>
-    <p id="before-ten"></p>
     <p id="last-departure"></p>
+    <p id="next-departure"></p>
 
     <h2>Docking Bays</h2>
     <table id="bays">
@@ -723,143 +758,161 @@ document.querySelector("#roll-call-button").addEventListener("click", () => {
 </html>
 ```
 
+```css board.css
+#flights caption {
+  font-style: italic;
+}
+```
+
 ```js schedule.js
-// Boarding check
-const flightRows = document.querySelectorAll("#flights tbody tr");
-const firstStatus = flightRows[0].querySelector(".status").textContent;
-const isBoarding = firstStatus === "Boarding";
-document.querySelector("#boarding-now").textContent = `First flight boarding: ${isBoarding}`;
+const firstDeparts = document.querySelector("#flights tbody tr .departs").textContent;
+console.log("First flight leaves before 10:00:", firstDeparts < "10:00");
 
-console.log("Loose:", "7" == 7);
-console.log("Strict:", "7" === 7);
+const firstStatus = document.querySelector("#flights tbody tr .status").textContent;
+console.log("First flight boarding:", firstStatus === "Boarding");
 
-// Gate message
+const secondStatus = document.querySelector("#flights tbody tr:nth-child(2) .status").textContent;
+const secondDeparts = document.querySelector("#flights tbody tr:nth-child(2) .departs").textContent;
+console.log("Second flight ready:", secondStatus === "On time" && secondDeparts < "10:00");
+
+const firstCode = document.querySelector("#flights tbody tr .code").textContent;
+if (firstStatus === "Boarding") {
+  document.querySelector("#boarding-now").textContent = `Now boarding: ${firstCode}`;
+} else {
+  document.querySelector("#boarding-now").textContent = "Nobody is boarding yet";
+}
+
 const gateMessage = document.querySelector("#gate-message");
-if (isBoarding) {
-  const firstCode = flightRows[0].querySelector(".code").textContent;
-  gateMessage.textContent = `Now boarding: ${firstCode}`;
-} else {
-  gateMessage.textContent = "No flight is boarding yet";
-}
-
-// Flight notes
-let note;
-if (firstStatus === "On time") {
-  note = "On schedule";
-} else if (firstStatus === "Boarding") {
-  note = "Go to the gate";
+if (firstStatus === "Boarding") {
+  gateMessage.textContent = "Go to gate 3";
 } else if (firstStatus === "Delayed") {
-  note = "Running late";
+  gateMessage.textContent = "Please wait";
 } else if (firstStatus === "Cancelled") {
-  note = "Grounded";
+  gateMessage.textContent = "Ask at the desk";
 } else {
-  note = "Check the board";
+  gateMessage.textContent = "Check the board";
 }
-document.querySelector("#first-flight-note").textContent = note;
 
-const flightCount = flightRows.length;
-const flightWord = flightCount === 1 ? "flight" : "flights";
-document.querySelector("#flight-count").textContent = `${flightCount} ${flightWord} today`;
+const flightTotal = document.querySelectorAll("#flights tbody tr").length;
+document.querySelector("#flight-count").textContent = `${flightTotal} ${flightTotal === 1 ? "flight" : "flights"} today`;
 
-// Fuel gauge
-let fuel = Number(document.querySelector("#fuel-start").textContent);
+const fuelStart = Number(document.querySelector("#fuel-start").textContent);
 const burnRate = Number(document.querySelector("#burn-rate").textContent);
+let fuelLeft = fuelStart;
 let minutes = 0;
-while (fuel > 0) {
-  fuel -= burnRate;
-  minutes++;
+while (fuelLeft >= burnRate) {
+  fuelLeft = fuelLeft - burnRate;
+  minutes = minutes + 1;
 }
-document.querySelector("#fuel").textContent = `Fuel lasts ${minutes} minutes`;
+document.querySelector("#fuel").textContent = `Enough fuel for ${minutes} minutes`;
 
-// Board scan
-let firstDelay = "none";
-for (const row of flightRows) {
-  if (row.querySelector(".status").textContent === "Delayed") {
-    firstDelay = row.querySelector(".code").textContent;
+let destinationList = "Destinations: ";
+for (const cell of document.querySelectorAll("#flights tbody .destination")) {
+  destinationList = destinationList + `${cell.textContent}. `;
+}
+document.querySelector("#destinations").textContent = destinationList;
+
+let reserveFuel = fuelStart;
+let reserveMinutes = 0;
+while (reserveFuel >= 30) {
+  reserveFuel = reserveFuel - burnRate;
+  reserveMinutes = reserveMinutes + 1;
+}
+document.querySelector("#reserve").textContent = `Reserve reached after ${reserveMinutes} minutes`;
+
+const statusCells = document.querySelectorAll("#flights tbody .status");
+const codeCells = document.querySelectorAll("#flights tbody .code");
+let firstDelay = "No delays";
+for (let i = 0; i < statusCells.length; i++) {
+  if (statusCells[i].textContent === "Delayed") {
+    firstDelay = `First delay: ${codeCells[i].textContent}`;
     break;
   }
 }
-document.querySelector("#first-delay").textContent = `First delay: ${firstDelay}`;
+document.querySelector("#first-delay").textContent = firstDelay;
 
-let activeFlights = 0;
-for (const row of flightRows) {
-  if (row.querySelector(".status").textContent === "Cancelled") {
+let stillFlying = 0;
+for (const cell of statusCells) {
+  if (cell.textContent === "Cancelled") {
     continue;
   }
-  activeFlights++;
+  stillFlying = stillFlying + 1;
 }
-document.querySelector("#active-count").textContent = `Active flights: ${activeFlights}`;
+document.querySelector("#active-count").textContent = `${stillFlying} flights still flying`;
 
-// Next flight, as an object
-const firstRow = flightRows[0];
-const firstFlight = {
-  code: firstRow.querySelector(".code").textContent,
-  destination: firstRow.querySelector(".destination").textContent,
-  departs: firstRow.querySelector(".departs").textContent,
-  status: firstRow.querySelector(".status").textContent,
+const nextFlight = {
+  code: "SL-102",
+  destination: "Mars Relay",
+  departs: "09:45",
 };
-document.querySelector("#next-flight").textContent =
-  `${firstFlight.code} to ${firstFlight.destination} at ${firstFlight.departs}`;
-console.log("Status:", firstFlight["status"]);
+console.log(`Next flight: ${nextFlight.code} to ${nextFlight.destination} at ${nextFlight.departs}`);
+nextFlight.departs = "10:05";
+nextFlight.gate = 3;
+console.log("New time:", nextFlight.departs);
+console.log("Gate:", nextFlight.gate);
 
-// Every flight, as an array of objects
-function readFlights() {
-  const list = [];
-  for (const row of document.querySelectorAll("#flights tbody tr")) {
-    list.push({
-      code: row.querySelector(".code").textContent,
-      destination: row.querySelector(".destination").textContent,
-      departs: row.querySelector(".departs").textContent,
-      status: row.querySelector(".status").textContent,
-    });
-  }
-  return list;
+const tomorrow = [
+  { code: "SL-201", destination: "Moon Base" },
+  { code: "SL-202", destination: "Titan Dock" },
+  { code: "SL-203", destination: "Mars Relay" },
+];
+for (const flight of tomorrow) {
+  console.log(`Tomorrow: ${flight.code} to ${flight.destination}`);
 }
 
-const flights = readFlights();
-console.log(`${flights.length} flights read`);
-
-const destinations = [];
-for (const flight of flights) {
-  destinations.push(flight.destination);
+const flights = [];
+for (const row of document.querySelectorAll("#flights tbody tr")) {
+  flights.push({
+    code: row.querySelector(".code").textContent,
+    destination: row.querySelector(".destination").textContent,
+    departs: row.querySelector(".departs").textContent,
+    status: row.querySelector(".status").textContent,
+  });
 }
-document.querySelector("#destinations").textContent = `Destinations: ${destinations.join(", ")}`;
+console.log("Flights read:", flights.length);
+const lastOnBoard = flights[flights.length - 1];
+console.log(`Last on the board: ${lastOnBoard.code} to ${lastOnBoard.destination}`);
 
-// On time
-const onTime = flights.filter((flight) => flight.status === "On time");
-const onTimeCodes = [];
-for (const flight of onTime) {
-  onTimeCodes.push(flight.code);
+function isOnTime(flight) {
+  return flight.status === "On time";
 }
-document.querySelector("#on-time").textContent =
-  `On time: ${onTimeCodes.length > 0 ? onTimeCodes.join(", ") : "none"}`;
 
-// Before 10:00: HH:MM times compare as text, digit by digit
-const beforeTen = flights
-  .filter((flight) => flight.status !== "Cancelled" && flight.departs < "10:00")
-  .map((flight) => `${flight.code} to ${flight.destination}`);
-document.querySelector("#before-ten").textContent =
-  `Before 10:00: ${beforeTen.length > 0 ? beforeTen.join(", ") : "none"}`;
+let onTimeText = "On time: ";
+for (const flight of flights.filter(isOnTime)) {
+  onTimeText = onTimeText + `${flight.code}. `;
+}
+document.querySelector("#on-time").textContent = onTimeText;
 
-// Departure order
-const byTime = [...flights].sort((a, b) => a.departs.localeCompare(b.departs));
+function byDeparture(a, b) {
+  return a.departs < b.departs ? -1 : 1;
+}
+
+const byTime = flights.slice().sort(byDeparture);
 const lastFlight = byTime[byTime.length - 1];
-document.querySelector("#last-departure").textContent =
-  `Last departure: ${lastFlight.code} at ${lastFlight.departs}`;
+document.querySelector("#last-departure").textContent = `Last departure: ${lastFlight.code} at ${lastFlight.departs}`;
+console.log("First on the board:", flights[0].code);
+console.log("Earliest:", byTime[0].code);
+
+function rowByTime(a, b) {
+  return a.querySelector(".departs").textContent < b.querySelector(".departs").textContent ? -1 : 1;
+}
 
 document.querySelector("#sort-by-time").addEventListener("click", () => {
   const body = document.querySelector("#flights tbody");
-  const rows = [...body.querySelectorAll("tr")];
-  rows.sort((a, b) =>
-    a.querySelector(".departs").textContent.localeCompare(b.querySelector(".departs").textContent),
-  );
+  const rows = Array.from(body.querySelectorAll("tr"));
+  rows.sort(rowByTime);
   for (const row of rows) {
     body.append(row);
   }
 });
 
-// Status classes, read from each row's status
-for (const row of flightRows) {
+for (const row of document.querySelectorAll("#flights tbody tr")) {
+  const code = row.querySelector(".code");
+  const destination = row.querySelector(".destination").textContent;
+  code.setAttribute("title", `Flight ${code.textContent} to ${destination}`);
+}
+
+for (const row of document.querySelectorAll("#flights tbody tr")) {
   const status = row.querySelector(".status").textContent;
   if (status === "Delayed") {
     row.classList.add("delayed");
@@ -868,30 +921,24 @@ for (const row of flightRows) {
   }
 }
 
-const hideCancelled = document.querySelector("#hide-cancelled");
-hideCancelled.addEventListener("click", () => {
-  const table = document.querySelector("#flights");
-  table.classList.toggle("hide-cancelled");
-  const hidden = table.classList.contains("hide-cancelled");
-  hideCancelled.setAttribute("aria-pressed", String(hidden));
-  hideCancelled.textContent = hidden ? "Show cancelled" : "Hide cancelled";
+const hideButton = document.querySelector("#hide-cancelled");
+hideButton.addEventListener("click", () => {
+  const hidden = document.querySelector("#flights").classList.toggle("hide-cancelled");
+  hideButton.setAttribute("aria-pressed", hidden);
+  hideButton.textContent = hidden ? "Show cancelled" : "Hide cancelled";
 });
 
-// Next departure
 const stationTime = document.querySelector("#station-time").textContent;
-const upcoming = flights
-  .filter((flight) => flight.status !== "Cancelled" && flight.departs > stationTime)
-  .sort((a, b) => a.departs.localeCompare(b.departs));
+
+function leavesLater(flight) {
+  return flight.departs > stationTime && flight.status !== "Cancelled";
+}
+
+const later = flights.filter(leavesLater).sort(byDeparture);
 const nextDeparture = document.querySelector("#next-departure");
-if (upcoming.length === 0) {
-  nextDeparture.textContent = "No more departures today";
+if (later.length > 0) {
+  nextDeparture.textContent = `Next departure: ${later[0].code} to ${later[0].destination} at ${later[0].departs}`;
 } else {
-  const next = upcoming[0];
-  nextDeparture.textContent = `Next departure: ${next.code} to ${next.destination} at ${next.departs}`;
-  for (const row of flightRows) {
-    if (row.querySelector(".code").textContent === next.code) {
-      row.classList.add("next");
-    }
-  }
+  nextDeparture.textContent = "No more departures today";
 }
 ```
