@@ -77,16 +77,14 @@ describe('AdminPage', () => {
     ).toBeTruthy();
   });
 
-  it('puts the poll card after the announcement card and before the online line', async () => {
+  it('puts the poll card after the announcement card', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    const online = await screen.findByText('Online now: 3 signed in · 5 guests');
-    const poll = screen.getByText('Poll');
+    await screen.findByText('Total users');
     expect(
-      screen.getByText('Announcement').compareDocumentPosition(poll) &
+      screen.getByText('Announcement').compareDocumentPosition(screen.getByText('Poll')) &
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
-    expect(poll.compareDocumentPosition(online) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('lets an admin send a poll even when the stats fail', async () => {
@@ -96,14 +94,11 @@ describe('AdminPage', () => {
     expect(screen.getByText('Poll')).toBeInTheDocument();
   });
 
-  it('shows how many users and guests are online now at the very foot, after the announcement card', async () => {
+  it('shows how many users and guests are online now in the role row, after the User count', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
     const online = await screen.findByText('Online now: 3 signed in · 5 guests');
-    expect(
-      screen.getByText('Announcement').compareDocumentPosition(online) &
-        Node.DOCUMENT_POSITION_FOLLOWING,
-    ).toBeTruthy();
+    expect(online.previousElementSibling).toHaveTextContent(/^User \d+$/);
   });
 
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {

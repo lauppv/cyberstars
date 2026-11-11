@@ -115,6 +115,10 @@ export function AdminPage() {
                       {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
                     </span>
                   ))}
+                  <span className="ml-auto">
+                    {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
+                    {t('admin.guestsOnline', { count: stats.online.guests })}
+                  </span>
                 </div>
               </section>
 
@@ -243,13 +247,6 @@ export function AdminPage() {
           {/* After the stats, since announcements are rare; outside them so it works without them */}
           <AnnouncementSection className={CARD_CLS + ' mt-5'} />
           <PollSection className={CARD_CLS + ' mt-5'} />
-
-          {stats && (
-            <p className="mt-5 mb-0 text-[12px] text-[var(--text3)] text-center">
-              {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
-              {t('admin.guestsOnline', { count: stats.online.guests })}
-            </p>
-          )}
         </div>
       </PageContainer>
     </div>
