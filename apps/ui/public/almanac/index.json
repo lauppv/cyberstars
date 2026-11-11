@@ -36,7 +36,7 @@
     "grad": "linear-gradient(135deg,#3a1f4f,#8b1a5c)",
     "title": "Ada Lovelace wrote code before computers existed",
     "excerpt": "In 1843, a century before the first electronic computer, Ada Lovelace published an algorithm for computing Bernoulli numbers on a machine that was never built. She is the first programmer in history.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🦄",
     "readTime": "6 min"
   },
@@ -140,7 +140,7 @@
     "grad": "linear-gradient(135deg,#3a1a1a,#7a2f2f)",
     "title": "The Cathedral and the Bazaar: why open source actually works",
     "excerpt": "Eric S. Raymond's 1999 essay explained why a chaotic crowd of volunteers can outpace polished corporate teams. \"Given enough eyeballs, all bugs are shallow.\" It became the manifesto for an entire industry.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🦄",
     "readTime": "10 min"
   },
@@ -153,7 +153,7 @@
     "grad": "linear-gradient(135deg,#1a3a2a,#2f7a4f)",
     "title": "The Xerox Alto: the first computer with a GUI that nobody bought",
     "excerpt": "In 1973, Xerox PARC built a computer with windows, icons, a mouse, and ethernet. It had everything. Then Xerox ignored it and let Steve Jobs copy the whole thing.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "🔬",
     "readTime": "7 min"
   },
@@ -166,7 +166,7 @@
     "grad": "linear-gradient(135deg,#1a2a3a,#2f4f7a)",
     "title": "How DNS works: the internet's phone book that nobody thinks about",
     "excerpt": "Every time you type a URL, a hidden system translates it into numbers. DNS is the backbone of the internet, controlled by just 13 root servers managed by organizations most people have never heard of.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "🌐",
     "readTime": "8 min"
   },
@@ -179,7 +179,7 @@
     "grad": "linear-gradient(135deg,#2a1a3a,#5f2f7a)",
     "title": "Dennis Ritchie: the man who created C and UNIX but got no fame",
     "excerpt": "Steve Jobs got a global mourning when he died. Dennis Ritchie died one week later and barely made the news. Yet everything Jobs built ran on Ritchie's inventions: the C language and UNIX.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "🏛️",
     "readTime": "9 min"
   },
@@ -192,7 +192,7 @@
     "grad": "linear-gradient(135deg,#1a2a3a,#3a5a7a)",
     "title": "The AI Winter: when everyone gave up on artificial intelligence",
     "excerpt": "In the 1970s and again in the late 1980s, AI research funding collapsed. Promises were broken, labs shut down, and the word 'AI' became toxic. It took decades to recover.",
-    "author": "Dr. Elena",
+    "author": "Dr. Sofia",
     "authorEm": "🧊",
     "readTime": "9 min"
   },
@@ -205,7 +205,7 @@
     "grad": "linear-gradient(135deg,#3a2a1a,#7a5f2f)",
     "title": "Y2K: the millennium bug that was actually real",
     "excerpt": "People mocked Y2K as a hoax. But the bug was real: programmers had saved memory by using two-digit years. The reason nothing collapsed? Thousands of engineers worked overtime to fix it before midnight.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "🔧",
     "readTime": "9 min"
   },
@@ -218,7 +218,7 @@
     "grad": "linear-gradient(135deg,#1a3a3a,#2f6a6a)",
     "title": "How Wikipedia became the largest encyclopedia ever written",
     "excerpt": "Experts said it would never work. An encyclopedia anyone can edit? It'll be full of nonsense. Two decades later, Wikipedia has 60 million articles in 300 languages and is one of the most visited sites on Earth.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "📖",
     "readTime": "8 min"
   },
@@ -231,7 +231,7 @@
     "grad": "linear-gradient(135deg,#2a2a1a,#5a5a2f)",
     "title": "Moore's Law is dying: what comes next?",
     "excerpt": "For 50 years, transistor counts doubled every two years like clockwork. Now we're hitting the physical limits of silicon. The chip industry is scrambling for alternatives before progress stalls.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "⚡",
     "readTime": "8 min"
   },
@@ -244,7 +244,7 @@
     "grad": "linear-gradient(135deg,#1a1a2a,#3a2f5a)",
     "title": "The Silk Road: when the dark web became a marketplace",
     "excerpt": "Ross Ulbricht built an anonymous marketplace using Tor and Bitcoin. For two years, you could buy anything. Then the FBI caught him in a public library with his laptop open.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "🕵️",
     "readTime": "9 min"
   },
@@ -257,7 +257,7 @@
     "grad": "linear-gradient(135deg,#2a1a2a,#5a2f4a)",
     "title": "Aaron Swartz: the internet's own boy",
     "excerpt": "Co-creator of RSS at 14, co-founder of Reddit, architect of Creative Commons. Aaron Swartz fought to make knowledge free for everyone. The US government charged him with 35 years in prison for downloading academic papers.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🕊️",
     "readTime": "10 min"
   },
@@ -270,7 +270,7 @@
     "grad": "linear-gradient(135deg,#3a1a2a,#7a2f4a)",
     "title": "The dot-com bubble: when pizza delivery apps were worth billions",
     "excerpt": "In 1999, any company with '.com' in its name could raise millions. Pets.com spent $300 million in 2 years and collapsed. The NASDAQ lost 78% of its value. Sound familiar?",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "📈",
     "readTime": "8 min"
   },
@@ -283,7 +283,7 @@
     "grad": "linear-gradient(135deg,#1a1a3a,#2f2f7a)",
     "title": "Deep Blue vs. Kasparov: when a machine beat the world chess champion",
     "excerpt": "In 1997, IBM's Deep Blue defeated Garry Kasparov in a six-game match. It was the first time a reigning world champion lost to a computer. Kasparov accused IBM of cheating.",
-    "author": "Dr. Elena",
+    "author": "Dr. Sofia",
     "authorEm": "🏆",
     "readTime": "8 min"
   },
@@ -296,7 +296,7 @@
     "grad": "linear-gradient(135deg,#2a1a1a,#6a3a2f)",
     "title": "How Git was born in two weeks of rage",
     "excerpt": "When the Linux kernel lost access to its version control tool, Linus Torvalds locked himself away and wrote Git in 14 days. It's now used by virtually every software project on Earth.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "🔥",
     "readTime": "9 min"
   },
@@ -309,7 +309,7 @@
     "grad": "linear-gradient(135deg,#1a3a1a,#2f7a3a)",
     "title": "The Raspberry Pi revolution: a $35 computer that changed education",
     "excerpt": "A group of Cambridge professors were worried that kids couldn't program anymore. Their solution: a credit-card-sized computer for $35. They expected to sell 10,000 units. They've sold over 60 million.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🌱",
     "readTime": "9 min"
   },
@@ -322,7 +322,7 @@
     "grad": "linear-gradient(135deg,#1a2a2a,#2f5a6a)",
     "title": "How submarine cables connect continents: the internet's hidden backbone",
     "excerpt": "97% of intercontinental data travels through cables on the ocean floor. There are over 500 of them, totaling 1.3 million km. And they're only as thick as a garden hose.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "⚓",
     "readTime": "8 min"
   },
@@ -335,7 +335,7 @@
     "grad": "linear-gradient(135deg,#2a2a1a,#5a5a3a)",
     "title": "Ken Thompson's compiler backdoor: the hack that can never be fixed",
     "excerpt": "In 1984, Ken Thompson revealed he'd hidden a backdoor in the C compiler itself. The hack was invisible in the source code and self-replicating. It proved you can never fully trust software you didn't write.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "🔓",
     "readTime": "9 min"
   },
@@ -348,7 +348,7 @@
     "grad": "linear-gradient(135deg,#2a2a2a,#4a4a5a)",
     "title": "Enigma and the birth of modern computing",
     "excerpt": "Breaking Nazi Germany's Enigma cipher shortened WWII by an estimated 2 years. The machines built to crack it, Colossus and the Bombe, were the direct ancestors of modern computers.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "🎖️",
     "readTime": "10 min"
   },
@@ -361,7 +361,7 @@
     "grad": "linear-gradient(135deg,#1a2a1a,#2f5a3f)",
     "title": "AlphaGo's Move 37: the move no human would play",
     "excerpt": "In Game 2 against the world Go champion, Google's AlphaGo played a move so alien that commentators thought it was a mistake. It won the game. Move 37 showed that AI can discover strategies humans never imagined.",
-    "author": "Dr. Elena",
+    "author": "Dr. Sofia",
     "authorEm": "🎯",
     "readTime": "9 min"
   },
@@ -374,7 +374,7 @@
     "grad": "linear-gradient(135deg,#3a2a1a,#7a5a2f)",
     "title": "Stack Overflow changed how we learn to code",
     "excerpt": "Before 2008, getting programming help meant posting on forums and waiting days for a reply (if you were lucky). Stack Overflow's gamified Q&A model created the largest programming knowledge base ever assembled.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🌟",
     "readTime": "9 min"
   },
@@ -387,7 +387,7 @@
     "grad": "linear-gradient(135deg,#1a2a1a,#3a5a2a)",
     "title": "Stuxnet: the virus that destroyed centrifuges with code",
     "excerpt": "Someone dropped infected USB sticks near an Iranian nuclear facility. One of them ended up in a computer. The worm inside quietly reprogrammed industrial centrifuges to tear themselves apart, while displaying normal readings.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "🕵️",
     "readTime": "10 min"
   },
@@ -413,7 +413,7 @@
     "grad": "linear-gradient(135deg,#1a1a3a,#3a3a6a)",
     "title": "Edward Snowden: the man who exposed global surveillance",
     "excerpt": "An NSA contractor copied 1.5 million classified documents and revealed that governments were spying on everyone's calls, emails, and texts. He's been in exile ever since.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "🕵️",
     "readTime": "10 min"
   },
@@ -439,7 +439,7 @@
     "grad": "linear-gradient(135deg,#0a0a2a,#1a1a5a)",
     "title": "Laniakea: the supercluster we all float in",
     "excerpt": "The Milky Way isn't alone. Our galaxy is part of an enormous structure of 100,000 galaxies spanning 500 million light-years. It's called Laniakea, 'immeasurable heaven' in Hawaiian.",
-    "author": "Dr. Elena",
+    "author": "Dr. Sofia",
     "authorEm": "🔭",
     "readTime": "8 min"
   },
@@ -452,7 +452,7 @@
     "grad": "linear-gradient(135deg,#0a0a1a,#1a1a3a)",
     "title": "TON 618: the monster that weighs 66 billion suns",
     "excerpt": "10 billion light-years away lies one of the most massive black holes ever discovered. TON 618 has a mass of 66 billion times that of our Sun. Its event horizon is larger than our entire solar system.",
-    "author": "Dr. Elena",
+    "author": "Dr. Sofia",
     "authorEm": "🔭",
     "readTime": "8 min"
   },
@@ -478,7 +478,7 @@
     "grad": "linear-gradient(135deg,#0a1a2a,#1a3a5a)",
     "title": "Pale Blue Dot: the photograph that changed humanity's perspective",
     "excerpt": "In 1990, Voyager 1 turned around and photographed Earth from 6 billion km away. Our planet appears as a pale blue dot, less than a pixel wide. Carl Sagan wrote the most moving speech in the history of science.",
-    "author": "Dr. Elena",
+    "author": "Dr. Sofia",
     "authorEm": "🔭",
     "readTime": "8 min"
   },
@@ -504,7 +504,7 @@
     "grad": "linear-gradient(135deg,#2a2a1a,#5a4a2f)",
     "title": "How C conquered the world: the language that refuses to die",
     "excerpt": "Created in 1972 as a side project to rewrite UNIX, C became the foundation of modern computing. 50+ years later, it still powers operating systems, databases, and embedded devices everywhere.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "🏛️",
     "readTime": "8 min"
   },
@@ -530,7 +530,7 @@
     "grad": "linear-gradient(135deg,#1a2a2a,#2f4a4a)",
     "title": "SolarWinds: the hack that infiltrated 18,000 organizations through a software update",
     "excerpt": "Russian hackers compromised a routine software update from SolarWinds, inserting a backdoor that gave them access to the US Treasury, Pentagon, and thousands of corporations. Nobody noticed for 9 months.",
-    "author": "Mr. Radu",
+    "author": "Mr. Noah",
     "authorEm": "🕵️",
     "readTime": "10 min"
   },
@@ -569,7 +569,7 @@
     "grad": "linear-gradient(135deg,#1a3a2a,#2a7a4a)",
     "title": "Python: the language named after Monty Python",
     "excerpt": "Guido van Rossum started Python during a Christmas holiday because he was bored. He named it after his favorite comedy show. Three decades later, it's the world's most popular programming language.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🦄",
     "readTime": "8 min"
   },
@@ -582,7 +582,7 @@
     "grad": "linear-gradient(135deg,#2a1a3a,#5a3a7a)",
     "title": "The database revolution: how SQL changed everything",
     "excerpt": "In 1970, Edgar Codd published a paper proposing that data should be stored in tables with relationships between them. His employer, IBM, ignored it. Others didn't. The relational database became the foundation of modern software.",
-    "author": "Prof. Andrei",
+    "author": "Prof. Oliver",
     "authorEm": "📊",
     "readTime": "8 min"
   },
@@ -608,7 +608,7 @@
     "grad": "linear-gradient(135deg,#2a2a1a,#6a5a2a)",
     "title": "The @ sign: how Ray Tomlinson invented email",
     "excerpt": "In 1971, Ray Tomlinson was looking for a way to send messages between computers. He picked the @ sign because it wasn't used in anyone's name. The first email was something like 'QWERTYUIOP'. He couldn't remember.",
-    "author": "Ms. Diana",
+    "author": "Ms. Clara",
     "authorEm": "🌟",
     "readTime": "6 min"
   },
