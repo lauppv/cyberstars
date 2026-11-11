@@ -19,7 +19,6 @@
   },
   "sidebar": {
     "label": "Main navigation",
-    "community": "Community",
     "show": "Show sidebar",
     "hide": "Hide sidebar",
     "laniakeaLeft_one": "{{count}} lesson to go",

@@ -26,7 +26,6 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
-import { BetaBadge } from '../ui/BetaBadge';
 import { BrandMark } from '../ui/BrandMark';
 import { TutorFace } from '../tutor/TutorFace';
 import { useAuth } from '../../context/AuthContext';
@@ -83,7 +82,7 @@ function NavItem({
   to: string;
   icon: LucideIcon;
   label: string;
-  // A small mark right after the label, such as Beta
+  // A small mark at the end of the row, such as Beta
   tag?: ReactNode;
   badge?: number;
   // A few words under the label, such as what still opens it: at the end of
@@ -107,23 +106,20 @@ function NavItem({
       <Icon size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
       {note ? (
         <span className="flex flex-col min-w-0">
-          <span className="flex items-center gap-2.5 min-w-0">
-            <span className="truncate">{label}</span>
-            {tag}
-          </span>
+          <span className="truncate">{label}</span>
           <span className="flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
             <Lock size={10} strokeWidth={2} />
             {note}
           </span>
         </span>
       ) : (
-        <>
-          <span className="truncate">{label}</span>
-          {tag}
-        </>
+        <span className="truncate">{label}</span>
       )}
+      {tag}
       {badge != null && badge > 0 && (
-        <span className="ml-auto min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums">
+        <span
+          className={`${tag ? '' : 'ml-auto'} min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums`}
+        >
           {badge > 9 ? '9+' : badge}
         </span>
       )}
@@ -168,7 +164,7 @@ function LaniakeaItem({ badge, onNavigate }: { badge: number; onNavigate: () => 
       to="/laniakea"
       icon={Orbit}
       label={t('nav.laniakea')}
-      tag={<BetaBadge hint={t('laniakea.betaHint')} />}
+      tag={<Tag hint={t('laniakea.betaHint')}>{t('common.beta')}</Tag>}
       note={!isLoading && left > 0 ? t('sidebar.laniakeaLeft', { count: left }) : undefined}
       badge={badge}
       onNavigate={onNavigate}
@@ -193,21 +189,27 @@ function LockedItem({ icon: Icon, label }: { icon: LucideIcon; label: string }) 
   );
 }
 
-function ComingSoonTag() {
-  const { t } = useTranslation();
+// Beta and Coming soon share one look, at the end of the row
+function Tag({ hint, children }: { hint?: string; children: ReactNode }) {
   return (
-    <span className="ml-auto text-[10px] px-1.5 py-px rounded border border-[var(--border)]">
-      {t('common.comingSoon')}
+    <span
+      title={hint}
+      className="ml-auto text-[10px] px-1.5 py-px rounded border border-[var(--border)]"
+    >
+      {children}
     </span>
   );
 }
 
-function Section({ label, children }: { label?: string; children: ReactNode }) {
+function ComingSoonTag() {
+  const { t } = useTranslation();
+  return <Tag>{t('common.comingSoon')}</Tag>;
+}
+
+// Groups are set apart by a line, with no title
+function Section({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col gap-px mt-4 first:mt-0">
-      {label && (
-        <div className="px-2.5 pb-1 text-[11px] font-medium text-[var(--text3)]">{label}</div>
-      )}
+    <div className="flex flex-col gap-px mt-2 pt-2 border-t border-[var(--border)] first:mt-0 first:pt-0 first:border-t-0">
       {children}
     </div>
   );
@@ -332,15 +334,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
       <nav className="flex-1 overflow-y-auto px-2 py-2">
         <Section>
           {user && (
-            <>
-              <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
-              <NavItem
-                to="/progress"
-                icon={ChartNoAxesColumnIncreasing}
-                label={t('nav.progress')}
-                onNavigate={onNavigate}
-              />
-            </>
+            <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
           )}
           <NavItem to="/courses" icon={BookOpen} label={t('nav.courses')} onNavigate={onNavigate} />
           <NavItem
@@ -362,12 +356,34 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
           ) : (
             <LockedItem icon={FolderKanban} label={t('nav.projects')} />
           )}
+          {user && (
+            <NavItem
+              to="/progress"
+              icon={ChartNoAxesColumnIncreasing}
+              label={t('nav.progress')}
+              onNavigate={onNavigate}
+            />
+          )}
+        </Section>
+
+        <Section>
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
           {user && <LaniakeaItem badge={sections.laniakea} onNavigate={onNavigate} />}
+          {user &&
+            (canAccessFeature('leaderboard', user.role, isProd) ? (
+              <NavItem
+                to="/leaderboard"
+                icon={Trophy}
+                label={t('nav.leaderboard')}
+                onNavigate={onNavigate}
+              />
+            ) : (
+              <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
+            ))}
         </Section>
 
         {user && (
-          <Section label={t('sidebar.community')}>
+          <Section>
             <NavItem
               to="/forum"
               icon={MessagesSquare}
@@ -397,17 +413,11 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             ) : (
               <LockedItem icon={Users} label={t('connections.title')} />
             )}
-            {canAccessFeature('leaderboard', user.role, isProd) ? (
-              <NavItem
-                to="/leaderboard"
-                icon={Trophy}
-                label={t('nav.leaderboard')}
-                onNavigate={onNavigate}
-              />
-            ) : (
-              <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
-            )}
-            <hr className="my-1 border-[var(--border)]" />
+          </Section>
+        )}
+
+        {user && (
+          <Section>
             {canAccessFeature('tutorChat', user.role, isProd) ? (
               <TutorItem onNavigate={onNavigate} />
             ) : (

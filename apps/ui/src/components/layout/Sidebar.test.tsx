@@ -78,6 +78,22 @@ describe('Sidebar', () => {
       'Almanac',
       'Sign in',
     ]);
+  });
+
+  it("groups a student's rows by lines, with the tutor last", () => {
+    h.auth = { user: USER };
+    h.progress = { progressMap: {}, isLoading: true };
+    renderSidebar();
+    const nav = screen.getByRole('navigation');
+    const groups = Array.from(nav.children).map((group) =>
+      Array.from(group.children).map((row) => row.textContent),
+    );
+    expect(groups).toEqual([
+      ['Dashboard', 'Courses', 'Algorithms', 'ProjectsComing soon', 'Progress'],
+      ['Almanac', 'LaniakeaBeta', 'Leaderboard'],
+      ['Forum', 'Messages', 'Connections'],
+      ['Tutor'],
+    ]);
     expect(screen.queryByText('Community')).toBeNull();
   });
 
@@ -99,9 +115,10 @@ describe('Sidebar', () => {
       expect.stringMatching(/^Still being built/),
     );
     expect(row).toHaveTextContent('2 lessons to go');
-    // Under the name, which keeps its room beside the Beta tag
+    // Under the name, with the Beta tag at the end of the row
     const note = within(row).getByText('2 lessons to go');
-    expect(note.previousElementSibling).toHaveTextContent(/^LaniakeaBeta$/);
+    expect(note.previousElementSibling).toHaveTextContent(/^Laniakea$/);
+    expect(row.lastElementChild).toHaveTextContent(/^Beta$/);
   });
 
   it('drops the note once the game is open', () => {
@@ -224,12 +241,10 @@ describe('Sidebar', () => {
     expect(link).toHaveTextContent(/^ProjectsComing soon$/);
   });
 
-  it('lists the tutor last in the community group and toggles its panel', () => {
+  it("toggles the tutor's panel", () => {
     h.auth = { user: USER };
     const onNavigate = renderSidebar();
     const tutor = screen.getByRole('button', { name: 'Tutor' });
-    const leaderboard = screen.getByRole('link', { name: 'Leaderboard' });
-    expect(leaderboard.compareDocumentPosition(tutor)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     expect(tutor).toHaveAttribute('aria-pressed', 'false');
     fireEvent.click(tutor);
     expect(h.tutor.toggle).toHaveBeenCalled();
