@@ -199,7 +199,7 @@
       "id": "q21",
       "text": "What does this print?",
       "code": "names = [\"ida\", \"rex\"]\nnice = [n[0].upper() + n[1:] for n in names]\nprint(nice)",
-      "options": ["['Ida', 'Rex']", "['IDA', 'REX']", "['A', 'R']", "['ida', 'rex']"],
+      "options": ["['Ida', 'Rex']", "['IDA', 'REX']", "['I', 'R']", "['ida', 'rex']"],
       "answer": 0
     },
     {

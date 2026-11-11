@@ -204,7 +204,7 @@
       "id": "q21",
       "text": "Ce afișează?",
       "code": "nume = [\"ida\", \"rex\"]\nfrumos = [n[0].upper() + n[1:] for n in nume]\nprint(frumos)",
-      "options": ["['Ida', 'Rex']", "['IDA', 'REX']", "['A', 'R']", "['ida', 'rex']"],
+      "options": ["['Ida', 'Rex']", "['IDA', 'REX']", "['I', 'R']", "['ida', 'rex']"],
       "answer": 0
     },
     {
