@@ -27,11 +27,11 @@ Recursivitatea nu se potrivește aici. Un apel recursiv pe copilul stâng termin
 Asta este o **coadă**, ca rândul de la casă. Cine vine se așază la sfârșit, cine e servit pleacă din față: primul venit, primul servit
 
 ```text
-vin:      Ana, apoi Ben, apoi Cris
+vin:      Ida, apoi Ben, apoi Cleo
 
-fata [ Ana  Ben  Cris ] spate
+fata [ Ida  Ben  Cleo ] spate
 
-servit:   Ana iese prima, apoi Ben
+servit:   Ida iese prima, apoi Ben
 ```
 
 ---
@@ -45,9 +45,9 @@ import java.util.Queue;
 public class Main {
     public static void main(String[] args) {
         Queue<String> coada = new ArrayDeque<>();
-        coada.add("Ana");
+        coada.add("Ida");
         coada.add("Ben");
-        coada.add("Cris");
+        coada.add("Cleo");
 
         System.out.println(coada.poll());
         System.out.println(coada.poll());
@@ -59,7 +59,7 @@ public class Main {
 Rezultat
 
 ```text
-Ana
+Ida
 Ben
 1
 ```

@@ -27,11 +27,11 @@ Recursivitatea nu se potrivește aici. Un apel recursiv pe copilul stâng termin
 Acesta e o **coadă**, ca rândul de la casă. Cine vine se așază la final, cine e servit pleacă din față: primul venit, primul servit
 
 ```text
-vin:     Ana, apoi Ben, apoi Cris
+vin:     Ida, apoi Ben, apoi Cleo
 
-fata [ Ana  Ben  Cris ] final
+fata [ Ida  Ben  Cleo ] final
 
-servit:  Ana iese prima, apoi Ben
+servit:  Ida iese prima, apoi Ben
 ```
 
 ---
@@ -42,9 +42,9 @@ Python are o coadă gata făcută, **deque**, în modulul **collections**. **app
 from collections import deque
 
 coada = deque()
-coada.append("Ana")
+coada.append("Ida")
 coada.append("Ben")
-coada.append("Cris")
+coada.append("Cleo")
 
 print(coada.popleft())
 print(coada.popleft())
@@ -54,7 +54,7 @@ print(len(coada))
 Rezultat
 
 ```text
-Ana
+Ida
 Ben
 1
 ```

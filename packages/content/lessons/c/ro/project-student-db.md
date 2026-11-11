@@ -115,14 +115,14 @@ Intrare
 
 ```text
 2
-Ana 88
-Mihai 91
+Ida 88
+Pablo 91
 ```
 
 Ieșire
 
 ```text
-Ana: 88
-Mihai: 91
-Cel mai bun: Mihai (91)
+Ida: 88
+Pablo: 91
+Cel mai bun: Pablo (91)
 ```

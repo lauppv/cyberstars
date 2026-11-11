@@ -93,10 +93,10 @@ Forgetting **fclose** is like leaving the tap running. The program might work fi
 The computing center keeps a log of every shift: the on-duty technician's name and the number of incidents they resolved. At the end of the shift, the log must be written to disk, then read back for the morning report.
 
 1. Open a file **"shift.txt"** for **writing**
-2. Write these 3 lines with **fprintf**: `Enescu 95`, `Vlad 82`, `Dobre 98` (name and incident count, separated by a space)
+2. Write these 3 lines with **fprintf**: `Larsen 95`, `Hans 82`, `Brown 98` (name and incident count, separated by a space)
 3. Close the file
 4. Open **"shift.txt"** for **reading**
-5. Read each name and count using **fscanf** and print them as: **"Technician: Enescu, Incidents: 95"**
+5. Read each name and count using **fscanf** and print them as: **"Technician: Larsen, Incidents: 95"**
 6. Close the file
 
 **Example**
@@ -104,7 +104,7 @@ The computing center keeps a log of every shift: the on-duty technician's name a
 Your program should print
 
 ```text
-Technician: Enescu, Incidents: 95
-Technician: Vlad, Incidents: 82
-Technician: Dobre, Incidents: 98
+Technician: Larsen, Incidents: 95
+Technician: Hans, Incidents: 82
+Technician: Brown, Incidents: 98
 ```

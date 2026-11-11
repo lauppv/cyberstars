@@ -31,9 +31,9 @@
     { "stdin": "Cerf\n80\n", "generated": true },
     { "stdin": "Lamport\n3\n", "generated": true },
     { "stdin": "X\n120\n", "generated": true },
-    { "stdin": "mihai\n17\n", "generated": true },
-    { "stdin": "ANA\n25\n", "generated": true },
-    { "stdin": "Popescu_Ion\n40\n", "generated": true },
+    { "stdin": "pablo\n17\n", "generated": true },
+    { "stdin": "IDA\n25\n", "generated": true },
+    { "stdin": "Schmidt_Raj\n40\n", "generated": true },
     { "stdin": "R2D2\n33\n", "generated": true },
     { "stdin": "Minsky\n75\n", "generated": true }
   ]

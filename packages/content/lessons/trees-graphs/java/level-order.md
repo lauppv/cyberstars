@@ -27,11 +27,11 @@ Recursion doesn't fit this walk. A recursive call on the left child finishes the
 That's a **queue**, like the line at a till. Whoever joins goes to the back, whoever is served comes from the front: first in, first out
 
 ```text
-join:   Ana, then Ben, then Cris
+join:   Ida, then Ben, then Cleo
 
-front [ Ana  Ben  Cris ] back
+front [ Ida  Ben  Cleo ] back
 
-serve:  Ana comes out first, then Ben
+serve:  Ida comes out first, then Ben
 ```
 
 ---
@@ -45,9 +45,9 @@ import java.util.Queue;
 public class Main {
     public static void main(String[] args) {
         Queue<String> queue = new ArrayDeque<>();
-        queue.add("Ana");
+        queue.add("Ida");
         queue.add("Ben");
-        queue.add("Cris");
+        queue.add("Cleo");
 
         System.out.println(queue.poll());
         System.out.println(queue.poll());
@@ -59,7 +59,7 @@ public class Main {
 Output
 
 ```text
-Ana
+Ida
 Ben
 1
 ```

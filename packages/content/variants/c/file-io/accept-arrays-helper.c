@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 static void write_log(const char *path) {
-    const char *names[] = { "Enescu", "Vlad", "Dobre" };
+    const char *names[] = { "Larsen", "Hans", "Brown" };
     int counts[] = { 95, 82, 98 };
     FILE *fp = fopen(path, "w");
     for (int i = 0; i < 3; i++) fprintf(fp, "%s %d\n", names[i], counts[i]);
