@@ -17,7 +17,14 @@ print("9")
 print("10")
 ```
 
-E clar că am **repetat** codul, iar asta este complet **interzis**. De ce? Ei bine, ce se întâmplă dacă vrem să afișăm toate numerele de la **1 la 1000**? În niciun caz nu vrem **1000 de instrucțiuni print()** pe care să le modificăm manual
+E clar că am **repetat** codul, iar asta este complet **interzis**. De ce? Pentru că nu știm întotdeauna de câte ori va trebui să facem ceva. De exemplu, în ambar poate fi un număr diferit de nave, în funcție de câte sunt plecate în misiune. Dacă vrem să verificăm pentru fiecare navă dacă are nevoie de combustibil și provizii pentru piloți, nu putem scrie câte o verificare separată pentru fiecare navă. Avem nevoie de o metodă prin care să repetăm aceleași instrucțiuni pentru fiecare navă din listă.
+
+```py
+nave = ["Voyager", "Odyssey", "Pioneer"]
+
+for nava in nave:
+    print("Verifică combustibilul și proviziile pentru", nava)
+```
 
 Aici intervine puterea buclei **for**
 
@@ -37,7 +44,7 @@ Acum vedem toate numerele de la **1 la 1000**
 
 Hai să explicăm acest cod
 
-**for** face singur variabila **i**, așa că nu o scriem înainte de buclă. Se uită la **range(1, 1001)** și știe că asta înseamnă **toate numerele de la 1 la 1000 (1001 - 1)**. La fiecare iterație îi dă lui **i** următorul număr din **range()**, începând cu primul, **1**
+**for** ia câte o valoare din ceea ce urmează după **in** și o pune în variabila **i**. Pentru **range(1, 1001)**, ne putem imagina valorile ca și cum ar fi într-o listă: **1, 2, 3, ..., 1000**. Observă că am scris **1001** în **range()**, dar numerele ajung doar până la **1000**. Ultimul număr din **range()** nu este inclus. Bucla **for** ia fiecare număr pe rând și îl pune în **i**. Diferența importantă este că **range()** nu creează și nu stochează o listă adevărată cu toate aceste numere. Îi dă buclei următorul număr atunci când are nevoie de el.
 
 Mai întâi, **i = 1**, apoi intră în bloc și îl afișează, după care **for** îi dă lui **i** următorul număr din **range()**
 
@@ -47,7 +54,7 @@ Acum **i = 3**, îl afișează, apoi **i** primește încă o dată următorul n
 
 ... și tot așa **:)**. Nu e fascinant? Practic facem calculatorul să facă această **repetiție** pentru noi
 
-**in** este un cuvânt cheie. Îi spune lui **Python** de unde își ia **i** valorile: din **range()**, câte un număr pe rând
+**in** este un cuvânt-cheie. Îi spune lui **Python** de unde să ia valorile: în acest exemplu, din **range()**, câte un număr pe rând
 
 ---
 
