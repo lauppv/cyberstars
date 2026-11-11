@@ -17,7 +17,14 @@ print("9")
 print("10")
 ```
 
-It's clear that we **repeated** the code, and that is completely **forbidden**. Why? Well, what happens if we want to display all the numbers from **1 to 1000**? There's no way we want **1000 print() statements** to modify manually
+It's clear that we **repeated** the code, and that is completely **forbidden**. Why? Because we don't always know how many times we'll need to do something. For example, the spaceport may have a different number of ships depending on which ones are away on missions. If we need to check each ship for fuel and food supplies, we can't write a separate check for every ship. We need a way to repeat the same instructions for each ship in the list.
+
+```py
+ships = ["Voyager", "Odyssey", "Pioneer"]
+
+for ship in ships:
+    print("Check fuel and food for", ship)
+```
 
 This is where the power of the **for** loop comes in
 
@@ -37,7 +44,7 @@ Now we see all the numbers from **1 to 1000**
 
 Let's explain this code
 
-**for** makes the variable **i** itself, so we don't write it before the loop. It looks at **range(1, 1001)** and knows this means **all numbers from 1 to 1000 (1001 - 1)**. On each iteration it gives **i** the next number of **range()**, starting with the first one, **1**
+**for** takes one value at a time from what comes after **in** and puts it in the variable **i**. With **range(1, 1001)**, you can think of those values as if they were a list: **1, 2, 3, ..., 1000**. Notice that we wrote **1001** in **range()**, but the numbers only go up to **1000**. The last number in **range()** is not included. The **for** loop takes each number in turn and puts it in **i**. The important difference is that **range()** doesn't create and store a real list of all those numbers. It gives the loop the next number when it needs it.
 
 First, **i = 1**, then it enters the block and prints it, after which **for** gives **i** the next number of **range()**
 
@@ -47,7 +54,7 @@ Now **i = 3**, it prints it, then **i** gets the next number once more
 
 ... and so on **:)**. Isn't it fascinating? We basically make the computer do this **repetition** for us
 
-**in** is a keyword. It tells **Python** where **i** takes its values from: **range()**, one number at a time
+**in** is a keyword. It tells **Python** what to take values from: in this example, **range()**, one number at a time
 
 ---
 
