@@ -1,4 +1,4 @@
-The robotics club at Gheorghe's school writes a newsletter every week. The members write it the easy way, in plain text with a few marks: a `#` for a title, `**` around bold words, a `-` in front of each item in a list. But the school's website only shows HTML. Gheorghe copies and fixes every tag by hand on Friday evenings. You'll write the converter that does it for him.
+The robotics club at Theodore's school writes a newsletter every week. The members write it the easy way, in plain text with a few marks: a `#` for a title, `**` around bold words, a `-` in front of each item in a list. But the school's website only shows HTML. Theodore copies and fixes every tag by hand on Friday evenings. You'll write the converter that does it for him.
 
 You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests convert newsletters your program has never seen. Passing them finishes the project.
 
@@ -58,10 +58,10 @@ A list ends at an empty line, a heading, an ordinary line of text, or an item of
 
 ## Safe characters
 
-In HTML, `<`, `>` and `&` mean something, so a newsletter that says `Ms. Pop & Mr. Ionescu` would confuse a browser. Before anything else in a piece of text, turn `&` into `&amp;`, `<` into `&lt;` and `>` into `&gt;`, in that order (why must `&` come first?):
+In HTML, `<`, `>` and `&` mean something, so a newsletter that says `Ms. Lee & Mr. Fischer` would confuse a browser. Before anything else in a piece of text, turn `&` into `&amp;`, `<` into `&lt;` and `>` into `&gt;`, in that order (why must `&` come first?):
 
 ```text
-<p>Questions? Ask Ms. Pop &amp; Mr. Ionescu.</p>
+<p>Questions? Ask Ms. Lee &amp; Mr. Fischer.</p>
 ```
 
 ## Code
@@ -75,4 +75,4 @@ if speed &gt; 100 &amp;&amp; ready:
 </code></pre>
 ```
 
-A block of code closes whatever was open before it. If the text ends inside a block, close it anyway. Gheorghe's Friday evenings are free again.
+A block of code closes whatever was open before it. If the text ends inside a block, close it anyway. Theodore's Friday evenings are free again.

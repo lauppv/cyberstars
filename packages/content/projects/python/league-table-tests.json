@@ -7,7 +7,7 @@
     },
     {
       "visible": true,
-      "stdin": "Rapid 1-0 Dinamo\nDinamo 2-2 Rapid\n"
+      "stdin": "Comet 1-0 Wolves\nWolves 2-2 Comet\n"
     },
     {
       "stdin": "Sharks 3-0 Owls\nOwls 1-2 Foxes\nFoxes 0-0 Sharks\nHedgehogs 5-1 Owls\nSharks 2-2 Hedgehogs\nFoxes 1-3 Hedgehogs\nOwls 0-4 Sharks\nHedgehogs 1-1 Foxes\nSharks 2 - 1 Foxes\nOwls 2-2 Hedgehogs\nFoxes 2-0 Owls\n"
@@ -16,7 +16,7 @@
       "stdin": "Lions two-one Tigers\nTigers\n"
     },
     {
-      "stdin": "Unirea 10-0 Victoria\nVictoria 0-10 Unirea\nSteaua 3-3 Victoria\nUnirea 1-1 Steaua\n"
+      "stdin": "United 10-0 Victoria\nVictoria 0-10 United\nRovers 3-3 Victoria\nUnited 1-1 Rovers\n"
     },
     {
       "stdin": "A 1-0 B\nB 1-0 C\nC 1-0 A\n"

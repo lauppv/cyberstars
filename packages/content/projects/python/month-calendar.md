@@ -1,4 +1,4 @@
-Grandma Maria keeps a paper calendar on the kitchen wall, with every birthday in the family written in by hand. The shop near her block stopped selling them. You'll make her one instead: a program that prints the months she asks for, each one laid out like a real calendar, with the family's birthdays, the public holidays, and how many working days her grandchildren have that month.
+Grandma Lucia keeps a paper calendar on the kitchen wall, with every birthday in the family written in by hand. The shop near her block stopped selling them. You'll make her one instead: a program that prints the months she asks for, each one laid out like a real calendar, with the family's birthdays, the public holidays, and how many working days her grandchildren have that month.
 
 You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests ask your program for months it has never printed, leap years included. Passing them finishes the project.
 
@@ -11,11 +11,11 @@ The first line says which month to start with, the year and the month's number, 
 ```text
 2026 11 3
 5
-B 14.11 Mama
-B 23.11 Ana
+B 14.11 Mom
+B 23.11 Ida
 H 30.11 Saint Andrew
 H 1.12 National Day
-B 2.11 Bunica Ana
+B 2.11 Granny Ida
 ```
 
 A birthday comes back every year, so a date has no year. `input().split(' ', 2)` splits off the first two words and keeps the rest of the line, spaces and all, as the third.
@@ -60,7 +60,7 @@ Print the months one after another, with an empty line between them. After Decem
 Under each month's grid, list its birthdays and its holidays, each sorted by day, with the day in front of the name and commas between them:
 
 ```text
-Birthdays: 2 Bunica Ana, 14 Mama, 23 Ana
+Birthdays: 2 Granny Ida, 14 Mom, 23 Ida
 Holidays: 30 Saint Andrew
 ```
 

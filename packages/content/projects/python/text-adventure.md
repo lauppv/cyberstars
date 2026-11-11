@@ -1,6 +1,6 @@
-Your little cousin Matei loves the old text adventure games where you type `go north` and the computer tells you what you see. He drew his own on paper: a bakery at night, a locked cellar, a recipe to rescue. He wants to play it on a computer, and next week he'll draw another one. So you won't write his bakery into the program: you'll write a game engine that reads any world from its input and lets you play it.
+Your little cousin Ethan loves the old text adventure games where you type `go north` and the computer tells you what you see. He drew his own on paper: a bakery at night, a locked cellar, a recipe to rescue. He wants to play it on a computer, and next week he'll draw another one. So you won't write his bakery into the program: you'll write a game engine that reads any world from its input and lets you play it.
 
-You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think the whole game works, press **Run Tests**: the tests play your engine with Matei's bakery and with worlds you've never seen. Passing them finishes the project.
+You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think the whole game works, press **Run Tests**: the tests play your engine with Ethan's bakery and with worlds you've never seen. Passing them finishes the project.
 
 Everything comes from `input()` and goes out through `print()`.
 
@@ -107,4 +107,4 @@ Exits: east
 You made it! It took you 10 moves.
 ```
 
-One move reads `1 move`. Matei finished the bakery in 10; draw him a world of your own and see if he can beat it.
+One move reads `1 move`. Ethan finished the bakery in 10; draw him a world of your own and see if he can beat it.

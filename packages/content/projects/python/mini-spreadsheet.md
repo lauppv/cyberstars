@@ -1,4 +1,4 @@
-Mihai is the class treasurer, and this spring the class goes on a trip. He has to work out the bus, the museum tickets, lunch, the total and what each kid pays, and every time someone drops out, everything changes. On a spreadsheet it would update by itself, but the school's computers have none. You'll write a small one: cells hold numbers, text or formulas that use other cells, and the table always shows the latest results.
+Pablo is the class treasurer, and this spring the class goes on a trip. He has to work out the bus, the museum tickets, lunch, the total and what each kid pays, and every time someone drops out, everything changes. On a spreadsheet it would update by itself, but the school's computers have none. You'll write a small one: cells hold numbers, text or formulas that use other cells, and the table always shows the latest results.
 
 You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests type sheets into your program that it has never seen. Passing them finishes the project.
 
@@ -74,4 +74,4 @@ And a cell that uses a cell with an error shows the same error. Raising your own
   2 Bus              900        30   #CYCLE!   #VALUE!
 ```
 
-A line that isn't a command or a cell prints `I don't understand: hello`, and a name that isn't a cell before the `=` prints `Not a cell: total`. Mihai worked out the trip in ten minutes.
+A line that isn't a command or a cell prints `I don't understand: hello`, and a name that isn't a cell before the `=` prints `Not a cell: total`. Pablo worked out the trip in ten minutes.
