@@ -206,12 +206,10 @@ function ComingSoonTag() {
   return <Tag>{t('common.comingSoon')}</Tag>;
 }
 
-function Section({ label, children }: { label?: string; children: ReactNode }) {
+// Groups are set apart by a line, with no title
+function Section({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-col gap-px mt-4 first:mt-0">
-      {label && (
-        <div className="px-2.5 pb-1 text-[11px] font-medium text-[var(--text3)]">{label}</div>
-      )}
+    <div className="flex flex-col gap-px mt-2 pt-2 border-t border-[var(--border)] first:mt-0 first:pt-0 first:border-t-0">
       {children}
     </div>
   );
@@ -336,15 +334,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
       <nav className="flex-1 overflow-y-auto px-2 py-2">
         <Section>
           {user && (
-            <>
-              <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
-              <NavItem
-                to="/progress"
-                icon={ChartNoAxesColumnIncreasing}
-                label={t('nav.progress')}
-                onNavigate={onNavigate}
-              />
-            </>
+            <NavItem to="/" icon={House} label={t('nav.dashboard')} onNavigate={onNavigate} />
           )}
           <NavItem to="/courses" icon={BookOpen} label={t('nav.courses')} onNavigate={onNavigate} />
           <NavItem
@@ -366,12 +356,34 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
           ) : (
             <LockedItem icon={FolderKanban} label={t('nav.projects')} />
           )}
+          {user && (
+            <NavItem
+              to="/progress"
+              icon={ChartNoAxesColumnIncreasing}
+              label={t('nav.progress')}
+              onNavigate={onNavigate}
+            />
+          )}
+        </Section>
+
+        <Section>
           <NavItem to="/almanac" icon={Library} label={t('nav.almanac')} onNavigate={onNavigate} />
           {user && <LaniakeaItem badge={sections.laniakea} onNavigate={onNavigate} />}
+          {user &&
+            (canAccessFeature('leaderboard', user.role, isProd) ? (
+              <NavItem
+                to="/leaderboard"
+                icon={Trophy}
+                label={t('nav.leaderboard')}
+                onNavigate={onNavigate}
+              />
+            ) : (
+              <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
+            ))}
         </Section>
 
         {user && (
-          <Section label={t('sidebar.community')}>
+          <Section>
             <NavItem
               to="/forum"
               icon={MessagesSquare}
@@ -401,17 +413,11 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
             ) : (
               <LockedItem icon={Users} label={t('connections.title')} />
             )}
-            {canAccessFeature('leaderboard', user.role, isProd) ? (
-              <NavItem
-                to="/leaderboard"
-                icon={Trophy}
-                label={t('nav.leaderboard')}
-                onNavigate={onNavigate}
-              />
-            ) : (
-              <LockedItem icon={Trophy} label={t('nav.leaderboard')} />
-            )}
-            <hr className="my-1 border-[var(--border)]" />
+          </Section>
+        )}
+
+        {user && (
+          <Section>
             {canAccessFeature('tutorChat', user.role, isProd) ? (
               <TutorItem onNavigate={onNavigate} />
             ) : (
