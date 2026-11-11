@@ -23,7 +23,7 @@ E clar că am **repetat** codul, iar asta este complet **interzis**. De ce? Pent
 nave = ["Voyager", "Odyssey", "Pioneer"]
 
 for nava in nave:
-    print("Verifică combustibilul și proviziile pentru", nava)
+    print("Verifica combustibilul si proviziile pentru", nava)
 ```
 
 Aici intervine puterea buclei **for**
