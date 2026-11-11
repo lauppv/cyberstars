@@ -13,8 +13,8 @@ The first line says which month to start with, the year and the month's number, 
 5
 B 14.11 Mom
 B 23.11 Ida
-H 30.11 Saint Andrew
-H 1.12 National Day
+H 11.11 Armistice Day
+H 25.12 Christmas
 B 2.11 Granny Ida
 ```
 
@@ -61,7 +61,7 @@ Under each month's grid, list its birthdays and its holidays, each sorted by day
 
 ```text
 Birthdays: 2 Granny Ida, 14 Mom, 23 Ida
-Holidays: 30 Saint Andrew
+Holidays: 11 Armistice Day
 ```
 
 A month with none says `Birthdays: none` or `Holidays: none`. A 29 February birthday shows only in years that have one.
