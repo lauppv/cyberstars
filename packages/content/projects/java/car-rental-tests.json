@@ -7,7 +7,7 @@
     },
     {
       "visible": true,
-      "stdin": "3\ncar B-1 Logan 100\nvan B-2 Transit 150\nscooter B-3 Vespa 40\nrent B-3 Ida 1\nreturn B-3 3 10\nrent B-3 Ida 5\nreturn B-3 5 0\nrent B-2 Dan 2\nreturn B-2 1 10\nreturn B-2 2 2600\nlist\nrent B-2 Eva 3\nserviced B-2\nrent B-1 Eva 10\nreturn B-1 11 150\nreturn B-1 11 0\ncustomer Ida\ncustomer Dan\navailable van\navailable car\nreport\nclose\n"
+      "stdin": "3\ncar CD-1 Polo 100\nvan CD-2 Transit 150\nscooter CD-3 Vespa 40\nrent CD-3 Ida 1\nreturn CD-3 3 10\nrent CD-3 Ida 5\nreturn CD-3 5 0\nrent CD-2 Dan 2\nreturn CD-2 1 10\nreturn CD-2 2 2600\nlist\nrent CD-2 Eva 3\nserviced CD-2\nrent CD-1 Eva 10\nreturn CD-1 11 150\nreturn CD-1 11 0\ncustomer Ida\ncustomer Dan\navailable van\navailable car\nreport\nclose\n"
     },
     {
       "stdin": "1\ncar X-1 Fiat 80\nreport\navailable bus\ncustomer Nobody\nrent X-1 Ida\nserviced X-1\nclose\n"
