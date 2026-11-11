@@ -21,8 +21,8 @@ Print `2 printers ready`, then keep reading commands until someone types `quit`,
 `submit <user> <pages> <normal|urgent>` sends a job to the spooler. Jobs are numbered from 1:
 
 ```text
-submit ana 30 normal
-Job 1: 30 pages for ana, 1 in the queue
+submit ida 30 normal
+Job 1: 30 pages for ida, 1 in the queue
 ```
 
 Nobody knows how many jobs will come, so don't put them in a fixed array: make each job a struct with `malloc`, and keep the queue as a **linked list**, each job pointing to the next one with a `struct Job *next`. A pointer to the first job is the whole queue.
@@ -35,8 +35,8 @@ Urgent jobs go before normal ones; among jobs of the same kind, the one submitte
 queue
 Laser: free
 Inkjet: free
-Job 3: ioana, 12 pages, urgent
-Job 1: ana, 30 pages
+Job 3: julia, 12 pages, urgent
+Job 1: ida, 30 pages
 Job 2: dan, 8 pages
 Job 4: leo, 50 pages
 ```
@@ -55,9 +55,9 @@ Say when a printer starts and finishes a job:
 
 ```text
 tick 2
-Minute 1: Laser starts job 3 (ioana)
-Minute 1: Laser finished job 3 (ioana)
-Minute 1: Inkjet starts job 1 (ana)
+Minute 1: Laser starts job 3 (julia)
+Minute 1: Laser finished job 3 (julia)
+Minute 1: Inkjet starts job 1 (ida)
 Minute 2: Laser starts job 2 (dan)
 Minute 2: Laser finished job 2 (dan)
 ```
@@ -94,9 +94,9 @@ report
 Minutes: 7
 Laser: 76 pages
 Inkjet: 14 pages
-ana: 40 pages
 dan: 8 pages
-ioana: 12 pages
+ida: 40 pages
+julia: 12 pages
 leo: 20 pages
 mara: 6 pages
 sara: 4 pages
@@ -104,7 +104,7 @@ Average time to print: 1.8 min
 Still waiting: 0
 ```
 
-Every page that came out counts, so Ana's 10 pages lost in the jam count too: that paper is gone. Before any job finished, the average reads `Average time to print: none`.
+Every page that came out counts, so Ida's 10 pages lost in the jam count too: that paper is gone. Before any job finished, the average reads `Average time to print: none`.
 
 ## Clean up
 

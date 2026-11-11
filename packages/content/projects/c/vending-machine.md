@@ -15,13 +15,13 @@ A2 Chips 380 1
 B1 Coffee 420 3
 ```
 
-Prices are in bani, whole numbers, so `250` is 2.50 lei: money as whole numbers never suffers the rounding of `float`. Keep the products in an array of structs.
+Prices are in cents, whole numbers, so `250` is 2.50 euros: money as whole numbers never suffers the rounding of `float`. Keep the products in an array of structs.
 
 Print `Loaded 3 products`. Then keep reading commands until the technician types `quit`, and print `Bye` then. Any other word prints `Unknown command: dance`.
 
 ## Show the products
 
-`list` prints every product in the order loaded, with its price in lei and two decimals, and how many are left:
+`list` prints every product in the order loaded, with its price in euros and two decimals, and how many are left:
 
 ```text
 list
@@ -30,11 +30,11 @@ A2 Chips 3.80 (1 left)
 B1 Coffee 4.20 (3 left)
 ```
 
-An empty slot shows `(sold out)` instead. Write a function that prints an amount of bani as lei (`%d.%02d` with a division and a remainder); every later step uses it.
+An empty slot shows `(sold out)` instead. Write a function that prints an amount of cents as euros (`%d.%02d` with a division and a remainder); every later step uses it.
 
 ## Insert coins
 
-`coin <value>` takes a coin. The machine knows four: 10, 50, 100 and 500 bani. Each accepted coin adds to the credit:
+`coin <value>` takes a coin. The machine knows four: 10, 50, 100 and 500 cents. Each accepted coin adds to the credit:
 
 ```text
 coin 100
@@ -113,7 +113,7 @@ Earned: 10.50
 Coins: 7x500 6x100 5x50 0x10
 ```
 
-The 10 bani tube is empty: the technician will bring more before the machine starts refusing sales.
+The 10 cent tube is empty: the technician will bring more before the machine starts refusing sales.
 
 ## Survive bad input
 
