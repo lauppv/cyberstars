@@ -266,10 +266,10 @@
       "id": "q30-v2",
       "text": "Cum arată Python o listă de texte când afișează toată lista?",
       "options": [
-        "Fiecare pe linia lui: Ana, apoi Ben",
-        "Cu paranteze și ghilimele: ['Ana', 'Ben']",
-        "Cu virgule, fără paranteze: Ana, Ben",
-        "Lipite, fără spații între ele: AnaBen"
+        "Fiecare pe linia lui: Ida, apoi Ben",
+        "Cu paranteze și ghilimele: ['Ida', 'Ben']",
+        "Cu virgule, fără paranteze: Ida, Ben",
+        "Lipite, fără spații între ele: IdaBen"
       ],
       "answer": 1
     }
@@ -442,7 +442,7 @@
           "items": "\"Shadow\", \"Jess\", \"Quincy\"",
           "i": 2,
           "j": 1,
-          "new": "\"Ana\""
+          "new": "\"Ida\""
         }
       ],
       "mistakes": [
@@ -774,7 +774,7 @@
         },
         {
           "v": "echipaj",
-          "items": "\"Ana\", \"Ben\", \"Cal\"",
+          "items": "\"Ida\", \"Ben\", \"Cal\"",
           "i": 0,
           "new": "\"Zoe\""
         },

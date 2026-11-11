@@ -1,4 +1,4 @@
-Grandma Elena got a new phone, and before the old one goes in a drawer she wants her photos safe: sorted by year, the summer at the seaside in an album of its own, and nothing deleted by accident. The photos are already copied off the phone, in one folder. You'll turn that folder into an archive.
+Grandma Sofia got a new phone, and before the old one goes in a drawer she wants her photos safe: sorted by year, the summer at the seaside in an album of its own, and nothing deleted by accident. The photos are already copied off the phone, in one folder. You'll turn that folder into an archive.
 
 You do it one step at a time, in the terminal on the right. Tick a step off once the files look like it asks; you can always come back and untick it.
 

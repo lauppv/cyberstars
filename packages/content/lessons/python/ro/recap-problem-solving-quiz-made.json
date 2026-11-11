@@ -125,13 +125,8 @@
     {
       "id": "rps-toolkit-6d9f92",
       "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\ntext = \"Ene purta patru pene\"\nprint(curata_text(text))\nprint(este_palindrom(curata_text(text)))",
-      "options": [
-        "enepurtapatrupene\nTrue",
-        "enepurtapatrupene\nFalse",
-        "Enepurtapatrupene\nFalse",
-        "Ene purta patru pene\nTrue"
-      ],
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\ntext = \"Aerisirea\"\nprint(curata_text(text))\nprint(este_palindrom(curata_text(text)))",
+      "options": ["aerisirea\nTrue", "aerisirea\nFalse", "Aerisirea\nFalse", "Aerisirea\nTrue"],
       "answer": 0
     },
     {
@@ -650,7 +645,7 @@
       "text": "Ce a tastat utilizatorul?",
       "code": "rand = input()\nlitere = \"\"\nfor ch in rand:\n    if ch.isalpha():\n        litere += ch.lower()\nprint(litere == litere[::-1])",
       "output": "False",
-      "options": ["Vice City", "Ana", "Rotitor", "Ele fac cafele"],
+      "options": ["Vice City", "Anna", "Rotitor", "Ele fac cafele"],
       "answer": 0
     },
     {

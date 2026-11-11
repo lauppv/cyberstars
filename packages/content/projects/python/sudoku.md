@@ -1,4 +1,4 @@
-Grandpa Ion does the sudoku in the Sunday paper with a pencil and an eraser. Lately his eyes are tired, and twice he spent an hour on a grid that had a mistake from the very first minute. You'll write him a helper: he types in the grid as it stands, and the program tells him if anything clashes, fills in the cells that are sure, and, if he asks it to, solves the rest by trying digits and taking them back when they lead nowhere.
+Grandpa Raj does the sudoku in the Sunday paper with a pencil and an eraser. Lately his eyes are tired, and twice he spent an hour on a grid that had a mistake from the very first minute. You'll write him a helper: he types in the grid as it stands, and the program tells him if anything clashes, fills in the cells that are sure, and, if he asks it to, solves the rest by trying digits and taking them back when they lead nowhere.
 
 You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests give your program grids it has never seen, some of them impossible. Passing them finishes the project.
 

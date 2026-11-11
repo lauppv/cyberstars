@@ -41,7 +41,7 @@
       "generated": true
     },
     {
-      "inject": { "commander": "Rex", "pilot": ["Iris", "Ana Maria Popescu"], "engineer": "Grace" },
+      "inject": { "commander": "Rex", "pilot": ["Iris", "Ida Lucia Schmidt"], "engineer": "Grace" },
       "generated": true
     },
     {
@@ -103,7 +103,7 @@
     {
       "inject": {
         "commander": "Lance",
-        "pilot": ["Ana Maria Popescu", "Big Mitch"],
+        "pilot": ["Ida Lucia Schmidt", "Big Mitch"],
         "engineer": "Sol"
       },
       "generated": true

@@ -16,9 +16,9 @@
       "answer": 0
     },
     {
-      "id": "rd-average-8f36ec",
+      "id": "rd-average-57d3ed",
       "text": "Ce afișează?",
-      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Ana\": 99, \"Ben\": 81, \"Cara\": 60}\nprint(total_din(echipaj) / len(echipaj))",
+      "code": "def total_din(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return total\n\nechipaj = {\"Ida\": 99, \"Ben\": 81, \"Cara\": 60}\nprint(total_din(echipaj) / len(echipaj))",
       "options": ["80.0", "20.0", "80", "33.0"],
       "answer": 0
     },
@@ -37,10 +37,10 @@
       "answer": 0
     },
     {
-      "id": "rd-top-4c6068",
+      "id": "rd-top-a5a3ca",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 91, \"Ben\": 64, \"Cara\": 77}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
-      "options": ["Cel mai bun: Ana", "Cel mai bun:", "Cel mai bun: Cara", "Cel mai bun: 91"],
+      "code": "scoruri = {\"Ida\": 91, \"Ben\": 64, \"Cara\": 77}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"Cel mai bun: {cel_mai_bun}\")",
+      "options": ["Cel mai bun: Ida", "Cel mai bun:", "Cel mai bun: Cara", "Cel mai bun: 91"],
       "answer": 0
     },
     {
@@ -132,12 +132,12 @@
       "answer": 0
     },
     {
-      "id": "rd-update-69d6ea",
+      "id": "rd-update-2f256b",
       "text": "Ce afișează?",
-      "code": "echipaj = {\"Ana\": 70, \"Ben\": 88}\nechipaj[\"Ben\"] = echipaj[\"Ben\"] + 2\nechipaj[\"Cara\"] = 64\ndel echipaj[\"Ana\"]\nprint(echipaj)",
+      "code": "echipaj = {\"Ida\": 70, \"Ben\": 88}\nechipaj[\"Ben\"] = echipaj[\"Ben\"] + 2\nechipaj[\"Cara\"] = 64\ndel echipaj[\"Ida\"]\nprint(echipaj)",
       "options": [
         "{'Ben': 90, 'Cara': 64}",
-        "{'Ana': 70, 'Ben': 90, 'Cara': 64}",
+        "{'Ida': 70, 'Ben': 90, 'Cara': 64}",
         "{'Ben': 2, 'Cara': 64}",
         "{'Ben': 90}"
       ],
@@ -170,10 +170,10 @@
       "answer": 0
     },
     {
-      "id": "rd-first-low-ee7074",
+      "id": "rd-first-low-016dca",
       "text": "Ce afișează?",
-      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 60:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Ana\": 64, \"Ben\": 58, \"Cara\": 71}))",
-      "options": ["Ben", "Ben\nNimeni", "Nimeni", "Ana"],
+      "code": "def primul_slab(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 60:\n            return nume\n    return \"Nimeni\"\n\nprint(primul_slab({\"Ida\": 64, \"Ben\": 58, \"Cara\": 71}))",
+      "options": ["Ben", "Ben\nNimeni", "Nimeni", "Ida"],
       "answer": 0
     },
     {
@@ -370,10 +370,10 @@
       "answer": 0
     },
     {
-      "id": "rd-gap-append-a289d4",
+      "id": "rd-gap-append-1c2502",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 51, \"Ben\": 64, \"Cara\": 20}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
-      "output": "['Ana', 'Ben']",
+      "code": "scoruri = {\"Ida\": 51, \"Ben\": 64, \"Cara\": 20}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        ___\nprint(promovati)",
+      "output": "['Ida', 'Ben']",
       "options": [
         "promovati.append(nume)",
         "promovati.append(scoruri[nume])",
@@ -425,9 +425,9 @@
       "answer": 0
     },
     {
-      "id": "rd-gap-method-5a2862",
+      "id": "rd-gap-method-9eea2f",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "echipaj = {\"Ana\": 51, \"Ben\": 64, \"Cara\": 20}\nfor x in echipaj.___():\n    print(x)",
+      "code": "echipaj = {\"Ida\": 51, \"Ben\": 64, \"Cara\": 20}\nfor x in echipaj.___():\n    print(x)",
       "output": "51\n64\n20",
       "options": ["values", "keys", "items", "append"],
       "answer": 0
@@ -465,9 +465,9 @@
       "answer": 0
     },
     {
-      "id": "rd-gap-key-002dd8",
+      "id": "rd-gap-key-5776e2",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Ana\": 50, \"Ben\": 30})\nprint(raport[___])",
+      "code": "def fa_raport(scoruri):\n    total = 0\n    for scor in scoruri.values():\n        total = total + scor\n    return {\"total\": total, \"numar\": len(scoruri)}\n\nraport = fa_raport({\"Ida\": 50, \"Ben\": 30})\nprint(raport[___])",
       "output": "80",
       "options": ["\"total\"", "\"numar\"", "total", "0"],
       "answer": 0
@@ -515,12 +515,12 @@
       "answer": 0
     },
     {
-      "id": "rd-bad-quotes-9c5356",
+      "id": "rd-bad-quotes-93e65d",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 70, \"Ben\": 88}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 5\nscoruri[\"Cara\"] = 64\nprint(scoruri[\"Cara\"])\nprint(scoruri[\"Ben\"])\nprint(scoruri[Ana])",
+      "code": "scoruri = {\"Ida\": 70, \"Ben\": 88}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 5\nscoruri[\"Cara\"] = 64\nprint(scoruri[\"Cara\"])\nprint(scoruri[\"Ben\"])\nprint(scoruri[Ida])",
       "output": "64\n93\n70",
       "options": [
-        "print(scoruri[Ana])",
+        "print(scoruri[Ida])",
         "print(scoruri[\"Ben\"])",
         "print(scoruri[\"Cara\"])",
         "scoruri[\"Cara\"] = 64"
@@ -638,10 +638,10 @@
       "answer": 0
     },
     {
-      "id": "rd-holds-bonus-bd1d69",
+      "id": "rd-holds-bonus-cbbe75",
       "text": "Ce conține `eroi` la final?",
-      "code": "def creste_nivel(niveluri, pasi):\n    for name in niveluri:\n        niveluri[name] = niveluri[name] + pasi\n    return niveluri\n\neroi = creste_nivel({\"Ana\": 3, \"Kai\": 5}, 2)",
-      "options": ["{'Ana': 5, 'Kai': 7}", "{'Ana': 5, 'Kai': 5}", "{'Ana': 2, 'Kai': 2}", "None"],
+      "code": "def creste_nivel(niveluri, pasi):\n    for name in niveluri:\n        niveluri[name] = niveluri[name] + pasi\n    return niveluri\n\neroi = creste_nivel({\"Ida\": 3, \"Kai\": 5}, 2)",
+      "options": ["{'Ida': 5, 'Kai': 7}", "{'Ida': 5, 'Kai': 5}", "{'Ida': 2, 'Kai': 2}", "None"],
       "answer": 0
     },
     {

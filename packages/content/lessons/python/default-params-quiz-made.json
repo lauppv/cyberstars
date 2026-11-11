@@ -2,10 +2,10 @@
   "note": "Made by npm run make:quiz from the templates in default-params-quiz.json; don't edit it by hand.",
   "questions": [
     {
-      "id": "dp-word-586961",
+      "id": "dp-word-c961cc",
       "text": "What does this print?",
-      "code": "def greet(name, word=\"Hello\"):\n    print(word, name)\n\ngreet(\"Ana\")\ngreet(\"Rex\", \"Hi\")",
-      "options": ["Hello Ana\nHi Rex", "Hello Ana\nRex Hi", "Ana Hello\nRex Hi", "Hi Ana\nHi Rex"],
+      "code": "def greet(name, word=\"Hello\"):\n    print(word, name)\n\ngreet(\"Ida\")\ngreet(\"Rex\", \"Hi\")",
+      "options": ["Hello Ida\nHi Rex", "Hello Ida\nRex Hi", "Ida Hello\nRex Hi", "Hi Ida\nHi Rex"],
       "answer": 0
     },
     {
@@ -66,13 +66,13 @@
       "answer": 0
     },
     {
-      "id": "dp-keyword-5f719d",
+      "id": "dp-keyword-0a86db",
       "text": "What does this print?",
-      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest} booked a {room} ({meal})\")\n\nbook(\"Ana\", meal=\"dinner\")",
+      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest} booked a {room} ({meal})\")\n\nbook(\"Ida\", meal=\"dinner\")",
       "options": [
-        "Ana booked a single (dinner)",
-        "Ana booked a dinner (breakfast)",
-        "Ana booked a single (single)",
+        "Ida booked a single (dinner)",
+        "Ida booked a dinner (breakfast)",
+        "Ida booked a single (single)",
         "{guest} booked a {room} ({meal})"
       ],
       "answer": 0
@@ -267,14 +267,14 @@
       "answer": 0
     },
     {
-      "id": "dp-which-twice-66431b",
+      "id": "dp-which-twice-ca9c64",
       "text": "Which program shows this?",
-      "output": "Welcome Ana\nWelcome Kai",
+      "output": "Welcome Ida\nWelcome Kai",
       "options": [
-        "def welcome(guest, word=\"Welcome\"):\n    print(word, guest)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\")",
-        "def welcome(guest, word=\"Welcome\"):\n    print(word, guest)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\", \"Bye\")",
-        "def welcome(guest, word=\"Welcome\"):\n    print(guest, word)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\")",
-        "def welcome(guest, word=\"Bye\"):\n    print(word, guest)\n\nwelcome(\"Ana\")\nwelcome(\"Kai\")"
+        "def welcome(guest, word=\"Welcome\"):\n    print(word, guest)\n\nwelcome(\"Ida\")\nwelcome(\"Kai\")",
+        "def welcome(guest, word=\"Welcome\"):\n    print(word, guest)\n\nwelcome(\"Ida\")\nwelcome(\"Kai\", \"Bye\")",
+        "def welcome(guest, word=\"Welcome\"):\n    print(guest, word)\n\nwelcome(\"Ida\")\nwelcome(\"Kai\")",
+        "def welcome(guest, word=\"Bye\"):\n    print(word, guest)\n\nwelcome(\"Ida\")\nwelcome(\"Kai\")"
       ],
       "answer": 0
     },
@@ -439,10 +439,10 @@
       "answer": 0
     },
     {
-      "id": "dp-val-default-ac8f86",
+      "id": "dp-val-default-e48ce7",
       "text": "What goes in the gap so the program prints this?",
-      "code": "def new_player(name, lives=___):\n    print(name, lives)\n\nnew_player(\"Ana\")\nnew_player(\"Rex\", 5)",
-      "output": "Ana 3\nRex 5",
+      "code": "def new_player(name, lives=___):\n    print(name, lives)\n\nnew_player(\"Ida\")\nnew_player(\"Rex\", 5)",
+      "output": "Ida 3\nRex 5",
       "options": ["3", "5", "0", "\"lives\""],
       "answer": 0
     },
@@ -479,10 +479,10 @@
       "answer": 0
     },
     {
-      "id": "dp-val-kw-b2c3a8",
+      "id": "dp-val-kw-b7f4b9",
       "text": "What goes in the gap so the program prints this?",
-      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest}: {room}, {meal}\")\n\nbook(\"Ana\", ___=\"dinner\")",
-      "output": "Ana: single, dinner",
+      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest}: {room}, {meal}\")\n\nbook(\"Ida\", ___=\"dinner\")",
+      "output": "Ida: single, dinner",
       "options": ["meal", "room", "guest", "dinner"],
       "answer": 0
     },
@@ -587,14 +587,14 @@
       "answer": 0
     },
     {
-      "id": "dp-bad-kw-5b8b11",
+      "id": "dp-bad-kw-61f0b6",
       "text": "Which line stops this program from printing this?",
-      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest}: {room}, {meal}\")\n\nbook(\"Ana\")\nbook(\"Rex\", \"double\")\nbook(\"Kai\", \"dinner\")",
-      "output": "Ana: single, breakfast\nRex: double, breakfast\nKai: single, dinner",
+      "code": "def book(guest, room=\"single\", meal=\"breakfast\"):\n    print(f\"{guest}: {room}, {meal}\")\n\nbook(\"Ida\")\nbook(\"Rex\", \"double\")\nbook(\"Kai\", \"dinner\")",
+      "output": "Ida: single, breakfast\nRex: double, breakfast\nKai: single, dinner",
       "options": [
         "book(\"Kai\", \"dinner\")",
         "book(\"Rex\", \"double\")",
-        "book(\"Ana\")",
+        "book(\"Ida\")",
         "print(f\"{guest}: {room}, {meal}\")"
       ],
       "answer": 0
@@ -721,10 +721,10 @@
       "answer": 0
     },
     {
-      "id": "dp-holds-label-a8b822",
+      "id": "dp-holds-label-4a91f8",
       "text": "What is in `note` at the end?",
-      "code": "def tag(name, end=\".\"):\n    return name + end\n\nnote = tag(\"Ana\")\nnote = tag(note, \"!\")",
-      "options": ["'Ana.!'", "'Ana.'", "'Ana!'", "'!.Ana'"],
+      "code": "def tag(name, end=\".\"):\n    return name + end\n\nnote = tag(\"Ida\")\nnote = tag(note, \"!\")",
+      "options": ["'Ida.!'", "'Ida.'", "'Ida!'", "'!.Ida'"],
       "answer": 0
     }
   ]

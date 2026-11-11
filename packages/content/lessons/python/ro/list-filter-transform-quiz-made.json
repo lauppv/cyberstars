@@ -517,14 +517,14 @@
       "answer": 0
     },
     {
-      "id": "ft-holds-names-678c37",
+      "id": "ft-holds-names-4a6566",
       "text": "Ce conține `cei_mai_buni` la final?",
-      "code": "jucatori = [{\"nume\": \"Ana\", \"scor\": 50}, {\"nume\": \"Rex\", \"scor\": 75}, {\"nume\": \"Kai\", \"scor\": 90}]\ncei_mai_buni = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 50]",
+      "code": "jucatori = [{\"nume\": \"Ida\", \"scor\": 50}, {\"nume\": \"Rex\", \"scor\": 75}, {\"nume\": \"Kai\", \"scor\": 90}]\ncei_mai_buni = [p[\"nume\"] for p in jucatori if p[\"scor\"] > 50]",
       "options": [
         "['Rex', 'Kai']",
         "[75, 90]",
         "[{'nume': 'Rex', 'scor': 75}, {'nume': 'Kai', 'scor': 90}]",
-        "['Ana', 'Rex', 'Kai']"
+        "['Ida', 'Rex', 'Kai']"
       ],
       "answer": 0
     },
@@ -592,9 +592,9 @@
       "answer": 0
     },
     {
-      "id": "ft-error-key-dd85bd",
+      "id": "ft-error-key-1fee3a",
       "text": "Ce eroare oprește acest program?",
-      "code": "jucatori = [{\"nume\": \"Ana\", \"scor\": 50}, {\"nume\": \"Rex\", \"scor\": 75}]\nprint([p[\"Nume\"] for p in jucatori])",
+      "code": "jucatori = [{\"nume\": \"Ida\", \"scor\": 50}, {\"nume\": \"Rex\", \"scor\": 75}]\nprint([p[\"Nume\"] for p in jucatori])",
       "options": ["KeyError", "IndexError", "NameError", "ValueError"],
       "answer": 0
     },

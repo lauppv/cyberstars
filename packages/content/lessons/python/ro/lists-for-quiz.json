@@ -623,7 +623,7 @@
       "values": [
         {
           "v": "echipaj",
-          "items": "\"Maria\", \"Andrei\", \"Elena\""
+          "items": "\"Mary\", \"Andrew\", \"Helen\""
         },
         {
           "v": "planete",
@@ -680,7 +680,7 @@
       "values": [
         {
           "v": "echipaj",
-          "items": "\"Maria\", \"Andrei\""
+          "items": "\"Mary\", \"Andrew\""
         },
         {
           "v": "planete",
@@ -688,7 +688,7 @@
         },
         {
           "v": "jucatori",
-          "items": "\"Ana\", \"Rex\", \"Kai\""
+          "items": "\"Ida\", \"Rex\", \"Kai\""
         }
       ],
       "answer": "1",
@@ -755,7 +755,7 @@
       "values": [
         {
           "v": "echipaj",
-          "items": "\"Maria\", \"Andrei\", \"Elena\"",
+          "items": "\"Mary\", \"Andrew\", \"Helen\"",
           "title": "Echipaj:",
           "end": "Sfarsitul listei"
         },
@@ -794,7 +794,7 @@
         },
         {
           "v": "jucatori",
-          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
+          "items": "\"Ida\", \"Rex\", \"Kai\", \"Zoe\"",
           "title": "Jucatori:",
           "end": "Hai sa jucam"
         }

@@ -1,4 +1,4 @@
-Green Corner sells house plants online and ships them across the country. The shop's website exports every order of the month to a CSV file, and at the end of October the owner, Sara, wants answers: how much came in, which plants sell, which cities order the most. She has no spreadsheet program on the shop's server, only a terminal. That's enough.
+Green Corner sells house plants online and ships them across Europe. The shop's website exports every order of the month to a CSV file, and at the end of October the owner, Sara, wants answers: how much came in, which plants sell, which cities order the most. She has no spreadsheet program on the shop's server, only a terminal. That's enough.
 
 You build the report one step at a time, in the terminal on the right. Tick a step off once you get its numbers, or its file holds what the step asks; you can always come back and untick it.
 

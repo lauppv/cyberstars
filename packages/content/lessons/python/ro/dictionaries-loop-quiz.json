@@ -71,10 +71,10 @@
     {
       "id": "q8",
       "text": "Ce afișează?",
-      "code": "varste = {\"Ana\": 12, \"Rex\": 30}\nfor varsta, nume in varste.items():\n    print(nume)",
+      "code": "varste = {\"Ida\": 12, \"Rex\": 30}\nfor varsta, nume in varste.items():\n    print(nume)",
       "options": [
         "12\n30",
-        "Ana\nRex",
+        "Ida\nRex",
         "Se oprește cu o eroare: numele sunt invers",
         "varsta\nnume"
       ],
@@ -187,8 +187,8 @@
     {
       "id": "q20",
       "text": "Ce afișează?",
-      "code": "locuri = {}\nlocuri[\"Lance\"] = 2\nlocuri[\"Ana\"] = 1\nfor nume in locuri:\n    print(nume)",
-      "options": ["Ana\nLance", "Lance\nAna", "1\n2", "2\n1"],
+      "code": "locuri = {}\nlocuri[\"Lance\"] = 2\nlocuri[\"Ida\"] = 1\nfor nume in locuri:\n    print(nume)",
+      "options": ["Ida\nLance", "Lance\nIda", "1\n2", "2\n1"],
       "answer": 1
     },
     {
@@ -206,12 +206,12 @@
     {
       "id": "q22",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 10, \"Rex\": 20}\nfor nume in scoruri:\n    scoruri[nume] = scoruri[nume] + 5\nprint(scoruri)",
+      "code": "scoruri = {\"Ida\": 10, \"Rex\": 20}\nfor nume in scoruri:\n    scoruri[nume] = scoruri[nume] + 5\nprint(scoruri)",
       "options": [
-        "{'Ana': 10, 'Rex': 20}",
-        "{'Ana': 15, 'Rex': 20}",
+        "{'Ida': 10, 'Rex': 20}",
+        "{'Ida': 15, 'Rex': 20}",
         "Se oprește cu o eroare",
-        "{'Ana': 15, 'Rex': 25}"
+        "{'Ida': 15, 'Rex': 25}"
       ],
       "answer": 3
     },
@@ -248,8 +248,8 @@
     {
       "id": "q26",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 40, \"Rex\": 75, \"Kai\": 50}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        promovati.append(nume)\nprint(promovati)",
-      "options": ["['Rex']", "[75, 50]", "['Rex', 'Kai']", "['Ana']"],
+      "code": "scoruri = {\"Ida\": 40, \"Rex\": 75, \"Kai\": 50}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        promovati.append(nume)\nprint(promovati)",
+      "options": ["['Rex']", "[75, 50]", "['Rex', 'Kai']", "['Ida']"],
       "answer": 2
     },
     {
@@ -290,10 +290,10 @@
     {
       "id": "q30",
       "text": "Ce se întâmplă când rulează?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 5}\ntotal = 0\nfor nume in scoruri:\n    total = total + nume\nprint(total)",
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 5}\ntotal = 0\nfor nume in scoruri:\n    total = total + nume\nprint(total)",
       "options": [
         "Afișează 12",
-        "Afișează AnaRex",
+        "Afișează IdaRex",
         "Afișează 2",
         "Se oprește cu o eroare: nume e o cheie, un text, și nu se poate aduna la un număr"
       ],
@@ -314,7 +314,7 @@
         },
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 7, \"Rex\": 9}",
+          "d": "{\"Ida\": 7, \"Rex\": 9}",
           "k": "nume"
         }
       ],
@@ -338,7 +338,7 @@
         },
         {
           "v": "varste",
-          "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
+          "d": "{\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}",
           "x": "varsta"
         }
       ],
@@ -385,7 +385,7 @@
       "values": [
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}",
+          "d": "{\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}",
           "t": "total",
           "x": "s"
         },
@@ -438,7 +438,7 @@
       "values": [
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 7, \"Rex\": 8}",
+          "d": "{\"Ida\": 7, \"Rex\": 8}",
           "t": "total",
           "x": "s"
         },
@@ -472,7 +472,7 @@
           "b": "maxim",
           "n": "nume",
           "v": "scoruri",
-          "d": "{\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}"
+          "d": "{\"Ida\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}"
         },
         {
           "tp": "cel_mai_bun",
@@ -504,7 +504,7 @@
       "values": [
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "d": "{\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
           "w": "promovati",
           "n": "nume",
           "op": ">=",
@@ -554,7 +554,7 @@
         },
         {
           "v": "orase",
-          "d": "{\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}",
+          "d": "{\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}",
           "x": "oras"
         }
       ],
@@ -572,7 +572,7 @@
       "values": [
         {
           "v": "varste",
-          "d": "{\"Ana\": 12, \"Rex\": 30}",
+          "d": "{\"Ida\": 12, \"Rex\": 30}",
           "k": "nume",
           "x": "varsta"
         },
@@ -645,7 +645,7 @@
         },
         {
           "v": "varste",
-          "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
+          "d": "{\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}",
           "k": "nume",
           "x": "varsta"
         },
@@ -711,7 +711,7 @@
         },
         {
           "v": "orase",
-          "d": "{\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}",
+          "d": "{\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}",
           "m": "values"
         },
         {
@@ -761,7 +761,7 @@
       "values": [
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}",
+          "d": "{\"Ida\": 6, \"Rex\": 9, \"Kai\": 9}",
           "t": "total",
           "x": "s"
         },
@@ -796,7 +796,7 @@
         },
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}",
+          "d": "{\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}",
           "t": "total",
           "x": "s",
           "label": "Total"
@@ -833,7 +833,7 @@
         },
         {
           "v": "varste",
-          "d": "{\"Ana\": 12, \"Rex\": 30}",
+          "d": "{\"Ida\": 12, \"Rex\": 30}",
           "k": "nume",
           "x": "varsta",
           "title": "Varste:"
@@ -897,7 +897,7 @@
       "values": [
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 7, \"Rex\": 5}",
+          "d": "{\"Ida\": 7, \"Rex\": 5}",
           "k": "nume",
           "n": 2,
           "lim": 6
@@ -940,7 +940,7 @@
         },
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "d": "{\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
           "t": "total",
           "k": "nume",
           "x": "scor",
@@ -970,7 +970,7 @@
       "values": [
         {
           "v": "scoruri",
-          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "d": "{\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
           "l": "limita",
           "k": "nume",
           "n": 50,

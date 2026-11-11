@@ -1,4 +1,4 @@
-Colet Rapid is a small courier company that moves parcels between Romanian towns through its depots. Today a parcel's journey is a column of stamps on a paper slip, and when a customer calls to ask where it is, someone has to go and find the slip. You'll write the tracking system: every parcel gets a status, every scan at a depot moves it on (only in ways that make sense), and anyone can see its whole journey.
+Swift Parcel is a small courier company that moves parcels between European towns through its depots. Today a parcel's journey is a column of stamps on a paper slip, and when a customer calls to ask where it is, someone has to go and find the slip. You'll write the tracking system: every parcel gets a status, every scan at a depot moves it on (only in ways that make sense), and anyone can see its whole journey.
 
 You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run parcels your program has never seen. Passing them finishes the project.
 
@@ -16,8 +16,8 @@ Print `Tracking ready` at the start. Then keep reading commands until someone ty
 - above 10 kg: 25.00 plus 2.00 for every kilo started beyond 10
 
 ```text
-send P1 Cluj Iasi 2.5 1
-P1: Cluj to Iasi, 2.5 kg, 18.00
+send P1 Lyon Bern 2.5 1
+P1: Lyon to Bern, 2.5 kg, 18.00
 ```
 
 Refuse, in this order, an id that exists already (`P1 already exists`), a weight that isn't above 0 and at most 30 (`Parcels weigh more than 0 and at most 30 kg`), and a parcel to its own town (`A parcel goes to another town`). Make a `Parcel` class; its constructor can work out the postage.
@@ -26,7 +26,7 @@ Refuse, in this order, an id that exists already (`P1 already exists`), a weight
 
 A parcel is always in exactly one state, which makes an `enum`: `REGISTERED`, `IN_TRANSIT`, `AT_DEPOT`, `OUT_FOR_DELIVERY`, `DELIVERED` and `RETURNED`. Give each the words it prints: `registered`, `in transit`, `at the depot`, `out for delivery`, `delivered`, `returned to sender`.
 
-Each parcel also knows the town it's in, starting with its `from` town, and keeps a history: a list of lines like `Day 1: registered in Cluj`, one added every time something happens to it.
+Each parcel also knows the town it's in, starting with its `from` town, and keeps a history: a list of lines like `Day 1: registered in Lyon`, one added every time something happens to it.
 
 ## Scans
 
@@ -34,8 +34,8 @@ Every time a parcel is handled, it's scanned: `scan <id> <event> <day> [place]`.
 
 | Event            | Allowed when                    | Becomes                    | Prints                   |
 | ---------------- | ------------------------------- | -------------------------- | ------------------------ |
-| `leave`          | registered or at a depot        | in transit                 | `P1 left Cluj`           |
-| `arrive <place>` | in transit                      | at the depot in that place | `P1 arrived in Sibiu`    |
+| `leave`          | registered or at a depot        | in transit                 | `P1 left Lyon`           |
+| `arrive <place>` | in transit                      | at the depot in that place | `P1 arrived in Porto`    |
 | `out`            | at the depot of its destination | out for delivery           | `P1 is out for delivery` |
 | `deliver`        | out for delivery                | delivered                  | `P1 delivered on day 4`  |
 
@@ -43,10 +43,10 @@ An event that isn't allowed changes nothing and says why, naming what it couldn'
 
 ```text
 scan P1 out 2
-P1 is at the depot in Sibiu, it can't go out for delivery
+P1 is at the depot in Porto, it can't go out for delivery
 ```
 
-The other phrases are `leave`, `arrive` and `be delivered`. An event that isn't one of these prints `Events are leave, arrive, out, deliver and fail`, and a parcel that doesn't exist `No parcel P9`. A `switch` on the event, checking the current status, keeps the rules in one place. Every scan that goes through adds its line to the history: `left Cluj`, `arrived in Sibiu`, `out for delivery`, `delivered`.
+The other phrases are `leave`, `arrive` and `be delivered`. An event that isn't one of these prints `Events are leave, arrive, out, deliver and fail`, and a parcel that doesn't exist `No parcel P9`. A `switch` on the event, checking the current status, keeps the rules in one place. Every scan that goes through adds its line to the history: `left Lyon`, `arrived in Porto`, `out for delivery`, `delivered`.
 
 ## Track
 
@@ -55,11 +55,11 @@ The other phrases are `leave`, `arrive` and `be delivered`. An event that isn't 
 ```text
 track P1
 P1 is delivered
-  Day 1: registered in Cluj
-  Day 1: left Cluj
-  Day 2: arrived in Sibiu
-  Day 2: left Sibiu
-  Day 3: arrived in Iasi
+  Day 1: registered in Lyon
+  Day 1: left Lyon
+  Day 2: arrived in Porto
+  Day 2: left Porto
+  Day 3: arrived in Bern
   Day 3: out for delivery
   Day 3: nobody home
   Day 4: out for delivery
@@ -79,7 +79,7 @@ On the third failed attempt it goes back to its sender instead, for good, and it
 
 ```text
 scan P2 fail 4
-P2: third failed delivery, back to Cluj
+P2: third failed delivery, back to Lyon
 ```
 
 The phrase for a refused `fail` is `miss a delivery`.
@@ -89,11 +89,11 @@ The phrase for a refused `fail` is `miss a delivery`.
 `depot <town>` lists the parcels waiting in a town, registered there or at its depot, sorted by id:
 
 ```text
-depot Cluj
-Cluj: P1, P2
+depot Lyon
+Lyon: P1, P2
 ```
 
-With none, print `Nothing in Cluj`.
+With none, print `Nothing in Lyon`.
 
 ## Late parcels and the report
 

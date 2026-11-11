@@ -9,10 +9,10 @@
       "answer": 0
     },
     {
-      "id": "dc-get-539aa3",
+      "id": "dc-get-bce62d",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\nprint(scores[\"Ben\"])",
-      "options": ["75", "90", "Ben", "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"],
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75, \"Zoe\": 88}\nprint(scores[\"Ben\"])",
+      "options": ["75", "90", "Ben", "{'Ida': 90, 'Ben': 75, 'Zoe': 88}"],
       "answer": 0
     },
     {
@@ -42,14 +42,14 @@
       "answer": 0
     },
     {
-      "id": "dc-set-204244",
+      "id": "dc-set-7cd8ee",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nscores[\"Zoe\"] = 88\nscores[\"Ana\"] = 95\nprint(scores)",
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75}\nscores[\"Zoe\"] = 88\nscores[\"Ida\"] = 95\nprint(scores)",
       "options": [
-        "{'Ana': 95, 'Ben': 75, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 95, 'Zoe': 88}",
-        "{'Ana': 95, 'Ben': 75}"
+        "{'Ida': 95, 'Ben': 75, 'Zoe': 88}",
+        "{'Ida': 90, 'Ben': 75, 'Zoe': 88}",
+        "{'Ida': 90, 'Ben': 95, 'Zoe': 88}",
+        "{'Ida': 95, 'Ben': 75}"
       ],
       "answer": 0
     },
@@ -90,14 +90,14 @@
       "answer": 0
     },
     {
-      "id": "dc-del-539aa3",
+      "id": "dc-del-bce62d",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\ndel scores[\"Ben\"]\nprint(scores)",
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75, \"Zoe\": 88}\ndel scores[\"Ben\"]\nprint(scores)",
       "options": [
-        "{'Ana': 90, 'Zoe': 88}",
+        "{'Ida': 90, 'Zoe': 88}",
         "{'Ben': 75, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 0, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"
+        "{'Ida': 90, 'Ben': 0, 'Zoe': 88}",
+        "{'Ida': 90, 'Ben': 75, 'Zoe': 88}"
       ],
       "answer": 0
     },
@@ -138,14 +138,14 @@
       "answer": 0
     },
     {
-      "id": "dc-check-d90025",
+      "id": "dc-check-8dc036",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nfor name in [\"Kai\", \"Ana\"]:\n    if name in scores:\n        print(scores[name])\n    else:\n        print(\"No score\")",
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75}\nfor name in [\"Kai\", \"Ida\"]:\n    if name in scores:\n        print(scores[name])\n    else:\n        print(\"No score\")",
       "options": [
         "No score\n90",
-        "No score\nAna",
+        "No score\nIda",
         "90\nNo score",
-        "No score\n{'Ana': 90, 'Ben': 75}"
+        "No score\n{'Ida': 90, 'Ben': 75}"
       ],
       "answer": 0
     },
@@ -188,9 +188,9 @@
       "answer": 0
     },
     {
-      "id": "dc-grow-348130",
+      "id": "dc-grow-042cb4",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nscores[\"Ben\"] = scores[\"Ben\"] + 10\nprint(scores[\"Ben\"])",
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75}\nscores[\"Ben\"] = scores[\"Ben\"] + 10\nprint(scores[\"Ben\"])",
       "options": ["85", "10", "100", "90"],
       "answer": 0
     },
@@ -209,10 +209,10 @@
       "answer": 0
     },
     {
-      "id": "dc-list-19d513",
+      "id": "dc-list-3d7865",
       "text": "What does this print?",
-      "code": "ship = {\"name\": \"Nova\", \"crew\": [\"Ana\", \"Ben\", \"Zoe\"]}\nprint(ship[\"crew\"][0])",
-      "options": ["Ana", "Ben", "['Ana', 'Ben', 'Zoe']", "3"],
+      "code": "ship = {\"name\": \"Nova\", \"crew\": [\"Ida\", \"Ben\", \"Zoe\"]}\nprint(ship[\"crew\"][0])",
+      "options": ["Ida", "Ben", "['Ida', 'Ben', 'Zoe']", "3"],
       "answer": 0
     },
     {
@@ -290,14 +290,14 @@
       "answer": 0
     },
     {
-      "id": "dc-which-in-4f0aa4",
+      "id": "dc-which-in-0a4d58",
       "text": "Which program shows this?",
-      "output": "Ana has a score",
+      "output": "Ida has a score",
       "options": [
-        "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scores:\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")",
-        "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" not in scores:\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")",
-        "scores = {\"Ana\": 90, \"Ben\": 75}\nif 90 in scores:\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")",
-        "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scores\n    print(\"Ana has a score\")\nelse:\n    print(\"Ana has no score\")"
+        "scores = {\"Ida\": 90, \"Ben\": 75}\nif \"Ida\" in scores:\n    print(\"Ida has a score\")\nelse:\n    print(\"Ida has no score\")",
+        "scores = {\"Ida\": 90, \"Ben\": 75}\nif \"Ida\" not in scores:\n    print(\"Ida has a score\")\nelse:\n    print(\"Ida has no score\")",
+        "scores = {\"Ida\": 90, \"Ben\": 75}\nif 90 in scores:\n    print(\"Ida has a score\")\nelse:\n    print(\"Ida has no score\")",
+        "scores = {\"Ida\": 90, \"Ben\": 75}\nif \"Ida\" in scores\n    print(\"Ida has a score\")\nelse:\n    print(\"Ida has no score\")"
       ],
       "answer": 0
     },
@@ -339,13 +339,13 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-add-1efa10",
+      "id": "dc-gap-add-445d24",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "scores = {\"Ana\": 90}\n___\nprint(scores)",
-      "output": "{'Ana': 90, 'Ben': 75}",
+      "code": "scores = {\"Ida\": 90}\n___\nprint(scores)",
+      "output": "{'Ida': 90, 'Ben': 75}",
       "options": [
         "scores[\"Ben\"] = 75",
-        "scores[\"Ana\"] = 75",
+        "scores[\"Ida\"] = 75",
         "scores.append(75)",
         "scores[75] = \"Ben\""
       ],
@@ -399,10 +399,10 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-del-fe5b79",
+      "id": "dc-gap-del-45fad6",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\n___\nprint(levels)",
-      "output": "{'Zoe': 12, 'Ana': 9}",
+      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}\n___\nprint(levels)",
+      "output": "{'Zoe': 12, 'Ida': 9}",
       "options": ["del levels[\"Kai\"]", "del levels[1]", "levels[\"Kai\"] = 0", "del levels"],
       "answer": 0
     },
@@ -447,9 +447,9 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-key-912955",
+      "id": "dc-gap-key-abd8fc",
       "text": "What goes in the gap so the program prints this?",
-      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\nprint(levels[___])",
+      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}\nprint(levels[___])",
       "output": "7",
       "options": ["\"Kai\"", "1", "Kai", "\"Zoe\""],
       "answer": 0
@@ -487,9 +487,9 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-in-0a975d",
+      "id": "dc-gap-in-0cd7b9",
       "text": "What goes in the gap so the program prints this?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nif \"Zoe\" ___ scores:\n    print(\"Zoe has no score\")\nelse:\n    print(\"Zoe has a score\")",
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75}\nif \"Zoe\" ___ scores:\n    print(\"Zoe has no score\")\nelse:\n    print(\"Zoe has a score\")",
       "output": "Zoe has no score",
       "options": ["not in", "in", "==", "="],
       "answer": 0
@@ -524,14 +524,14 @@
       "answer": 0
     },
     {
-      "id": "dc-bad-brackets-d5b695",
+      "id": "dc-bad-brackets-5020e4",
       "text": "Which line stops this program from printing this?",
-      "code": "scores = [\"Ana\": 90, \"Ben\": 75]\nscores[\"Zoe\"] = 88\nprint(scores[\"Ana\"])\nprint(scores[\"Ben\"])\nprint(scores[\"Zoe\"])",
+      "code": "scores = [\"Ida\": 90, \"Ben\": 75]\nscores[\"Zoe\"] = 88\nprint(scores[\"Ida\"])\nprint(scores[\"Ben\"])\nprint(scores[\"Zoe\"])",
       "output": "90\n75\n88",
       "options": [
-        "scores = [\"Ana\": 90, \"Ben\": 75]",
+        "scores = [\"Ida\": 90, \"Ben\": 75]",
         "scores[\"Zoe\"] = 88",
-        "print(scores[\"Ana\"])",
+        "print(scores[\"Ida\"])",
         "print(scores[\"Ben\"])"
       ],
       "answer": 0
@@ -602,14 +602,14 @@
       "answer": 0
     },
     {
-      "id": "dc-bad-quotes-198549",
+      "id": "dc-bad-quotes-bccbb4",
       "text": "Which line stops this program from printing this?",
-      "code": "scores = {\"Ana\": 90, \"Ben\": 75}\nscores[\"Ben\"] = scores[\"Ben\"] + 10\nprint(scores[Ana])\nprint(scores[\"Ben\"])",
+      "code": "scores = {\"Ida\": 90, \"Ben\": 75}\nscores[\"Ben\"] = scores[\"Ben\"] + 10\nprint(scores[Ida])\nprint(scores[\"Ben\"])",
       "output": "90\n85",
       "options": [
-        "print(scores[Ana])",
+        "print(scores[Ida])",
         "scores[\"Ben\"] = scores[\"Ben\"] + 10",
-        "scores = {\"Ana\": 90, \"Ben\": 75}",
+        "scores = {\"Ida\": 90, \"Ben\": 75}",
         "print(scores[\"Ben\"])"
       ],
       "answer": 0
@@ -641,13 +641,13 @@
       "answer": 0
     },
     {
-      "id": "dc-bad-del-0e713a",
+      "id": "dc-bad-del-608540",
       "text": "Which line stops this program from printing this?",
-      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\ndelete levels[\"Kai\"]\nlevels[\"Mia\"] = 4\nprint(levels)",
-      "output": "{'Zoe': 12, 'Ana': 9, 'Mia': 4}",
+      "code": "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}\ndelete levels[\"Kai\"]\nlevels[\"Mia\"] = 4\nprint(levels)",
+      "output": "{'Zoe': 12, 'Ida': 9, 'Mia': 4}",
       "options": [
         "delete levels[\"Kai\"]",
-        "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}",
+        "levels = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}",
         "levels[\"Mia\"] = 4",
         "print(levels)"
       ],

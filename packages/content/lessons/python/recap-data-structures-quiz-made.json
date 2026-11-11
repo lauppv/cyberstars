@@ -9,10 +9,10 @@
       "answer": 0
     },
     {
-      "id": "rds-both-c421f8",
+      "id": "rds-both-a6adf1",
       "text": "What does this print?",
-      "code": "team_a = [(\"Ana\", 60), (\"Rex\", 75), (\"Kai\", 90)]\nteam_b = [(\"Kai\", 70), (\"Zoe\", 80), (\"Ana\", 55)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
-      "options": ["Ana\nKai", "Rex", "60\n90", "Kai\nZoe\nAna"],
+      "code": "team_a = [(\"Ida\", 60), (\"Rex\", 75), (\"Kai\", 90)]\nteam_b = [(\"Kai\", 70), (\"Zoe\", 80), (\"Ida\", 55)]\nnames_b = set()\nfor name, score in team_b:\n    names_b.add(name)\nfor name, score in team_a:\n    if name in names_b:\n        print(name)",
+      "options": ["Ida\nKai", "Rex", "60\n90", "Kai\nZoe\nIda"],
       "answer": 0
     },
     {
@@ -23,9 +23,9 @@
       "answer": 0
     },
     {
-      "id": "rds-high-e6087d",
+      "id": "rds-high-f64854",
       "text": "What does this print?",
-      "code": "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]\nhigh = [score for name, score in team if score > 65]\nprint(high)",
+      "code": "team = [(\"Ida\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]\nhigh = [score for name, score in team if score > 65]\nprint(high)",
       "options": ["[70, 95, 70]", "['Rex', 'Kai', 'Zoe']", "[64, 70, 95, 70]", "[64]"],
       "answer": 0
     },
@@ -120,9 +120,9 @@
       "answer": 0
     },
     {
-      "id": "rds-remove-19e1cd",
+      "id": "rds-remove-d8fbe6",
       "text": "What does this print?",
-      "code": "crew = {\"Ana\", \"Rex\", \"Kai\"}\ncrew.add(\"Zoe\")\ncrew.remove(\"Ana\")\nfor name in [\"Rex\", \"Zoe\", \"Ana\"]:\n    print(name in crew)",
+      "code": "crew = {\"Ida\", \"Rex\", \"Kai\"}\ncrew.add(\"Zoe\")\ncrew.remove(\"Ida\")\nfor name in [\"Rex\", \"Zoe\", \"Ida\"]:\n    print(name in crew)",
       "options": [
         "True\nTrue\nFalse",
         "True\nTrue\nTrue",
@@ -165,14 +165,14 @@
       "answer": 0
     },
     {
-      "id": "rds-which-names-9dc92c",
+      "id": "rds-which-names-c59b47",
       "text": "Which program shows this?",
-      "output": "['Ana', 'Rex']",
+      "output": "['Ida', 'Rex']",
       "options": [
-        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score >= 70]\nprint(names)",
-        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score < 70]\nprint(names)",
-        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [score for name, score in team if score >= 70]\nprint(names)",
-        "team = [(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score > 70]\nprint(names)"
+        "team = [(\"Ida\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score >= 70]\nprint(names)",
+        "team = [(\"Ida\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score < 70]\nprint(names)",
+        "team = [(\"Ida\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [score for name, score in team if score >= 70]\nprint(names)",
+        "team = [(\"Ida\", 70), (\"Rex\", 90), (\"Kai\", 30)]\nnames = [name for name, score in team if score > 70]\nprint(names)"
       ],
       "answer": 0
     },
@@ -249,9 +249,9 @@
       "answer": 0
     },
     {
-      "id": "rds-gap-add-197ef6",
+      "id": "rds-gap-add-b9d943",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "seen = set()\nfor name in [\"Rex\", \"Zoe\", \"Ana\", \"Zoe\", \"Rex\", \"Max\"]:\n    ___\nprint(len(seen))",
+      "code": "seen = set()\nfor name in [\"Rex\", \"Zoe\", \"Ida\", \"Zoe\", \"Rex\", \"Max\"]:\n    ___\nprint(len(seen))",
       "output": "4",
       "options": ["seen.add(name)", "seen.append(name)", "seen = {name}", "print(name)"],
       "answer": 0
@@ -535,13 +535,13 @@
       "answer": 0
     },
     {
-      "id": "rds-bad-comp-a8712d",
+      "id": "rds-bad-comp-a8d9b5",
       "text": "Which line stops this program from printing this?",
-      "code": "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]\nnames = [score for name, score in team if score > 65]\nprint(len(names))\nprint(names)",
+      "code": "team = [(\"Ida\", 64), (\"Rex\", 70), (\"Kai\", 95)]\nnames = [score for name, score in team if score > 65]\nprint(len(names))\nprint(names)",
       "output": "2\n['Rex', 'Kai']",
       "options": [
         "names = [score for name, score in team if score > 65]",
-        "team = [(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
+        "team = [(\"Ida\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
         "print(len(names))",
         "print(names)"
       ],
@@ -573,14 +573,14 @@
       "answer": 0
     },
     {
-      "id": "rds-holds-high-91a7c2",
+      "id": "rds-holds-high-5c57de",
       "text": "What is in `passed` at the end?",
-      "code": "team = [(\"Ana\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]\npassed = [name for name, score in team if score > 50]",
+      "code": "team = [(\"Ida\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]\npassed = [name for name, score in team if score > 50]",
       "options": [
-        "['Ana', 'Zoe']",
+        "['Ida', 'Zoe']",
         "[55, 90]",
-        "['Ana', 'Kai', 'Zoe']",
-        "[('Ana', 55), ('Zoe', 90)]"
+        "['Ida', 'Kai', 'Zoe']",
+        "[('Ida', 55), ('Zoe', 90)]"
       ],
       "answer": 0
     },
@@ -604,14 +604,14 @@
       "answer": 0
     },
     {
-      "id": "rds-holds-tally-04533b",
+      "id": "rds-holds-tally-3f8062",
       "text": "What is in `per_role` at the end?",
-      "code": "crew = [(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]\nper_role = {}\nfor name, role in crew:\n    if role in per_role:\n        per_role[role] = per_role[role] + 1\n    else:\n        per_role[role] = 1",
+      "code": "crew = [(\"Ida\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]\nper_role = {}\nfor name, role in crew:\n    if role in per_role:\n        per_role[role] = per_role[role] + 1\n    else:\n        per_role[role] = 1",
       "options": [
         "{'pilot': 2, 'cook': 2, 'medic': 1}",
         "{'pilot': 1, 'cook': 1, 'medic': 1}",
         "{'pilot': 1, 'cook': 1, 'medic': 0}",
-        "{'Ana': 1, 'Rex': 1, 'Kai': 1, 'Zoe': 1, 'Ben': 1}"
+        "{'Ida': 1, 'Rex': 1, 'Kai': 1, 'Zoe': 1, 'Ben': 1}"
       ],
       "answer": 0
     },
@@ -652,14 +652,14 @@
       "answer": 0
     },
     {
-      "id": "rds-holds-firsts-a45339",
+      "id": "rds-holds-firsts-d962f7",
       "text": "What is in `first` at the end?",
-      "code": "crew = [(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]\nroles = set()\nfirst = []\nfor name, role in crew:\n    if role in roles:\n        continue\n    roles.add(role)\n    first.append(name)",
+      "code": "crew = [(\"Ida\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]\nroles = set()\nfirst = []\nfor name, role in crew:\n    if role in roles:\n        continue\n    roles.add(role)\n    first.append(name)",
       "options": [
-        "['Ana', 'Rex', 'Zoe']",
-        "['Ana', 'Rex']",
+        "['Ida', 'Rex', 'Zoe']",
+        "['Ida', 'Rex']",
         "['pilot', 'cook', 'medic']",
-        "['Ana', 'Rex', 'Kai', 'Zoe', 'Ben']"
+        "['Ida', 'Rex', 'Kai', 'Zoe', 'Ben']"
       ],
       "answer": 0
     },
@@ -704,9 +704,9 @@
       "answer": 0
     },
     {
-      "id": "rds-input-look-8cc1c7",
+      "id": "rds-input-look-efabba",
       "text": "What did the user type?",
-      "code": "bags = {\"Ana\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}\nname = input()\napples, pears = bags[name]\nprint(apples + pears)",
+      "code": "bags = {\"Ida\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}\nname = input()\napples, pears = bags[name]\nprint(apples + pears)",
       "output": "8",
       "options": ["Kai", "8", "Rex", "kai"],
       "answer": 0

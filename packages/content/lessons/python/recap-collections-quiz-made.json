@@ -118,14 +118,14 @@
       "answer": 0
     },
     {
-      "id": "col-replace-3665f1",
+      "id": "col-replace-e89aba",
       "text": "What does this print?",
-      "code": "seats = [\"Ana\", \"x\", \"Rex\", \"x\"]\nfor i in range(len(seats)):\n    if seats[i][0:1] == \"x\":\n        seats[i] = \"free\"\nprint(seats)",
+      "code": "seats = [\"Ida\", \"x\", \"Rex\", \"x\"]\nfor i in range(len(seats)):\n    if seats[i][0:1] == \"x\":\n        seats[i] = \"free\"\nprint(seats)",
       "options": [
-        "['Ana', 'free', 'Rex', 'free']",
-        "['Ana', 'x', 'Rex', 'x', 'free', 'free']",
+        "['Ida', 'free', 'Rex', 'free']",
+        "['Ida', 'x', 'Rex', 'x', 'free', 'free']",
         "['free', 'x', 'free', 'x']",
-        "['Ana', 'free', 'Rex', 'x']"
+        "['Ida', 'free', 'Rex', 'x']"
       ],
       "answer": 0
     },
@@ -156,14 +156,14 @@
       "answer": 0
     },
     {
-      "id": "col-which-skip-13a2cd",
+      "id": "col-which-skip-844c89",
       "text": "Which program shows this?",
       "output": "['Rex', 'Mia']",
       "options": [
-        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
-        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        break\n    others.append(n)\nprint(others)",
-        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] != \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
-        "names = [\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        continue\n    others.append(n)\n    print(others)"
+        "names = [\"Dr. Ida\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
+        "names = [\"Dr. Ida\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        break\n    others.append(n)\nprint(others)",
+        "names = [\"Dr. Ida\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] != \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
+        "names = [\"Dr. Ida\", \"Rex\", \"Dr. Kai\", \"Mia\"]\nothers = []\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        continue\n    others.append(n)\n    print(others)"
       ],
       "answer": 0
     },
@@ -240,10 +240,10 @@
       "answer": 0
     },
     {
-      "id": "col-gap-continue-5f9a90",
+      "id": "col-gap-continue-37fa1a",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "names = [\"Ana\", \"Dr. Rex\", \"Kai\"]\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        ___\n    print(n)",
-      "output": "Ana\nKai",
+      "code": "names = [\"Ida\", \"Dr. Rex\", \"Kai\"]\nfor n in names:\n    if n[0:3] == \"Dr.\":\n        ___\n    print(n)",
+      "output": "Ida\nKai",
       "options": ["continue", "break", "print(n)", "print(\"Dr.\")"],
       "answer": 0
     },
@@ -335,9 +335,9 @@
       "answer": 0
     },
     {
-      "id": "col-gap-start-8af3d8",
+      "id": "col-gap-start-784142",
       "text": "What goes in the gap so the program prints this?",
-      "code": "names = [\"Dr. Ana\", \"Rex\", \"Kai\"]\nfor n in names:\n    if n[0:___] == \"Dr.\":\n        continue\n    print(n)",
+      "code": "names = [\"Dr. Ida\", \"Rex\", \"Kai\"]\nfor n in names:\n    if n[0:___] == \"Dr.\":\n        continue\n    print(n)",
       "output": "Rex\nKai",
       "options": ["3", "1", "2", "4"],
       "answer": 0
@@ -431,11 +431,11 @@
       "answer": 0
     },
     {
-      "id": "col-bad-slice-7728d9",
+      "id": "col-bad-slice-fdd910",
       "text": "Which line stops this program from printing this?",
-      "code": "names = [\"Dr. Ana\", \"Rex\", \"Kai\", \"Dr. Mia\"]\nothers = []\nfor n in names:\n    if n[1:3] == \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
+      "code": "names = [\"Dr. Ida\", \"Rex\", \"Kai\", \"Dr. Mia\"]\nothers = []\nfor n in names:\n    if n[1:3] == \"Dr.\":\n        continue\n    others.append(n)\nprint(others)",
       "output": "['Rex', 'Kai']",
-      "options": ["if n[1:3] == \"Dr.\":", "for n in names:", "continue", "others.append(n)"],
+      "options": ["if n[1:3] == \"Dr.\":", "for n in names:", "others = []", "continue"],
       "answer": 0
     },
     {

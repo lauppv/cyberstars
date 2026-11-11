@@ -266,10 +266,10 @@
       "id": "q30-v2",
       "text": "How does Python show a list of text when it prints the whole list?",
       "options": [
-        "Each on its own line: Ana, then Ben",
-        "With brackets and quotes: ['Ana', 'Ben']",
-        "With commas but no brackets: Ana, Ben",
-        "Joined with no spaces, like AnaBen"
+        "Each on its own line: Ida, then Ben",
+        "With brackets and quotes: ['Ida', 'Ben']",
+        "With commas but no brackets: Ida, Ben",
+        "Joined with no spaces, like IdaBen"
       ],
       "answer": 1
     }
@@ -442,7 +442,7 @@
           "items": "\"Shadow\", \"Jess\", \"Quincy\"",
           "i": 2,
           "j": 1,
-          "new": "\"Ana\""
+          "new": "\"Ida\""
         }
       ],
       "mistakes": [
@@ -774,7 +774,7 @@
         },
         {
           "v": "crew",
-          "items": "\"Ana\", \"Ben\", \"Cal\"",
+          "items": "\"Ida\", \"Ben\", \"Cal\"",
           "i": 0,
           "new": "\"Zoe\""
         },

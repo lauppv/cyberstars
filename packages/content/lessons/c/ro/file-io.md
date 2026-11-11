@@ -93,10 +93,10 @@ A uita de **fclose** este ca și cum ai lăsa robinetul deschis. Programul ar pu
 Centrul de calcul ține un registru al fiecărei ture: numele tehnicianului de serviciu și numărul de incidente pe care le-a rezolvat. La finalul turei, registrul trebuie scris pe disc, apoi citit înapoi pentru raportul de dimineață.
 
 1. Deschide un fișier **"tura.txt"** pentru **scriere**
-2. Scrie aceste 3 linii cu **fprintf**: `Enescu 95`, `Vlad 82`, `Dobre 98` (nume și număr de incidente, separate prin spațiu)
+2. Scrie aceste 3 linii cu **fprintf**: `Larsen 95`, `Hans 82`, `Brown 98` (nume și număr de incidente, separate prin spațiu)
 3. Închide fișierul
 4. Deschide **"tura.txt"** pentru **citire**
-5. Citește fiecare nume și număr folosind **fscanf** și afișează-le ca: **"Tehnician: Enescu, Incidente: 95"**
+5. Citește fiecare nume și număr folosind **fscanf** și afișează-le ca: **"Tehnician: Larsen, Incidente: 95"**
 6. Închide fișierul
 
 **Exemplu**
@@ -104,7 +104,7 @@ Centrul de calcul ține un registru al fiecărei ture: numele tehnicianului de s
 Programul tău ar trebui să afișeze
 
 ```text
-Tehnician: Enescu, Incidente: 95
-Tehnician: Vlad, Incidente: 82
-Tehnician: Dobre, Incidente: 98
+Tehnician: Larsen, Incidente: 95
+Tehnician: Hans, Incidente: 82
+Tehnician: Brown, Incidente: 98
 ```

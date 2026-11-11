@@ -15,7 +15,7 @@ struct Product {
 int coins[4] = {500, 100, 50, 10};
 int tube[4] = {5, 5, 5, 5};
 
-void money(int bani) { printf("%d.%02d", bani / 100, bani % 100); }
+void money(int cents) { printf("%d.%02d", cents / 100, cents % 100); }
 
 int find(struct Product p[], int n, const char *code) {
     for (int i = 0; i < n; i++)

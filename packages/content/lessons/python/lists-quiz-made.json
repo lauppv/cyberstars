@@ -162,13 +162,13 @@
       "answer": 0
     },
     {
-      "id": "list-change-95a957",
+      "id": "list-change-4cacad",
       "text": "What does this print?",
-      "code": "crew = [\"Shadow\", \"Jess\", \"Quincy\"]\ncrew[2] = \"Ana\"\nprint(crew)",
+      "code": "crew = [\"Shadow\", \"Jess\", \"Quincy\"]\ncrew[2] = \"Ida\"\nprint(crew)",
       "options": [
-        "['Shadow', 'Jess', 'Ana']",
-        "['Shadow', 'Ana', 'Quincy']",
-        "['Shadow', 'Jess', 'Quincy', 'Ana']",
+        "['Shadow', 'Jess', 'Ida']",
+        "['Shadow', 'Ida', 'Quincy']",
+        "['Shadow', 'Jess', 'Quincy', 'Ida']",
         "['Shadow', 'Jess', 'Quincy']"
       ],
       "answer": 0
@@ -541,14 +541,14 @@
       "answer": 0
     },
     {
-      "id": "list-holds-change-e47404",
+      "id": "list-holds-change-88bd48",
       "text": "What is in `crew` at the end?",
-      "code": "crew = [\"Ana\", \"Ben\", \"Cal\"]\ncrew[0] = \"Zoe\"",
+      "code": "crew = [\"Ida\", \"Ben\", \"Cal\"]\ncrew[0] = \"Zoe\"",
       "options": [
         "['Zoe', 'Ben', 'Cal']",
-        "['Ana', 'Zoe', 'Cal']",
-        "['Ana', 'Ben', 'Cal', 'Zoe']",
-        "['Ana', 'Ben', 'Cal']"
+        "['Ida', 'Zoe', 'Cal']",
+        "['Ida', 'Ben', 'Cal', 'Zoe']",
+        "['Ida', 'Ben', 'Cal']"
       ],
       "answer": 0
     },

@@ -1,4 +1,4 @@
-Luca runs a small pizzeria with a website for its menu and online orders. Since yesterday the site feels slow, customers say some pages are missing, and Luca wonders whether someone is trying to break in. The web server writes down every request it answers, so the answers are in its log. You'll read it with the tools you know and leave Luca a report.
+Noel runs a small pizzeria with a website for its menu and online orders. Since yesterday the site feels slow, customers say some pages are missing, and Noel wonders whether someone is trying to break in. The web server writes down every request it answers, so the answers are in its log. You'll read it with the tools you know and leave Noel a report.
 
 You do it one step at a time, in the terminal on the right. Each step saves what it finds to a file in `~/report`. Tick a step off once its file holds what the step asks; you can always come back and untick it.
 
@@ -32,7 +32,7 @@ Which addresses ask the most? Save the five busiest to `~/report/top-visitors.tx
 
 The 404 lines tell you which pages customers expected and didn't find. Save each missing page once to `~/report/broken-pages.txt`, with how many times it was asked for, the most asked first: a count, then the page.
 
-Luca will know which pages to add back.
+Noel will know which pages to add back.
 
 ## The busiest hours
 
@@ -42,7 +42,7 @@ The lunch rush is expected. Look for an hour that isn't.
 
 ## The night visitor
 
-Somebody was busy while the pizzeria was closed. Look at the logins the server refused and count them per address: one address stands out. Save every line of that address to `~/report/intruder.txt`, so Luca can send them to whoever hosts his site and have it blocked.
+Somebody was busy while the pizzeria was closed. Look at the logins the server refused and count them per address: one address stands out. Save every line of that address to `~/report/intruder.txt`, so Noel can send them to whoever hosts his site and have it blocked.
 
 Look at its first and last line too: how long did it take?
 
@@ -62,4 +62,4 @@ Intruder: <the address> (<how many logins it had refused> failed logins)
 Bytes sent: <the total>
 ```
 
-`ls report` now lists the six files Luca will read.
+`ls report` now lists the six files Noel will read.

@@ -4,27 +4,27 @@
   "files": [
     {
       "path": "novel/chapter-01.txt",
-      "content": "Chapter 1: The Lighthouse\n\nIon had kept the lighthouse for eleven years when the letter came.\nIt was from Mrs. Ionescu, the harbour master, and it was short.\nSuddenly the station would be closed, and Ion would have to leave.\nHe read it twice, then folded it  and put it in his coat.\n[TODO: describe the sea here]\n"
+      "content": "Chapter 1: The Lighthouse\n\nRaj had kept the lighthouse for eleven years when the letter came.\nIt was from Mrs. Rajan, the harbour master, and it was short.\nSuddenly the station would be closed, and Raj would have to leave.\nHe read it twice, then folded it  and put it in his coat.\n[TODO: describe the sea here]\n"
     },
     {
       "path": "novel/chapter-02.txt",
-      "content": "Chapter 2: The Harbour\n\nThe harbour was quiet in the morning, and the boats were still asleep.\nIon walked past the fish market, where Mrs. Ionescu was already shouting.\nSuddenly she saw him and stopped.\n\"You got my letter,\" she said. Ion nodded.\n"
+      "content": "Chapter 2: The Harbour\n\nThe harbour was quiet in the morning, and the boats were still asleep.\nRaj walked past the fish market, where Mrs. Rajan was already shouting.\nSuddenly she saw him and stopped.\n\"You got my letter,\" she said. Raj nodded.\n"
     },
     {
       "path": "novel/chapter-03.txt",
-      "content": "Chapter 3: The Storm\n\nThe storm came on the third night, faster than anyone had said.\nSuddenly the lights of the town went out, one street after another.\nOnly the lighthouse was still burning, because Ion had not left yet.\nOut at sea, a small boat was turning back towards the  rocks.\n[TODO: name the boat]\n"
+      "content": "Chapter 3: The Storm\n\nThe storm came on the third night, faster than anyone had said.\nSuddenly the lights of the town went out, one street after another.\nOnly the lighthouse was still burning, because Raj had not left yet.\nOut at sea, a small boat was turning back towards the  rocks.\n[TODO: name the boat]\n"
     },
     {
       "path": "novel/chapter-04.txt",
-      "content": "Chapter 4: The Rescue\n\nIon ran down the stairs, two at a time, and out into the rain.\nThe boat was close now, and he could hear voices over the wind.\nSuddenly a rope flew out of the dark and landed at his feet.\nHe pulled, and pulled, until the boat scraped onto the sand.\n"
+      "content": "Chapter 4: The Rescue\n\nRaj ran down the stairs, two at a time, and out into the rain.\nThe boat was close now, and he could hear voices over the wind.\nSuddenly a rope flew out of the dark and landed at his feet.\nHe pulled, and pulled, until the boat scraped onto the sand.\n"
     },
     {
       "path": "novel/chapter-05.txt",
-      "content": "Chapter 5: The Morning After\n\nIn the morning the whole town came down to the shore.\nMrs. Ionescu stood next to Ion and said nothing for a long time.\nThen she took the letter out of his coat and tore it in half.\n"
+      "content": "Chapter 5: The Morning After\n\nIn the morning the whole town came down to the shore.\nMrs. Rajan stood next to Raj and said nothing for a long time.\nThen she took the letter out of his coat and tore it in half.\n"
     },
     {
       "path": "novel/chapter-06.txt",
-      "content": "Chapter 6: The Keeper\n\nThe station stayed open, and Ion stayed with it.\nSuddenly, he thought, eleven years did not seem so long.\nHe climbed the stairs that evening and lit the lamp, as always.\n[TODO: last line]\n"
+      "content": "Chapter 6: The Keeper\n\nThe station stayed open, and Raj stayed with it.\nSuddenly, he thought, eleven years did not seem so long.\nHe climbed the stairs that evening and lit the lamp, as always.\n[TODO: last line]\n"
     }
   ],
   "intro": "The six chapters of The Keeper are in ~/novel."

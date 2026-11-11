@@ -634,9 +634,9 @@
       "answer": 0
     },
     {
-      "id": "te-error-index-04eccf",
+      "id": "te-error-index-2b0977",
       "text": "Ce eroare oprește acest program?",
-      "code": "echipaj = [\"Ana\", \"Ben\"]\nprint(echipaj[\"1\"])",
+      "code": "echipaj = [\"Ida\", \"Ben\"]\nprint(echipaj[\"1\"])",
       "options": ["TypeError", "KeyError", "IndexError", "ValueError"],
       "answer": 0
     },

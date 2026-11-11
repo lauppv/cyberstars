@@ -4,11 +4,11 @@
   "files": [
     {
       "path": "contacts/old-phone.csv",
-      "content": "Ana Pop,0722 111 222\nBogdan Ilie,0744 333 444\nClinic Dr. Matei,0264 555 666\nDan Radu,0733 777 888\nElena Stan,\nFlorin Toma,0755 123 456\nMama,0721 000 111\nPizzeria Roma,0264 999 000\n"
+      "content": "Ida Lee,07 22 11 12 22\nMartin Hale,07 44 33 34 44\nClinic Dr. Evans,02 64 55 56 66\nDan Reid,07 33 77 78 88\nSofia Shaw,\nFabian Ward,07 55 12 34 56\nMom,07 21 00 01 11\nPizzeria Roma,02 64 99 90 00\n"
     },
     {
       "path": "contacts/new-phone.csv",
-      "content": "Mama,+40 721 000 111\nAna Pop,+40722111222\nDan Radu,0733 777 888\nDan Radu,0799 888 777\nGabi Neagu,+40 766 432 100\nFlorin Toma,0755123456\nIoana Marin,0740 202 303\nPlumber Vasile,0742 600 700\n"
+      "content": "Mom,+33 7 21 00 01 11\nIda Lee,+33722111222\nDan Reid,07 33 77 78 88\nDan Reid,07 99 88 87 77\nGail Nolan,+33 7 66 43 21 00\nFabian Ward,0755123456\nJulia Weber,07 40 20 23 03\nPlumber Harold,07 42 60 07 00\n"
     }
   ],
   "intro": "The two phone exports are in ~/contacts."

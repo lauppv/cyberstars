@@ -105,15 +105,15 @@
       "answer": 0
     },
     {
-      "id": "bad-line-8365eb",
+      "id": "bad-line-068265",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")\nprint(\"Imi place pizza\")\nprint(CyberStars e cel mai tare)",
-      "output": "Numele meu este Ana\nAm 12 ani\nImi place pizza\nCyberStars e cel mai tare",
+      "code": "print(\"Numele meu este Ida\")\nprint(\"Am 12 ani\")\nprint(\"Imi place pizza\")\nprint(CyberStars e cel mai tare)",
+      "output": "Numele meu este Ida\nAm 12 ani\nImi place pizza\nCyberStars e cel mai tare",
       "options": [
         "print(CyberStars e cel mai tare)",
         "print(\"Imi place pizza\")",
         "print(\"Am 12 ani\")",
-        "print(\"Numele meu este Ana\")"
+        "print(\"Numele meu este Ida\")"
       ],
       "answer": 0
     },
@@ -352,10 +352,10 @@
       "answer": 0
     },
     {
-      "id": "var-again-49f128",
+      "id": "var-again-fd5cda",
       "text": "Ce afișează?",
-      "code": "nume = \"Ana\"\nnume = \"Ben\"\nprint(nume)",
-      "options": ["Ben", "Ana", "nume", "Ana\nBen"],
+      "code": "nume = \"Ida\"\nnume = \"Ben\"\nprint(nume)",
+      "options": ["Ben", "Ida", "nume", "Ida\nBen"],
       "answer": 0
     },
     {
@@ -435,10 +435,10 @@
       "answer": 0
     },
     {
-      "id": "fstring-gap-f0f760",
+      "id": "fstring-gap-7e0253",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "nume = \"Ana\"\nvarsta = 12\nprint(f\"Numele meu este {___}\")",
-      "output": "Numele meu este Ana",
+      "code": "nume = \"Ida\"\nvarsta = 12\nprint(f\"Numele meu este {___}\")",
+      "output": "Numele meu este Ida",
       "options": ["nume", "\"nume\"", "varsta", "Nume"],
       "answer": 0
     },
@@ -455,14 +455,14 @@
       "answer": 0
     },
     {
-      "id": "fstring-no-f-139a2f",
+      "id": "fstring-no-f-3d7d82",
       "text": "Ce afișează?",
-      "code": "nume = \"Ana\"\nvarsta = 12\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
+      "code": "nume = \"Ida\"\nvarsta = 12\nprint(f\"Numele meu este {nume} si varsta mea e {varsta}\")",
       "options": [
-        "Numele meu este Ana si varsta mea e 12",
+        "Numele meu este Ida si varsta mea e 12",
         "Numele meu este {nume} si varsta mea e {varsta}",
         "Numele meu este nume si varsta mea e 12",
-        "Numele meu este Ana si varsta mea e Ana"
+        "Numele meu este Ida si varsta mea e Ida"
       ],
       "answer": 0
     },
@@ -504,12 +504,12 @@
       "answer": 0
     },
     {
-      "id": "card-broken-7f510c",
+      "id": "card-broken-9346a1",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "nume = Ana\nnivel = 7\nviata = 50.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
-      "output": "Jucatorul Ana(7) are viata 50.5",
+      "code": "nume = Ida\nnivel = 7\nviata = 50.5\nprint(f\"Jucatorul {nume}({nivel}) are viata {viata}\")",
+      "output": "Jucatorul Ida(7) are viata 50.5",
       "options": [
-        "nume = Ana",
+        "nume = Ida",
         "nivel = 7",
         "viata = 50.5",
         "print(f\"Jucatorul {nume}({nivel}) are viata {viata}\")"
@@ -543,10 +543,10 @@
       "answer": 0
     },
     {
-      "id": "card-gap-a47dd8",
+      "id": "card-gap-652bbc",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "nume = \"Ana\"\nnivel = 7\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
-      "output": "Ana are nivelul 7 in Rachetele",
+      "code": "nume = \"Ida\"\nnivel = 7\n___\nprint(f\"{nume} are nivelul {nivel} in {breasla}\")",
+      "output": "Ida are nivelul 7 in Rachetele",
       "options": [
         "breasla = \"Rachetele\"",
         "breasla = Rachetele",

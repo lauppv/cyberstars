@@ -107,12 +107,12 @@
     },
     {
       "id": "q13",
-      "text": "Care program afișează Numele meu este Ana pe o linie și Am 12 ani pe următoarea?",
+      "text": "Care program afișează Numele meu este Ida pe o linie și Am 12 ani pe următoarea?",
       "options": [
-        "print(\"Numele meu este Ana\")\nprint(\"Am 12 ani\")",
-        "print(\"Numele meu este Ana Am 12 ani\")",
-        "print(Numele meu este Ana)\nprint(Am 12 ani)",
-        "print(\"Am 12 ani\")\nprint(\"Numele meu este Ana\")"
+        "print(\"Numele meu este Ida\")\nprint(\"Am 12 ani\")",
+        "print(\"Numele meu este Ida Am 12 ani\")",
+        "print(Numele meu este Ida)\nprint(Am 12 ani)",
+        "print(\"Am 12 ani\")\nprint(\"Numele meu este Ida\")"
       ],
       "answer": 0
     },
@@ -375,7 +375,7 @@
       "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
       "values": [
         {
-          "a": "Numele meu este Ana",
+          "a": "Numele meu este Ida",
           "b": "Am 12 ani",
           "c": "Imi place pizza",
           "d": "CyberStars e cel mai tare"
@@ -575,7 +575,7 @@
           "b": "Lance"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben"
         }
       ],
@@ -676,7 +676,7 @@
           "age": 57
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "age": 12
         }
       ],
@@ -694,7 +694,7 @@
           "age": 32
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "age": 12
         }
       ],
@@ -737,7 +737,7 @@
           "health": 97.5
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "level": 7,
           "health": 50.5
         },
@@ -761,7 +761,7 @@
           "guild": "CyberStars"
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "level": 7,
           "guild": "Rachetele"
         },

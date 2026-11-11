@@ -16,9 +16,9 @@
       "answer": 0
     },
     {
-      "id": "rd-average-8f36ec",
+      "id": "rd-average-57d3ed",
       "text": "What does this print?",
-      "code": "def total_of(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return total\n\ncrew = {\"Ana\": 99, \"Ben\": 81, \"Cara\": 60}\nprint(total_of(crew) / len(crew))",
+      "code": "def total_of(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return total\n\ncrew = {\"Ida\": 99, \"Ben\": 81, \"Cara\": 60}\nprint(total_of(crew) / len(crew))",
       "options": ["80.0", "20.0", "80", "33.0"],
       "answer": 0
     },
@@ -37,10 +37,10 @@
       "answer": 0
     },
     {
-      "id": "rd-top-4c6068",
+      "id": "rd-top-a5a3ca",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 91, \"Ben\": 64, \"Cara\": 77}\ntop = \"\"\nhighest = 0\nfor name in scores:\n    if scores[name] > highest:\n        highest = scores[name]\n        top = name\nprint(f\"Top: {top}\")",
-      "options": ["Top: Ana", "Top:", "Top: Cara", "Top: 91"],
+      "code": "scores = {\"Ida\": 91, \"Ben\": 64, \"Cara\": 77}\ntop = \"\"\nhighest = 0\nfor name in scores:\n    if scores[name] > highest:\n        highest = scores[name]\n        top = name\nprint(f\"Top: {top}\")",
+      "options": ["Top: Ida", "Top:", "Top: Cara", "Top: 91"],
       "answer": 0
     },
     {
@@ -127,12 +127,12 @@
       "answer": 0
     },
     {
-      "id": "rd-update-69d6ea",
+      "id": "rd-update-2f256b",
       "text": "What does this print?",
-      "code": "crew = {\"Ana\": 70, \"Ben\": 88}\ncrew[\"Ben\"] = crew[\"Ben\"] + 2\ncrew[\"Cara\"] = 64\ndel crew[\"Ana\"]\nprint(crew)",
+      "code": "crew = {\"Ida\": 70, \"Ben\": 88}\ncrew[\"Ben\"] = crew[\"Ben\"] + 2\ncrew[\"Cara\"] = 64\ndel crew[\"Ida\"]\nprint(crew)",
       "options": [
         "{'Ben': 90, 'Cara': 64}",
-        "{'Ana': 70, 'Ben': 90, 'Cara': 64}",
+        "{'Ida': 70, 'Ben': 90, 'Cara': 64}",
         "{'Ben': 2, 'Cara': 64}",
         "{'Ben': 90}"
       ],
@@ -165,10 +165,10 @@
       "answer": 0
     },
     {
-      "id": "rd-first-low-ee7074",
+      "id": "rd-first-low-016dca",
       "text": "What does this print?",
-      "code": "def first_low(scores):\n    for name, score in scores.items():\n        if score < 60:\n            return name\n    return \"Nobody\"\n\nprint(first_low({\"Ana\": 64, \"Ben\": 58, \"Cara\": 71}))",
-      "options": ["Ben", "Ben\nNobody", "Nobody", "Ana"],
+      "code": "def first_low(scores):\n    for name, score in scores.items():\n        if score < 60:\n            return name\n    return \"Nobody\"\n\nprint(first_low({\"Ida\": 64, \"Ben\": 58, \"Cara\": 71}))",
+      "options": ["Ben", "Ben\nNobody", "Nobody", "Ida"],
       "answer": 0
     },
     {
@@ -365,10 +365,10 @@
       "answer": 0
     },
     {
-      "id": "rd-gap-append-a289d4",
+      "id": "rd-gap-append-1c2502",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "scores = {\"Ana\": 51, \"Ben\": 64, \"Cara\": 20}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        ___\nprint(passing)",
-      "output": "['Ana', 'Ben']",
+      "code": "scores = {\"Ida\": 51, \"Ben\": 64, \"Cara\": 20}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        ___\nprint(passing)",
+      "output": "['Ida', 'Ben']",
       "options": [
         "passing.append(name)",
         "passing.append(scores[name])",
@@ -420,9 +420,9 @@
       "answer": 0
     },
     {
-      "id": "rd-gap-method-5a2862",
+      "id": "rd-gap-method-9eea2f",
       "text": "What goes in the gap so the program prints this?",
-      "code": "crew = {\"Ana\": 51, \"Ben\": 64, \"Cara\": 20}\nfor x in crew.___():\n    print(x)",
+      "code": "crew = {\"Ida\": 51, \"Ben\": 64, \"Cara\": 20}\nfor x in crew.___():\n    print(x)",
       "output": "51\n64\n20",
       "options": ["values", "keys", "items", "append"],
       "answer": 0
@@ -460,9 +460,9 @@
       "answer": 0
     },
     {
-      "id": "rd-gap-key-002dd8",
+      "id": "rd-gap-key-5776e2",
       "text": "What goes in the gap so the program prints this?",
-      "code": "def make_report(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return {\"total\": total, \"count\": len(scores)}\n\nreport = make_report({\"Ana\": 50, \"Ben\": 30})\nprint(report[___])",
+      "code": "def make_report(scores):\n    total = 0\n    for score in scores.values():\n        total = total + score\n    return {\"total\": total, \"count\": len(scores)}\n\nreport = make_report({\"Ida\": 50, \"Ben\": 30})\nprint(report[___])",
       "output": "80",
       "options": ["\"total\"", "\"count\"", "total", "0"],
       "answer": 0
@@ -510,12 +510,12 @@
       "answer": 0
     },
     {
-      "id": "rd-bad-quotes-9c5356",
+      "id": "rd-bad-quotes-93e65d",
       "text": "Which line stops this program from printing this?",
-      "code": "scores = {\"Ana\": 70, \"Ben\": 88}\nscores[\"Ben\"] = scores[\"Ben\"] + 5\nscores[\"Cara\"] = 64\nprint(scores[\"Cara\"])\nprint(scores[\"Ben\"])\nprint(scores[Ana])",
+      "code": "scores = {\"Ida\": 70, \"Ben\": 88}\nscores[\"Ben\"] = scores[\"Ben\"] + 5\nscores[\"Cara\"] = 64\nprint(scores[\"Cara\"])\nprint(scores[\"Ben\"])\nprint(scores[Ida])",
       "output": "64\n93\n70",
       "options": [
-        "print(scores[Ana])",
+        "print(scores[Ida])",
         "print(scores[\"Ben\"])",
         "print(scores[\"Cara\"])",
         "scores[\"Cara\"] = 64"
@@ -633,10 +633,10 @@
       "answer": 0
     },
     {
-      "id": "rd-holds-bonus-bd1d69",
+      "id": "rd-holds-bonus-cbbe75",
       "text": "What is in `heroes` at the end?",
-      "code": "def level_up(levels, steps):\n    for name in levels:\n        levels[name] = levels[name] + steps\n    return levels\n\nheroes = level_up({\"Ana\": 3, \"Kai\": 5}, 2)",
-      "options": ["{'Ana': 5, 'Kai': 7}", "{'Ana': 5, 'Kai': 5}", "{'Ana': 2, 'Kai': 2}", "None"],
+      "code": "def level_up(levels, steps):\n    for name in levels:\n        levels[name] = levels[name] + steps\n    return levels\n\nheroes = level_up({\"Ida\": 3, \"Kai\": 5}, 2)",
+      "options": ["{'Ida': 5, 'Kai': 7}", "{'Ida': 5, 'Kai': 5}", "{'Ida': 2, 'Kai': 2}", "None"],
       "answer": 0
     },
     {

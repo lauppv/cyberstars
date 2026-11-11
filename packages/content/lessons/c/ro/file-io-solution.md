@@ -6,9 +6,9 @@ int main(void) {
     if (f == NULL) {
         return 1;
     }
-    fprintf(f, "Enescu 95\n");
-    fprintf(f, "Vlad 82\n");
-    fprintf(f, "Dobre 98\n");
+    fprintf(f, "Larsen 95\n");
+    fprintf(f, "Hans 82\n");
+    fprintf(f, "Brown 98\n");
     fclose(f);
 
     f = fopen("tura.txt", "r");

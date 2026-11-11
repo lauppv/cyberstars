@@ -58,9 +58,9 @@
       "answer": 0
     },
     {
-      "id": "st-remove-f2a62e",
+      "id": "st-remove-7f1f1c",
       "text": "Ce afișează?",
-      "code": "oaspeti = {\"Ana\", \"Rex\"}\noaspeti.remove(\"Rex\")\nprint(\"Rex\" in oaspeti)\nprint(len(oaspeti))",
+      "code": "oaspeti = {\"Ida\", \"Rex\"}\noaspeti.remove(\"Rex\")\nprint(\"Rex\" in oaspeti)\nprint(len(oaspeti))",
       "options": ["False\n1", "True\n2", "True\n1", "1\nFalse"],
       "answer": 0
     },
@@ -410,13 +410,13 @@
       "answer": 0
     },
     {
-      "id": "st-gap-remove-197741",
+      "id": "st-gap-remove-315c7e",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "oaspeti = {\"Ana\", \"Rex\"}\n___\nprint(\"Ana\" in oaspeti)\nprint(len(oaspeti))",
+      "code": "oaspeti = {\"Ida\", \"Rex\"}\n___\nprint(\"Ida\" in oaspeti)\nprint(len(oaspeti))",
       "output": "False\n1",
       "options": [
-        "oaspeti.remove(\"Ana\")",
-        "oaspeti.add(\"Ana\")",
+        "oaspeti.remove(\"Ida\")",
+        "oaspeti.add(\"Ida\")",
         "del oaspeti[0]",
         "oaspeti.remove(\"Rex\")"
       ],

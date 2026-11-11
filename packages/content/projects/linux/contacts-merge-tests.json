@@ -3,12 +3,12 @@
     {
       "kind": "command_output",
       "cmd": "cat contacts/merged.csv",
-      "expected": "Ana Pop,0722111222\nBogdan Ilie,0744333444\nClinic Dr. Matei,0264555666\nDan Radu,0733777888\nDan Radu,0799888777\nElena Stan,\nFlorin Toma,0755123456\nGabi Neagu,0766432100\nIoana Marin,0740202303\nMama,0721000111\nPizzeria Roma,0264999000\nPlumber Vasile,0742600700"
+      "expected": "Clinic Dr. Evans,0264555666\nDan Reid,0733777888\nDan Reid,0799888777\nFabian Ward,0755123456\nGail Nolan,0766432100\nIda Lee,0722111222\nJulia Weber,0740202303\nMartin Hale,0744333444\nMom,0721000111\nPizzeria Roma,0264999000\nPlumber Harold,0742600700\nSofia Shaw,"
     },
     {
       "kind": "command_output",
       "cmd": "cat contacts/contacts.csv",
-      "expected": "name,phone\nAna Pop,0722111222\nBogdan Ilie,0744333444\nClinic Dr. Matei,0264555666\nDan Radu,0799888777\nElena Stan,\nFlorin Toma,0755123456\nGabi Neagu,0766432100\nIoana Marin,0740202303\nMama,0721000111\nPizzeria Roma,0264999000\nPlumber Vasile,0742600700"
+      "expected": "name,phone\nClinic Dr. Evans,0264555666\nDan Reid,0799888777\nFabian Ward,0755123456\nGail Nolan,0766432100\nIda Lee,0722111222\nJulia Weber,0740202303\nMartin Hale,0744333444\nMom,0721000111\nPizzeria Roma,0264999000\nPlumber Harold,0742600700\nSofia Shaw,"
     }
   ],
   "requires": [

@@ -3,7 +3,7 @@
   "cases": [
     {
       "visible": true,
-      "stdin": "# Settings for Star Miner\n{\n  \"player\": \"Ioana\",\n  \"volume\": 0.8,\n  \"graphics\": {\n    \"fullscreen\": true,\n    \"resolution\": { \"width\": 1920, \"height\": 1080 },\n    \"shadows\": \"high\"\n  },\n  \"controls\": [\"W\", \"A\", \"S\", \"D\"],\n  \"saves\": [\n    { \"name\": \"Moon base\", \"level\": 4 },\n    { \"name\": \"Asteroid\", \"level\": 7, \"hard\": true }\n  ],\n  \"cheats\": null,\n  \"mods\": []\n}\n---\nget player\nget graphics.resolution.width\nget controls[2]\nget saves[1].name\nget saves\ntype volume\ntype cheats\ntype graphics\nget graphics.colour\nget saves[5].name\nprint graphics\nprint mods\nprint saves[0]\nfly away\nquit\n"
+      "stdin": "# Settings for Star Miner\n{\n  \"player\": \"Julia\",\n  \"volume\": 0.8,\n  \"graphics\": {\n    \"fullscreen\": true,\n    \"resolution\": { \"width\": 1920, \"height\": 1080 },\n    \"shadows\": \"high\"\n  },\n  \"controls\": [\"W\", \"A\", \"S\", \"D\"],\n  \"saves\": [\n    { \"name\": \"Moon base\", \"level\": 4 },\n    { \"name\": \"Asteroid\", \"level\": 7, \"hard\": true }\n  ],\n  \"cheats\": null,\n  \"mods\": []\n}\n---\nget player\nget graphics.resolution.width\nget controls[2]\nget saves[1].name\nget saves\ntype volume\ntype cheats\ntype graphics\nget graphics.colour\nget saves[5].name\nprint graphics\nprint mods\nprint saves[0]\nfly away\nquit\n"
     },
     {
       "visible": true,

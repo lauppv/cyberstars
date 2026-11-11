@@ -1,4 +1,4 @@
-The rangers of a national park in the Apuseni mountains plan their firebreaks, strips of land with no trees, and want to see what a fire would do before summer comes. They give you a map of a patch of forest, the wind, and where a fire might start. You'll write the simulation: minute by minute, the fire spreads from tree to tree, the wind pushes it further, and water stops it.
+The rangers of a national park in the Alps plan their firebreaks, strips of land with no trees, and want to see what a fire would do before summer comes. They give you a map of a patch of forest, the wind, and where a fire might start. You'll write the simulation: minute by minute, the fire spreads from tree to tree, the wind pushes it further, and water stops it.
 
 You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests burn forests your program has never seen (on the screen only). Passing them finishes the project.
 

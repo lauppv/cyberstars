@@ -83,7 +83,7 @@
     {
       "id": "q10",
       "text": "What does this print?",
-      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\ncrew = [\"Ana\", \"Ben\", \"Ana\", \"Cal\"]\nprint(linear_search(crew, \"Ana\"))",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\ncrew = [\"Ida\", \"Ben\", \"Ida\", \"Cal\"]\nprint(linear_search(crew, \"Ida\"))",
       "options": ["2", "0", "[0, 2]", "1"],
       "answer": 1
     },

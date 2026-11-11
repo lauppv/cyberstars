@@ -88,7 +88,7 @@
     {
       "id": "q10",
       "text": "Ce afișează?",
-      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Ana\", \"Ben\", \"Ana\", \"Cal\"]\nprint(cautare_liniara(echipaj, \"Ana\"))",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nechipaj = [\"Ida\", \"Ben\", \"Ida\", \"Cal\"]\nprint(cautare_liniara(echipaj, \"Ida\"))",
       "options": ["2", "0", "[0, 2]", "1"],
       "answer": 1
     },

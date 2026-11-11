@@ -27,11 +27,11 @@ Recursion doesn't fit this walk. A recursive call on the left child finishes the
 That's a **queue**, like the line at a till. Whoever joins goes to the back, whoever is served comes from the front: first in, first out
 
 ```text
-join:   Ana, then Ben, then Cris
+join:   Ida, then Ben, then Cleo
 
-front [ Ana  Ben  Cris ] back
+front [ Ida  Ben  Cleo ] back
 
-serve:  Ana comes out first, then Ben
+serve:  Ida comes out first, then Ben
 ```
 
 ---

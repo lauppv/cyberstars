@@ -53,16 +53,16 @@ B02 | Emma by Jane Austen | 1 of 1 on the shelf
 `borrow <member> <id> <day>` lends one copy of a book. Members are named by one word, and the library opens a member's card the first time they borrow. Days are numbers, counted from the day the library opened; a book is due back 14 days after it was borrowed.
 
 ```text
-borrow Ana B01 3
-Ana borrowed "Dune", due on day 17
+borrow Ida B01 3
+Ida borrowed "Dune", due on day 17
 ```
 
 Refuse the loan, and change nothing, when:
 
 - there is no book with that ID: `No book with ID B09`
 - no copy is left on the shelf: `No copies of "Emma" left`
-- the member already has that book: `Ana already has "Dune"`
-- the member already has 3 books: `Ana already has 3 books`
+- the member already has that book: `Ida already has "Dune"`
+- the member already has 3 books: `Ida already has 3 books`
 
 Check them in that order and print only the first one that applies.
 
@@ -71,38 +71,38 @@ Check them in that order and print only the first one that applies.
 `return <member> <id> <day>` brings a copy back to the shelf.
 
 ```text
-return Ana B01 10
-Ana returned "Dune"
+return Ida B01 10
+Ida returned "Dune"
 ```
 
-When the book doesn't exist, print the same `No book with ID B09` as `borrow`. When the member doesn't have it, print `Ana does not have "Dune"` and change nothing.
+When the book doesn't exist, print the same `No book with ID B09` as `borrow`. When the member doesn't have it, print `Ida does not have "Dune"` and change nothing.
 
 ## Late fees
 
 A book returned after its due day costs 0.50 for every day late. Add the fee to what the member owes and say it when the book comes back, with two decimals:
 
 ```text
-borrow Ana B01 3
-Ana borrowed "Dune", due on day 17
-return Ana B01 20
-Ana returned "Dune" 3 days late, fee 1.50
+borrow Ida B01 3
+Ida borrowed "Dune", due on day 17
+return Ida B01 20
+Ida returned "Dune" 3 days late, fee 1.50
 ```
 
 A single day late reads `1 day late`. A book returned on its due day or before is on time and prints the line from the previous step. A member who owes more than 5.00 can't borrow until they pay; check it before every other rule of `borrow`:
 
 ```text
-Ana owes 6.00, pay first
+Ida owes 6.00, pay first
 ```
 
-`pay <member> <amount>` takes a payment and prints what is still owed: `Ana paid 2.00, owes 4.00`. Nobody can pay more than they owe: then print `Ana owes only 4.00` and take nothing. A name that never borrowed anything prints `No member named Bob`.
+`pay <member> <amount>` takes a payment and prints what is still owed: `Ida paid 2.00, owes 4.00`. Nobody can pay more than they owe: then print `Ida owes only 4.00` and take nothing. A name that never borrowed anything prints `No member named Bob`.
 
 ## Member card
 
 `member <name>` shows what a member has, their loans sorted by due day:
 
 ```text
-member Ana
-Member: Ana
+member Ida
+Member: Ida
 Loans: 2
 - Dune, due on day 17
 - Matilda, due on day 21
@@ -119,7 +119,7 @@ A member with no loans shows `Loans: 0` and no lines under it. A name that never
 report 20
 Report for day 20
 Books out: 3
-Overdue: Ana - Dune (3 days)
+Overdue: Ida - Dune (3 days)
 Overdue: Leo - Emma (1 day)
 Most borrowed: Dune (4 times)
 Fees owed: 7.50

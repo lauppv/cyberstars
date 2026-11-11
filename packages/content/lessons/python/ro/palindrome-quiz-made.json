@@ -102,13 +102,8 @@
     {
       "id": "pd-clean-81e122",
       "text": "Ce afișează?",
-      "code": "text = \"Ion a luat luana noi\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "options": [
-        "ionaluatluananoi\nFalse",
-        "Ionaluatluananoi\nFalse",
-        "ion a luat luana noi\nFalse",
-        "i\nTrue"
-      ],
+      "code": "text = \"E la cale\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": ["elacale\nTrue", "Elacale\nFalse", "e la cale\nFalse", "elacale\nFalse"],
       "answer": 0
     },
     {
@@ -374,8 +369,8 @@
     {
       "id": "pd-gap-clean-bd75a8",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "text = \"Ion a luat luana noi 9\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
-      "output": "ionaluatluananoi False",
+      "code": "text = \"E la cale 9\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "elacale True",
       "options": ["isalpha", "isdigit", "isupper", "islower"],
       "answer": 0
     },
@@ -476,12 +471,12 @@
     {
       "id": "pd-bad-lower-8b4bb8",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "text = \"Ion a luat luana noi\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "output": "ionaluatluananoi\nFalse",
+      "code": "text = \"E la cale\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "elacale\nTrue",
       "options": [
         "curatat += caracter",
         "curatat = \"\"",
-        "text = \"Ion a luat luana noi\"",
+        "text = \"E la cale\"",
         "if caracter.isalpha():"
       ],
       "answer": 0
@@ -502,12 +497,12 @@
     {
       "id": "pd-bad-lower-5d0cea",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "text = \"Ana are mere\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "output": "anaaremere\nFalse",
+      "code": "text = \"Ida are mere\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "idaaremere\nFalse",
       "options": [
         "curatat += caracter",
         "curatat = \"\"",
-        "text = \"Ana are mere\"",
+        "text = \"Ida are mere\"",
         "print(curatat)"
       ],
       "answer": 0
@@ -600,8 +595,8 @@
     {
       "id": "pal-holds-clean-f6b9ad",
       "text": "Ce conține `curatat` la final?",
-      "code": "text = \"Ion a luat luana noi\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
-      "options": ["'ionaluatluananoi'", "'Ionaluatluananoi'", "'    '", "'i'"],
+      "code": "text = \"E la cale\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
+      "options": ["'elacale'", "'Elacale'", "'  '", "'e'"],
       "answer": 0
     },
     {

@@ -27,11 +27,11 @@ Recursivitatea nu se potrivește aici. Un apel recursiv pe copilul stâng termin
 Acel ceva este o **coadă**, ca șirul de la casa de marcat. Cine vine se așază la capătul din spate, cine e servit pleacă din față: primul venit, primul servit
 
 ```text
-vin:      Ana, apoi Ben, apoi Cris
+vin:      Ida, apoi Ben, apoi Cleo
 
-fata [ Ana  Ben  Cris ] spate
+fata [ Ida  Ben  Cleo ] spate
 
-servire:  Ana iese prima, apoi Ben
+servire:  Ida iese prima, apoi Ben
 ```
 
 ---

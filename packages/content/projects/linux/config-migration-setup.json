@@ -28,7 +28,7 @@
     },
     {
       "path": "apps/invoices/NOTES.txt",
-      "content": "2024-03: moved invoices from db-old.lan's first disk to its second.\nAsk Radu before touching the config.\n"
+      "content": "2024-03: moved invoices from db-old.lan's first disk to its second.\nAsk Noah before touching the config.\n"
     }
   ],
   "intro": "The three apps and their config files are in ~/apps."

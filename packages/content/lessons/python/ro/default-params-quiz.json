@@ -320,7 +320,7 @@
           "p": "nume",
           "q": "salut",
           "d": "Salut",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Rex",
           "c": "Hei"
         },
@@ -416,7 +416,7 @@
           "dq": "single",
           "dr": "mic dejun",
           "w": "a rezervat camera",
-          "a": "Ana",
+          "a": "Ida",
           "x": "cina"
         },
         {
@@ -634,7 +634,7 @@
           "p": "oaspete",
           "q": "cuvant",
           "w": "Bine ai venit",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Kai",
           "w2": "Pa"
         },
@@ -824,7 +824,7 @@
           "p": "nume",
           "q": "vieti",
           "d": 3,
-          "a": "Ana",
+          "a": "Ida",
           "b": "Rex",
           "n": 5
         },
@@ -882,7 +882,7 @@
           "r": "masa",
           "dq": "single",
           "dr": "mic dejun",
-          "a": "Ana",
+          "a": "Ida",
           "x": "cina"
         },
         {
@@ -1021,7 +1021,7 @@
           "r": "masa",
           "dq": "single",
           "dr": "mic dejun",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Rex",
           "y": "dubla",
           "c": "Kai",
@@ -1196,7 +1196,7 @@
           "p": "nume",
           "q": "final",
           "d": ".",
-          "a": "Ana",
+          "a": "Ida",
           "b": "!",
           "v": "nota"
         }

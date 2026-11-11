@@ -2,14 +2,14 @@
   "note": "Made by npm run make:quiz from the templates in default-params-quiz.json; don't edit it by hand.",
   "questions": [
     {
-      "id": "dp-word-586961",
+      "id": "dp-word-c961cc",
       "text": "Ce afișează?",
-      "code": "def saluta(nume, salut=\"Salut\"):\n    print(salut, nume)\n\nsaluta(\"Ana\")\nsaluta(\"Rex\", \"Hei\")",
+      "code": "def saluta(nume, salut=\"Salut\"):\n    print(salut, nume)\n\nsaluta(\"Ida\")\nsaluta(\"Rex\", \"Hei\")",
       "options": [
-        "Salut Ana\nHei Rex",
-        "Salut Ana\nRex Hei",
-        "Ana Salut\nRex Hei",
-        "Hei Ana\nHei Rex"
+        "Salut Ida\nHei Rex",
+        "Salut Ida\nRex Hei",
+        "Ida Salut\nRex Hei",
+        "Hei Ida\nHei Rex"
       ],
       "answer": 0
     },
@@ -71,13 +71,13 @@
       "answer": 0
     },
     {
-      "id": "dp-keyword-5f719d",
+      "id": "dp-keyword-0a86db",
       "text": "Ce afișează?",
-      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete} a rezervat camera {camera} ({masa})\")\n\nrezerva(\"Ana\", masa=\"cina\")",
+      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete} a rezervat camera {camera} ({masa})\")\n\nrezerva(\"Ida\", masa=\"cina\")",
       "options": [
-        "Ana a rezervat camera single (cina)",
-        "Ana a rezervat camera cina (mic dejun)",
-        "Ana a rezervat camera single (single)",
+        "Ida a rezervat camera single (cina)",
+        "Ida a rezervat camera cina (mic dejun)",
+        "Ida a rezervat camera single (single)",
         "{oaspete} a rezervat camera {camera} ({masa})"
       ],
       "answer": 0
@@ -272,14 +272,14 @@
       "answer": 0
     },
     {
-      "id": "dp-which-twice-66431b",
+      "id": "dp-which-twice-ca9c64",
       "text": "Care program afișează asta?",
-      "output": "Bine ai venit Ana\nBine ai venit Kai",
+      "output": "Bine ai venit Ida\nBine ai venit Kai",
       "options": [
-        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\")",
-        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\", \"Pa\")",
-        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(oaspete, cuvant)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\")",
-        "def bun_venit(oaspete, cuvant=\"Pa\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ana\")\nbun_venit(\"Kai\")"
+        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ida\")\nbun_venit(\"Kai\")",
+        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ida\")\nbun_venit(\"Kai\", \"Pa\")",
+        "def bun_venit(oaspete, cuvant=\"Bine ai venit\"):\n    print(oaspete, cuvant)\n\nbun_venit(\"Ida\")\nbun_venit(\"Kai\")",
+        "def bun_venit(oaspete, cuvant=\"Pa\"):\n    print(cuvant, oaspete)\n\nbun_venit(\"Ida\")\nbun_venit(\"Kai\")"
       ],
       "answer": 0
     },
@@ -454,10 +454,10 @@
       "answer": 0
     },
     {
-      "id": "dp-val-default-ac8f86",
+      "id": "dp-val-default-e48ce7",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "def jucator_nou(nume, vieti=___):\n    print(nume, vieti)\n\njucator_nou(\"Ana\")\njucator_nou(\"Rex\", 5)",
-      "output": "Ana 3\nRex 5",
+      "code": "def jucator_nou(nume, vieti=___):\n    print(nume, vieti)\n\njucator_nou(\"Ida\")\njucator_nou(\"Rex\", 5)",
+      "output": "Ida 3\nRex 5",
       "options": ["3", "5", "0", "\"vieti\""],
       "answer": 0
     },
@@ -494,10 +494,10 @@
       "answer": 0
     },
     {
-      "id": "dp-val-kw-b2c3a8",
+      "id": "dp-val-kw-b7f4b9",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete}: {camera}, {masa}\")\n\nrezerva(\"Ana\", ___=\"cina\")",
-      "output": "Ana: single, cina",
+      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete}: {camera}, {masa}\")\n\nrezerva(\"Ida\", ___=\"cina\")",
+      "output": "Ida: single, cina",
       "options": ["masa", "camera", "oaspete", "cina"],
       "answer": 0
     },
@@ -602,14 +602,14 @@
       "answer": 0
     },
     {
-      "id": "dp-bad-kw-5b8b11",
+      "id": "dp-bad-kw-61f0b6",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete}: {camera}, {masa}\")\n\nrezerva(\"Ana\")\nrezerva(\"Rex\", \"dubla\")\nrezerva(\"Kai\", \"cina\")",
-      "output": "Ana: single, mic dejun\nRex: dubla, mic dejun\nKai: single, cina",
+      "code": "def rezerva(oaspete, camera=\"single\", masa=\"mic dejun\"):\n    print(f\"{oaspete}: {camera}, {masa}\")\n\nrezerva(\"Ida\")\nrezerva(\"Rex\", \"dubla\")\nrezerva(\"Kai\", \"cina\")",
+      "output": "Ida: single, mic dejun\nRex: dubla, mic dejun\nKai: single, cina",
       "options": [
         "rezerva(\"Kai\", \"cina\")",
         "rezerva(\"Rex\", \"dubla\")",
-        "rezerva(\"Ana\")",
+        "rezerva(\"Ida\")",
         "print(f\"{oaspete}: {camera}, {masa}\")"
       ],
       "answer": 0
@@ -736,10 +736,10 @@
       "answer": 0
     },
     {
-      "id": "dp-holds-label-a8b822",
+      "id": "dp-holds-label-4a91f8",
       "text": "Ce conține `nota` la final?",
-      "code": "def marcaj(nume, final=\".\"):\n    return nume + final\n\nnota = marcaj(\"Ana\")\nnota = marcaj(nota, \"!\")",
-      "options": ["'Ana.!'", "'Ana.'", "'Ana!'", "'!.Ana'"],
+      "code": "def marcaj(nume, final=\".\"):\n    return nume + final\n\nnota = marcaj(\"Ida\")\nnota = marcaj(nota, \"!\")",
+      "options": ["'Ida.!'", "'Ida.'", "'Ida!'", "'!.Ida'"],
       "answer": 0
     }
   ]

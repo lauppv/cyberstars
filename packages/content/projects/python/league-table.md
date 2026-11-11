@@ -1,4 +1,4 @@
-Every Sunday four neighbourhood teams play football in the park, and Andrei, who organises the league, writes each result in a text file on his phone. At the end of the season everyone wants the final table, the kind newspapers print, with every column lined up. Andrei pastes the whole file into your program, and it prints the table.
+Every Sunday four neighbourhood teams play football in the park, and Oliver, who organises the league, writes each result in a text file on his phone. At the end of the season everyone wants the final table, the kind newspapers print, with every column lined up. Oliver pastes the whole file into your program, and it prints the table.
 
 You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests feed your program seasons it has never seen. Passing them finishes the project.
 
@@ -27,7 +27,7 @@ Skip empty lines, keep the others, and print how many matches you read: `10 matc
 
 ## Lines that aren't results
 
-Andrei types fast on a small screen. A line is a result only if it has three words, the two teams are different, and the score is two whole numbers joined by a `-`. Leave every other line out of the season, and after the count say which ones, with their line number in the file (empty lines count too):
+Oliver types fast on a small screen. A line is a result only if it has three words, the two teams are different, and the score is two whole numbers joined by a `-`. Leave every other line out of the season, and after the count say which ones, with their line number in the file (empty lines count too):
 
 ```text
 10 matches read

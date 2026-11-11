@@ -2,7 +2,7 @@
 
 int main(void) {
     FILE *out = fopen("shift.txt", "w");
-    fprintf(out, "Enescu 95\nVlad 82\nDobre 98\n");
+    fprintf(out, "Larsen 95\nHans 82\nBrown 98\n");
     fclose(out);
 
     FILE *in = fopen("shift.txt", "r");

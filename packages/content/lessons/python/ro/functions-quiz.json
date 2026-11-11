@@ -220,7 +220,7 @@
     {
       "id": "q25",
       "text": "Care apel merge pentru `def saluta(nume):`?",
-      "options": ["saluta(\"Ana\")", "saluta()", "saluta \"Ana\"", "def saluta(\"Ana\")"],
+      "options": ["saluta(\"Ida\")", "saluta()", "saluta \"Ida\"", "def saluta(\"Ida\")"],
       "answer": 0
     },
     {
@@ -278,7 +278,7 @@
           "f": "saluta",
           "p": "nume",
           "word": "Salut",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben"
         },
         {
@@ -569,7 +569,7 @@
           "f": "noroc",
           "p": "pilot",
           "word": "Succes",
-          "a": "Ana"
+          "a": "Ida"
         }
       ],
       "mistakes": [
@@ -684,7 +684,7 @@
           "f": "bun_venit",
           "p": "membru",
           "word": "Bun venit la bord",
-          "a": "Ana"
+          "a": "Ida"
         },
         {
           "f": "bravo",
@@ -853,7 +853,7 @@
           "f": "bravo",
           "p": "jucator",
           "word": "Bravo",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben"
         },
         {
@@ -883,7 +883,7 @@
           "f": "saluta",
           "p": "nume",
           "word": "Salut",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben",
           "g": "Saluta"
         },
@@ -958,7 +958,7 @@
           "f": "saluta",
           "p": "nume",
           "word": "Salut",
-          "a": "Ana"
+          "a": "Ida"
         },
         {
           "f": "bravo",

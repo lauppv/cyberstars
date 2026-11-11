@@ -1,4 +1,4 @@
-A small company runs three web apps: a shop, a blog and an invoicing tool. Tonight their database moves to a new server, `db.internal`, which also listens on a new port, 6432 instead of 5432, and the old cache server is being switched off for good. Radu, who wrote the apps, is on holiday. Every app reads its settings from plain text files, so you'll make the change by hand, carefully, without breaking anything else.
+A small company runs three web apps: a shop, a blog and an invoicing tool. Tonight their database moves to a new server, `db.internal`, which also listens on a new port, 6432 instead of 5432, and the old cache server is being switched off for good. Noah, who wrote the apps, is on holiday. Every app reads its settings from plain text files, so you'll make the change by hand, carefully, without breaking anything else.
 
 You do it one step at a time, in the terminal on the right. Tick a step off once the files look like it asks; you can always come back and untick it.
 
@@ -41,10 +41,10 @@ New idea: a `sed` command can be limited to the lines that match a pattern, writ
 
 ## Switch off the cache
 
-The old cache server is gone tomorrow. Find the `cache_server` settings and switch them off without deleting them: put `# ` (a hash and a space) at the start of each line. A line starting with `#` is a comment the apps skip, and Radu can still see what was there. Only a setting at the start of a line may change.
+The old cache server is gone tomorrow. Find the `cache_server` settings and switch them off without deleting them: put `# ` (a hash and a space) at the start of each line. A line starting with `#` is a comment the apps skip, and Noah can still see what was there. Only a setting at the start of a line may change.
 
 ## Check the work
 
 Compare an app before and after, its configuration against the backup's. Then count how many times the old server's name appears in each backed-up configuration file: the counts must add up to the settings you changed.
 
-Leave Radu `apps/CHANGES.txt` saying what you did, one line per change.
+Leave Noah `apps/CHANGES.txt` saying what you did, one line per change.

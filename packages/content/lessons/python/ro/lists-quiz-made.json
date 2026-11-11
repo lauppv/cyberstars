@@ -167,13 +167,13 @@
       "answer": 0
     },
     {
-      "id": "list-change-95a957",
+      "id": "list-change-4cacad",
       "text": "Ce afișează?",
-      "code": "echipaj = [\"Shadow\", \"Jess\", \"Quincy\"]\nechipaj[2] = \"Ana\"\nprint(echipaj)",
+      "code": "echipaj = [\"Shadow\", \"Jess\", \"Quincy\"]\nechipaj[2] = \"Ida\"\nprint(echipaj)",
       "options": [
-        "['Shadow', 'Jess', 'Ana']",
-        "['Shadow', 'Ana', 'Quincy']",
-        "['Shadow', 'Jess', 'Quincy', 'Ana']",
+        "['Shadow', 'Jess', 'Ida']",
+        "['Shadow', 'Ida', 'Quincy']",
+        "['Shadow', 'Jess', 'Quincy', 'Ida']",
         "['Shadow', 'Jess', 'Quincy']"
       ],
       "answer": 0
@@ -556,14 +556,14 @@
       "answer": 0
     },
     {
-      "id": "list-holds-change-e47404",
+      "id": "list-holds-change-88bd48",
       "text": "Ce conține `echipaj` la final?",
-      "code": "echipaj = [\"Ana\", \"Ben\", \"Cal\"]\nechipaj[0] = \"Zoe\"",
+      "code": "echipaj = [\"Ida\", \"Ben\", \"Cal\"]\nechipaj[0] = \"Zoe\"",
       "options": [
         "['Zoe', 'Ben', 'Cal']",
-        "['Ana', 'Zoe', 'Cal']",
-        "['Ana', 'Ben', 'Cal', 'Zoe']",
-        "['Ana', 'Ben', 'Cal']"
+        "['Ida', 'Zoe', 'Cal']",
+        "['Ida', 'Ben', 'Cal', 'Zoe']",
+        "['Ida', 'Ben', 'Cal']"
       ],
       "answer": 0
     },

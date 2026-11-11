@@ -35,7 +35,7 @@
       "inject": { "coduri": { "$list": ["abcdefgfedcba", "abcdefggfedcba", "abcdefgxfedcba"] } },
       "generated": true
     },
-    { "inject": { "coduri": { "$list": ["ana", "ana", "anas"] } }, "generated": true },
+    { "inject": { "coduri": { "$list": ["cojoc", "cojoc", "cojoace"] } }, "generated": true },
     { "inject": { "coduri": { "$list": ["ba", "bab", "abab", "baab"] } }, "generated": true },
     { "inject": { "coduri": { "$list": ["rotitor", "rotitori", "arotitor"] } }, "generated": true },
     {

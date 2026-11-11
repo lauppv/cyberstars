@@ -115,14 +115,14 @@ Input
 
 ```text
 2
-Ana 88
-Mihai 91
+Ida 88
+Pablo 91
 ```
 
 Output
 
 ```text
-Ana: 88
-Mihai: 91
-Top student: Mihai (91)
+Ida: 88
+Pablo: 91
+Top student: Pablo (91)
 ```

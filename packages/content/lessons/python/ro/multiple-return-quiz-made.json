@@ -171,14 +171,14 @@
       "answer": 0
     },
     {
-      "id": "mr-type-8d5c58",
+      "id": "mr-type-5f503f",
       "text": "Ce afișează?",
-      "code": "def jucator():\n    return \"Ana\", 12\n\nrezultat = jucator()\nprint(rezultat)\nprint(type(rezultat))",
+      "code": "def jucator():\n    return \"Ida\", 12\n\nrezultat = jucator()\nprint(rezultat)\nprint(type(rezultat))",
       "options": [
-        "('Ana', 12)\n<class 'tuple'>",
-        "['Ana', 12]\n<class 'list'>",
-        "('Ana', 12)\n2",
-        "Ana\n<class 'tuple'>"
+        "('Ida', 12)\n<class 'tuple'>",
+        "['Ida', 12]\n<class 'list'>",
+        "('Ida', 12)\n2",
+        "Ida\n<class 'tuple'>"
       ],
       "answer": 0
     },

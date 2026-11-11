@@ -245,7 +245,7 @@
     {
       "id": "q26",
       "text": "Ce afișează?",
-      "code": "def alege(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 50:\n            return nume\n    return \"Nimeni\"\n\nprint(alege({\"Ana\": 60, \"Ben\": 30, \"Cara\": 20}))",
+      "code": "def alege(scoruri):\n    for nume, scor in scoruri.items():\n        if scor < 50:\n            return nume\n    return \"Nimeni\"\n\nprint(alege({\"Ida\": 60, \"Ben\": 30, \"Cara\": 20}))",
       "options": ["Ben\nCara", "Ben", "Cara", "Nimeni"],
       "answer": 1
     },
@@ -263,8 +263,8 @@
     {
       "id": "q28",
       "text": "Ce afișează?",
-      "code": "def buni(scoruri):\n    lista = []\n    for nume in scoruri:\n        if scoruri[nume] > 80:\n            lista.append(nume)\n    return lista\n\nfor nume in buni({\"Ana\": 90, \"Ben\": 70, \"Cara\": 85}):\n    print(nume)",
-      "options": ["Ana\nCara", "['Ana', 'Cara']", "Ana\nBen\nCara", "90\n85"],
+      "code": "def buni(scoruri):\n    lista = []\n    for nume in scoruri:\n        if scoruri[nume] > 80:\n            lista.append(nume)\n    return lista\n\nfor nume in buni({\"Ida\": 90, \"Ben\": 70, \"Cara\": 85}):\n    print(nume)",
+      "options": ["Ida\nCara", "['Ida', 'Cara']", "Ida\nBen\nCara", "90\n85"],
       "answer": 0
     },
     {
@@ -314,7 +314,7 @@
           "z": 60
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 99,
           "b": "Ben",
           "y": 81,
@@ -352,7 +352,7 @@
           "z": 75
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 91,
           "b": "Ben",
           "y": 64,
@@ -453,7 +453,7 @@
           "bonus": 5
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 70,
           "b": "Ben",
           "y": 88,
@@ -503,7 +503,7 @@
           "limit": 50
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 64,
           "b": "Ben",
           "y": 58,
@@ -664,7 +664,7 @@
           "z": 50
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 51,
           "b": "Ben",
           "y": 64,
@@ -721,7 +721,7 @@
           "m": "keys"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 51,
           "b": "Ben",
           "y": 64,
@@ -772,7 +772,7 @@
           "k": "numar"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 50,
           "b": "Ben",
           "y": 30,
@@ -819,7 +819,7 @@
           "z": 90
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 70,
           "b": "Ben",
           "y": 88,
@@ -935,7 +935,7 @@
           "p": "niveluri",
           "n": "pasi",
           "v": "eroi",
-          "a": "Ana",
+          "a": "Ida",
           "x": 3,
           "b": "Kai",
           "y": 5,

@@ -3,7 +3,7 @@
   "cases": [
     {
       "visible": true,
-      "stdin": "2026 11 3\n5\nB 14.11 Mama\nB 23.11 Ana\nH 30.11 Saint Andrew\nH 1.12 National Day\nB 2.11 Bunica Ana\n"
+      "stdin": "2026 11 3\n5\nB 14.11 Mom\nB 23.11 Ida\nH 11.11 Armistice Day\nH 25.12 Christmas\nB 2.11 Granny Ida\n"
     },
     {
       "visible": true,
@@ -19,7 +19,7 @@
       "stdin": "2000 2 1\n2\nB 29.2 Leap Leo\nH 26.2 Saturday holiday\n"
     },
     {
-      "stdin": "2031 6 1\n3\nB 5.6 Ana\nB 5.6 Dan\nH 1.6 Children's Day\n"
+      "stdin": "2031 6 1\n3\nB 5.6 Ida\nB 5.6 Dan\nH 1.6 Children's Day\n"
     }
   ]
 }

@@ -125,12 +125,12 @@
     {
       "id": "q14",
       "text": "Ce afișează?",
-      "code": "clasament = [(3, \"Ana\"), (1, \"Cal\"), (3, \"Ben\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "code": "clasament = [(3, \"Ida\"), (1, \"Cal\"), (3, \"Ben\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
       "options": [
-        "[(3, 'Ben'), (3, 'Ana'), (1, 'Cal')]",
-        "[(1, 'Cal'), (3, 'Ana'), (3, 'Ben')]",
-        "[(3, 'Ana'), (3, 'Ben'), (1, 'Cal')]",
-        "[(3, 'Ana'), (1, 'Cal'), (3, 'Ben')]"
+        "[(3, 'Ben'), (3, 'Ida'), (1, 'Cal')]",
+        "[(1, 'Cal'), (3, 'Ida'), (3, 'Ben')]",
+        "[(3, 'Ida'), (3, 'Ben'), (1, 'Cal')]",
+        "[(3, 'Ida'), (1, 'Cal'), (3, 'Ben')]"
       ],
       "answer": 2
     },
@@ -220,8 +220,8 @@
     {
       "id": "q25",
       "text": "Ce afișează?",
-      "code": "victorii = {\"Ana\": 2, \"Ben\": 2}\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor >= cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion)",
-      "options": ["Ana", "Ana\nBen", "Ben", "2"],
+      "code": "victorii = {\"Ida\": 2, \"Ben\": 2}\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor >= cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion)",
+      "options": ["Ida", "Ida\nBen", "Ben", "2"],
       "answer": 2
     },
     {
@@ -233,8 +233,8 @@
     {
       "id": "q27",
       "text": "Ce afișează?",
-      "code": "victorii = {\"Rex\": 1, \"Ana\": 3}\nprint(sorted(victorii))",
-      "options": ["['Ana', 'Rex']", "['Rex', 'Ana']", "[1, 3]", "[3, 1]"],
+      "code": "victorii = {\"Rex\": 1, \"Ida\": 3}\nprint(sorted(victorii))",
+      "options": ["['Ida', 'Rex']", "['Rex', 'Ida']", "[1, 3]", "[3, 1]"],
       "answer": 0
     },
     {
@@ -278,7 +278,7 @@
           "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
         },
         {
-          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+          "r": "\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\""
         }
       ],
       "mistakes": [
@@ -298,7 +298,7 @@
           "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
         },
         {
-          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+          "r": "\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\""
         }
       ],
       "mistakes": [
@@ -318,7 +318,7 @@
           "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
         },
         {
-          "d": "\"Ana\": 3, \"Ben\": 1"
+          "d": "\"Ida\": 3, \"Ben\": 1"
         }
       ],
       "mistakes": [
@@ -338,7 +338,7 @@
           "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
         },
         {
-          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")"
+          "L": "(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")"
         }
       ],
       "mistakes": [
@@ -358,7 +358,7 @@
           "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3, \"Cara\": 2"
         },
         {
-          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+          "d": "\"Ida\": 3, \"Ben\": 1, \"Cal\": 2"
         },
         {
           "d": "\"Lance\": 1, \"Phil\": 3"
@@ -382,7 +382,7 @@
           "t": "Cara"
         },
         {
-          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"",
+          "r": "\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"",
           "t": "Cal"
         },
         {
@@ -456,7 +456,7 @@
           "r": "\"Rex\", \"Tommy\", \"Boris\", \"Tommy\", \"Cara\", \"Boris\", \"Tommy\""
         },
         {
-          "r": "\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\""
+          "r": "\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\""
         },
         {
           "r": "\"Lance\", \"Phil\", \"Phil\", \"Sonny\", \"Phil\", \"Sonny\""
@@ -485,7 +485,7 @@
           "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
         },
         {
-          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+          "d": "\"Ida\": 3, \"Ben\": 1, \"Cal\": 2"
         },
         {
           "d": "\"Phil\": 2, \"Lance\": 5"
@@ -515,7 +515,7 @@
           "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
         },
         {
-          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")"
+          "L": "(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")"
         },
         {
           "L": "(3, \"Cara\"), (1, \"Phil\"), (2, \"Lance\")"
@@ -540,7 +540,7 @@
           "L": "(4, \"Tommy\"), (3, \"Boris\"), (1, \"Rex\")"
         },
         {
-          "L": "(5, \"Ben\"), (2, \"Ana\")"
+          "L": "(5, \"Ben\"), (2, \"Ida\")"
         },
         {
           "L": "(3, \"Cara\"), (2, \"Lance\"), (1, \"Phil\")"
@@ -565,7 +565,7 @@
           "d": "\"Rex\": 1, \"Tommy\": 4, \"Boris\": 3"
         },
         {
-          "d": "\"Ana\": 3, \"Ben\": 1, \"Cal\": 2"
+          "d": "\"Ida\": 3, \"Ben\": 1, \"Cal\": 2"
         },
         {
           "d": "\"Phil\": 2, \"Lance\": 5, \"Sonny\": 3"
@@ -589,7 +589,7 @@
           "L": "(1, \"Rex\"), (4, \"Tommy\"), (3, \"Boris\")"
         },
         {
-          "L": "(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")"
+          "L": "(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")"
         },
         {
           "L": "(3, \"Cara\"), (1, \"Phil\"), (4, \"Lance\")"
@@ -621,7 +621,7 @@
           "b": "clasament",
           "n": "nume",
           "c": "contor",
-          "d": "\"Ana\": 3, \"Ben\": 1"
+          "d": "\"Ida\": 3, \"Ben\": 1"
         },
         {
           "w": "victorii",
@@ -705,10 +705,10 @@
         },
         {
           "v": "rezultate",
-          "r": "\"Ana\", \"Ben\", \"Cal\"",
-          "a": "Ana",
+          "r": "\"Ida\", \"Ben\", \"Cal\"",
+          "a": "Ida",
           "i": 0,
-          "low": "ana",
+          "low": "ida",
           "other": "Ben"
         },
         {

@@ -16,7 +16,7 @@ New idea: in a `grep` pattern, `^` stands for the start of a line and `$` for it
 
 ## One way of writing
 
-Email addresses don't care about capitals, but a list does: to `sort` and `uniq`, `Ana@Mail.com` and `ana@mail.com` are two different lines. Write every line of `step1.txt` in small letters to `step2.txt`, and check that no capital letter is left.
+Email addresses don't care about capitals, but a list does: to `sort` and `uniq`, `Ida@Mail.com` and `ida@mail.com` are two different lines. Write every line of `step1.txt` in small letters to `step2.txt`, and check that no capital letter is left.
 
 New idea: `awk` has a function that turns text into small letters, `tolower`.
 
@@ -40,7 +40,7 @@ New idea: `grep` can read its patterns from a file, one per line. `grep --help` 
 
 The owner also wants to know where the readers are. Count the addresses on `list.txt` per domain, the part after the `@`, from the most common.
 
-The local school will get a poster too, so put the addresses on `list.txt` that end in `@school.ro` into `school.txt`. Make sure an address like `someone@school.ro.example.com` wouldn't slip in.
+The local school will get a poster too, so put the addresses on `list.txt` that end in `@school.org` into `school.txt`. Make sure an address like `someone@school.org.example.com` wouldn't slip in.
 
 ## Tidy up
 

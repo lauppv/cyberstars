@@ -15,7 +15,7 @@
     },
     {
       "visible": true,
-      "inject": { "nume": "Ana", "rol": "Inginer", "varsta": 29, "statie": "Orion" }
+      "inject": { "nume": "Ida", "rol": "Inginer", "varsta": 29, "statie": "Orion" }
     },
     { "inject": { "nume": "Zed", "rol": "Medic", "varsta": 0, "statie": "Baza" } },
     { "inject": { "nume": "Kai", "rol": "Capitan", "varsta": 99, "statie": "Adanc" } },
@@ -29,7 +29,7 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Ana", "rol": "Cercetator", "varsta": 19, "statie": "Adanc" },
+      "inject": { "nume": "Ida", "rol": "Cercetator", "varsta": 19, "statie": "Adanc" },
       "generated": true
     },
     {
@@ -41,7 +41,7 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Bucatar", "varsta": 30, "statie": "Adanc" },
+      "inject": { "nume": "Hans", "rol": "Bucatar", "varsta": 30, "statie": "Adanc" },
       "generated": true
     },
     {
@@ -49,11 +49,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Ioana", "rol": "Inginer", "varsta": 40, "statie": "Europa" },
+      "inject": { "nume": "Julia", "rol": "Inginer", "varsta": 40, "statie": "Europa" },
       "generated": true
     },
     {
-      "inject": { "nume": "Elena", "rol": "Cercetator", "varsta": 41, "statie": "Titan" },
+      "inject": { "nume": "Sofia", "rol": "Cercetator", "varsta": 41, "statie": "Titan" },
       "generated": true
     },
     {
@@ -61,7 +61,7 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Radu", "rol": "Botanist", "varsta": 50, "statie": "Laniakea" },
+      "inject": { "nume": "Noah", "rol": "Botanist", "varsta": 50, "statie": "Laniakea" },
       "generated": true
     },
     {
@@ -85,7 +85,7 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Ana", "rol": "Cercetator", "varsta": 98, "statie": "Poarta Marte" },
+      "inject": { "nume": "Ida", "rol": "Cercetator", "varsta": 98, "statie": "Poarta Marte" },
       "generated": true
     },
     {
@@ -93,11 +93,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Pilot", "varsta": 22, "statie": "Nod" },
+      "inject": { "nume": "Hans", "rol": "Pilot", "varsta": 22, "statie": "Nod" },
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Navigator", "varsta": 45, "statie": "Nod" },
+      "inject": { "nume": "Hans", "rol": "Navigator", "varsta": 45, "statie": "Nod" },
       "generated": true
     },
     {
@@ -105,11 +105,11 @@
       "generated": true
     },
     {
-      "inject": { "nume": "Ana", "rol": "Navigator", "varsta": 38, "statie": "Luna-1" },
+      "inject": { "nume": "Ida", "rol": "Navigator", "varsta": 38, "statie": "Luna-1" },
       "generated": true
     },
     {
-      "inject": { "nume": "Vlad", "rol": "Capitan", "varsta": 58, "statie": "Adanc" },
+      "inject": { "nume": "Hans", "rol": "Capitan", "varsta": 58, "statie": "Adanc" },
       "generated": true
     },
     {

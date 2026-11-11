@@ -1,4 +1,4 @@
-Mr. Radu runs a hardware store, and his till's calculator only does one operation at a time: to work out a discount on three boxes of screws plus delivery, he writes intermediate results on a scrap of paper. He wants to type the whole thing, brackets and all, like `(3 * 45 - 20) * 2 + 15`, and get the answer. You'll write that calculator, the way real ones work inside: two stacks, one for numbers and one for operators.
+Mr. Noah runs a hardware store, and his till's calculator only does one operation at a time: to work out a discount on three boxes of screws plus delivery, he writes intermediate results on a scrap of paper. He wants to type the whole thing, brackets and all, like `(3 * 45 - 20) * 2 + 15`, and get the answer. You'll write that calculator, the way real ones work inside: two stacks, one for numbers and one for operators.
 
 You build it one step at a time, in one C file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests type sums your program has never seen. Passing them finishes the project.
 
@@ -69,10 +69,10 @@ Knowing whether a number or an operator should come next, one variable you flip 
 
 ## Remember things
 
-Mr. Radu reuses results:
+Mr. Noah reuses results:
 
 - `ans` in a sum is the last answer the calculator gave (0 at the start; a line with an error doesn't change it)
 - a line like `p = 12 * 3` saves the result in a variable, a single small letter, and prints `p = 36`; it's also the new `ans`
 - a variable used later stands for its value: `q = p / 4 + 1` gives `q = 10`
 
-A name that isn't `ans` or a saved variable prints `Error: unknown name`. Mr. Radu threw away his scraps of paper.
+A name that isn't `ans` or a saved variable prints `Error: unknown name`. Mr. Noah threw away his scraps of paper.

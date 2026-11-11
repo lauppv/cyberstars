@@ -67,33 +67,33 @@ Rezultat **100**. Am început cu **total = 0**, apoi pentru fiecare preț **i** 
 
 Ai în dreapta lista cu cei **20** de membri ai echipajului, numită echipaj. Controlul de la sol a selectat trei oameni pentru o ieșire în spațiu (EVA): cei aflați la **indexurile 5, 10 și 12** din listă
 
-Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. Maria`, `2. Andrei` și tot așa; folosește indexul cu **i + 1**). Pentru membrii de la indexurile **5**, **10** și **12** adaugă la final ` -> selectat pentru EVA`
+Parcurge lista cu o buclă **for** și afișează fiecare membru numerotat (`1. Mary`, `2. Andrew` și tot așa; folosește indexul cu **i + 1**). Pentru membrii de la indexurile **5**, **10** și **12** adaugă la final ` -> selectat pentru EVA`
 
 Ai grijă: numărăm de la **0**, deci indexul **5** este al **6**-lea membru afișat
 
 **Ieșire**
 
 ```text
-1. Maria
-2. Andrei
-3. Elena
-4. Mihai
-5. Ana
-6. Vlad -> selectat pentru EVA
-7. Ioana
+1. Mary
+2. Andrew
+3. Helen
+4. Michael
+5. Anna
+6. Victor -> selectat pentru EVA
+7. Joanna
 8. George
-9. Diana
-10. Radu
-11. Cristina -> selectat pentru EVA
+9. Clara
+10. Robert
+11. Christine -> selectat pentru EVA
 12. Alex
-13. Gabriela -> selectat pentru EVA
-14. Stefan
+13. Gabrielle -> selectat pentru EVA
+14. Steven
 15. Laura
-16. Bogdan
-17. Andreea
+16. Brian
+17. Andrea
 18. Paul
-19. Roxana
-20. Dan
+19. Rose
+20. Daniel
 ```
 
 Schimbă indexurile selectate sau adaugă un membru nou și rulează din nou, vezi cum se mută eticheta de EVA

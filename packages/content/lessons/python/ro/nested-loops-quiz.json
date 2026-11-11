@@ -279,7 +279,7 @@
           "a": "echipe",
           "xs": "\"Sharks\", \"Bears\"",
           "b": "jucatori",
-          "ys": "\"Ana\", \"Rex\"",
+          "ys": "\"Ida\", \"Rex\"",
           "x": "echipa",
           "y": "jucator",
           "word": "joaca pentru"
@@ -449,7 +449,7 @@
       "values": [
         {
           "v": "jucatori",
-          "xs": "\"Ana\", \"Rex\", \"Kai\""
+          "xs": "\"Ida\", \"Rex\", \"Kai\""
         },
         {
           "v": "culori",

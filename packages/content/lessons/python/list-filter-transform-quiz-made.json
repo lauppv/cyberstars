@@ -472,14 +472,14 @@
       "answer": 0
     },
     {
-      "id": "ft-holds-names-678c37",
+      "id": "ft-holds-names-4a6566",
       "text": "What is in `best` at the end?",
-      "code": "players = [{\"name\": \"Ana\", \"score\": 50}, {\"name\": \"Rex\", \"score\": 75}, {\"name\": \"Kai\", \"score\": 90}]\nbest = [p[\"name\"] for p in players if p[\"score\"] > 50]",
+      "code": "players = [{\"name\": \"Ida\", \"score\": 50}, {\"name\": \"Rex\", \"score\": 75}, {\"name\": \"Kai\", \"score\": 90}]\nbest = [p[\"name\"] for p in players if p[\"score\"] > 50]",
       "options": [
         "['Rex', 'Kai']",
         "[75, 90]",
         "[{'name': 'Rex', 'score': 75}, {'name': 'Kai', 'score': 90}]",
-        "['Ana', 'Rex', 'Kai']"
+        "['Ida', 'Rex', 'Kai']"
       ],
       "answer": 0
     },
@@ -547,9 +547,9 @@
       "answer": 0
     },
     {
-      "id": "ft-error-key-dd85bd",
+      "id": "ft-error-key-1fee3a",
       "text": "Which error stops this program?",
-      "code": "players = [{\"name\": \"Ana\", \"score\": 50}, {\"name\": \"Rex\", \"score\": 75}]\nprint([p[\"Name\"] for p in players])",
+      "code": "players = [{\"name\": \"Ida\", \"score\": 50}, {\"name\": \"Rex\", \"score\": 75}]\nprint([p[\"Name\"] for p in players])",
       "options": ["KeyError", "IndexError", "NameError", "ValueError"],
       "answer": 0
     },

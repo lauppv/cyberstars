@@ -12,8 +12,8 @@
     },
     {
       "kind": "command_output",
-      "cmd": "grep -oh 'Ion[a-z]*\\|Petru' novel/chapter-*.txt | sort | uniq -c | awk '{print $1, $2}'",
-      "expected": "3 Ionescu\n8 Petru"
+      "cmd": "grep -oh 'Raj[a-z]*\\|Pedro' novel/chapter-*.txt | sort | uniq -c | awk '{print $1, $2}'",
+      "expected": "8 Pedro\n3 Rajan"
     },
     {
       "kind": "command_output",

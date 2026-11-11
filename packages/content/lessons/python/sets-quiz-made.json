@@ -58,9 +58,9 @@
       "answer": 0
     },
     {
-      "id": "st-remove-f2a62e",
+      "id": "st-remove-7f1f1c",
       "text": "What does this print?",
-      "code": "guests = {\"Ana\", \"Rex\"}\nguests.remove(\"Rex\")\nprint(\"Rex\" in guests)\nprint(len(guests))",
+      "code": "guests = {\"Ida\", \"Rex\"}\nguests.remove(\"Rex\")\nprint(\"Rex\" in guests)\nprint(len(guests))",
       "options": ["False\n1", "True\n2", "True\n1", "1\nFalse"],
       "answer": 0
     },
@@ -410,13 +410,13 @@
       "answer": 0
     },
     {
-      "id": "st-gap-remove-197741",
+      "id": "st-gap-remove-315c7e",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "guests = {\"Ana\", \"Rex\"}\n___\nprint(\"Ana\" in guests)\nprint(len(guests))",
+      "code": "guests = {\"Ida\", \"Rex\"}\n___\nprint(\"Ida\" in guests)\nprint(len(guests))",
       "output": "False\n1",
       "options": [
-        "guests.remove(\"Ana\")",
-        "guests.add(\"Ana\")",
+        "guests.remove(\"Ida\")",
+        "guests.add(\"Ida\")",
         "del guests[0]",
         "guests.remove(\"Rex\")"
       ],

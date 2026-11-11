@@ -19,7 +19,7 @@
   "cases": [
     {
       "visible": true,
-      "stdin": "3 the\nThe storm came on the third night.\nSuddenly the lights of the town went out.\nOnly the lighthouse was still burning.\nOut at sea, a small boat was turning back.\nIon ran down the stairs, two at a time.\nThe boat was close now; he heard voices.\nA rope flew out of the dark.\nHe pulled until the boat scraped onto the sand.\n"
+      "stdin": "3 the\nThe storm came on the third night.\nSuddenly the lights of the town went out.\nOnly the lighthouse was still burning.\nOut at sea, a small boat was turning back.\nRaj ran down the stairs, two at a time.\nThe boat was close now; he heard voices.\nA rope flew out of the dark.\nHe pulled until the boat scraped onto the sand.\n"
     },
     {
       "visible": true,

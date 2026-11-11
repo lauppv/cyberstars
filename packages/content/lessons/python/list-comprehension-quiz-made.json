@@ -227,14 +227,14 @@
       "answer": 0
     },
     {
-      "id": "lc-which-suffix-08ceaf",
+      "id": "lc-which-suffix-9682d3",
       "text": "Which program shows this?",
-      "output": "['Ana?', 'Rex?', 'Kai?']",
+      "output": "['Ida?', 'Rex?', 'Kai?']",
       "options": [
-        "names = [\"Ana\", \"Rex\", \"Kai\"]\ncalls = [n + \"?\" for n in names]\nprint(calls)",
-        "names = [\"Ana\", \"Rex\", \"Kai\"]\ncalls = [\"?\" + n for n in names]\nprint(calls)",
-        "names = [\"Ana\", \"Rex\", \"Kai\"]\ncalls = names + [\"?\"]\nprint(calls)",
-        "names = [\"Ana\", \"Rex\", \"Kai\"]\ncalls = [n for n in names]\nprint(calls)"
+        "names = [\"Ida\", \"Rex\", \"Kai\"]\ncalls = [n + \"?\" for n in names]\nprint(calls)",
+        "names = [\"Ida\", \"Rex\", \"Kai\"]\ncalls = [\"?\" + n for n in names]\nprint(calls)",
+        "names = [\"Ida\", \"Rex\", \"Kai\"]\ncalls = names + [\"?\"]\nprint(calls)",
+        "names = [\"Ida\", \"Rex\", \"Kai\"]\ncalls = [n for n in names]\nprint(calls)"
       ],
       "answer": 0
     },

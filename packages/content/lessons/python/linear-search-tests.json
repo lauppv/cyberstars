@@ -46,7 +46,7 @@
     },
     {
       "inject": { "crew": { "$list": ["Tommy", "Boris", "Cara", "Dmitri", "Cortez"] } },
-      "stdin": "Ana\n",
+      "stdin": "Ida\n",
       "generated": true
     },
     { "inject": { "crew": { "$list": ["Solo"] } }, "stdin": "Other\n", "generated": true },
@@ -69,18 +69,18 @@
           "$list": [
             "Hugo",
             "Iris",
-            "Ioana",
+            "Julia",
             "Cortez",
             "Avery",
             "Zane",
             "Sonny",
             "Yara",
             "Quinn",
-            "Vlad",
+            "Hans",
             "Petra",
-            "Ana",
+            "Ida",
             "Bob",
-            "Radu",
+            "Noah",
             "Boris"
           ]
         }
@@ -93,21 +93,21 @@
         "crew": {
           "$list": [
             "Bob",
-            "Radu",
+            "Noah",
             "Omar",
-            "Vlad",
+            "Hans",
             "Lance",
             "Cortez",
-            "Ioana",
+            "Julia",
             "Quinn",
-            "Elena",
+            "Sofia",
             "Dmitri",
             "Petra",
             "Avery",
             "Rex",
             "Jo",
             "Li",
-            "Ana",
+            "Ida",
             "Iris",
             "Boris",
             "Cara",
@@ -125,7 +125,7 @@
     },
     { "inject": { "crew": { "$list": ["Cortez"] } }, "stdin": "Cortez\n", "generated": true },
     {
-      "inject": { "crew": { "$list": ["Omar", "Vlad", "Jo", "Petra"] } },
+      "inject": { "crew": { "$list": ["Omar", "Hans", "Jo", "Petra"] } },
       "stdin": "Omar\n",
       "generated": true
     },
@@ -147,7 +147,7 @@
             "Bob",
             "Iris",
             "Tommy",
-            "Elena"
+            "Sofia"
           ]
         }
       },
@@ -155,13 +155,13 @@
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Umberto", "Rex", "Boris", "Vlad"] } },
-      "stdin": "Vlad\n",
+      "inject": { "crew": { "$list": ["Umberto", "Rex", "Boris", "Hans"] } },
+      "stdin": "Hans\n",
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Avery", "Sonny", "Omar", "Vlad"] } },
-      "stdin": "Vlad\n",
+      "inject": { "crew": { "$list": ["Avery", "Sonny", "Omar", "Hans"] } },
+      "stdin": "Hans\n",
       "generated": true
     },
     {
@@ -171,19 +171,19 @@
     },
     {
       "inject": {
-        "crew": { "$list": ["Li", "Cara", "Nova", "Elena", "Boris", "Omar", "Lance", "Cortez"] }
+        "crew": { "$list": ["Li", "Cara", "Nova", "Sofia", "Boris", "Omar", "Lance", "Cortez"] }
       },
       "stdin": "Boris\n",
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Ioana", "Yara", "Omar", "Hugo"] } },
+      "inject": { "crew": { "$list": ["Julia", "Yara", "Omar", "Hugo"] } },
       "stdin": "Hugo\n",
       "generated": true
     },
     {
       "inject": {
-        "crew": { "$list": ["Lance", "Radu", "Petra", "Ioana", "Umberto", "Rex", "Elena", "Iris"] }
+        "crew": { "$list": ["Lance", "Noah", "Petra", "Julia", "Umberto", "Rex", "Sofia", "Iris"] }
       },
       "stdin": "Lance\n",
       "generated": true
@@ -196,7 +196,7 @@
             "Ghost",
             "Tommy",
             "Diaz",
-            "Ana",
+            "Ida",
             "Lance",
             "Jo",
             "Cara",
@@ -209,7 +209,7 @@
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Ioana", "Zane", "Quinn", "Mira", "Jo"] } },
+      "inject": { "crew": { "$list": ["Julia", "Zane", "Quinn", "Mira", "Jo"] } },
       "stdin": "Quinn\n",
       "generated": true
     },
@@ -217,19 +217,19 @@
       "inject": {
         "crew": {
           "$list": [
-            "Radu",
+            "Noah",
             "Omar",
             "Petra",
             "Umberto",
             "Ghost",
-            "Vlad",
+            "Hans",
             "Cara",
             "Bob",
             "Boris",
             "Hugo",
             "Li",
             "Tommy",
-            "Ana",
+            "Ida",
             "Jo",
             "Cortez"
           ]
@@ -245,20 +245,20 @@
             "Boris",
             "Li",
             "Dmitri",
-            "Ioana",
+            "Julia",
             "Kenji",
-            "Vlad",
+            "Hans",
             "Bob",
             "Lance",
             "Mira",
             "Tommy",
             "Umberto",
-            "Ana",
+            "Ida",
             "Avery",
             "Rex",
             "Jo",
-            "Radu",
-            "Elena",
+            "Noah",
+            "Sofia",
             "Ghost",
             "Petra",
             "Nova"
@@ -276,18 +276,18 @@
             "Sonny",
             "Ghost",
             "Avery",
-            "Elena",
-            "Vlad",
+            "Sofia",
+            "Hans",
             "Hugo",
             "Diaz",
             "Li",
             "Tommy",
-            "Ana",
+            "Ida",
             "Jo",
             "Bob",
             "Dmitri",
             "Umberto",
-            "Ioana",
+            "Julia",
             "Mira",
             "Rex",
             "Cortez",
@@ -300,8 +300,8 @@
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Elena", "Yara", "Umberto", "Li"] } },
-      "stdin": "Elena\n",
+      "inject": { "crew": { "$list": ["Sofia", "Yara", "Umberto", "Li"] } },
+      "stdin": "Sofia\n",
       "generated": true
     },
     {
@@ -334,41 +334,41 @@
         "crew": {
           "$list": [
             "Tommy",
-            "Elena",
+            "Sofia",
             "Jo",
             "Lance",
             "Kenji",
             "Boris",
             "Sonny",
-            "Radu",
+            "Noah",
             "Umberto",
             "Diaz"
           ]
         }
       },
-      "stdin": "Radu\n",
+      "stdin": "Noah\n",
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Elena", "Radu", "Boris", "Mira"] } },
-      "stdin": "Elena\n",
+      "inject": { "crew": { "$list": ["Sofia", "Noah", "Boris", "Mira"] } },
+      "stdin": "Sofia\n",
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Radu", "Jo", "Cara", "Nova", "Li", "Quinn"] } },
+      "inject": { "crew": { "$list": ["Noah", "Jo", "Cara", "Nova", "Li", "Quinn"] } },
       "stdin": "Quinn\n",
       "generated": true
     },
     { "inject": { "crew": { "$list": ["Hugo", "Quinn"] } }, "stdin": "Ghost\n", "generated": true },
     { "inject": { "crew": { "$list": ["Diaz"] } }, "stdin": "Diaz\n", "generated": true },
-    { "inject": { "crew": { "$list": ["Vlad"] } }, "stdin": "Vlad\n", "generated": true },
+    { "inject": { "crew": { "$list": ["Hans"] } }, "stdin": "Hans\n", "generated": true },
     {
       "inject": {
         "crew": {
           "$list": [
-            "Elena",
+            "Sofia",
             "Yara",
-            "Ioana",
+            "Julia",
             "Dmitri",
             "Diaz",
             "Cara",
@@ -377,8 +377,8 @@
             "Li",
             "Kenji",
             "Mira",
-            "Radu",
-            "Vlad",
+            "Noah",
+            "Hans",
             "Nova",
             "Jo"
           ]
@@ -400,15 +400,15 @@
             "Avery",
             "Boris",
             "Bob",
-            "Ana",
-            "Elena",
+            "Ida",
+            "Sofia",
             "Yara",
             "Jo",
             "Kenji",
             "Li",
             "Lance",
             "Cortez",
-            "Ioana",
+            "Julia",
             "Quinn",
             "Petra"
           ]
@@ -419,7 +419,7 @@
     },
     {
       "inject": {
-        "crew": { "$list": ["Dmitri", "Diaz", "Vlad", "Kenji", "Bob", "Cara", "Avery", "Boris"] }
+        "crew": { "$list": ["Dmitri", "Diaz", "Hans", "Kenji", "Bob", "Cara", "Avery", "Boris"] }
       },
       "stdin": "Dmitri\n",
       "generated": true
@@ -432,11 +432,11 @@
             "Dmitri",
             "Yara",
             "Rex",
-            "Radu",
+            "Noah",
             "Cara",
-            "Vlad",
+            "Hans",
             "Ghost",
-            "Elena",
+            "Sofia",
             "Sonny"
           ]
         }
@@ -445,15 +445,15 @@
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Iris", "Li", "Bob", "Vlad", "Sonny", "Tommy"] } },
+      "inject": { "crew": { "$list": ["Iris", "Li", "Bob", "Hans", "Sonny", "Tommy"] } },
       "stdin": "Iris\n",
       "generated": true
     },
     {
-      "inject": { "crew": { "$list": ["Iris", "Radu", "Bob", "Cara"] } },
+      "inject": { "crew": { "$list": ["Iris", "Noah", "Bob", "Cara"] } },
       "stdin": "Sonny\n",
       "generated": true
     },
-    { "inject": { "crew": { "$list": ["Vlad", "Iris"] } }, "stdin": "Iris\n", "generated": true }
+    { "inject": { "crew": { "$list": ["Hans", "Iris"] } }, "stdin": "Iris\n", "generated": true }
   ]
 }

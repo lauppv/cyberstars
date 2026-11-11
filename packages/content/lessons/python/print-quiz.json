@@ -107,12 +107,12 @@
     },
     {
       "id": "q13",
-      "text": "Which program shows My name is Ana on one line and I am 12 years old on the next?",
+      "text": "Which program shows My name is Ida on one line and I am 12 years old on the next?",
       "options": [
-        "print(\"My name is Ana\")\nprint(\"I am 12 years old\")",
-        "print(\"My name is Ana I am 12 years old\")",
-        "print(My name is Ana)\nprint(I am 12 years old)",
-        "print(\"I am 12 years old\")\nprint(\"My name is Ana\")"
+        "print(\"My name is Ida\")\nprint(\"I am 12 years old\")",
+        "print(\"My name is Ida I am 12 years old\")",
+        "print(My name is Ida)\nprint(I am 12 years old)",
+        "print(\"I am 12 years old\")\nprint(\"My name is Ida\")"
       ],
       "answer": 0
     },
@@ -375,7 +375,7 @@
       "code": "print(\"{{a}}\")\nprint(\"{{b}}\")\nprint(\"{{c}}\")\nprint(\"{{d}}\")",
       "values": [
         {
-          "a": "My name is Ana",
+          "a": "My name is Ida",
           "b": "I am 12 years old",
           "c": "I like pizza",
           "d": "CyberStars is the coolest"
@@ -575,7 +575,7 @@
           "b": "Lance"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben"
         }
       ],
@@ -676,7 +676,7 @@
           "age": 57
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "age": 12
         }
       ],
@@ -694,7 +694,7 @@
           "age": 32
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "age": 12
         }
       ],
@@ -737,7 +737,7 @@
           "health": 97.5
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "level": 7,
           "health": 50.5
         },
@@ -761,7 +761,7 @@
           "guild": "CyberStars"
         },
         {
-          "name": "Ana",
+          "name": "Ida",
           "level": 7,
           "guild": "Rockets"
         },

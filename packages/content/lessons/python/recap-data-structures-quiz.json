@@ -243,7 +243,7 @@
     {
       "id": "q28",
       "text": "What does this print?",
-      "code": "a = [(\"Ana\", 7), (\"Rex\", 5)]\nb = [(\"Kai\", 5), (\"Zoe\", 7)]\nsame = 0\nfor x, s1 in a:\n    for y, s2 in b:\n        if s1 == s2:\n            same = same + 1\nprint(same)",
+      "code": "a = [(\"Ida\", 7), (\"Rex\", 5)]\nb = [(\"Kai\", 5), (\"Zoe\", 7)]\nsame = 0\nfor x, s1 in a:\n    for y, s2 in b:\n        if s1 == s2:\n            same = same + 1\nprint(same)",
       "options": ["4", "0", "2", "1"],
       "answer": 2
     },
@@ -277,8 +277,8 @@
           "b": "[(\"Mira\", 88), (\"Lance\", 65), (\"Tommy\", 91)]"
         },
         {
-          "a": "[(\"Ana\", 60), (\"Rex\", 75), (\"Kai\", 90)]",
-          "b": "[(\"Kai\", 70), (\"Zoe\", 80), (\"Ana\", 55)]"
+          "a": "[(\"Ida\", 60), (\"Rex\", 75), (\"Kai\", 90)]",
+          "b": "[(\"Kai\", 70), (\"Zoe\", 80), (\"Ida\", 55)]"
         }
       ],
       "mistakes": [
@@ -299,7 +299,7 @@
           "lim": 80
         },
         {
-          "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]",
+          "t": "[(\"Ida\", 64), (\"Rex\", 70), (\"Kai\", 95), (\"Zoe\", 70)]",
           "lim": 65
         }
       ],
@@ -429,13 +429,13 @@
           "z": "Ken"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "b": "Rex",
           "c": "Kai",
           "d": "Zoe",
           "x": "Rex",
           "y": "Zoe",
-          "z": "Ana"
+          "z": "Ida"
         }
       ],
       "mistakes": [
@@ -491,7 +491,7 @@
           "lim": 50
         },
         {
-          "t": "[(\"Ana\", 70), (\"Rex\", 90), (\"Kai\", 30)]",
+          "t": "[(\"Ida\", 70), (\"Rex\", 90), (\"Kai\", 30)]",
           "lim": 70
         },
         {
@@ -552,7 +552,7 @@
           "l": "\"Kai\", \"Kai\", \"Zoe\", \"Kai\""
         },
         {
-          "l": "\"Rex\", \"Zoe\", \"Ana\", \"Zoe\", \"Rex\", \"Max\""
+          "l": "\"Rex\", \"Zoe\", \"Ida\", \"Zoe\", \"Rex\", \"Max\""
         }
       ],
       "answer": "seen.add(name)",
@@ -762,7 +762,7 @@
           "lim": 80
         },
         {
-          "t": "[(\"Ana\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
+          "t": "[(\"Ida\", 64), (\"Rex\", 70), (\"Kai\", 95)]",
           "lim": 65
         },
         {
@@ -787,7 +787,7 @@
         },
         {
           "t": "team",
-          "d": "[(\"Ana\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]",
+          "d": "[(\"Ida\", 55), (\"Rex\", 30), (\"Kai\", 50), (\"Zoe\", 90)]",
           "o": "passed",
           "lim": 50
         },
@@ -819,7 +819,7 @@
         },
         {
           "t": "crew",
-          "d": "[(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]",
+          "d": "[(\"Ida\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]",
           "c": "per_role",
           "k": "role"
         },
@@ -858,7 +858,7 @@
         },
         {
           "t": "crew",
-          "d": "[(\"Ana\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]",
+          "d": "[(\"Ida\", \"pilot\"), (\"Rex\", \"cook\"), (\"Kai\", \"pilot\"), (\"Zoe\", \"medic\"), (\"Ben\", \"cook\")]",
           "seen": "roles",
           "w": "first",
           "k": "role"
@@ -913,7 +913,7 @@
         },
         {
           "v": "bags",
-          "d": "{\"Ana\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}",
+          "d": "{\"Ida\": (2, 5), \"Rex\": (4, 3), \"Kai\": (6, 2)}",
           "x": "apples",
           "y": "pears",
           "a": "Kai",

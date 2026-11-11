@@ -14,13 +14,13 @@
       "answer": 0
     },
     {
-      "id": "ra-freq-1e6f1c",
+      "id": "ra-freq-ab5e85",
       "text": "What does this print?",
-      "code": "results = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nprint(wins)",
+      "code": "results = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nprint(wins)",
       "options": [
-        "{'Ana': 3, 'Ben': 1, 'Cal': 1}",
-        "{'Ana': 1, 'Ben': 1, 'Cal': 1}",
-        "{'Ana': 2, 'Ben': 0, 'Cal': 0}",
+        "{'Ida': 3, 'Ben': 1, 'Cal': 1}",
+        "{'Ida': 1, 'Ben': 1, 'Cal': 1}",
+        "{'Ida': 2, 'Ben': 0, 'Cal': 0}",
         "3"
       ],
       "answer": 0
@@ -38,13 +38,13 @@
       "answer": 0
     },
     {
-      "id": "ra-champion-1e6f1c",
+      "id": "ra-champion-ab5e85",
       "text": "What does this print?",
-      "code": "results = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(f\"Champion: {champion} ({highest} wins)\")",
+      "code": "results = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(f\"Champion: {champion} ({highest} wins)\")",
       "options": [
-        "Champion: Ana (3 wins)",
+        "Champion: Ida (3 wins)",
         "Champion:  (0 wins)",
-        "Champion: Ana (1 wins)",
+        "Champion: Ida (1 wins)",
         "Champion: 3 (3 wins)"
       ],
       "answer": 0
@@ -62,10 +62,10 @@
       "answer": 0
     },
     {
-      "id": "ra-tuples-d79f4b",
+      "id": "ra-tuples-11b4df",
       "text": "What does this print?",
-      "code": "wins = {\"Ana\": 3, \"Ben\": 1}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nprint(leaderboard)",
-      "options": ["[(3, 'Ana'), (1, 'Ben')]", "[('Ana', 3), ('Ben', 1)]", "[3, 1]", "[(1, 'Ben')]"],
+      "code": "wins = {\"Ida\": 3, \"Ben\": 1}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nprint(leaderboard)",
+      "options": ["[(3, 'Ida'), (1, 'Ben')]", "[('Ida', 3), ('Ben', 1)]", "[3, 1]", "[(1, 'Ben')]"],
       "answer": 0
     },
     {
@@ -81,14 +81,14 @@
       "answer": 0
     },
     {
-      "id": "ra-sort-4d9dca",
+      "id": "ra-sort-bfc496",
       "text": "What does this print?",
-      "code": "leaderboard = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "code": "leaderboard = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
       "options": [
-        "[(5, 'Ben'), (3, 'Dan'), (2, 'Ana'), (1, 'Cal')]",
-        "[(1, 'Cal'), (2, 'Ana'), (3, 'Dan'), (5, 'Ben')]",
-        "[(2, 'Ana'), (5, 'Ben'), (1, 'Cal'), (3, 'Dan')]",
-        "[(5, 'Ben'), (2, 'Ana'), (1, 'Cal'), (3, 'Dan')]"
+        "[(5, 'Ben'), (3, 'Dan'), (2, 'Ida'), (1, 'Cal')]",
+        "[(1, 'Cal'), (2, 'Ida'), (3, 'Dan'), (5, 'Ben')]",
+        "[(2, 'Ida'), (5, 'Ben'), (1, 'Cal'), (3, 'Dan')]",
+        "[(5, 'Ben'), (2, 'Ida'), (1, 'Cal'), (3, 'Dan')]"
       ],
       "answer": 0
     },
@@ -105,14 +105,14 @@
       "answer": 0
     },
     {
-      "id": "ra-board-140919",
+      "id": "ra-board-7d2009",
       "text": "What does this print?",
-      "code": "wins = {\"Ana\": 3, \"Ben\": 1, \"Cal\": 2}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nfor i in range(len(leaderboard)):\n    count, name = leaderboard[i]\n    print(f\"{i + 1}. {name} - {count} wins\")",
+      "code": "wins = {\"Ida\": 3, \"Ben\": 1, \"Cal\": 2}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nfor i in range(len(leaderboard)):\n    count, name = leaderboard[i]\n    print(f\"{i + 1}. {name} - {count} wins\")",
       "options": [
-        "1. Ana - 3 wins\n2. Cal - 2 wins\n3. Ben - 1 wins",
-        "0. Ana - 3 wins\n1. Cal - 2 wins\n2. Ben - 1 wins",
-        "1. Ben - 1 wins\n2. Cal - 2 wins\n3. Ana - 3 wins",
-        "1. 3 - Ana wins\n2. 2 - Cal wins\n3. 1 - Ben wins"
+        "1. Ida - 3 wins\n2. Cal - 2 wins\n3. Ben - 1 wins",
+        "0. Ida - 3 wins\n1. Cal - 2 wins\n2. Ben - 1 wins",
+        "1. Ben - 1 wins\n2. Cal - 2 wins\n3. Ida - 3 wins",
+        "1. 3 - Ida wins\n2. 2 - Cal wins\n3. 1 - Ben wins"
       ],
       "answer": 0
     },
@@ -136,9 +136,9 @@
       "answer": 0
     },
     {
-      "id": "ra-linear-1ba755",
+      "id": "ra-linear-c99bc6",
       "text": "What does this print?",
-      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresults = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nprint(linear_search(results, \"Cal\"))",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresults = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nprint(linear_search(results, \"Cal\"))",
       "options": ["3", "Cal", "-1", "4"],
       "answer": 0
     },
@@ -219,14 +219,14 @@
       "answer": 0
     },
     {
-      "id": "ra-which-58084c",
+      "id": "ra-which-f01998",
       "text": "Which program shows this?",
-      "output": "Ana 3",
+      "output": "Ida 3",
       "options": [
-        "results = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
-        "results = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count < highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
-        "results = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] = 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
-        "results = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = count\nprint(champion, highest)"
+        "results = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
+        "results = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count < highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
+        "results = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] = 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
+        "results = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nwins = {}\nfor name in results:\n    if name in wins:\n        wins[name] += 1\n    else:\n        wins[name] = 1\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count > highest:\n        highest = count\n        champion = count\nprint(champion, highest)"
       ],
       "answer": 0
     },
@@ -280,10 +280,10 @@
       "answer": 0
     },
     {
-      "id": "ra-gap-append-d090a6",
+      "id": "ra-gap-append-9d6963",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "wins = {\"Ana\": 3, \"Ben\": 1, \"Cal\": 2}\nleaderboard = []\nfor name, count in wins.items():\n    ___\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
-      "output": "[(3, 'Ana'), (2, 'Cal'), (1, 'Ben')]",
+      "code": "wins = {\"Ida\": 3, \"Ben\": 1, \"Cal\": 2}\nleaderboard = []\nfor name, count in wins.items():\n    ___\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "output": "[(3, 'Ida'), (2, 'Cal'), (1, 'Ben')]",
       "options": [
         "leaderboard.append((count, name))",
         "leaderboard.append((name, count))",
@@ -340,10 +340,10 @@
       "answer": 0
     },
     {
-      "id": "ra-gap-cmp-3de460",
+      "id": "ra-gap-cmp-04b483",
       "text": "What goes in the gap so the program prints this?",
-      "code": "leaderboard = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] ___ leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
-      "output": "[(5, 'Ben'), (2, 'Ana'), (1, 'Cal')]",
+      "code": "leaderboard = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")]\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] ___ leaderboard[max_index][0]:\n            max_index = j\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "output": "[(5, 'Ben'), (2, 'Ida'), (1, 'Cal')]",
       "options": [">", "<", "==", "="],
       "answer": 0
     },
@@ -380,10 +380,10 @@
       "answer": 0
     },
     {
-      "id": "ra-gap-rank-5675df",
+      "id": "ra-gap-rank-12c995",
       "text": "What goes in the gap so the program prints this?",
-      "code": "leaderboard = [(5, \"Ben\"), (2, \"Ana\")]\nfor i in range(len(leaderboard)):\n    count, name = leaderboard[i]\n    print(f\"{___}. {name} - {count} wins\")",
-      "output": "1. Ben - 5 wins\n2. Ana - 2 wins",
+      "code": "leaderboard = [(5, \"Ben\"), (2, \"Ida\")]\nfor i in range(len(leaderboard)):\n    count, name = leaderboard[i]\n    print(f\"{___}. {name} - {count} wins\")",
+      "output": "1. Ben - 5 wins\n2. Ida - 2 wins",
       "options": ["i + 1", "i", "count", "len(leaderboard)"],
       "answer": 0
     },
@@ -425,15 +425,15 @@
       "answer": 0
     },
     {
-      "id": "ra-bad-champ-e70c58",
+      "id": "ra-bad-champ-70ca23",
       "text": "Which line stops this program from printing this?",
-      "code": "wins = {\"Ana\": 3, \"Ben\": 1, \"Cal\": 2}\nprint(wins)\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count < highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
-      "output": "{'Ana': 3, 'Ben': 1, 'Cal': 2}\nAna 3",
+      "code": "wins = {\"Ida\": 3, \"Ben\": 1, \"Cal\": 2}\nprint(wins)\nchampion = \"\"\nhighest = 0\nfor name, count in wins.items():\n    if count < highest:\n        highest = count\n        champion = name\nprint(champion, highest)",
+      "output": "{'Ida': 3, 'Ben': 1, 'Cal': 2}\nIda 3",
       "options": [
         "if count < highest:",
         "for name, count in wins.items():",
         "highest = 0",
-        "highest = count"
+        "champion = \"\""
       ],
       "answer": 0
     },
@@ -490,15 +490,15 @@
       "answer": 0
     },
     {
-      "id": "ra-bad-sort-ffc017",
+      "id": "ra-bad-sort-e98e65",
       "text": "Which line stops this program from printing this?",
-      "code": "leaderboard = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")]\nprint(leaderboard)\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = i\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
-      "output": "[(2, 'Ana'), (5, 'Ben'), (1, 'Cal')]\n[(5, 'Ben'), (2, 'Ana'), (1, 'Cal')]",
+      "code": "leaderboard = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")]\nprint(leaderboard)\nfor i in range(len(leaderboard)):\n    max_index = i\n    for j in range(i + 1, len(leaderboard)):\n        if leaderboard[j][0] > leaderboard[max_index][0]:\n            max_index = i\n    leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]\nprint(leaderboard)",
+      "output": "[(2, 'Ida'), (5, 'Ben'), (1, 'Cal')]\n[(5, 'Ben'), (2, 'Ida'), (1, 'Cal')]",
       "options": [
         "max_index = i",
+        "leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]",
         "print(leaderboard)",
-        "leaderboard = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")]",
-        "leaderboard[i], leaderboard[max_index] = leaderboard[max_index], leaderboard[i]"
+        "leaderboard = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")]"
       ],
       "answer": 0
     },
@@ -554,10 +554,10 @@
       "answer": 0
     },
     {
-      "id": "ra-holds-pairs-4c2d56",
+      "id": "ra-holds-pairs-e293a6",
       "text": "What is in `leaderboard` at the end?",
-      "code": "wins = {\"Ana\": 3, \"Ben\": 1}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))",
-      "options": ["[(3, 'Ana'), (1, 'Ben')]", "[('Ana', 3), ('Ben', 1)]", "[(1, 'Ben')]", "[3, 1]"],
+      "code": "wins = {\"Ida\": 3, \"Ben\": 1}\nleaderboard = []\nfor name, count in wins.items():\n    leaderboard.append((count, name))",
+      "options": ["[(3, 'Ida'), (1, 'Ben')]", "[('Ida', 3), ('Ben', 1)]", "[(1, 'Ben')]", "[3, 1]"],
       "answer": 0
     },
     {
@@ -640,11 +640,11 @@
       "answer": 0
     },
     {
-      "id": "ra-input-search-133720",
+      "id": "ra-input-search-07e152",
       "text": "What did the user type?",
-      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresults = [\"Ana\", \"Ben\", \"Cal\"]\nprint(linear_search(results, input()))",
+      "code": "def linear_search(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\n\nresults = [\"Ida\", \"Ben\", \"Cal\"]\nprint(linear_search(results, input()))",
       "output": "0",
-      "options": ["Ana", "0", "ana", "Ben"],
+      "options": ["Ida", "0", "ida", "Ben"],
       "answer": 0
     },
     {

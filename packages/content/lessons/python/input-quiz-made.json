@@ -382,10 +382,10 @@
       "answer": 0
     },
     {
-      "id": "in-gap-crew-21a802",
-      "text": "The user typed Elena, then 25, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
-      "code": "name = \"Elena\"\nage = \"25\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
-      "output": "Welcome aboard, Elena! You are 25. Next year you will be 26.",
+      "id": "in-gap-crew-32bd94",
+      "text": "The user typed Sofia, then 25, and `name` and `age` hold what input() gave back. Which line goes in the gap so the program prints this?",
+      "code": "name = \"Sofia\"\nage = \"25\"\n___\nprint(f\"Welcome aboard, {name}! You are {age}. Next year you will be {age + 1}.\")",
+      "output": "Welcome aboard, Sofia! You are 25. Next year you will be 26.",
       "options": ["age = int(age)", "int(age)", "age = float(age)", "age = int(name)"],
       "answer": 0
     },
