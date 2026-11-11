@@ -23,7 +23,7 @@
     {
       "kind": "command_output",
       "cmd": "cat shop/by-city.txt",
-      "expected": "665 Cluj\n513 Bucharest\n398 Timisoara\n268 Iasi\n54 Brasov"
+      "expected": "665 Lyon\n513 Barcelona\n398 Edinburgh\n268 Bern\n54 Munich"
     },
     {
       "kind": "command_output",
@@ -48,7 +48,7 @@
     {
       "kind": "file_contains",
       "path": "shop/report.txt",
-      "text": "Best city: Cluj"
+      "text": "Best city: Lyon"
     },
     {
       "kind": "file_contains",

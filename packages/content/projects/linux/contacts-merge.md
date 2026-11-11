@@ -6,7 +6,7 @@ When every step is done, press **Run Tests**: it checks the files in this termin
 
 ## Look at both exports
 
-You start in `~/contacts`. How many contacts does each file hold? Look at the first lines of both: a name, a comma, a number. You'll find the same person in both with the number written two ways. `+40` is Romania's code and stands in for the first `0`, so `+40722111222` and `0722 111 222` are the same number.
+You start in `~/contacts`. How many contacts does each file hold? Look at the first lines of both: a name, a comma, a number. You'll find the same person in both with the number written two ways. `+33` is France's code and stands in for the first `0`, so `+33722111222` and `07 22 11 12 22` are the same number.
 
 ## All in one file
 
@@ -14,7 +14,7 @@ Put both files, one after the other, into `all.csv`.
 
 ## One way of writing a number
 
-Before you can spot duplicates, every number must be written the same way: no spaces, and `0` instead of `+40`. Only the numbers change: the spaces in the names stay. Save the result as `same.csv`, and check one of the people who was in both files.
+Before you can spot duplicates, every number must be written the same way: no spaces, and `0` instead of `+33`. Only the numbers change: the spaces in the names stay. Save the result as `same.csv`, and check one of the people who was in both files.
 
 New idea: `awk` can change a single field and print the line back with its commas. `-F,` splits on commas, `-v OFS=,` puts them back, and `gsub` replaces text inside one field only. For example, this writes every first field in capitals:
 

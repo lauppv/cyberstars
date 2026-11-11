@@ -3,12 +3,12 @@
     {
       "kind": "command_output",
       "cmd": "cat newsletter/list.txt",
-      "expected": "ana.pop@gmail.com\ncristina.m@gmail.com\ndiana.neagu@gmail.com\nelena.stan@outlook.com\ngeorge.tudor@gmail.com\nioana@school.ro\nirina.dobre@gmail.com\nmaria.lupu@yahoo.com\nmihai.ionescu@yahoo.com\npaul.dinu@yahoo.com\nradu.vasile@outlook.com\nsorin.pana@school.ro"
+      "expected": "carla.m@gmail.com\nclara.nolan@gmail.com\ngeorge.turner@gmail.com\nida.lee@gmail.com\njulia@school.org\nlucia.lopez@yahoo.com\nnoah.hayes@outlook.com\npablo.fischer@yahoo.com\npaul.dunn@yahoo.com\nselma.dobbs@gmail.com\nsimon.page@school.org\nsofia.shaw@outlook.com"
     },
     {
       "kind": "command_output",
       "cmd": "cat newsletter/school.txt",
-      "expected": "ioana@school.ro\nsorin.pana@school.ro"
+      "expected": "julia@school.org\nsimon.page@school.org"
     },
     {
       "kind": "command_output",

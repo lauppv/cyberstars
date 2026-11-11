@@ -1,4 +1,4 @@
-Maria's laptop is slow, and her Downloads folder is why: photos, invoices, music, half-finished downloads and a copy of her CV, all in one heap. She asked you to sort it out before she starts looking for a new job.
+Lucia's laptop is slow, and her Downloads folder is why: photos, invoices, music, half-finished downloads and a copy of her CV, all in one heap. She asked you to sort it out before she starts looking for a new job.
 
 You do it one step at a time, in the terminal on the right. Each step leaves something behind (a file, a folder, a cleaner heap) that the next one builds on. Tick a step off once the files look like it asks; you can always come back and untick it.
 
@@ -6,11 +6,11 @@ When every step is done, press **Run Tests**: it checks the files in this termin
 
 ## Take stock
 
-Everything is in `~/downloads`. Save the list of what is there to `~/before.txt`, one name per line, so you can compare once you are done. How many files does Maria have?
+Everything is in `~/downloads`. Save the list of what is there to `~/before.txt`, one name per line, so you can compare once you are done. How many files does Lucia have?
 
 ## Throw out the junk
 
-Some of the files are leftovers, not things Maria wants: downloads that never finished, and a cache file. Their names tell you which they are. Remove them all with a single command that doesn't spell out any full name.
+Some of the files are leftovers, not things Lucia wants: downloads that never finished, and a cache file. Their names tell you which they are. Remove them all with a single command that doesn't spell out any full name.
 
 ## Make the shelves
 
@@ -29,11 +29,11 @@ When you are done, nothing but the five folders is left loose in `downloads`.
 
 ## Remove the copy
 
-Maria saved her CV twice: one of the files has `-copy` in its name, somewhere on the shelves. Find it by its name. Before you delete anything, make sure it really is the same CV as the original, in what it says and in its size. Then remove the copy and keep the original.
+Lucia saved her CV twice: one of the files has `-copy` in its name, somewhere on the shelves. Find it by its name. Before you delete anything, make sure it really is the same CV as the original, in what it says and in its size. Then remove the copy and keep the original.
 
 ## Find the space hogs
 
-A couple of files take up almost all the room. Save to `~/big-files.txt` every file in `downloads` bigger than 20 kilobytes, one path per line as seen from inside `downloads`, so each starts with `./`. Maria will decide herself whether to keep them, so leave them where they are.
+A couple of files take up almost all the room. Save to `~/big-files.txt` every file in `downloads` bigger than 20 kilobytes, one path per line as seen from inside `downloads`, so each starts with `./`. Lucia will decide herself whether to keep them, so leave them where they are.
 
 ## Before and after
 
