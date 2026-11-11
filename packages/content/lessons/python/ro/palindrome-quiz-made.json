@@ -102,8 +102,8 @@
     {
       "id": "pd-clean-81e122",
       "text": "Ce afișează?",
-      "code": "text = \"Aerisirea\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "options": ["aerisirea\nTrue", "Aerisirea\nFalse", "aerisirea\nFalse", "a\nTrue"],
+      "code": "text = \"E la cale\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "options": ["elacale\nTrue", "Elacale\nFalse", "e la cale\nFalse", "elacale\nFalse"],
       "answer": 0
     },
     {
@@ -369,8 +369,8 @@
     {
       "id": "pd-gap-clean-bd75a8",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "text = \"Aerisirea 9\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
-      "output": "aerisirea True",
+      "code": "text = \"E la cale 9\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.___():\n        curatat += caracter.lower()\nprint(curatat, curatat == curatat[::-1])",
+      "output": "elacale True",
       "options": ["isalpha", "isdigit", "isupper", "islower"],
       "answer": 0
     },
@@ -471,12 +471,12 @@
     {
       "id": "pd-bad-lower-8b4bb8",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "text = \"Aerisirea\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
-      "output": "aerisirea\nTrue",
+      "code": "text = \"E la cale\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter\nprint(curatat)\nprint(curatat == curatat[::-1])",
+      "output": "elacale\nTrue",
       "options": [
         "curatat += caracter",
         "curatat = \"\"",
-        "text = \"Aerisirea\"",
+        "text = \"E la cale\"",
         "if caracter.isalpha():"
       ],
       "answer": 0
@@ -595,8 +595,8 @@
     {
       "id": "pal-holds-clean-f6b9ad",
       "text": "Ce conține `curatat` la final?",
-      "code": "text = \"Aerisirea\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
-      "options": ["'aerisirea'", "'Aerisirea'", "''", "'a'"],
+      "code": "text = \"E la cale\"\ncuratat = \"\"\nfor caracter in text:\n    if caracter.isalpha():\n        curatat += caracter.lower()",
+      "options": ["'elacale'", "'Elacale'", "'  '", "'e'"],
       "answer": 0
     },
     {
