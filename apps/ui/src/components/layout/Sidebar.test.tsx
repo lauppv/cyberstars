@@ -99,9 +99,10 @@ describe('Sidebar', () => {
       expect.stringMatching(/^Still being built/),
     );
     expect(row).toHaveTextContent('2 lessons to go');
-    // Under the name, which keeps its room beside the Beta tag
+    // Under the name, with the Beta tag at the end of the row
     const note = within(row).getByText('2 lessons to go');
-    expect(note.previousElementSibling).toHaveTextContent(/^LaniakeaBeta$/);
+    expect(note.previousElementSibling).toHaveTextContent(/^Laniakea$/);
+    expect(row.lastElementChild).toHaveTextContent(/^Beta$/);
   });
 
   it('drops the note once the game is open', () => {

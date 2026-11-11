@@ -26,7 +26,6 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
-import { BetaBadge } from '../ui/BetaBadge';
 import { BrandMark } from '../ui/BrandMark';
 import { TutorFace } from '../tutor/TutorFace';
 import { useAuth } from '../../context/AuthContext';
@@ -83,7 +82,7 @@ function NavItem({
   to: string;
   icon: LucideIcon;
   label: string;
-  // A small mark right after the label, such as Beta
+  // A small mark at the end of the row, such as Beta
   tag?: ReactNode;
   badge?: number;
   // A few words under the label, such as what still opens it: at the end of
@@ -107,23 +106,20 @@ function NavItem({
       <Icon size={ICON_SIZE} strokeWidth={1.75} className="flex-shrink-0 opacity-80" />
       {note ? (
         <span className="flex flex-col min-w-0">
-          <span className="flex items-center gap-2.5 min-w-0">
-            <span className="truncate">{label}</span>
-            {tag}
-          </span>
+          <span className="truncate">{label}</span>
           <span className="flex items-center gap-1 text-[10px] text-[var(--text3)] whitespace-nowrap">
             <Lock size={10} strokeWidth={2} />
             {note}
           </span>
         </span>
       ) : (
-        <>
-          <span className="truncate">{label}</span>
-          {tag}
-        </>
+        <span className="truncate">{label}</span>
       )}
+      {tag}
       {badge != null && badge > 0 && (
-        <span className="ml-auto min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums">
+        <span
+          className={`${tag ? '' : 'ml-auto'} min-w-[18px] h-[18px] px-1 rounded-full bg-[var(--accent)] text-white text-[10px] font-semibold leading-[18px] text-center tabular-nums`}
+        >
           {badge > 9 ? '9+' : badge}
         </span>
       )}
@@ -168,7 +164,7 @@ function LaniakeaItem({ badge, onNavigate }: { badge: number; onNavigate: () => 
       to="/laniakea"
       icon={Orbit}
       label={t('nav.laniakea')}
-      tag={<BetaBadge hint={t('laniakea.betaHint')} />}
+      tag={<Tag hint={t('laniakea.betaHint')}>{t('common.beta')}</Tag>}
       note={!isLoading && left > 0 ? t('sidebar.laniakeaLeft', { count: left }) : undefined}
       badge={badge}
       onNavigate={onNavigate}
@@ -193,13 +189,21 @@ function LockedItem({ icon: Icon, label }: { icon: LucideIcon; label: string }) 
   );
 }
 
-function ComingSoonTag() {
-  const { t } = useTranslation();
+// Beta and Coming soon share one look, at the end of the row
+function Tag({ hint, children }: { hint?: string; children: ReactNode }) {
   return (
-    <span className="ml-auto text-[10px] px-1.5 py-px rounded border border-[var(--border)]">
-      {t('common.comingSoon')}
+    <span
+      title={hint}
+      className="ml-auto text-[10px] px-1.5 py-px rounded border border-[var(--border)]"
+    >
+      {children}
     </span>
   );
+}
+
+function ComingSoonTag() {
+  const { t } = useTranslation();
+  return <Tag>{t('common.comingSoon')}</Tag>;
 }
 
 function Section({ label, children }: { label?: string; children: ReactNode }) {
