@@ -61,15 +61,15 @@ Intrare:
 3
 Eve
 3.5
-Ana
+Ida
 3.5
 Bob
 3.5
 
 Ieșire:
-Ana 3.5
 Bob 3.5
 Eve 3.5
+Ida 3.5
 ```
 
 Când toate mediile sunt egale, întreaga listă cade înapoi pe ordinea alfabetică.

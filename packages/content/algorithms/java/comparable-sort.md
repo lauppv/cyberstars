@@ -61,15 +61,15 @@ Input:
 3
 Eve
 3.5
-Ana
+Ida
 3.5
 Bob
 3.5
 
 Output:
-Ana 3.5
 Bob 3.5
 Eve 3.5
+Ida 3.5
 ```
 
 When every GPA ties, the whole list falls back to alphabetical order.
