@@ -3,7 +3,7 @@
   "cases": [
     {
       "visible": true,
-      "stdin": "4\nMargherita 25\nDiavola 32\nFunghi 28\nQuattro 35\nmenu\nnew Ana\nadd 1 Margherita large\nadd 1 Diavola small chili\nadd 1 Hawaii large\nadd 1 Funghi huge\nadd 1 Funghi medium pineapple\nshow 1\nadd 1 Funghi medium cheese olives\nshow 1\nsend 1 5\nadd 1 Quattro large\nnew Dan\nadd 2 Quattro large\nadd 2 Quattro medium ham\nsend 2 2.5\nsend 3 2\nsend 2 x\nreport\nadd two Margherita large\nadd 2\nbake 2\n\nclose\n"
+      "stdin": "4\nMargherita 25\nDiavola 32\nFunghi 28\nQuattro 35\nmenu\nnew Ida\nadd 1 Margherita large\nadd 1 Diavola small chili\nadd 1 Hawaii large\nadd 1 Funghi huge\nadd 1 Funghi medium pineapple\nshow 1\nadd 1 Funghi medium cheese olives\nshow 1\nsend 1 5\nadd 1 Quattro large\nnew Dan\nadd 2 Quattro large\nadd 2 Quattro medium ham\nsend 2 2.5\nsend 3 2\nsend 2 x\nreport\nadd two Margherita large\nadd 2\nbake 2\n\nclose\n"
     },
     {
       "visible": true,

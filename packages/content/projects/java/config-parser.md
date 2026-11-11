@@ -1,4 +1,4 @@
-Andrei and two friends are making a small space game, Star Miner, and every setting lives in one text file: the player's name, the volume, the screen, the saved games. The file nests, a group inside a group inside a list, in the format half the internet uses, JSON. They don't want a library for it; they want to understand it. So you'll write the reader: a **recursive** parser that turns the text into Java objects, finds any setting by its path, and reports a broken file with the line where it broke.
+Oliver and two friends are making a small space game, Star Miner, and every setting lives in one text file: the player's name, the volume, the screen, the saved games. The file nests, a group inside a group inside a list, in the format half the internet uses, JSON. They don't want a library for it; they want to understand it. So you'll write the reader: a **recursive** parser that turns the text into Java objects, finds any setting by its path, and reports a broken file with the line where it broke.
 
 You build it one step at a time, in one `Main.java`. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests feed your parser settings files it has never seen, broken ones too. Passing them finishes the project.
 
@@ -9,7 +9,7 @@ The input is the settings file, then a line `---`, then questions, one per line,
 ```text
 # Settings for Star Miner
 {
-  "player": "Ioana",
+  "player": "Julia",
   "volume": 0.8,
   "graphics": {
     "fullscreen": true,
@@ -50,7 +50,7 @@ Read 16 values
 
 ```text
 get player
-"Ioana"
+"Julia"
 get graphics.resolution.width
 1920
 get saves[1].name
@@ -100,4 +100,4 @@ print graphics
 }
 ```
 
-`print .` prints the whole file. Printing is recursive too: a method that prints a value, and calls itself for each item, one level deeper. Andrei's team now edit their settings without fear.
+`print .` prints the whole file. Printing is recursive too: a method that prints a value, and calls itself for each item, one level deeper. Oliver's team now edit their settings without fear.

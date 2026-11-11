@@ -1,4 +1,4 @@
-The supermarket in Ana's neighbourhood is putting in self-checkout kiosks. A kiosk spends most of its life saying no: that barcode doesn't exist, put the bananas on the scale first, a staff member must check your age before the wine, your card was declined. You'll write a kiosk's program, and every one of those "no"s will be an exception of its own, thrown where the problem is found and caught where the customer is told.
+The supermarket in Ida's neighbourhood is putting in self-checkout kiosks. A kiosk spends most of its life saying no: that barcode doesn't exist, put the bananas on the scale first, a staff member must check your age before the wine, your card was declined. You'll write a kiosk's program, and every one of those "no"s will be an exception of its own, thrown where the problem is found and caught where the customer is told.
 
 You build it one step at a time, in one `Main.java`. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests send customers to your kiosk that it has never seen. Passing them finishes the project.
 
@@ -17,7 +17,7 @@ The kiosk starts by reading the products: how many, then one line each with the 
 302 Wine 32.00 alcohol
 ```
 
-Keep prices in bani, as `int` (`Math.round(price * 100)`), so sums are exact. Print `Kiosk ready, 5 products`, then read commands until `quit`. Any other word prints `Unknown command: dance`.
+Keep prices in cents, as `int` (`Math.round(price * 100)`), so sums are exact. Print `Kiosk ready, 5 products`, then read commands until `quit`. Any other word prints `Unknown command: dance`.
 
 ## Scanning, and your first exception
 

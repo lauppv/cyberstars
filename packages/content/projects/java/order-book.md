@@ -1,4 +1,4 @@
-The economics club at a high school in Timișoara runs a stock market game: each member gets pretend shares of a pretend company and trades them with the others. Until now, a teacher matched buyers and sellers by hand on a whiteboard. You'll write the exchange itself, the order book: it keeps every offer to buy and to sell, matches them the moment their prices meet, and tells everyone what they own.
+The economics club at a high school in Edinburgh runs a stock market game: each member gets pretend shares of a pretend company and trades them with the others. Until now, a teacher matched buyers and sellers by hand on a whiteboard. You'll write the exchange itself, the order book: it keeps every offer to buy and to sell, matches them the moment their prices meet, and tells everyone what they own.
 
 You build it one step at a time, in one `Main.java`. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests trade on days your program has never seen. Passing them finishes the project.
 
@@ -33,7 +33,7 @@ Sell:
   103 x 8  (Leo, order 3)
   105 x 10  (Dan, order 1)
 Buy:
-  100 x 4  (Ana, order 4)
+  100 x 4  (Ida, order 4)
 ```
 
 A `PriorityQueue` only promises its best order at the head; to list them all in order, copy them into a list and sort it with the same comparator.
@@ -55,7 +55,7 @@ An order that doesn't trade at all goes into the book.
 
 Quantities rarely line up. A trade is for the smaller of the two quantities; the order that runs out leaves the book (or never enters it), and the other keeps its rest. Leo's 8 shares above are now 1 in the book. A new order with some shares left after trading goes into the book with them, and says so: `  4 left in the book`.
 
-One more rule: nobody trades with themselves. When the best waiting order belongs to the new order's own trader, the old order is cancelled first: `  Order 4 cancelled, Ana can't trade with themselves`.
+One more rule: nobody trades with themselves. When the best waiting order belongs to the new order's own trader, the old order is cancelled first: `  Order 4 cancelled, Ida can't trade with themselves`.
 
 ## Cancel and market orders
 
@@ -67,8 +67,8 @@ One more rule: nobody trades with themselves. When the best waiting order belong
 Every trader starts with 0 shares and 0 cash; a purchase adds shares and takes cash, a sale the other way round, so both can go negative (this is a game); one share reads `1 share`. `traders` lists everyone who placed an order, by name:
 
 ```text
-Ana: -20 shares, cash 1980
 Dan: 0 shares, cash 0
+Ida: -20 shares, cash 1980
 ```
 
 `stats` shows the last trade's price, the shares traded and the average price paid, with two decimals, or `No trades yet`. Finally, bad input: `buy`, `sell`, `market` and `cancel` with the wrong words print `Usage: buy <trader> <quantity> <price>` (and so on), a number that isn't one `Not a number: ten`, and 0 or less `Quantities and prices are whole numbers above 0`. The teacher retired the whiteboard.

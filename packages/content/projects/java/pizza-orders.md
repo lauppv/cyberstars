@@ -39,8 +39,8 @@ The size's name prints with a capital and the rest small: `name()` gives `LARGE`
 `new <customer>` opens an order, numbered from 1:
 
 ```text
-new Ana
-Order 1 for Ana
+new Ida
+Order 1 for Ida
 ```
 
 `add <order> <pizza> <size> [extras...]` adds a pizza to an order. Extras cost 3.00 each, and the kitchen has four: `cheese`, `olives`, `chili` and `ham`.
@@ -67,7 +67,7 @@ Sizes can be typed in any case. Make an `Order` class holding its items, and an 
 
 ```text
 show 1
-Order 1 for Ana
+Order 1 for Ida
   Large Margherita 32.50
   Small Diavola +chili 28.60
 Total: 61.10
@@ -79,7 +79,7 @@ Order three pizzas or more and the cheapest one is free. `show` adds a line for 
 
 ```text
 show 1
-Order 1 for Ana
+Order 1 for Ida
   Large Margherita 32.50
   Small Diavola +chili 28.60
   Medium Funghi +cheese +olives 34.00
@@ -95,7 +95,7 @@ The price that counts is the item's whole price, extras included. Let the `Order
 
 ```text
 send 1 5
-Order 1 sent to Ana, delivery 7.00, total 73.50
+Order 1 sent to Ida, delivery 7.00, total 73.50
 ```
 
 Once sent, an order can't change: `add` and `send` print `Order 1 is already on its way`. An order with no pizza can't be sent: `Order 2 is empty`. After it's sent, `show` lists the delivery before the total, `  Delivery 7.00`.

@@ -1,4 +1,4 @@
-Tudor drives his little sister to school every morning, and the car has an old music player he wants to replace with a program of his own. He listens to songs, she wants her science podcast, and neither must end up in the other's list. Shuffle should be random, but the same "random" when they find an order they like. In Java, that's a job for a generic class: one `Playlist` written once that holds songs in one place and episodes in another, and that a `for` loop can walk through.
+Felix drives his little sister to school every morning, and the car has an old music player he wants to replace with a program of his own. He listens to songs, she wants her science podcast, and neither must end up in the other's list. Shuffle should be random, but the same "random" when they find an order they like. In Java, that's a job for a generic class: one `Playlist` written once that holds songs in one place and episodes in another, and that a `for` loop can walk through.
 
 You build it one step at a time, in one `Main.java`. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests fill playlists your program has never seen. Passing them finishes the project.
 
@@ -40,7 +40,7 @@ Make `Playlist` implement `Iterable<T>`: its `iterator()` method hands out the t
 ```text
 play music
 1. The Weeknd - Blinding Lights (3:20)
-2. O-Zone - Dragostea din tei (3:35)
+2. Shakira - Hips Don't Lie (3:35)
 3. Queen - Bohemian Rhapsody (5:55)
 Total 12:50
 ```
@@ -63,7 +63,7 @@ The drive to school is 12 minutes. `fit <playlist> <m:ss>` goes through the trac
 ```text
 fit music 12:00
 1. The Weeknd - Blinding Lights (3:20)
-2. O-Zone - Dragostea din tei (3:35)
+2. Shakira - Hips Don't Lie (3:35)
 3. Dua Lipa - Levitating (3:23)
 3 tracks, 10:18 of 12:00
 ```

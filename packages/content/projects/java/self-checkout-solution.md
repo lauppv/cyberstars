@@ -26,7 +26,7 @@ public class Main {
     static List<Product> waiting = new ArrayList<>();
     static int sales = 0, takings = 0, attempts = 0;
 
-    static String money(int bani) { return String.format("%d.%02d", bani / 100, bani % 100); }
+    static String money(int cents) { return String.format("%d.%02d", cents / 100, cents % 100); }
 
     static Product find(String code) throws UnknownProductException {
         Product p = products.get(code);

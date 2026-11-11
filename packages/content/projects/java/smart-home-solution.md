@@ -136,7 +136,7 @@ public class Main {
                             System.out.println(String.format("%s: %.2f kWh", r, room));
                         }
                         for (Device d : devices.values()) if (d.wh > 0 && (top == null || d.wh > top.wh)) top = d;
-                        System.out.println(String.format("Total: %.2f kWh, %.2f lei", kwh, kwh * 1.2));
+                        System.out.println(String.format("Total: %.2f kWh, %.2f euros", kwh, kwh * 1.2));
                         System.out.println("Biggest user: " + (top == null ? "none" : top.name));
                     }
                     default -> System.out.println("Unknown command: " + w[0]);

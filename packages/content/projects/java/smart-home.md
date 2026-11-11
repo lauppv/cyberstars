@@ -1,4 +1,4 @@
-The Popescu family put smart plugs, bulbs and a radiator controller all over their flat, and now each one has its own app. They want one hub: a single program that knows every device and room, switches them by name or a room at a time, dims the lights, sets the radiator, and at the end of the month says how much electricity went where. Different devices can do different things, which is exactly what Java's interfaces are for.
+The Schmidt family put smart plugs, bulbs and a radiator controller all over their flat, and now each one has its own app. They want one hub: a single program that knows every device and room, switches them by name or a room at a time, dims the lights, sets the radiator, and at the end of the month says how much electricity went where. Different devices can do different things, which is exactly what Java's interfaces are for.
 
 You build it one step at a time, in one `Main.java`. Every step adds a command or a rule, and the commands from earlier steps keep working. Tick a step off when your program does everything it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests run flats your program has never seen. Passing them finishes the project.
 
@@ -102,14 +102,14 @@ Keep the energy each device used in watt-hours: watts times minutes divided by 6
 
 ## The monthly bill
 
-`energy` shows what each room used in kilowatt-hours (watt-hours divided by 1000), with two decimals, then the total and its cost at 1.20 lei a kWh, and the device that used the most:
+`energy` shows what each room used in kilowatt-hours (watt-hours divided by 1000), with two decimals, then the total and its cost at 1.20 euros a kWh, and the device that used the most:
 
 ```text
 energy
 living: 2.08 kWh
 office: 0.00 kWh
 kitchen: 0.45 kWh
-Total: 2.53 kWh, 3.04 lei
+Total: 2.53 kWh, 3.04 euros
 Biggest user: radiator
 ```
 
