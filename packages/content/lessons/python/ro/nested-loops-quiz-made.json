@@ -2,13 +2,13 @@
   "note": "Made by npm run make:quiz from the templates in nested-loops-quiz.json; don't edit it by hand.",
   "questions": [
     {
-      "id": "nl-pairs-cd7672",
+      "id": "nl-pairs-03694f",
       "text": "Ce afișează?",
-      "code": "echipe = [\"Sharks\", \"Bears\"]\njucatori = [\"Ana\", \"Rex\"]\nfor echipa in echipe:\n    for jucator in jucatori:\n        print(f\"{jucator} joaca pentru {echipa}\")",
+      "code": "echipe = [\"Sharks\", \"Bears\"]\njucatori = [\"Ida\", \"Rex\"]\nfor echipa in echipe:\n    for jucator in jucatori:\n        print(f\"{jucator} joaca pentru {echipa}\")",
       "options": [
-        "Ana joaca pentru Sharks\nRex joaca pentru Sharks\nAna joaca pentru Bears\nRex joaca pentru Bears",
-        "Ana joaca pentru Sharks\nAna joaca pentru Bears\nRex joaca pentru Sharks\nRex joaca pentru Bears",
-        "Sharks joaca pentru Ana\nSharks joaca pentru Rex\nBears joaca pentru Ana\nBears joaca pentru Rex",
+        "Ida joaca pentru Sharks\nRex joaca pentru Sharks\nIda joaca pentru Bears\nRex joaca pentru Bears",
+        "Ida joaca pentru Sharks\nIda joaca pentru Bears\nRex joaca pentru Sharks\nRex joaca pentru Bears",
+        "Sharks joaca pentru Ida\nSharks joaca pentru Rex\nBears joaca pentru Ida\nBears joaca pentru Rex",
         "{jucator} joaca pentru {echipa}\n{jucator} joaca pentru {echipa}\n{jucator} joaca pentru {echipa}\n{jucator} joaca pentru {echipa}"
       ],
       "answer": 0
@@ -152,14 +152,14 @@
       "answer": 0
     },
     {
-      "id": "nl-match-1fb22c",
+      "id": "nl-match-c1896e",
       "text": "Ce afișează?",
-      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\"]\nfor a in jucatori:\n    for b in jucatori:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
+      "code": "jucatori = [\"Ida\", \"Rex\", \"Kai\"]\nfor a in jucatori:\n    for b in jucatori:\n        if a == b:\n            continue\n        print(f\"{a}-{b}\")",
       "options": [
-        "Ana-Rex\nAna-Kai\nRex-Ana\nRex-Kai\nKai-Ana\nKai-Rex",
-        "Rex-Ana\nKai-Ana\nKai-Rex",
-        "Ana-Ana\nRex-Rex\nKai-Kai",
-        "Ana-Kai\nRex-Kai\nKai-Kai"
+        "Ida-Rex\nIda-Kai\nRex-Ida\nRex-Kai\nKai-Ida\nKai-Rex",
+        "Rex-Ida\nKai-Ida\nKai-Rex",
+        "Ida-Ida\nRex-Rex\nKai-Kai",
+        "Ida-Kai\nRex-Kai\nKai-Kai"
       ],
       "answer": 0
     },

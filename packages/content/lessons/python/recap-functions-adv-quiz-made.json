@@ -663,9 +663,9 @@
       "answer": 0
     },
     {
-      "id": "rfa-error-call-79067b",
+      "id": "rfa-error-call-f92f0d",
       "text": "Which error stops this program?",
-      "code": "def greet(name, word=\"Hello\"):\n    print(f\"{name} {word}\")\n\ngreet(\"Ana\", \"Hi\", \"!\")",
+      "code": "def greet(name, word=\"Hello\"):\n    print(f\"{name} {word}\")\n\ngreet(\"Ida\", \"Hi\", \"!\")",
       "options": ["TypeError", "SyntaxError", "NameError", "ValueError"],
       "answer": 0
     },

@@ -99,10 +99,10 @@
       "answer": 0
     },
     {
-      "id": "ie-online-cbab11",
+      "id": "ie-online-ddebee",
       "text": "What does this print?",
-      "code": "user = \"Ana\"\nonline = True\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
-      "options": ["Ana is playing", "Ana is offline", "Ana is playing\nAna is offline", "True"],
+      "code": "user = \"Ida\"\nonline = True\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "options": ["Ida is playing", "Ida is offline", "Ida is playing\nIda is offline", "True"],
       "answer": 0
     },
     {
@@ -518,13 +518,13 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-true-b65c32",
+      "id": "ie-bad-true-6e5e1e",
       "text": "Which line stops this program from printing this?",
-      "code": "user = \"Ana\"\nonline = true\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
-      "output": "Ana is playing",
+      "code": "user = \"Ida\"\nonline = true\nif online == True:\n    print(f\"{user} is playing\")\nelse:\n    print(f\"{user} is offline\")",
+      "output": "Ida is playing",
       "options": [
         "online = true",
-        "user = \"Ana\"",
+        "user = \"Ida\"",
         "print(f\"{user} is playing\")",
         "print(f\"{user} is offline\")"
       ],

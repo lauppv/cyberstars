@@ -32,7 +32,7 @@
       "generated": true
     },
     {
-      "inject": { "pilot": "Ana", "ship_name": "Falcon", "fuel": 5000, "speed": 19.95 },
+      "inject": { "pilot": "Ida", "ship_name": "Falcon", "fuel": 5000, "speed": 19.95 },
       "generated": true
     },
     {
@@ -48,7 +48,7 @@
       "generated": true
     },
     {
-      "inject": { "pilot": "Ana", "ship_name": "Comet", "fuel": 1, "speed": 11.1 },
+      "inject": { "pilot": "Ida", "ship_name": "Comet", "fuel": 1, "speed": 11.1 },
       "generated": true
     },
     {
@@ -56,7 +56,7 @@
       "generated": true
     },
     {
-      "inject": { "pilot": "Oana", "ship_name": "Falcon", "fuel": 401, "speed": 11.1 },
+      "inject": { "pilot": "Olga", "ship_name": "Falcon", "fuel": 401, "speed": 11.1 },
       "generated": true
     },
     {

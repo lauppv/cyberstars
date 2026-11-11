@@ -279,7 +279,7 @@
           "a": "teams",
           "xs": "\"Sharks\", \"Bears\"",
           "b": "players",
-          "ys": "\"Ana\", \"Rex\"",
+          "ys": "\"Ida\", \"Rex\"",
           "x": "team",
           "y": "player",
           "word": "plays for"
@@ -449,7 +449,7 @@
       "values": [
         {
           "v": "players",
-          "xs": "\"Ana\", \"Rex\", \"Kai\""
+          "xs": "\"Ida\", \"Rex\", \"Kai\""
         },
         {
           "v": "colors",

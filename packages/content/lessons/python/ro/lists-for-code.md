@@ -1,1 +1,1 @@
-echipaj = ["Maria", "Andrei", "Elena", "Mihai", "Ana", "Vlad", "Ioana", "George", "Diana", "Radu", "Cristina", "Alex", "Gabriela", "Stefan", "Laura", "Bogdan", "Andreea", "Paul", "Roxana", "Dan"]
+echipaj = ["Mary", "Andrew", "Helen", "Michael", "Anna", "Victor", "Joanna", "George", "Clara", "Robert", "Christine", "Alex", "Gabrielle", "Steven", "Laura", "Brian", "Andrea", "Paul", "Rose", "Daniel"]

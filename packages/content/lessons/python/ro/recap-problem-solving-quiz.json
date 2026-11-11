@@ -135,8 +135,8 @@
       "id": "q15",
       "text": "Pe care dintre aceste texte trusa din misiune îl numește palindrom, `este_palindrom(curata_text(text))`?",
       "options": [
-        "\"Ene purta pene patru\"",
-        "\"Ene purta patru pene\"",
+        "\"Ele fac cafea\"",
+        "\"Ele fac cafele\"",
         "\"Sistem pornit\"",
         "\"Canal de navigatie\""
       ],
@@ -182,8 +182,8 @@
     {
       "id": "q20",
       "text": "Ce afișează?",
-      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(curata_text(\"Ene purta patru pene\")))",
-      "options": ["True", "False", "enepurtapatrupene", "Ene purta patru pene"],
+      "code": "def curata_text(text):\n    rezultat = \"\"\n    for caracter in text:\n        if caracter.isalpha():\n            rezultat += caracter.lower()\n    return rezultat\n\ndef este_palindrom(cuvant):\n    stanga = 0\n    dreapta = len(cuvant) - 1\n    while stanga < dreapta:\n        if cuvant[stanga] != cuvant[dreapta]:\n            return False\n        stanga += 1\n        dreapta -= 1\n    return True\n\nprint(este_palindrom(curata_text(\"Ele fac cafele\")))",
+      "options": ["True", "False", "elefaccafele", "Ele fac cafele"],
       "answer": 0
     },
     {
@@ -427,7 +427,7 @@
           "t": "Ele fac cafele"
         },
         {
-          "t": "Ene purta patru pene"
+          "t": "Aerisirea"
         }
       ],
       "mistakes": [
@@ -807,7 +807,7 @@
           "x": "rand",
           "c": "litere",
           "a": "Vice City",
-          "w1": "Ana",
+          "w1": "Anna",
           "w2": "Rotitor",
           "w3": "Ele fac cafele"
         }

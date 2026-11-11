@@ -2,14 +2,14 @@
   "note": "Made by npm run make:quiz from the templates in functions-quiz.json; don't edit it by hand.",
   "questions": [
     {
-      "id": "fn-greet-35e230",
+      "id": "fn-greet-43e373",
       "text": "Ce afișează?",
-      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Ana\")\nsaluta(\"Ben\")",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Ida\")\nsaluta(\"Ben\")",
       "options": [
-        "Salut, Ana!\nSalut, Ben!",
+        "Salut, Ida!\nSalut, Ben!",
         "Salut, {nume}!\nSalut, {nume}!",
         "Salut, nume!\nSalut, nume!",
-        "Salut, Ben!\nSalut, Ana!"
+        "Salut, Ben!\nSalut, Ida!"
       ],
       "answer": 0
     },
@@ -315,14 +315,14 @@
       "answer": 0
     },
     {
-      "id": "fn-which-call-cad945",
+      "id": "fn-which-call-be8eee",
       "text": "Care program afișează asta?",
-      "output": "Succes, Ana!",
+      "output": "Succes, Ida!",
       "options": [
-        "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Ana\")",
+        "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")\n\nnoroc(\"Ida\")",
         "def noroc(pilot):\n    print(f\"Succes, {pilot}!\")",
-        "def noroc(pilot):\n    print(\"Succes, {pilot}!\")\n\nnoroc(\"Ana\")",
-        "def noroc(pilot):\n    print(f\"Succes, pilot!\")\n\nnoroc(\"Ana\")"
+        "def noroc(pilot):\n    print(\"Succes, {pilot}!\")\n\nnoroc(\"Ida\")",
+        "def noroc(pilot):\n    print(f\"Succes, pilot!\")\n\nnoroc(\"Ida\")"
       ],
       "answer": 0
     },
@@ -428,10 +428,10 @@
       "answer": 0
     },
     {
-      "id": "fn-gap-def-abeb64",
+      "id": "fn-gap-def-3df7c1",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "___\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Ana\")",
-      "output": "Bun venit la bord, Ana!",
+      "code": "___\n    print(f\"Bun venit la bord, {membru}!\")\n\nbun_venit(\"Ida\")",
+      "output": "Bun venit la bord, Ida!",
       "options": [
         "def bun_venit(membru):",
         "def bun_venit(membru)",
@@ -584,14 +584,14 @@
       "answer": 0
     },
     {
-      "id": "fn-bad-f-cc5860",
+      "id": "fn-bad-f-e9d253",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "def bravo():\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Ana\")\nbravo(\"Ben\")",
-      "output": "Bravo, Ana!\nBravo, Ben!",
+      "code": "def bravo():\n    print(f\"Bravo, {jucator}!\")\n\nbravo(\"Ida\")\nbravo(\"Ben\")",
+      "output": "Bravo, Ida!\nBravo, Ben!",
       "options": [
         "def bravo():",
         "print(f\"Bravo, {jucator}!\")",
-        "bravo(\"Ana\")",
+        "bravo(\"Ida\")",
         "bravo(\"Ben\")"
       ],
       "answer": 0
@@ -618,13 +618,13 @@
       "answer": 0
     },
     {
-      "id": "fn-bad-name-442437",
+      "id": "fn-bad-name-d6023e",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Ana\")\nSaluta(\"Ben\")",
-      "output": "Salut, Ana!\nSalut, Ben!",
+      "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(\"Ida\")\nSaluta(\"Ben\")",
+      "output": "Salut, Ida!\nSalut, Ben!",
       "options": [
         "Saluta(\"Ben\")",
-        "saluta(\"Ana\")",
+        "saluta(\"Ida\")",
         "print(f\"Salut, {nume}!\")",
         "def saluta(nume):"
       ],
@@ -696,11 +696,11 @@
       "answer": 0
     },
     {
-      "id": "fn-input-greet-eafb72",
+      "id": "fn-input-greet-f5182c",
       "text": "Ce a tastat utilizatorul?",
       "code": "def saluta(nume):\n    print(f\"Salut, {nume}!\")\n\nsaluta(input())",
-      "output": "Salut, Ana!",
-      "options": ["Ana", "Salut, Ana!", "nume", "Ana!"],
+      "output": "Salut, Ida!",
+      "options": ["Ida", "Salut, Ida!", "nume", "Ida!"],
       "answer": 0
     },
     {

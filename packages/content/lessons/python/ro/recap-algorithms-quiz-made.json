@@ -14,13 +14,13 @@
       "answer": 0
     },
     {
-      "id": "ra-freq-1e6f1c",
+      "id": "ra-freq-ab5e85",
       "text": "Ce afișează?",
-      "code": "rezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
+      "code": "rezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\nprint(victorii)",
       "options": [
-        "{'Ana': 3, 'Ben': 1, 'Cal': 1}",
-        "{'Ana': 1, 'Ben': 1, 'Cal': 1}",
-        "{'Ana': 2, 'Ben': 0, 'Cal': 0}",
+        "{'Ida': 3, 'Ben': 1, 'Cal': 1}",
+        "{'Ida': 1, 'Ben': 1, 'Cal': 1}",
+        "{'Ida': 2, 'Ben': 0, 'Cal': 0}",
         "3"
       ],
       "answer": 0
@@ -38,13 +38,13 @@
       "answer": 0
     },
     {
-      "id": "ra-champion-1e6f1c",
+      "id": "ra-champion-ab5e85",
       "text": "Ce afișează?",
-      "code": "rezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
+      "code": "rezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(f\"Campion: {campion} ({cel_mai_mare} victorii)\")",
       "options": [
-        "Campion: Ana (3 victorii)",
+        "Campion: Ida (3 victorii)",
         "Campion:  (0 victorii)",
-        "Campion: Ana (1 victorii)",
+        "Campion: Ida (1 victorii)",
         "Campion: 3 (3 victorii)"
       ],
       "answer": 0
@@ -62,10 +62,10 @@
       "answer": 0
     },
     {
-      "id": "ra-tuples-d79f4b",
+      "id": "ra-tuples-11b4df",
       "text": "Ce afișează?",
-      "code": "victorii = {\"Ana\": 3, \"Ben\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
-      "options": ["[(3, 'Ana'), (1, 'Ben')]", "[('Ana', 3), ('Ben', 1)]", "[3, 1]", "[(1, 'Ben')]"],
+      "code": "victorii = {\"Ida\": 3, \"Ben\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nprint(clasament)",
+      "options": ["[(3, 'Ida'), (1, 'Ben')]", "[('Ida', 3), ('Ben', 1)]", "[3, 1]", "[(1, 'Ben')]"],
       "answer": 0
     },
     {
@@ -81,14 +81,14 @@
       "answer": 0
     },
     {
-      "id": "ra-sort-4d9dca",
+      "id": "ra-sort-bfc496",
       "text": "Ce afișează?",
-      "code": "clasament = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "code": "clasament = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\"), (3, \"Dan\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
       "options": [
-        "[(5, 'Ben'), (3, 'Dan'), (2, 'Ana'), (1, 'Cal')]",
-        "[(1, 'Cal'), (2, 'Ana'), (3, 'Dan'), (5, 'Ben')]",
-        "[(2, 'Ana'), (5, 'Ben'), (1, 'Cal'), (3, 'Dan')]",
-        "[(5, 'Ben'), (2, 'Ana'), (1, 'Cal'), (3, 'Dan')]"
+        "[(5, 'Ben'), (3, 'Dan'), (2, 'Ida'), (1, 'Cal')]",
+        "[(1, 'Cal'), (2, 'Ida'), (3, 'Dan'), (5, 'Ben')]",
+        "[(2, 'Ida'), (5, 'Ben'), (1, 'Cal'), (3, 'Dan')]",
+        "[(5, 'Ben'), (2, 'Ida'), (1, 'Cal'), (3, 'Dan')]"
       ],
       "answer": 0
     },
@@ -105,14 +105,14 @@
       "answer": 0
     },
     {
-      "id": "ra-board-140919",
+      "id": "ra-board-7d2009",
       "text": "Ce afișează?",
-      "code": "victorii = {\"Ana\": 3, \"Ben\": 1, \"Cal\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{i + 1}. {nume} - {contor} victorii\")",
+      "code": "victorii = {\"Ida\": 3, \"Ben\": 1, \"Cal\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{i + 1}. {nume} - {contor} victorii\")",
       "options": [
-        "1. Ana - 3 victorii\n2. Cal - 2 victorii\n3. Ben - 1 victorii",
-        "0. Ana - 3 victorii\n1. Cal - 2 victorii\n2. Ben - 1 victorii",
-        "1. Ben - 1 victorii\n2. Cal - 2 victorii\n3. Ana - 3 victorii",
-        "1. 3 - Ana victorii\n2. 2 - Cal victorii\n3. 1 - Ben victorii"
+        "1. Ida - 3 victorii\n2. Cal - 2 victorii\n3. Ben - 1 victorii",
+        "0. Ida - 3 victorii\n1. Cal - 2 victorii\n2. Ben - 1 victorii",
+        "1. Ben - 1 victorii\n2. Cal - 2 victorii\n3. Ida - 3 victorii",
+        "1. 3 - Ida victorii\n2. 2 - Cal victorii\n3. 1 - Ben victorii"
       ],
       "answer": 0
     },
@@ -136,9 +136,9 @@
       "answer": 0
     },
     {
-      "id": "ra-linear-1ba755",
+      "id": "ra-linear-c99bc6",
       "text": "Ce afișează?",
-      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nprint(cautare_liniara(rezultate, \"Cal\"))",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nprint(cautare_liniara(rezultate, \"Cal\"))",
       "options": ["3", "Cal", "-1", "4"],
       "answer": 0
     },
@@ -219,14 +219,14 @@
       "answer": 0
     },
     {
-      "id": "ra-which-58084c",
+      "id": "ra-which-f01998",
       "text": "Care program afișează asta?",
-      "output": "Ana 3",
+      "output": "Ida 3",
       "options": [
-        "rezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
-        "rezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
-        "rezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] = 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
-        "rezultate = [\"Ana\", \"Ben\", \"Ana\", \"Cal\", \"Ana\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = contor\nprint(campion, cel_mai_mare)"
+        "rezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
+        "rezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
+        "rezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] = 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
+        "rezultate = [\"Ida\", \"Ben\", \"Ida\", \"Cal\", \"Ida\"]\nvictorii = {}\nfor nume in rezultate:\n    if nume in victorii:\n        victorii[nume] += 1\n    else:\n        victorii[nume] = 1\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor > cel_mai_mare:\n        cel_mai_mare = contor\n        campion = contor\nprint(campion, cel_mai_mare)"
       ],
       "answer": 0
     },
@@ -280,10 +280,10 @@
       "answer": 0
     },
     {
-      "id": "ra-gap-append-d090a6",
+      "id": "ra-gap-append-9d6963",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "victorii = {\"Ana\": 3, \"Ben\": 1, \"Cal\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    ___\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
-      "output": "[(3, 'Ana'), (2, 'Cal'), (1, 'Ben')]",
+      "code": "victorii = {\"Ida\": 3, \"Ben\": 1, \"Cal\": 2}\nclasament = []\nfor nume, contor in victorii.items():\n    ___\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "output": "[(3, 'Ida'), (2, 'Cal'), (1, 'Ben')]",
       "options": [
         "clasament.append((contor, nume))",
         "clasament.append((nume, contor))",
@@ -340,10 +340,10 @@
       "answer": 0
     },
     {
-      "id": "ra-gap-cmp-3de460",
+      "id": "ra-gap-cmp-04b483",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "clasament = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] ___ clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
-      "output": "[(5, 'Ben'), (2, 'Ana'), (1, 'Cal')]",
+      "code": "clasament = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")]\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] ___ clasament[index_max][0]:\n            index_max = j\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "output": "[(5, 'Ben'), (2, 'Ida'), (1, 'Cal')]",
       "options": [">", "<", "==", "="],
       "answer": 0
     },
@@ -380,10 +380,10 @@
       "answer": 0
     },
     {
-      "id": "ra-gap-rank-5675df",
+      "id": "ra-gap-rank-12c995",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "clasament = [(5, \"Ben\"), (2, \"Ana\")]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{___}. {nume} - {contor} victorii\")",
-      "output": "1. Ben - 5 victorii\n2. Ana - 2 victorii",
+      "code": "clasament = [(5, \"Ben\"), (2, \"Ida\")]\nfor i in range(len(clasament)):\n    contor, nume = clasament[i]\n    print(f\"{___}. {nume} - {contor} victorii\")",
+      "output": "1. Ben - 5 victorii\n2. Ida - 2 victorii",
       "options": ["i + 1", "i", "contor", "len(clasament)"],
       "answer": 0
     },
@@ -425,15 +425,15 @@
       "answer": 0
     },
     {
-      "id": "ra-bad-champ-e70c58",
+      "id": "ra-bad-champ-70ca23",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "victorii = {\"Ana\": 3, \"Ben\": 1, \"Cal\": 2}\nprint(victorii)\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
-      "output": "{'Ana': 3, 'Ben': 1, 'Cal': 2}\nAna 3",
+      "code": "victorii = {\"Ida\": 3, \"Ben\": 1, \"Cal\": 2}\nprint(victorii)\ncampion = \"\"\ncel_mai_mare = 0\nfor nume, contor in victorii.items():\n    if contor < cel_mai_mare:\n        cel_mai_mare = contor\n        campion = nume\nprint(campion, cel_mai_mare)",
+      "output": "{'Ida': 3, 'Ben': 1, 'Cal': 2}\nIda 3",
       "options": [
         "if contor < cel_mai_mare:",
         "for nume, contor in victorii.items():",
         "cel_mai_mare = 0",
-        "cel_mai_mare = contor"
+        "campion = \"\""
       ],
       "answer": 0
     },
@@ -490,15 +490,15 @@
       "answer": 0
     },
     {
-      "id": "ra-bad-sort-ffc017",
+      "id": "ra-bad-sort-e98e65",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "clasament = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")]\nprint(clasament)\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = i\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
-      "output": "[(2, 'Ana'), (5, 'Ben'), (1, 'Cal')]\n[(5, 'Ben'), (2, 'Ana'), (1, 'Cal')]",
+      "code": "clasament = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")]\nprint(clasament)\nfor i in range(len(clasament)):\n    index_max = i\n    for j in range(i + 1, len(clasament)):\n        if clasament[j][0] > clasament[index_max][0]:\n            index_max = i\n    clasament[i], clasament[index_max] = clasament[index_max], clasament[i]\nprint(clasament)",
+      "output": "[(2, 'Ida'), (5, 'Ben'), (1, 'Cal')]\n[(5, 'Ben'), (2, 'Ida'), (1, 'Cal')]",
       "options": [
         "index_max = i",
+        "clasament[i], clasament[index_max] = clasament[index_max], clasament[i]",
         "print(clasament)",
-        "clasament = [(2, \"Ana\"), (5, \"Ben\"), (1, \"Cal\")]",
-        "clasament[i], clasament[index_max] = clasament[index_max], clasament[i]"
+        "clasament = [(2, \"Ida\"), (5, \"Ben\"), (1, \"Cal\")]"
       ],
       "answer": 0
     },
@@ -554,10 +554,10 @@
       "answer": 0
     },
     {
-      "id": "ra-holds-pairs-4c2d56",
+      "id": "ra-holds-pairs-e293a6",
       "text": "Ce conține `clasament` la final?",
-      "code": "victorii = {\"Ana\": 3, \"Ben\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
-      "options": ["[(3, 'Ana'), (1, 'Ben')]", "[('Ana', 3), ('Ben', 1)]", "[(1, 'Ben')]", "[3, 1]"],
+      "code": "victorii = {\"Ida\": 3, \"Ben\": 1}\nclasament = []\nfor nume, contor in victorii.items():\n    clasament.append((contor, nume))",
+      "options": ["[(3, 'Ida'), (1, 'Ben')]", "[('Ida', 3), ('Ben', 1)]", "[(1, 'Ben')]", "[3, 1]"],
       "answer": 0
     },
     {
@@ -640,11 +640,11 @@
       "answer": 0
     },
     {
-      "id": "ra-input-search-133720",
+      "id": "ra-input-search-07e152",
       "text": "Ce a tastat utilizatorul?",
-      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Ana\", \"Ben\", \"Cal\"]\nprint(cautare_liniara(rezultate, input()))",
+      "code": "def cautare_liniara(elemente, tinta):\n    for i in range(len(elemente)):\n        if elemente[i] == tinta:\n            return i\n    return -1\n\nrezultate = [\"Ida\", \"Ben\", \"Cal\"]\nprint(cautare_liniara(rezultate, input()))",
       "output": "0",
-      "options": ["Ana", "0", "ana", "Ben"],
+      "options": ["Ida", "0", "ida", "Ben"],
       "answer": 0
     },
     {

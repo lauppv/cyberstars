@@ -352,7 +352,7 @@
         },
         {
           "v": "oaspeti",
-          "items": "\"Ana\", \"Rex\"",
+          "items": "\"Ida\", \"Rex\"",
           "r": "Rex"
         }
       ],
@@ -645,8 +645,8 @@
         },
         {
           "v": "oaspeti",
-          "items": "\"Ana\", \"Rex\"",
-          "r": "Ana",
+          "items": "\"Ida\", \"Rex\"",
+          "r": "Ida",
           "other": "Rex"
         },
         {

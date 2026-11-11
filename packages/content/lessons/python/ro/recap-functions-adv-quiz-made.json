@@ -678,9 +678,9 @@
       "answer": 0
     },
     {
-      "id": "rfa-error-call-79067b",
+      "id": "rfa-error-call-f92f0d",
       "text": "Ce eroare oprește acest program?",
-      "code": "def saluta(nume, cuvant=\"Salut\"):\n    print(f\"{nume} {cuvant}\")\n\nsaluta(\"Ana\", \"Hei\", \"!\")",
+      "code": "def saluta(nume, cuvant=\"Salut\"):\n    print(f\"{nume} {cuvant}\")\n\nsaluta(\"Ida\", \"Hei\", \"!\")",
       "options": ["TypeError", "SyntaxError", "NameError", "ValueError"],
       "answer": 0
     },

@@ -71,10 +71,10 @@
     {
       "id": "q8",
       "text": "What does this print?",
-      "code": "ages = {\"Ana\": 12, \"Rex\": 30}\nfor age, name in ages.items():\n    print(name)",
+      "code": "ages = {\"Ida\": 12, \"Rex\": 30}\nfor age, name in ages.items():\n    print(name)",
       "options": [
         "12\n30",
-        "Ana\nRex",
+        "Ida\nRex",
         "It stops with an error: the names are the wrong way round",
         "age\nname"
       ],
@@ -187,8 +187,8 @@
     {
       "id": "q20",
       "text": "What does this print?",
-      "code": "ranks = {}\nranks[\"Lance\"] = 2\nranks[\"Ana\"] = 1\nfor name in ranks:\n    print(name)",
-      "options": ["Ana\nLance", "Lance\nAna", "1\n2", "2\n1"],
+      "code": "ranks = {}\nranks[\"Lance\"] = 2\nranks[\"Ida\"] = 1\nfor name in ranks:\n    print(name)",
+      "options": ["Ida\nLance", "Lance\nIda", "1\n2", "2\n1"],
       "answer": 1
     },
     {
@@ -206,12 +206,12 @@
     {
       "id": "q22",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 10, \"Rex\": 20}\nfor name in scores:\n    scores[name] = scores[name] + 5\nprint(scores)",
+      "code": "scores = {\"Ida\": 10, \"Rex\": 20}\nfor name in scores:\n    scores[name] = scores[name] + 5\nprint(scores)",
       "options": [
-        "{'Ana': 10, 'Rex': 20}",
-        "{'Ana': 15, 'Rex': 20}",
+        "{'Ida': 10, 'Rex': 20}",
+        "{'Ida': 15, 'Rex': 20}",
         "It stops with an error",
-        "{'Ana': 15, 'Rex': 25}"
+        "{'Ida': 15, 'Rex': 25}"
       ],
       "answer": 3
     },
@@ -248,8 +248,8 @@
     {
       "id": "q26",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 40, \"Rex\": 75, \"Kai\": 50}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        passing.append(name)\nprint(passing)",
-      "options": ["['Rex']", "[75, 50]", "['Rex', 'Kai']", "['Ana']"],
+      "code": "scores = {\"Ida\": 40, \"Rex\": 75, \"Kai\": 50}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        passing.append(name)\nprint(passing)",
+      "options": ["['Rex']", "[75, 50]", "['Rex', 'Kai']", "['Ida']"],
       "answer": 2
     },
     {
@@ -290,10 +290,10 @@
     {
       "id": "q30",
       "text": "What happens when this runs?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 5}\ntotal = 0\nfor name in scores:\n    total = total + name\nprint(total)",
+      "code": "scores = {\"Ida\": 7, \"Rex\": 5}\ntotal = 0\nfor name in scores:\n    total = total + name\nprint(total)",
       "options": [
         "It prints 12",
-        "It prints AnaRex",
+        "It prints IdaRex",
         "It prints 2",
         "It stops with an error: name is a key, a text, and can't be added to a number"
       ],
@@ -314,7 +314,7 @@
         },
         {
           "v": "scores",
-          "d": "{\"Ana\": 7, \"Rex\": 9}",
+          "d": "{\"Ida\": 7, \"Rex\": 9}",
           "k": "name"
         }
       ],
@@ -338,7 +338,7 @@
         },
         {
           "v": "ages",
-          "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
+          "d": "{\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}",
           "x": "age"
         }
       ],
@@ -385,7 +385,7 @@
       "values": [
         {
           "v": "scores",
-          "d": "{\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}",
+          "d": "{\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}",
           "t": "total",
           "x": "s"
         },
@@ -438,7 +438,7 @@
       "values": [
         {
           "v": "scores",
-          "d": "{\"Ana\": 7, \"Rex\": 8}",
+          "d": "{\"Ida\": 7, \"Rex\": 8}",
           "t": "total",
           "x": "s"
         },
@@ -472,7 +472,7 @@
           "b": "best",
           "n": "name",
           "v": "scores",
-          "d": "{\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}"
+          "d": "{\"Ida\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}"
         },
         {
           "tp": "top",
@@ -504,7 +504,7 @@
       "values": [
         {
           "v": "scores",
-          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "d": "{\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
           "w": "passing",
           "n": "name",
           "op": ">=",
@@ -554,7 +554,7 @@
         },
         {
           "v": "homes",
-          "d": "{\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}",
+          "d": "{\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}",
           "x": "city"
         }
       ],
@@ -572,7 +572,7 @@
       "values": [
         {
           "v": "ages",
-          "d": "{\"Ana\": 12, \"Rex\": 30}",
+          "d": "{\"Ida\": 12, \"Rex\": 30}",
           "k": "name",
           "x": "age"
         },
@@ -645,7 +645,7 @@
         },
         {
           "v": "ages",
-          "d": "{\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}",
+          "d": "{\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}",
           "k": "name",
           "x": "age"
         },
@@ -711,7 +711,7 @@
         },
         {
           "v": "homes",
-          "d": "{\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}",
+          "d": "{\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}",
           "m": "values"
         },
         {
@@ -761,7 +761,7 @@
       "values": [
         {
           "v": "scores",
-          "d": "{\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}",
+          "d": "{\"Ida\": 6, \"Rex\": 9, \"Kai\": 9}",
           "t": "total",
           "x": "s"
         },
@@ -796,7 +796,7 @@
         },
         {
           "v": "scores",
-          "d": "{\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}",
+          "d": "{\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}",
           "t": "total",
           "x": "s",
           "label": "Total"
@@ -833,7 +833,7 @@
         },
         {
           "v": "ages",
-          "d": "{\"Ana\": 12, \"Rex\": 30}",
+          "d": "{\"Ida\": 12, \"Rex\": 30}",
           "k": "name",
           "x": "age",
           "title": "Ages:"
@@ -897,7 +897,7 @@
       "values": [
         {
           "v": "scores",
-          "d": "{\"Ana\": 7, \"Rex\": 5}",
+          "d": "{\"Ida\": 7, \"Rex\": 5}",
           "k": "name",
           "n": 2,
           "lim": 6
@@ -940,7 +940,7 @@
         },
         {
           "v": "scores",
-          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "d": "{\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
           "t": "total",
           "k": "name",
           "x": "score",
@@ -970,7 +970,7 @@
       "values": [
         {
           "v": "scores",
-          "d": "{\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
+          "d": "{\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}",
           "l": "limit",
           "k": "name",
           "n": 50,

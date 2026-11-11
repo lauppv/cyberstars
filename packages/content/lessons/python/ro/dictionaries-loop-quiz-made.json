@@ -14,10 +14,10 @@
       "answer": 0
     },
     {
-      "id": "dl-keys-8cc823",
+      "id": "dl-keys-d014d2",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 9}\nfor nume in scoruri:\n    print(nume)",
-      "options": ["Ana\nRex", "7\n9", "{'Ana': 7, 'Rex': 9}\n{'Ana': 7, 'Rex': 9}", "2\n2"],
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 9}\nfor nume in scoruri:\n    print(nume)",
+      "options": ["Ida\nRex", "7\n9", "{'Ida': 7, 'Rex': 9}\n{'Ida': 7, 'Rex': 9}", "2\n2"],
       "answer": 0
     },
     {
@@ -33,13 +33,13 @@
       "answer": 0
     },
     {
-      "id": "dl-values-77db54",
+      "id": "dl-values-adf3a8",
       "text": "Ce afișează?",
-      "code": "varste = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\nfor varsta in varste.values():\n    print(varsta)",
+      "code": "varste = {\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}\nfor varsta in varste.values():\n    print(varsta)",
       "options": [
         "12\n30\n9",
-        "Ana\nRex\nKai",
-        "{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}",
+        "Ida\nRex\nKai",
+        "{'Ida': 12, 'Rex': 30, 'Kai': 9}\n{'Ida': 12, 'Rex': 30, 'Kai': 9}\n{'Ida': 12, 'Rex': 30, 'Kai': 9}",
         "3\n3\n3"
       ],
       "answer": 0
@@ -69,9 +69,9 @@
       "answer": 0
     },
     {
-      "id": "dl-total-9abe4e",
+      "id": "dl-total-f7e561",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total)",
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total)",
       "options": ["20", "8", "3", "7\n12\n20"],
       "answer": 0
     },
@@ -119,9 +119,9 @@
       "answer": 0
     },
     {
-      "id": "dl-average-69ad1d",
+      "id": "dl-average-424145",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total / len(scoruri))",
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total / len(scoruri))",
       "options": ["7.5", "15", "7", "4.0"],
       "answer": 0
     },
@@ -140,9 +140,9 @@
       "answer": 0
     },
     {
-      "id": "dl-top-549814",
+      "id": "dl-top-8d0f10",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"{cel_mai_bun}: {maxim}\")",
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ncel_mai_bun = \"\"\nmaxim = 0\nfor nume in scoruri:\n    if scoruri[nume] > maxim:\n        maxim = scoruri[nume]\n        cel_mai_bun = nume\nprint(f\"{cel_mai_bun}: {maxim}\")",
       "options": ["Rex: 9", "Max: 9", ": 9", ": 0"],
       "answer": 0
     },
@@ -161,14 +161,14 @@
       "answer": 0
     },
     {
-      "id": "dl-pass-a383b5",
+      "id": "dl-pass-6dbca3",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        promovati.append(nume)\nprint(promovati)",
+      "code": "scoruri = {\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\npromovati = []\nfor nume in scoruri:\n    if scoruri[nume] >= 50:\n        promovati.append(nume)\nprint(promovati)",
       "options": [
-        "['Ana', 'Kai', 'Zoe']",
+        "['Ida', 'Kai', 'Zoe']",
         "[55, 50, 90]",
         "['Rex']",
-        "['Ana']\n['Ana']\n['Ana', 'Kai']\n['Ana', 'Kai', 'Zoe']"
+        "['Ida']\n['Ida']\n['Ida', 'Kai']\n['Ida', 'Kai', 'Zoe']"
       ],
       "answer": 0
     },
@@ -216,26 +216,26 @@
       "answer": 0
     },
     {
-      "id": "dl-which-values-afd738",
+      "id": "dl-which-values-c26bc2",
       "text": "Care program afișează asta?",
       "output": "Roma\nOslo",
       "options": [
-        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\n    print(oras)",
-        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.keys():\n    print(oras)",
-        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\n    print(orase)",
-        "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\nprint(oras)"
+        "orase = {\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\n    print(oras)",
+        "orase = {\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.keys():\n    print(oras)",
+        "orase = {\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\n    print(orase)",
+        "orase = {\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}\nfor oras in orase.values():\nprint(oras)"
       ],
       "answer": 0
     },
     {
-      "id": "dl-which-items-3be77e",
+      "id": "dl-which-items-104123",
       "text": "Care program afișează asta?",
-      "output": "Ana: 12\nRex: 30",
+      "output": "Ida: 12\nRex: 30",
       "options": [
-        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(f\"{nume}: {varsta}\")",
-        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(f\"{varsta}: {nume}\")",
-        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(\"{nume}: {varsta}\")",
-        "varste = {\"Ana\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\nprint(f\"{nume}: {varsta}\")"
+        "varste = {\"Ida\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(f\"{nume}: {varsta}\")",
+        "varste = {\"Ida\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(f\"{varsta}: {nume}\")",
+        "varste = {\"Ida\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\n    print(\"{nume}: {varsta}\")",
+        "varste = {\"Ida\": 12, \"Rex\": 30}\nfor nume, varsta in varste.items():\nprint(f\"{nume}: {varsta}\")"
       ],
       "answer": 0
     },
@@ -342,10 +342,10 @@
       "answer": 0
     },
     {
-      "id": "dl-gap-loop-61afc3",
+      "id": "dl-gap-loop-dbd2de",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "varste = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\n___\n    print(f\"{nume}: {varsta}\")",
-      "output": "Ana: 12\nRex: 30\nKai: 9",
+      "code": "varste = {\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}\n___\n    print(f\"{nume}: {varsta}\")",
+      "output": "Ida: 12\nRex: 30\nKai: 9",
       "options": [
         "for nume, varsta in varste.items():",
         "for nume, varsta in varste:",
@@ -416,9 +416,9 @@
       "answer": 0
     },
     {
-      "id": "dl-gap-method-a0819f",
+      "id": "dl-gap-method-2e0b3d",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "orase = {\"Ana\": \"Roma\", \"Rex\": \"Oslo\"}\nfor x in orase.___():\n    print(x)",
+      "code": "orase = {\"Ida\": \"Roma\", \"Rex\": \"Oslo\"}\nfor x in orase.___():\n    print(x)",
       "output": "Roma\nOslo",
       "options": ["values", "keys", "items", "len"],
       "answer": 0
@@ -464,9 +464,9 @@
       "answer": 0
     },
     {
-      "id": "dl-gap-len-a02c66",
+      "id": "dl-gap-len-225692",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total / ___)",
+      "code": "scoruri = {\"Ida\": 6, \"Rex\": 9, \"Kai\": 9}\ntotal = 0\nfor s in scoruri.values():\n    total = total + s\nprint(total / ___)",
       "output": "8.0",
       "options": ["len(scoruri)", "len(scoruri) - 1", "total", "len(total)"],
       "answer": 0
@@ -501,11 +501,16 @@
       "answer": 0
     },
     {
-      "id": "dl-bad-sum-24bca3",
+      "id": "dl-bad-sum-524067",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scoruri.values():\n    print(s)\n    total = s\nprint(f\"Total: {total}\")",
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scoruri.values():\n    print(s)\n    total = s\nprint(f\"Total: {total}\")",
       "output": "7\n5\n8\nTotal: 20",
-      "options": ["total = s", "print(s)", "total = 0", "print(f\"Total: {total}\")"],
+      "options": [
+        "total = s",
+        "print(s)",
+        "total = 0",
+        "scoruri = {\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}"
+      ],
       "answer": 0
     },
     {
@@ -548,14 +553,14 @@
       "answer": 0
     },
     {
-      "id": "dl-bad-items-4f050b",
+      "id": "dl-bad-items-45e23b",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "varste = {\"Ana\": 12, \"Rex\": 30}\nprint(\"Varste:\")\nfor nume, varsta in varste.items():\n    print(f\"{nume}: {nume}\")",
-      "output": "Varste:\nAna: 12\nRex: 30",
+      "code": "varste = {\"Ida\": 12, \"Rex\": 30}\nprint(\"Varste:\")\nfor nume, varsta in varste.items():\n    print(f\"{nume}: {nume}\")",
+      "output": "Varste:\nIda: 12\nRex: 30",
       "options": [
         "print(f\"{nume}: {nume}\")",
         "print(\"Varste:\")",
-        "varste = {\"Ana\": 12, \"Rex\": 30}",
+        "varste = {\"Ida\": 12, \"Rex\": 30}",
         "for nume, varsta in varste.items():"
       ],
       "answer": 0
@@ -624,14 +629,14 @@
       "answer": 0
     },
     {
-      "id": "dl-holds-raise-262074",
+      "id": "dl-holds-raise-c1b1b6",
       "text": "Ce conține `scoruri` la final?",
-      "code": "scoruri = {\"Ana\": 7, \"Rex\": 5}\nfor nume in scoruri:\n    if scoruri[nume] < 6:\n        scoruri[nume] = scoruri[nume] + 2",
+      "code": "scoruri = {\"Ida\": 7, \"Rex\": 5}\nfor nume in scoruri:\n    if scoruri[nume] < 6:\n        scoruri[nume] = scoruri[nume] + 2",
       "options": [
-        "{'Ana': 7, 'Rex': 7}",
-        "{'Ana': 7, 'Rex': 2}",
-        "{'Ana': 7, 'Rex': 5}",
-        "{'Ana': 9, 'Rex': 5}"
+        "{'Ida': 7, 'Rex': 7}",
+        "{'Ida': 7, 'Rex': 2}",
+        "{'Ida': 7, 'Rex': 5}",
+        "{'Ida': 9, 'Rex': 5}"
       ],
       "answer": 0
     },
@@ -667,9 +672,9 @@
       "answer": 0
     },
     {
-      "id": "dl-holds-sum-1b882d",
+      "id": "dl-holds-sum-8254a4",
       "text": "Ce conține `total` la final?",
-      "code": "scoruri = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\ntotal = 0\nfor nume, scor in scoruri.items():\n    if scor > 50:\n        total = total + scor",
+      "code": "scoruri = {\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\ntotal = 0\nfor nume, scor in scoruri.items():\n    if scor > 50:\n        total = total + scor",
       "options": ["145", "195", "2", "90"],
       "answer": 0
     },
@@ -681,10 +686,10 @@
       "answer": 0
     },
     {
-      "id": "dl-input-above-f0cc55",
+      "id": "dl-input-above-b8e677",
       "text": "Ce a tastat utilizatorul?",
-      "code": "scoruri = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\nlimita = int(input())\nfor nume in scoruri:\n    if scoruri[nume] > limita:\n        print(nume)",
-      "output": "Ana\nZoe",
+      "code": "scoruri = {\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\nlimita = int(input())\nfor nume in scoruri:\n    if scoruri[nume] > limita:\n        print(nume)",
+      "output": "Ida\nZoe",
       "options": ["50", "55", "30", "90"],
       "answer": 0
     },

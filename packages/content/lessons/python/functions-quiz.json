@@ -220,7 +220,7 @@
     {
       "id": "q25",
       "text": "Which call works for `def greet(name):`?",
-      "options": ["greet(\"Ana\")", "greet()", "greet \"Ana\"", "def greet(\"Ana\")"],
+      "options": ["greet(\"Ida\")", "greet()", "greet \"Ida\"", "def greet(\"Ida\")"],
       "answer": 0
     },
     {
@@ -278,7 +278,7 @@
           "f": "greet",
           "p": "name",
           "word": "Hello",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben"
         },
         {
@@ -569,7 +569,7 @@
           "f": "wave",
           "p": "pilot",
           "word": "Good luck",
-          "a": "Ana"
+          "a": "Ida"
         }
       ],
       "mistakes": [
@@ -684,7 +684,7 @@
           "f": "welcome",
           "p": "crew",
           "word": "Welcome aboard",
-          "a": "Ana"
+          "a": "Ida"
         },
         {
           "f": "cheer",
@@ -853,7 +853,7 @@
           "f": "cheer",
           "p": "player",
           "word": "Well done",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben"
         },
         {
@@ -883,7 +883,7 @@
           "f": "greet",
           "p": "name",
           "word": "Hello",
-          "a": "Ana",
+          "a": "Ida",
           "b": "Ben",
           "g": "Greet"
         },
@@ -958,7 +958,7 @@
           "f": "greet",
           "p": "name",
           "word": "Hello",
-          "a": "Ana"
+          "a": "Ida"
         },
         {
           "f": "cheer",

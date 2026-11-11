@@ -89,10 +89,10 @@
       "answer": 0
     },
     {
-      "id": "ie-online-cbab11",
+      "id": "ie-online-ddebee",
       "text": "Ce afișează?",
-      "code": "jucator = \"Ana\"\nonline = True\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
-      "options": ["Ana joaca", "Ana este offline", "Ana joaca\nAna este offline", "True"],
+      "code": "jucator = \"Ida\"\nonline = True\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "options": ["Ida joaca", "Ida este offline", "Ida joaca\nIda este offline", "True"],
       "answer": 0
     },
     {
@@ -513,13 +513,13 @@
       "answer": 0
     },
     {
-      "id": "ie-bad-true-b65c32",
+      "id": "ie-bad-true-6e5e1e",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "jucator = \"Ana\"\nonline = true\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
-      "output": "Ana joaca",
+      "code": "jucator = \"Ida\"\nonline = true\nif online == True:\n    print(f\"{jucator} joaca\")\nelse:\n    print(f\"{jucator} este offline\")",
+      "output": "Ida joaca",
       "options": [
         "online = true",
-        "jucator = \"Ana\"",
+        "jucator = \"Ida\"",
         "print(f\"{jucator} joaca\")",
         "print(f\"{jucator} este offline\")"
       ],

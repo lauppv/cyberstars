@@ -2,14 +2,14 @@
   "note": "Made by npm run make:quiz from the templates in functions-quiz.json; don't edit it by hand.",
   "questions": [
     {
-      "id": "fn-greet-35e230",
+      "id": "fn-greet-43e373",
       "text": "What does this print?",
-      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ana\")\ngreet(\"Ben\")",
+      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ida\")\ngreet(\"Ben\")",
       "options": [
-        "Hello, Ana!\nHello, Ben!",
+        "Hello, Ida!\nHello, Ben!",
         "Hello, {name}!\nHello, {name}!",
         "Hello, name!\nHello, name!",
-        "Hello, Ben!\nHello, Ana!"
+        "Hello, Ben!\nHello, Ida!"
       ],
       "answer": 0
     },
@@ -300,14 +300,14 @@
       "answer": 0
     },
     {
-      "id": "fn-which-call-cad945",
+      "id": "fn-which-call-be8eee",
       "text": "Which program shows this?",
-      "output": "Good luck, Ana!",
+      "output": "Good luck, Ida!",
       "options": [
-        "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Ana\")",
+        "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")\n\nwave(\"Ida\")",
         "def wave(pilot):\n    print(f\"Good luck, {pilot}!\")",
-        "def wave(pilot):\n    print(\"Good luck, {pilot}!\")\n\nwave(\"Ana\")",
-        "def wave(pilot):\n    print(f\"Good luck, pilot!\")\n\nwave(\"Ana\")"
+        "def wave(pilot):\n    print(\"Good luck, {pilot}!\")\n\nwave(\"Ida\")",
+        "def wave(pilot):\n    print(f\"Good luck, pilot!\")\n\nwave(\"Ida\")"
       ],
       "answer": 0
     },
@@ -408,10 +408,10 @@
       "answer": 0
     },
     {
-      "id": "fn-gap-def-abeb64",
+      "id": "fn-gap-def-3df7c1",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "___\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Ana\")",
-      "output": "Welcome aboard, Ana!",
+      "code": "___\n    print(f\"Welcome aboard, {crew}!\")\n\nwelcome(\"Ida\")",
+      "output": "Welcome aboard, Ida!",
       "options": ["def welcome(crew):", "def welcome(crew)", "welcome(crew):", "def welcome():"],
       "answer": 0
     },
@@ -559,14 +559,14 @@
       "answer": 0
     },
     {
-      "id": "fn-bad-f-cc5860",
+      "id": "fn-bad-f-e9d253",
       "text": "Which line stops this program from printing this?",
-      "code": "def cheer():\n    print(f\"Well done, {player}!\")\n\ncheer(\"Ana\")\ncheer(\"Ben\")",
-      "output": "Well done, Ana!\nWell done, Ben!",
+      "code": "def cheer():\n    print(f\"Well done, {player}!\")\n\ncheer(\"Ida\")\ncheer(\"Ben\")",
+      "output": "Well done, Ida!\nWell done, Ben!",
       "options": [
         "def cheer():",
         "print(f\"Well done, {player}!\")",
-        "cheer(\"Ana\")",
+        "cheer(\"Ida\")",
         "cheer(\"Ben\")"
       ],
       "answer": 0
@@ -593,13 +593,13 @@
       "answer": 0
     },
     {
-      "id": "fn-bad-name-442437",
+      "id": "fn-bad-name-d6023e",
       "text": "Which line stops this program from printing this?",
-      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ana\")\nGreet(\"Ben\")",
-      "output": "Hello, Ana!\nHello, Ben!",
+      "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ida\")\nGreet(\"Ben\")",
+      "output": "Hello, Ida!\nHello, Ben!",
       "options": [
         "Greet(\"Ben\")",
-        "greet(\"Ana\")",
+        "greet(\"Ida\")",
         "print(f\"Hello, {name}!\")",
         "def greet(name):"
       ],
@@ -671,11 +671,11 @@
       "answer": 0
     },
     {
-      "id": "fn-input-greet-eafb72",
+      "id": "fn-input-greet-f5182c",
       "text": "What did the user type?",
       "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(input())",
-      "output": "Hello, Ana!",
-      "options": ["Ana", "Hello, Ana!", "name", "Ana!"],
+      "output": "Hello, Ida!",
+      "options": ["Ida", "Hello, Ida!", "name", "Ida!"],
       "answer": 0
     },
     {

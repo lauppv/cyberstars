@@ -402,10 +402,10 @@
       "answer": 0
     },
     {
-      "id": "in-gap-crew-21a802",
-      "text": "Utilizatorul a tastat Elena, apoi 25, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "nume = \"Elena\"\nvarsta = \"25\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
-      "output": "Bun venit la bord, Elena! Ai 25. Anul viitor vei avea 26.",
+      "id": "in-gap-crew-32bd94",
+      "text": "Utilizatorul a tastat Sofia, apoi 25, iar `nume` și `varsta` țin ce a returnat input(). Ce linie pui în locul liber ca programul să afișeze asta?",
+      "code": "nume = \"Sofia\"\nvarsta = \"25\"\n___\nprint(f\"Bun venit la bord, {nume}! Ai {varsta}. Anul viitor vei avea {varsta + 1}.\")",
+      "output": "Bun venit la bord, Sofia! Ai 25. Anul viitor vei avea 26.",
       "options": [
         "varsta = int(varsta)",
         "int(varsta)",

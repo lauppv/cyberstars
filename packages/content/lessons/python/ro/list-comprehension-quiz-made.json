@@ -227,14 +227,14 @@
       "answer": 0
     },
     {
-      "id": "lc-which-suffix-08ceaf",
+      "id": "lc-which-suffix-9682d3",
       "text": "Care program afișează asta?",
-      "output": "['Ana?', 'Rex?', 'Kai?']",
+      "output": "['Ida?', 'Rex?', 'Kai?']",
       "options": [
-        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = [n + \"?\" for n in nume]\nprint(strigate)",
-        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = [\"?\" + n for n in nume]\nprint(strigate)",
-        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = nume + [\"?\"]\nprint(strigate)",
-        "nume = [\"Ana\", \"Rex\", \"Kai\"]\nstrigate = [n for n in nume]\nprint(strigate)"
+        "nume = [\"Ida\", \"Rex\", \"Kai\"]\nstrigate = [n + \"?\" for n in nume]\nprint(strigate)",
+        "nume = [\"Ida\", \"Rex\", \"Kai\"]\nstrigate = [\"?\" + n for n in nume]\nprint(strigate)",
+        "nume = [\"Ida\", \"Rex\", \"Kai\"]\nstrigate = nume + [\"?\"]\nprint(strigate)",
+        "nume = [\"Ida\", \"Rex\", \"Kai\"]\nstrigate = [n for n in nume]\nprint(strigate)"
       ],
       "answer": 0
     },

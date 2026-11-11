@@ -688,7 +688,7 @@
         },
         {
           "v": "players",
-          "items": "\"Ana\", \"Rex\", \"Kai\""
+          "items": "\"Ida\", \"Rex\", \"Kai\""
         }
       ],
       "answer": "1",
@@ -794,7 +794,7 @@
         },
         {
           "v": "players",
-          "items": "\"Ana\", \"Rex\", \"Kai\", \"Zoe\"",
+          "items": "\"Ida\", \"Rex\", \"Kai\", \"Zoe\"",
           "title": "Players:",
           "end": "Let's play"
         }

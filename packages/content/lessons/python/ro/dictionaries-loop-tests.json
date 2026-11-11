@@ -10,7 +10,7 @@
     ]
   },
   "cases": [
-    { "visible": true, "inject": { "scoruri": { "$dict": { "Ana": 40, "Bob": 90, "Cara": 70 } } } },
+    { "visible": true, "inject": { "scoruri": { "$dict": { "Ida": 40, "Bob": 90, "Cara": 70 } } } },
     {
       "visible": true,
       "inject": { "scoruri": { "$dict": { "Tommy": 88, "Lance": 95, "Cortez": 70 } } }
@@ -20,7 +20,7 @@
     { "inject": { "scoruri": { "$dict": { "X": 100, "Y": 55, "Z": 80, "W": 99 } } } },
     { "inject": { "scoruri": { "$dict": { "Nova": 100 } } }, "generated": true },
     { "inject": { "scoruri": { "$dict": { "Rex": 1 } } }, "generated": true },
-    { "inject": { "scoruri": { "$dict": { "Ana": 0, "Bob": 1 } } }, "generated": true },
+    { "inject": { "scoruri": { "$dict": { "Ida": 0, "Bob": 1 } } }, "generated": true },
     {
       "inject": { "scoruri": { "$dict": { "Kai": 99, "Mira": 0, "Jess": 0 } } },
       "generated": true
@@ -46,7 +46,7 @@
     },
     { "inject": { "scoruri": { "$dict": { "Mary-Jane": 59, "Diaz": 17 } } }, "generated": true },
     {
-      "inject": { "scoruri": { "$dict": { "Ana": 83, "Cortez": 85, "Diaz": 68 } } },
+      "inject": { "scoruri": { "$dict": { "Ida": 83, "Cortez": 85, "Diaz": 68 } } },
       "generated": true
     },
     {
@@ -73,7 +73,7 @@
       "inject": {
         "scoruri": {
           "$dict": {
-            "Ana": 74,
+            "Ida": 74,
             "Diaz": 84,
             "Kai": 45,
             "Nova": 55,
@@ -98,7 +98,7 @@
             "Cara": 68,
             "Orion": 72,
             "Umberto": 47,
-            "Ana": 10,
+            "Ida": 10,
             "Rex": 36
           }
         }
@@ -111,7 +111,7 @@
           "$dict": {
             "Mary-Jane": 25,
             "Sonny": 37,
-            "Ana": 30,
+            "Ida": 30,
             "Jess": 79,
             "Tommy": 66,
             "Orion": 10,
@@ -155,7 +155,7 @@
             "Orion": 64,
             "Kai": 78,
             "Sonny": 67,
-            "Ana": 33,
+            "Ida": 33,
             "Mira": 66,
             "Lance": 15,
             "Cortez": 0,
@@ -190,7 +190,7 @@
             "Phil": 66,
             "Umberto": 58,
             "Orion": 34,
-            "Ana": 96,
+            "Ida": 96,
             "Mercedes": 43,
             "Sonny": 86,
             "Diaz": 64,
@@ -211,7 +211,7 @@
             "Vega": 89,
             "Big Mitch": 57,
             "Mary-Jane": 18,
-            "Ana": 92,
+            "Ida": 92,
             "Cara": 72,
             "Sonny": 65,
             "Lance": 93
@@ -282,7 +282,7 @@
       "generated": true
     },
     {
-      "inject": { "scoruri": { "$dict": { "Ken": 7, "Radu": 17, "Bob": 29, "Mary-Jane": 68 } } },
+      "inject": { "scoruri": { "$dict": { "Ken": 7, "Noah": 17, "Bob": 29, "Mary-Jane": 68 } } },
       "generated": true
     },
     {
@@ -296,16 +296,16 @@
             "Orion": 3,
             "Cara": 11,
             "Diaz": 94,
-            "Ana": 67,
+            "Ida": 67,
             "Mercedes": 56,
             "Avery": 83,
             "Big Mitch": 27,
-            "Elena": 26,
+            "Sofia": 26,
             "Phil": 55,
             "Mary-Jane": 93,
-            "Radu": 47,
+            "Noah": 47,
             "Cortez": 24,
-            "Ioana": 42,
+            "Julia": 42,
             "Lance": 82,
             "Kai": 28,
             "Bob": 61,
@@ -326,7 +326,7 @@
             "Mercedes": 36,
             "Kai": 39,
             "Big Mitch": 83,
-            "Ioana": 25,
+            "Julia": 25,
             "Avery": 14,
             "Sonny": 58,
             "Diaz": 25,
@@ -336,8 +336,8 @@
             "Bob": 100,
             "Cara": 6,
             "Orion": 71,
-            "Ana": 91,
-            "Radu": 15,
+            "Ida": 91,
+            "Noah": 15,
             "Mira": 34,
             "Nova": 12,
             "Vega": 81
@@ -363,14 +363,14 @@
       "inject": {
         "scoruri": {
           "$dict": {
-            "Elena": 57,
-            "Ana": 22,
+            "Sofia": 57,
+            "Ida": 22,
             "Lance": 5,
             "Kai": 16,
             "Mary-Jane": 15,
             "Umberto": 72,
             "Tommy": 78,
-            "Radu": 6,
+            "Noah": 6,
             "Diaz": 78,
             "Mercedes": 26,
             "Cortez": 100,
@@ -383,14 +383,14 @@
     {
       "inject": {
         "scoruri": {
-          "$dict": { "Ioana": 67, "Phil": 90, "Jess": 64, "Nova": 51, "Elena": 29, "Mira": 67 }
+          "$dict": { "Julia": 67, "Phil": 90, "Jess": 64, "Nova": 51, "Sofia": 29, "Mira": 67 }
         }
       },
       "generated": true
     },
     {
       "inject": {
-        "scoruri": { "$dict": { "Ioana": 17, "Vega": 47, "Nova": 15, "Cortez": 66, "Avery": 100 } }
+        "scoruri": { "$dict": { "Julia": 17, "Vega": 47, "Nova": 15, "Cortez": 66, "Avery": 100 } }
       },
       "generated": true
     },
@@ -398,7 +398,7 @@
       "inject": {
         "scoruri": {
           "$dict": {
-            "Radu": 93,
+            "Noah": 93,
             "Sonny": 54,
             "Cortez": 26,
             "Mercedes": 18,
@@ -415,7 +415,7 @@
       "inject": {
         "scoruri": {
           "$dict": {
-            "Ioana": 33,
+            "Julia": 33,
             "Cortez": 68,
             "Jess": 25,
             "Orion": 55,

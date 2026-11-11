@@ -67,7 +67,7 @@
     },
     {
       "id": "q8",
-      "text": "nume ține `\"Ana\"` și `\"Rex\"`. După `nume.append(\"Kai\")`, ce dă `len(nume)`?",
+      "text": "nume ține `\"Ida\"` și `\"Rex\"`. După `nume.append(\"Kai\")`, ce dă `len(nume)`?",
       "options": ["2", "9", "Kai", "3"],
       "answer": 3
     },
@@ -153,8 +153,8 @@
     {
       "id": "q18",
       "text": "Ce afișează?",
-      "code": "nume = [\"ana\", \"rex\"]\nfor i in range(len(nume)):\n    nume[i] = nume[i].upper()\nprint(nume)",
-      "options": ["['ana', 'rex']", "['ANA', 'REX']", "ANA\nREX", "['ana', 'rex', 'ANA', 'REX']"],
+      "code": "nume = [\"ida\", \"rex\"]\nfor i in range(len(nume)):\n    nume[i] = nume[i].upper()\nprint(nume)",
+      "options": ["['ida', 'rex']", "['IDA', 'REX']", "IDA\nREX", "['ida', 'rex', 'IDA', 'REX']"],
       "answer": 1
     },
     {
@@ -440,7 +440,7 @@
         },
         {
           "v": "locuri",
-          "items": "\"Ana\", \"x\", \"Rex\", \"x\"",
+          "items": "\"Ida\", \"x\", \"Rex\", \"x\"",
           "k": 1,
           "pre": "x",
           "rep": "liber"
@@ -496,7 +496,7 @@
         },
         {
           "v": "nume",
-          "items": "\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"",
+          "items": "\"Dr. Ida\", \"Rex\", \"Dr. Kai\", \"Mia\"",
           "x": "n",
           "w": "altii",
           "pre": "Dr.",
@@ -584,7 +584,7 @@
         },
         {
           "v": "nume",
-          "items": "\"Ana\", \"Dr. Rex\", \"Kai\"",
+          "items": "\"Ida\", \"Dr. Rex\", \"Kai\"",
           "x": "n",
           "k": 3,
           "pre": "Dr."
@@ -675,7 +675,7 @@
         },
         {
           "v": "nume",
-          "items": "\"Dr. Ana\", \"Rex\", \"Kai\"",
+          "items": "\"Dr. Ida\", \"Rex\", \"Kai\"",
           "x": "n",
           "k": 3,
           "pre": "Dr."
@@ -799,7 +799,7 @@
         },
         {
           "v": "nume",
-          "items": "\"Dr. Ana\", \"Rex\", \"Kai\", \"Dr. Mia\"",
+          "items": "\"Dr. Ida\", \"Rex\", \"Kai\", \"Dr. Mia\"",
           "x": "n",
           "w": "altii",
           "pre": "Dr.",

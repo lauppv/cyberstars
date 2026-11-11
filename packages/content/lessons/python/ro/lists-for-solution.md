@@ -1,5 +1,5 @@
 ```py
-echipaj = ["Maria", "Andrei", "Elena", "Mihai", "Ana", "Vlad", "Ioana", "George", "Diana", "Radu", "Cristina", "Alex", "Gabriela", "Stefan", "Laura", "Bogdan", "Andreea", "Paul", "Roxana", "Dan"]
+echipaj = ["Mary", "Andrew", "Helen", "Michael", "Anna", "Victor", "Joanna", "George", "Clara", "Robert", "Christine", "Alex", "Gabrielle", "Steven", "Laura", "Brian", "Andrea", "Paul", "Rose", "Daniel"]
 
 for i in range(len(echipaj)):
     if i == 5 or i == 10 or i == 12:

@@ -62,7 +62,7 @@
     },
     {
       "id": "q8",
-      "text": "names holds `\"Ana\"` and `\"Rex\"`. After `names.append(\"Kai\")`, what does `len(names)` give?",
+      "text": "names holds `\"Ida\"` and `\"Rex\"`. After `names.append(\"Kai\")`, what does `len(names)` give?",
       "options": ["2", "9", "Kai", "3"],
       "answer": 3
     },
@@ -148,8 +148,8 @@
     {
       "id": "q18",
       "text": "What does this print?",
-      "code": "names = [\"ana\", \"rex\"]\nfor i in range(len(names)):\n    names[i] = names[i].upper()\nprint(names)",
-      "options": ["['ana', 'rex']", "['ANA', 'REX']", "ANA\nREX", "['ana', 'rex', 'ANA', 'REX']"],
+      "code": "names = [\"ida\", \"rex\"]\nfor i in range(len(names)):\n    names[i] = names[i].upper()\nprint(names)",
+      "options": ["['ida', 'rex']", "['IDA', 'REX']", "IDA\nREX", "['ida', 'rex', 'IDA', 'REX']"],
       "answer": 1
     },
     {
@@ -435,7 +435,7 @@
         },
         {
           "v": "seats",
-          "items": "\"Ana\", \"x\", \"Rex\", \"x\"",
+          "items": "\"Ida\", \"x\", \"Rex\", \"x\"",
           "k": 1,
           "pre": "x",
           "rep": "free"
@@ -491,7 +491,7 @@
         },
         {
           "v": "names",
-          "items": "\"Dr. Ana\", \"Rex\", \"Dr. Kai\", \"Mia\"",
+          "items": "\"Dr. Ida\", \"Rex\", \"Dr. Kai\", \"Mia\"",
           "x": "n",
           "w": "others",
           "pre": "Dr.",
@@ -579,7 +579,7 @@
         },
         {
           "v": "names",
-          "items": "\"Ana\", \"Dr. Rex\", \"Kai\"",
+          "items": "\"Ida\", \"Dr. Rex\", \"Kai\"",
           "x": "n",
           "k": 3,
           "pre": "Dr."
@@ -670,7 +670,7 @@
         },
         {
           "v": "names",
-          "items": "\"Dr. Ana\", \"Rex\", \"Kai\"",
+          "items": "\"Dr. Ida\", \"Rex\", \"Kai\"",
           "x": "n",
           "k": 3,
           "pre": "Dr."
@@ -794,7 +794,7 @@
         },
         {
           "v": "names",
-          "items": "\"Dr. Ana\", \"Rex\", \"Kai\", \"Dr. Mia\"",
+          "items": "\"Dr. Ida\", \"Rex\", \"Kai\", \"Dr. Mia\"",
           "x": "n",
           "w": "others",
           "pre": "Dr.",

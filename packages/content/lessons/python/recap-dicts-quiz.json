@@ -245,7 +245,7 @@
     {
       "id": "q26",
       "text": "What does this print?",
-      "code": "def pick(scores):\n    for name, score in scores.items():\n        if score < 50:\n            return name\n    return \"Nobody\"\n\nprint(pick({\"Ana\": 60, \"Ben\": 30, \"Cara\": 20}))",
+      "code": "def pick(scores):\n    for name, score in scores.items():\n        if score < 50:\n            return name\n    return \"Nobody\"\n\nprint(pick({\"Ida\": 60, \"Ben\": 30, \"Cara\": 20}))",
       "options": ["Ben\nCara", "Ben", "Cara", "Nobody"],
       "answer": 1
     },
@@ -263,8 +263,8 @@
     {
       "id": "q28",
       "text": "What does this print?",
-      "code": "def high(scores):\n    names = []\n    for name in scores:\n        if scores[name] > 80:\n            names.append(name)\n    return names\n\nfor name in high({\"Ana\": 90, \"Ben\": 70, \"Cara\": 85}):\n    print(name)",
-      "options": ["Ana\nCara", "['Ana', 'Cara']", "Ana\nBen\nCara", "90\n85"],
+      "code": "def high(scores):\n    names = []\n    for name in scores:\n        if scores[name] > 80:\n            names.append(name)\n    return names\n\nfor name in high({\"Ida\": 90, \"Ben\": 70, \"Cara\": 85}):\n    print(name)",
+      "options": ["Ida\nCara", "['Ida', 'Cara']", "Ida\nBen\nCara", "90\n85"],
       "answer": 0
     },
     {
@@ -314,7 +314,7 @@
           "z": 60
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 99,
           "b": "Ben",
           "y": 81,
@@ -352,7 +352,7 @@
           "z": 75
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 91,
           "b": "Ben",
           "y": 64,
@@ -453,7 +453,7 @@
           "bonus": 5
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 70,
           "b": "Ben",
           "y": 88,
@@ -503,7 +503,7 @@
           "limit": 50
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 64,
           "b": "Ben",
           "y": 58,
@@ -664,7 +664,7 @@
           "z": 50
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 51,
           "b": "Ben",
           "y": 64,
@@ -721,7 +721,7 @@
           "m": "keys"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 51,
           "b": "Ben",
           "y": 64,
@@ -772,7 +772,7 @@
           "k": "count"
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 50,
           "b": "Ben",
           "y": 30,
@@ -819,7 +819,7 @@
           "z": 90
         },
         {
-          "a": "Ana",
+          "a": "Ida",
           "x": 70,
           "b": "Ben",
           "y": 88,
@@ -935,7 +935,7 @@
           "p": "levels",
           "n": "steps",
           "v": "heroes",
-          "a": "Ana",
+          "a": "Ida",
           "x": 3,
           "b": "Kai",
           "y": 5,

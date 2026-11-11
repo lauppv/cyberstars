@@ -37,7 +37,7 @@
       "generated": true
     },
     {
-      "inject": { "pilot": "Ana", "nume_nava": "Falcon", "combustibil": 5000, "viteza": 19.95 },
+      "inject": { "pilot": "Ida", "nume_nava": "Falcon", "combustibil": 5000, "viteza": 19.95 },
       "generated": true
     },
     {
@@ -53,7 +53,7 @@
       "generated": true
     },
     {
-      "inject": { "pilot": "Ana", "nume_nava": "Comet", "combustibil": 1, "viteza": 11.1 },
+      "inject": { "pilot": "Ida", "nume_nava": "Comet", "combustibil": 1, "viteza": 11.1 },
       "generated": true
     },
     {
@@ -61,7 +61,7 @@
       "generated": true
     },
     {
-      "inject": { "pilot": "Oana", "nume_nava": "Falcon", "combustibil": 401, "viteza": 11.1 },
+      "inject": { "pilot": "Olga", "nume_nava": "Falcon", "combustibil": 401, "viteza": 11.1 },
       "generated": true
     },
     {

@@ -61,7 +61,7 @@
     {
       "visible": true,
       "inject": {
-        "text_palindrom": "Sus, Ana, sus!",
+        "text_palindrom": "Sus, Anna, sus!",
         "anagrama_a": "Marte",
         "anagrama_b": "Te ram",
         "propozitie": "alpha bravo charlie",
@@ -117,7 +117,7 @@
     },
     {
       "inject": {
-        "text_palindrom": "Ana, rotor, Ana",
+        "text_palindrom": "Anna, rotor, Anna",
         "anagrama_a": "Mare",
         "anagrama_b": "Rame",
         "propozitie": "centrul de control catre maiorul tom",
@@ -267,7 +267,7 @@
     },
     {
       "inject": {
-        "text_palindrom": "Ana, sas, Ana",
+        "text_palindrom": "Anna, sas, Anna",
         "anagrama_a": "Rame",
         "anagrama_b": "Mare",
         "propozitie": "a b",
@@ -317,7 +317,7 @@
     },
     {
       "inject": {
-        "text_palindrom": "Ana, rotor, Ana",
+        "text_palindrom": "Anna, rotor, Anna",
         "anagrama_a": "rare",
         "anagrama_b": "sare",
         "propozitie": "centrul de control catre maiorul tom",
@@ -467,7 +467,7 @@
     },
     {
       "inject": {
-        "text_palindrom": "Ana, sas, Ana",
+        "text_palindrom": "Anna, sas, Anna",
         "anagrama_a": "sare",
         "anagrama_b": "rare",
         "propozitie": "a b",
@@ -517,7 +517,7 @@
     },
     {
       "inject": {
-        "text_palindrom": "Ana, rotor, Ana",
+        "text_palindrom": "Anna, rotor, Anna",
         "anagrama_a": "aab",
         "anagrama_b": "abb",
         "propozitie": "centrul de control catre maiorul tom",

@@ -203,8 +203,8 @@
     {
       "id": "q21",
       "text": "Ce afișează?",
-      "code": "nume = [\"ana\", \"rex\"]\nfrumos = [n[0].upper() + n[1:] for n in nume]\nprint(frumos)",
-      "options": ["['Ana', 'Rex']", "['ANA', 'REX']", "['A', 'R']", "['ana', 'rex']"],
+      "code": "nume = [\"ida\", \"rex\"]\nfrumos = [n[0].upper() + n[1:] for n in nume]\nprint(frumos)",
+      "options": ["['Ida', 'Rex']", "['IDA', 'REX']", "['A', 'R']", "['ida', 'rex']"],
       "answer": 0
     },
     {
@@ -597,7 +597,7 @@
         },
         {
           "v": "nume",
-          "data": "\"Ana\", \"Rex\", \"Kai\"",
+          "data": "\"Ida\", \"Rex\", \"Kai\"",
           "o": "strigate",
           "x": "n",
           "suf": "?"

@@ -14,10 +14,10 @@
       "answer": 0
     },
     {
-      "id": "dl-keys-8cc823",
+      "id": "dl-keys-d014d2",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 9}\nfor name in scores:\n    print(name)",
-      "options": ["Ana\nRex", "7\n9", "{'Ana': 7, 'Rex': 9}\n{'Ana': 7, 'Rex': 9}", "2\n2"],
+      "code": "scores = {\"Ida\": 7, \"Rex\": 9}\nfor name in scores:\n    print(name)",
+      "options": ["Ida\nRex", "7\n9", "{'Ida': 7, 'Rex': 9}\n{'Ida': 7, 'Rex': 9}", "2\n2"],
       "answer": 0
     },
     {
@@ -33,13 +33,13 @@
       "answer": 0
     },
     {
-      "id": "dl-values-77db54",
+      "id": "dl-values-adf3a8",
       "text": "What does this print?",
-      "code": "ages = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\nfor age in ages.values():\n    print(age)",
+      "code": "ages = {\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}\nfor age in ages.values():\n    print(age)",
       "options": [
         "12\n30\n9",
-        "Ana\nRex\nKai",
-        "{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}\n{'Ana': 12, 'Rex': 30, 'Kai': 9}",
+        "Ida\nRex\nKai",
+        "{'Ida': 12, 'Rex': 30, 'Kai': 9}\n{'Ida': 12, 'Rex': 30, 'Kai': 9}\n{'Ida': 12, 'Rex': 30, 'Kai': 9}",
         "3\n3\n3"
       ],
       "answer": 0
@@ -69,9 +69,9 @@
       "answer": 0
     },
     {
-      "id": "dl-total-9abe4e",
+      "id": "dl-total-f7e561",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total)",
+      "code": "scores = {\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total)",
       "options": ["20", "8", "3", "7\n12\n20"],
       "answer": 0
     },
@@ -119,9 +119,9 @@
       "answer": 0
     },
     {
-      "id": "dl-average-69ad1d",
+      "id": "dl-average-424145",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / len(scores))",
+      "code": "scores = {\"Ida\": 7, \"Rex\": 8}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / len(scores))",
       "options": ["7.5", "15", "7", "4.0"],
       "answer": 0
     },
@@ -140,9 +140,9 @@
       "answer": 0
     },
     {
-      "id": "dl-top-549814",
+      "id": "dl-top-8d0f10",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ntop = \"\"\nbest = 0\nfor name in scores:\n    if scores[name] > best:\n        best = scores[name]\n        top = name\nprint(f\"{top}: {best}\")",
+      "code": "scores = {\"Ida\": 7, \"Rex\": 9, \"Kai\": 4, \"Zoe\": 6, \"Max\": 2}\ntop = \"\"\nbest = 0\nfor name in scores:\n    if scores[name] > best:\n        best = scores[name]\n        top = name\nprint(f\"{top}: {best}\")",
       "options": ["Rex: 9", "Max: 9", ": 9", ": 0"],
       "answer": 0
     },
@@ -161,14 +161,14 @@
       "answer": 0
     },
     {
-      "id": "dl-pass-a383b5",
+      "id": "dl-pass-6dbca3",
       "text": "What does this print?",
-      "code": "scores = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        passing.append(name)\nprint(passing)",
+      "code": "scores = {\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\npassing = []\nfor name in scores:\n    if scores[name] >= 50:\n        passing.append(name)\nprint(passing)",
       "options": [
-        "['Ana', 'Kai', 'Zoe']",
+        "['Ida', 'Kai', 'Zoe']",
         "[55, 50, 90]",
         "['Rex']",
-        "['Ana']\n['Ana']\n['Ana', 'Kai']\n['Ana', 'Kai', 'Zoe']"
+        "['Ida']\n['Ida']\n['Ida', 'Kai']\n['Ida', 'Kai', 'Zoe']"
       ],
       "answer": 0
     },
@@ -216,26 +216,26 @@
       "answer": 0
     },
     {
-      "id": "dl-which-values-afd738",
+      "id": "dl-which-values-c26bc2",
       "text": "Which program shows this?",
       "output": "Rome\nOslo",
       "options": [
-        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\n    print(city)",
-        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.keys():\n    print(city)",
-        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\n    print(homes)",
-        "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\nprint(city)"
+        "homes = {\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\n    print(city)",
+        "homes = {\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.keys():\n    print(city)",
+        "homes = {\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\n    print(homes)",
+        "homes = {\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}\nfor city in homes.values():\nprint(city)"
       ],
       "answer": 0
     },
     {
-      "id": "dl-which-items-3be77e",
+      "id": "dl-which-items-104123",
       "text": "Which program shows this?",
-      "output": "Ana: 12\nRex: 30",
+      "output": "Ida: 12\nRex: 30",
       "options": [
-        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(f\"{name}: {age}\")",
-        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(f\"{age}: {name}\")",
-        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(\"{name}: {age}\")",
-        "ages = {\"Ana\": 12, \"Rex\": 30}\nfor name, age in ages.items():\nprint(f\"{name}: {age}\")"
+        "ages = {\"Ida\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(f\"{name}: {age}\")",
+        "ages = {\"Ida\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(f\"{age}: {name}\")",
+        "ages = {\"Ida\": 12, \"Rex\": 30}\nfor name, age in ages.items():\n    print(\"{name}: {age}\")",
+        "ages = {\"Ida\": 12, \"Rex\": 30}\nfor name, age in ages.items():\nprint(f\"{name}: {age}\")"
       ],
       "answer": 0
     },
@@ -342,10 +342,10 @@
       "answer": 0
     },
     {
-      "id": "dl-gap-loop-61afc3",
+      "id": "dl-gap-loop-dbd2de",
       "text": "Which line goes in the gap so the program prints this?",
-      "code": "ages = {\"Ana\": 12, \"Rex\": 30, \"Kai\": 9}\n___\n    print(f\"{name}: {age}\")",
-      "output": "Ana: 12\nRex: 30\nKai: 9",
+      "code": "ages = {\"Ida\": 12, \"Rex\": 30, \"Kai\": 9}\n___\n    print(f\"{name}: {age}\")",
+      "output": "Ida: 12\nRex: 30\nKai: 9",
       "options": [
         "for name, age in ages.items():",
         "for name, age in ages:",
@@ -421,9 +421,9 @@
       "answer": 0
     },
     {
-      "id": "dl-gap-method-a0819f",
+      "id": "dl-gap-method-2e0b3d",
       "text": "What goes in the gap so the program prints this?",
-      "code": "homes = {\"Ana\": \"Rome\", \"Rex\": \"Oslo\"}\nfor x in homes.___():\n    print(x)",
+      "code": "homes = {\"Ida\": \"Rome\", \"Rex\": \"Oslo\"}\nfor x in homes.___():\n    print(x)",
       "output": "Rome\nOslo",
       "options": ["values", "keys", "items", "len"],
       "answer": 0
@@ -469,9 +469,9 @@
       "answer": 0
     },
     {
-      "id": "dl-gap-len-a02c66",
+      "id": "dl-gap-len-225692",
       "text": "What goes in the gap so the program prints this?",
-      "code": "scores = {\"Ana\": 6, \"Rex\": 9, \"Kai\": 9}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / ___)",
+      "code": "scores = {\"Ida\": 6, \"Rex\": 9, \"Kai\": 9}\ntotal = 0\nfor s in scores.values():\n    total = total + s\nprint(total / ___)",
       "output": "8.0",
       "options": ["len(scores)", "len(scores) - 1", "total", "len(total)"],
       "answer": 0
@@ -506,11 +506,16 @@
       "answer": 0
     },
     {
-      "id": "dl-bad-sum-24bca3",
+      "id": "dl-bad-sum-524067",
       "text": "Which line stops this program from printing this?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    print(s)\n    total = s\nprint(f\"Total: {total}\")",
+      "code": "scores = {\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}\ntotal = 0\nfor s in scores.values():\n    print(s)\n    total = s\nprint(f\"Total: {total}\")",
       "output": "7\n5\n8\nTotal: 20",
-      "options": ["total = s", "print(s)", "total = 0", "print(f\"Total: {total}\")"],
+      "options": [
+        "total = s",
+        "print(s)",
+        "total = 0",
+        "scores = {\"Ida\": 7, \"Rex\": 5, \"Kai\": 8}"
+      ],
       "answer": 0
     },
     {
@@ -548,14 +553,14 @@
       "answer": 0
     },
     {
-      "id": "dl-bad-items-4f050b",
+      "id": "dl-bad-items-45e23b",
       "text": "Which line stops this program from printing this?",
-      "code": "ages = {\"Ana\": 12, \"Rex\": 30}\nprint(\"Ages:\")\nfor name, age in ages.items():\n    print(f\"{name}: {name}\")",
-      "output": "Ages:\nAna: 12\nRex: 30",
+      "code": "ages = {\"Ida\": 12, \"Rex\": 30}\nprint(\"Ages:\")\nfor name, age in ages.items():\n    print(f\"{name}: {name}\")",
+      "output": "Ages:\nIda: 12\nRex: 30",
       "options": [
         "print(f\"{name}: {name}\")",
         "print(\"Ages:\")",
-        "ages = {\"Ana\": 12, \"Rex\": 30}",
+        "ages = {\"Ida\": 12, \"Rex\": 30}",
         "for name, age in ages.items():"
       ],
       "answer": 0
@@ -634,14 +639,14 @@
       "answer": 0
     },
     {
-      "id": "dl-holds-raise-262074",
+      "id": "dl-holds-raise-c1b1b6",
       "text": "What is in `scores` at the end?",
-      "code": "scores = {\"Ana\": 7, \"Rex\": 5}\nfor name in scores:\n    if scores[name] < 6:\n        scores[name] = scores[name] + 2",
+      "code": "scores = {\"Ida\": 7, \"Rex\": 5}\nfor name in scores:\n    if scores[name] < 6:\n        scores[name] = scores[name] + 2",
       "options": [
-        "{'Ana': 7, 'Rex': 7}",
-        "{'Ana': 7, 'Rex': 2}",
-        "{'Ana': 7, 'Rex': 5}",
-        "{'Ana': 9, 'Rex': 5}"
+        "{'Ida': 7, 'Rex': 7}",
+        "{'Ida': 7, 'Rex': 2}",
+        "{'Ida': 7, 'Rex': 5}",
+        "{'Ida': 9, 'Rex': 5}"
       ],
       "answer": 0
     },
@@ -677,9 +682,9 @@
       "answer": 0
     },
     {
-      "id": "dl-holds-sum-1b882d",
+      "id": "dl-holds-sum-8254a4",
       "text": "What is in `total` at the end?",
-      "code": "scores = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\ntotal = 0\nfor name, score in scores.items():\n    if score > 50:\n        total = total + score",
+      "code": "scores = {\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\ntotal = 0\nfor name, score in scores.items():\n    if score > 50:\n        total = total + score",
       "options": ["145", "195", "2", "90"],
       "answer": 0
     },
@@ -691,10 +696,10 @@
       "answer": 0
     },
     {
-      "id": "dl-input-above-f0cc55",
+      "id": "dl-input-above-b8e677",
       "text": "What did the user type?",
-      "code": "scores = {\"Ana\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\nlimit = int(input())\nfor name in scores:\n    if scores[name] > limit:\n        print(name)",
-      "output": "Ana\nZoe",
+      "code": "scores = {\"Ida\": 55, \"Rex\": 30, \"Kai\": 50, \"Zoe\": 90}\nlimit = int(input())\nfor name in scores:\n    if scores[name] > limit:\n        print(name)",
+      "output": "Ida\nZoe",
       "options": ["50", "55", "30", "90"],
       "answer": 0
     },

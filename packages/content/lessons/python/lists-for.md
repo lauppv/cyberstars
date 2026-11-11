@@ -82,7 +82,7 @@ Careful: we count from **0**, so index **5** is the **6**th member printed
 6. Victor -> selected for EVA
 7. Joanna
 8. George
-9. Diana
+9. Clara
 10. Robert
 11. Christine -> selected for EVA
 12. Alex

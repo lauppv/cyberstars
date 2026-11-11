@@ -308,10 +308,10 @@
       "answer": 0
     },
     {
-      "id": "bi-gap-zip-665f3e",
+      "id": "bi-gap-zip-dadb91",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "echipaj = [\"Ana\", \"Bo\", \"Kai\", \"Dan\"]\nscoruri = [50, 49, 61, 77]\n___\n    print(f\"{membru}: {scor}\")",
-      "output": "Ana: 50\nBo: 49\nKai: 61\nDan: 77",
+      "code": "echipaj = [\"Ida\", \"Bo\", \"Kai\", \"Dan\"]\nscoruri = [50, 49, 61, 77]\n___\n    print(f\"{membru}: {scor}\")",
+      "output": "Ida: 50\nBo: 49\nKai: 61\nDan: 77",
       "options": [
         "for membru, scor in zip(echipaj, scoruri):",
         "for membru, scor in enumerate(echipaj):",
@@ -505,14 +505,14 @@
       "answer": 0
     },
     {
-      "id": "bi-bad-zip-ddd2e7",
+      "id": "bi-bad-zip-1a43e1",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "echipaj = [\"Dmitri\", \"Ana\"]\nscoruri = [73, 61]\nfor membru, scor in zip(echipaj, echipaj):\n    print(f\"{membru}: {scor}\")",
-      "output": "Dmitri: 73\nAna: 61",
+      "code": "echipaj = [\"Dmitri\", \"Ida\"]\nscoruri = [73, 61]\nfor membru, scor in zip(echipaj, echipaj):\n    print(f\"{membru}: {scor}\")",
+      "output": "Dmitri: 73\nIda: 61",
       "options": [
         "for membru, scor in zip(echipaj, echipaj):",
         "scoruri = [73, 61]",
-        "echipaj = [\"Dmitri\", \"Ana\"]",
+        "echipaj = [\"Dmitri\", \"Ida\"]",
         "print(f\"{membru}: {scor}\")"
       ],
       "answer": 0

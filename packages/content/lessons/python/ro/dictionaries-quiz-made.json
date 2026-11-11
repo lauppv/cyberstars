@@ -9,10 +9,10 @@
       "answer": 0
     },
     {
-      "id": "dc-get-539aa3",
+      "id": "dc-get-bce62d",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\nprint(scoruri[\"Ben\"])",
-      "options": ["75", "90", "Ben", "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"],
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75, \"Zoe\": 88}\nprint(scoruri[\"Ben\"])",
+      "options": ["75", "90", "Ben", "{'Ida': 90, 'Ben': 75, 'Zoe': 88}"],
       "answer": 0
     },
     {
@@ -42,14 +42,14 @@
       "answer": 0
     },
     {
-      "id": "dc-set-204244",
+      "id": "dc-set-7cd8ee",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nscoruri[\"Zoe\"] = 88\nscoruri[\"Ana\"] = 95\nprint(scoruri)",
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75}\nscoruri[\"Zoe\"] = 88\nscoruri[\"Ida\"] = 95\nprint(scoruri)",
       "options": [
-        "{'Ana': 95, 'Ben': 75, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 95, 'Zoe': 88}",
-        "{'Ana': 95, 'Ben': 75}"
+        "{'Ida': 95, 'Ben': 75, 'Zoe': 88}",
+        "{'Ida': 90, 'Ben': 75, 'Zoe': 88}",
+        "{'Ida': 90, 'Ben': 95, 'Zoe': 88}",
+        "{'Ida': 95, 'Ben': 75}"
       ],
       "answer": 0
     },
@@ -90,14 +90,14 @@
       "answer": 0
     },
     {
-      "id": "dc-del-539aa3",
+      "id": "dc-del-bce62d",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75, \"Zoe\": 88}\ndel scoruri[\"Ben\"]\nprint(scoruri)",
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75, \"Zoe\": 88}\ndel scoruri[\"Ben\"]\nprint(scoruri)",
       "options": [
-        "{'Ana': 90, 'Zoe': 88}",
+        "{'Ida': 90, 'Zoe': 88}",
         "{'Ben': 75, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 0, 'Zoe': 88}",
-        "{'Ana': 90, 'Ben': 75, 'Zoe': 88}"
+        "{'Ida': 90, 'Ben': 0, 'Zoe': 88}",
+        "{'Ida': 90, 'Ben': 75, 'Zoe': 88}"
       ],
       "answer": 0
     },
@@ -138,14 +138,14 @@
       "answer": 0
     },
     {
-      "id": "dc-check-d90025",
+      "id": "dc-check-8dc036",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nfor nume in [\"Kai\", \"Ana\"]:\n    if nume in scoruri:\n        print(scoruri[nume])\n    else:\n        print(\"Fara scor\")",
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75}\nfor nume in [\"Kai\", \"Ida\"]:\n    if nume in scoruri:\n        print(scoruri[nume])\n    else:\n        print(\"Fara scor\")",
       "options": [
         "Fara scor\n90",
-        "Fara scor\nAna",
+        "Fara scor\nIda",
         "90\nFara scor",
-        "Fara scor\n{'Ana': 90, 'Ben': 75}"
+        "Fara scor\n{'Ida': 90, 'Ben': 75}"
       ],
       "answer": 0
     },
@@ -188,9 +188,9 @@
       "answer": 0
     },
     {
-      "id": "dc-grow-348130",
+      "id": "dc-grow-042cb4",
       "text": "Ce afișează?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 10\nprint(scoruri[\"Ben\"])",
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 10\nprint(scoruri[\"Ben\"])",
       "options": ["85", "10", "100", "90"],
       "answer": 0
     },
@@ -209,10 +209,10 @@
       "answer": 0
     },
     {
-      "id": "dc-list-19d513",
+      "id": "dc-list-3d7865",
       "text": "Ce afișează?",
-      "code": "nava = {\"nume\": \"Nova\", \"echipaj\": [\"Ana\", \"Ben\", \"Zoe\"]}\nprint(nava[\"echipaj\"][0])",
-      "options": ["Ana", "Ben", "['Ana', 'Ben', 'Zoe']", "3"],
+      "code": "nava = {\"nume\": \"Nova\", \"echipaj\": [\"Ida\", \"Ben\", \"Zoe\"]}\nprint(nava[\"echipaj\"][0])",
+      "options": ["Ida", "Ben", "['Ida', 'Ben', 'Zoe']", "3"],
       "answer": 0
     },
     {
@@ -290,14 +290,14 @@
       "answer": 0
     },
     {
-      "id": "dc-which-in-4f0aa4",
+      "id": "dc-which-in-0a4d58",
       "text": "Care program afișează asta?",
-      "output": "Ana are scor",
+      "output": "Ida are scor",
       "options": [
-        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scoruri:\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")",
-        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" not in scoruri:\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")",
-        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif 90 in scoruri:\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")",
-        "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Ana\" in scoruri\n    print(\"Ana are scor\")\nelse:\n    print(\"Ana nu are scor\")"
+        "scoruri = {\"Ida\": 90, \"Ben\": 75}\nif \"Ida\" in scoruri:\n    print(\"Ida are scor\")\nelse:\n    print(\"Ida nu are scor\")",
+        "scoruri = {\"Ida\": 90, \"Ben\": 75}\nif \"Ida\" not in scoruri:\n    print(\"Ida are scor\")\nelse:\n    print(\"Ida nu are scor\")",
+        "scoruri = {\"Ida\": 90, \"Ben\": 75}\nif 90 in scoruri:\n    print(\"Ida are scor\")\nelse:\n    print(\"Ida nu are scor\")",
+        "scoruri = {\"Ida\": 90, \"Ben\": 75}\nif \"Ida\" in scoruri\n    print(\"Ida are scor\")\nelse:\n    print(\"Ida nu are scor\")"
       ],
       "answer": 0
     },
@@ -339,13 +339,13 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-add-1efa10",
+      "id": "dc-gap-add-445d24",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 90}\n___\nprint(scoruri)",
-      "output": "{'Ana': 90, 'Ben': 75}",
+      "code": "scoruri = {\"Ida\": 90}\n___\nprint(scoruri)",
+      "output": "{'Ida': 90, 'Ben': 75}",
       "options": [
         "scoruri[\"Ben\"] = 75",
-        "scoruri[\"Ana\"] = 75",
+        "scoruri[\"Ida\"] = 75",
         "scoruri.append(75)",
         "scoruri[75] = \"Ben\""
       ],
@@ -399,10 +399,10 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-del-fe5b79",
+      "id": "dc-gap-del-45fad6",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\n___\nprint(niveluri)",
-      "output": "{'Zoe': 12, 'Ana': 9}",
+      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}\n___\nprint(niveluri)",
+      "output": "{'Zoe': 12, 'Ida': 9}",
       "options": [
         "del niveluri[\"Kai\"]",
         "del niveluri[1]",
@@ -462,9 +462,9 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-key-912955",
+      "id": "dc-gap-key-abd8fc",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\nprint(niveluri[___])",
+      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}\nprint(niveluri[___])",
       "output": "7",
       "options": ["\"Kai\"", "1", "Kai", "\"Zoe\""],
       "answer": 0
@@ -502,9 +502,9 @@
       "answer": 0
     },
     {
-      "id": "dc-gap-in-0a975d",
+      "id": "dc-gap-in-0cd7b9",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nif \"Zoe\" ___ scoruri:\n    print(\"Zoe nu are scor\")\nelse:\n    print(\"Zoe are scor\")",
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75}\nif \"Zoe\" ___ scoruri:\n    print(\"Zoe nu are scor\")\nelse:\n    print(\"Zoe are scor\")",
       "output": "Zoe nu are scor",
       "options": ["not in", "in", "==", "="],
       "answer": 0
@@ -539,14 +539,14 @@
       "answer": 0
     },
     {
-      "id": "dc-bad-brackets-d5b695",
+      "id": "dc-bad-brackets-5020e4",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "scoruri = [\"Ana\": 90, \"Ben\": 75]\nscoruri[\"Zoe\"] = 88\nprint(scoruri[\"Ana\"])\nprint(scoruri[\"Ben\"])\nprint(scoruri[\"Zoe\"])",
+      "code": "scoruri = [\"Ida\": 90, \"Ben\": 75]\nscoruri[\"Zoe\"] = 88\nprint(scoruri[\"Ida\"])\nprint(scoruri[\"Ben\"])\nprint(scoruri[\"Zoe\"])",
       "output": "90\n75\n88",
       "options": [
-        "scoruri = [\"Ana\": 90, \"Ben\": 75]",
+        "scoruri = [\"Ida\": 90, \"Ben\": 75]",
         "scoruri[\"Zoe\"] = 88",
-        "print(scoruri[\"Ana\"])",
+        "print(scoruri[\"Ida\"])",
         "print(scoruri[\"Ben\"])"
       ],
       "answer": 0
@@ -617,14 +617,14 @@
       "answer": 0
     },
     {
-      "id": "dc-bad-quotes-198549",
+      "id": "dc-bad-quotes-bccbb4",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "scoruri = {\"Ana\": 90, \"Ben\": 75}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 10\nprint(scoruri[Ana])\nprint(scoruri[\"Ben\"])",
+      "code": "scoruri = {\"Ida\": 90, \"Ben\": 75}\nscoruri[\"Ben\"] = scoruri[\"Ben\"] + 10\nprint(scoruri[Ida])\nprint(scoruri[\"Ben\"])",
       "output": "90\n85",
       "options": [
-        "print(scoruri[Ana])",
+        "print(scoruri[Ida])",
         "scoruri[\"Ben\"] = scoruri[\"Ben\"] + 10",
-        "scoruri = {\"Ana\": 90, \"Ben\": 75}",
+        "scoruri = {\"Ida\": 90, \"Ben\": 75}",
         "print(scoruri[\"Ben\"])"
       ],
       "answer": 0
@@ -656,13 +656,13 @@
       "answer": 0
     },
     {
-      "id": "dc-bad-del-0e713a",
+      "id": "dc-bad-del-608540",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}\ndelete niveluri[\"Kai\"]\nniveluri[\"Mia\"] = 4\nprint(niveluri)",
-      "output": "{'Zoe': 12, 'Ana': 9, 'Mia': 4}",
+      "code": "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}\ndelete niveluri[\"Kai\"]\nniveluri[\"Mia\"] = 4\nprint(niveluri)",
+      "output": "{'Zoe': 12, 'Ida': 9, 'Mia': 4}",
       "options": [
         "delete niveluri[\"Kai\"]",
-        "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ana\": 9}",
+        "niveluri = {\"Zoe\": 12, \"Kai\": 7, \"Ida\": 9}",
         "niveluri[\"Mia\"] = 4",
         "print(niveluri)"
       ],

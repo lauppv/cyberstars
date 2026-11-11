@@ -325,8 +325,8 @@
     {
       "id": "lf-gap-loop-0e6459",
       "text": "Ce linie pui în locul liber ca programul să afișeze asta?",
-      "code": "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]\n___\n    print(f\"{i + 1}. {echipaj[i]}\")",
-      "output": "1. Maria\n2. Andrei\n3. Elena",
+      "code": "echipaj = [\"Mary\", \"Andrew\", \"Helen\"]\n___\n    print(f\"{i + 1}. {echipaj[i]}\")",
+      "output": "1. Mary\n2. Andrew\n3. Helen",
       "options": [
         "for i in range(len(echipaj)):",
         "for i in echipaj:",
@@ -388,8 +388,8 @@
     {
       "id": "lf-gap-plus-a2547b",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "echipaj = [\"Maria\", \"Andrei\"]\nfor i in range(len(echipaj)):\n    print(f\"{i + ___}. {echipaj[i]}\")",
-      "output": "1. Maria\n2. Andrei",
+      "code": "echipaj = [\"Mary\", \"Andrew\"]\nfor i in range(len(echipaj)):\n    print(f\"{i + ___}. {echipaj[i]}\")",
+      "output": "1. Mary\n2. Andrew",
       "options": ["1", "0", "2", "i"],
       "answer": 0
     },
@@ -402,10 +402,10 @@
       "answer": 0
     },
     {
-      "id": "lf-gap-plus-933c44",
+      "id": "lf-gap-plus-a6c1bd",
       "text": "Ce pui în locul liber ca programul să afișeze asta?",
-      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\"]\nfor i in range(len(jucatori)):\n    print(f\"{i + ___}. {jucatori[i]}\")",
-      "output": "1. Ana\n2. Rex\n3. Kai",
+      "code": "jucatori = [\"Ida\", \"Rex\", \"Kai\"]\nfor i in range(len(jucatori)):\n    print(f\"{i + ___}. {jucatori[i]}\")",
+      "output": "1. Ida\n2. Rex\n3. Kai",
       "options": ["1", "0", "2", "i"],
       "answer": 0
     },
@@ -460,12 +460,12 @@
     {
       "id": "lf-bad-index-e3fa74",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]\nprint(\"Echipaj:\")\nfor i in range(len(echipaj)):\n    print(f\"{i + 1}. {echipaj[i + 1]}\")\nprint(\"Sfarsitul listei\")",
-      "output": "Echipaj:\n1. Maria\n2. Andrei\n3. Elena\nSfarsitul listei",
+      "code": "echipaj = [\"Mary\", \"Andrew\", \"Helen\"]\nprint(\"Echipaj:\")\nfor i in range(len(echipaj)):\n    print(f\"{i + 1}. {echipaj[i + 1]}\")\nprint(\"Sfarsitul listei\")",
+      "output": "Echipaj:\n1. Mary\n2. Andrew\n3. Helen\nSfarsitul listei",
       "options": [
         "print(f\"{i + 1}. {echipaj[i + 1]}\")",
         "print(\"Echipaj:\")",
-        "echipaj = [\"Maria\", \"Andrei\", \"Elena\"]",
+        "echipaj = [\"Mary\", \"Andrew\", \"Helen\"]",
         "for i in range(len(echipaj)):"
       ],
       "answer": 0
@@ -523,15 +523,15 @@
       "answer": 0
     },
     {
-      "id": "lf-bad-range-6d5b78",
+      "id": "lf-bad-range-eeeb0f",
       "text": "Care linie împiedică programul să afișeze asta?",
-      "code": "jucatori = [\"Ana\", \"Rex\", \"Kai\", \"Zoe\"]\nprint(\"Jucatori:\")\nfor i in range(1, len(jucatori)):\n    print(f\"{i + 1}. {jucatori[i]}\")\nprint(\"Hai sa jucam\")",
-      "output": "Jucatori:\n1. Ana\n2. Rex\n3. Kai\n4. Zoe\nHai sa jucam",
+      "code": "jucatori = [\"Ida\", \"Rex\", \"Kai\", \"Zoe\"]\nprint(\"Jucatori:\")\nfor i in range(1, len(jucatori)):\n    print(f\"{i + 1}. {jucatori[i]}\")\nprint(\"Hai sa jucam\")",
+      "output": "Jucatori:\n1. Ida\n2. Rex\n3. Kai\n4. Zoe\nHai sa jucam",
       "options": [
         "for i in range(1, len(jucatori)):",
         "print(\"Jucatori:\")",
-        "print(f\"{i + 1}. {jucatori[i]}\")",
-        "print(\"Hai sa jucam\")"
+        "jucatori = [\"Ida\", \"Rex\", \"Kai\", \"Zoe\"]",
+        "print(f\"{i + 1}. {jucatori[i]}\")"
       ],
       "answer": 0
     },
