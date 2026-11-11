@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "name": "The console shows the crew before the ship docks",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Crew on board: 4"
+        }
+      ]
+    },
+    {
+      "name": "And after, two more",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Crew on board: 6"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "name": "The part headings are the logo blue",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h2:not(#today)",
+          "prop": "color",
+          "every": true,
+          "equals": "rgb(29, 78, 137)",
+          "label": "every part heading but Today on Board"
+        }
+      ]
+    },
+    {
+      "name": "The biggest heading is the logo gold",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(122, 79, 1)",
+          "label": "the biggest heading"
+        }
+      ]
+    }
+  ]
+}

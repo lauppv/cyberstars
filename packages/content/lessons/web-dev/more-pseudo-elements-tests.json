@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "name": "The crew list's bullets are gold",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#crew li",
+          "prop": "color",
+          "pseudo": "::marker",
+          "equals": "rgb(255, 209, 102)",
+          "label": "a crew list item's marker"
+        },
+        {
+          "style": "#crew li",
+          "prop": "color",
+          "not": "rgb(255, 209, 102)",
+          "label": "a crew list item's words"
+        }
+      ]
+    },
+    {
+      "name": "The introduction's first letter is big",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "h1 + p",
+          "prop": "font-size",
+          "pseudo": "::first-letter",
+          "atLeast": 32,
+          "label": "the introduction's first letter"
+        },
+        {
+          "style": "h1 + p",
+          "prop": "font-size",
+          "atMost": 18,
+          "label": "the introduction's text"
+        }
+      ]
+    }
+  ]
+}

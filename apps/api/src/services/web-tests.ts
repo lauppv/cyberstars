@@ -185,10 +185,21 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     const scroll = seen.scrollWidth ?? 0;
     return scroll <= width + 1 ? null : { kind: 'fits', found: String(scroll), width };
   }
+  if ('doctype' in step) return seen.standards ? null : { kind: 'doctype' };
   if ('logged' in step) {
     const logs = seen.logs ?? [];
-    if (logs.some((line) => line.trim() === step.logged.trim())) return null;
+    const there = logs.some((line) => line.trim() === step.logged.trim());
+    if (step.none) return there ? { kind: 'logged', detail: 'none', expected: step.logged } : null;
+    if (there) return null;
     return { kind: 'logged', expected: step.logged, found: logs.at(-1) ?? null };
+  }
+  if ('alerted' in step) {
+    const dialogs = seen.dialogs ?? [];
+    const there = dialogs.some((line) => line.trim() === step.alerted.trim());
+    if (step.none)
+      return there ? { kind: 'alerted', detail: 'none', expected: step.alerted } : null;
+    if (there) return null;
+    return { kind: 'alerted', expected: step.alerted, found: dialogs.at(-1) ?? null };
   }
   if ('noErrors' in step) {
     const errors = seen.errors ?? [];
@@ -316,6 +327,9 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
       found: String(Math.round(spread)),
       width,
     };
+  }
+  if ('loaded' in step) {
+    return (seen.values ?? []).every((v) => v === 'yes') ? null : { kind: 'loaded', label };
   }
   if ('fills' in step) {
     const [box, parent] = boxes;

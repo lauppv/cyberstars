@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "name": "The console welcomes Lena Park",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Welcome aboard, Lena Park! You are crew member 7."
+        }
+      ]
+    }
+  ]
+}

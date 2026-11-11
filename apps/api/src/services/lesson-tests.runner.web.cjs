@@ -130,11 +130,51 @@ async function answer(route, files, answers) {
 
 const MAX_ELEMENTS = 50;
 
+// The preview's PREVIEW_TEXT_LIMIT, the most one console line carries
+const CONSOLE_LIMIT = 2_000;
+
+// The page's console writes its lines as the preview's console does
+// (previewPrelude.ts), so a mission's line reads the same in both: an element as
+// <h1>, a list as [1, "two"], an object as {name: "Ana"}. Runs in the page, before its scripts
+function consoleAsPreview(limit) {
+  const show = (v, depth) => {
+    if (typeof v === 'string') return depth === 0 ? v : JSON.stringify(v);
+    if (v === undefined) return 'undefined';
+    if (typeof v === 'function') return `function ${v.name || ''}()`;
+    if (typeof v === 'symbol' || typeof v === 'bigint') return String(v);
+    if (v === null || typeof v !== 'object') return String(v);
+    if (v instanceof Error) return `${v.name}: ${v.message}`;
+    if (v instanceof Element) return `<${v.tagName.toLowerCase()}>`;
+    if (depth > 3) return Array.isArray(v) ? '[…]' : '{…}';
+    if (Array.isArray(v)) return `[${v.map((x) => show(x, depth + 1)).join(', ')}]`;
+    const entries = Object.keys(v).map((key) => `${key}: ${show(v[key], depth + 1)}`);
+    return `{${entries.join(', ')}}`;
+  };
+  const write = (value) => {
+    try {
+      return show(value, 0);
+    } catch {
+      return String(value);
+    }
+  };
+  for (const level of ['log', 'info', 'warn', 'error', 'debug']) {
+    const own = console[level].bind(console);
+    console[level] = (...args) => {
+      const text = args.map(write).join(' ');
+      own(text.length > limit ? `${text.slice(0, limit)}…` : text);
+    };
+  }
+}
+
 async function observe(page, step, seen) {
   if ('fits' in step) {
     return { scrollWidth: await page.evaluate(() => document.documentElement.scrollWidth) };
   }
+  if ('doctype' in step) {
+    return { standards: await page.evaluate(() => document.compatMode === 'CSS1Compat') };
+  }
   if ('logged' in step) return { logs: [...seen.logs] };
+  if ('alerted' in step) return { dialogs: [...seen.dialogs] };
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };
   if ('outline' in step) {
@@ -158,6 +198,7 @@ async function observe(page, step, seen) {
     step.layout ??
     step.centered ??
     step.fills ??
+    step.loaded ??
     step.size;
   const elements = page.locator(`css=${selector}`);
   const count = await elements.count();
@@ -169,6 +210,15 @@ async function observe(page, step, seen) {
         els
           .slice(0, max)
           .map((el) => (el.innerText ?? el.textContent ?? '').replace(/\s+/g, ' ').trim()),
+      MAX_ELEMENTS,
+    );
+    return { count, values };
+  }
+  // Whether each picture's file was found and drawn
+  if ('loaded' in step) {
+    const values = await elements.evaluateAll(
+      (els, max) =>
+        els.slice(0, max).map((el) => (el.complete && el.naturalWidth > 0 ? 'yes' : 'no')),
       MAX_ELEMENTS,
     );
     return { count, values };
@@ -422,7 +472,7 @@ async function settle(page, nav, stepMs) {
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
-  const seen = { logs: [], errors: [] };
+  const seen = { logs: [], errors: [], dialogs: [] };
   const nav = { pending: false, inflight: 0 };
   let crashed = false;
   let onCrash;
@@ -441,6 +491,7 @@ async function runCase(browser, files, testCase, limits) {
   });
   try {
     await serve(context, files, testCase.fetch ?? {});
+    await context.addInitScript(consoleAsPreview, CONSOLE_LIMIT);
     const page = await context.newPage();
     page.on('console', (message) => {
       const text = message.text();
@@ -448,6 +499,11 @@ async function runCase(browser, files, testCase, limits) {
       else seen.logs.push(text);
     });
     page.on('pageerror', (error) => seen.errors.push(error.message));
+    // A message box is noted and closed, as a visitor would
+    page.on('dialog', (dialog) => {
+      seen.dialogs.push(dialog.message());
+      dialog.dismiss().catch(() => {});
+    });
     page.on('crash', onCrash);
     outOfMemory.listener = onCrash;
     page.on('request', (request) => {

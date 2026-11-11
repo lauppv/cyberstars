@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "name": "crew.html is a whole page",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        }
+      ]
+    },
+    {
+      "name": "crew.html uses the same style.css",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "text": "h1",
+          "nonEmpty": true,
+          "label": "the biggest heading"
+        }
+      ]
+    },
+    {
+      "name": "The home page links to crew.html",
+      "visible": true,
+      "steps": [
+        {
+          "click": "a[href=\"crew.html\"]",
+          "label": "the link to crew.html"
+        },
+        {
+          "at": "crew.html"
+        }
+      ]
+    },
+    {
+      "name": "crew.html links back home",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "a[href=\"index.html\"]",
+          "label": "the link to index.html"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    }
+  ]
+}

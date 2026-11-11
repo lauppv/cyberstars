@@ -122,7 +122,7 @@ export default function WebWorkspace({
   // A change refused at a limit puts the editor back as it was
   const [editorKey, setEditorKey] = useState(0);
   // Taken apart, so the frame's ref is only ever handed to the frame
-  const { page, choosePage, frame, frameRef, entries, clear, paused, run } = useWebPreview({
+  const { page, title, choosePage, frame, frameRef, entries, clear, paused, run } = useWebPreview({
     files,
     courseKey,
     lessonSlug,
@@ -501,8 +501,14 @@ export default function WebWorkspace({
           className={`${view === 'site' ? 'flex' : 'hidden'} @2xl:flex flex-1 min-w-0 min-h-0 flex-col bg-[var(--panel-bg)]`}
         >
           <div className="shrink-0 h-12 flex items-center gap-2 px-3 border-b border-[var(--border)] bg-[var(--glass)]">
-            <span className="flex-1 min-w-0 truncate text-[12px] font-mono text-[var(--text2)]">
-              {page}
+            {/* The page's <title> first, as a browser's tab shows it, then its file */}
+            <span
+              data-testid="web-page-name"
+              className="flex-1 min-w-0 truncate text-[12px] text-[var(--text2)]"
+            >
+              {title && <span className="text-[var(--text)]">{title}</span>}
+              {title && <span className="text-[var(--text3)]"> · </span>}
+              <span className="font-mono">{page}</span>
             </span>
             {testsError && (
               <span

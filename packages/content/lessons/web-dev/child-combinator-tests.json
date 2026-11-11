@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "name": "The decks stand apart",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".decks > li",
+          "prop": "margin-bottom",
+          "every": true,
+          "atLeast": 8,
+          "label": "every deck"
+        }
+      ]
+    },
+    {
+      "name": "Their rooms stay close together",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".decks li li",
+          "prop": "margin-bottom",
+          "every": true,
+          "equals": "0px",
+          "label": "every room"
+        }
+      ]
+    }
+  ]
+}

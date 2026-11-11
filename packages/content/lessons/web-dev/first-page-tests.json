@@ -1,54 +1,13 @@
 {
   "cases": [
     {
-      "name": "The page is in English and can show any letter",
+      "name": "The page has its biggest heading, with words in it",
       "visible": true,
       "steps": [
         {
-          "attr": "html",
-          "name": "lang",
-          "equals": "en",
-          "label": "the <html> tag"
-        },
-        {
-          "attr": "head meta[charset]",
-          "name": "charset",
-          "equals": "UTF-8",
-          "ignoreCase": true,
-          "label": "a <meta> tag in the <head>"
-        }
-      ]
-    },
-    {
-      "name": "The tab is named Station Log",
-      "visible": true,
-      "steps": [
-        {
-          "text": "head > title",
-          "equals": "Station Log",
-          "label": "a <title> in the <head>"
-        }
-      ]
-    },
-    {
-      "name": "The biggest heading says Welcome aboard",
-      "visible": true,
-      "steps": [
-        {
-          "text": "body h1",
-          "equals": "Welcome aboard",
-          "label": "the biggest heading (<h1>)"
-        }
-      ]
-    },
-    {
-      "name": "A paragraph of your own follows the heading",
-      "visible": true,
-      "steps": [
-        {
-          "text": "body h1 ~ p",
+          "text": "h1",
           "nonEmpty": true,
-          "label": "a paragraph (<p>) under the heading"
+          "label": "the biggest heading (<h1>)"
         }
       ]
     }

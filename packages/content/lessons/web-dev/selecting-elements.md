@@ -1,57 +1,75 @@
-So far your script has only talked to the console. Now it reaches into the page: it finds an element, reads its text and writes new text in it.
+So far, your script only talks to the console. The page itself hasn't changed at all. To change the page, a script first has to **find** the part it wants to change, the way you'd point at something on a map before you draw on it.
 
-## Finding an element
+## The page as a tree
 
-```js
-const title = document.querySelector("h1");
-```
+When the browser reads your HTML, it builds the page in memory: every element, inside the one that holds it, like branches on a tree. JavaScript can reach every one of them through `document`, the whole page.
 
-`document.querySelector` takes a **CSS selector**, the same kind you write in `style.css`. It gives you back the **first** element of the page that matches. Any selector works: `"h1"`, `".warning"`, `"#today"`, `"p.address"`.
+## `document.querySelector`
 
-For an id there's also a shortcut, written without the `#`:
+`querySelector` finds an element with a **selector**, written exactly like in CSS:
 
 ```js
-const bayTitle = document.getElementById("loading");
+const heading = document.querySelector("h1");
+const list = document.querySelector("#members");
+const tip = document.querySelector(".tip");
 ```
 
-When nothing matches, you get `null`, which means "nothing". If you use `null` as if it were an element, the script stops with an error you'll see often:
+- `"h1"`: the first `h1` on the page;
+- `"#members"`: the element with the id `members`;
+- `".tip"`: the first element with the class `tip`.
+
+It gives you the **first** element that matches, and you keep it under a name to use later.
+
+Log one, and the console shows which element it found:
+
+```js
+console.log(heading);
+```
 
 ```text
-Cannot read properties of null (reading 'textContent')
+<h1>
 ```
 
-When you see it, your selector found nothing. Maybe there's a typo, a missing `#`, or the element isn't on the page.
+That's the element itself, not its text. You'll read its text in the next lesson.
 
-## Reading and writing text
+## Nothing found: `null`
 
-`textContent` is the text inside an element:
+When no element matches, you get `null`, which means "nothing":
 
 ```js
-console.log(title.textContent); // reads it
-title.textContent = "Cargo Bay, closed"; // replaces it
+console.log(document.querySelector("#member"));
 ```
 
-Writing it replaces everything inside the element with the new text, and the page changes right away.
-
-A common trick: leave an element empty in the HTML, give it an id, and let the script fill it:
-
-```html
-<p id="bay-status"></p>
+```text
+null
 ```
+
+There's no `#member`, only `#members`. A `null` in your console is almost always a selector that doesn't match: a typo, a missing `#` or `.`, or the wrong name.
+
+## Break it on purpose
+
+Forget the `#`:
 
 ```js
-const bayStatus = document.querySelector("#bay-status");
-bayStatus.textContent = "Doors open";
+const list = document.querySelector("members");
 ```
 
-Your script runs with `defer`, so when it looks, the whole page is already there.
+`null`. Without the `#`, it looks for a tag called `<members>`, as in CSS. Same rules as your style sheet.
 
 ---
 
-## Mission: Live Status
+## Mission: Find the parts
 
-The home page needs a status line that the script keeps up to date.
+Your crew directory's script should be able to find the parts of the page it will work with.
 
-- Right under the paragraph with your jump links, add an empty paragraph with the id `status`.
-- The status says the page's biggest heading followed by `: all systems normal`. On your page that's `Welcome aboard: all systems normal`. The heading may be renamed one day, and the status must follow it without changing the script.
-- To check what your script found, log the heading's text in the console too.
+**Example**: when `crew.html` opens, the console shows, among its other lines:
+
+```text
+<ul>
+<h2>
+```
+
+- In `crew.js`, the crew list is found by its id and logged: the console shows `<ul>`.
+- The duty board's heading is found by its id and logged: the console shows `<h2>`.
+
+Psst, if you see `null`, check your selector's `#` :)

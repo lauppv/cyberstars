@@ -1,53 +1,59 @@
-A script works where you can't see it. To find out what it's doing, you make it talk: `console.log` writes a line in the **console**.
+Message boxes are fun once. But imagine one popping up every time something happens: you'd go mad clicking OK. When a script wants to tell **you**, the person writing it, what it's doing, it writes in a quiet place instead: the **console**.
 
 ## The console
 
-Every browser has a console, hidden in its developer tools: press **F12** (or **⌘+⌥+I** on a Mac) on any website. Here, it's under the preview, and it shows the same thing.
+The console is a list of messages from the page's scripts. Under your preview there's one: it shows every line your page writes there. Every real browser has one too, hidden in Inspect, under the **Console** tab.
+
+## `console.log`
 
 ```js
-console.log("Docking bay ready");
-console.log(40);
-console.log("Crates:", 40);
+console.log("Game club loaded");
+console.log(12);
+console.log("Members:", 12);
 ```
+
+The console shows:
 
 ```text
-Docking bay ready
-40
-Crates: 40
+Game club loaded
+12
+Members: 12
 ```
 
-- Text is called a **string**, and it goes in quotes: `"Docking bay ready"`. Single quotes work too.
-- A **number** goes without quotes: `40`.
-- Several values with commas between them come out on one line, with a space between them.
+- Text goes in quotes. In JavaScript, a piece of text is called a **string**.
+- A number goes **without** quotes: `12`.
+- Several values with commas between them come out on one line, with a space between each.
 
-Each line of code here is a **statement**: an order for the browser. It ends with `;`.
+Visitors never see the console. It's your window into what the script is doing, and you'll use it all the time to check your work.
 
-## Errors
+## Strings and numbers
 
-When the browser can't understand or run a line, it stops the script there. It writes an **error** in the console, in red, with the number of the line. Read it: it's the quickest way to find what's wrong. Common causes: a missing quote, a name spelled wrong, or `console.log` written as `Console.log`. JavaScript cares about capital letters.
+`"12"` and `12` look the same in the console, but they aren't the same thing: the first is text, the characters 1 and 2. The second is a number you can do maths with. You'll see why that matters soon.
 
-## Comments
+## Break it on purpose
+
+Write `console.Log` with a capital L:
 
 ```js
-// A comment on one line
-/* A comment
-   on several lines */
+console.Log("Game club loaded");
 ```
 
-The browser skips them, just like HTML's `<!-- -->`.
-
-`console.log` is your best friend when you write JavaScript. Whenever you're not sure what a value is, log it.
+Nothing is logged, and the console shows a red line instead: an **error**. JavaScript cares about capital letters: `log` and `Log` are different words. You'll learn to read those red lines in the next lesson.
 
 ---
 
-## Mission: System Check
+## Mission: Report to the console
 
-When the page opens, the station reports to its engineer in the console. Keep your line along the top, and under it, in `script.js`, make the console show these three lines, in this order:
+Your `crew.js` pops up a message box. The crew finds it annoying, so it should report to the console as well.
+
+**Example**: when `crew.html` opens, the console under the preview shows:
 
 ```text
-Station Log online
-92
-Crew on board: 6
+Crew directory loaded
+4
 ```
 
-The `92` is how many minutes one trip around the Earth takes. It's a number, not text: look at how the console shows it.
+- The console shows `Crew directory loaded`.
+- On another line, it shows the number `4`, as a number.
+
+Psst, a number has no quotes :)

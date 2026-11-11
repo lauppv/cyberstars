@@ -1,84 +1,38 @@
 {
   "cases": [
     {
-      "name": "The intercom has its buttons",
+      "name": "The alarm waits for a click",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "text": "button#call-dinner",
-          "equals": "Call to dinner",
-          "label": "the button with id=\"call-dinner\""
+          "text": "button#alarm",
+          "equals": "Sound the alarm",
+          "label": "the button (<button id=\"alarm\">)"
         },
         {
-          "text": "button#call-bridge",
-          "equals": "Call to the bridge",
-          "label": "the button with id=\"call-bridge\""
-        },
-        {
-          "exists": "p#intercom",
-          "label": "the intercom paragraph"
+          "text": "#intercom",
+          "equals": "",
+          "label": "the intercom (#intercom) before the click"
         }
       ]
     },
     {
-      "name": "Call to dinner",
+      "name": "A click sounds the alarm",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "click": "button#call-dinner",
-          "label": "the button Call to dinner"
+          "click": "button#alarm",
+          "label": "the button Sound the alarm"
         },
         {
-          "text": "p#intercom",
-          "equals": "Dinner is served in the galley",
+          "text": "#intercom",
+          "equals": "Alarm! All crew to the bridge",
           "label": "the intercom"
         },
         {
-          "logged": "Intercom: Dinner is served in the galley"
-        }
-      ]
-    },
-    {
-      "name": "Call to the bridge",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "click": "button#call-bridge",
-          "label": "the button Call to the bridge"
-        },
-        {
-          "text": "p#intercom",
-          "equals": "All crew to the bridge",
-          "label": "the intercom"
-        },
-        {
-          "logged": "Intercom: All crew to the bridge"
-        }
-      ]
-    },
-    {
-      "name": "One call after the other",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "click": "button#call-bridge",
-          "label": "the button Call to the bridge"
-        },
-        {
-          "click": "button#call-dinner",
-          "label": "the button Call to dinner"
-        },
-        {
-          "text": "p#intercom",
-          "equals": "Dinner is served in the galley",
-          "label": "the intercom, after both calls"
-        },
-        {
-          "noErrors": true
+          "logged": "Alarm sounded"
         }
       ]
     }

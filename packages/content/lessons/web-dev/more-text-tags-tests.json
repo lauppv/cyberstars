@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "name": "Water's formula has its 2 low",
+      "visible": true,
+      "steps": [
+        {
+          "text": "sub",
+          "equals": "2",
+          "label": "a low part (<sub>)"
+        },
+        {
+          "text": "p:has(> sub)",
+          "contains": "H2O",
+          "label": "the paragraph with water's formula"
+        }
+      ]
+    },
+    {
+      "name": "A power is up high",
+      "visible": true,
+      "steps": [
+        {
+          "text": "sup",
+          "nonEmpty": true,
+          "label": "a high part (<sup>)"
+        }
+      ]
+    },
+    {
+      "name": "A side note is small and a word is highlighted",
+      "visible": true,
+      "steps": [
+        {
+          "text": "small",
+          "nonEmpty": true,
+          "label": "a side note (<small>)"
+        },
+        {
+          "text": "mark",
+          "nonEmpty": true,
+          "label": "a highlighted word (<mark>)"
+        }
+      ]
+    }
+  ]
+}

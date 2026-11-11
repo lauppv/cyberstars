@@ -1,114 +1,28 @@
 {
   "cases": [
     {
-      "name": "The text and the headings have their sizes",
+      "name": "The biggest heading is at least 40 pixels",
       "visible": true,
       "steps": [
         {
-          "style": "body",
-          "prop": "font-size",
-          "atLeast": 17,
-          "atMost": 24,
-          "label": "the page"
-        },
-        {
           "style": "h1",
           "prop": "font-size",
-          "atLeast": 32,
+          "atLeast": 40,
           "label": "the biggest heading"
-        },
+        }
+      ]
+    },
+    {
+      "name": "The paragraphs are between 17 and 20 pixels",
+      "visible": true,
+      "steps": [
         {
-          "style": "h2",
+          "style": "p",
           "prop": "font-size",
-          "atLeast": 20,
-          "atMost": 31.9,
           "every": true,
-          "label": "a section heading"
-        }
-      ]
-    },
-    {
-      "name": "The sizes grow with the visitor's own text size",
-      "visible": true,
-      "page": "zoomed.html",
-      "files": {
-        "zoomed.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <link rel=\"stylesheet\" href=\"zoom.css\" />\n  </head>\n  <body>\n    <h1>Welcome aboard</h1>\n    <h2>Today on Board</h2>\n    <p>Text</p>\n  </body>\n</html>\n",
-        "zoom.css": "html { font-size: 24px; }\n"
-      },
-      "steps": [
-        {
-          "style": "body",
-          "prop": "font-size",
-          "atLeast": 25.5,
-          "label": "the page, for a visitor whose text size is 24px"
-        },
-        {
-          "style": "h1",
-          "prop": "font-size",
-          "atLeast": 48,
-          "label": "the biggest heading, for a visitor whose text size is 24px"
-        },
-        {
-          "style": "h2",
-          "prop": "font-size",
-          "atLeast": 30,
-          "label": "a section heading, for a visitor whose text size is 24px"
-        }
-      ]
-    },
-    {
-      "name": "The address is smaller than the text around it",
-      "visible": true,
-      "page": "small.html",
-      "files": {
-        "small.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <div style=\"font-size: 10px\">\n      <p>Small print box</p>\n      <p class=\"address\">Orbital Station 7</p>\n    </div>\n  </body>\n</html>\n"
-      },
-      "steps": [
-        {
-          "style": "p.address",
-          "prop": "font-size",
-          "atMost": 9.9,
-          "atLeast": 7,
-          "label": "the address, in a box whose text is 10px"
-        }
-      ]
-    },
-    {
-      "name": "The page fits a phone",
-      "visible": true,
-      "width": 375,
-      "steps": [
-        {
-          "fits": true
-        },
-        {
-          "size": "img[src$=\"img/divider.svg\"]",
-          "maxWidth": 375,
-          "label": "the divider"
-        },
-        {
-          "size": "img[src$=\"img/station.svg\"]",
-          "minWidth": 319,
-          "maxWidth": 321,
-          "minHeight": 199,
-          "maxHeight": 201,
-          "label": "the station's picture, at its own size"
-        }
-      ]
-    },
-    {
-      "name": "Pictures keep their shape when they shrink",
-      "visible": true,
-      "width": 320,
-      "steps": [
-        {
-          "fits": true
-        },
-        {
-          "size": "img[src$=\"img/station.svg\"]",
-          "maxWidth": 305,
-          "maxHeight": 192,
-          "label": "the station's picture, shrunk with its height"
+          "atLeast": 17,
+          "atMost": 20,
+          "label": "every paragraph"
         }
       ]
     }

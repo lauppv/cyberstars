@@ -1,43 +1,68 @@
-Part 3 adds the station's third page, the **Flight Schedule**: every departure of the day, with where it goes, when it leaves, and how it's doing. Data in rows and columns is a **table**.
+A school timetable is a grid: days across the top, lessons down the side, and in each box one subject. You read it along a row, or down a column. Lists can't do that: some information only makes sense in rows and columns. That's a **table**.
 
-## Rows and cells
+## `<table>`, `<tr>`, `<td>`
+
+A table is built row by row:
 
 ```html
 <table>
   <tr>
-    <th>Crate</th>
-    <th>Weight</th>
+    <td>Monday</td>
+    <td>Maths</td>
+    <td>Art</td>
   </tr>
   <tr>
-    <td>Water</td>
-    <td>120 kg</td>
-  </tr>
-  <tr>
-    <td>Seeds</td>
-    <td>45 kg</td>
+    <td>Tuesday</td>
+    <td>History</td>
+    <td>Music</td>
   </tr>
 </table>
 ```
 
-- `table` holds the whole table.
-- `tr`, a **table row**, holds one row's cells, from left to right.
-- `td`, **table data**, is a normal cell.
-- `th`, a **table header**, is a cell that names a column (or a row). The browser shows it bold and centered.
+```text
+Monday    Maths     Art
+Tuesday   History   Music
+```
 
-Every row should have as many cells as the others, or the columns get out of line.
+- `<table>` holds the whole table;
+- `<tr>` is a **table row**;
+- `<td>` is a **cell** in that row, short for "table data".
 
-## Tables are for data
+The browser lines the cells up into columns by itself: the first cell of every row goes in the first column, and so on. Each row should have the same number of cells.
 
-A screen reader reads a table cell by cell, and it can tell the visitor which column each cell belongs to: "Weight, 45 kg". That only works for real tables, with real headers. Long ago, people built whole page layouts out of tables. Don't. A table is for data that has rows and columns, like a schedule, a price list or a score board.
+## Break it on purpose
 
-This lesson added an empty `schedule.html`.
+Leave out the `<tr>`s:
+
+```html
+<table>
+  <td>Monday</td>
+  <td>Maths</td>
+  <td>Tuesday</td>
+  <td>History</td>
+</table>
+```
+
+All four cells end up in one long row: the browser only starts a new row where you start a new `<tr>`. And forget one cell in a row: that row is shorter, and its last column sits empty.
 
 ---
 
-## Mission: Departures
+## Mission: The flight schedule
 
-The station gets its third page: the board of the day's departures.
+The station gets a third page: the flight schedule. Today's flights are:
 
-- Write `schedule.html` as a complete page like the other two: English, able to show any letter, **Flight Schedule** on its tab and as its title, with the same look and the same navigation.
-- Every page should lead to the new one: add a fourth link, **Schedule**, to the navigation of **all three** pages.
-- Under the title, the departures as a table with the id `flights`. Its first row names the four columns: **Flight**, **Destination**, **Departs** and **Status**. Under it, at least four flights, one per row: a flight code like `SL-101`, where it goes, a time like `08:30`, and how it's doing: `On time`, `Boarding`, `Delayed` or `Cancelled`. Later lessons read these four statuses, so use them exactly.
+```text
+SL-101   Moon Base        08:30   Boarding
+SL-102   Mars Relay       09:45   On time
+SL-103   Europa Outpost   07:15   Delayed
+SL-104   Lunar Gateway    11:00   Cancelled
+SL-105   Orbital Yard     10:20   On time
+```
+
+**Example**: a new page, `schedule.html`, on the night blue of the site, shows a heading and the five flights in a grid, one flight per row.
+
+- `schedule.html` is a whole page, in English, that can show any letter, with a name for its tab and a biggest heading, using the site's `style.css`.
+- It has a table with the id `flights`, with one row per flight, in this order, and a cell for each of the four columns.
+- Every page's menu has a third link, to `schedule.html`.
+
+Psst, one `<tr>` per flight, one `<td>` per value :)

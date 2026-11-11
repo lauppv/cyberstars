@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "name": "The shift headings are slate grey",
+      "visible": true,
+      "steps": [
+        {
+          "style": ".shift",
+          "prop": "color",
+          "every": true,
+          "equals": "rgb(84, 104, 125)",
+          "label": "every shift heading"
+        }
+      ]
+    },
+    {
+      "name": "The address is the logo blue, see-through at 70%",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "p.address:has(> br)",
+          "label": "the address paragraph (<p class=\"address\">)"
+        },
+        {
+          "style": ".address",
+          "prop": "color",
+          "equals": "rgba(29, 78, 137, 0.7)",
+          "label": "the address"
+        }
+      ]
+    }
+  ]
+}

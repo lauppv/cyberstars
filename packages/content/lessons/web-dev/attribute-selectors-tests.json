@@ -1,88 +1,28 @@
 {
   "cases": [
     {
-      "name": "Links to other sites look different",
+      "name": "Links that open a new tab are underlined",
       "visible": true,
       "steps": [
         {
-          "differs": "a[href^=\"https://\"]",
-          "from": "a:not([href^=\"https://\"]):not([href^=\"mailto:\"])",
-          "props": ["color"],
-          "fromLabel": "the links inside the site",
-          "label": "the links to other sites"
-        },
-        {
-          "contrast": "a[href^=\"https://\"]",
-          "atLeast": 4.5,
+          "style": "a[target=\"_blank\"]",
+          "prop": "text-decoration-line",
           "every": true,
-          "label": "a link to another site"
+          "equals": "underline",
+          "label": "every link that opens a new tab"
         }
       ]
     },
     {
-      "name": "Email links have a dotted line",
+      "name": "The other links are not",
       "visible": true,
       "steps": [
         {
-          "style": "a[href^=\"mailto:\"]",
-          "prop": "text-decoration-style",
-          "equals": "dotted",
+          "style": "a:not([target=\"_blank\"])",
+          "prop": "text-decoration-line",
           "every": true,
-          "label": "an email link"
-        },
-        {
-          "style": "p.jumps a",
-          "prop": "text-decoration-style",
-          "equals": "solid",
-          "label": "a jump link"
-        }
-      ]
-    },
-    {
-      "name": "New links follow without a class",
-      "visible": false,
-      "files": {
-        "links.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <p><a href=\"https://example.com/new\">New</a> <a href=\"mailto:new@station.example\">Mail</a> <a href=\"crew.html\">Crew</a></p>\n  </body>\n</html>\n"
-      },
-      "page": "links.html",
-      "steps": [
-        {
-          "differs": "a[href^=\"https://\"]",
-          "from": "a[href=\"crew.html\"]",
-          "props": ["color"],
-          "fromLabel": "a link inside the site",
-          "label": "a new link to another site"
-        },
-        {
-          "style": "a[href^=\"mailto:\"]",
-          "prop": "text-decoration-style",
-          "equals": "dotted",
-          "label": "a new email link"
-        }
-      ]
-    },
-    {
-      "name": "Column headers line up left, spanning cells are italic",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "style": "th[scope=\"col\"]",
-          "prop": "text-align",
-          "equals": "left",
-          "label": "a column header"
-        },
-        {
-          "style": "td[colspan]",
-          "prop": "font-style",
-          "equals": "italic",
-          "label": "a cell that spans columns"
-        },
-        {
-          "style": "#flights tbody td",
-          "prop": "font-style",
-          "equals": "normal",
-          "label": "an ordinary cell"
+          "equals": "none",
+          "label": "every other link"
         }
       ]
     }

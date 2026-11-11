@@ -1,112 +1,33 @@
 {
   "cases": [
     {
-      "name": "Every element counts its border in its width",
+      "name": "Every card is between 200 and 300 pixels wide",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "style": ".card",
-          "prop": "box-sizing",
-          "equals": "border-box",
-          "label": "a card"
-        },
-        {
-          "style": "h1",
-          "prop": "box-sizing",
-          "equals": "border-box",
-          "label": "the biggest heading"
-        },
-        {
-          "style": "ul#crew",
-          "prop": "box-sizing",
-          "equals": "border-box",
-          "label": "the crew list"
-        }
-      ]
-    },
-    {
-      "name": "The home page does too",
-      "visible": true,
-      "steps": [
-        {
-          "style": "p",
-          "prop": "box-sizing",
-          "equals": "border-box",
-          "label": "a paragraph of the home page"
-        }
-      ]
-    },
-    {
-      "name": "Every card has the same width, border included",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "size": ".card",
+          "size": "#cards > .card:nth-child(1)",
           "minWidth": 200,
-          "maxWidth": 320,
-          "label": "a card"
+          "maxWidth": 300,
+          "label": "card 1"
         },
         {
-          "size": ".card",
-          "minHeight": 120,
-          "label": "a card"
-        }
-      ]
-    },
-    {
-      "name": "Its padding stays inside its width",
-      "visible": true,
-      "page": "crew.html",
-      "files": {
-        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <div id=\"cards\">\n      <div class=\"card\" style=\"padding: 40px\">\n        <h3>Ada</h3>\n        <p>One line.</p>\n        <p>Two lines.</p>\n        <p>Three lines.</p>\n        <p>Four lines.</p>\n        <p>Five lines.</p>\n      </div>\n    </div>\n  </body>\n</html>\n"
-      },
-      "steps": [
-        {
-          "size": ".card",
+          "size": "#cards > .card:nth-child(2)",
           "minWidth": 200,
-          "maxWidth": 320,
-          "label": "a card with 40px of padding"
-        }
-      ]
-    },
-    {
-      "name": "A card with a lot to say grows taller",
-      "visible": false,
-      "page": "crew.html",
-      "files": {
-        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada</h3>\n        <p>One line.</p>\n        <p>Two lines.</p>\n        <p>Three lines.</p>\n        <p>Four lines.</p>\n        <p>Five lines.</p>\n      </div>\n    </div>\n  </body>\n</html>\n"
-      },
-      "steps": [
+          "maxWidth": 300,
+          "label": "card 2"
+        },
         {
-          "size": ".card",
-          "minHeight": 200,
-          "label": "a card with five paragraphs"
-        }
-      ]
-    },
-    {
-      "name": "The box of cards stops at 900px",
-      "visible": true,
-      "page": "crew.html",
-      "width": 1920,
-      "steps": [
+          "size": "#cards > .card:nth-child(3)",
+          "minWidth": 200,
+          "maxWidth": 300,
+          "label": "card 3"
+        },
         {
-          "size": "#cards",
-          "maxWidth": 900,
-          "label": "the box of cards"
-        }
-      ]
-    },
-    {
-      "name": "On a phone, the box of cards still fits",
-      "visible": true,
-      "page": "crew.html",
-      "width": 375,
-      "steps": [
-        {
-          "fits": true
+          "size": "#cards > .card:nth-child(4)",
+          "minWidth": 200,
+          "maxWidth": 300,
+          "label": "card 4"
         }
       ]
     }

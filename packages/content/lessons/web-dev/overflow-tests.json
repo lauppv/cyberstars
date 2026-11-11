@@ -6,73 +6,57 @@
       "page": "crew.html",
       "steps": [
         {
-          "count": "#cards > .card:not(:has(p.bio))",
-          "equals": 0,
-          "label": "cards without a bio, in the class bio"
-        },
-        {
-          "text": ".card p.bio",
-          "nonEmpty": true,
-          "label": "a bio"
+          "count": "#cards > .card > p.bio:not(:empty)",
+          "atLeast": 4,
+          "label": "cards with a bio (<p class=\"bio\">)"
         }
       ]
     },
     {
-      "name": "A long bio can be read inside its card",
+      "name": "A bio is at most 100 pixels tall",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "#cards > .card:nth-child(1) .bio",
+          "maxHeight": 100,
+          "label": "the bio of card 1"
+        },
+        {
+          "size": "#cards > .card:nth-child(2) .bio",
+          "maxHeight": 100,
+          "label": "the bio of card 2"
+        },
+        {
+          "size": "#cards > .card:nth-child(3) .bio",
+          "maxHeight": 100,
+          "label": "the bio of card 3"
+        },
+        {
+          "size": "#cards > .card:nth-child(4) .bio",
+          "maxHeight": 100,
+          "label": "the bio of card 4"
+        }
+      ]
+    },
+    {
+      "name": "A long bio scrolls inside its box",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
           "style": ".bio",
           "prop": "overflow-y",
+          "every": true,
           "not": "visible",
-          "label": "a bio"
+          "label": "every bio"
         },
         {
           "style": ".bio",
           "prop": "overflow-y",
+          "every": true,
           "not": "hidden",
-          "label": "a bio"
-        }
-      ]
-    },
-    {
-      "name": "A very long bio stays in its box",
-      "visible": false,
-      "page": "crew.html",
-      "files": {
-        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Ada Okafor</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p class=\"bio\">One. Two. Three. Four. Five. Six. Seven. Eight. Nine. Ten. Eleven. Twelve. Thirteen. Fourteen. Fifteen. Sixteen. Seventeen. Eighteen. Nineteen. Twenty. Twenty-one. Twenty-two. Twenty-three. Twenty-four. Twenty-five.</p>\n      </div>\n    </div>\n  </body>\n</html>\n"
-      },
-      "steps": [
-        {
-          "size": ".bio",
-          "maxHeight": 175,
-          "label": "a bio of 25 sentences, in 18px text"
-        }
-      ]
-    },
-    {
-      "name": "Names stay on one line, cut with ...",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "style": ".card h3",
-          "prop": "white-space",
-          "equals": "nowrap",
-          "label": "a crew member's name"
-        },
-        {
-          "style": ".card h3",
-          "prop": "overflow-x",
-          "equals": "hidden",
-          "label": "a crew member's name"
-        },
-        {
-          "style": ".card h3",
-          "prop": "text-overflow",
-          "equals": "ellipsis",
-          "label": "a crew member's name"
+          "label": "every bio"
         }
       ]
     }

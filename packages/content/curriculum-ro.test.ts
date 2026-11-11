@@ -1,10 +1,17 @@
 import { describe, it, expect } from 'vitest';
+import { WEB_COURSE_KEYS } from '@cyberstars/shared/constants';
 import { courseParts, lessons } from './curriculum.js';
 import { lessonTitlesRo, partTitlesRo } from './curriculum-ro.js';
 
+// A web course is English only until it is translated (CYB-117): its lessons
+// and parts show their English names on the Romanian site
+const english = (course: string) => WEB_COURSE_KEYS.includes(course);
+
 describe('lessonTitlesRo', () => {
   it('titles every lesson, so a new one needs its Romanian title here', () => {
-    const untitled = lessons.filter((l) => !lessonTitlesRo[l.courseKey]?.[l.slug]);
+    const untitled = lessons.filter(
+      (l) => !english(l.courseKey) && !lessonTitlesRo[l.courseKey]?.[l.slug],
+    );
     expect(untitled.map((l) => `${l.courseKey}/${l.slug}`)).toEqual([]);
   });
 
@@ -36,7 +43,7 @@ describe('partTitlesRo', () => {
   it('names every part of a course, so a new one needs its Romanian name here', () => {
     const unnamed = parts.filter((key) => {
       const [course, part] = key.split('/');
-      return !partTitlesRo[course]?.[part];
+      return !english(course) && !partTitlesRo[course]?.[part];
     });
     expect(unnamed).toEqual([]);
   });

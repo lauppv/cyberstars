@@ -1,96 +1,72 @@
 {
   "cases": [
     {
-      "name": "The cards have rounded corners and a shadow",
+      "name": "Every card's corners are rounded",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
           "style": ".card",
           "prop": "border-top-left-radius",
-          "atLeast": 4,
           "every": true,
-          "label": "a card"
+          "atLeast": 8,
+          "label": "every card"
         },
         {
           "style": ".card",
           "prop": "border-top-right-radius",
-          "atLeast": 4,
           "every": true,
-          "label": "a card"
+          "atLeast": 8,
+          "label": "every card"
         },
         {
           "style": ".card",
           "prop": "border-bottom-right-radius",
-          "atLeast": 4,
           "every": true,
-          "label": "a card"
+          "atLeast": 8,
+          "label": "every card"
         },
         {
           "style": ".card",
           "prop": "border-bottom-left-radius",
-          "atLeast": 4,
           "every": true,
-          "label": "a card"
-        },
-        {
-          "style": ".card",
-          "prop": "box-shadow",
-          "not": "none",
-          "every": true,
-          "label": "a card"
+          "atLeast": 8,
+          "label": "every card"
         }
       ]
     },
     {
-      "name": "The pictures have rounded corners",
+      "name": "The duty list's corners are rounded",
       "visible": true,
+      "page": "crew.html",
       "steps": [
         {
-          "style": "img",
+          "style": "#duty + ol",
           "prop": "border-top-left-radius",
-          "atLeast": 4,
           "every": true,
-          "label": "a picture of the home page"
+          "atLeast": 8,
+          "label": "the duty list"
         },
         {
-          "style": "img",
+          "style": "#duty + ol",
+          "prop": "border-top-right-radius",
+          "every": true,
+          "atLeast": 8,
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
           "prop": "border-bottom-right-radius",
-          "atLeast": 4,
           "every": true,
-          "label": "a picture of the home page"
-        }
-      ]
-    },
-    {
-      "name": "The navigation's links have a line along their bottom only",
-      "visible": true,
-      "steps": [
-        {
-          "style": "nav a",
-          "prop": "border-bottom-width",
-          "atLeast": 1,
-          "every": true,
-          "label": "a link of the navigation"
+          "atLeast": 8,
+          "label": "the duty list"
         },
         {
-          "style": "nav a",
-          "prop": "border-bottom-style",
-          "not": "none",
+          "style": "#duty + ol",
+          "prop": "border-bottom-left-radius",
           "every": true,
-          "label": "a link of the navigation"
-        },
-        {
-          "style": "nav a",
-          "prop": "border-top-width",
-          "equals": "0px",
-          "label": "the top of a link of the navigation"
-        },
-        {
-          "style": "nav a",
-          "prop": "border-left-width",
-          "equals": "0px",
-          "label": "the left side of a link of the navigation"
+          "atLeast": 8,
+          "label": "the duty list"
         }
       ]
     }

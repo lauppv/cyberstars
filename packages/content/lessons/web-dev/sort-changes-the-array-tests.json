@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "name": "The board keeps its order",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "logged": "First on the board: SL-101"
+        }
+      ]
+    },
+    {
+      "name": "The sorted copy starts with the earliest",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "logged": "Earliest: SL-103"
+        },
+        {
+          "text": "#last-departure",
+          "equals": "Last departure: SL-104 at 11:00",
+          "label": "the paragraph #last-departure"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "cases": [
+    {
+      "name": "The page says it is in English",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        }
+      ]
+    }
+  ]
+}

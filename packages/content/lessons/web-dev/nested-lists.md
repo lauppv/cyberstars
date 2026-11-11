@@ -1,46 +1,81 @@
-Some lists have lists inside them: a book's chapters and their parts, a shop's aisles and what's on them, a station's decks and their rooms.
+Think of a school's floors: the ground floor has the gym and the canteen, the first floor has the labs and the library. That's a list of floors, and each floor has its own little list of rooms. A list inside a list.
 
-## A list in an item
+## A list inside an item
 
 A list can sit **inside a list item**, after the item's own text:
 
 ```html
 <ul>
   <li>
-    Cargo Bay
+    Ground floor
     <ul>
-      <li>Crates</li>
-      <li>Fuel cells</li>
+      <li>Gym</li>
+      <li>Canteen</li>
     </ul>
   </li>
-  <li>Galley</li>
+  <li>
+    First floor
+    <ul>
+      <li>Labs</li>
+      <li>Library</li>
+    </ul>
+  </li>
 </ul>
 ```
 
-The inner list belongs to **Cargo Bay**: it starts after the bay's name and ends before its `</li>`. The browser moves it a little to the right and gives it another kind of bullet. A screen reader says "list, 2 items" inside the first item, so the visitor hears what belongs to what.
+```text
+• Ground floor
+    ◦ Gym
+    ◦ Canteen
+• First floor
+    ◦ Labs
+    ◦ Library
+```
 
-The mistake to avoid is putting the inner list straight into the outer one, between two items:
+The inner list belongs to its floor: it starts after the floor's name and ends before that floor's `</li>`. The browser pushes it further right and gives it another kind of bullet.
+
+Indent the inner list one step further than its item in your file, so you can see at a glance what's inside what.
+
+## Break it on purpose
+
+Put the inner list straight into the outer one, between two items:
 
 ```html
 <ul>
-  <li>Cargo Bay</li>
+  <li>Ground floor</li>
   <ul>
-    <li>Crates</li>
+    <li>Gym</li>
   </ul>
+  <li>First floor</li>
 </ul>
 ```
 
-It looks almost the same, but a `ul` may only hold `li` elements, and now the crates don't belong to the bay any more.
-
-Lists of either kind nest the same way: an `ol` of steps can hold a `ul` of details under one step.
-
-Indent the inner list one step further than its item, so you can see at a glance what's inside what.
+It looks almost the same. But a `ul` may only hold `li`s, and now the gym doesn't belong to the ground floor any more: it floats between two floors. A screen reader can't tell what goes with what. The inner list always goes **inside** an `<li>`, before its `</li>`.
 
 ---
 
-## Mission: Deck Plan
+## Mission: Deck plan
 
-New crew members get lost on the station. On `crew.html`, after the morning routine, add a section called **Decks** with a plan of the station:
+New crew members get lost on the station. Show them where everything is.
 
-- at least three decks, named as you like, in a list in the class `decks`;
-- for each deck, at least two of its rooms, listed so that each room clearly belongs to its deck.
+**Example**: after the morning routine, `crew.html` would show something like this:
+
+```text
+Decks
+
+• Upper Deck
+    ◦ Bridge
+    ◦ Observatory
+• Living Deck
+    ◦ Galley
+    ◦ Gym
+• Lower Deck
+    ◦ Cargo bay
+    ◦ Greenhouse
+```
+
+- A part with a heading at the same level as Crew, called Decks.
+- Under it, a list with the class `decks`, with at least three decks.
+- Each deck has at least two rooms, in a list inside that deck's item.
+
+Psst, the inner list goes inside the `<li>`, before its `</li>` :)

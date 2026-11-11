@@ -1,61 +1,55 @@
-For the browser, every element is a **box**: a rectangle, even a single word in a `<span>`. Laying out a page means deciding how big those boxes are and how far apart they are. It starts with what a box is made of.
+Look at a framed photo on a wall. There's the photo itself, then a white strip of card around it, then the frame, and then some empty wall before the next picture. Every element on a web page is built the same way: a **box**, with layers around what it holds.
 
-## Four layers
+## Every element is a box
 
-From the inside out:
-
-1. **Content**: the text or picture itself.
-2. **Padding**: space between the content and the border, inside the box. It has the box's background color.
-3. **Border**: a line around the padding.
-4. **Margin**: space outside the border, between this box and the boxes next to it. It's always see-through.
-
-A sign on a hatch shows the first three. Its words get some space inside the sign, and a line goes around it:
+Even when you can't see it, every element sits in a rectangle: a heading, a paragraph, a card. Give one a background, and you see its box:
 
 ```css
-.hatch-sign {
-  background-color: #5a1010;
-  padding: 6px;
-  border: 4px double gold;
+.member {
+  background-color: #1e3a5f;
 }
 ```
 
-The fourth, margin, is the space a box keeps from the boxes around it. Pictures in a gallery keep their distance like this:
+The whole `div` turns blue, from edge to edge, and its text sits right against the edges, squashed.
+
+## `padding`: room inside the box
+
+`padding` is the white strip of card around the photo: space **inside** the box, between its edges and what it holds:
 
 ```css
-.photo {
-  margin-right: 30px;
+.member {
+  background-color: #1e3a5f;
+  padding: 16px;
 }
 ```
 
-`border` takes three values at once: its width, its style (`solid`, `dashed`, `dotted`...) and its color. Without a style, there's no border at all.
+Now there are 16 pixels of blue all around the text, on every side. The box grows to make room, and the text can breathe.
 
-## One side or all four
+The padding takes the box's background color. It's part of the box, just empty.
 
-`padding` and `margin` can be set for one side, `padding-top`, `margin-left`, or for all at once:
+Over the next lessons you'll meet the other layers: the **border** (the frame) and the **margin** (the empty wall around it).
+
+## Break it on purpose
+
+Give the padding, but no background:
 
 ```css
-padding: 12px; /* all four sides */
-padding: 12px 24px; /* top and bottom, then left and right */
-padding: 4px 8px 12px 16px; /* top, right, bottom, left */
+.member {
+  padding: 16px;
+}
 ```
 
-Four values go around like a clock's hand, starting at the top.
-
-## Seeing the boxes
-
-In any browser, right-click an element and pick **Inspect**. The developer tools draw its box, with the padding in one color and the margin in another, and every size written next to it. When the spacing on a page confuses you, look there first.
-
-One surprise you'll see there: when two boxes stand one above the other, their margins between them don't add up. The bigger one wins. A heading with a 20px margin under a paragraph with a 16px margin are 20px apart, not 36px.
+The text moves away from where it was, but you can't see any box: the room is there, only invisible. Padding shows best on a box with a background or a border.
 
 ---
 
-## Mission: Card Frames
+## Mission: Real cards
 
-On the crew page, the cards run into one another: you can't tell where one crew member ends and the next begins, and the words sit right on the edges. Make every card a panel of its own:
+Your crew cards on `crew.html` are only text so far. Make them look like cards.
 
-- a background of its own, so the card shows against the page, with its text still readable on it;
-- room inside, at least `8px` on every side, so no word touches the card's edge;
-- a frame you can see all the way round;
-- room between one card and the next, at least `12px`, so no two cards touch.
+**Example**: each card is a panel of its own color, with its name and job set a little away from the panel's edges.
 
-How much room, and which colors, is up to you. Open **Inspect** on a card to see its layers while you work.
+- Every card has a background the page doesn't have.
+- Every card has at least 12 pixels of room inside it, on every side.
+
+Psst, padding is the room **inside** the box :)

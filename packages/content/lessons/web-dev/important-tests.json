@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "name": "schedule.html links board.css after style.css",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "exists": "head link[href=\"style.css\"] ~ link[href=\"board.css\"]",
+          "label": "a <link> to board.css after the one to style.css"
+        }
+      ]
+    },
+    {
+      "name": "The caption is in italic, from board.css",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "style": "#flights caption",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "the caption"
+        }
+      ]
+    },
+    {
+      "name": "Every paragraph keeps its light color",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "contrast": "p",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every paragraph"
+        }
+      ]
+    }
+  ]
+}

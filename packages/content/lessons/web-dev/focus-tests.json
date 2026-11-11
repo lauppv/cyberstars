@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "name": "Tab shows a clear outline on the first link",
+      "visible": true,
+      "steps": [
+        {
+          "press": "Tab"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the first link of the menu, with the focus"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the first link of the menu, with the focus"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the first link of the menu, with the focus"
+        }
+      ]
+    },
+    {
+      "name": "On the schedule too",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "press": "Tab"
+        },
+        {
+          "style": "nav a:first-child",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the first link of the menu, with the focus"
+        }
+      ]
+    }
+  ]
+}

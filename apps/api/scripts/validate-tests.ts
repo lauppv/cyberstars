@@ -383,10 +383,13 @@ const WEB_CHECKS = [
   'layout',
   'centered',
   'fills',
+  'loaded',
   'size',
   'fits',
+  'doctype',
   'outline',
   'logged',
+  'alerted',
   'noErrors',
   'at',
 ] as const;
@@ -409,10 +412,13 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   layout: ['arrange', 'gap', 'align', 'label'],
   centered: ['label'],
   fills: ['label'],
+  loaded: ['label'],
   size: ['minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'label'],
   fits: [],
+  doctype: [],
   outline: [],
-  logged: [],
+  logged: ['none'],
+  alerted: ['none'],
   noErrors: [],
   at: [],
 };
@@ -431,6 +437,7 @@ const NEEDS_LABEL = new Set([
   'layout',
   'centered',
   'fills',
+  'loaded',
   'size',
 ]);
 const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);
@@ -449,6 +456,7 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   const value = step[own];
   switch (own) {
     case 'fits':
+    case 'doctype':
     case 'outline':
     case 'noErrors':
       return value === true ? null : `${own} must be true`;
@@ -461,7 +469,11 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
       if (!isPage(value)) return `${own} must name an .html page of the site`;
       return sitePaths.has(value) ? null : `${own} names ${value}, which the site doesn't have`;
     case 'logged':
-      return isText(value) ? null : 'logged must name a line';
+    case 'alerted':
+      if (!isText(value)) return `${own} must name a line`;
+      return step.none === undefined || step.none === true
+        ? null
+        : `a ${own} step's none is true or left out`;
     case 'press':
       return isText(value) ? null : 'press must name a key';
     default:

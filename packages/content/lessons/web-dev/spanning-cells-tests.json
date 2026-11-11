@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "name": "The footer's note spans the four columns",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "fills": "#flights > tfoot td",
+          "label": "the footer's note"
+        }
+      ]
+    },
+    {
+      "name": "A Docking Bays part has its table",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "exists": "h2 + table#bays",
+          "label": "a table with the id bays right under a part heading"
+        },
+        {
+          "count": "#bays th",
+          "atLeast": 3,
+          "label": "header cells in #bays"
+        },
+        {
+          "count": "#bays tbody tr",
+          "atLeast": 3,
+          "label": "rows of ships in #bays"
+        }
+      ]
+    },
+    {
+      "name": "Bay 1's cell spans its two ships",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "exists": "#bays td[rowspan=\"2\"]",
+          "label": "a cell of #bays spanning two rows"
+        },
+        {
+          "count": "#bays tbody tr:has(> td[rowspan=\"2\"]) + tr > td",
+          "equals": 2,
+          "label": "cells in the row under the spanning cell, which takes one of its places"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "name": "The page starts with <!DOCTYPE html>",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        }
+      ]
+    },
+    {
+      "name": "The heading and the paragraphs are in the body",
+      "visible": true,
+      "steps": [
+        {
+          "text": "body > h1",
+          "nonEmpty": true,
+          "label": "the biggest heading (<h1>) in the <body>"
+        },
+        {
+          "count": "h1 ~ p:not(:empty)",
+          "atLeast": 2,
+          "label": "paragraphs (<p>) with words, under the heading"
+        }
+      ]
+    }
+  ]
+}

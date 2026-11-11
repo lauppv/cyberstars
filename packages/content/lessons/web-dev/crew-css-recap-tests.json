@@ -1,193 +1,64 @@
 {
   "cases": [
     {
-      "name": "The duty board is a panel of its own",
+      "name": "Every job has a background of its own",
       "visible": true,
       "page": "crew.html",
       "steps": [
         {
-          "exists": "#duty + ol.duties",
-          "label": "the duties (in the class duties) right under Duty Board"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "background-color",
-          "not": "rgba(0, 0, 0, 0)",
-          "label": "the duties"
-        },
-        {
-          "differs": "ol.duties",
-          "from": "body",
+          "differs": ".role",
+          "from": ".card",
           "props": ["background-color"],
-          "fromLabel": "the page",
-          "label": "the duties"
+          "fromLabel": "its card",
+          "label": "every job"
+        }
+      ]
+    },
+    {
+      "name": "Every job has room on its sides and rounded corners",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".role",
+          "prop": "padding-left",
+          "every": true,
+          "atLeast": 4,
+          "label": "every job"
         },
         {
-          "contrast": "ol.duties li",
+          "style": ".role",
+          "prop": "padding-right",
+          "every": true,
+          "atLeast": 4,
+          "label": "every job"
+        },
+        {
+          "style": ".role",
+          "prop": "border-top-left-radius",
+          "every": true,
+          "atLeast": 4,
+          "label": "every job"
+        }
+      ]
+    },
+    {
+      "name": "Every job stays on its line and reads easily",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".role",
+          "prop": "display",
+          "every": true,
+          "not": "block",
+          "label": "every job"
+        },
+        {
+          "contrast": ".role",
           "atLeast": 4.5,
           "every": true,
-          "label": "a duty"
-        }
-      ]
-    },
-    {
-      "name": "A line on its left, round corners on its right",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "style": "ol.duties",
-          "prop": "border-left-width",
-          "atLeast": 3,
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-top-width",
-          "equals": "0px",
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-right-width",
-          "equals": "0px",
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-bottom-width",
-          "equals": "0px",
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-top-right-radius",
-          "atLeast": 4,
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-bottom-right-radius",
-          "atLeast": 4,
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-top-left-radius",
-          "equals": "0px",
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "border-bottom-left-radius",
-          "equals": "0px",
-          "label": "the duties"
-        }
-      ]
-    },
-    {
-      "name": "Room round the text, the numbers inside",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "style": "ol.duties",
-          "prop": "padding-top",
-          "atLeast": 8,
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "padding-right",
-          "atLeast": 8,
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "padding-bottom",
-          "atLeast": 8,
-          "label": "the duties"
-        },
-        {
-          "style": "ol.duties",
-          "prop": "padding-left",
-          "atLeast": 28,
-          "label": "the duties"
-        }
-      ]
-    },
-    {
-      "name": "At most 600px wide, centered",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "size": "ol.duties",
-          "maxWidth": 600,
-          "label": "the duties"
-        },
-        {
-          "centered": "ol.duties",
-          "label": "the duties"
-        }
-      ]
-    },
-    {
-      "name": "On a phone it still fits",
-      "visible": true,
-      "page": "crew.html",
-      "width": 375,
-      "steps": [
-        {
-          "fits": true
-        }
-      ]
-    },
-    {
-      "name": "The navigation is a bar with its links in the middle",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "style": "nav",
-          "prop": "background-color",
-          "not": "rgba(0, 0, 0, 0)",
-          "label": "the navigation"
-        },
-        {
-          "differs": "nav",
-          "from": "body",
-          "props": ["background-color"],
-          "fromLabel": "the page",
-          "label": "the navigation"
-        },
-        {
-          "style": "nav",
-          "prop": "border-top-left-radius",
-          "atLeast": 4,
-          "label": "the navigation"
-        },
-        {
-          "style": "nav",
-          "prop": "border-top-right-radius",
-          "atLeast": 4,
-          "label": "the navigation"
-        },
-        {
-          "style": "nav",
-          "prop": "border-bottom-right-radius",
-          "atLeast": 4,
-          "label": "the navigation"
-        },
-        {
-          "style": "nav",
-          "prop": "border-bottom-left-radius",
-          "atLeast": 4,
-          "label": "the navigation"
-        },
-        {
-          "centered": "nav a",
-          "label": "the navigation's links"
+          "label": "every job"
         }
       ]
     }

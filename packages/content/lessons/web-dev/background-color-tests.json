@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "name": "The page's background is night blue",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        }
+      ]
+    },
+    {
+      "name": "The page's text is light, given on the body",
+      "visible": true,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "color",
+          "equals": "rgb(240, 244, 255)",
+          "label": "the page (<body>)"
+        }
+      ]
+    },
+    {
+      "name": "The paragraphs are light",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p:not(.warning):not(.address)",
+          "prop": "color",
+          "every": true,
+          "equals": "rgb(240, 244, 255)",
+          "label": "every paragraph that isn't a warning or the address"
+        }
+      ]
+    },
+    {
+      "name": "The warnings stand on a strip of their own",
+      "visible": true,
+      "steps": [
+        {
+          "differs": ".warning",
+          "from": "p:not(.warning)",
+          "props": ["background-color"],
+          "fromLabel": "the other paragraphs",
+          "label": "the warnings"
+        }
+      ]
+    }
+  ]
+}

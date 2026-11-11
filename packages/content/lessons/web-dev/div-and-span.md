@@ -1,40 +1,75 @@
-Every element you've used so far means something: a heading, a paragraph, a list, a link. Sometimes you need a box that means nothing at all. It's only there to group things, so CSS or JavaScript can treat them as one.
+When you move house, you put things in boxes: one box for the kitchen, one for books. The box itself isn't a book or a plate. It's only there to keep things together, so you can carry them as one.
 
-## div and span
+Every element you've used so far **means** something: a heading, a paragraph, a list. Sometimes you need a box that means nothing at all, only to hold other elements together. That's a `div`.
 
-- **`div`** is a **block** box: it starts on a new line and takes the whole width, like a paragraph. It groups other elements.
-- **`span`** is an **inline** box: it sits inside a line of text, like `<strong>`. It goes around a few words.
+## `<div>`
 
 ```html
-<div class="notice">
-  <p>The galley closes early tonight.</p>
-  <p>Dinner is at 18:00.</p>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
 </div>
-<p>Your locker code is <span class="code">4471</span>.</p>
 ```
 
-The `div` groups two paragraphs into one notice. The `span` marks a few words inside a sentence, without breaking the line.
+The `div` holds a heading and a paragraph together, as one "member" box. On its own it changes nothing you can see: the heading and the paragraph look exactly as before. A `div` is a **block**, like a paragraph: it starts on a new line and takes the whole width.
 
-On their own, they change nothing on the screen. With a class, they give CSS and JavaScript something to hold on to: style every `.notice` as a yellow note, or find every `.code` to hide them.
+What makes it useful is the class. With `class="member"`, CSS can later give every member box a background and a border, and they look like cards. JavaScript can find them all, count them, add new ones.
 
-## Boxes that mean something
+## Boxes inside a box
 
-Before you use a `div`, check whether HTML has an element that says what the box is. A few of them:
+A `div` can hold other `div`s:
 
-- `<header>`, the top of a page or a section, often with its title and navigation;
-- `<main>`, the main content of the page, once per page;
-- `<section>`, a part of the page with a heading of its own;
-- `<article>`, something that would make sense alone, like a post or a profile card;
-- `<footer>`, the end of a page or a section: contact, small print.
+```html
+<div id="members">
+  <div class="member">
+    <h3>Sam Green</h3>
+    <p>Plays chess on Sundays.</p>
+  </div>
+  <div class="member">
+    <h3>Lea Park</h3>
+    <p>Runs the card games.</p>
+  </div>
+</div>
+```
 
-On the screen they act like a `div`, but a screen reader can jump between them, like it jumps between headings. Use `div` and `span` when nothing else fits: when the box is only there for its look or its script.
+One big box, `members`, holds all the member boxes. Later, CSS can lay them out side by side, all at once, through the big box.
+
+## Only when nothing else fits
+
+Before you reach for a `div`, ask: is this a heading, a paragraph, a list? If HTML has an element that says what it is, use that. A `div` is for when you only need a box.
+
+## Break it on purpose
+
+Close a `div` too early:
+
+```html
+<div class="member">
+  <h3>Sam Green</h3>
+</div>
+  <p>Plays chess on Sundays.</p>
+```
+
+The page looks the same now. But the paragraph has fallen out of its box. When CSS gives every member box a background, Sam's text will sit outside it. Indent what's inside a `div`, and you'll spot this at a glance.
 
 ---
 
-## Mission: Crew Cards
+## Mission: Crew cards
 
-The crew directory gets a card for each crew member. Later lessons turn them into real cards with CSS and fill them with JavaScript, so they need these names. On `crew.html`, after the decks:
+The crew directory gets a card for each crew member. Later lessons turn them into real cards with CSS, and fill them with JavaScript.
 
-- one box with the id `cards` that holds all the cards;
-- inside it, at least four cards, each a box in the class `card`. A card holds the crew member's name as a heading one level below the section headings, and a paragraph with their job, like **Job: Pilot**;
-- in that paragraph, the job itself (**Pilot**, not **Job:**) is wrapped in the class `role`, without breaking its line.
+**Example**: after the decks, `crew.html` would show something like this (it doesn't look like cards yet):
+
+```text
+Mara Vega
+Job: Commander
+
+Tomas Okafor
+Job: Engineer
+...
+```
+
+- One `div` with the id `cards` holds all the cards.
+- Inside it, at least four `div`s with the class `card`, one per crew member.
+- Each card holds the crew member's name as a heading one level under the part headings, and a paragraph with their job, like Job: Pilot.
+
+Psst, close each card's `div` after its paragraph, and the big box after the last card :)

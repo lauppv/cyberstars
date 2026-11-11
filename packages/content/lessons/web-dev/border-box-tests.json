@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "name": "Every card is 260 pixels wide, border included",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "#cards > .card:nth-child(1)",
+          "minWidth": 259,
+          "maxWidth": 261,
+          "label": "card 1"
+        },
+        {
+          "size": "#cards > .card:nth-child(2)",
+          "minWidth": 259,
+          "maxWidth": 261,
+          "label": "card 2"
+        },
+        {
+          "size": "#cards > .card:nth-child(3)",
+          "minWidth": 259,
+          "maxWidth": 261,
+          "label": "card 3"
+        },
+        {
+          "size": "#cards > .card:nth-child(4)",
+          "minWidth": 259,
+          "maxWidth": 261,
+          "label": "card 4"
+        }
+      ]
+    }
+  ]
+}

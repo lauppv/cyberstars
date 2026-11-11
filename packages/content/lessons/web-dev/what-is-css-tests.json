@@ -1,101 +1,41 @@
 {
   "cases": [
     {
-      "name": "The page links style.css",
+      "name": "style.css is linked from the head",
       "visible": true,
       "steps": [
         {
-          "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"], head link[rel=\"stylesheet\"][href=\"./style.css\"]",
-          "label": "a link to style.css in the head"
+          "exists": "head link[rel=\"stylesheet\"][href=\"style.css\"]",
+          "label": "a <link> to style.css in the <head>"
         }
       ]
     },
     {
-      "name": "Each kind of heading has a color",
+      "name": "The biggest heading has a color of its own",
       "visible": true,
       "steps": [
         {
           "style": "h1",
           "prop": "color",
           "not": "rgb(0, 0, 0)",
-          "every": true,
           "label": "the biggest heading"
-        },
-        {
-          "style": "h2",
-          "prop": "color",
-          "not": "rgb(0, 0, 0)",
-          "every": true,
-          "label": "a section heading"
-        },
-        {
-          "style": "h3",
-          "prop": "color",
-          "not": "rgb(0, 0, 0)",
-          "every": true,
-          "label": "a shift heading"
         }
       ]
     },
     {
-      "name": "The three kinds look different",
-      "visible": true,
-      "steps": [
-        {
-          "differs": "h1",
-          "from": "h2, h3",
-          "props": ["color"],
-          "fromLabel": "the other headings",
-          "label": "the biggest heading"
-        },
-        {
-          "differs": "h2",
-          "from": "h3",
-          "props": ["color"],
-          "fromLabel": "the shift headings",
-          "label": "the section headings"
-        }
-      ]
-    },
-    {
-      "name": "Every heading reads on the white page",
-      "visible": true,
-      "steps": [
-        {
-          "contrast": "h1, h2, h3",
-          "atLeast": 3,
-          "every": true,
-          "label": "a heading"
-        }
-      ]
-    },
-    {
-      "name": "The colors come from style.css, for every heading of a kind",
+      "name": "The rules come from style.css",
+      "visible": false,
+      "files": {
+        "style.css": "h1 { color: rgb(1, 2, 3); }"
+      },
       "steps": [
         {
           "style": "h1",
           "prop": "color",
           "equals": "rgb(1, 2, 3)",
-          "label": "the biggest heading's color"
-        },
-        {
-          "style": "h2",
-          "prop": "color",
-          "equals": "rgb(4, 5, 6)",
-          "every": true,
-          "label": "a section heading's color"
-        },
-        {
-          "style": "h3",
-          "prop": "color",
-          "equals": "rgb(7, 8, 9)",
-          "every": true,
-          "label": "a shift heading's color"
+          "label": "the biggest heading"
         }
-      ],
-      "files": {
-        "style.css": "h1 { color: rgb(1, 2, 3); }\nh2 { color: rgb(4, 5, 6); }\nh3 { color: rgb(7, 8, 9); }\n"
-      }
+      ]
     }
   ]
 }

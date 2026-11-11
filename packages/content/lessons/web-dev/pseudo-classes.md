@@ -1,37 +1,52 @@
-Some things about an element aren't written in the HTML at all: the mouse is over it, the keyboard is on it, it's the third row of its table. **Pseudo-classes** pick elements by states and places like these. They start with a colon.
+Move your mouse over a button on almost any website: it changes colour a little, as if to say "yes, you can click me". The button hasn't changed: it's in a different **state**, with the mouse on it. CSS can style an element just for that state.
 
-## States
+## `:hover`
 
-```css
-a:hover { }          /* the mouse is over it */
-a:focus-visible { }  /* it has the keyboard's focus */
-button:disabled { }  /* it can't be used right now */
-```
-
-`:hover` is the classic one: a row that lights up under the mouse, a link that changes color. But not everyone uses a mouse. Someone who moves through a page with the **Tab** key needs to see where they are. That's `:focus-visible`: the browser uses it when the focus came from the keyboard. Browsers draw their own focus ring. Never remove it without putting a clear one back.
-
-## Places
+A **pseudo-class** is a word after a `:` that picks an element only while it's in some state:
 
 ```css
-li:first-child { }        /* the first child of its parent */
-li:last-child { }         /* the last */
-tr:nth-child(2) { }       /* the second */
-tr:nth-child(even) { }    /* the 2nd, 4th, 6th... */
-tr:nth-child(odd) { }     /* the 1st, 3rd, 5th... */
-p:not(.warning) { }       /* every p that isn't a .warning */
+a:hover {
+  color: gold;
+}
 ```
 
-`:nth-child(even)` gives a table **zebra stripes**: every other row a bit darker, so your eyes can follow a long row across the table.
+"A link, while the mouse is over it". Move the mouse onto a link: it turns gold. Move it away: it goes back.
 
-When rules compete, a pseudo-class counts as much as a class. So `tr:hover` and `tr:nth-child(even)` are equal, and the one written later wins. Put the hover rule after the stripes, or a striped row won't light up.
+It works on any element:
+
+```css
+#scores tbody tr:hover {
+  background-color: #1e3a5f;
+}
+```
+
+Every row of a table lights up while the mouse is on it, so your eye can follow it across, even in a wide table.
+
+## Phones
+
+A phone has no mouse, so nothing hovers. Some phones treat a tap as a quick hover, others don't. So `:hover` is for extra help, never for something people need: never hide important information until a hover.
+
+## Break it on purpose
+
+Put a space before the colon:
+
+```css
+#scores tbody tr :hover {
+  background-color: #1e3a5f;
+}
+```
+
+Now it means "any element **inside** a row, while hovered": the cells light up one at a time, not the whole row. The `:` sticks to the element it's about, with no space.
 
 ---
 
-## Mission: Live Board
+## Mission: Follow the row
 
-The departures board is long, and passengers lose their row. Help them:
+The flight table is wide, and it's easy to lose your place in a row.
 
-- In the body of the flights table, every other row looks different from the ones next to it, like zebra stripes, with the text still easy to read.
-- The row under the mouse lights up in a color of its own, unlike any other row, whatever its stripe.
-- A navigation link under the mouse changes its look.
-- Someone using the **Tab** key always sees which link they're on: give the link with the keyboard's focus a clear outline, at least `2px` thick.
+**Example**: move the mouse over a flight, and its whole row lights up in a color of your own. Move away, and it goes back.
+
+- A row of the flight table's body, while the mouse is over it, has a background it doesn't have otherwise.
+- Without the mouse on it, it doesn't.
+
+Psst, no space before the `:` :)

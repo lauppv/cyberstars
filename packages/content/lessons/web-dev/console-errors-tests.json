@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "name": "The system check runs to its end",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "All systems go"
+        }
+      ]
+    },
+    {
+      "name": "The console shows no errors",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "cases": [
+    {
+      "name": "Two paragraphs of your own follow the heading",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h1 ~ p:not(:empty)",
+          "atLeast": 2,
+          "label": "paragraphs (<p>) with words, under the heading"
+        }
+      ]
+    }
+  ]
+}

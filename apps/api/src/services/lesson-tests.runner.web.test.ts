@@ -261,6 +261,120 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(phone.web).toMatchObject({ kind: 'fits', width: 375 });
   });
 
+  it('tells a picture whose file loaded from one whose file is missing, whatever its size', () => {
+    const svg = encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"/>',
+    );
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <img class="ok" src="data:image/svg+xml,${svg}" alt="A dot">
+        <img class="lost" src="img/gone.svg" alt="A dot" width="240" height="150"></body></html>`,
+    };
+    const [ok, lost] = verdicts(files, [
+      { name: 'Found', visible: true, steps: [{ loaded: '.ok', label: 'the dot' }] },
+      { name: 'Lost', visible: true, steps: [{ loaded: '.lost', label: 'the dot' }] },
+    ]);
+    expect(ok.passed).toBe(true);
+    expect(lost.web).toMatchObject({ kind: 'loaded' });
+  });
+
+  it('writes console values as the preview does: an element, a list, an object', () => {
+    const files = {
+      'index.html':
+        '<!DOCTYPE html><html><body><h1>Crew</h1><script>console.log(document.querySelector("h1")); console.log("crew", [1, "two"], { name: "Ana" }); console.log(4);</script></body></html>',
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Console',
+        visible: true,
+        steps: [{ logged: '<h1>' }, { logged: 'crew [1, "two"] {name: "Ana"}' }, { logged: '4' }],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
+  it('keeps up with a busy console, a page that moves on and a too long line', () => {
+    const files = {
+      'index.html':
+        '<!DOCTYPE html><html><body><h1 id="go">Go</h1><script>for (let i = 0; i < 5000; i++) console.log("Line", i); console.log("x".repeat(2100)); document.querySelector("#go").onclick = () => { console.log(document.querySelector("h1")); location.href = "next.html"; };</script></body></html>',
+      'next.html': '<!DOCTYPE html><html><body><p>Next</p></body></html>',
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Console',
+        visible: true,
+        steps: [
+          { logged: 'Line 4999' },
+          { logged: `${'x'.repeat(2000)}…` },
+          { click: '#go', label: 'the heading' },
+          { at: 'next.html' },
+          { logged: '<h1>' },
+        ],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
+  it("reads a first letter's and a list marker's style", () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        p::first-letter { font-size: 40px; } li::marker { color: rgb(255, 209, 102); }
+      </style></head><body><p>Hello</p><ul><li>One</li></ul></body></html>`,
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Pseudo',
+        visible: true,
+        steps: [
+          {
+            style: 'p',
+            prop: 'font-size',
+            pseudo: '::first-letter',
+            atLeast: 40,
+            label: 'the first letter',
+          },
+          {
+            style: 'li',
+            prop: 'color',
+            pseudo: '::marker',
+            equals: 'rgb(255, 209, 102)',
+            label: 'the bullet',
+          },
+          { style: 'p', prop: 'font-size', atMost: 20, label: 'the paragraph' },
+        ],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
+  it('notes a message box and closes it, so the page goes on', () => {
+    const files = {
+      'index.html':
+        '<!DOCTYPE html><html><body><p id="after"></p><script>alert("Hi crew"); document.querySelector("#after").textContent = "on";</script></body></html>',
+    };
+    const [run] = verdicts(files, [
+      {
+        name: 'Box',
+        visible: true,
+        steps: [{ alerted: 'Hi crew' }, { text: '#after', equals: 'on', label: 'the line' }],
+      },
+    ]);
+    expect(run.passed).toBe(true);
+  });
+
+  it('tells a page that starts with <!DOCTYPE html> from one without', () => {
+    const files = {
+      'index.html': '<!DOCTYPE html><html><body><h1>Station Log</h1></body></html>',
+      'old.html': '<html><body><h1>Station Log</h1></body></html>',
+    };
+    const [modern, old] = verdicts(files, [
+      { name: 'Modern', visible: true, steps: [{ doctype: true }] },
+      { name: 'Old', visible: true, page: 'old.html', steps: [{ doctype: true }] },
+    ]);
+    expect(modern.passed).toBe(true);
+    expect(old.web).toMatchObject({ kind: 'doctype' });
+  });
+
   it('reads the effect of a style: room, contrast, a look of its own, the middle, the outline', () => {
     const files = {
       'index.html': `<!DOCTYPE html><html><head><style>

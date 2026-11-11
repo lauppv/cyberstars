@@ -1,49 +1,59 @@
-The station's home page is done. Part 2 adds a second page, the **Crew Directory**. The first thing two pages need is a way to get from one to the other.
+On your computer you keep files in folders: photos in one, homework in another, and folders inside folders. A website is the same. As it grows, its files go into folders so you can find them, like your pictures in `img`.
 
-## Paths
+To reach a file, a link or a picture uses its **path**: the way to it, from the page you're on.
 
-A link's `href` and a picture's `src` say where a file is. You've written two kinds:
+## Into a folder
 
-- a **full address**, like `https://en.wikipedia.org/wiki/Space_station`: another site, written out in full;
-- a **relative path**, like `img/station.svg`: a file of your own site, found **starting from the page that names it**.
-
-Read a relative path like directions from where you are standing:
-
-```text
-index.html            ← you are here
-crew.html             → "crew.html"
-img/station.svg       → "img/station.svg"
-bays/cargo.html       → "bays/cargo.html"
-```
-
-From `bays/cargo.html`, the way back to the home page first goes up one folder: `../index.html`. `..` means "the folder above".
-
-A path that starts with `/`, like `/crew.html`, starts from the site's **root**, the top folder, wherever the page is. That works once a site is on a web server, but not when you open the files straight from your computer. Relative paths are the safer habit.
-
-Keep file names simple: small letters, digits and `-`, and no spaces. On most servers, `Crew Directory.html` and `crew directory.html` are two different files, and a space turns into `%20` in the address.
-
-## A way around: nav
-
-Most sites start every page with the same few links: the **navigation**. HTML has an element for it:
+You've already used one: `img/station.svg` means "go into the folder `img`, and take `station.svg` there". Each `/` is a step into a folder.
 
 ```html
-<nav>
-  <a href="index.html">Home</a>
-  <a href="bays.html">Bays</a>
-</nav>
+<a href="games/chess.html">Chess</a>
 ```
 
-`<nav>` changes nothing on the screen. But it tells a screen reader "these are the site's main links", so a visitor can jump straight to them, or skip past them.
+From `index.html`, this goes into the folder `games` and opens `chess.html`.
 
-## The second page
+## Out of a folder: `../`
 
-This lesson added an empty `crew.html`. It's a page like `index.html`, with its own frame and its own `<title>`, and it uses the same `style.css`: one style sheet, two pages, one look.
+Now you're **on** `games/chess.html`, inside the `games` folder. The style sheet is outside it, next to `index.html`. How do you get there?
+
+`../` means "go up one folder, out of the one I'm in":
+
+```html
+<link rel="stylesheet" href="../style.css" />
+<img src="../img/logo.svg" alt="The club's logo" />
+<a href="../index.html">Home</a>
+```
+
+From `games/chess.html`:
+
+- `../style.css`: step out of `games`, take `style.css`;
+- `../img/logo.svg`: step out of `games`, then into `img`;
+- `../index.html`: step out, take the home page.
+
+A path is always worked out **from the page it's written in**. The same file can need different paths from different pages: `style.css` from `index.html`, `../style.css` from `games/chess.html`.
+
+To make a folder, use **New folder** in your file list. To put a page in it, make the file inside the folder.
+
+## Break it on purpose
+
+On `games/chess.html`, link the style sheet as if you were on the home page:
+
+```html
+<link rel="stylesheet" href="style.css" />
+```
+
+The browser looks for `games/style.css`, which doesn't exist. The page shows up plain, black on white, with no error. When a page in a folder loses its style or its pictures, check its paths: they probably need a `../`.
 
 ---
 
-## Mission: Second Deck
+## Mission: The commander's page
 
-The station gets a second page, the crew directory.
+The station's commander gets a page of her own, in a new folder for crew pages.
 
-- Write `crew.html` as a complete page, like your home page: English, able to show any letter, **Crew Directory** on its tab and as its title, with a paragraph of your own under the title. It looks like the home page, from the same style sheet.
-- A visitor on either page should reach the other in one click. At the very top of **both** pages, add the site's navigation, with a link **Home** to the home page and a link **Crew** to the crew page.
+**Example**: from the crew directory, a link opens the commander's page. It has her name as its heading, the station picture, the same night blue as the other pages, and a link back to the crew directory.
+
+- In a folder named `people`, a page `vega.html`: a whole page with a name for its tab and her name as its biggest heading.
+- It uses the site's `style.css`, and shows the picture `img/station.svg`.
+- `crew.html` links to it, and it links back to `crew.html`.
+
+Psst, from inside `people`, everything else is one folder up :)

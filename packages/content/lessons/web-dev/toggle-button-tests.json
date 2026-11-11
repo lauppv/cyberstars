@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "name": "The button starts unpressed",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "button#hide-cancelled",
+          "equals": "Hide cancelled",
+          "label": "the button (<button id=\"hide-cancelled\">)"
+        },
+        {
+          "attr": "button#hide-cancelled",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the button"
+        }
+      ]
+    },
+    {
+      "name": "A click hides the cancelled flight",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "style": "#flights tr.cancelled",
+          "prop": "display",
+          "equals": "none",
+          "label": "the cancelled row"
+        },
+        {
+          "text": "button#hide-cancelled",
+          "equals": "Show cancelled",
+          "label": "the button"
+        },
+        {
+          "attr": "button#hide-cancelled",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the button"
+        },
+        {
+          "style": "#flights tbody tr:first-child",
+          "prop": "display",
+          "not": "none",
+          "label": "the first row"
+        }
+      ]
+    },
+    {
+      "name": "A second click brings it back",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "click": "button#hide-cancelled",
+          "label": "the button Hide cancelled"
+        },
+        {
+          "style": "#flights tr.cancelled",
+          "prop": "display",
+          "not": "none",
+          "label": "the cancelled row"
+        },
+        {
+          "text": "button#hide-cancelled",
+          "equals": "Hide cancelled",
+          "label": "the button"
+        },
+        {
+          "attr": "button#hide-cancelled",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the button"
+        }
+      ]
+    }
+  ]
+}

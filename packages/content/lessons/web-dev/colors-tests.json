@@ -1,98 +1,28 @@
 {
   "cases": [
     {
-      "name": "The page is dark, its text light",
+      "name": "Paragraphs that aren't warnings aren't black",
       "visible": true,
       "steps": [
         {
-          "contrast": "body",
-          "atLeast": 4.5,
-          "on": "dark",
-          "label": "the page's text"
-        },
-        {
-          "contrast": "p:not(.warning)",
-          "atLeast": 4.5,
-          "on": "dark",
+          "style": "p:not(.warning)",
+          "prop": "color",
           "every": true,
-          "label": "a paragraph"
+          "not": "rgb(0, 0, 0)",
+          "label": "every paragraph that isn't a warning"
         }
       ]
     },
     {
-      "name": "The headings read on the dark",
+      "name": "Small headings that aren't shifts aren't black",
       "visible": true,
       "steps": [
         {
-          "contrast": "h1, h2, h3",
-          "atLeast": 3,
-          "on": "dark",
+          "style": "h3:not(.shift)",
+          "prop": "color",
           "every": true,
-          "label": "a heading"
-        }
-      ]
-    },
-    {
-      "name": "The links read on the dark",
-      "visible": true,
-      "steps": [
-        {
-          "contrast": "a",
-          "atLeast": 4.5,
-          "on": "dark",
-          "every": true,
-          "label": "a link"
-        }
-      ]
-    },
-    {
-      "name": "The warnings stand out, and read",
-      "visible": true,
-      "steps": [
-        {
-          "differs": ".warning",
-          "from": "p:not(.warning)",
-          "props": ["color", "background-color"],
-          "fromLabel": "the other paragraphs",
-          "label": "the warnings"
-        },
-        {
-          "contrast": ".warning",
-          "atLeast": 4.5,
-          "every": true,
-          "label": "a warning"
-        }
-      ]
-    },
-    {
-      "name": "The small numbers and stressed words read on the dark",
-      "visible": true,
-      "steps": [
-        {
-          "contrast": "sub, sup",
-          "atLeast": 4.5,
-          "on": "dark",
-          "every": true,
-          "label": "a number below or above the line"
-        },
-        {
-          "contrast": "em, strong",
-          "atLeast": 4.5,
-          "every": true,
-          "label": "a stressed or important word"
-        }
-      ]
-    },
-    {
-      "name": "Today on Board stands out from the other sections",
-      "visible": true,
-      "steps": [
-        {
-          "differs": "#today",
-          "from": "h2:not(#today)",
-          "props": ["color", "background-color"],
-          "fromLabel": "the other section headings",
-          "label": "the heading Today on Board"
+          "not": "rgb(0, 0, 0)",
+          "label": "every small heading (<h3>) that isn't a shift"
         }
       ]
     }

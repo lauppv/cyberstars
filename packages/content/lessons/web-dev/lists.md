@@ -1,42 +1,76 @@
-A crew directory is a list of people. HTML has elements made for lists. Use them instead of a paragraph per line: they tell the browser and a screen reader "these belong together, and there are this many".
+Before you go shopping, you write a list: milk, bread, apples. Each thing on its own line, often with a dot in front. Nobody writes it as one long sentence. Web pages have lists too, made for exactly this.
 
-## Unordered lists
+## `<ul>` and `<li>`
 
-When the order doesn't matter, use an **unordered list**, `ul`, with each item in an `li`, a **list item**:
+A list is a `ul` element, short for **unordered list**. Each thing in it is an `li`, a **list item**:
 
 ```html
 <ul>
-  <li>Water</li>
-  <li>Seeds</li>
-  <li>Spare bolts</li>
+  <li>Milk</li>
+  <li>Bread</li>
+  <li>Apples</li>
 </ul>
 ```
 
-The browser puts a bullet before each item. A screen reader says "list, 3 items" before reading them, so the visitor knows how much is coming.
-
-## Ordered lists
-
-When the order matters, like steps or a ranking, use an **ordered list**, `ol`:
-
-```html
-<ol>
-  <li>Close the inner hatch</li>
-  <li>Check the suit's pressure</li>
-  <li>Open the outer hatch</li>
-</ol>
+```text
+• Milk
+• Bread
+• Apples
 ```
 
-The browser numbers the items by itself. Add an item in the middle, and the numbers after it change too. Never type the numbers into the items yourself.
+The browser puts a bullet before each item and moves the list a little to the right. "Unordered" means the order doesn't matter: apples before bread is just as good.
+
+## Why not paragraphs?
+
+You could write three paragraphs, and it might even look similar. But a list **says** that these things belong together, and how many there are. A screen reader announces "list, 3 items" before reading them, so the listener knows what's coming. Paragraphs don't tell them that.
 
 ## Only items inside
 
-A `ul` or an `ol` holds `li` elements, and nothing else. Whatever you want in the list goes **inside** an `li`. And an `li` always sits in a list. A list item can hold more than text: a link, a picture, a paragraph.
+A `ul` holds `li` elements and nothing else. Whatever you want in the list goes **inside** an `li`: text, a link, even a picture.
+
+```html
+<ul>
+  <li><a href="chess.html">Chess</a></li>
+  <li>Cards</li>
+</ul>
+```
+
+## Break it on purpose
+
+Forget the `<li>`s:
+
+```html
+<ul>
+  Milk
+  Bread
+  Apples
+</ul>
+```
+
+```text
+Milk Bread Apples
+```
+
+No bullets, all on one line. Without its items, a `ul` is just a box of loose words.
 
 ---
 
-## Mission: Roll Call
+## Mission: The crew list
 
-On `crew.html`, under your paragraph:
+`crew.html` needs its most important part: who is on board.
 
-- a section called **Crew**, with the names of at least four crew members, as a list with the id `crew`, one name per item. The names can come in any order;
-- a section called **Morning Routine**, with what the crew does every morning, at least three steps. Here the order matters: nobody eats breakfast before waking up.
+**Example**: under the page's heading and paragraph, your page would show something like this:
+
+```text
+Crew
+
+• Mara Vega
+• Tomas Okafor
+• Ines Lindqvist
+• Kenji Arano
+```
+
+- A part with a heading one level under the page's heading, called Crew.
+- Under it, a list with the id `crew`, with at least four crew members, one name per item. Later lessons use this id.
+
+Psst, every name goes in its own `<li>` :)

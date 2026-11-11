@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "name": "An evening shift makes four",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Shifts: 4"
+        }
+      ]
+    },
+    {
+      "name": "The last one is cancelled",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Cancelled: Evening"
+        },
+        {
+          "logged": "Shifts: 3"
+        }
+      ]
+    }
+  ]
+}

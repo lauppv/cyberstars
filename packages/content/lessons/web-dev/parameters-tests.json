@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "name": "Call to dinner",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "button#call-dinner",
+          "label": "the button Call to dinner"
+        },
+        {
+          "text": "#intercom",
+          "equals": "Dinner is ready",
+          "label": "the intercom"
+        }
+      ]
+    },
+    {
+      "name": "Call to the bridge",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "click": "button#call-bridge",
+          "label": "the button Call to the bridge"
+        },
+        {
+          "text": "#intercom",
+          "equals": "Report to the bridge",
+          "label": "the intercom"
+        }
+      ]
+    },
+    {
+      "name": "One after the other",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "text": "#intercom",
+          "equals": "",
+          "label": "the intercom before any click"
+        },
+        {
+          "click": "button#call-dinner",
+          "label": "the button Call to dinner"
+        },
+        {
+          "click": "button#call-bridge",
+          "label": "the button Call to the bridge"
+        },
+        {
+          "text": "#intercom",
+          "equals": "Report to the bridge",
+          "label": "the intercom"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,41 +1,12 @@
 {
   "cases": [
     {
-      "name": "The station greets its visitors",
+      "name": "The console shows the new arrival",
       "visible": true,
+      "page": "crew.html",
       "steps": [
         {
-          "logged": "Welcome aboard Station Log"
-        }
-      ]
-    },
-    {
-      "name": "It counts the characters of its name",
-      "visible": true,
-      "steps": [
-        {
-          "logged": "11"
-        }
-      ]
-    },
-    {
-      "name": "It shouts its name",
-      "visible": true,
-      "steps": [
-        {
-          "logged": "STATION LOG"
-        }
-      ]
-    },
-    {
-      "name": "It tells its orbit time in a sentence",
-      "visible": true,
-      "steps": [
-        {
-          "logged": "One orbit takes 92 minutes"
-        },
-        {
-          "noErrors": true
+          "logged": "New arrival: Lena Park"
         }
       ]
     }

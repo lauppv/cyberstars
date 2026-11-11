@@ -113,6 +113,8 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
   const page = pages.includes(chosenPage) ? chosenPage : (pages[0] ?? null);
   const [entries, setEntries] = useState<ConsoleEntry[]>([]);
   const [paused, setPaused] = useState(false);
+  // The shown page's <title>, as its frame said it
+  const [title, setTitle] = useState('');
   // The page in the frame, and the frame's number: a new number is a new frame
   const [frame, setFrame] = useState<{ id: number; page: PreviewPage } | null>(null);
   const frameRef = useRef<HTMLIFrameElement>(null);
@@ -173,6 +175,7 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
         text: tr('web.console.missingFile', { file, from }),
       })),
     );
+    setTitle('');
     setFrame({ id: nextId.current++, page: out });
   }, []);
 
@@ -241,6 +244,9 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
             add('info', latest.current.t('web.console.outsideLink', { href: message.href }));
           }
           break;
+        case 'title':
+          if (typeof message.text === 'string') setTitle(message.text.trim());
+          break;
         case 'formSent':
           if (typeof message.fields === 'string') {
             add('info', latest.current.t('web.console.formSent', { fields: message.fields }));
@@ -266,6 +272,7 @@ export function useWebPreview({ files, courseKey, lessonSlug }: Options) {
 
   return {
     page,
+    title,
     choosePage: setChosenPage,
     frame,
     frameRef,

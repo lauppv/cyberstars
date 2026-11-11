@@ -1,37 +1,50 @@
-You've already written `nav a`: two selectors with a space between them. That space is a **combinator**: it picks elements by where they sit compared to others. There are four.
+"Everyone in Class 7B, stand up." Not everyone in the school, only the pupils inside one class. CSS can say that too: style an element only when it's **inside** another one.
 
-## The four combinators
+## The descendant selector: a space
+
+Two selectors with a space between them pick elements that sit **inside** the first:
 
 ```css
-table td { }   /* descendant: a td anywhere inside a table */
-ul > li { }    /* child: an li directly inside a ul, not deeper */
-h2 + p { }     /* next sibling: a p right after an h2, same parent */
-h2 ~ p { }     /* later sibling: every p after an h2, same parent */
+#scores td {
+  padding: 8px;
+}
 ```
 
-- **Descendant** (a space): inside, at any depth. You'll use this one the most.
-- **Child** (`>`): only one level down. `.decks > li` picks the decks, not the rooms inside them.
-- **Next sibling** (`+`): the element right after, with the same parent. `h1 + p` is the paragraph right under a page's title.
-- **Later sibling** (`~`): any element that comes after, with the same parent.
+This means "every `td` inside the element with the id `scores`". The cells of the `#scores` table get room inside them. Cells of any other table on the page stay as they were.
 
-You can chain them: `#flights tbody td` is every data cell in the body of the flights table.
+"Inside" means anywhere inside: a child, a grandchild, deeper still. The `td` is in a `tr`, in a `tbody`, in the table, and the space still finds it.
 
-## Why bother
+## Reading it right to left
 
-Combinators let you style things by where they are, without putting a class on every element. Use classes for things that mean something, and combinators for things that follow from the shape of the page.
+The browser reads a selector from the end: "a `td`... that sits inside `#scores`". So the **last** part is what gets styled. `#scores td` styles cells, `td #scores` would style something called `#scores` inside a cell.
 
-## Tables and borders
+A few more:
 
-Table cells have their own borders, with a small gap between them. `border-collapse: collapse` on the table joins the borders next to each other into one line. Most data tables look like that.
+- `nav a`: links inside a menu, not the other links of the page;
+- `.card h3`: headings inside cards;
+- `footer p`: paragraphs in a footer.
+
+## Break it on purpose
+
+Forget the space:
+
+```css
+#scores.td {
+  padding: 8px;
+}
+```
+
+Now it means "the element with the id `scores` **and** the class `td`", one element with both. Nothing has that, so nothing changes. A space means "inside", no space means "the same element".
 
 ---
 
-## Mission: Styled Board
+## Mission: Room in the flights
 
-The departures board should look like the screens at a spaceport gate. Style it through the table, without adding a class to any cell:
+The flight table's cells are squashed together. The docking bays table is fine as it is.
 
-- The flights table stretches across the whole column, with one single line between its cells, not double ones.
-- Its header cells stand out from the data cells, and stay easy to read.
-- Every cell of the flights table has room around its text, at least `4px` on each side, and a line under it, so each row is easy to follow. The bays table keeps its own look for now.
-- On every page, the paragraph right after the page's title is an introduction: bigger than the paragraphs after it.
-- The navigation's own links are bold. Links inside the text stay as they are.
+**Example**: the flight table's cells have room inside them, and the docking bays table looks exactly as before.
+
+- Every cell of the flight table (`#flights`), headers and data, has at least 8 pixels of room inside on its left and right.
+- The docking bays table's cells don't change.
+
+Psst, a space between two selectors means "inside" :)

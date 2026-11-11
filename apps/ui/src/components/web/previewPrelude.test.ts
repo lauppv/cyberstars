@@ -45,6 +45,18 @@ describe('previewPrelude', () => {
     expect(atStart).toEqual([{ source: PREVIEW_SOURCE, type: 'ready' }]);
   });
 
+  it("sends the page's title once it is read", () => {
+    document.title = 'Station Log';
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    expect(last()).toEqual({ source: PREVIEW_SOURCE, type: 'title', text: 'Station Log' });
+  });
+
+  it('sends the title again when a script changes it', async () => {
+    document.title = 'Launch in 3';
+    await Promise.resolve();
+    expect(last()).toEqual({ source: PREVIEW_SOURCE, type: 'title', text: 'Launch in 3' });
+  });
+
   it("sends what the page logs, values shown as a browser's console would", () => {
     const loop: Record<string, unknown> = { name: 'Ana' };
     loop.self = loop;

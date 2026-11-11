@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "name": "Both scripts load from the head, deferred",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "head script[src=\"check.js\"][defer]",
+          "label": "a <script> for check.js in the <head>, with defer"
+        },
+        {
+          "exists": "head script[src=\"crew.js\"][defer]",
+          "label": "a <script> for crew.js in the <head>, with defer"
+        }
+      ]
+    },
+    {
+      "name": "They still run",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Crew directory loaded"
+        },
+        {
+          "logged": "All systems go"
+        }
+      ]
+    }
+  ]
+}

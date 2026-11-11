@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "name": "The page can show any letter",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        }
+      ]
+    }
+  ]
+}

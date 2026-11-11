@@ -1,48 +1,59 @@
-So far your scripts change the text of elements that are already on the page. They can also **make** new elements and **take** elements away.
+So far your scripts change what's **in** elements: their text. But the page can also grow: a chat app adds a new bubble for every message, a to-do app a new line for every task. The script makes a brand new element and puts it on the page.
 
-## Making an element
+## `createElement`: make one
 
 ```js
 const item = document.createElement("li");
-item.textContent = "Spare bolts";
-document.querySelector("#manifest").append(item);
+item.textContent = "darts";
 ```
 
-1. `document.createElement("li")` makes a new `li`. It exists, but it isn't on the page yet.
-2. Fill it, like any other element.
-3. `append` puts it inside another element, after what's already there. Only now can the visitor see it.
+`document.createElement("li")` makes a new, empty `li`, as if you'd written `<li></li>`. Then you fill it like any element. But it isn't on the page yet: it's floating in the script's memory, waiting to be put somewhere.
 
-`prepend` puts it first instead.
-
-## Taking one away
+## `append`: put it on the page
 
 ```js
-document.querySelector("#manifest li:last-child").remove();
+document.querySelector("#games").append(item);
 ```
 
-`remove()` takes an element off the page, with everything inside it. `:last-child` in a selector means "the one that comes last inside its parent": here, the list's last item. Part 3 shows you more selectors like it.
+`append` puts the new element **inside** another one, at its **end**. Now the `#games` list has one more item, at the bottom, and the page shows it.
 
-## Lists you read earlier are old
-
-`querySelectorAll` gives you the elements that match **at that moment**. If you add an item later, a list you read before doesn't have it. So when the page changes, read it again. A function makes that easy: put the reading and the writing in one function, and call it after every change.
+Put the two together on a click:
 
 ```js
-function showCount() {
-  const items = document.querySelectorAll("#manifest li");
-  document.querySelector("#count").textContent = `${items.length} items`;
-}
-
-showCount(); // once when the page opens
-// ...and again after every append or remove
+let added = 0;
+document.querySelector("#add").addEventListener("click", () => {
+  added = added + 1;
+  const item = document.createElement("li");
+  item.textContent = `New game ${added}`;
+  document.querySelector("#games").append(item);
+});
 ```
+
+Each click makes a fresh `li`, "New game 1", "New game 2"... and adds it to the end.
+
+## Break it on purpose
+
+Make the element only once, outside the click:
+
+```js
+const item = document.createElement("li");
+document.querySelector("#add").addEventListener("click", () => {
+  item.textContent = "New game";
+  document.querySelector("#games").append(item);
+});
+```
+
+Click three times: only **one** new item. There's just one element, so each `append` moves the same one to the end again. Every new item needs its own `createElement`.
 
 ---
 
-## Mission: New Arrivals
+## Mission: Rookies
 
-New crew members arrive, and others leave. The crew list should keep up.
+New rookies join the crew all the time. The crew directory gets a button to add them to the crew list.
 
-- On `crew.html`, after the roster paragraph, add two buttons, with the ids `add-rookie` and `remove-last`, that say **Add a rookie** and **Remove the last**.
-- **Add a rookie** adds a new name at the end of the crew list: `Rookie 1` the first time, `Rookie 2` the next time, and so on.
-- **Remove the last** takes the crew list's last name away.
-- After every change, the roster tells the truth again: how many crew members there are now, and the first and last names.
+**Example**: under the roster, a button says `Add a rookie`. Each click adds a new name at the end of the crew list: `Rookie 1`, then `Rookie 2`, and so on.
+
+- A button with the id `add-rookie`, saying `Add a rookie`.
+- Each click adds a new item at the end of the crew list, `#crew`: `Rookie 1` the first time, `Rookie 2` the second, and so on.
+
+Psst, every new item needs its own `createElement` :)

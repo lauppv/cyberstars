@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "name": "A name stays on one line, ending in ...",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": ".card h3",
+          "prop": "white-space",
+          "every": true,
+          "equals": "nowrap",
+          "label": "every name on a card"
+        },
+        {
+          "style": ".card h3",
+          "prop": "text-overflow",
+          "every": true,
+          "equals": "ellipsis",
+          "label": "every name on a card"
+        }
+      ]
+    },
+    {
+      "name": "A long name is cut at the card's edge",
+      "visible": false,
+      "page": "crew.html",
+      "files": {
+        "crew.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Crew Directory</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n    </nav>\n    <h1>Crew Directory</h1>\n    <p>Everyone who lives and works on the station, and where to find them.</p>\n    <p>Meet our commander, <a href=\"people/vega.html\">Mara Vega</a>.</p>\n    <p><a href=\"#duty\">See today's duties</a></p>\n    <p><a href=\"index.html\">Back to the home page</a></p>\n\n    <h2>Crew</h2>\n    <ul id=\"crew\">\n      <li>Mara Vega</li>\n      <li>Tomas Okafor</li>\n      <li>Ines Lindqvist</li>\n      <li>Kenji Arano</li>\n    </ul>\n\n    <h2>Morning Routine</h2>\n    <ol>\n      <li>Check the oxygen readings</li>\n      <li>Water the greenhouse</li>\n      <li>Report to the commander</li>\n    </ol>\n\n    <h2>Decks</h2>\n    <ul class=\"decks\">\n      <li>\n        Upper Deck\n        <ul>\n          <li>Bridge</li>\n          <li>Observatory</li>\n        </ul>\n      </li>\n      <li>\n        Living Deck\n        <ul>\n          <li>Galley</li>\n          <li>Sleeping pods</li>\n          <li>Gym</li>\n        </ul>\n      </li>\n      <li>\n        Lower Deck\n        <ul>\n          <li>Cargo bay</li>\n          <li>Greenhouse</li>\n        </ul>\n      </li>\n    </ul>\n\n    <div id=\"cards\">\n      <div class=\"card\">\n        <h3>Maximiliana Ostrowski-Lindqvist de la Vega</h3>\n        <p>Job: <span class=\"role\">Commander</span></p>\n        <p class=\"bio\">Twenty years in orbit, three of them in charge of this station. Knows every bolt by its first name, still checks the airlocks herself before bed, and has never once been late for a docking.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Tomas Okafor</h3>\n        <p>Job: <span class=\"role\">Engineer</span></p>\n        <p class=\"bio\">Keeps the power on and the water clean. Spends his free time building a clock out of spare parts that has never once shown the right time, and says that is the point.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Ines Lindqvist</h3>\n        <p>Job: <span class=\"role\">Pilot</span></p>\n        <p class=\"bio\">Flies the supply runs and the rescue drills. Holds the station record for the softest docking, and reminds everyone of it at dinner, every dinner, without fail.</p>\n      </div>\n      <div class=\"card\">\n        <h3>Kenji Arano</h3>\n        <p>Job: <span class=\"role\">Botanist</span></p>\n        <p class=\"bio\">Grows the tomatoes, the beans and the only flowers for four hundred kilometres. Talks to the plants every morning, and claims that they answer.</p>\n      </div>\n    </div>\n\n    <h2 id=\"duty\">Duty Board</h2>\n    <ol class=\"duties\">\n      <li>\n        Inspect the solar panels\n        <ul>\n          <li>Tomas Okafor</li>\n          <li>Ines Lindqvist</li>\n        </ul>\n      </li>\n      <li>Harvest the greenhouse</li>\n      <li>Log the day's dockings</li>\n    </ol>\n  </body>\n</html>"
+      },
+      "steps": [
+        {
+          "size": "#cards > .card:first-child h3",
+          "maxHeight": 40,
+          "label": "a long name"
+        },
+        {
+          "style": "#cards > .card:first-child h3",
+          "prop": "overflow-x",
+          "equals": "hidden",
+          "label": "a long name"
+        },
+        {
+          "size": "#cards > .card:first-child",
+          "maxWidth": 261,
+          "label": "its card"
+        }
+      ]
+    }
+  ]
+}

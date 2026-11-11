@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "name": "The home page starts with the menu, and it leads to the crew",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "body > nav:first-child",
+          "label": "a menu (<nav>) at the very top of the <body>"
+        },
+        {
+          "click": "nav a[href$=\"crew.html\"]",
+          "label": "the menu link to the crew"
+        },
+        {
+          "at": "crew.html"
+        }
+      ]
+    },
+    {
+      "name": "The crew directory starts with the menu, and it leads home",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "exists": "body > nav:first-child",
+          "label": "a menu (<nav>) at the very top of the <body>"
+        },
+        {
+          "click": "nav a[href$=\"index.html\"]",
+          "label": "the menu link home"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    },
+    {
+      "name": "The commander's page starts with the menu, and both links work",
+      "visible": true,
+      "page": "people/vega.html",
+      "steps": [
+        {
+          "exists": "body > nav:first-child",
+          "label": "a menu (<nav>) at the very top of the <body>"
+        },
+        {
+          "click": "nav a[href$=\"crew.html\"]",
+          "label": "the menu link to the crew"
+        },
+        {
+          "at": "crew.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "nav a[href$=\"index.html\"]",
+          "label": "the menu link home"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    }
+  ]
+}

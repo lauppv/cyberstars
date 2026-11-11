@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "name": "The paragraphs have room between their lines",
+      "visible": true,
+      "steps": [
+        {
+          "style": "p",
+          "prop": "line-height",
+          "every": true,
+          "atLeast": 24,
+          "label": "every paragraph"
+        }
+      ]
+    },
+    {
+      "name": "The part headings have room between their letters",
+      "visible": true,
+      "steps": [
+        {
+          "style": "h2",
+          "prop": "letter-spacing",
+          "every": true,
+          "atLeast": 1,
+          "label": "every part heading"
+        }
+      ]
+    }
+  ]
+}

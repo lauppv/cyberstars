@@ -1,60 +1,62 @@
-A tag's name picks every element of that kind. Often you want fewer: only the warnings, or only one heading. For that, CSS has two more kinds of selector.
+At school, some lessons are in the gym, some in the lab, some in the classroom. You can't tell from the timetable's grid alone which is which, so the teacher puts a coloured sticker on each kind: red for gym, green for lab. Everything with a red sticker belongs together, wherever it is in the week.
 
-## Classes
+In HTML, that sticker is a **class**.
 
-The `class` attribute puts an element in a group, and you choose the group's name. Many elements can share a class. A dot in front of the name picks them all:
+## Give elements a class
+
+`class` is an attribute you can put on any element. Its value is a name you make up:
 
 ```html
-<p class="fragile">Glass panels, handle with care.</p>
-<p>Spare bolts.</p>
-<p class="fragile">Seed samples, keep upright.</p>
+<p class="tip">Bring water to every game.</p>
+<p>The club meets on Tuesdays.</p>
+<p class="tip">Arrive ten minutes early.</p>
 ```
 
-```css
-.fragile {
-  color: darkorange;
-}
-```
+The two tips now share the class `tip`. The page looks the same: a class is only a label, until CSS uses it.
 
-Both fragile paragraphs turn orange, and the bolts stay as they were. An element can be in several classes at once, with spaces between the names: `class="fragile urgent"`.
+## Style a class
 
-Name a class after **what** the elements are (`fragile`, `warning`, `price`), not after how they look today. A class called `orange-text` stops making sense the day you make it red.
-
-## Ids
-
-You know `id` from the jump links: a name that only one element of the page has. A `#` in front of it picks that one element:
+In CSS, a class is picked with a **dot** in front of its name:
 
 ```css
-#loading {
+.tip {
   color: darkgreen;
 }
 ```
 
-## Which to use
+```text
+Bring water to every game.       (dark green)
+The club meets on Tuesdays.
+Arrive ten minutes early.        (dark green)
+```
 
-- A **type** selector, `h3`, for every element of a kind.
-- A **class**, `.fragile`, for a group, even a group of one. This is the one you'll use most.
-- An **id**, `#loading`, for the one element with that name. It's handy for jump links and JavaScript, but a style written for an id can't be used on anything else.
+`p` would pick every paragraph. `.tip` picks only the elements that wear the `tip` class, whatever their tag. A heading with `class="tip"` would turn green too.
 
-## Two rules, one element
+Many elements can share one class, and that's the point: one rule styles them all, and a new tip only needs `class="tip"` to look the part.
 
-What if two rules pick the same element? Say an `h2` rule colors every section heading, and a `#loading` rule colors one of them. The browser picks the **more specific** rule: an id names just one element, so it beats a class, and a class beats a tag's name. So the heading with the id `loading` gets the id's color, and the others keep the `h2` color. Part 3 explains this fully.
+A class name has no spaces, and is usually written in small letters with `-` between words: `class="club-tip"`.
 
-Several selectors can share one rule, with commas between them:
+## Break it on purpose
+
+Forget the dot:
 
 ```css
-h4,
-h5 {
-  color: gray;
+tip {
+  color: darkgreen;
 }
 ```
 
+Without the dot, the browser looks for a **tag** called `<tip>`. There isn't one, so nothing turns green. And the other way round: in the HTML, the class is written **without** the dot, `class="tip"`, never `class=".tip"`.
+
 ---
 
-## Mission: Spot the Warnings
+## Mission: Warnings stand out
 
-Visitors skim your page. Make sure they notice what matters:
+Your page has two warnings: the one about the hatch in Today on Board, and the one about badges in Visiting Hours. Make them look like warnings.
 
-- The paragraph about Hatch 3 and the one about the visitors' badge are both warnings. Put them in the class `warning`: later lessons use it. Give the warnings a color that no other paragraph has, still easy to read on the white page.
-- **Today on Board** changes every day, so it should stand out from the other section headings. Pick it by its id.
-- The small numbers below and above the line, in H₂O and 10⁵, should stand out from the text around them too. One rule is enough for both.
+**Example**: both warning paragraphs show in a color the other paragraphs don't have, like dark red.
+
+- Both warning paragraphs have the class `warning`. Later lessons use this name.
+- Paragraphs with the class `warning` have a color the other paragraphs don't have.
+
+Psst, a dot in CSS, no dot in the HTML :)

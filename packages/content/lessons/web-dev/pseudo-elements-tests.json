@@ -1,92 +1,21 @@
 {
   "cases": [
     {
-      "name": "Links to other sites end with an arrow",
+      "name": "The caption gets a sign before it",
       "visible": true,
+      "page": "schedule.html",
       "steps": [
         {
-          "style": "a[href^=\"https://\"]",
-          "pseudo": "::after",
+          "style": "#flights caption",
           "prop": "content",
-          "equals": "\" ↗\"",
-          "label": "the end of every link to another site",
-          "every": true
-        },
-        {
-          "style": "p.jumps a",
-          "pseudo": "::after",
-          "prop": "content",
-          "equals": "none",
-          "label": "the end of every jump link",
-          "every": true
-        }
-      ]
-    },
-    {
-      "name": "Warnings start with a sign",
-      "visible": true,
-      "steps": [
-        {
-          "style": "p.warning",
           "pseudo": "::before",
-          "prop": "content",
-          "equals": "\"⚠ \"",
-          "label": "the start of every warning",
-          "every": true
+          "not": "none",
+          "label": "the caption's ::before"
         },
         {
-          "text": "p.warning strong",
+          "text": "#flights caption",
           "nonEmpty": true,
-          "label": "a warning's important part, still in the HTML"
-        }
-      ]
-    },
-    {
-      "name": "Section headings have a bar under them",
-      "visible": true,
-      "page": "crew.html",
-      "steps": [
-        {
-          "style": "h2",
-          "prop": "content",
-          "pseudo": "::after",
-          "equals": "\"\"",
-          "label": "the bar under a section heading",
-          "every": true
-        },
-        {
-          "style": "h2",
-          "prop": "display",
-          "pseudo": "::after",
-          "equals": "block",
-          "label": "the bar under a section heading",
-          "every": true
-        },
-        {
-          "style": "h2",
-          "prop": "width",
-          "pseudo": "::after",
-          "atLeast": 20,
-          "atMost": 120,
-          "label": "the bar under a section heading",
-          "every": true
-        },
-        {
-          "style": "h2",
-          "prop": "height",
-          "pseudo": "::after",
-          "atLeast": 2,
-          "atMost": 8,
-          "label": "the bar under a section heading",
-          "every": true
-        },
-        {
-          "style": "h2",
-          "prop": "background-color",
-          "pseudo": "::after",
-          "not": "rgba(0, 0, 0, 0)",
-          "label": "the bar under a section heading",
-          "every": true
+          "label": "the caption"
         }
       ]
     }

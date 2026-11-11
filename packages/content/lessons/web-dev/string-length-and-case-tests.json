@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "name": "The console shows the badge in capitals",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Badge: LENA PARK"
+        }
+      ]
+    },
+    {
+      "name": "The console counts the letters",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Letters in the name: 9"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

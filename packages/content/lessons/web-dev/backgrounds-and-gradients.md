@@ -1,41 +1,54 @@
-A background can be more than a color: a picture, or a **gradient**, colors blending into each other.
+The big screen over an airport's gates often shows a picture behind its words: a sky, a city, the airline's plane. The picture isn't part of the information. It's a **background**, and CSS can put one behind any box.
 
-## A picture behind
+## `background-image`
 
 ```css
-.hangar {
-  background-image: url("img/hangar.svg");
+.banner {
+  background-image: url("img/sky.svg");
+  height: 160px;
+}
+```
+
+`url(...)` says which picture, with a path like an `<img>`'s `src`. The path starts from the **style sheet**, not from the page.
+
+An empty `div` with this class shows the picture as its background, 160 pixels tall. The picture doesn't need to be in the HTML at all.
+
+## Size and position
+
+By default, a background shows at its own size, starting at the top left corner, and repeats like tiles to fill the box. Usually you want something else:
+
+```css
+.banner {
+  background-image: url("img/sky.svg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  height: 160px;
 }
 ```
 
-- `url(...)` names the file. Its path is read **from the style sheet**, not from the page. Your `style.css` sits next to the `img` folder, so `img/station.svg` works from it.
-- `background-size: cover` makes the picture big enough to cover the whole box, and cuts off what sticks out. `contain` fits the whole picture inside, and leaves empty space.
-- `background-position: center` decides which part of the picture stays in view.
-- A background picture repeats like tiles, unless you say `no-repeat`.
+- `background-size: cover`: grow or shrink the picture until it **covers** the whole box, keeping its shape. Some of its edges may be cut off;
+- `background-position: center`: keep the middle of the picture in view.
 
-A background picture is only decoration: a screen reader doesn't know it's there, and it has no `alt`. A picture that means something belongs in an `<img>`.
+`background-size: contain` is the opposite of `cover`: the whole picture fits inside the box, with empty space around it if needed.
 
-## Gradients
+## Pictures with a meaning
 
-```css
-.panel {
-  background-image: linear-gradient(180deg, #ff8a00, #e52e71);
-}
-```
+A background has no `alt`: a screen reader skips it. So a picture that carries information, like a map or a photo of someone, goes in an `<img>`. Backgrounds are for decoration.
 
-A gradient is a picture that CSS paints by itself, so it goes in `background-image`. `linear-gradient` blends colors along a line: first the angle (`90deg` is left to right, `180deg` is top to bottom), then two or more colors. `radial-gradient` blends outwards from a center instead.
+## Break it on purpose
 
-Keep text readable on top of a background: check the contrast where the text is, at the darkest and the lightest part.
+Leave out the height on an empty box: it's 0 pixels tall, so its background has nowhere to show. A box with only a background needs a size.
 
 ---
 
-## Mission: Banner
+## Mission: A banner
 
 The schedule page gets a banner at the top, like the big screen over a spaceport's gates.
 
-- On `schedule.html`, right after the introduction paragraph, add an empty box in the class `banner`.
-- The banner shows `img/station.svg` as its background, covering the whole banner without stretching, with the middle of the picture in view. It's between `120px` and `240px` tall, and its corners are rounded.
-- The flights table's header cells get a gradient as their background, in colors of your choice.
+**Example**: under the schedule's introduction, a wide banner shows the station picture, filling the banner without being stretched, with the middle of the station in view.
+
+- Right after the introduction paragraph, an empty `div` with the class `banner`.
+- Its background is `img/station.svg`, covering the whole banner, centered.
+- It's between 120 and 240 pixels tall.
+
+Psst, the path in `url()` starts from `style.css` :)

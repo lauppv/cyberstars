@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "name": "The duty list has a thick line on its left",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#duty + ol",
+          "prop": "border-left-width",
+          "atLeast": 3,
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "border-left-style",
+          "not": "none",
+          "label": "the duty list"
+        }
+      ]
+    },
+    {
+      "name": "No border on its other sides",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#duty + ol",
+          "prop": "border-top-style",
+          "equals": "none",
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "border-right-style",
+          "equals": "none",
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "border-bottom-style",
+          "equals": "none",
+          "label": "the duty list"
+        }
+      ]
+    },
+    {
+      "name": "Its right corners are rounded, its left ones square",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "style": "#duty + ol",
+          "prop": "border-top-right-radius",
+          "atLeast": 4,
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "border-bottom-right-radius",
+          "atLeast": 4,
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "border-top-left-radius",
+          "equals": "0px",
+          "label": "the duty list"
+        },
+        {
+          "style": "#duty + ol",
+          "prop": "border-bottom-left-radius",
+          "equals": "0px",
+          "label": "the duty list"
+        }
+      ]
+    }
+  ]
+}

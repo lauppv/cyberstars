@@ -1,49 +1,72 @@
-The function you wrote does something: it writes and logs. Many other functions **work something out** instead, and give the answer back to whoever called them.
+Ask a friend "what's 7 times 8?" and they answer "56". They don't write it on the wall: they hand the answer back to you, and you do what you like with it. A function can hand back an answer too, with `return`.
 
-## return
-
-```js
-function crateWeight(count, eachKg) {
-  return count * eachKg;
-}
-
-const total = crateWeight(40, 12);
-console.log(total); // 480
-```
-
-`return` ends the function and gives its value back. Then the call, `crateWeight(40, 12)`, stands for that value: you can keep it in a variable, log it, put it in a template literal, or give it to another function.
-
-A function that never reaches a `return` gives back `undefined`. And nothing after a `return` ever runs:
+## `return`
 
 ```js
-function check(pressure) {
-  return pressure * 2;
-  console.log("never shown");
+function double(number) {
+  return number * 2;
 }
+
+const result = double(21);
+console.log(result);
 ```
 
-## Doing versus working out
+```text
+42
+```
 
-- A function that **does** something, like your intercom, changes the page or logs.
-- A function that **works something out** takes values and returns a new one, without touching the page.
-
-The second kind is the easiest to reuse and to trust: the same values in, the same answer out, every time, wherever you call it. Do the working out first, and write on the page at the end.
+`return` ends the function and hands a value back to wherever it was called. `double(21)` **becomes** 42, as if you'd written 42 there. You can keep it in a name, log it, or use it in a sum:
 
 ```js
-function bayLabel(name, crates) {
-  return `${name}: ${crates} crates`;
-}
-
-document.querySelector("#bay-a").textContent = bayLabel("Bay A", 40);
-document.querySelector("#bay-b").textContent = bayLabel("Bay B", 12);
+console.log(double(5) + 1);
 ```
+
+```text
+11
+```
+
+## The function stops at `return`
+
+```js
+function double(number) {
+  return number * 2;
+  console.log("Done");
+}
+```
+
+`"Done"` is never logged. `return` leaves the function at once, so lines after it never run.
+
+## Break it on purpose
+
+Forget the `return`:
+
+```js
+function double(number) {
+  number * 2;
+}
+console.log(double(21));
+```
+
+```text
+undefined
+```
+
+The function works out 42... and keeps it to itself. Without `return`, a function hands back `undefined`, "nothing". If a function's answer comes out as `undefined`, look for a missing `return`.
 
 ---
 
-## Mission: Time Format
+## Mission: Days of oxygen on the page
 
-Your oxygen check turns hours into days and hours. The crew's working hours need the same, and the same words.
+The page already works out how many hours the oxygen lasts. Now it also says how many full days that is, with a function that turns hours into days.
 
-- On `crew.html`, after the hours total, add an empty paragraph with the id `watch-time`. It says how long the crew worked this week in days and hours: `Total watch time: 5 days and 22 hours` for 142 hours.
-- The oxygen paragraph keeps saying `Oxygen for 16 days and 6 hours`.
-- Turning hours into days and hours should be written once in your script, and used for both. Both follow the numbers on the page.
+**Example**: under the oxygen line, the page shows:
+
+```text
+Oxygen for 5 full days
+```
+
+- A function, named by you, takes a number of hours and returns how many full days of 24 hours they make.
+- A paragraph with the id `oxygen-days`, under `#oxygen`, says `Oxygen for `, the days your function returns for the oxygen's hours, and ` full days`.
+- The hours come from the numbers on the page.
+
+Psst, a function's answer comes back through `return` :)

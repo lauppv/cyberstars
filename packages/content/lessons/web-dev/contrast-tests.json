@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "name": "Every paragraph reads easily",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "p",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every paragraph"
+        }
+      ]
+    },
+    {
+      "name": "Every link reads easily",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "a",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every link"
+        }
+      ]
+    },
+    {
+      "name": "Every heading reads easily",
+      "visible": true,
+      "steps": [
+        {
+          "contrast": "h1, h2, h3",
+          "atLeast": 3,
+          "every": true,
+          "label": "every heading"
+        }
+      ]
+    }
+  ]
+}

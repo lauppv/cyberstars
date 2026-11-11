@@ -4,12 +4,12 @@ import { test, expect } from '../fixtures/test.js';
 // the web sandbox, the verdict in the lesson's Result tab, with a reason in
 // words, and a pass once the page is as the mission asks.
 
-const PAGE = (title: string) =>
+const PAGE = (heading: string) =>
   [
     '<!DOCTYPE html>',
     '<html lang="en">',
-    '<head><meta charset="UTF-8"><title>' + title + '</title></head>',
-    '<body><h1>Welcome aboard</h1><p>Six crew keep the station running.</p></body>',
+    '<head><meta charset="UTF-8"><title>Station Log</title></head>',
+    '<body>' + heading + '<p>Six crew keep the station running.</p></body>',
     '</html>',
   ].join('\n');
 
@@ -32,24 +32,22 @@ test('Run Tests grades the site in a browser and says why it failed', async ({
     .getByRole('button', { name: 'Code' })
     .click();
 
-  await writeIndex(page, PAGE('Cargo Bay'));
+  await writeIndex(page, PAGE('<h2>Welcome aboard</h2>'));
   await page.getByRole('button', { name: 'Run Tests' }).click();
   const result = page.locator('[data-testid="result"]');
   await expect(result).toContainText('Not as asked yet', { timeout: 60_000 });
-  await expect(result).toContainText('Test 2: The tab is named Station Log');
-  await expect(result).toContainText(
-    'Expected a <title> in the <head> with the text “Station Log”, found “Cargo Bay”.',
-  );
-  await expect(result).toContainText('1 / 4');
+  await expect(result).toContainText('Test 1: The page has its biggest heading, with words in it');
+  await expect(result).toContainText('Expected the biggest heading (<h1>), found none.');
+  await expect(result).toContainText('0 / 1');
 
   await page
     .getByRole('group', { name: 'What the left side shows' })
     .getByRole('button', { name: 'Code' })
     .click();
-  await writeIndex(page, PAGE('Station Log'));
+  await writeIndex(page, PAGE('<h1>Welcome aboard</h1>'));
   await page.getByRole('button', { name: 'Run Tests' }).click();
   await expect(result).toContainText('Accepted', { timeout: 60_000 });
-  await expect(result).toContainText('4 / 4');
+  await expect(result).toContainText('1 / 1');
 
   // The attempts keep the site, file by file
   await page.getByRole('tab', { name: 'Submissions' }).click();

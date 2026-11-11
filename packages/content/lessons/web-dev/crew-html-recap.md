@@ -1,13 +1,30 @@
-Your crew page has a navigation, lists, lists inside lists, and cards. One more section, and it uses all of them, with no steps to follow.
+No new theory, just a challenge that uses what you've learned in this part's HTML: lists, numbered lists, lists inside lists, `div`, `span`, and jump links from the first part.
 
-One new thing you'll need: a link can lead to an element on **another** page. Write that page's path, then `#` and the element's id: `bays.html#loading` opens `bays.html` and jumps straight to the element with the id `loading`.
+Read what the crew needs, then pick the elements yourself.
+
+If something looks wrong, check that every inner list sits inside its `<li>`, and that every `div` closes where it should.
 
 ---
 
-## Mission: Duty Board
+## Mission: Duty board
 
-Every morning the crew checks who does what. On `crew.html`, after the cards:
+Every morning the crew checks who does what. `crew.html` gets a duty board.
 
-- a section called **Duty Board**, with the id `duty`;
-- right under its title, the day's duties, at least three, in the order they're done. For at least one duty, list the crew members who work on it, inside that duty;
-- from **both** pages, a visitor should reach the duty board in one click: add a third link to both navigations, **Duty**, that goes straight to it.
+**Example**: after the cards, the page would show something like this:
+
+```text
+Duty Board
+
+1. Inspect the solar panels
+    • Tomas Okafor
+    • Ines Lindqvist
+2. Harvest the greenhouse
+3. Log the day's dockings
+```
+
+- A part with a heading at the same level as Crew, with the id `duty`.
+- Right under its heading, the day's duties, at least three, in the order they're done.
+- At least one duty lists, inside it, the crew members who work on it, at least two.
+- Under the page's heading, a link jumps straight to the duty board.
+
+Psst, a duty's crew list goes inside that duty's `<li>` :)

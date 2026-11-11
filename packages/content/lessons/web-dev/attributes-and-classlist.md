@@ -1,44 +1,55 @@
-Your rows get their `delayed` and `cancelled` classes from the HTML, typed by hand. But the status is right there in each row: the script can read it and give each row its class by itself. Then, when a status changes in one place, the cell, the row's look changes too.
+Hover over a button in many apps and a little label pops up: "Save", "Delete". That label is an attribute, `title`, and a script can write attributes like that, or read them, just as it writes text.
 
-## Attributes
-
-```js
-const link = document.querySelector("#manual");
-link.getAttribute("href"); // "manual.html"
-link.setAttribute("href", "manual-v2.html");
-link.hasAttribute("target"); // false
-link.removeAttribute("title");
-```
-
-`getAttribute` reads any attribute as a string (or `null` when it's missing), and `setAttribute` writes one.
-
-## classList
-
-Classes have a tool of their own, `classList`:
+## `getAttribute`
 
 ```js
-row.classList.add("selected");
-row.classList.remove("selected");
-row.classList.toggle("selected"); // add if missing, remove if there
-row.classList.contains("selected"); // true or false
+const link = document.querySelector("#rules-link");
+console.log(link.getAttribute("href"));
 ```
 
-That's the usual way for a script to change how a page looks. The script says **what** an element is now, with a class, and CSS says **how** that looks. Setting `style` properties from the script mixes the two, and is harder to change later.
+```text
+rules.html
+```
 
-## A button that stays pressed
+`getAttribute` gives the value of an attribute, as a string, exactly as written in the HTML. An attribute that isn't there gives `null`.
 
-A button that switches something on and off should say whether it's on. `aria-pressed` tells a screen reader: `"true"` when it's pressed, `"false"` when it isn't. Keep it matching what the button does:
+## `setAttribute`
 
 ```js
-button.setAttribute("aria-pressed", String(isOn));
+link.setAttribute("title", "Read the club rules");
 ```
+
+Two things in the brackets: the attribute's name, then its value. If the attribute exists, its value is replaced. If not, it's added. Hover over the link, and the label pops up.
+
+It works for any attribute: `alt` on a picture, `href` on a link, `title` on anything.
+
+## Break it on purpose
+
+Give only one thing to `setAttribute`:
+
+```js
+link.setAttribute("title");
+```
+
+```text
+TypeError: Failed to execute 'setAttribute': 2 arguments required, but only 1 present.
+```
+
+A name **and** a value, every time. And reading with `getAttribute("titel")`, misspelled, gives `null`: check the name first when an attribute seems to be missing.
 
 ---
 
-## Mission: Status Classes
+## Mission: Labels on the codes
 
-The rows' classes should follow their status by themselves.
+A flight code like SL-104 doesn't say much on its own. Hovering over it should say where the flight goes.
 
-- Take the `delayed` and `cancelled` classes off the rows in your HTML. Your script gives every row whose status says `Delayed` the class `delayed`, and every row whose status says `Cancelled` the class `cancelled`, so the look from your style sheet still shows.
-- Over the flights table, add a button with the id `hide-cancelled` that says **Hide cancelled**, and tells a screen reader it isn't pressed.
-- A click hides every cancelled flight. Do it with a class on the table, `hide-cancelled`, and a rule in your style sheet, not with styles from the script. The button then says **Show cancelled** and tells a screen reader it's pressed. A second click brings everything back, and so on.
+**Example**: hover over SL-104 in the flight table, and a label pops up:
+
+```text
+Flight SL-104 to Lunar Gateway
+```
+
+- Every flight code cell of the table gets a `title` attribute, written by the script: `Flight `, the code, `to` and the destination of its row.
+- The code and the destination are read from the row's cells.
+
+Psst, `setAttribute` takes a name and a value :)

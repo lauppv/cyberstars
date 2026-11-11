@@ -1,44 +1,56 @@
-HTML says what's on the page, and CSS says how it looks. The third language of the web, **JavaScript**, says what the page **does**: react to a click, count things, change its text while the visitor watches. It's a real programming language, with variables, loops and functions, and it runs right inside the browser.
+Your pages can show things and look good. But they can't **do** anything: no button reacts, nothing changes on its own. A page that does things needs a third language, **JavaScript**.
 
-## The script element
+Think of a page as a theatre stage. HTML is the set and the actors, CSS is the costumes and the lights. JavaScript is the script the actors follow: what happens, and when.
 
-JavaScript goes in a file of its own, ending in `.js`. You link it from the page with a `script` element:
+## A script file
+
+JavaScript lives in a file of its own, ending in `.js`, like CSS lives in `.css`. The page loads it with a `<script>` tag:
 
 ```html
-<script src="script.js" defer></script>
+<body>
+  <h1>Game Club</h1>
+  <p>Welcome!</p>
+  <script src="games.js"></script>
+</body>
 ```
 
-Unlike `<img>` or `<link>`, `<script>` always needs its closing tag, even with nothing between.
-
-## When it runs
-
-The browser reads a page from top to bottom, and it runs a script as soon as it reaches it. A script in the `<head>` would run before the browser even gets to the `<body>`. None of your page exists yet, so a script that looks for a heading finds nothing, and stops with an error.
-
-`defer` fixes that. It tells the browser: download this file now, but only run it once the whole page has been read. So the script goes in the `<head>`, where it's easy to find, and it still sees the whole page.
-
-You'll also see scripts placed at the very end of the `<body>` instead. That works too, and it's how people did it before `defer` existed. Use `defer`.
+- `src` says which file to run, like `href` for a style sheet.
+- Unlike `<link>`, a `<script>` always has a closing tag, `</script>`, even with nothing between them.
+- For now, put it at the very end of the `<body>`, after everything else. You'll see why in a later lesson.
 
 ## A first line
 
-This lesson added an empty `script.js`. Here's a line of JavaScript:
+Here's a whole script, one line long:
 
 ```js
-document.body.style.backgroundColor = "#202030";
+alert("Welcome to the club!");
 ```
 
-`document` is the page, as JavaScript sees it. `document.body` is its `<body>`, and `style.backgroundColor` is that body's CSS `background-color`. The line sets it, like a CSS rule would, but from the script.
+When the page opens, a small box pops up with the message and an OK button. `alert` shows a message box. The message goes between `(` and `)`, in quotes, and the line ends with `;`.
 
-Notice the name: in CSS it's `background-color`, in JavaScript it's `backgroundColor`. A CSS property with dashes loses them in JavaScript, and each word after the first starts with a capital letter: `font-size` becomes `fontSize`, `border-top` becomes `borderTop`. The value is the same text you'd write in CSS, in quotes.
+Every time the page loads, the browser reads the script from top to bottom and does what each line says.
 
-The next lessons explain each piece. For now, notice that this line needs the `<body>` to exist when it runs.
+## Break it on purpose
+
+Forget the quotes:
+
+```js
+alert(Welcome to the club!);
+```
+
+No box at all. Without quotes, JavaScript thinks `Welcome` is a name it should know, can't make sense of the line, and stops. In the next lessons you'll see where it tells you what went wrong.
+
+And a misspelled file name, `src="game.js"`, gives no box either: the browser never finds the script to run.
 
 ---
 
-## Mission: Power On
+## Mission: Hello from the crew directory
 
-When the station powers on, a line lights up along the top of the home page.
+Your site has a new empty file, `crew.js`. Make the crew directory greet its visitors.
 
-- Link `script.js` from the `<head>` of your page, so it runs once the whole page has been read.
-- In `script.js`, draw a line along the top of the page: at least 4 pixels thick, in a color of your choice. The script draws it, not your style sheet.
+**Example**: when `crew.html` opens, a message box pops up saying `Crew directory ready`. Click OK, and the page is there as before.
 
-Then try the script **without** `defer` and look at the console under the preview: that's the error a script gets when it runs too early. Put `defer` back before you run the tests.
+- `crew.html` loads `crew.js`, with a `<script>` tag at the end of its `<body>`.
+- When the page opens, a message box says `Crew directory ready`.
+
+Psst, the message goes in quotes :)

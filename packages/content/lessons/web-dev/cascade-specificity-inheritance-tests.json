@@ -1,85 +1,28 @@
 {
   "cases": [
     {
-      "name": "The flights' cells have a color of their own",
-      "visible": true,
-      "page": "schedule.html",
-      "steps": [
-        {
-          "differs": "#flights tbody tr:not(.cancelled) td",
-          "from": "p",
-          "props": ["color"],
-          "fromLabel": "the paragraphs",
-          "label": "the cells of the flights"
-        },
-        {
-          "contrast": "#flights tbody tr:not(.cancelled) td",
-          "atLeast": 4.5,
-          "every": true,
-          "label": "a cell of a flight"
-        }
-      ]
-    },
-    {
-      "name": "The cancelled flight looks faded and struck through",
+      "name": "The cancelled flight has the class cancelled",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
           "text": "#flights tr.cancelled td.status",
           "equals": "Cancelled",
-          "label": "the status of the row with class=\"cancelled\""
-        },
-        {
-          "count": "#flights tr.cancelled",
-          "equals": 1,
-          "label": "cancelled rows"
-        },
-        {
-          "differs": "#flights tr.cancelled td",
-          "from": "#flights tbody tr:not(.cancelled) td",
-          "props": ["color"],
-          "fromLabel": "the other flights",
-          "label": "the cells of the cancelled flight"
-        },
-        {
-          "contrast": "#flights tr.cancelled td",
-          "atLeast": 3,
-          "every": true,
-          "label": "a cell of the cancelled flight"
-        },
-        {
-          "style": "#flights tr.cancelled td",
-          "prop": "text-decoration-line",
-          "equals": "line-through",
-          "every": true,
-          "label": "a cell of the cancelled flight"
+          "label": "the status of the row with the class cancelled"
         }
       ]
     },
     {
-      "name": "The table passes its font down",
+      "name": "Its cells have a color the others don't",
       "visible": true,
       "page": "schedule.html",
       "steps": [
         {
-          "style": "#flights",
-          "prop": "font-family",
-          "endsWith": "monospace",
-          "label": "the flights table"
-        },
-        {
-          "style": "#flights td",
-          "prop": "font-family",
-          "endsWith": "monospace",
-          "every": true,
-          "label": "a cell of the flights table"
-        },
-        {
-          "style": "#flights > caption",
-          "prop": "font-family",
-          "endsWith": "monospace",
-          "label": "the title of the flights table"
+          "differs": "#flights tr.cancelled td",
+          "from": "#flights tbody tr:not(.cancelled) td",
+          "props": ["color"],
+          "fromLabel": "the other flights' cells",
+          "label": "the cancelled flight's cells"
         }
       ]
     }

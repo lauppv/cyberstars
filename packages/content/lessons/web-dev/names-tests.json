@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "name": "The console shows the oxygen tanks",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Oxygen tanks: 7"
+        }
+      ]
+    },
+    {
+      "name": "The console shows the hours per tank",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Hours per tank: 20"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

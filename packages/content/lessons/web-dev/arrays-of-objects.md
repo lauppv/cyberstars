@@ -1,49 +1,76 @@
-One object is one flight. A whole schedule is an **array of objects**: the most common shape of data on the web. A list of products, of messages, of users: each one an object, all of them in an array.
+Your phone doesn't have one contact, it has hundreds: a list of contacts, each with its own name and number. A list where every item is an object is one of the most common shapes of data there is.
 
-## Building one
+## An array of objects
 
 ```js
-const crates = [
-  { name: "Water", weight: 120 },
-  { name: "Seeds", weight: 45 },
+const friends = [
+  { name: "Sam", age: 13 },
+  { name: "Lea", age: 12 },
+  { name: "Ola", age: 14 },
 ];
-
-crates[1].name; // "Seeds"
-crates.length; // 2
 ```
 
-`crates[1]` is an object, so `.name` reads its property. Loops work like with any array:
+Square brackets for the list, curly brackets for each item. Every item has the same properties.
+
+## Reading one
+
+The item first, by its index, then its property:
 
 ```js
-for (const crate of crates) {
-  console.log(`${crate.name}: ${crate.weight} kg`);
+console.log(friends[1].name);
+```
+
+```text
+Lea
+```
+
+`friends[1]` is Lea's object, and `.name` is her name.
+
+## A loop through all of them
+
+```js
+for (const friend of friends) {
+  console.log(`${friend.name} is ${friend.age}`);
 }
 ```
 
-## From the page
-
-When the data is on the page, a function can read it into an array of objects once. Then the rest of the script works with the objects, instead of digging through the cells every time:
-
-```js
-function readCrates() {
-  const crates = [];
-  for (const row of document.querySelectorAll("#manifest tr")) {
-    crates.push({
-      name: row.querySelector(".name").textContent,
-      weight: Number(row.querySelector(".weight").textContent),
-    });
-  }
-  return crates;
-}
+```text
+Sam is 13
+Lea is 12
+Ola is 14
 ```
 
-Turn numbers into real numbers as you read them, and every later step can rely on it.
+In each lap, `friend` is one whole object, and you read whichever properties you need.
+
+## Break it on purpose
+
+Forget the index:
+
+```js
+console.log(friends.name);
+```
+
+```text
+undefined
+```
+
+The **array** has no `name`: only each item does. First pick an item, then its property.
 
 ---
 
-## Mission: Destinations
+## Mission: Tomorrow's flights
 
-The next lessons ask many questions about the flights. Read the table once, so every question can work with the flights instead of with cells.
+Tomorrow's three flights are already planned, and the script keeps them as a list of objects.
 
-- Your script reads every flight of the table's body, with its `code`, `destination`, `departs` and `status`, and keeps them all. The console says how many it read: `5 flights read`.
-- Under the next flight, add an empty paragraph with the id `destinations`. It lists every destination, in the table's order, with `, ` between them: `Destinations: Moon Base, Mars Relay, ...`.
+**Example**: when `schedule.html` opens, the console shows:
+
+```text
+Tomorrow: SL-201 to Moon Base
+Tomorrow: SL-202 to Titan Dock
+Tomorrow: SL-203 to Mars Relay
+```
+
+- In `schedule.js`, one array holds three objects, each with a `code` and a `destination`: `SL-201` to `Moon Base`, `SL-202` to `Titan Dock`, `SL-203` to `Mars Relay`.
+- A loop logs `Tomorrow: `, each flight's code, `to` and its destination.
+
+Psst, curly brackets for each flight, square brackets around them all :)

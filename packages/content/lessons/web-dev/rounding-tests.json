@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "name": "The console shows the full days of oxygen",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Full days of oxygen: 5"
+        }
+      ]
+    },
+    {
+      "name": "And enough tanks for 31 days",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Tanks for 31 days: 38"
+        }
+      ]
+    }
+  ]
+}

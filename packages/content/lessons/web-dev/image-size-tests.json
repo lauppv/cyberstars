@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "name": "The station picture has a width and a height",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "img[src=\"img/station.svg\"]",
+          "name": "width",
+          "label": "the station picture"
+        },
+        {
+          "attr": "img[src=\"img/station.svg\"]",
+          "name": "height",
+          "label": "the station picture"
+        }
+      ]
+    },
+    {
+      "name": "It shows 240 pixels wide, in its own shape",
+      "visible": true,
+      "steps": [
+        {
+          "size": "img[src=\"img/station.svg\"]",
+          "minWidth": 239,
+          "maxWidth": 241,
+          "label": "the station picture"
+        },
+        {
+          "size": "img[src=\"img/station.svg\"]",
+          "minHeight": 149,
+          "maxHeight": 151,
+          "label": "the station picture"
+        }
+      ]
+    }
+  ]
+}

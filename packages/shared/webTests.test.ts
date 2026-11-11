@@ -57,6 +57,18 @@ describe('webFailureText', () => {
     expect(say({ kind: 'fits', found: '900', width: 375 })).toBe(
       'Expected the page to fit 375px without scrolling sideways, found it 900px wide.',
     );
+    expect(say({ kind: 'loaded', label: 'the station picture' })).toBe(
+      'Expected the station picture to show, found its file missing: check its path.',
+    );
+    expect(say({ kind: 'logged', detail: 'none', expected: 'ready' })).toBe(
+      'Expected the console not to show “ready” any more, found it there.',
+    );
+    expect(say({ kind: 'alerted', expected: 'Hi crew', found: null })).toBe(
+      'Expected a message box saying “Hi crew”, found none.',
+    );
+    expect(say({ kind: 'doctype' })).toBe(
+      'Expected the page to start with <!DOCTYPE html>, found it missing.',
+    );
     expect(say({ kind: 'logged', expected: 'ready', found: null })).toBe(
       'Expected the console to show “ready”, found nothing.',
     );

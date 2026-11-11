@@ -1,59 +1,37 @@
 {
   "cases": [
     {
-      "name": "The fine print with the fee is gone from the page",
+      "name": "The side note no longer shows",
       "visible": true,
       "steps": [
         {
           "count": "small",
           "equals": 0,
-          "label": "pieces of fine print"
+          "label": "side notes (<small>) on the page"
         }
       ]
     },
     {
-      "name": "Everything after it still shows",
+      "name": "The rest of the page still shows",
       "visible": true,
       "steps": [
         {
-          "text": "h2",
-          "equals": "Today on Board",
-          "label": "a section heading"
+          "exists": "sub",
+          "label": "the low part (<sub>)"
         },
         {
-          "text": "p strong",
-          "equals": "Hatch 3 stays closed",
-          "label": "the warning"
+          "exists": "sup",
+          "label": "the high part (<sup>)"
         },
         {
-          "exists": "p sub",
-          "label": "the water paragraph"
+          "count": "h2",
+          "atLeast": 3,
+          "label": "part headings (<h2>)"
         },
         {
-          "count": "h2 ~ h3",
-          "atLeast": 2,
-          "label": "shift headings"
-        }
-      ]
-    },
-    {
-      "name": "Everything before it still shows",
-      "visible": true,
-      "steps": [
-        {
-          "text": "h1",
-          "equals": "Welcome aboard",
-          "label": "the biggest heading"
-        },
-        {
-          "text": "h2",
-          "equals": "About the Station",
-          "label": "a section heading"
-        },
-        {
-          "text": "p",
-          "contains": "Orbital Station 7 Docking Ring B Low Earth Orbit",
-          "label": "the address"
+          "count": "h3",
+          "atLeast": 3,
+          "label": "smaller headings (<h3>)"
         }
       ]
     }

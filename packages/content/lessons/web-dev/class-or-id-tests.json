@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "name": "Both shift headings have the class shift",
+      "visible": true,
+      "steps": [
+        {
+          "count": "h3.shift",
+          "atLeast": 2,
+          "label": "shift headings (<h3 class=\"shift\">)"
+        }
+      ]
+    },
+    {
+      "name": "Shifts have a color the other small headings don't have",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "h3.shift",
+          "from": "h3:not(.shift)",
+          "props": ["color"],
+          "fromLabel": "the other small headings",
+          "label": "the shift headings"
+        }
+      ]
+    }
+  ]
+}

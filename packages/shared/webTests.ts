@@ -70,7 +70,7 @@ export type WebCheck =
   | ({ attr: string; name: string; equals?: string; ignoreCase?: true } & Labelled)
   /**
    * The first element's computed style, as the browser reports it, or that of
-   * its ::before or ::after (`pseudo`), whose `content` keeps its quotes: `"★"`.
+   * its ::before, ::after, ::first-letter or ::marker (`pseudo`), whose `content` keeps its quotes: `"★"`.
    * It `equals` a value, is anything `not` this one, `endsWith` a text (a
    * font list's generic family: `sans-serif`), or, for a length (the
    * browser reports it in px), is `atLeast` and/or `atMost` so many px: a
@@ -123,6 +123,8 @@ export type WebCheck =
   | ({ centered: string } & Labelled)
   /** The first element is as wide as its parent's content: a table across its column. */
   | ({ fills: string } & Labelled)
+  /** Every picture it picks has loaded: its file was found, whatever room its width and height keep. */
+  | ({ loaded: string } & Labelled)
   /** The first element's size in px. */
   | ({
       size: string;
@@ -133,10 +135,14 @@ export type WebCheck =
     } & Labelled)
   /** The page fits the window's width, with nothing to scroll sideways. */
   | { fits: true }
+  /** The page starts with `<!DOCTYPE html>`, so the browser shows it as a modern page. */
+  | { doctype: true }
   /** The page's headings: one h1, and none more than a level below the heading before it. */
   | { outline: true }
-  /** The page's scripts logged this line (spaces at the ends aside). */
-  | { logged: string }
+  /** The page's scripts logged this line (spaces at the ends aside), or with `none` never did. */
+  | { logged: string; none?: true }
+  /** The page's scripts showed a message box (`alert`) with this text (spaces at the ends aside), or with `none` never did. */
+  | { alerted: string; none?: true }
   /** Nothing thrown and nothing logged with console.error so far. */
   | { noErrors: true }
   /** The page shown now is this one (after a link, a form or `open`). */
@@ -162,7 +168,7 @@ export function isWebAction(step: WebStep): step is WebAction {
   return WEB_ACTION_KEYS.some((key) => key in step);
 }
 
-export const WEB_PSEUDO_ELEMENTS = ['::before', '::after'] as const;
+export const WEB_PSEUDO_ELEMENTS = ['::before', '::after', '::first-letter', '::marker'] as const;
 type WebPseudo = (typeof WEB_PSEUDO_ELEMENTS)[number];
 
 export const WEB_DEFAULT_WIDTH = 1280;
@@ -199,7 +205,11 @@ export interface WebObservation {
   /** An outline check's: the page's headings in order. */
   headings?: { level: number; text: string }[];
   scrollWidth?: number;
+  /** A doctype check's: whether the browser shows the page as a modern one (`document.compatMode`). */
+  standards?: boolean;
   logs?: string[];
+  /** An alerted check's: the message boxes shown so far. */
+  dialogs?: string[];
   errors?: string[];
   page?: string;
 }
@@ -217,12 +227,15 @@ type WebFailureKind =
   | 'align'
   | 'centered'
   | 'fills'
+  | 'loaded'
   | 'size'
   | 'contrast'
   | 'differs'
   | 'outline'
   | 'fits'
+  | 'doctype'
   | 'logged'
+  | 'alerted'
   | 'errors'
   | 'at'
   | 'memory';
@@ -418,6 +431,10 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         ? `Se aștepta ca ${label} să stea la mijloc în părintele său la o fereastră de ${w}px, dar are ${left}px în stânga și ${right}px în dreapta.`
         : `Expected ${label} centered in its parent in a window ${w}px wide, found ${left}px of room on the left and ${right}px on the right.`;
     }
+    case 'loaded':
+      return ro
+        ? `Se aștepta ca ${label} să se vadă, dar fișierul nu e găsit: verifică-i calea.`
+        : `Expected ${label} to show, found its file missing: check its path.`;
     case 'fills':
       return ro
         ? `Se aștepta ca ${label} să fie lat cât părintele său (${expected}px) la o fereastră de ${w}px, dar are ${found}px.`
@@ -464,10 +481,28 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca pagina să încapă în ${w}px fără derulare în lateral, dar e lată de ${found}px.`
         : `Expected the page to fit ${w}px without scrolling sideways, found it ${found}px wide.`;
+    case 'doctype':
+      return ro
+        ? 'Se aștepta ca pagina să înceapă cu <!DOCTYPE html>, dar nu începe așa.'
+        : 'Expected the page to start with <!DOCTYPE html>, found it missing.';
     case 'logged':
+      if (f.detail === 'none') {
+        return ro
+          ? `Se aștepta ca în consolă să nu mai apară ${q(expected)}, dar apare.`
+          : `Expected the console not to show ${q(expected)} any more, found it there.`;
+      }
       return ro
         ? `Se aștepta în consolă ${q(expected)}, dar ${found ? `are ${q(found)}` : 'consola e goală'}.`
         : `Expected the console to show ${q(expected)}, found ${found ? q(found) : 'nothing'}.`;
+    case 'alerted':
+      if (f.detail === 'none') {
+        return ro
+          ? `Se aștepta să nu se mai deschidă fereastra cu mesajul ${q(expected)}, dar se deschide.`
+          : `Expected no message box saying ${q(expected)} any more, found one.`;
+      }
+      return ro
+        ? `Se aștepta o fereastră cu mesajul ${q(expected)}, dar ${found ? `are ${q(found)}` : 'nu s-a deschis niciuna'}.`
+        : `Expected a message box saying ${q(expected)}, found ${found ? q(found) : 'none'}.`;
     case 'errors':
       return ro
         ? `Se aștepta ca pagina să meargă fără erori, dar are: ${found}`

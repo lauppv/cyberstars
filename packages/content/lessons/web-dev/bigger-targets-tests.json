@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "name": "The menu links are big targets",
+      "visible": true,
+      "steps": [
+        {
+          "size": "nav a:nth-of-type(1)",
+          "minHeight": 32,
+          "label": "menu link 1"
+        },
+        {
+          "size": "nav a:nth-of-type(2)",
+          "minHeight": 32,
+          "label": "menu link 2"
+        },
+        {
+          "size": "nav",
+          "minHeight": 32,
+          "label": "the menu"
+        },
+        {
+          "style": "nav a",
+          "prop": "padding-left",
+          "every": true,
+          "atLeast": 8,
+          "label": "every menu link"
+        },
+        {
+          "style": "nav a",
+          "prop": "padding-right",
+          "every": true,
+          "atLeast": 8,
+          "label": "every menu link"
+        }
+      ]
+    },
+    {
+      "name": "So are the crew directory's",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "size": "nav a:nth-of-type(1)",
+          "minHeight": 32,
+          "label": "menu link 1"
+        },
+        {
+          "size": "nav a:nth-of-type(2)",
+          "minHeight": 32,
+          "label": "menu link 2"
+        },
+        {
+          "size": "nav",
+          "minHeight": 32,
+          "label": "the menu"
+        },
+        {
+          "style": "nav a",
+          "prop": "padding-left",
+          "every": true,
+          "atLeast": 8,
+          "label": "every menu link"
+        },
+        {
+          "style": "nav a",
+          "prop": "padding-right",
+          "every": true,
+          "atLeast": 8,
+          "label": "every menu link"
+        }
+      ]
+    }
+  ]
+}

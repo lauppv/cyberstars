@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "name": "A click puts the flights in order of departure",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "text": "button#sort-by-time",
+          "equals": "Sort by time",
+          "label": "the button (<button id=\"sort-by-time\">)"
+        },
+        {
+          "click": "button#sort-by-time",
+          "label": "the button Sort by time"
+        },
+        {
+          "text": "#flights tbody tr:nth-child(1) .code",
+          "equals": "SL-103",
+          "label": "the first flight after sorting"
+        },
+        {
+          "text": "#flights tbody tr:nth-child(2) .code",
+          "equals": "SL-101",
+          "label": "the second flight"
+        },
+        {
+          "text": "#flights tbody tr:nth-child(5) .code",
+          "equals": "SL-104",
+          "label": "the last flight"
+        }
+      ]
+    },
+    {
+      "name": "The rows move, with their classes",
+      "visible": true,
+      "page": "schedule.html",
+      "steps": [
+        {
+          "click": "button#sort-by-time",
+          "label": "the button Sort by time"
+        },
+        {
+          "count": "#flights tbody tr",
+          "equals": 5,
+          "label": "rows in the table"
+        },
+        {
+          "text": "#flights tbody tr.cancelled .code",
+          "equals": "SL-104",
+          "label": "the cancelled row"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

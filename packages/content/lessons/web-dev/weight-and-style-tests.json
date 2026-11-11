@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "name": "The shift headings are in capitals",
+      "visible": true,
+      "steps": [
+        {
+          "style": ".shift",
+          "prop": "text-transform",
+          "every": true,
+          "equals": "uppercase",
+          "label": "every shift heading"
+        }
+      ]
+    },
+    {
+      "name": "The shift headings aren't bold",
+      "visible": true,
+      "steps": [
+        {
+          "style": ".shift",
+          "prop": "font-weight",
+          "every": true,
+          "not": "700",
+          "label": "every shift heading"
+        }
+      ]
+    },
+    {
+      "name": "The address is in italic",
+      "visible": true,
+      "steps": [
+        {
+          "style": ".address",
+          "prop": "font-style",
+          "equals": "italic",
+          "label": "the address"
+        }
+      ]
+    }
+  ]
+}

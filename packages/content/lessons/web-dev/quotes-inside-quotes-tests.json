@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "name": "The console shows Lena's message",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "logged": "Lena says: \"Hi everyone, I'm so happy to be here!\""
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

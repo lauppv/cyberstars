@@ -1,52 +1,71 @@
-Inside a paragraph, some words matter more than others: a warning, a word you'd say louder, a chemical formula. HTML has small tags for them that go **inside** the text.
+When you tell a friend something important, your voice changes. "Don't touch the oven, it's **hot**." Or you lean on one word: "I said _Tuesday_, not Thursday." In writing, we show that with bold and italic text.
 
-## Important and stressed
+HTML has two tags for it. They don't just change how text looks, they say what it **means**.
 
-`<strong>` marks text as **important**: a warning, something serious or urgent. The browser shows it in bold.
-
-`<em>` marks **stress**: the word you'd say louder, the one that changes what the sentence means. The browser shows it in italics.
+## `<strong>`: this is important
 
 ```html
-<p><strong>Never open the airlock while the light is red.</strong></p>
-<p>I asked for <em>two</em> spacesuits, not one.</p>
+<p><strong>Don't touch the oven</strong>, it's still hot.</p>
 ```
 
-Why not just ask for bold or italics? Because these tags say what the words **mean**, not how they look. A screen reader can read a `<strong>` warning more firmly. And later you can change how both look with CSS, without touching the HTML.
+The page shows:
 
-HTML also has `<b>` and `<i>`. They only change the look and add no meaning: `<i>` for the name of a ship or a word from another language, `<b>` for a word that should catch the eye. When you're not sure, ask yourself: is it **important**? Then `<strong>`. Is it **stressed**? Then `<em>`.
+```text
+Don't touch the oven, it's still hot.     ("Don't touch the oven" in bold)
+```
 
-## A few friends
+`<strong>` means "this part is important". Browsers show it in **bold**, and a screen reader may say it with more force.
 
-- `<small>` is for **fine print**: side notes, conditions, the tiny text under a price.
-- `<sub>` sits **below** the line and `<sup>` sits **above** it: the 2 in O₂, the 2 in m².
-- `<mark>` **highlights** text that matters right now, like the words a search found.
+## `<em>`: say this word differently
 
 ```html
-<p>Each crew member breathes about 550 litres of O<sub>2</sub> a day.</p>
-<p>The greenhouse is 40 m<sup>2</sup>.</p>
-<p><small>Times are in station time.</small></p>
+<p>I said <em>Tuesday</em>, not Thursday.</p>
 ```
 
-## Inline and block
+```text
+I said Tuesday, not Thursday.             ("Tuesday" in italic)
+```
 
-`<p>` and the headings are **block** elements: each one starts on a new line and takes the whole width. `<strong>`, `<em>` and their friends are **inline**: they sit inside the text, so they go **inside** a block, never around it.
+`<em>` is short for **emphasis**: the word you'd lean on when you say the sentence out loud. Browsers show it in _italic_.
 
-Close them in the order you opened them, the inner one first:
+Move the `<em>` and the sentence means something else:
 
 ```html
-<p>Dock at <strong>Bay 2</strong>.</p>
+<p><em>I</em> said Tuesday, not Thursday.</p>
 ```
 
-and not `<p>Dock at <strong>Bay 2</p></strong>`. Browsers try to fix tags closed in the wrong order, but they guess, and the guess isn't always what you meant.
+Now the point is who said it, not which day.
+
+Both tags go **inside** a paragraph, around the words they're about. The rest of the paragraph stays as it was.
+
+## What about `<b>` and `<i>`?
+
+You may see `<b>` (bold) and `<i>` (italic) on other pages. They only change the look and say nothing about meaning. When something is important or stressed, use `<strong>` and `<em>`.
+
+## Break it on purpose
+
+Forget to close the `<strong>`:
+
+```html
+<p><strong>Don't touch the oven, it's still hot.</p>
+<p>Dinner is at seven.</p>
+```
+
+Now everything after it may turn bold, even the next paragraph, because the browser doesn't know where the important part ends. Close it, and only the words inside stay bold.
 
 ---
 
-## Mission: Safety Notice
+## Mission: A warning
 
-Your page has a few words that need to stand out, each in its own way. Pick the tag for each one by what it **means**:
+Your `index.html` has its parts. Something on board needs a warning.
 
-- in one of your paragraphs about the station, a word you'd say louder because it changes what the sentence means;
-- under **Today on Board**, before the shifts, a paragraph that starts with a warning the crew must not miss: **Hatch 3 stays closed**. Only those four words carry the warning;
-- after the warning, a paragraph saying how much water is left, with water written the way scientists write it: **H₂O**;
-- after that, a paragraph with the station's height: **4 × 10⁵ metres** (an `x` will do for the ×);
-- at the end of **About the Station**, after the address, a side note nobody needs to read first: **Docking fee: 20 credits a day.**
+**Example**: in your Today on Board part, your page would show something like this:
+
+```text
+Hatch 3 stays closed while the panels are repaired.     ("Hatch 3 stays closed" in bold)
+```
+
+- A paragraph has a warning, with its most important words in `<strong>`.
+- Somewhere on the page, a word you'd say with more stress is in `<em>`.
+
+Psst, `<strong>` and `<em>` go inside the paragraph, around just the words they're about :)

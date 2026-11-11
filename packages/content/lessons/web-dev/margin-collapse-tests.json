@@ -1,0 +1,17 @@
+{
+  "cases": [
+    {
+      "name": "The cards stand at least 24 pixels apart",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "layout": "#cards > .card",
+          "arrange": "column",
+          "gap": 24,
+          "label": "the cards"
+        }
+      ]
+    }
+  ]
+}
