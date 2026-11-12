@@ -1,0 +1,164 @@
+{
+  "cases": [
+    {
+      "name": "A name of one character is not sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "I",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "exists": "#passenger:invalid",
+          "label": "the name box, which the browser refuses to send"
+        }
+      ]
+    },
+    {
+      "name": "A name of two characters is sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Al",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Al",
+            "email": "ida@example.com",
+            "flight": "SL-101",
+            "date": "2031-05-14"
+          }
+        }
+      ]
+    },
+    {
+      "name": "The name box stops at 40 characters",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Sofia Isabella Lind-Moreau of Oslo and Porto",
+          "label": "the name box"
+        },
+        {
+          "value": "#passenger",
+          "equals": "Sofia Isabella Lind-Moreau of Oslo and P",
+          "label": "the name box after typing more than 40 characters"
+        }
+      ]
+    },
+    {
+      "name": "The notes box stops at 200 characters",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "I travel with my grandmother, who is ninety and has never been to space. She would like a seat near the window, a warm blanket and a cup of tea. She also asks if she may bring her knitting, and her small dog, who is very calm.",
+          "label": "the notes box"
+        },
+        {
+          "value": "#notes",
+          "equals": "I travel with my grandmother, who is ninety and has never been to space. She would like a seat near the window, a warm blanket and a cup of tea. She also asks if she may bring her knitting, and her sm",
+          "label": "the notes box after typing more than 200 characters"
+        }
+      ]
+    },
+    {
+      "name": "Another long name",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Oliver Alexander Grant from the Orbital Yard",
+          "label": "the name box"
+        },
+        {
+          "value": "#passenger",
+          "equals": "Oliver Alexander Grant from the Orbital ",
+          "label": "the name box after typing a long name"
+        },
+        {
+          "fill": "#email",
+          "text": "noah.berg@mail.example",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2032-01-09",
+          "label": "the date box"
+        },
+        {
+          "fill": "#notes",
+          "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "label": "the notes box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Oliver Alexander Grant from the Orbital ",
+            "email": "noah.berg@mail.example",
+            "flight": "SL-104",
+            "date": "2032-01-09"
+          }
+        }
+      ]
+    }
+  ]
+}
