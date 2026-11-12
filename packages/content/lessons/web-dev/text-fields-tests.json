@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "name": "boarding.html is a whole page of the site",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        },
+        {
+          "text": "h1",
+          "nonEmpty": true,
+          "label": "the biggest heading"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        }
+      ]
+    },
+    {
+      "name": "A box for the name, ready to type in",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "input#passenger:is(:not([type]), [type=\"text\" i])",
+          "label": "a box to type in (<input>) with the id passenger"
+        },
+        {
+          "fill": "input#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "value": "input#passenger",
+          "equals": "Ida Moreau",
+          "label": "the name box"
+        }
+      ]
+    },
+    {
+      "name": "Every menu leads to the boarding page, and back",
+      "visible": true,
+      "steps": [
+        {
+          "click": "nav a[href$=\"boarding.html\"]",
+          "label": "the menu link to the boarding page"
+        },
+        {
+          "at": "boarding.html"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "click": "nav a[href$=\"boarding.html\"]",
+          "label": "the menu link to the boarding page"
+        },
+        {
+          "at": "boarding.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "nav a[href$=\"boarding.html\"]",
+          "label": "the menu link to the boarding page"
+        },
+        {
+          "at": "boarding.html"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "click": "nav a[href$=\"boarding.html\"]",
+          "label": "the menu link to the boarding page"
+        },
+        {
+          "at": "boarding.html"
+        },
+        {
+          "click": "nav a[href$=\"schedule.html\"]",
+          "label": "the menu link to the schedule"
+        },
+        {
+          "at": "schedule.html"
+        }
+      ]
+    }
+  ]
+}

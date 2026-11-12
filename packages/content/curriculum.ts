@@ -2187,6 +2187,11 @@ export const lessons = [
     title: 'Project: Launch Board',
     sortOrder: 156,
   },
+  { courseKey: 'web-dev', slug: 'text-fields', title: 'Text Fields', sortOrder: 157 },
+  { courseKey: 'web-dev', slug: 'labels', title: 'Labels', sortOrder: 158 },
+  { courseKey: 'web-dev', slug: 'placeholder', title: 'A Hint in the Box', sortOrder: 159 },
+  { courseKey: 'web-dev', slug: 'forms', title: 'Forms', sortOrder: 160 },
+  { courseKey: 'web-dev', slug: 'field-names', title: 'What a Form Sends', sortOrder: 161 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2369,6 +2374,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'schedule-js-recap',
         'launch-board-project',
       ],
+    },
+    {
+      key: 'boarding-form',
+      title: 'Boarding Form',
+      lessons: ['text-fields', 'labels', 'placeholder', 'forms', 'field-names'],
     },
   ],
 };
