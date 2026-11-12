@@ -1,4 +1,4 @@
-Tehnica **two pointers** (doi pointeri) este o idee simplă, dar puternică: în loc să folosim o singură variabilă pentru a parcurge datele, folosim **două**: una care pornește de la început și una de la sfârșit (sau una lentă și una rapidă)
+Tehnica **two pointers** (doi pointeri) este o idee simplă, dar puternică: în loc să folosim o singură variabilă pentru a parcurge datele, folosim două: una care pornește de la început și una de la sfârșit (sau una lentă și una rapidă)
 
 Am văzut-o deja fără să știm. Când verificam palindroamele, comparam primul caracter cu ultimul, apoi al doilea cu penultimul. Aceia erau doi pointeri
 
@@ -30,9 +30,9 @@ False
 
 ---
 
-Alt exemplu clasic: având o listă **sortată** și o sumă țintă, găsește două numere care se adună până la țintă
+Alt exemplu clasic: având o listă sortată și o sumă țintă, găsește două numere care se adună până la țintă
 
-Metoda brute force (buclă imbricată, verificând fiecare pereche) funcționează, dar este lentă. Cu doi pointeri pe o listă **sortată**, este mult mai inteligent
+Metoda brute force (buclă imbricată, verificând fiecare pereche) funcționează, dar este lentă. Cu doi pointeri pe o listă sortată, este mult mai inteligent
 
 ```py
 def doua_numere(numere, tinta):
@@ -57,7 +57,7 @@ print(rezultat)
 
 Rezultat **(2, 7)**
 
-Cum funcționează? Adunăm cel mai mic număr (stanga) și cel mai mare (dreapta). Dacă suma este **prea mică**, avem nevoie de un număr mai mare → mută **stanga** spre dreapta. Dacă suma este **prea mare**, avem nevoie de un număr mai mic → mută **dreapta** spre stânga. Dacă este **exact bună**, am găsit perechea
+Cum funcționează? Adunăm cel mai mic număr (stanga) și cel mai mare (dreapta). Dacă suma este prea mică, avem nevoie de un număr mai mare → mută stanga spre dreapta. Dacă suma este prea mare, avem nevoie de un număr mai mic → mută dreapta spre stânga. Dacă este exact bună, am găsit perechea
 
 Asta funcționează pentru că lista este **sortată**. Mutarea lui stanga crește suma, mutarea lui dreapta o scade. Restrângem din ambele părți până când găsim răspunsul (sau pointerii se întâlnesc, ceea ce înseamnă că nu există nicio pereche)
 
@@ -78,7 +78,7 @@ Asta funcționează pentru că lista este **sortată**. Mutarea lui stanga creș
 
 ---
 
-Un exemplu mai simplu: **elimină duplicatele** dintr-o listă sortată (păstrând doar elementele unice)
+Un exemplu mai simplu: elimină duplicatele dintr-o listă sortată (păstrând doar elementele unice)
 
 ```py
 def elimina_duplicatele(numere):
@@ -96,7 +96,7 @@ print(elimina_duplicatele([1, 1, 2, 2, 2, 3, 4, 4, 5]))
 
 Rezultat **[1, 2, 3, 4, 5]**
 
-Aici comparăm fiecare element cu cel **anterior**. Dacă sunt diferite, este o nouă valoare unică, deci păstreaz-o
+Aici comparăm fiecare element cu cel anterior. Dacă sunt diferite, este o nouă valoare unică, deci păstreaz-o
 
 ---
 
@@ -104,7 +104,7 @@ Aici comparăm fiecare element cu cel **anterior**. Dacă sunt diferite, este o 
 
 Navele care așteaptă să andocheze poartă fiecare o încărcătură de combustibil (sortată de la cea mai mică la cea mai mare). Două nave pot împărți o clemă de andocare doar dacă încărcăturile lor de combustibil se adună exact până la `tinta`. Găsește fiecare pereche validă.
 
-Scrie o funcție **pereche_cu_suma(numere, tinta)** care primește o listă **sortată** și un număr țintă și returnează o listă cu **toate** perechile care se adună până la țintă. Folosește tehnica **two pointers** (un pointer la început, unul la sfârșit, mută-i unul către celălalt).
+Scrie o funcție **pereche_cu_suma(numere, tinta)** care primește o listă sortată și un număr țintă și returnează o listă cu toate perechile care se adună până la țintă. Folosește tehnica two pointers (un pointer la început, unul la sfârșit, mută-i unul către celălalt).
 
 Apoi afișează `Perechi: ` urmat de lista de perechi și `Total perechi: ` urmat de câte sunt.
 
