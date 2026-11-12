@@ -339,7 +339,7 @@ Every page gets the same header, menu and footer. The wiki's pages join them nex
 | 35  | **`event-delegation`**     | One listener for many elements, with `closest`                  | Bubbling and Delegation      |
 | 36  | **`shared-script`**        | One script on every page, which checks its element is there     | Recap                        |
 | 37  | **`aria-expanded`**        | `aria-expanded`: a button says what it opened                   | Recap                        |
-| 38  | `wiki-js-recap`            | No new idea: a menu that opens on a phone                       | Recap                        |
+| 38  | `wiki-js-recap`            | No new idea: a menu that opens from a button                    | Recap                        |
 | 39  | `spaceport-launch-project` | Project: a launch page, from an empty folder                    | Project                      |
 
 ## Moved out, because a later part teaches them
