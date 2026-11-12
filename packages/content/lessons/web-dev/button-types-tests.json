@@ -1,0 +1,148 @@
+{
+  "cases": [
+    {
+      "name": "A button clears the form, and sends nothing",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#notes",
+          "text": "I get cold.",
+          "label": "the notes box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the choice SL-102 in the flight list"
+        },
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"meal\"]), input[name=\"extras\"][value=\"meal\"] + label, label:has(+ input[name=\"extras\"][value=\"meal\"])",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "click": "[type=\"reset\" i]",
+          "label": "the button that clears the form"
+        },
+        {
+          "value": "#passenger",
+          "empty": true,
+          "label": "the name box after the form is cleared"
+        },
+        {
+          "value": "#notes",
+          "empty": true,
+          "label": "the notes box after the form is cleared"
+        },
+        {
+          "value": "#flight",
+          "empty": true,
+          "label": "the flight list after the form is cleared"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"meal\"]",
+          "off": true,
+          "label": "the hot meal box after the form is cleared"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Clearing puts every box back as it was at the start",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"wifi\"]), input[name=\"extras\"][value=\"wifi\"] + label, label:has(+ input[name=\"extras\"][value=\"wifi\"])",
+          "label": "the label of the Wi-Fi box"
+        },
+        {
+          "click": "[type=\"reset\" i]",
+          "label": "the button that clears the form"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"wifi\"]",
+          "label": "the Wi-Fi box after the form is cleared"
+        }
+      ]
+    },
+    {
+      "name": "The send button still sends",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Ida Moreau"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Another passenger",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "noah.berg@mail.example",
+          "label": "the email box"
+        },
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"aisle\"]), input[name=\"seat\"][value=\"aisle\"] + label, label:has(+ input[name=\"seat\"][value=\"aisle\"])",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "click": "[type=\"reset\" i]",
+          "label": "the button that clears the form"
+        },
+        {
+          "value": "#email",
+          "empty": true,
+          "label": "the email box after the form is cleared"
+        },
+        {
+          "checked": "input[name=\"seat\"][value=\"aisle\"]",
+          "off": true,
+          "label": "the aisle seat after the form is cleared"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Noah Berg"
+          }
+        }
+      ]
+    }
+  ]
+}
