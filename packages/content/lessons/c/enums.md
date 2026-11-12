@@ -1,4 +1,4 @@
-Sometimes we have a variable that can only be one of a few **named values**: a day of the week, a direction, a job state. We could use ints (0 = UP, 1 = DOWN...) but that's unreadable. **Enums** give names to these constants
+Sometimes we have a variable that can only be one of a few named values: a day of the week, a direction, a job state. We could use ints (0 = UP, 1 = DOWN...) but that's unreadable. **Enums** give names to these constants
 
 ```c
 #include <stdio.h>
@@ -15,7 +15,7 @@ int main(void) {
 }
 ```
 
-Behind the scenes, **UP** is **0**, **DOWN** is **1**, **LEFT** is **2**, **RIGHT** is **3**. The compiler assigns numbers automatically starting from 0. But we write **UP** instead of **0**, which makes the code much clearer
+Behind the scenes, UP is 0, DOWN is 1, LEFT is 2, RIGHT is 3. The compiler assigns numbers automatically starting from 0. But we write UP instead of 0, which makes the code much clearer
 
 ---
 
@@ -92,9 +92,9 @@ Instead of remembering "was 2 suspended or done?", we simply use the names. The 
 
 The computing center runs a quarterly maintenance cycle, one round per season. The operating console needs a function that translates each season code into a readable name on the teletype screen.
 
-1. Define **enum Season** with values **SPRING**, **SUMMER**, **AUTUMN**, **WINTER**
-2. Write the function **void print_season(enum Season s)** with a **switch** statement that prints the season's name
-3. In **main**, call the function for all four seasons, in order
+1. Define **enum Season** with values SPRING, SUMMER, AUTUMN, WINTER
+2. Write the function **void print_season(enum Season s)** with a switch statement that prints the season's name
+3. In main, call the function for all four seasons, in order
 
 **Example**
 

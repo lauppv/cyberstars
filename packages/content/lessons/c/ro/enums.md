@@ -1,4 +1,4 @@
-Uneori avem o variabilă care poate avea doar una dintre câteva **valori cu nume**: o zi a săptămânii, o direcție, o stare de joc. Am putea folosi int-uri (0 = SUS, 1 = JOS...) dar e ilizibil. **Enum-urile** dau nume acestor constante
+Uneori avem o variabilă care poate avea doar una dintre câteva valori cu nume: o zi a săptămânii, o direcție, o stare de joc. Am putea folosi int-uri (0 = SUS, 1 = JOS...) dar e ilizibil. **Enum-urile** dau nume acestor constante
 
 ```c
 #include <stdio.h>
@@ -15,7 +15,7 @@ int main(void) {
 }
 ```
 
-În culise, **SUS** este **0**, **JOS** este **1**, **STANGA** este **2**, **DREAPTA** este **3**. Compilatorul atribuie automat numere începând de la 0. Dar noi scriem **SUS** în loc de **0**, ceea ce face codul mult mai clar
+În culise, SUS este 0, JOS este 1, STANGA este 2, DREAPTA este 3. Compilatorul atribuie automat numere începând de la 0. Dar noi scriem SUS în loc de 0, ceea ce face codul mult mai clar
 
 ---
 
@@ -92,9 +92,9 @@ int main(void) {
 
 Centrul de calcul rulează un ciclu de mentenanță trimestrial, câte o rundă pentru fiecare anotimp. Consola de operare are nevoie de o funcție care traduce fiecare cod de anotimp într-un nume citibil pe ecranul teletype-ului.
 
-1. Definește **enum Anotimp** cu valorile **PRIMAVARA**, **VARA**, **TOAMNA**, **IARNA**
-2. Scrie funcția **void afiseaza_anotimp(enum Anotimp a)** cu o instrucțiune **switch** care afișează numele anotimpului
-3. În **main**, apelează funcția pentru toate cele patru anotimpuri, în ordine
+1. Definește **enum Anotimp** cu valorile PRIMAVARA, VARA, TOAMNA, IARNA
+2. Scrie funcția **void afiseaza_anotimp(enum Anotimp a)** cu o instrucțiune switch care afișează numele anotimpului
+3. În main, apelează funcția pentru toate cele patru anotimpuri, în ordine
 
 **Exemplu**
 
