@@ -34,15 +34,15 @@ drwxr-xr-x 2 student student 4096 May 16 10:00 rapoarte
 
 Primul caracter îți spune tipul:
 
-- `-` înseamnă **fișier**
-- `d` înseamnă **director**
+- `-` înseamnă fișier
+- `d` înseamnă director
 
 Așa că, în sfârșit, poți deosebi fișierele de foldere. (Celelalte coloane,
 permisiuni, dimensiune, dată, sunt acoperite în capitolele următoare.)
 
 ### Combină opțiunile: `ls -la`
 
-Opțiunile pot fi combinate într-una singură. `ls -la` înseamnă „format long **și**
+Opțiunile pot fi combinate într-una singură. `ls -la` înseamnă „format long și
 afișează toate":
 
 ```bash

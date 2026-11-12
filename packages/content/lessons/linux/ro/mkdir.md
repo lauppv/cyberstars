@@ -1,5 +1,5 @@
-Te poți deplasa prin stație. Acum este momentul să **construiești**. Prima cărămidă
-de construcție este un nou **director** (folder).
+Te poți deplasa prin stație. Acum este momentul să construiești. Prima cărămidă
+de construcție este un nou director (folder).
 
 Comanda **mkdir** (**make directory**) creează un folder. Dă-i numele pe care îl
 dorești:

@@ -2,10 +2,10 @@ Congratulations, cadet. You have learned navigation, file management, searching,
 pipelines, text processing, permissions, and system tools. Now it is time to prove
 yourself.
 
-The station's **Mission Control** directory is a mess. A previous officer left files
+The station's Mission Control directory is a mess. A previous officer left files
 scattered across the wrong folders, permissions broken, and no summary report. Your
 commanding officer needs the directory organized and a final report generated
-**before the next shift starts**.
+before the next shift starts.
 
 ---
 

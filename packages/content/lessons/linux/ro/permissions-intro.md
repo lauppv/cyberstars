@@ -20,7 +20,7 @@ director). Restul de 9 sunt împărțite în trei grupuri de câte trei:
 | 5-7     | **g**rup              | `r-x` = citire, fără scriere, execuție |
 | 8-10    | **o**thers (ceilalți) | `r--` = doar citire                    |
 
-O liniuță (`-`) înseamnă că permisiunea respectivă **nu** este acordată.
+O liniuță (`-`) înseamnă că permisiunea respectivă nu este acordată.
 
 ### Ce înseamnă r, w, x?
 

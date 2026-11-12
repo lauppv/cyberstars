@@ -1,5 +1,5 @@
-You can move around the station. Now it is time to **build**. The first building
-block is a new **directory** (folder).
+You can move around the station. Now it is time to build. The first building
+block is a new directory (folder).
 
 The **mkdir** command (**make directory**) creates a folder. Give it the name you
 want:

@@ -17,7 +17,7 @@ connects them in real time.
 
 ### Why not just `grep error system.log`?
 
-Both work! But pipes shine when you chain commands that **cannot** take a filename as an
+Both work! But pipes shine when you chain commands that cannot take a filename as an
 argument, or when you build longer chains (next lesson). The pipe makes every command
 composable: each one does one small job, and you snap them together like modules on the
 station.

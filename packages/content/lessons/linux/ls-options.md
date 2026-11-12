@@ -33,15 +33,15 @@ drwxr-xr-x 2 student student 4096 May 16 10:00 reports
 
 The very first character tells you the type:
 
-- `-` means a **file**
-- `d` means a **directory**
+- `-` means a file
+- `d` means a directory
 
 So now you can finally tell files and folders apart. (The other columns, permissions,
 size, date, are covered in later chapters.)
 
 ### Combine options: `ls -la`
 
-Options can be combined into one. `ls -la` means "long format **and** show all":
+Options can be combined into one. `ls -la` means "long format and show all":
 
 ```bash
 ls -la
