@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "name": "Book my seat stands out the most",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "style": "#booking [type=\"submit\" i]",
+          "prop": "font-size",
+          "atLeast": 18,
+          "label": "the Book my seat button"
+        },
+        {
+          "size": "#booking [type=\"submit\" i]",
+          "minHeight": 44,
+          "label": "the Book my seat button"
+        },
+        {
+          "differs": "#booking [type=\"submit\" i]",
+          "from": "#booking [type=\"reset\" i]",
+          "props": ["background-color", "color", "border-top-color", "border-top-style"],
+          "label": "the Book my seat button",
+          "fromLabel": "the button that clears the form"
+        },
+        {
+          "contrast": "#booking [type=\"submit\" i]",
+          "atLeast": 4.5,
+          "label": "the Book my seat button"
+        }
+      ]
+    },
+    {
+      "name": "Clear the form stays quiet, but readable",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "style": "#booking [type=\"reset\" i]",
+          "prop": "font-size",
+          "atMost": 16,
+          "label": "the button that clears the form"
+        },
+        {
+          "contrast": "#booking [type=\"reset\" i]",
+          "atLeast": 4.5,
+          "label": "the button that clears the form"
+        }
+      ]
+    },
+    {
+      "name": "On a phone",
+      "page": "boarding.html",
+      "width": 375,
+      "steps": [
+        {
+          "style": "#booking [type=\"submit\" i]",
+          "prop": "font-size",
+          "atLeast": 18,
+          "label": "the Book my seat button"
+        },
+        {
+          "size": "#booking [type=\"submit\" i]",
+          "minHeight": 44,
+          "label": "the Book my seat button"
+        },
+        {
+          "contrast": "#booking [type=\"submit\" i]",
+          "atLeast": 4.5,
+          "label": "the Book my seat button"
+        },
+        {
+          "style": "#booking [type=\"reset\" i]",
+          "prop": "font-size",
+          "atMost": 16,
+          "label": "the button that clears the form"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

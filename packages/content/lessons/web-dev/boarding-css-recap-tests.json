@@ -1,0 +1,217 @@
+{
+  "cases": [
+    {
+      "name": "The form is a card in the middle of the page",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "differs": "#booking",
+          "from": "body",
+          "props": ["background-color"],
+          "label": "the booking form",
+          "fromLabel": "the page"
+        },
+        {
+          "centered": "#booking",
+          "label": "the booking form"
+        }
+      ]
+    },
+    {
+      "name": "Every label, question and button reads well on the card",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "contrast": "#booking label",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every label of the form"
+        },
+        {
+          "contrast": "#booking legend",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every question (legend) of the form"
+        },
+        {
+          "contrast": "#booking button",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every button of the form"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, everything stays on the card",
+      "visible": true,
+      "page": "boarding.html",
+      "width": 375,
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "against": "#booking input, #booking select, #booking textarea, #booking button",
+          "in": "form",
+          "side": "top",
+          "within": 2000,
+          "label": "every box, list and button of the form",
+          "inLabel": "the form"
+        }
+      ]
+    },
+    {
+      "name": "The ring, the marks and the choices still work",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "press": "Tab",
+          "on": "#passenger",
+          "label": "the name box"
+        },
+        {
+          "style": "#email",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the email box, reached with Tab"
+        },
+        {
+          "style": "#email",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the email box, reached with Tab"
+        },
+        {
+          "style": "#email",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the email box, reached with Tab"
+        },
+        {
+          "fill": "#email",
+          "text": "ida.example.com",
+          "label": "the email box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#email",
+          "from": "#passenger",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the email box with ida.example.com",
+          "fromLabel": "the name box, not touched yet"
+        },
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "differs": "label[for=\"seat-aisle\"]",
+          "from": "label[for=\"seat-window\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the aisle seat, picked",
+          "fromLabel": "the label of the window seat"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, after a click on send",
+      "page": "boarding.html",
+      "width": 375,
+      "steps": [
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "differs": "#email",
+          "from": "#phone",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the empty email box, after a click on send",
+          "fromLabel": "the empty phone box"
+        },
+        {
+          "differs": "label[for=\"extra-wifi\"]",
+          "from": "label[for=\"extra-meal\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of Wi-Fi, ticked",
+          "fromLabel": "the label of the meal"
+        },
+        {
+          "differs": "label[for=\"extra-spacewalk\"]",
+          "from": "label[for=\"extra-meal\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the space walk",
+          "fromLabel": "the label of the meal"
+        },
+        {
+          "contrast": "#booking label",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every label of the form"
+        },
+        {
+          "against": "#booking input, #booking select, #booking textarea, #booking button",
+          "in": "form",
+          "side": "top",
+          "within": 2000,
+          "label": "every box, list and button of the form",
+          "inLabel": "the form"
+        }
+      ]
+    }
+  ]
+}

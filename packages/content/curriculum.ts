@@ -2218,6 +2218,9 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'checked-state', title: ':checked', sortOrder: 180 },
   { courseKey: 'web-dev', slug: 'disabled-fields', title: 'Disabled Fields', sortOrder: 181 },
   { courseKey: 'web-dev', slug: 'accent-color', title: 'accent-color', sortOrder: 182 },
+  { courseKey: 'web-dev', slug: 'spacing', title: 'Spacing', sortOrder: 183 },
+  { courseKey: 'web-dev', slug: 'hierarchy', title: 'Hierarchy', sortOrder: 184 },
+  { courseKey: 'web-dev', slug: 'boarding-css-recap', title: 'CSS Recap', sortOrder: 185 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2431,6 +2434,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'checked-state',
         'disabled-fields',
         'accent-color',
+        'spacing',
+        'hierarchy',
+        'boarding-css-recap',
       ],
     },
   ],
