@@ -15,7 +15,7 @@ async function newFile(page: Page, path: string) {
 // Opens a file from the tree and writes its whole text
 async function write(page: Page, name: string, text: string) {
   await page.getByRole('button', { name, exact: true }).click();
-  await page.locator('.cm-content').first().click();
+  await page.locator('[data-testid="editor"] .cm-content').click();
   await page.keyboard.press('ControlOrMeta+a');
   await page.keyboard.press('Delete');
   await page.keyboard.insertText(text);
@@ -78,9 +78,9 @@ test('a web lesson previews a site of several files, sealed off from the lesson'
   await expect(page.getByText('Paused: a loop ran too long')).toBeVisible({ timeout: 15_000 });
   await expect(log).toContainText('Stopped a loop that ran too long, on line 1 of index.html.');
   // The lesson still answers
-  await page.locator('.cm-content').first().click();
+  await page.locator('[data-testid="editor"] .cm-content').click();
   await page.keyboard.insertText('<!-- still here -->');
-  await expect(page.locator('.cm-content').first()).toContainText('still here');
+  await expect(page.locator('[data-testid="editor"] .cm-content')).toContainText('still here');
 });
 
 test('Run says once what it is for, then draws the page again', async ({ page }) => {

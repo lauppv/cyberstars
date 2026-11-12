@@ -388,7 +388,7 @@ export default function WebWorkspace({
           {notice}
         </p>
       )}
-      <div className="flex-1 min-h-0 overflow-auto bg-[rgba(13,17,23,0.3)]">
+      <div data-testid="editor" className="flex-1 min-h-0 overflow-auto bg-[rgba(13,17,23,0.3)]">
         {!activeFile ? (
           <p className="px-4 py-3 text-[13px] text-[var(--text3)]">{t('web.noFileOpen')}</p>
         ) : activeFile.image ? (
