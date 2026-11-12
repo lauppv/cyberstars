@@ -66,7 +66,7 @@ Now **(2 + 3)** is computed first (giving 5), then glued to the string. Remember
 
 ---
 
-+ is enough for simple cases, but when you have a lot of text to combine it gets hard to read, full of quotes and + signs. Java has a cleaner alternative: **String.format()**
+**+** is enough for simple cases, but when you have a lot of text to combine it gets hard to read, full of quotes and + signs. Java has a cleaner alternative: **String.format()**
 
 ```java
 public class Main {

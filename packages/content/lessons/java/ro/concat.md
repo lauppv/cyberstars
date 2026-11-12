@@ -66,7 +66,7 @@ Acum **(2 + 3)** este calculat mai întâi (dând 5), apoi lipit de string. Țin
 
 ---
 
-+ este suficient pentru cazuri simple, dar când ai mult text de combinat devine greu de citit, plin de ghilimele și de +-uri. Java are o alternativă mai curată: **String.format()**
+**+** este suficient pentru cazuri simple, dar când ai mult text de combinat devine greu de citit, plin de ghilimele și de +-uri. Java are o alternativă mai curată: **String.format()**
 
 ```java
 public class Main {
