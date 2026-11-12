@@ -1,4 +1,4 @@
-Python comes with a bunch of useful functions already built in. We've already seen **print()**, **len()**, **int()**, **input()**, **range()**, **min()**, **max()**. Let's look at some more that will save us a lot of time
+Python comes with a bunch of useful functions already built in. We've already seen print(), len(), int(), input(), range(), min(), max(). Let's look at some more that will save us a lot of time
 
 ---
 
@@ -28,7 +28,7 @@ Output
 [5, 2, 8, 1, 9, 3]
 ```
 
-Notice that the **original** list is unchanged. **sorted()** gives us a new one. If we want to sort in **reverse** (descending) order
+Notice that the original list is unchanged. sorted() gives us a new one. If we want to sort in reverse (descending) order
 
 ```py
 print(sorted(numbers, reverse=True))
@@ -47,7 +47,7 @@ Output **['Cortez', 'Lance', 'Phil', 'Tommy']**. Alphabetical order
 
 ---
 
-**enumerate()** gives us both the **index** and the **value** when looping through a list
+**enumerate()** gives us both the index and the value when looping through a list
 
 Remember the old way?
 
@@ -57,7 +57,7 @@ for i in range(len(names)):
     print(f"{i}: {names[i]}")
 ```
 
-With **enumerate()** it's much cleaner
+With enumerate() it's much cleaner
 
 ```py
 names = ["Tommy", "Lance", "Cortez"]
@@ -77,7 +77,7 @@ Same result, but we don't have to write **range(len(...))** and **names[i]**. Mu
 
 ---
 
-**zip()** combines two lists **element by element**, like a zipper on a jacket
+**zip()** combines two lists element by element, like a zipper on a jacket
 
 ```py
 names = ["Tommy", "Lance", "Cortez"]
@@ -95,11 +95,11 @@ Lance: 80
 Cortez: 70
 ```
 
-**zip()** pairs up the first element from each list, then the second, then the third, and so on. If the lists have different lengths, it stops at the shortest one
+zip() pairs up the first element from each list, then the second, then the third, and so on. If the lists have different lengths, it stops at the shortest one
 
 ---
 
-**any()** returns **True** if **at least one** element is true. **all()** returns **True** if **every** element is true
+**any()** returns True if **at least one** element is true. **all()** returns True if **every** element is true
 
 ```py
 scores = [80, 95, 40, 70]
@@ -118,13 +118,13 @@ True
 False
 ```
 
-**any()**: is there at least one score below 50? Yes (40), so **True**
+any(): is there at least one score below 50? Yes (40), so True
 
-**all()**: are ALL scores at least 50? No (40 is not), so **False**
+all(): are ALL scores at least 50? No (40 is not), so False
 
 ---
 
-**abs()** gives us the **absolute value** (removes the minus sign)
+**abs()** gives us the absolute value (removes the minus sign)
 
 ```py
 print(abs(-5))
@@ -164,14 +164,14 @@ The second argument tells Python how many decimal places we want
 
 ## Mission: Crew Leaderboard
 
-You have two lists: `crew` (names) and `scores`. Using the **built-in functions** you just learned:
+You have two lists: `crew` (names) and `scores`. Using the built-in functions you just learned:
 
 1. Use `zip` to print each crew member with their score as `name: score`
-2. Print `Sorted: ` then the scores sorted from **highest to lowest** (`sorted(..., reverse=True)`)
-3. Print `Total: ` then the **sum** of all scores
-4. Print `Average: ` then the average, **rounded** to 1 decimal place (`round(..., 1)`)
-5. Print `All passed: ` then whether **all** scores are 50 or more (`all(...)`)
-6. Print `Any perfect: ` then whether **any** score equals 100 (`any(...)`)
+2. Print `Sorted: ` then the scores sorted from highest to lowest (`sorted(..., reverse=True)`)
+3. Print `Total: ` then the sum of all scores
+4. Print `Average: ` then the average, rounded to 1 decimal place (`round(..., 1)`)
+5. Print `All passed: ` then whether all scores are 50 or more (`all(...)`)
+6. Print `Any perfect: ` then whether any score equals 100 (`any(...)`)
 
 **Output**
 

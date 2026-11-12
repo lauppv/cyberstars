@@ -1,4 +1,4 @@
-Now that we know what a dictionary is, it's time to **loop** through one. Just like we looped through lists, we can loop through dictionaries. But since a dictionary has **keys** and **values**, things are a bit different
+Now that we know what a dictionary is, it's time to loop through one. Just like we looped through lists, we can loop through dictionaries. But since a dictionary has keys and values, things are a bit different
 
 ```py
 player = {
@@ -19,7 +19,7 @@ health
 city
 ```
 
-Wait, it only showed the **keys**? Yes. By default, when we loop through a dictionary, Python gives us the **keys**. But we can easily get the **values** too
+Wait, it only showed the keys? Yes. By default, when we loop through a dictionary, Python gives us the keys. But we can easily get the values too
 
 ```py
 player = {
@@ -40,11 +40,11 @@ Tommy Vercetti
 Vice City
 ```
 
-We used **player[i]** to grab the value for each key. We took **i** as the iterator, which goes through each key in the dictionary one by one. This works, but Python has a nicer way
+We used **player[i]** to grab the value for each key. We took i as the iterator, which goes through each key in the dictionary one by one. This works, but Python has a nicer way
 
 ---
 
-**.items()** gives us both the **key** and the **value** at the same time
+**.items()** gives us both the key and the value at the same time
 
 ```py
 player = {
@@ -57,11 +57,11 @@ for key, value in player.items():
     print(f"The key {key} with value {value}")
 ```
 
-We see how Python views **player.items()**, it knows this means a `key: value` pair, so it automatically assigns **key** to whatever is on the left of the **:** ("name", "health", "city") and **value** to whatever is on the right of the **:** ("Tommy Vercetti", 100, "Vice City")
+We see how Python views **player.items()**, it knows this means a `key: value` pair, so it automatically assigns key to whatever is on the left of the : ("name", "health", "city") and value to whatever is on the right of the : ("Tommy Vercetti", 100, "Vice City")
 
 ---
 
-If we only need the **keys**, we can use **.keys()**
+If we only need the keys, we can use **.keys()**
 
 ```py
 player = {
@@ -82,7 +82,7 @@ health
 city
 ```
 
-If we only need the **values**, we use **.values()**
+If we only need the values, we use **.values()**
 
 ```py
 player = {
@@ -104,7 +104,7 @@ Vice City
 
 ---
 
-A very common use case: **counting things**. Let's say we want to count how many times each letter appears in a word
+A very common use case: counting things. Let's say we want to count how many times each letter appears in a word
 
 ```py
 word = "banana"
@@ -125,7 +125,7 @@ Output
 {'b': 1, 'a': 3, 'n': 2}
 ```
 
-This is called a **frequency dictionary** or **histogram**. We check: is the letter already in the dictionary? If yes, increase the count. If not, start it at **1**
+This is called a **frequency dictionary** or histogram. We check: is the letter already in the dictionary? If yes, increase the count. If not, start it at 1
 
 ---
 
@@ -150,11 +150,11 @@ You have a dictionary of crew members and their scores from the last mission (al
 
 Print, in this order:
 
-1. The `name` of each member (loop with **.keys()**)
-2. The `score` of each member (loop with **.values()**)
+1. The `name` of each member (loop with .keys())
+2. The `score` of each member (loop with .values())
 3. `Total: ` then the sum of all scores
-4. `Average: ` then the total divided by the number of members (use **len()**)
-5. `Top: ` then the **name** of the member with the highest score
+4. `Average: ` then the total divided by the number of members (use len())
+5. `Top: ` then the name of the member with the highest score
 
 **Output**
 

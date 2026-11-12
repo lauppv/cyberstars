@@ -1,6 +1,6 @@
-So far we have stored values in variables and in lists. A **list** is great when we have a bunch of values and we access them by their **position** (index 0, 1, 2, …). But what if we don't care about position and instead we care about a **name**?
+So far we have stored values in variables and in lists. A list is great when we have a bunch of values and we access them by their position (index 0, 1, 2, …). But what if we don't care about position and instead we care about a name?
 
-Imagine Tommy Vercetti's phone book. He doesn't say "give me contact number 3". He says "give me **Cortez's** phone number". The **name** is the way he looks things up
+Imagine Tommy Vercetti's phone book. He doesn't say "give me contact number 3". He says "give me Cortez's phone number". The name is the way he looks things up
 
 This is exactly what a **dictionary** does in Python
 
@@ -16,7 +16,7 @@ print(phone_book["Cortez"])
 
 Output **555-1234**
 
-A dictionary is created with **curly braces {}**. Inside, we write **key: value** pairs separated by **commas**. The **key** is what we use to look things up (like the name), and the **value** is what we get back (like the phone number)
+A dictionary is created with **curly braces {}**. Inside, we write **key: value** pairs separated by commas. The **key** is what we use to look things up (like the name), and the **value** is what we get back (like the phone number)
 
 ```py
 phone_book = {
@@ -49,11 +49,11 @@ phone_book = {
 print(phone_book["Sonny"])
 ```
 
-**Run** it. You'll see a **KeyError**. Python is telling us: "I don't know any Sonny"
+Run it. You'll see a **KeyError**. Python is telling us: "I don't know any Sonny"
 
 ---
 
-We can **add** a new entry or **change** an existing one very easily
+We can add a new entry or change an existing one very easily
 
 ```py
 phone_book = {
@@ -75,11 +75,11 @@ Output
 555-1111
 ```
 
-If the key doesn't exist, Python **creates** it. If it already exists, Python **updates** it. Simple
+If the key doesn't exist, Python creates it. If it already exists, Python updates it. Simple
 
 ---
 
-We can also **remove** an entry with **del**
+We can also remove an entry with **del**
 
 ```py
 phone_book = {
@@ -101,7 +101,7 @@ Lance is gone. Sorry Lance :)
 
 ---
 
-To check if a key **exists** before accessing it, use **in**
+To check if a key exists before accessing it, use **in**
 
 ```py
 phone_book = {"Cortez": "555-1234"}
@@ -114,7 +114,7 @@ else:
 
 ---
 
-Just like lists, dictionaries can hold **any type** of value: strings, numbers, booleans, even other lists or dictionaries
+Just like lists, dictionaries can hold any type of value: strings, numbers, booleans, even other lists or dictionaries
 
 ```py
 player = {
@@ -137,11 +137,11 @@ In the editor you're given four details about a crew member as variables: `name`
 
 Do the following, in order:
 
-1. **Create** a dictionary `crew` with three keys (`"name"`, `"role"`, and `"age"`) using the `name`, `role`, and `age` variables as their values
-2. **Add** a new key `"station"`, using the `station` variable as its value
-3. It's the crew member's birthday, so **update** `age` inside the dictionary by adding **1** to it (use the + operator)
+1. Create a dictionary `crew` with three keys (`"name"`, `"role"`, and `"age"`) using the `name`, `role`, and `age` variables as their values
+2. Add a new key `"station"`, using the `station` variable as its value
+3. It's the crew member's birthday, so update `age` inside the dictionary by adding 1 to it (use the + operator)
 4. Print the values for `name`, `role`, `age`, and `station`, each on its own line
-5. We don't track rank yet, so if the key `"rank"` is **not in** the dictionary, print `Rank: unknown`
+5. We don't track rank yet, so if the key `"rank"` is not in the dictionary, print `Rank: unknown`
 
 **Output**
 
