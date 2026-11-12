@@ -1,12 +1,12 @@
-E timpul pentru un proiect adevărat! O să construim un **sistem de inventar**: Tommy gestionează depozitul stației, ține evidența proviziilor și trebuie să știe ce are și cât valorează totul
+E timpul pentru un proiect adevărat! O să construim un sistem de inventar: Tommy gestionează depozitul stației, ține evidența proviziilor și trebuie să știe ce are și cât valorează totul
 
-Acest proiect aduce împreună tot ce ai învățat: **clase**, **constructori**, **ArrayList-uri**, **metode**, și **bucle**. Hai să-l construim bucată cu bucată
+Acest proiect aduce împreună tot ce ai învățat: clase, constructori, ArrayList-uri, metode, și bucle. Hai să-l construim bucată cu bucată
 
 ---
 
 **Pasul 1: Clasa Articol**
 
-Fiecare obiect din inventarul nostru are un **nume**, o **cantitate**, și un **pret** per unitate. Hai să modelăm asta
+Fiecare obiect din inventarul nostru are un nume, o cantitate, și un pret per unitate. Hai să modelăm asta
 
 ```text
 class Articol {
@@ -67,7 +67,7 @@ public class Main {
 }
 ```
 
-Parcurgem obiectele, verificăm dacă numele se potrivește, îl eliminăm, și **returnăm** imediat (nu are rost să continuăm după ce l-am găsit și eliminat)
+Parcurgem obiectele, verificăm dacă numele se potrivește, îl eliminăm, și returnăm imediat (nu are rost să continuăm după ce l-am găsit și eliminat)
 
 ---
 
@@ -187,7 +187,7 @@ Total: $376.00
 
 ---
 
-Observă cum clasele lucrează împreună: `Articol` este un simplu container de date, iar `Inventar` gestionează o colecție de obiecte. Asta este **compoziția**: Inventar **are** o listă de Articole. Este unul dintre cele mai comune tipare din Java din lumea reală
+Observă cum clasele lucrează împreună: `Articol` este un simplu container de date, iar `Inventar` gestionează o colecție de obiecte. Asta este **compoziția**: Inventar are o listă de Articole. Este unul dintre cele mai comune tipare din Java din lumea reală
 
 Observă și: `Articol` și `Inventar` NU sunt public, doar `Main` este public. Asta pentru că Java permite o singură clasă public per fișier, și cum fișierul este compilat ca `Main.java`, clasa public trebuie să fie `Main`
 

@@ -1,10 +1,10 @@
-Hai să construim ceva distractiv: un **simulator de luptă**! Gândește-te la el ca la un sistem de luptă pe ture dintr-un RPG. O să avem personaje cu viață și putere de atac, plus subclase pentru Razboinici și Magi cu propriile lor abilități speciale. Acest proiect folosește **moștenirea**, **metodele**, și **OOP** lucrând toate împreună
+Hai să construim ceva distractiv: un simulator de luptă! Gândește-te la el ca la un sistem de luptă pe ture dintr-un RPG. O să avem personaje cu viață și putere de atac, plus subclase pentru Razboinici și Magi cu propriile lor abilități speciale. Acest proiect folosește moștenirea, metodele, și OOP lucrând toate împreună
 
 ---
 
 **Pasul 1: Clasa de bază Personaj**
 
-Fiecare personaj are un **nume**, **viata**, și **putereAtac**. De asemenea, poate să **atace** alt personaj
+Fiecare personaj are un nume, viata, și putereAtac. De asemenea, poate să atace alt personaj
 
 ```text
 class Personaj {
@@ -35,7 +35,7 @@ Metoda `ataca` reduce viața țintei cu puterea atacatorului. Simplu și eficien
 
 **Pasul 2: Subclasa Razboinic**
 
-Un Razboinic are **armura** în plus, care reduce daunele primite. Suprascriem câmpurile părintelui și adăugăm logica de reducere a daunelor. Când un Razboinic e atacat, armura absoarbe o parte din daune
+Un Razboinic are armura în plus, care reduce daunele primite. Suprascriem câmpurile părintelui și adăugăm logica de reducere a daunelor. Când un Razboinic e atacat, armura absoarbe o parte din daune
 
 ```text
 class Razboinic extends Personaj {
@@ -60,7 +60,7 @@ Metoda `ataca` a Razboinicului o suprascrie pe cea a părintelui ca să afișeze
 
 **Pasul 3: Subclasa Mag**
 
-Un Mag are **putereVraja**: magia lui face daune suplimentare peste atacul de bază
+Un Mag are putereVraja: magia lui face daune suplimentare peste atacul de bază
 
 ```text
 class Mag extends Personaj {

@@ -1,12 +1,12 @@
-Time for a real project! We're going to build an **inventory system**: Tommy manages the station's supply depot, keeps track of provisions and needs to know what he's got and how much it's all worth
+Time for a real project! We're going to build an inventory system: Tommy manages the station's supply depot, keeps track of provisions and needs to know what he's got and how much it's all worth
 
-This project brings together everything you've learned: **classes**, **constructors**, **ArrayLists**, **methods**, and **loops**. Let's build it piece by piece
+This project brings together everything you've learned: classes, constructors, ArrayLists, methods, and loops. Let's build it piece by piece
 
 ---
 
 **Step 1: The Item class**
 
-Every item in our inventory has a **name**, a **quantity**, and a **price** per unit. Let's model that
+Every item in our inventory has a name, a quantity, and a price per unit. Let's model that
 
 ```text
 class Item {
@@ -67,7 +67,7 @@ public class Main {
 }
 ```
 
-We loop through items, check if the name matches, remove it, and **return** immediately (no point continuing after we found and removed it)
+We loop through items, check if the name matches, remove it, and return immediately (no point continuing after we found and removed it)
 
 ---
 
@@ -187,7 +187,7 @@ Total: $376.00
 
 ---
 
-Notice how the classes work together: `Item` is a simple data container, and `Inventory` manages a collection of items. This is **composition**: the Inventory **has** a list of Items. It's one of the most common patterns in real-world Java
+Notice how the classes work together: `Item` is a simple data container, and `Inventory` manages a collection of items. This is **composition**: the Inventory has a list of Items. It's one of the most common patterns in real-world Java
 
 Also notice: `Item` and `Inventory` are NOT public, only `Main` is public. That's because Java only allows one public class per file, and since the file is compiled as `Main.java`, the public class must be `Main`
 

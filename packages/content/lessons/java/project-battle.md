@@ -1,10 +1,10 @@
-Let's build something fun: a **battle simulator**! Think of it like a turn-based combat system from an RPG. We'll have characters with health and attack power, plus subclasses for Warriors and Mages with their own special abilities. This project uses **inheritance**, **methods**, and **OOP** all working together
+Let's build something fun: a battle simulator! Think of it like a turn-based combat system from an RPG. We'll have characters with health and attack power, plus subclasses for Warriors and Mages with their own special abilities. This project uses inheritance, methods, and OOP all working together
 
 ---
 
 **Step 1: The Character base class**
 
-Every character has a **name**, **health**, and **attackPower**. They can also **attack** another character
+Every character has a name, health, and attackPower. They can also attack another character
 
 ```text
 class Character {
@@ -35,7 +35,7 @@ The `attack` method reduces the target's health by the attacker's power. Simple 
 
 **Step 2: The Warrior subclass**
 
-A Warrior has bonus **armor** that reduces incoming damage. We override the parent's fields and add damage reduction logic. When a Warrior gets attacked, the armor absorbs some damage
+A Warrior has bonus armor that reduces incoming damage. We override the parent's fields and add damage reduction logic. When a Warrior gets attacked, the armor absorbs some damage
 
 ```text
 class Warrior extends Character {
@@ -60,7 +60,7 @@ The Warrior's attack method overrides the parent's to print a more specific mess
 
 **Step 3: The Mage subclass**
 
-A Mage has **spellPower**: their magic does extra damage on top of their base attack
+A Mage has spellPower: their magic does extra damage on top of their base attack
 
 ```text
 class Mage extends Character {

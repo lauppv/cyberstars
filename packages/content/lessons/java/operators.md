@@ -1,4 +1,4 @@
-We already saw **+**, **-**, **\***, and **/** in earlier lessons. Java has a few more useful operators that we’ll meet now
+We already saw +, -, \*, and / in earlier lessons. Java has a few more useful operators that we’ll meet now
 
 ```java
 public class Main {
@@ -25,9 +25,9 @@ Output
 2
 ```
 
-The interesting one is **a / b = 3**, not **3.4**. Why? Because **a** and **b** are both **int**. Java does **integer division** when both operands are integers: it throws away the decimal part. We saw this in an earlier lesson
+The interesting one is **a / b = 3**, not **3.4**. Why? Because a and b are both int. Java does **integer division** when both operands are integers: it throws away the decimal part. We saw this in an earlier lesson
 
-If we want the decimal result, we need at least one **double**
+If we want the decimal result, we need at least one double
 
 ```java
 public class Main {
@@ -41,7 +41,7 @@ public class Main {
 
 ---
 
-The new operator is **%**, called **modulo** (or "remainder"). It gives the **remainder** of the division
+The new operator is **%**, called **modulo** (or "remainder"). It gives the remainder of the division
 
 ```java
 public class Main {
@@ -54,7 +54,7 @@ public class Main {
 
 **17 / 5 = 3** with remainder **2**, so **17 % 5 = 2**. **20 / 4 = 5** exactly, so the remainder is **0**
 
-**%** is incredibly useful. The classic example: checking if a number is **even**
+% is incredibly useful. The classic example: checking if a number is even
 
 ```java
 public class Main {
@@ -71,20 +71,20 @@ public class Main {
 
 ---
 
-Java has handy **shortcuts**
+Java has handy shortcuts
 
-- **a++** is the same as **a = a + 1**
-- **a--** is the same as **a = a - 1**
-- **a += 5** is the same as **a = a + 5**
-- **a -= 3** is the same as **a = a - 3**
-- **a \*= 2** is the same as **a = a \* 2**
-- **a /= 4** is the same as **a = a / 4**
+- **a++** is the same as a = a + 1
+- **a--** is the same as a = a - 1
+- **a += 5** is the same as a = a + 5
+- **a -= 3** is the same as a = a - 3
+- **a \*= 2** is the same as a = a \* 2
+- **a /= 4** is the same as a = a / 4
 
-You’ll see **i++** in **for** loops literally everywhere
+You’ll see i++ in for loops literally everywhere
 
 ---
 
-What about **powers**? Java doesn’t have a dedicated power operator. Instead, we use **Math.pow**
+What about powers? Java doesn’t have a dedicated power operator. Instead, we use **Math.pow**
 
 ```java
 public class Main {
@@ -94,7 +94,7 @@ public class Main {
 }
 ```
 
-Output is **8.0** (a double). **Math.pow** always returns a double, so even **2 to the power of 3** comes out as **8.0**, not **8**
+Output is **8.0** (a double). Math.pow always returns a double, so even 2 to the power of 3 comes out as 8.0, not 8
 
 ---
 
@@ -109,7 +109,7 @@ public class Main {
 }
 ```
 
-When in doubt, **add parentheses**. They make the code easier to read anyway
+When in doubt, add parentheses. They make the code easier to read anyway
 
 ---
 
