@@ -2,9 +2,9 @@
 
 One line per lesson: what it **introduces**. A lesson may use anything above it, nothing below it (`WEB_LESSONS.md`, rule 6). Every lesson follows `WEB_LESSONS.md`.
 
-"From" names the lesson of today's course the idea comes from. A slug in **bold** is new.
+"From" names the lesson of today's course the idea comes from, or for parts 4 and 5 the topic of their ticket (CYB-113). A slug in **bold** is new.
 
-Parts 4 to 9 (CYB-113, CYB-114, CYB-115) are mapped here when their turn comes, in the same way.
+Parts 6 to 9 (CYB-114, CYB-115) are mapped here when their turn comes, in the same way.
 
 ## Part 1: Station Home (`index.html`, `style.css`)
 
@@ -215,14 +215,143 @@ HTML and CSS only. JavaScript starts in part 2.
 | 44  | `schedule-js-recap`          | No new idea                                     | schedule-js-recap        |
 | 45  | `launch-board-project`       | Project                                         | launch-board-project     |
 
+## Part 4: Boarding Form (`boarding.html`, `boarding.js`)
+
+A passenger books a seat on one of the station's flights. The form asks, the page checks, and the script answers.
+
+### HTML
+
+| #   | Slug                      | Introduces                                                      | From                     |
+| --- | ------------------------- | --------------------------------------------------------------- | ------------------------ |
+| 1   | **`text-fields`**         | `<input>`: a box the visitor types in                           | Forms and Labels         |
+| 2   | **`labels`**              | `<label for>`: a field's name, tied to it by its id             | Forms and Labels         |
+| 3   | **`placeholder`**         | `placeholder`, a hint inside the field, and why it's no label   | Forms and Labels         |
+| 4   | **`forms`**               | `<form>` and its button: sending what was typed                 | Forms and Labels         |
+| 5   | **`field-names`**         | `name`: what a form sends, as `name=value`                      | What a Form Sends        |
+| 6   | **`input-types`**         | `type="email"` and `type="tel"`: the type picks the keyboard    | Input Types              |
+| 7   | **`number-fields`**       | `type="number"` with `min`, `max` and `step`                    | Input Types              |
+| 8   | **`date-fields`**         | `type="date"`, and the value it gives: `2031-05-14`             | Input Types              |
+| 9   | **`checkboxes`**          | `type="checkbox"`, its `value` and `checked`                    | Checkboxes and Radios    |
+| 10  | **`radio-buttons`**       | `type="radio"`: one name, one choice                            | Checkboxes and Radios    |
+| 11  | **`fieldset-and-legend`** | `<fieldset>` and `<legend>`: a question over a group of choices | Checkboxes and Radios    |
+| 12  | **`select-lists`**        | `<select>` and `<option value>`                                 | Select, Textarea, Button |
+| 13  | **`textareas`**           | `<textarea>`: room for a longer text                            | Select, Textarea, Button |
+| 14  | **`button-types`**        | A button's `type`: `submit`, `button`, `reset`                  | Select, Textarea, Button |
+| 15  | **`required-fields`**     | `required`, and the browser's own message                       | Built-in Validation      |
+| 16  | **`length-limits`**       | `minlength` and `maxlength`                                     | Built-in Validation      |
+| 17  | **`form-action`**         | `action` and `method`: where a form goes, and how               | What a Form Sends        |
+| 18  | `boarding-html-recap`     | No new idea                                                     | Recap                    |
+
+### CSS
+
+| #   | Slug                    | Introduces                                                | From          |
+| --- | ----------------------- | --------------------------------------------------------- | ------------- |
+| 19  | **`fields-look`**       | Fields don't take the page's font: `font: inherit`        | Styling Forms |
+| 20  | **`form-layout`**       | A label above its field, one field a line                 | Styling Forms |
+| 21  | **`focus-visible`**     | `:focus-visible`: a ring for the keyboard only            | Styling Forms |
+| 22  | **`valid-and-invalid`** | `:valid` and `:invalid`                                   | Styling Forms |
+| 23  | **`user-invalid`**      | `:user-invalid`: only once the visitor has had a go       | Styling Forms |
+| 24  | **`checked-state`**     | `:checked`, and `+` to light up the chosen option's label | Styling Forms |
+| 25  | **`disabled-fields`**   | `disabled` and `:disabled`                                | Styling Forms |
+| 26  | **`accent-color`**      | `accent-color` for boxes and round buttons                | Styling Forms |
+| 27  | **`spacing`**           | Room shows what belongs together                          | Design Basics |
+| 28  | **`hierarchy`**         | The most important thing stands out the most              | Design Basics |
+| 29  | `boarding-css-recap`    | No new idea                                               | Recap         |
+
+### JavaScript
+
+| #   | Slug                    | Introduces                                                   | From                           |
+| --- | ----------------------- | ------------------------------------------------------------ | ------------------------------ |
+| 30  | **`field-value`**       | `.value`: what is in a field now                             | Keyboard and Input             |
+| 31  | **`event-object`**      | The event object and `event.target`                          | The Event Object               |
+| 32  | **`input-event`**       | The `input` event: react while the visitor types             | Keyboard and Input             |
+| 33  | **`change-event`**      | `change`, and `.checked` for a box                           | Keyboard and Input             |
+| 34  | **`keyboard-events`**   | `keydown` and `event.key`                                    | Keyboard and Input             |
+| 35  | **`submit-event`**      | Listening for `submit`                                       | submit and preventDefault      |
+| 36  | **`prevent-default`**   | `preventDefault`: the page answers, the form isn't sent      | submit and preventDefault      |
+| 37  | **`truthy-and-falsy`**  | Truthy and falsy: an empty text counts as false              | Truthy and Falsy               |
+| 38  | **`or-default`**        | `\|\|` for a value to fall back on                           | Truthy and Falsy               |
+| 39  | **`switch`**            | `switch`                                                     | switch                         |
+| 40  | **`trim`**              | `trim()`                                                     | String Methods                 |
+| 41  | **`string-includes`**   | `includes`, `startsWith`, `endsWith`                         | String Methods                 |
+| 42  | **`string-slice`**      | `slice` and `indexOf` on a text                              | String Methods                 |
+| 43  | **`regex-test`**        | A regular expression and `test`                              | Regex Basics                   |
+| 44  | **`regex-patterns`**    | `[ ]`, `\d`, `{ }`, `^` and `$`                              | Regex Basics                   |
+| 45  | **`pattern-attribute`** | `pattern`: the same rule in the HTML                         | Regex Basics                   |
+| 46  | **`error-messages`**    | Writing the error next to its field                          | Validating Forms in JavaScript |
+| 47  | **`custom-validity`**   | `setCustomValidity`: your rule, the browser's message        | Validating Forms in JavaScript |
+| 48  | **`aria-describedby`**  | `aria-describedby` and `aria-invalid`: an error you can hear | Validating Forms in JavaScript |
+| 49  | `boarding-js-recap`     | No new idea                                                  | Recap                          |
+| 50  | `cargo-request-project` | Project: a request form, from an empty folder                | Project                        |
+
+## Part 5: Station Wiki (`wiki.html`, `wiki-*.html`, `menu.js`)
+
+Every page gets the same header, menu and footer. The wiki's pages join them next to the others, and the menu opens from a button on a phone.
+
+### HTML
+
+| #   | Slug                     | Introduces                                                  | From                    |
+| --- | ------------------------ | ----------------------------------------------------------- | ----------------------- |
+| 1   | **`header-and-footer`**  | `<header>` and `<footer>`                                   | Semantic Layout         |
+| 2   | **`main-element`**       | `<main>`: the page's own part                               | Semantic Layout         |
+| 3   | **`landmarks`**          | Landmarks: a screen reader jumps between them; `aria-label` | Semantic Layout         |
+| 4   | **`section-element`**    | `<section>`: a part of the page, with its heading           | section, article, aside |
+| 5   | **`article-element`**    | `<article>`: a piece that stands on its own                 | section, article, aside |
+| 6   | **`aside-element`**      | `<aside>`: a note beside the main text                      | section, article, aside |
+| 7   | **`meta-description`**   | `<meta name="description">`: the page in a sentence         | Meta Tags and the Head  |
+| 8   | **`viewport`**           | `<meta name="viewport">`: a page made for the phone's width | Meta Tags and the Head  |
+| 9   | **`special-characters`** | `&lt;`, `&gt;` and `&amp;`                                  | Special Characters      |
+| 10  | **`non-breaking-space`** | `&nbsp;`: two words that stay on one line                   | Special Characters      |
+| 11  | `wiki-html-recap`        | No new idea                                                 | Recap                   |
+
+### CSS
+
+| #   | Slug                    | Introduces                                            | From                  |
+| --- | ----------------------- | ----------------------------------------------------- | --------------------- |
+| 12  | **`display-flex`**      | `display: flex`: children side by side                | display: flex         |
+| 13  | **`flex-direction`**    | `flex-direction`: a row or a column                   | Flex Direction        |
+| 14  | **`justify-content`**   | `justify-content`: where the items sit along the line | justify and align     |
+| 15  | **`align-items`**       | `align-items`: where they sit across it               | justify and align     |
+| 16  | **`gap`**               | `gap`: room between the items                         | wrap and gap          |
+| 17  | **`flex-wrap`**         | `flex-wrap`: a new row when there is no room          | wrap and gap          |
+| 18  | **`flex-grow`**         | `flex-grow`: share the room left                      | grow, shrink, basis   |
+| 19  | **`flex-basis`**        | `flex-basis`: an item's size to start from            | grow, shrink, basis   |
+| 20  | **`flex-shrink`**       | `flex-shrink`: who gives up room first                | grow, shrink, basis   |
+| 21  | **`align-self`**        | `align-self`: one item sits its own way               | align-self and order  |
+| 22  | **`flex-order`**        | `order`, and why the keyboard doesn't follow it       | align-self and order  |
+| 23  | **`margin-auto`**       | `margin-left: auto`: push an item to the far end      | justify and align     |
+| 24  | **`position-relative`** | `position: relative`: a nudge from its own place      | relative and absolute |
+| 25  | **`position-absolute`** | `position: absolute`: a place inside its box          | relative and absolute |
+| 26  | **`position-fixed`**    | `position: fixed`: it stays when the page scrolls     | fixed and sticky      |
+| 27  | **`position-sticky`**   | `position: sticky`: it scrolls, then stays            | fixed and sticky      |
+| 28  | **`z-index`**           | `z-index`: which one is on top                        | z-index               |
+| 29  | `wiki-css-recap`        | No new idea                                           | Recap                 |
+
+### JavaScript
+
+| #   | Slug                       | Introduces                                                      | From                         |
+| --- | -------------------------- | --------------------------------------------------------------- | ---------------------------- |
+| 30  | **`arrow-functions`**      | An arrow function in a variable, and the short one that returns | Arrow Functions and Defaults |
+| 31  | **`default-parameters`**   | A parameter's default value                                     | Arrow Functions and Defaults |
+| 32  | **`scope`**                | A variable lives in its block                                   | Scope                        |
+| 33  | **`style-property`**       | `element.style`: one style from JavaScript                      | Styles from JavaScript       |
+| 34  | **`bubbling`**             | An event goes up through the parents                            | Bubbling and Delegation      |
+| 35  | **`event-delegation`**     | One listener for many elements, with `closest`                  | Bubbling and Delegation      |
+| 36  | **`shared-script`**        | One script on every page, which checks its element is there     | Recap                        |
+| 37  | **`aria-expanded`**        | `aria-expanded`: a button says what it opened                   | Recap                        |
+| 38  | `wiki-js-recap`            | No new idea: a menu that opens on a phone                       | Recap                        |
+| 39  | `spaceport-launch-project` | Project: a launch page, from an empty folder                    | Project                      |
+
 ## Moved out, because a later part teaches them
 
 - Truthy and falsy (today in `if-else`): part 4 has "Truthy, Falsy, Logical Operators".
 - `map`, `find`, `some` (today in `filter`, "Its cousins"): part 6 has `map` and "find, some, every".
 - `<header>`, `<main>`, `<section>`, `<article>`, `<footer>` (today in `div-and-span`): part 5 has "Semantic Layout".
+- Grid and media queries: part 6. Part 5 lays its pages out with flex and `position` only.
+- `??` and `?.` (next to `||` in `or-default`): part 7.
 - `::before` (today mentioned in `box-sizing-and-sizes`): part 3 teaches it.
 - `flex` and `grid` (today named in `display`): parts 5 and 6.
 
 ## Totals
 
-Part 1: 43 lessons (today 22). Part 2: 68 (today 22). Part 3: 45 (today 22). In all, 156 lessons where there are 66 today.
+Part 1: 43 lessons (today 22). Part 2: 68 (today 22). Part 3: 45 (today 22). Part 4: 50. Part 5: 39. In all, 245 lessons.
