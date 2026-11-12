@@ -20,7 +20,7 @@ for i in range(10):
 
 Output **0 1 1 2 3 5 8 13 21 34**
 
-Beautiful? Yes. Efficient? Not really. **fib(5)** calls **fib(4)** and **fib(3)**. But **fib(4)** also calls **fib(3)**, so we compute the same thing twice. For **fib(30)**, this repeats millions of times. For now, don't worry about it, understanding the logic is what matters
+Beautiful? Yes. Efficient? Not really. **fib(5)** calls fib(4) and fib(3). But fib(4) also calls fib(3), so we compute the same thing twice. For fib(30), this repeats millions of times. For now, don't worry about it, understanding the logic is what matters
 
 ---
 
@@ -65,7 +65,7 @@ Check the first character. If it matches, count 1. Then recursively count in the
 
 ---
 
-**Flatten a nested list**. This is where recursion truly shines: when data is **nested** and we don't know how deep
+**Flatten a nested list**. This is where recursion truly shines: when data is nested and we don't know how deep
 
 ```py
 def flatten(lst):
@@ -88,11 +88,11 @@ For each element: if it's a list, recursively flatten it and add the results. If
 
 ## Mission: Transmission Checksums
 
-Every transmission carries a numeric code, and the station verifies it with a **checksum**: the sum of the code's digits. You'll compute these checksums with **recursion**.
+Every transmission carries a numeric code, and the station verifies it with a checksum: the sum of the code's digits. You'll compute these checksums with recursion.
 
-1. Write a recursive function **sum_digits(n)** that returns the sum of the digits of a positive integer. The trick: `n % 10` is the **last digit**, `n // 10` is the **rest of the number**. Base case: if `n < 10` (one digit), return `n` itself.
+1. Write a recursive function **sum_digits(n)** that returns the sum of the digits of a positive integer. The trick: `n % 10` is the last digit, `n // 10` is the rest of the number. Base case: if `n < 10` (one digit), return `n` itself.
 2. For each code in the list named `codes`, print the code, then `: `, then its checksum.
-3. Track and print the **largest** checksum as `Largest checksum: ` followed by the value.
+3. Track and print the largest checksum as `Largest checksum: ` followed by the value.
 
 **Output**
 

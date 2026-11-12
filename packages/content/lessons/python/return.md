@@ -1,6 +1,6 @@
-In the **functions** lesson, all our functions did the same thing: they **printed** something on the screen. But functions can do something much more powerful, they can **give us a value back** that we can use later
+In the functions lesson, all our functions did the same thing: they printed something on the screen. But functions can do something much more powerful, they can give us a value back that we can use later
 
-Imagine: I ask a friend "what’s 2 + 3?". I want them to **answer** me with **5**, not to **shout** the answer at the wall. I want to take that **5** and use it for something else
+Imagine: I ask a friend "what’s 2 + 3?". I want them to answer me with 5, not to shout the answer at the wall. I want to take that 5 and use it for something else
 
 This is what **return** does in a function
 
@@ -14,7 +14,7 @@ print(result)
 
 Output **5**
 
-What happened? The function **add** **took** two numbers, **calculated** their sum, and **returned** the result. We caught that result in the variable **result**, then printed it
+What happened? The function add took two numbers, calculated their sum, and returned the result. We caught that result in the variable result, then printed it
 
 Compare this with the old style we used
 
@@ -25,9 +25,9 @@ def add_and_print(a, b):
 add_and_print(2, 3)
 ```
 
-This just prints. It doesn’t give anything back. If I wanted to take the result and **multiply** it by 10, I couldn’t. The function did its thing and the value is **gone**
+This just prints. It doesn’t give anything back. If I wanted to take the result and multiply it by 10, I couldn’t. The function did its thing and the value is gone
 
-With **return**, we can chain functions together
+With return, we can chain functions together
 
 ```py
 def add(a, b):
@@ -37,13 +37,13 @@ result = add(2, 3) * 10
 print(result)
 ```
 
-Output **50**. **add(2, 3)** gave us **5**, then we multiplied by **10**. Try doing that with a function that only **prints**, you can’t
+Output **50**. **add(2, 3)** gave us **5**, then we multiplied by 10. Try doing that with a function that only prints, you can’t
 
 ---
 
-The real point of a function is that you write the logic **once** and then use it **as many times as you want**, with different arguments. You stop repeating the code in the body
+The real point of a function is that you write the logic once and then use it as many times as you want, with different arguments. You stop repeating the code in the body
 
-Imagine we have three sensors giving us the temperature in **Celsius**, but we want it in **Fahrenheit**. Without a function, we’d repeat the same formula every time
+Imagine we have three sensors giving us the temperature in Celsius, but we want it in Fahrenheit. Without a function, we’d repeat the same formula every time
 
 ```py
 sensor1 = 20 * 9 / 5 + 32
@@ -54,9 +54,9 @@ print(sensor2)
 print(sensor3)
 ```
 
-The same formula, written **three times**. If we get something wrong in it, we have to fix it in every place. And what if we had **a hundred** sensors?
+The same formula, written three times. If we get something wrong in it, we have to fix it in every place. And what if we had a hundred sensors?
 
-With a function, we write the formula **once** in its body and then **call** it with different arguments
+With a function, we write the formula once in its body and then call it with different arguments
 
 ```py
 def in_fahrenheit(c):
@@ -75,11 +75,11 @@ Output
 212.0
 ```
 
-The function’s body, the formula, is written **once**. We reuse it three times, changing only the **argument**. That’s what a function gives us, in the end: you write the code once and never repeat it
+The function’s body, the formula, is written once. We reuse it three times, changing only the argument. That’s what a function gives us, in the end: you write the code once and never repeat it
 
 ---
 
-A function can return **anything**, not just numbers. Strings, booleans, lists, anything
+A function can return anything, not just numbers. Strings, booleans, lists, anything
 
 ```py
 def greet(name):
@@ -99,9 +99,9 @@ print(is_adult(20))    # True
 print(is_adult(15))    # False
 ```
 
-This function returns a **boolean**. Notice that we can use **is_adult(20)** **directly inside print()**, no need for a separate variable. **Python** runs the function first, then **print()** shows the returned value
+This function returns a boolean. Notice that we can use **is_adult(20)** directly inside print(), no need for a separate variable. Python runs the function first, then print() shows the returned value
 
-We can even use it inside an **if**
+We can even use it inside an if
 
 ```py
 def is_adult(age):
@@ -118,7 +118,7 @@ Cleaner than writing **if age >= 18** everywhere, especially if our condition ge
 
 ---
 
-**Important**: as soon as **Python** sees **return**, the function **exits immediately**. Anything written after **return** is **NOT** executed
+Important: as soon as Python sees **return**, the function **exits immediately**. Anything written after return is **NOT** executed
 
 ```py
 def f():
@@ -128,9 +128,9 @@ def f():
 print(f())
 ```
 
-Output is just **1**. The **print** inside the function is **dead code**, it never runs
+Output is just **1**. The print inside the function is **dead code**, it never runs
 
-We can use this to exit a function **early**
+We can use this to exit a function early
 
 ```py
 def divide(a, b):
@@ -144,7 +144,7 @@ print(divide(10, 0))    # cannot divide by zero
 
 ---
 
-By the way, a function that has no **return** still works, it just gives back a special value called **None**
+By the way, a function that has no return still works, it just gives back a special value called **None**
 
 ```py
 def f():
@@ -161,17 +161,17 @@ hello
 None
 ```
 
-**None** is **Python**’s way of saying "nothing". You don’t need to worry about it now, just know it exists :)
+None is Python’s way of saying "nothing". You don’t need to worry about it now, just know it exists :)
 
 ---
 
 ## Mission: Atlas of Galaxies
 
-In the editor you already have **five galaxies**, the variables `galaxy1` to `galaxy5`, each a **list** of ten star names.
+In the editor you already have five galaxies, the variables `galaxy1` to `galaxy5`, each a list of ten star names.
 
-Write **one** function called `longest_star` that takes a galaxy (the list) and **returns** the name of the star with the most letters in that galaxy.
+Write one function called `longest_star` that takes a galaxy (the list) and returns the name of the star with the most letters in that galaxy.
 
-Then **call it five times**, once for each galaxy, and print what it returns. You write the function once, but use it for all five lists, without repeating the code in the body.
+Then call it five times, once for each galaxy, and print what it returns. You write the function once, but use it for all five lists, without repeating the code in the body.
 
 **Output**
 
