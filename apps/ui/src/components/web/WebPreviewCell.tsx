@@ -18,6 +18,9 @@ interface WebPreviewCellProps {
   source: string;
   // The language of the part shown: html or css
   language: string;
+  // ```html preview scroll: the frame keeps a short height and the page
+  // scrolls inside it, for a lesson about moving around a page (jump links)
+  scroll?: boolean;
 }
 
 // How long the code stays still before the page follows it, in ms
@@ -27,6 +30,7 @@ const START_HEIGHT = 80;
 const MIN_HEIGHT = 32;
 // A page as tall as its frame (min-height: 100vh) would grow it for ever
 const MAX_HEIGHT = 600;
+const SCROLL_HEIGHT = 160;
 const LOOP_LIMIT_MS = 2000;
 const DOCTYPE = /^\s*<!doctype\s/i;
 // A picture the page names: an <img>'s src or a url() in its CSS
@@ -42,7 +46,7 @@ function imagePaths(page: string): string[] {
   return [...paths];
 }
 
-export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
+export function WebPreviewCell({ source, language, scroll = false }: WebPreviewCellProps) {
   const { t } = useTranslation();
   const course = useContext(PreviewCourseContext);
   const cell = useMemo(() => parsePreviewCell(source), [source]);
@@ -168,7 +172,7 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
             // No allow-same-origin, as the lesson's own preview
             sandbox="allow-scripts allow-forms allow-modals"
             title={t('web.cell.previewTitle')}
-            style={{ height }}
+            style={{ height: scroll ? SCROLL_HEIGHT : height }}
             className="w-full border-none block"
           />
         )}

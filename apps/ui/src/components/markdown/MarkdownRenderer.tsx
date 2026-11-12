@@ -86,19 +86,20 @@ const components: Components = {
       );
     }
 
-    // ```html preview / ```css preview: the page it makes shows under it
+    // ```html preview / ```css preview: the page it makes shows under it;
+    // ```html preview scroll keeps the frame short, the page scrolling in it
     const meta = (node?.data as { meta?: unknown } | undefined)?.meta;
-    if (
-      !isInline &&
-      lang &&
-      PREVIEW_LANGS.includes(lang) &&
-      typeof meta === 'string' &&
-      meta.trim().split(/\s+/).includes('preview')
-    ) {
+    const words = typeof meta === 'string' ? meta.trim().split(/\s+/) : [];
+    if (!isInline && lang && PREVIEW_LANGS.includes(lang) && words.includes('preview')) {
       const source = String(children).replace(/\n$/, '');
       return (
         <Suspense fallback={<div className="my-4 panel rounded min-h-[140px]" />}>
-          <WebPreviewCell key={source} source={source} language={lang} />
+          <WebPreviewCell
+            key={source}
+            source={source}
+            language={lang}
+            scroll={words.includes('scroll')}
+          />
         </Suspense>
       );
     }

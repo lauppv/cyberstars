@@ -19,14 +19,17 @@ The id doesn't change how the heading looks. It's only a name.
 
 Then a link whose `href` is `#` followed by the id:
 
-```html preview
+```html preview scroll
 <p><a href="#rules">See the rules</a></p>
 
 <h2>Members</h2>
-<p>...</p>
+<p>Twelve students meet every Friday after school.</p>
+<p>New members are always welcome.</p>
 
 <h2 id="rules">Club Rules</h2>
-<p>...</p>
+<p>Shake hands before every game.</p>
+<p>Touch a piece, move that piece.</p>
+<p>Keep your voice down: others are thinking.</p>
 ```
 
 Click **See the rules** and the page scrolls straight down to the Club Rules heading. The `#` means "a place on this page".
@@ -37,9 +40,17 @@ You'll see `id` again soon: CSS and JavaScript use it to find an element by its 
 
 Make the names not match:
 
-```html preview
+```html preview scroll
 <p><a href="#rule">See the rules</a></p>
+
+<h2>Members</h2>
+<p>Twelve students meet every Friday after school.</p>
+<p>New members are always welcome.</p>
+
 <h2 id="rules">Club Rules</h2>
+<p>Shake hands before every game.</p>
+<p>Touch a piece, move that piece.</p>
+<p>Keep your voice down: others are thinking.</p>
 ```
 
 `rule` isn't `rules`, so the click finds nothing and the page doesn't move. The names must be exactly the same, including capital letters: `#Rules` doesn't find `id="rules"` either.

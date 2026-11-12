@@ -66,6 +66,21 @@ describe('WebPreviewCell', () => {
     expect(screen.getByRole('status')).toHaveTextContent('The form was sent: name=Sam');
   });
 
+  it('keeps a short frame the page scrolls in, whatever its height, with scroll', async () => {
+    const { container } = render(<WebPreviewCell source={'<h1>Hi</h1>'} language="html" scroll />);
+    await waitFor(() => expect(container.querySelector('iframe')).not.toBeNull());
+    const frame = container.querySelector('iframe')!;
+    act(() => {
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          data: { source: 'cyberstars-preview', type: 'height', height: 500 },
+          source: frame.contentWindow,
+        }),
+      );
+    });
+    expect(frame.style.height).toBe('160px');
+  });
+
   it('has no View button when nothing is hidden', () => {
     const { container } = render(<WebPreviewCell source={'<h1>Hi</h1>'} language="html" />);
     expect(editorText(container)).toBe('<h1>Hi</h1>');
