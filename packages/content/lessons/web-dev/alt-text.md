@@ -4,7 +4,7 @@ Some people visit web pages without seeing them: they're blind, and a **screen r
 
 ## `alt`: the picture in words
 
-```html
+```html preview
 <img src="img/cat.svg" alt="A grey cat asleep in a shoebox" />
 ```
 
@@ -25,7 +25,7 @@ There's no need to say "picture of": the screen reader already says it's a pictu
 
 Some pictures carry no meaning: a pretty line between two parts, a little star in a corner. Reading them out would just get in the way. For those, write an **empty** alt:
 
-```html
+```html preview
 <img src="img/line.svg" alt="" />
 ```
 
@@ -35,7 +35,7 @@ Some pictures carry no meaning: a pretty line between two parts, a little star i
 
 Break the picture's path and look at the preview:
 
-```html
+```html preview
 <img src="img/kat.svg" alt="A grey cat asleep in a shoebox" />
 ```
 
