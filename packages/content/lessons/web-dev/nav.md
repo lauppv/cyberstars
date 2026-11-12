@@ -4,16 +4,12 @@ Walk into any shop or open any app: the way around is always in the same place. 
 
 A menu is a few links in a `<nav>` element, short for **navigation**:
 
-```html
+```html preview
 <nav>
   <a href="index.html">Home</a>
   <a href="games.html">Games</a>
   <a href="members.html">Members</a>
 </nav>
-```
-
-```text
-Home Games Members        (three links side by side)
 ```
 
 `<nav>` doesn't look like anything special: the links are inline, so they sit side by side. But it **means** "this is the way around the site". A screen reader can jump straight to it, and skip it to reach the page's content.
@@ -24,7 +20,7 @@ The menu goes at the very top of the `<body>`, before the page's heading, so it'
 
 Copy the same menu to every page, so it's always in the same place. Only the paths change, depending on where each page is:
 
-```html
+```html preview
 <!-- on games/chess.html -->
 <nav>
   <a href="../index.html">Home</a>

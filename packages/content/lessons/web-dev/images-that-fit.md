@@ -4,10 +4,18 @@ Open a website on your phone and drag it sideways by accident: if the page slide
 
 `max-width` is the most a width can be. With `100%`, the most is "as wide as the space it's in":
 
-```css
-img {
-  max-width: 100%;
-}
+```css preview
+<style>
+  /* show */
+  img {
+    max-width: 100%;
+  }
+  /* /show */
+</style>
+<h2>Our Station</h2>
+<img src="img/station.svg" alt="The space station" width="640" height="400" />
+<p>And our cat, who came to visit:</p>
+<img src="img/cat.svg" alt="A grey cat asleep in a shoebox" width="150" height="100" />
 ```
 
 - on a wide screen, the picture shows at its own size, since it already fits;
@@ -19,11 +27,19 @@ img {
 
 There's a catch. Your pictures have a `height` in the HTML. When the picture gets narrower, the height stays the same, and the picture gets squashed. Fix it with:
 
-```css
-img {
-  max-width: 100%;
-  height: auto;
-}
+```css preview
+<style>
+  /* show */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  /* /show */
+</style>
+<h2>Our Station</h2>
+<img src="img/station.svg" alt="The space station" width="640" height="400" />
+<p>And our cat, who came to visit:</p>
+<img src="img/cat.svg" alt="A grey cat asleep in a shoebox" width="150" height="100" />
 ```
 
 `height: auto` means "work out the height from the width", so the picture shrinks in its own shape. The `width` and `height` in the HTML still do their first job: they tell the browser the picture's shape before it loads, so the text doesn't jump.
@@ -36,10 +52,18 @@ Your preview is as wide as its panel, so make the panel narrow and see the pictu
 
 Use `width: 100%` instead of `max-width`:
 
-```css
-img {
-  width: 100%;
-}
+```css preview
+<style>
+  /* show */
+  img {
+    width: 100%;
+  }
+  /* /show */
+</style>
+<h2>Our Station</h2>
+<img src="img/station.svg" alt="The space station" width="640" height="400" />
+<p>And our cat, who came to visit:</p>
+<img src="img/cat.svg" alt="A grey cat asleep in a shoebox" width="150" height="100" />
 ```
 
 Now **every** picture stretches to the full width, even a small one, which gets blurry and huge. `max-width` only shrinks what's too big, and leaves the rest alone.

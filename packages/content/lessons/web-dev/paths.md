@@ -6,7 +6,7 @@ To reach a file, a link or a picture uses its **path**: the way to it, from the 
 
 You've already used one: `img/station.svg` means "go into the folder `img`, and take `station.svg` there". Each `/` is a step into a folder.
 
-```html
+```html preview
 <a href="games/chess.html">Chess</a>
 ```
 

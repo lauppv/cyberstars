@@ -20,7 +20,7 @@ One `style.css`, two pages: they share every rule, the night blue, the fonts, th
 
 A link to a page of your own site needs only the file's name:
 
-```html
+```html preview
 <p><a href="games.html">See all our games</a></p>
 ```
 
@@ -28,7 +28,7 @@ No `https://`, no site name: `games.html` means "the file `games.html` next to t
 
 And the new page needs a way back:
 
-```html
+```html preview
 <p><a href="index.html">Back to the home page</a></p>
 ```
 
