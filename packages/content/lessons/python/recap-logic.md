@@ -1,4 +1,4 @@
-This is a **recap**. Put to work everything we've learned so far: **input**, **booleans**, loops, and **break** / **continue**. You decide how to combine them
+This is a recap. Put to work everything we've learned so far: input, booleans, loops, and break / continue. You decide how to combine them
 
 ---
 
@@ -6,9 +6,9 @@ This is a **recap**. Put to work everything we've learned so far: **input**, **b
 
 Before launch, the operator enters the level of each rocket system, one by one, until they type `0`.
 
-- a **negative** reading is noise and is ignored (don't print anything for it)
-- a system with a level **below 50** is critical and makes the launch unsafe → print `Critical system`
-- a system with a level **of 50 or more** is good → print `System OK`
+- a negative reading is noise and is ignored (don't print anything for it)
+- a system with a level below 50 is critical and makes the launch unsafe → print `Critical system`
+- a system with a level of 50 or more is good → print `System OK`
 
 When the operator types `0`, the input is over. If no system was critical, print `Launch authorized`. Otherwise, print `Launch aborted`.
 

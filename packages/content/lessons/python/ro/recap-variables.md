@@ -1,10 +1,10 @@
-E timpul să combini ce ai învățat! Nicio teorie nouă, doar o provocare care folosește **print**, **variabile**, **f-string-uri** și **comentarii**
+E timpul să combini ce ai învățat! Nicio teorie nouă, doar o provocare care folosește print, variabile, f-string-uri și comentarii
 
 ---
 
 ## Misiune: Cardul Jucătorului
 
-Construiește un **card de profil al personajului** pentru un joc. Trebuie să creezi statisticile personajului: `nume`, `nivel`, `viata` și `breasla`.
+Construiește un card de profil al personajului pentru un joc. Trebuie să creezi statisticile personajului: `nume`, `nivel`, `viata` și `breasla`.
 
 Folosind **f-string-uri (f{})**, afișează cardul de profil.
 
