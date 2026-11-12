@@ -11,11 +11,25 @@ And everything you learned about boxes works on it.
 
 ## A column in the middle
 
-```css
-body {
-  max-width: 800px;
-  margin: 0 auto;
-}
+```css preview
+<style>
+  html {
+    background-color: #dde6f0;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  /* show */
+  body {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  /* /show */
+</style>
+<h1>Our Station</h1>
+<p>The station goes round the Earth every 92 minutes. Six people live here, with a greenhouse full of tomatoes and a gym they use every day.</p>
 ```
 
 On a wide screen, the whole page sits in a column 800 pixels wide, in the middle. On a phone, it takes the full width. The same pair as before: a `max-width`, and `auto` margins left and right.
@@ -26,12 +40,26 @@ What about the background? A background on the `body` still covers the whole win
 
 With `margin: 0 auto`, the body's left and right margins are 0 on a narrow phone, so the text touches the screen's edges. Add some padding inside:
 
-```css
-body {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
+```css preview
+<style>
+  html {
+    background-color: #dde6f0;
+  }
+
+  body {
+    background-color: white;
+  }
+
+  /* show */
+  body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  /* /show */
+</style>
+<h1>Our Station</h1>
+<p>The station goes round the Earth every 92 minutes. Six people live here, with a greenhouse full of tomatoes and a gym they use every day.</p>
 ```
 
 ## Break it on purpose
