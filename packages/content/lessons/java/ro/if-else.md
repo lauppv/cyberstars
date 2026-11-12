@@ -1,4 +1,4 @@
-În viața reală ne confruntăm adesea cu decizii: **dacă** e frig, ne punem o bluză groasă, **altfel** un tricou e de ajuns
+În viața reală ne confruntăm adesea cu decizii: dacă e frig, ne punem o bluză groasă, altfel un tricou e de ajuns
 
 În cod, spunem
 
@@ -17,10 +17,10 @@ public class Main {
 
 Două lucruri de observat în Java
 
-- Condiția stă între **paranteze** **( )**
-- Blocul de cod stă între **acolade** **{ }**
+- Condiția stă între paranteze **( )**
+- Blocul de cod stă între acolade **{ }**
 
-Dacă **temperatura** este mai mică de **15**, intrăm în blocul **if** (e frig, ne îmbrăcăm gros). **Altfel**, intrăm în blocul **else**. Rulează codul, schimbă temperatura, vezi ce se întâmplă
+Dacă temperatura este mai mică de 15, intrăm în blocul if (e frig, ne îmbrăcăm gros). Altfel, intrăm în blocul else. Rulează codul, schimbă temperatura, vezi ce se întâmplă
 
 ---
 
@@ -31,9 +31,9 @@ Operatorii de comparație sunt exact cei la care te aștepți
 - **>** mai mare decât
 - **>=** mai mare sau egal
 - **==** egal (atenție la cele două semne egal)
-- **!=** **diferit** de
+- **!=** diferit de
 
-**Fii atent** la diferența dintre **=** și **==**. **=** atribuie o valoare, **==** compară
+Fii atent la diferența dintre **=** și **==**. = atribuie o valoare, == compară
 
 ```java
 public class Main {
@@ -61,7 +61,7 @@ public class Main {
 
 ---
 
-Nu avem mereu nevoie de un **else**. Uneori vrem doar să facem ceva **dacă** o condiție este adevărată, iar altfel să nu facem nimic
+Nu avem mereu nevoie de un else. Uneori vrem doar să facem ceva dacă o condiție este adevărată, iar altfel să nu facem nimic
 
 ```java
 public class Main {
@@ -95,7 +95,7 @@ public class Main {
 }
 ```
 
-Schimbă **utilizatorOnline** la **false** și rulează din nou. Citește noul rezultat. Programarea devine distractivă din momentul în care începi să **te joci** cu valorile
+Schimbă utilizatorOnline la false și rulează din nou. Citește noul rezultat. Programarea devine distractivă din momentul în care începi să te joci cu valorile
 
 ---
 
@@ -103,9 +103,9 @@ Schimbă **utilizatorOnline** la **false** și rulează din nou. Citește noul r
 
 Senzorul de carenă al stației raportează temperatura de afară.
 
-Creează o variabilă `int` numită `temperatura` (cu orice valoare vrei). Apoi scrie un **if / else** care o verifică:
+Creează o variabilă `int` numită `temperatura` (cu orice valoare vrei). Apoi scrie un if / else care o verifică:
 
-- dacă temperatura este **mai mică de 0** → afișează `afara e ger`
+- dacă temperatura este mai mică de 0 → afișează `afara e ger`
 - altfel → afișează `apa nu ingheata`
 
 **Exemplu**

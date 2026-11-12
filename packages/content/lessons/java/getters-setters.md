@@ -1,6 +1,6 @@
 So far, we've been accessing fields directly: `player.name`, `player.score`. That works, but it's like leaving your front door wide open. Anyone can walk in and change anything
 
-In real Java code, we **hide** fields and control access through methods. This concept is called **encapsulation**
+In real Java code, we hide fields and control access through methods. This concept is called **encapsulation**
 
 ---
 
@@ -80,7 +80,7 @@ Output
 Balance: 1300
 ```
 
-Now the only way to change the balance is through `deposit()` and `withdraw()`, which have **validation** built in. Negative deposits? Ignored. Withdrawing more than you have? Nope
+Now the only way to change the balance is through `deposit()` and `withdraw()`, which have validation built in. Negative deposits? Ignored. Withdrawing more than you have? Nope
 
 ---
 
@@ -142,7 +142,7 @@ The `setHealth(-50)` call was silently ignored because our setter rejects negati
 
 Not every field needs a setter. Sometimes a field should be set once (in the constructor) and never changed. If `name` shouldn't change after creation, just don't write `setName()`, problem solved
 
-The getter still lets people **read** the name, but nobody can change it. This is a common and good pattern
+The getter still lets people read the name, but nobody can change it. This is a common and good pattern
 
 ---
 
