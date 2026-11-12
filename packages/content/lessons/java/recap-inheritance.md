@@ -1,4 +1,4 @@
-Combine **inheritance**, **overriding methods**, **polymorphism**, and **abstract classes**
+Combine inheritance, overriding methods, polymorphism, and abstract classes
 
 ---
 
@@ -6,14 +6,14 @@ Combine **inheritance**, **overriding methods**, **polymorphism**, and **abstrac
 
 Tommy has a mixed fleet in his Vice City garages: sports cars, trucks, motorcycles. Each type burns fuel at a different rate. Build an abstract `Vehicle` system so the whole fleet can be managed the same way, no matter the type.
 
-Create an **abstract** class `Vehicle` with:
+Create an abstract class `Vehicle` with:
 
 - Fields: `name` (String), `fuel` (int, starts at `100`)
 - Constructor takes the name
-- **`abstract String type()`**: each subclass returns its type
-- **`abstract int fuelPerKm()`**: fuel burned per km (different for each vehicle)
-- **`void drive(int km)`**: reduces fuel by `km * fuelPerKm()`. If there isn't enough fuel, print `"Not enough fuel!"` and change nothing
-- **`toString()`**: returns `"name (type) - Fuel: X%"`
+- `abstract String type()`: each subclass returns its type
+- `abstract int fuelPerKm()`: fuel burned per km (different for each vehicle)
+- `void drive(int km)`: reduces fuel by `km * fuelPerKm()`. If there isn't enough fuel, print `"Not enough fuel!"` and change nothing
+- `toString()`: returns `"name (type) - Fuel: X%"`
 
 Then create three concrete subclasses:
 

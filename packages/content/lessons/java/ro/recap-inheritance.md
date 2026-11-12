@@ -1,4 +1,4 @@
-Combină **moștenirea**, **suprascrierea metodelor**, **polimorfismul** și **clasele abstracte**
+Combină moștenirea, suprascrierea metodelor, polimorfismul și clasele abstracte
 
 ---
 
@@ -6,14 +6,14 @@ Combină **moștenirea**, **suprascrierea metodelor**, **polimorfismul** și **c
 
 Tommy are o flotă pestriță în garajele lui din Vice City: mașini sport, camioane, motociclete. Fiecare tip consumă combustibil cu o rată diferită. Construiește un sistem `Vehicul` abstract, astfel încât toată flota să poată fi gestionată la fel, indiferent de tip.
 
-Creează o clasă **abstractă** `Vehicul` cu:
+Creează o clasă abstractă `Vehicul` cu:
 
 - Câmpuri: `nume` (String), `combustibil` (int, începe de la `100`)
 - Constructorul primește numele
-- **`abstract String tip()`**: fiecare subclasă returnează tipul ei
-- **`abstract int consumPeKm()`**: combustibilul consumat pe km (diferit pentru fiecare vehicul)
-- **`void condu(int km)`**: scade combustibilul cu `km * consumPeKm()`. Dacă nu este destul combustibil, afișează `"Combustibil insuficient!"` și nu schimbă nimic
-- **`toString()`**: returnează `"nume (tip) - Combustibil: X%"`
+- `abstract String tip()`: fiecare subclasă returnează tipul ei
+- `abstract int consumPeKm()`: combustibilul consumat pe km (diferit pentru fiecare vehicul)
+- `void condu(int km)`: scade combustibilul cu `km * consumPeKm()`. Dacă nu este destul combustibil, afișează `"Combustibil insuficient!"` și nu schimbă nimic
+- `toString()`: returnează `"nume (tip) - Combustibil: X%"`
 
 Apoi creează trei subclase concrete:
 
