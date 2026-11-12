@@ -4,20 +4,40 @@ Siblings are elements with the same parent, side by side in the HTML, like the h
 
 ## `+`: the very next sibling
 
-```css
-h1 + p {
-  font-size: 1.25rem;
-}
+```css preview
+<style>
+  /* show */
+  h1 + p {
+    font-size: 1.25rem;
+  }
+  /* /show */
+</style>
+<h1>Game Club</h1>
+<p>Welcome to the club! We play every week.</p>
+<p>New members are always welcome.</p>
+<h2>Our Games</h2>
+<p>Chess and cards.</p>
+<p>Puzzles on rainy days.</p>
 ```
 
 "A `p` that comes **right after** an `h1`": the first paragraph under the page's title, often the introduction. Other paragraphs aren't touched, and a paragraph after an `h2` isn't either.
 
 ## `~`: any sibling after it
 
-```css
-h2 ~ p {
-  color: gray;
-}
+```css preview
+<style>
+  /* show */
+  h2 ~ p {
+    color: gray;
+  }
+  /* /show */
+</style>
+<h1>Game Club</h1>
+<p>Welcome to the club! We play every week.</p>
+<p>New members are always welcome.</p>
+<h2>Our Games</h2>
+<p>Chess and cards.</p>
+<p>Puzzles on rainy days.</p>
 ```
 
 "Every `p` that comes **after** an `h2`, on the same level", not just the first one. Paragraphs before the first `h2` stay as they were.
@@ -26,10 +46,17 @@ h2 ~ p {
 
 Put something between them:
 
-```html
+```html preview
+<style>
+  h1 + p {
+    font-size: 1.25rem;
+  }
+</style>
+<!-- show -->
 <h1>Game Club</h1>
-<img src="img/logo.svg" alt="The club's logo" />
+<img src="img/station.svg" alt="The space station" />
 <p>Welcome to the club!</p>
+<!-- /show -->
 ```
 
 `h1 + p` no longer matches: the `p` comes right after the `img`, not the `h1`. `+` means **right** after, with nothing in between. `h1 ~ p` would still match it.
