@@ -4,14 +4,20 @@ Imagine a teacher who ends every instruction with "and this is the MOST importan
 
 `!important` after a value makes that declaration win over every normal rule, whatever their scores and order:
 
-```css
-p {
-  color: gray !important;
-}
+```css preview
+<style>
+  /* show */
+  p {
+    color: gray !important;
+  }
 
-.tip {
-  color: darkgreen;
-}
+  .tip {
+    color: darkgreen;
+  }
+  /* /show */
+</style>
+<p>The club meets on Tuesdays.</p>
+<p class="tip">Bring water to every game.</p>
 ```
 
 A paragraph with the class `tip` should be dark green: `.tip` has a higher score. But `gray !important` wins anyway. It skips the whole score system.

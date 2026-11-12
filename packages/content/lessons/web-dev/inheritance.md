@@ -4,14 +4,22 @@ Children often inherit things from their parents: the colour of their eyes, thei
 
 Some properties pass from an element to everything inside it, unless something inside has a rule of its own:
 
-```css
-.notice {
-  color: gold;
-  font-family: Georgia, serif;
-}
+```css preview
+<style>
+  /* show */
+  .notice {
+    color: gold;
+    font-family: Georgia, serif;
+  }
+  /* /show */
+</style>
+<div class="notice">
+  <h3>Tonight</h3>
+  <p>The club closes at <strong>18:00</strong>.</p>
+</div>
 ```
 
-```html
+```html preview
 <div class="notice">
   <h3>Tonight</h3>
   <p>The club closes at <strong>18:00</strong>.</p>
@@ -32,14 +40,27 @@ A background seems to pass down, but it doesn't: the children are see-through by
 
 Inheritance is the weakest rule of all. Any rule that picks the element itself, even just its tag, beats what it would inherit:
 
-```css
-.notice {
-  color: gold;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
 
-p {
-  color: white;
-}
+  /* show */
+  .notice {
+    color: gold;
+  }
+
+  p {
+    color: white;
+  }
+  /* /show */
+</style>
+<div class="notice">
+  <h3>Tonight</h3>
+  <p>The club closes at <strong>18:00</strong>.</p>
+</div>
 ```
 
 The paragraph in the notice is white: its own rule, `p`, beats the gold it would inherit.
