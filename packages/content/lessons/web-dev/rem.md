@@ -9,14 +9,20 @@ Some people can't read small text easily, so they set their phone or browser to 
 
 Other sizes are multiples of it:
 
-```css
-p {
-  font-size: 1.125rem;
-}
+```css preview
+<style>
+  /* show */
+  p {
+    font-size: 1.125rem;
+  }
 
-h1 {
-  font-size: 2.5rem;
-}
+  h1 {
+    font-size: 2.5rem;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 With the usual 16-pixel setting:
@@ -38,10 +44,16 @@ To turn a pixel size into rem, divide by 16: 40 pixels is 40 ÷ 16 = `2.5rem`.
 
 Write a rem size in pixels' place and forget to divide:
 
-```css
-p {
-  font-size: 18rem;
-}
+```css preview
+<style>
+  /* show */
+  p {
+    font-size: 18rem;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 18 times the normal size: each letter is nearly 300 pixels tall, and a single word fills the screen. `rem` counts in "normal text sizes", not pixels.

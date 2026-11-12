@@ -2,10 +2,16 @@ The title of a poster is usually in the middle. A letter starts on the left. A p
 
 ## `text-align`
 
-```css
-h1 {
-  text-align: center;
-}
+```css preview
+<style>
+  /* show */
+  h1 {
+    text-align: center;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 The heading's text now sits in the middle of the page.
@@ -31,10 +37,15 @@ Centered text is good for short things: a title, a line of links, a signature. A
 
 Center a link that's inside a sentence:
 
-```css
-a {
-  text-align: center;
-}
+```css preview
+<style>
+  /* show */
+  a {
+    text-align: center;
+  }
+  /* /show */
+</style>
+<p>New to the game? <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a> before you start.</p>
 ```
 
 Nothing moves. The link is inline, only as wide as its words. Put the rule on the paragraph that holds it, and the whole line moves to the middle.
