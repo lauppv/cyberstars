@@ -41,8 +41,8 @@ lor, totul permanent.
 posibilitate de recuperare. Întotdeauna rulează `ls` pe folder mai întâi, ca să fii
 sigur ce conține.
 
-| Comandă | Folosește-o pentru                             |
-| ------- | ---------------------------------------------- |
+| Comandă | Folosește-o pentru                         |
+| ------- | ------------------------------------------ |
 | `rmdir` | un folder gol (sigur)                      |
 | `rm -r` | un folder cu conținut (puternic, atenție!) |
 

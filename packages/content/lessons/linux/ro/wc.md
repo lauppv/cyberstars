@@ -21,8 +21,8 @@ Cele trei numere sunt, în ordine:
 
 Opțiunile reduc rezultatul la un singur număr:
 
-| Opțiune | Numără               |
-| ------- | -------------------- |
+| Opțiune | Numără           |
+| ------- | ---------------- |
 | `wc -l` | doar liniile     |
 | `wc -w` | doar cuvintele   |
 | `wc -c` | doar caracterele |

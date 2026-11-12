@@ -21,8 +21,8 @@ The three numbers are, in order:
 
 Options narrow it down to a single number:
 
-| Option  | Counts              |
-| ------- | ------------------- |
+| Option  | Counts          |
+| ------- | --------------- |
 | `wc -l` | lines only      |
 | `wc -w` | words only      |
 | `wc -c` | characters only |

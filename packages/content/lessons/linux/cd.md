@@ -36,9 +36,9 @@ pwd
 
 | Command | Where it takes you                                            |
 | ------- | ------------------------------------------------------------- |
-| `cd ~`  | your home directory (`/home/student`)                     |
-| `cd /`  | the root of the whole system                              |
-| `cd ..` | one directory up                                          |
+| `cd ~`  | your home directory (`/home/student`)                         |
+| `cd /`  | the root of the whole system                                  |
+| `cd ..` | one directory up                                              |
 | `cd`    | also home (typing `cd` with nothing is a shortcut for `cd ~`) |
 
 ### Paths

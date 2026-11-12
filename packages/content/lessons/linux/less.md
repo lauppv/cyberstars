@@ -10,12 +10,12 @@ less bigfile.log
 `less` opens the file in a viewer. It does not dump everything. It shows one
 screenful and waits for you. Inside the viewer you can:
 
-| Key            | Action                            |
-| -------------- | --------------------------------- |
-| `Space` or `f` | next page                         |
-| `b`            | previous page                     |
-| arrow keys     | line up / down                    |
-| `/word`        | search forwards for _word_        |
+| Key            | Action                        |
+| -------------- | ----------------------------- |
+| `Space` or `f` | next page                     |
+| `b`            | previous page                 |
+| arrow keys     | line up / down                |
+| `/word`        | search forwards for _word_    |
 | `q`            | quit and return to the prompt |
 
 The most important key is **`q`**: that is how you leave `less` and get your shell

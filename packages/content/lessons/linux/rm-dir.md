@@ -39,8 +39,8 @@ permanently.
 `rm -r` is powerful and dangerous. It deletes entire trees with no confirmation and no
 undo. Always `ls` the folder first to be certain of what is inside.
 
-| Command | Use it for                                     |
-| ------- | ---------------------------------------------- |
+| Command | Use it for                                 |
+| ------- | ------------------------------------------ |
 | `rmdir` | an empty folder (safe)                     |
 | `rm -r` | a folder with content (powerful, careful!) |
 

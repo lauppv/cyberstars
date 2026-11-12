@@ -5,8 +5,8 @@ usefully by type and size.
 
 The `-type` option says whether you want files or directories:
 
-| Condition | Matches           |
-| --------- | ----------------- |
+| Condition | Matches       |
+| --------- | ------------- |
 | `-type f` | regular files |
 | `-type d` | directories   |
 

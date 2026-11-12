@@ -5,8 +5,8 @@ cel mai util după tip și după dimensiune.
 
 Opțiunea `-type` spune dacă vrei fișiere sau directoare:
 
-| Condiție  | Potrivește            |
-| --------- | --------------------- |
+| Condiție  | Potrivește        |
+| --------- | ----------------- |
 | `-type f` | fișiere obișnuite |
 | `-type d` | directoare        |
 
