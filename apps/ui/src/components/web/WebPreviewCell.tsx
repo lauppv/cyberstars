@@ -1,17 +1,18 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { WEB_PREVIEW_PATH } from '@cyberstars/shared/webFiles';
+import { resolveWebPath, WEB_PREVIEW_PATH } from '@cyberstars/shared/webFiles';
 import { CodeEditor } from '../code/CodeEditor';
 import { buildPreviewPage, type PreviewPage } from './previewDocument';
 import { PREVIEW_SOURCE } from './previewPrelude';
-import { parsePreviewCell, shownPart, wholePage } from './previewCell';
+import { parsePreviewCell, PreviewCourseContext, shownPart, wholePage } from './previewCell';
+import { assetUrl, loadImage } from './useWebPreview';
 
 // A preview cell of a web lesson's text (```html preview, ```css preview): the
 // part of a page the lesson is about, in an editor, and under it the page it
 // makes, drawn again a moment after the student stops typing. View shows the
 // whole page the part sits in, editable too (previewCell.ts). The page runs
 // in the same sandboxed frame as the lesson's site (web-preview.html), on its
-// own, with nothing of the student's site.
+// own, with nothing of the student's site but the course's pictures.
 
 interface WebPreviewCellProps {
   source: string;
@@ -28,9 +29,22 @@ const MIN_HEIGHT = 32;
 const MAX_HEIGHT = 600;
 const LOOP_LIMIT_MS = 2000;
 const DOCTYPE = /^\s*<!doctype\s/i;
+// A picture the page names: an <img>'s src or a url() in its CSS
+const IMAGE_REF = /\bsrc\s*=\s*["']([^"']+)["']|url\(\s*["']?([^"')]+)["']?\s*\)/gi;
+const IMAGE_FILE = /\.(svg|png|jpe?g|gif|webp)$/i;
+
+function imagePaths(page: string): string[] {
+  const paths = new Set<string>();
+  for (const match of page.matchAll(IMAGE_REF)) {
+    const path = resolveWebPath('index.html', match[1] ?? match[2] ?? '');
+    if (path && IMAGE_FILE.test(path)) paths.add(path);
+  }
+  return [...paths];
+}
 
 export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
   const { t } = useTranslation();
+  const course = useContext(PreviewCourseContext);
   const cell = useMemo(() => parsePreviewCell(source), [source]);
   // The whole page, which both views edit
   const [page, setPage] = useState(() => wholePage(cell, cell.shown));
@@ -47,7 +61,20 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
   const nextId = useRef(0);
 
   useEffect(() => {
-    const draw = () =>
+    let cancelled = false;
+    const draw = async () => {
+      // The course's pictures the page names, as the lesson's own preview
+      // has them (img/station.svg)
+      const images: Record<string, string> = {};
+      if (course) {
+        await Promise.all(
+          imagePaths(page).map(async (path) => {
+            const data = await loadImage(assetUrl(course, path));
+            if (data) images[path] = data;
+          }),
+        );
+      }
+      if (cancelled) return;
       setFrame({
         id: nextId.current++,
         page: buildPreviewPage({
@@ -57,7 +84,7 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
             { path: 'index.html', content: DOCTYPE.test(page) ? page : `<!DOCTYPE html>\n${page}` },
           ],
           page: 'index.html',
-          images: {},
+          images,
           prelude: {
             parentOrigin: window.location.origin,
             storage: {},
@@ -67,14 +94,14 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
           },
         }),
       });
+    };
     // The first drawing doesn't wait
-    if (nextId.current === 0) {
-      draw();
-      return;
-    }
-    const timer = setTimeout(draw, SETTLE_MS);
-    return () => clearTimeout(timer);
-  }, [page, t]);
+    const timer = setTimeout(() => void draw(), nextId.current === 0 ? 0 : SETTLE_MS);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [page, t, course]);
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {

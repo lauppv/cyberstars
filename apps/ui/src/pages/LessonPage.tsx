@@ -47,6 +47,7 @@ import { LessonTour } from '../components/tour/LessonTour';
 import { TourNotice } from '../components/tour/TourNotice';
 import { TerminalPanel } from '../components/terminal/TerminalPanel';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
+import { PreviewCourseContext } from '../components/web/previewCell';
 import { VisualSteps } from '../components/visual/VisualSteps';
 import { Segmented } from '../components/ui/Segmented';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -763,7 +764,9 @@ export function LessonPage() {
 
           <div className="lesson-body">
             <VisualSteps.Provider value={visualSteps}>
-              <MarkdownRenderer content={content} />
+              <PreviewCourseContext.Provider value={category}>
+                <MarkdownRenderer content={content} />
+              </PreviewCourseContext.Provider>
             </VisualSteps.Provider>
           </div>
 

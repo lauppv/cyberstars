@@ -1,3 +1,5 @@
+import { createContext } from 'react';
+
 // A preview cell of a web lesson's text: a whole page written in one fenced
 // block (```html preview or ```css preview), shown with the page it makes
 // under it. The part the lesson is about sits between two marker lines,
@@ -81,3 +83,7 @@ export function shownPart(
     .map((line) => (line.startsWith(indent) ? line.slice(indent.length) : line.trimStart()))
     .join('\n');
 }
+
+// The course whose lesson the cells are in, for the pictures a cell's page
+// names (assets/ of the course); null outside a lesson
+export const PreviewCourseContext = createContext<string | null>(null);

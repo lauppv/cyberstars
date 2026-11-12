@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { WebPreviewCell } from './WebPreviewCell';
 
 const SOURCE = [
@@ -32,8 +32,9 @@ describe('WebPreviewCell', () => {
     expect(editorText(container)).toBe('.tip {\n  color: red;\n}');
   });
 
-  it('shows the page it makes in the sandboxed preview frame', () => {
+  it('shows the page it makes in the sandboxed preview frame', async () => {
     const { container } = render(<WebPreviewCell source={SOURCE} language="css" />);
+    await waitFor(() => expect(container.querySelector('iframe')).not.toBeNull());
     const frame = container.querySelector('iframe')!;
     expect(frame.getAttribute('src')).toBe('/web-preview.html');
     expect(frame.getAttribute('sandbox')).toBe('allow-scripts allow-forms allow-modals');

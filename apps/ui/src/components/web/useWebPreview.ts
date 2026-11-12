@@ -35,7 +35,7 @@ const LEVELS = new Set(['log', 'info', 'warn', 'error']);
 // The site's images, as data: URLs the preview's own origin can show. Kept for
 // the visit; one that fails to load is asked for again next time.
 const imageCache = new Map<string, Promise<string | null>>();
-function loadImage(url: string): Promise<string | null> {
+export function loadImage(url: string): Promise<string | null> {
   let pending = imageCache.get(url);
   if (!pending) {
     pending = fetch(url)
