@@ -8,7 +8,7 @@ inaltime = 1.97
 print(f"Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}")
 ```
 
-Ce e acel **print()** lung, care arată ca un script? Ei bine, mai întâi, hai să ne întrebăm cum am putea afișa valorile pentru **nume**, **varsta** și **inaltime** în interiorul unui text
+Ce e acel print() lung, care arată ca un script? Ei bine, mai întâi, hai să ne întrebăm cum am putea afișa valorile pentru **nume**, **varsta** și **inaltime** în interiorul unui text
 
 Am putea face așa
 
@@ -20,7 +20,7 @@ inaltime = 1.90
 print("Salut. Numele meu este ", nume, ", am ", varsta, " ani si am inaltimea de ", inaltime)
 ```
 
-Problema e că, cu această abordare, trebuie să fii atent la spații, virgule și ghilimele… **fun fact**: am greșit de două ori când am scris asta **XD**
+Problema e că, cu această abordare, trebuie să fii atent la spații, virgule și ghilimele… fun fact: am greșit de două ori când am scris asta XD
 
 Credem că cea mai bună abordare este prima
 
@@ -31,7 +31,7 @@ inaltime = 1.67
 print(f"Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}")
 ```
 
-Evident, **nume**, **varsta** și **inaltime** sunt variabilele. Simbolurile **{}** funcționează ca un _placeholder_. În interiorul lor, dacă pui o variabilă, **numele variabilei va fi înlocuit cu valoarea ei**. Totuși, nu trebuie să uităm de **f**
+Evident, nume, varsta și inaltime sunt variabilele. Simbolurile **{}** funcționează ca un _placeholder_. În interiorul lor, dacă pui o variabilă, **numele variabilei va fi înlocuit cu valoarea ei**. Totuși, nu trebuie să uităm de **f**
 
 ```py
 nume = "Quincy"
@@ -41,14 +41,14 @@ inaltime = 1.90
 print("Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}")
 ```
 
-Acum **nu am pus acel f**. Ce se va afișa? Corect, exact șirul de caractere
+Acum nu am pus acel f. Ce se va afișa? Corect, exact șirul de caractere
 
 ```text
 Salut. Numele meu este {nume}, am {varsta} ani si am inaltimea de {inaltime}
 ```
 
 Și asta pentru că **f**-ul din fața șirului îi spune lui Python: „salut, înlocuiește ce e în {} cu valorile respective"
-Acest proces în programare se numește **formatare** (de aici și litera **f**)
+Acest proces în programare se numește **formatare** (de aici și litera f)
 
 ---
 
