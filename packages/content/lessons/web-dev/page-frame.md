@@ -4,7 +4,7 @@ A web page works the same way. Every real page sits inside a **frame** with two 
 
 ## The frame
 
-```html
+```html preview
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,13 +23,7 @@ Line by line:
 - `<head>` is the envelope: information **about** the page. Nothing in it shows on the page. It's empty for now. In the next lessons we'll put things in it.
 - `<body>` is the letter: everything you **see**. Your heading and your paragraphs go here.
 
-The page still shows the same thing:
-
-```text
-My Favourite Games        (big and bold)
-
-I play chess with my grandpa every Sunday.
-```
+The page still shows the same thing.
 
 So why bother? Because the browser now knows exactly what kind of page this is, and where each part belongs.
 
@@ -39,7 +33,7 @@ Look again: `<h1>` is **inside** `<body>`, and `<body>` is **inside** `<html>`. 
 
 A box inside another one must close before the outer one does. This is right:
 
-```html
+```html preview
 <body>
   <p>Hello</p>
 </body>

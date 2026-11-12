@@ -6,8 +6,18 @@ To say it, a tag needs a bit of **extra information**. That extra information is
 
 An attribute is written **inside the opening tag**, after the tag's name:
 
-```html
+```html preview
+<!DOCTYPE html>
+<!-- show -->
 <html lang="en">
+<!-- /show -->
+  <head>
+    <title>Game Club</title>
+  </head>
+  <body>
+    <h1>My Favourite Games</h1>
+  </body>
+</html>
 ```
 
 It has three parts:
@@ -24,7 +34,7 @@ Other languages have other codes: `es` is Spanish, `de` is German, `ro` is Roman
 
 Only in the **opening** tag, never in the closing one:
 
-```html
+```html preview
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,8 +54,18 @@ Lots of tags take attributes. We'll meet many of them: one for where a link lead
 
 Forget the quotes and the `=`:
 
-```html
+```html preview
+<!DOCTYPE html>
+<!-- show -->
 <html lang en>
+<!-- /show -->
+  <head>
+    <title>Game Club</title>
+  </head>
+  <body>
+    <h1>My Favourite Games</h1>
+  </body>
+</html>
 ```
 
 The browser now reads two attributes with no values, `lang` and `en`, and has no idea what language the page is in. Nothing on the page shows you the mistake, so it's easy to miss. Always write `name="value"`.
