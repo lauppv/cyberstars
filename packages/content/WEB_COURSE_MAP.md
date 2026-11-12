@@ -250,7 +250,7 @@ A passenger books a seat on one of the station's flights. The form asks, the pag
 | 20  | **`form-layout`**       | A label above its field, one field a line                 | Styling Forms |
 | 21  | **`focus-visible`**     | `:focus-visible`: a ring for the keyboard only            | Styling Forms |
 | 22  | **`valid-and-invalid`** | `:valid` and `:invalid`                                   | Styling Forms |
-| 23  | **`user-invalid`**      | `:user-invalid`: only once the visitor has had a go       | Styling Forms |
+| 23  | **`user-invalid`**      | `:user-invalid`: only once the visitor has tried          | Styling Forms |
 | 24  | **`checked-state`**     | `:checked`, and `+` to light up the chosen option's label | Styling Forms |
 | 25  | **`disabled-fields`**   | `disabled` and `:disabled`                                | Styling Forms |
 | 26  | **`accent-color`**      | `accent-color` for boxes and round buttons                | Styling Forms |

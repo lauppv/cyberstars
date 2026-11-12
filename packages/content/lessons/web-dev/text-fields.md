@@ -9,7 +9,7 @@ A box to type in is an `input` element:
 <input />
 ```
 
-Click in the box and type. The letters show up inside it, and you can delete them, move with the arrow keys, and select them, as in any app. The page does nothing with them yet: for now the box only holds what you typed.
+Click in the box and type. The letters appear inside it, and you can delete them, move with the arrow keys, and select them, as in any app. The page does nothing with them yet: for now the box only holds what you typed.
 
 Like `<img>` and `<br>`, `<input>` has no closing tag. The visitor writes what goes inside, not you.
 
