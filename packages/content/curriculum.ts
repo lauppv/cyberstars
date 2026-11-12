@@ -2212,6 +2212,9 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'boarding-html-recap', title: 'HTML Recap', sortOrder: 174 },
   { courseKey: 'web-dev', slug: 'fields-look', title: 'Fonts in Fields', sortOrder: 175 },
   { courseKey: 'web-dev', slug: 'form-layout', title: 'Form Layout', sortOrder: 176 },
+  { courseKey: 'web-dev', slug: 'focus-visible', title: ':focus-visible', sortOrder: 177 },
+  { courseKey: 'web-dev', slug: 'valid-and-invalid', title: ':valid and :invalid', sortOrder: 178 },
+  { courseKey: 'web-dev', slug: 'user-invalid', title: ':user-invalid', sortOrder: 179 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2419,6 +2422,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'boarding-html-recap',
         'fields-look',
         'form-layout',
+        'focus-visible',
+        'valid-and-invalid',
+        'user-invalid',
       ],
     },
   ],
