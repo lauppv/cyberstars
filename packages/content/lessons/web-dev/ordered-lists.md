@@ -4,18 +4,12 @@ A recipe's steps come in a fixed order: you crack the eggs before you whisk them
 
 When the order matters, use an `ol`, an **ordered list**. Its items are `li`s, just like in a `ul`:
 
-```html
+```html preview
 <ol>
   <li>Crack the eggs</li>
   <li>Whisk them</li>
   <li>Pour them in the pan</li>
 </ol>
-```
-
-```text
-1. Crack the eggs
-2. Whisk them
-3. Pour them in the pan
 ```
 
 The browser numbers the items by itself.
@@ -24,7 +18,7 @@ The browser numbers the items by itself.
 
 Say you forgot a step and add it in the middle:
 
-```html
+```html preview
 <ol>
   <li>Crack the eggs</li>
   <li>Add a pinch of salt</li>
@@ -46,16 +40,11 @@ Ask yourself: if I swapped two items, would it be wrong?
 
 Type the numbers in yourself, inside an `ol`:
 
-```html
+```html preview
 <ol>
   <li>1. Crack the eggs</li>
   <li>2. Whisk them</li>
 </ol>
-```
-
-```text
-1. 1. Crack the eggs
-2. 2. Whisk them
 ```
 
 Now every number shows twice. The `ol` already numbers its items.

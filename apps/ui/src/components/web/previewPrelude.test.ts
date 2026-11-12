@@ -51,6 +51,15 @@ describe('previewPrelude', () => {
     expect(last()).toEqual({ source: PREVIEW_SOURCE, type: 'title', text: 'Station Log' });
   });
 
+  it("sends the page's height once it is read, for a lesson's preview cell", () => {
+    const box = vi
+      .spyOn(document.documentElement, 'getBoundingClientRect')
+      .mockReturnValue({ height: 120.4 } as DOMRect);
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    box.mockRestore();
+    expect(sent).toContainEqual({ source: PREVIEW_SOURCE, type: 'height', height: 121 });
+  });
+
   it('sends the title again when a script changes it', async () => {
     document.title = 'Launch in 3';
     await Promise.resolve();

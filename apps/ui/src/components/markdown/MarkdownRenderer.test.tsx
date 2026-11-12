@@ -69,6 +69,19 @@ describe('MarkdownRenderer', () => {
     expect(screen.getByText('Start')).toBeInTheDocument();
   });
 
+  it('renders a ```css preview fence as a preview cell, loaded on demand', async () => {
+    const fence = '<style>\n  /* show */\n  p { color: red; }\n  /* /show */\n</style>\n<p>Hi</p>';
+    render(<MarkdownRenderer content={'```css preview\n' + fence + '\n```'} />);
+    expect(await screen.findByTestId('web-preview-cell')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'View all the code' })).toBeInTheDocument();
+  });
+
+  it('leaves a ```css fence without preview as a plain block', () => {
+    const { container } = render(<MarkdownRenderer content={'```css\np { color: red; }\n```'} />);
+    expect(container.querySelector('code')!.textContent).toBe('p { color: red; }\n');
+    expect(screen.queryByTestId('web-preview-cell')).toBeNull();
+  });
+
   it('shows a ```visual fence it cannot read as plain text', () => {
     const { container } = render(
       <MarkdownRenderer content={'```visual\n{ "type": "array" }\n```'} />,

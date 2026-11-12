@@ -10,14 +10,20 @@ You met pixels with the picture's `width` and `height`. In CSS you always write 
 
 `font-size` sets how big the text is:
 
-```css
-p {
-  font-size: 18px;
-}
+```css preview
+<style>
+  /* show */
+  p {
+    font-size: 18px;
+  }
 
-h1 {
-  font-size: 40px;
-}
+  h1 {
+    font-size: 40px;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 The browser's normal text is `16px`. With this CSS, paragraphs are a bit bigger than normal, and the biggest heading is 40 pixels tall.
@@ -30,10 +36,16 @@ Bigger isn't always better. Body text between 16 and 20 pixels reads well on mos
 
 Leave out the unit:
 
-```css
-p {
-  font-size: 18;
-}
+```css preview
+<style>
+  /* show */
+  p {
+    font-size: 18;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 `18` what? Pixels? Something else? CSS doesn't guess: the declaration is ignored and the paragraphs keep their size. A size always needs its unit. Only `0` can go without one, since 0 of anything is nothing.

@@ -4,10 +4,19 @@ A suitcase for a plane has rules: no bigger than this, so it fits in the overhea
 
 You already met it with pictures. On any box, `max-width` lets it be narrower, but never wider:
 
-```css
-.notice {
-  max-width: 500px;
-}
+```css preview
+<style>
+  .notice {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .notice {
+    max-width: 500px;
+  }
+  /* /show */
+</style>
+<p class="notice">The pool is closed on Monday for cleaning. On Tuesday it opens again at eight, with the water a little warmer than before.</p>
 ```
 
 On a wide screen the notice stops at 500 pixels, so its lines don't get too long to read. On a phone narrower than that, it simply takes the phone's width. A fixed `width: 500px` would stick out of the phone instead.
@@ -16,10 +25,33 @@ That's the big difference: `width` is always that size, `max-width` is "that siz
 
 ## `min-height`: never shorter
 
-```css
-.member {
-  min-height: 120px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* show */
+  .member {
+    min-height: 120px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games on Fridays, and keeps the score of every game the club has played this year.</p>
+</div>
 ```
 
 Each member box is at least 120 pixels tall. A member with a short text gets a box of 120. A member with a long one gets a taller box that holds it all. Unlike `height`, the text never spills out.

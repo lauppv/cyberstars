@@ -4,33 +4,23 @@ HTML has two tags for it. They don't just change how text looks, they say what i
 
 ## `<strong>`: this is important
 
-```html
+```html preview
 <p><strong>Don't touch the oven</strong>, it's still hot.</p>
-```
-
-The page shows:
-
-```text
-Don't touch the oven, it's still hot.     ("Don't touch the oven" in bold)
 ```
 
 `<strong>` means "this part is important". Browsers show it in **bold**, and a screen reader may say it with more force.
 
 ## `<em>`: say this word differently
 
-```html
+```html preview
 <p>I said <em>Tuesday</em>, not Thursday.</p>
-```
-
-```text
-I said Tuesday, not Thursday.             ("Tuesday" in italic)
 ```
 
 `<em>` is short for **emphasis**: the word you'd lean on when you say the sentence out loud. Browsers show it in _italic_.
 
 Move the `<em>` and the sentence means something else:
 
-```html
+```html preview
 <p><em>I</em> said Tuesday, not Thursday.</p>
 ```
 
@@ -46,7 +36,7 @@ You may see `<b>` (bold) and `<i>` (italic) on other pages. They only change the
 
 Forget to close the `<strong>`:
 
-```html
+```html preview
 <p><strong>Don't touch the oven, it's still hot.</p>
 <p>Dinner is at seven.</p>
 ```

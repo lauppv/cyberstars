@@ -2,11 +2,17 @@ Open an old storybook: the first letter of a chapter is often huge, decorated, t
 
 ## `::first-letter`
 
-```css
-.story::first-letter {
-  font-size: 2em;
-  color: gold;
-}
+```css preview
+<style>
+  /* show */
+  .story::first-letter {
+    font-size: 2em;
+    color: gold;
+  }
+  /* /show */
+</style>
+<p class="story">Once upon a time, a small station circled the Earth, and six people lived in it with a greenhouse full of tomatoes.</p>
+<p>The end.</p>
 ```
 
 The first letter of every `.story` paragraph shows twice as big, in gold. The rest of the paragraph is untouched. `2em` means "twice the size of this element's text".
@@ -15,10 +21,19 @@ The first letter of every `.story` paragraph shows twice as big, in gold. The re
 
 The bullet or number of a list item is its **marker**:
 
-```css
-.menu li::marker {
-  color: gold;
-}
+```css preview
+<style>
+  /* show */
+  .menu li::marker {
+    color: gold;
+  }
+  /* /show */
+</style>
+<ul class="menu">
+  <li>Home</li>
+  <li>Games</li>
+  <li>Members</li>
+</ul>
 ```
 
 The bullets turn gold, while the words of the items keep their own color.
@@ -31,10 +46,16 @@ One more you'll use soon: in a form, a box to type in can show a grey hint, like
 
 Use one colon:
 
-```css
-.story:first-letter {
-  font-size: 2em;
-}
+```css preview
+<style>
+  /* show */
+  .story:first-letter {
+    font-size: 2em;
+  }
+  /* /show */
+</style>
+<p class="story">Once upon a time, a small station circled the Earth, and six people lived in it with a greenhouse full of tomatoes.</p>
+<p>The end.</p>
 ```
 
 It still works: old CSS used one colon, and browsers still accept it for a few of these. But the rule is two colons for pseudo-elements, the pieces, and one for pseudo-classes, the states like `:hover`. Writing two keeps them apart in your head.

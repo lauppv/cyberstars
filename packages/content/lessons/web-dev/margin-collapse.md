@@ -4,11 +4,33 @@ Two people stand in a queue. One says "I need a metre of space around me", the o
 
 Two boxes, one under the other:
 
-```css
-.member {
-  margin-top: 20px;
-  margin-bottom: 30px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+  }
+
+  /* show */
+  .member {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 You might expect 30 + 20 = 50 pixels between two members: the first one's bottom margin plus the second one's top margin. But there are only **30**. When the margin under one box meets the margin over the next, they **collapse** into one, as big as the bigger of the two.
@@ -30,11 +52,33 @@ Inspect the first box and the second one. Both show their margins in orange, and
 
 Want 50 pixels between the members? Raising both margins doesn't help as you'd think:
 
-```css
-.member {
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+  }
+
+  /* show */
+  .member {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 You get 25, not 50. To get 50, give one side all of it: `margin-bottom: 50px`, and no margin on top.

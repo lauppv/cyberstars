@@ -8,15 +8,13 @@ Think of a school notebook. You write the title of a lesson bigger, and underlin
 
 A tag is a word between `<` and `>`. Here is the tag for the biggest heading of a page:
 
-```html
+```html preview
 <h1>My Favourite Games</h1>
 ```
 
-`h1` is short for **heading 1**, the most important heading. The page shows:
+`h1` is short for **heading 1**, the most important heading. Under the code you see the page it makes: the words, big and bold.
 
-```text
-My Favourite Games        (big and bold)
-```
+Every example in these lessons works like this: the code on top, the page it makes underneath. Change the code and the page follows, so try things out right there. When an example shows only the part that matters, **View all the code** shows the whole page behind it.
 
 Look at the two tags around the words:
 
@@ -35,7 +33,7 @@ On the right you have your own small editor:
 
 Type this in `index.html` and look at the preview:
 
-```html
+```html preview
 <h1>Hello</h1>
 ```
 
@@ -45,7 +43,7 @@ Now change `Hello` to your name. The preview changes too. That's the whole loop:
 
 What if you forget the `/` in the closing tag?
 
-```html
+```html preview
 <h1>Hello<h1>
 ```
 
@@ -53,7 +51,7 @@ The browser thinks you opened a second heading and never closed either. On this 
 
 What if you leave the tags out?
 
-```html
+```html preview
 Hello
 ```
 

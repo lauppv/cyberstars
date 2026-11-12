@@ -4,11 +4,38 @@ Think of tiles on a bathroom wall. Each tile is a little box with its own size, 
 
 ## `display`
 
-```css
-.member {
-  display: inline-block;
-  width: 200px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 12px;
+    margin: 4px;
+  }
+
+  /* show */
+  .member {
+    display: inline-block;
+    width: 130px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games, and keeps the score of every game.</p>
+</div>
+<div class="member">
+  <h3>Ana Ruiz</h3>
+  <p>New this year.</p>
+</div>
 ```
 
 The values you'll use:
@@ -24,12 +51,39 @@ With `display: inline-block`, the member boxes line up in a row like tiles. When
 
 They line up along the bottom of their text by default, so boxes of different heights look uneven. `vertical-align: top` lines up their tops instead:
 
-```css
-.member {
-  display: inline-block;
-  vertical-align: top;
-  width: 200px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 12px;
+    margin: 4px;
+  }
+
+  /* show */
+  .member {
+    display: inline-block;
+    vertical-align: top;
+    width: 130px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games, and keeps the score of every game.</p>
+</div>
+<div class="member">
+  <h3>Ana Ruiz</h3>
+  <p>New this year.</p>
+</div>
 ```
 
 ## Break it on purpose

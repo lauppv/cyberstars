@@ -4,7 +4,7 @@ Every element you've used so far **means** something: a heading, a paragraph, a 
 
 ## `<div>`
 
-```html
+```html preview
 <div class="member">
   <h3>Sam Green</h3>
   <p>Plays chess on Sundays.</p>
@@ -19,7 +19,7 @@ What makes it useful is the class. With `class="member"`, CSS can later give eve
 
 A `div` can hold other `div`s:
 
-```html
+```html preview
 <div id="members">
   <div class="member">
     <h3>Sam Green</h3>
@@ -42,7 +42,7 @@ Before you reach for a `div`, ask: is this a heading, a paragraph, a list? If HT
 
 Close a `div` too early:
 
-```html
+```html preview
 <div class="member">
   <h3>Sam Green</h3>
 </div>

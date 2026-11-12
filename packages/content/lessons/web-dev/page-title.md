@@ -6,7 +6,7 @@ That name comes from the page itself, from a tag called `<title>`.
 
 The title is information **about** the page, so it goes in the `<head>`, the envelope:
 
-```html
+```html preview
 <!DOCTYPE html>
 <html>
   <head>
@@ -35,7 +35,7 @@ They often say something similar, but they don't have to be the same.
 
 Move the `<title>` down into the `<body>`:
 
-```html
+```html preview
 <body>
   <title>Game Club</title>
   <h1>My Favourite Games</h1>

@@ -6,13 +6,21 @@ That language is **CSS**. Your station's page is still plain black on white. Tim
 
 CSS is written as **rules**. Here is one:
 
-```css
-h1 {
-  color: steelblue;
-}
+```css preview
+<style>
+  /* show */
+  h1 {
+    color: steelblue;
+  }
+  /* /show */
+</style>
+<h1>Game Club</h1>
+<p>We meet every Friday after school.</p>
 ```
 
-It says: "every `h1` on the page has steel-blue text". Put it in action and the page's biggest heading turns blue. The rest of the page doesn't change.
+It says: "every `h1` on the page has steel-blue text". Look at the page under it: the biggest heading is blue, and the rest of the page doesn't change.
+
+**View all the code** shows the whole page: there, the CSS sits at the top, inside a `<style>` tag. That's just a way to keep an example in one piece. Your own site keeps its CSS in a file of its own, as you'll see in a moment.
 
 `steelblue` is one of the color names CSS knows. A few others: `red`, `green`, `teal`, `indigo`, `firebrick`. We'll look at colors properly in a later lesson. For now, any of these will do.
 
@@ -22,12 +30,21 @@ Your HTML and your CSS live in separate files. Look at the files of your site: t
 
 The page needs to know about the file. You tell it with a `<link>` in the `<head>`:
 
-```html
+```html preview
+<!DOCTYPE html>
+<html lang="en">
+<!-- show -->
 <head>
   <meta charset="UTF-8" />
   <title>Game Club</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+<!-- /show -->
+<body>
+  <h1>Game Club</h1>
+  <p>We meet every Friday after school.</p>
+</body>
+</html>
 ```
 
 - `rel="stylesheet"` says what kind of file it is: a style sheet, a file of CSS;
@@ -43,8 +60,21 @@ Write the rule in `style.css` but leave out the `<link>`. Nothing changes on the
 
 Now put the `<link>` back, but name the file wrong:
 
-```html
+```html preview
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game Club</title>
+<!-- show -->
 <link rel="stylesheet" href="styles.css" />
+<!-- /show -->
+</head>
+<body>
+  <h1>Game Club</h1>
+  <p>We meet every Friday after school.</p>
+</body>
+</html>
 ```
 
 Again nothing happens, and the browser doesn't show you any error. When your CSS seems to do nothing at all, check the link first.

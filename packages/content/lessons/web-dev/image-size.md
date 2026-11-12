@@ -4,7 +4,7 @@ On a slow connection, have you seen a page jump while you read it? You start a s
 
 Two attributes tell the browser a picture's size before it loads:
 
-```html
+```html preview
 <img src="img/cat.svg" alt="A grey cat asleep in a shoebox" width="300" height="200" />
 ```
 
@@ -12,7 +12,7 @@ The numbers are in **pixels**, the tiny dots a screen is made of. Now the browse
 
 They also choose the size it **shows** at. The same picture can show smaller:
 
-```html
+```html preview
 <img src="img/cat.svg" alt="A grey cat asleep in a shoebox" width="150" height="100" />
 ```
 
@@ -30,7 +30,7 @@ A picture has a **shape**: how wide it is compared to how tall. The cat picture 
 
 Change only one number:
 
-```html
+```html preview
 <img src="img/cat.svg" alt="A grey cat asleep in a shoebox" width="300" height="100" />
 ```
 

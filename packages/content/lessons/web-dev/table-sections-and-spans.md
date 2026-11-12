@@ -2,10 +2,13 @@ A report has a title on top, a header, the body of the text, and a footer at the
 
 ## A title: `<caption>`
 
-```html
+```html preview
 <table>
+  <!-- show -->
   <caption>Club scores, March</caption>
-  ...
+  <!-- /show -->
+  <tr><td>Sam</td><td>12</td></tr>
+  <tr><td>Lea</td><td>9</td></tr>
 </table>
 ```
 
@@ -13,7 +16,7 @@ A report has a title on top, a header, the body of the text, and a footer at the
 
 ## Three sections
 
-```html
+```html preview
 <table>
   <caption>Club scores, March</caption>
   <thead>

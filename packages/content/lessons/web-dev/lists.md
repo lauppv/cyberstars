@@ -4,18 +4,12 @@ Before you go shopping, you write a list: milk, bread, apples. Each thing on its
 
 A list is a `ul` element, short for **unordered list**. Each thing in it is an `li`, a **list item**:
 
-```html
+```html preview
 <ul>
   <li>Milk</li>
   <li>Bread</li>
   <li>Apples</li>
 </ul>
-```
-
-```text
-• Milk
-• Bread
-• Apples
 ```
 
 The browser puts a bullet before each item and moves the list a little to the right. "Unordered" means the order doesn't matter: apples before bread is just as good.
@@ -28,7 +22,7 @@ You could write three paragraphs, and it might even look similar. But a list **s
 
 A `ul` holds `li` elements and nothing else. Whatever you want in the list goes **inside** an `li`: text, a link, even a picture.
 
-```html
+```html preview
 <ul>
   <li><a href="chess.html">Chess</a></li>
   <li>Cards</li>
@@ -39,16 +33,12 @@ A `ul` holds `li` elements and nothing else. Whatever you want in the list goes 
 
 Forget the `<li>`s:
 
-```html
+```html preview
 <ul>
   Milk
   Bread
   Apples
 </ul>
-```
-
-```text
-Milk Bread Apples
 ```
 
 No bullets, all on one line. Without its items, a `ul` is just a box of loose words.

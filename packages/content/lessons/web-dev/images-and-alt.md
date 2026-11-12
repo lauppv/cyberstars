@@ -4,7 +4,7 @@ A page with only words is like a school project with no pictures glued in. A pho
 
 A picture is an `img` element, short for **image**:
 
-```html
+```html preview
 <img src="img/cat.svg" />
 ```
 
@@ -18,7 +18,7 @@ Like `<br>` and `<meta>`, `<img>` has no closing tag: there are no words to put 
 
 An image is **inline**, like a word: it sits in the line of text where you put it. Most of the time you want it on a line of its own, so put it between paragraphs:
 
-```html
+```html preview
 <h1>Our Cat</h1>
 <img src="img/cat.svg" />
 <p>Her name is Pixel and she sleeps all day.</p>
@@ -34,7 +34,7 @@ Look at the files on the left of your editor: there's a new folder, `img`, with 
 
 Write the path wrong:
 
-```html
+```html preview
 <img src="img/stations.svg" />
 ```
 
@@ -42,7 +42,7 @@ The browser looks for `stations.svg`, finds nothing, and shows a small broken pi
 
 Leave out the folder and it breaks too:
 
-```html
+```html preview
 <img src="station.svg" />
 ```
 

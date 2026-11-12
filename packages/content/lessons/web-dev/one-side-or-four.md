@@ -4,13 +4,22 @@ A picture frame is often wider at the bottom than at the top, so the picture loo
 
 Every side has its own property:
 
-```css
-.note {
-  padding-top: 8px;
-  padding-right: 16px;
-  padding-bottom: 8px;
-  padding-left: 40px;
-}
+```css preview
+<style>
+  .note {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .note {
+    padding-top: 8px;
+    padding-right: 16px;
+    padding-bottom: 8px;
+    padding-left: 40px;
+  }
+  /* /show */
+</style>
+<p class="note">Bring your own board on Saturdays: we only have six.</p>
 ```
 
 Top, right, bottom, left, each with its own value. The same works for margins: `margin-top`, `margin-right`, `margin-bottom`, `margin-left`. Set only one side, and the others keep what they had.
@@ -33,8 +42,16 @@ With two values, the first is for top and bottom, the second for left and right.
 
 Mix up the order:
 
-```css
-padding: 40px 8px 16px 8px;
+```css preview
+<style>
+  .note {
+    background-color: lightyellow;
+    /* show */
+    padding: 40px 8px 16px 8px;
+    /* /show */
+  }
+</style>
+<p class="note">Bring your own board on Saturdays: we only have six.</p>
 ```
 
 You wanted 40 on the left, but it's the first value, so it's the **top**: a big empty space above the text, and only 8 pixels on the left. When a side looks wrong, count round the clock: top, right, bottom, left.

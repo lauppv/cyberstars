@@ -6,13 +6,22 @@ Think of a shelf. `margin: 0 auto` moves the **shelf** to the middle of the wall
 
 `text-align: center` goes on a box, and centers the **lines of text and inline elements inside it**. The box itself doesn't move:
 
-```css
-.links {
-  text-align: center;
-}
+```css preview
+<style>
+  .links {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .links {
+    text-align: center;
+  }
+  /* /show */
+</style>
+<p class="links"><a href="a.html">One</a> <a href="b.html">Two</a></p>
 ```
 
-```html
+```html preview
 <p class="links"><a href="a.html">One</a> <a href="b.html">Two</a></p>
 ```
 
@@ -31,10 +40,19 @@ The paragraph still takes the full width. The links, which are inline, move to t
 
 Try to center a menu's links by putting `margin: 0 auto` on the links:
 
-```css
-.links a {
-  margin: 0 auto;
-}
+```css preview
+<style>
+  .links {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .links a {
+    margin: 0 auto;
+  }
+  /* /show */
+</style>
+<p class="links"><a href="a.html">One</a> <a href="b.html">Two</a></p>
 ```
 
 Nothing moves. A link is inline: it has no width of its own to center, and inline elements ignore `auto` margins. Put `text-align: center` on the box around them instead.

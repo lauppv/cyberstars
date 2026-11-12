@@ -15,7 +15,7 @@ const PAGE = (heading: string) =>
 
 async function writeIndex(page: import('@playwright/test').Page, text: string) {
   await page.getByRole('button', { name: 'index.html', exact: true }).click();
-  await page.locator('.cm-content').first().click();
+  await page.locator('[data-testid="editor"] .cm-content').click();
   await page.keyboard.press('ControlOrMeta+a');
   await page.keyboard.press('Delete');
   await page.keyboard.insertText(text);

@@ -4,7 +4,7 @@ You now have two ways to name an element: a class and an id. So which do you use
 
 Use a class when **more than one** element shares a look, or could one day:
 
-```html
+```html preview
 <p class="tip">Bring water to every game.</p>
 <p class="tip">Arrive ten minutes early.</p>
 ```
@@ -15,7 +15,7 @@ Two tips today, maybe ten next month. With a class, each new tip just wears `cla
 
 Use an id for **one** element that's unique on the page, especially one a link jumps to:
 
-```html
+```html preview
 <h2 id="rules">Club Rules</h2>
 ```
 
@@ -27,7 +27,7 @@ If you're not sure, pick a class. It never breaks when a second element comes al
 
 An element can have a class and an id at the same time, and even several classes, separated by spaces:
 
-```html
+```html preview
 <h2 id="rules" class="important">Club Rules</h2>
 ```
 
@@ -35,7 +35,7 @@ An element can have a class and an id at the same time, and even several classes
 
 Give two elements the same id:
 
-```html
+```html preview
 <h3 id="match">Saturday's match</h3>
 <h3 id="match">Sunday's match</h3>
 ```

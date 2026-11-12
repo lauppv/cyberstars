@@ -1749,6 +1749,12 @@
       "noPage": "There is no page {{page}} in your site.",
       "outsideLink": "Links to other sites don't open in the preview: {{href}}",
       "formSent": "The form was sent: {{fields}}"
+    },
+    "cell": {
+      "viewAll": "View all the code",
+      "hideRest": "Show less",
+      "previewTitle": "What this code shows",
+      "otherPage": "This example is a single page, so the link to {{page}} doesn't open here."
     }
   }
 }

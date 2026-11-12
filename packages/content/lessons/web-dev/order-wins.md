@@ -2,14 +2,28 @@ Two teachers give you homework for Friday, both with the same authority. Which c
 
 ## A tie
 
-```css
-#scores .winner td {
-  color: gold;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
 
-#scores .late td {
-  color: gray;
-}
+  /* show */
+  #scores .winner td {
+    color: gold;
+  }
+
+  #scores .late td {
+    color: gray;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <tr class="winner"><td>Sam</td><td>12</td><td>winner</td></tr>
+  <tr class="late"><td>Lea</td><td>9</td><td>late</td></tr>
+  <tr class="winner late"><td>Ana</td><td>12</td><td>winner and late</td></tr>
+</table>
 ```
 
 Both selectors have an id, a class and a tag: the same score. A row that's only `winner` is gold, a row that's only `late` is gray. And a row with **both** classes, `class="winner late"`? It's a tie, so the later rule wins: gray.
@@ -26,14 +40,28 @@ Remember, order only decides a **tie**. A rule with a higher score wins wherever
 
 Put the special case first:
 
-```css
-#scores .late td {
-  color: gray;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
 
-#scores .winner td {
-  color: gold;
-}
+  /* show */
+  #scores .late td {
+    color: gray;
+  }
+
+  #scores .winner td {
+    color: gold;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <tr class="winner"><td>Sam</td><td>12</td><td>winner</td></tr>
+  <tr class="late"><td>Lea</td><td>9</td><td>late</td></tr>
+  <tr class="winner late"><td>Ana</td><td>12</td><td>winner and late</td></tr>
+</table>
 ```
 
 A late winner is now gold: the gray rule lost the tie. When a rule you know is right does nothing, look for a rule with the same score further down.

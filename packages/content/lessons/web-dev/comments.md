@@ -4,18 +4,10 @@ Have you ever written a note in the margin of a book, or a reminder on a sticky 
 
 A comment starts with `<!--` and ends with `-->`. Everything between them is ignored by the browser:
 
-```html
+```html preview
 <h1>My Favourite Games</h1>
 <!-- Add the new games after the summer holiday -->
 <p>I play chess with my grandpa every Sunday.</p>
-```
-
-The page shows:
-
-```text
-My Favourite Games
-
-I play chess with my grandpa every Sunday.
 ```
 
 The note is in the file, but not on the page. Comments are for people who read the code: you in a month, or a friend who helps you.
@@ -24,13 +16,9 @@ The note is in the file, but not on the page. Comments are for people who read t
 
 A comment can also hide a piece of the page for a while, without deleting it:
 
-```html
+```html preview
 <p>I play chess with my grandpa every Sunday.</p>
 <!-- <p>Tournament this Saturday!</p> -->
-```
-
-```text
-I play chess with my grandpa every Sunday.
 ```
 
 The second paragraph is still in the file. To bring it back, you just take away the `<!--` and `-->`. That's handy for something that comes and goes, like a notice for one week.
@@ -41,7 +29,7 @@ A comment can be as long as you like, over several lines, until its `-->`.
 
 Forget the end of the comment:
 
-```html
+```html preview
 <!-- Add the new games after the summer holiday
 <p>I play chess with my grandpa every Sunday.</p>
 <p>On rainy days we play cards instead.</p>

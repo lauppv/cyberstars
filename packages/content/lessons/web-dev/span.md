@@ -4,12 +4,8 @@ A `div` is a box for whole blocks. But sometimes you want to mark just a few wor
 
 `span` is a box for a few words, inside a line:
 
-```html
+```html preview
 <p>The next match is on <span class="date">Saturday</span>.</p>
-```
-
-```text
-The next match is on Saturday.
 ```
 
 Nothing changes on the page: the sentence reads the same, on one line. A `span` is **inline**, like `<strong>` or `<mark>`, so it never breaks the line.
@@ -24,15 +20,8 @@ Like `div`, `span` means nothing. If the words are **important**, use `<strong>`
 
 Use a `div` instead:
 
-```html
+```html preview
 <p>The next match is on <div class="date">Saturday</div>.</p>
-```
-
-```text
-The next match is on
-
-Saturday
-.
 ```
 
 A `div` is a block: it breaks the sentence apart. And a block inside a `<p>` isn't allowed, so the browser even closes the paragraph early. For a few words in a line, it's always `span`.

@@ -4,13 +4,27 @@
 
 A `>` between two selectors picks elements that are **direct children** of the first, one level down, no deeper:
 
-```css
-.menu > li {
-  margin-bottom: 16px;
-}
+```css preview
+<style>
+  /* show */
+  .menu > li {
+    margin-bottom: 16px;
+  }
+  /* /show */
+</style>
+<ul class="menu">
+  <li>
+    Drinks
+    <ul>
+      <li>Tea</li>
+      <li>Juice</li>
+    </ul>
+  </li>
+  <li>Snacks</li>
+</ul>
 ```
 
-```html
+```html preview
 <ul class="menu">
   <li>
     Drinks
@@ -36,10 +50,24 @@ With a space instead, `.menu li` would pick all four, and the drinks would be sp
 
 Use a space on the nested menu:
 
-```css
-.menu li {
-  margin-bottom: 16px;
-}
+```css preview
+<style>
+  /* show */
+  .menu li {
+    margin-bottom: 16px;
+  }
+  /* /show */
+</style>
+<ul class="menu">
+  <li>
+    Drinks
+    <ul>
+      <li>Tea</li>
+      <li>Juice</li>
+    </ul>
+  </li>
+  <li>Snacks</li>
+</ul>
 ```
 
 Tea and Juice get the big margin too, and the inner list falls apart. When styles leak into a nested list, try `>`.

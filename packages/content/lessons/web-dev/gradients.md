@@ -4,20 +4,44 @@ Look at the sky at sunset: orange near the horizon, fading into purple, then dar
 
 A gradient is used like a background picture:
 
-```css
-.header {
-  background-image: linear-gradient(orange, purple);
-}
+```css preview
+<style>
+  .header {
+    padding: 16px;
+    color: white;
+  }
+
+  /* show */
+  .header {
+    background-image: linear-gradient(orange, purple);
+  }
+  /* /show */
+</style>
+<div class="header">
+  <h1>Night Owls</h1>
+</div>
 ```
 
 From orange at the top to purple at the bottom, melting in between.
 
 Add a direction first, and more colors:
 
-```css
-.header {
-  background-image: linear-gradient(90deg, orange, purple, darkblue);
-}
+```css preview
+<style>
+  .header {
+    padding: 16px;
+    color: white;
+  }
+
+  /* show */
+  .header {
+    background-image: linear-gradient(90deg, orange, purple, darkblue);
+  }
+  /* /show */
+</style>
+<div class="header">
+  <h1>Night Owls</h1>
+</div>
 ```
 
 `90deg` turns it to go left to right instead of top to bottom: `0deg` is upwards, `90deg` to the right, `180deg` downwards. With three colors, it goes orange, then purple, then dark blue.
@@ -26,10 +50,23 @@ Add a direction first, and more colors:
 
 A radial gradient spreads from the middle outwards, in a circle:
 
-```css
-.spotlight {
-  background-image: radial-gradient(white, darkblue);
-}
+```css preview
+<style>
+  .spotlight {
+    padding: 40px;
+    text-align: center;
+    color: darkblue;
+  }
+
+  /* show */
+  .spotlight {
+    background-image: radial-gradient(white, darkblue);
+  }
+  /* /show */
+</style>
+<div class="spotlight">
+  <p>Tonight's show</p>
+</div>
 ```
 
 White in the middle, fading out to dark blue at the edges, like a spotlight.
@@ -42,10 +79,22 @@ A gradient changes color across the box, so text on it has a different backgroun
 
 Write it as `background-color`:
 
-```css
-.header {
-  background-color: linear-gradient(orange, purple);
-}
+```css preview
+<style>
+  .header {
+    padding: 16px;
+    color: white;
+  }
+
+  /* show */
+  .header {
+    background-color: linear-gradient(orange, purple);
+  }
+  /* /show */
+</style>
+<div class="header">
+  <h1>Night Owls</h1>
+</div>
 ```
 
 Nothing shows. A gradient is a kind of **image**, so it goes in `background-image`, never in `background-color`.

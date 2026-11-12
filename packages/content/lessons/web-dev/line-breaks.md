@@ -6,20 +6,12 @@ Making each line its own paragraph would be wrong here. It's one address, not th
 
 `<br>` is short for **break**, a line break. It's like pressing Enter, but one the browser listens to:
 
-```html
+```html preview
 <p>
   Sam Green<br />
   12 Oak Street<br />
   Bristol
 </p>
-```
-
-The page shows:
-
-```text
-Sam Green
-12 Oak Street
-Bristol
 ```
 
 One paragraph, three lines. Like `<meta>`, `<br>` has nothing inside it, so it has no closing tag. The `/` before `>` is optional.
@@ -30,7 +22,7 @@ Notice there's no `<br>` after the last line. The paragraph ends there anyway.
 
 `<br>` is for line breaks that are part of the text itself: an address, a poem, the lines of a song. It's **not** for spacing things out.
 
-```html
+```html preview
 <p>Clean your room.</p>
 <br />
 <br />
@@ -45,16 +37,12 @@ And if each line is its own idea, like your station's rules, keep them as separa
 
 Write the address with Enters only, and no `<br>`:
 
-```html
+```html preview
 <p>
   Sam Green
   12 Oak Street
   Bristol
 </p>
-```
-
-```text
-Sam Green 12 Oak Street Bristol
 ```
 
 As you saw last lesson, the Enters turn into spaces, and the address squeezes onto one line.

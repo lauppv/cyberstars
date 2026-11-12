@@ -6,7 +6,7 @@ In HTML, that sticker is a **class**.
 
 `class` is an attribute you can put on any element. Its value is a name you make up:
 
-```html
+```html preview
 <p class="tip">Bring water to every game.</p>
 <p>The club meets on Tuesdays.</p>
 <p class="tip">Arrive ten minutes early.</p>
@@ -18,16 +18,17 @@ The two tips now share the class `tip`. The page looks the same: a class is only
 
 In CSS, a class is picked with a **dot** in front of its name:
 
-```css
-.tip {
-  color: darkgreen;
-}
-```
-
-```text
-Bring water to every game.       (dark green)
-The club meets on Tuesdays.
-Arrive ten minutes early.        (dark green)
+```css preview
+<style>
+  /* show */
+  .tip {
+    color: darkgreen;
+  }
+  /* /show */
+</style>
+<p class="tip">Bring water to every game.</p>
+<p>The club meets on Tuesdays.</p>
+<p class="tip">Arrive ten minutes early.</p>
 ```
 
 `p` would pick every paragraph. `.tip` picks only the elements that wear the `tip` class, whatever their tag. A heading with `class="tip"` would turn green too.
@@ -40,10 +41,17 @@ A class name has no spaces, and is usually written in small letters with `-` bet
 
 Forget the dot:
 
-```css
-tip {
-  color: darkgreen;
-}
+```css preview
+<style>
+  /* show */
+  tip {
+    color: darkgreen;
+  }
+  /* /show */
+</style>
+<p class="tip">Bring water to every game.</p>
+<p>The club meets on Tuesdays.</p>
+<p class="tip">Arrive ten minutes early.</p>
 ```
 
 Without the dot, the browser looks for a **tag** called `<tip>`. There isn't one, so nothing turns green. And the other way round: in the HTML, the class is written **without** the dot, `class="tip"`, never `class=".tip"`.

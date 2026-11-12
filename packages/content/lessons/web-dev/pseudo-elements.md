@@ -4,18 +4,20 @@ On a shop's price tags, a little star shows before every special offer. Nobody t
 
 A **pseudo-element** is a piece CSS adds to an element as if it were there. It's written with two colons:
 
-```css
-.offer::before {
-  content: "★ ";
-}
-```
-
-```html
+```css preview
+<style>
+  /* show */
+  .offer::before {
+    content: "★ ";
+  }
+  /* /show */
+</style>
 <p class="offer">Two for one on Fridays</p>
+<p>The shop opens at nine.</p>
 ```
 
-```text
-★ Two for one on Fridays
+```html preview
+<p class="offer">Two for one on Fridays</p>
 ```
 
 `::before` adds something at the very start, inside the element, before its own text. `::after` adds it at the very end.
@@ -26,11 +28,17 @@ A **pseudo-element** is a piece CSS adds to an element as if it were there. It's
 
 The added piece can have a style of its own:
 
-```css
-.offer::before {
-  content: "★ ";
-  color: gold;
-}
+```css preview
+<style>
+  /* show */
+  .offer::before {
+    content: "★ ";
+    color: gold;
+  }
+  /* /show */
+</style>
+<p class="offer">Two for one on Fridays</p>
+<p>The shop opens at nine.</p>
 ```
 
 The star is gold, the rest of the text keeps its color.
@@ -43,10 +51,16 @@ The added text isn't in your HTML, and some screen readers skip it. So use it on
 
 Leave out `content`:
 
-```css
-.offer::before {
-  color: gold;
-}
+```css preview
+<style>
+  /* show */
+  .offer::before {
+    color: gold;
+  }
+  /* /show */
+</style>
+<p class="offer">Two for one on Fridays</p>
+<p>The shop opens at nine.</p>
 ```
 
 No star, and no error. A `::before` without `content` doesn't exist. Even an empty one needs `content: ""`.

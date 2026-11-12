@@ -4,19 +4,55 @@ Have you ever tried to tap a tiny link on a phone and hit the one next to it ins
 
 Padding makes a box bigger without changing its text, and a click anywhere on the padding counts as a click on the link:
 
-```css
-.links a {
-  padding: 8px 12px;
-}
+```css preview
+<style>
+  .links a {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .links a {
+    padding: 8px 12px;
+  }
+  /* /show */
+</style>
+<p class="links">
+  <a href="index.html">Home</a>
+  <a href="games.html">Games</a>
+  <a href="members.html">Members</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+  <a href="photos.html">Photos</a>
+  <a href="news.html">News</a>
+  <a href="join.html">Join the club</a>
+</p>
 ```
 
 But a link is **inline**, and inline boxes don't really take their padding up and down: the padding shows, but overlaps the lines above and below, and doesn't push anything away. The fix is the box you just met:
 
-```css
-.links a {
-  display: inline-block;
-  padding: 8px 12px;
-}
+```css preview
+<style>
+  .links a {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .links a {
+    display: inline-block;
+    padding: 8px 12px;
+  }
+  /* /show */
+</style>
+<p class="links">
+  <a href="index.html">Home</a>
+  <a href="games.html">Games</a>
+  <a href="members.html">Members</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+  <a href="photos.html">Photos</a>
+  <a href="news.html">News</a>
+  <a href="join.html">Join the club</a>
+</p>
 ```
 
 Now each link is a proper tile, 8 pixels of room above and below its words and 12 on the sides, and all of it can be clicked or tapped.

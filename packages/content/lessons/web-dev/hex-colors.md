@@ -6,10 +6,16 @@ Every color on a screen is a mix of three lights: **red**, **green** and **blue*
 
 A **hex color** gives the strength of each light as a two-character code:
 
-```css
-h2 {
-  color: #1d4e89;
-}
+```css preview
+<style>
+  /* show */
+  h2 {
+    color: #1d4e89;
+  }
+  /* /show */
+</style>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 `#1d4e89` is read in pairs: `1d` for red, `4e` for green, `89` for blue. Each pair goes from `00` (off) to `ff` (full), counting with the digits `0` to `9` and then the letters `a` to `f`. Here the blue pair is the biggest, so it's a blue, and all three are fairly small, so it's a dark one.
@@ -31,10 +37,16 @@ When each pair is a doubled character, you can write one of each: `#ffffff` is `
 
 Forget the `#`:
 
-```css
-h2 {
-  color: 1d4e89;
-}
+```css preview
+<style>
+  /* show */
+  h2 {
+    color: 1d4e89;
+  }
+  /* /show */
+</style>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 Without the `#`, the browser doesn't know it's a color code. It ignores the declaration and the heading keeps its old color. Write five characters, `#1d4e8`, and the same happens: a hex color has exactly 3 or 6.

@@ -2,11 +2,17 @@ The big screen over an airport's gates often shows a picture behind its words: a
 
 ## `background-image`
 
-```css
-.banner {
-  background-image: url("img/sky.svg");
-  height: 160px;
-}
+```css preview
+<style>
+  /* show */
+  .banner {
+    background-image: url("img/sky.svg");
+    height: 160px;
+  }
+  /* /show */
+</style>
+<div class="banner"></div>
+<p>Flights leave from gate 4.</p>
 ```
 
 `url(...)` says which picture, with a path like an `<img>`'s `src`. The path starts from the **style sheet**, not from the page.
@@ -17,13 +23,19 @@ An empty `div` with this class shows the picture as its background, 160 pixels t
 
 By default, a background shows at its own size, starting at the top left corner, and repeats like tiles to fill the box. Usually you want something else:
 
-```css
-.banner {
-  background-image: url("img/sky.svg");
-  background-size: cover;
-  background-position: center;
-  height: 160px;
-}
+```css preview
+<style>
+  /* show */
+  .banner {
+    background-image: url("img/sky.svg");
+    background-size: cover;
+    background-position: center;
+    height: 160px;
+  }
+  /* /show */
+</style>
+<div class="banner"></div>
+<p>Flights leave from gate 4.</p>
 ```
 
 - `background-size: cover`: grow or shrink the picture until it **covers** the whole box, keeping its shape. Some of its edges may be cut off;

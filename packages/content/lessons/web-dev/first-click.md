@@ -4,7 +4,7 @@ A doorbell does nothing until someone presses it. Then it rings. Most of what ha
 
 First, something to click. HTML has a tag for it:
 
-```html
+```html preview
 <button type="button" id="hello">Say hello</button>
 <p id="answer"></p>
 ```

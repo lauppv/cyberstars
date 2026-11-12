@@ -4,10 +4,27 @@
 
 Two selectors with a space between them pick elements that sit **inside** the first:
 
-```css
-#scores td {
-  padding: 8px;
-}
+```css preview
+<style>
+  td {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  #scores td {
+    padding: 8px;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <tr><td>Sam</td><td>12</td></tr>
+  <tr><td>Lea</td><td>9</td></tr>
+</table>
+<p>Last month:</p>
+<table>
+  <tr><td>Sam</td><td>8</td></tr>
+  <tr><td>Lea</td><td>11</td></tr>
+</table>
 ```
 
 This means "every `td` inside the element with the id `scores`". The cells of the `#scores` table get room inside them. Cells of any other table on the page stay as they were.
@@ -28,10 +45,27 @@ A few more:
 
 Forget the space:
 
-```css
-#scores.td {
-  padding: 8px;
-}
+```css preview
+<style>
+  td {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  #scores.td {
+    padding: 8px;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <tr><td>Sam</td><td>12</td></tr>
+  <tr><td>Lea</td><td>9</td></tr>
+</table>
+<p>Last month:</p>
+<table>
+  <tr><td>Sam</td><td>8</td></tr>
+  <tr><td>Lea</td><td>11</td></tr>
+</table>
 ```
 
 Now it means "the element with the id `scores` **and** the class `td`", one element with both. Nothing has that, so nothing changes. A space means "inside", no space means "the same element".

@@ -17,15 +17,16 @@ None of it is in your files. It's just what the browser does when nobody says ot
 
 When your CSS says something about a property, your value takes the place of the browser's. Links are underlined by the browser, so:
 
-```css
-a {
-  text-decoration: none;
-  color: darkgreen;
-}
-```
-
-```text
-Read about chess        (dark green, no underline)
+```css preview
+<style>
+  /* show */
+  a {
+    text-decoration: none;
+    color: darkgreen;
+  }
+  /* /show */
+</style>
+<p>New to the game? <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a> before you start.</p>
 ```
 
 The browser wanted blue and underlined. Your rule says dark green and no line, so that's what shows.
@@ -36,15 +37,16 @@ What your rule doesn't mention stays as the browser made it. This rule says noth
 
 Take away the underline **and** give the link the same color as the text around it:
 
-```css
-a {
-  text-decoration: none;
-  color: black;
-}
-```
-
-```text
-New to the game? Read about chess before you start.
+```css preview
+<style>
+  /* show */
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  /* /show */
+</style>
+<p>New to the game? <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a> before you start.</p>
 ```
 
 Which part is the link? Nobody can tell. A link must always look different from the text around it, by its color or its line, so people know they can click it.

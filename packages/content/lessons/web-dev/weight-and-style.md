@@ -2,14 +2,21 @@ On a poster, the most important words are thick and heavy, a quote is slanted, a
 
 ## `font-weight`: thick or thin
 
-```css
-.highlight {
-  font-weight: bold;
-}
+```css preview
+<style>
+  /* show */
+  .highlight {
+    font-weight: bold;
+  }
 
-h2 {
-  font-weight: normal;
-}
+  h2 {
+    font-weight: normal;
+  }
+  /* /show */
+</style>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
+<p class="highlight">Games start at five sharp.</p>
 ```
 
 `bold` makes letters thick, `normal` takes the thickness away. Headings are bold because the browser says so: `normal` undoes it.
@@ -18,10 +25,16 @@ You can also use numbers from `100` (very thin) to `900` (very thick): `400` is 
 
 ## `font-style`: slanted
 
-```css
-.quote {
-  font-style: italic;
-}
+```css preview
+<style>
+  /* show */
+  .quote {
+    font-style: italic;
+  }
+  /* /show */
+</style>
+<p>My grandpa always says:</p>
+<p class="quote">Think twice, move once.</p>
 ```
 
 `italic` slants the letters. `normal` straightens them again, for example an `<em>` you don't want slanted.
@@ -30,14 +43,16 @@ Remember: `<strong>` and `<em>` say what text **means**. These properties only c
 
 ## `text-transform`: capitals
 
-```css
-h3 {
-  text-transform: uppercase;
-}
-```
-
-```text
-CHESS        (typed in the HTML as "Chess")
+```css preview
+<style>
+  /* show */
+  h3 {
+    text-transform: uppercase;
+  }
+  /* /show */
+</style>
+<h3>Chess</h3>
+<p>I play with my grandpa every Sunday.</p>
 ```
 
 `uppercase` shows every letter as a capital, `lowercase` as small letters, `capitalize` the first letter of every word. The text in your HTML doesn't change, only how it shows. That's better than typing in capitals: screen readers sometimes spell out words in capitals letter by letter.
@@ -46,10 +61,16 @@ CHESS        (typed in the HTML as "Chess")
 
 Write the value wrong:
 
-```css
-h3 {
-  text-transform: upper;
-}
+```css preview
+<style>
+  /* show */
+  h3 {
+    text-transform: upper;
+  }
+  /* /show */
+</style>
+<h3>Chess</h3>
+<p>I play with my grandpa every Sunday.</p>
 ```
 
 `upper` isn't a value CSS knows, so the declaration is ignored and the heading stays as typed. The value is `uppercase`, in one word.

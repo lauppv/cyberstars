@@ -6,16 +6,10 @@ Think of a shelf of books. Each **book** takes a whole row of the shelf to itsel
 
 A **block** element starts on a new line and takes the whole width of the page, even if its text is short. `<h1>` to `<h6>` and `<p>` are blocks:
 
-```html
+```html preview
 <h2>Snacks</h2>
 <p>Apples</p>
 <p>Crisps</p>
-```
-
-```text
-Snacks
-Apples
-Crisps
 ```
 
 Each one on its own line, stacked one under the other.
@@ -24,12 +18,8 @@ Each one on its own line, stacked one under the other.
 
 An **inline** element sits inside a line of text, as wide as its words, and doesn't push anything onto a new line. `<strong>`, `<em>`, `<mark>`, `<small>`, `<sub>`, `<sup>` and `<br>` are inline:
 
-```html
+```html preview
 <p>We have <mark>apples</mark>, <mark>crisps</mark> and <mark>juice</mark>.</p>
-```
-
-```text
-We have apples, crisps and juice.      (three highlighted words, all on one line)
 ```
 
 The three `<mark>`s sit side by side, inside the paragraph's line.
@@ -42,14 +32,8 @@ An inline element is part of a sentence, so it goes **inside** a block, the way 
 
 Try to put the three snacks side by side as paragraphs:
 
-```html
+```html preview
 <p>Apples</p> <p>Crisps</p> <p>Juice</p>
-```
-
-```text
-Apples
-Crisps
-Juice
 ```
 
 Writing them on one line of the file doesn't help. Each `<p>` is a block, so each one takes its own row anyway. To keep words on one line, they go in one paragraph, each one in an inline tag.

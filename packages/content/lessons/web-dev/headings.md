@@ -4,7 +4,7 @@ A web page has the same kind of levels. You already know the biggest one, `<h1>`
 
 ## Six levels
 
-```html
+```html preview
 <h1>My Favourite Games</h1>
 <h2>Board Games</h2>
 <h3>Chess</h3>
@@ -13,16 +13,7 @@ A web page has the same kind of levels. You already know the biggest one, `<h1>`
 <h6>Its first move</h6>
 ```
 
-The page shows six headings, each one a bit smaller than the one above:
-
-```text
-My Favourite Games      (biggest)
-Board Games
-Chess
-Openings
-The Italian Game
-Its first move          (smallest)
-```
+The page shows six headings, each one a bit smaller than the one above.
 
 The number is the **level**: `h1` is level 1, the whole page; `h2` starts a big part of it; `h3` a smaller part inside an `h2`, and so on down to `h6`. Most pages only need the first three.
 
@@ -30,7 +21,7 @@ The number is the **level**: `h1` is level 1, the whole page; `h2` starts a big 
 
 A heading starts a part, and the text of that part comes after it:
 
-```html
+```html preview
 <h1>My Favourite Games</h1>
 
 <h2>Board Games</h2>
@@ -64,8 +55,19 @@ The empty lines between the parts don't show on the page. They just make the fil
 
 Make Video Games an `h3`:
 
-```html
+```html preview
+<h1>My Favourite Games</h1>
+
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
+
+<h3>Chess</h3>
+<p>I play with my grandpa every Sunday.</p>
+
+<!-- show -->
 <h3>Video Games</h3>
+<!-- /show -->
+<p>Only at weekends.</p>
 ```
 
 On the page it just looks a bit smaller. But now the page says Video Games is part of Board Games, which isn't true. Someone who listens to the page with a screen reader, and jumps from heading to heading, gets the wrong idea of how the page is built.

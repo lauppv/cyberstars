@@ -4,7 +4,7 @@ The web is called a web because pages lead to one another, like threads in a spi
 
 A link is an `a` element. The `a` stands for **anchor**:
 
-```html
+```html preview
 <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a>
 ```
 
@@ -13,17 +13,11 @@ It has two parts:
 - the `href` attribute says **where** the link leads. Here it's a **full address**: it starts with `https://`, then the site's name, then the page on it;
 - the words between the tags are what the visitor **sees and clicks**.
 
-The page shows:
-
-```text
-Read about chess        (blue and underlined)
-```
-
 Browsers show links blue and underlined, so people know they can click them.
 
 A link is **inline**, like `<strong>`: it goes inside a paragraph, as part of a sentence:
 
-```html
+```html preview
 <p>New to the game? <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a> before you start.</p>
 ```
 
@@ -33,7 +27,7 @@ In your preview, a link to another site doesn't open. The console tells you wher
 
 Compare these two:
 
-```html
+```html preview
 <p>To learn the rules, <a href="https://en.wikipedia.org/wiki/Chess">click here</a>.</p>
 <p>Learn the <a href="https://en.wikipedia.org/wiki/Chess">rules of chess</a>.</p>
 ```
@@ -44,7 +38,7 @@ Both work. But a screen reader can list all the links on a page, without the sen
 
 Leave out the `https://`:
 
-```html
+```html preview
 <a href="en.wikipedia.org/wiki/Chess">Read about chess</a>
 ```
 

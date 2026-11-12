@@ -8,17 +8,30 @@ Every selector gets a score from what it's made of:
 - a **class**, like `.tip`, or a pseudo-class like `:hover`: a medium weight;
 - a **tag**, like `td`: the smallest.
 
-```css
-#scores td {
-  color: white;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
 
-.winner td {
-  color: gold;
-}
+  /* show */
+  #scores td {
+    color: white;
+  }
+
+  .winner td {
+    color: gold;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <tr class="winner"><td>Sam</td><td>12</td></tr>
+  <tr><td>Lea</td><td>9</td></tr>
+</table>
 ```
 
-```html
+```html preview
 <table id="scores">
   <tr class="winner"><td>Sam</td><td>12</td></tr>
 </table>
@@ -30,10 +43,27 @@ Both rules are about Sam's cells. `#scores td` has an id and a tag. `.winner td`
 
 To make the winner gold, the gold rule needs a higher score:
 
-```css
-#scores .winner td {
-  color: gold;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  #scores td {
+    color: white;
+  }
+
+  /* show */
+  #scores .winner td {
+    color: gold;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <tr class="winner"><td>Sam</td><td>12</td></tr>
+  <tr><td>Lea</td><td>9</td></tr>
+</table>
 ```
 
 An id, a class and a tag: more than an id and a tag. Now Sam's row is gold.
