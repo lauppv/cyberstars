@@ -1,4 +1,4 @@
-Bun venit la probabil una dintre cele **mai importante** lecții pe care le putem învăța în lumea programării - bucla **for**
+Bun venit la probabil una dintre cele mai importante lecții pe care le putem învăța în lumea programării - bucla **for**
 
 De ce este importantă? Să presupunem că vrem să afișăm toate numerele de la 0 la 10
 
@@ -17,7 +17,7 @@ print("9")
 print("10")
 ```
 
-E clar că am **repetat** codul, iar asta este complet **interzis**. De ce? Pentru că nu știm întotdeauna de câte ori va trebui să facem ceva. De exemplu, în ambar poate fi un număr diferit de nave, în funcție de câte sunt plecate în misiune. Dacă vrem să verificăm pentru fiecare navă dacă are nevoie de combustibil și provizii pentru piloți, nu putem scrie câte o verificare separată pentru fiecare navă. Avem nevoie de o metodă prin care să repetăm aceleași instrucțiuni pentru fiecare navă din listă.
+E clar că am repetat codul, iar asta este complet interzis. De ce? Pentru că nu știm întotdeauna de câte ori va trebui să facem ceva. De exemplu, în ambar poate fi un număr diferit de nave, în funcție de câte sunt plecate în misiune. Dacă vrem să verificăm pentru fiecare navă dacă are nevoie de combustibil și provizii pentru piloți, nu putem scrie câte o verificare separată pentru fiecare navă. Avem nevoie de o metodă prin care să repetăm aceleași instrucțiuni pentru fiecare navă din listă.
 
 ```py
 nave = ["Voyager", "Odyssey", "Pioneer"]
@@ -26,67 +26,67 @@ for nava in nave:
     print("Verifica combustibilul si proviziile pentru", nava)
 ```
 
-Aici intervine puterea buclei **for**
+Aici intervine puterea buclei for
 
 ```py
 for i in range(1, 1000):
     print(i)
 ```
 
-Aceasta va afișa toate numerele de la **1 la 999**. De ce nu include **1000**? **range()** este o **funcție** care există deja în **Python** și ne spune de unde vrem să **începem** și unde vrem să ne **oprim - 1**. Adică, **range(1, 1000)** înseamnă de la **1 la 999**. Dacă vrem de la **1 la 1000**, putem spune **range(1, 1001)**
+Aceasta va afișa toate numerele de la **1 la 999**. De ce nu include **1000**? **range()** este o funcție care există deja în Python și ne spune de unde vrem să începem și unde vrem să ne **oprim - 1**. Adică, **range(1, 1000)** înseamnă de la 1 la 999. Dacă vrem de la 1 la 1000, putem spune **range(1, 1001)**
 
 ```py
 for i in range(1, 1001):
     print(i)
 ```
 
-Acum vedem toate numerele de la **1 la 1000**
+Acum vedem toate numerele de la 1 la 1000
 
 Hai să explicăm acest cod
 
-**for** ia câte o valoare din ceea ce urmează după **in** și o pune în variabila **i**. Pentru **range(1, 1001)**, ne putem imagina valorile ca și cum ar fi într-o listă: **1, 2, 3, ..., 1000**. Observă că am scris **1001** în **range()**, dar numerele ajung doar până la **1000**. Ultimul număr din **range()** nu este inclus. Bucla **for** ia fiecare număr pe rând și îl pune în **i**. Diferența importantă este că **range()** nu creează și nu stochează o listă adevărată cu toate aceste numere. Îi dă buclei următorul număr atunci când are nevoie de el.
+**for** ia câte o valoare din ceea ce urmează după **in** și o pune în variabila **i**. Pentru range(1, 1001), ne putem imagina valorile ca și cum ar fi într-o listă: 1, 2, 3, ..., 1000. Observă că am scris **1001** în range(), dar numerele ajung doar până la **1000**. Ultimul număr din range() nu este inclus. Bucla for ia fiecare număr pe rând și îl pune în i. Diferența importantă este că range() nu creează și nu stochează o listă adevărată cu toate aceste numere. Îi dă buclei următorul număr atunci când are nevoie de el.
 
-Mai întâi, **i = 1**, apoi intră în bloc și îl afișează, după care **for** îi dă lui **i** următorul număr din **range()**
+Mai întâi, **i = 1**, apoi intră în bloc și îl afișează, după care for îi dă lui i următorul număr din range()
 
-Acum **i = 2**, îl afișează, apoi **i** primește din nou următorul număr
+Acum **i = 2**, îl afișează, apoi i primește din nou următorul număr
 
-Acum **i = 3**, îl afișează, apoi **i** primește încă o dată următorul număr
+Acum **i = 3**, îl afișează, apoi i primește încă o dată următorul număr
 
-... și tot așa **:)**. Nu e fascinant? Practic facem calculatorul să facă această **repetiție** pentru noi
+... și tot așa :). Nu e fascinant? Practic facem calculatorul să facă această repetiție pentru noi
 
-**in** este un cuvânt-cheie. Îi spune lui **Python** de unde să ia valorile: în acest exemplu, din **range()**, câte un număr pe rând
+**in** este un cuvânt-cheie. Îi spune lui Python de unde să ia valorile: în acest exemplu, din range(), câte un număr pe rând
 
 ---
 
 ## Mai multe despre range()
 
-Până acum am dat lui **range()** două numere - de unde **începe** și unde se **oprește - 1**. Dar **range()** este mai flexibil de atât
+Până acum am dat lui **range()** două numere - de unde începe și unde se oprește - 1. Dar range() este mai flexibil de atât
 
-Dacă îi dăm un **singur** număr, **Python** presupune că vrem să începem de la **0**
+Dacă îi dăm un singur număr, Python presupune că vrem să începem de la **0**
 
 ```py
 for i in range(5):
     print(i)
 ```
 
-Asta afișează **0, 1, 2, 3, 4** - adică **5** numere pornind de la **0**
+Asta afișează **0, 1, 2, 3, 4** - adică 5 numere pornind de la 0
 
-Putem da și un **al treilea** număr, numit **pas**. El spune cu **cât** sărim de la o valoare la alta. De exemplu, dacă vrem doar numerele **pare** de la 0 la 10
+Putem da și un al treilea număr, numit **pas**. El spune cu cât sărim de la o valoare la alta. De exemplu, dacă vrem doar numerele pare de la 0 la 10
 
 ```py
 for i in range(0, 11, 2):
     print(i)
 ```
 
-Asta afișează **0, 2, 4, 6, 8, 10**. Fiecare număr pe care îl primește **i** e acum cu **2** mai mare decât cel dinainte
+Asta afișează **0, 2, 4, 6, 8, 10**. Fiecare număr pe care îl primește i e acum cu 2 mai mare decât cel dinainte
 
 ---
 
 ## Combinăm for cu variabile
 
-Îți amintești de **variabile**? Le putem folosi împreună cu **for** ca să **strângem** un rezultat pe parcursul buclei
+Îți amintești de variabile? Le putem folosi împreună cu for ca să strângem un rezultat pe parcursul buclei
 
-Să presupunem că vrem să **adunăm** toate numerele de la **1 la 5**. Avem nevoie de o variabilă în care să ținem **totalul**. O declarăm **înainte** de buclă, cu valoarea **0**, și o creștem la fiecare iterație
+Să presupunem că vrem să adunăm toate numerele de la 1 la 5. Avem nevoie de o variabilă în care să ținem **totalul**. O declarăm **înainte** de buclă, cu valoarea 0, și o creștem la fiecare iterație
 
 ```py
 total = 0
@@ -97,16 +97,16 @@ print(total)
 
 Hai să urmărim ce se întâmplă:
 
-- la început **total = 0**
-- **i = 1** → **total = 0 + 1 = 1**
-- **i = 2** → **total = 1 + 2 = 3**
-- **i = 3** → **total = 3 + 3 = 6**
-- **i = 4** → **total = 6 + 4 = 10**
-- **i = 5** → **total = 10 + 5 = 15**
+- la început total = 0
+- i = 1 → total = 0 + 1 = 1
+- i = 2 → total = 1 + 2 = 3
+- i = 3 → total = 3 + 3 = 6
+- i = 4 → total = 6 + 4 = 10
+- i = 5 → total = 10 + 5 = 15
 
 La final, **print(total)** afișează **15**
 
-Foarte important: **print(total)** este **în afara** buclei (nu are spațiile din față). Dacă l-am pune **înăuntru**, am vedea totalul după **fiecare** pas, nu doar la sfârșit
+Foarte important: **print(total)** este **în afara** buclei (nu are spațiile din față). Dacă l-am pune înăuntru, am vedea totalul după fiecare pas, nu doar la sfârșit
 
 ```py
 total = 0
@@ -115,7 +115,7 @@ for i in range(1, 6):
     print(total)
 ```
 
-Acum am mutat **print(total)** **în interiorul** buclei, așa că afișează totalul la fiecare iterație
+Acum am mutat print(total) **în interiorul** buclei, așa că afișează totalul la fiecare iterație
 
 ```text
 1
@@ -129,9 +129,9 @@ Acum am mutat **print(total)** **în interiorul** buclei, așa că afișează to
 
 ## Combinăm for cu if
 
-Deja știm **if**. Ce se întâmplă dacă îl punem **în interiorul** unei bucle **for**? Atunci **Python** verifică condiția la **fiecare** iterație
+Deja știm if. Ce se întâmplă dacă îl punem în interiorul unei bucle for? Atunci Python verifică condiția la fiecare iterație
 
-De exemplu, vrem să afișăm doar numerele **pare** de la 1 la 10
+De exemplu, vrem să afișăm doar numerele pare de la 1 la 10
 
 ```py
 for i in range(1, 11):
@@ -139,39 +139,39 @@ for i in range(1, 11):
         print(i)
 ```
 
-La fiecare valoare a lui **i**, intrăm în buclă și verificăm **if i % 2 == 0** (adică „restul împărțirii la 2 este 0", deci numărul e par). Dacă da, îl afișăm. Dacă nu, sărim peste și mergem mai departe
+La fiecare valoare a lui i, intrăm în buclă și verificăm **if i % 2 == 0** (adică „restul împărțirii la 2 este 0", deci numărul e par). Dacă da, îl afișăm. Dacă nu, sărim peste și mergem mai departe
 
 Aceasta afișează **2, 4, 6, 8, 10**
 
-Observă cele **două** niveluri de spațiere: **if** este indentat o dată (e în interiorul lui **for**), iar **print** este indentat de două ori (e în interiorul lui **if**)
+Observă cele două niveluri de spațiere: **if** este indentat o dată (e în interiorul lui for), iar **print** este indentat de două ori (e în interiorul lui if)
 
 ---
 
 ## Misiune: Colectorul de Energie
 
-Stația adună energie de la o serie de celule numerotate de la **1** la `celule`. Doar celulele cu număr **impar** funcționează, restul sunt defecte.
+Stația adună energie de la o serie de celule numerotate de la 1 la `celule`. Doar celulele cu număr impar funcționează, restul sunt defecte.
 
 Fă-ți o variabilă numită `celule` pentru câte celule sunt (alege ce valoare vrei), apoi scrie un program care:
 
-- dacă sunt **0** celule → afișează `Fara celule`
-- dacă este **1** celulă → afișează `O singura celula`
-- altfel → parcurge cu **for** numerele de la **1** la `celule`, **adună** doar numerele impare într-o variabilă `total` și afișează `total`
+- dacă sunt 0 celule → afișează `Fara celule`
+- dacă este 1 celulă → afișează `O singura celula`
+- altfel → parcurge cu for numerele de la 1 la `celule`, adună doar numerele impare într-o variabilă `total` și afișează `total`
 
 **Exemple**
 
-Cu **6** celule, cele impare sunt **1, 3, 5**, deci programul afișează
+Cu 6 celule, cele impare sunt 1, 3, 5, deci programul afișează
 
 ```text
 9
 ```
 
-Cu **0** celule afișează
+Cu 0 celule afișează
 
 ```text
 Fara celule
 ```
 
-Cu **1** celulă afișează
+Cu 1 celulă afișează
 
 ```text
 O singura celula

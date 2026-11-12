@@ -1,4 +1,4 @@
-Welcome to probably one of the **most important** lessons we can learn in the world of programming - the **for** loop
+Welcome to probably one of the most important lessons we can learn in the world of programming - the **for** loop
 
 Why is it important? Let's suppose we want to display all the numbers from 0 to 10
 
@@ -17,7 +17,7 @@ print("9")
 print("10")
 ```
 
-It's clear that we **repeated** the code, and that is completely **forbidden**. Why? Because we don't always know how many times we'll need to do something. For example, the spaceport may have a different number of ships depending on which ones are away on missions. If we need to check each ship for fuel and food supplies, we can't write a separate check for every ship. We need a way to repeat the same instructions for each ship in the list.
+It's clear that we repeated the code, and that is completely forbidden. Why? Because we don't always know how many times we'll need to do something. For example, the spaceport may have a different number of ships depending on which ones are away on missions. If we need to check each ship for fuel and food supplies, we can't write a separate check for every ship. We need a way to repeat the same instructions for each ship in the list.
 
 ```py
 ships = ["Voyager", "Odyssey", "Pioneer"]
@@ -26,67 +26,67 @@ for ship in ships:
     print("Check fuel and food for", ship)
 ```
 
-This is where the power of the **for** loop comes in
+This is where the power of the for loop comes in
 
 ```py
 for i in range(1, 1000):
     print(i)
 ```
 
-This will print all the numbers from **1 to 999**. Why doesn't it include **1000**? **range()** is a **function** that already exists in **Python** and tells us where we want to **start** and where we want to **stop - 1**. That is, **range(1, 1000)** means from **1 to 999**. If we want from **1 to 1000**, we can say **range(1, 1001)**
+This will print all the numbers from **1 to 999**. Why doesn't it include **1000**? **range()** is a function that already exists in Python and tells us where we want to start and where we want to **stop - 1**. That is, **range(1, 1000)** means from 1 to 999. If we want from 1 to 1000, we can say **range(1, 1001)**
 
 ```py
 for i in range(1, 1001):
     print(i)
 ```
 
-Now we see all the numbers from **1 to 1000**
+Now we see all the numbers from 1 to 1000
 
 Let's explain this code
 
-**for** takes one value at a time from what comes after **in** and puts it in the variable **i**. With **range(1, 1001)**, you can think of those values as if they were a list: **1, 2, 3, ..., 1000**. Notice that we wrote **1001** in **range()**, but the numbers only go up to **1000**. The last number in **range()** is not included. The **for** loop takes each number in turn and puts it in **i**. The important difference is that **range()** doesn't create and store a real list of all those numbers. It gives the loop the next number when it needs it.
+**for** takes one value at a time from what comes after **in** and puts it in the variable **i**. With range(1, 1001), you can think of those values as if they were a list: 1, 2, 3, ..., 1000. Notice that we wrote **1001** in range(), but the numbers only go up to **1000**. The last number in range() is not included. The for loop takes each number in turn and puts it in i. The important difference is that range() doesn't create and store a real list of all those numbers. It gives the loop the next number when it needs it.
 
-First, **i = 1**, then it enters the block and prints it, after which **for** gives **i** the next number of **range()**
+First, **i = 1**, then it enters the block and prints it, after which for gives i the next number of range()
 
-Now **i = 2**, it prints it, then **i** gets the next number again
+Now **i = 2**, it prints it, then i gets the next number again
 
-Now **i = 3**, it prints it, then **i** gets the next number once more
+Now **i = 3**, it prints it, then i gets the next number once more
 
-... and so on **:)**. Isn't it fascinating? We basically make the computer do this **repetition** for us
+... and so on :). Isn't it fascinating? We basically make the computer do this repetition for us
 
-**in** is a keyword. It tells **Python** what to take values from: in this example, **range()**, one number at a time
+**in** is a keyword. It tells Python what to take values from: in this example, range(), one number at a time
 
 ---
 
 ## More about range()
 
-So far we've given **range()** two numbers - where it **starts** and where it **stops - 1**. But **range()** is more flexible than that
+So far we've given **range()** two numbers - where it starts and where it stops - 1. But range() is more flexible than that
 
-If we give it a **single** number, **Python** assumes we want to start from **0**
+If we give it a single number, Python assumes we want to start from **0**
 
 ```py
 for i in range(5):
     print(i)
 ```
 
-This prints **0, 1, 2, 3, 4** - that is, **5** numbers starting from **0**
+This prints **0, 1, 2, 3, 4** - that is, 5 numbers starting from 0
 
-We can also give a **third** number, called the **step**. It says by **how much** we jump from one value to the next. For example, if we want only the **even** numbers from 0 to 10
+We can also give a third number, called the **step**. It says by how much we jump from one value to the next. For example, if we want only the even numbers from 0 to 10
 
 ```py
 for i in range(0, 11, 2):
     print(i)
 ```
 
-This prints **0, 2, 4, 6, 8, 10**. Each number **i** gets is now **2** more than the one before
+This prints **0, 2, 4, 6, 8, 10**. Each number i gets is now 2 more than the one before
 
 ---
 
 ## Combining for with variables
 
-Remember **variables**? We can use them together with **for** to **gather** a result over the course of the loop
+Remember variables? We can use them together with for to gather a result over the course of the loop
 
-Let's suppose we want to **add up** all the numbers from **1 to 5**. We need a variable to hold the **total**. We declare it **before** the loop, with the value **0**, and increase it on each iteration
+Let's suppose we want to add up all the numbers from 1 to 5. We need a variable to hold the **total**. We declare it **before** the loop, with the value 0, and increase it on each iteration
 
 ```py
 total = 0
@@ -97,16 +97,16 @@ print(total)
 
 Let's follow what happens:
 
-- at the start **total = 0**
-- **i = 1** → **total = 0 + 1 = 1**
-- **i = 2** → **total = 1 + 2 = 3**
-- **i = 3** → **total = 3 + 3 = 6**
-- **i = 4** → **total = 6 + 4 = 10**
-- **i = 5** → **total = 10 + 5 = 15**
+- at the start total = 0
+- i = 1 → total = 0 + 1 = 1
+- i = 2 → total = 1 + 2 = 3
+- i = 3 → total = 3 + 3 = 6
+- i = 4 → total = 6 + 4 = 10
+- i = 5 → total = 10 + 5 = 15
 
 At the end, **print(total)** prints **15**
 
-Very important: **print(total)** is **outside** the loop (it has no leading spaces). If we put it **inside**, we would see the total after **every** step, not just at the end
+Very important: **print(total)** is **outside** the loop (it has no leading spaces). If we put it inside, we would see the total after every step, not just at the end
 
 ```py
 total = 0
@@ -115,7 +115,7 @@ for i in range(1, 6):
     print(total)
 ```
 
-Now we moved **print(total)** **inside** the loop, so it prints the total on every iteration
+Now we moved print(total) **inside** the loop, so it prints the total on every iteration
 
 ```text
 1
@@ -129,9 +129,9 @@ Now we moved **print(total)** **inside** the loop, so it prints the total on eve
 
 ## Combining for with if
 
-We already know **if**. What happens if we put it **inside** a **for** loop? Then **Python** checks the condition on **every** iteration
+We already know if. What happens if we put it inside a for loop? Then Python checks the condition on every iteration
 
-For example, we want to print only the **even** numbers from 1 to 10
+For example, we want to print only the even numbers from 1 to 10
 
 ```py
 for i in range(1, 11):
@@ -139,39 +139,39 @@ for i in range(1, 11):
         print(i)
 ```
 
-On each value of **i**, we enter the loop and check **if i % 2 == 0** (that is, "the remainder of the division by 2 is 0", so the number is even). If yes, we print it. If not, we skip it and move on
+On each value of i, we enter the loop and check **if i % 2 == 0** (that is, "the remainder of the division by 2 is 0", so the number is even). If yes, we print it. If not, we skip it and move on
 
 This prints **2, 4, 6, 8, 10**
 
-Notice the **two** levels of spacing: **if** is indented once (it's inside **for**), and **print** is indented twice (it's inside **if**)
+Notice the two levels of spacing: **if** is indented once (it's inside for), and **print** is indented twice (it's inside if)
 
 ---
 
 ## Mission: The Energy Collector
 
-The station gathers energy from a series of cells numbered from **1** to `cells`. Only the cells with an **odd** number work, the rest are broken.
+The station gathers energy from a series of cells numbered from 1 to `cells`. Only the cells with an odd number work, the rest are broken.
 
 Make a variable named `cells` for how many cells there are (pick any value you like), then write a program that:
 
-- if there are **0** cells → print `No cells`
-- if there is **1** cell → print `A single cell`
-- otherwise → loop with **for** over the numbers from **1** to `cells`, **add up** only the odd numbers into a variable `total`, and print `total`
+- if there are 0 cells → print `No cells`
+- if there is 1 cell → print `A single cell`
+- otherwise → loop with for over the numbers from 1 to `cells`, add up only the odd numbers into a variable `total`, and print `total`
 
 **Examples**
 
-With **6** cells, the odd ones are **1, 3, 5**, so the program prints
+With 6 cells, the odd ones are 1, 3, 5, so the program prints
 
 ```text
 9
 ```
 
-With **0** cells it prints
+With 0 cells it prints
 
 ```text
 No cells
 ```
 
-With **1** cell it prints
+With 1 cell it prints
 
 ```text
 A single cell

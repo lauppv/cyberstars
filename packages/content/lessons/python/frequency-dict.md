@@ -1,4 +1,4 @@
-We briefly saw in the dictionaries lesson how to count letters in a word. This pattern is so important that it deserves its own lesson. It's called a **frequency dictionary** (or **histogram**) and it's the go-to tool when the question is "how many times does each X appear?"
+We briefly saw in the dictionaries lesson how to count letters in a word. This pattern is so important that it deserves its own lesson. It's called a **frequency dictionary** (or histogram) and it's the go-to tool when the question is "how many times does each X appear?"
 
 ```py
 word = "mississippi"
@@ -19,7 +19,7 @@ Let's understand this line by line. We start with an empty dictionary. For each 
 
 ---
 
-This works for **anything**, not just letters. Counting words in a sentence
+This works for anything, not just letters. Counting words in a sentence
 
 ```py
 sentence = "I like pizza and I like burgers and I like tacos"
@@ -71,11 +71,11 @@ for item, count in sorted_items:
     print(f"{item}: {count}")
 ```
 
-Don't worry about **lambda** for now, just know that it tells **sorted()** which value to sort by (in this case, the count)
+Don't worry about **lambda** for now, just know that it tells sorted() which value to sort by (in this case, the count)
 
 ---
 
-A real-life use case: you're building an analytics system for **CyberStars** and you want to know which course is most popular
+A real-life use case: you're building an analytics system for CyberStars and you want to know which course is most popular
 
 ```py
 enrollments = ["python", "java", "python", "c", "python", "java", "c", "python", "java", "python"]
@@ -104,9 +104,9 @@ c: 2 students
 
 The station's antenna logs every signal it receives by channel letter in a list named signals. Mission Control wants to know how busy each channel is, and which one is busiest.
 
-1. Build a **frequency dictionary** counting how many times each channel appears.
-2. Print each channel and its count as `channel: count`, **sorted alphabetically** (loop over `sorted(freq)`).
-3. Find the **most common** channel and print `Most common: ` followed by its letter.
+1. Build a frequency dictionary counting how many times each channel appears.
+2. Print each channel and its count as `channel: count`, sorted alphabetically (loop over `sorted(freq)`).
+3. Find the most common channel and print `Most common: ` followed by its letter.
 
 **Output**
 
