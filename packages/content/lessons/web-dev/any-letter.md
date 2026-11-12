@@ -6,7 +6,7 @@ A computer stores every letter as a number. A **character set** is the list that
 
 The fix is one line in the `<head>`:
 
-```html
+```html preview
 <!DOCTYPE html>
 <html lang="en">
   <head>

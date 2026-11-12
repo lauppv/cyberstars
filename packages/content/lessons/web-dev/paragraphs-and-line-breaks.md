@@ -4,26 +4,16 @@ Write a text message and press Enter three times between two words. The message 
 
 Try this in your editor:
 
-```html
+```html preview
 <p>I    like      chess.</p>
-```
-
-The page shows:
-
-```text
-I like chess.
 ```
 
 All those spaces became one. Now press Enter in the middle:
 
-```html
+```html preview
 <p>I like
 chess
 and cards.</p>
-```
-
-```text
-I like chess and cards.
 ```
 
 Still one line. To the browser, an Enter is just another space, and any number of spaces in a row count as one.
@@ -34,34 +24,22 @@ That's on purpose. It means you can lay out your HTML file however you like, wit
 
 With tags. Every `<p>` starts on a new line, so if you want things on separate lines, make them separate paragraphs:
 
-```html
+```html preview
 <p>Clean your room.</p>
 <p>Feed the cat.</p>
 <p>Do your homework.</p>
-```
-
-```text
-Clean your room.
-
-Feed the cat.
-
-Do your homework.
 ```
 
 ## Break it on purpose
 
 Write the same three lines in **one** paragraph, each on its own line in the file:
 
-```html
+```html preview
 <p>
   Clean your room.
   Feed the cat.
   Do your homework.
 </p>
-```
-
-```text
-Clean your room. Feed the cat. Do your homework.
 ```
 
 They run together into one line. The Enters you typed are gone.

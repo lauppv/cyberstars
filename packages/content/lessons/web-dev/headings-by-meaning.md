@@ -10,7 +10,7 @@ On a web page it's tempting to pick a heading by how it **looks**: "I want this 
 
 This page follows both rules:
 
-```html
+```html preview
 <h1>My Favourite Games</h1>
 <h2>Board Games</h2>
 <h3>Chess</h3>
@@ -40,7 +40,7 @@ People who can't see the screen use a **screen reader**, a program that reads th
 
 Here are both mistakes:
 
-```html
+```html preview
 <h1>My Favourite Games</h1>
 <h2>Board Games</h2>
 <h4>Chess</h4>
