@@ -1,4 +1,4 @@
-Am văzut cum să stocăm numere. Dar ce ne facem cu **textul**? În Java, tipul pentru text se numește **String** (cu **S** mare, asta contează)
+Am văzut cum să stocăm numere. Dar ce ne facem cu textul? În Java, tipul pentru text se numește **String** (cu **S** mare, asta contează)
 
 ```java
 public class Main {
@@ -40,11 +40,11 @@ Paul
 Paul
 ```
 
-Observă că **a doua oară** când schimbăm **nume**, **nu** mai scriem **String** din nou. Scriem tipul **o singură dată**, când **declarăm prima dată** variabila. După aceea, Java știe deja tipul
+Observă că a doua oară când schimbăm nume, nu mai scriem String din nou. Scriem tipul **o singură dată**, când declarăm prima dată variabila. După aceea, Java știe deja tipul
 
 ---
 
-**Nu uita ghilimelele**. Codul de mai jos nu va funcționa
+Nu uita ghilimelele. Codul de mai jos nu va funcționa
 
 ```java
 public class Main {
@@ -68,7 +68,7 @@ public class Main {
 }
 ```
 
-Asta afișează **Booooo**, nu **Kent**. De ce? Pentru că **Kent** fără ghilimele este tratat ca o **variabilă**, iar acea variabilă conține **"Booooo"**. Ca să afișăm efectiv cuvântul **Kent** am scrie
+Asta afișează **Booooo**, nu **Kent**. De ce? Pentru că Kent fără ghilimele este tratat ca o variabilă, iar acea variabilă conține "Booooo". Ca să afișăm efectiv cuvântul Kent am scrie
 
 ```java
 public class Main {
@@ -92,7 +92,7 @@ public class Main {
 }
 ```
 
-Output **14**. **.length()** ne spune câte caractere are textul. Spațiile contează și ele. Vom explora multe alte astfel de metode într-o lecție viitoare, deocamdată observă doar **sintaxa cu punct**
+Output **14**. **.length()** ne spune câte caractere are textul. Spațiile contează și ele. Vom explora multe alte astfel de metode într-o lecție viitoare, deocamdată observă doar sintaxa cu punct
 
 ---
 
