@@ -1,0 +1,117 @@
+{
+  "cases": [
+    {
+      "name": "The pass shows the notes, or No notes",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#pass-notes",
+          "equals": "No notes",
+          "label": "the notes on the pass at the start (#pass-notes)"
+        },
+        {
+          "fill": "#notes",
+          "text": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-notes",
+          "equals": "Vegan meal",
+          "label": "the notes on the pass (#pass-notes)"
+        },
+        {
+          "fill": "#notes",
+          "text": "",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-notes",
+          "equals": "No notes",
+          "label": "the notes on the pass once the notes are deleted (#pass-notes)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Escape empties the notes on the pass too",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "press": "Escape",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-notes",
+          "equals": "No notes",
+          "label": "the notes on the pass after Escape (#pass-notes)"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "200 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        }
+      ]
+    },
+    {
+      "name": "The name still has its message",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass (#pass-name)"
+        }
+      ]
+    },
+    {
+      "name": "Other notes",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Window seat, please",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-notes",
+          "equals": "Window seat, please",
+          "label": "the notes on the pass (#pass-notes)"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "181 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        },
+        {
+          "press": "Escape",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-notes",
+          "equals": "No notes",
+          "label": "the notes on the pass (#pass-notes)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

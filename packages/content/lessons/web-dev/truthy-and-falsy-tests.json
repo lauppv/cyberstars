@@ -1,0 +1,124 @@
+{
+  "cases": [
+    {
+      "name": "Before any name, the pass says so",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass at the start (#pass-name)"
+        }
+      ]
+    },
+    {
+      "name": "The name shows, and a deleted name brings the message back",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Ida Moreau",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass once the name is deleted (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The booking still gets its answer",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Clara Diaz",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "clara@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Clara Diaz on SL-104",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Another name, deleted, then started again",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Noah Berg",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "N",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "N",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}
