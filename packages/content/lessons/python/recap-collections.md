@@ -1,4 +1,4 @@
-Combine **string methods**, **lists**, **looping over lists**, and **break/continue**
+Combine string methods, lists, looping over lists, and break/continue
 
 ---
 
@@ -7,9 +7,9 @@ Combine **string methods**, **lists**, **looping over lists**, and **break/conti
 The station receives a list of supply crates named items (already on the right). Some crates are contaminated: their name starts with `con-`. Sort the good supplies into a clean list with these rules:
 
 1. Loop through the items.
-2. **Skip** any crate whose **first four characters** are `con-`
+2. Skip any crate whose first four characters are `con-`
 3. For every good crate, add it to a new list called `clean`
-4. The moment you add `butter`, the bay is full, so **stop** right after adding it
+4. The moment you add `butter`, the bay is full, so stop right after adding it
 5. Print each item in `clean`, one per line
 6. Print `Total: ` then how many items ended up in `clean`
 
