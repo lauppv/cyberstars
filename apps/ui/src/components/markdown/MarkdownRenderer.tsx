@@ -101,6 +101,8 @@ const components: Components = {
         className={`${className ?? ''} panel`.trim()}
         style={{
           display: 'block',
+          // Same gap as a CodeCell's my-4, so the text after an output block doesn't touch it
+          margin: '16px 0',
           padding: '12px 16px',
           borderRadius: '6px',
         }}

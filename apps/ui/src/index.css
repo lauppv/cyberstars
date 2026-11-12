@@ -253,7 +253,7 @@ body {
   word-break: break-word;
 }
 .lesson-body p {
-  margin-bottom: 1em;
+  margin-bottom: 1.35em;
 }
 .lesson-body strong {
   color: var(--text);
@@ -276,7 +276,7 @@ body {
 .lesson-body h3 {
   color: var(--text);
   font-weight: 700;
-  margin: 1.5em 0 0.5em;
+  margin: 2em 0 0.6em;
   letter-spacing: -0.3px;
 }
 .lesson-body h1 {
@@ -290,11 +290,11 @@ body {
 }
 .lesson-body ul,
 .lesson-body ol {
-  margin: 0.5em 0 1em 1.5em;
+  margin: 0.5em 0 1.35em 1.5em;
   list-style: revert;
 }
 .lesson-body li {
-  margin-bottom: 0.4em;
+  margin-bottom: 0.5em;
 }
 .lesson-body table {
   width: 100%;
@@ -319,7 +319,7 @@ body {
 .lesson-body hr {
   border: 0;
   border-top: 1px solid var(--border);
-  margin: 1.5em 0;
+  margin: 2em 0;
 }
 .lesson-body pre {
   white-space: pre-wrap;
