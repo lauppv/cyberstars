@@ -4,7 +4,7 @@ A long page on a phone means a lot of scrolling. That's why many pages have a sm
 
 First, the place you jump to needs a name. You give it one with the `id` attribute:
 
-```html
+```html preview
 <h2 id="rules">Club Rules</h2>
 ```
 
@@ -19,7 +19,7 @@ The id doesn't change how the heading looks. It's only a name.
 
 Then a link whose `href` is `#` followed by the id:
 
-```html
+```html preview
 <p><a href="#rules">See the rules</a></p>
 
 <h2>Members</h2>
@@ -37,7 +37,7 @@ You'll see `id` again soon: CSS and JavaScript use it to find an element by its 
 
 Make the names not match:
 
-```html
+```html preview
 <p><a href="#rule">See the rules</a></p>
 <h2 id="rules">Club Rules</h2>
 ```
@@ -46,7 +46,7 @@ Make the names not match:
 
 And leave out the `#`:
 
-```html
+```html preview
 <a href="rules">See the rules</a>
 ```
 

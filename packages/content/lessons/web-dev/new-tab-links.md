@@ -4,7 +4,7 @@ You're reading a recipe online and it links to "how to whisk eggs". You click it
 
 Add the `target` attribute with the value `_blank`, and the link opens in a new tab:
 
-```html
+```html preview
 <a href="https://en.wikipedia.org/wiki/Chess" target="_blank">Read about chess</a>
 ```
 
@@ -16,7 +16,7 @@ A link can have several attributes. They all go in the opening tag, one after th
 
 When you add `target="_blank"`, add `rel="noopener"` next to it:
 
-```html
+```html preview
 <a href="https://en.wikipedia.org/wiki/Chess" target="_blank" rel="noopener">Read about chess</a>
 ```
 
@@ -32,7 +32,7 @@ For links between your own pages, keep the same tab. Visitors expect that, and t
 
 Write `target="blank"`, without the `_`:
 
-```html
+```html preview
 <a href="https://en.wikipedia.org/wiki/Chess" target="blank">Read about chess</a>
 ```
 

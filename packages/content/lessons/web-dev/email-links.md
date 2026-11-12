@@ -4,14 +4,8 @@ On a shop's website there's often a "Contact us" link at the bottom. Click it an
 
 It's a normal `<a>` link, but its `href` starts with `mailto:` and then the email address:
 
-```html
+```html preview
 <p><a href="mailto:club@school.example">Write to the chess club</a></p>
-```
-
-The page shows:
-
-```text
-Write to the chess club        (a link)
 ```
 
 When you click it, instead of opening a page, the browser opens the email app with a new message to `club@school.example`.
@@ -22,7 +16,7 @@ In your preview, the console tells you where the email would go.
 
 As with any link, the words should say what happens: "Write to the chess club", "Email us". Some sites show the address itself as the words, so people can also copy it:
 
-```html
+```html preview
 <p>Questions? Write to <a href="mailto:club@school.example">club@school.example</a>.</p>
 ```
 
@@ -32,7 +26,7 @@ Both are fine.
 
 Forget the `mailto:`:
 
-```html
+```html preview
 <a href="club@school.example">Write to the chess club</a>
 ```
 
