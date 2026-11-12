@@ -1,4 +1,4 @@
-Before changing ownership, you need to know **who you are** on the system. Two commands
+Before changing ownership, you need to know who you are on the system. Two commands
 tell you:
 
 ### `whoami`: your username
@@ -23,7 +23,7 @@ id
 uid=1000(student) gid=1000(crew) groups=1000(crew),27(sudo)
 ```
 
-This shows your **user ID** (uid), **primary group** (gid), and all groups you belong
+This shows your user ID (uid), primary group (gid), and all groups you belong
 to. Groups determine which "group" permissions apply to you.
 
 ### Ownership in `ls -l`

@@ -2,7 +2,7 @@ Two small but handy commands round off your searching skills: **which** and **fi
 
 ### Where does a command live? `which`
 
-When you type `ls`, Linux runs a program stored somewhere on disk. The **which**
+When you type `ls`, Linux runs a program stored somewhere on disk. The which
 command tells you _exactly where_ that program is:
 
 ```bash
@@ -26,8 +26,8 @@ This is useful when you want to know whether a command is installed at all: if
 
 ### What kind of file is this? `file`
 
-A file's name does not always tell you what is inside it. The **file** command
-**inspects the content** and reports the type:
+A file's name does not always tell you what is inside it. The file command
+inspects the content and reports the type:
 
 ```bash
 file notes.txt

@@ -30,7 +30,7 @@ An **absolute path** starts at the root `/` and spells out every step:
 /home/student/reports/january.log
 ```
 
-It works from **anywhere**: it is the full address.
+It works from anywhere: it is the full address.
 
 A **relative path** starts from _wherever you currently are_. If you are in
 `/home/student`, then:

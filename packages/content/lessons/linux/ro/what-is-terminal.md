@@ -1,7 +1,7 @@
 Un **terminal** este o fereastră text în care comunici cu calculatorul **scriind
 comenzi** în loc să apeși butoane.
 
-Scrii o comandă, apeși **Enter**, iar calculatorul o execută și îți arată
+Scrii o comandă, apeși Enter, iar calculatorul o execută și îți arată
 rezultatul. Simbolul mic de la începutul liniei (de obicei `$`) se numește
 **prompt**. Înseamnă că sistemul este pregătit și te așteaptă.
 
@@ -40,7 +40,7 @@ Linux e distractiv
 ```
 
 Nu-ți face griji că trebuie să memorezi totul. Terminalul este un loc unde poți
-**experimenta**. Încearcă o comandă, vezi ce se întâmplă, încearcă alta.
+experimenta. Încearcă o comandă, vezi ce se întâmplă, încearcă alta.
 
 ---
 

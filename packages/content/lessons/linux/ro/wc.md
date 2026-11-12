@@ -1,4 +1,4 @@
-Uneori nu vrei să _citești_ un fișier. Vrei să îl **măsori**. Câte linii? Câte
+Uneori nu vrei să _citești_ un fișier. Vrei să îl măsori. Câte linii? Câte
 cuvinte? Comanda **wc** (**word count**) îți spune.
 
 Rulează un `wc` simplu pe un fișier:
@@ -13,9 +13,9 @@ wc echipaj.txt
 
 Cele trei numere sunt, în ordine:
 
-1. **linii**
-2. **cuvinte**
-3. **caractere (octeți)**
+1. linii
+2. cuvinte
+3. caractere (octeți)
 
 ### Numărarea unui singur lucru
 
@@ -23,9 +23,9 @@ Opțiunile reduc rezultatul la un singur număr:
 
 | Opțiune | Numără               |
 | ------- | -------------------- |
-| `wc -l` | doar **liniile**     |
-| `wc -w` | doar **cuvintele**   |
-| `wc -c` | doar **caracterele** |
+| `wc -l` | doar liniile     |
+| `wc -w` | doar cuvintele   |
+| `wc -c` | doar caracterele |
 
 ```bash
 wc -l echipaj.txt

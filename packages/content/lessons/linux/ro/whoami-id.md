@@ -1,4 +1,4 @@
-Înainte să schimbi proprietarul unui fișier, trebuie să știi **cine ești** în sistem. Două comenzi îți spun asta:
+Înainte să schimbi proprietarul unui fișier, trebuie să știi cine ești în sistem. Două comenzi îți spun asta:
 
 ### `whoami`: numele tău de utilizator
 
@@ -22,7 +22,7 @@ id
 uid=1000(student) gid=1000(echipaj) groups=1000(echipaj),27(sudo)
 ```
 
-Afișează **ID-ul de utilizator** (uid), **grupul principal** (gid) și toate grupurile din care faci parte. Grupurile determină ce permisiuni de „group" se aplică pentru tine.
+Afișează ID-ul de utilizator (uid), grupul principal (gid) și toate grupurile din care faci parte. Grupurile determină ce permisiuni de „group" se aplică pentru tine.
 
 ### Proprietatea în `ls -l`
 

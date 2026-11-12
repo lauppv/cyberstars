@@ -30,7 +30,7 @@ O **cale absolută** începe la rădăcină `/` și descrie fiecare pas:
 /home/student/rapoarte/ianuarie.log
 ```
 
-Funcționează de **oriunde**: este adresa completă.
+Funcționează de oriunde: este adresa completă.
 
 O **cale relativă** începe de _oriunde te afli în acel moment_. Dacă ești în
 `/home/student`, atunci:
