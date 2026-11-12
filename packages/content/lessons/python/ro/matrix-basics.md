@@ -1,4 +1,4 @@
-O **matrice** este o grilă de numere organizate în **rânduri** și **coloane**. Gândește-te la o foaie de calcul, o tablă de șah sau un ecran de pixeli: toate sunt grile. În Python, reprezentăm o matrice ca o **listă de liste**
+O **matrice** este o grilă de numere organizate în rânduri și coloane. Gândește-te la o foaie de calcul, o tablă de șah sau un ecran de pixeli: toate sunt grile. În Python, reprezentăm o matrice ca o **listă de liste**
 
 ```py
 matrice = [
@@ -8,9 +8,9 @@ matrice = [
 ]
 ```
 
-Aceasta este o matrice **3×3** (3 rânduri, 3 coloane). Fiecare listă interioară este un **rând**
+Aceasta este o matrice 3×3 (3 rânduri, 3 coloane). Fiecare listă interioară este un rând
 
-Ca să accesăm un element, folosim **doi indecși**: **matrice[rand][coloana]**
+Ca să accesăm un element, folosim doi indecși: **matrice[rand][coloana]**
 
 ```py
 print(matrice[0][0])   # 1  (randul 0, coloana 0)
@@ -20,7 +20,7 @@ print(matrice[2][1])   # 8  (randul 2, coloana 1)
 
 ---
 
-Ca să parcurgem fiecare element, folosim **bucle imbricate**
+Ca să parcurgem fiecare element, folosim bucle imbricate
 
 ```py
 matrice = [
@@ -43,11 +43,11 @@ Ieșire
 7 8 9
 ```
 
-Bucla exterioară parcurge fiecare **rând** (care este o listă). Bucla interioară parcurge fiecare **element** din acel rând. **print()** de la final începe o linie nouă după fiecare rând
+Bucla exterioară parcurge fiecare rând (care este o listă). Bucla interioară parcurge fiecare element din acel rând. print() de la final începe o linie nouă după fiecare rând
 
 ---
 
-Dacă avem nevoie de **indecși** (ca să știm unde suntem)
+Dacă avem nevoie de indecși (ca să știm unde suntem)
 
 ```py
 matrice = [
@@ -116,13 +116,13 @@ Rezultat **Numarul de ziduri: 4**
 
 ## Misiune: Grila de Senzori
 
-Senzorii de pe carena stației își raportează citirile sub forma unei **grile 4×4** (o listă de liste numită grila). Controlul Misiunii vrea un rezumat rapid al grilei.
+Senzorii de pe carena stației își raportează citirile sub forma unei grile 4×4 (o listă de liste numită grila). Controlul Misiunii vrea un rezumat rapid al grilei.
 
-Folosind **bucle imbricate**, afișează:
+Folosind bucle imbricate, afișează:
 
-1. **Suma fiecărui rând**, câte una pe linie, etichetată `Rand 1: `, `Rand 2: `, și așa mai departe (rândurile numerotate de la 1).
-2. `Max: ` urmat de cea mai **mare** citire de oriunde din grilă.
-3. `Peste 7: ` urmat de **câte** citiri sunt strict mai mari decât 7.
+1. Suma fiecărui rând, câte una pe linie, etichetată `Rand 1: `, `Rand 2: `, și așa mai departe (rândurile numerotate de la 1).
+2. `Max: ` urmat de cea mai mare citire de oriunde din grilă.
+3. `Peste 7: ` urmat de câte citiri sunt strict mai mari decât 7.
 
 **Ieșire**
 

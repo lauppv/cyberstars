@@ -1,4 +1,4 @@
-A **matrix** is a grid of numbers organized in **rows** and **columns**. Think of a spreadsheet, a chess board, or a pixel screen: all are grids. In Python, we represent a matrix as a **list of lists**
+A **matrix** is a grid of numbers organized in rows and columns. Think of a spreadsheet, a chess board, or a pixel screen: all are grids. In Python, we represent a matrix as a **list of lists**
 
 ```py
 matrix = [
@@ -8,9 +8,9 @@ matrix = [
 ]
 ```
 
-This is a **3×3** matrix (3 rows, 3 columns). Each inner list is a **row**
+This is a 3×3 matrix (3 rows, 3 columns). Each inner list is a row
 
-To access an element, we use **two indexes**: **matrix[row][column]**
+To access an element, we use two indexes: **matrix[row][column]**
 
 ```py
 print(matrix[0][0])   # 1  (row 0, column 0)
@@ -20,7 +20,7 @@ print(matrix[2][1])   # 8  (row 2, column 1)
 
 ---
 
-To go through every element, we use **nested loops**
+To go through every element, we use nested loops
 
 ```py
 matrix = [
@@ -43,11 +43,11 @@ Output
 7 8 9
 ```
 
-The outer loop goes through each **row** (which is a list). The inner loop goes through each **element** in that row. **print()** at the end starts a new line after each row
+The outer loop goes through each row (which is a list). The inner loop goes through each element in that row. print() at the end starts a new line after each row
 
 ---
 
-If we need the **indexes** (to know where we are)
+If we need the indexes (to know where we are)
 
 ```py
 matrix = [
@@ -116,13 +116,13 @@ Output **Number of walls: 4**
 
 ## Mission: Sensor Grid
 
-The station's hull sensors report their readings as a **4×4 grid** (a list of lists named grid, already on the right). Mission Control wants a quick summary of the grid.
+The station's hull sensors report their readings as a 4×4 grid (a list of lists named grid, already on the right). Mission Control wants a quick summary of the grid.
 
-Using **nested loops**, print:
+Using nested loops, print:
 
-1. The **sum of each row**, one per line, labelled `Row 1: `, `Row 2: `, and so on (rows numbered from 1).
-2. `Max: ` followed by the single **highest** reading anywhere in the grid.
-3. `Above 7: ` followed by **how many** readings are strictly greater than 7.
+1. The sum of each row, one per line, labelled `Row 1: `, `Row 2: `, and so on (rows numbered from 1).
+2. `Max: ` followed by the single highest reading anywhere in the grid.
+3. `Above 7: ` followed by how many readings are strictly greater than 7.
 
 **Output**
 

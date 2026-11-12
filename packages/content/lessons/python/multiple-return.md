@@ -1,4 +1,4 @@
-We learned that **return** sends a value back from a function. But what if we want to send back **more than one value**? For example, a function that gives us both the **minimum** and **maximum** of a list
+We learned that return sends a value back from a function. But what if we want to send back more than one value? For example, a function that gives us both the minimum and maximum of a list
 
 In many programming languages, this is tricky. In Python, it's beautifully simple
 
@@ -67,7 +67,7 @@ One function, three useful values back. Clean
 
 ---
 
-Another common use: a function that **splits** a full name
+Another common use: a function that splits a full name
 
 ```py
 def split_name(full_name):
@@ -88,17 +88,17 @@ First: Tommy
 Last: Vercetti
 ```
 
-**.split(" ")** is a new string method: it splits a string by a separator (in this case a space) and returns a **list** of the parts. So **"Tommy Vercetti".split(" ")** gives us **["Tommy", "Vercetti"]**
+**.split(" ")** is a new string method: it splits a string by a separator (in this case a space) and returns a list of the parts. So **"Tommy Vercetti".split(" ")** gives us **["Tommy", "Vercetti"]**
 
 ---
 
 ## Mission: Coordinate Parser
 
-Write a function `parse(reading)` that takes a string of three numbers separated by spaces (like `"45 90 12"`) and returns **three values**: the **sum**, the **largest**, and the **smallest**.
+Write a function `parse(reading)` that takes a string of three numbers separated by spaces (like `"45 90 12"`) and returns three values: the sum, the largest, and the smallest.
 
-Inside the function, use `.split(" ")` to break the string into parts and turn each part into a number. Then **return** all three results at once.
+Inside the function, use `.split(" ")` to break the string into parts and turn each part into a number. Then return all three results at once.
 
-In the main program, **read** a line, call `parse`, **unpack** the three values, and print them.
+In the main program, read a line, call `parse`, unpack the three values, and print them.
 
 **Input:**
 

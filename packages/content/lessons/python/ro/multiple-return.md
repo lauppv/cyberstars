@@ -1,4 +1,4 @@
-Am învățat că **return** trimite o valoare înapoi dintr-o funcție. Dar dacă vrem să trimitem înapoi **mai mult de o valoare**? De exemplu, o funcție care ne dă atât **minimul** cât și **maximul** unei liste
+Am învățat că return trimite o valoare înapoi dintr-o funcție. Dar dacă vrem să trimitem înapoi mai mult de o valoare? De exemplu, o funcție care ne dă atât minimul cât și maximul unei liste
 
 În multe limbaje de programare, asta e complicat. În Python, este minunat de simplu
 
@@ -67,7 +67,7 @@ O singură funcție, trei valori utile înapoi. Curat
 
 ---
 
-O altă utilizare frecventă: o funcție care **împarte** un nume complet
+O altă utilizare frecventă: o funcție care împarte un nume complet
 
 ```py
 def nume_impartit(nume_complet):
@@ -88,17 +88,17 @@ Prenume: Tommy
 Nume: Vercetti
 ```
 
-**.split(" ")** este o nouă metodă pentru șiruri: împarte un șir după un separator (în acest caz un spațiu) și returnează o **listă** cu părțile. Deci **"Tommy Vercetti".split(" ")** ne dă **["Tommy", "Vercetti"]**
+**.split(" ")** este o nouă metodă pentru șiruri: împarte un șir după un separator (în acest caz un spațiu) și returnează o listă cu părțile. Deci **"Tommy Vercetti".split(" ")** ne dă **["Tommy", "Vercetti"]**
 
 ---
 
 ## Misiune: Analizatorul de Coordonate
 
-Scrie o funcție `analizeaza(citire)` care primește un șir de trei numere separate prin spații (precum `"45 90 12"`) și returnează **trei valori**: **suma**, **cel mai mare** și **cel mai mic**.
+Scrie o funcție `analizeaza(citire)` care primește un șir de trei numere separate prin spații (precum `"45 90 12"`) și returnează trei valori: suma, cel mai mare și cel mai mic.
 
-În interiorul funcției, folosește `.split(" ")` ca să spargi șirul în părți și transformă fiecare parte într-un număr. Apoi **returnează** toate cele trei rezultate deodată.
+În interiorul funcției, folosește `.split(" ")` ca să spargi șirul în părți și transformă fiecare parte într-un număr. Apoi returnează toate cele trei rezultate deodată.
 
-În programul principal, **citește** o linie, apelează `analizeaza`, **despachetează** cele trei valori și afișează-le.
+În programul principal, citește o linie, apelează `analizeaza`, despachetează cele trei valori și afișează-le.
 
 **Intrare:**
 
