@@ -69,7 +69,9 @@ export function wholePage(cell: Omit<PreviewCell, 'shown' | 'hasRest'>, shown: s
 }
 
 // The part shown of an edited whole page, or null when the edit reached
-// outside it and the part can no longer be told apart
+// outside it and the part can no longer be told apart. A line written left of
+// the part's indent counts as outside too: shown without it, the next edit of
+// the part would put the indent back and move a line the student placed.
 export function shownPart(
   cell: Omit<PreviewCell, 'shown' | 'hasRest'>,
   page: string,
@@ -77,11 +79,9 @@ export function shownPart(
   const { before, after, indent } = cell;
   if (page.length < before.length + after.length) return null;
   if (!page.startsWith(before) || !page.endsWith(after)) return null;
-  return page
-    .slice(before.length, page.length - after.length)
-    .split('\n')
-    .map((line) => (line.startsWith(indent) ? line.slice(indent.length) : line.trimStart()))
-    .join('\n');
+  const lines = page.slice(before.length, page.length - after.length).split('\n');
+  if (lines.some((line) => line.trim() && !line.startsWith(indent))) return null;
+  return lines.map((line) => line.slice(Math.min(indent.length, line.length))).join('\n');
 }
 
 // The course whose lesson the cells are in, for the pictures a cell's page

@@ -69,4 +69,10 @@ describe('wholePage and shownPart', () => {
     expect(shownPart(cell, page)).toBeNull();
     expect(shownPart(cell, '')).toBeNull();
   });
+
+  it('give up once a line of the part left its indent', () => {
+    const cell = parsePreviewCell(CSS_CELL);
+    const page = wholePage(cell, cell.shown).replace('    color: red;', 'color: red;');
+    expect(shownPart(cell, page)).toBeNull();
+  });
 });
