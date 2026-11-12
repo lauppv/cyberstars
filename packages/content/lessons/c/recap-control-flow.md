@@ -1,4 +1,4 @@
-Combine **if/else**, **if/else if**, and **for loops** into a single challenge
+Combine if/else, if/else if, and for loops into a single challenge
 
 ---
 
@@ -6,12 +6,12 @@ Combine **if/else**, **if/else if**, and **for loops** into a single challenge
 
 A diagnostic program checks 20 magnetic tape reels, numbered from 1 to 20, at a computing center. Each reel gets a label based on divisibility patterns set by the system administrator.
 
-1. Loop through numbers from **1 to 20**
-2. If the number is **divisible by both 3 and 5**, print **"X: fizzbuzz"**
-3. If divisible by **3 only**, print **"X: fizz"**
-4. If divisible by **5 only**, print **"X: buzz"**
-5. Otherwise, print **"X: normal"**
-6. At the end, print how many **fizzbuzz** reels you found
+1. Loop through numbers from 1 to 20
+2. If the number is divisible by both 3 and 5, print "X: fizzbuzz"
+3. If divisible by 3 only, print "X: fizz"
+4. If divisible by 5 only, print "X: buzz"
+5. Otherwise, print "X: normal"
+6. At the end, print how many fizzbuzz reels you found
 
 **Output**
 

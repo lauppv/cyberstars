@@ -1,4 +1,4 @@
-Combines **while loops**, **functions**, **input** and **operators**
+Combines while loops, functions, input and operators
 
 ---
 
@@ -10,14 +10,14 @@ Write these functions:
 
 - **int add(int a, int b)**: returns a + b
 - **int multiply(int a, int b)**: returns a \* b
-- **int power(int base, int exp)**: returns base^exp using a **while loop**
+- **int power(int base, int exp)**: returns base^exp using a while loop
 
-The main program reads three integers from input: **a**, **b** and **op**
+The main program reads three integers from input: a, b and op
 
-- If **op** is **1**, print the result of **add(a, b)**
-- If **op** is **2**, print the result of **multiply(a, b)**
-- If **op** is **3**, print the result of **power(a, b)**
-- If **op** is **0**, stop the program
+- If op is 1, print the result of add(a, b)
+- If op is 2, print the result of multiply(a, b)
+- If op is 3, print the result of power(a, b)
+- If op is 0, stop the program
 
 **Example**
 
@@ -53,4 +53,4 @@ Output
 30
 ```
 
-Each input line has three numbers. Process them one at a time until op is 0. Implement **power** with a while loop, not a library function.
+Each input line has three numbers. Process them one at a time until op is 0. Implement power with a while loop, not a library function.
