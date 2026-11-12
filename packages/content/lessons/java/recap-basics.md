@@ -1,4 +1,4 @@
-Combine **print**, **variables (numbers and strings)**, and **string concatenation**
+Combine print, variables (numbers and strings), and string concatenation
 
 ---
 
@@ -8,12 +8,12 @@ A cargo shipment just arrived at the station's supply depot. Before the crates c
 
 Create variables for the three products and the tax, name them `product1`/`price1`, `product2`/`price2`, `product3`/`price3` and `tax`:
 
-- **Oxygen module**: price **999.99**
-- **Water filter**: price **29.50**
-- **Solar battery**: price **5.99**
-- **Tax**: **19** (percent, as an `int`)
+- Oxygen module: price 999.99
+- Water filter: price 29.50
+- Solar battery: price 5.99
+- Tax: 19 (percent, as an `int`)
 
-Calculate the **subtotal** (sum of the three prices), the **tax amount** (subtotal × tax ÷ 100), and the **total** (subtotal + tax amount). Print the receipt exactly like the example, with amounts rounded to 2 decimals (`%.2f`).
+Calculate the subtotal (sum of the three prices), the tax amount (subtotal × tax ÷ 100), and the total (subtotal + tax amount). Print the receipt exactly like the example, with amounts rounded to 2 decimals (`%.2f`).
 
 **Example**
 

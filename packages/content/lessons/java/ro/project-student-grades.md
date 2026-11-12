@@ -1,10 +1,10 @@
-Ultimul proiect: hai să construim un **catalog de note**! Acesta combină **clase**, **HashMap**, și **ArrayList** într-o aplicație din lumea reală. Gândește-te la el ca la ecranul de statistici din Vice City, dar pentru școală în loc de crimă
+Ultimul proiect: hai să construim un catalog de note! Acesta combină clase, HashMap, și ArrayList într-o aplicație din lumea reală. Gândește-te la el ca la ecranul de statistici din Vice City, dar pentru școală în loc de crimă
 
 ---
 
 **Mai întâi, o scurtă recapitulare de HashMap**
 
-Un HashMap stochează **perechi cheie-valoare**. Perfect pentru a mapa numele unei materii la o notă
+Un HashMap stochează perechi cheie-valoare. Perfect pentru a mapa numele unei materii la o notă
 
 ```java
 import java.util.HashMap;
@@ -33,7 +33,7 @@ Mate: 92
 
 **Pasul 1: Clasa Student**
 
-Fiecare student are un **nume** și un **HashMap** care mapează numele materiilor la note
+Fiecare student are un nume și un HashMap care mapează numele materiilor la note
 
 ```text
 import java.util.HashMap;
@@ -69,7 +69,7 @@ Foarte simplu. `note.put("Mate", 95)` stochează nota 95 pentru Mate. Dacă stud
 
 **Pasul 3: Calcularea mediei**
 
-Ca să obținem media, trebuie să adunăm toate notele și să împărțim la câte sunt. Parcurgem **values** din HashMap
+Ca să obținem media, trebuie să adunăm toate notele și să împărțim la câte sunt. Parcurgem values din HashMap
 
 ```text
 public class Main {
@@ -89,7 +89,7 @@ public class Main {
 
 **Pasul 4: Afișarea raportului**
 
-Hai să afișăm un raport frumos cu numele studentului, fiecare materie cu nota ei, și media. O să parcurgem **keySet** din HashMap ca să obținem atât cheile cât și valorile
+Hai să afișăm un raport frumos cu numele studentului, fiecare materie cu nota ei, și media. O să parcurgem keySet din HashMap ca să obținem atât cheile cât și valorile
 
 ```text
 public class Main {
@@ -109,7 +109,7 @@ public class Main {
 
 **Notă importantă despre ordinea în HashMap**
 
-HashMap-urile **NU** garantează ordinea. Dacă adaugi Mate, Engleza, Stiinte, s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
+HashMap-urile NU garantează ordinea. Dacă adaugi Mate, Engleza, Stiinte, s-ar putea să se afișeze în orice ordine. Așa funcționează HashMap-urile pe plan intern. Dacă ai nevoie de o ordine anume, ai folosi un `LinkedHashMap` în schimb (care păstrează ordinea de inserare), dar pentru moment, un HashMap obișnuit e bun
 
 Pentru exercițiul nostru, o să folosim un **LinkedHashMap** ca rezultatul să fie previzibil
 
@@ -189,7 +189,7 @@ Student: Tommy
 
 ---
 
-Observă cum am folosit din nou **compoziția**: un Student **are un** HashMap de note. Este același tipar ca în proiectul Inventar unde Inventar **are un** ArrayList de Articole. Java din lumea reală e plină de asta: obiecte care conțin alte obiecte, fiecare cu responsabilitățile lui
+Observă cum am folosit din nou **compoziția**: un Student are un HashMap de note. Este același tipar ca în proiectul Inventar unde Inventar are un ArrayList de Articole. Java din lumea reală e plină de asta: obiecte care conțin alte obiecte, fiecare cu responsabilitățile lui
 
 Clasa Student este de sine stătătoare: știe cum să adauge note, să-și calculeze propria medie, și să-și afișeze propriul raport. Fiecare obiect își gestionează propriile date. Acesta este un design OOP bun
 

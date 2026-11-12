@@ -1,4 +1,4 @@
-Combină **metode**, **valori returnate**, **metode pe șiruri**, **array-uri**, **parcurgerea array-urilor** și **break/continue** într-o singură misiune
+Combină metode, valori returnate, metode pe șiruri, array-uri, parcurgerea array-urilor și break/continue într-o singură misiune
 
 ---
 
@@ -12,16 +12,16 @@ Pune semnalele într-un array de `String` numit `semnale`, de exemplu:
 String[] semnale = { "tommy", "parazit", "lance", "parazit", "cortez", "parazit", "diaz", "gata", "mercedes" };
 ```
 
-Scrie o **metodă** care primește array-ul de semnale și **returnează** un nou array care conține doar numele valide, scrise cu **majuscule**. Metoda trebuie să:
+Scrie o metodă care primește array-ul de semnale și returnează un nou array care conține doar numele valide, scrise cu majuscule. Metoda trebuie să:
 
 1. Parcurgă array-ul
-2. **Sară** peste orice semnal egal cu `"parazit"` (folosește `continue` și `.equals()`)
-3. **Se oprească** complet când întâlnește `"gata"` (folosește `break`); tot ce vine după este ignorat
+2. Sară peste orice semnal egal cu `"parazit"` (folosește `continue` și `.equals()`)
+3. Se oprească complet când întâlnește `"gata"` (folosește `break`); tot ce vine după este ignorat
 4. Transforme numele valide cu `.toUpperCase()` și să le strângă în array-ul rezultat
 
-În `main`, apelează metoda, afișează fiecare nume pe linia lui, apoi afișează **câte** nume au rămas.
+În `main`, apelează metoda, afișează fiecare nume pe linia lui, apoi afișează câte nume au rămas.
 
-**Sfat**: din moment ce nu știi de la început câte nume vor fi valide, parcurge array-ul de **două** ori: prima dată doar le numeri, apoi creezi array-ul rezultat de mărimea potrivită și îl umpli la a doua parcurgere.
+**Sfat**: din moment ce nu știi de la început câte nume vor fi valide, parcurge array-ul de două ori: prima dată doar le numeri, apoi creezi array-ul rezultat de mărimea potrivită și îl umpli la a doua parcurgere.
 
 **Exemplu**
 

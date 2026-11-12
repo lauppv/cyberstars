@@ -1,4 +1,4 @@
-Combine **ArrayList**, **HashMap**, and **Collections.sort()**
+Combine ArrayList, HashMap, and Collections.sort()
 
 ---
 

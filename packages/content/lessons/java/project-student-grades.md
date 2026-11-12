@@ -1,10 +1,10 @@
-Last project: let's build a **student gradebook**! This one combines **classes**, **HashMap**, and **ArrayList** into a real-world application. Think of it like the stats screen in Vice City, but for school instead of crime
+Last project: let's build a student gradebook! This one combines classes, HashMap, and ArrayList into a real-world application. Think of it like the stats screen in Vice City, but for school instead of crime
 
 ---
 
 **First, a quick HashMap refresher**
 
-A HashMap stores **key-value pairs**. Perfect for mapping a subject name to a grade
+A HashMap stores key-value pairs. Perfect for mapping a subject name to a grade
 
 ```java
 import java.util.HashMap;
@@ -33,7 +33,7 @@ Math: 92
 
 **Step 1: The Student class**
 
-Each student has a **name** and a **HashMap** that maps subject names to grades
+Each student has a name and a HashMap that maps subject names to grades
 
 ```text
 import java.util.HashMap;
@@ -69,7 +69,7 @@ Dead simple. `grades.put("Math", 95)` stores the grade 95 for Math. If the stude
 
 **Step 3: Calculating the average**
 
-To get the average, we need to sum all the grades and divide by how many there are. We loop through the HashMap's **values**
+To get the average, we need to sum all the grades and divide by how many there are. We loop through the HashMap's values
 
 ```text
 public class Main {
@@ -89,7 +89,7 @@ public class Main {
 
 **Step 4: Printing the report**
 
-Let's print a nice report showing the student's name, each subject with its grade, and the average. We'll loop through the HashMap's **keySet** to get both keys and values
+Let's print a nice report showing the student's name, each subject with its grade, and the average. We'll loop through the HashMap's keySet to get both keys and values
 
 ```text
 public class Main {
@@ -109,7 +109,7 @@ public class Main {
 
 **Important note about HashMap ordering**
 
-HashMaps do **NOT** guarantee order. If you add Math, English, Science, they might print in any order. That's just how HashMaps work internally. If you need a specific order, you'd use a `LinkedHashMap` instead (which preserves insertion order), but for now, regular HashMap is fine
+HashMaps do NOT guarantee order. If you add Math, English, Science, they might print in any order. That's just how HashMaps work internally. If you need a specific order, you'd use a `LinkedHashMap` instead (which preserves insertion order), but for now, regular HashMap is fine
 
 For our exercise, we'll use a **LinkedHashMap** so the output is predictable
 
@@ -189,7 +189,7 @@ Student: Tommy
 
 ---
 
-Notice how we used **composition** again: a Student **has a** HashMap of grades. This is the same pattern as the Inventory project where Inventory **has an** ArrayList of Items. Real-world Java is full of this: objects containing other objects, each with their own responsibilities
+Notice how we used **composition** again: a Student has a HashMap of grades. This is the same pattern as the Inventory project where Inventory has an ArrayList of Items. Real-world Java is full of this: objects containing other objects, each with their own responsibilities
 
 The Student class is self-contained: it knows how to add grades, calculate its own average, and print its own report. Each object manages its own data. That's good OOP design
 
