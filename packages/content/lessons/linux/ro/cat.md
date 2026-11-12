@@ -17,7 +17,7 @@ Tot fișierul este aruncat în terminal dintr-odată.
 
 ### Când să folosești cat
 
-`cat` este perfect pentru fișiere **scurte**: câteva linii pe care vrei să le citești
+`cat` este perfect pentru fișiere scurte: câteva linii pe care vrei să le citești
 dintr-o privire. Pentru fișiere foarte lungi inundă ecranul; vei întâlni curând unelte
 mai potrivite (`head`, `tail`, `less`) pentru astfel de situații.
 

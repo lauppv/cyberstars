@@ -1,5 +1,5 @@
 Instead of letters, you can set permissions with a **three-digit octal number**. Each
-digit represents one group (user, group, others) and is the **sum** of:
+digit represents one group (user, group, others) and is the sum of:
 
 | Permission  | Value |
 | ----------- | ----- |
@@ -24,7 +24,7 @@ chmod 755 script.sh
 chmod 644 readme.txt
 ```
 
-The numeric form sets **all** permissions at once: there is no "add" or "remove", you
+The numeric form sets all permissions at once: there is no "add" or "remove", you
 replace the entire set.
 
 ### When to use which form?

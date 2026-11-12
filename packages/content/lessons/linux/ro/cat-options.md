@@ -2,7 +2,7 @@
 
 ### Numerotarea liniilor: `cat -n`
 
-Opțiunea `-n` pune un **număr de linie** în fața fiecărei linii:
+Opțiunea `-n` pune un număr de linie în fața fiecărei linii:
 
 ```bash
 cat -n echipaj.txt

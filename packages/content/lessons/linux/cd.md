@@ -1,4 +1,4 @@
-So far you have only _looked_ at directories. Now you will **move between them**.
+So far you have only _looked_ at directories. Now you will move between them.
 
 The **cd** command (**change directory**) takes you into a different folder. After
 `cd`, your _current working directory_ changes, and `pwd` will prove it.
@@ -16,7 +16,7 @@ pwd
 /home/student/reports
 ```
 
-You have moved **down** into `reports`.
+You have moved down into `reports`.
 
 ### Going back up: `..`
 
@@ -36,14 +36,14 @@ pwd
 
 | Command | Where it takes you                                            |
 | ------- | ------------------------------------------------------------- |
-| `cd ~`  | your **home** directory (`/home/student`)                     |
-| `cd /`  | the **root** of the whole system                              |
-| `cd ..` | one directory **up**                                          |
+| `cd ~`  | your home directory (`/home/student`)                     |
+| `cd /`  | the root of the whole system                              |
+| `cd ..` | one directory up                                          |
 | `cd`    | also home (typing `cd` with nothing is a shortcut for `cd ~`) |
 
 ### Paths
 
-You can also jump several levels at once by giving a full **path**:
+You can also jump several levels at once by giving a full path:
 
 ```bash
 cd /home/student/reports

@@ -17,7 +17,7 @@ pwd
 /home/student/rapoarte
 ```
 
-Te-ai deplasat **în jos**, în `rapoarte`.
+Te-ai deplasat în jos, în `rapoarte`.
 
 ### Întoarcerea în sus: `..`
 
@@ -37,14 +37,14 @@ pwd
 
 | Comandă | Unde te duce                                                             |
 | ------- | ------------------------------------------------------------------------ |
-| `cd ~`  | directorul tău **personal** (`/home/student`)                            |
-| `cd /`  | **rădăcina** întregului sistem                                           |
-| `cd ..` | un director mai **sus**                                                  |
+| `cd ~`  | directorul tău personal (`/home/student`)                            |
+| `cd /`  | rădăcina întregului sistem                                           |
+| `cd ..` | un director mai sus                                                  |
 | `cd`    | tot acasă (scrierea lui `cd` fără nimic este o scurtătură pentru `cd ~`) |
 
 ### Căi
 
-Poți sări și peste mai multe niveluri deodată, dând o **cale** completă:
+Poți sări și peste mai multe niveluri deodată, dând o cale completă:
 
 ```bash
 cd /home/student/rapoarte

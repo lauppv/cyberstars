@@ -2,7 +2,7 @@
 
 ### Numbering lines: `cat -n`
 
-The `-n` option puts a **line number** in front of every line:
+The `-n` option puts a line number in front of every line:
 
 ```bash
 cat -n crew.txt

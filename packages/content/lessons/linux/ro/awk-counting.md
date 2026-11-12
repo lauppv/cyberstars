@@ -1,4 +1,4 @@
-Pe lângă afișarea câmpurilor, awk poate să **calculeze**. Poți folosi variabile,
+Pe lângă afișarea câmpurilor, awk poate să calculeze. Poți folosi variabile,
 tipare și blocuri speciale precum `END` ca să produci rezumate.
 
 ### Adunarea unei coloane
