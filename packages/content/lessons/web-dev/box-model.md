@@ -4,10 +4,23 @@ Look at a framed photo on a wall. There's the photo itself, then a white strip o
 
 Even when you can't see it, every element sits in a rectangle: a heading, a paragraph, a card. Give one a background, and you see its box:
 
-```css
-.member {
-  background-color: #1e3a5f;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  /* show */
+  .member {
+    background-color: #1e3a5f;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
 ```
 
 The whole `div` turns blue, from edge to edge, and its text sits right against the edges, squashed.
@@ -16,11 +29,24 @@ The whole `div` turns blue, from edge to edge, and its text sits right against t
 
 `padding` is the white strip of card around the photo: space **inside** the box, between its edges and what it holds:
 
-```css
-.member {
-  background-color: #1e3a5f;
-  padding: 16px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  /* show */
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
 ```
 
 Now there are 16 pixels of blue all around the text, on every side. The box grows to make room, and the text can breathe.
@@ -33,10 +59,23 @@ Over the next lessons you'll meet the other layers: the **border** (the frame) a
 
 Give the padding, but no background:
 
-```css
-.member {
-  padding: 16px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  /* show */
+  .member {
+    padding: 16px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
 ```
 
 The text moves away from where it was, but you can't see any box: the room is there, only invisible. Padding shows best on a box with a background or a border.
