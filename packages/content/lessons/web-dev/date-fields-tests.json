@@ -1,0 +1,72 @@
+{
+  "cases": [
+    {
+      "name": "A date box for the day of travel, with its label",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "input#travel-date[type=\"date\" i]",
+          "label": "a date box with the id travel-date"
+        },
+        {
+          "click": "label[for=\"travel-date\"], label:has(#travel-date)",
+          "label": "the label of the date box"
+        },
+        {
+          "exists": "#travel-date:focus",
+          "label": "the date box, ready to type in after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "The form sends the date as year-month-day",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "date": "2031-05-14"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Another day",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#travel-date",
+          "text": "2032-01-09",
+          "label": "the date box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "date": "2032-01-09"
+          }
+        }
+      ]
+    }
+  ]
+}
