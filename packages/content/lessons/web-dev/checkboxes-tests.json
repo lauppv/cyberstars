@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "name": "Three boxes for the extras, only Wi-Fi ticked at the start",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "count": "input[type=\"checkbox\" i][name=\"extras\"]",
+          "equals": 3,
+          "label": "boxes to tick named extras"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"meal\"]",
+          "off": true,
+          "label": "the hot meal box (value meal) at the start"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"blanket\"]",
+          "off": true,
+          "label": "the blanket box (value blanket) at the start"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"wifi\"]",
+          "label": "the Wi-Fi box (value wifi) at the start"
+        }
+      ]
+    },
+    {
+      "name": "A click on each label ticks or unticks its box",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"meal\"]), input[name=\"extras\"][value=\"meal\"] + label, label:has(+ input[name=\"extras\"][value=\"meal\"])",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"meal\"]",
+          "label": "the hot meal box after a click on its label"
+        },
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"blanket\"]), input[name=\"extras\"][value=\"blanket\"] + label, label:has(+ input[name=\"extras\"][value=\"blanket\"])",
+          "label": "the label of the blanket box"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"blanket\"]",
+          "label": "the blanket box after a click on its label"
+        },
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"wifi\"]), input[name=\"extras\"][value=\"wifi\"] + label, label:has(+ input[name=\"extras\"][value=\"wifi\"])",
+          "label": "the label of the Wi-Fi box"
+        },
+        {
+          "checked": "input[name=\"extras\"][value=\"wifi\"]",
+          "off": true,
+          "label": "the Wi-Fi box after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "The form sends every extra ticked",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"meal\"]), input[name=\"extras\"][value=\"meal\"] + label, label:has(+ input[name=\"extras\"][value=\"meal\"])",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "extras": "meal"
+          }
+        },
+        {
+          "sent": {
+            "extras": "wifi"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Other extras",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"blanket\"]), input[name=\"extras\"][value=\"blanket\"] + label, label:has(+ input[name=\"extras\"][value=\"blanket\"])",
+          "label": "the label of the blanket box"
+        },
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"wifi\"]), input[name=\"extras\"][value=\"wifi\"] + label, label:has(+ input[name=\"extras\"][value=\"wifi\"])",
+          "label": "the label of the Wi-Fi box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "extras": "blanket"
+          }
+        }
+      ]
+    }
+  ]
+}
