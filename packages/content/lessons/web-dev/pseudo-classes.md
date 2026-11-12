@@ -4,20 +4,48 @@ Move your mouse over a button on almost any website: it changes colour a little,
 
 A **pseudo-class** is a word after a `:` that picks an element only while it's in some state:
 
-```css
-a:hover {
-  color: gold;
-}
+```css preview
+<style>
+  /* show */
+  a:hover {
+    color: gold;
+  }
+  /* /show */
+</style>
+<p>New to the game? <a href="https://en.wikipedia.org/wiki/Chess">Read about chess</a> before you start.</p>
 ```
 
 "A link, while the mouse is over it". Move the mouse onto a link: it turns gold. Move it away: it goes back.
 
 It works on any element:
 
-```css
-#scores tbody tr:hover {
-  background-color: #1e3a5f;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  #scores td {
+    padding: 4px 12px;
+  }
+
+  /* show */
+  #scores tbody tr:hover {
+    background-color: #1e3a5f;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <thead>
+    <tr><th scope="col">Name</th><th scope="col">Points</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sam</td><td>12</td></tr>
+    <tr><td>Lea</td><td>9</td></tr>
+    <tr><td>Ana</td><td>7</td></tr>
+  </tbody>
+</table>
 ```
 
 Every row of a table lights up while the mouse is on it, so your eye can follow it across, even in a wide table.
@@ -30,10 +58,33 @@ A phone has no mouse, so nothing hovers. Some phones treat a tap as a quick hove
 
 Put a space before the colon:
 
-```css
-#scores tbody tr :hover {
-  background-color: #1e3a5f;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  #scores td {
+    padding: 4px 12px;
+  }
+
+  /* show */
+  #scores tbody tr :hover {
+    background-color: #1e3a5f;
+  }
+  /* /show */
+</style>
+<table id="scores">
+  <thead>
+    <tr><th scope="col">Name</th><th scope="col">Points</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Sam</td><td>12</td></tr>
+    <tr><td>Lea</td><td>9</td></tr>
+    <tr><td>Ana</td><td>7</td></tr>
+  </tbody>
+</table>
 ```
 
 Now it means "any element **inside** a row, while hovered": the cells light up one at a time, not the whole row. The `:` sticks to the element it's about, with no space.

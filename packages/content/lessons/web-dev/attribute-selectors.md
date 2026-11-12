@@ -4,10 +4,20 @@ At the airport, every bag with a "fragile" sticker goes on a special trolley. Th
 
 Square brackets pick elements by their attributes:
 
-```css
-a[target] {
-  font-style: italic;
-}
+```css preview
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  /* show */
+  a[target] {
+    font-style: italic;
+  }
+  /* /show */
+</style>
+<p><a href="https://en.wikipedia.org/wiki/Chess" target="_blank">Rules of chess</a></p>
+<p><a href="games.html">Our games</a></p>
 ```
 
 "Every `a` that **has** a `target` attribute", whatever its value.
@@ -16,10 +26,20 @@ a[target] {
 
 With a value, only elements whose attribute is exactly that:
 
-```css
-a[target="_blank"] {
-  text-decoration: underline;
-}
+```css preview
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  /* show */
+  a[target="_blank"] {
+    text-decoration: underline;
+  }
+  /* /show */
+</style>
+<p><a href="https://en.wikipedia.org/wiki/Chess" target="_blank">Rules of chess</a></p>
+<p><a href="games.html">Our games</a></p>
 ```
 
 Links that open a new tab are underlined, so visitors know before they click.
@@ -34,10 +54,20 @@ A few more ways to match:
 
 Forget the quotes and the exact value:
 
-```css
-a[target="blank"] {
-  text-decoration: underline;
-}
+```css preview
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  /* show */
+  a[target="blank"] {
+    text-decoration: underline;
+  }
+  /* /show */
+</style>
+<p><a href="https://en.wikipedia.org/wiki/Chess" target="_blank">Rules of chess</a></p>
+<p><a href="games.html">Our games</a></p>
 ```
 
 Nothing is underlined: your links say `_blank`, with the underscore. An attribute selector matches the value exactly, letter for letter.

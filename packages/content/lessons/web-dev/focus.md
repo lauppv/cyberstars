@@ -2,10 +2,15 @@ Not everyone uses a mouse. Some people move around a page with the **Tab** key: 
 
 ## `:focus`
 
-```css
-a:focus {
-  outline: 3px solid gold;
-}
+```css preview
+<style>
+  /* show */
+  a:focus {
+    outline: 3px solid gold;
+  }
+  /* /show */
+</style>
+<p><a href="games.html">Our games</a> · <a href="members.html">Members</a> · <a href="rules.html">Rules</a></p>
 ```
 
 "A link, while it has the focus". Press Tab until you reach a link: a thick gold line appears around it. Press Enter, and the link opens.
@@ -20,10 +25,15 @@ Browsers draw a focus ring by themselves, a thin one. Some people think it looks
 
 Remove the outline:
 
-```css
-a:focus {
-  outline: none;
-}
+```css preview
+<style>
+  /* show */
+  a:focus {
+    outline: none;
+  }
+  /* /show */
+</style>
+<p><a href="games.html">Our games</a> · <a href="members.html">Members</a> · <a href="rules.html">Rules</a></p>
 ```
 
 Now press Tab a few times. Where are you? You can't tell. Imagine moving around a whole site that way.
