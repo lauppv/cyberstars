@@ -1,12 +1,12 @@
-Uneori avem nevoie de **mai mult de două** ramuri. Imaginează-ți un mainframe care pornește dimineața la centrul de calcul. În funcție de câte secunde mai sunt până la pornirea completă, sistemul trece prin etape diferite
+Uneori avem nevoie de mai mult de două ramuri. Imaginează-ți un mainframe care pornește dimineața la centrul de calcul. În funcție de câte secunde mai sunt până la pornirea completă, sistemul trece prin etape diferite
 
-Dacă mai sunt **100** de secunde → verificăm memoria
+Dacă mai sunt 100 de secunde → verificăm memoria
 
-Dacă mai sunt **60** de secunde → verificăm perifericele
+Dacă mai sunt 60 de secunde → verificăm perifericele
 
-Dacă mai sunt **20** de secunde → încărcăm nucleul sistemului de operare
+Dacă mai sunt 20 de secunde → încărcăm nucleul sistemului de operare
 
-Dacă mai sunt **10** secunde → pornim procesele de sistem
+Dacă mai sunt 10 secunde → pornim procesele de sistem
 
 Altfel → nu facem nimic special
 
@@ -34,13 +34,13 @@ int main(void) {
 }
 ```
 
-Hai să urmărim ce se întâmplă dacă schimbăm **secunde** la **60**, **20**, **10**, **42**
+Hai să urmărim ce se întâmplă dacă schimbăm secunde la 60, 20, 10, 42
 
-Lanțul rulează **de sus în jos**. La **prima** ramură care este **adevărată**, C rulează acel bloc și apoi **iese** din întregul lanț. Ramurile rămase **nu** sunt verificate niciodată. Așadar pentru **secunde = 60**, se afișează o singură linie, nu toate
+Lanțul rulează **de sus în jos**. La prima ramură care este adevărată, C rulează acel bloc și apoi iese din întregul lanț. Ramurile rămase nu sunt verificate niciodată. Așadar pentru secunde = 60, se afișează o singură linie, nu toate
 
 ---
 
-De ce să nu scriem pur și simplu o grămadă de **if**-uri separate? Așa
+De ce să nu scriem pur și simplu o grămadă de if-uri separate? Așa
 
 ```c
 #include <stdio.h>
@@ -55,17 +55,17 @@ int main(void) {
 }
 ```
 
-Problema: fiecare **if** este independent. **else**-ul de la final aparține doar **ultimului if**. Așadar pentru **secunde = 60**, a treia condiție eșuează (60 != 20), iar **else**-ul ar afișa **"altceva"**: greșit, am tratat deja 60 mai sus
+Problema: fiecare if este independent. else-ul de la final aparține doar **ultimului if**. Așadar pentru secunde = 60, a treia condiție eșuează (60 != 20), iar else-ul ar afișa "altceva": greșit, am tratat deja 60 mai sus
 
-**Regulă practică**: când testăm **aceeași variabilă** pentru mai multe valori, **înlănțuim** cu **if / else if / else**
-
----
-
-C are de asemenea o instrucțiune **switch** care se potrivește bine acestui tipar, dar o vom lăsa pentru o lecție mai avansată. Pentru moment, **if / else if / else** este suficient
+Regulă practică: când testăm **aceeași variabilă** pentru mai multe valori, înlănțuim cu **if / else if / else**
 
 ---
 
-Putem îmbrica **if**-uri unul în altul
+C are de asemenea o instrucțiune switch care se potrivește bine acestui tipar, dar o vom lăsa pentru o lecție mai avansată. Pentru moment, if / else if / else este suficient
+
+---
+
+Putem îmbrica if-uri unul în altul
 
 ```c
 #include <stdio.h>
@@ -85,7 +85,7 @@ int main(void) {
 }
 ```
 
-**if**-urile îmbricate sunt în regulă, dar dacă ajungi la 5 niveluri de adâncime, codul devine ilizibil. Încearcă să păstrezi lucrurile plate când poți
+if-urile îmbricate sunt în regulă, dar dacă ajungi la 5 niveluri de adâncime, codul devine ilizibil. Încearcă să păstrezi lucrurile plate când poți
 
 ---
 
@@ -93,21 +93,21 @@ int main(void) {
 
 Tu ești operatorul de tură. Cronometrul de pornire afișează câte secunde mai sunt până la boot complet, iar un senzor separat îți spune dacă a fost detectată vreo eroare hardware.
 
-Scrie un program care, în interiorul lui **main**
+Scrie un program care, în interiorul lui main
 
-- declară un **int** numit **secunde**
-- declară un **int** numit **eroare_detectata**
-- folosește un lanț **if / else if / else**:
-  - dacă `secunde` este **100** → afișează `Verific memoria`
-  - altfel dacă `secunde` este **60** → afișează `Verific perifericele`
-  - altfel dacă `secunde` este **30** → afișează `Incarc nucleul sistemului de operare`
-  - altfel dacă `secunde` este **10** → afișează `Pornesc procesele de sistem`
-  - altfel dacă `secunde` este **mai mic decât 10** → verifică `eroare_detectata`: dacă este **1**, afișează `Eroare detectata. Anulez pornirea`, altfel afișează `Nicio eroare detectata. Pornesc sistemul...`
+- declară un int numit secunde
+- declară un int numit eroare_detectata
+- folosește un lanț if / else if / else:
+  - dacă `secunde` este 100 → afișează `Verific memoria`
+  - altfel dacă `secunde` este 60 → afișează `Verific perifericele`
+  - altfel dacă `secunde` este 30 → afișează `Incarc nucleul sistemului de operare`
+  - altfel dacă `secunde` este 10 → afișează `Pornesc procesele de sistem`
+  - altfel dacă `secunde` este mai mic decât 10 → verifică `eroare_detectata`: dacă este 1, afișează `Eroare detectata. Anulez pornirea`, altfel afișează `Nicio eroare detectata. Pornesc sistemul...`
   - altfel → afișează `%d secunde nu au niciun efect` (cu numărul de secunde în loc de `%d`)
 
 **Exemplu**
 
-Pentru un **secunde** de 5 și un **eroare_detectata** de 1, programul tău ar afișa ceva de genul
+Pentru un secunde de 5 și un eroare_detectata de 1, programul tău ar afișa ceva de genul
 
 ```text
 Eroare detectata. Anulez pornirea

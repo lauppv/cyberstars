@@ -1,4 +1,4 @@
-Am văzut buclele **for**. Acum hai să punem o buclă **înăuntrul** alteia: o **buclă imbricată**
+Am văzut buclele for. Acum hai să punem o buclă înăuntrul alteia: o **buclă imbricată**
 
 ```c
 #include <stdio.h>
@@ -22,11 +22,11 @@ Ieșire
 (3, 1) (3, 2) (3, 3)
 ```
 
-**Bucla exterioară** controlează **liniile**, **bucla interioară** controlează **coloanele**. Pentru fiecare valoare a lui **i**, bucla interioară rulează **complet** de la început până la sfârșit. Citește output-ul cu atenție și parcurge codul în minte
+**Bucla exterioară** controlează liniile, **bucla interioară** controlează coloanele. Pentru fiecare valoare a lui i, bucla interioară rulează complet de la început până la sfârșit. Citește output-ul cu atenție și parcurge codul în minte
 
 ---
 
-O utilizare clasică a buclelor imbricate: **afișarea unui model**
+O utilizare clasică a buclelor imbricate: afișarea unui model
 
 ```c
 #include <stdio.h>
@@ -52,11 +52,11 @@ Ieșire
 * * * * *
 ```
 
-Observă că bucla interioară merge **până la i**, nu până la 5. Când **i = 1**, afișăm 1 stea. Când **i = 3**, afișăm 3 stele. Așa construim un **triunghi**
+Observă că bucla interioară merge **până la i**, nu până la 5. Când i = 1, afișăm 1 stea. Când i = 3, afișăm 3 stele. Așa construim un triunghi
 
 ---
 
-Bucle imbricate cu tablouri: imaginează-ți o **tablă a înmulțirii**
+Bucle imbricate cu tablouri: imaginează-ți o tablă a înmulțirii
 
 ```c
 #include <stdio.h>
@@ -74,16 +74,16 @@ int main(void) {
 }
 ```
 
-Asta afișează **fiecare combinație** de două elemente din tablou. Dacă tabloul are **n** elemente, buclele imbricate ne dau **n \* n** combinații. Când auzi "toate perechile", gândește-te la bucle imbricate
+Asta afișează fiecare combinație de două elemente din tablou. Dacă tabloul are n elemente, buclele imbricate ne dau **n \* n** combinații. Când auzi "toate perechile", gândește-te la bucle imbricate
 
 ---
 
 ## Misiune: Jurnalul liniilor de imprimantă
 
-Imprimanta liniară a centrului de calcul primește o comandă: numărul de linii de tipărit. Fiecare linie **i** trebuie să conțină numerele de la **1** până la **i**, ca un test de calibrare a capului de tipărire.
+Imprimanta liniară a centrului de calcul primește o comandă: numărul de linii de tipărit. Fiecare linie i trebuie să conțină numerele de la 1 până la i, ca un test de calibrare a capului de tipărire.
 
-1. Citește un întreg **n** din input: numărul de linii
-2. Scrie **bucle for imbricate**: bucla exterioară merge de la **1** la **n**, bucla interioară afișează numerele de la **1** la **i**, separate prin spațiu
+1. Citește un întreg n din input: numărul de linii
+2. Scrie bucle for imbricate: bucla exterioară merge de la 1 la n, bucla interioară afișează numerele de la 1 la i, separate prin spațiu
 3. Afișează `printf("\n")` la finalul fiecărei linii
 
 **Exemplu**
