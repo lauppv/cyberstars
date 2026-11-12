@@ -1,4 +1,4 @@
-Să scrii **struct Angajat** peste tot devine obositor. **typedef** ne lasă să creăm un nume mai scurt pentru orice tip
+Să scrii struct Angajat peste tot devine obositor. **typedef** ne lasă să creăm un nume mai scurt pentru orice tip
 
 ```c
 #include <stdio.h>
@@ -40,7 +40,7 @@ Putem da nume cu sens tipurilor. **Ore** este tot un int dedesubt, dar numele î
 
 ---
 
-**typedef** strălucește cu adevărat cu pointeri la funcții (dacă ești curios) și prin eliminarea cuvântului cheie **struct**. Iată cel mai comun tipar pe care îl vei vedea în codul real
+typedef strălucește cu adevărat cu pointeri la funcții (dacă ești curios) și prin eliminarea cuvântului cheie struct. Iată cel mai comun tipar pe care îl vei vedea în codul real
 
 ```c
 #include <stdio.h>
@@ -67,17 +67,17 @@ int main(void) {
 }
 ```
 
-Observă cum putem folosi **Celula** în interiorul lui **Banca**. Struct-uri în struct-uri: **compoziție**. Așa construiesc programele C structuri de date complexe fără clase
+Observă cum putem folosi Celula în interiorul lui Banca. Struct-uri în struct-uri: **compoziție**. Așa construiesc programele C structuri de date complexe fără clase
 
 ---
 
 ## Misiune: Raportul de Performanță al Turei
 
-Șeful de tură vrea un raport formatat al evaluărilor operatorilor din centrul de calcul. Folosește **typedef** pentru a defini un struct curat și parcurge lista.
+Șeful de tură vrea un raport formatat al evaluărilor operatorilor din centrul de calcul. Folosește typedef pentru a defini un struct curat și parcurge lista.
 
-1. Definește un struct **typedef** numit **Operator** cu câmpurile: **nume** (array de char), **grad** (int), **evaluare** (double)
-2. Citește din input un număr **n** de operatori, urmat de **n** linii, fiecare cu **nume grad evaluare**
-3. Parcurge-i și afișează fiecare în formatul **"Nume - Grad X - Evaluare Y.YY"**
+1. Definește un struct typedef numit Operator cu câmpurile: nume (array de char), grad (int), evaluare (double)
+2. Citește din input un număr n de operatori, urmat de n linii, fiecare cu nume grad evaluare
+3. Parcurge-i și afișează fiecare în formatul "Nume - Grad X - Evaluare Y.YY"
 
 **Exemplu**
 

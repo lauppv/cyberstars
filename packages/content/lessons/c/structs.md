@@ -1,4 +1,4 @@
-So far we've stored simple values: an int, a char, a string. But what if we want to represent an **employee** of the computing center, with a name, a shift, and a number of tasks completed? We could use three separate variables, but things get messy fast when we have dozens of employees. Enter **structs**
+So far we've stored simple values: an int, a char, a string. But what if we want to represent an employee of the computing center, with a name, a shift, and a number of tasks completed? We could use three separate variables, but things get messy fast when we have dozens of employees. Enter structs
 
 A **struct** is a way to group related data into a single type. Think of it as a custom box that holds several fields
 
@@ -25,7 +25,7 @@ int main(void) {
 }
 ```
 
-We **define** the struct with **struct Employee { ... };**. Notice the **semicolon** after the closing brace. Then we **create** a variable of that type with **struct Employee e1**. We access fields with the **dot operator**: **e1.shift**
+We define the struct with **struct Employee { ... };**. Notice the **semicolon** after the closing brace. Then we create a variable of that type with **struct Employee e1**. We access fields with the **dot operator**: **e1.shift**
 
 ---
 
@@ -47,7 +47,7 @@ int main(void) {
 }
 ```
 
-The values fill in the fields **in order**: name, shift, tasks. Or, more explicitly
+The values fill in the fields in order: name, shift, tasks. Or, more explicitly
 
 ```c
 #include <stdio.h>
@@ -108,9 +108,9 @@ op9: shift 3, 8 tasks
 
 The computing center's archive tracks every reel of magnetic tape used to store programs and results. The archive chief wants a quick report, generated straight from the intake log.
 
-1. Define a struct **Tape** with fields: **label** (char array), **year** (int), **meters** (int)
-2. Read **two** tapes from input: on each line, a label (a single word, no spaces), a year, and a length in meters
-3. Print each tape in the format **"Label (Year) - Meters m"**
+1. Define a struct Tape with fields: label (char array), year (int), meters (int)
+2. Read two tapes from input: on each line, a label (a single word, no spaces), a year, and a length in meters
+3. Print each tape in the format "Label (Year) - Meters m"
 
 **Example**
 

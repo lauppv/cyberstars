@@ -1,4 +1,4 @@
-Am învățat că string-urile în C sunt tablouri de **char** care se termină cu **'\0'**. Să lucrezi cu ele manual (caracter cu caracter) este obositor. Biblioteca **string.h** ne dă funcții gata făcute
+Am învățat că string-urile în C sunt tablouri de char care se termină cu '\0'. Să lucrezi cu ele manual (caracter cu caracter) este obositor. Biblioteca string.h ne dă funcții gata făcute
 
 ```c
 #include <stdio.h>
@@ -17,7 +17,7 @@ Ieșire
 Lungime: 14
 ```
 
-**strlen** returnează numărul de caractere din string, **FĂRĂ** a număra **'\0'**. Tabloul real are 15 char-uri (14 litere + '\0'), dar strlen spune 14. Este o distincție importantă
+**strlen** returnează numărul de caractere din string, FĂRĂ a număra '\0'. Tabloul real are 15 char-uri (14 litere + '\0'), dar strlen spune 14. Este o distincție importantă
 
 ---
 
@@ -39,7 +39,7 @@ int main(void) {
 }
 ```
 
-**strcmp** returnează **0** dacă string-urile sunt egale, un număr **negativ** dacă primul vine înainte de al doilea (alfabetic), și un număr **pozitiv** dacă vine după. Reține: în C, **nu poți compara string-uri cu ==**. Asta compară **adrese**, nu conținut
+strcmp returnează **0** dacă string-urile sunt egale, un număr negativ dacă primul vine înainte de al doilea (alfabetic), și un număr pozitiv dacă vine după. Reține: în C, **nu poți compara string-uri cu ==**. Asta compară adrese, nu conținut
 
 ---
 
@@ -59,7 +59,7 @@ int main(void) {
 }
 ```
 
-**strcpy(destinatie, sursa)** copiază totul din **sursa** în **destinatie**, inclusiv **'\0'**. Asigură-te că **destinatie** este suficient de mare! Dacă este prea mic, obții un **buffer overflow**, unul dintre cele mai periculoase bug-uri din programare. Așa apar vulnerabilitățile reale de securitate
+**strcpy(destinatie, sursa)** copiază totul din sursa în destinatie, inclusiv '\0'. Asigură-te că destinatie este suficient de mare! Dacă este prea mic, obții un **buffer overflow**, unul dintre cele mai periculoase bug-uri din programare. Așa apar vulnerabilitățile reale de securitate
 
 ---
 
@@ -77,7 +77,7 @@ int main(void) {
 }
 ```
 
-**strcat** adaugă al doilea string la finalul primului. Din nou, asigură-te că tabloul destinație este suficient de mare pentru ambele string-uri plus **'\0'**
+strcat adaugă al doilea string la finalul primului. Din nou, asigură-te că tabloul destinație este suficient de mare pentru ambele string-uri plus '\0'
 
 ---
 
@@ -98,7 +98,7 @@ int main(void) {
 }
 ```
 
-**strstr** returnează un pointer către locul unde începe sub-string-ul, sau **NULL** dacă nu este găsit. **NULL** este felul lui C de a spune "nimic": este o valoare specială de pointer care înseamnă "pointează către nimic." Îl vom vedea des
+strstr returnează un pointer către locul unde începe sub-string-ul, sau **NULL** dacă nu este găsit. NULL este felul lui C de a spune "nimic": este o valoare specială de pointer care înseamnă "pointează către nimic." Îl vom vedea des
 
 ---
 
@@ -106,11 +106,11 @@ int main(void) {
 
 O bandă magnetică veche și-a pierdut eticheta. Doi operatori diferiți au retranscris fiecare câte o jumătate, pe teletype-uri separate. Treaba ta: măsoară primul fragment, apoi unește ambele fragmente într-un singur string și afișează eticheta completă.
 
-1. Citește două cuvinte din input, **primul** și **al_doilea** (fără spații în interior)
-2. Afișează lungimea lui **primul** (folosește **strlen**)
-3. Copiază **primul** într-un tablou **rezultat** (folosește **strcpy**, fă rezultat suficient de mare: `char rezultat[50]`)
-4. Concatenează **al_doilea** la **rezultat** (folosește **strcat**)
-5. Afișează **rezultat**
+1. Citește două cuvinte din input, primul și al_doilea (fără spații în interior)
+2. Afișează lungimea lui primul (folosește strlen)
+3. Copiază primul într-un tablou rezultat (folosește strcpy, fă rezultat suficient de mare: `char rezultat[50]`)
+4. Concatenează al_doilea la rezultat (folosește strcat)
+5. Afișează rezultat
 
 **Exemplu**
 

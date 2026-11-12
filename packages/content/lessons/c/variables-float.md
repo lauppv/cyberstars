@@ -1,4 +1,4 @@
-For numbers with **decimals** (like **3.14** or **1.75**), **int** is not enough. C has two types for decimal numbers: **float** and **double**
+For numbers with decimals (like 3.14 or 1.75), int is not enough. C has two types for decimal numbers: **float** and **double**
 
 ```c
 #include <stdio.h>
@@ -23,10 +23,10 @@ Output
 
 Two new format specifiers
 
-- **%f** → for a **float** or **double**
-- (you'll also see **%lf** in some C books, mostly for **scanf**, not for **printf**. **%f** works fine for both with **printf**)
+- **%f** → for a float or double
+- (you'll also see %lf in some C books, mostly for scanf, not for printf. %f works fine for both with printf)
 
-By default, **%f** prints **6 decimals**. If we want fewer, we can tell **printf** how many digits we want
+By default, %f prints **6 decimals**. If we want fewer, we can tell printf how many digits we want
 
 ```c
 #include <stdio.h>
@@ -46,18 +46,18 @@ Output
 3.1416
 ```
 
-The **.2** and **.4** between **%** and **f** mean "this many decimals". A small trick that makes the output much cleaner
+The **.2** and **.4** between % and f mean "this many decimals". A small trick that makes the output much cleaner
 
 ---
 
-What is the difference between **float** and **double**?
+What is the difference between float and double?
 
-- **float** uses less memory but keeps **fewer** correct digits
-- **double** uses more memory but keeps **more** precise values
+- **float** uses less memory but keeps fewer correct digits
+- **double** uses more memory but keeps more precise values
 
-In practice, **use double** unless you have a strong reason not to. **double** is the default type for decimal numbers in C
+In practice, **use double** unless you have a strong reason not to. double is the default type for decimal numbers in C
 
-Notice the **f** at the end of **3.14f** in the float example. This tells C "treat this as a float, not a double". Without the **f**, the value **3.14** would be a double. For **double** variables, you don't need any suffix
+Notice the f at the end of **3.14f** in the float example. This tells C "treat this as a float, not a double". Without the f, the value 3.14 would be a double. For double variables, you don't need any suffix
 
 ---
 
@@ -77,7 +77,7 @@ int main(void) {
 
 You'd expect **3.5**. But the output is **3.000000**. Why?
 
-Because **a / b** is computed **first**, with both **a** and **b** being ints. The result is **3** (integer division). Only **after** that, **3** is stored in **result** as **3.0**. By that point, the **.5** is already lost forever
+Because **a / b** is computed **first**, with both a and b being ints. The result is 3 (integer division). Only after that, 3 is stored in result as 3.0. By that point, the .5 is already lost forever
 
 To get the real answer, **at least one** of the operands must be a decimal
 
@@ -92,7 +92,7 @@ int main(void) {
 }
 ```
 
-Or we can use a **cast** to force one of them to be a double
+Or we can use a cast to force one of them to be a double
 
 ```c
 #include <stdio.h>
@@ -105,7 +105,7 @@ int main(void) {
 }
 ```
 
-**(double)** in front of **a** says "treat this as a double for this operation". This is called a **cast**, and it's a tool you'll use a lot in C
+**(double)** in front of a says "treat this as a double for this operation". This is called a **cast**, and it's a tool you'll use a lot in C
 
 ---
 
@@ -113,16 +113,16 @@ int main(void) {
 
 The computing center's machine room has a thermometer and a hygrometer connected to a teletype. Every shift, the operator reads the two values and logs them, rounded to 2 decimal places.
 
-Write a program that, inside **main**
+Write a program that, inside main
 
-- declares a **double** named **temperature**
-- declares a **double** named **humidity**
-- prints **temperature** on one line, with the label `Temperature: `, rounded to **2 decimals**
-- prints **humidity** on a separate line, with the label `Humidity: `, rounded to **2 decimals**
+- declares a double named temperature
+- declares a double named humidity
+- prints temperature on one line, with the label `Temperature: `, rounded to 2 decimals
+- prints humidity on a separate line, with the label `Humidity: `, rounded to 2 decimals
 
 **Example**
 
-For a **temperature** of 21.6 and a **humidity** of 45.5, your program would print something like
+For a temperature of 21.6 and a humidity of 45.5, your program would print something like
 
 ```text
 Temperature: 21.60
