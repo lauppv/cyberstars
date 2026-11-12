@@ -1,27 +1,27 @@
-Sometimes things go wrong. The user types a word when we expect a number. We try to access a list index that doesn't exist. We divide by zero. These things are called **errors** or **exceptions**, and they **crash** the program
+Sometimes things go wrong. The user types a word when we expect a number. We try to access a list index that doesn't exist. We divide by zero. These things are called errors or **exceptions**, and they crash the program
 
 ```py
 number = int("abc")
 ```
 
-**Run** it. **ValueError**. Python can't convert "abc" to a number
+Run it. **ValueError**. Python can't convert "abc" to a number
 
 ```py
 names = ["Tommy", "Lance"]
 print(names[10])
 ```
 
-**Run** it. **IndexError**. There's no element at position 10
+Run it. **IndexError**. There's no element at position 10
 
 ```py
 print(10 / 0)
 ```
 
-**Run** it. **ZeroDivisionError**. Math says no
+Run it. **ZeroDivisionError**. Math says no
 
 ---
 
-Until now, when an error happened, the program crashed and that was it. But in a real program, we don't want a crash. We want to **handle** the error gracefully and keep going
+Until now, when an error happened, the program crashed and that was it. But in a real program, we don't want a crash. We want to handle the error gracefully and keep going
 
 This is where **try** and **except** come in
 
@@ -35,7 +35,7 @@ except:
 
 Output **That's not a valid number**
 
-How it works: Python **tries** to run the code inside the **try** block. If everything goes well, it continues normally. If an error happens, instead of crashing, Python jumps to the **except** block and runs that code instead
+How it works: Python tries to run the code inside the try block. If everything goes well, it continues normally. If an error happens, instead of crashing, Python jumps to the except block and runs that code instead
 
 ```py
 try:
@@ -45,11 +45,11 @@ except:
     print("Please enter a number, not text!")
 ```
 
-If the user types **18**, everything works. If they type **hello**, we get a friendly message instead of a crash
+If the user types 18, everything works. If they type hello, we get a friendly message instead of a crash
 
 ---
 
-We can be **specific** about which error we want to catch
+We can be specific about which error we want to catch
 
 ```py
 try:
@@ -62,7 +62,7 @@ except ZeroDivisionError:
     print("Can't divide by zero!")
 ```
 
-If the user types text → **ValueError** is caught. If they type **0** → **ZeroDivisionError** is caught. Each error gets its own message. This is better than a generic **except** because we know exactly what went wrong
+If the user types text → ValueError is caught. If they type 0 → ZeroDivisionError is caught. Each error gets its own message. This is better than a generic except because we know exactly what went wrong
 
 ---
 
@@ -79,7 +79,7 @@ while True:
 print(f"Your age is {age}")
 ```
 
-The **while True** loop keeps running. If **int()** succeeds, we **break** out of the loop. If it fails, we print a message and the loop continues. This is a pattern you'll use a lot
+The **while True** loop keeps running. If int() succeeds, we break out of the loop. If it fails, we print a message and the loop continues. This is a pattern you'll use a lot
 
 ---
 
@@ -103,16 +103,16 @@ No errors, great!
 This always runs
 ```
 
-**else** and **finally** are optional. For now, **try** and **except** are the important ones
+else and finally are optional. For now, try and except are the important ones
 
 ---
 
 ## Mission: Sensor Cleanup
 
-The station receives a list of sensor readings as **strings**, stored in a variable named `readings`, but some are corrupted: they aren't numbers at all. Go through the list and, using **try/except**, turn each one into an integer:
+The station receives a list of sensor readings as strings, stored in a variable named `readings`, but some are corrupted: they aren't numbers at all. Go through the list and, using try/except, turn each one into an integer:
 
-- if it converts, add it to a running **total**
-- if `int()` raises a `ValueError`, count it as **corrupted** and move on (no crash)
+- if it converts, add it to a running total
+- if `int()` raises a `ValueError`, count it as corrupted and move on (no crash)
 
 At the end, print:
 

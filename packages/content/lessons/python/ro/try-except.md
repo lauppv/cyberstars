@@ -1,27 +1,27 @@
-Uneori lucrurile merg prost. Utilizatorul tastează un cuvânt când noi așteptăm un număr. Încercăm să accesăm un index dintr-o listă care nu există. Împărțim la zero. Aceste lucruri se numesc **erori** sau **excepții** și **prăbușesc** programul
+Uneori lucrurile merg prost. Utilizatorul tastează un cuvânt când noi așteptăm un număr. Încercăm să accesăm un index dintr-o listă care nu există. Împărțim la zero. Aceste lucruri se numesc erori sau **excepții** și prăbușesc programul
 
 ```py
 numar = int("abc")
 ```
 
-**Rulează**-l. **ValueError**. Python nu poate converti "abc" într-un număr
+Rulează-l. **ValueError**. Python nu poate converti "abc" într-un număr
 
 ```py
 nume = ["Tommy", "Lance"]
 print(nume[10])
 ```
 
-**Rulează**-l. **IndexError**. Nu există niciun element la poziția 10
+Rulează-l. **IndexError**. Nu există niciun element la poziția 10
 
 ```py
 print(10 / 0)
 ```
 
-**Rulează**-l. **ZeroDivisionError**. Matematica zice nu
+Rulează-l. **ZeroDivisionError**. Matematica zice nu
 
 ---
 
-Până acum, când apărea o eroare, programul se prăbușea și gata. Dar într-un program real, nu vrem o prăbușire. Vrem să **gestionăm** eroarea elegant și să mergem mai departe
+Până acum, când apărea o eroare, programul se prăbușea și gata. Dar într-un program real, nu vrem o prăbușire. Vrem să gestionăm eroarea elegant și să mergem mai departe
 
 Aici intervin **try** și **except**
 
@@ -35,7 +35,7 @@ except:
 
 Rezultat **Acela nu e un număr valid**
 
-Cum funcționează: Python **încearcă** (try) să ruleze codul din blocul **try**. Dacă totul merge bine, continuă normal. Dacă apare o eroare, în loc să se prăbușească, Python sare la blocul **except** și rulează acel cod în schimb
+Cum funcționează: Python încearcă (try) să ruleze codul din blocul try. Dacă totul merge bine, continuă normal. Dacă apare o eroare, în loc să se prăbușească, Python sare la blocul except și rulează acel cod în schimb
 
 ```py
 try:
@@ -45,11 +45,11 @@ except:
     print("Te rog introdu un numar, nu text!")
 ```
 
-Dacă utilizatorul tastează **18**, totul funcționează. Dacă tastează **hello**, primim un mesaj prietenos în loc de o prăbușire
+Dacă utilizatorul tastează 18, totul funcționează. Dacă tastează hello, primim un mesaj prietenos în loc de o prăbușire
 
 ---
 
-Putem fi **specifici** în privința erorii pe care vrem să o prindem
+Putem fi specifici în privința erorii pe care vrem să o prindem
 
 ```py
 try:
@@ -62,7 +62,7 @@ except ZeroDivisionError:
     print("Nu poti imparti la zero!")
 ```
 
-Dacă utilizatorul tastează text → este prinsă o **ValueError**. Dacă tastează **0** → este prinsă o **ZeroDivisionError**. Fiecare eroare primește propriul mesaj. Asta e mai bine decât un **except** generic, pentru că știm exact ce a mers prost
+Dacă utilizatorul tastează text → este prinsă o ValueError. Dacă tastează 0 → este prinsă o ZeroDivisionError. Fiecare eroare primește propriul mesaj. Asta e mai bine decât un except generic, pentru că știm exact ce a mers prost
 
 ---
 
@@ -79,7 +79,7 @@ while True:
 print(f"Varsta ta este {varsta}")
 ```
 
-Bucla **while True** continuă să ruleze. Dacă **int()** reușește, **ieșim** (break) din buclă. Dacă eșuează, afișăm un mesaj și bucla continuă. Este un tipar pe care îl vei folosi mult
+Bucla **while True** continuă să ruleze. Dacă int() reușește, ieșim (break) din buclă. Dacă eșuează, afișăm un mesaj și bucla continuă. Este un tipar pe care îl vei folosi mult
 
 ---
 
@@ -103,16 +103,16 @@ Nicio eroare, super!
 Asta ruleaza mereu
 ```
 
-**else** și **finally** sunt opționale. Deocamdată, **try** și **except** sunt cele importante
+else și finally sunt opționale. Deocamdată, try și except sunt cele importante
 
 ---
 
 ## Misiune: Curățarea Senzorilor
 
-Stația primește o listă de citiri de senzori sub formă de **string-uri**, păstrată într-o variabilă numită `citiri`, dar unele sunt corupte: nu sunt deloc numere. Parcurge lista și, folosind **try/except**, transformă fiecare element într-un întreg:
+Stația primește o listă de citiri de senzori sub formă de string-uri, păstrată într-o variabilă numită `citiri`, dar unele sunt corupte: nu sunt deloc numere. Parcurge lista și, folosind try/except, transformă fiecare element într-un întreg:
 
-- dacă se convertește, adaugă-l la un **total** curent
-- dacă `int()` aruncă o `ValueError`, numără-l drept **corupt** și mergi mai departe (fără prăbușire)
+- dacă se convertește, adaugă-l la un total curent
+- dacă `int()` aruncă o `ValueError`, numără-l drept corupt și mergi mai departe (fără prăbușire)
 
 La final, afișează:
 
