@@ -1,6 +1,6 @@
 Cea mai puternică utilizare a semaforului nu e ca mutex, ci ca **semnal** între fire. Trucul: inițializăm semaforul cu **0**. Astfel, `sem_wait` blochează imediat, până când un alt fir face `sem_post`.
 
-Schema e utilă când vrem ca un fir să aștepte un **eveniment** de la altul: un rezultat pregătit, o intrare disponibilă, o comandă terminată. Diferit de mutex, unde ambele fire "concurează" pentru resursă, aici avem o relație clară: unul așteaptă, celălalt semnalează.
+Schema e utilă când vrem ca un fir să aștepte un eveniment de la altul: un rezultat pregătit, o intrare disponibilă, o comandă terminată. Diferit de mutex, unde ambele fire "concurează" pentru resursă, aici avem o relație clară: unul așteaptă, celălalt semnalează.
 
 ```c
 #include <stdio.h>
@@ -34,7 +34,7 @@ int main(void) {
 }
 ```
 
-Poți zice: "Dar `pthread_join` face același lucru: așteaptă firul." Corect, aici `pthread_join` ar fi fost destul. Semaforul strălucește când vrem să **așteptăm un moment intermediar** din execuția firului (nu terminarea totală), sau când firul rulează într-o buclă infinită și niciodată nu se termină de tot.
+Poți zice: "Dar `pthread_join` face același lucru: așteaptă firul." Corect, aici `pthread_join` ar fi fost destul. Semaforul strălucește când vrem să așteptăm un moment intermediar din execuția firului (nu terminarea totală), sau când firul rulează într-o buclă infinită și niciodată nu se termină de tot.
 
 ---
 
@@ -51,9 +51,9 @@ Pattern-ul e fundamentul multor cozi de mesaje și pipeline-uri.
 
 ## Misiune: Așteaptă rezultatul
 
-Un fir "lucrător" trebuie să calculeze suma numerelor **1 până la 10** și să o pună într-o variabilă globală. Firul principal așteaptă semnalul, apoi tipărește rezultatul.
+Un fir "lucrător" trebuie să calculeze suma numerelor 1 până la 10 și să o pună într-o variabilă globală. Firul principal așteaptă semnalul, apoi tipărește rezultatul.
 
-1. Declară un semafor `gata` inițializat cu **0**.
+1. Declară un semafor `gata` inițializat cu 0.
 2. Firul lucrător calculează `1 + 2 + ... + 10` și îl scrie în variabila globală `suma`. Apoi face `sem_post(&gata)`.
 3. Firul principal face `sem_wait(&gata)`, apoi tipărește `Suma: 55`.
 4. La sfârșit, `pthread_join` pe firul lucrător și `sem_destroy` pe semafor.
@@ -66,4 +66,4 @@ Suma: 55
 
 Rezultatul e deterministic: firul principal nu poate tipări valoarea până când lucrătorul nu a scris-o și nu a semnalat.
 
-Folosește `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` din **<semaphore.h>**, și `pthread_create`, `pthread_join` din **<pthread.h>**.
+Folosește `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` din <semaphore.h>, și `pthread_create`, `pthread_join` din <pthread.h>.

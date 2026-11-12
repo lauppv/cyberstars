@@ -1,6 +1,6 @@
 When you pass a variable to a function, the function receives a **copy**. Pointers let us do something special: **pass by reference**
 
-First, let's look at the problem. This function tries to swap two numbers but **fails**
+First, let's look at the problem. This function tries to swap two numbers but fails
 
 ```c
 #include <stdio.h>
@@ -25,7 +25,7 @@ Output
 x = 10, y = 20
 ```
 
-Nothing happened! The function swapped its **local copies**, but the original **x** and **y** never changed. The copies were destroyed when the function ended
+Nothing happened! The function swapped its **local copies**, but the original x and y never changed. The copies were destroyed when the function ended
 
 ---
 
@@ -54,7 +54,7 @@ Output
 x = 20, y = 10
 ```
 
-Now it works. We passed the **addresses** of x and y. The function followed those addresses and changed the real values. This is **pass by reference**, the most important use of pointers
+Now it works. We passed the addresses of x and y. The function followed those addresses and changed the real values. This is pass by reference, the most important use of pointers
 
 ---
 
@@ -110,11 +110,11 @@ The function "returns" both the minimum and the maximum through pointers. This i
 
 ## Mission: The Signal Amplifier
 
-At the computing center, a signal translator reads a raw value off a magnetic tape. The amplifier needs to **triple** it before sending it onward, but direct access to the variable isn't allowed, only through a pointer.
+At the computing center, a signal translator reads a raw value off a magnetic tape. The amplifier needs to triple it before sending it onward, but direct access to the variable isn't allowed, only through a pointer.
 
-1. Read an **int** **signal** from input
-2. Write a function **triple_it** that takes a **pointer to int** and triples the value it points to
-3. Call **triple_it(&signal)** from **main**
+1. Read an int signal from input
+2. Write a function **triple_it** that takes a pointer to int and triples the value it points to
+3. Call triple_it(&signal) from main
 4. Print the result
 
 **Example**

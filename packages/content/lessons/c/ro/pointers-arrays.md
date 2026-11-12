@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-**numere** este în esență un pointer către primul element. **p + 1** nu adaugă 1 byte, ci se mută la **următorul int** (4 bytes înainte). Aceasta se numește **aritmetică de pointeri**, și C se ocupă automat de mărime în funcție de tip
+numere este în esență un pointer către primul element. **p + 1** nu adaugă 1 byte, ci se mută la **următorul int** (4 bytes înainte). Aceasta se numește **aritmetică de pointeri**, și C se ocupă automat de mărime în funcție de tip
 
 ---
 
@@ -31,11 +31,11 @@ int main(void) {
 }
 ```
 
-De aceea indicii tablourilor încep de la **0** în C. Primul element este la offset-ul **0** de la început: **\*(tablou + 0)** este **\*tablou** este **tablou[0]**
+De aceea indicii tablourilor încep de la 0 în C. Primul element este la offset-ul 0 de la început: **\*(tablou + 0)** este **\*tablou** este **tablou[0]**
 
 ---
 
-Putem și **parcurge** un tablou cu un pointer
+Putem și parcurge un tablou cu un pointer
 
 ```c
 #include <stdio.h>
@@ -53,11 +53,11 @@ int main(void) {
 }
 ```
 
-**p++** avansează pointerul cu un element (un int înainte). Este echivalent cu bucla clasică **numere[i]** dar îți arată ce se întâmplă sub capotă
+**p++** avansează pointerul cu un element (un int înainte). Este echivalent cu bucla clasică numere[i] dar îți arată ce se întâmplă sub capotă
 
 ---
 
-Îți amintești când am spus că transmiterea unui tablou către o funcție face **sizeof** să nu mai funcționeze? Acum înțelegi **de ce**. Când scrii
+Îți amintești când am spus că transmiterea unui tablou către o funcție face sizeof să nu mai funcționeze? Acum înțelegi de ce. Când scrii
 
 ```text
 void afiseaza(int tablou[]) { }
@@ -69,18 +69,18 @@ compilatorul vede de fapt
 void afiseaza(int *tablou) { }
 ```
 
-Tabloul **decade** într-un pointer. Funcția primește doar adresa primului element: **nu are nicio idee** cât de mare este tabloul. De aceea transmitem mereu **mărimea** ca parametru separat
+Tabloul decade într-un pointer. Funcția primește doar adresa primului element: nu are nicio idee cât de mare este tabloul. De aceea transmitem mereu **mărimea** ca parametru separat
 
 ---
 
 ## Misiune: Sumatorul buffer-ului de bandă
 
-Un buffer brut de memorie a fost citit de pe bandă magnetică: mai întâi mărimea lui, apoi valorile propriu-zise. Scrie o funcție care parcurge buffer-ul folosind **aritmetica de pointeri** și returnează suma tuturor valorilor.
+Un buffer brut de memorie a fost citit de pe bandă magnetică: mai întâi mărimea lui, apoi valorile propriu-zise. Scrie o funcție care parcurge buffer-ul folosind aritmetica de pointeri și returnează suma tuturor valorilor.
 
-1. Citește un întreg **n**, apoi **n** numere întregi, într-un tablou **numere**
-2. Scrie o funcție **suma_tablou** care primește un **pointer la int** și o **mărime**, și returnează **suma** tuturor elementelor
-3. Folosește **aritmetică de pointeri** în interiorul funcției: accesează elementele cu **\*(ptr + i)** în loc de **ptr[i]**
-4. În **main**, apelează **suma_tablou** și afișează rezultatul
+1. Citește un întreg n, apoi n numere întregi, într-un tablou numere
+2. Scrie o funcție suma_tablou care primește un pointer la int și o mărime, și returnează suma tuturor elementelor
+3. Folosește aritmetică de pointeri în interiorul funcției: accesează elementele cu \*(ptr + i) în loc de ptr[i]
+4. În main, apelează suma_tablou și afișează rezultatul
 
 **Exemplu**
 

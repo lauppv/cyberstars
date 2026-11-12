@@ -1,8 +1,8 @@
-A **process** is a whole program with its own memory. But sometimes we want multiple things happening at the same time **within the same program**, sharing the same memory. That's what **threads** are
+A process is a whole program with its own memory. But sometimes we want multiple things happening at the same time within the same program, sharing the same memory. That's what **threads** are
 
-A thread is like a **lightweight process**. Multiple threads inside one process share the same heap, global variables, and code, but each has its **own stack** (its own local variables)
+A thread is like a lightweight process. Multiple threads inside one process share the same heap, global variables, and code, but each has its **own stack** (its own local variables)
 
-Think of it this way: a **process** is a kitchen (separate space, separate utensils). A **thread** is a cook inside the kitchen. Multiple cooks (threads) share the same kitchen (process), using the same ingredients (memory), but each follows their own recipe (stack)
+Think of it this way: a process is a kitchen (separate space, separate utensils). A thread is a cook inside the kitchen. Multiple cooks (threads) share the same kitchen (process), using the same ingredients (memory), but each follows their own recipe (stack)
 
 ---
 
@@ -32,13 +32,13 @@ int main(void) {
 }
 ```
 
-**pthread_create** starts a new thread running the function **say_hello**. The last argument is passed to the function. **pthread_join** waits for the thread to finish, like **wait()** for processes
+**pthread_create** starts a new thread running the function say_hello. The last argument is passed to the function. **pthread_join** waits for the thread to finish, like wait() for processes
 
-The function signature is special: it takes a **void \*** and returns a **void \***. That's the pthread convention: **void \*** is C's "generic pointer" that can point to anything
+The function signature is special: it takes a void \* and returns a void \*. That's the pthread convention: **void \*** is C's "generic pointer" that can point to anything
 
 ---
 
-Why threads instead of processes? **Speed**. Creating a thread is much faster than forking a process. And threads share memory, so they can communicate without pipes. But this comes with a price: **shared memory is dangerous**
+Why threads instead of processes? Speed. Creating a thread is much faster than forking a process. And threads share memory, so they can communicate without pipes. But this comes with a price: **shared memory is dangerous**
 
 ```c
 #include <stdio.h>
@@ -67,7 +67,7 @@ int main(void) {
 }
 ```
 
-You'd expect **200000**, but run it a few times and you might get different numbers each time! This is a **race condition**: both threads are modifying **counter** simultaneously, and their operations can interfere with each other
+You'd expect **200000**, but run it a few times and you might get different numbers each time! This is a **race condition**: both threads are modifying counter simultaneously, and their operations can interfere with each other
 
 ---
 
@@ -100,11 +100,11 @@ int main(void) {
 }
 ```
 
-Now **counter** will always be exactly 200000. The mutex ensures only one thread touches counter at a time. But there's a tradeoff: locking/unlocking is slower. The art of multithreading is minimizing the time you hold locks
+Now counter will always be exactly 200000. The mutex ensures only one thread touches counter at a time. But there's a tradeoff: locking/unlocking is slower. The art of multithreading is minimizing the time you hold locks
 
 ---
 
-When to use **threads** vs **processes**:
+When to use threads vs processes:
 
 - **Threads**: shared memory needed, lightweight, same program doing parallel work (web server handling requests, video game updating physics and rendering)
 - **Processes**: isolation needed, safety (a crash in one process doesn't kill the other), running different programs
@@ -115,9 +115,9 @@ When to use **threads** vs **processes**:
 
 The computing center is testing two teleprinters connected to the mainframe at the same time. Each runs on its own thread, repeating its test signal. The operator waits for both to finish before confirming the test.
 
-1. Create **two threads**, passing **"Ping"** to the first and **"Pong"** to the second
-2. Each thread prints its string **3 times**
-3. The main thread waits for both to finish, then prints **"Test complete"**
+1. Create two threads, passing "Ping" to the first and "Pong" to the second
+2. Each thread prints its string 3 times
+3. The main thread waits for both to finish, then prints "Test complete"
 
 **Example**
 
@@ -133,4 +133,4 @@ Pong
 Test complete
 ```
 
-The order of the Ping and Pong lines may vary, but **"Test complete"** must always be last
+The order of the Ping and Pong lines may vary, but "Test complete" must always be last
