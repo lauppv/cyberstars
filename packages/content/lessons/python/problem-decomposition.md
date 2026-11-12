@@ -1,6 +1,6 @@
-Welcome to the second part of the Python curriculum. Until now, we learned the **tools**: variables, loops, functions, lists, dictionaries. Now we learn how to **think** with them
+Welcome to the second part of the Python curriculum. Until now, we learned the tools: variables, loops, functions, lists, dictionaries. Now we learn how to think with them
 
-The most important skill in programming is not knowing the syntax. It's knowing how to **break a problem into smaller steps**. This is called **decomposition**
+The most important skill in programming is not knowing the syntax. It's knowing how to break a problem into smaller steps. This is called **decomposition**
 
 ---
 
@@ -48,12 +48,12 @@ Output **Most common: the (3 times)**
 
 ---
 
-Each step is simple on its own. The trick is **not trying to solve everything at once**. Instead:
+Each step is simple on its own. The trick is not trying to solve everything at once. Instead:
 
-1. **Understand** what the problem is asking
-2. **Break** it into smaller sub-problems
-3. **Solve** each sub-problem one at a time
-4. **Combine** the solutions
+1. Understand what the problem is asking
+2. Break it into smaller sub-problems
+3. Solve each sub-problem one at a time
+4. Combine the solutions
 
 This is how professional programmers think. Nobody writes a program in one go. They build it piece by piece, testing each piece along the way
 
@@ -90,11 +90,11 @@ Why **range(i + 1, len(numbers))**? Because we don't want to pair a number with 
 
 ## Mission: Log Analyzer
 
-The station log, stored in a variable named log, is a single string of event codes separated by spaces. **Break the work into three functions**, then use them together:
+The station log, stored in a variable named log, is a single string of event codes separated by spaces. Break the work into three functions, then use them together:
 
-1. `split_codes(log)`: returns the **list** of codes (use `.split(" ")`)
-2. `count_codes(codes)`: returns a **dictionary** mapping each code to how many times it appears
-3. `most_common(counts)`: returns the code with the **highest** count
+1. `split_codes(log)`: returns the list of codes (use `.split(" ")`)
+2. `count_codes(codes)`: returns a dictionary mapping each code to how many times it appears
+3. `most_common(counts)`: returns the code with the highest count
 
 In the main program, call the functions in order, then print:
 

@@ -1,14 +1,14 @@
-Ultimul nostru mini-proiect: un **manager de listă de sarcini**. O să construim funcții ca să **adăugăm**, **eliminăm**, **marcăm ca terminate**, și **afișăm** sarcini. Asta leagă tot la un loc: **liste**, **dicționare**, **funcții**, **bucle**, **if/else**, și **formatarea șirurilor**
+Ultimul nostru mini-proiect: un manager de listă de sarcini. O să construim funcții ca să adăugăm, eliminăm, marcăm ca terminate, și afișăm sarcini. Asta leagă tot la un loc: liste, dicționare, funcții, bucle, if/else, și formatarea șirurilor
 
 ---
 
-Fiecare sarcină este un dicționar cu un **nume** și o stare **terminat**
+Fiecare sarcină este un dicționar cu un nume și o stare terminat
 
 ```py
 sarcina = {"nume": "Invata Python", "terminat": False}
 ```
 
-Lista noastră de sarcini este o **listă** din aceste dicționare
+Lista noastră de sarcini este o listă din aceste dicționare
 
 ```py
 sarcini = [
@@ -93,11 +93,11 @@ Ieșire
 1. [neterminat] Incepe curriculumul de Java
 ```
 
-Fiecare funcție face **un singur lucru** și îl face bine. Acesta este un principiu de bază al programării bune. Funcțiile sunt mici, ușor de înțeles, și ușor de testat
+Fiecare funcție face un singur lucru și îl face bine. Acesta este un principiu de bază al programării bune. Funcțiile sunt mici, ușor de înțeles, și ușor de testat
 
 ---
 
-O funcție de **numărare** este și ea utilă
+O funcție de numărare este și ea utilă
 
 ```py
 def numara_finalizate(sarcini):
@@ -115,7 +115,7 @@ def numara_nefinalizate(sarcini):
 
 ## Misiune: Tabla de Sarcini a Misiunii
 
-Echipajul își urmărește munca pe o tablă de sarcini comună. Vei **citi sarcinile de la tastatură**, vei construi tabla, vei marca unele ca terminate, apoi o afișezi. Fiecare sarcină este un dicționar cu un `nume` și o stare `terminat`, iar tabla este o listă din aceste dicționare.
+Echipajul își urmărește munca pe o tablă de sarcini comună. Vei citi sarcinile de la tastatură, vei construi tabla, vei marca unele ca terminate, apoi o afișezi. Fiecare sarcină este un dicționar cu un `nume` și o stare `terminat`, iar tabla este o listă din aceste dicționare.
 
 Scrie trei funcții:
 
@@ -125,9 +125,9 @@ Scrie trei funcții:
 
 Apoi:
 
-1. Citește un număr **N**, apoi citește **N nume de sarcini** (câte unul pe linie) și adaugă fiecare în tablă.
-2. Citește încă o linie cu **indecșii de finalizat**, separați prin spații (de exemplu `0 2`), și marchează fiecare dintre acele sarcini ca terminată.
-3. **Afișează** tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[in asteptare]`, apoi numele sarcinii.
+1. Citește un număr N, apoi citește N nume de sarcini (câte unul pe linie) și adaugă fiecare în tablă.
+2. Citește încă o linie cu indecșii de finalizat, separați prin spații (de exemplu `0 2`), și marchează fiecare dintre acele sarcini ca terminată.
+3. Afișează tabla: pentru fiecare sarcină afișează indexul ei, apoi `. `, apoi `[terminat]` sau `[in asteptare]`, apoi numele sarcinii.
 4. La final afișează `Finalizat: ` urmat de numărul de sarcini terminate, un `/`, și totalul.
 
 **Intrare:**

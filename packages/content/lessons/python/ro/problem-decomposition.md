@@ -1,6 +1,6 @@
-Bun venit la a doua parte a curriculumului de Python. Până acum, am învățat **uneltele**: variabile, bucle, funcții, liste, dicționare. Acum învățăm cum să **gândim** cu ele
+Bun venit la a doua parte a curriculumului de Python. Până acum, am învățat uneltele: variabile, bucle, funcții, liste, dicționare. Acum învățăm cum să gândim cu ele
 
-Cea mai importantă abilitate în programare nu este să cunoști sintaxa. Este să știi cum să **împarți o problemă în pași mai mici**. Asta se numește **descompunere**
+Cea mai importantă abilitate în programare nu este să cunoști sintaxa. Este să știi cum să împarți o problemă în pași mai mici. Asta se numește **descompunere**
 
 ---
 
@@ -48,12 +48,12 @@ Rezultat **Cel mai frecvent: pisica (3 ori)**
 
 ---
 
-Fiecare pas este simplu în sine. Trucul este să **nu încerci să rezolvi totul dintr-o dată**. În schimb:
+Fiecare pas este simplu în sine. Trucul este să nu încerci să rezolvi totul dintr-o dată. În schimb:
 
-1. **Înțelege** ce cere problema
-2. **Împarte-o** în sub-probleme mai mici
-3. **Rezolvă** fiecare sub-problemă pe rând
-4. **Combină** soluțiile
+1. Înțelege ce cere problema
+2. Împarte-o în sub-probleme mai mici
+3. Rezolvă fiecare sub-problemă pe rând
+4. Combină soluțiile
 
 Așa gândesc programatorii profesioniști. Nimeni nu scrie un program dintr-o singură mișcare. Îl construiesc bucată cu bucată, testând fiecare bucată pe parcurs
 
@@ -90,11 +90,11 @@ De ce **range(i + 1, len(numere))**? Pentru că nu vrem să formăm o pereche di
 
 ## Misiune: Analizatorul de Jurnal
 
-Jurnalul stației, stocat într-o variabilă numită jurnal, este un singur șir de coduri de eveniment separate prin spații. **Împarte munca în trei funcții**, apoi folosește-le împreună:
+Jurnalul stației, stocat într-o variabilă numită jurnal, este un singur șir de coduri de eveniment separate prin spații. Împarte munca în trei funcții, apoi folosește-le împreună:
 
-1. `desparte_coduri(jurnal)`: returnează **lista** de coduri (folosește `.split(" ")`)
-2. `numara_coduri(coduri)`: returnează un **dicționar** care asociază fiecărui cod de câte ori apare
-3. `cel_mai_frecvent(contor)`: returnează codul cu numărul **cel mai mare**
+1. `desparte_coduri(jurnal)`: returnează lista de coduri (folosește `.split(" ")`)
+2. `numara_coduri(coduri)`: returnează un dicționar care asociază fiecărui cod de câte ori apare
+3. `cel_mai_frecvent(contor)`: returnează codul cu numărul cel mai mare
 
 În programul principal, apelează funcțiile în ordine, apoi afișează:
 
