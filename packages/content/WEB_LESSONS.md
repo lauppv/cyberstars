@@ -33,6 +33,7 @@ Open with a problem or a moment from real life, then show how the new idea solve
 ## 4. Small steps you can see
 
 - Each idea gets its own small code block: a few lines, never a whole page when one element makes the point.
+- HTML and CSS examples are preview cells: ` ```html preview ` or ` ```css preview `. The block holds a whole small page, and the page it makes shows under it, so no ` ```text ` block describes it. The part the lesson is about goes between `<!-- show -->` and `<!-- /show -->` (or `/* show */` and `/* /show */` inside a `<style>`): only that part shows until the student presses View all the code, and the rest is just what that part needs to be seen. The rest uses only what has been taught by then, since the student can read it. A block whose whole code is the point has no markers.
 - Right after a block, say what the student will see: what the page shows, or the console's output in a ` ```text ` block, like Python's `Output:`.
 - Then change one thing and show the new result. Python's `variables-str` prints three names, then shows the same code with one name changed.
 - Tell the student to try it in the editor on the right: "Type this in `index.html` and look at the preview."
@@ -84,7 +85,7 @@ Before a lesson goes for review, every answer is yes:
 1. Does it introduce exactly one new idea?
 2. Does it open with something from real life, or a problem the student already has?
 3. Would a 14-year-old understand every sentence on the first read?
-4. Does every idea have its own small example, with what you see right after it?
+4. Does every idea have its own small example, with what you see right after it? Is every HTML and CSS example a preview cell?
 5. Is there at least one wrong version, with what happens?
 6. Is every tag, property, word and function in it taught in this lesson or an earlier one?
 7. Does the mission say where you start and show what done looks like?
