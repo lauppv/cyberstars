@@ -2,11 +2,20 @@ Pour too much juice in a glass and it spills over the top. Put too much text in 
 
 ## `overflow`
 
-```css
-.note {
-  max-height: 100px;
-  overflow: auto;
-}
+```css preview
+<style>
+  .note {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .note {
+    max-height: 100px;
+    overflow: auto;
+  }
+  /* /show */
+</style>
+<p class="note">Rules of the pool: shower before you swim. No running on the tiles. No glass by the water. Children under eight swim with a grown-up. The deep end is for people who can swim a full length. Lifeguards have the last word. Lost and found is at the desk.</p>
 ```
 
 The note is at most 100 pixels tall. If its text is longer, `overflow` decides what to do with the rest:
@@ -22,22 +31,40 @@ The note is at most 100 pixels tall. If its text is longer, `overflow` decides w
 
 `overflow-y` is only for up and down, `overflow-x` only for left and right:
 
-```css
-.note {
-  max-height: 100px;
-  overflow-y: auto;
-}
+```css preview
+<style>
+  .note {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .note {
+    max-height: 100px;
+    overflow-y: auto;
+  }
+  /* /show */
+</style>
+<p class="note">Rules of the pool: shower before you swim. No running on the tiles. No glass by the water. Children under eight swim with a grown-up. The deep end is for people who can swim a full length. Lifeguards have the last word. Lost and found is at the desk.</p>
 ```
 
 ## Break it on purpose
 
 Use `hidden` on a box of text:
 
-```css
-.note {
-  max-height: 100px;
-  overflow: hidden;
-}
+```css preview
+<style>
+  .note {
+    background-color: lightyellow;
+  }
+
+  /* show */
+  .note {
+    max-height: 100px;
+    overflow: hidden;
+  }
+  /* /show */
+</style>
+<p class="note">Rules of the pool: shower before you swim. No running on the tiles. No glass by the water. Children under eight swim with a grown-up. The deep end is for people who can swim a full length. Lifeguards have the last word. Lost and found is at the desk.</p>
 ```
 
 The end of the text is simply gone. Nobody knows there was more, and nobody can read it. `hidden` is for things you really want cut, like a picture's edges, never for text people need.

@@ -2,10 +2,33 @@ Look at the buttons and cards in the apps on your phone. Hardly any have sharp c
 
 ## `border-radius`
 
-```css
-.member {
-  border-radius: 12px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* show */
+  .member {
+    border-radius: 12px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 Each corner of the box becomes a curve. The number is the size of the curve: the bigger it is, the rounder the corner.
@@ -22,10 +45,32 @@ It rounds everything: the background, the border, and the box's shadow, as you'l
 
 Each corner has its own property, like `border-top-left-radius`, or four values in one, going round the clock from the top left:
 
-```css
-.tab {
-  border-radius: 12px 12px 0 0;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .tab {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #1e3a5f;
+  }
+
+  .panel {
+    padding: 16px;
+    background-color: #1e3a5f;
+  }
+
+  /* show */
+  .tab {
+    border-radius: 12px 12px 0 0;
+  }
+  /* /show */
+</style>
+<div class="tab">Games</div>
+<div class="panel">Chess, cards and puzzles.</div>
 ```
 
 Rounded at the top, square at the bottom, like a folder's tab.
