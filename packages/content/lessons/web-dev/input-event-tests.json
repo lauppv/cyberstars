@@ -1,0 +1,114 @@
+{
+  "cases": [
+    {
+      "name": "The pass shows the name as it's typed, with no click",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Ida Moreau",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The counter follows the notes",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#notes-left",
+          "equals": "200 characters left",
+          "label": "the counter under the notes box at the start (#notes-left)"
+        },
+        {
+          "fill": "#notes",
+          "text": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "190 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The seat still shows",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label[for=\"seat-window\"]",
+          "label": "the label of the window seat"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "window",
+          "label": "the seat on the pass (#pass-seat)"
+        }
+      ]
+    },
+    {
+      "name": "Other notes and names, changed again",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Window seat, please",
+          "label": "the notes box"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "181 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        },
+        {
+          "fill": "#notes",
+          "text": "",
+          "label": "the notes box"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "200 characters left",
+          "label": "the counter under the notes box once the box is emptied (#notes-left)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Oliver Grant",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Oliver Grant",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Oliver",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Oliver",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}
