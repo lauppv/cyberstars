@@ -20,7 +20,7 @@ Think of tiles on a bathroom wall. Each tile is a little box with its own size, 
   /* show */
   .member {
     display: inline-block;
-    width: 200px;
+    width: 130px;
   }
   /* /show */
 </style>
@@ -68,7 +68,7 @@ They line up along the bottom of their text by default, so boxes of different he
   .member {
     display: inline-block;
     vertical-align: top;
-    width: 200px;
+    width: 130px;
   }
   /* /show */
 </style>
