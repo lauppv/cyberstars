@@ -1,0 +1,116 @@
+{
+  "cases": [
+    {
+      "name": "The form goes to the station's booking address",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "attr": "form:has(#passenger)",
+          "name": "action",
+          "equals": "https://station.example/book",
+          "label": "the booking form"
+        }
+      ]
+    },
+    {
+      "name": "The booking stays out of the address bar",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "attr": "form:has(#passenger)",
+          "name": "method",
+          "equals": "post",
+          "ignoreCase": true,
+          "label": "the booking form"
+        }
+      ]
+    },
+    {
+      "name": "The form still sends a whole booking",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Ida Moreau",
+            "email": "ida@example.com",
+            "flight": "SL-101",
+            "date": "2031-05-14"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Another passenger",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "noah.berg@mail.example",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2032-01-09",
+          "label": "the date box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Noah Berg",
+            "email": "noah.berg@mail.example",
+            "flight": "SL-104",
+            "date": "2032-01-09"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "cases": [
+    {
+      "name": "The form has the id booking",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "form#booking #passenger",
+          "label": "the booking form with the id booking"
+        }
+      ]
+    },
+    {
+      "name": "A group for someone to call on Earth",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "fieldset:has(#contact-name):has(#contact-phone)",
+          "label": "a group (fieldset) that holds the contact's name and phone"
+        },
+        {
+          "text": "fieldset:has(#contact-name):has(#contact-phone) > legend",
+          "nonEmpty": true,
+          "label": "a question (legend) over the contact's group"
+        },
+        {
+          "exists": "input#contact-phone[type=\"tel\" i]",
+          "label": "a box for a phone number with the id contact-phone"
+        },
+        {
+          "click": "label[for=\"contact-name\"], label:has(#contact-name)",
+          "label": "the label of the contact name box"
+        },
+        {
+          "exists": "#contact-name:focus",
+          "label": "the contact name box, ready to type in after a click on its label"
+        },
+        {
+          "click": "label[for=\"contact-phone\"], label:has(#contact-phone)",
+          "label": "the label of the contact phone box"
+        },
+        {
+          "exists": "#contact-phone:focus",
+          "label": "the contact phone box, ready to type in after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "The contact's name stops at 40 characters",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#contact-name",
+          "text": "Sofia Isabella Lind-Moreau of Oslo and Porto",
+          "label": "the contact name box"
+        },
+        {
+          "value": "#contact-name",
+          "equals": "Sofia Isabella Lind-Moreau of Oslo and P",
+          "label": "the contact name box after typing more than 40 characters"
+        }
+      ]
+    },
+    {
+      "name": "The contact can be left empty",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Ida Moreau",
+            "email": "ida@example.com",
+            "flight": "SL-101",
+            "date": "2031-05-14"
+          }
+        }
+      ]
+    },
+    {
+      "name": "A whole booking is sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#phone",
+          "text": "+33 6 12 34 56 78",
+          "label": "the phone box"
+        },
+        {
+          "fill": "#bags",
+          "text": "2",
+          "label": "the bags box"
+        },
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"window\"]), input[name=\"seat\"][value=\"window\"] + label, label:has(+ input[name=\"seat\"][value=\"window\"])",
+          "label": "the label of the window seat"
+        },
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"meal\"]), input[name=\"extras\"][value=\"meal\"] + label, label:has(+ input[name=\"extras\"][value=\"meal\"])",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "fill": "#notes",
+          "text": "I get cold.",
+          "label": "the notes box"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "Lena Park",
+          "label": "the contact name box"
+        },
+        {
+          "fill": "#contact-phone",
+          "text": "+44 20 7946 0000",
+          "label": "the contact phone box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Ida Moreau",
+            "email": "ida@example.com",
+            "flight": "SL-101",
+            "date": "2031-05-14"
+          }
+        },
+        {
+          "sent": {
+            "phone": "+33 6 12 34 56 78",
+            "bags": "2",
+            "seat": "window",
+            "extras": "meal",
+            "notes": "I get cold.",
+            "contact-name": "Lena Park",
+            "contact-phone": "+44 20 7946 0000"
+          }
+        },
+        {
+          "sent": {
+            "extras": "wifi"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Another whole booking",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "noah.berg@mail.example",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2032-01-09",
+          "label": "the date box"
+        },
+        {
+          "fill": "#phone",
+          "text": "555 0199",
+          "label": "the phone box"
+        },
+        {
+          "fill": "#bags",
+          "text": "1",
+          "label": "the bags box"
+        },
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"aisle\"]), input[name=\"seat\"][value=\"aisle\"] + label, label:has(+ input[name=\"seat\"][value=\"aisle\"])",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "click": "label:has(input[name=\"extras\"][value=\"blanket\"]), input[name=\"extras\"][value=\"blanket\"] + label, label:has(+ input[name=\"extras\"][value=\"blanket\"])",
+          "label": "the label of the blanket box"
+        },
+        {
+          "fill": "#notes",
+          "text": "First flight!",
+          "label": "the notes box"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "Clara Diaz",
+          "label": "the contact name box"
+        },
+        {
+          "fill": "#contact-phone",
+          "text": "555 0142",
+          "label": "the contact phone box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Noah Berg",
+            "email": "noah.berg@mail.example",
+            "flight": "SL-104",
+            "date": "2032-01-09"
+          }
+        },
+        {
+          "sent": {
+            "phone": "555 0199",
+            "bags": "1",
+            "seat": "aisle",
+            "extras": "blanket",
+            "notes": "First flight!",
+            "contact-name": "Clara Diaz",
+            "contact-phone": "555 0142"
+          }
+        },
+        {
+          "sent": {
+            "extras": "wifi"
+          }
+        }
+      ]
+    }
+  ]
+}
