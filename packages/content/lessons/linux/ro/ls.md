@@ -1,4 +1,4 @@
-Acum că știi **unde** te afli folosind `pwd`, următoarea întrebare este: **ce se
+Acum că știi unde te afli folosind `pwd`, următoarea întrebare este: **ce se
 găsește aici?**
 
 Comanda **ls** (prescurtare de la **list**) îți arată fișierele și folderele din
@@ -18,7 +18,7 @@ Fiecare nume este fie un **fișier** (precum `misiune.txt`), fie un **folder /
 director** (precum `rapoarte` și `unelte`). Cu simpla comandă `ls`, ele pot părea
 identice. Într-o lecție viitoare vei învăța cum să le deosebești dintr-o privire.
 
-Poți lista și conținutul unui folder **fără a intra în el**, dându-i numele lui `ls`:
+Poți lista și conținutul unui folder fără a intra în el, dându-i numele lui `ls`:
 
 ```bash
 ls rapoarte

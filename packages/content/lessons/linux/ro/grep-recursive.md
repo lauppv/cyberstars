@@ -1,4 +1,4 @@
-Până acum, `grep` a căutat într-**un singur fișier**. Dar ce te faci dacă nu știi
+Până acum, `grep` a căutat într-un singur fișier. Dar ce te faci dacă nu știi
 _în care_ fișier se află cuvântul, știi doar că este undeva într-un folder plin de
 fișiere și sub-foldere?
 
@@ -14,7 +14,7 @@ jurnale/ianuarie.log:Misiune spre sectorul 7 aprobata.
 jurnale/vechi/arhiva.log:Recunoastere sector 7 finalizata.
 ```
 
-Observă că ieșirea începe acum cu **numele fișierului** pentru fiecare potrivire,
+Observă că ieșirea începe acum cu numele fișierului pentru fiecare potrivire,
 apoi două puncte, apoi linia care s-a potrivit. Astfel știi _de unde_ provine
 fiecare rezultat.
 

@@ -1,4 +1,4 @@
-Now that you know **where** you are with `pwd`, the next question is: **what is
+Now that you know where you are with `pwd`, the next question is: **what is
 here?**
 
 The **ls** command (short for **list**) shows you the files and folders inside your
@@ -18,7 +18,7 @@ Each name is either a **file** (like `mission.txt`) or a **folder / directory** 
 `reports` and `tools`). With the plain `ls` command they can look similar. In a later
 lesson you will learn how to tell them apart at a glance.
 
-You can also list the contents of a folder **without going into it** by giving its
+You can also list the contents of a folder without going into it by giving its
 name to `ls`:
 
 ```bash

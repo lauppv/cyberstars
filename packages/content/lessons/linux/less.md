@@ -1,5 +1,5 @@
 `cat` shows a whole file at once; `head` and `tail` show the ends. But what if you
-want to **scroll** through a long file at your own pace, up and down?
+want to scroll through a long file at your own pace, up and down?
 
 That is the job of **less**.
 
@@ -7,7 +7,7 @@ That is the job of **less**.
 less bigfile.log
 ```
 
-`less` opens the file in a **viewer**. It does not dump everything. It shows one
+`less` opens the file in a viewer. It does not dump everything. It shows one
 screenful and waits for you. Inside the viewer you can:
 
 | Key            | Action                            |
@@ -16,15 +16,15 @@ screenful and waits for you. Inside the viewer you can:
 | `b`            | previous page                     |
 | arrow keys     | line up / down                    |
 | `/word`        | search forwards for _word_        |
-| `q`            | **quit** and return to the prompt |
+| `q`            | quit and return to the prompt |
 
 The most important key is **`q`**: that is how you leave `less` and get your shell
 back.
 
 ### Why "less"?
 
-There was an older tool called `more` that could only page **forwards**. `less` does
-everything `more` does _and_ lets you scroll **backwards**, hence the joke name:
+There was an older tool called `more` that could only page forwards. `less` does
+everything `more` does _and_ lets you scroll backwards, hence the joke name:
 "less is more".
 
 `less` never changes the file. It is a pure viewer.
