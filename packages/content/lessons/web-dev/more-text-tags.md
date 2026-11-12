@@ -4,38 +4,25 @@ HTML has a tag for each of these.
 
 ## `<mark>`: the highlighter
 
-```html
+```html preview
 <p>The test is on <mark>Friday</mark>.</p>
-```
-
-```text
-The test is on Friday.        ("Friday" with a yellow background)
 ```
 
 `<mark>` is text you've highlighted because it matters right now, like a search word found on the page.
 
 ## `<sub>` and `<sup>`: low and high
 
-```html
+```html preview
 <p>Water is H<sub>2</sub>O.</p>
 <p>A square with sides of 3 cm covers 3<sup>2</sup> = 9 cm<sup>2</sup>.</p>
-```
-
-```text
-Water is H₂O.
-A square with sides of 3 cm covers 3² = 9 cm².
 ```
 
 `<sub>` (subscript) puts text a little lower and smaller, as in chemistry. `<sup>` (superscript) puts it a little higher, as in powers and units.
 
 ## `<small>`: the small print
 
-```html
+```html preview
 <p>Tickets cost 5 euros. <small>Children under 6 go free.</small></p>
-```
-
-```text
-Tickets cost 5 euros. Children under 6 go free.     (the last sentence smaller)
 ```
 
 `<small>` is for side notes: the fine print, a copyright line, "prices may change".
@@ -46,12 +33,8 @@ All four go inside a paragraph, around the few characters or words they're about
 
 Put the whole formula in `<sub>`:
 
-```html
+```html preview
 <p>Water is <sub>H2O</sub>.</p>
-```
-
-```text
-Water is H2O.       (all of it low and small)
 ```
 
 Now the H and the O are low too, and it no longer reads as water's formula. Only the 2 goes in `<sub>`.
