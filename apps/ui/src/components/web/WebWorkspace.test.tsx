@@ -24,6 +24,7 @@ function Lesson({
   runTests?: ReactNode;
   testsError?: string | null;
   verdictShown?: number;
+  devMode?: boolean;
 }) {
   const [text, setText] = useState(start);
   return (
@@ -383,6 +384,141 @@ describe('WebWorkspace', () => {
     expect(localStorage.getItem('cyberstars.devMode.webFiles')).toBeNull();
     // The actions stand once, at the far right over the site
     expect(screen.getAllByRole('button', { name: 'Lesson actions' })).toHaveLength(1);
+  });
+
+  it("turns dev mode's lesson and code on and off, side by side when both are on", () => {
+    const { unmount } = render(<Lesson devMode />);
+    const sides = () => screen.getByRole('group', { name: 'What the left side shows' });
+    const button = (name: string) => within(sides()).getByRole('button', { name });
+    const lessonPane = () => screen.getByText('The lesson text').parentElement!;
+    const codePane = () =>
+      screen.getByRole('tablist', { name: 'Code' }).closest('[class*="@2xl:flex-row"]')!;
+    // The lesson alone at first, and it can't be turned off then
+    expect(button('Lesson')).toHaveAttribute('aria-pressed', 'true');
+    expect(button('Lesson')).toBeDisabled();
+    expect(button('Code')).toHaveAttribute('aria-pressed', 'false');
+    expect(lessonPane()).not.toHaveClass('hidden');
+    expect(codePane()).toHaveClass('hidden');
+    const dividers = screen.getAllByRole('separator').length;
+
+    fireEvent.click(button('Code'));
+    expect(button('Lesson')).toHaveAttribute('aria-pressed', 'true');
+    expect(button('Code')).toHaveAttribute('aria-pressed', 'true');
+    expect(button('Lesson')).not.toBeDisabled();
+    expect(lessonPane()).not.toHaveClass('hidden');
+    expect(codePane()).not.toHaveClass('hidden');
+    // A divider between them, the lesson keeping its share of the side
+    expect(screen.getAllByRole('separator')).toHaveLength(dividers + 1);
+    expect(lessonPane()).toHaveStyle({ '--panes': '50%' });
+    expect(localStorage.getItem('cyberstars.devMode.webPanes')).toBe('both');
+
+    fireEvent.click(button('Lesson'));
+    expect(lessonPane()).toHaveClass('hidden');
+    expect(codePane()).not.toHaveClass('hidden');
+    expect(button('Code')).toBeDisabled();
+    expect(screen.getAllByRole('separator')).toHaveLength(dividers);
+    expect(localStorage.getItem('cyberstars.devMode.webPanes')).toBe('code');
+
+    // The device keeps the choice for the next lesson
+    unmount();
+    render(<Lesson devMode />);
+    expect(button('Lesson')).toHaveAttribute('aria-pressed', 'false');
+    expect(button('Code')).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  it("leaves the plain lesson's either/or alone, whatever dev mode keeps", () => {
+    localStorage.setItem('cyberstars.devMode.webPanes', 'both');
+    localStorage.setItem('cyberstars.devMode.webFiles.closed', '1');
+    render(<Lesson />);
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    expect(within(sides).getByRole('button', { name: 'Lesson' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    expect(within(sides).getByRole('button', { name: 'Code' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+    expect(screen.getByText('Files')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Show the files' })).toBeNull();
+  });
+
+  it('opens the lesson beside the code for a verdict in dev mode, for this visit only', () => {
+    localStorage.setItem('cyberstars.devMode.webPanes', 'code');
+    const { rerender } = render(<Lesson devMode verdictShown={0} />);
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    const lesson = within(sides).getByRole('button', { name: 'Lesson' });
+    expect(lesson).toHaveAttribute('aria-pressed', 'false');
+    rerender(<Lesson devMode verdictShown={1} />);
+    expect(lesson).toHaveAttribute('aria-pressed', 'true');
+    expect(within(sides).getByRole('button', { name: 'Code' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    expect(localStorage.getItem('cyberstars.devMode.webPanes')).toBe('code');
+  });
+
+  it("closes dev mode's files when their divider is dragged to the left, and opens them again", () => {
+    localStorage.setItem('cyberstars.devMode.webPanes', 'code');
+    const { unmount } = render(<Lesson devMode />);
+    expect(screen.getByText('Files')).toBeInTheDocument();
+    // The files' divider is the first one while the code is alone
+    const divider = screen.getAllByRole('separator')[0];
+    fireEvent.pointerDown(divider);
+    act(() => {
+      window.dispatchEvent(new MouseEvent('pointermove', { clientX: 10 }));
+    });
+    fireEvent.pointerUp(window);
+    expect(screen.queryByText('Files')).toBeNull();
+    expect(screen.queryByRole('button', { name: 'index.html' })).toBeNull();
+    expect(screen.getByRole('button', { name: 'Show the files' })).toBeInTheDocument();
+    // The open tabs stay
+    expect(screen.getByRole('tab', { name: 'index.html' })).toBeInTheDocument();
+    expect(localStorage.getItem('cyberstars.devMode.webFiles.closed')).toBe('1');
+
+    // Closed on the next visit too, and New file opens them on its name box
+    unmount();
+    render(<Lesson devMode />);
+    fireEvent.click(screen.getByRole('button', { name: 'New file' }));
+    expect(screen.getByText('Files')).toBeInTheDocument();
+    expect(
+      screen.getByRole('textbox', { name: 'Name of the new file, with its folder' }),
+    ).toHaveFocus();
+    expect(localStorage.getItem('cyberstars.devMode.webFiles.closed')).toBeNull();
+
+    // And the strip's first button opens them as they were
+    fireEvent.pointerDown(screen.getAllByRole('separator')[0]);
+    act(() => {
+      window.dispatchEvent(new MouseEvent('pointermove', { clientX: 10 }));
+    });
+    fireEvent.pointerUp(window);
+    fireEvent.click(screen.getByRole('button', { name: 'Show the files' }));
+    expect(screen.getByRole('button', { name: 'index.html' })).toBeInTheDocument();
+  });
+
+  it('puts the lesson alone and the files open again on Reset', () => {
+    localStorage.setItem('cyberstars.devMode.webPanes', 'both');
+    localStorage.setItem('cyberstars.devMode.webPanesSplit', '35');
+    localStorage.setItem('cyberstars.devMode.webFiles.closed', '1');
+    render(<Lesson devMode />);
+    expect(screen.getByText('The lesson text').parentElement).toHaveStyle({ '--panes': '35%' });
+    expect(screen.getByRole('button', { name: 'Show the files' })).toBeInTheDocument();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Put the panels back to their first sizes' }),
+    );
+    const sides = screen.getByRole('group', { name: 'What the left side shows' });
+    expect(within(sides).getByRole('button', { name: 'Lesson' })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    expect(within(sides).getByRole('button', { name: 'Code' })).toHaveAttribute(
+      'aria-pressed',
+      'false',
+    );
+    expect(screen.getByText('Files')).toBeInTheDocument();
+    for (const key of ['webPanes', 'webPanesSplit', 'webFiles.closed']) {
+      expect(localStorage.getItem(`cyberstars.devMode.${key}`)).toBeNull();
+    }
   });
 
   it('says there is no page while the site has none', () => {

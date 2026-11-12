@@ -26,7 +26,10 @@ import { assetUrl, useWebPreview, type ConsoleEntry } from './useWebPreview';
 // in tabs beside them, an editor), the right side the site, with its console
 // under it. The site follows the files as they change and shows the page
 // last opened from them, or the one a link led to. On a phone the lesson,
-// the code and the site are each a panel. The files travel as one text
+// the code and the site are each a panel. In dev mode the lesson and the
+// code are each turned on or off, side by side when both are on, and the
+// files close to a strip when their divider is dragged to the left; the
+// device keeps all of it. The files travel as one text
 // (packages/shared/webFiles.ts), which the lesson saves, resets and shares
 // like any lesson's code.
 
@@ -76,6 +79,34 @@ type View = 'lesson' | 'code' | 'site';
 // What the left side switches between
 const SIDES = ['lesson', 'code'] as const;
 
+// What dev mode's left side shows, kept on the device: the lesson unless the
+// student picked otherwise
+type Panes = 'lesson' | 'code' | 'both';
+const PANES_KEY = 'cyberstars.devMode.webPanes';
+
+function storedPanes(): Panes {
+  try {
+    const stored = localStorage.getItem(PANES_KEY);
+    return stored === 'code' || stored === 'both' ? stored : 'lesson';
+  } catch {
+    return 'lesson';
+  }
+}
+
+function storePanes(panes: Panes): void {
+  try {
+    if (panes === 'lesson') localStorage.removeItem(PANES_KEY);
+    else localStorage.setItem(PANES_KEY, panes);
+  } catch {
+    // storage blocked: the choice lasts for this page
+  }
+}
+
+// Dragged closer than this to the code's left edge, the files close: about
+// half of the width they never go under while open (10rem, 8rem beside the
+// lesson)
+const FILES_CLOSE_BELOW = 80;
+
 const LEVEL_COLOR: Record<ConsoleEntry['level'], string> = {
   log: 'text-[var(--text)]',
   info: 'text-[var(--text2)]',
@@ -112,12 +143,20 @@ export default function WebWorkspace({
   // On a phone the panel shown; from @2xl the left side shows the lesson
   // unless it is the code, and the site is always on the right
   const [view, setView] = useState<View>('lesson');
+  // In dev mode the left side's lesson and code are each on or off instead
+  const [panes, setPanes] = useState<Panes>(storedPanes);
+  const pickPanes = (next: Panes) => {
+    setPanes(next);
+    storePanes(next);
+  };
   const [notice, setNotice] = useState<string | null>(null);
-  // A verdict shows on the lesson side, in its Result tab
+  // A verdict shows on the lesson side, in its Result tab; in dev mode the
+  // lesson opens beside the code, for this visit only
   const [verdictSeen, setVerdictSeen] = useState(verdictShown);
   if (verdictShown !== verdictSeen) {
     setVerdictSeen(verdictShown);
     setView('lesson');
+    if (devMode && panes === 'code') setPanes('both');
   }
   // A change refused at a limit puts the editor back as it was
   const [editorKey, setEditorKey] = useState(0);
@@ -141,6 +180,7 @@ export default function WebWorkspace({
   const bandRef = useRef<HTMLDivElement>(null);
   const siteRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
+  const panesRef = useRef<HTMLDivElement>(null);
   // Dev mode keeps its own splits on the device, as on any lesson
   const plainSides = useResizeSplit({
     axis: 'x',
@@ -188,6 +228,16 @@ export default function WebWorkspace({
     max: 60,
     containerRef: codeRef,
     storageKey: 'cyberstars.devMode.webFiles',
+    closeBelow: FILES_CLOSE_BELOW,
+  });
+  // The lesson's share of the left side, while the code is beside it
+  const devPanes = useResizeSplit({
+    axis: 'x',
+    initial: 50,
+    min: 30,
+    max: 70,
+    containerRef: panesRef,
+    storageKey: 'cyberstars.devMode.webPanesSplit',
   });
   const sides = devMode ? devSides : plainSides;
   const siteSplit = devMode ? devSite : plainSite;
@@ -286,6 +336,8 @@ export default function WebWorkspace({
         const failed = apply(removePath(site, path));
         if (failed) setNotice(failed);
       }}
+      closed={filesSplit.closed}
+      onShow={filesSplit.open}
     />
   );
 
@@ -389,7 +441,7 @@ export default function WebWorkspace({
             title={t('web.previewTitle', { page: page })}
             // While a divider is dragged the frame lets the pointer through:
             // over it, the moves would go to the page and the drag would stop
-            className={`w-full h-full border-none block ${sides.dragging || siteSplit.dragging || filesSplit.dragging ? 'pointer-events-none' : ''}`}
+            className={`w-full h-full border-none block ${sides.dragging || siteSplit.dragging || filesSplit.dragging || devPanes.dragging ? 'pointer-events-none' : ''}`}
           />
         ) : (
           !page && <p className="m-0 px-4 py-3 text-[13px] text-[#444]">{t('web.noPage')}</p>
@@ -438,8 +490,18 @@ export default function WebWorkspace({
     { key: 'code' as const, label: t('web.code') },
     { key: 'site' as const, label: t('web.site') },
   ];
-  // The left side's own choice: the code, else the lesson
+  // The left side's own choice: the code, else the lesson; in dev mode
+  // either or both
   const side = view === 'code' ? 'code' : 'lesson';
+  const lessonShown = devMode ? panes !== 'code' : side === 'lesson';
+  const codeShown = devMode ? panes !== 'lesson' : side === 'code';
+  const bothShown = lessonShown && codeShown;
+  // A pane turned off leaves the other on: one of them always shows
+  const togglePane = (pane: 'lesson' | 'code') => {
+    const lesson = pane === 'lesson' ? !lessonShown : lessonShown;
+    const code = pane === 'code' ? !codeShown : codeShown;
+    if (lesson || code) pickPanes(lesson && code ? 'both' : lesson ? 'lesson' : 'code');
+  };
 
   return (
     <div className="flex-1 min-w-0 flex flex-col">
@@ -454,40 +516,88 @@ export default function WebWorkspace({
       <div ref={bandRef} className="flex-1 min-h-0 flex">
         <div
           style={{ '--split': `${sides.size}%` } as CSSProperties}
-          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none min-w-0 flex-col bg-[var(--panel-bg)]`}
+          // With the lesson and the code side by side, the side widens to
+          // hold 10rem of lesson beside the code, as far as the site keeps
+          // room for its buttons
+          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none ${!bothShown ? 'min-w-0' : filesSplit.closed ? 'min-w-[min(calc(22rem+12px),calc(100%-23rem-6px))]' : 'min-w-[min(calc(28rem+12px),calc(100%-23rem-6px))]'} flex-col bg-[var(--panel-bg)]`}
         >
           <div className="shrink-0 h-12 flex items-center justify-between gap-2 px-3 border-b border-[var(--border)]">
             <div className="hidden @2xl:block">
-              <Segmented
-                value={side}
-                options={SIDES}
-                onChange={setView}
-                optionLabel={(key) => (key === 'lesson' ? t('lesson.tabLesson') : t('web.code'))}
-                ariaLabel={t('web.side')}
-              />
+              {devMode ? (
+                <div
+                  role="group"
+                  aria-label={t('web.side')}
+                  className="flex items-center rounded-[var(--radius-sm)] border border-[var(--border)] overflow-hidden"
+                >
+                  {SIDES.map((pane) => {
+                    const on = pane === 'lesson' ? lessonShown : codeShown;
+                    return (
+                      <button
+                        key={pane}
+                        type="button"
+                        aria-pressed={on}
+                        // The only one on stays on
+                        disabled={on && !bothShown}
+                        onClick={() => togglePane(pane)}
+                        className={`px-3 py-1 text-[12px] font-semibold border-0 transition first:border-r first:border-[var(--border)] cursor-pointer disabled:cursor-default ${
+                          on
+                            ? 'bg-[var(--accent)] text-white'
+                            : 'bg-transparent text-[var(--text3)] hover:text-[var(--text)]'
+                        }`}
+                      >
+                        {pane === 'lesson' ? t('lesson.tabLesson') : t('web.code')}
+                      </button>
+                    );
+                  })}
+                </div>
+              ) : (
+                <Segmented
+                  value={side}
+                  options={SIDES}
+                  onChange={setView}
+                  optionLabel={(key) => (key === 'lesson' ? t('lesson.tabLesson') : t('web.code'))}
+                  ariaLabel={t('web.side')}
+                />
+              )}
             </div>
             {!wide && <div className="ml-auto">{actions}</div>}
           </div>
-          <div className={`${side === 'lesson' ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col`}>
-            {lesson}
-          </div>
-          <div
-            ref={codeRef}
-            className={`${side === 'code' ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col @2xl:flex-row`}
-          >
+          <div ref={panesRef} className="flex-1 min-h-0 flex">
             <div
-              style={{ '--files': `${filesSplit.size}%` } as CSSProperties}
-              className="shrink-0 max-h-[35%] @2xl:max-h-none w-full @2xl:w-[var(--files)] @2xl:min-w-40 border-b @2xl:border-b-0 border-[var(--border)] flex flex-col min-h-0"
+              style={bothShown ? ({ '--panes': `${devPanes.size}%` } as CSSProperties) : undefined}
+              // Side by side, the lesson gives way first when the side is
+              // narrow, so the editor keeps room to write in
+              className={`${lessonShown ? 'flex' : 'hidden'} ${bothShown ? 'basis-[var(--panes)] grow-0 shrink' : 'flex-1'} min-w-0 min-h-0 flex-col`}
             >
-              {tree}
+              {lesson}
             </div>
-            <ResizeHandle
-              axis="x"
-              className="hidden @2xl:block"
-              onPointerDown={filesSplit.onPointerDown}
-              dragging={filesSplit.dragging}
-            />
-            <div className="flex-1 min-w-0 min-h-0 flex flex-col">{editor}</div>
+            {bothShown && (
+              <ResizeHandle
+                axis="x"
+                onPointerDown={devPanes.onPointerDown}
+                dragging={devPanes.dragging}
+              />
+            )}
+            <div
+              ref={codeRef}
+              className={`${codeShown ? 'flex' : 'hidden'} flex-1 min-h-0 flex-col @2xl:flex-row ${!bothShown ? 'min-w-0' : filesSplit.closed ? 'min-w-[calc(12rem+6px)]' : 'min-w-[calc(18rem+6px)]'}`}
+            >
+              <div
+                style={{ '--files': `${filesSplit.size}%` } as CSSProperties}
+                className={`shrink-0 ${bothShown ? '@2xl:shrink' : ''} max-h-[35%] @2xl:max-h-none w-full ${filesSplit.closed ? '@2xl:w-8' : bothShown ? '@2xl:w-[max(var(--files),10rem)] @2xl:min-w-32' : '@2xl:w-[var(--files)] @2xl:min-w-40'} border-b @2xl:border-b-0 border-[var(--border)] flex flex-col min-h-0`}
+              >
+                {tree}
+              </div>
+              <ResizeHandle
+                axis="x"
+                className="hidden @2xl:block"
+                onPointerDown={filesSplit.onPointerDown}
+                dragging={filesSplit.dragging}
+              />
+              <div className={`flex-1 ${bothShown ? 'min-w-40' : 'min-w-0'} min-h-0 flex flex-col`}>
+                {editor}
+              </div>
+            </div>
           </div>
         </div>
         <ResizeHandle
@@ -534,6 +644,8 @@ export default function WebWorkspace({
                   devSides.reset();
                   devSite.reset();
                   devFiles.reset();
+                  devPanes.reset();
+                  pickPanes('lesson');
                 }}
                 aria-label={t('lesson.devModeReset')}
                 title={t('lesson.devModeReset')}

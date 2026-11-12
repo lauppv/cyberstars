@@ -1705,6 +1705,7 @@
     "code": "Code",
     "newFile": "New file",
     "newFolder": "New folder",
+    "showFiles": "Show the files",
     "rename": "Rename {{name}}",
     "delete": "Delete {{name}}",
     "fileName": "Name of the new file, with its folder",

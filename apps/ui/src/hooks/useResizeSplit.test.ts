@@ -35,7 +35,76 @@ describe('useResizeSplit', () => {
     expect(result.current.size).toBe(30);
     drag(result.current.onPointerDown, 950);
     expect(result.current.size).toBe(80);
+    // With no closeBelow it never closes, at the start it stops at its min
+    drag(result.current.onPointerDown, 0);
+    expect(result.current.size).toBe(20);
+    expect(result.current.closed).toBe(false);
     expect(localStorage.length).toBe(0);
+  });
+
+  it('closes when dragged to the start, keeping its size for when it opens again', () => {
+    const ref = container();
+    const options = {
+      axis: 'x',
+      initial: 25,
+      min: 15,
+      max: 50,
+      containerRef: ref,
+      storageKey: KEY,
+      closeBelow: 80,
+    } as const;
+    const first = renderHook(() => useResizeSplit(options));
+    drag(first.result.current.onPointerDown, 400);
+    expect(first.result.current.size).toBe(40);
+    // Past its min, but not yet under closeBelow: still open, at its min
+    drag(first.result.current.onPointerDown, 100);
+    expect(first.result.current.size).toBe(15);
+    expect(first.result.current.closed).toBe(false);
+    drag(first.result.current.onPointerDown, 400);
+    drag(first.result.current.onPointerDown, 79);
+    expect(first.result.current.closed).toBe(true);
+    expect(first.result.current.size).toBe(40);
+    expect(localStorage.getItem(KEY)).toBe('40');
+    expect(localStorage.getItem(`${KEY}.closed`)).toBe('1');
+
+    // The next visit starts closed, and open() gives the size back
+    const second = renderHook(() => useResizeSplit(options));
+    expect(second.result.current.closed).toBe(true);
+    act(() => second.result.current.open());
+    expect(second.result.current.closed).toBe(false);
+    expect(second.result.current.size).toBe(40);
+    expect(localStorage.getItem(`${KEY}.closed`)).toBeNull();
+
+    // A drag out of closed opens it where it ends
+    drag(second.result.current.onPointerDown, 0);
+    expect(second.result.current.closed).toBe(true);
+    drag(second.result.current.onPointerDown, 300);
+    expect(second.result.current.closed).toBe(false);
+    expect(second.result.current.size).toBe(30);
+    expect(localStorage.getItem(`${KEY}.closed`)).toBeNull();
+
+    // Reset opens it too
+    drag(second.result.current.onPointerDown, 10);
+    act(() => second.result.current.reset());
+    expect(second.result.current.closed).toBe(false);
+    expect(second.result.current.size).toBe(25);
+    expect(localStorage.getItem(KEY)).toBeNull();
+    expect(localStorage.getItem(`${KEY}.closed`)).toBeNull();
+  });
+
+  it('ignores a saved closed state without closeBelow', () => {
+    localStorage.setItem(`${KEY}.closed`, '1');
+    const { result } = renderHook(() =>
+      useResizeSplit({
+        axis: 'x',
+        initial: 25,
+        min: 15,
+        max: 50,
+        containerRef: container(),
+        storageKey: KEY,
+      }),
+    );
+    expect(result.current.closed).toBe(false);
   });
 
   it('keeps the size under its key once a drag ends, and starts from it next time', () => {
