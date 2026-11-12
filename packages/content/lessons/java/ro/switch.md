@@ -1,4 +1,4 @@
-Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar când ai **multe** opțiuni (cum ar fi ce armă a ales Tommy), codul devine urât rapid. Aici intră în scenă **switch**
+Cunoști lanțurile de if-else. Funcționează grozav pentru 2-3 opțiuni. Dar când ai multe opțiuni (cum ar fi ce armă a ales Tommy), codul devine urât rapid. Aici intră în scenă **switch**
 
 ```java
 public class Main {
@@ -29,11 +29,11 @@ Ieșire
 Devastator la distanta apropiata
 ```
 
-**switch** verifică valoarea lui `arma` și sare la **case**-ul care se potrivește. Când găsește `"pusca"`, rulează acel bloc, apoi **break** îi spune să se oprească și să iasă din switch
+switch verifică valoarea lui `arma` și sare la **case**-ul care se potrivește. Când găsește `"pusca"`, rulează acel bloc, apoi **break** îi spune să se oprească și să iasă din switch
 
 ---
 
-**break** este crucial. Fără el, Java „cade prin" (fall-through) la următorul case și continuă să ruleze
+break este crucial. Fără el, Java „cade prin" (fall-through) la următorul case și continuă să ruleze
 
 ```java
 public class Main {
@@ -64,7 +64,7 @@ Sosesc fortele speciale
 Intra tancurile armatei
 ```
 
-Uau, voiam doar mesajul de 3 stele, dar a afișat 3, 4 și 5! Asta pentru că fără **break**, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
+Uau, voiam doar mesajul de 3 stele, dar a afișat 3, 4 și 5! Asta pentru că fără break, Java cade prin fiecare case de sub potrivire. Uneori asta e util intenționat, dar de obicei e un bug. **Adaugă întotdeauna break** dacă nu vrei în mod special fall-through
 
 ---
 
@@ -128,7 +128,7 @@ Alt vehicul: barca
 
 ---
 
-**switch** funcționează cu **int**, **String**, **char** și **enum**. Uneori vrem ca **mai multe case-uri** să ruleze același cod. Atunci le stivuim unul peste altul, fără cod între ele
+switch funcționează cu int, String, char și enum. Uneori vrem ca mai multe case-uri să ruleze același cod. Atunci le stivuim unul peste altul, fără cod între ele
 
 ```java
 public class Main {
@@ -151,7 +151,7 @@ Observă cum am stivuit `case "Sambata":` și `case "Duminica":` împreună, fă
 
 ---
 
-Switch cu **int** este de asemenea foarte des întâlnit
+Switch cu int este de asemenea foarte des întâlnit
 
 ```java
 public class Main {
@@ -186,9 +186,9 @@ Incarca jocul salvat
 
 ## Misiune: Clasificatorul Programului de Tură
 
-Programul de tură al stației are nevoie de un clasificator rapid: dată fiind o zi, afișează dacă este o tură de **zi lucrătoare** sau de **weekend**.
+Programul de tură al stației are nevoie de un clasificator rapid: dată fiind o zi, afișează dacă este o tură de zi lucrătoare sau de weekend.
 
-Reține ziua într-o variabilă `String` numită `zi` și scrie un **switch** care:
+Reține ziua într-o variabilă `String` numită `zi` și scrie un switch care:
 
 - pentru `"Luni"`, `"Marti"`, `"Miercuri"`, `"Joi"`, `"Vineri"` → afișează `Zi lucratoare`
 - pentru `"Sambata"` și `"Duminica"` → afișează `Weekend`

@@ -6,7 +6,7 @@ The `static` keyword means **"this belongs to the class itself, not to any indiv
 
 ## Static vs Instance Fields
 
-Imagine a Vice City nightclub tracking visitors. Each visitor has their own name, but the **total visit count** is shared across all of them: it belongs to the club, not to any single person:
+Imagine a Vice City nightclub tracking visitors. Each visitor has their own name, but the total visit count is shared across all of them: it belongs to the club, not to any single person:
 
 ```java
 class Visitor {
@@ -108,7 +108,7 @@ public class Main {
 
 ## Static Cannot Access Instance
 
-A static method has no `this`: there's no object associated with it. So it **cannot** access instance fields or instance methods:
+A static method has no `this`: there's no object associated with it. So it cannot access instance fields or instance methods:
 
 ```text
 class Example {

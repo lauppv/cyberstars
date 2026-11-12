@@ -1,6 +1,6 @@
-În lecția despre metode, am văzut că o metodă poate **returna** o valoare în loc să doar afișeze. Hai să aprofundăm **valorile returnate**: sunt una dintre cele mai puternice unelte din trusa ta Java
+În lecția despre metode, am văzut că o metodă poate returna o valoare în loc să doar afișeze. Hai să aprofundăm valorile returnate: sunt una dintre cele mai puternice unelte din trusa ta Java
 
-Gândește-te la o metodă cu valoare returnată ca la un **automat de vânzări**. Pui ceva în el (parametrii), mașina își face treaba și **îți dă ceva înapoi** (valoarea returnată). O metodă **void** este ca un difuzor: face ceva (redă un sunet), dar nu îți dă nimic în mână
+Gândește-te la o metodă cu valoare returnată ca la un automat de vânzări. Pui ceva în el (parametrii), mașina își face treaba și îți dă ceva înapoi (valoarea returnată). O metodă void este ca un difuzor: face ceva (redă un sunet), dar nu îți dă nimic în mână
 
 ```java
 public class Main {
@@ -21,7 +21,7 @@ Tipul returnat **int** dinaintea numelui metodei îi spune lui Java: „această
 
 ---
 
-Putem returna **orice tip**, nu doar int. Iată câteva exemple
+Putem returna orice tip, nu doar int. Iată câteva exemple
 
 ```java
 public class Main {
@@ -55,7 +55,7 @@ true
 false
 ```
 
-Fiecare metodă își declară tipul returnat chiar înaintea numelui: **String**, **double**, **boolean**. Tipul trebuie să corespundă cu ce returnezi de fapt. Java nu te va lăsa să returnezi un String dintr-o metodă care promite un int
+Fiecare metodă își declară tipul returnat chiar înaintea numelui: String, double, boolean. Tipul trebuie să corespundă cu ce returnezi de fapt. Java nu te va lăsa să returnezi un String dintr-o metodă care promite un int
 
 ---
 
@@ -91,11 +91,11 @@ Afișează
 Da, 5 > 4
 ```
 
-Te poți gândi la un apel de metodă precum **aduna(10, 20)** ca fiind **înlocuit** cu valoarea sa returnată. Așa că **aduna(10, 20) + aduna(5, 5)** devine **30 + 10**, adică **40**
+Te poți gândi la un apel de metodă precum aduna(10, 20) ca fiind **înlocuit** cu valoarea sa returnată. Așa că **aduna(10, 20) + aduna(5, 5)** devine **30 + 10**, adică **40**
 
 ---
 
-O greșeală frecventă: să încerci să faci **return** într-o metodă **void** sau să uiți să faci **return** într-o metodă care nu este void
+O greșeală frecventă: să încerci să faci return într-o metodă void sau să uiți să faci return într-o metodă care nu este void
 
 ```text
 public class Main {
@@ -118,18 +118,18 @@ Java le prinde pe amândouă la compilare, înainte ca programul să ruleze măc
 
 **void vs return**: când le folosești pe fiecare?
 
-- Folosește **void** când metoda doar **face** ceva (afișează, modifică date etc.)
-- Folosește un **tip returnat** când metoda **calculează** ceva și ai nevoie de rezultat
+- Folosește **void** când metoda doar face ceva (afișează, modifică date etc.)
+- Folosește un **tip returnat** când metoda calculează ceva și ai nevoie de rezultat
 
-Tommy nu doar duce la capăt misiuni, el **aduce înapoi banii**. Asta este o valoare returnată. Dacă doar provoacă haos fără nicio răsplată, asta este void
+Tommy nu doar duce la capăt misiuni, el aduce înapoi banii. Asta este o valoare returnată. Dacă doar provoacă haos fără nicio răsplată, asta este void
 
 ---
 
 ## Misiune: Creșterea Imperiului
 
-Imperiul lui Tommy crește pe zi ce trece. Stocul pornește de la **1**, iar în fiecare zi se înmulțește cu un factor fix. Vrei o metodă care îți spune cât ai după un anumit număr de zile.
+Imperiul lui Tommy crește pe zi ce trece. Stocul pornește de la 1, iar în fiecare zi se înmulțește cu un factor fix. Vrei o metodă care îți spune cât ai după un anumit număr de zile.
 
-Scrie o metodă care primește **factorul** și **numărul de zile** și **întoarce** stocul de la final. Calculează-l cu o buclă: pornește de la **1**, apoi înmulțește cu factorul de un număr de ori egal cu zilele. Dacă au trecut **0** zile, bucla nu rulează deloc și rămâi cu **1**. Apoi, în **main**, stochează factorul într-o variabilă numită `factor` și numărul de zile într-o variabilă numită `zile`, apelează metoda și afișează rezultatul.
+Scrie o metodă care primește factorul și numărul de zile și întoarce stocul de la final. Calculează-l cu o buclă: pornește de la 1, apoi înmulțește cu factorul de un număr de ori egal cu zilele. Dacă au trecut 0 zile, bucla nu rulează deloc și rămâi cu 1. Apoi, în main, stochează factorul într-o variabilă numită `factor` și numărul de zile într-o variabilă numită `zile`, apelează metoda și afișează rezultatul.
 
 **Exemplu**
 
