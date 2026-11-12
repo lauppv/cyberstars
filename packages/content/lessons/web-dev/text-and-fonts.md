@@ -4,10 +4,17 @@ Look at a birthday card, a road sign and a comic book. The letters look complete
 
 `font-family` picks the font:
 
-```css
-body {
-  font-family: Verdana;
-}
+```css preview
+<style>
+  /* show */
+  body {
+    font-family: Verdana;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 The `body` holds everything you see, so everything on the page takes this font. You'll learn exactly why in a later lesson.
@@ -20,10 +27,17 @@ Here's the catch: a font only shows if the visitor's device has it. Verdana is o
 
 So you give a **list**, best first:
 
-```css
-body {
-  font-family: Verdana, Geneva, sans-serif;
-}
+```css preview
+<style>
+  /* show */
+  body {
+    font-family: Verdana, Geneva, sans-serif;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 The browser tries Verdana. If the device doesn't have it, it tries Geneva. If it has neither, it takes any `sans-serif` font it has.
@@ -40,10 +54,17 @@ Always end your list with one of them. Then, whatever happens, the page gets the
 
 Pick a font almost nobody has, with no fallback:
 
-```css
-body {
-  font-family: Papyrus;
-}
+```css preview
+<style>
+  /* show */
+  body {
+    font-family: Papyrus;
+  }
+  /* /show */
+</style>
+<h1>My Favourite Games</h1>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 On your computer it may look as you wanted. On a phone without Papyrus, the browser shows its default font instead, often a `serif` one, and your page looks like a newspaper. Add `, sans-serif` at the end and it falls back to the right kind.

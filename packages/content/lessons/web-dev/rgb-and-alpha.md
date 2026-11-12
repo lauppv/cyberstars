@@ -4,10 +4,17 @@ Put a sheet of tracing paper over a drawing. You still see the drawing, just sof
 
 You know a color is a mix of red, green and blue light. `rgb()` writes that mix with plain numbers from `0` (off) to `255` (full):
 
-```css
-h3 {
-  color: rgb(0, 128, 96);
-}
+```css preview
+<style>
+  /* show */
+  h3 {
+    color: rgb(0, 128, 96);
+  }
+  /* /show */
+</style>
+<h3>Chess</h3>
+<p>Our club meets on Fridays.</p>
+<p class="note">Updated on 3 May.</p>
 ```
 
 `rgb(0, 128, 96)`: no red, green at half, a bit of blue. A sea green. It's the same idea as a hex color, just easier to read and change: to make it a little bluer, you turn the last number up.
@@ -20,10 +27,17 @@ h3 {
 
 Add a fourth number, the **alpha**, and the color becomes see-through:
 
-```css
-.note {
-  color: rgb(0, 0, 0, 0.5);
-}
+```css preview
+<style>
+  /* show */
+  .note {
+    color: rgb(0, 0, 0, 0.5);
+  }
+  /* /show */
+</style>
+<h3>Chess</h3>
+<p>Our club meets on Fridays.</p>
+<p class="note">Updated on 3 May.</p>
 ```
 
 Alpha goes from `0` to `1`:
@@ -38,10 +52,17 @@ See-through text looks quieter than the text around it. That's handy for things 
 
 Write the alpha as a percent without saying so, or as a number above 1:
 
-```css
-.note {
-  color: rgb(0, 0, 0, 50);
-}
+```css preview
+<style>
+  /* show */
+  .note {
+    color: rgb(0, 0, 0, 50);
+  }
+  /* /show */
+</style>
+<h3>Chess</h3>
+<p>Our club meets on Fridays.</p>
+<p class="note">Updated on 3 May.</p>
 ```
 
 Anything above 1 counts as 1, so the text is solid black, not half see-through. Alpha is a number from 0 to 1, or a percent with its `%`: `50%`.
