@@ -721,6 +721,41 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(unticked.web).toEqual({ kind: 'checked', label: 'the meal box', expected: 'on' });
   });
 
+  it('keeps a refused form refused, its field marked, case after case', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        input:user-invalid { outline: 3px solid red; }
+      </style></head><body><form>
+        <input id="name" name="name" required minlength="2"><button>Send</button>
+      </form></body></html>`,
+    };
+    const refused: WebTestCase = {
+      name: 'A short name is refused',
+      visible: true,
+      steps: [
+        { fill: '#name', text: 'I', label: 'the name box' },
+        { click: 'button', label: 'the Send button' },
+        { notSent: true },
+        { style: '#name', prop: 'outline-style', equals: 'solid', label: 'the name box' },
+      ],
+    };
+    const sent: WebTestCase = {
+      name: 'A whole name is sent',
+      visible: true,
+      steps: [
+        { fill: '#name', text: 'Ida', label: 'the name box' },
+        { click: 'button', label: 'the Send button' },
+        { sent: { name: 'Ida' } },
+      ],
+    };
+    expect(verdicts(files, [refused, sent, refused, sent]).map((c) => c.passed)).toEqual([
+      true,
+      true,
+      true,
+      true,
+    ]);
+  });
+
   it('scrolls, and tells a sticky header from one that scrolled away', () => {
     const page = (position: string) => `<!DOCTYPE html><html><body style="margin: 0">
       <header style="position: ${position}; top: 0; height: 60px; background: #123; color: white; z-index: 1">Station</header>
