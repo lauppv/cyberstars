@@ -12,11 +12,19 @@ document.querySelector("#dark-mode").addEventListener("click", () => {
 
 First click: the body gets `dark`. Second click: it loses it. Third: gets it again. One line does the switching, and CSS does the rest:
 
-```css
-.dark {
-  background-color: black;
-  color: white;
-}
+```css preview
+<style>
+  /* show */
+  .dark {
+    background-color: black;
+    color: white;
+  }
+  /* /show */
+</style>
+<body class="dark">
+  <h1>Game Club</h1>
+  <p>Dark mode is on.</p>
+</body>
 ```
 
 `toggle` also gives back `true` when it has just added the class, and `false` when it has just removed it.
@@ -25,10 +33,26 @@ First click: the body gets `dark`. Second click: it loses it. Third: gets it aga
 
 To hide some elements, put a class on something around them, and let CSS do the hiding:
 
-```css
-.hide-done .done {
-  display: none;
-}
+```css preview
+<style>
+  /* show */
+  .hide-done .done {
+    display: none;
+  }
+  /* /show */
+</style>
+<p>All the jobs:</p>
+<ul>
+  <li class="done">Book the room</li>
+  <li>Buy snacks</li>
+  <li class="done">Pack the boards</li>
+</ul>
+<p>With hide-done:</p>
+<ul class="hide-done">
+  <li class="done">Book the room</li>
+  <li>Buy snacks</li>
+  <li class="done">Pack the boards</li>
+</ul>
 ```
 
 When the list has `hide-done`, its `.done` items are hidden. Toggle `hide-done`, and they come and go.
