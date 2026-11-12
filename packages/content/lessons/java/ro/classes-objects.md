@@ -1,8 +1,8 @@
-Asta e cea mare. Totul în Java se învârte în jurul **claselor și obiectelor**, iar acum o să-ți construiești propriile tale. Dacă Java ar fi GTA Vice City, lecția asta e momentul în care încetezi să faci misiuni pentru alții și începi să-ți construiești propriul imperiu
+Asta e cea mare. Totul în Java se învârte în jurul claselor și obiectelor, iar acum o să-ți construiești propriile tale. Dacă Java ar fi GTA Vice City, lecția asta e momentul în care încetezi să faci misiuni pentru alții și începi să-ți construiești propriul imperiu
 
 ---
 
-Deci ce este o **clasă**? Gândește-te la ea ca la un **plan de construcție** (blueprint). Un plan pentru o mașină descrie ce **are** o mașină (culoare, viteză, combustibil) și ce poate **face** (merge, frânează, claxonează). Dar un plan nu este o mașină în sine. Tu **construiești** mașini pornind de la plan
+Deci ce este o **clasă**? Gândește-te la ea ca la un **plan de construcție** (blueprint). Un plan pentru o mașină descrie ce are o mașină (culoare, viteză, combustibil) și ce poate face (merge, frânează, claxonează). Dar un plan nu este o mașină în sine. Tu construiești mașini pornind de la plan
 
 În termeni Java
 
@@ -16,7 +16,7 @@ class Masina {
 }
 ```
 
-Asta creează o **clasă** numită **Masina** cu două **câmpuri** (numite și atribute sau proprietăți): o **culoare** (String) și o **viteză** (int). Încă nu există nicio mașină reală, este doar planul
+Asta creează o clasă numită Masina cu două **câmpuri** (numite și atribute sau proprietăți): o culoare (String) și o viteză (int). Încă nu există nicio mașină reală, este doar planul
 
 ---
 
@@ -47,11 +47,11 @@ Culoare: rosu
 Viteza: 120
 ```
 
-**new Masina()** creează un nou obiect Masina. Îl stocăm într-o variabilă numită **masinaMea**. Apoi folosim **notația cu punct** (masinaMea.culoare, masinaMea.viteza) ca să-i setăm și să-i citim câmpurile
+**new Masina()** creează un nou obiect Masina. Îl stocăm într-o variabilă numită masinaMea. Apoi folosim **notația cu punct** (masinaMea.culoare, masinaMea.viteza) ca să-i setăm și să-i citim câmpurile
 
 ---
 
-Puterea claselor este că poți crea **mai multe obiecte** din același plan
+Puterea claselor este că poți crea mai multe obiecte din același plan
 
 ```java
 class Personaj {
@@ -85,15 +85,15 @@ Tommy Vercetti are 100 HP si poarta un M4
 Lance Vance are 80 HP si poarta un Pistol
 ```
 
-**tommy** și **lance** sunt două obiecte diferite, ambele construite din aceeași clasă **Personaj**. Fiecare are propriile valori pentru **nume**, **viata** și **arma**, iar schimbarea unuia nu afectează pe celălalt
+tommy și lance sunt două obiecte diferite, ambele construite din aceeași clasă Personaj. Fiecare are propriile valori pentru nume, viata și arma, iar schimbarea unuia nu afectează pe celălalt
 
 ---
 
 Când creezi un obiect nou, toate câmpurile pornesc cu **valori implicite**
 
-- Numerele (int, double) pornesc implicit de la **0**
-- Booleenii pornesc implicit de la **false**
-- Obiectele (String etc.) pornesc implicit de la **null**
+- Numerele (int, double) pornesc implicit de la 0
+- Booleenii pornesc implicit de la false
+- Obiectele (String etc.) pornesc implicit de la null
 
 ```java
 class Jucator {
@@ -114,9 +114,9 @@ public class Main {
 
 ---
 
-Câteva detalii importante despre structura codului. Observă că clasa **Masina** și clasa **Main** sunt **clase separate în același fișier**. În Java, doar **o singură** clasă per fișier poate fi **public**, iar ea trebuie să se potrivească cu numele fișierului. Platforma noastră îți împachetează automat codul în clasa Main pentru programele simple, dar când îți definești propriile clase, trebuie să scrii singur întreaga structură
+Câteva detalii importante despre structura codului. Observă că clasa Masina și clasa Main sunt **clase separate în același fișier**. În Java, doar o singură clasă per fișier poate fi public, iar ea trebuie să se potrivească cu numele fișierului. Platforma noastră îți împachetează automat codul în clasa Main pentru programele simple, dar când îți definești propriile clase, trebuie să scrii singur întreaga structură
 
-Clasa pe care o definești (cum ar fi **Masina** sau **Personaj**) merge **în afara** clasei Main. Clasa Main conține **main()**, locul de unde programul tău începe să ruleze
+Clasa pe care o definești (cum ar fi Masina sau Personaj) merge în afara clasei Main. Clasa Main conține main(), locul de unde programul tău începe să ruleze
 
 ```java
 class LucrulMeu {
@@ -165,7 +165,7 @@ public class Main {
 
 Output **Lansator rachete provoaca mai multe daune**
 
-Fără clase, ai avea nevoie de variabile separate pentru fiecare câmp în parte: **a1Nume, a1Dauna, a1Greutate, a2Nume, a2Dauna, a2Greutate**... Devine repede dezordonat. Clasele îți permit să grupezi date înrudite într-un singur pachet curat
+Fără clase, ai avea nevoie de variabile separate pentru fiecare câmp în parte: a1Nume, a1Dauna, a1Greutate, a2Nume, a2Dauna, a2Greutate... Devine repede dezordonat. Clasele îți permit să grupezi date înrudite într-un singur pachet curat
 
 ---
 
@@ -173,9 +173,9 @@ Fără clase, ai avea nevoie de variabile separate pentru fiecare câmp în part
 
 Tommy își înregistrează câinii de pază de la conacul din Vice City. Fiecare câine are nevoie de un nume și de o vârstă în evidență înainte de a fi pus pe ture.
 
-Creează o **clasă** care reprezintă un câine de pază, cu un câmp pentru **nume** (String) și unul pentru **vârstă** (int).
+Creează o clasă care reprezintă un câine de pază, cu un câmp pentru nume (String) și unul pentru vârstă (int).
 
-În `main`, stochează mai întâi valorile în variabile locale: `nume1` și `varsta1` pentru primul câine, `nume2` și `varsta2` pentru al doilea. Apoi construiește **două** obiecte câine și setează câmpurile fiecărui obiect din acele variabile. La final afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
+În `main`, stochează mai întâi valorile în variabile locale: `nume1` și `varsta1` pentru primul câine, `nume2` și `varsta2` pentru al doilea. Apoi construiește două obiecte câine și setează câmpurile fiecărui obiect din acele variabile. La final afișează fiecare câine pe linia lui în formatul `Nume are X ani`.
 
 **Exemplu** pentru un câine `Rex` de `5` ani și unul `Buddy` de `3` ani
 

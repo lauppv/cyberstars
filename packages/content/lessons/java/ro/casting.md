@@ -50,7 +50,7 @@ Convertirea unui double în int **trunchiază** (taie zecimala), nu rotunjește.
 
 ---
 
-Casting funcționează și cu **obiecte** în ierarhiile de moștenire
+Casting funcționează și cu obiecte în ierarhiile de moștenire
 
 ```text
 class Animal {

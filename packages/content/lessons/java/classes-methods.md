@@ -1,4 +1,4 @@
-You know how to write methods with `static`: those belong to the class itself. But when you're building objects, you usually want methods that belong to **each object**. These are called **instance methods**, and they don't use the `static` keyword
+You know how to write methods with `static`: those belong to the class itself. But when you're building objects, you usually want methods that belong to each object. These are called **instance methods**, and they don't use the `static` keyword
 
 ---
 
@@ -123,7 +123,7 @@ Let's trace what happens to `tommy`:
 - The second call starts from `10` and reaches `20`
 - The third starts from `20` and reaches `30`
 
-Each call to `completeMission()` modifies **that specific object's** `respect` field. If we had another `GangMember`, their respect would be separate
+Each call to `completeMission()` modifies that specific object's `respect` field. If we had another `GangMember`, their respect would be separate
 
 ---
 
@@ -131,8 +131,8 @@ Each call to `completeMission()` modifies **that specific object's** `respect` f
 
 Here's the rule:
 
-- **Static methods** belong to the **class**. You call them with the class name: `Math.max(5, 10)`
-- **Instance methods** belong to an **object**. You call them on a variable: `tommy.completeMission()`
+- **Static methods** belong to the class. You call them with the class name: `Math.max(5, 10)`
+- **Instance methods** belong to an object. You call them on a variable: `tommy.completeMission()`
 
 Static methods can't access instance fields (because there's no object). Instance methods can access everything
 
@@ -161,7 +161,7 @@ Tommy owns several businesses in Vice City. Each business has a name and a total
 
 Create a class that represents a business, with a field for the name and one for the total earnings. Write a method that adds an amount to the total and a method that returns the current total
 
-In `main`, store the first business's name in `name1` and its two takings in `sale1` and `sale2`; store the second's name in `name2` and its two takings in `sale3` and `sale4`. Create **two** businesses from those variables, add each business's two takings, then print for each business the name, then `: `, then the total, for example `Malibu Club: 500`
+In `main`, store the first business's name in `name1` and its two takings in `sale1` and `sale2`; store the second's name in `name2` and its two takings in `sale3` and `sale4`. Create two businesses from those variables, add each business's two takings, then print for each business the name, then `: `, then the total, for example `Malibu Club: 500`
 
 **Example**: `Malibu Club` with takings 200, 300 and `Print Works` with 500, 250
 

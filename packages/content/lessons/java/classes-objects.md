@@ -1,8 +1,8 @@
-This is the big one. Everything in Java revolves around **classes and objects**, and now you're going to build your own. If Java were GTA Vice City, this lesson is where you stop doing missions for other people and start building your own empire
+This is the big one. Everything in Java revolves around classes and objects, and now you're going to build your own. If Java were GTA Vice City, this lesson is where you stop doing missions for other people and start building your own empire
 
 ---
 
-So what's a **class**? Think of it as a **blueprint**. A blueprint for a car describes what a car **has** (color, speed, fuel) and what it can **do** (drive, brake, honk). But a blueprint isn't a car itself. You **build** cars from the blueprint
+So what's a **class**? Think of it as a **blueprint**. A blueprint for a car describes what a car has (color, speed, fuel) and what it can do (drive, brake, honk). But a blueprint isn't a car itself. You build cars from the blueprint
 
 In Java terms
 
@@ -16,7 +16,7 @@ class Car {
 }
 ```
 
-This creates a **class** called **Car** with two **fields** (also called attributes or properties): a **color** (String) and a **speed** (int). No actual car exists yet, it's just the blueprint
+This creates a class called Car with two **fields** (also called attributes or properties): a color (String) and a speed (int). No actual car exists yet, it's just the blueprint
 
 ---
 
@@ -47,11 +47,11 @@ Color: red
 Speed: 120
 ```
 
-**new Car()** creates a new Car object. We store it in a variable called **myCar**. Then we use **dot notation** (myCar.color, myCar.speed) to set and read its fields
+**new Car()** creates a new Car object. We store it in a variable called myCar. Then we use **dot notation** (myCar.color, myCar.speed) to set and read its fields
 
 ---
 
-The power of classes is that you can create **multiple objects** from the same blueprint
+The power of classes is that you can create multiple objects from the same blueprint
 
 ```java
 class Character {
@@ -85,15 +85,15 @@ Tommy Vercetti has 100 HP and carries a M4
 Lance Vance has 80 HP and carries a Pistol
 ```
 
-**tommy** and **lance** are two different objects, both built from the same **Character** class. They each have their own **name**, **health**, and **weapon** values, and changing one doesn't affect the other
+tommy and lance are two different objects, both built from the same Character class. They each have their own name, health, and weapon values, and changing one doesn't affect the other
 
 ---
 
 When you create a new object, all fields start with **default values**
 
-- Numbers (int, double) default to **0**
-- Booleans default to **false**
-- Objects (String, etc.) default to **null**
+- Numbers (int, double) default to 0
+- Booleans default to false
+- Objects (String, etc.) default to null
 
 ```java
 class Player {
@@ -114,9 +114,9 @@ public class Main {
 
 ---
 
-A few important details about the code structure. Notice that the **Car** class and the **Main** class are **separate classes in the same file**. In Java, only **one** class per file can be **public**, and it must match the filename. Our platform wraps your code in the Main class automatically for simple programs, but when you define your own classes, you need to write the full structure yourself
+A few important details about the code structure. Notice that the Car class and the Main class are **separate classes in the same file**. In Java, only one class per file can be public, and it must match the filename. Our platform wraps your code in the Main class automatically for simple programs, but when you define your own classes, you need to write the full structure yourself
 
-The class you define (like **Car** or **Character**) goes **outside** the Main class. The Main class contains **main()** where your program starts running
+The class you define (like Car or Character) goes outside the Main class. The Main class contains main() where your program starts running
 
 ```java
 class MyThing {
@@ -165,7 +165,7 @@ public class Main {
 
 Output **Rocket Launcher deals more damage**
 
-Without classes, you'd need separate variables for every single field: **w1Name, w1Damage, w1Weight, w2Name, w2Damage, w2Weight**... It gets messy fast. Classes let you bundle related data together into one clean package
+Without classes, you'd need separate variables for every single field: w1Name, w1Damage, w1Weight, w2Name, w2Damage, w2Weight... It gets messy fast. Classes let you bundle related data together into one clean package
 
 ---
 
@@ -173,9 +173,9 @@ Without classes, you'd need separate variables for every single field: **w1Name,
 
 Tommy is registering the guard dogs at his Vice City mansion. Each dog needs a name and an age on record before it goes on rotation.
 
-Create a **class** that represents a guard dog, with a field for the **name** (String) and one for the **age** (int).
+Create a class that represents a guard dog, with a field for the name (String) and one for the age (int).
 
-In `main`, first store the values in local variables: `name1` and `age1` for the first dog, `name2` and `age2` for the second. Then build **two** dog objects and set each object's fields from those variables. Finally print each dog on its own line in the format `Name is X years old`.
+In `main`, first store the values in local variables: `name1` and `age1` for the first dog, `name2` and `age2` for the second. Then build two dog objects and set each object's fields from those variables. Finally print each dog on its own line in the format `Name is X years old`.
 
 **Example** for a dog `Rex` aged `5` and one `Buddy` aged `3`
 

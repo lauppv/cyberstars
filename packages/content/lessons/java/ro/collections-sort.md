@@ -28,11 +28,11 @@ Lance
 Tommy
 ```
 
-`Collections.sort()` sortează **pe loc**: modifică direct lista originală. String-urile se sortează **alfabetic**, numerele **crescător**
+`Collections.sort()` sortează **pe loc**: modifică direct lista originală. String-urile se sortează alfabetic, numerele crescător
 
 ---
 
-Vrei ordine **inversă**? Folosește `Collections.reverse()` după sortare
+Vrei ordine inversă? Folosește `Collections.reverse()` după sortare
 
 ```java
 import java.util.ArrayList;
@@ -63,11 +63,11 @@ Ieșire
 42
 ```
 
-`reverse()` nu sortează, doar **întoarce** ordinea actuală. Ca să obții ordine descrescătoare, sortezi întâi, apoi întorci
+`reverse()` nu sortează, doar întoarce ordinea actuală. Ca să obții ordine descrescătoare, sortezi întâi, apoi întorci
 
 ---
 
-Dar cum sortezi o listă de **obiecte**? Dacă ai un `ArrayList<Masina>`, Java nu știe după ce criteriu să sorteze: după nume? după viteză? Trebuie să-i spui implementând interfața **Comparable**
+Dar cum sortezi o listă de obiecte? Dacă ai un `ArrayList<Masina>`, Java nu știe după ce criteriu să sorteze: după nume? după viteză? Trebuie să-i spui implementând interfața **Comparable**
 
 ```java
 import java.util.ArrayList;
@@ -115,16 +115,16 @@ Hai să urmărim ce se întâmplă:
 
 1. `Masina implements Comparable<Masina>`: clasa promite că știe să se compare cu alte mașini
 2. Metoda `compareTo` returnează un număr:
-   - **negativ** dacă `this` vine înainte de `alta`
-   - **zero** dacă sunt egale
-   - **pozitiv** dacă `this` vine după `alta`
+   - negativ dacă `this` vine înainte de `alta`
+   - zero dacă sunt egale
+   - pozitiv dacă `this` vine după `alta`
 3. `this.viteza - alta.viteza` sortează crescător după viteză
 
-Dacă vrei sortare **descrescătoare**, inversezi: `alta.viteza - this.viteza`
+Dacă vrei sortare descrescătoare, inversezi: `alta.viteza - this.viteza`
 
 ---
 
-Pentru sortare după **String** (de exemplu, după nume), folosești `.compareTo()` de pe String
+Pentru sortare după String (de exemplu, după nume), folosești `.compareTo()` de pe String
 
 ```text
 public int compareTo(Masina alta) {

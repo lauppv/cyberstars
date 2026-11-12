@@ -50,7 +50,7 @@ Converting a double to int **truncates** (chops off the decimal), it doesn't rou
 
 ---
 
-Casting also works with **objects** in inheritance hierarchies
+Casting also works with objects in inheritance hierarchies
 
 ```text
 class Animal {
