@@ -446,30 +446,18 @@ describe('prepareC', () => {
     ],
   };
 
-  it('injects into both user and solution per case', async () => {
-    const result = await prepareC(PROGRAM, PROGRAM, spec);
+  it("injects each case's values into the program, and nothing else goes with it", async () => {
+    const result = await prepareC(PROGRAM, spec);
     expect(result.syntaxError).toBeNull();
     expect(result.structureFailures).toHaveLength(0);
-    expect(result.cases).toHaveLength(2);
-    expect(result.cases[0].userSrc).toContain('int age = 5;');
-    expect(result.cases[0].solutionSrc).toContain('int age = 5;');
-    expect(result.cases[1].userSrc).toContain('int age = 100;');
-    expect(result.cases[1].stdin).toBe('x\n');
-  });
-
-  it('leaves the solution out of cases whose reference output is cached', async () => {
-    const result = await prepareC(PROGRAM, PROGRAM, spec, new Set([1]));
-    expect(result.cases[0].solutionSrc).toContain('int age = 5;');
-    expect(result.cases[0].skipSolution).toBeUndefined();
-    expect(result.cases[1]).toEqual({
-      userSrc: expect.stringContaining('int age = 100;'),
-      skipSolution: true,
-      stdin: 'x\n',
-    });
+    expect(result.cases).toEqual([
+      { userSrc: expect.stringContaining('int age = 5;') },
+      { userSrc: expect.stringContaining('int age = 100;'), stdin: 'x\n' },
+    ]);
   });
 
   it('short-circuits on a syntax error without injecting', async () => {
-    const result = await prepareC('int main(void){ int x = ; }', PROGRAM, spec);
+    const result = await prepareC('int main(void){ int x = ; }', spec);
     expect(result.syntaxError).toMatch(/line \d+/);
     expect(result.cases).toHaveLength(0);
   });
@@ -479,14 +467,14 @@ describe('prepareC', () => {
       structure: { requires: [{ kind: 'variable' as const, name: 'age' }] },
       cases: [{ visible: true }],
     };
-    const result = await prepareC(PROGRAM, PROGRAM, noInjectSpec);
+    const result = await prepareC(PROGRAM, noInjectSpec);
     expect(result.cases).toHaveLength(1);
     expect(result.cases[0].userSrc).toContain('int age = 45;');
   });
 
   it('reports structure failures from the pristine user code', async () => {
     const noAge = '#include <stdio.h>\nint main(void){ printf("hi"); return 0; }';
-    const result = await prepareC(noAge, PROGRAM, spec);
+    const result = await prepareC(noAge, spec);
     expect(result.structureFailures).toEqual([
       { type: 'require', rule: { kind: 'variable', name: 'age' } },
     ]);

@@ -1,18 +1,20 @@
-# Thin C judge runner, executed inside the owner's sandbox container
+# Thin C judge runner, executed inside a sandbox container
 # (gcc:latest, which ships python3; --network=none, pids/memory capped). Unlike
 # the python/java runners it does NO parsing/structure/injection; for C those
 # happen on the SERVER via tree-sitter (see c-analysis.ts). This runner only:
 #   1. compiles the pristine user code once (gate 2: gcc surfaces semantic
 #      errors tree-sitter recovers from: undeclared identifier, type mismatch);
-#   2. per case, compiles + runs the already-injected userSrc and solutionSrc
-#      with the case's stdin (timing only the program's own code, see
-#      TIMER_SRC), memoizing compiled binaries by source string so
-#      identical stdin-only sources compile once and run N times. Each case's
-#      result is streamed as a JSON line, and the next case starts only on the
-#      server's go-ahead (it stops the run at the first failing case).
+#   2. per case, compiles + runs the already-injected userSrc with the case's
+#      stdin (timing only the program's own code, see TIMER_SRC), memoizing
+#      compiled binaries by source string so identical stdin-only sources
+#      compile once and run N times. Each case's result is streamed as a JSON
+#      line, and the next case starts only on the server's go-ahead (it stops
+#      the run at the first failing case).
 # Compiled binaries live under /work (the exec tmpfs mount; /tmp is noexec).
-# Expected outputs never enter this container: the server compares the two
-# stdouts on its side.
+# It judges one program: the student's in their own container, or our
+# reference solution in the judge's (lesson-tests.service.ts). The solution
+# and the expected outputs never enter a student's container: the server
+# compares the two programs' outputs on its side.
 import hashlib
 import json
 import os
@@ -201,22 +203,15 @@ def main():
 
     for case in payload["cases"]:
         stdin = case.get("stdin")
-        # skipSolution: the server already holds this case's reference output
-        # (cached from an earlier run) and sends no solutionSrc for it.
-        skip_solution = case.get("skipSolution", False)
         user_bin, _ = compile_source(case["userSrc"])
-        solution_bin = None if skip_solution else compile_source(case["solutionSrc"])[0]
         # The pristine user code already compiled cleanly, so a post-injection
         # compile failure is a spec bug (injection type/decl mismatch), not the
         # student's; surfaced by the server as a 500, same as java's injectError.
-        if user_bin is None or (solution_bin is None and not skip_solution):
+        if user_bin is None:
             emit({"injectError": True})
             break
         user_run = run_binary(user_bin, stdin)
-        if skip_solution:
-            emit({"user": user_run})
-        else:
-            emit({"user": user_run, "solution": run_binary(solution_bin, stdin)})
+        emit({"user": user_run})
         # A hung program would burn CASE_TIMEOUT on every remaining case too.
         if user_run["timedOut"] or not proceed():
             break

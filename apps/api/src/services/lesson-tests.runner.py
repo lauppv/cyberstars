@@ -1,14 +1,14 @@
-# Trusted judge runner, executed inside the owner's sandbox container
+# Trusted judge runner, executed inside a sandbox container
 # (python:3.10-slim, --network=none, pids/memory capped). Reads a payload JSON
-# ({userCode, solutionCode, structure, cases}), checks the user code's
-# structure with the ast module, injects each case's values into the lesson's
-# input variables (in BOTH the user code and the reference solution) and/or
-# feeds the case's stdin to both, runs the two programs per case (timing only
-# the program's own code, see PREAMBLE), and streams the verdict to stdout as
-# JSON lines, one
+# ({userCode, structure, cases}), checks the code's structure with the ast
+# module, injects each case's values into the lesson's input variables and/or
+# feeds the case's stdin, runs the program once per case (timing only its own
+# code, see PREAMBLE), and streams what it printed to stdout as JSON lines, one
 # case at a time, waiting for the server's go-ahead between cases.
-# Expected outputs never enter this container: the server compares the two
-# stdouts on its side.
+# It judges one program: the student's in their own container, or our
+# reference solution in the judge's (lesson-tests.service.ts). The solution
+# and the expected outputs never enter a student's container: the server
+# compares the two programs' outputs on its side.
 import ast
 import builtins
 import gc
@@ -1094,7 +1094,7 @@ def code_ms(read_fd):
 # Every program but the load test's (see run_fresh) runs in a child forked
 # from this interpreter, as if it were `python -u /tmp/_judged.py`: a fresh
 # interpreter costs ~50 ms to start under the container's CPU cap, a forked
-# child ~8 ms, and a lesson runs two programs per case on up to 50 cases.
+# child ~8 ms, and a lesson has up to 50 cases.
 # The child gets the streams, __main__ module, argv, path and recursion room a
 # fresh interpreter would, and leaves through SystemExit, so the interpreter's
 # own shutdown joins its threads, runs its atexit hooks, finalizes its objects
@@ -1309,59 +1309,6 @@ def run_program(code, stdin=None, fresh=False):
     return result
 
 
-# The reference solution's programs fork from a second interpreter, started
-# fresh once per run: strings hash with another seed there, as they did when
-# each program had its own interpreter, so a solution whose output follows a
-# set's order still prints differently from the student's run of the same code
-# (check:tests catches it). Raw fds only, no file objects: a forked program
-# closes every fd of ours, and a file object would then fail to close at its
-# exit, onto its stderr.
-SOLUTIONS_FLAG = "--solutions"
-solutions = {}
-
-
-def run_solution(code, stdin):
-    if not solutions:
-        request_r, request_w = os.pipe()
-        reply_r, reply_w = os.pipe()
-        solutions["pid"] = os.posix_spawn(
-            sys.executable,
-            [sys.executable, os.path.abspath(__file__), SOLUTIONS_FLAG],
-            os.environ,
-            file_actions=[
-                (os.POSIX_SPAWN_DUP2, request_r, 0),
-                (os.POSIX_SPAWN_DUP2, reply_w, 1),
-            ],
-        )
-        os.close(request_r)
-        os.close(reply_w)
-        solutions.update(request=request_w, reply=reply_r, pending=b"")
-    request = (json.dumps({"code": code, "stdin": stdin}) + "\n").encode("utf-8")
-    while request:
-        request = request[os.write(solutions["request"], request) :]
-    while b"\n" not in solutions["pending"]:
-        chunk = os.read(solutions["reply"], 65536)
-        if not chunk:
-            raise RuntimeError("the solutions' interpreter quit")
-        solutions["pending"] += chunk
-    line, solutions["pending"] = solutions["pending"].split(b"\n", 1)
-    return json.loads(line)
-
-
-def stop_solutions():
-    if solutions:
-        os.close(solutions["request"])
-        os.waitpid(solutions["pid"], 0)
-
-
-def serve_solutions():
-    # The solutions' interpreter: one request per line, each answered with
-    # its run on one line.
-    for line in sys.stdin:
-        request = json.loads(line)
-        print(json.dumps(run_program(request["code"], request["stdin"])), flush=True)
-
-
 def emit(obj):
     print(json.dumps(obj), flush=True)
 
@@ -1399,37 +1346,18 @@ def main():
     for case in payload["cases"]:
         inject = case.get("inject") or {}
         stdin = case.get("stdin")
-        # skipSolution: the server already holds this case's reference output
-        # (cached from an earlier run), so only the student's program runs.
-        skip_solution = case.get("skipSolution", False)
         try:
             user_src = inject_values(payload["userCode"], inject)
-            solution_src = None if skip_solution else inject_values(payload["solutionCode"], inject)
         except SyntaxError:
-            # solution is trusted; user code already parsed, should not happen.
-            # The server fails the whole run on it, so there is nothing after.
+            # The code already parsed, should not happen. The server fails the
+            # whole run on it, so there is nothing after.
             emit({"injectError": True})
             break
-        fresh = bool(case.get("load"))
-        user_run = run_program(user_src, stdin, fresh)
-        if skip_solution:
-            emit({"user": user_run})
-        else:
-            # A fresh interpreter hashes with its own seed, no need for the
-            # solutions' one.
-            solution_run = (
-                run_program(solution_src, stdin, True)
-                if fresh
-                else run_solution(solution_src, stdin)
-            )
-            emit({"user": user_run, "solution": solution_run})
+        user_run = run_program(user_src, stdin, bool(case.get("load")))
+        emit({"user": user_run})
         # A hung program would burn 5s on every remaining case too, so stop here.
         if user_run["timedOut"] or not proceed():
             break
-    stop_solutions()
 
 
-if sys.argv[1:] == [SOLUTIONS_FLAG]:
-    serve_solutions()
-else:
-    main()
+main()

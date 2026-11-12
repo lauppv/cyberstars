@@ -1,18 +1,19 @@
-// Trusted judge runner for Java lessons, executed inside the owner's sandbox
-// container (eclipse-temurin:21-jdk-alpine, --network=none, pids/memory
-// capped). Compiled once per container into /tmp/_judge by the service, then
-// invoked as `java Runner /work/_payload.json` per test run.
+// Trusted judge runner for Java lessons, executed inside a sandbox container
+// (eclipse-temurin:21-jdk-alpine, --network=none, pids/memory capped).
+// Compiled once per container into /tmp/_judge by the service, then invoked
+// as `java Runner /work/_payload.json` per test run.
 //
-// Mirrors lesson-tests.runner.py: reads a payload JSON ({userCode,
-// solutionCode, structure, cases}), checks the user code's structure via the
-// Compiler Tree API, injects each case's values into the lesson's input
-// variables (in BOTH the user code and the reference solution) by splicing
-// the initializer/rhs source ranges, and/or feeds the case's stdin to both,
-// compiles and runs the two programs per case (timing only the program's own
-// code, see TIMER_SOURCE), and streams the verdict to stdout as JSON lines,
-// one case at a time,
-// waiting for the server's go-ahead between cases. Expected outputs never
-// enter this container: the server compares the two stdouts on its side.
+// Mirrors lesson-tests.runner.py: reads a payload JSON ({userCode, structure,
+// cases}), checks the code's structure via the Compiler Tree API, injects each
+// case's values into the lesson's input variables by splicing the
+// initializer/rhs source ranges, and/or feeds the case's stdin, compiles and
+// runs the program once per case (timing only its own code, see
+// TIMER_SOURCE), and streams what it printed to stdout as JSON lines, one case
+// at a time, waiting for the server's go-ahead between cases. It judges one
+// program: the student's in their own container, or our reference solution in
+// the judge's (lesson-tests.service.ts). The solution and the expected outputs
+// never enter a student's container: the server compares the two programs'
+// outputs on its side.
 //
 // Divergences from the Python runner, by necessity of the language:
 // - "syntax error" covers all compile errors of the pristine user code (Java
@@ -90,7 +91,6 @@ public class Runner {
     Object payloadRaw = Json.parse(Files.readString(Path.of(args[0]), StandardCharsets.UTF_8));
     Map<String, Object> payload = asMap(payloadRaw);
     String userCode = (String) payload.get("userCode");
-    String solutionCode = (String) payload.get("solutionCode");
     Map<String, Object> structure = asMap(payload.getOrDefault("structure", new LinkedHashMap<>()));
     List<Object> cases = asList(payload.getOrDefault("cases", new ArrayList<>()));
 
@@ -106,19 +106,15 @@ public class Runner {
     }
     List<Object> structureFailures = Structure.check(user, structure);
 
-    Parsed solution = Parsed.of(solutionCode);
-
     // Java surfaces semantic errors (unknown variable, bad types) only at
     // compile time, so compile the pristine user code once so those become the
     // "syntax error" verdict instead of a misleading per-case failure. The
     // compiled classes are cached, so inject-free cases reuse them.
     CompiledCache cache = new CompiledCache();
-    if (solution.error == null) {
-      Compiled pristine = cache.compile(user);
-      if (pristine.error != null) {
-        emit(header(pristine.error, new ArrayList<>()));
-        return;
-      }
+    Compiled pristine = cache.compile(user);
+    if (pristine.error != null) {
+      emit(header(pristine.error, new ArrayList<>()));
+      return;
     }
     emit(header(null, structureFailures));
 
@@ -128,30 +124,17 @@ public class Runner {
       Map<String, Object> testCase = asMap(caseRaw);
       Map<String, Object> inject = asMap(testCase.getOrDefault("inject", new LinkedHashMap<>()));
       String stdin = testCase.get("stdin") instanceof String s ? s : "";
-      // skipSolution: the server already holds this case's reference output
-      // (cached from an earlier run), so only the student's program runs.
-      boolean skipSolution = Boolean.TRUE.equals(testCase.get("skipSolution"));
-      Compiled userProg = null;
-      Compiled solutionProg = null;
-      if (solution.error == null) {
-        userProg = cache.compile(user.withInjected(inject));
-        if (!skipSolution) solutionProg = cache.compile(solution.withInjected(inject));
-      }
+      Compiled userProg = cache.compile(user.withInjected(inject));
       // The pristine user code compiled, so a per-case failure means injection
       // broke it: a spec/solution mismatch on our side, not the student's. The
       // server fails the whole run on it, so there is nothing after.
-      if (userProg == null
-          || userProg.error != null
-          || (!skipSolution && (solutionProg == null || solutionProg.error != null))) {
+      if (userProg.error != null) {
         emit(Map.of("injectError", true));
         break;
       }
 
       Map<String, Object> userRun = runProgram(cache, userProg, stdin);
-      Map<String, Object> caseResult = new LinkedHashMap<>();
-      caseResult.put("user", userRun);
-      if (!skipSolution) caseResult.put("solution", runProgram(cache, solutionProg, stdin));
-      emit(caseResult);
+      emit(Map.of("user", userRun));
       // A hung program would burn 5s on every remaining case too, so stop here.
       if (Boolean.TRUE.equals(userRun.get("timedOut")) || !proceed(control)) break;
     }

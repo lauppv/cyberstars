@@ -52,17 +52,13 @@ describe.skipIf(!has('python3'))('python runner', () => {
       'lesson-tests.runner.py',
       {
         userCode: 'import sys\nsys.stdout.buffer.write(b"A\\x93\\n")\n',
-        solutionCode: 'print("A")\n',
         structure: {},
         cases: [{ stdin: '' }],
       },
       ['stop'],
     );
     expect(lines[0]).toEqual({ syntaxError: null, structureFailures: [] });
-    expect(lines[1]).toMatchObject({
-      user: { stdout: 'A�\n', exit: 0, timedOut: false },
-      solution: { stdout: 'A\n', exit: 0 },
-    });
+    expect(lines[1]).toMatchObject({ user: { stdout: 'A�\n', exit: 0, timedOut: false } });
   });
 
   it('tells a for statement from a while and a comprehension', () => {
@@ -70,7 +66,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { requires: [forRule] }, cases: [] },
+        { userCode, structure: { requires: [forRule] }, cases: [] },
         [],
       )[0];
     expect(header('for i in range(3):\n    print(i)\n')).toEqual({
@@ -92,7 +88,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { requires: rules }, cases: [] },
+        { userCode, structure: { requires: rules }, cases: [] },
         [],
       )[0];
     expect(header('def f(n):\n    return 1 if n < 2 else n * f(n - 1)\n')).toEqual({
@@ -121,15 +117,14 @@ describe.skipIf(!has('python3'))('python runner', () => {
   });
 
   it("injects the input variable, not a helper's parameter of the same name", () => {
-    const solution = 'shield = 5\nprint(shield * 2)\n';
     const user =
       'def boost(shield):\n    shield = shield * 2\n    return shield\n\nshield = 5\nprint(boost(shield))\n';
     const lines = runRunner(
       'lesson-tests.runner.py',
-      { userCode: user, solutionCode: solution, structure: {}, cases: [{ inject: { shield: 7 } }] },
+      { userCode: user, structure: {}, cases: [{ inject: { shield: 7 } }] },
       ['stop'],
     );
-    expect(lines[1]).toMatchObject({ user: { stdout: '14\n' }, solution: { stdout: '14\n' } });
+    expect(lines[1]).toMatchObject({ user: { stdout: '14\n' } });
   });
 
   it('injects the input variable, not a class attribute of the same name', () => {
@@ -137,13 +132,12 @@ describe.skipIf(!has('python3'))('python runner', () => {
       'lesson-tests.runner.py',
       {
         userCode: 'class Ship:\n    shield = 0\n\nshield = 5\nprint(shield, Ship.shield)\n',
-        solutionCode: 'shield = 5\nprint(shield, 0)\n',
         structure: {},
         cases: [{ inject: { shield: 7 } }],
       },
       ['stop'],
     );
-    expect(lines[1]).toMatchObject({ user: { stdout: '7 0\n' }, solution: { stdout: '7 0\n' } });
+    expect(lines[1]).toMatchObject({ user: { stdout: '7 0\n' } });
   });
 
   // Each new kind: a program that has the construct, and one that only gets
@@ -199,7 +193,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { requires: [rule] }, cases: [] },
+        { userCode, structure: { requires: [rule] }, cases: [] },
         [],
       )[0];
     expect(header(withIt)).toEqual({ syntaxError: null, structureFailures: [] });
@@ -215,11 +209,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
       forbids: [{ kind: 'slice', in: 'reverse_text' }],
     };
     const header = (userCode: string) =>
-      runRunner(
-        'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: rules, cases: [] },
-        [],
-      )[0];
+      runRunner('lesson-tests.runner.py', { userCode, structure: rules, cases: [] }, [])[0];
     const loop =
       'def reverse_text(t):\n    out = ""\n    for c in t:\n        out = c + out\n    return out\n';
     expect(header(loop + 'print(" ".join("a b".split()[::-1]))\n')).toEqual({
@@ -260,7 +250,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { forbids: [rule, max] }, cases: [] },
+        { userCode, structure: { forbids: [rule, max] }, cases: [] },
         [],
       )[0];
     const forbidden = (which: unknown) => ({
@@ -288,7 +278,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { forbids: [max] }, cases: [] },
+        { userCode, structure: { forbids: [max] }, cases: [] },
         [],
       )[0];
     const passes = { syntaxError: null, structureFailures: [] };
@@ -324,7 +314,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { forbids: [max] }, cases: [] },
+        { userCode, structure: { forbids: [max] }, cases: [] },
         [],
       )[0];
     const forbidden = { syntaxError: null, structureFailures: [{ type: 'forbid', rule: max }] };
@@ -362,7 +352,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { forbids: rules }, cases: [] },
+        { userCode, structure: { forbids: rules }, cases: [] },
         [],
       )[0] as { structureFailures: { rule: { name: string } }[] };
     const fired = (code: string) => header(code).structureFailures.map((f) => f.rule.name);
@@ -383,7 +373,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { forbids: [rule] }, cases: [] },
+        { userCode, structure: { forbids: [rule] }, cases: [] },
         [],
       )[0];
     for (const code of [
@@ -409,7 +399,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
     const header = (userCode: string) =>
       runRunner(
         'lesson-tests.runner.py',
-        { userCode, solutionCode: '', structure: { forbids: [rule] }, cases: [] },
+        { userCode, structure: { forbids: [rule] }, cases: [] },
         [],
       )[0];
     for (const code of ['print("58 64")\n', 'print(f"{1} 64")\n', 'print(58)\n']) {
@@ -436,44 +426,36 @@ describe.skipIf(!has('python3'))('python runner', () => {
     });
   });
 
-  it('streams one line per case and stops on the server reply', () => {
+  it('streams one line per case, the one program it judges alone on it, and stops on the server reply', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
       {
         userCode: 'print(input())\n',
-        solutionCode: 'print(input())\n',
         structure: {},
-        cases: [{ stdin: 'é\n' }, { stdin: '2\n', skipSolution: true }, { stdin: '3\n' }],
+        cases: [{ stdin: 'é\n' }, { stdin: '2\n' }, { stdin: '3\n' }],
       },
       ['next', 'stop'],
     );
     expect(lines).toHaveLength(3);
-    expect(lines[1]).toMatchObject({ user: { stdout: 'é\n' }, solution: { stdout: 'é\n' } });
-    // A cached case runs the student's program only.
+    expect(lines[1]).toEqual({ user: expect.objectContaining({ stdout: 'é\n' }) });
     expect(lines[2]).toEqual({ user: expect.objectContaining({ stdout: '2\n' }) });
   });
 
   it("times the CPU the program's own code used, and nothing when it skips its exit hooks", () => {
-    const lines = runRunner(
-      'lesson-tests.runner.py',
-      {
-        userCode: 'print(sum(range(5_000_000)))\n',
-        solutionCode: 'import time\ntime.sleep(0.2)\nprint(12499997500000)\n',
-        structure: {},
-        cases: [{}],
-      },
-      ['next'],
-    );
-    const { user, solution } = lines[1] as { user: { ms: number }; solution: { ms: number } };
+    const timed = (userCode: string) =>
+      (
+        runRunner('lesson-tests.runner.py', { userCode, structure: {}, cases: [{}] }, [
+          'next',
+        ])[1] as { user: { ms: number } }
+      ).user.ms;
     // Computing counts; sleeping doesn't, and neither does interpreter startup.
-    expect(user.ms).toBeGreaterThan(20);
-    expect(solution.ms).toBeLessThan(20);
+    expect(timed('print(sum(range(5_000_000)))\n')).toBeGreaterThan(20);
+    expect(timed('import time\ntime.sleep(0.2)\nprint(12499997500000)\n')).toBeLessThan(20);
 
     const exited = runRunner(
       'lesson-tests.runner.py',
       {
         userCode: 'import os\nprint("ok", flush=True)\nos._exit(0)\n',
-        solutionCode: 'print("ok")\n',
         structure: {},
         cases: [{}],
       },
@@ -487,7 +469,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
       'import os, sys\npid = os.fork()\nif pid == 0:\n    sys.exit(0)\nos.waitpid(pid, 0)\nprint("ok")\n';
     const lines = runRunner(
       'lesson-tests.runner.py',
-      { userCode: code, solutionCode: 'print("ok")\n', structure: {}, cases: [{}] },
+      { userCode: code, structure: {}, cases: [{}] },
       ['stop'],
     );
     const { user } = lines[1] as { user: { stdout: string; ms?: number } };
@@ -530,7 +512,6 @@ describe.skipIf(!has('python3'))('python runner', () => {
       'lesson-tests.runner.py',
       {
         userCode: code,
-        solutionCode: 'print(1)\n',
         structure: {},
         cases: [{ stdin: 'a\r\nb\n' }, { stdin: 'a\r\nb\n', load: true }],
       },
@@ -542,21 +523,19 @@ describe.skipIf(!has('python3'))('python runner', () => {
     expect(forked.exit).toBe(fresh.exit);
   });
 
-  it("runs our solution with another hash seed than the student's program", () => {
-    // A set of strings comes out in the order of the seed: our solution run
-    // as the student's code must still print it differently (check:tests).
+  it('hashes strings with another seed on each run, as our solution and the student do', () => {
+    // A set of strings comes out in the order of the seed. Our solution runs
+    // through a runner of its own, in the judge's container, so run as the
+    // student's code it must still print the set differently (check:tests).
     const words = Array.from({ length: 20 }, (_, i) => `w${i}`);
     const code = `print(set(${JSON.stringify(words)}))\n`;
-    const lines = runRunner(
-      'lesson-tests.runner.py',
-      { userCode: code, solutionCode: code, structure: {}, cases: [{}] },
-      ['stop'],
-    );
-    const { user, solution } = lines[1] as {
-      user: { stdout: string };
-      solution: { stdout: string };
-    };
-    expect(user.stdout).not.toBe(solution.stdout);
+    const printed = () =>
+      (
+        runRunner('lesson-tests.runner.py', { userCode: code, structure: {}, cases: [{}] }, [
+          'stop',
+        ])[1] as { user: { stdout: string } }
+      ).user.stdout;
+    expect(printed()).not.toBe(printed());
   });
 
   it("leaves the program none of the runner's files, and takes an input larger than a pipe", () => {
@@ -566,7 +545,6 @@ describe.skipIf(!has('python3'))('python runner', () => {
         userCode:
           'import os, sys\ndef is_open(fd):\n    try:\n        os.fstat(fd)\n        return True\n    except OSError:\n        return False\n' +
           'print([fd for fd in range(4, 256) if is_open(fd)], len(sys.stdin.read()))\n',
-        solutionCode: 'print(1)\n',
         structure: {},
         cases: [{ stdin: 'x'.repeat(1_000_000) }],
       },
@@ -578,7 +556,7 @@ describe.skipIf(!has('python3'))('python runner', () => {
   it('keeps tracebacks on the same lines as without the timing preamble', () => {
     const lines = runRunner(
       'lesson-tests.runner.py',
-      { userCode: 'x = 1\ny = nope\n', solutionCode: 'print(1)\n', structure: {}, cases: [{}] },
+      { userCode: 'x = 1\ny = nope\n', structure: {}, cases: [{}] },
       ['stop'],
     );
     const { user } = lines[1] as { user: { stderr: string; exit: number; ms: number } };
@@ -592,24 +570,21 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
   it('grades a program that prints invalid UTF-8 instead of crashing', () => {
     const user =
       '#include <stdio.h>\nint main(void) { char c = (char)0x93; printf("A%c\\n", c); return 0; }\n';
-    const solution = '#include <stdio.h>\nint main(void) { printf("A\\n"); return 0; }\n';
     const lines = runRunner(
       'lesson-tests.runner.c.py',
-      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: solution }] },
+      { pristineUser: user, cases: [{ userSrc: user }] },
       ['stop'],
     );
     expect(lines[0]).toEqual({ syntaxError: null });
-    expect(lines[1]).toMatchObject({
-      user: { stdout: 'A�\n', exit: 0 },
-      solution: { stdout: 'A\n', exit: 0 },
-    });
+    // The one program it judges is alone on the case's line.
+    expect(lines[1]).toEqual({ user: expect.objectContaining({ stdout: 'A�\n', exit: 0 }) });
   });
   it('reports one time from the program itself when it forks a child', () => {
     const user =
       '#include <stdio.h>\n#include <unistd.h>\n#include <sys/wait.h>\nint main(void) { pid_t p = fork(); if (p == 0) return 0; waitpid(p, NULL, 0); puts("ok"); return 0; }\n';
     const lines = runRunner(
       'lesson-tests.runner.c.py',
-      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: user }] },
+      { pristineUser: user, cases: [{ userSrc: user }] },
       ['stop'],
     );
     const { user: u } = lines[1] as { user: { stdout: string; ms?: number } };
@@ -620,21 +595,22 @@ describe.skipIf(!has('python3') || !has('gcc'))('c runner', () => {
   it("times the CPU the program's own code used, and nothing when it crashes", () => {
     const user =
       '#include <stdio.h>\n#include <unistd.h>\nint main(void) { volatile long s = 0; for (long i = 0; i < 200000000; i++) s += i; usleep(200000); puts("ok"); return 0; }\n';
-    const solution = 'int main(void) { int *p = 0; *p = 1; return 0; }\n';
-    const lines = runRunner(
-      'lesson-tests.runner.c.py',
-      { pristineUser: user, cases: [{ userSrc: user, solutionSrc: solution }] },
-      ['stop'],
-    );
-    const { user: u, solution: s } = lines[1] as {
-      user: { ms: number; stdout: string };
-      solution: { ms?: number; exit: number };
-    };
+    const crash = 'int main(void) { int *p = 0; *p = 1; return 0; }\n';
+    const ran = (program: string) =>
+      (
+        runRunner(
+          'lesson-tests.runner.c.py',
+          { pristineUser: program, cases: [{ userSrc: program }] },
+          ['stop'],
+        )[1] as { user: { ms?: number; stdout: string; exit: number } }
+      ).user;
     // The loop counts, the 200 ms sleep doesn't.
+    const u = ran(user);
     expect(u.stdout).toBe('ok\n');
     expect(u.ms).toBeGreaterThan(50);
-    expect(s.exit).not.toBe(0);
-    expect(s.ms).toBeUndefined();
+    const crashed = ran(crash);
+    expect(crashed.exit).not.toBe(0);
+    expect(crashed.ms).toBeUndefined();
   });
 });
 
@@ -654,7 +630,7 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     const payloadPath = path.join(dir, 'payload.json');
     fs.writeFileSync(
       payloadPath,
-      JSON.stringify({ userCode, solutionCode: '', structure: { requires, forbids }, cases: [] }),
+      JSON.stringify({ userCode, structure: { requires, forbids }, cases: [] }),
     );
     const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
       encoding: 'utf8',
@@ -673,7 +649,7 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
       'public class Main {\n    public static void main(String[] args) { System.out.println("hi"); }\n}\n';
     fs.writeFileSync(
       payloadPath,
-      JSON.stringify({ userCode: program, solutionCode: program, structure: {}, cases: [{}] }),
+      JSON.stringify({ userCode: program, structure: {}, cases: [{}] }),
     );
     const run = () => {
       const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
@@ -683,9 +659,9 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
       });
       expect(result.status).toBe(0);
       const lines = result.stdout.trim().split('\n');
-      expect(JSON.parse(lines[1])).toMatchObject({
-        user: { stdout: 'hi\n', exit: 0, ms: expect.any(Number) },
-        solution: { stdout: 'hi\n' },
+      // The one program it judges is alone on the case's line.
+      expect(JSON.parse(lines[1])).toEqual({
+        user: expect.objectContaining({ stdout: 'hi\n', exit: 0, ms: expect.any(Number) }),
       });
     };
     const timer = path.join(classes, 'timer', 'CyberstarsJudgeTimer');
