@@ -6,7 +6,7 @@ Think of a page as a theatre stage. HTML is the set and the actors, CSS is the c
 
 JavaScript lives in a file of its own, ending in `.js`, like CSS lives in `.css`. The page loads it with a `<script>` tag:
 
-```html
+```html preview
 <body>
   <h1>Game Club</h1>
   <p>Welcome!</p>

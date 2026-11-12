@@ -4,7 +4,7 @@ So far your oxygen numbers live in `crew.js`. But when the crew gets new tanks, 
 
 `textContent` always gives a string, even when it looks like a number:
 
-```html
+```html preview
 <p>Members: <span id="members">12</span></p>
 ```
 

@@ -2,10 +2,34 @@ Put a sheet of paper on a desk under a lamp: it casts a soft shadow, and you can
 
 ## `box-shadow`
 
-```css
-.member {
-  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.4);
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+  }
+
+  /* show */
+  .member {
+    box-shadow: 0 4px 12px rgb(0, 0, 0, 0.4);
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 Four values, in this order:
