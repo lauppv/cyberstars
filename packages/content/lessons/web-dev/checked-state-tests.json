@@ -1,0 +1,181 @@
+{
+  "cases": [
+    {
+      "name": "Wi-Fi, ticked at the start, stands out",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "differs": "label[for=\"extra-wifi\"]",
+          "from": "label[for=\"extra-meal\"], label[for=\"extra-blanket\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of Wi-Fi, ticked at the start",
+          "fromLabel": "the labels of the meal and the blanket, not ticked"
+        },
+        {
+          "contrast": "label[for=\"extra-wifi\"]",
+          "atLeast": 4.5,
+          "label": "the label of Wi-Fi, ticked"
+        }
+      ]
+    },
+    {
+      "name": "Only the seat picked stands out",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "differs": "label[for=\"seat-aisle\"]",
+          "from": "label[for=\"seat-window\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the aisle seat, picked",
+          "fromLabel": "the label of the window seat"
+        },
+        {
+          "click": "label[for=\"seat-window\"]",
+          "label": "the label of the window seat"
+        },
+        {
+          "differs": "label[for=\"seat-window\"]",
+          "from": "label[for=\"seat-aisle\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the window seat, picked",
+          "fromLabel": "the label of the aisle seat"
+        },
+        {
+          "contrast": "label[for=\"seat-window\"]",
+          "atLeast": 4.5,
+          "label": "the label of the window seat, picked"
+        }
+      ]
+    },
+    {
+      "name": "A box unticked stops standing out",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label[for=\"extra-wifi\"]",
+          "label": "the label of the Wi-Fi box"
+        },
+        {
+          "click": "label[for=\"extra-meal\"]",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "differs": "label[for=\"extra-meal\"]",
+          "from": "label[for=\"extra-wifi\"], label[for=\"extra-blanket\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the meal, ticked",
+          "fromLabel": "the labels of Wi-Fi, unticked, and the blanket"
+        }
+      ]
+    },
+    {
+      "name": "Other choices",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label[for=\"extra-blanket\"]",
+          "label": "the label of the blanket box"
+        },
+        {
+          "click": "label[for=\"seat-window\"]",
+          "label": "the label of the window seat"
+        },
+        {
+          "differs": "label[for=\"extra-blanket\"]",
+          "from": "label[for=\"extra-meal\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the blanket, ticked",
+          "fromLabel": "the label of the meal"
+        },
+        {
+          "differs": "label[for=\"seat-window\"]",
+          "from": "label[for=\"seat-aisle\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the window seat, picked",
+          "fromLabel": "the label of the aisle seat"
+        },
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "differs": "label[for=\"seat-aisle\"]",
+          "from": "label[for=\"seat-window\"]",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "opacity",
+            "border-top-style",
+            "border-top-color"
+          ],
+          "label": "the label of the aisle seat, picked",
+          "fromLabel": "the label of the window seat"
+        }
+      ]
+    }
+  ]
+}
