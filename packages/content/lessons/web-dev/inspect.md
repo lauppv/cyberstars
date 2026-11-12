@@ -28,10 +28,17 @@ This is where Inspect shines. Say there's space above a heading and you never wr
 
 Once you know, you can change it in your own CSS:
 
-```css
-h2 {
-  margin-top: 0;
-}
+```css preview
+<style>
+  /* show */
+  h2 {
+    margin-top: 0;
+  }
+  /* /show */
+</style>
+<p>Our club has two parts.</p>
+<h2>Board Games</h2>
+<p>We keep them in the cupboard by the window.</p>
 ```
 
 You can even try values right there in the Styles panel. They change the page at once, but only until you reload, so copy the one that works into your file.

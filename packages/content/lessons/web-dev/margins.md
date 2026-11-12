@@ -4,12 +4,29 @@ Photos hung edge to edge on a wall look like one big messy picture. Leave some e
 
 `margin` is space **outside** the box, between its border and the next element:
 
-```css
-.member {
-  background-color: #1e3a5f;
-  padding: 16px;
-  margin: 24px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  /* show */
+  .member {
+    background-color: #1e3a5f;
+    padding: 16px;
+    margin: 24px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 Now there are 24 pixels of empty space around each member box, on every side. Two boxes one under the other stand apart.
@@ -32,10 +49,31 @@ Both make space, so which one do you need? Ask: should the space have the box's 
 
 Try to separate the cards with padding instead:
 
-```css
-.member {
-  padding: 40px;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+  }
+
+  /* show */
+  .member {
+    padding: 40px;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 The cards get bigger, with lots of blue around the text, but they still touch each other. Padding is inside the box: it can never push two boxes apart.
