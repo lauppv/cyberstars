@@ -626,10 +626,7 @@ export function applyInjection(
 
 interface PreparedCase {
   userSrc: string;
-  /** Absent when the case's reference output is already cached (skipSolution). */
-  solutionSrc?: string;
   stdin?: string;
-  skipSolution?: true;
 }
 
 export interface PrepareResult {
@@ -639,33 +636,21 @@ export interface PrepareResult {
 }
 
 // Full server-side preparation for the C judge: syntax gate 1 + structure checks
-// on the pristine user code, then per-case injection into BOTH the user code and
-// the reference solution. The runner receives only pre-injected sources. Cases
-// in `skipSolution` (reference output already cached) carry the user side only.
-export async function prepareC(
-  userCode: string,
-  solutionCode: string,
-  spec: LessonTestsSpec,
-  skipSolution: ReadonlySet<number> = new Set(),
-): Promise<PrepareResult> {
+// on the pristine code, then per-case injection. The runner receives only
+// pre-injected sources. The judge prepares the student's program and our
+// reference solution each on its own, for the container each runs in.
+export async function prepareC(userCode: string, spec: LessonTestsSpec): Promise<PrepareResult> {
   const userRoot = await parseC(userCode);
   const syntaxError = detectSyntaxError(userRoot);
   if (syntaxError) return { syntaxError, structureFailures: [], cases: [] };
 
   const structureFailures = checkStructure(userRoot, spec.structure);
   const userSites = collectInjectionSites(userRoot);
-  const solutionSites = collectInjectionSites(await parseC(solutionCode));
 
-  const cases: PreparedCase[] = spec.cases.map((testCase, index) => {
-    const inject = testCase.inject ?? {};
-    return {
-      userSrc: applyInjection(userCode, userSites, inject),
-      ...(skipSolution.has(index)
-        ? { skipSolution: true as const }
-        : { solutionSrc: applyInjection(solutionCode, solutionSites, inject) }),
-      ...(testCase.stdin !== undefined ? { stdin: testCase.stdin } : {}),
-    };
-  });
+  const cases: PreparedCase[] = spec.cases.map((testCase) => ({
+    userSrc: applyInjection(userCode, userSites, testCase.inject ?? {}),
+    ...(testCase.stdin !== undefined ? { stdin: testCase.stdin } : {}),
+  }));
 
   return { syntaxError: null, structureFailures, cases };
 }

@@ -124,7 +124,7 @@ There is no endpoint that marks a lesson complete: only the judge does, on a pas
 | GET    | `/api/tests/:courseKey/:lessonSlug/submissions` | Yes   | The student's last 20 attempts on the lesson                      |
 | GET    | `/api/tests/submissions/:id`                    | Yes   | One attempt with its code and the test it stopped on              |
 
-The judge runs the student's code and the reference solution in the owner's container and compares the outputs on the server, so the expected output never reaches the container. It stops at the first failing test and never shows a hidden test's expected output.
+The judge runs the student's code in the owner's container and the reference solution in a container of the judge's own, which no student's code enters, and compares the outputs on the server, so neither the solution nor the expected output reaches the student's container. It stops at the first failing test and never shows a hidden test's expected output.
 
 ### Terminal (Linux course)
 

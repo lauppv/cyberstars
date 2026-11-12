@@ -68,6 +68,10 @@ const SPEC = {
 const ONE_CASE = { comparator: 'trimmed', structure: {}, cases: [{ visible: true }] };
 const SOLUTION_MD = '```py\nprint("ok")\n```\n';
 
+// The student's container, and the judge's own, the only one our solution runs in
+const STUDENT = 'cid-1';
+const JUDGE = 'judge-cid';
+
 // Every file is there but a hidden part (<slug>-harness.md), which only the
 // challenges that have one ship.
 const noHarness = (file: string) => !file.endsWith('-harness.md');
@@ -90,34 +94,109 @@ function program(overrides: Record<string, unknown> = {}) {
 interface StubVerdict {
   syntaxError: string | null;
   structureFailures?: unknown[];
-  cases: unknown[];
+  // Per case: `user`, what the student's program printed, and `solution`,
+  // what ours prints on it, which the judge's container plays when asked
+  cases: { user?: unknown; solution?: unknown; injectError?: boolean }[];
+  // Our solution's runs, when not the cases' own
+  solutions?: unknown[];
+  // Sends each case line as written, `solution` included, as a student's
+  // container that lies about our solution would
+  verbatim?: boolean;
 }
 
-// Server replies to each case line, in order ('next' | 'stop').
+// Server replies to each case line of the student's run, in order ('next' | 'stop').
 let replies: (string | null)[] = [];
+// The student's runs to play, one per run, and our solution's, in the order
+// the judge's container is asked for them (a program printing 'ok' past them)
+let verdicts: StubVerdict[] = [];
+let solutions: unknown[] = [];
+// How long each run in the judge's container takes, and how many overlapped
+let judgeDelayMs = 0;
+let judgeBusy = 0;
+let judgeMostBusy = 0;
 
-// Writes the runner and the payload, then plays a runner that streams the
-// header and one line per case, stopping when the server answers anything but
-// 'next' (the lockstep protocol of the real runners).
-function stubVerdict({ syntaxError, structureFailures = [], cases }: StubVerdict) {
-  mockDockerExec.mockResolvedValueOnce('').mockResolvedValueOnce('');
-  mockConverse.mockImplementationOnce(
-    async (_args: string[], _timeout: number, onLine: (line: string) => string | null) => {
-      replies = [];
-      onLine(JSON.stringify(syntaxError ? { syntaxError } : { syntaxError, structureFailures }));
-      if (syntaxError) return;
-      for (const c of cases) {
-        const reply = onLine(JSON.stringify(c));
-        replies.push(reply);
-        if (reply !== 'next') return;
-      }
-    },
-  );
+// Queues the student's run, and our solution's runs it needs, so the next
+// judge run plays them as the real runners would.
+function stubVerdict(verdict: StubVerdict) {
+  verdicts.push(verdict);
+  solutions = verdict.solutions ?? verdict.cases.flatMap((c) => (c.solution ? [c.solution] : []));
+}
+
+// The payloads the service wrote to a container, in order
+function payloads(container: string): Record<string, unknown>[] {
+  return mockDockerExec.mock.calls
+    .filter(([args]) => (args as string[])[2] === container)
+    .filter(([args]) => (args as string[]).join(' ').includes('cat > /work/_payload.json'))
+    .map(([, , stdin]) => JSON.parse(stdin as string) as Record<string, unknown>);
+}
+const studentPayload = () => payloads(STUDENT).at(-1)!;
+const judgePayloads = () => payloads(JUDGE);
+
+type OnLine = (line: string) => string | null;
+
+// The runner in the judge's container: our solution on every case it was
+// sent, its header first, as long as the server answers 'next'.
+async function playSolution(onLine: OnLine) {
+  judgeMostBusy = Math.max(judgeMostBusy, ++judgeBusy);
+  try {
+    if (judgeDelayMs) await new Promise((resolve) => setTimeout(resolve, judgeDelayMs));
+    const { cases } = judgePayloads().at(-1)! as { cases: unknown[] };
+    onLine(JSON.stringify({ syntaxError: null, structureFailures: [] }));
+    for (let i = 0; i < cases.length; i++) {
+      if (onLine(JSON.stringify({ user: solutions.shift() ?? program() })) !== 'next') return;
+    }
+  } finally {
+    judgeBusy--;
+  }
+}
+
+// The runner in the student's container: the header, then one line per case,
+// stopping when the server answers anything but 'next' (the lockstep protocol
+// of the real runners). Without a run queued it prints nothing.
+async function playStudent(onLine: OnLine) {
+  const verdict = verdicts.shift();
+  if (!verdict) return;
+  const { syntaxError, structureFailures = [], cases, verbatim } = verdict;
+  replies = [];
+  onLine(JSON.stringify(syntaxError ? { syntaxError } : { syntaxError, structureFailures }));
+  if (syntaxError) return;
+  for (const c of cases) {
+    const line = verbatim ? c : { user: c.user, injectError: c.injectError };
+    const reply = onLine(JSON.stringify(line));
+    replies.push(reply);
+    if (reply !== 'next') return;
+  }
+}
+
+// The cases a C prep gives a program: the code itself, with each case's stdin
+function prepared(code: string, spec: { cases: { stdin?: string }[] }) {
+  return {
+    syntaxError: null,
+    structureFailures: [],
+    cases: spec.cases.map((c) => ({
+      userSrc: code,
+      ...(c.stdin !== undefined ? { stdin: c.stdin } : {}),
+    })),
+  };
 }
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mockAcquire.mockResolvedValue('cid-1');
+  verdicts = [];
+  solutions = [];
+  judgeDelayMs = 0;
+  judgeBusy = 0;
+  judgeMostBusy = 0;
+  mockAcquire.mockImplementation(async (owner: string) =>
+    owner.startsWith('judge:reference:') ? JUDGE : STUDENT,
+  );
+  mockDockerExec.mockResolvedValue('');
+  mockConverse.mockImplementation(async (args: string[], _timeout: number, onLine: OnLine) =>
+    args[2] === JUDGE ? playSolution(onLine) : playStudent(onLine),
+  );
+  mockPrepareC.mockImplementation(async (code: string, spec: { cases: { stdin?: string }[] }) =>
+    prepared(code, spec),
+  );
   mockAcquireSandbox.mockResolvedValue(mockReleaseSandbox);
   clearReferences();
 });
@@ -267,22 +346,16 @@ describe('runLessonTests', () => {
         { user: program(), solution: program() },
       ],
     });
-    mockPrepareC.mockResolvedValue({
-      syntaxError: null,
-      structureFailures: [],
-      cases: [
-        { userSrc: 'U', solutionSrc: 'S' },
-        { userSrc: 'U', solutionSrc: 'S' },
-      ],
-    });
 
     await runLessonTests('user:1', 'trees-graphs', 'trees', 'int main(void) {}', 'en', 'c');
 
     const read = mockReadFileSync.mock.calls.map(([file]) => String(file));
     expect(read[0]).toContain(path.join('trees-graphs', 'c', 'trees-tests.json'));
     expect(read[1]).toContain(path.join('trees-graphs', 'c', 'trees-solution.md'));
-    // The container is the C one the editor's runs in C use too.
+    // The container is the C one the editor's runs in C use too, and our
+    // solution runs in the judge's C one.
     expect(mockAcquire).toHaveBeenCalledWith('user:1', 'c', undefined);
+    expect(mockAcquire).toHaveBeenCalledWith('judge:reference:c', 'c', undefined);
     expect(mockPrepareC).toHaveBeenCalled();
   });
 
@@ -510,8 +583,9 @@ describe('runLessonTests', () => {
       });
       await runLessonTests('user:1', 'python', 'print', 'code');
     }
-    // python: 15 s boot + 30 s case budget + 11 s for one case in flight.
-    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([66_000, 66_000]);
+    // python: 15 s boot + 30 s case budget + 11 s for one case in flight, our
+    // solution's run in the judge's container too.
+    expect(mockConverse.mock.calls.map((call) => call[1])).toEqual([66_000, 66_000, 66_000]);
   });
 
   it('stops once the case budget runs out and reports the next case as a timeout', async () => {
@@ -573,8 +647,6 @@ describe('runLessonTests', () => {
 
   it('500s when the runner sends no header or more cases than the spec has', async () => {
     stubFiles();
-    mockDockerExec.mockResolvedValue('');
-    mockConverse.mockResolvedValueOnce(undefined);
     await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
       statusCode: 500,
     });
@@ -657,17 +729,23 @@ describe('runLessonTests', () => {
     expect(res2.passedCount).toBe(1);
   });
 
-  it('treats a broken reference solution as an internal error', async () => {
+  it.each([
+    ['crashes', program({ exit: 1 })],
+    ['times out', program({ timedOut: true, exit: -1 })],
+  ])('treats a reference solution that %s as an internal error', async (_, broken) => {
     stubFiles();
     stubVerdict({
       syntaxError: null,
       structureFailures: [],
-      cases: [{ user: program(), solution: program({ exit: 1 }) }],
+      cases: [{ user: program(), solution: broken }],
     });
     await expect(runLessonTests('user:1', 'python', 'print', 'code')).rejects.toMatchObject({
       statusCode: 500,
     });
+    // Both containers start clean next time, and the student's program never ran.
+    expect(mockDestroy).toHaveBeenCalledWith('judge:reference:python');
     expect(mockDestroy).toHaveBeenCalledWith('user:1');
+    expect(payloads(STUDENT)).toEqual([]);
   });
 
   it('loads the ro/ solution together with the ro/ tests spec', async () => {
@@ -710,10 +788,9 @@ describe('runLessonTests', () => {
     ).toBe(true);
     // Runner source lands in /work; the bootstrap compiles it once into
     // /tmp/_judge and hands stdout over to the runner via exec.
-    expect((mockDockerExec.mock.calls[0][0] as string[]).join(' ')).toContain(
-      'cat > /work/Runner.java',
-    );
-    const runArgs = mockConverse.mock.calls[0][0] as string[];
+    const writes = mockDockerExec.mock.calls.map(([args]) => (args as string[]).join(' '));
+    expect(writes.filter((w) => w.includes(STUDENT))[0]).toContain('cat > /work/Runner.java');
+    const runArgs = mockConverse.mock.calls.at(-1)![0] as string[];
     // The run is a conversation: stdin stays attached for the server's replies.
     expect(runArgs.slice(0, 3)).toEqual(['exec', '-i', 'cid-1']);
     expect(runArgs).toContain('sh');
@@ -726,25 +803,76 @@ describe('runLessonTests', () => {
     );
   });
 
+  it("runs our solution only in the judge's container, and sends none of it to the student's", async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true, stdin: '5\n' }] });
+    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
+
+    await runLessonTests('user:1', 'python', 'print', 'print("mine")');
+
+    expect(mockAcquire).toHaveBeenCalledWith('judge:reference:python', 'python', undefined);
+    expect(judgePayloads()).toEqual([
+      { userCode: 'print("ok")\n', structure: {}, cases: [{ visible: true, stdin: '5\n' }] },
+    ]);
+    expect(studentPayload()).toEqual({
+      userCode: 'print("mine")',
+      structure: {},
+      cases: [{ visible: true, stdin: '5\n' }],
+    });
+    const sentToStudent = mockDockerExec.mock.calls
+      .filter(([args]) => (args as string[])[2] === STUDENT)
+      .map(([, , stdin]) => String(stdin));
+    expect(sentToStudent.some((sent) => sent.includes('print("ok")'))).toBe(false);
+    // What our solution left running is stopped too, before its container is free.
+    expect(mockKillLeftovers).toHaveBeenCalledWith(JUDGE);
+    expect(mockRelease).toHaveBeenCalledWith('judge:reference:python');
+  });
+
+  it("believes no word of the student's container about our solution, for them or anyone after", async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }, {}] });
+    // A program that rewrote its runner: it claims our solution printed what it did.
+    const pwned = program({ stdout: 'pwned\n' });
+    stubVerdict({
+      syntaxError: null,
+      verbatim: true,
+      cases: [
+        { user: pwned, solution: pwned },
+        { user: pwned, solution: pwned },
+      ],
+      solutions: [program(), program()],
+    });
+    const cheat = await runLessonTests('guest:g', 'python', 'print', 'cheat');
+    expect(cheat).toMatchObject({ status: 'failed', passedCount: 0 });
+    expect(cheat.cases[0]).toMatchObject({ expected: 'ok', actual: 'pwned' });
+
+    // The cache holds what our solution printed, so the next student passes.
+    stubVerdict({ syntaxError: null, cases: [{ user: program() }, { user: program() }] });
+    const honest = await runLessonTests('user:2', 'python', 'print', 'print("ok")');
+    expect(honest).toMatchObject({ status: 'passed', passedCount: 2 });
+    expect(judgePayloads()).toHaveLength(1);
+  });
+
   it("reuses our solution's output on every case but the load test, which always runs it", async () => {
     stubFiles({
       comparator: 'trimmed',
       structure: {},
       cases: [{ visible: true }, { generated: true, stdin: '1\n' }, { stdin: '9\n', load: true }],
     });
-    const fresh = {
+    stubVerdict({
       syntaxError: null,
       cases: [
         { user: program({ ms: 4 }), solution: program({ ms: 3 }) },
         { user: program({ stdout: '1\n', ms: 2 }), solution: program({ stdout: '1\n', ms: 1 }) },
         { user: program({ stdout: '9\n', ms: 40 }), solution: program({ stdout: '9\n', ms: 20 }) },
       ],
-    };
-    stubVerdict(fresh);
+    });
     const first = await runLessonTests('user:1', 'python', 'cache-pass', 'code');
     expect(first).toMatchObject({ status: 'passed', runtimeMs: 40, referenceMs: 20 });
-    const firstPayload = JSON.parse(mockDockerExec.mock.calls[1][2] as string);
-    expect(firstPayload.cases.some((c: object) => 'skipSolution' in c)).toBe(false);
+    expect(first.cases[0]).toMatchObject({ userMs: 4, solutionMs: 3 });
+    // The cases before the load test in one run, then the load test on its own
+    expect(judgePayloads().map((p) => p.cases)).toEqual([
+      [{ visible: true }, { generated: true, stdin: '1\n' }],
+      [{ stdin: '9\n', load: true }],
+    ]);
 
     mockDockerExec.mockClear();
     stubVerdict({
@@ -756,14 +884,39 @@ describe('runLessonTests', () => {
       ],
     });
     const second = await runLessonTests('user:1', 'python', 'cache-pass', 'code');
-    const payload = JSON.parse(mockDockerExec.mock.calls[1][2] as string);
-    expect(payload.cases[0]).toEqual({ visible: true, skipSolution: true });
-    expect(payload.cases[1]).toEqual({ generated: true, stdin: '1\n', skipSolution: true });
-    // The load test always runs our solution, timed next to the student's.
-    expect(payload.cases[2]).toEqual({ stdin: '9\n', load: true });
+    // The load test always runs our solution, timed for the student's.
+    expect(judgePayloads().map((p) => p.cases)).toEqual([[{ stdin: '9\n', load: true }]]);
     expect(second.status).toBe('passed');
     expect(second.cases[0].solutionMs).toBeUndefined();
     expect(second).toMatchObject({ runtimeMs: 38, referenceMs: 21 });
+  });
+
+  it("runs our solution on the load test only once the student's program got through it", async () => {
+    const spec = {
+      comparator: 'trimmed',
+      structure: {},
+      cases: [{ visible: true }, { stdin: '9\n', load: true }],
+    };
+    stubFiles(spec);
+    stubVerdict({
+      syntaxError: null,
+      cases: [{ user: program({ stdout: 'wrong\n' }), solution: program() }],
+    });
+    await runLessonTests('user:1', 'python', 'load-early', 'code');
+    stubVerdict({
+      syntaxError: null,
+      cases: [{ user: program() }, { user: program({ timedOut: true, exit: -1 }) }],
+    });
+    const slow = await runLessonTests('user:1', 'python', 'load-early', 'code');
+    expect(slow.cases[1]).toMatchObject({ load: true, error: 'timeout' });
+    stubVerdict({
+      syntaxError: null,
+      cases: [{ user: program() }, { user: program({ exit: 1, stderr: 'MemoryError' }) }],
+    });
+    const crashed = await runLessonTests('user:1', 'python', 'load-early', 'code');
+    expect(crashed.cases[1]).toMatchObject({ load: true, error: 'MemoryError' });
+    // Only the first run's cases before the load test: never the load test itself.
+    expect(judgePayloads().map((p) => p.cases)).toEqual([[{ visible: true }]]);
   });
 
   it('judges a cached case against the cached output', async () => {
@@ -783,6 +936,7 @@ describe('runLessonTests', () => {
     await expect(runLessonTests('user:1', 'python', 'cache-fail', 'code')).rejects.toMatchObject({
       statusCode: 500,
     });
+    expect(judgePayloads()).toHaveLength(1);
   });
 
   it('never caches a broken reference run or a nondeterministic lesson', async () => {
@@ -796,35 +950,65 @@ describe('runLessonTests', () => {
     });
     stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
     await runLessonTests('user:1', 'python', 'cache-broken', 'code');
-    expect(JSON.parse(mockDockerExec.mock.calls.at(-1)![2] as string).cases[0]).not.toHaveProperty(
-      'skipSolution',
-    );
+    expect(judgePayloads()).toHaveLength(2);
 
     stubFiles({ comparator: 'unordered', structure: {}, cases: [{}] });
     for (let run = 0; run < 2; run++) {
       stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
       await runLessonTests('user:1', 'python', 'cache-unordered', 'code');
     }
-    expect(JSON.parse(mockDockerExec.mock.calls.at(-1)![2] as string).cases[0]).not.toHaveProperty(
-      'skipSolution',
-    );
+    expect(judgePayloads()).toHaveLength(4);
   });
 
-  it('hands the cached cases to the c prep so it leaves their solution out', async () => {
-    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ stdin: '2\n' }] });
-    mockPrepareC.mockResolvedValue({
-      syntaxError: null,
-      structureFailures: [],
-      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '2\n' }],
-    });
-    stubVerdict({ syntaxError: null, cases: [{ user: program(), solution: program() }] });
-    await runLessonTests('user:1', 'c', 'cache-c', 'code');
-    expect(mockPrepareC.mock.calls[0][3]).toEqual(new Set());
+  it('runs our solution one run at a time per language, the second finding the first one done', async () => {
+    stubFiles({ comparator: 'trimmed', structure: {}, cases: [{ visible: true }] });
+    judgeDelayMs = 20;
+    stubVerdict({ syntaxError: null, cases: [{ user: program() }], solutions: [program()] });
+    stubVerdict({ syntaxError: null, cases: [{ user: program() }], solutions: [program()] });
 
-    stubVerdict({ syntaxError: null, cases: [{ user: program() }] });
-    const res = await runLessonTests('user:1', 'c', 'cache-c', 'code');
-    expect(mockPrepareC.mock.calls[1][3]).toEqual(new Set([0]));
+    const runs = await Promise.all([
+      runLessonTests('user:1', 'python', 'turns', 'code'),
+      runLessonTests('user:2', 'python', 'turns', 'code'),
+    ]);
+
+    expect(runs.map((r) => r.status)).toEqual(['passed', 'passed']);
+    expect(judgeMostBusy).toBe(1);
+    expect(judgePayloads()).toHaveLength(1);
+  });
+
+  it('prepares our C solution on its own, with only the cases it runs', async () => {
+    stubFiles({
+      comparator: 'trimmed',
+      structure: {},
+      cases: [{ stdin: '2\n' }, { stdin: '3\n' }],
+    });
+    stubVerdict({
+      syntaxError: null,
+      cases: [
+        { user: program(), solution: program() },
+        { user: program(), solution: program() },
+      ],
+    });
+    await runLessonTests('user:1', 'c', 'cache-c', 'mine');
+    expect(mockPrepareC.mock.calls.map(([code, spec]) => [code, spec.cases])).toEqual([
+      ['mine', [{ stdin: '2\n' }, { stdin: '3\n' }]],
+      ['print("ok")\n', [{ stdin: '2\n' }, { stdin: '3\n' }]],
+    ]);
+    expect(judgePayloads()).toEqual([
+      {
+        pristineUser: 'print("ok")\n',
+        cases: [
+          { userSrc: 'print("ok")\n', stdin: '2\n' },
+          { userSrc: 'print("ok")\n', stdin: '3\n' },
+        ],
+      },
+    ]);
+
+    stubVerdict({ syntaxError: null, cases: [{ user: program() }, { user: program() }] });
+    const res = await runLessonTests('user:1', 'c', 'cache-c', 'mine');
     expect(res.status).toBe('passed');
+    // Every case cached: the solution isn't even prepared again.
+    expect(mockPrepareC).toHaveBeenCalledTimes(3);
   });
 
   it('404s when the course language has no judge runner', async () => {
@@ -837,10 +1021,10 @@ describe('runLessonTests', () => {
 
   it('dispatches c lessons to the c runner with a server-prepped payload', async () => {
     stubFiles(ONE_CASE);
-    mockPrepareC.mockResolvedValue({
+    mockPrepareC.mockResolvedValueOnce({
       syntaxError: null,
       structureFailures: [],
-      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '' }],
+      cases: [{ userSrc: 'U', stdin: '' }],
     });
     stubVerdict({
       syntaxError: null,
@@ -854,9 +1038,10 @@ describe('runLessonTests', () => {
       mockReadFileSync.mock.calls.some((c) => String(c[0]).endsWith('lesson-tests.runner.c.py')),
     ).toBe(true);
     // The C runner gets pre-injected sources, not the raw code + spec.
-    const payload = mockDockerExec.mock.calls[1][2] as string;
-    expect(payload).toContain('pristineUser');
-    expect(JSON.parse(payload).cases).toEqual([{ userSrc: 'U', solutionSrc: 'S', stdin: '' }]);
+    expect(studentPayload()).toEqual({
+      pristineUser: 'code',
+      cases: [{ userSrc: 'U', stdin: '' }],
+    });
   });
 
   it('short-circuits a c syntax error before touching a container', async () => {
@@ -875,10 +1060,10 @@ describe('runLessonTests', () => {
 
   it('merges c structure failures from the server prep, not the runner', async () => {
     stubFiles(ONE_CASE);
-    mockPrepareC.mockResolvedValue({
+    mockPrepareC.mockResolvedValueOnce({
       syntaxError: null,
       structureFailures: [{ type: 'require', rule: { kind: 'variable', name: 'age' } }],
-      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '' }],
+      cases: [{ userSrc: 'U', stdin: '' }],
     });
     stubVerdict({
       syntaxError: null,
@@ -982,9 +1167,10 @@ describe('runLessonTests on a challenge with a hidden part', () => {
       'python',
     );
 
-    const payload = JSON.parse(mockDockerExec.mock.calls[1][2] as string);
-    expect(payload.userCode).toBe('def max_depth(root):\n    return 1\n\nprint(max_depth(None))\n');
-    expect(payload.solutionCode).toBe(
+    expect(studentPayload().userCode).toBe(
+      'def max_depth(root):\n    return 1\n\nprint(max_depth(None))\n',
+    );
+    expect(judgePayloads()[0].userCode).toBe(
       'def max_depth(root):\n    return 0\n\nprint(max_depth(None))\n',
     );
   });
@@ -1000,9 +1186,7 @@ describe('runLessonTests on a challenge with a hidden part', () => {
       'en',
       'python',
     );
-    expect(JSON.parse(mockDockerExec.mock.calls[1][2] as string).userCode).toContain(
-      'print(adancime_maxima(None))',
-    );
+    expect(studentPayload().userCode).toContain('print(adancime_maxima(None))');
 
     passing();
     await runLessonTests(
@@ -1013,9 +1197,7 @@ describe('runLessonTests on a challenge with a hidden part', () => {
       'ro',
       'python',
     );
-    expect(JSON.parse(mockDockerExec.mock.calls[3][2] as string).userCode).toContain(
-      'print(max_depth(None))',
-    );
+    expect(studentPayload().userCode).toContain('print(max_depth(None))');
   });
 
   it('names the line of a C syntax error in the code the student sees', async () => {
@@ -1048,11 +1230,6 @@ describe('runLessonTests on a challenge with a hidden part', () => {
       { en: C_HARNESS, ro: C_HARNESS },
       '```c\nint max_depth(struct Node *r) { return 0; }\n```\n',
     );
-    mockPrepareC.mockResolvedValue({
-      syntaxError: null,
-      structureFailures: [],
-      cases: [{ userSrc: 'U', solutionSrc: 'S', stdin: '' }],
-    });
     stubVerdict({ syntaxError: 'line 7: error', cases: [] });
 
     const res = await runLessonTests('user:1', 'algo-trees-graphs', 'max-depth', 'x', 'en', 'c');

@@ -24,13 +24,16 @@ import type {
 } from '@cyberstars/shared/tests';
 
 // Server-side judge for lessons that ship a <slug>-tests.json. The heavy
-// lifting happens inside the owner's sandbox container (same one the editor
-// Run uses): a trusted per-language runner checks code structure via the
-// language's own parser (Python ast / javac Compiler Tree API), injects each
-// case's values into the lesson's input variables in both the user code and
-// the reference solution, and runs the two programs. Outputs are compared
-// HERE, on the server; expected outputs never enter the container, so user
-// code cannot read them.
+// lifting happens inside sandbox containers: a trusted per-language runner
+// checks code structure via the language's own parser (Python ast / javac
+// Compiler Tree API), injects each case's values into the lesson's input
+// variables and runs the program on every case. The student's program runs in
+// its owner's container (same one the editor Run uses). Our reference solution
+// runs in a container of the judge's own, which no student's program ever
+// enters: a program shares its container with whatever else runs there and
+// can rewrite it, so nothing a student's container says about our solution
+// could be believed. The solution and the expected outputs never enter a
+// student's container, and outputs are compared HERE, on the server.
 const SERVICES_DIR = import.meta.dirname;
 
 const WRITE_TIMEOUT_MS = 10_000;
@@ -71,14 +74,12 @@ interface JudgeRunner {
    * `{ pristineUser, cases }` and its verdict is merged with these structure
    * failures. py/java leave this unset (runner does structure+injection).
    */
-  prepare?: (
-    userCode: string,
-    solutionCode: string,
-    spec: LessonTestsSpec,
-    skipSolution: ReadonlySet<number>,
-  ) => Promise<PrepareResult>;
+  prepare?: (code: string, spec: LessonTestsSpec) => Promise<PrepareResult>;
 }
 
+// The times below were measured, and the budgets sized, when a case ran our
+// solution next to the student's program in one container. Each container now
+// runs one program per case, so they leave more room than they say.
 const RUNNERS: Record<string, JudgeRunner> = {
   python: {
     runnerPath: path.join(SERVICES_DIR, 'lesson-tests.runner.py'),
@@ -237,10 +238,18 @@ interface RunnerHeader {
   structureFailures?: StructureFailure[];
 }
 
+// `user` is the program the runner judged: the student's in their container,
+// our solution in the judge's.
 interface RunnerCase {
   user?: RunnerProgram;
-  solution?: RunnerProgram;
   injectError?: boolean;
+}
+
+// What our solution printed on a case, from the cache or from a run in the
+// judge's container; `ms` only from a run made for this judge run.
+interface Reference {
+  stdout: string;
+  ms?: number;
 }
 
 function failRun(): never {
@@ -258,35 +267,26 @@ function caseBase(spec: LessonTestsSpec, index: number): TestCaseResult {
   return base;
 }
 
-// `cached`: the case's reference stdout from the cache; the runner then ran the
-// student's program only, so the case carries no solutionMs.
+// The verdict on one case of the student's program. A program that timed out
+// or crashed needs no reference to fail; any other is compared with ours.
 function judgeCase(
   spec: LessonTestsSpec,
   index: number,
-  c: RunnerCase,
-  cached: string | undefined,
+  user: RunnerProgram,
+  reference: Reference | undefined,
 ): TestCaseResult {
   const base = caseBase(spec, index);
-
-  if (!c.user || c.injectError) failRun();
-  let expected: string;
-  if (cached !== undefined) {
-    expected = cached;
-  } else {
-    // A broken reference solution is our bug, not the student's.
-    if (!c.solution || c.solution.timedOut || c.solution.exit !== 0) failRun();
-    expected = c.solution.stdout;
-    if (c.solution.ms !== undefined) base.solutionMs = roundMs(c.solution.ms);
-  }
-  if (c.user.ms !== undefined) base.userMs = roundMs(c.user.ms);
-  if (c.user.timedOut) return { ...base, error: 'timeout' };
-  const passed = compareOutputs(expected, c.user.stdout, spec.comparator ?? 'trimmed');
+  if (reference?.ms !== undefined) base.solutionMs = roundMs(reference.ms);
+  if (user.ms !== undefined) base.userMs = roundMs(user.ms);
+  if (user.timedOut) return { ...base, error: 'timeout' };
   // The load test's outputs are as large as its input: only the verdict goes back.
-  if (base.load) {
-    if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error' };
-    return { ...base, passed };
+  if (user.exit !== 0) {
+    const error = user.stderr || 'error';
+    return base.load ? { ...base, error } : { ...base, error, actual: user.stdout };
   }
-  if (c.user.exit !== 0) return { ...base, error: c.user.stderr || 'error', actual: c.user.stdout };
+  if (!reference) failRun();
+  const passed = compareOutputs(reference.stdout, user.stdout, spec.comparator ?? 'trimmed');
+  if (base.load) return { ...base, passed };
 
   // A passed case shows both outputs: the student already produced the expected
   // one, so revealing it gives nothing away, even on a hidden case.
@@ -294,14 +294,14 @@ function judgeCase(
     return {
       ...base,
       passed: true,
-      expected: normalize(expected),
-      actual: normalize(c.user.stdout),
+      expected: normalize(reference.stdout),
+      actual: normalize(user.stdout),
     };
   }
   return {
     ...base,
-    actual: normalize(c.user.stdout),
-    ...(base.visible ? { expected: normalize(expected) } : {}),
+    actual: normalize(user.stdout),
+    ...(base.visible ? { expected: normalize(reference.stdout) } : {}),
   };
 }
 
@@ -479,17 +479,9 @@ async function judgeProgram({
   const judge = RUNNERS[getRuntime(runtime)?.name ?? ''];
   if (!judge) throw new AppError(404, 'This lesson has no tests');
 
-  // Cases whose reference output is cached skip our solution; the load test
-  // always runs it fresh, next to the student's program, for the runtime.
-  const keys = referenceKeys(spec, cacheCourse, slug, lang, solutionCode);
-  const cached = keys.map((key) => (key ? getReference(key) : undefined));
-  const skipSolution = new Set(cached.flatMap((out, index) => (out === undefined ? [] : [index])));
-
   // Server-side prep (C): structure + injection happen here; a syntax error in
   // the pristine user code is caught before any container is touched (gate 1).
-  const prepared = judge.prepare
-    ? await judge.prepare(program, solutionCode, spec, skipSolution)
-    : null;
+  const prepared = judge.prepare ? await judge.prepare(program, spec) : null;
   if (prepared?.syntaxError) {
     return syntaxErrorResponse(spec, studentLines(prepared.syntaxError, harness));
   }
@@ -499,20 +491,17 @@ async function judgeProgram({
   const releaseSlot = await inLine(waitKey, (onWait) => acquireJudgeSlot({ onWait }));
   try {
     // A judge run is a busy sandbox too, so it also takes one of the slots
-    // editor runs and terminal commands share.
+    // editor runs and terminal commands share. Our solution's container and
+    // the student's take turns under it, never busy at once.
     const releaseSandbox = await inLine(waitKey, (onWait) => sandbox.acquireSlot({ onWait }));
     try {
-      const result = await runInContainer(
-        ownerKey,
-        guestIp,
-        languageOf(runtime),
+      const result = await runInContainer(ownerKey, guestIp, program, prepared, {
+        language: languageOf(runtime),
         judge,
         spec,
-        program,
         solutionCode,
-        prepared,
-        { keys, cached, skipSolution },
-      );
+        keys: referenceKeys(spec, cacheCourse, slug, lang, solutionCode),
+      });
       if (!result.syntaxError) return result;
       return { ...result, syntaxError: studentLines(result.syntaxError, harness) };
     } finally {
@@ -523,24 +512,39 @@ async function judgeProgram({
   }
 }
 
-interface ReferenceReuse {
+// What a judge run and its reference runs share
+interface JudgeRun {
+  // The sandbox language, which names the containers
+  language: string;
+  judge: JudgeRunner;
+  spec: LessonTestsSpec;
+  solutionCode: string;
+  // The cache key of each case's reference output, null for one never reused
   keys: (string | null)[];
-  cached: (string | undefined)[];
-  skipSolution: ReadonlySet<number>;
 }
 
-async function runInContainer(
-  ownerKey: string,
-  guestIp: string | undefined,
-  // The sandbox language, which names the owner's container
-  language: string,
-  judge: JudgeRunner,
-  spec: LessonTestsSpec,
-  userCode: string,
-  solutionCode: string,
+// What a runner gets: the program and the cases to run it on. The C runner
+// receives pre-injected sources; py/java runners inject in the container from
+// the raw code + spec.
+function runnerPayload(
+  code: string,
+  spec: Pick<LessonTestsSpec, 'structure' | 'cases'>,
   prepared: PrepareResult | null,
-  { keys, cached, skipSolution }: ReferenceReuse,
-): Promise<RunTestsResponse> {
+): string {
+  return prepared
+    ? JSON.stringify({ pristineUser: code, cases: prepared.cases })
+    : JSON.stringify({ userCode: code, structure: spec.structure ?? {}, cases: spec.cases });
+}
+
+// Reserves the owner's container for the length of `work`. Anything that
+// breaks it (stuck exec, bad container state) drops the container, so the
+// next attempt starts clean.
+async function withContainer<T>(
+  ownerKey: string,
+  language: string,
+  guestIp: string | undefined,
+  work: (containerId: string) => Promise<T>,
+): Promise<T> {
   let containerId: string;
   try {
     containerId = await sandbox.acquireForRun(ownerKey, language, guestIp);
@@ -555,54 +559,177 @@ async function runInContainer(
 
   let keep = true;
   try {
-    const runner = fs.readFileSync(judge.runnerPath, 'utf8');
-    // The C runner receives pre-injected sources; py/java runners inject in the
-    // container from the raw code + spec.
-    const payload = prepared
-      ? JSON.stringify({ pristineUser: userCode, cases: prepared.cases })
-      : JSON.stringify({
-          userCode,
-          solutionCode,
-          structure: spec.structure ?? {},
-          cases: spec.cases.map((testCase, index) =>
-            skipSolution.has(index) ? { ...testCase, skipSolution: true } : testCase,
-          ),
-        });
-    await dockerExec(
-      ['exec', '-i', containerId, 'sh', '-c', `rm -rf /work/* && cat > ${judge.containerFile}`],
-      WRITE_TIMEOUT_MS,
-      runner,
-    );
-    await dockerExec(
-      ['exec', '-i', containerId, 'sh', '-c', 'cat > /work/_payload.json'],
-      WRITE_TIMEOUT_MS,
-      payload,
-    );
+    return await work(containerId);
+  } catch (err) {
+    keep = false;
+    throw err instanceof AppError ? err : new AppError(500, 'Test run failed, please try again');
+  } finally {
+    if (keep) {
+      // Nothing the program started outlives the run
+      await killLeftovers(containerId);
+      sandbox.releaseAfterRun(ownerKey);
+    } else void sandbox.destroyOwner(ownerKey);
+  }
+}
 
-    let header: RunnerHeader | null = null;
+// One run of a runner in a container: writes the runner and its payload,
+// then hands over each case line, whose answer ('next' or 'stop') goes back
+// to the runner. Returns the runner's header.
+async function converse(
+  containerId: string,
+  judge: JudgeRunner,
+  payload: string,
+  onCase: (runnerCase: RunnerCase, index: number) => 'next' | 'stop',
+  onHeader: () => void = () => {},
+): Promise<RunnerHeader> {
+  const runner = fs.readFileSync(judge.runnerPath, 'utf8');
+  await dockerExec(
+    ['exec', '-i', containerId, 'sh', '-c', `rm -rf /work/* && cat > ${judge.containerFile}`],
+    WRITE_TIMEOUT_MS,
+    runner,
+  );
+  await dockerExec(
+    ['exec', '-i', containerId, 'sh', '-c', 'cat > /work/_payload.json'],
+    WRITE_TIMEOUT_MS,
+    payload,
+  );
+
+  let header: RunnerHeader | null = null;
+  let index = 0;
+  // Hard ceiling for the exec, independent of the case count: boot, the case
+  // budget, and one case that started just before the budget ran out. Past
+  // it the runner is stuck, and the container is dropped.
+  await dockerConverse(
+    ['exec', '-i', containerId, ...judge.runCmd],
+    judge.baseTimeoutMs + judge.budgetMs + judge.caseBudgetMs,
+    (line) => {
+      const message = JSON.parse(line) as RunnerHeader | RunnerCase;
+      if (!header) {
+        header = message as RunnerHeader;
+        onHeader();
+        return null;
+      }
+      return onCase(message as RunnerCase, index++);
+    },
+  );
+  return (header as RunnerHeader | null) ?? failRun();
+}
+
+// The judge's own containers, one per language: the only place our solution
+// runs. No student's program ever enters one and no owner of a student's
+// (`user:`, `guest:`) can be named like it, so what comes out is ours.
+function referenceOwner(language: string): string {
+  return `judge:reference:${language}`;
+}
+
+// A container serves one run at a time, so the reference runs of a language
+// take turns.
+const referenceTurns = new Map<string, Promise<void>>();
+
+function inTurn<T>(language: string, work: () => Promise<T>): Promise<T> {
+  const turn = (referenceTurns.get(language) ?? Promise.resolve()).then(work);
+  referenceTurns.set(
+    language,
+    turn.then(
+      () => {},
+      () => {},
+    ),
+  );
+  return turn;
+}
+
+// Runs our solution on the given cases in the judge's container, through the
+// same runner as a student's program, and returns what it printed on each. A
+// solution that doesn't compile, crashes or times out is our bug, not the
+// student's.
+async function runReference(
+  { language, judge, spec, solutionCode }: JudgeRun,
+  indexes: number[],
+): Promise<Reference[]> {
+  // No structure rules: they are for the student's program
+  const cases = { cases: indexes.map((index) => spec.cases[index]) };
+  const prepared = judge.prepare ? await judge.prepare(solutionCode, cases) : null;
+  if (prepared?.syntaxError) failRun();
+
+  return withContainer(referenceOwner(language), language, undefined, async (containerId) => {
+    const runs: Reference[] = [];
+    const header = await converse(
+      containerId,
+      judge,
+      runnerPayload(solutionCode, cases, prepared),
+      ({ user, injectError }) => {
+        if (!user || injectError || user.timedOut || user.exit !== 0) failRun();
+        runs.push({ stdout: user.stdout, ms: user.ms });
+        return 'next';
+      },
+    );
+    if (header.syntaxError || runs.length !== indexes.length) failRun();
+    return runs;
+  });
+}
+
+// Each case's reference output before the student's program runs: from the
+// cache, and for the cases missing there from a run of our solution in the
+// judge's container, the only thing that fills the cache. `later` is a case
+// left for after (the load test), -1 for none.
+async function referencesBefore(run: JudgeRun, later: number): Promise<(Reference | undefined)[]> {
+  const cached = (): (Reference | undefined)[] =>
+    run.keys.map((key) => {
+      const stdout = key ? getReference(key) : undefined;
+      return stdout === undefined ? undefined : { stdout };
+    });
+  const missing = (references: (Reference | undefined)[]): number[] =>
+    references.flatMap((reference, index) => (reference || index === later ? [] : [index]));
+
+  const held = cached();
+  if (missing(held).length === 0) return held;
+  return inTurn(run.language, async () => {
+    // A run ahead of this one in line may have filled the cache
+    const references = cached();
+    const indexes = missing(references);
+    if (indexes.length === 0) return references;
+    const runs = await runReference(run, indexes);
+    indexes.forEach((index, at) => {
+      references[index] = runs[at];
+      const key = run.keys[index];
+      if (key) putReference(key, runs[at].stdout);
+    });
+    return references;
+  });
+}
+
+async function runInContainer(
+  ownerKey: string,
+  guestIp: string | undefined,
+  userCode: string,
+  prepared: PrepareResult | null,
+  run: JudgeRun,
+): Promise<RunTestsResponse> {
+  const { judge, spec } = run;
+  // The student's container is theirs from here on, so a second run of theirs
+  // is refused while this one gets our solution's outputs.
+  return withContainer(ownerKey, run.language, guestIp, async (containerId) => {
+    // The load test, always last, runs our solution every time, for the
+    // runtime shown next to the student's. It waits until the student's
+    // program got through the test: most runs stop before it.
+    const last = spec.cases.length - 1;
+    const loadTest = spec.cases[last]?.load ? last : -1;
+    const references = await referencesBefore(run, loadTest);
+
     let deadline = Infinity;
     const cases: TestCaseResult[] = [];
-    // Hard ceiling for the exec, independent of the case count: boot, the case
-    // budget, and one case that started just before the budget ran out. Past
-    // it the runner is stuck, and the container is dropped.
-    await dockerConverse(
-      ['exec', '-i', containerId, ...judge.runCmd],
-      judge.baseTimeoutMs + judge.budgetMs + judge.caseBudgetMs,
-      (line) => {
-        const message = JSON.parse(line) as RunnerHeader | RunnerCase;
-        if (!header) {
-          header = message as RunnerHeader;
-          deadline = Date.now() + judge.budgetMs;
-          return null;
+    const waiting: { load?: RunnerProgram } = {};
+    const header = await converse(
+      containerId,
+      judge,
+      runnerPayload(userCode, spec, prepared),
+      ({ user, injectError }, index) => {
+        if (index >= spec.cases.length || !user || injectError) failRun();
+        if (index === loadTest && !user.timedOut && user.exit === 0) {
+          waiting.load = user;
+          return 'stop';
         }
-        const index = cases.length;
-        if (index >= spec.cases.length) failRun();
-        const runnerCase = message as RunnerCase;
-        const result = judgeCase(spec, index, runnerCase, cached[index]);
-        // judgeCase vouched for our solution's run (exit 0, in time), so its
-        // output is safe to reuse.
-        const key = keys[index];
-        if (key && cached[index] === undefined) putReference(key, runnerCase.solution!.stdout);
+        const result = judgeCase(spec, index, user, references[index]);
         cases.push(result);
         if (!result.passed) return 'stop';
         // Out of time with cases left: the next one is the case that timed out.
@@ -612,25 +739,24 @@ async function runInContainer(
         }
         return 'next';
       },
+      () => {
+        deadline = Date.now() + judge.budgetMs;
+      },
     );
 
-    const { syntaxError, structureFailures = [] } = (header as RunnerHeader | null) ?? failRun();
-    if (syntaxError) return syntaxErrorResponse(spec, syntaxError);
+    if (header.syntaxError) return syntaxErrorResponse(spec, header.syntaxError);
+    if (waiting.load) {
+      const [reference] = await inTurn(run.language, () => runReference(run, [loadTest]));
+      cases.push(judgeCase(spec, loadTest, waiting.load, reference));
+    }
     // A runner that quits before the last case without a failing one broke.
     if (cases.length < spec.cases.length && cases.every((c) => c.passed)) failRun();
     // Server-prepped runs carry structure failures from the server (the thin
     // runner only reports gcc syntax errors + per-case program results).
-    return finalResponse(spec, prepared ? prepared.structureFailures : structureFailures, cases);
-  } catch (err) {
-    // Anything that breaks the run (stuck exec, bad container state), drop the
-    // container so the next attempt starts clean.
-    keep = false;
-    throw err instanceof AppError ? err : new AppError(500, 'Test run failed, please try again');
-  } finally {
-    if (keep) {
-      // Nothing the student's program started outlives the run
-      await killLeftovers(containerId);
-      sandbox.releaseAfterRun(ownerKey);
-    } else void sandbox.destroyOwner(ownerKey);
-  }
+    return finalResponse(
+      spec,
+      prepared ? prepared.structureFailures : (header.structureFailures ?? []),
+      cases,
+    );
+  });
 }
