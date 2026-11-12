@@ -1,4 +1,4 @@
-We already have **+**, **-**, **\***, **/**, and **%**. But **+** has a second talent: besides adding numbers, it can **glue text together**. This is the classic Java way to combine text and variables
+We already have +, -, \*, /, and %. But + has a second talent: besides adding numbers, it can glue text together. This is the classic Java way to combine text and variables
 
 ```java
 public class Main {
@@ -18,7 +18,7 @@ Output
 Hello. My name is Quincy, I am 32 years old and 1.97 m tall
 ```
 
-What is happening here? When we put a **String** and another value together with **+**, Java **converts everything to text** and glues them. This is called **string concatenation**
+What is happening here? When we put a String and another value together with +, Java converts everything to text and glues them. This is called **string concatenation**
 
 Watch the spaces carefully
 
@@ -26,7 +26,7 @@ Watch the spaces carefully
 "Hello. My name is " + name
 ```
 
-We have a space **before the closing quote**, otherwise we’d get **Hello. My name isQuincy** all stuck together. This is something almost everyone gets wrong at first. **Always check your spaces**
+We have a space before the closing quote, otherwise we’d get **Hello. My name isQuincy** all stuck together. This is something almost everyone gets wrong at first. Always check your spaces
 
 ---
 
@@ -44,9 +44,9 @@ What do you think this prints? **Result: 5**?
 
 It prints **Result: 23**
 
-Why? Java reads from **left to right**. It starts with **"Result: "** (a String), then sees **+ 2**: a String + an int = String, so it becomes **"Result: 2"**. Then **+ 3** → **"Result: 23"**
+Why? Java reads from **left to right**. It starts with "Result: " (a String), then sees + 2: a String + an int = String, so it becomes "Result: 2". Then + 3 → "Result: 23"
 
-If we want **5**, we use **parentheses** to force the math first
+If we want 5, we use **parentheses** to force the math first
 
 ```java
 public class Main {
@@ -62,11 +62,11 @@ Output
 Result: 5
 ```
 
-Now **(2 + 3)** is computed first (giving **5**), then glued to the string. Remember this rule, you will hit it in real code
+Now **(2 + 3)** is computed first (giving 5), then glued to the string. Remember this rule, you will hit it in real code
 
 ---
 
-**+** is enough for simple cases, but when you have a lot of text to combine it gets hard to read, full of quotes and **+** signs. Java has a cleaner alternative: **String.format()**
+**+** is enough for simple cases, but when you have a lot of text to combine it gets hard to read, full of quotes and + signs. Java has a cleaner alternative: **String.format()**
 
 ```java
 public class Main {
@@ -112,7 +112,7 @@ Output
 Player: Lance Vance | Kills: 47 | Accuracy: 82.500000
 ```
 
-Wait, that’s a lot of decimals! By default, **%f** prints 6 decimals. To control that, use **%.Nf**, where N is the number of decimals you want
+Wait, that’s a lot of decimals! By default, %f prints 6 decimals. To control that, use **%.Nf**, where N is the number of decimals you want
 
 ---
 
@@ -157,7 +157,7 @@ Use whichever you prefer. `String.format()` is great when you want to store the 
 
 The station’s arcade just finished a tournament. Print the winner’s stats on a single line.
 
-Create three variables: `name` (String) for the player’s name, `score` (int) for the total score, and `rating` (double) for the performance rating. Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use **+** or **String.format()**, whichever you prefer.
+Create three variables: `name` (String) for the player’s name, `score` (int) for the total score, and `rating` (double) for the performance rating. Then print a line of the form `Player: <name> | Score: <score> | Rating: <rating>`. You can use + or String.format(), whichever you prefer.
 
 **Example**
 

@@ -27,7 +27,7 @@ du -h logs/
 
 ### Summarize a directory
 
-When you only want the **total** size without listing every file, use `-s`
+When you only want the total size without listing every file, use `-s`
 (summary):
 
 ```bash

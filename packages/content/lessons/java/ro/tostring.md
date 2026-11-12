@@ -31,7 +31,7 @@ Asta este... deloc util. Java nu știe cum vrei să fie afișat obiectul tău, a
 
 ## Suprascrierea lui toString()
 
-Fiecare obiect din Java are o metodă `toString()` (moștenită de la o clasă de bază numită `Object`). În mod implicit afișează acea aiureală urâtă. Dar poți să o **suprascrii**: să scrii propria ta versiune:
+Fiecare obiect din Java are o metodă `toString()` (moștenită de la o clasă de bază numită `Object`). În mod implicit afișează acea aiureală urâtă. Dar poți să o suprascrii: să scrii propria ta versiune:
 
 ```java
 class Masina {

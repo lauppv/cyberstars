@@ -1,4 +1,4 @@
-Am văzut deja cum să declarăm un **String** și cum să combinăm string-uri cu **+**. E timpul să ne uităm la cele mai utile **metode pentru String** din Java
+Am văzut deja cum să declarăm un String și cum să combinăm string-uri cu +. E timpul să ne uităm la cele mai utile metode pentru String din Java
 
 ---
 
@@ -13,7 +13,7 @@ public class Main {
 }
 ```
 
-Output **14**. Spațiile contează și ele. Observă **parantezele** **()** de la final: pentru String, **length** este o **metodă**, așa că o apelăm cu paranteze
+Output **14**. Spațiile contează și ele. Observă parantezele **()** de la final: pentru String, length este o metodă, așa că o apelăm cu paranteze
 
 ---
 
@@ -29,7 +29,7 @@ public class Main {
 }
 ```
 
-**Important**: aceste metode **nu** schimbă variabila originală. Ele dau înapoi un string **nou**
+Important: aceste metode **nu** schimbă variabila originală. Ele dau înapoi un string nou
 
 ```java
 public class Main {
@@ -41,7 +41,7 @@ public class Main {
 }
 ```
 
-Ca să păstrăm efectiv versiunea cu majuscule, trebuie să **reasignăm**
+Ca să păstrăm efectiv versiunea cu majuscule, trebuie să reasignăm
 
 ```java
 public class Main {
@@ -57,7 +57,7 @@ Această capcană prinde pe toată lumea la început. String-urile în Java sunt
 
 ---
 
-Obține un **substring** (o bucată din string)
+Obține un substring (o bucată din string)
 
 ```java
 public class Main {
@@ -69,11 +69,11 @@ public class Main {
 }
 ```
 
-**substring(start, end)** dă caracterele de la poziția **start** până la (dar **fără** a include) poziția **end**, capătul este exclusiv
+**substring(start, end)** dă caracterele de la poziția start până la (dar **fără** a include) poziția end, capătul este exclusiv
 
-**substring(start)** cu un singur argument dă tot de la **start** până la finalul string-ului
+**substring(start)** cu un singur argument dă tot de la start până la finalul string-ului
 
-Numărarea începe de la **0**. **nume.substring(0, 5)** înseamnă pozițiile **0, 1, 2, 3, 4** care formează **Tommy**
+Numărarea începe de la 0. **nume.substring(0, 5)** înseamnă pozițiile 0, 1, 2, 3, 4 care formează **Tommy**
 
 ---
 
@@ -89,7 +89,7 @@ public class Main {
 }
 ```
 
-**charAt(i)** dă înapoi un **char** (un singur caracter). Combinat cu **length()**, poți lua și ultimul caracter: **nume.charAt(nume.length() - 1)**
+**charAt(i)** dă înapoi un char (un singur caracter). Combinat cu length(), poți lua și ultimul caracter: **nume.charAt(nume.length() - 1)**
 
 ---
 
@@ -110,7 +110,7 @@ public class Main {
 }
 ```
 
-Asta **ar putea** afișa **egal**, dar **e greșit**. Cu obiectele (și **String** este un obiect în Java), **==** compară dacă sunt **același obiect din memorie**, nu dacă au același conținut. Modul corect este
+Asta ar putea afișa egal, dar e greșit. Cu obiectele (și String este un obiect în Java), **==** compară dacă sunt **același obiect din memorie**, nu dacă au același conținut. Modul corect este
 
 ```java
 public class Main {
@@ -133,16 +133,16 @@ public class Main {
 
 Un nume a sosit bruiat prin stația de comunicații a lui Tommy. Modulul de decriptare are nevoie să-l afișezi în mai multe formate, ca analiștii să-l poată verifica.
 
-Stochează numele într-un String numit nume. Apoi afișează aceste șase valori pe **linii separate**, în această ordine:
+Stochează numele într-un String numit nume. Apoi afișează aceste șase valori pe linii separate, în această ordine:
 
 - numele cu majuscule
 - numele cu minuscule
 - lungimea numelui
 - primul caracter
-- primele **5** caractere
-- ultimele **5** caractere
+- primele 5 caractere
+- ultimele 5 caractere
 
-Pentru „ultimele 5 caractere" folosește **length()** ca să calculezi poziția de start, ca să meargă pentru orice nume (de cel puțin 5 litere).
+Pentru „ultimele 5 caractere" folosește length() ca să calculezi poziția de start, ca să meargă pentru orice nume (de cel puțin 5 litere).
 
 **Exemplu** pentru numele `lance vance`:
 

@@ -6,7 +6,7 @@ Cuvântul-cheie `static` înseamnă **„asta aparține clasei însăși, nu vre
 
 ## Câmpuri Static vs Câmpuri de Instanță
 
-Imaginează-ți un club de noapte din Vice City care ține evidența vizitatorilor. Fiecare vizitator are propriul nume, dar **numărul total de vizite** este partajat între toți: aparține clubului, nu vreunei persoane:
+Imaginează-ți un club de noapte din Vice City care ține evidența vizitatorilor. Fiecare vizitator are propriul nume, dar numărul total de vizite este partajat între toți: aparține clubului, nu vreunei persoane:
 
 ```java
 class Vizitator {
@@ -108,7 +108,7 @@ public class Main {
 
 ## Static Nu Poate Accesa Instanța
 
-O metodă statică nu are `this`: nu există niciun obiect asociat cu ea. Așa că **nu poate** accesa câmpuri de instanță sau metode de instanță:
+O metodă statică nu are `this`: nu există niciun obiect asociat cu ea. Așa că nu poate accesa câmpuri de instanță sau metode de instanță:
 
 ```text
 class Exemplu {

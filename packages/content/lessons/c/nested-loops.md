@@ -1,4 +1,4 @@
-We've seen **for** loops. Now let's put a loop **inside** another loop: a **nested loop**
+We've seen for loops. Now let's put a loop inside another loop: a **nested loop**
 
 ```c
 #include <stdio.h>
@@ -22,11 +22,11 @@ Output
 (3, 1) (3, 2) (3, 3)
 ```
 
-The **outer loop** controls the **rows**, the **inner loop** controls the **columns**. For every single value of **i**, the inner loop runs **completely** from start to finish. Read the output carefully and trace through the code in your head
+The **outer loop** controls the rows, the **inner loop** controls the columns. For every single value of i, the inner loop runs completely from start to finish. Read the output carefully and trace through the code in your head
 
 ---
 
-A classic use of nested loops: **printing a pattern**
+A classic use of nested loops: printing a pattern
 
 ```c
 #include <stdio.h>
@@ -52,11 +52,11 @@ Output
 * * * * *
 ```
 
-Notice that the inner loop goes **up to i**, not up to 5. When **i = 1**, we print 1 star. When **i = 3**, we print 3 stars. This is how we build a **triangle**
+Notice that the inner loop goes **up to i**, not up to 5. When i = 1, we print 1 star. When i = 3, we print 3 stars. This is how we build a triangle
 
 ---
 
-Nested loops with arrays: imagine a **multiplication table**
+Nested loops with arrays: imagine a multiplication table
 
 ```c
 #include <stdio.h>
@@ -74,16 +74,16 @@ int main(void) {
 }
 ```
 
-This prints **every combination** of two elements from the array. If the array has **n** elements, nested loops give us **n \* n** combinations. When you hear "all pairs", think nested loops
+This prints every combination of two elements from the array. If the array has n elements, nested loops give us **n \* n** combinations. When you hear "all pairs", think nested loops
 
 ---
 
 ## Mission: The Line Printer Log
 
-The computing center's line printer receives a job: the number of lines to print. Each line **i** must contain the numbers from **1** to **i**, as a print-head calibration test.
+The computing center's line printer receives a job: the number of lines to print. Each line i must contain the numbers from 1 to i, as a print-head calibration test.
 
-1. Read an integer **n** from input: the number of lines
-2. Write **nested for loops**: the outer loop goes from **1** to **n**, the inner loop prints the numbers from **1** to **i**, separated by a space
+1. Read an integer n from input: the number of lines
+2. Write nested for loops: the outer loop goes from 1 to n, the inner loop prints the numbers from 1 to i, separated by a space
 3. Print `printf("\n")` at the end of each line
 
 **Example**

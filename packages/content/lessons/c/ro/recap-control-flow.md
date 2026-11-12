@@ -1,4 +1,4 @@
-Combină **if/else**, **if/else if** și **buclele for** într-o singură provocare
+Combină if/else, if/else if și buclele for într-o singură provocare
 
 ---
 
@@ -6,12 +6,12 @@ Combină **if/else**, **if/else if** și **buclele for** într-o singură provoc
 
 Un program de diagnostic verifică 20 de bobine de bandă magnetică, numerotate de la 1 la 20, aflate la un centru de calcul. Fiecare bobină primește o etichetă bazată pe niște tipare de divizibilitate stabilite de administratorul sistemului.
 
-1. Parcurge numerele de la **1 la 20**
-2. Dacă numărul este **divizibil cu 3 și 5**, afișează **"X: fizzbuzz"**
-3. Dacă este divizibil **doar cu 3**, afișează **"X: fizz"**
-4. Dacă este divizibil **doar cu 5**, afișează **"X: buzz"**
-5. Altfel, afișează **"X: normal"**
-6. La final, afișează câte sectoare **fizzbuzz** ai găsit
+1. Parcurge numerele de la 1 la 20
+2. Dacă numărul este divizibil cu 3 și 5, afișează "X: fizzbuzz"
+3. Dacă este divizibil doar cu 3, afișează "X: fizz"
+4. Dacă este divizibil doar cu 5, afișează "X: buzz"
+5. Altfel, afișează "X: normal"
+6. La final, afișează câte sectoare fizzbuzz ai găsit
 
 **Ieșire**
 

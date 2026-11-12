@@ -1,4 +1,4 @@
-We learned that strings in C are arrays of **char** that end with **'\0'**. Working with them manually (character by character) is tedious. The **string.h** library gives us ready-made functions
+We learned that strings in C are arrays of char that end with '\0'. Working with them manually (character by character) is tedious. The string.h library gives us ready-made functions
 
 ```c
 #include <stdio.h>
@@ -17,7 +17,7 @@ Output
 Length: 14
 ```
 
-**strlen** returns the number of characters in the string, **NOT** counting the **'\0'**. The actual array has 15 chars (14 letters + '\0'), but strlen says 14. This is an important distinction
+**strlen** returns the number of characters in the string, NOT counting the '\0'. The actual array has 15 chars (14 letters + '\0'), but strlen says 14. This is an important distinction
 
 ---
 
@@ -39,7 +39,7 @@ int main(void) {
 }
 ```
 
-**strcmp** returns **0** if the strings are equal, a **negative** number if the first comes before the second (alphabetically), and a **positive** number if it comes after. Remember: in C, **you cannot compare strings with ==**. That compares **addresses**, not content
+strcmp returns **0** if the strings are equal, a negative number if the first comes before the second (alphabetically), and a positive number if it comes after. Remember: in C, **you cannot compare strings with ==**. That compares addresses, not content
 
 ---
 
@@ -59,7 +59,7 @@ int main(void) {
 }
 ```
 
-**strcpy(dest, source)** copies everything from **source** into **dest**, including the **'\0'**. Make sure **dest** is big enough! If it's too small, you get a **buffer overflow**, one of the most dangerous bugs in programming. This is how real security vulnerabilities happen
+**strcpy(dest, source)** copies everything from source into dest, including the '\0'. Make sure dest is big enough! If it's too small, you get a **buffer overflow**, one of the most dangerous bugs in programming. This is how real security vulnerabilities happen
 
 ---
 
@@ -77,7 +77,7 @@ int main(void) {
 }
 ```
 
-**strcat** appends the second string to the end of the first. Again, make sure the destination array is big enough for both strings plus the **'\0'**
+strcat appends the second string to the end of the first. Again, make sure the destination array is big enough for both strings plus the '\0'
 
 ---
 
@@ -98,7 +98,7 @@ int main(void) {
 }
 ```
 
-**strstr** returns a pointer to where the substring starts, or **NULL** if it's not found. **NULL** is C's way of saying "nothing": it's a special pointer value that means "points to nothing." We'll see it a lot
+strstr returns a pointer to where the substring starts, or **NULL** if it's not found. NULL is C's way of saying "nothing": it's a special pointer value that means "points to nothing." We'll see it a lot
 
 ---
 
@@ -106,11 +106,11 @@ int main(void) {
 
 An old magnetic tape has lost its label. Two different operators each transcribed half of it, on separate teletypes. Your job: measure the first fragment, then join both fragments into a single string and print the full label.
 
-1. Read two words from input, **first** and **second** (no internal spaces)
-2. Print the length of **first** (use **strlen**)
-3. Copy **first** into an array **result** (use **strcpy**, make result big enough: `char result[50]`)
-4. Concatenate **second** onto **result** (use **strcat**)
-5. Print **result**
+1. Read two words from input, first and second (no internal spaces)
+2. Print the length of first (use strlen)
+3. Copy first into an array result (use strcpy, make result big enough: `char result[50]`)
+4. Concatenate second onto result (use strcat)
+5. Print result
 
 **Example**
 

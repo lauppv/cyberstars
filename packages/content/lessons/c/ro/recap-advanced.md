@@ -1,4 +1,4 @@
-Combină **macro-urile de preprocesor**, **operațiile cu fișiere** și **operatorii pe biți**
+Combină macro-urile de preprocesor, operațiile cu fișiere și operatorii pe biți
 
 ---
 
@@ -8,13 +8,13 @@ Centrul de calcul stochează nivelurile de acces ale conturilor într-un fișier
 
 Fă următoarele, în ordine:
 
-1. Scrie **void afiseaza_permisiuni(const char \*nume, int permisiuni)**. Folosește **&** pe biți ca să verifice fiecare flag și afișează permisiunile setate
-2. Citește perechi **nume permisiuni** din input, câte una pe linie, până la sfârșitul intrării (folosește `while (scanf("%s %d", nume, &permisiuni) == 2)`)
-3. Pentru fiecare pereche citită, scrie-o cu **fprintf** într-un fișier **"config.txt"**
-4. După ce ai scris toate perechile, închide fișierul, apoi deschide-l din nou pentru **citire**
-5. Citește fiecare pereche înapoi cu **fscanf** și apelează **afiseaza_permisiuni** pentru fiecare, ca să decodezi flag-urile
+1. Scrie **void afiseaza_permisiuni(const char \*nume, int permisiuni)**. Folosește & pe biți ca să verifice fiecare flag și afișează permisiunile setate
+2. Citește perechi nume permisiuni din input, câte una pe linie, până la sfârșitul intrării (folosește `while (scanf("%s %d", nume, &permisiuni) == 2)`)
+3. Pentru fiecare pereche citită, scrie-o cu fprintf într-un fișier "config.txt"
+4. După ce ai scris toate perechile, închide fișierul, apoi deschide-l din nou pentru citire
+5. Citește fiecare pereche înapoi cu fscanf și apelează afiseaza_permisiuni pentru fiecare, ca să decodezi flag-urile
 
-Numărul **7** este **111** în binar (toate permisiunile). **3** este **011** (read + write). **1** este **001** (doar read)
+Numărul 7 este **111** în binar (toate permisiunile). 3 este **011** (read + write). 1 este **001** (doar read)
 
 **Exemplu**
 

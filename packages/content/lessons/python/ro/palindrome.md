@@ -1,6 +1,6 @@
-Un **palindrom** este un cuvânt care se citește la fel de la stânga la dreapta și invers. **rotitor**, **cojoc**, **capac**: întoarce-le și sunt la fel
+Un **palindrom** este un cuvânt care se citește la fel de la stânga la dreapta și invers. rotitor, cojoc, capac: întoarce-le și sunt la fel
 
-Cum verificăm dacă un cuvânt este palindrom? Cea mai simplă abordare: **inversează-l și compară**
+Cum verificăm dacă un cuvânt este palindrom? Cea mai simplă abordare: inversează-l și compară
 
 ```py
 cuvant = "rotitor"
@@ -16,9 +16,9 @@ Asta e tot. O singură linie de logică. Inversăm șirul și verificăm dacă e
 
 ---
 
-Dar hai să ne gândim și cum să facem asta **fără** trucul cu slicing, pentru că logica este importantă
+Dar hai să ne gândim și cum să facem asta fără trucul cu slicing, pentru că logica este importantă
 
-Un palindrom înseamnă: **primul** caracter este egal cu **ultimul**, **al doilea** este egal cu **penultimul** și așa mai departe
+Un palindrom înseamnă: primul caracter este egal cu ultimul, al doilea este egal cu penultimul și așa mai departe
 
 ```py
 def este_palindrom(cuvant):
@@ -69,15 +69,15 @@ True
 False
 ```
 
-Mai întâi **curățăm** șirul: păstrăm doar literele și le transformăm în litere mici. Apoi verificăm dacă este palindrom. Pas cu pas, exact cum am învățat în lecția despre descompunere
+Mai întâi curățăm șirul: păstrăm doar literele și le transformăm în litere mici. Apoi verificăm dacă este palindrom. Pas cu pas, exact cum am învățat în lecția despre descompunere
 
 ---
 
 ## Misiune: Verificarea Integrității Semnalului
 
-Un cod de semnal este de încredere doar dacă se citește la fel de la stânga la dreapta și invers: un **palindrom**. Stația a înregistrat un lot de coduri într-o listă numită coduri și trebuie verificate.
+Un cod de semnal este de încredere doar dacă se citește la fel de la stânga la dreapta și invers: un palindrom. Stația a înregistrat un lot de coduri într-o listă numită coduri și trebuie verificate.
 
-1. Scrie o funcție **este_palindrom(cuvant)** care returnează `True` dacă cuvântul este palindrom, `False` altfel. Folosește o **buclă** (compară prima literă cu ultima, a doua cu penultima, ...), nu `[::-1]`.
+1. Scrie o funcție **este_palindrom(cuvant)** care returnează `True` dacă cuvântul este palindrom, `False` altfel. Folosește o buclă (compară prima literă cu ultima, a doua cu penultima, ...), nu `[::-1]`.
 2. Pentru fiecare cod, afișează codul, apoi `: `, apoi rezultatul.
 3. Numără câte coduri sunt palindroame și afișează `Semnale valide: ` urmat de acel număr.
 

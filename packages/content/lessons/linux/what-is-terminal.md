@@ -1,7 +1,7 @@
 A **terminal** is a text window where you talk to your computer by **typing
 commands** instead of clicking buttons.
 
-You type a command, press **Enter**, and the computer runs it and shows you the
+You type a command, press Enter, and the computer runs it and shows you the
 result. The small symbol at the start of the line (often `$`) is called the
 **prompt**. It means the computer is ready and waiting for you.
 
@@ -39,7 +39,7 @@ echo "Linux is fun"
 Linux is fun
 ```
 
-Don't worry about memorising everything. The terminal is a place to **experiment**.
+Don't worry about memorising everything. The terminal is a place to experiment.
 Try a command, see what happens, try another.
 
 ---

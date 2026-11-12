@@ -1,8 +1,8 @@
 Some files are huge: hundreds or thousands of lines. Dumping all of that with `cat`
-floods your screen. Often you only want a quick peek at the **start** of a file.
+floods your screen. Often you only want a quick peek at the start of a file.
 
-The **head** command prints just the **first lines** of a file. By default, the
-**first 10 lines**:
+The **head** command prints just the first lines of a file. By default, the
+first 10 lines:
 
 ```bash
 head bigfile.log
@@ -31,7 +31,7 @@ line 3
 
 ### When head is useful
 
-- Checking the **header row** of a data file
+- Checking the header row of a data file
 - Seeing how a log file _begins_
 - Sampling a file without scrolling through all of it
 

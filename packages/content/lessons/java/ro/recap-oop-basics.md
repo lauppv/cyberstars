@@ -1,4 +1,4 @@
-Combină tot ce ai învățat în acest modul: **clase și obiecte**, **constructori**, **metode de instanță** care modifică obiectul și **`toString()`**
+Combină tot ce ai învățat în acest modul: clase și obiecte, constructori, metode de instanță care modifică obiectul și `toString()`
 
 ---
 
@@ -6,12 +6,12 @@ Combină tot ce ai învățat în acest modul: **clase și obiecte**, **construc
 
 Tommy își construiește o bandă în Vice City și vrea să urmărească respectul fiecărui membru. Respectul crește când un membru se antrenează sau iese la o misiune, dar nu trece niciodată de 100
 
-Creează o clasă **`MembruBanda`** cu:
+Creează o clasă `MembruBanda` cu:
 
 - câmpuri pentru nume (String), rol (String), ani (int, de câți ani e în bandă) și respect (int, care pornește de la 50)
-- un **constructor** care primește numele, rolul și anii
-- o metodă **`antreneaza()`** care crește respectul cu 15, fără să treacă de 100
-- o metodă **`misiune()`** care crește respectul cu 10, fără să treacă de 100
+- un constructor care primește numele, rolul și anii
+- o metodă `antreneaza()` care crește respectul cu 15, fără să treacă de 100
+- o metodă `misiune()` care crește respectul cu 10, fără să treacă de 100
 - o reprezentare ca text în formatul `Nume (Rol, Y ani) - Respect: X`, ca să poți afișa un membru direct cu `System.out.println`
 
 În `main`, stochează detaliile fiecărui membru în variabile: `nume1`, `rol1`, `ani1` pentru primul, `nume2`, `rol2`, `ani2` pentru al doilea, `nume3`, `rol3`, `ani3` pentru al treilea. Creează cei trei membri din acele variabile, apoi aplică exact acest antrenament, ca să iasă rezultatul potrivit:

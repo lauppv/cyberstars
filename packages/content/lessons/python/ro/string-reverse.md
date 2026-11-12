@@ -1,4 +1,4 @@
-Inversarea unui string sună simplu (și chiar este), dar este un exercițiu clasic pentru că te forțează să te gândești la **indexare**, **bucle** și **construirea treptată** a unui rezultat
+Inversarea unui string sună simplu (și chiar este), dar este un exercițiu clasic pentru că te forțează să te gândești la indexare, bucle și construirea treptată a unui rezultat
 
 Am văzut deja o metodă folosind pattern-ul de acumulator
 
@@ -21,11 +21,11 @@ print(nume[::-1])
 
 Rezultatul **ymmoT**
 
-Ce înseamnă **[::-1]**? Ține minte slicing-ul: **[start:stop:step]**. Când pasul este **-1**, Python merge **înapoi**. Lăsăm start și stop goale, așa că merge de la sfârșit la început. Este elegant, dar asigură-te că înțelegi mai întâi metoda manuală
+Ce înseamnă **[::-1]**? Ține minte slicing-ul: **[start:stop:step]**. Când pasul este -1, Python merge înapoi. Lăsăm start și stop goale, așa că merge de la sfârșit la început. Este elegant, dar asigură-te că înțelegi mai întâi metoda manuală
 
 ---
 
-Hai să încercăm o altă abordare: folosind o **buclă for cu indexuri**
+Hai să încercăm o altă abordare: folosind o buclă for cu indexuri
 
 ```py
 nume = "Tommy"
@@ -41,7 +41,7 @@ Rezultatul **ymmoT**
 
 ---
 
-Dar inversarea **cuvintelor** dintr-o propoziție, nu a caracterelor individuale?
+Dar inversarea cuvintelor dintr-o propoziție, nu a caracterelor individuale?
 
 ```py
 propozitie = "Imi place Vice City"
@@ -59,11 +59,11 @@ Rezultatul **City Vice place Imi**
 
 ## Misiune: Decodează Transmisiunea
 
-Tocmai a sosit o transmisiune bruiată. Echipajul bănuiește că a fost trimisă **invers**, așa că trebuie să o întorci în două moduri și să vezi care are sens.
+Tocmai a sosit o transmisiune bruiată. Echipajul bănuiește că a fost trimisă invers, așa că trebuie să o întorci în două moduri și să vezi care are sens.
 
-1. Scrie o funcție **inverseaza_text(text)** care returnează textul inversat **caracter cu caracter**, folosind o buclă (**nu folosi `[::-1]`**).
-2. **Citește** transmisiunea, apoi afișează `Inversat: ` urmat de textul inversat caracter cu caracter.
-3. Inversează de asemenea **ordinea cuvintelor** (desparte în cuvinte, inversează lista, lipește înapoi cu spații) și afișează `Ordine cuvinte: ` urmat de rezultat.
+1. Scrie o funcție **inverseaza_text(text)** care returnează textul inversat caracter cu caracter, folosind o buclă (nu folosi `[::-1]`).
+2. Citește transmisiunea, apoi afișează `Inversat: ` urmat de textul inversat caracter cu caracter.
+3. Inversează de asemenea ordinea cuvintelor (desparte în cuvinte, inversează lista, lipește înapoi cu spații) și afișează `Ordine cuvinte: ` urmat de rezultat.
 
 **Intrare:**
 

@@ -1,4 +1,4 @@
-Un **boolean** este o valoare care poate fi doar **true** sau **false**. Le-am văzut deja înăuntrul condițiilor **if**. Java are propriul tip pentru ele, numit **boolean**
+Un **boolean** este o valoare care poate fi doar **true** sau **false**. Le-am văzut deja înăuntrul condițiilor if. Java are propriul tip pentru ele, numit boolean
 
 ```java
 public class Main {
@@ -11,7 +11,7 @@ public class Main {
 }
 ```
 
-**Important**: în Java, **true** și **false** se scriu **cu literă mică**. Ai grijă să nu le scrii cu literă mare
+Important: în Java, true și false se scriu **cu literă mică**. Ai grijă să nu le scrii cu literă mare
 
 Condiții precum **varsta < 18** sau **x == 5** produc de asemenea booleans
 
@@ -29,11 +29,11 @@ public class Main {
 
 Putem combina booleans cu operatori logici
 
-- **&&** înseamnă **and** (ambele condiții trebuie să fie true)
-- **||** înseamnă **or** (cel puțin una trebuie să fie true)
-- **!** înseamnă **not** (inversează valoarea)
+- **&&** înseamnă and (ambele condiții trebuie să fie true)
+- **||** înseamnă or (cel puțin una trebuie să fie true)
+- **!** înseamnă not (inversează valoarea)
 
-Imaginează-ți: pentru a conduce o mașină, trebuie să ai **cel puțin 18 ani ȘI să ai permis**
+Imaginează-ți: pentru a conduce o mașină, trebuie să ai cel puțin 18 ani ȘI să ai permis
 
 ```java
 public class Main {
@@ -50,11 +50,11 @@ public class Main {
 }
 ```
 
-Ambele condiții trebuie să fie **true** pentru ca **&&** să fie **true**. Dacă măcar una este false, întregul lucru este false
+Ambele condiții trebuie să fie true pentru ca && să fie true. Dacă măcar una este false, întregul lucru este false
 
 ---
 
-**||** (or) este mai relaxat. Doar **una** dintre condiții fiind true este suficient
+|| (or) este mai relaxat. Doar una dintre condiții fiind true este suficient
 
 ```java
 public class Main {
@@ -71,11 +71,11 @@ public class Main {
 }
 ```
 
-**esteVIP** este false, **areInvitatie** este true, așa că **or**-ul este true și persoana intră
+esteVIP este false, areInvitatie este true, așa că or-ul este true și persoana intră
 
 ---
 
-**!** inversează un boolean. **!true** devine **false**, **!false** devine **true**
+! inversează un boolean. **!true** devine false, !false devine true
 
 ```java
 public class Main {
@@ -113,7 +113,7 @@ false || false = false
 
 ## Misiune: Poarta de Acces a Stației
 
-Scrii sistemul de acces pentru stație. O persoană poate intra dacă este **angajat ȘI este zi lucrătoare**, SAU dacă este **oaspete CU o invitație**.
+Scrii sistemul de acces pentru stație. O persoană poate intra dacă este angajat ȘI este zi lucrătoare, SAU dacă este oaspete CU o invitație.
 
 Reține în patru variabile `boolean` (`angajat`, `ziLucratoare`, `oaspete` și `invitatie`) dacă persoana este angajat, dacă azi e zi lucrătoare, dacă este oaspete și dacă are invitație. Apoi scrie un `if / else` folosind `&&` și `||` care afișează `Acces permis` sau `Acces refuzat`.
 

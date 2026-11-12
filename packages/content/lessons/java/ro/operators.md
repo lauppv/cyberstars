@@ -1,4 +1,4 @@
-Am văzut deja **+**, **-**, **\***, și **/** în lecțiile anterioare. Java are câțiva operatori utili în plus pe care îi întâlnim acum
+Am văzut deja +, -, \*, și / în lecțiile anterioare. Java are câțiva operatori utili în plus pe care îi întâlnim acum
 
 ```java
 public class Main {
@@ -25,9 +25,9 @@ Ieșire
 2
 ```
 
-Cel interesant este **a / b = 3**, nu **3.4**. De ce? Pentru că **a** și **b** sunt amândoi **int**. Java face **împărțire întreagă** când ambii operanzi sunt numere întregi: aruncă partea zecimală. Am văzut asta într-o lecție anterioară
+Cel interesant este **a / b = 3**, nu **3.4**. De ce? Pentru că a și b sunt amândoi int. Java face **împărțire întreagă** când ambii operanzi sunt numere întregi: aruncă partea zecimală. Am văzut asta într-o lecție anterioară
 
-Dacă vrem rezultatul cu zecimale, avem nevoie de cel puțin un **double**
+Dacă vrem rezultatul cu zecimale, avem nevoie de cel puțin un double
 
 ```java
 public class Main {
@@ -41,7 +41,7 @@ public class Main {
 
 ---
 
-Operatorul nou este **%**, numit **modulo** (sau „rest"). Ne dă **restul** împărțirii
+Operatorul nou este **%**, numit **modulo** (sau „rest"). Ne dă restul împărțirii
 
 ```java
 public class Main {
@@ -54,7 +54,7 @@ public class Main {
 
 **17 / 5 = 3** cu rest **2**, deci **17 % 5 = 2**. **20 / 4 = 5** exact, deci restul este **0**
 
-**%** este incredibil de util. Exemplul clasic: să verificăm dacă un număr este **par**
+% este incredibil de util. Exemplul clasic: să verificăm dacă un număr este par
 
 ```java
 public class Main {
@@ -71,20 +71,20 @@ public class Main {
 
 ---
 
-Java are **scurtături** utile
+Java are scurtături utile
 
-- **a++** este același lucru cu **a = a + 1**
-- **a--** este același lucru cu **a = a - 1**
-- **a += 5** este același lucru cu **a = a + 5**
-- **a -= 3** este același lucru cu **a = a - 3**
-- **a \*= 2** este același lucru cu **a = a \* 2**
-- **a /= 4** este același lucru cu **a = a / 4**
+- **a++** este același lucru cu a = a + 1
+- **a--** este același lucru cu a = a - 1
+- **a += 5** este același lucru cu a = a + 5
+- **a -= 3** este același lucru cu a = a - 3
+- **a \*= 2** este același lucru cu a = a \* 2
+- **a /= 4** este același lucru cu a = a / 4
 
-Vei vedea **i++** în bucle **for** absolut peste tot
+Vei vedea i++ în bucle for absolut peste tot
 
 ---
 
-Dar **puterile**? Java nu are un operator dedicat pentru putere. În schimb, folosim **Math.pow**
+Dar puterile? Java nu are un operator dedicat pentru putere. În schimb, folosim **Math.pow**
 
 ```java
 public class Main {
@@ -94,7 +94,7 @@ public class Main {
 }
 ```
 
-Rezultatul este **8.0** (un double). **Math.pow** întoarce mereu un double, deci chiar și **2 la puterea 3** iese ca **8.0**, nu **8**
+Rezultatul este **8.0** (un double). Math.pow întoarce mereu un double, deci chiar și 2 la puterea 3 iese ca 8.0, nu 8
 
 ---
 
@@ -109,7 +109,7 @@ public class Main {
 }
 ```
 
-Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
+Când ai dubii, adaugă paranteze. Oricum fac codul mai ușor de citit
 
 ---
 

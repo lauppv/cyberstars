@@ -1,10 +1,10 @@
-Let's build a **quiz game**! We'll store questions, possible answers, and the correct answer in a data structure, then loop through them and keep score
+Let's build a quiz game! We'll store questions, possible answers, and the correct answer in a data structure, then loop through them and keep score
 
-This project teaches us how to **organize data**, **loop through it**, and **track state**, skills that show up in every real program
+This project teaches us how to organize data, loop through it, and track state, skills that show up in every real program
 
 ---
 
-How do we store a quiz question? A **dictionary** is perfect
+How do we store a quiz question? A dictionary is perfect
 
 ```py
 question = {
@@ -59,7 +59,7 @@ for i, q in enumerate(quiz):
 print(f"\nYou scored {score}/{len(quiz)}")
 ```
 
-Notice what we used: **list of dictionaries**, **enumerate**, **for loops**, **if/else**, **input**, **string methods** (.upper()), **f-strings**, and the **counter pattern**. All the tools from this curriculum, working together
+Notice what we used: list of dictionaries, enumerate, for loops, if/else, input, string methods (.upper()), f-strings, and the counter pattern. All the tools from this curriculum, working together
 
 ---
 

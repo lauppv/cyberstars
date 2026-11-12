@@ -1,4 +1,4 @@
-Combine **interfaces**, **enums**, and **instanceof / casting**
+Combine interfaces, enums, and instanceof / casting
 
 ---
 

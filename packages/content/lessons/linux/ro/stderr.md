@@ -39,7 +39,7 @@ Rămâne doar rezultatul reușit; erorile dispar în tăcere.
 ls real.txt fals.txt > tot.txt 2>&1
 ```
 
-Asta trimite **ambele** fluxuri, stdout și stderr, în `tot.txt`. `2>&1` înseamnă „trimite
+Asta trimite ambele fluxuri, stdout și stderr, în `tot.txt`. `2>&1` înseamnă „trimite
 fluxul 2 acolo unde merge fluxul 1".
 
 ---

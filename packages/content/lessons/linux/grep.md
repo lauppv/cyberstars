@@ -1,7 +1,7 @@
 A log file can have thousands of lines. You rarely want all of them. You want the
 lines that mention a particular word. The **grep** command finds them for you.
 
-`grep` searches a file and prints **only the lines that contain** your search text.
+`grep` searches a file and prints only the lines that contain your search text.
 
 The pattern is: `grep WORD FILE`.
 

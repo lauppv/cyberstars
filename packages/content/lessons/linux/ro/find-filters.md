@@ -1,14 +1,14 @@
 `find -name` potrivește după nume. Dar `find` poate filtra și după alte proprietăți,
-cel mai util după **tip** și după **dimensiune**.
+cel mai util după tip și după dimensiune.
 
 ### Filtrare după tip: `-type`
 
 Opțiunea `-type` spune dacă vrei fișiere sau directoare:
 
-| Condiție  | Potrivește            |
-| --------- | --------------------- |
-| `-type f` | **fișiere** obișnuite |
-| `-type d` | **directoare**        |
+| Condiție  | Potrivește        |
+| --------- | ----------------- |
+| `-type f` | fișiere obișnuite |
+| `-type d` | directoare        |
 
 ```bash
 find . -type d
@@ -20,9 +20,9 @@ Asta listează fiecare folder de sub `.`. Ca să găsești doar fișiere:
 find . -type f -name "*.log"
 ```
 
-Se citește așa: sub `.`, găsește lucrurile care sunt **fișiere** _și_ al căror nume
+Se citește așa: sub `.`, găsește lucrurile care sunt fișiere _și_ al căror nume
 se termină în `.log`. Mai multe condiții se listează pur și simplu una după alta:
-`find` cere ca **toate** să se potrivească.
+`find` cere ca toate să se potrivească.
 
 ### Filtrare după dimensiune: `-size`
 

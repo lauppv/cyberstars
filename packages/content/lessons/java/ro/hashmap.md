@@ -23,7 +23,7 @@ Ieșire
 555-0002
 ```
 
-**HashMap\<String, String\>**: primul tip este pentru chei, al doilea pentru valori. Poți amesteca: **HashMap\<String, Integer\>** are chei String și valori numerice. La fel ca la ArrayList, folosești **Integer** în loc de **int**, **Double** în loc de **double**
+**HashMap\<String, String\>**: primul tip este pentru chei, al doilea pentru valori. Poți amesteca: HashMap\<String, Integer\> are chei String și valori numerice. La fel ca la ArrayList, folosești Integer în loc de int, Double în loc de double
 
 ---
 
@@ -148,7 +148,7 @@ Afișează doar Tommy și Phil, ei datorează mai mult de $5000
 
 ---
 
-HashMap **nu** garantează ordinea. Dacă adaugi Tommy, Lance, Phil, la parcurgere ar putea ieși în orice ordine. Nu te baza pe ordinea de inserare
+HashMap nu garantează ordinea. Dacă adaugi Tommy, Lance, Phil, la parcurgere ar putea ieși în orice ordine. Nu te baza pe ordinea de inserare
 
 ---
 

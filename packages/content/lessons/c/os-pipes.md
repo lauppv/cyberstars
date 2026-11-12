@@ -1,14 +1,14 @@
-How do processes **talk to each other**? One of the simplest mechanisms is a **pipe**. If you've used Linux, you've already seen pipes:
+How do processes talk to each other? One of the simplest mechanisms is a **pipe**. If you've used Linux, you've already seen pipes:
 
 ```text
 ls | grep ".txt"
 ```
 
-The **|** symbol takes the output of **ls** and sends it as input to **grep**. That's a pipe
+The **|** symbol takes the output of ls and sends it as input to grep. That's a pipe
 
 ---
 
-A pipe is a **one-way communication channel**. One process **writes** into it, another process **reads** from it. Think of it like a water pipe: water flows in one direction
+A pipe is a **one-way communication channel**. One process writes into it, another process reads from it. Think of it like a water pipe: water flows in one direction
 
 In C, we create a pipe with the **pipe()** function
 
@@ -54,17 +54,17 @@ Output: **Parent received: Hello from child!**
 Let's break it down:
 
 1. **pipe(fd)** creates two file descriptors: **fd[0]** for reading, **fd[1]** for writing
-2. We **fork**; now both parent and child have copies of the pipe
-3. The **child** closes the read end (it only needs to write), writes a message, and closes the write end
-4. The **parent** closes the write end (it only needs to read), reads the message, and closes the read end
+2. We fork; now both parent and child have copies of the pipe
+3. The child closes the read end (it only needs to write), writes a message, and closes the write end
+4. The parent closes the write end (it only needs to read), reads the message, and closes the read end
 
-Why do we close the ends we don't use? It's like closing a door you don't need. If the parent doesn't close the write end, the read will **never know** when the child is done writing: it will wait forever
+Why do we close the ends we don't use? It's like closing a door you don't need. If the parent doesn't close the write end, the read will never know when the child is done writing: it will wait forever
 
 ---
 
-**File descriptors** are a big idea. In Unix, **everything is a file**. Your keyboard is file descriptor 0 (**stdin**). Your screen is file descriptor 1 (**stdout**). Error messages go to file descriptor 2 (**stderr**). A pipe creates two new file descriptors
+**File descriptors** are a big idea. In Unix, **everything is a file**. Your keyboard is file descriptor 0 (stdin). Your screen is file descriptor 1 (stdout). Error messages go to file descriptor 2 (stderr). A pipe creates two new file descriptors
 
-When you write **printf("hello")**, it goes to fd 1 (stdout → your screen). When you use **scanf**, it reads from fd 0 (stdin → your keyboard). Pipes connect the stdout of one process to the stdin of another. That's literally all the **|** symbol does in a terminal
+When you write printf("hello"), it goes to fd 1 (stdout → your screen). When you use scanf, it reads from fd 0 (stdin → your keyboard). Pipes connect the stdout of one process to the stdin of another. That's literally all the | symbol does in a terminal
 
 ---
 
@@ -77,8 +77,8 @@ Pipes are the fundamental building block for process communication in Unix. Shel
 Two processes need to communicate through a pipe, exactly like a message passing from one teleprinter to another over a dedicated line.
 
 1. Create a pipe and fork
-2. The **child** writes the message **"Bell Labs"** to the pipe, then closes its ends
-3. The **parent** reads the message and prints **"Received: Bell Labs"**, then closes its ends and waits for the child
+2. The child writes the message "Bell Labs" to the pipe, then closes its ends
+3. The parent reads the message and prints "Received: Bell Labs", then closes its ends and waits for the child
 
 **Example**
 

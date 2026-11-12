@@ -1,4 +1,4 @@
-Python vine cu o grămadă de funcții utile deja încorporate. Am văzut deja **print()**, **len()**, **int()**, **input()**, **range()**, **min()**, **max()**. Hai să ne uităm la câteva în plus care ne vor economisi mult timp
+Python vine cu o grămadă de funcții utile deja încorporate. Am văzut deja print(), len(), int(), input(), range(), min(), max(). Hai să ne uităm la câteva în plus care ne vor economisi mult timp
 
 ---
 
@@ -28,7 +28,7 @@ Afișează
 [5, 2, 8, 1, 9, 3]
 ```
 
-Observă că lista **originală** rămâne neschimbată. **sorted()** ne dă una nouă. Dacă vrem să sortăm în ordine **inversă** (descrescătoare)
+Observă că lista originală rămâne neschimbată. sorted() ne dă una nouă. Dacă vrem să sortăm în ordine inversă (descrescătoare)
 
 ```py
 print(sorted(numere, reverse=True))
@@ -47,7 +47,7 @@ Afișează **['Cortez', 'Lance', 'Phil', 'Tommy']**. Ordine alfabetică
 
 ---
 
-**enumerate()** ne dă atât **indexul** cât și **valoarea** când parcurgem o listă
+**enumerate()** ne dă atât indexul cât și valoarea când parcurgem o listă
 
 Îți amintești metoda veche?
 
@@ -57,7 +57,7 @@ for i in range(len(nume)):
     print(f"{i}: {nume[i]}")
 ```
 
-Cu **enumerate()** e mult mai curat
+Cu enumerate() e mult mai curat
 
 ```py
 nume = ["Tommy", "Lance", "Cortez"]
@@ -77,7 +77,7 @@ Același rezultat, dar nu mai trebuie să scriem **range(len(...))** și **nume[
 
 ---
 
-**zip()** combină două liste **element cu element**, ca un fermoar la o geacă
+**zip()** combină două liste element cu element, ca un fermoar la o geacă
 
 ```py
 nume = ["Tommy", "Lance", "Cortez"]
@@ -95,11 +95,11 @@ Lance: 80
 Cortez: 70
 ```
 
-**zip()** împerechează primul element din fiecare listă, apoi al doilea, apoi al treilea, și așa mai departe. Dacă listele au lungimi diferite, se oprește la cea mai scurtă
+zip() împerechează primul element din fiecare listă, apoi al doilea, apoi al treilea, și așa mai departe. Dacă listele au lungimi diferite, se oprește la cea mai scurtă
 
 ---
 
-**any()** returnează **True** dacă **cel puțin un** element este adevărat. **all()** returnează **True** dacă **fiecare** element este adevărat
+**any()** returnează True dacă **cel puțin un** element este adevărat. **all()** returnează True dacă **fiecare** element este adevărat
 
 ```py
 scoruri = [80, 95, 40, 70]
@@ -118,13 +118,13 @@ True
 False
 ```
 
-**any()**: există cel puțin un scor sub 50? Da (40), deci **True**
+any(): există cel puțin un scor sub 50? Da (40), deci True
 
-**all()**: sunt TOATE scorurile cel puțin 50? Nu (40 nu e), deci **False**
+all(): sunt TOATE scorurile cel puțin 50? Nu (40 nu e), deci False
 
 ---
 
-**abs()** ne dă **valoarea absolută** (elimină semnul minus)
+**abs()** ne dă valoarea absolută (elimină semnul minus)
 
 ```py
 print(abs(-5))
@@ -164,14 +164,14 @@ Al doilea argument îi spune lui Python câte zecimale vrem
 
 ## Misiune: Clasamentul Echipajului
 
-Ai două liste: `echipaj` (nume) și `scoruri`. Folosind **funcțiile încorporate** pe care tocmai le-ai învățat:
+Ai două liste: `echipaj` (nume) și `scoruri`. Folosind funcțiile încorporate pe care tocmai le-ai învățat:
 
 1. Folosește `zip` ca să afișezi fiecare membru al echipajului cu scorul său ca `nume: scor`
-2. Afișează `Sortate: ` apoi scorurile sortate de la **cel mai mare la cel mai mic** (`sorted(..., reverse=True)`)
-3. Afișează `Total: ` apoi **suma** tuturor scorurilor
-4. Afișează `Medie: ` apoi media, **rotunjită** la 1 zecimală (`round(..., 1)`)
-5. Afișează `Toti au trecut: ` apoi dacă **toate** scorurile sunt 50 sau mai mult (`all(...)`)
-6. Afișează `Vreunul perfect: ` apoi dacă **vreun** scor este egal cu 100 (`any(...)`)
+2. Afișează `Sortate: ` apoi scorurile sortate de la cel mai mare la cel mai mic (`sorted(..., reverse=True)`)
+3. Afișează `Total: ` apoi suma tuturor scorurilor
+4. Afișează `Medie: ` apoi media, rotunjită la 1 zecimală (`round(..., 1)`)
+5. Afișează `Toti au trecut: ` apoi dacă toate scorurile sunt 50 sau mai mult (`all(...)`)
+6. Afișează `Vreunul perfect: ` apoi dacă vreun scor este egal cu 100 (`any(...)`)
 
 **Ieșire**
 

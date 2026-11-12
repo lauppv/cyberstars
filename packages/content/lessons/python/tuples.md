@@ -1,4 +1,4 @@
-We already know **lists**. A list can grow, shrink, and change: we can **append**, **remove**, and **modify** elements whenever we want. But sometimes we want a collection that **cannot change**. This is a **tuple**
+We already know lists. A list can grow, shrink, and change: we can append, remove, and modify elements whenever we want. But sometimes we want a collection that cannot change. This is a **tuple**
 
 ```py
 coordinates = (10, 20)
@@ -14,18 +14,18 @@ coordinates = (10, 20)
 coordinates[0] = 99
 ```
 
-**Run** it. Python will scream at us with a **TypeError**: 'tuple' object does not support item assignment. In other words: "you can't change me"
+Run it. Python will scream at us with a **TypeError**: 'tuple' object does not support item assignment. In other words: "you can't change me"
 
 ---
 
-Why would we ever want something we can't change? Well, sometimes that's the whole point. Think about a date of birth. **Tommy Vercetti was born on a specific day**. That date should never change. If we accidentally write code that tries to modify it, we **want** Python to stop us
+Why would we ever want something we can't change? Well, sometimes that's the whole point. Think about a date of birth. Tommy Vercetti was born on a specific day. That date should never change. If we accidentally write code that tries to modify it, we want Python to stop us
 
 ```py
 birthday = (1951, 7, 15)
 print(birthday)
 ```
 
-Another example: GPS coordinates. **Vice City is at a fixed location**. It doesn't move
+Another example: GPS coordinates. Vice City is at a fixed location. It doesn't move
 
 ```py
 vice_city = (25.7617, -80.1918)
@@ -34,7 +34,7 @@ print(vice_city)
 
 ---
 
-We **can** read elements from a tuple, just like a list, using an **index**
+We can read elements from a tuple, just like a list, using an index
 
 ```py
 player = ("Tommy Vercetti", 100, "Vice City")
@@ -51,14 +51,14 @@ Tommy Vercetti
 Vice City
 ```
 
-**len()** works too
+len() works too
 
 ```py
 player = ("Tommy Vercetti", 100, "Vice City")
 print(len(player))
 ```
 
-Output **3**
+Output 3
 
 ---
 
@@ -81,7 +81,7 @@ Tommy Vercetti
 Vice City
 ```
 
-We created **three variables** in one line. Python took the first element and put it in **name**, the second in **health**, the third in **city**. The number of variables on the left **must match** the number of elements in the tuple
+We created three variables in one line. Python took the first element and put it in name, the second in health, the third in city. The number of variables on the left **must match** the number of elements in the tuple
 
 ```py
 a, b = (10, 20)
@@ -96,11 +96,11 @@ Output
 20
 ```
 
-This is the same **unpacking** we saw in **.items()** when looping through dictionaries. Now you know where it comes from
+This is the same unpacking we saw in .items() when looping through dictionaries. Now you know where it comes from
 
 ---
 
-We can also **loop** through a tuple, just like a list
+We can also loop through a tuple, just like a list
 
 ```py
 heroes = ("Shrek", "Fiona", "Donkey")
@@ -120,9 +120,9 @@ Donkey
 
 ## Mission: Star Chart
 
-The station's navigation computer stores each star system as a **tuple** of `(name, distance, planets)`, all of them in a list named `systems`
+The station's navigation computer stores each star system as a tuple of `(name, distance, planets)`, all of them in a list named `systems`
 
-1. Loop over the list and **unpack** each tuple into three variables: `name`, `distance`, `planets`
+1. Loop over the list and unpack each tuple into three variables: `name`, `distance`, `planets`
 2. Print each system as `name: distance ly, planets planets`, for example `Sol: 0 ly, 8 planets` (`ly` = light years)
 3. After the loop, print `Total planets: ` then the sum of all the planets
 

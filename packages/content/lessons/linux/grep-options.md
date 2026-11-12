@@ -13,7 +13,7 @@ This matches `error`, `Error`, `ERROR`, and any mix.
 
 ### Count matches: `grep -c`
 
-The `-c` option prints just the **number** of matching lines, not the lines
+The `-c` option prints just the number of matching lines, not the lines
 themselves:
 
 ```bash
@@ -36,7 +36,7 @@ This hides every `info` line and shows everything else.
 
 ### Show line numbers: `grep -n`
 
-The `-n` option puts the **line number** in front of each match:
+The `-n` option puts the line number in front of each match:
 
 ```bash
 grep -n error system.log

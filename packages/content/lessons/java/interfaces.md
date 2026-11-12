@@ -25,7 +25,7 @@ class Book implements Printable {
 }
 ```
 
-Notice the method in the class must be **public**. Interface methods are always public by default, so your implementation must be too
+Notice the method in the class must be public. Interface methods are always public by default, so your implementation must be too
 
 ---
 

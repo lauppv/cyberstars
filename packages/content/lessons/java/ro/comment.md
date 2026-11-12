@@ -1,4 +1,4 @@
-**Comentariile** sunt bucăți de text din codul nostru pe care Java le **ignoră**. Le folosim ca să **explicăm** ce face codul, sau ca să **dezactivăm** părți din cod fără a le șterge
+**Comentariile** sunt bucăți de text din codul nostru pe care Java le ignoră. Le folosim ca să explicăm ce face codul, sau ca să dezactivăm părți din cod fără a le șterge
 
 În Java, un comentariu pe o singură linie începe cu **//**
 
@@ -12,11 +12,11 @@ public class Main {
 }
 ```
 
-Liniile de după **//** sunt complet ignorate de Java. Programul rulează ca și cum nu ar fi acolo
+Liniile de după // sunt complet ignorate de Java. Programul rulează ca și cum nu ar fi acolo
 
 ---
 
-Comentariile sunt grozave și pentru **dezactivarea** temporară a codului
+Comentariile sunt grozave și pentru dezactivarea temporară a codului
 
 ```java
 public class Main {
@@ -27,7 +27,7 @@ public class Main {
 }
 ```
 
-Acum programul nu afișează nimic, pentru că am **comentat** **println**-ul. Foarte util când depanezi: în loc să ștergi codul și să-l rescrii mai târziu, doar îl comentăm
+Acum programul nu afișează nimic, pentru că am comentat println-ul. Foarte util când depanezi: în loc să ștergi codul și să-l rescrii mai târziu, doar îl comentăm
 
 ---
 
@@ -41,7 +41,7 @@ mai multe linii
 */
 ```
 
-Totuși, în practică, majoritatea codului Java folosește **//** chiar și pentru câteva linii la rând
+Totuși, în practică, majoritatea codului Java folosește // chiar și pentru câteva linii la rând
 
 ```text
 // asa o sa ne scriem
@@ -52,15 +52,15 @@ Totuși, în practică, majoritatea codului Java folosește **//** chiar și pen
 
 ---
 
-Mai există un tip special, **/\*\* ... \*/**, folosit pentru a documenta clase și metode. Îl vom întâlni mai târziu în călătoria ta prin Java. Deocamdată, **//** e tot ce-ți trebuie
+Mai există un tip special, **/\*\* ... \*/**, folosit pentru a documenta clase și metode. Îl vom întâlni mai târziu în călătoria ta prin Java. Deocamdată, // e tot ce-ți trebuie
 
 ---
 
 ## Misiune: Marfă Clasificată
 
-Manifestul navei este afișat pe ecranul principal, dar o linie conține **marfă clasificată** care trebuie să rămână ascunsă de echipaj.
+Manifestul navei este afișat pe ecranul principal, dar o linie conține marfă clasificată care trebuie să rămână ascunsă de echipaj.
 
-Comentează **o singură linie** astfel încât să fie afișate doar numele navei, numele misiunii și puterea maximă. Nu șterge nimic, doar folosește `//` ca să ascunzi secretul.
+Comentează o singură linie astfel încât să fie afișate doar numele navei, numele misiunii și puterea maximă. Nu șterge nimic, doar folosește `//` ca să ascunzi secretul.
 
 **Intrare** (deja setat la începutul codului tău; schimbă valorile ca să testezi):
 

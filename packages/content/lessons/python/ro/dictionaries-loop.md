@@ -1,4 +1,4 @@
-Acum că știm ce este un dicționar, e timpul să-l **parcurgem** cu o buclă. La fel cum am parcurs listele, putem parcurge dicționarele. Dar pentru că un dicționar are **chei** și **valori**, lucrurile sunt puțin diferite
+Acum că știm ce este un dicționar, e timpul să-l parcurgem cu o buclă. La fel cum am parcurs listele, putem parcurge dicționarele. Dar pentru că un dicționar are chei și valori, lucrurile sunt puțin diferite
 
 ```py
 jucator = {
@@ -19,7 +19,7 @@ viata
 oras
 ```
 
-Stai, a afișat doar **cheile**? Da. În mod implicit, când parcurgem un dicționar, Python ne dă **cheile**. Dar putem obține ușor și **valorile**
+Stai, a afișat doar cheile? Da. În mod implicit, când parcurgem un dicționar, Python ne dă cheile. Dar putem obține ușor și valorile
 
 ```py
 jucator = {
@@ -40,11 +40,11 @@ Tommy Vercetti
 Vice City
 ```
 
-Am folosit **jucator[i]** ca să luăm valoarea pentru fiecare cheie. Am luat **i** ca iterator, care ia pe rând fiecare cheie din dicționar. Asta funcționează, dar Python are o metodă mai frumoasă
+Am folosit **jucator[i]** ca să luăm valoarea pentru fiecare cheie. Am luat i ca iterator, care ia pe rând fiecare cheie din dicționar. Asta funcționează, dar Python are o metodă mai frumoasă
 
 ---
 
-**.items()** ne dă atât **cheia** cât și **valoarea** în același timp
+**.items()** ne dă atât cheia cât și valoarea în același timp
 
 ```py
 jucator = {
@@ -57,11 +57,11 @@ for cheie, valoare in jucator.items():
     print(f"Cheia {cheie} cu valoare {valoare}")
 ```
 
-Vedem cum Python vede **jucator.items()**, știe că asta înseamnă pereche `cheie: valoare`, așa că atribuie automat **cheie** cu ce se află la stânga de **:** ("nume", "viata", "oras") și **valoare** cu ce se află la dreapta de **:** ("Tommy Vercetti", 100, "Vice City")
+Vedem cum Python vede **jucator.items()**, știe că asta înseamnă pereche `cheie: valoare`, așa că atribuie automat cheie cu ce se află la stânga de : ("nume", "viata", "oras") și valoare cu ce se află la dreapta de : ("Tommy Vercetti", 100, "Vice City")
 
 ---
 
-Dacă avem nevoie doar de **chei**, putem folosi **.keys()**
+Dacă avem nevoie doar de chei, putem folosi **.keys()**
 
 ```py
 jucator = {
@@ -82,7 +82,7 @@ viata
 oras
 ```
 
-Dacă avem nevoie doar de **valori**, folosim **.values()**
+Dacă avem nevoie doar de valori, folosim **.values()**
 
 ```py
 jucator = {
@@ -104,7 +104,7 @@ Vice City
 
 ---
 
-Un caz de utilizare foarte des întâlnit: **numărarea lucrurilor**. Să zicem că vrem să numărăm de câte ori apare fiecare literă într-un cuvânt
+Un caz de utilizare foarte des întâlnit: numărarea lucrurilor. Să zicem că vrem să numărăm de câte ori apare fiecare literă într-un cuvânt
 
 ```py
 cuvant = "banana"
@@ -125,7 +125,7 @@ Afișează
 {'b': 1, 'a': 3, 'n': 2}
 ```
 
-Acesta se numește **dicționar de frecvențe** sau **histogramă**. Verificăm: este litera deja în dicționar? Dacă da, creștem numărul. Dacă nu, îl pornim de la **1**
+Acesta se numește **dicționar de frecvențe** sau histogramă. Verificăm: este litera deja în dicționar? Dacă da, creștem numărul. Dacă nu, îl pornim de la 1
 
 ---
 
@@ -150,11 +150,11 @@ Ai un dicționar cu membrii echipajului și scorurile lor de la ultima misiune (
 
 Afișează, în această ordine:
 
-1. `Numele` fiecărui membru (parcurge cu **.keys()**)
-2. `Scorul` fiecărui membru (parcurge cu **.values()**)
+1. `Numele` fiecărui membru (parcurge cu .keys())
+2. `Scorul` fiecărui membru (parcurge cu .values())
 3. `Total: ` apoi suma tuturor scorurilor
-4. `Medie: ` apoi totalul împărțit la numărul de membri (folosește **len()**)
-5. `Top: ` apoi **numele** membrului cu cel mai mare scor
+4. `Medie: ` apoi totalul împărțit la numărul de membri (folosește len())
+5. `Top: ` apoi numele membrului cu cel mai mare scor
 
 **Ieșire**
 

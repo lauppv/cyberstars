@@ -1,4 +1,4 @@
-Beyond printing fields, awk can **calculate**. You can use variables, patterns, and
+Beyond printing fields, awk can calculate. You can use variables, patterns, and
 special blocks like `END` to produce summaries.
 
 ### Summing a column

@@ -1,4 +1,4 @@
-Sometimes you want a class that's a **blueprint**: it defines what child classes MUST do, but it can't be used on its own. That's an **abstract class**
+Sometimes you want a class that's a blueprint: it defines what child classes MUST do, but it can't be used on its own. That's an **abstract class**
 
 Think of it this way: "Vehicle" is a concept. You can't just build a generic "vehicle". You build a sports car, a motorcycle, a truck. But they all share the idea of being a vehicle. In Java, you'd make Vehicle **abstract**
 
@@ -87,7 +87,7 @@ Angel: 200 km/h
 
 ---
 
-An abstract class can have **both** abstract methods (that children must implement) and **regular** methods (that children inherit for free)
+An abstract class can have both abstract methods (that children must implement) and regular methods (that children inherit for free)
 
 ```text
 abstract class Character {
@@ -116,9 +116,9 @@ Tommy Vercetti and Lance Vance would both extend `Character`. They'd each have t
 
 **When to use abstract class vs regular class?**
 
-Use a **regular class** when it makes sense to create objects of that type directly. A `Car` is a real thing, you can create one
+Use a regular class when it makes sense to create objects of that type directly. A `Car` is a real thing, you can create one
 
-Use an **abstract class** when the class is just a concept or category. "Vehicle" is abstract: there's no such thing as a generic vehicle. "Character" could go either way depending on your design
+Use an abstract class when the class is just a concept or category. "Vehicle" is abstract: there's no such thing as a generic vehicle. "Character" could go either way depending on your design
 
 The rule of thumb: if you'd never want someone to write `new YourClass()`, make it abstract
 

@@ -1,4 +1,4 @@
-When we pass a struct to a function, C copies the **entire struct**. For a small struct that's fine. But for a struct with a 1000-character buffer and dozens of fields, copying is wasteful. The solution: **pass a pointer to the struct**
+When we pass a struct to a function, C copies the entire struct. For a small struct that's fine. But for a struct with a 1000-character buffer and dozens of fields, copying is wasteful. The solution: **pass a pointer to the struct**
 
 ```c
 #include <stdio.h>
@@ -25,7 +25,7 @@ We pass **&t** (the address of the struct), and the function receives a **struct
 
 ---
 
-Writing **(\*p).sessions** everywhere is ugly. C gives us a shortcut: the **arrow operator ->**
+Writing (\*p).sessions everywhere is ugly. C gives us a shortcut: the **arrow operator ->**
 
 ```c
 #include <stdio.h>
@@ -47,11 +47,11 @@ int main(void) {
 }
 ```
 
-**p->sessions** is exactly the same thing as **(\*p).sessions**. It's cleaner and everyone uses it. The rule is simple: **dot** for structs, **arrow** for pointers to structs
+**p->sessions** is exactly the same thing as (\*p).sessions. It's cleaner and everyone uses it. The rule is simple: **dot** for structs, **arrow** for pointers to structs
 
 ---
 
-The real power: functions that **modify** a struct through a pointer
+The real power: functions that modify a struct through a pointer
 
 ```c
 #include <stdio.h>
@@ -93,11 +93,11 @@ The functions modified the **original struct**, not a copy. It's the same "pass 
 
 The computing center bills processor time by the hour. Each user has an account with a balance in hours, and shift operators make allocations and withdrawals throughout the day. All updates must go through a pointer, so the original balance in the ledger changes in place.
 
-1. Define a struct **HourAccount** with fields **owner** (char array) and **balance** (int)
+1. Define a struct HourAccount with fields owner (char array) and balance (int)
 2. Write the function **void allocate(struct HourAccount \*acc, int hours)**: adds hours to the balance through the pointer
-3. Write the function **void withdraw(struct HourAccount \*acc, int hours)**: subtracts hours from the balance if there's enough, otherwise print **"Insufficient funds"**
-4. Read from input: the owner's name, the initial balance, then three operations. Each operation has a code (**1** = allocate, **2** = withdraw) followed by a value
-5. After all operations, print **"Balance: X"**
+3. Write the function **void withdraw(struct HourAccount \*acc, int hours)**: subtracts hours from the balance if there's enough, otherwise print "Insufficient funds"
+4. Read from input: the owner's name, the initial balance, then three operations. Each operation has a code (1 = allocate, 2 = withdraw) followed by a value
+5. After all operations, print "Balance: X"
 
 **Example**
 

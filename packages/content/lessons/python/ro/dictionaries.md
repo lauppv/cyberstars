@@ -1,6 +1,6 @@
-Până acum am stocat valori în variabile și în liste. O **listă** este grozavă când avem o grămadă de valori și le accesăm după **poziția** lor (index 0, 1, 2, …). Dar ce ne facem dacă nu ne pasă de poziție și în schimb ne pasă de un **nume**?
+Până acum am stocat valori în variabile și în liste. O listă este grozavă când avem o grămadă de valori și le accesăm după poziția lor (index 0, 1, 2, …). Dar ce ne facem dacă nu ne pasă de poziție și în schimb ne pasă de un nume?
 
-Imaginează-ți agenda telefonică a lui Tommy Vercetti. El nu spune „dă-mi contactul numărul 3". El spune „dă-mi numărul de telefon al lui **Cortez**". **Numele** este modul în care caută lucrurile
+Imaginează-ți agenda telefonică a lui Tommy Vercetti. El nu spune „dă-mi contactul numărul 3". El spune „dă-mi numărul de telefon al lui Cortez". Numele este modul în care caută lucrurile
 
 Exact asta face un **dicționar** în Python
 
@@ -16,7 +16,7 @@ print(agenda_telefonica["Cortez"])
 
 Afișează **555-1234**
 
-Un dicționar se creează cu **acolade {}**. Înăuntru, scriem perechi **key: value (cheie: valoare)** separate prin **virgule**. **Cheia** este ceea ce folosim ca să căutăm lucrurile (cum ar fi numele), iar **valoarea** este ceea ce primim înapoi (cum ar fi numărul de telefon)
+Un dicționar se creează cu **acolade {}**. Înăuntru, scriem perechi **key: value (cheie: valoare)** separate prin virgule. **Cheia** este ceea ce folosim ca să căutăm lucrurile (cum ar fi numele), iar **valoarea** este ceea ce primim înapoi (cum ar fi numărul de telefon)
 
 ```py
 agenda_telefonica = {
@@ -49,11 +49,11 @@ agenda_telefonica = {
 print(agenda_telefonica["Sonny"])
 ```
 
-**Rulează**. Vei vedea o **KeyError**. Python ne spune: „nu cunosc niciun Sonny"
+Rulează. Vei vedea o **KeyError**. Python ne spune: „nu cunosc niciun Sonny"
 
 ---
 
-Putem **adăuga** o intrare nouă sau **modifica** una existentă foarte ușor
+Putem adăuga o intrare nouă sau modifica una existentă foarte ușor
 
 ```py
 agenda_telefonica = {
@@ -75,11 +75,11 @@ Afișează
 555-1111
 ```
 
-Dacă cheia nu există, Python o **creează**. Dacă există deja, Python o **actualizează**. Simplu
+Dacă cheia nu există, Python o creează. Dacă există deja, Python o actualizează. Simplu
 
 ---
 
-Putem și **elimina** o intrare cu **del**
+Putem și elimina o intrare cu **del**
 
 ```py
 agenda_telefonica = {
@@ -101,7 +101,7 @@ Lance a dispărut. Scuze, Lance :)
 
 ---
 
-Ca să verificăm dacă o cheie **există** înainte să o accesăm, folosim **in**
+Ca să verificăm dacă o cheie există înainte să o accesăm, folosim **in**
 
 ```py
 agenda_telefonica = {"Cortez": "555-1234"}
@@ -114,7 +114,7 @@ else:
 
 ---
 
-La fel ca listele, dicționarele pot conține **orice tip** de valoare: șiruri de caractere, numere, valori booleene, chiar și alte liste sau dicționare
+La fel ca listele, dicționarele pot conține orice tip de valoare: șiruri de caractere, numere, valori booleene, chiar și alte liste sau dicționare
 
 ```py
 jucator = {
@@ -137,11 +137,11 @@ print(jucator["arme"])
 
 Fă următoarele, în ordine:
 
-1. **Creează** un dicționar `echipaj` cu trei chei (`"nume"`, `"rol"` și `"varsta"`) folosind variabilele `nume`, `rol` și `varsta` ca valori
-2. **Adaugă** o cheie nouă `"statie"`, folosind variabila `statie` ca valoare
-3. E ziua de naștere a membrului, așa că **actualizează** `varsta` din dicționar adăugându-i **1** (folosind operatorul +)
+1. Creează un dicționar `echipaj` cu trei chei (`"nume"`, `"rol"` și `"varsta"`) folosind variabilele `nume`, `rol` și `varsta` ca valori
+2. Adaugă o cheie nouă `"statie"`, folosind variabila `statie` ca valoare
+3. E ziua de naștere a membrului, așa că actualizează `varsta` din dicționar adăugându-i 1 (folosind operatorul +)
 4. Afișează valorile pentru `nume`, `rol`, `varsta` și `statie`, fiecare pe propria linie
-5. Încă nu urmărim rangul, așa că dacă cheia `"rang"` **nu este în** dicționar, afișează `Rang: necunoscut`
+5. Încă nu urmărim rangul, așa că dacă cheia `"rang"` nu este în dicționar, afișează `Rang: necunoscut`
 
 **Ieșire**
 

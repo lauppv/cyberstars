@@ -1,5 +1,5 @@
 `cat` afișează un fișier întreg dintr-odată; `head` și `tail` arată capetele. Dar ce
-faci dacă vrei să **derulezi** printr-un fișier lung în ritmul tău, în sus și în jos?
+faci dacă vrei să derulezi printr-un fișier lung în ritmul tău, în sus și în jos?
 
 Aceasta este treaba lui **less**.
 
@@ -7,24 +7,24 @@ Aceasta este treaba lui **less**.
 less fisier_mare.log
 ```
 
-`less` deschide fișierul într-un **vizualizator**. Nu aruncă totul, ci afișează un
+`less` deschide fișierul într-un vizualizator. Nu aruncă totul, ci afișează un
 ecran și te așteaptă. În interiorul vizualizatorului poți:
 
-| Tastă           | Acțiune                      |
-| --------------- | ---------------------------- |
-| `Space` sau `f` | pagina următoare             |
-| `b`             | pagina anterioară            |
-| săgețile        | sus / jos o linie            |
-| `/cuvânt`       | caută înainte _cuvânt_       |
-| `q`             | **ieși** și revino la prompt |
+| Tastă           | Acțiune                  |
+| --------------- | ------------------------ |
+| `Space` sau `f` | pagina următoare         |
+| `b`             | pagina anterioară        |
+| săgețile        | sus / jos o linie        |
+| `/cuvânt`       | caută înainte _cuvânt_   |
+| `q`             | ieși și revino la prompt |
 
 Cea mai importantă tastă este **`q`**: așa ieși din `less` și îți recapeți
 shell-ul.
 
 ### De ce „less”?
 
-A existat o unealtă mai veche numită `more` care putea parcurge doar **înainte**.
-`less` face tot ce face `more` _și_ îți permite să derulezi **înapoi**, de aici
+A existat o unealtă mai veche numită `more` care putea parcurge doar înainte.
+`less` face tot ce face `more` _și_ îți permite să derulezi înapoi, de aici
 numele glumeț: „less is more” („mai puțin înseamnă mai mult”).
 
 `less` nu modifică niciodată fișierul. Este un vizualizator pur.

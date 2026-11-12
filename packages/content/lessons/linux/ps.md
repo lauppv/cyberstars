@@ -14,7 +14,7 @@ ps
  1245 pts/0    00:00:00 ps
 ```
 
-That is usually just your shell and `ps` itself. To see **all** processes on the
+That is usually just your shell and `ps` itself. To see all processes on the
 system, use `ps aux`:
 
 ```bash

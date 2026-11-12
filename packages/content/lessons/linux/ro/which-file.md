@@ -3,7 +3,7 @@ Două comenzi mici, dar foarte utile, îți completează arsenalul de căutare:
 
 ### Unde se află o comandă? `which`
 
-Când scrii `ls`, Linux rulează un program stocat undeva pe disc. Comanda **which**
+Când scrii `ls`, Linux rulează un program stocat undeva pe disc. Comanda which
 îți spune _exact unde_ se află acel program:
 
 ```bash
@@ -27,8 +27,8 @@ afișează nimic, comanda nu a fost găsită.
 
 ### Ce fel de fișier este acesta? `file`
 
-Numele unui fișier nu îți spune întotdeauna ce se află în el. Comanda **file**
-**inspectează conținutul** și raportează tipul:
+Numele unui fișier nu îți spune întotdeauna ce se află în el. Comanda file
+inspectează conținutul și raportează tipul:
 
 ```bash
 file notite.txt

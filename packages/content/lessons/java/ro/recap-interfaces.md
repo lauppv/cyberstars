@@ -1,4 +1,4 @@
-Combină **interfețe**, **enum-uri** și **instanceof / casting**
+Combină interfețe, enum-uri și instanceof / casting
 
 ---
 

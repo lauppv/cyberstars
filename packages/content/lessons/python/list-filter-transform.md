@@ -1,4 +1,4 @@
-In real programs, we constantly need to **filter** data (keep only what we want) and **transform** it (change every element in some way). These are two of the most common operations in programming, and we've already seen them, now let's practice them as a skill
+In real programs, we constantly need to filter data (keep only what we want) and transform it (change every element in some way). These are two of the most common operations in programming, and we've already seen them, now let's practice them as a skill
 
 ---
 
@@ -45,7 +45,7 @@ with_tax = [round(price * 1.19, 2) for price in prices]
 
 ---
 
-The real power comes when we **combine** both: filter first, then transform (or vice versa)
+The real power comes when we combine both: filter first, then transform (or vice versa)
 
 ```py
 players = [
@@ -65,7 +65,7 @@ print(online_names)
 
 Output **['Tommy', 'Cortez', 'Phil']**
 
-We **filtered** (only online players) and **transformed** (extracted just the name). With list comprehension
+We filtered (only online players) and transformed (extracted just the name). With list comprehension
 
 ```py
 online_names = [p["name"] for p in players if p["online"]]
@@ -75,9 +75,9 @@ online_names = [p["name"] for p in players if p["online"]]
 
 Let's do a more complex example. We have student grades and we want to
 
-1. **Filter** out anyone who failed (below 50)
-2. **Transform** the remaining grades by adding a 5-point bonus
-3. **Cap** at 100 (nobody can go above 100)
+1. Filter out anyone who failed (below 50)
+2. Transform the remaining grades by adding a 5-point bonus
+3. Cap at 100 (nobody can go above 100)
 
 ```py
 grades = [45, 82, 67, 91, 38, 74, 55, 96]
@@ -95,7 +95,7 @@ print(result)
 
 Output **[87, 72, 96, 79, 60, 100]**
 
-With comprehension and **min()** to cap
+With comprehension and min() to cap
 
 ```py
 result = [min(g + 5, 100) for g in grades if g >= 50]
@@ -105,10 +105,10 @@ result = [min(g + 5, 100) for g in grades if g >= 50]
 
 ## Mission: Power Grid Filter
 
-The station's reactors report power readings in a list named readings. Engineering wants to focus on the **stable** reactors and give them a small boost, but no reactor may exceed 100.
+The station's reactors report power readings in a list named readings. Engineering wants to focus on the stable reactors and give them a small boost, but no reactor may exceed 100.
 
-1. **Filter**: keep only readings that are `>= 50` (the stable reactors).
-2. **Transform**: add a 5-point boost to each kept reading, **capped at 100** (use `min(reading + 5, 100)` so nothing goes over).
+1. Filter: keep only readings that are `>= 50` (the stable reactors).
+2. Transform: add a 5-point boost to each kept reading, capped at 100 (use `min(reading + 5, 100)` so nothing goes over).
 3. Print `Boosted: ` followed by the resulting list.
 4. Print `Stable reactors: ` followed by how many made the cut.
 5. Print `Average: ` followed by the average of the boosted readings, rounded to a whole number with `round()`.

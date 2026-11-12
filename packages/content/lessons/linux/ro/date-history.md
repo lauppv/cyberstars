@@ -1,4 +1,4 @@
-Pe o stație spațială contează să știi **când** se întâmplă lucrurile. Comanda
+Pe o stație spațială contează să știi când se întâmplă lucrurile. Comanda
 `date` afișează data și ora curentă:
 
 ```bash

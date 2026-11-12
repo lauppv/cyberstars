@@ -1,4 +1,4 @@
-Cum creează sistemul de operare procese noi? În Unix/Linux, există un apel de sistem fascinant: **fork()**. **Clonează** procesul curent, creând o copie exactă
+Cum creează sistemul de operare procese noi? În Unix/Linux, există un apel de sistem fascinant: **fork()**. Clonează procesul curent, creând o copie exactă
 
 ```c
 #include <stdio.h>
@@ -22,7 +22,7 @@ int main(void) {
 }
 ```
 
-După **fork()**, sunt **două procese** care rulează același cod. Originalul este **părintele**, copia este **copilul**. Cum știu care e care? **fork()** returnează:
+După fork(), sunt **două procese** care rulează același cod. Originalul este **părintele**, copia este **copilul**. Cum știu care e care? fork() returnează:
 
 - **0** către procesul copil
 - **PID-ul copilului** către procesul părinte
@@ -31,9 +31,9 @@ De asta verificăm **pid == 0**: este singurul mod de a-ți da seama care suntem
 
 ---
 
-Gândește-te la asta ca la diviziunea celulară în biologie. O celulă se împarte în două celule identice. Ambele au același ADN (cod), dar apoi pot merge în direcții diferite. **if/else**-ul de după fork este modul în care trimitem părintele și copilul pe căi diferite
+Gândește-te la asta ca la diviziunea celulară în biologie. O celulă se împarte în două celule identice. Ambele au același ADN (cod), dar apoi pot merge în direcții diferite. if/else-ul de după fork este modul în care trimitem părintele și copilul pe căi diferite
 
-**wait(NULL)** face părintele să **se oprească** până când copilul termină. Fără el, părintele ar putea termina primul și lucrurile devin dezordonate. E ca un părinte care așteaptă la poarta școlii: nu pleca fără copilul tău
+**wait(NULL)** face părintele să se oprească până când copilul termină. Fără el, părintele ar putea termina primul și lucrurile devin dezordonate. E ca un părinte care așteaptă la poarta școlii: nu pleca fără copilul tău
 
 ---
 
@@ -57,7 +57,7 @@ Dacă faci fork din nou înăuntrul unuia dintre acele procese, obții 4 procese
 
 ---
 
-**fork** este fundamentul felului în care funcționează Unix. Când deschizi un terminal și tastezi o comandă, shell-ul **face fork** la sine însuși, iar procesul copil **se înlocuiește** cu noul program (folosind o funcție numită **exec**, pe care nu o vom trata în detaliu dar e bine să știi că există)
+fork este fundamentul felului în care funcționează Unix. Când deschizi un terminal și tastezi o comandă, shell-ul face fork la sine însuși, iar procesul copil se înlocuiește cu noul program (folosind o funcție numită **exec**, pe care nu o vom trata în detaliu dar e bine să știi că există)
 
 Acest pattern fork-apoi-exec este peste tot:
 
@@ -72,9 +72,9 @@ Acest pattern fork-apoi-exec este peste tot:
 
 Un tehnician de la centrul de calcul trebuie să lanseze un proces de diagnostic care raportează propriul PID, în timp ce terminalul principal așteaptă confirmarea înainte să continue tura.
 
-1. Apelează **fork()** pentru a crea un proces copil
-2. **Copilul** afișează **"Copil: salut de la PID X"** (unde X este PID-ul său real din **getpid()**)
-3. **Părintele** apelează **wait(NULL)**, apoi afișează **"Parinte: copilul a terminat"**
+1. Apelează fork() pentru a crea un proces copil
+2. Copilul afișează "Copil: salut de la PID X" (unde X este PID-ul său real din getpid())
+3. Părintele apelează wait(NULL), apoi afișează "Parinte: copilul a terminat"
 
 **Exemplu**
 
@@ -85,4 +85,4 @@ Copil: salut de la PID 12345
 Parinte: copilul a terminat
 ```
 
-Folosește **fork()**, **getpid()** și **wait(NULL)** din **unistd.h** și **sys/wait.h**
+Folosește fork(), getpid() și wait(NULL) din unistd.h și sys/wait.h

@@ -21,7 +21,7 @@ Cannot divide by zero!
 Program continues...
 ```
 
-Without try/catch, the program would stop at `10 / 0`. With it, Java **catches** the error, runs the catch block, and moves on
+Without try/catch, the program would stop at `10 / 0`. With it, Java catches the error, runs the catch block, and moves on
 
 ---
 

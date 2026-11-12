@@ -1,4 +1,4 @@
-So far, every variable held **one** thing: one name, one number, one boolean. But what if I want to store the names of all the characters from **GTA Vice City**?
+So far, every variable held one thing: one name, one number, one boolean. But what if I want to store the names of all the characters from GTA Vice City?
 
 I could do this
 
@@ -10,7 +10,7 @@ name4 = "Phil Cassidy"
 name5 = "Sonny Forelli"
 ```
 
-Ugly. And what if I wanted **100** names? **1000**? No way. There has to be a better solution
+Ugly. And what if I wanted 100 names? 1000? No way. There has to be a better solution
 
 There is. It’s called a **list**
 
@@ -19,9 +19,9 @@ names = ["Tommy Vercetti", "Lance Vance", "Cortez", "Phil Cassidy", "Sonny Forel
 print(names)
 ```
 
-A **list** is a **collection** of values stored in a single variable. We use the square brackets **[ ]** and separate the elements with **commas**
+A list is a **collection** of values stored in a single variable. We use the square brackets **[ ]** and separate the elements with commas
 
-If we run this, **Python** will display the whole list at once
+If we run this, Python will display the whole list at once
 
 ```text
 ['Tommy Vercetti', 'Lance Vance', 'Cortez', 'Phil Cassidy', 'Sonny Forelli']
@@ -29,7 +29,7 @@ If we run this, **Python** will display the whole list at once
 
 ---
 
-We can also access **a single element** of the list, just like we did with strings: by **index**
+We can also access a single element of the list, just like we did with strings: by **index**
 
 ```py
 names = ["Tommy Vercetti", "Lance Vance", "Cortez"]
@@ -47,7 +47,7 @@ names = ["Tommy Vercetti", "Lance Vance", "Cortez"]
 print(names[10])
 ```
 
-**Run** it. You’ll see **Python** complains with an **IndexError**, because there is no element at position **10**. Always read your errors :)
+Run it. You’ll see Python complains with an **IndexError**, because there is no element at position 10. Always read your errors :)
 
 ---
 
@@ -58,11 +58,11 @@ names = ["Tommy Vercetti", "Lance Vance", "Cortez"]
 print(len(names))   # 3
 ```
 
-Same **len()** that we used on strings. **Python** is smart about it
+Same len() that we used on strings. Python is smart about it
 
 ---
 
-We can **add** new elements to a list with **.append()**
+We can add new elements to a list with **.append()**
 
 ```py
 names = ["Tommy Vercetti", "Lance Vance"]
@@ -77,11 +77,11 @@ Output
 ['Tommy Vercetti', 'Lance Vance', 'Cortez', 'Phil Cassidy']
 ```
 
-**.append()** adds the new element **at the end** of the list. The list has **changed**, this is different from **upper()** and **lower()** on strings, which returned a new string. Lists are modified **in place**
+.append() adds the new element **at the end** of the list. The list has changed, this is different from upper() and lower() on strings, which returned a new string. Lists are modified **in place**
 
 ---
 
-We can also **change** a value at a given index
+We can also change a value at a given index
 
 ```py
 names = ["Tommy Vercetti", "Lance Vance", "Cortez"]
@@ -111,12 +111,12 @@ We can even mix them, but in practice it’s rare and usually a sign that someth
 
 ## Mission: Cargo Bay
 
-The station tracks its cargo in a list. Create an empty list called `cargo`. Then read **4 items** from input, one per line, and do the following, in order:
+The station tracks its cargo in a list. Create an empty list called `cargo`. Then read 4 items from input, one per line, and do the following, in order:
 
-1. **Add** each of the 4 items you read to the list
+1. Add each of the 4 items you read to the list
 2. Print the list
-3. Print the **first** item
-4. Print the **last** item
+3. Print the first item
+4. Print the last item
 5. Print how many items are loaded
 6. A leak empties the item at index 1, replace it with `empty`
 7. Print the list

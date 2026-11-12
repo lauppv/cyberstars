@@ -28,11 +28,11 @@ Lance
 Tommy
 ```
 
-`Collections.sort()` sorts **in place**: it modifies the original list directly. Strings are sorted **alphabetically**, numbers **ascending**
+`Collections.sort()` sorts **in place**: it modifies the original list directly. Strings are sorted alphabetically, numbers ascending
 
 ---
 
-Want **reverse** order? Use `Collections.reverse()` after sorting
+Want reverse order? Use `Collections.reverse()` after sorting
 
 ```java
 import java.util.ArrayList;
@@ -63,11 +63,11 @@ Output
 42
 ```
 
-`reverse()` doesn't sort, it just **flips** the current order. To get descending order, sort first then reverse
+`reverse()` doesn't sort, it just flips the current order. To get descending order, sort first then reverse
 
 ---
 
-But how do you sort a list of **objects**? If you have an `ArrayList<Car>`, Java doesn't know what to sort by: name? speed? You have to tell it by implementing the **Comparable** interface
+But how do you sort a list of objects? If you have an `ArrayList<Car>`, Java doesn't know what to sort by: name? speed? You have to tell it by implementing the **Comparable** interface
 
 ```java
 import java.util.ArrayList;
@@ -115,16 +115,16 @@ Let's trace what happens:
 
 1. `Car implements Comparable<Car>`: the class promises it knows how to compare itself with other cars
 2. The `compareTo` method returns a number:
-   - **negative** if `this` comes before `other`
-   - **zero** if they're equal
-   - **positive** if `this` comes after `other`
+   - negative if `this` comes before `other`
+   - zero if they're equal
+   - positive if `this` comes after `other`
 3. `this.speed - other.speed` sorts ascending by speed
 
-For **descending** order, flip it: `other.speed - this.speed`
+For descending order, flip it: `other.speed - this.speed`
 
 ---
 
-To sort by **String** (e.g., by name), use String's own `.compareTo()`
+To sort by String (e.g., by name), use String's own `.compareTo()`
 
 ```text
 public int compareTo(Car other) {

@@ -1,4 +1,4 @@
-În programare vrem adesea să **stocăm** lucruri ca să le folosim mai târziu. Cel mai simplu exemplu: numere. În Java, înainte de a stoca ceva, trebuie să-i spunem limbajului **ce fel de valoare** vrem să stocăm. Asta se numește **tip**
+În programare vrem adesea să stocăm lucruri ca să le folosim mai târziu. Cel mai simplu exemplu: numere. În Java, înainte de a stoca ceva, trebuie să-i spunem limbajului ce fel de valoare vrem să stocăm. Asta se numește **tip**
 
 ```java
 public class Main {
@@ -11,9 +11,9 @@ public class Main {
 }
 ```
 
-**int** este **tipul** pentru numere întregi (1, 2, 100, -20, 0). Îi spunem lui Java: "sunt pe cale să stochez un număr întreg, iar numele lui este **varsta**"
+**int** este tipul pentru numere întregi (1, 2, 100, -20, 0). Îi spunem lui Java: "sunt pe cale să stochez un număr întreg, iar numele lui este varsta"
 
-Java este **strict** cu tipurile: vrea mereu să știe ce fel de valoare pui într-o variabilă. Avantajul este că Java poate prinde multe greșeli înainte ca programul să ruleze măcar
+Java este strict cu tipurile: vrea mereu să știe ce fel de valoare pui într-o variabilă. Avantajul este că Java poate prinde multe greșeli înainte ca programul să ruleze măcar
 
 ---
 
@@ -30,7 +30,7 @@ public class Main {
 }
 ```
 
-Cu semnul **=**, Java calculează mai întâi ce este în **dreapta**, apoi stochează rezultatul în variabila din **stânga**. Deci **c = a + b** stochează **8** în **c**
+Cu semnul **=**, Java calculează mai întâi ce este în **dreapta**, apoi stochează rezultatul în variabila din stânga. Deci **c = a + b** stochează **8** în c
 
 Clasica incrementare cu 1
 
@@ -44,9 +44,9 @@ public class Main {
 }
 ```
 
-Java se uită la **n + 1**, vede **10 + 1 = 11**, și stochează **11** înapoi în **n**
+Java se uită la n + 1, vede 10 + 1 = 11, și stochează 11 înapoi în n
 
-Java are chiar și o **scurtătură** pentru asta
+Java are chiar și o scurtătură pentru asta
 
 ```java
 public class Main {
@@ -62,7 +62,7 @@ public class Main {
 
 ---
 
-Pentru numere cu zecimale (precum **3.14** sau **1.75**), **int** nu este suficient. Folosim **double**
+Pentru numere cu zecimale (precum 3.14 sau 1.75), int nu este suficient. Folosim **double**
 
 ```java
 public class Main {
@@ -80,9 +80,9 @@ Ieșire
 36.14159
 ```
 
-Rezultatul este un **double** pentru că am amestecat un **int** cu un **double**
+Rezultatul este un double pentru că am amestecat un int cu un double
 
-**Important**: dacă încerci să stochezi o zecimală într-un **int**, Java va refuza
+Important: dacă încerci să stochezi o zecimală într-un int, Java va refuza
 
 ```java
 public class Main {
@@ -108,7 +108,7 @@ public class Main {
 }
 ```
 
-Poate te-ai aștepta la **3.5**. Dar vei vedea **3**. De ce? Pentru că atunci când împărțim un **int** la un **int**, Java ne dă înapoi tot un **int**, aruncând zecimalele. Ca să obținem **3.5**, avem nevoie de cel puțin un **double**
+Poate te-ai aștepta la **3.5**. Dar vei vedea **3**. De ce? Pentru că atunci când împărțim un int la un int, Java ne dă înapoi tot un int, aruncând zecimalele. Ca să obținem 3.5, avem nevoie de cel puțin un double
 
 ```java
 public class Main {
@@ -120,7 +120,7 @@ public class Main {
 }
 ```
 
-Acum vedem **3.5**. Ține minte asta, este un bug foarte des întâlnit la începători
+Acum vedem 3.5. Ține minte asta, este un bug foarte des întâlnit la începători
 
 ---
 
@@ -130,7 +130,7 @@ Comandantul Cortez are nevoie de o legitimație nouă tipărită. Setează valor
 
 1. Setează `varsta` la `57`
 2. Setează `inaltime` la `1.67`
-3. `println`-ul de la final construiește deja mesajul cu **+**, asigură-te doar că variabilele conțin valorile corecte
+3. `println`-ul de la final construiește deja mesajul cu +, asigură-te doar că variabilele conțin valorile corecte
 
 **Intrare** (deja setat în partea de sus a codului tău; schimbă valorile ca să testezi):
 

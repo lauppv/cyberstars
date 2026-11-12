@@ -1,4 +1,4 @@
-Python is the best programming language to start learning programming. The most important thing is to understand **software concepts**.  
+Python is the best programming language to start learning programming. The most important thing is to understand software concepts.  
 The first concept is **displaying output**, or, in "engineering terms", **print** :D
 
 How can we tell the computer "hey, I like pizza"? In Python we say:
@@ -7,9 +7,9 @@ How can we tell the computer "hey, I like pizza"? In Python we say:
 print("hey, I like pizza")
 ```
 
-By the way, you can **run** these pieces of code to see the result. We **strongly encourage you to modify these codes and explore**, to ask yourself questions like 'what happens if I change this, or that, or something else.' Always run the code and see what happens. Experimenting can sometimes be really **fun** :)
+By the way, you can run these pieces of code to see the result. We strongly encourage you to modify these codes and explore, to ask yourself questions like 'what happens if I change this, or that, or something else.' Always run the code and see what happens. Experimenting can sometimes be really fun :)
 
-**print()** is a function (we'll learn in later lessons what a function really is). For now, we only need to know that **print()** is an instruction, our way of telling the computer: "display something"
+**print()** is a function (we'll learn in later lessons what a function really is). For now, we only need to know that print() is an instruction, our way of telling the computer: "display something"
 
 An important thing to notice is the **quotes**:
 
@@ -43,6 +43,6 @@ Time to say hello to CyberStars. Write a program that uses **print()** to displa
 Hello, Stars!
 ```
 
-It has to match **exactly**: the capital letters, the comma and the exclamation mark.
+It has to match exactly: the capital letters, the comma and the exclamation mark.
 
-Psst, don't forget the **quotes** :)
+Psst, don't forget the quotes :)

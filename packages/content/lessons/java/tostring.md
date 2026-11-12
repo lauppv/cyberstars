@@ -31,7 +31,7 @@ That's... not helpful. Java doesn't know how you want your object displayed, so 
 
 ## Overriding toString()
 
-Every object in Java has a `toString()` method (inherited from a base class called `Object`). By default it prints that ugly gibberish. But you can **override** it: write your own version:
+Every object in Java has a `toString()` method (inherited from a base class called `Object`). By default it prints that ugly gibberish. But you can override it: write your own version:
 
 ```java
 class Car {

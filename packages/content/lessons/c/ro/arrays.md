@@ -1,6 +1,6 @@
-Până acum, fiecare variabilă ținea **un** singur lucru. Dar dacă vrem să stocăm consumul orar al unei benzi magnetice pe mai multe ore? Cinci variabile separate ar fi urât. Cincizeci ar fi imposibil. Avem nevoie de un **array**
+Până acum, fiecare variabilă ținea un singur lucru. Dar dacă vrem să stocăm consumul orar al unei benzi magnetice pe mai multe ore? Cinci variabile separate ar fi urât. Cincizeci ar fi imposibil. Avem nevoie de un **array**
 
-Un **array** în C este o colecție cu mărime fixă de valori de **același tip**
+Un array în C este o colecție cu mărime fixă de valori de **același tip**
 
 ```c
 #include <stdio.h>
@@ -16,9 +16,9 @@ int main(void) {
 }
 ```
 
-Forma este **tip nume[marime]**. Am declarat **consum** ca un array de **5 int-uri**, apoi l-am umplut cu **{ ... }**
+Forma este **tip nume[marime]**. Am declarat consum ca un array de 5 int-uri, apoi l-am umplut cu { ... }
 
-**Numărarea începe de la 0**. **consum[0]** este primul element, **consum[4]** este ultimul (pentru că mărimea este 5, indicii sunt 0-4)
+**Numărarea începe de la 0**. **consum[0]** este primul element, consum[4] este ultimul (pentru că mărimea este 5, indicii sunt 0-4)
 
 ---
 
@@ -33,9 +33,9 @@ int main(void) {
 }
 ```
 
-Parantezele drepte sunt încă goale, dar array-ul are tot mărimea **5**. C numără valorile pentru noi. Este mai scurt și mai greu de greșit la tastare
+Parantezele drepte sunt încă goale, dar array-ul are tot mărimea 5. C numără valorile pentru noi. Este mai scurt și mai greu de greșit la tastare
 
-Putem de asemenea să creăm un array **fără** a-l inițializa, apoi să-l umplem mai târziu
+Putem de asemenea să creăm un array fără a-l inițializa, apoi să-l umplem mai târziu
 
 ```c
 #include <stdio.h>
@@ -51,11 +51,11 @@ int main(void) {
 }
 ```
 
-**Atenție**: până nu atribuim valori, array-ul conține **gunoi** (orice era în acea memorie înainte). Citirea dintr-un array neinițializat este **undefined behavior** în C: programul tău ar putea afișa **0**, sau numere aleatoare, sau să se prăbușească. Inițializează întotdeauna înainte de a citi
+Atenție: până nu atribuim valori, array-ul conține **gunoi** (orice era în acea memorie înainte). Citirea dintr-un array neinițializat este **undefined behavior** în C: programul tău ar putea afișa 0, sau numere aleatoare, sau să se prăbușească. Inițializează întotdeauna înainte de a citi
 
 ---
 
-Câte elemente are un array? Aici C nu ne ajută cu nimic: array-ul nu **își cunoaște** propria mărime, este doar o bucată de memorie
+Câte elemente are un array? Aici C nu ne ajută cu nimic: array-ul nu își cunoaște propria mărime, este doar o bucată de memorie
 
 Soluția clasică folosește **sizeof**
 
@@ -72,7 +72,7 @@ int main(void) {
 
 **sizeof(consum)** dă numărul total de bytes ai array-ului, **sizeof(consum[0])** dă numărul de bytes ai unui element. Împărțindu-i obținem numărul de elemente
 
-**Capcană mare**: acest truc funcționează doar pe array-ul **original**. În momentul în care **pasezi un array unei funcții**, C îl convertește pe ascuns la un pointer, iar **sizeof** dă un rezultat diferit (greșit). Deci în practică, când scriem funcții care iau array-uri, **pasăm mărimea ca parametru separat**. Vom vedea asta în lecția următoare
+Capcană mare: acest truc funcționează doar pe array-ul original. În momentul în care **pasezi un array unei funcții**, C îl convertește pe ascuns la un pointer, iar sizeof dă un rezultat diferit (greșit). Deci în practică, când scriem funcții care iau array-uri, **pasăm mărimea ca parametru separat**. Vom vedea asta în lecția următoare
 
 ---
 
@@ -103,9 +103,9 @@ int main(void) {
 }
 ```
 
-Rulează-l. **C NU verifică** dacă indicele este valid. C citește pur și simplu orice se întâmplă să fie la acea locație de memorie. Ai putea vedea **0**, sau gunoi aleator, sau programul tău s-ar putea prăbuși
+Rulează-l. **C NU verifică** dacă indicele este valid. C citește pur și simplu orice se întâmplă să fie la acea locație de memorie. Ai putea vedea 0, sau gunoi aleator, sau programul tău s-ar putea prăbuși
 
-**Verifică întotdeauna indicii**. Ieșirea în afara limitelor este unul dintre cele **mai periculoase bug-uri** din C și cauza multor **vulnerabilități reale de securitate** (buffer overflows). Bine ai venit la programarea low-level
+**Verifică întotdeauna indicii**. Ieșirea în afara limitelor este unul dintre cele mai periculoase bug-uri din C și cauza multor vulnerabilități reale de securitate (buffer overflows). Bine ai venit la programarea low-level
 
 ---
 
@@ -113,10 +113,10 @@ Rulează-l. **C NU verifică** dacă indicele este valid. C citește pur și sim
 
 Centrul de calcul rulează în trei schimburi. La finalul fiecărei ture, operatorul notează pe banda teletype-ului trei citiri de consum ale unității de bandă magnetică.
 
-1. Citește **3 numere întregi** din input, unul câte unul, în array-ul **consum** (mărime 3): **consum[0]**, **consum[1]**, **consum[2]**
-2. Afișează **mărimea** array-ului (folosește trucul **sizeof**)
-3. Afișează **primul** element
-4. Afișează **ultimul** element (indicele **2**)
+1. Citește 3 numere întregi din input, unul câte unul, în array-ul consum (mărime 3): consum[0], consum[1], consum[2]
+2. Afișează mărimea array-ului (folosește trucul sizeof)
+3. Afișează primul element
+4. Afișează ultimul element (indicele 2)
 
 **Exemplu**
 

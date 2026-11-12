@@ -1,4 +1,4 @@
-In real life we often face decisions: **if** it's cold, we put on a warm sweater, **otherwise** a t-shirt is enough
+In real life we often face decisions: if it's cold, we put on a warm sweater, otherwise a t-shirt is enough
 
 In code, we say
 
@@ -17,10 +17,10 @@ public class Main {
 
 Two things to notice in Java
 
-- The condition goes inside **parentheses** **( )**
-- The block of code goes inside **braces** **{ }**
+- The condition goes inside parentheses **( )**
+- The block of code goes inside braces **{ }**
 
-If the **temperature** is less than **15**, we enter the **if** block (it's cold, dress warm). **Otherwise**, we enter the **else** block. Run the code, change the temperature, see what happens
+If the temperature is less than 15, we enter the if block (it's cold, dress warm). Otherwise, we enter the else block. Run the code, change the temperature, see what happens
 
 ---
 
@@ -31,9 +31,9 @@ The comparison operators are exactly the ones you'd expect
 - **>** greater than
 - **>=** greater than or equal
 - **==** equal (note the two equals signs)
-- **!=** **not** equal
+- **!=** not equal
 
-**Be careful** about the difference between **=** and **==**. **=** assigns a value, **==** compares
+Be careful about the difference between **=** and **==**. = assigns a value, == compares
 
 ```java
 public class Main {
@@ -61,7 +61,7 @@ public class Main {
 
 ---
 
-We don't always need an **else**. Sometimes we just want to do something **if** a condition is true, and otherwise do nothing
+We don't always need an else. Sometimes we just want to do something if a condition is true, and otherwise do nothing
 
 ```java
 public class Main {
@@ -95,7 +95,7 @@ public class Main {
 }
 ```
 
-Change **isUserOnline** to **false** and run again. Read the new output. Programming becomes fun the moment you start **playing** with the values
+Change isUserOnline to false and run again. Read the new output. Programming becomes fun the moment you start playing with the values
 
 ---
 
@@ -103,9 +103,9 @@ Change **isUserOnline** to **false** and run again. Read the new output. Program
 
 The station's hull sensor reports the outside temperature.
 
-Create an `int` variable named `temperature` (any value you like). Then write an **if / else** that checks it:
+Create an `int` variable named `temperature` (any value you like). Then write an if / else that checks it:
 
-- if the temperature is **less than 0** → print `it's freezing outside`
+- if the temperature is less than 0 → print `it's freezing outside`
 - otherwise → print `water does not freeze`
 
 **Example**

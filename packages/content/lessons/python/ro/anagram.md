@@ -1,4 +1,4 @@
-Două cuvinte sunt **anagrame** dacă conțin exact **aceleași litere**, doar într-o ordine diferită. **roma** și **amor**. **mare** și **rame**. **cal** și **lac**
+Două cuvinte sunt **anagrame** dacă conțin exact aceleași litere, doar într-o ordine diferită. roma și amor. mare și rame. cal și lac
 
 Cum verificăm? Cea mai simplă abordare: **sortăm literele** și le comparăm
 
@@ -19,13 +19,13 @@ False
 True
 ```
 
-De ce funcționează? Dacă două cuvinte au aceleași litere, sortarea acelor litere va produce **același rezultat**. „roma" sortat → „amor". „amor" sortat → „amor". La fel? Da → anagramă
+De ce funcționează? Dacă două cuvinte au aceleași litere, sortarea acelor litere va produce același rezultat. „roma" sortat → „amor". „amor" sortat → „amor". La fel? Da → anagramă
 
 Folosim **.lower()** ca să nu conteze majusculele și minusculele
 
 ---
 
-Dar hai să o rezolvăm și folosind ce am învățat: un **dicționar de frecvențe**. Două cuvinte sunt anagrame dacă fiecare literă apare de **același număr de ori** în ambele cuvinte
+Dar hai să o rezolvăm și folosind ce am învățat: un **dicționar de frecvențe**. Două cuvinte sunt anagrame dacă fiecare literă apare de același număr de ori în ambele cuvinte
 
 ```py
 def este_anagrama(cuvant1, cuvant2):
@@ -68,16 +68,16 @@ Observă **ieșirea timpurie**: dacă lungimile sunt diferite, nu pot fi anagram
 
 ---
 
-Abordarea cu frecvențe este de fapt **mai rapidă** decât sortarea pentru șiruri foarte lungi. Sortarea ia aproximativ **n × log(n)** pași, în timp ce numărarea ia doar **n** pași. Pentru acest exercițiu, ambele sunt bune, dar e bine să te gândești la astfel de lucruri
+Abordarea cu frecvențe este de fapt mai rapidă decât sortarea pentru șiruri foarte lungi. Sortarea ia aproximativ **n × log(n)** pași, în timp ce numărarea ia doar **n** pași. Pentru acest exercițiu, ambele sunt bune, dar e bine să te gândești la astfel de lucruri
 
 ---
 
 ## Misiune: Potrivirea Parolelor
 
-Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se deschide doar dacă cele două parole sunt **anagrame** una a celeilalte: aceleași litere într-o ordine diferită (nu contează majusculele).
+Doi membri ai echipajului transmit fiecare câte o parolă amestecată. Sasul se deschide doar dacă cele două parole sunt anagrame una a celeilalte: aceleași litere într-o ordine diferită (nu contează majusculele).
 
-1. Scrie o funcție **sunt_anagrame(a, b)** care returnează `True` dacă cele două cuvinte sunt anagrame, `False` altfel. Folosește **oricare** abordare (sortează literele și compară, sau un dicționar de frecvențe). Transformă-le mai întâi în minuscule ca să nu conteze majusculele.
-2. **Citește** două parole, apoi afișează `Anagrama: ` urmat de rezultat.
+1. Scrie o funcție **sunt_anagrame(a, b)** care returnează `True` dacă cele două cuvinte sunt anagrame, `False` altfel. Folosește oricare abordare (sortează literele și compară, sau un dicționar de frecvențe). Transformă-le mai întâi în minuscule ca să nu conteze majusculele.
+2. Citește două parole, apoi afișează `Anagrama: ` urmat de rezultat.
 3. Pe linia următoare, afișează `Acces permis` dacă se potrivesc, sau `Acces refuzat` dacă nu.
 
 **Intrare:**

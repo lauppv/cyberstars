@@ -1,4 +1,4 @@
-În viața reală, suntem deseori puși în fața unei decizii: ori fac asta, ori fac aia. Dacă afară sunt mai puțin de 15 grade, am nevoie de o bluză, altfel un tricou e suficient. Dacă mi-e somn, mă duc la culcare, altfel programez **:)** Așadar observăm 2 ramuri:
+În viața reală, suntem deseori puși în fața unei decizii: ori fac asta, ori fac aia. Dacă afară sunt mai puțin de 15 grade, am nevoie de o bluză, altfel un tricou e suficient. Dacă mi-e somn, mă duc la culcare, altfel programez :) Așadar observăm 2 ramuri:
 
 **if** da
 
@@ -21,13 +21,13 @@ else:
 ```
 
 Asta e ca o poveste:
-**dacă temperatura de afară este mai mică de 15 grade Celsius**, am nevoie de o bluză
+dacă temperatura de afară este mai mică de 15 grade Celsius, am nevoie de o bluză
 
-**Altfel**, ajunge un tricou
+Altfel, ajunge un tricou
 
-După **if** și **else**, punem două puncte **:**
+După if și else, punem două puncte **:**
 
-Apoi tot ce scriem după aceste **:** trebuie să fie **indentat**. De ce? Ca Python să știe care linii de cod aparțin blocului **if** și care nu, și la fel pentru **else**
+Apoi tot ce scriem după aceste : trebuie să fie **indentat**. De ce? Ca Python să știe care linii de cod aparțin blocului if și care nu, și la fel pentru else
 
 ```py
 temperatura = 14
@@ -37,7 +37,7 @@ else:
 print("Un tricou e suficient")
 ```
 
-Rulează codul. Poți vedea eroarea. Apropo, încearcă să **citești erorile** pentru că îți spun exact ce ai greșit
+Rulează codul. Poți vedea eroarea. Apropo, încearcă să citești erorile pentru că îți spun exact ce ai greșit
 
 Semnul **<** înseamnă mai mic decât. Dacă temperatura este mai mică de 15: 14, 10, 0, etc
 
@@ -49,7 +49,7 @@ Semnul **<** înseamnă mai mic decât. Dacă temperatura este mai mică de 15: 
 
 **>=** înseamnă mai mare sau egal cu 15: 15, 16, 20, 1000
 
-**==** înseamnă egal. Nu îl confunda cu **=** care este folosit ca să **atribui** o valoare unei variabile
+**==** înseamnă egal. Nu îl confunda cu **=** care este folosit ca să atribui o valoare unei variabile
 
 ```py
 x = 4
@@ -65,9 +65,9 @@ if x == 4:
     print("Bau")
 ```
 
-Apropo, nu avem mereu nevoie de un **else** după **if**. Hai să ne gândim la o mașină. **Dacă** întoarcem cheia, motorul pornește, **altfel** nu se întâmplă nimic. Aici, nu avem neapărat nevoie de un **else**
+Apropo, nu avem mereu nevoie de un **else** după if. Hai să ne gândim la o mașină. Dacă întoarcem cheia, motorul pornește, altfel nu se întâmplă nimic. Aici, nu avem neapărat nevoie de un else
 
-Totuși, există cazuri în care chiar avem nevoie de **else**. **Dacă** iau cel puțin 50% la un examen, trec, **altfel** nu trec. Aici vedem că există două posibilități: ori treci, ori nu treci. Nu e ca și cum aici poți spune 'dacă iau 50% trec, dacă nu, nu se întâmplă nimic'. Se întâmplă să pici examenul, adică există o consecință
+Totuși, există cazuri în care chiar avem nevoie de else. Dacă iau cel puțin 50% la un examen, trec, altfel nu trec. Aici vedem că există două posibilități: ori treci, ori nu treci. Nu e ca și cum aici poți spune 'dacă iau 50% trec, dacă nu, nu se întâmplă nimic'. Se întâmplă să pici examenul, adică există o consecință
 
 ```py
 utilizator = "Tommy Vercetti"
@@ -79,7 +79,7 @@ else:
     print(f"{utilizator} este offline")
 ```
 
-**True** și **False** sunt destul de simple. **Dacă** utilizatorul este **online**, intrăm în blocul **if** și **NU** vom intra în **else**. Putem vedea că codul din blocul **else** nu se execută. Schimbă **este_utilizator_online** în **False** și rulează codul. Ce vezi?
+**True** și **False** sunt destul de simple. Dacă utilizatorul este online, intrăm în blocul if și **NU** vom intra în else. Putem vedea că codul din blocul else nu se execută. Schimbă **este_utilizator_online** în **False** și rulează codul. Ce vezi?
 
 ```py
 utilizator = "Tommy Vercetti"
@@ -91,7 +91,7 @@ else:
     print(f"{utilizator} este offline")
 ```
 
-Aici vedem că utilizatorul este **offline** pentru că **este_utilizator_online** = **False**, ceea ce înseamnă că nu vom intra în blocul **if**, din moment ce intrăm doar **dacă** condiția este **adevărată**. Pentru că condiția noastră este **falsă**, intrăm în blocul **else**
+Aici vedem că utilizatorul este offline pentru că **este_utilizator_online** = **False**, ceea ce înseamnă că nu vom intra în blocul if, din moment ce intrăm doar dacă condiția este adevărată. Pentru că condiția noastră este falsă, intrăm în blocul else
 
 ---
 
@@ -99,7 +99,7 @@ Aici vedem că utilizatorul este **offline** pentru că **este_utilizator_online
 
 Reactorul își raportează temperatura în `temperatura` (grade Celsius). Scrie un **if / else** care o verifică:
 
-- dacă `temperatura` este **mai mare de 1000** → afișează `Pericol: reactor la`, temperatura, apoi `grade - oprire` (pentru `temperatura = 1200` asta înseamnă `Pericol: reactor la 1200 grade - oprire`)
+- dacă `temperatura` este mai mare de 1000 → afișează `Pericol: reactor la`, temperatura, apoi `grade - oprire` (pentru `temperatura = 1200` asta înseamnă `Pericol: reactor la 1200 grade - oprire`)
 - altfel → afișează `Reactor stabil la`, temperatura, apoi `grade` (pentru `temperatura = 800` asta înseamnă `Reactor stabil la 800 grade`)
 
 Creează o variabilă numită `temperatura` care să stocheze temperatura, alege ce valoare vrei. Numele descriptive contează: dacă cineva vede o variabilă `x`, automat se va întreba „cum adică x? Cine este x?”

@@ -1,4 +1,4 @@
-`sort` simplu tratează totul ca text. Numărul `9` apare **după** `80`, pentru că `9`
+`sort` simplu tratează totul ca text. Numărul `9` apare după `80`, pentru că `9`
 vine după `8` alfabetic. Ca să sortezi după valoarea numerică reală, folosește `-n`:
 
 ```bash
@@ -23,7 +23,7 @@ un anumit număr de coloană:
 sort -k2 registru.txt
 ```
 
-Aceasta sortează după a **doua** coloană. Combină cu `-n` pentru a sorta numeric după
+Aceasta sortează după a doua coloană. Combină cu `-n` pentru a sorta numeric după
 acea coloană:
 
 ```bash

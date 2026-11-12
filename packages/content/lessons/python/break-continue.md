@@ -1,10 +1,10 @@
-We learned **for** and **while**. Loops do their job from start to finish. But what if, in the middle of a loop, we want to say "ok, that's enough, stop"? Or "skip this one, go to the next"?
+We learned for and while. Loops do their job from start to finish. But what if, in the middle of a loop, we want to say "ok, that's enough, stop"? Or "skip this one, go to the next"?
 
-For exactly these two situations, **Python** gives us **break** and **continue**
+For exactly these two situations, Python gives us **break** and **continue**
 
 ---
 
-**break** **stops** the loop completely. Once we hit it, the program exits the loop, no matter how many iterations were left
+**break** stops the loop completely. Once we hit it, the program exits the loop, no matter how many iterations were left
 
 ```py
 for i in range(0, 100):
@@ -23,7 +23,7 @@ Output
 4
 ```
 
-We told **for** to go from **0** to **99**, but as soon as **i** became **5**, we hit **break** and the loop stopped. The numbers **5, 6, 7, ..., 99** were never printed
+We told for to go from 0 to 99, but as soon as i became 5, we hit break and the loop stopped. The numbers 5, 6, 7, ..., 99 were never printed
 
 A real example: imagine we scan the station's sectors, one by one, to find a signal. Once we found it, why keep scanning?
 
@@ -47,11 +47,11 @@ Scanning sector 6...
 Signal found in sector 7!
 ```
 
-The loop never checked sectors **8** through **99**, because we already found what we wanted. **break** saved us time
+The loop never checked sectors 8 through 99, because we already found what we wanted. break saved us time
 
 ---
 
-**continue** is different. It doesn't stop the loop. It just **skips** the rest of the current iteration and **jumps to the next one**
+**continue** is different. It doesn't stop the loop. It just skips the rest of the current iteration and jumps to the next one
 
 ```py
 for i in range(0, 10):
@@ -74,9 +74,9 @@ Output
 9
 ```
 
-Notice that **5** is **missing**. When **i** was **5**, **continue** kicked in, jumped over **print(i)**, and the loop kept going from **i = 6**
+Notice that **5** is missing. When i was 5, continue kicked in, jumped over **print(i)**, and the loop kept going from **i = 6**
 
-A real example: print only **even** numbers from 0 to 10
+A real example: print only even numbers from 0 to 10
 
 ```py
 for i in range(0, 11):
@@ -96,11 +96,11 @@ Output
 10
 ```
 
-For odd numbers, **continue** skipped the **print**. For even ones, the **if** was **False**, so **continue** didn't fire and **print** ran normally
+For odd numbers, continue skipped the print. For even ones, the if was False, so continue didn't fire and print ran normally
 
 ---
 
-Both keywords work the same way in **while** loops, not just **for**. A very common pattern is **while True** together with **input()**: we repeat forever and exit with **break** when the user tells us to
+Both keywords work the same way in while loops, not just for. A very common pattern is **while True** together with **input()**: we repeat forever and exit with break when the user tells us to
 
 ```py
 while True:
@@ -111,18 +111,18 @@ while True:
 print("System stopped")
 ```
 
-**while True** would normally be an infinite loop. But on every step we ask for a command, and if the user types **stop**, **break** takes us out of the loop. Whatever else they type, the program prints **Running: ...** and asks again
+while True would normally be an infinite loop. But on every step we ask for a command, and if the user types **stop**, break takes us out of the loop. Whatever else they type, the program prints **Running: ...** and asks again
 
-Notice **command == "stop"**. So far we've only used **==** with numbers, but it works just as well with **text**: **command == "stop"** is **True** only if the variable holds exactly the word **stop**. Text comparison is case-sensitive, so **"Stop"** or **"STOP"** would be different from **"stop"**
+Notice **command == "stop"**. So far we've only used == with numbers, but it works just as well with text: command == "stop" is True only if the variable holds exactly the word stop. Text comparison is case-sensitive, so **"Stop"** or **"STOP"** would be different from "stop"
 
 ---
 
 ## Mission: Manual Sector Scanner
 
-The station operator enters sector numbers **one by one**. Use a **while True** loop and read a number on every step with `int(input(...))`. For each number:
+The station operator enters sector numbers one by one. Use a **while True** loop and read a number on every step with `int(input(...))`. For each number:
 
-- if the operator types `0` → it's the end of the scan, **stop** the loop (use **break**)
-- if the number is **negative** → it's just noise, **skip it** (use **continue**) and print nothing
+- if the operator types `0` → it's the end of the scan, stop the loop (use **break**)
+- if the number is negative → it's just noise, skip it (use **continue**) and print nothing
 - otherwise → print `Sector ` then the number, then ` checked` (for example `Sector 4 checked`)
 
 After the loop, print `Scan complete`.

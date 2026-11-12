@@ -1,6 +1,6 @@
 Când treci o variabilă către o funcție, funcția primește o **copie**. Pointerii ne lasă să facem ceva special: **transmitere prin referință**
 
-Mai întâi, hai să vedem problema. Această funcție încearcă să interschimbe două numere dar **eșuează**
+Mai întâi, hai să vedem problema. Această funcție încearcă să interschimbe două numere dar eșuează
 
 ```c
 #include <stdio.h>
@@ -25,7 +25,7 @@ Ieșire
 x = 10, y = 20
 ```
 
-Nu s-a întâmplat nimic! Funcția a interschimbat **copiile locale**, dar **x** și **y** originali nu s-au schimbat. Copiile au fost distruse când funcția s-a încheiat
+Nu s-a întâmplat nimic! Funcția a interschimbat **copiile locale**, dar x și y originali nu s-au schimbat. Copiile au fost distruse când funcția s-a încheiat
 
 ---
 
@@ -54,7 +54,7 @@ Ieșire
 x = 20, y = 10
 ```
 
-Acum funcționează. Am transmis **adresele** lui x și y. Funcția a urmat acele adrese și a schimbat valorile reale. Aceasta este **transmiterea prin referință**, cea mai importantă utilizare a pointerilor
+Acum funcționează. Am transmis adresele lui x și y. Funcția a urmat acele adrese și a schimbat valorile reale. Aceasta este transmiterea prin referință, cea mai importantă utilizare a pointerilor
 
 ---
 
@@ -110,11 +110,11 @@ Funcția "returnează" atât minimul cât și maximul prin pointeri. Este idioma
 
 ## Misiune: Amplificatorul de semnal
 
-La centrul de calcul, un traductor de semnal citește o valoare brută de pe bandă magnetică. Amplificatorul trebuie s-o **tripleze** înainte de a o trimite mai departe, dar accesul direct la variabilă nu e permis, doar prin pointer.
+La centrul de calcul, un traductor de semnal citește o valoare brută de pe bandă magnetică. Amplificatorul trebuie s-o tripleze înainte de a o trimite mai departe, dar accesul direct la variabilă nu e permis, doar prin pointer.
 
-1. Citește un **int** **semnal** din input
-2. Scrie o funcție **tripleaza** care primește un **pointer la int** și triplează valoarea către care pointează
-3. Apelează **tripleaza(&semnal)** din **main**
+1. Citește un int semnal din input
+2. Scrie o funcție **tripleaza** care primește un pointer la int și triplează valoarea către care pointează
+3. Apelează tripleaza(&semnal) din main
 4. Afișează rezultatul
 
 **Exemplu**

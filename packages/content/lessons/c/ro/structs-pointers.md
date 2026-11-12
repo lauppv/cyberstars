@@ -1,4 +1,4 @@
-Când transmitem un struct unei funcții, C copiază **întregul struct**. Pentru un struct mic e în regulă. Dar pentru un struct cu un buffer de 1000 de caractere și zeci de câmpuri, copierea e o risipă. Soluția: **transmite un pointer la struct**
+Când transmitem un struct unei funcții, C copiază întregul struct. Pentru un struct mic e în regulă. Dar pentru un struct cu un buffer de 1000 de caractere și zeci de câmpuri, copierea e o risipă. Soluția: **transmite un pointer la struct**
 
 ```c
 #include <stdio.h>
@@ -25,7 +25,7 @@ Transmitem **&t** (adresa struct-ului), iar funcția primește un **struct Termi
 
 ---
 
-Să scrii **(\*p).sesiuni** peste tot e urât. C ne oferă o scurtătură: **operatorul săgeată ->**
+Să scrii (\*p).sesiuni peste tot e urât. C ne oferă o scurtătură: **operatorul săgeată ->**
 
 ```c
 #include <stdio.h>
@@ -47,11 +47,11 @@ int main(void) {
 }
 ```
 
-**p->sesiuni** este exact același lucru cu **(\*p).sesiuni**. E mai curat și toată lumea îl folosește. Regula e simplă: **punct** pentru struct-uri, **săgeată** pentru pointeri la struct-uri
+**p->sesiuni** este exact același lucru cu (\*p).sesiuni. E mai curat și toată lumea îl folosește. Regula e simplă: **punct** pentru struct-uri, **săgeată** pentru pointeri la struct-uri
 
 ---
 
-Adevărata putere: funcții care **modifică** un struct printr-un pointer
+Adevărata putere: funcții care modifică un struct printr-un pointer
 
 ```c
 #include <stdio.h>
@@ -93,11 +93,11 @@ Funcțiile au modificat **struct-ul original**, nu o copie. Este același tipar 
 
 Centrul de calcul facturează timpul de procesor pe ore. Fiecare utilizator are un cont cu un sold de ore, iar operatorii de tură fac alocări și retrageri de-a lungul zilei. Toate actualizările trebuie să treacă printr-un pointer, ca soldul original din registru să se schimbe pe loc.
 
-1. Definește un struct **ContOre** cu câmpurile **proprietar** (array de char) și **sold** (int)
+1. Definește un struct ContOre cu câmpurile proprietar (array de char) și sold (int)
 2. Scrie funcția **void aloca(struct ContOre \*cont, int ore)**: adaugă ore la sold prin pointer
-3. Scrie funcția **void retrage(struct ContOre \*cont, int ore)**: scade ore din sold dacă e suficient, altfel afișează **"Fonduri insuficiente"**
-4. Citește din input: numele proprietarului, soldul inițial, apoi trei operații. Fiecare operație are un cod (**1** = alocă, **2** = retrage) urmat de o valoare
-5. După toate operațiile, afișează **"Sold: X"**
+3. Scrie funcția **void retrage(struct ContOre \*cont, int ore)**: scade ore din sold dacă e suficient, altfel afișează "Fonduri insuficiente"
+4. Citește din input: numele proprietarului, soldul inițial, apoi trei operații. Fiecare operație are un cod (1 = alocă, 2 = retrage) urmat de o valoare
+5. După toate operațiile, afișează "Sold: X"
 
 **Exemplu**
 

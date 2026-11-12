@@ -22,7 +22,7 @@ c = a + b is very important to understand. If we have the **=** sign, what is on
 x = 23 + 22
 ```
 
-here 23 + 22 is done first. the result 45 is taken and stored in the variable **x**
+here 23 + 22 is done first. the result 45 is taken and stored in the variable x
 
 Very often encountered in programming is **incrementing by 1**, meaning
 
@@ -33,7 +33,7 @@ print(n)
 ```
 
 Why is 11 displayed? Or better said, why does the program run? Why doesn’t it crash? What do you mean n = n + 1? Mathematically this makes no sense
-Well, in programming, it does make sense. We already said that if we have an equals sign, **Python first does what’s on the right**, then stores the result in what’s on the left
+Well, in programming, it does make sense. We already said that if we have an equals sign, Python first does what’s on the right, then stores the result in what’s on the left
 
 ```text
 n = n + 1
@@ -60,7 +60,7 @@ this displays `text 36.159`
 
 The station has three oxygen tanks, with their amounts (in liters) stored in `tank_a`, `tank_b`, and `tank_c`.
 
-Add the three tanks together into a `total` and print it. Then a leak drains **50** liters, so subtract 50 from the `total` and print the new value.
+Add the three tanks together into a `total` and print it. Then a leak drains 50 liters, so subtract 50 from the `total` and print the new value.
 
 **Input** (already set at the top of your code, change the values to test):
 

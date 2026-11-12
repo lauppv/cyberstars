@@ -1,4 +1,4 @@
-Writing **struct Employee** everywhere gets tiring. **typedef** lets us create a shorter name for any type
+Writing struct Employee everywhere gets tiring. **typedef** lets us create a shorter name for any type
 
 ```c
 #include <stdio.h>
@@ -40,7 +40,7 @@ We can give meaningful names to types. **Hours** is still an int underneath, but
 
 ---
 
-**typedef** really shines with function pointers (if you're curious) and by dropping the **struct** keyword. Here's the most common pattern you'll see in real code
+typedef really shines with function pointers (if you're curious) and by dropping the struct keyword. Here's the most common pattern you'll see in real code
 
 ```c
 #include <stdio.h>
@@ -67,17 +67,17 @@ int main(void) {
 }
 ```
 
-Notice how we can use **Cell** inside **Bank**. Structs within structs: **composition**. This is how C programs build complex data structures without classes
+Notice how we can use Cell inside Bank. Structs within structs: **composition**. This is how C programs build complex data structures without classes
 
 ---
 
 ## Mission: Shift Performance Report
 
-The shift supervisor wants a formatted report of the computing center's operator evaluations. Use **typedef** to define a clean struct and walk through the list.
+The shift supervisor wants a formatted report of the computing center's operator evaluations. Use typedef to define a clean struct and walk through the list.
 
-1. Define a **typedef** struct named **Operator** with fields: **name** (char array), **grade** (int), **rating** (double)
-2. Read from input a count **n** of operators, followed by **n** lines, each with **name grade rating**
-3. Walk through them and print each in the format **"Name - Grade X - Rating Y.YY"**
+1. Define a typedef struct named Operator with fields: name (char array), grade (int), rating (double)
+2. Read from input a count n of operators, followed by n lines, each with name grade rating
+3. Walk through them and print each in the format "Name - Grade X - Rating Y.YY"
 
 **Example**
 

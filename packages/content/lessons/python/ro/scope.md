@@ -1,4 +1,4 @@
-Am folosit variabile peste tot: în interiorul buclelor, în interiorul funcțiilor, în afara funcțiilor. Dar te-ai întrebat vreodată: poate o variabilă creată **în interiorul** unei funcții să fie folosită **în afara** ei?
+Am folosit variabile peste tot: în interiorul buclelor, în interiorul funcțiilor, în afara funcțiilor. Dar te-ai întrebat vreodată: poate o variabilă creată în interiorul unei funcții să fie folosită în afara ei?
 
 ```py
 def saluta():
@@ -9,13 +9,13 @@ saluta()
 print(mesaj)
 ```
 
-**Rulează** asta. Primul **print** funcționează (în interiorul funcției), dar al doilea se prăbușește cu o **NameError**: name 'mesaj' is not defined
+Rulează asta. Primul print funcționează (în interiorul funcției), dar al doilea se prăbușește cu o **NameError**: name 'mesaj' is not defined
 
-De ce? Pentru că **mesaj** a fost creat **în interiorul** funcției și există doar acolo. Odată ce funcția se termină, **mesaj** dispare. Asta se numește **scope** (domeniu de vizibilitate)
+De ce? Pentru că mesaj a fost creat în interiorul funcției și există doar acolo. Odată ce funcția se termină, mesaj dispare. Asta se numește **scope** (domeniu de vizibilitate)
 
 ---
 
-**Scope-ul** unei variabile este zona de cod în care ea există și poate fi folosită. În Python, există două scope-uri principale
+Scope-ul unei variabile este zona de cod în care ea există și poate fi folosită. În Python, există două scope-uri principale
 
 **Scope local**: variabile create în interiorul unei funcții. Ele există doar în interiorul acelei funcții
 
@@ -40,11 +40,11 @@ saluta()
 print(nume)
 ```
 
-Ambele print-uri funcționează. **nume** a fost creat la nivelul cel mai de sus, așa că funcția îl poate **vedea**
+Ambele print-uri funcționează. nume a fost creat la nivelul cel mai de sus, așa că funcția îl poate vedea
 
 ---
 
-Dar ce se întâmplă dacă încercăm să **schimbăm** o variabilă globală în interiorul unei funcții?
+Dar ce se întâmplă dacă încercăm să schimbăm o variabilă globală în interiorul unei funcții?
 
 ```py
 viata = 100
@@ -56,7 +56,7 @@ def primeste_lovitura():
 primeste_lovitura()
 ```
 
-**Rulează**-l. Eroare! Python vede **viata = ...** în interiorul funcției și crede că creăm o **nouă variabilă locală** numită viata. Dar în partea dreaptă folosim și **viata**, iar cea locală nu există încă. Confuz? Da. De asta este important să înțelegi **scope-ul**
+Rulează-l. Eroare! Python vede **viata = ...** în interiorul funcției și crede că creăm o **nouă variabilă locală** numită viata. Dar în partea dreaptă folosim și viata, iar cea locală nu există încă. Confuz? Da. De asta este important să înțelegi scope-ul
 
 Regula simplă: dacă **atribui** o valoare unei variabile în interiorul unei funcții, Python o tratează ca fiind **locală**. Chiar dacă o variabilă globală are același nume
 
@@ -75,13 +75,13 @@ viata = primeste_lovitura(viata)
 print(viata)
 ```
 
-Rezultatul **90**. Am transmis **viata** în funcție, funcția și-a făcut treaba și a returnat noua valoare. Nicio confuzie legată de scope
+Rezultatul **90**. Am transmis viata în funcție, funcția și-a făcut treaba și a returnat noua valoare. Nicio confuzie legată de scope
 
-Asta este cea mai bună practică: **funcțiile primesc date prin parametri și trimit date înapoi prin return**. Ele nu se întind să apuce variabile globale
+Asta este cea mai bună practică: funcțiile primesc date prin parametri și trimit date înapoi prin return. Ele nu se întind să apuce variabile globale
 
 ---
 
-Un exemplu rapid care arată că variabilele din **funcții diferite** sunt complet separate
+Un exemplu rapid care arată că variabilele din funcții diferite sunt complet separate
 
 ```py
 def f():
@@ -103,19 +103,19 @@ Ieșire
 99
 ```
 
-Două variabile **x** diferite. Doar se întâmplă să aibă același nume, dar trăiesc în funcții diferite, așa că nu interferează una cu cealaltă
+Două variabile x diferite. Doar se întâmplă să aibă același nume, dar trăiesc în funcții diferite, așa că nu interferează una cu cealaltă
 
 ---
 
 ## Misiune: Amplificare Scut
 
-Scrie o funcție `amplifica(scut)` care **returnează** valoarea scutului dublată. Trebuie să lucreze doar cu **parametrul** ei și să **returneze** rezultatul. Nu trebuie să se întindă către nicio variabilă globală (ăsta e tot rostul scope-ului).
+Scrie o funcție `amplifica(scut)` care returnează valoarea scutului dublată. Trebuie să lucreze doar cu parametrul ei și să returneze rezultatul. Nu trebuie să se întindă către nicio variabilă globală (ăsta e tot rostul scope-ului).
 
 Apoi, în programul principal:
 
 1. Setează `scut = 100`
 2. Afișează `Inainte: ` apoi scut
-3. Apelează `amplifica(scut)` **fără a stoca** rezultatul, apoi afișează `Ignorat: ` apoi scut. Observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
+3. Apelează `amplifica(scut)` fără a stoca rezultatul, apoi afișează `Ignorat: ` apoi scut. Observă că rămâne neschimbat, pentru că valoarea returnată a fost aruncată
 4. Acum fă `scut = amplifica(scut)` și afișează `Dupa: ` apoi scut
 
 **Ieșire**
@@ -126,4 +126,4 @@ Ignorat: 100
 Dupa: 200
 ```
 
-Linia `Ignorat` dovedește că funcția nu poate schimba variabila globală de la sine: noua valoare se păstrează doar când **stochezi valoarea returnată**.
+Linia `Ignorat` dovedește că funcția nu poate schimba variabila globală de la sine: noua valoare se păstrează doar când stochezi valoarea returnată.

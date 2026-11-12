@@ -1,10 +1,10 @@
-Buclele **for** și **while** își fac treaba de la început până la sfârșit. Dar dacă, în mijlocul unei bucle, vrem să spunem „ok, e suficient, oprește-te"? Sau „sari peste asta, treci la următoarea"?
+Buclele for și while își fac treaba de la început până la sfârșit. Dar dacă, în mijlocul unei bucle, vrem să spunem „ok, e suficient, oprește-te"? Sau „sari peste asta, treci la următoarea"?
 
 C ne oferă două cuvinte cheie pentru asta: **break** și **continue**
 
 ---
 
-**break** **oprește** bucla complet. Iterațiile rămase nu se mai întâmplă
+**break** oprește bucla complet. Iterațiile rămase nu se mai întâmplă
 
 ```c
 #include <stdio.h>
@@ -30,7 +30,7 @@ Ieșire
 4
 ```
 
-I-am spus buclei să meargă până la **99**, dar de îndată ce **i** a devenit **5**, **break** a intrat în acțiune și bucla s-a terminat
+I-am spus buclei să meargă până la 99, dar de îndată ce i a devenit 5, break a intrat în acțiune și bucla s-a terminat
 
 Un exemplu real: căutarea unei valori într-un array
 
@@ -53,11 +53,11 @@ int main(void) {
 }
 ```
 
-Bucla se oprește de îndată ce găsim ce căutăm. **break** ne economisește timp
+Bucla se oprește de îndată ce găsim ce căutăm. break ne economisește timp
 
 ---
 
-**continue** este diferit. Nu oprește bucla, doar **sare peste restul** iterației curente și **trece la următoarea**
+**continue** este diferit. Nu oprește bucla, doar sare peste restul iterației curente și trece la următoarea
 
 ```c
 #include <stdio.h>
@@ -87,9 +87,9 @@ Ieșire
 9
 ```
 
-**5** lipsește. Când **i** a fost **5**, **continue** a sărit peste **printf** și bucla a continuat
+**5** lipsește. Când i a fost 5, continue a sărit peste printf și bucla a continuat
 
-Un exemplu real: afișează doar numerele **pare**
+Un exemplu real: afișează doar numerele pare
 
 ```c
 #include <stdio.h>
@@ -109,7 +109,7 @@ Output: **0 2 4 6 8 10**
 
 ---
 
-Ambele cuvinte cheie funcționează la fel în **while**, nu doar în **for**
+Ambele cuvinte cheie funcționează la fel în while, nu doar în for
 
 ```c
 #include <stdio.h>
@@ -127,22 +127,22 @@ int main(void) {
 }
 ```
 
-**while (1)** ar fi în mod normal infinit, dar **break** ne lasă să scăpăm
+**while (1)** ar fi în mod normal infinit, dar break ne lasă să scăpăm
 
 ---
 
-O mică avertizare: **break** și **continue** pot face codul mai greu de citit dacă abuzezi de ele. Folosește-le când fac logica mai clară, nu doar ca să pară cod deștept
+O mică avertizare: break și continue pot face codul mai greu de citit dacă abuzezi de ele. Folosește-le când fac logica mai clară, nu doar ca să pară cod deștept
 
 ---
 
 ## Misiune: Inspecția sălii de cartele perforate
 
-Faci inspecția anuală a sălii cu cititoare de cartele perforate, numerotate de la **1** la **20**. Un cititor este marcat ca **sigilat pentru reparații**: trebuie **sărit** cu **continue**, fără să-l afișezi. Un alt cititor declanșează **alarma de fum**: de îndată ce ajungi la el, **oprești** inspecția cu **break** (fără să-l afișezi nici pe el).
+Faci inspecția anuală a sălii cu cititoare de cartele perforate, numerotate de la 1 la 20. Un cititor este marcat ca sigilat pentru reparații: trebuie sărit cu continue, fără să-l afișezi. Un alt cititor declanșează alarma de fum: de îndată ce ajungi la el, oprești inspecția cu break (fără să-l afișezi nici pe el).
 
-1. Citește două numere întregi din input: **sigilat** și **alarma**
-2. Parcurge cititoarele de la **1** la **20** cu o buclă **for**
-3. Dacă numărul curent este egal cu **sigilat**, sari peste el cu **continue**
-4. Dacă numărul curent este egal cu **alarma**, oprește bucla cu **break**
+1. Citește două numere întregi din input: sigilat și alarma
+2. Parcurge cititoarele de la 1 la 20 cu o buclă for
+3. Dacă numărul curent este egal cu sigilat, sari peste el cu continue
+4. Dacă numărul curent este egal cu alarma, oprește bucla cu break
 5. Altfel, afișează numărul cititorului
 
 **Exemplu**

@@ -1,6 +1,6 @@
-Bun venit la unul dintre **cele mai importante** concepte din programare: bucla **for**. Cu ea, putem cere calculatorului să facă ceva **de multe ori, automat**
+Bun venit la unul dintre cele mai importante concepte din programare: bucla **for**. Cu ea, putem cere calculatorului să facă ceva de multe ori, automat
 
-Imaginează-ți că vrem să afișăm toate numerele de la **1** la **10**
+Imaginează-ți că vrem să afișăm toate numerele de la 1 la 10
 
 ```c
 #include <stdio.h>
@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-Obositor. Pentru **1** la **1000** este imposibil. **for** ne salvează
+Obositor. Pentru 1 la 1000 este imposibil. for ne salvează
 
 ```c
 #include <stdio.h>
@@ -27,11 +27,11 @@ int main(void) {
 }
 ```
 
-Rulează-l. Vei vedea numerele de la **1** la **10**, câte unul pe linie
+Rulează-l. Vei vedea numerele de la 1 la 10, câte unul pe linie
 
 ---
 
-Bucla **for** din C are **trei părți** între paranteze, separate prin **;**
+Bucla for din C are **trei părți** între paranteze, separate prin **;**
 
 ```c
 #include <stdio.h>
@@ -44,13 +44,13 @@ int main(void) {
 }
 ```
 
-1. **int i = 1**: **punctul de pornire**. Declarăm o variabilă **i** și o setăm la **1**
-2. **i <= 10**: **condiția**. Atât timp cât aceasta este **adevărată**, bucla continuă să ruleze
-3. **i++**: ce să facă **după fiecare iterație**. Creștem **i** cu 1
+1. **int i = 1**: **punctul de pornire**. Declarăm o variabilă i și o setăm la 1
+2. **i <= 10**: **condiția**. Atât timp cât aceasta este adevărată, bucla continuă să ruleze
+3. **i++**: ce să facă **după fiecare iterație**. Creștem i cu 1
 
-Așadar **i** ia valorile **1, 2, 3, ..., 10**. Când **i** devine **11**, condiția **11 <= 10** este **falsă** și bucla se termină
+Așadar i ia valorile 1, 2, 3, ..., 10. Când i devine 11, condiția **11 <= 10** este falsă și bucla se termină
 
-Un mic detaliu: în **C-ul mai vechi** (înainte de C99), nu puteai declara **int i** în interiorul lui **for**. Trebuia să-l declari înainte. În **C-ul modern** (C99 și mai recent, pe care îl folosim), declararea înăuntru este în regulă și idiomatic
+Un mic detaliu: în C-ul mai vechi (înainte de C99), nu puteai declara int i în interiorul lui for. Trebuia să-l declari înainte. În C-ul modern (C99 și mai recent, pe care îl folosim), declararea înăuntru este în regulă și idiomatic
 
 Putem număra din 2 în 2, putem număra descrescător, putem face orice vrem
 
@@ -75,7 +75,7 @@ int main(void) {
 
 ---
 
-Fii atent: dacă uităm să actualizăm **i**, obținem o **buclă infinită**
+Fii atent: dacă uităm să actualizăm i, obținem o **buclă infinită**
 
 ```c
 #include <stdio.h>
@@ -88,15 +88,15 @@ int main(void) {
 }
 ```
 
-**i** rămâne **1** pentru totdeauna, condiția rămâne **adevărată** pentru totdeauna, iar programul afișează **1** până când ceva îl oprește. Platforma îl oprește după 5 secunde, dar în sisteme reale o buclă infinită îți poate bloca calculatorul. Asigură-te mereu că condiția ta poate deveni falsă
+i rămâne 1 pentru totdeauna, condiția rămâne adevărată pentru totdeauna, iar programul afișează 1 până când ceva îl oprește. Platforma îl oprește după 5 secunde, dar în sisteme reale o buclă infinită îți poate bloca calculatorul. Asigură-te mereu că condiția ta poate deveni falsă
 
 ---
 
 ## Misiune: Bobinele de bandă magnetică
 
-Depozitul centrului de calcul are 101 bobine de bandă magnetică, numerotate de la **0** la **100**, așezate pe un raft lung. Majoritatea bobinelor afișează doar numărul lor pe etichetă, dar bobinele **10** și **50** au o etichetă specială: conțin rezerva de **cafea** a operatorilor de tură, nu date.
+Depozitul centrului de calcul are 101 bobine de bandă magnetică, numerotate de la 0 la 100, așezate pe un raft lung. Majoritatea bobinelor afișează doar numărul lor pe etichetă, dar bobinele 10 și 50 au o etichetă specială: conțin rezerva de cafea a operatorilor de tură, nu date.
 
-Scrie o buclă **for** de la 0 la 100. Pentru fiecare număr, dacă este **10** sau **50**, afișează `CAFEA` în loc de număr. Altfel afișează numărul în sine.
+Scrie o buclă for de la 0 la 100. Pentru fiecare număr, dacă este 10 sau 50, afișează `CAFEA` în loc de număr. Altfel afișează numărul în sine.
 
 **Exemplu**
 

@@ -1,4 +1,4 @@
-Bubble Sort works, but it's a bit wasteful: it makes a lot of unnecessary swaps. **Selection Sort** takes a different approach: find the **smallest** element and put it in position 0, then find the **second smallest** and put it in position 1, and so on
+Bubble Sort works, but it's a bit wasteful: it makes a lot of unnecessary swaps. **Selection Sort** takes a different approach: find the smallest element and put it in position 0, then find the second smallest and put it in position 1, and so on
 
 Think of it like organizing a deck of cards. You look through all the cards, find the smallest, and put it first. Then look through the remaining cards, find the smallest of those, and put it second. Repeat until everything is in order
 
@@ -6,19 +6,19 @@ Think of it like organizing a deck of cards. You look through all the cards, fin
 numbers = [5, 3, 8, 1, 2]
 ```
 
-**Step 1**: find the smallest in the whole list → **1** (at index 3). Swap it with position 0
-→ **[1, 3, 8, 5, 2]**
+**Step 1**: find the smallest in the whole list → 1 (at index 3). Swap it with position 0
+→ [1, 3, 8, 5, 2]
 
-**Step 2**: find the smallest from index 1 onward → **2** (at index 4). Swap with position 1
-→ **[1, 2, 8, 5, 3]**
+**Step 2**: find the smallest from index 1 onward → 2 (at index 4). Swap with position 1
+→ [1, 2, 8, 5, 3]
 
-**Step 3**: find the smallest from index 2 onward → **3** (at index 4). Swap with position 2
-→ **[1, 2, 3, 5, 8]**
+**Step 3**: find the smallest from index 2 onward → 3 (at index 4). Swap with position 2
+→ [1, 2, 3, 5, 8]
 
-**Step 4**: find the smallest from index 3 onward → **5** (at index 3). Already in place
-→ **[1, 2, 3, 5, 8]**
+**Step 4**: find the smallest from index 3 onward → 5 (at index 3). Already in place
+→ [1, 2, 3, 5, 8]
 
-**Done!**
+Done!
 
 ---
 
@@ -39,21 +39,21 @@ print(numbers)
 
 Output **[1, 2, 3, 5, 8]**
 
-The **outer loop** picks each position (0, 1, 2, ...). For each position, the **inner loop** scans the rest of the list to find the smallest element. Then we **swap** it into place
+The **outer loop** picks each position (0, 1, 2, ...). For each position, the **inner loop** scans the rest of the list to find the smallest element. Then we swap it into place
 
 The key difference from Bubble Sort: we only do **one swap per pass** instead of potentially many. We find the minimum first, then swap once
 
 ---
 
-Let's trace through the code for **[5, 3, 8, 1, 2]**
+Let's trace through the code for [5, 3, 8, 1, 2]
 
-**i = 0**: min_index starts at 0 (value 5). Inner loop finds 1 at index 3, so min_index = 3. Swap positions 0 and 3 → **[1, 3, 8, 5, 2]**
+**i = 0**: min_index starts at 0 (value 5). Inner loop finds 1 at index 3, so min_index = 3. Swap positions 0 and 3 → [1, 3, 8, 5, 2]
 
-**i = 1**: min_index starts at 1 (value 3). Inner loop finds 2 at index 4, so min_index = 4. Swap positions 1 and 4 → **[1, 2, 8, 5, 3]**
+**i = 1**: min_index starts at 1 (value 3). Inner loop finds 2 at index 4, so min_index = 4. Swap positions 1 and 4 → [1, 2, 8, 5, 3]
 
-**i = 2**: min_index starts at 2 (value 8). Inner loop finds 3 at index 4, so min_index = 4. Swap positions 2 and 4 → **[1, 2, 3, 5, 8]**
+**i = 2**: min_index starts at 2 (value 8). Inner loop finds 3 at index 4, so min_index = 4. Swap positions 2 and 4 → [1, 2, 3, 5, 8]
 
-**i = 3**: min_index starts at 3 (value 5). Inner loop finds nothing smaller, min_index stays 3. Swap with itself → **[1, 2, 3, 5, 8]**
+**i = 3**: min_index starts at 3 (value 5). Inner loop finds nothing smaller, min_index stays 3. Swap with itself → [1, 2, 3, 5, 8]
 
 ```visual
 {
@@ -82,9 +82,9 @@ Let's trace through the code for **[5, 3, 8, 1, 2]**
 
 ---
 
-**Is Selection Sort faster than Bubble Sort?** They do roughly the same number of **comparisons** (n × n). But Selection Sort does fewer **swaps**, which can matter in practice. Still, both are slow for large lists. The real-world **sorted()** is hundreds of times faster
+Is Selection Sort faster than Bubble Sort? They do roughly the same number of comparisons (n × n). But Selection Sort does fewer swaps, which can matter in practice. Still, both are slow for large lists. The real-world sorted() is hundreds of times faster
 
-The point of learning these algorithms is not to use them in production. It's to understand **how to think** about breaking a problem into steps, tracking state with variables, and using nested loops effectively
+The point of learning these algorithms is not to use them in production. It's to understand how to think about breaking a problem into steps, tracking state with variables, and using nested loops effectively
 
 ---
 
@@ -92,7 +92,7 @@ The point of learning these algorithms is not to use them in production. It's to
 
 The cargo bay scanner reports container weights in whatever order they were loaded. To balance the hold, the crew needs them sorted from lightest to heaviest.
 
-Write a function **selection_sort(numbers)** that sorts a list in **ascending** order using selection sort and **returns** the sorted list.
+Write a function **selection_sort(numbers)** that sorts a list in ascending order using selection sort and returns the sorted list.
 
 Then sort the two batches of weights (`batch1` and `batch2`, already in the starter) and print each result.
 

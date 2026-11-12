@@ -1,4 +1,4 @@
-So far `grep` searched **one file**. But what if you do not know _which_ file contains
+So far `grep` searched one file. But what if you do not know _which_ file contains
 the word, only that it is somewhere in a folder full of files and sub-folders?
 
 The `-r` option (**recursive**) tells `grep` to search **every file in a whole
@@ -13,7 +13,7 @@ logs/january.log:Mission to sector 7 approved.
 logs/old/archive.log:Sector 7 survey complete.
 ```
 
-Notice the output now starts with the **file name** of each match, then a colon, then
+Notice the output now starts with the file name of each match, then a colon, then
 the matching line. That way you know _where_ every hit came from.
 
 ### Searching from the current folder

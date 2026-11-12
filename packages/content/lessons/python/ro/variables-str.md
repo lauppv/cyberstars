@@ -1,4 +1,4 @@
-Un concept fundamental în programare este stocarea informației. De cele mai multe ori, nu vrem doar să afișăm ceva pe ecran; vrem să-l **procesăm** mai întâi, să facem ceva cu el, și apoi poate să afișăm rezultatul
+Un concept fundamental în programare este stocarea informației. De cele mai multe ori, nu vrem doar să afișăm ceva pe ecran; vrem să-l procesăm mai întâi, să facem ceva cu el, și apoi poate să afișăm rezultatul
 
 ```py
 print("Numele meu este Tommy Vercetti")
@@ -10,7 +10,7 @@ print("Numele meu este Tommy Vercetti")
 Numele meu este Tommy Vercetti
 ```
 
-**print()** face exact asta. Totuși, nu ar fi mai organizat să **stocăm** numele undeva mai întâi și apoi să spunem ceva de genul **Numele meu este ...**, indiferent care este numele? De exemplu **Numele meu este Lance Vance** sau **Numele meu este Paul**. Cumva, nu contează care nume este, ceea ce contează este că îl putem afișa, **oricare** ar fi el
+**print()** face exact asta. Totuși, nu ar fi mai organizat să stocăm numele undeva mai întâi și apoi să spunem ceva de genul **Numele meu este ...**, indiferent care este numele? De exemplu **Numele meu este Lance Vance** sau **Numele meu este Paul**. Cumva, nu contează care nume este, ceea ce contează este că îl putem afișa, oricare ar fi el
 
 Ei bine, da, există o cale de a nu ne păsa de numele concret, ci doar de a-l afișa. Asta se numește **variabilă** în programare
 
@@ -37,7 +37,7 @@ nume = Paul
 print(nume)
 ```
 
-De ce nu funcționează? Python crede că **Paul** este o variabilă. Dacă vrem să-i spunem că nu este o variabilă, ci **text**, trebuie să-l punem între **""**. Textul în programare se numește **string**
+De ce nu funcționează? Python crede că **Paul** este o variabilă. Dacă vrem să-i spunem că nu este o variabilă, ci text, trebuie să-l punem între "". Textul în programare se numește **string**
 
 Un exemplu puțin mai avansat, dar care merită studiat, este:
 
@@ -47,7 +47,7 @@ nume = Kent
 print(nume)
 ```
 
-Am putea fi tentați să credem că se va afișa **Kent**, dar nu este adevărat. Se va afișa **Booooo** în schimb. De ce? Pentru că dacă nu punem **""**, Python crede că **Kent** este o variabilă și nu numele nostru. Vede **nume = Kent**, și cum Kent nu are "", caută o variabilă cu acel nume definită mai devreme și o înlocuiește cu **Booooo**.
+Am putea fi tentați să credem că se va afișa **Kent**, dar nu este adevărat. Se va afișa **Booooo** în schimb. De ce? Pentru că dacă nu punem "", Python crede că Kent este o variabilă și nu numele nostru. Vede **nume = Kent**, și cum Kent nu are "", caută o variabilă cu acel nume definită mai devreme și o înlocuiește cu Booooo.
 
 ```py
 Kent = "Booooo"
@@ -57,7 +57,7 @@ print(nume)
 
 ## Acest cod va afișa într-adevăr numele exact cum am intenționat. Rulează-l :)
 
-Așadar, orice scriem între **" și "** se numește **string** și este folosit oricând vrem să scriem text pe care Python să-l trateze exact cum intenționăm, și **nu** ca pe o variabilă.
+Așadar, orice scriem între **" și "** se numește string și este folosit oricând vrem să scriem text pe care Python să-l trateze exact cum intenționăm, și nu ca pe o variabilă.
 
 ---
 
@@ -65,7 +65,7 @@ Așadar, orice scriem între **" și "** se numește **string** și este folosit
 
 Trei membri ai echipajului sunt repartizați la stație. Numele lor sunt stocate în variabilele `comandant`, `pilot` și `inginer` în partea de sus a codului tău. Numele de start sunt doar exemple, pune orice nume vrei în ele.
 
-Afișează cele trei nume, **fiecare pe linia lui**, în această ordine: comandant, pilot, inginer. Apoi pilotul este schimbat la mijlocul misiunii, așa că adaugă o linie care schimbă `pilot` într-un **nume nou la alegerea ta** și afișează `pilot` încă o dată.
+Afișează cele trei nume, fiecare pe linia lui, în această ordine: comandant, pilot, inginer. Apoi pilotul este schimbat la mijlocul misiunii, așa că adaugă o linie care schimbă `pilot` într-un nume nou la alegerea ta și afișează `pilot` încă o dată.
 
 **Intrare** (deja setat în partea de sus a codului tău, schimbă valorile ca să testezi):
 

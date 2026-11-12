@@ -1,4 +1,4 @@
-**Comments** are used to **explain** code or to **disable** certain parts of the code
+**Comments** are used to explain code or to disable certain parts of the code
 In Python, a comment starts with the **#**sign
 
 ```py
@@ -33,7 +33,7 @@ comment
 '''
 ```
 
-However, in future lessons we will use comments with **#**, even if they span multiple lines
+However, in future lessons we will use comments with #, even if they span multiple lines
 
 ```py
 # this is how we will write
@@ -46,9 +46,9 @@ However, in future lessons we will use comments with **#**, even if they span mu
 
 ## Mission: Redact the Log
 
-The code at the right prints four lines about the rocket. But the **wind speed** is classified: you must hide it **without deleting it**.
+The code at the right prints four lines about the rocket. But the wind speed is classified: you must hide it without deleting it.
 
-**Comment** the single line that prints `wind_speed` so that the program shows only the **ship name**, **mission name**, and **maximum power**. Don't delete anything, just add a `#`.
+Comment the single line that prints `wind_speed` so that the program shows only the ship name, mission name, and maximum power. Don't delete anything, just add a `#`.
 
 **Example**
 

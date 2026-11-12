@@ -1,4 +1,4 @@
-Așa cum am menționat într-o lecție anterioară, nu este o idee bună să **repetăm** cod. Dacă trebuie să scriem același lucru de două ori, șansele sunt că va trebui să-l scriem de trei ori sau mai mult. Aici intervine noțiunea de **funcție**. O **funcție** este o bucată de cod pe care o scriem **o dată** și o putem refolosi de **mai multe** ori
+Așa cum am menționat într-o lecție anterioară, nu este o idee bună să repetăm cod. Dacă trebuie să scriem același lucru de două ori, șansele sunt că va trebui să-l scriem de trei ori sau mai mult. Aici intervine noțiunea de **funcție**. O funcție este o bucată de cod pe care o scriem o dată și o putem refolosi de mai multe ori
 
 ```py
 nume = "Cortez"
@@ -50,9 +50,9 @@ Ma numesc Tommy Vercetti si am varsta 42
 
 și asta e în regulă
 
-Totuși, dacă vrem să folosim această bucată de cod **mai târziu** în program cu **valori diferite pentru nume și varsta**, ar trebui mereu să **copiem și să lipim** această buclă **for**
+Totuși, dacă vrem să folosim această bucată de cod mai târziu în program cu valori diferite pentru nume și varsta, ar trebui mereu să copiem și să lipim această buclă for
 
-Se dovedește că cel mai bun mod, și cel care face codul cel mai **lizibil**, este să folosim o **funcție**
+Se dovedește că cel mai bun mod, și cel care face codul cel mai lizibil, este să folosim o funcție
 
 ```py
 def functia_mea(nume, varsta):
@@ -64,13 +64,13 @@ functia_mea("Tommy Vercetti", 42)
 functia_mea("Lance Vance Dance", 35)
 ```
 
-Putem vedea cum codul nostru este mult mai **curat** și mai **ușor** de citit. Ce am făcut a fost să **refolosim** **funcția** numită **functia_mea** și să o apelăm cu valori diferite. Am scris funcția **o dată** și o putem rula de câte ori vrem cu valori diferite
+Putem vedea cum codul nostru este mult mai curat și mai ușor de citit. Ce am făcut a fost să refolosim funcția numită functia_mea și să o apelăm cu valori diferite. Am scris funcția o dată și o putem rula de câte ori vrem cu valori diferite
 
-Cuvântul **def** definește o **funcție** în Python
+Cuvântul **def** definește o funcție în Python
 
-**functia_mea** este **numele** funcției, adică numele pe care îl folosim pentru a **apela** această funcție
+**functia_mea** este numele funcției, adică numele pe care îl folosim pentru a **apela** această funcție
 
-La fel ca **print()**, folosim paranteze **()**
+La fel ca print(), folosim paranteze **()**
 
 În interiorul parantezelor, scriem cum vrem să numim parametrii. În acest caz, **nume** și **varsta**
 

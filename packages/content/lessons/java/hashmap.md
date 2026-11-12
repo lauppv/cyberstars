@@ -23,7 +23,7 @@ Output
 555-0002
 ```
 
-**HashMap\<String, String\>**: the first type is for keys, the second for values. You can mix them: **HashMap\<String, Integer\>** has String keys and numeric values. Just like ArrayList, you use **Integer** instead of **int**, **Double** instead of **double**
+**HashMap\<String, String\>**: the first type is for keys, the second for values. You can mix them: HashMap\<String, Integer\> has String keys and numeric values. Just like ArrayList, you use Integer instead of int, Double instead of double
 
 ---
 
@@ -148,7 +148,7 @@ Only Tommy and Phil show up, they owe more than $5000
 
 ---
 
-HashMap does **not** guarantee order. If you add Tommy, Lance, Phil, they might come out in any order when you iterate. Don't rely on insertion order
+HashMap does not guarantee order. If you add Tommy, Lance, Phil, they might come out in any order when you iterate. Don't rely on insertion order
 
 ---
 

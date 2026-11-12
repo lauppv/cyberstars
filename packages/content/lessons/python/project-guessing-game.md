@@ -1,6 +1,6 @@
-Time for a mini-project! We're going to build a **number guessing game**. The computer picks a random number and the player has to guess it. After each guess, the program says **too high**, **too low**, or **correct!**
+Time for a mini-project! We're going to build a number guessing game. The computer picks a random number and the player has to guess it. After each guess, the program says too high, too low, or correct!
 
-This combines everything we've learned: **variables**, **loops**, **if/else**, **input**, **functions**, and even a bit of **try/except**
+This combines everything we've learned: variables, loops, if/else, input, functions, and even a bit of try/except
 
 ---
 
@@ -95,7 +95,7 @@ def play_game():
 play_game()
 ```
 
-Notice how we used **everything**: import, function, for loop, try/except, if/elif/else, f-strings, return (to exit early when they guess correctly)
+Notice how we used everything: import, function, for loop, try/except, if/elif/else, f-strings, return (to exit early when they guess correctly)
 
 ---
 
@@ -105,7 +105,7 @@ The reactor is locked behind a secret numeric code, stored in a variable named s
 
 1. Write a function **check_guess(secret, guess)** that returns `"too low"` if the guess is smaller than the secret, `"too high"` if it's bigger, and `"correct"` if they match.
 2. Loop through the guesses, counting attempts. For each guess, print the guess, then `: `, then the result.
-3. **Stop** as soon as a guess is correct, then print `Cracked in N attempts!` (with the real number of attempts).
+3. Stop as soon as a guess is correct, then print `Cracked in N attempts!` (with the real number of attempts).
 
 **Output**
 

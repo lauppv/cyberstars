@@ -1,6 +1,6 @@
-Bun venit la unul dintre cele **mai importante** concepte din programare: bucla **for**. Cu ea, putem cere calculatorului să facă ceva **de multe ori**, **automat**
+Bun venit la unul dintre cele mai importante concepte din programare: bucla **for**. Cu ea, putem cere calculatorului să facă ceva de multe ori, automat
 
-De ce contează? Imaginează-ți că vrem să afișăm toate numerele de la **1** la **10**
+De ce contează? Imaginează-ți că vrem să afișăm toate numerele de la 1 la 10
 
 ```java
 public class Main {
@@ -13,7 +13,7 @@ public class Main {
 }
 ```
 
-Obositor. Acum imaginează-ți de la **1** la **1000**. Nu există nicio șansă să scriem **1000 de println**. Aici ne salvează **for**
+Obositor. Acum imaginează-ți de la 1 la 1000. Nu există nicio șansă să scriem 1000 de println. Aici ne salvează for
 
 ```java
 public class Main {
@@ -25,11 +25,11 @@ public class Main {
 }
 ```
 
-Rulează-l. Vei vedea numerele de la **1** la **10**, câte unul pe linie
+Rulează-l. Vei vedea numerele de la 1 la 10, câte unul pe linie
 
 ---
 
-Bucla **for** din Java are **trei părți** între paranteze, separate prin **;**
+Bucla for din Java are **trei părți** între paranteze, separate prin **;**
 
 ```java
 public class Main {
@@ -41,13 +41,13 @@ public class Main {
 }
 ```
 
-1. **int i = 1**: **punctul de pornire**. Creăm o nouă variabilă **i** și o setăm la **1**
-2. **i <= 10**: **condiția**. Atât timp cât aceasta este **adevărată**, bucla continuă să ruleze
-3. **i++**: ce să facă **după fiecare iterație**. Aici creștem **i** cu 1
+1. **int i = 1**: **punctul de pornire**. Creăm o nouă variabilă i și o setăm la 1
+2. **i <= 10**: **condiția**. Atât timp cât aceasta este adevărată, bucla continuă să ruleze
+3. **i++**: ce să facă **după fiecare iterație**. Aici creștem i cu 1
 
-Citit ca o poveste: "pornește cu **i = 1**. Cât timp **i <= 10**, rulează corpul. După fiecare rulare, fă **i++**"
+Citit ca o poveste: "pornește cu i = 1. Cât timp i <= 10, rulează corpul. După fiecare rulare, fă i++"
 
-Așadar **i** ia valorile **1, 2, 3, 4, 5, 6, 7, 8, 9, 10**. Când **i** devine **11**, condiția **11 <= 10** este **falsă**, iar bucla se termină
+Așadar i ia valorile 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Când i devine 11, condiția **11 <= 10** este falsă, iar bucla se termină
 
 ---
 
@@ -81,7 +81,7 @@ Rezultat: 10, 9, 8, ..., 1. **i--** înseamnă **i = i - 1**
 
 ---
 
-O greșeală frecventă: uitarea actualizării lui **i**
+O greșeală frecventă: uitarea actualizării lui i
 
 ```java
 public class Main {
@@ -93,11 +93,11 @@ public class Main {
 }
 ```
 
-Aceasta este o **buclă infinită**. **i** rămâne **1** pentru totdeauna, condiția rămâne **adevărată** pentru totdeauna, iar programul afișează **1** până când îl oprești tu. Mereu asigură-te că ceva din buclă apropie condiția de a deveni **falsă**
+Aceasta este o **buclă infinită**. i rămâne 1 pentru totdeauna, condiția rămâne adevărată pentru totdeauna, iar programul afișează 1 până când îl oprești tu. Mereu asigură-te că ceva din buclă apropie condiția de a deveni falsă
 
 ---
 
-Putem pune **orice** în corpul buclei, inclusiv un **if**. Aici parcurgem sectoarele de la 1 la 5 și marcăm sectorul 3 ca fiind cel de patrulat
+Putem pune orice în corpul buclei, inclusiv un if. Aici parcurgem sectoarele de la 1 la 5 și marcăm sectorul 3 ca fiind cel de patrulat
 
 ```java
 public class Main {
@@ -127,14 +127,14 @@ Sector de patrulat
 
 ## Misiune: Inspecția Garajului
 
-Tommy inspectează garajul vilei Vercetti. Locurile de parcare sunt numerotate de la **1** până la un număr total. Pe unul dintre locuri e parcat **Infernus**-ul lui. Acolo, în loc de număr, vrei să afișezi numele mașinii.
+Tommy inspectează garajul vilei Vercetti. Locurile de parcare sunt numerotate de la 1 până la un număr total. Pe unul dintre locuri e parcat Infernus-ul lui. Acolo, în loc de număr, vrei să afișezi numele mașinii.
 
-Stochează numărul total de locuri în `totalLocuri` și locul pe care se află Infernus-ul în `loculInfernus`. Apoi folosește o buclă **for** care parcurge locurile de la **1** la total. Pentru fiecare loc:
+Stochează numărul total de locuri în `totalLocuri` și locul pe care se află Infernus-ul în `loculInfernus`. Apoi folosește o buclă for care parcurge locurile de la 1 la total. Pentru fiecare loc:
 
 - dacă e locul unde stă Infernus-ul → afișează `Infernus`
 - altfel → afișează numărul locului
 
-**Exemplu** pentru **5** locuri, cu Infernus pe locul **3**:
+**Exemplu** pentru 5 locuri, cu Infernus pe locul 3:
 
 ```text
 1
@@ -144,7 +144,7 @@ Infernus
 5
 ```
 
-**Exemplu** pentru **5** locuri, cu Infernus pe locul **1** (primul):
+**Exemplu** pentru 5 locuri, cu Infernus pe locul 1 (primul):
 
 ```text
 Infernus
@@ -154,7 +154,7 @@ Infernus
 5
 ```
 
-**Exemplu** pentru **5** locuri, cu Infernus pe locul **5** (ultimul):
+**Exemplu** pentru 5 locuri, cu Infernus pe locul 5 (ultimul):
 
 ```text
 1

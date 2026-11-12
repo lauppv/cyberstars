@@ -2,10 +2,10 @@ Felicitări, cadet. Ai învățat navigare, gestionarea fișierelor, căutare,
 pipeline-uri, procesare de text, permisiuni și unelte de sistem. Acum este
 momentul să te dovedești.
 
-Directorul **Centru de Comandă** al stației este o harababură. Un ofițer anterior
+Directorul Centru de Comandă al stației este o harababură. Un ofițer anterior
 a lăsat fișiere împrăștiate prin foldere greșite, permisiuni stricate și niciun
 raport de sinteză. Ofițerul tău comandant are nevoie ca directorul să fie
-organizat și un raport final generat **înainte să înceapă următorul schimb**.
+organizat și un raport final generat înainte să înceapă următorul schimb.
 
 ---
 

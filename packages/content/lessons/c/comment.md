@@ -1,4 +1,4 @@
-**Comments** are pieces of text in our code that the compiler **ignores**. We use them to **explain** code or to **disable** lines without deleting them
+**Comments** are pieces of text in our code that the compiler ignores. We use them to explain code or to disable lines without deleting them
 
 In C, a single-line comment starts with **//**
 
@@ -13,11 +13,11 @@ int main(void) {
 }
 ```
 
-Everything after **//** on a line is ignored. The program runs as if those parts weren't there
+Everything after // on a line is ignored. The program runs as if those parts weren't there
 
 ---
 
-Comments are great for **temporarily disabling** code
+Comments are great for temporarily disabling code
 
 ```c
 #include <stdio.h>
@@ -29,7 +29,7 @@ int main(void) {
 }
 ```
 
-Now nothing is printed, because the **printf** is **commented out**. Very useful when debugging: instead of deleting code and rewriting it later, you just comment it out
+Now nothing is printed, because the printf is commented out. Very useful when debugging: instead of deleting code and rewriting it later, you just comment it out
 
 ---
 
@@ -49,7 +49,7 @@ int main(void) {
 }
 ```
 
-In old C code (before C99), only **/\* \*/** existed. **//** was added later, copied from C++. Today both work. Most modern code uses **//**
+In old C code (before C99), only /\* \*/ existed. // was added later, copied from C++. Today both work. Most modern code uses //
 
 ---
 
@@ -57,7 +57,7 @@ In old C code (before C99), only **/\* \*/** existed. **//** was added later, co
 
 The system prints a boot log to the teletype, but one of the lines contains an internal access code that must not end up in the public log.
 
-- Write four **printf** calls, in order, that print: `PDP-11`, `Bell Labs Computing Center`, `ACCESS-7734-SECRET`, and the number `1972`
+- Write four printf calls, in order, that print: `PDP-11`, `Bell Labs Computing Center`, `ACCESS-7734-SECRET`, and the number `1972`
 - Comment out the third printf call (the one with the access code), so that its line no longer appears in the output
 
 **Example**
@@ -70,4 +70,4 @@ Bell Labs Computing Center
 1972
 ```
 
-Don't delete anything, just **comment** the line you don't want to run
+Don't delete anything, just comment the line you don't want to run

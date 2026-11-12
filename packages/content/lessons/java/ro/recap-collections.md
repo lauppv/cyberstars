@@ -1,4 +1,4 @@
-Combină **ArrayList**, **HashMap** și **Collections.sort()**
+Combină ArrayList, HashMap și Collections.sort()
 
 ---
 

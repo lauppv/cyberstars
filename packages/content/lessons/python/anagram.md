@@ -1,4 +1,4 @@
-Two words are **anagrams** if they contain exactly the **same letters**, just in a different order. **listen** and **silent**. **evil** and **vile**. **astronomer** and **moon starer** (ok, that last one has a space, but you get the idea)
+Two words are **anagrams** if they contain exactly the same letters, just in a different order. listen and silent. evil and vile. astronomer and moon starer (ok, that last one has a space, but you get the idea)
 
 How do we check? The simplest approach: **sort the letters** and compare
 
@@ -19,13 +19,13 @@ False
 True
 ```
 
-Why does this work? If two words have the same letters, sorting those letters will produce the **same result**. "listen" sorted → "eilnst". "silent" sorted → "eilnst". Same? Yes → anagram
+Why does this work? If two words have the same letters, sorting those letters will produce the same result. "listen" sorted → "eilnst". "silent" sorted → "eilnst". Same? Yes → anagram
 
 We use **.lower()** so that uppercase and lowercase don't matter
 
 ---
 
-But let's also solve it using what we learned: a **frequency dictionary**. Two words are anagrams if every letter appears the **same number of times** in both words
+But let's also solve it using what we learned: a **frequency dictionary**. Two words are anagrams if every letter appears the same number of times in both words
 
 ```py
 def is_anagram(word1, word2):
@@ -68,16 +68,16 @@ Notice the **early exit**: if the lengths are different, they can't be anagrams,
 
 ---
 
-The frequency approach is actually **faster** than sorting for very long strings. Sorting takes roughly **n × log(n)** steps, while counting takes only **n** steps. For this exercise, both are fine, but it's good to think about these things
+The frequency approach is actually faster than sorting for very long strings. Sorting takes roughly **n × log(n)** steps, while counting takes only **n** steps. For this exercise, both are fine, but it's good to think about these things
 
 ---
 
 ## Mission: Passphrase Match
 
-Two crew members each transmit a scrambled passphrase. The airlock only opens if the two passphrases are **anagrams** of each other: the same letters in a different order (case doesn't matter).
+Two crew members each transmit a scrambled passphrase. The airlock only opens if the two passphrases are anagrams of each other: the same letters in a different order (case doesn't matter).
 
-1. Write a function **are_anagrams(a, b)** that returns `True` if the two words are anagrams, `False` otherwise. Use **either** approach (sort the letters and compare, or a frequency dictionary). Lowercase both first so capitals don't matter.
-2. **Read** two passphrases, then print `Anagram: ` followed by the result.
+1. Write a function **are_anagrams(a, b)** that returns `True` if the two words are anagrams, `False` otherwise. Use either approach (sort the letters and compare, or a frequency dictionary). Lowercase both first so capitals don't matter.
+2. Read two passphrases, then print `Anagram: ` followed by the result.
 3. On the next line, print `Access granted` if they match, or `Access denied` if they don't.
 
 **Input:**

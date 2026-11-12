@@ -1,14 +1,14 @@
-Our final mini-project: a **to-do list manager**. We'll build functions to **add**, **remove**, **mark as done**, and **display** tasks. This ties together everything: **lists**, **dictionaries**, **functions**, **loops**, **if/else**, and **string formatting**
+Our final mini-project: a to-do list manager. We'll build functions to add, remove, mark as done, and display tasks. This ties together everything: lists, dictionaries, functions, loops, if/else, and string formatting
 
 ---
 
-Each task is a dictionary with a **name** and a **done** status
+Each task is a dictionary with a name and a done status
 
 ```py
 task = {"name": "Learn Python", "done": False}
 ```
 
-Our to-do list is a **list** of these dictionaries
+Our to-do list is a list of these dictionaries
 
 ```py
 todos = [
@@ -93,11 +93,11 @@ Output
 1. [not done] Start Java curriculum
 ```
 
-Each function does **one thing** and does it well. This is a core principle of good programming. The functions are small, easy to understand, and easy to test
+Each function does one thing and does it well. This is a core principle of good programming. The functions are small, easy to understand, and easy to test
 
 ---
 
-A **count** function is useful too
+A count function is useful too
 
 ```py
 def count_done(todos):
@@ -115,7 +115,7 @@ def count_not_done(todos):
 
 ## Mission: Mission Task Board
 
-The crew tracks its work on a shared task board. You'll **read the tasks from input**, build the board, mark some as complete, then print it. Each task is a dictionary with a `name` and a `done` status, and the board is a list of those dictionaries.
+The crew tracks its work on a shared task board. You'll read the tasks from input, build the board, mark some as complete, then print it. Each task is a dictionary with a `name` and a `done` status, and the board is a list of those dictionaries.
 
 Write three functions:
 
@@ -125,9 +125,9 @@ Write three functions:
 
 Then:
 
-1. Read a number **N**, then read **N task names** (one per line) and add each one to the board.
-2. Read one more line of **indices to complete**, separated by spaces (for example `0 2`), and mark each of those tasks as done.
-3. **Display** the board: for each task print its index, then `. `, then `[done]` or `[pending]`, then the task name.
+1. Read a number N, then read N task names (one per line) and add each one to the board.
+2. Read one more line of indices to complete, separated by spaces (for example `0 2`), and mark each of those tasks as done.
+3. Display the board: for each task print its index, then `. `, then `[done]` or `[pending]`, then the task name.
 4. Finally print `Completed: ` followed by the number done, a `/`, and the total.
 
 **Input:**

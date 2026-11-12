@@ -18,7 +18,7 @@ le conectează în timp real.
 
 ### De ce nu doar `grep error sistem.log`?
 
-Ambele funcționează! Dar pipe-urile strălucesc atunci când înlănțui comenzi care **nu**
+Ambele funcționează! Dar pipe-urile strălucesc atunci când înlănțui comenzi care nu
 pot accepta un nume de fișier ca argument sau când construiești lanțuri mai lungi
 (lecția următoare). Pipe-ul face fiecare comandă combinabilă: fiecare face o singură
 treabă mică, iar tu le îmbini ca pe modulele unei stații.

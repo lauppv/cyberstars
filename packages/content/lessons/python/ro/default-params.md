@@ -1,4 +1,4 @@
-Am învățat că funcțiile primesc **parametri**. Dar uneori, de cele mai multe ori un parametru are **aceeași valoare**, și doar ocazional vrem să-l schimbăm. Ar fi enervant să-l transmitem de fiecare dată
+Am învățat că funcțiile primesc parametri. Dar uneori, de cele mai multe ori un parametru are aceeași valoare, și doar ocazional vrem să-l schimbăm. Ar fi enervant să-l transmitem de fiecare dată
 
 De exemplu, imaginează-ți o funcție care creează un profil de jucător
 
@@ -12,7 +12,7 @@ creaza_jucator("Cortez", 100, "Vice City")
 creaza_jucator("Phil", 50, "Vice City")
 ```
 
-Am scris **100** și **"Vice City"** de trei ori din patru. E multă repetiție. Ce-ar fi dacă am putea spune „viata este 100 **în mod implicit** și oras este Vice City **în mod implicit**, dacă nu spun altfel"?
+Am scris 100 și "Vice City" de trei ori din patru. E multă repetiție. Ce-ar fi dacă am putea spune „viata este 100 în mod implicit și oras este Vice City în mod implicit, dacă nu spun altfel"?
 
 ```py
 def creaza_jucator(nume, viata=100, oras="Vice City"):
@@ -33,25 +33,25 @@ Phil | HP: 50 | Oras: Vice City
 Cortez | HP: 100 | Oras: San Andreas
 ```
 
-**viata=100** și **oras="Vice City"** sunt **valori implicite**. Dacă nu transmitem nimic pentru acei parametri, Python folosește valorile implicite. Dacă **transmitem** ceva, aceasta înlocuiește valoarea implicită
+**viata=100** și **oras="Vice City"** sunt **valori implicite**. Dacă nu transmitem nimic pentru acei parametri, Python folosește valorile implicite. Dacă transmitem ceva, aceasta înlocuiește valoarea implicită
 
 ---
 
-**Regulă importantă**: parametrii cu valori implicite trebuie să vină **după** parametrii fără valori implicite
+Regulă importantă: parametrii cu valori implicite trebuie să vină **după** parametrii fără valori implicite
 
 ```py
 def f(a, b=10, c=20):
     print(a, b, c)
 ```
 
-Asta e în regulă. **a** nu are valoare implicită, **b** și **c** au
+Asta e în regulă. a nu are valoare implicită, b și c au
 
 ```py
 def f(a=10, b, c):
     print(a, b, c)
 ```
 
-**Rulează** asta. Python ne dă o **SyntaxError**. Nu poți pune un parametru fără valoare implicită **după** unul care are valoare implicită. Gândește-te: Python nu ar ști care valoare aparține cărui parametru
+Rulează asta. Python ne dă o **SyntaxError**. Nu poți pune un parametru fără valoare implicită după unul care are valoare implicită. Gândește-te: Python nu ar ști care valoare aparține cărui parametru
 
 ---
 
@@ -66,13 +66,13 @@ creaza_jucator("Tommy", oras="Liberty City")
 
 Afișează **Tommy | HP: 100 | Oras: Liberty City**
 
-Am sărit peste **viata** (am păstrat valoarea implicită 100) și am schimbat doar **oras** folosind **numele** lui. Fără argumente cu nume, ar trebui să scriem **creaza_jucator("Tommy", 100, "Liberty City")**, transmițând 100 deși este valoarea implicită
+Am sărit peste viata (am păstrat valoarea implicită 100) și am schimbat doar oras folosind numele lui. Fără argumente cu nume, ar trebui să scriem **creaza_jucator("Tommy", 100, "Liberty City")**, transmițând 100 deși este valoarea implicită
 
 ---
 
 ## Misiune: Jurnal de Andocare
 
-Scrie o funcție `andocheaza(nava, doc="A1", prioritate="normal")` care afișează `nava andocat la doc (prioritate)`. Parametrii `doc` și `prioritate` au **valori implicite**, deci pot fi omiși.
+Scrie o funcție `andocheaza(nava, doc="A1", prioritate="normal")` care afișează `nava andocat la doc (prioritate)`. Parametrii `doc` și `prioritate` au valori implicite, deci pot fi omiși.
 
 Cele trei nume de nave sunt deja în starter ca variabile `nava1`, `nava2` și `nava3`. Apeleaz-o exact așa (apelurile sunt deja în starter):
 
@@ -82,7 +82,7 @@ andocheaza(nava2, "B7")
 andocheaza(nava3, prioritate="urgent")
 ```
 
-Observă că ultimul apel folosește un **argument cu nume** (`prioritate="urgent"`) ca să sară peste `doc` și să-i păstreze valoarea implicită în timp ce setează totuși prioritatea.
+Observă că ultimul apel folosește un argument cu nume (`prioritate="urgent"`) ca să sară peste `doc` și să-i păstreze valoarea implicită în timp ce setează totuși prioritatea.
 
 **Ieșire**
 

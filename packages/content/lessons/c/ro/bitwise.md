@@ -1,6 +1,6 @@
-Calculatoarele gândesc în **biți**: 0-uri și 1-uri. C ne lasă să lucrăm direct cu acei biți folosind **operatorii pe biți**. Ăsta este nivelul cel mai jos la care poți ajunge fără să scrii asamblare
+Calculatoarele gândesc în biți: 0-uri și 1-uri. C ne lasă să lucrăm direct cu acei biți folosind **operatorii pe biți**. Ăsta este nivelul cel mai jos la care poți ajunge fără să scrii asamblare
 
-Numărul **13** în binar este **1101**. Numărul **10** este **1010**. Operatorii pe biți acționează asupra fiecărui bit individual
+Numărul 13 în binar este **1101**. Numărul 10 este **1010**. Operatorii pe biți acționează asupra fiecărui bit individual
 
 ---
 
@@ -77,9 +77,9 @@ int main(void) {
 
 ---
 
-**Operatorii de shift** mută biții la stânga sau la dreapta
+Operatorii de shift mută biții la stânga sau la dreapta
 
-**<< (shift la stânga)**: mută biții la stânga, umple cu 0-uri. Fiecare shift la stânga **înmulțește cu 2**
+**<< (shift la stânga)**: mută biții la stânga, umple cu 0-uri. Fiecare shift la stânga înmulțește cu 2
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main(void) {
 }
 ```
 
-**>> (shift la dreapta)**: mută biții la dreapta. Fiecare shift la dreapta **împarte la 2**
+**>> (shift la dreapta)**: mută biții la dreapta. Fiecare shift la dreapta împarte la 2
 
 ```c
 #include <stdio.h>
@@ -135,7 +135,7 @@ int main(void) {
 }
 ```
 
-Un singur **int** stochează mai multe proprietăți da/nu folosind biți individuali. Asta este exact ce face UNIX când afișezi `ls -l` și vezi `rwx` lângă un fișier: fiecare literă este un bit dintr-un întreg
+Un singur int stochează mai multe proprietăți da/nu folosind biți individuali. Asta este exact ce face UNIX când afișezi `ls -l` și vezi `rwx` lângă un fișier: fiecare literă este un bit dintr-un întreg
 
 ---
 
@@ -143,11 +143,11 @@ Un singur **int** stochează mai multe proprietăți da/nu folosind biți indivi
 
 Centrul de calcul verifică perechi de coduri de securitate primite de la terminale. Operatorul de tură introduce doi întregi, iar sistemul trebuie să afișeze cele patru operații de bază pe biți ca să confirme configurația.
 
-1. Citește doi întregi **a** și **b**
-2. Afișează **a & b** (AND)
-3. Afișează **a | b** (OR)
-4. Afișează **a ^ b** (XOR)
-5. Afișează **a << 2** (shift la stânga cu 2)
+1. Citește doi întregi a și b
+2. Afișează a & b (AND)
+3. Afișează a | b (OR)
+4. Afișează a ^ b (XOR)
+5. Afișează a << 2 (shift la stânga cu 2)
 
 **Exemplu**
 

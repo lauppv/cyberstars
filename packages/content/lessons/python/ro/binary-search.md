@@ -1,10 +1,10 @@
-Îți amintești de **căutarea liniară**? Parcurgem lista element cu element. Pentru o listă de **1.000.000** de elemente, s-ar putea să le verificăm pe toate. Asta e lent
+Îți amintești de căutarea liniară? Parcurgem lista element cu element. Pentru o listă de 1.000.000 de elemente, s-ar putea să le verificăm pe toate. Asta e lent
 
 **Căutarea binară** este dramatic mai rapidă, dar are o cerință: lista trebuie să fie **sortată**
 
-Ideea: ne uităm la elementul din **mijloc**. Dacă este ceea ce căutăm, perfect. Dacă ținta noastră este **mai mică**, trebuie să fie în **jumătatea stângă**. Dacă este **mai mare**, trebuie să fie în **jumătatea dreaptă**. Apoi repetăm pe jumătatea corectă
+Ideea: ne uităm la elementul din **mijloc**. Dacă este ceea ce căutăm, perfect. Dacă ținta noastră este mai mică, trebuie să fie în jumătatea stângă. Dacă este mai mare, trebuie să fie în jumătatea dreaptă. Apoi repetăm pe jumătatea corectă
 
-Gândește-te la o carte de telefon. Cauți „Vercetti". Nu începi de la pagina 1. Deschizi cartea aproximativ la mijloc. Dacă pagina din mijloc arată nume care încep cu „M", știi că Vercetti este în **a doua jumătate**. Deschizi la mijlocul celei de-a doua jumătăți. Și așa mai departe
+Gândește-te la o carte de telefon. Cauți „Vercetti". Nu începi de la pagina 1. Deschizi cartea aproximativ la mijloc. Dacă pagina din mijloc arată nume care încep cu „M", știi că Vercetti este în a doua jumătate. Deschizi la mijlocul celei de-a doua jumătăți. Și așa mai departe
 
 ```py
 numere = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
@@ -19,7 +19,7 @@ tinta = 13
 
 **Pasul 4**: [13]. Am găsit-o!
 
-Am verificat **4 elemente** în loc să le scanăm pe toate 10. Pentru 1.000.000 de elemente, căutarea binară verifică cel mult **20**. Asta e magia înjumătățirii problemei la fiecare pas
+Am verificat 4 elemente în loc să le scanăm pe toate 10. Pentru 1.000.000 de elemente, căutarea binară verifică cel mult **20**. Asta e magia înjumătățirii problemei la fiecare pas
 
 ---
 
@@ -63,7 +63,7 @@ Hai să urmărim pas cu pas **cautare_binara([1,3,5,7,9,11,13,15,17,19], 13)**
 - stanga=0, dreapta=9, mijloc=4 → numere[4]=9 < 13 → stanga=5
 - stanga=5, dreapta=9, mijloc=7 → numere[7]=15 > 13 → dreapta=6
 - stanga=5, dreapta=6, mijloc=5 → numere[5]=11 < 13 → stanga=6
-- stanga=6, dreapta=6, mijloc=6 → numere[6]=13 == 13 → **găsit la indexul 6!**
+- stanga=6, dreapta=6, mijloc=6 → numere[6]=13 == 13 → găsit la indexul 6!
 
 ```visual
 {
@@ -82,7 +82,7 @@ Hai să urmărim pas cu pas **cautare_binara([1,3,5,7,9,11,13,15,17,19], 13)**
 
 ---
 
-O putem scrie și **recursiv**
+O putem scrie și recursiv
 
 ```py
 def cautare_binara_recursiva(numere, tinta, stanga, dreapta):
@@ -106,15 +106,15 @@ Rezultat **6**. Aceeași logică, alt stil
 
 ---
 
-**Cât de rapidă este căutarea binară?** Fiecare pas înjumătățește lista. Pornind de la **n** elemente: n → n/2 → n/4 → n/8 → … → 1. Câte înjumătățiri? Asta e **log₂(n)**. Pentru 1.000.000 de elemente: log₂(1.000.000) ≈ **20 de pași**. Compară asta cu cei 1.000.000 de pași ai căutării liniare. Diferența este uriașă
+Cât de rapidă este căutarea binară? Fiecare pas înjumătățește lista. Pornind de la n elemente: n → n/2 → n/4 → n/8 → … → 1. Câte înjumătățiri? Asta e **log₂(n)**. Pentru 1.000.000 de elemente: log₂(1.000.000) ≈ 20 de pași. Compară asta cu cei 1.000.000 de pași ai căutării liniare. Diferența este uriașă
 
 ---
 
 ## Misiune: Căutare în Arhivă
 
-Arhiva stației stochează codurile echipajului (ID-urile) într-o listă **sortată**. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid, așa că vei folosi **căutarea binară**, nu o scanare liniară.
+Arhiva stației stochează codurile echipajului (ID-urile) într-o listă sortată. Controlul Misiunii trimite un lot de interogări de căutare și are nevoie ca fiecare să primească răspuns rapid, așa că vei folosi căutarea binară, nu o scanare liniară.
 
-1. Scrie o funcție **cautare_binara(numere, tinta)** care returnează **indexul** unde se află `tinta` în lista sortată, sau `-1` dacă nu este acolo.
+1. Scrie o funcție **cautare_binara(numere, tinta)** care returnează indexul unde se află `tinta` în lista sortată, sau `-1` dacă nu este acolo.
 2. Pentru fiecare interogare, afișează interogarea, apoi `-> index ` și indexul dacă a fost găsit, sau `-> negasit` dacă nu.
 3. Afișează `Gasite: ` urmat de câte interogări au fost localizate.
 

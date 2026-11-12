@@ -10,7 +10,7 @@ for n in numere:
 print(dublat)
 ```
 
-Rezultat **[2, 4, 6, 8, 10]**
+Rezultat [2, 4, 6, 8, 10]
 
 Acest tipar este atât de des întâlnit încât Python ne oferă o scurtătură: **list comprehension**
 
@@ -20,7 +20,7 @@ dublat = [n * 2 for n in numere]
 print(dublat)
 ```
 
-Rezultat **[2, 4, 6, 8, 10]**. Același rezultat, o singură linie în loc de patru. Sintaxa este: **[expresie for variabilă in colecție]**
+Rezultat [2, 4, 6, 8, 10]. Același rezultat, o singură linie în loc de patru. Sintaxa este: **[expresie for variabilă in colecție]**
 
 Hai să o descompunem:
 
@@ -38,7 +38,7 @@ pare = [n for n in numere if n % 2 == 0]
 print(pare)
 ```
 
-Rezultat **[2, 4, 6, 8, 10]**. Doar numerele unde **n % 2 == 0** au ajuns în lista nouă
+Rezultat [2, 4, 6, 8, 10]. Doar numerele unde **n % 2 == 0** au ajuns în lista nouă
 
 ```py
 nume = ["Tommy Vercetti", "Lance", "Cortez", "Phil Cassidy"]
@@ -70,7 +70,7 @@ Rezultat **[22.5, 36.0, 27.0]**. Am luat doar prețurile peste 20, apoi am aplic
 
 ---
 
-**Când să o folosești?** List comprehensions sunt grozave pentru transformări simple. Dacă logica devine complicată (if-uri imbricate, mai multe linii de procesare), folosește mai degrabă o buclă **for** obișnuită. Lizibilitatea este mai importantă decât să fii „deștept"
+Când să o folosești? List comprehensions sunt grozave pentru transformări simple. Dacă logica devine complicată (if-uri imbricate, mai multe linii de procesare), folosește mai degrabă o buclă for obișnuită. Lizibilitatea este mai importantă decât să fii „deștept"
 
 ```py
 scoruri = [85, 42, 91, 67, 38, 74, 95]
@@ -84,11 +84,11 @@ Curat. Ușor de citit. Cazul perfect de folosire
 
 ## Misiune: Filtru de Date
 
-Ai o listă de citiri de senzori numită citiri. Folosind **list comprehension** pentru fiecare pas:
+Ai o listă de citiri de senzori numită citiri. Folosind list comprehension pentru fiecare pas:
 
-1. Creează `mari`: doar citirile **peste 80**
-2. Creează `dublate`: fiecare citire **înmulțită cu 2**
-3. Creează `promovate`: doar citirile care sunt **50 sau mai mult**
+1. Creează `mari`: doar citirile peste 80
+2. Creează `dublate`: fiecare citire înmulțită cu 2
+3. Creează `promovate`: doar citirile care sunt 50 sau mai mult
 4. Afișează toate cele trei liste, fiecare pe linia ei
 
 **Ieșire**

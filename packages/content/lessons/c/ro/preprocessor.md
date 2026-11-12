@@ -1,4 +1,4 @@
-Înainte ca compilatorul să-ți vadă măcar codul, rulează un pas special: **preprocesorul**. Toate acele linii care încep cu **#** sunt directive de preprocesor. Am folosit **#include** încă de la prima lecție. Hai să înțelegem ce se întâmplă cu adevărat
+Înainte ca compilatorul să-ți vadă măcar codul, rulează un pas special: **preprocesorul**. Toate acele linii care încep cu **#** sunt directive de preprocesor. Am folosit #include încă de la prima lecție. Hai să înțelegem ce se întâmplă cu adevărat
 
 **#include** copiază întregul conținut al unui fișier în codul tău
 
@@ -7,7 +7,7 @@
 #include "fisierul_meu.h"   // fisierul tau: cauta mai intai in directorul curent
 ```
 
-Diferența: **< >** pentru header-ele de sistem, **" "** pentru fișierele tale. Când scrii **#include <stdio.h>**, preprocesorul lipește literalmente mii de linii de declarații în fișierul tău înainte de compilare. Așa devine **printf** disponibil
+Diferența: **< >** pentru header-ele de sistem, **" "** pentru fișierele tale. Când scrii #include <stdio.h>, preprocesorul lipește literalmente mii de linii de declarații în fișierul tău înainte de compilare. Așa devine printf disponibil
 
 ---
 
@@ -33,7 +33,7 @@ Prin convenție, macro-urile se scriu cu **MAJUSCULE** ca să le poți distinge 
 
 ---
 
-**#define** poate crea și macro-uri cu parametri
+#define poate crea și macro-uri cu parametri
 
 ```c
 #include <stdio.h>
@@ -48,7 +48,7 @@ int main(void) {
 }
 ```
 
-Parantezele suplimentare sunt importante! Fără ele, **PATRAT(2+3)** s-ar expanda la **2+3 \* 2+3** = **2 + 6 + 3** = **11** în loc de **25**. Pune întotdeauna parametrii macro-urilor între paranteze
+Parantezele suplimentare sunt importante! Fără ele, **PATRAT(2+3)** s-ar expanda la **2+3 \* 2+3** = 2 + 6 + 3 = **11** în loc de **25**. Pune întotdeauna parametrii macro-urilor între paranteze
 
 ---
 
@@ -69,7 +69,7 @@ int main(void) {
 }
 ```
 
-Dacă **DEBUG** este definit, mesajul de debug este compilat. Dacă scoatem linia **#define DEBUG**, compilatorul sare complet peste acel printf: nici măcar nu există în programul final. Asta este folosit masiv în proiectele reale pentru a include/exclude logging-ul de debug fără să ștergi codul
+Dacă DEBUG este definit, mesajul de debug este compilat. Dacă scoatem linia **#define DEBUG**, compilatorul sare complet peste acel printf: nici măcar nu există în programul final. Asta este folosit masiv în proiectele reale pentru a include/exclude logging-ul de debug fără să ștergi codul
 
 ---
 
@@ -77,18 +77,18 @@ Dacă **DEBUG** este definit, mesajul de debug este compilat. Dacă scoatem lini
 
 Ești tehnician la centrul de calcul. Înainte de a preda noul rack de servere și antena satelit de pe acoperiș, trebuie să completezi fișa de configurare a compilatorului cu macro-urile folosite la calculele geometrice. Panoul de diagnostice depinde de ele ca să compileze.
 
-Deasupra lui **main**, definește:
+Deasupra lui main, definește:
 
 - **PI**: `3.14159`
 - **ARIE_DREPTUNGHI(lung, lat)**: returnează `((lung) * (lat))` (suprafața sălii de echipamente)
 - **ARIE_CERC(r)**: returnează `((PI) * (r) * (r))` (suprafața antenei)
 - **LIMITA_MAX**: `100` (limita de temperatură a sălii, în grade)
 
-În **main**, folosește macro-urile ca să afișezi:
+În main, folosește macro-urile ca să afișezi:
 
-1. `ARIE_DREPTUNGHI(5, 3)` pe formatul **"Sala: %d"**
-2. `ARIE_CERC(4.0)` pe formatul **"Antena: %.2f"**
-3. `LIMITA_MAX` pe formatul **"Limita: %d"**
+1. `ARIE_DREPTUNGHI(5, 3)` pe formatul "Sala: %d"
+2. `ARIE_CERC(4.0)` pe formatul "Antena: %.2f"
+3. `LIMITA_MAX` pe formatul "Limita: %d"
 
 **Exemplu**
 

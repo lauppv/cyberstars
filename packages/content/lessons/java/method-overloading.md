@@ -1,6 +1,6 @@
-Java lets you have **multiple methods with the same name**, as long as they take **different parameters**. This is called **method overloading**
+Java lets you have multiple methods with the same name, as long as they take different parameters. This is called **method overloading**
 
-Imagine Phil Cassidy's gun shop. You walk in and say "I want a weapon." Phil's response depends on **what info you give him**:
+Imagine Phil Cassidy's gun shop. You walk in and say "I want a weapon." Phil's response depends on what info you give him:
 
 - Just a name? He grabs it off the shelf
 - A name and a quantity? He grabs that many
@@ -32,7 +32,7 @@ Weapon: Shotgun
 Weapon: Pistol (x3)
 ```
 
-Java looks at **how many arguments** you pass and **what types** they are, then picks the right version of the method. This happens at compile time: Java figures it out before the program even runs
+Java looks at how many arguments you pass and what types they are, then picks the right version of the method. This happens at compile time: Java figures it out before the program even runs
 
 Let's trace the two calls:
 
@@ -41,7 +41,7 @@ Let's trace the two calls:
 
 ---
 
-The key rule: overloaded methods must differ in their **parameter list**. That means either a different **number** of parameters, or different **types**
+The key rule: overloaded methods must differ in their **parameter list**. That means either a different number of parameters, or different types
 
 ```java
 public class Main {
@@ -73,11 +73,11 @@ Number: 42
 Text: Lance, Number: 100
 ```
 
-Three methods, all named **info**, but Java knows which one to call based on what you pass in
+Three methods, all named info, but Java knows which one to call based on what you pass in
 
 ---
 
-What does **NOT** count as overloading? Changing only the **return type**
+What does NOT count as overloading? Changing only the **return type**
 
 ```text
 public class Main {
@@ -87,7 +87,7 @@ public class Main {
 }
 ```
 
-Java says: "If someone calls **calculate(5)**, which one do I pick?" It can't tell just from the return type, so this is **not allowed**
+Java says: "If someone calls calculate(5), which one do I pick?" It can't tell just from the return type, so this is not allowed
 
 ---
 

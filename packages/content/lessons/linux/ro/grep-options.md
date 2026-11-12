@@ -13,7 +13,7 @@ Astfel se potrivesc `error`, `Error`, `ERROR` și orice combinație.
 
 ### Numără potrivirile: `grep -c`
 
-Opțiunea `-c` afișează doar **numărul** de linii care se potrivesc, nu și liniile în
+Opțiunea `-c` afișează doar numărul de linii care se potrivesc, nu și liniile în
 sine:
 
 ```bash
@@ -36,7 +36,7 @@ Astfel se ascund toate liniile cu `info` și se afișează tot restul.
 
 ### Afișează numerele liniilor: `grep -n`
 
-Opțiunea `-n` pune **numărul liniei** în fața fiecărei potriviri:
+Opțiunea `-n` pune numărul liniei în fața fiecărei potriviri:
 
 ```bash
 grep -n error sistem.log

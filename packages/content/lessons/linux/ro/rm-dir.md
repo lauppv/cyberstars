@@ -1,4 +1,4 @@
-Ștergerea **folderelor** necesită puțin mai multă grijă decât ștergerea fișierelor.
+Ștergerea folderelor necesită puțin mai multă grijă decât ștergerea fișierelor.
 Ai două unelte la dispoziție.
 
 ### Foldere goale: `rmdir`
@@ -20,7 +20,7 @@ rmdir rapoarte
 rmdir: failed to remove 'rapoarte': Directory not empty
 ```
 
-Acest refuz este o **măsură de siguranță**: te împiedică să ștergi fișiere din
+Acest refuz este o măsură de siguranță: te împiedică să ștergi fișiere din
 greșeală.
 
 ### Foldere cu conținut: `rm -r`
@@ -41,10 +41,10 @@ lor, totul permanent.
 posibilitate de recuperare. Întotdeauna rulează `ls` pe folder mai întâi, ca să fii
 sigur ce conține.
 
-| Comandă | Folosește-o pentru                             |
-| ------- | ---------------------------------------------- |
-| `rmdir` | un folder **gol** (sigur)                      |
-| `rm -r` | un folder **cu conținut** (puternic, atenție!) |
+| Comandă | Folosește-o pentru                         |
+| ------- | ------------------------------------------ |
+| `rmdir` | un folder gol (sigur)                      |
+| `rm -r` | un folder cu conținut (puternic, atenție!) |
 
 ---
 

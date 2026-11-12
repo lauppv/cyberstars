@@ -1,6 +1,6 @@
-E timpul pentru un mini-proiect! O să construim un **joc de ghicit numere**. Calculatorul alege un număr aleatoriu și jucătorul trebuie să-l ghicească. După fiecare ghicire, programul spune **prea mare**, **prea mic**, sau **corect!**
+E timpul pentru un mini-proiect! O să construim un joc de ghicit numere. Calculatorul alege un număr aleatoriu și jucătorul trebuie să-l ghicească. După fiecare ghicire, programul spune prea mare, prea mic, sau corect!
 
-Asta combină tot ce am învățat: **variabile**, **bucle**, **if/else**, **input**, **funcții**, și chiar un pic de **try/except**
+Asta combină tot ce am învățat: variabile, bucle, if/else, input, funcții, și chiar un pic de try/except
 
 ---
 
@@ -95,7 +95,7 @@ def joaca_joc():
 joaca_joc()
 ```
 
-Observă cum am folosit **tot**: import, funcție, buclă for, try/except, if/elif/else, f-string-uri, return (ca să ieșim devreme când ghicesc corect)
+Observă cum am folosit tot: import, funcție, buclă for, try/except, if/elif/else, f-string-uri, return (ca să ieșim devreme când ghicesc corect)
 
 ---
 
@@ -105,7 +105,7 @@ Reactorul este blocat în spatele unui cod numeric secret, stocat într-o variab
 
 1. Scrie o funcție **verifica_ghicirea(numar_secret, ghicire)** care returnează `"prea mic"` dacă ghicirea e mai mică decât secretul, `"prea mare"` dacă e mai mare, și `"corect"` dacă se potrivesc.
 2. Parcurge ghicirile, numărând încercările. Pentru fiecare ghicire, afișează ghicirea, apoi `: `, apoi rezultatul.
-3. **Oprește-te** imediat ce o ghicire e corectă, apoi afișează `Spart in N incercari!` (cu numărul real de încercări).
+3. Oprește-te imediat ce o ghicire e corectă, apoi afișează `Spart in N incercari!` (cu numărul real de încercări).
 
 **Ieșire**
 

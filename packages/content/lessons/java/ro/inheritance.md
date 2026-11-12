@@ -1,4 +1,4 @@
-Uneori vrei o clasă care e practic o altă clasă, dar cu ceva în plus. În Java, o clasă poate **moșteni** de la alta folosind cuvântul cheie **extends**
+Uneori vrei o clasă care e practic o altă clasă, dar cu ceva în plus. În Java, o clasă poate moșteni de la alta folosind cuvântul cheie **extends**
 
 ```text
 class Criminal {
@@ -24,11 +24,11 @@ class Sofer extends Criminal {
 }
 ```
 
-Clasa `Sofer` **moștenește** totul de la `Criminal`: câmpul ei `nume`, logica constructorului, totul. Apoi **suprascrie** metoda `vorbeste()` ca să facă propriul ei lucru. Aceasta este **moștenirea**, una dintre cele mai mari idei din Java
+Clasa `Sofer` moștenește totul de la `Criminal`: câmpul ei `nume`, logica constructorului, totul. Apoi suprascrie metoda `vorbeste()` ca să facă propriul ei lucru. Aceasta este **moștenirea**, una dintre cele mai mari idei din Java
 
 ---
 
-Un exemplu din Vice City: Tommy Vercetti este un **criminal** (clasa părinte). Lance Vance este și el un criminal, dar este un _tip specific_: un criminal care te trădează pe la spate. El **extinde** clasa de bază criminal cu propriul lui comportament special (trădarea). El are în continuare toate abilitățile de bază ale unui criminal, plus propria lui răsucire
+Un exemplu din Vice City: Tommy Vercetti este un criminal (clasa părinte). Lance Vance este și el un criminal, dar este un _tip specific_: un criminal care te trădează pe la spate. El extinde clasa de bază criminal cu propriul lui comportament special (trădarea). El are în continuare toate abilitățile de bază ale unui criminal, plus propria lui răsucire
 
 ---
 
@@ -56,7 +56,7 @@ class Sef extends Criminal {
 
 ---
 
-O clasă copil poate de asemenea **adăuga** câmpuri și metode noi pe care părintele nu le are
+O clasă copil poate de asemenea adăuga câmpuri și metode noi pe care părintele nu le are
 
 ```text
 class Criminal {

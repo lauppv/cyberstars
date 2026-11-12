@@ -1,4 +1,4 @@
-In programming we often want to **store** things so we can use them later. The simplest example: numbers. In Java, before storing something, we have to tell the language **what kind of value** we want to store. That is called a **type**
+In programming we often want to store things so we can use them later. The simplest example: numbers. In Java, before storing something, we have to tell the language what kind of value we want to store. That is called a **type**
 
 ```java
 public class Main {
@@ -11,9 +11,9 @@ public class Main {
 }
 ```
 
-**int** is the **type** for whole numbers (1, 2, 100, -20, 0). We tell Java: "I am about to store a whole number, and its name is **age**"
+**int** is the type for whole numbers (1, 2, 100, -20, 0). We tell Java: "I am about to store a whole number, and its name is age"
 
-Java is **strict** about types: it always wants to know what kind of value you put in a variable. The upside is that Java can catch many mistakes before the program even runs
+Java is strict about types: it always wants to know what kind of value you put in a variable. The upside is that Java can catch many mistakes before the program even runs
 
 ---
 
@@ -30,7 +30,7 @@ public class Main {
 }
 ```
 
-With the **=** sign, Java first computes what is on the **right**, then stores the result in the variable on the **left**. So **c = a + b** stores **8** in **c**
+With the **=** sign, Java first computes what is on the **right**, then stores the result in the variable on the left. So **c = a + b** stores **8** in c
 
 The classic increment by 1
 
@@ -44,9 +44,9 @@ public class Main {
 }
 ```
 
-Java looks at **n + 1**, sees **10 + 1 = 11**, and stores **11** back into **n**
+Java looks at n + 1, sees 10 + 1 = 11, and stores 11 back into n
 
-Java even has a **shortcut** for this
+Java even has a shortcut for this
 
 ```java
 public class Main {
@@ -62,7 +62,7 @@ public class Main {
 
 ---
 
-For numbers with decimals (like **3.14** or **1.75**), **int** is not enough. We use **double**
+For numbers with decimals (like 3.14 or 1.75), int is not enough. We use **double**
 
 ```java
 public class Main {
@@ -80,9 +80,9 @@ Output
 36.14159
 ```
 
-The result is a **double** because we mixed an **int** with a **double**
+The result is a double because we mixed an int with a double
 
-**Important**: if you try to store a decimal in an **int**, Java will refuse
+Important: if you try to store a decimal in an int, Java will refuse
 
 ```java
 public class Main {
@@ -108,7 +108,7 @@ public class Main {
 }
 ```
 
-You might expect **3.5**. But you will see **3**. Why? Because when we divide an **int** by an **int**, Java gives us back an **int**, dropping the decimals. To get **3.5**, we need at least one **double**
+You might expect **3.5**. But you will see **3**. Why? Because when we divide an int by an int, Java gives us back an int, dropping the decimals. To get 3.5, we need at least one double
 
 ```java
 public class Main {
@@ -120,7 +120,7 @@ public class Main {
 }
 ```
 
-Now we see **3.5**. Keep this in mind, it is a very common beginner bug
+Now we see 3.5. Keep this in mind, it is a very common beginner bug
 
 ---
 
@@ -130,7 +130,7 @@ Commander Cortez needs a new badge printed. Set the correct values for `age` and
 
 1. Set `age` to `57`
 2. Set `height` to `1.67`
-3. The final `println` already builds the message with **+**, just make sure the variables hold the right values
+3. The final `println` already builds the message with +, just make sure the variables hold the right values
 
 **Input** (already set at the top of your code; change the values to test):
 

@@ -1,4 +1,4 @@
-Am văzut deja **+**, **-**, **\***, **/** în lecțiile anterioare. Hai să ne uităm la restul setului de unelte aritmetice al C-ului
+Am văzut deja +, -, \*, / în lecțiile anterioare. Hai să ne uităm la restul setului de unelte aritmetice al C-ului
 
 ```c
 #include <stdio.h>
@@ -27,7 +27,7 @@ Ieșire
 2
 ```
 
-Cel interesant este **a / b = 3**, nu **3.4**. De ce? **a** și **b** sunt amândoi **int**, deci C face **împărțire întreagă** și aruncă partea zecimală. Am acoperit asta în **variables-float**
+Cel interesant este **a / b = 3**, nu **3.4**. De ce? a și b sunt amândoi int, deci C face **împărțire întreagă** și aruncă partea zecimală. Am acoperit asta în variables-float
 
 ---
 
@@ -45,7 +45,7 @@ int main(void) {
 
 **17 / 5 = 3** cu rest **2**, deci **17 % 5 = 2**. **20 / 4 = 5** exact, deci restul este **0**
 
-Caz de utilizare clasic: verificarea dacă un număr este **par**
+Caz de utilizare clasic: verificarea dacă un număr este par
 
 ```c
 #include <stdio.h>
@@ -63,20 +63,20 @@ int main(void) {
 
 ---
 
-C are **scurtături** la îndemână
+C are scurtături la îndemână
 
-- **a++** este același lucru cu **a = a + 1**
-- **a--** este același lucru cu **a = a - 1**
-- **a += 5** este același lucru cu **a = a + 5**
-- **a -= 3** este același lucru cu **a = a - 3**
-- **a \*= 2** este același lucru cu **a = a \* 2**
-- **a /= 4** este același lucru cu **a = a / 4**
+- **a++** este același lucru cu a = a + 1
+- **a--** este același lucru cu a = a - 1
+- **a += 5** este același lucru cu a = a + 5
+- **a -= 3** este același lucru cu a = a - 3
+- **a \*= 2** este același lucru cu a = a \* 2
+- **a /= 4** este același lucru cu a = a / 4
 
-Vei vedea **i++** în bucle **for** absolut peste tot
+Vei vedea i++ în bucle for absolut peste tot
 
 ---
 
-Dar **puterile**? C nu are un operator încorporat pentru putere. Folosim **pow()** din biblioteca matematică
+Dar puterile? C nu are un operator încorporat pentru putere. Folosim **pow()** din biblioteca matematică
 
 ```c
 #include <stdio.h>
@@ -88,13 +88,13 @@ int main(void) {
 }
 ```
 
-**pow()** întoarce mereu un **double**, deci chiar și **2 la puterea 3** iese ca **8.000000**, nu **8**
+pow() întoarce mereu un **double**, deci chiar și 2 la puterea 3 iese ca **8.000000**, nu **8**
 
-Ca să folosim **pow()** avem nevoie de **#include <math.h>**. Pe unele sisteme, trebuie și să legi biblioteca matematică cu **-lm** când compilezi, dar platforma noastră se ocupă de asta pentru noi
+Ca să folosim pow() avem nevoie de **#include <math.h>**. Pe unele sisteme, trebuie și să legi biblioteca matematică cu **-lm** când compilezi, dar platforma noastră se ocupă de asta pentru noi
 
 ---
 
-**Ordinea operațiilor** este aceeași ca în matematică: **\*** și **/** înaintea lui **+** și **-**
+**Ordinea operațiilor** este aceeași ca în matematică: \* și / înaintea lui + și -
 
 ```c
 #include <stdio.h>
@@ -106,7 +106,7 @@ int main(void) {
 }
 ```
 
-Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
+Când ai dubii, adaugă paranteze. Oricum fac codul mai ușor de citit
 
 ---
 
@@ -114,7 +114,7 @@ Când ai dubii, **adaugă paranteze**. Oricum fac codul mai ușor de citit
 
 Panoul de diagnostic al mainframe-ului citește două valori de pe consolă și rulează cele cinci operații aritmetice de bază, ca tehnicianul de tură să poată verifica rapid dacă unitatea aritmetică funcționează corect.
 
-Citește două numere întregi **a** și **b** folosind **scanf**, apoi afișează rezultatele lui `a + b`, `a - b`, `a * b`, `a / b` și `a % b`, fiecare pe propria linie. Citește datele direct; nu afișa nicio întrebare înainte de citire.
+Citește două numere întregi a și b folosind scanf, apoi afișează rezultatele lui `a + b`, `a - b`, `a * b`, `a / b` și `a % b`, fiecare pe propria linie. Citește datele direct; nu afișa nicio întrebare înainte de citire.
 
 **Exemplu**
 

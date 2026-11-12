@@ -1,14 +1,14 @@
 `find -name` matches by name. But `find` can filter by other properties too, most
-usefully by **type** and **size**.
+usefully by type and size.
 
 ### Filter by type: `-type`
 
 The `-type` option says whether you want files or directories:
 
-| Condition | Matches           |
-| --------- | ----------------- |
-| `-type f` | regular **files** |
-| `-type d` | **directories**   |
+| Condition | Matches       |
+| --------- | ------------- |
+| `-type f` | regular files |
+| `-type d` | directories   |
 
 ```bash
 find . -type d
@@ -20,9 +20,9 @@ That lists every folder under `.`. To find only files:
 find . -type f -name "*.log"
 ```
 
-This reads as: under `.`, find things that are **files** _and_ whose name ends in
+This reads as: under `.`, find things that are files _and_ whose name ends in
 `.log`. Multiple conditions are simply listed one after another: `find` requires
-**all** of them to match.
+all of them to match.
 
 ### Filter by size: `-size`
 

@@ -1,4 +1,4 @@
-Before the compiler even sees your code, a special step runs first: the **preprocessor**. Every line starting with **#** is a preprocessor directive. We've been using **#include** since the very first lesson. Let's understand what actually happens
+Before the compiler even sees your code, a special step runs first: the **preprocessor**. Every line starting with **#** is a preprocessor directive. We've been using #include since the very first lesson. Let's understand what actually happens
 
 **#include** copies the entire contents of a file into your code
 
@@ -7,7 +7,7 @@ Before the compiler even sees your code, a special step runs first: the **prepro
 #include "myheader.h"   // your own file, searched for in the current directory first
 ```
 
-The difference: **< >** for system headers, **" "** for your own files. When you write **#include <stdio.h>**, the preprocessor literally pastes thousands of lines of declarations into your file before compilation. That's how **printf** becomes available
+The difference: **< >** for system headers, **" "** for your own files. When you write #include <stdio.h>, the preprocessor literally pastes thousands of lines of declarations into your file before compilation. That's how printf becomes available
 
 ---
 
@@ -33,7 +33,7 @@ By convention, macros are written in **UPPERCASE** so you can tell them apart fr
 
 ---
 
-**#define** can also create macros with parameters
+#define can also create macros with parameters
 
 ```c
 #include <stdio.h>
@@ -48,7 +48,7 @@ int main(void) {
 }
 ```
 
-The extra parentheses matter! Without them, **SQUARE(2+3)** would expand to **2+3 \* 2+3** = **2 + 6 + 3** = **11** instead of **25**. Always wrap macro parameters in parentheses
+The extra parentheses matter! Without them, **SQUARE(2+3)** would expand to **2+3 \* 2+3** = 2 + 6 + 3 = **11** instead of **25**. Always wrap macro parameters in parentheses
 
 ---
 
@@ -69,7 +69,7 @@ int main(void) {
 }
 ```
 
-If **DEBUG** is defined, the debug message gets compiled in. If we remove the **#define DEBUG** line, the compiler skips that printf entirely: it doesn't even exist in the final program. This is used heavily in real projects to include/exclude debug logging without deleting the code
+If DEBUG is defined, the debug message gets compiled in. If we remove the **#define DEBUG** line, the compiler skips that printf entirely: it doesn't even exist in the final program. This is used heavily in real projects to include/exclude debug logging without deleting the code
 
 ---
 
@@ -77,18 +77,18 @@ If **DEBUG** is defined, the debug message gets compiled in. If we remove the **
 
 You're a technician at the computing center. Before handing off the new server rack and the satellite dish on the roof, you need to fill in the compiler's configuration sheet with the macros used for the geometry calculations. The diagnostics panel depends on them to compile.
 
-Above **main**, define:
+Above main, define:
 
 - **PI**: `3.14159`
 - **AREA_RECT(w, h)**: returns `((w) * (h))` (surface area of the equipment room)
 - **AREA_CIRCLE(r)**: returns `((PI) * (r) * (r))` (surface area of the dish)
 - **MAX_SIZE**: `100` (the room's temperature limit, in degrees)
 
-In **main**, use the macros to print:
+In main, use the macros to print:
 
-1. `AREA_RECT(5, 3)` in the format **"Room: %d"**
-2. `AREA_CIRCLE(4.0)` in the format **"Dish: %.2f"**
-3. `MAX_SIZE` in the format **"Limit: %d"**
+1. `AREA_RECT(5, 3)` in the format "Room: %d"
+2. `AREA_CIRCLE(4.0)` in the format "Dish: %.2f"
+3. `MAX_SIZE` in the format "Limit: %d"
 
 **Example**
 

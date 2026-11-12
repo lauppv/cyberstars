@@ -1,6 +1,6 @@
 Căutarea este unul dintre cele mai fundamentale lucruri pe care le face un calculator. „Este acest utilizator în baza de date?" „Conține această listă numărul 42?" „Unde este cuvântul 'eroare' în acest jurnal?"
 
-Cel mai simplu mod de a căuta este **căutarea liniară**: parcurgem lista **element cu element**, de la început la sfârșit, și verificăm fiecare element
+Cel mai simplu mod de a căuta este **căutarea liniară**: parcurgem lista element cu element, de la început la sfârșit, și verificăm fiecare element
 
 ```py
 def cautare_liniara(elemente, tinta):
@@ -27,13 +27,13 @@ Afișează **-1**. Shrek nu este în Vice City
 
 ---
 
-Cum funcționează? Ne uităm la poziția **0**: este Cortez? Nu. Poziția **1**: este Cortez? Nu. Poziția **2**: este Cortez? **Da!** Returnăm **2**
+Cum funcționează? Ne uităm la poziția 0: este Cortez? Nu. Poziția 1: este Cortez? Nu. Poziția 2: este Cortez? Da! Returnăm 2
 
-Dacă parcurgem întreaga listă fără să găsim ținta, returnăm **-1**
+Dacă parcurgem întreaga listă fără să găsim ținta, returnăm -1
 
 ---
 
-Putem de asemenea să căutăm ceva pe baza unei **condiții**, nu doar o potrivire exactă
+Putem de asemenea să căutăm ceva pe baza unei condiții, nu doar o potrivire exactă
 
 ```py
 scoruri = [65, 42, 88, 95, 71]
@@ -48,9 +48,9 @@ Afișează **Am găsit un scor peste 90: 95 la indexul 3**
 
 ---
 
-**Cât de bună este căutarea liniară?** Dacă lista are **10** elemente, s-ar putea să verificăm toate cele 10. Dacă are **1.000.000** de elemente, s-ar putea să verificăm toate cele 1.000.000. Căutarea liniară verifică elementele **unul câte unul**. Cu cât mai multe elemente, cu atât durează mai mult. În cel mai rău caz (elementul negăsit), verificăm **fiecare element în parte**
+Cât de bună este căutarea liniară? Dacă lista are 10 elemente, s-ar putea să verificăm toate cele 10. Dacă are 1.000.000 de elemente, s-ar putea să verificăm toate cele 1.000.000. Căutarea liniară verifică elementele unul câte unul. Cu cât mai multe elemente, cu atât durează mai mult. În cel mai rău caz (elementul negăsit), verificăm fiecare element în parte
 
-Există ceva mai rapid? Da, **căutarea binară**, pe care o vom învăța mai târziu. Dar căutarea binară funcționează doar pe liste **sortate**. Căutarea liniară funcționează pe **orice**
+Există ceva mai rapid? Da, căutarea binară, pe care o vom învăța mai târziu. Dar căutarea binară funcționează doar pe liste sortate. Căutarea liniară funcționează pe orice
 
 ---
 
@@ -58,9 +58,9 @@ Există ceva mai rapid? Da, **căutarea binară**, pe care o vom învăța mai t
 
 Lista echipajului stației este o listă de nume numită echipaj, fiecare la o stație numerotată (stația 0, stația 1, și așa mai departe). Controlul Misiunii vrea să caute pe cineva după nume.
 
-Scrie o funcție **gaseste_echipaj(echipaj, tinta)** care folosește **căutarea liniară** ca să returneze **numărul stației** (indexul) unde se află `tinta` în listă. Dacă numele nu este în listă, returnează **-1**.
+Scrie o funcție **gaseste_echipaj(echipaj, tinta)** care folosește căutarea liniară ca să returneze numărul stației (indexul) unde se află `tinta` în listă. Dacă numele nu este în listă, returnează -1.
 
-Apoi **citește** un nume și raportează rezultatul.
+Apoi citește un nume și raportează rezultatul.
 
 **Intrare:**
 

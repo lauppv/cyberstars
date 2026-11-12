@@ -1,6 +1,6 @@
-Sometimes we don't need to count things or accumulate a result. We just need to know: **did something happen or not?** Yes or no. This is the **flag pattern**
+Sometimes we don't need to count things or accumulate a result. We just need to know: did something happen or not? Yes or no. This is the **flag pattern**
 
-A **flag** is a boolean variable that starts as **True** or **False** and flips when a certain condition is met
+A flag is a boolean variable that starts as True or False and flips when a certain condition is met
 
 ```py
 numbers = [2, 4, 6, 8, 10]
@@ -18,7 +18,7 @@ else:
 
 Output **All numbers are even**
 
-We started with the assumption **all_even = True** (optimistic, we believe they're all even). If we find even one number that's **not** even, we set the flag to **False**. At the end, we check the flag
+We started with the assumption **all_even = True** (optimistic, we believe they're all even). If we find even one number that's not even, we set the flag to False. At the end, we check the flag
 
 ```py
 numbers = [2, 4, 7, 8, 10]
@@ -38,7 +38,7 @@ Output **Not all numbers are even** (because of the 7)
 
 ---
 
-The opposite works too: starting with **False** and switching to **True**
+The opposite works too: starting with False and switching to True
 
 ```py
 names = ["Tommy", "Lance", "Cortez", "Phil"]
@@ -57,7 +57,7 @@ else:
 
 Output **Cortez is in the list!**
 
-We start pessimistic (**found = False**) and only switch to **True** if we actually find the target
+We start pessimistic (**found = False**) and only switch to True if we actually find the target
 
 ---
 
@@ -81,7 +81,7 @@ else:
 
 ---
 
-A practical example: checking if a password is **strong** (has at least one uppercase letter, one lowercase letter, and one digit)
+A practical example: checking if a password is strong (has at least one uppercase letter, one lowercase letter, and one digit)
 
 ```py
 password = "Tommy123"
@@ -109,9 +109,9 @@ Output **Strong password**. Three flags, one for each requirement
 
 ## Mission: Access Code Check
 
-A station access code is **valid** only if it meets **all three** rules: it has at least one **uppercase** letter, at least one **digit**, and is at least **6 characters** long.
+A station access code is valid only if it meets all three rules: it has at least one uppercase letter, at least one digit, and is at least 6 characters long.
 
-**Read** a code, then use **flags** (`has_upper` and `has_digit`, each starting `False` and flipped to `True` when you find one) plus a length check. Print each result, then the verdict:
+Read a code, then use flags (`has_upper` and `has_digit`, each starting `False` and flipped to `True` when you find one) plus a length check. Print each result, then the verdict:
 
 **Input:**
 

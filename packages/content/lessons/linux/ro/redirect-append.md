@@ -23,7 +23,7 @@ Ambele linii s-au păstrat. Fiecare `>>` adaugă la final.
 | `>`      | Creează / suprascrie |
 | `>>`     | Creează / adaugă     |
 
-Dacă fișierul nu există încă, **ambii** operatori `>` și `>>` îl vor crea. Diferența
+Dacă fișierul nu există încă, ambii operatori `>` și `>>` îl vor crea. Diferența
 contează doar atunci când fișierul are deja conținut.
 
 Un tipar des întâlnit este să folosești `>` o dată ca să pornești de la zero, apoi `>>`

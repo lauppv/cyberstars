@@ -1,4 +1,4 @@
-Uneori ai nevoie de o **copie** a unui fișier: un backup, sau un punct de pornire
+Uneori ai nevoie de o copie a unui fișier: un backup, sau un punct de pornire
 pentru ceva nou. Comanda **cp** (**copy**) face exact asta.
 
 Tiparul este întotdeauna: `cp SURSĂ DESTINAȚIE`.

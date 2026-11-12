@@ -1,8 +1,8 @@
 Unele fișiere sunt uriașe: sute sau mii de linii. Aruncarea tuturor cu `cat` îți
-inundă ecranul. Adesea vrei doar o privire rapidă la **începutul** unui fișier.
+inundă ecranul. Adesea vrei doar o privire rapidă la începutul unui fișier.
 
-Comanda **head** afișează doar **primele linii** ale unui fișier. În mod implicit,
-**primele 10 linii**:
+Comanda **head** afișează doar primele linii ale unui fișier. În mod implicit,
+primele 10 linii:
 
 ```bash
 head fisier_mare.log
@@ -31,7 +31,7 @@ linia 3
 
 ### Când este util head
 
-- Verificarea **rândului de antet** al unui fișier de date
+- Verificarea rândului de antet al unui fișier de date
 - Vizualizarea modului în care _începe_ un fișier de log
 - Eșantionarea unui fișier fără a derula prin tot
 

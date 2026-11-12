@@ -1,6 +1,6 @@
-Welcome to one of the **most important** concepts in programming: the **for** loop. With it, we can tell the computer to do something **many times, automatically**
+Welcome to one of the most important concepts in programming: the **for** loop. With it, we can tell the computer to do something many times, automatically
 
-Imagine we want to print all the numbers from **1** to **10**
+Imagine we want to print all the numbers from 1 to 10
 
 ```c
 #include <stdio.h>
@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-Tedious. For **1** to **1000** it's impossible. **for** saves us
+Tedious. For 1 to 1000 it's impossible. for saves us
 
 ```c
 #include <stdio.h>
@@ -27,11 +27,11 @@ int main(void) {
 }
 ```
 
-Run it. You'll see the numbers from **1** to **10**, one per line
+Run it. You'll see the numbers from 1 to 10, one per line
 
 ---
 
-The **for** loop in C has **three parts** between the parentheses, separated by **;**
+The for loop in C has **three parts** between the parentheses, separated by **;**
 
 ```c
 #include <stdio.h>
@@ -44,13 +44,13 @@ int main(void) {
 }
 ```
 
-1. **int i = 1**: the **starting point**. We declare a variable **i** and set it to **1**
-2. **i <= 10**: the **condition**. As long as this is **true**, the loop keeps running
-3. **i++**: what to do **after each iteration**. We increase **i** by 1
+1. **int i = 1**: the **starting point**. We declare a variable i and set it to 1
+2. **i <= 10**: the **condition**. As long as this is true, the loop keeps running
+3. **i++**: what to do **after each iteration**. We increase i by 1
 
-So **i** takes the values **1, 2, 3, ..., 10**. When **i** becomes **11**, the condition **11 <= 10** is **false** and the loop ends
+So i takes the values 1, 2, 3, ..., 10. When i becomes 11, the condition **11 <= 10** is false and the loop ends
 
-A small detail: in **older C** (before C99), you couldn't declare **int i** inside **for**. You had to declare it beforehand. In **modern C** (C99 and later, which we use), declaring it inside is fine and idiomatic
+A small detail: in older C (before C99), you couldn't declare int i inside for. You had to declare it beforehand. In modern C (C99 and later, which we use), declaring it inside is fine and idiomatic
 
 We can count by 2s, count down, do anything we want
 
@@ -75,7 +75,7 @@ int main(void) {
 
 ---
 
-Be careful: if we forget to update **i**, we get an **infinite loop**
+Be careful: if we forget to update i, we get an **infinite loop**
 
 ```c
 #include <stdio.h>
@@ -88,15 +88,15 @@ int main(void) {
 }
 ```
 
-**i** stays **1** forever, the condition stays **true** forever, and the program prints **1** until something stops it. The platform stops it after 5 seconds, but on real systems an infinite loop can freeze your computer. Always make sure your condition can become false
+i stays 1 forever, the condition stays true forever, and the program prints 1 until something stops it. The platform stops it after 5 seconds, but on real systems an infinite loop can freeze your computer. Always make sure your condition can become false
 
 ---
 
 ## Mission: The Magnetic Tape Reels
 
-The computing center's storage room has 101 magnetic tape reels, numbered from **0** to **100**, sitting on a long shelf. Most reels just show their number on the label, but reels **10** and **50** have a special label: they hold the shift operators' **coffee** stash, not data.
+The computing center's storage room has 101 magnetic tape reels, numbered from 0 to 100, sitting on a long shelf. Most reels just show their number on the label, but reels 10 and 50 have a special label: they hold the shift operators' coffee stash, not data.
 
-Write a **for** loop from 0 to 100. For each number, if it is **10** or **50**, print `COFFEE` instead of the number. Otherwise print the number itself.
+Write a for loop from 0 to 100. For each number, if it is 10 or 50, print `COFFEE` instead of the number. Otherwise print the number itself.
 
 **Example**
 

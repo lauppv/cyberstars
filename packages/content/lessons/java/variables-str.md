@@ -1,4 +1,4 @@
-We saw how to store numbers. But what about **text**? In Java, the type for text is called **String** (with a capital **S**, this matters)
+We saw how to store numbers. But what about text? In Java, the type for text is called **String** (with a capital **S**, this matters)
 
 ```java
 public class Main {
@@ -40,11 +40,11 @@ Paul
 Paul
 ```
 
-Notice that the **second time** we change **name**, we **don’t** write **String** again. We only write the type **once**, when we **first declare** the variable. After that, Java already knows the type
+Notice that the second time we change name, we don’t write String again. We only write the type **once**, when we first declare the variable. After that, Java already knows the type
 
 ---
 
-**Don’t forget the quotes**. The code below will not work
+Don’t forget the quotes. The code below will not work
 
 ```java
 public class Main {
@@ -68,7 +68,7 @@ public class Main {
 }
 ```
 
-This prints **Booooo**, not **Kent**. Why? Because **Kent** without quotes is treated as a **variable**, and that variable holds **"Booooo"**. To actually print the word **Kent** we’d write
+This prints **Booooo**, not **Kent**. Why? Because Kent without quotes is treated as a variable, and that variable holds "Booooo". To actually print the word Kent we’d write
 
 ```java
 public class Main {
@@ -92,7 +92,7 @@ public class Main {
 }
 ```
 
-Output **14**. **.length()** tells us how many characters the text has. Spaces count too. We’ll explore many more of these methods in a later lesson, for now just notice the **dot syntax**
+Output **14**. **.length()** tells us how many characters the text has. Spaces count too. We’ll explore many more of these methods in a later lesson, for now just notice the dot syntax
 
 ---
 

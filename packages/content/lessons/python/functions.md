@@ -1,4 +1,4 @@
-As we mentioned in a previous lesson, it’s not a good idea to **repeat** code. If we have to write the same thing twice, chances are we’ll need to write it three times or more. This is where the notion of a **function** comes in. A **function** is a piece of code that we write **once** and can reuse **multiple** times
+As we mentioned in a previous lesson, it’s not a good idea to repeat code. If we have to write the same thing twice, chances are we’ll need to write it three times or more. This is where the notion of a **function** comes in. A function is a piece of code that we write once and can reuse multiple times
 
 ```py
 name = "Cortez"
@@ -50,9 +50,9 @@ My name is Tommy Vercetti and my age is 42
 
 and that’s fine
 
-However, if we want to use this piece of code **later** in the program with **different values for name and age**, we would always have to **copy and paste** this **for** loop
+However, if we want to use this piece of code later in the program with different values for name and age, we would always have to copy and paste this for loop
 
-It turns out that the best way, and the one that makes the code most **readable**, is to use a **function**
+It turns out that the best way, and the one that makes the code most readable, is to use a function
 
 ```py
 def my_function(name, age):
@@ -64,13 +64,13 @@ my_function("Tommy Vercetti", 42)
 my_function("Lance Vance Dance", 35)
 ```
 
-We can see how our code is much **cleaner** and **easier** to read. What we did was **reuse** the **function** called **my_function** and call it with different values. We wrote the function **once** and can run it as many times as we want with different values
+We can see how our code is much cleaner and easier to read. What we did was reuse the function called my_function and call it with different values. We wrote the function once and can run it as many times as we want with different values
 
-The word **def** defines a **function** in Python
+The word **def** defines a function in Python
 
-**my_function** is the **name** of the function, meaning the name we use to **call** this function
+**my_function** is the name of the function, meaning the name we use to **call** this function
 
-Just like **print()**, we use parentheses **()**
+Just like print(), we use parentheses **()**
 
 Inside the parentheses, we write whatever we want to name the parameters. In this case, **name** and **age**
 

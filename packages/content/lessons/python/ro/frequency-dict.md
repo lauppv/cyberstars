@@ -1,4 +1,4 @@
-Am văzut pe scurt în lecția despre dicționare cum să numărăm literele dintr-un cuvânt. Acest tipar este atât de important încât merită propria lui lecție. Se numește **dicționar de frecvențe** (sau **histogramă**) și este unealta de bază atunci când întrebarea este „de câte ori apare fiecare X?"
+Am văzut pe scurt în lecția despre dicționare cum să numărăm literele dintr-un cuvânt. Acest tipar este atât de important încât merită propria lui lecție. Se numește **dicționar de frecvențe** (sau histogramă) și este unealta de bază atunci când întrebarea este „de câte ori apare fiecare X?"
 
 ```py
 cuvant = "mississippi"
@@ -19,7 +19,7 @@ Hai să înțelegem asta linie cu linie. Pornim cu un dicționar gol. Pentru fie
 
 ---
 
-Asta funcționează pentru **orice**, nu doar pentru litere. Numărarea cuvintelor dintr-o propoziție
+Asta funcționează pentru orice, nu doar pentru litere. Numărarea cuvintelor dintr-o propoziție
 
 ```py
 propozitie = "imi place pizza si imi place supa si imi place tortul"
@@ -71,11 +71,11 @@ for element, contor in elemente_sortate:
     print(f"{element}: {contor}")
 ```
 
-Nu-ți face griji cu **lambda** deocamdată, doar reține că îi spune lui **sorted()** după ce valoare să sorteze (în acest caz, numărătoarea)
+Nu-ți face griji cu **lambda** deocamdată, doar reține că îi spune lui sorted() după ce valoare să sorteze (în acest caz, numărătoarea)
 
 ---
 
-Un caz de utilizare din viața reală: construiești un sistem de analiză pentru **CyberStars** și vrei să știi care curs este cel mai popular
+Un caz de utilizare din viața reală: construiești un sistem de analiză pentru CyberStars și vrei să știi care curs este cel mai popular
 
 ```py
 inscrieri = ["python", "java", "python", "c", "python", "java", "c", "python", "java", "python"]
@@ -104,9 +104,9 @@ c: 2 studenti
 
 Antena stației înregistrează fiecare semnal pe care îl primește după litera canalului într-o listă numită semnale. Controlul Misiunii vrea să știe cât de ocupat este fiecare canal și care este cel mai aglomerat.
 
-1. Construiește un **dicționar de frecvențe** care numără de câte ori apare fiecare canal.
-2. Afișează fiecare canal și numărătoarea lui ca `canal: contor`, **sortate alfabetic** (parcurge `sorted(frecventa)`).
-3. Găsește canalul **cel mai comun** și afișează `Cel mai comun: ` urmat de litera lui.
+1. Construiește un dicționar de frecvențe care numără de câte ori apare fiecare canal.
+2. Afișează fiecare canal și numărătoarea lui ca `canal: contor`, sortate alfabetic (parcurge `sorted(frecventa)`).
+3. Găsește canalul cel mai comun și afișează `Cel mai comun: ` urmat de litera lui.
 
 **Ieșire**
 

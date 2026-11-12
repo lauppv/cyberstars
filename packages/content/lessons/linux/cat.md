@@ -17,7 +17,7 @@ The whole file is dumped into the terminal at once.
 
 ### When to use cat
 
-`cat` is perfect for **short** files: a few lines you want to read in one glance. For
+`cat` is perfect for short files: a few lines you want to read in one glance. For
 very long files it floods the screen; you will meet better tools (`head`, `tail`,
 `less`) for those soon.
 

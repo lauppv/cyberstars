@@ -1,6 +1,6 @@
 Aceasta este lecția care separă C de aproape orice alt limbaj. **Pointerii**. Sună înfricoșător, dar odată ce înțelegi ideea, sunt de fapt destul de eleganți
 
-Un **pointer** este o variabilă care stochează **adresa** altei variabile. Gândește-te așa: fiecare variabilă trăiește undeva în memoria calculatorului, la o **adresă** specifică, un număr, exact ca un număr de cameră într-un imobil de birouri. Un pointer este o bucată de hârtie pe care ai notat acel număr de cameră
+Un **pointer** este o variabilă care stochează **adresa** altei variabile. Gândește-te așa: fiecare variabilă trăiește undeva în memoria calculatorului, la o adresă specifică, un număr, exact ca un număr de cameră într-un imobil de birouri. Un pointer este o bucată de hârtie pe care ai notat acel număr de cameră
 
 ```c
 #include <stdio.h>
@@ -19,14 +19,14 @@ int main(void) {
 
 Doi operatori noi:
 
-- **&**: operatorul **adresa-lui**. **&varsta** ne dă **adresa** la care este stocat `varsta` în memorie
-- **\***: operatorul de **dereferențiere**. **\*ptr** ne dă **valoarea** de la adresa stocată în `ptr`
+- **&**: operatorul **adresa-lui**. **&varsta** ne dă adresa la care este stocat `varsta` în memorie
+- **\***: operatorul de **dereferențiere**. **\*ptr** ne dă valoarea de la adresa stocată în `ptr`
 
-Deci **&varsta** dă adresa, **\*ptr** citește valoarea de la acea adresă. Sunt ca inverșii unul altuia
+Deci &varsta dă adresa, \*ptr citește valoarea de la acea adresă. Sunt ca inverșii unul altuia
 
 ---
 
-Declarația **int \*ptr** spune "ptr este un pointer către un int". **\*** de aici este parte din **tip**, nu operatorul de dereferențiere. La început e confuz, dar te obișnuiești
+Declarația **int \*ptr** spune "ptr este un pointer către un int". \* de aici este parte din **tip**, nu operatorul de dereferențiere. La început e confuz, dar te obișnuiești
 
 ```c
 #include <stdio.h>
@@ -40,7 +40,7 @@ int main(void) {
 }
 ```
 
-Putem și **schimba** valoarea prin pointer
+Putem și schimba valoarea prin pointer
 
 ```c
 #include <stdio.h>
@@ -56,12 +56,12 @@ int main(void) {
 
 Hai să urmărim ce se întâmplă:
 
-1. **x** e creat cu valoarea 10, undeva în memorie
-2. **p** este un pointer care primește adresa lui **x**. Acum **p** "știe" unde locuiește **x**
-3. **\*p = 42** nu schimbă pointerul, ci merge la adresa din **p** și scrie 42 acolo
-4. cum **p** ținea adresa lui **x**, valoarea scrisă acolo este chiar **x**
+1. x e creat cu valoarea 10, undeva în memorie
+2. p este un pointer care primește adresa lui x. Acum p "știe" unde locuiește x
+3. **\*p = 42** nu schimbă pointerul, ci merge la adresa din p și scrie 42 acolo
+4. cum p ținea adresa lui x, valoarea scrisă acolo este chiar x
 
-Nu am atins **x** direct. Am trecut prin **p**, am urmat adresa, și am schimbat valoarea de acolo. Aceasta este puterea pointerilor
+Nu am atins x direct. Am trecut prin p, am urmat adresa, și am schimbat valoarea de acolo. Aceasta este puterea pointerilor
 
 ```visual
 {
@@ -106,7 +106,7 @@ int main(void) {
 }
 ```
 
-Tipul pointerului trebuie să se potrivească cu tipul către care pointează. Un **int \*** poate pointa doar către un **int**. Așa știe C câți octeți să citească atunci când dereferențiezi
+Tipul pointerului trebuie să se potrivească cu tipul către care pointează. Un **int \*** poate pointa doar către un int. Așa știe C câți octeți să citească atunci când dereferențiezi
 
 ---
 
@@ -114,10 +114,10 @@ Tipul pointerului trebuie să se potrivească cu tipul către care pointează. U
 
 Ești operator de tură la centrul de calcul. Un cititor de bandă magnetică ți-a transmis o valoare inițială pentru registrul său de control, dar comanda nouă trebuie scrisă prin pointer: accesul direct la hardware nu e permis, doar prin adresă.
 
-1. Citește un **int** **x** din input
-2. Creează un pointer **ptr** care pointează către **x**
-3. Folosește pointerul ca să schimbi **x** în **42** (atribuie prin **\*ptr**)
-4. Afișează atât **x** cât și **\*ptr**, fiecare pe linia lui
+1. Citește un int x din input
+2. Creează un pointer ptr care pointează către x
+3. Folosește pointerul ca să schimbi x în 42 (atribuie prin \*ptr)
+4. Afișează atât x cât și \*ptr, fiecare pe linia lui
 
 **Exemplu**
 
@@ -149,4 +149,4 @@ Ieșire
 42
 ```
 
-Indiferent ce valoare are **x** la citire, după ce scrii prin pointer, **x** devine **42**.
+Indiferent ce valoare are x la citire, după ce scrii prin pointer, x devine 42.

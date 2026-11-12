@@ -1,6 +1,6 @@
-We know **lists**, **tuples**, and **dictionaries**. Time for the last big collection type: **sets**
+We know lists, tuples, and dictionaries. Time for the last big collection type: sets
 
-A **set** is a collection where **every element is unique**. No duplicates allowed. Think of it like a guest list for a party: each person can only be on the list **once**
+A **set** is a collection where **every element is unique**. No duplicates allowed. Think of it like a guest list for a party: each person can only be on the list once
 
 ```py
 guests = {"Tommy", "Lance", "Cortez", "Tommy"}
@@ -13,18 +13,18 @@ Output
 {'Lance', 'Cortez', 'Tommy'}
 ```
 
-Wait, we wrote **Tommy** twice, but he only appears once. That's the whole point of a set: it automatically removes duplicates. Also notice that the **order might be different** from how we wrote them. Sets don't care about order, only about **what's inside**
+Wait, we wrote Tommy twice, but he only appears once. That's the whole point of a set: it automatically removes duplicates. Also notice that the order might be different from how we wrote them. Sets don't care about order, only about what's inside
 
 ---
 
-Sets use **curly braces {}**, just like dictionaries. But there's no **key: value**, just values. If it has colons it's a dictionary, if it doesn't it's a set
+Sets use **curly braces {}**, just like dictionaries. But there's no key: value, just values. If it has colons it's a dictionary, if it doesn't it's a set
 
 ```py
 my_set = {1, 2, 3}
 my_dict = {"a": 1, "b": 2}
 ```
 
-**Be careful** with empty collections
+Be careful with empty collections
 
 ```py
 empty_dict = {}
@@ -35,7 +35,7 @@ An empty **{}** creates a dictionary, not a set. To create an empty set, use **s
 
 ---
 
-We can **add** elements with **.add()** and **remove** them with **.remove()**
+We can add elements with **.add()** and remove them with **.remove()**
 
 ```py
 weapons = {"bat", "pistol"}
@@ -46,11 +46,11 @@ weapons.remove("bat")
 print(weapons)
 ```
 
-Notice we use **.add()**, not **.append()** like with lists. Sets don't have an order, so "appending at the end" doesn't make sense
+Notice we use .add(), not .append() like with lists. Sets don't have an order, so "appending at the end" doesn't make sense
 
 ---
 
-The most useful thing about sets: checking if something **is in** the set. This is **extremely fast**, much faster than checking in a list
+The most useful thing about sets: checking if something **is in** the set. This is extremely fast, much faster than checking in a list
 
 ```py
 banned_players = {"Sonny", "Diaz", "Gonzalez"}
@@ -66,7 +66,7 @@ Output **Tommy is welcome**
 
 ---
 
-A super common use case: **removing duplicates from a list**
+A super common use case: removing duplicates from a list
 
 ```py
 names = ["Tommy", "Lance", "Tommy", "Cortez", "Lance", "Lance"]
@@ -78,14 +78,14 @@ We converted the list to a set (which removed duplicates), then back to a list. 
 
 ---
 
-**len()** works on sets too
+len() works on sets too
 
 ```py
 colors = {"red", "green", "blue", "red"}
 print(len(colors))
 ```
 
-Output **3**, not 4, because the duplicate **red** was removed
+Output **3**, not 4, because the duplicate red was removed
 
 ---
 
@@ -94,9 +94,9 @@ Output **3**, not 4, because the duplicate **red** was removed
 The station picked up a list of signal codes, stored in a variable named `signals`, and many repeat. Do the following:
 
 1. Print `Total: ` then the total number of signals (length of the list)
-2. Make a **set** of the unique codes
+2. Make a set of the unique codes
 3. Print `Unique: ` then how many unique codes there are
-4. Check whether the code `D4` was picked up: print `D4 detected` if it is **in** the set, otherwise `D4 missing`
+4. Check whether the code `D4` was picked up: print `D4 detected` if it is in the set, otherwise `D4 missing`
 
 **Output**
 

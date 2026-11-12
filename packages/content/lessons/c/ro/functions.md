@@ -1,4 +1,4 @@
-O **funcție** în C este o bucată de cod pe care o scriem **o singură dată** și o refolosim de **multe ori**
+O **funcție** în C este o bucată de cod pe care o scriem o singură dată și o refolosim de multe ori
 
 ```c
 #include <stdio.h>
@@ -29,15 +29,15 @@ Hai să descompunem antetul funcției
 void saluta(char nume[])
 ```
 
-- **void**: funcția **NU** întoarce nimic (doar afișează)
+- **void**: funcția NU întoarce nimic (doar afișează)
 - **saluta**: numele funcției
-- **(char nume[])**: lista de parametri. **char nume[]** înseamnă "un șir de caractere" (o bucată de text). Vom discuta despre string-uri într-o lecție dedicată
+- **(char nume[])**: lista de parametri. char nume[] înseamnă "un șir de caractere" (o bucată de text). Vom discuta despre string-uri într-o lecție dedicată
 
-Format specifier-ul **%s** din **printf** este pentru string-uri, exact cum **%d** este pentru int-i
+Format specifier-ul **%s** din printf este pentru string-uri, exact cum %d este pentru int-i
 
 ---
 
-O funcție poate, de asemenea, să **întoarcă** o valoare. În loc de **void**, punem tipul de retur
+O funcție poate, de asemenea, să **întoarcă** o valoare. În loc de void, punem tipul de retur
 
 ```c
 #include <stdio.h>
@@ -55,7 +55,7 @@ int main(void) {
 
 Output **5**
 
-Funcția **aduna** primește doi int-i și întoarce un int. Cuvântul cheie **return** trimite valoarea înapoi, și **funcția iese imediat** când **return** rulează
+Funcția aduna primește doi int-i și întoarce un int. Cuvântul cheie return trimite valoarea înapoi, și **funcția iese imediat** când return rulează
 
 Putem folosi rezultatul și direct într-o altă expresie
 
@@ -74,7 +74,7 @@ int main(void) {
 
 ---
 
-**Detaliu important în C**: o funcție trebuie să fie **declarată înainte de a fi folosită**. De aceea **aduna** este scrisă **deasupra** lui **main**. Dacă o punem dedesubt, compilatorul citește **main** primul, vede **aduna** apelată, nu știe ce este **aduna** și se plânge
+Detaliu important în C: o funcție trebuie să fie **declarată înainte de a fi folosită**. De aceea aduna este scrisă deasupra lui main. Dacă o punem dedesubt, compilatorul citește main primul, vede aduna apelată, nu știe ce este aduna și se plânge
 
 ```c
 #include <stdio.h>
@@ -106,7 +106,7 @@ int aduna(int a, int b) {   // corpul, scris mai tarziu
 }
 ```
 
-Observă **;**-ul de la finalul prototipului: este o declarație, nu un corp. Deocamdată, cel mai simplu este să-ți scrii funcțiile ajutătoare **deasupra** lui **main** și să nu-ți mai faci griji
+Observă **;**-ul de la finalul prototipului: este o declarație, nu un corp. Deocamdată, cel mai simplu este să-ți scrii funcțiile ajutătoare deasupra lui main și să nu-ți mai faci griji
 
 ---
 
@@ -114,21 +114,21 @@ Observă **;**-ul de la finalul prototipului: este o declarație, nu un corp. De
 
 Într-un centru de calcul de altădată, fiecare terminal avea nevoie de propriul modul de aritmetică rapidă, ca operatorii să nu mai facă aceleași calcule de mână de fiecare dată.
 
-Scrie o funcție **calculator** care primește trei parametri: **int numar1**, **int numar2** și **char operator** (un singur caracter precum **'+'**, **'-'**, **'\*'**, **'/'**; observă **ghilimelele simple** pentru un singur char în C).
+Scrie o funcție **calculator** care primește trei parametri: int numar1, int numar2 și char operator (un singur caracter precum '+', '-', '\*', '/'; observă ghilimelele simple pentru un singur char în C).
 
 Funcția ar trebui să afișeze rezultatul operației, în formatul **numar1 operator numar2 = rezultat**. Dacă operatorul nu este recunoscut, afișează **Operator invalid**.
 
-1. Tratează **adunarea** (**'+'**), **scăderea** (**'-'**), **înmulțirea** (**'\*'**) și **împărțirea** (**'/'**)
-2. Folosește **%c** ca format specifier pentru un singur **char**
-3. Folosește **==** ca să compari char-ul (asta funcționează în C pentru că char-urile sunt, sub capotă, întregi mici)
+1. Tratează adunarea ('+'), scăderea ('-'), înmulțirea ('\*') și împărțirea ('/')
+2. Folosește **%c** ca format specifier pentru un singur char
+3. Folosește == ca să compari char-ul (asta funcționează în C pentru că char-urile sunt, sub capotă, întregi mici)
 
-În **main**, apelează **calculator** de cinci ori, cu exact aceste seturi de argumente, în ordine:
+În main, apelează calculator de cinci ori, cu exact aceste seturi de argumente, în ordine:
 
-- **14, 12, '+'**
-- **10, 3, '-'**
-- **5, 4, '\*'**
-- **10, 2, '/'**
-- **1, 1, 'x'**
+- 14, 12, '+'
+- 10, 3, '-'
+- 5, 4, '\*'
+- 10, 2, '/'
+- 1, 1, 'x'
 
 **Exemplu**
 

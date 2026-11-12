@@ -1,10 +1,10 @@
-Time to combine what you've learned! No new theory, just a challenge that uses **print**, **variables**, **f-strings**, and **comments**
+Time to combine what you've learned! No new theory, just a challenge that uses print, variables, f-strings, and comments
 
 ---
 
 ## Mission: Player Card
 
-Build a **character profile card** for a game. You need to create the character's stats: `name`, `level`, `health`, and `guild`.
+Build a character profile card for a game. You need to create the character's stats: `name`, `level`, `health`, and `guild`.
 
 Using **f-strings (f{})**, print the profile card.
 

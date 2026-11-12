@@ -1,4 +1,4 @@
-Welcome to **Java**. Java is one of the most widely used languages in the world, especially in big companies, banks, and Android apps. It has a reputation for being a **strict** and organized language, but don’t worry, we’ll get used to it together
+Welcome to Java. Java is one of the most widely used languages in the world, especially in big companies, banks, and Android apps. It has a reputation for being a strict and organized language, but don’t worry, we’ll get used to it together
 
 The first thing we want to learn is how to display something on the screen
 
@@ -10,13 +10,13 @@ public class Main {
 }
 ```
 
-**Run** the code. You should see
+Run the code. You should see
 
 ```text
 hey, I like pizza
 ```
 
-What is all that boilerplate around our **System.out.println**? Don’t panic. Right now, we don’t need to fully understand it. Just know that **every Java program** needs this structure to work. Think of it as the **frame of a painting**: it’s always there, the actual code goes **inside**
+What is all that boilerplate around our System.out.println? Don’t panic. Right now, we don’t need to fully understand it. Just know that every Java program needs this structure to work. Think of it as the frame of a painting: it’s always there, the actual code goes inside
 
 The line that does the work is
 
@@ -28,11 +28,11 @@ System.out.println("hey, I like pizza");
 
 Three things to notice
 
-- The text goes **inside double quotes** **""**
-- Every statement ends with a **semicolon** **;**. Forget it and Java will refuse to run
-- The **{ }** braces define **blocks** of code: they group the lines that belong together
+- The text goes inside double quotes **""**
+- Every statement ends with a semicolon **;**. Forget it and Java will refuse to run
+- The **{ }** braces define blocks of code: they group the lines that belong together
 
-Try removing the **;** and run the code. Read the error, that’s how you learn to recognize the compiler’s messages
+Try removing the ; and run the code. Read the error, that’s how you learn to recognize the compiler’s messages
 
 ---
 
@@ -48,9 +48,9 @@ public class Main {
 }
 ```
 
-Three lines, three messages. Each one ends with **;**
+Three lines, three messages. Each one ends with ;
 
-There is also **System.out.print** without **ln**. The difference: it does **NOT** go to a new line after printing
+There is also **System.out.print** without ln. The difference: it does **NOT** go to a new line after printing
 
 ```java
 public class Main {
@@ -67,7 +67,7 @@ Output
 HelloWorld
 ```
 
-Notice that **Hello** and **World** are stuck together, because **print** does not add a new line between them. Most of the time, you’ll want **println**, but it’s good to know both exist
+Notice that Hello and World are stuck together, because print does not add a new line between them. Most of the time, you’ll want println, but it’s good to know both exist
 
 ---
 
@@ -75,7 +75,7 @@ Notice that **Hello** and **World** are stuck together, because **print** does n
 
 The station’s communication array just came online. Send out your very first status report to confirm the link is active.
 
-Write four `System.out.println` statements inside `main` that display **exactly** these four lines:
+Write four `System.out.println` statements inside `main` that display exactly these four lines:
 
 ```text
 Cyberstars Station
@@ -84,4 +84,4 @@ Signal: stable
 Hello from orbit, cadet!
 ```
 
-Match the text exactly, line by line. Don’t forget the **quotes** and the **;** at the end.
+Match the text exactly, line by line. Don’t forget the quotes and the ; at the end.

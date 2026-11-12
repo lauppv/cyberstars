@@ -1,4 +1,4 @@
-Folders need **files** inside them. The quickest way to create a new, empty file is
+Folders need files inside them. The quickest way to create a new, empty file is
 the **touch** command.
 
 ```bash
@@ -39,7 +39,7 @@ touch reports/summary.txt
 
 If the file _already_ exists, `touch` does not erase it. It just updates the file's
 "last modified" time. That is its original purpose. For a beginner, think of it
-simply as **"create an empty file"**.
+simply as "create an empty file".
 
 ---
 

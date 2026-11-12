@@ -20,7 +20,7 @@ directory). The remaining 9 split into three groups of three:
 | 5-7       | **g**roup        | `r-x` = read, no write, execute |
 | 8-10      | **o**thers       | `r--` = read only               |
 
-A dash (`-`) means that permission is **not** granted.
+A dash (`-`) means that permission is not granted.
 
 ### What do r, w, x mean?
 

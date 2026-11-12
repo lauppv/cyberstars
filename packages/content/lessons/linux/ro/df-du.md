@@ -28,7 +28,7 @@ du -h jurnale/
 
 ### Sumarizează un director
 
-Când vrei doar **totalul**, fără să listezi fiecare fișier, folosește `-s`
+Când vrei doar totalul, fără să listezi fiecare fișier, folosește `-s`
 (summary):
 
 ```bash

@@ -1,6 +1,6 @@
 Până acum, am accesat câmpurile direct: `jucator.nume`, `jucator.scor`. Asta funcționează, dar e ca și cum ai lăsa ușa de la intrare larg deschisă. Oricine poate intra și schimba orice
 
-În cod Java real, **ascundem** câmpurile și controlăm accesul prin metode. Acest concept se numește **încapsulare**
+În cod Java real, ascundem câmpurile și controlăm accesul prin metode. Acest concept se numește **încapsulare**
 
 ---
 
@@ -80,7 +80,7 @@ Rezultat
 Sold: 1300
 ```
 
-Acum singura modalitate de a schimba soldul este prin `depune()` și `retrage()`, care au **validare** încorporată. Depuneri negative? Ignorate. Retragi mai mult decât ai? Nici vorbă
+Acum singura modalitate de a schimba soldul este prin `depune()` și `retrage()`, care au validare încorporată. Depuneri negative? Ignorate. Retragi mai mult decât ai? Nici vorbă
 
 ---
 
@@ -142,7 +142,7 @@ Apelul `setViata(-50)` a fost ignorat în tăcere pentru că setterul nostru res
 
 Nu fiecare câmp are nevoie de un setter. Uneori un câmp ar trebui setat o singură dată (în constructor) și niciodată schimbat. Dacă `nume` nu ar trebui să se schimbe după creare, pur și simplu nu scrie `setNume()`, problemă rezolvată
 
-Getterul tot le permite oamenilor să **citească** numele, dar nimeni nu îl poate schimba. Acesta este un tipar comun și bun
+Getterul tot le permite oamenilor să citească numele, dar nimeni nu îl poate schimba. Acesta este un tipar comun și bun
 
 ---
 

@@ -1,10 +1,10 @@
-Hai să construim un **joc de tip quiz**! O să stocăm întrebări, răspunsuri posibile, și răspunsul corect într-o structură de date, apoi le parcurgem și ținem scorul
+Hai să construim un joc de tip quiz! O să stocăm întrebări, răspunsuri posibile, și răspunsul corect într-o structură de date, apoi le parcurgem și ținem scorul
 
-Acest proiect ne învață cum să **organizăm datele**, să le **parcurgem**, și să **urmărim starea**, abilități care apar în orice program real
+Acest proiect ne învață cum să organizăm datele, să le parcurgem, și să urmărim starea, abilități care apar în orice program real
 
 ---
 
-Cum stocăm o întrebare de quiz? Un **dicționar** este perfect
+Cum stocăm o întrebare de quiz? Un dicționar este perfect
 
 ```py
 intrebare = {
@@ -59,7 +59,7 @@ for i, q in enumerate(quiz):
 print(f"\nAi obtinut {scor}/{len(quiz)}")
 ```
 
-Observă ce am folosit: **listă de dicționare**, **enumerate**, **bucle for**, **if/else**, **input**, **metode pe șiruri** (.upper()), **f-string-uri**, și **tiparul de contor**. Toate uneltele din acest curriculum, lucrând împreună
+Observă ce am folosit: listă de dicționare, enumerate, bucle for, if/else, input, metode pe șiruri (.upper()), f-string-uri, și tiparul de contor. Toate uneltele din acest curriculum, lucrând împreună
 
 ---
 

@@ -1,4 +1,4 @@
-Programs need to read and write **files**: configurations, shift logs, saved data. C gives us **fopen**, **fclose**, **fprintf**, **fscanf**, and **fgets** for this
+Programs need to read and write files: configurations, shift logs, saved data. C gives us fopen, fclose, fprintf, fscanf, and fgets for this
 
 ```c
 #include <stdio.h>
@@ -25,7 +25,7 @@ int main(void) {
 - **"r"**: read (file must exist)
 - **"a"**: append (adds to the end, doesn't erase)
 
-**fprintf** works exactly like **printf**, but writes to a file instead of the screen. **fclose** closes the file. Always do this, or data might not be saved
+**fprintf** works exactly like printf, but writes to a file instead of the screen. **fclose** closes the file. Always do this, or data might not be saved
 
 ---
 
@@ -51,7 +51,7 @@ int main(void) {
 }
 ```
 
-**fgets(line, 100, f)** reads one line (up to 99 characters + '\0') from the file into the **line** array. It returns **NULL** when there are no more lines. The while loop reads the entire file, line by line
+**fgets(line, 100, f)** reads one line (up to 99 characters + '\0') from the file into the line array. It returns **NULL** when there are no more lines. The while loop reads the entire file, line by line
 
 ---
 
@@ -73,7 +73,7 @@ int main(void) {
 }
 ```
 
-**fscanf** returns the number of items it successfully read. When we expect 2 items (name and code), we check **== 2**
+fscanf returns the number of items it successfully read. When we expect 2 items (name and code), we check == 2
 
 ---
 
@@ -84,7 +84,7 @@ The pattern for safe file operations is always the same:
 3. **Read or write**: do your work
 4. **fclose**: close the file
 
-Forgetting **fclose** is like leaving the tap running. The program might work fine for a while, but eventually you'll run out of file descriptors (a limited operating system resource)
+Forgetting fclose is like leaving the tap running. The program might work fine for a while, but eventually you'll run out of file descriptors (a limited operating system resource)
 
 ---
 
@@ -92,11 +92,11 @@ Forgetting **fclose** is like leaving the tap running. The program might work fi
 
 The computing center keeps a log of every shift: the on-duty technician's name and the number of incidents they resolved. At the end of the shift, the log must be written to disk, then read back for the morning report.
 
-1. Open a file **"shift.txt"** for **writing**
-2. Write these 3 lines with **fprintf**: `Larsen 95`, `Hans 82`, `Brown 98` (name and incident count, separated by a space)
+1. Open a file "shift.txt" for writing
+2. Write these 3 lines with fprintf: `Larsen 95`, `Hans 82`, `Brown 98` (name and incident count, separated by a space)
 3. Close the file
-4. Open **"shift.txt"** for **reading**
-5. Read each name and count using **fscanf** and print them as: **"Technician: Larsen, Incidents: 95"**
+4. Open "shift.txt" for reading
+5. Read each name and count using fscanf and print them as: "Technician: Larsen, Incidents: 95"
 6. Close the file
 
 **Example**

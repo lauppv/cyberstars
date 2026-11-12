@@ -1,4 +1,4 @@
-În Vice City, nu toată lumea are acces la tot. Camera sigură a lui Tommy este privată. Pietonii oarecare nu pot intra. Ușa din față a clubului Malibu este publică. Java funcționează la fel cu **vizibilitatea (scope)** și **modificatorii de acces**
+În Vice City, nu toată lumea are acces la tot. Camera sigură a lui Tommy este privată. Pietonii oarecare nu pot intra. Ușa din față a clubului Malibu este publică. Java funcționează la fel cu vizibilitatea (scope) și **modificatorii de acces**
 
 ---
 
@@ -27,7 +27,7 @@ Afișează
 10
 ```
 
-Variabilele trăiesc în **blocul** (acoladele `{ }`) în care sunt declarate. Odată ce ieși din acel bloc, ele dispar
+Variabilele trăiesc în blocul (acoladele `{ }`) în care sunt declarate. Odată ce ieși din acel bloc, ele dispar
 
 ---
 
@@ -76,7 +76,7 @@ Tommy Vercetti: 70 HP
 Ai văzut `private` în lecția despre getteri/setteri. Iată tabloul complet:
 
 - **`public`**: oricine poate accesa asta. Orice clasă, orice pachet, oriunde
-- **`private`**: doar codul **din interiorul acestei clase** poate accesa. Nimeni altcineva
+- **`private`**: doar codul din interiorul acestei clase poate accesa. Nimeni altcineva
 - **`protected`**: accesibil în interiorul clasei și de către subclase (vom acoperi moștenirea mai târziu)
 - **fără modificator** (implicit): accesibil în interiorul aceluiași pachet
 
@@ -129,9 +129,9 @@ Bani: 50000
 
 În cod Java bine scris, tiparul este:
 
-1. Câmpurile sunt **`private`**: nimeni nu le atinge direct
-2. Metodele sunt **`public`**: ele oferă acces controlat
-3. Constructorul este **`public`**, ca oamenii să poată crea efectiv obiecte
+1. Câmpurile sunt `private`: nimeni nu le atinge direct
+2. Metodele sunt `public`: ele oferă acces controlat
+3. Constructorul este `public`, ca oamenii să poată crea efectiv obiecte
 
 ```text
 class Portofel {
@@ -187,7 +187,7 @@ Tommy vrea un portofel protejat de controale de acces, ca nimeni să nu-i poată
 1. Un câmp `private int bani`
 2. Un constructor `public` care primește banii de start
 3. O metodă `public void adaugaBani(int suma)` care adaugă doar dacă `suma > 0`
-4. O metodă `public void cheltuieBani(int suma)` care cheltuie doar dacă `suma > 0` **și** `suma <= bani`
+4. O metodă `public void cheltuieBani(int suma)` care cheltuie doar dacă `suma > 0` și `suma <= bani`
 5. O metodă `public int getSold()` care returnează soldul curent
 
 În `main`, stochează valorile în variabile: `start` pentru banii de start, `venit` pentru cât adaugi, `cheltuiala1` și `cheltuiala2` pentru cele două sume pe care încerci să le cheltui. Apoi creează un portofel cu `start`, adaugă `venit`, cheltuie `cheltuiala1`, încearcă să cheltui `cheltuiala2` (care ar trebui să eșueze în tăcere când depășește soldul), apoi afișează soldul.

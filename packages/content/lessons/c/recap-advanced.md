@@ -1,4 +1,4 @@
-Combine **preprocessor macros**, **file operations**, and **bitwise operators**
+Combine preprocessor macros, file operations, and bitwise operators
 
 ---
 
@@ -8,13 +8,13 @@ The computing center stores account access levels in a configuration file. You n
 
 Do the following, in order:
 
-1. Write **void print_permissions(const char \*name, int permissions)**. Use bitwise **&** to check each flag and print the permissions that are set
-2. Read **name permissions** pairs from input, one per line, until the end of input (use `while (scanf("%s %d", name, &permissions) == 2)`)
-3. For each pair read, write it with **fprintf** into a file **"config.txt"**
-4. After writing all the pairs, close the file, then open it again for **reading**
-5. Read each pair back with **fscanf** and call **print_permissions** for each one, to decode the flags
+1. Write **void print_permissions(const char \*name, int permissions)**. Use bitwise & to check each flag and print the permissions that are set
+2. Read name permissions pairs from input, one per line, until the end of input (use `while (scanf("%s %d", name, &permissions) == 2)`)
+3. For each pair read, write it with fprintf into a file "config.txt"
+4. After writing all the pairs, close the file, then open it again for reading
+5. Read each pair back with fscanf and call print_permissions for each one, to decode the flags
 
-The number **7** is **111** in binary (all permissions). **3** is **011** (read + write). **1** is **001** (read only)
+The number 7 is **111** in binary (all permissions). 3 is **011** (read + write). 1 is **001** (read only)
 
 **Example**
 

@@ -1,4 +1,4 @@
-Until now, every variable we've created lives on the **stack**, a region of memory that's automatically managed. When a function ends, its stack variables are destroyed. But what if we need memory that **survives** after the function returns? Or what if we don't know at compile time **how much** memory we need?
+Until now, every variable we've created lives on the **stack**, a region of memory that's automatically managed. When a function ends, its stack variables are destroyed. But what if we need memory that survives after the function returns? Or what if we don't know at compile time how much memory we need?
 
 Enter **dynamic memory allocation**: the **heap**
 
@@ -15,7 +15,7 @@ int main(void) {
 }
 ```
 
-**malloc** (memory allocate) asks the operating system for a block of memory on the **heap**. It returns a **pointer** to that memory. **sizeof(int)** tells it how many bytes we need (4 on most systems)
+**malloc** (memory allocate) asks the operating system for a block of memory on the heap. It returns a pointer to that memory. **sizeof(int)** tells it how many bytes we need (4 on most systems)
 
 **free** returns the memory. If you don't free it, the memory stays allocated until your program ends. This is called a **memory leak**. In a long-running program, memory leaks can eat up all the RAM
 
@@ -47,7 +47,7 @@ int main(void) {
 }
 ```
 
-We use **scores[i]** exactly like a normal array, because the name of an array is a pointer anyway. The only difference: we allocated it ourselves and **must free it** when we're done
+We use scores[i] exactly like a normal array, because the name of an array is a pointer anyway. The only difference: we allocated it ourselves and **must free it** when we're done
 
 ---
 
@@ -66,13 +66,13 @@ int main(void) {
 }
 ```
 
-With **malloc**, the memory contains garbage (whatever was there before). With **calloc**, it's clean. Use calloc when you want zeros
+With malloc, the memory contains garbage (whatever was there before). With calloc, it's clean. Use calloc when you want zeros
 
 ---
 
 The golden rules of dynamic memory:
 
-1. Every **malloc** or **calloc** must have a matching **free**
+1. Every malloc or calloc must have a matching free
 2. Never use memory after it's been freed (**use after free**, a dangerous bug)
 3. Never free the same memory twice (**double free**, also dangerous)
 4. Always check whether malloc returned **NULL** (it does when the system is out of memory)
@@ -102,11 +102,11 @@ These rules sound simple, but breaking them causes some of the nastiest bugs in 
 
 The punch card reader sends a batch of readings, but the number of cards in the batch isn't known at compile time: it comes from the first line of the input tape. Allocate a dynamic buffer of exactly the right size, fill it with the readings, print them, and free the memory before the next batch.
 
-1. Read an integer **n**: the number of readings in the batch
-2. Allocate a dynamic array of **n ints** using **malloc**
-3. Read the **n** values from input and put them in the array
+1. Read an integer n: the number of readings in the batch
+2. Allocate a dynamic array of n ints using malloc
+3. Read the n values from input and put them in the array
 4. Print each value on its own line
-5. **free** the memory when you're done
+5. free the memory when you're done
 
 **Example**
 

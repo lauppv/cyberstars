@@ -1,4 +1,4 @@
-We learned that functions take **parameters**. But sometimes, most of the time a parameter has the **same value**, and only occasionally do we want to change it. It would be annoying to pass it every single time
+We learned that functions take parameters. But sometimes, most of the time a parameter has the same value, and only occasionally do we want to change it. It would be annoying to pass it every single time
 
 For example, imagine a function that creates a player profile
 
@@ -12,7 +12,7 @@ create_player("Cortez", 100, "Vice City")
 create_player("Phil", 50, "Vice City")
 ```
 
-We wrote **100** and **"Vice City"** three out of four times. That's a lot of repetition. What if we could say "health is 100 **by default** and city is Vice City **by default**, unless I say otherwise"?
+We wrote 100 and "Vice City" three out of four times. That's a lot of repetition. What if we could say "health is 100 by default and city is Vice City by default, unless I say otherwise"?
 
 ```py
 def create_player(name, health=100, city="Vice City"):
@@ -33,25 +33,25 @@ Phil | HP: 50 | City: Vice City
 Cortez | HP: 100 | City: San Andreas
 ```
 
-**health=100** and **city="Vice City"** are **default values**. If we don't pass anything for those parameters, Python uses the defaults. If we **do** pass something, it overrides the default
+**health=100** and **city="Vice City"** are **default values**. If we don't pass anything for those parameters, Python uses the defaults. If we do pass something, it overrides the default
 
 ---
 
-**Important rule**: parameters with default values must come **after** parameters without defaults
+Important rule: parameters with default values must come **after** parameters without defaults
 
 ```py
 def f(a, b=10, c=20):
     print(a, b, c)
 ```
 
-This is fine. **a** has no default, **b** and **c** do
+This is fine. a has no default, b and c do
 
 ```py
 def f(a=10, b, c):
     print(a, b, c)
 ```
 
-**Run** this. Python gives us a **SyntaxError**. You can't put a parameter without a default **after** one that has a default. Think about it: Python wouldn't know which value belongs to which parameter
+Run this. Python gives us a **SyntaxError**. You can't put a parameter without a default after one that has a default. Think about it: Python wouldn't know which value belongs to which parameter
 
 ---
 
@@ -66,13 +66,13 @@ create_player("Tommy", city="Liberty City")
 
 Output **Tommy | HP: 100 | City: Liberty City**
 
-We skipped **health** (kept the default 100) and only changed **city** by using its **name**. Without keyword arguments, we'd have to write **create_player("Tommy", 100, "Liberty City")**, passing 100 even though it's the default
+We skipped health (kept the default 100) and only changed city by using its name. Without keyword arguments, we'd have to write **create_player("Tommy", 100, "Liberty City")**, passing 100 even though it's the default
 
 ---
 
 ## Mission: Docking Log
 
-Write a function `dock(ship, bay="A1", priority="normal")` that prints `ship docked at bay (priority)`. The `bay` and `priority` parameters have **default values**, so they can be left out.
+Write a function `dock(ship, bay="A1", priority="normal")` that prints `ship docked at bay (priority)`. The `bay` and `priority` parameters have default values, so they can be left out.
 
 The three ship names are already in the starter as variables `ship1`, `ship2`, and `ship3`. Call `dock` exactly like this (the calls are already in the starter too):
 
@@ -82,7 +82,7 @@ dock(ship2, "B7")
 dock(ship3, priority="urgent")
 ```
 
-Notice the last call uses a **keyword argument** (`priority="urgent"`) to skip `bay` and keep its default while still setting the priority.
+Notice the last call uses a keyword argument (`priority="urgent"`) to skip `bay` and keep its default while still setting the priority.
 
 **Output**
 

@@ -1,5 +1,5 @@
 În loc de litere, poți seta permisiunile cu un **număr octal de trei cifre**. Fiecare
-cifră reprezintă un grup (user, group, others) și este **suma** dintre:
+cifră reprezintă un grup (user, group, others) și este suma dintre:
 
 | Permisiune   | Valoare |
 | ------------ | ------- |
@@ -24,7 +24,7 @@ chmod 755 script.sh
 chmod 644 citeste-ma.txt
 ```
 
-Forma numerică setează **toate** permisiunile deodată: nu există „adaugă" sau „elimină", înlocuiești întregul set.
+Forma numerică setează toate permisiunile deodată: nu există „adaugă" sau „elimină", înlocuiești întregul set.
 
 ### Când folosești fiecare formă?
 

@@ -1,6 +1,6 @@
 Semaphores extend the mutex idea. A **semaphore** is an atomic counter with two operations:
 
-- **sem_wait(&s)**: decrements the counter. If it's 0, the thread **waits** until someone else increments.
+- **sem_wait(&s)**: decrements the counter. If it's 0, the thread waits until someone else increments.
 - **sem_post(&s)**: increments the counter (and wakes up one blocked thread, if any).
 
 In C, POSIX gives us the **<semaphore.h>** library. A semaphore is declared with the `sem_t` type and initialized with `sem_init(&s, 0, initial_value)`. The second argument is `0` when the semaphore is shared between threads of the same process (our case); `1` would mean shared between different processes.
@@ -41,11 +41,11 @@ int main(void) {
 }
 ```
 
-The result is always **200000**. The code is equivalent to the mutex version from the previous lesson. Only the mechanism changed. **Why use a semaphore instead of a mutex?** Because the semaphore's counter can exceed 1, and that makes it far more flexible.
+The result is always **200000**. The code is equivalent to the mutex version from the previous lesson. Only the mechanism changed. Why use a semaphore instead of a mutex? Because the semaphore's counter can exceed 1, and that makes it far more flexible.
 
 ---
 
-A **counting semaphore** (initialized to N > 1) models a number of **shared resources**. Picture the computing centre with **5 printers**: five jobs can run at once, and the sixth one waits until one of them frees up.
+A **counting semaphore** (initialized to N > 1) models a number of shared resources. Picture the computing centre with 5 printers: five jobs can run at once, and the sixth one waits until one of them frees up.
 
 ```text
 sem_t printers;
@@ -57,22 +57,22 @@ sem_wait(&printers);   // grab a printer (counter--)
 sem_post(&printers);   // release the printer (counter++)
 ```
 
-When five threads have called `sem_wait`, the counter is 0. The sixth thread **blocks** on `sem_wait` until one of the running jobs finishes and calls `sem_post`.
+When five threads have called `sem_wait`, the counter is 0. The sixth thread blocks on `sem_wait` until one of the running jobs finishes and calls `sem_post`.
 
-A mutex couldn't do this: a mutex is always binary (held or free). A counting semaphore **caps how many go in at once**, not just one.
+A mutex couldn't do this: a mutex is always binary (held or free). A counting semaphore caps how many go in at once, not just one.
 
 ---
 
-Don't forget `sem_destroy(&sem)` at the end: it releases internal resources. And `sem_init`'s third argument is the counter's **starting** value: 0, 1, or N.
+Don't forget `sem_destroy(&sem)` at the end: it releases internal resources. And `sem_init`'s third argument is the counter's starting value: 0, 1, or N.
 
 ---
 
 ## Mission: The Printer Queue
 
-The computing centre has **2 printers** available. Four operators submit jobs simultaneously, but at any given moment at most 2 can be printing; the others queue politely.
+The computing centre has 2 printers available. Four operators submit jobs simultaneously, but at any given moment at most 2 can be printing; the others queue politely.
 
-1. Create a semaphore initialized to **2**.
-2. Start **4 threads**, each with its ID (1, 2, 3, 4) passed as an argument.
+1. Create a semaphore initialized to 2.
+2. Start 4 threads, each with its ID (1, 2, 3, 4) passed as an argument.
 3. Each thread:
    - Waits on the semaphore (`sem_wait`).
    - Prints `Thread K printing`.
@@ -98,4 +98,4 @@ All jobs finished
 
 The final message always appears last, because the main thread waits with `pthread_join`.
 
-Use `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` from **<semaphore.h>**, plus `pthread_create` and `pthread_join` from **<pthread.h>**.
+Use `sem_t`, `sem_init`, `sem_wait`, `sem_post`, `sem_destroy` from <semaphore.h>, plus `pthread_create` and `pthread_join` from <pthread.h>.

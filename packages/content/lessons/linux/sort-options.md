@@ -1,4 +1,4 @@
-Plain `sort` treats everything as text. The number `9` sorts **after** `80` because `9`
+Plain `sort` treats everything as text. The number `9` sorts after `80` because `9`
 comes after `8` alphabetically. To sort by actual numeric value, use `-n`:
 
 ```bash
@@ -23,7 +23,7 @@ column number:
 sort -k2 roster.txt
 ```
 
-This sorts by the **second** column. Combine with `-n` to sort numerically by that
+This sorts by the second column. Combine with `-n` to sort numerically by that
 column:
 
 ```bash

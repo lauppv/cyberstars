@@ -1,4 +1,4 @@
-Reversing a string sounds simple (and it is), but it's a classic exercise because it forces you to think about **indexing**, **loops**, and **building up** a result
+Reversing a string sounds simple (and it is), but it's a classic exercise because it forces you to think about indexing, loops, and building up a result
 
 We already saw one way using the accumulator pattern
 
@@ -21,11 +21,11 @@ print(name[::-1])
 
 Output **ymmoT**
 
-What's **[::-1]**? Remember slicing: **[start:stop:step]**. When the step is **-1**, Python goes **backwards**. We leave start and stop empty, so it goes from end to beginning. It's elegant, but make sure you understand the manual way first
+What's **[::-1]**? Remember slicing: **[start:stop:step]**. When the step is -1, Python goes backwards. We leave start and stop empty, so it goes from end to beginning. It's elegant, but make sure you understand the manual way first
 
 ---
 
-Let's try another approach: using a **for loop with indexes**
+Let's try another approach: using a for loop with indexes
 
 ```py
 name = "Tommy"
@@ -41,7 +41,7 @@ Output **ymmoT**
 
 ---
 
-What about reversing **words** in a sentence, not individual characters?
+What about reversing words in a sentence, not individual characters?
 
 ```py
 sentence = "I love Vice City"
@@ -59,11 +59,11 @@ Output **City Vice love I**
 
 ## Mission: Decode Transmission
 
-A garbled transmission just arrived. The crew suspects it was sent **backwards**, so you need to flip it two ways and see which one makes sense.
+A garbled transmission just arrived. The crew suspects it was sent backwards, so you need to flip it two ways and see which one makes sense.
 
-1. Write a function **reverse_text(text)** that returns the text reversed **character by character**, using a loop (**don't use `[::-1]`**).
-2. **Read** the transmission, then print `Reversed: ` followed by the character-reversed text.
-3. Also reverse the **order of the words** (split into words, reverse the list, join back with spaces) and print `Word order: ` followed by the result.
+1. Write a function **reverse_text(text)** that returns the text reversed character by character, using a loop (don't use `[::-1]`).
+2. Read the transmission, then print `Reversed: ` followed by the character-reversed text.
+3. Also reverse the order of the words (split into words, reverse the list, join back with spaces) and print `Word order: ` followed by the result.
 
 **Input:**
 
