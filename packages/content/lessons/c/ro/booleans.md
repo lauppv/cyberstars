@@ -1,4 +1,4 @@
-În lecția **if-else** am văzut o mică surpriză: **C nu are un tip boolean nativ**. Folosește **întregi**, unde **0** înseamnă **false** și **orice altceva** înseamnă **true**
+În lecția if-else am văzut o mică surpriză: **C nu are un tip boolean nativ**. Folosește întregi, unde **0** înseamnă false și **orice altceva** înseamnă true
 
 ```c
 #include <stdio.h>
@@ -14,7 +14,7 @@ int main(void) {
 }
 ```
 
-Asta funcționează, dar a citi **int este_utilizator_online = 1** este stângaci. Arată ca un contor, nu ca o valoare true/false
+Asta funcționează, dar a citi int este_utilizator_online = 1 este stângaci. Arată ca un contor, nu ca o valoare true/false
 
 ---
 
@@ -37,19 +37,19 @@ int main(void) {
 
 După ce facem **#include <stdbool.h>**, există trei identificatori noi: **bool**, **true** și **false**
 
-În spatele cortinei, **bool** este în esență tot un int (**true** este **1**, **false** este **0**), dar numele fac codul nostru mult mai **lizibil**. De acum încolo, când ceva poate fi doar true sau false, preferă **bool** în loc de **int**
+În spatele cortinei, bool este în esență tot un int (true este 1, false este 0), dar numele fac codul nostru mult mai lizibil. De acum încolo, când ceva poate fi doar true sau false, preferă bool în loc de int
 
-Nu există un format specifier special pentru **bool** în **printf**: folosește doar **%d** (va afișa **0** sau **1**)
+Nu există un format specifier special pentru bool în printf: folosește doar **%d** (va afișa 0 sau 1)
 
 ---
 
 Putem combina booleans cu operatori logici
 
-- **&&** → **and** (ambele trebuie să fie true)
-- **||** → **or** (cel puțin una trebuie să fie true)
-- **!** → **not** (inversează valoarea)
+- **&&** → and (ambele trebuie să fie true)
+- **||** → or (cel puțin una trebuie să fie true)
+- **!** → not (inversează valoarea)
 
-Un exemplu real: pentru a conduce o mașină, trebuie să ai **cel puțin 18 ani ȘI să ai permis**
+Un exemplu real: pentru a conduce o mașină, trebuie să ai cel puțin 18 ani ȘI să ai permis
 
 ```c
 #include <stdio.h>
@@ -71,7 +71,7 @@ int main(void) {
 
 ---
 
-**||** este mai relaxat. Doar una dintre condiții fiind true este suficient
+|| este mai relaxat. Doar una dintre condiții fiind true este suficient
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main(void) {
 
 ---
 
-**!** inversează un boolean. **!true** devine **false**, și viceversa
+! inversează un boolean. **!true** devine false, și viceversa
 
 ```c
 #include <stdio.h>
@@ -111,9 +111,9 @@ int main(void) {
 
 ## Misiune: Accesul în sala calculatoarelor
 
-Sala calculatoarelor centrului de date se încuie automat. Poarta programează un panou care decide cine intră: o persoană poate trece dacă este **angajat ȘI este zi lucrătoare**, SAU dacă este **oaspete CU o invitație**.
+Sala calculatoarelor centrului de date se încuie automat. Poarta programează un panou care decide cine intră: o persoană poate trece dacă este angajat ȘI este zi lucrătoare, SAU dacă este oaspete CU o invitație.
 
-Citește patru numere întregi (**0** sau **1**), separate prin spațiu, în această ordine: **este_angajat**, **este_zi_lucratoare**, **este_oaspete**, **are_invitatie**. Scrie un **if / else** folosind `&&` și `||` care afișează verdictul corect
+Citește patru numere întregi (0 sau 1), separate prin spațiu, în această ordine: este_angajat, este_zi_lucratoare, este_oaspete, are_invitatie. Scrie un if / else folosind `&&` și `||` care afișează verdictul corect
 
 **Exemplu**
 

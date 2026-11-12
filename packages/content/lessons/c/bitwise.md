@@ -1,6 +1,6 @@
-Computers think in **bits**: 0s and 1s. C lets us work directly with those bits using **bitwise operators**. This is as low-level as it gets without writing assembly
+Computers think in bits: 0s and 1s. C lets us work directly with those bits using **bitwise operators**. This is as low-level as it gets without writing assembly
 
-The number **13** in binary is **1101**. The number **10** is **1010**. Bitwise operators work on each bit individually
+The number 13 in binary is **1101**. The number 10 is **1010**. Bitwise operators work on each bit individually
 
 ---
 
@@ -77,9 +77,9 @@ int main(void) {
 
 ---
 
-**Shift operators** move bits left or right
+Shift operators move bits left or right
 
-**<< (left shift)**: shifts bits left, filling with 0s. Each left shift **multiplies by 2**
+**<< (left shift)**: shifts bits left, filling with 0s. Each left shift multiplies by 2
 
 ```c
 #include <stdio.h>
@@ -92,7 +92,7 @@ int main(void) {
 }
 ```
 
-**>> (right shift)**: shifts bits right. Each right shift **divides by 2**
+**>> (right shift)**: shifts bits right. Each right shift divides by 2
 
 ```c
 #include <stdio.h>
@@ -135,7 +135,7 @@ int main(void) {
 }
 ```
 
-A single **int** stores multiple yes/no properties using individual bits. This is exactly what UNIX does when you run `ls -l` and see `rwx` next to a file: each letter is a bit in an integer
+A single int stores multiple yes/no properties using individual bits. This is exactly what UNIX does when you run `ls -l` and see `rwx` next to a file: each letter is a bit in an integer
 
 ---
 
@@ -143,11 +143,11 @@ A single **int** stores multiple yes/no properties using individual bits. This i
 
 The computing center checks pairs of security codes received from terminals. The shift operator enters two integers, and the system must print the four basic bitwise operations to confirm the configuration.
 
-1. Read two integers **a** and **b**
-2. Print **a & b** (AND)
-3. Print **a | b** (OR)
-4. Print **a ^ b** (XOR)
-5. Print **a << 2** (left shift by 2)
+1. Read two integers a and b
+2. Print a & b (AND)
+3. Print a | b (OR)
+4. Print a ^ b (XOR)
+5. Print a << 2 (left shift by 2)
 
 **Example**
 

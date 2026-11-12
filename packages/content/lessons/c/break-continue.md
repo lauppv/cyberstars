@@ -1,10 +1,10 @@
-**for** and **while** loops do their job from start to finish. But what if, in the middle of a loop, we want to say "ok, that's enough, stop"? Or "skip this one, go to the next"?
+for and while loops do their job from start to finish. But what if, in the middle of a loop, we want to say "ok, that's enough, stop"? Or "skip this one, go to the next"?
 
 C gives us two keywords for this: **break** and **continue**
 
 ---
 
-**break** **stops** the loop completely. The remaining iterations never happen
+**break** stops the loop completely. The remaining iterations never happen
 
 ```c
 #include <stdio.h>
@@ -30,7 +30,7 @@ Output
 4
 ```
 
-We told the loop to go up to **99**, but as soon as **i** became **5**, **break** kicked in and the loop ended
+We told the loop to go up to 99, but as soon as i became 5, break kicked in and the loop ended
 
 A real example: searching for a value in an array
 
@@ -53,11 +53,11 @@ int main(void) {
 }
 ```
 
-The loop stops as soon as we find what we're looking for. **break** saves us time
+The loop stops as soon as we find what we're looking for. break saves us time
 
 ---
 
-**continue** is different. It doesn't stop the loop; it just **skips the rest** of the current iteration and **moves on to the next one**
+**continue** is different. It doesn't stop the loop; it just skips the rest of the current iteration and moves on to the next one
 
 ```c
 #include <stdio.h>
@@ -87,9 +87,9 @@ Output
 9
 ```
 
-**5** is missing. When **i** was **5**, **continue** skipped over **printf** and the loop kept going
+**5** is missing. When i was 5, continue skipped over printf and the loop kept going
 
-A real example: print only **even** numbers
+A real example: print only even numbers
 
 ```c
 #include <stdio.h>
@@ -109,7 +109,7 @@ Output: **0 2 4 6 8 10**
 
 ---
 
-Both keywords work the same way in **while**, not just **for**
+Both keywords work the same way in while, not just for
 
 ```c
 #include <stdio.h>
@@ -127,22 +127,22 @@ int main(void) {
 }
 ```
 
-**while (1)** would normally be infinite, but **break** lets us escape
+**while (1)** would normally be infinite, but break lets us escape
 
 ---
 
-A small warning: **break** and **continue** can make code harder to read if you abuse them. Use them when they make the logic clearer, not just to look clever
+A small warning: break and continue can make code harder to read if you abuse them. Use them when they make the logic clearer, not just to look clever
 
 ---
 
 ## Mission: The Punch Card Room Inspection
 
-You are doing the annual inspection of the punch card reader room, numbered from **1** to **20**. One reader is marked **sealed for repairs**: it must be **skipped** with **continue**, without printing it. Another reader triggers the **smoke alarm**: the moment you reach it, you **stop** the inspection with **break** (without printing it either).
+You are doing the annual inspection of the punch card reader room, numbered from 1 to 20. One reader is marked sealed for repairs: it must be skipped with continue, without printing it. Another reader triggers the smoke alarm: the moment you reach it, you stop the inspection with break (without printing it either).
 
-1. Read two integers from input: **sealed** and **alarm**
-2. Walk through readers **1** to **20** with a **for** loop
-3. If the current number equals **sealed**, skip it with **continue**
-4. If the current number equals **alarm**, stop the loop with **break**
+1. Read two integers from input: sealed and alarm
+2. Walk through readers 1 to 20 with a for loop
+3. If the current number equals sealed, skip it with continue
+4. If the current number equals alarm, stop the loop with break
 5. Otherwise, print the reader number
 
 **Example**
