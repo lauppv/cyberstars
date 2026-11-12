@@ -2,7 +2,7 @@ In real life, we are often faced with a decision: either I do this, or I do that
 
 **if** yes
 
-if not (**else**)
+**if** not (**else**)
 
 In programming, we say
 

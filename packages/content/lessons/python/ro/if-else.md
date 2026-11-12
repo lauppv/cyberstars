@@ -2,7 +2,7 @@
 
 **if** da
 
-if nu (**else**)
+**if** nu (**else**)
 
 În programare, spunem
 
