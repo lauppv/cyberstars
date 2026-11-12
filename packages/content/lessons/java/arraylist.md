@@ -1,6 +1,6 @@
-Arrays are great, but they have one big limitation: their **size is fixed**. Once you create an array of 5 elements, you can't add a 6th. In real programs, you often don't know upfront how many items you'll need. This is where **ArrayList** comes in
+Arrays are great, but they have one big limitation: their size is fixed. Once you create an array of 5 elements, you can't add a 6th. In real programs, you often don't know upfront how many items you'll need. This is where **ArrayList** comes in
 
-An **ArrayList** is a **dynamic array**: it grows and shrinks as needed. You need to import it from `java.util`
+An ArrayList is a **dynamic array**: it grows and shrinks as needed. You need to import it from `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ Output
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
 ```
 
-The **\<String\>** part is called a **generic type**: it tells Java what type of elements the list holds. `ArrayList<String>` means "a list that holds Strings." For numbers you use **ArrayList\<Integer\>** or **ArrayList\<Double\>** (not `int`/`double` directly, Java converts automatically)
+The **\<String\>** part is called a **generic type**: it tells Java what type of elements the list holds. `ArrayList<String>` means "a list that holds Strings." For numbers you use ArrayList\<Integer\> or ArrayList\<Double\> (not `int`/`double` directly, Java converts automatically)
 
 ---
 
@@ -125,7 +125,7 @@ Read `for (String name : crew)` as: "for each String called `name` in `crew`"
 
 ---
 
-ArrayList becomes really powerful when you hold **objects** in it, not just Strings or numbers, but instances of your own classes
+ArrayList becomes really powerful when you hold objects in it, not just Strings or numbers, but instances of your own classes
 
 ```java
 import java.util.ArrayList;

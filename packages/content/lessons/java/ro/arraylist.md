@@ -1,6 +1,6 @@
-Array-urile sunt utile, dar au o limitare mare: **mărimea lor este fixă**. Odată ce creezi un array cu 5 elemente, nu poți adăuga un al 6-lea. În programele reale, adesea nu știi de la început câte elemente vei avea. Aici intervine **ArrayList**
+Array-urile sunt utile, dar au o limitare mare: mărimea lor este fixă. Odată ce creezi un array cu 5 elemente, nu poți adăuga un al 6-lea. În programele reale, adesea nu știi de la început câte elemente vei avea. Aici intervine **ArrayList**
 
-Un **ArrayList** este un **array dinamic**: crește și se micșorează după nevoie. Trebuie importat din `java.util`
+Un ArrayList este un **array dinamic**: crește și se micșorează după nevoie. Trebuie importat din `java.util`
 
 ```java
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ Ieșire
 [Tommy Vercetti, Lance Vance, Phil Cassidy]
 ```
 
-Partea **\<String\>** se numește **tip generic**: îi spune lui Java ce tip de elemente ține lista. `ArrayList<String>` înseamnă „o listă care ține String-uri." Pentru numere folosești **ArrayList\<Integer\>** sau **ArrayList\<Double\>** (nu `int`/`double` direct, Java face conversia automat)
+Partea **\<String\>** se numește **tip generic**: îi spune lui Java ce tip de elemente ține lista. `ArrayList<String>` înseamnă „o listă care ține String-uri." Pentru numere folosești ArrayList\<Integer\> sau ArrayList\<Double\> (nu `int`/`double` direct, Java face conversia automat)
 
 ---
 
@@ -125,7 +125,7 @@ Citește `for (String nume : echipaj)` ca: „pentru fiecare String numit `nume`
 
 ---
 
-ArrayList devine cu adevărat puternic când ții **obiecte** în el, nu doar String-uri sau numere, ci instanțe ale claselor tale
+ArrayList devine cu adevărat puternic când ții obiecte în el, nu doar String-uri sau numere, ci instanțe ale claselor tale
 
 ```java
 import java.util.ArrayList;

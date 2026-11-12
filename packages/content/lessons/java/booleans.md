@@ -1,4 +1,4 @@
-A **boolean** is a value that can only be **true** or **false**. We’ve already seen them inside **if** conditions. Java has its own type for them, called **boolean**
+A **boolean** is a value that can only be **true** or **false**. We’ve already seen them inside if conditions. Java has its own type for them, called boolean
 
 ```java
 public class Main {
@@ -11,7 +11,7 @@ public class Main {
 }
 ```
 
-**Important**: in Java, **true** and **false** are **lowercase**. Be careful not to capitalize them
+Important: in Java, true and false are **lowercase**. Be careful not to capitalize them
 
 Conditions like **age < 18** or **x == 5** also produce booleans
 
@@ -29,11 +29,11 @@ public class Main {
 
 We can combine booleans with logical operators
 
-- **&&** means **and** (both conditions must be true)
-- **||** means **or** (at least one must be true)
-- **!** means **not** (flips the value)
+- **&&** means and (both conditions must be true)
+- **||** means or (at least one must be true)
+- **!** means not (flips the value)
 
-Imagine: in order to drive a car, you need to be **at least 18 years old AND have a license**
+Imagine: in order to drive a car, you need to be at least 18 years old AND have a license
 
 ```java
 public class Main {
@@ -50,11 +50,11 @@ public class Main {
 }
 ```
 
-Both conditions must be **true** for **&&** to be **true**. If even one is false, the whole thing is false
+Both conditions must be true for && to be true. If even one is false, the whole thing is false
 
 ---
 
-**||** (or) is more relaxed. Just **one** of the conditions being true is enough
+|| (or) is more relaxed. Just one of the conditions being true is enough
 
 ```java
 public class Main {
@@ -71,11 +71,11 @@ public class Main {
 }
 ```
 
-**isVIP** is false, **hasInvitation** is true, so the **or** is true and the person enters
+isVIP is false, hasInvitation is true, so the or is true and the person enters
 
 ---
 
-**!** flips a boolean. **!true** becomes **false**, **!false** becomes **true**
+! flips a boolean. **!true** becomes false, !false becomes true
 
 ```java
 public class Main {
@@ -113,7 +113,7 @@ false || false = false
 
 ## Mission: Station Access Gate
 
-You are writing the access system for the station. A person can enter if they are an **employee AND it is a working day**, OR if they are a **guest WITH an invitation**.
+You are writing the access system for the station. A person can enter if they are an employee AND it is a working day, OR if they are a guest WITH an invitation.
 
 Store in four `boolean` variables (`employee`, `workingDay`, `guest`, and `invitation`) whether the person is an employee, whether today is a working day, whether they are a guest, and whether they have an invitation. Then write an `if / else` using `&&` and `||` that prints `Access granted` or `Access denied`.
 

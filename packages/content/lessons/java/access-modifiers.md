@@ -1,4 +1,4 @@
-In Vice City, not everyone gets access to everything. Tommy's safe room is private. Random pedestrians can't walk in. The front door of the Malibu Club is public. Java works the same way with **scope** and **access modifiers**
+In Vice City, not everyone gets access to everything. Tommy's safe room is private. Random pedestrians can't walk in. The front door of the Malibu Club is public. Java works the same way with scope and **access modifiers**
 
 ---
 
@@ -27,7 +27,7 @@ Output
 10
 ```
 
-Variables live in the **block** (the `{ }` braces) where they're declared. Once you exit that block, they're gone
+Variables live in the block (the `{ }` braces) where they're declared. Once you exit that block, they're gone
 
 ---
 
@@ -76,7 +76,7 @@ Tommy Vercetti: 70 HP
 You've seen `private` in the getters/setters lesson. Here's the full picture:
 
 - **`public`**: anyone can access this. Any class, any package, anywhere
-- **`private`**: only code **inside this class** can access it. Nobody else
+- **`private`**: only code inside this class can access it. Nobody else
 - **`protected`**: accessible within the class and by subclasses (we'll cover inheritance later)
 - **no modifier** (default): accessible within the same package
 
@@ -129,9 +129,9 @@ Money: 50000
 
 In well-written Java code, the pattern is:
 
-1. Fields are **`private`**: nobody touches them directly
-2. Methods are **`public`**: they provide controlled access
-3. The constructor is **`public`**, so people can actually create objects
+1. Fields are `private`: nobody touches them directly
+2. Methods are `public`: they provide controlled access
+3. The constructor is `public`, so people can actually create objects
 
 ```text
 class Wallet {
@@ -187,7 +187,7 @@ Tommy wants a wallet protected by access controls, so nobody can mess with his m
 1. A `private int money` field
 2. A `public` constructor that takes starting money
 3. A `public void addMoney(int amount)` method that only adds if `amount > 0`
-4. A `public void spendMoney(int amount)` method that only spends if `amount > 0` **and** `amount <= money`
+4. A `public void spendMoney(int amount)` method that only spends if `amount > 0` and `amount <= money`
 5. A `public int getBalance()` method that returns the current balance
 
 In `main`, store the values in variables: `start` for the starting money, `income` for what you add, `spend1` and `spend2` for the two amounts you try to spend. Then create a wallet with `start`, add `income`, spend `spend1`, try to spend `spend2` (which should fail silently when it's more than the balance), then print the balance.

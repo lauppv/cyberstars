@@ -1,6 +1,6 @@
-Până acum, fiecare variabilă ținea **un** singur lucru. Dar dacă vrem să stocăm **toate** personajele din GTA Vice City? Să scriem **nume1**, **nume2**, **nume3**... este urât. Avem nevoie de un **array**
+Până acum, fiecare variabilă ținea un singur lucru. Dar dacă vrem să stocăm toate personajele din GTA Vice City? Să scriem nume1, nume2, nume3... este urât. Avem nevoie de un **array**
 
-Un **array** este o colecție de valori de **același tip**, stocate într-o singură variabilă
+Un array este o colecție de valori de **același tip**, stocate într-o singură variabilă
 
 ```java
 public class Main {
@@ -24,14 +24,14 @@ Cortez
 
 Două lucruri noi
 
-- Tipul este **String[]** (observă **[]**): „un array de String-uri"
+- Tipul este **String[]** (observă []): „un array de String-uri"
 - Folosim **{ }** ca să listăm valorile, separate prin virgule
 
-**Numărarea începe de la 0**. **nume[0]** este primul element, **nume[1]** al doilea, și așa mai departe
+**Numărarea începe de la 0**. **nume[0]** este primul element, nume[1] al doilea, și așa mai departe
 
 ---
 
-Array-urile Java au o **mărime fixă**. Odată ce le creezi, nu poți adăuga sau elimina elemente. (Pentru colecții dinamice, Java are **ArrayList**, dar deocamdată rămânem la array-uri)
+Array-urile Java au o **mărime fixă**. Odată ce le creezi, nu poți adăuga sau elimina elemente. (Pentru colecții dinamice, Java are ArrayList, dar deocamdată rămânem la array-uri)
 
 Câte elemente are array-ul? Folosește **.length**
 
@@ -44,7 +44,7 @@ public class Main {
 }
 ```
 
-**Observă**: **nume.length** **nu are paranteze**, spre deosebire de **String.length()**. Da, asta este enervant de inconsecvent: array-urile folosesc un **câmp** numit **length**, în timp ce String-urile au o **metodă** numită **length()**
+Observă: **nume.length** **nu are paranteze**, spre deosebire de **String.length()**. Da, asta este enervant de inconsecvent: array-urile folosesc un câmp numit length, în timp ce String-urile au o metodă numită length()
 
 ---
 
@@ -64,11 +64,11 @@ public class Main {
 }
 ```
 
-**new int[5]** creează un array cu **5** sloturi. Implicit sunt umplute cu **0** pentru numere, **null** pentru obiecte (ca String-urile) și **false** pentru booleans
+**new int[5]** creează un array cu 5 sloturi. Implicit sunt umplute cu 0 pentru numere, null pentru obiecte (ca String-urile) și false pentru booleans
 
 ---
 
-Putem **schimba** o valoare la orice indice
+Putem schimba o valoare la orice indice
 
 ```java
 public class Main {
@@ -97,7 +97,7 @@ Rulează-l. Java aruncă o **ArrayIndexOutOfBoundsException** și se prăbușeș
 
 ---
 
-Acum partea cea mai utilă: să parcurgem **toate** elementele. Să afișăm câte un salut pentru fiecare nume. **Am putea** scrie o linie pentru fiecare
+Acum partea cea mai utilă: să parcurgem toate elementele. Să afișăm câte un salut pentru fiecare nume. Am putea scrie o linie pentru fiecare
 
 ```java
 public class Main {
@@ -110,7 +110,7 @@ public class Main {
 }
 ```
 
-Repetitiv, și se rupe în clipa în care array-ul are mai multe elemente. Bucla **for** merge mână în mână cu array-urile
+Repetitiv, și se rupe în clipa în care array-ul are mai multe elemente. Bucla for merge mână în mână cu array-urile
 
 ```java
 public class Main {
@@ -124,7 +124,7 @@ public class Main {
 }
 ```
 
-Observă că am folosit **i < nume.length**, **nu** **i <= nume.length**. De ce? Pentru că indicii merg de la **0** la **length - 1**. Pentru un array de **3** elemente, indicii sunt **0, 1, 2**. **i = 3** este în afara limitelor. **i < length** se oprește exact la locul potrivit
+Observă că am folosit **i < nume.length**, nu **i <= nume.length**. De ce? Pentru că indicii merg de la 0 la length - 1. Pentru un array de 3 elemente, indicii sunt 0, 1, 2. i = 3 este în afara limitelor. i < length se oprește exact la locul potrivit
 
 ---
 
@@ -142,20 +142,20 @@ public class Main {
 }
 ```
 
-Citește-o ca: „pentru fiecare **n** din **nume**, fă asta". Mai curată când vrem doar valoarea
+Citește-o ca: „pentru fiecare n din nume, fă asta". Mai curată când vrem doar valoarea
 
 Forma este **for (Tip variabila : array) { ... }**. **:**-ul din mijloc este esențial
 
 Când alegi una față de cealaltă?
 
-- Folosește **for clasic** când ai nevoie de **indice** (de exemplu, pentru a afișa numerele pozițiilor)
-- Folosește **for îmbunătățit** când ai nevoie doar de **valoare**
+- Folosește **for clasic** când ai nevoie de indice (de exemplu, pentru a afișa numerele pozițiilor)
+- Folosește **for îmbunătățit** când ai nevoie doar de valoare
 
 Ambele sunt comune. Codul Java le folosește pe amândouă în funcție de situație
 
 ---
 
-Un șablon clasic: **adunarea** numerelor dintr-un array
+Un șablon clasic: adunarea numerelor dintr-un array
 
 ```java
 public class Main {
@@ -176,13 +176,13 @@ Output **100**. Începe cu **total = 0**, parcurge fiecare preț, adaugă-l la t
 
 ## Misiune: Raportul Imperiului
 
-Fiecare afacere a lui Tommy din Vice City și-a raportat încasările pe ziua de azi. Sarcina ta este să produci un raport rapid: listează fiecare sumă, apoi arată **totalul** și **media**.
+Fiecare afacere a lui Tommy din Vice City și-a raportat încasările pe ziua de azi. Sarcina ta este să produci un raport rapid: listează fiecare sumă, apoi arată totalul și media.
 
 Pune încasările într-un array de `int` numit `incasari`. Apoi:
 
 1. Afișează fiecare sumă pe linia ei
-2. Afișează **totalul** tuturor sumelor
-3. Afișează **media** ca număr zecimal (folosește o conversie la `double`)
+2. Afișează totalul tuturor sumelor
+3. Afișează media ca număr zecimal (folosește o conversie la `double`)
 
 **Sfat**: dacă împarți `total / numarul_de_sume` ca int-uri, obții un întreg trunchiat, nu un zecimal. Convertește o parte la `double` ca să păstrezi zecimalele:
 
@@ -211,7 +211,7 @@ Pentru încasările `{ 1200, 3400, 800, 2600 }`, programul tău ar trebui să af
 5000.0
 ```
 
-**Exemplu** când media **nu** este un număr rotund `{ 125, 200 }`
+**Exemplu** când media nu este un număr rotund `{ 125, 200 }`
 
 ```text
 125

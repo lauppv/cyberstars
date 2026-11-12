@@ -1,4 +1,4 @@
-Uneori vrei o clasă care este un **șablon**: definește ce TREBUIE să facă clasele copil, dar nu poate fi folosită singură. Asta este o **clasă abstractă**
+Uneori vrei o clasă care este un șablon: definește ce TREBUIE să facă clasele copil, dar nu poate fi folosită singură. Asta este o **clasă abstractă**
 
 Gândește-te așa: „Vehicul" este un concept. Nu poți construi pur și simplu un „vehicul" generic. Construiești o mașină sport, o motocicletă, un camion. Dar toate împărtășesc ideea de a fi un vehicul. În Java, ai face Vehicul **abstract**
 
@@ -87,7 +87,7 @@ Angel: 200 km/h
 
 ---
 
-O clasă abstractă poate avea **atât** metode abstracte (pe care copiii trebuie să le implementeze) **cât și** metode **obișnuite** (pe care copiii le moștenesc gratuit)
+O clasă abstractă poate avea atât metode abstracte (pe care copiii trebuie să le implementeze) cât și metode obișnuite (pe care copiii le moștenesc gratuit)
 
 ```text
 abstract class Personaj {
@@ -116,9 +116,9 @@ Tommy Vercetti și Lance Vance ar extinde amândoi `Personaj`. Fiecare ar avea p
 
 **Când folosești o clasă abstractă vs o clasă obișnuită?**
 
-Folosește o **clasă obișnuită** când are sens să creezi obiecte de acel tip direct. O `Masina` este un lucru real, poți crea una
+Folosește o clasă obișnuită când are sens să creezi obiecte de acel tip direct. O `Masina` este un lucru real, poți crea una
 
-Folosește o **clasă abstractă** când clasa este doar un concept sau o categorie. „Vehicul" este abstract: nu există așa ceva ca un vehicul generic. „Personaj" ar putea fi oricare dintre cele două, în funcție de designul tău
+Folosește o clasă abstractă când clasa este doar un concept sau o categorie. „Vehicul" este abstract: nu există așa ceva ca un vehicul generic. „Personaj" ar putea fi oricare dintre cele două, în funcție de designul tău
 
 Regula de bază: dacă nu ai vrea niciodată ca cineva să scrie `new ClasaTa()`, fă-o abstractă
 
