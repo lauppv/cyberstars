@@ -1,4 +1,4 @@
-Imaginează-ți că programezi un sistem de misiuni în Vice City și trebuie să reprezinți **vremea** curentă: însorit, ploios, cu ceață sau furtună. Ai _putea_ folosi String-uri precum `"insorit"` și `"ploios"`, dar cineva ar putea scrie din greșeală `"insort"` și codul tău nu ar prinde greșeala decât la rulare. Aici intervin **enum-urile**
+Imaginează-ți că programezi un sistem de misiuni în Vice City și trebuie să reprezinți vremea curentă: însorit, ploios, cu ceață sau furtună. Ai _putea_ folosi String-uri precum `"insorit"` și `"ploios"`, dar cineva ar putea scrie din greșeală `"insort"` și codul tău nu ar prinde greșeala decât la rulare. Aici intervin enum-urile
 
 Un **enum** (prescurtare de la enumerare) este un tip special care reprezintă un **set fix de valori cu nume**. Odată ce le definești, acelea sunt singurele opțiuni valide
 
@@ -87,7 +87,7 @@ Rata de foc mare. Bun pentru misiuni intense.
 
 ---
 
-Poți parcurge **toate valorile** unui enum folosind metoda **values()**
+Poți parcurge toate valorile unui enum folosind metoda **values()**
 
 ```java
 enum Gasca {
@@ -118,8 +118,8 @@ DIAZ
 
 Când să folosești enum-uri în loc de String-uri?
 
-- **Enum-uri**: când ai un **set fix și cunoscut** de opțiuni: zilele săptămânii, anotimpurile, nivelurile de dificultate, stările jocului
-- **String-uri**: când valoarea e **liberă** sau provine de la utilizator: nume de jucători, mesaje, căi de fișiere
+- **Enum-uri**: când ai un set fix și cunoscut de opțiuni: zilele săptămânii, anotimpurile, nivelurile de dificultate, stările jocului
+- **String-uri**: când valoarea e liberă sau provine de la utilizator: nume de jucători, mesaje, căi de fișiere
 
 Dacă te trezești scriind `if (status.equals("activ") || status.equals("inactiv") || ...)`, probabil vrei un enum
 
@@ -129,7 +129,7 @@ Dacă te trezești scriind `if (status.equals("activ") || status.equals("inactiv
 
 Tommy are mai multe afaceri în Vice City și vrea un raport rapid. Fiecare afacere poate fi într-una din câteva stări fixe: produce bani, e închisă temporar, e în renovare sau a fost distrusă de o bandă rivală. De exemplu, Malibu Club merge bine și produce bani, Print Works e în renovare, Boatyard e închis temporar, iar Kaufman Cabs a fost distrus de o bandă rivală
 
-Definește stările posibile ca un set fix de valori (`Stare`). Scrie o metodă `descrieStare` care primește o stare și afișează ce înseamnă. În `main`, stochează cele patru nume de afaceri într-un array `nume` (unul pentru fiecare stare, în **aceeași ordine** ca valorile enum-ului). Apoi parcurge `Stare.values()`; pentru fiecare stare, afișează numele afacerii corespunzătoare urmat de `" - "`, apoi descrie starea.
+Definește stările posibile ca un set fix de valori (`Stare`). Scrie o metodă `descrieStare` care primește o stare și afișează ce înseamnă. În `main`, stochează cele patru nume de afaceri într-un array `nume` (unul pentru fiecare stare, în aceeași ordine ca valorile enum-ului). Apoi parcurge `Stare.values()`; pentru fiecare stare, afișează numele afacerii corespunzătoare urmat de `" - "`, apoi descrie starea.
 
 **Exemplu**
 

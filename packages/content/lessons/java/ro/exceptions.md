@@ -21,7 +21,7 @@ Nu se poate imparti la zero!
 Programul continua...
 ```
 
-Fără try/catch, programul s-ar opri la `10 / 0`. Cu el, Java **prinde** eroarea, rulează blocul catch și merge mai departe
+Fără try/catch, programul s-ar opri la `10 / 0`. Cu el, Java prinde eroarea, rulează blocul catch și merge mai departe
 
 ---
 

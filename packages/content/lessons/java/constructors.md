@@ -1,4 +1,4 @@
-When you create a new object, Java calls a special method called a **constructor**. It's the code that runs **at birth**, setting up the object before anyone can use it
+When you create a new object, Java calls a special method called a **constructor**. It's the code that runs at birth, setting up the object before anyone can use it
 
 Think of it like this: when Tommy Vercetti arrives in Vice City, he starts with a name, a reputation, and maybe some cash. The constructor is what gives him those starting stats
 
@@ -48,7 +48,7 @@ You probably spotted `this.name = name` and wondered what's going on. Here's the
 - `name` (without `this`) refers to the **parameter**, the value passed in
 - `this.name` refers to the **field** on the object itself
 
-It's like saying "**this** object's name equals the name you gave me"
+It's like saying "this object's name equals the name you gave me"
 
 ```java
 class Player {
@@ -188,9 +188,9 @@ Fists deals 10 damage
 
 Tommy keeps a record of his Vice City crew. Each member is registered with a name and a score: their reputation on the streets.
 
-Create a **class** `Player` that represents a crew member, with a field for the **name** (String) and one for the **score** (int). Write a **constructor** that takes both values and sets them using `this`.
+Create a class `Player` that represents a crew member, with a field for the name (String) and one for the score (int). Write a constructor that takes both values and sets them using `this`.
 
-In `main`, first store the values in local variables: `name1` and `score1` for the first member, `name2` and `score2` for the second. Then build **two** members by passing those variables to the constructor, and print each one on its own line in the format `Name has Score points`.
+In `main`, first store the values in local variables: `name1` and `score1` for the first member, `name2` and `score2` for the second. Then build two members by passing those variables to the constructor, and print each one on its own line in the format `Name has Score points`.
 
 **Example** for `Tommy Vercetti` with score `500` and `Lance Vance` with score `300`
 

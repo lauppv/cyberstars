@@ -1,4 +1,4 @@
-Uneori ai o valoare care nu ar trebui **niciodată să se schimbe**. Respectul maxim al unui membru, numele orașului, numărul maxim de stele de urmărire: acestea sunt constante. În Java, cuvântul cheie `final` blochează o variabilă astfel încât să nu poată fi reatribuită
+Uneori ai o valoare care nu ar trebui niciodată să se schimbe. Respectul maxim al unui membru, numele orașului, numărul maxim de stele de urmărire: acestea sunt constante. În Java, cuvântul cheie `final` blochează o variabilă astfel încât să nu poată fi reatribuită
 
 ---
 

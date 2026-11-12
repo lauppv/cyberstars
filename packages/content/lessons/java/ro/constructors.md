@@ -1,4 +1,4 @@
-wCând creezi un obiect nou, Java apelează o metodă specială numită **constructor**. Este codul care rulează **la naștere**, pregătind obiectul înainte ca cineva să-l poată folosi
+wCând creezi un obiect nou, Java apelează o metodă specială numită **constructor**. Este codul care rulează la naștere, pregătind obiectul înainte ca cineva să-l poată folosi
 
 Gândește-te așa: când Tommy Vercetti ajunge în Vice City, începe cu un nume, o reputație și poate ceva bani. Constructorul este cel care îi dă acele statistici de start
 
@@ -48,7 +48,7 @@ Probabil ai remarcat `this.nume = nume` și te-ai întrebat ce se întâmplă. I
 - `nume` (fără `this`) se referă la **parametru**, valoarea pasată
 - `this.nume` se referă la **câmpul** de pe obiectul însuși
 
-E ca și cum ai spune „numele **acestui** obiect este egal cu numele pe care mi l-ai dat"
+E ca și cum ai spune „numele acestui obiect este egal cu numele pe care mi l-ai dat"
 
 ```java
 class Jucator {
@@ -188,9 +188,9 @@ Pumni provoaca 10 daune
 
 Tommy ține o evidență a echipajului său din Vice City. Fiecare membru este înregistrat cu un nume și un scor: reputația lui pe străzi.
 
-Creează o **clasă** `Jucator` care reprezintă un membru al echipajului, cu un câmp pentru **nume** (String) și unul pentru **scor** (int). Scrie un **constructor** care primește ambele valori și le setează folosind `this`.
+Creează o clasă `Jucator` care reprezintă un membru al echipajului, cu un câmp pentru nume (String) și unul pentru scor (int). Scrie un constructor care primește ambele valori și le setează folosind `this`.
 
-În `main`, stochează mai întâi valorile în variabile locale: `nume1` și `scor1` pentru primul membru, `nume2` și `scor2` pentru al doilea. Apoi construiește **doi** membri pasând acele variabile constructorului și afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
+În `main`, stochează mai întâi valorile în variabile locale: `nume1` și `scor1` pentru primul membru, `nume2` și `scor2` pentru al doilea. Apoi construiește doi membri pasând acele variabile constructorului și afișează fiecare pe linia lui în formatul `Nume are Scor puncte`.
 
 **Exemplu** pentru `Tommy Vercetti` cu scorul `500` și `Lance Vance` cu scorul `300`
 

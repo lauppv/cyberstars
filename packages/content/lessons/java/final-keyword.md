@@ -1,4 +1,4 @@
-Sometimes you have a value that should **never change**. A crew member's max respect, the name of the city, the maximum wanted level: these are constants. In Java, the keyword `final` locks a variable so it can't be reassigned
+Sometimes you have a value that should never change. A crew member's max respect, the name of the city, the maximum wanted level: these are constants. In Java, the keyword `final` locks a variable so it can't be reassigned
 
 ---
 

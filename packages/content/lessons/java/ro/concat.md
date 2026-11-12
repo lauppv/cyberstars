@@ -1,4 +1,4 @@
-Avem deja **+**, **-**, **\***, **/** și **%**. Dar **+** are un al doilea talent: pe lângă adunarea numerelor, poate **lipi text**. Acesta este modul clasic în Java de a combina text și variabile
+Avem deja +, -, \*, / și %. Dar + are un al doilea talent: pe lângă adunarea numerelor, poate lipi text. Acesta este modul clasic în Java de a combina text și variabile
 
 ```java
 public class Main {
@@ -18,7 +18,7 @@ Ieșire
 Salut. Ma numesc Quincy, am 32 ani si inaltimea de 1.97 m
 ```
 
-Ce se întâmplă aici? Când punem un **String** și o altă valoare împreună cu **+**, Java **convertește totul în text** și le lipește. Asta se numește **concatenare de string-uri** (string concatenation)
+Ce se întâmplă aici? Când punem un String și o altă valoare împreună cu +, Java convertește totul în text și le lipește. Asta se numește **concatenare de string-uri** (string concatenation)
 
 Fii atent la spații
 
@@ -26,7 +26,7 @@ Fii atent la spații
 "Salut. Ma numesc " + nume
 ```
 
-Avem un spațiu **înainte de ghilimeaua de închidere**, altfel am obține **Salut. Ma numescQuincy**, totul lipit. Asta e ceva ce aproape toată lumea greșește la început. **Verifică-ți mereu spațiile**
+Avem un spațiu înainte de ghilimeaua de închidere, altfel am obține **Salut. Ma numescQuincy**, totul lipit. Asta e ceva ce aproape toată lumea greșește la început. Verifică-ți mereu spațiile
 
 ---
 
@@ -44,9 +44,9 @@ Ce crezi că afișează asta? **Rezultat: 5**?
 
 Afișează **Rezultat: 23**
 
-De ce? Java citește de la **stânga la dreapta**. Începe cu **"Rezultat: "** (un String), apoi vede **+ 2**: un String + un int = String, deci devine **"Rezultat: 2"**. Apoi **+ 3** → **"Rezultat: 23"**
+De ce? Java citește de la **stânga la dreapta**. Începe cu "Rezultat: " (un String), apoi vede + 2: un String + un int = String, deci devine "Rezultat: 2". Apoi + 3 → "Rezultat: 23"
 
-Dacă vrem **5**, folosim **paranteze** ca să forțăm calculul matematic mai întâi
+Dacă vrem 5, folosim **paranteze** ca să forțăm calculul matematic mai întâi
 
 ```java
 public class Main {
@@ -62,11 +62,11 @@ Ieșire
 Rezultat: 5
 ```
 
-Acum **(2 + 3)** este calculat mai întâi (dând **5**), apoi lipit de string. Ține minte regula asta, o să dai de ea în cod real
+Acum **(2 + 3)** este calculat mai întâi (dând 5), apoi lipit de string. Ține minte regula asta, o să dai de ea în cod real
 
 ---
 
-**+** este suficient pentru cazuri simple, dar când ai mult text de combinat devine greu de citit, plin de ghilimele și de **+**-uri. Java are o alternativă mai curată: **String.format()**
++ este suficient pentru cazuri simple, dar când ai mult text de combinat devine greu de citit, plin de ghilimele și de +-uri. Java are o alternativă mai curată: **String.format()**
 
 ```java
 public class Main {
@@ -112,7 +112,7 @@ Ieșire
 Jucator: Lance Vance | Eliminari: 47 | Acuratete: 82.500000
 ```
 
-Stai, o grămadă de zecimale! În mod implicit, **%f** afișează 6 zecimale. Ca să controlezi asta, folosește **%.Nf**, unde N este numărul de zecimale dorit
+Stai, o grămadă de zecimale! În mod implicit, %f afișează 6 zecimale. Ca să controlezi asta, folosește **%.Nf**, unde N este numărul de zecimale dorit
 
 ---
 
@@ -157,7 +157,7 @@ Folosește ce preferi. `String.format()` e bună când vrei să stochezi textul 
 
 Sala de jocuri a stației tocmai a terminat un turneu. Afișează statisticile câștigătorului pe o singură linie.
 
-Creează trei variabile: `nume` (String) pentru numele jucătorului, `scor` (int) pentru scorul total și `nota` (double) pentru nota de performanță. Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Nota: <nota>`. Poți folosi **+** sau **String.format()**, cum preferi.
+Creează trei variabile: `nume` (String) pentru numele jucătorului, `scor` (int) pentru scorul total și `nota` (double) pentru nota de performanță. Apoi afișează o linie de forma `Jucator: <nume> | Scor: <scor> | Nota: <nota>`. Poți folosi + sau String.format(), cum preferi.
 
 **Exemplu**
 
