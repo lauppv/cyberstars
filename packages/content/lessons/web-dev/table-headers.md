@@ -4,7 +4,7 @@ Look at your timetable again: across the top, Monday, Tuesday, Wednesday. Those 
 
 A cell that **labels** a column is a `<th>`, a table header, instead of a `<td>`:
 
-```html
+```html preview
 <table>
   <tr>
     <th scope="col">Day</th>
@@ -15,11 +15,6 @@ A cell that **labels** a column is a `<th>`, a table header, instead of a `<td>`
     <td>Maths</td>
   </tr>
 </table>
-```
-
-```text
-Day       First lesson      (bold and centered)
-Monday    Maths
 ```
 
 The browser shows header cells in bold and centered. More importantly, a screen reader now knows that "Maths" is the "First lesson": it can read the header out with each cell.
@@ -34,11 +29,19 @@ A table is for information that really has rows and columns: a timetable, scores
 
 Make the header row with `<td>` and `<strong>`:
 
-```html
+```html preview
+<table>
+<!-- show -->
 <tr>
   <td><strong>Day</strong></td>
   <td><strong>First lesson</strong></td>
 </tr>
+<!-- /show -->
+<tr>
+  <td>Monday</td>
+  <td>Maths</td>
+</tr>
+</table>
 ```
 
 It looks almost the same. But to a screen reader, it's just another row of data, and no cell below it has a label. Looks aren't meaning: a label is a `<th>`.

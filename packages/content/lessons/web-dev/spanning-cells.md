@@ -2,19 +2,37 @@ On a timetable, a double lesson takes two boxes in a row, merged into one. And a
 
 ## `colspan`: across columns
 
-```html
+```html preview
+<style>
+  td {
+    border: 1px solid gray;
+  }
+</style>
+<table>
+  <tr><td>Monday</td><td>Maths</td><td>Art</td></tr>
+  <tr><td>Friday</td><td>Music</td><td>Sport</td></tr>
+<!-- show -->
 <tfoot>
   <tr>
     <td colspan="3">School closes at 15:00 on Friday</td>
   </tr>
 </tfoot>
+<!-- /show -->
+</table>
 ```
 
 `colspan="3"` makes the cell three columns wide. A row in a 3-column table now needs only this one cell.
 
 ## `rowspan`: down rows
 
-```html
+```html preview
+<style>
+  td {
+    border: 1px solid gray;
+  }
+</style>
+<table>
+<!-- show -->
 <tr>
   <td rowspan="2">Monday</td>
   <td>Maths</td>
@@ -22,11 +40,8 @@ On a timetable, a double lesson takes two boxes in a row, merged into one. And a
 <tr>
   <td>Art</td>
 </tr>
-```
-
-```text
-Monday   Maths
-         Art
+<!-- /show -->
+</table>
 ```
 
 `rowspan="2"` makes "Monday" two rows tall. The second row has one cell fewer: the place on its left is already taken by Monday.
@@ -39,7 +54,14 @@ The trick with spans is counting: every row must still add up to the same number
 
 Keep the extra cell in the second row:
 
-```html
+```html preview
+<style>
+  td {
+    border: 1px solid gray;
+  }
+</style>
+<table>
+<!-- show -->
 <tr>
   <td rowspan="2">Monday</td>
   <td>Maths</td>
@@ -48,6 +70,8 @@ Keep the extra cell in the second row:
   <td>Art</td>
   <td>Music</td>
 </tr>
+<!-- /show -->
+</table>
 ```
 
 "Music" sticks out into a new column on the right, past the edge of the table. The second row has one cell too many: Monday was already in its first place.

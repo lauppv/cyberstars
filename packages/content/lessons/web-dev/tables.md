@@ -4,7 +4,7 @@ A school timetable is a grid: days across the top, lessons down the side, and in
 
 A table is built row by row:
 
-```html
+```html preview
 <table>
   <tr>
     <td>Monday</td>
@@ -19,11 +19,6 @@ A table is built row by row:
 </table>
 ```
 
-```text
-Monday    Maths     Art
-Tuesday   History   Music
-```
-
 - `<table>` holds the whole table;
 - `<tr>` is a **table row**;
 - `<td>` is a **cell** in that row, short for "table data".
@@ -34,7 +29,7 @@ The browser lines the cells up into columns by itself: the first cell of every r
 
 Leave out the `<tr>`s:
 
-```html
+```html preview
 <table>
   <td>Monday</td>
   <td>Maths</td>
