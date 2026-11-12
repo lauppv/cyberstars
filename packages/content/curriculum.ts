@@ -2210,6 +2210,8 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'length-limits', title: 'Length Limits', sortOrder: 172 },
   { courseKey: 'web-dev', slug: 'form-action', title: 'Where a Form Goes', sortOrder: 173 },
   { courseKey: 'web-dev', slug: 'boarding-html-recap', title: 'HTML Recap', sortOrder: 174 },
+  { courseKey: 'web-dev', slug: 'fields-look', title: 'Fonts in Fields', sortOrder: 175 },
+  { courseKey: 'web-dev', slug: 'form-layout', title: 'Form Layout', sortOrder: 176 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2415,6 +2417,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'length-limits',
         'form-action',
         'boarding-html-recap',
+        'fields-look',
+        'form-layout',
       ],
     },
   ],
