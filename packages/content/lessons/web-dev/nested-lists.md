@@ -4,7 +4,7 @@ Think of a school's floors: the ground floor has the gym and the canteen, the fi
 
 A list can sit **inside a list item**, after the item's own text:
 
-```html
+```html preview
 <ul>
   <li>
     Ground floor
@@ -23,15 +23,6 @@ A list can sit **inside a list item**, after the item's own text:
 </ul>
 ```
 
-```text
-• Ground floor
-    ◦ Gym
-    ◦ Canteen
-• First floor
-    ◦ Labs
-    ◦ Library
-```
-
 The inner list belongs to its floor: it starts after the floor's name and ends before that floor's `</li>`. The browser pushes it further right and gives it another kind of bullet.
 
 Indent the inner list one step further than its item in your file, so you can see at a glance what's inside what.
@@ -40,7 +31,7 @@ Indent the inner list one step further than its item in your file, so you can se
 
 Put the inner list straight into the outer one, between two items:
 
-```html
+```html preview
 <ul>
   <li>Ground floor</li>
   <ul>
