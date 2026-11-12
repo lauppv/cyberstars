@@ -1,4 +1,4 @@
-Folderele au nevoie de **fișiere** în interiorul lor. Cea mai rapidă cale de a crea
+Folderele au nevoie de fișiere în interiorul lor. Cea mai rapidă cale de a crea
 un fișier nou, gol, este comanda **touch**.
 
 ```bash
@@ -39,7 +39,7 @@ touch rapoarte/rezumat.txt
 
 Dacă fișierul _există deja_, `touch` nu îl șterge, ci doar îi actualizează ora de
 „ultimă modificare". Acesta este scopul său original. Pentru un începător, gândește-te
-la el pur și simplu ca la **„creează un fișier gol"**.
+la el pur și simplu ca la „creează un fișier gol".
 
 ---
 

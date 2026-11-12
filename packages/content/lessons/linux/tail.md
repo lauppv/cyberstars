@@ -1,6 +1,6 @@
-The opposite of `head` is **tail**. It prints the **last lines** of a file.
+The opposite of `head` is **tail**. It prints the last lines of a file.
 
-By default, `tail` shows the **last 10 lines**:
+By default, `tail` shows the last 10 lines:
 
 ```bash
 tail bigfile.log
@@ -22,8 +22,8 @@ line 100
 
 ### Why the end of a file matters
 
-Log files grow by adding **new lines at the bottom**. So the _most recent_ events are
-always at the **end**. When something just went wrong, the answer is almost always in
+Log files grow by adding new lines at the bottom. So the _most recent_ events are
+always at the end. When something just went wrong, the answer is almost always in
 the last few lines:
 
 ```bash

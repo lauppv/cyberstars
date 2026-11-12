@@ -39,7 +39,7 @@ Only the success output remains; errors vanish silently.
 ls real.txt fake.txt > all.txt 2>&1
 ```
 
-This sends **both** stdout and stderr into `all.txt`. The `2>&1` means "send stream 2
+This sends both stdout and stderr into `all.txt`. The `2>&1` means "send stream 2
 wherever stream 1 is going."
 
 ---

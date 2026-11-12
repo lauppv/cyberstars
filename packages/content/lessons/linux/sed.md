@@ -1,5 +1,5 @@
 The **sed** command (stream editor) performs text transformations on the fly. Its most
-common use is **find and replace**:
+common use is find and replace:
 
 ```bash
 sed 's/old/new/' file.txt

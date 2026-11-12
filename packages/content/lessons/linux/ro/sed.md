@@ -1,5 +1,5 @@
 Comanda **sed** (stream editor) face transformări de text din mers. Cea mai
-folosită utilizare a ei este **caută și înlocuiește**:
+folosită utilizare a ei este caută și înlocuiește:
 
 ```bash
 sed 's/old/new/' fisier.txt

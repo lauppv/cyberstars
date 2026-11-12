@@ -1,6 +1,6 @@
-Opusul lui `head` este **tail**. Acesta afișează **ultimele linii** ale unui fișier.
+Opusul lui `head` este **tail**. Acesta afișează ultimele linii ale unui fișier.
 
-În mod implicit, `tail` arată **ultimele 10 linii**:
+În mod implicit, `tail` arată ultimele 10 linii:
 
 ```bash
 tail fisier_mare.log
@@ -22,8 +22,8 @@ linia 100
 
 ### De ce contează sfârșitul unui fișier
 
-Fișierele de log cresc prin adăugarea de **linii noi la final**. Așadar, _cele mai
-recente_ evenimente sunt mereu la **sfârșit**. Când tocmai s-a întâmplat ceva rău,
+Fișierele de log cresc prin adăugarea de linii noi la final. Așadar, _cele mai
+recente_ evenimente sunt mereu la sfârșit. Când tocmai s-a întâmplat ceva rău,
 răspunsul este aproape întotdeauna în ultimele câteva linii:
 
 ```bash
