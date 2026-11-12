@@ -5,6 +5,7 @@ import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { isImagePath, isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
 import {
   WEB_ACTION_KEYS,
+  WEB_AGAINST_WITHIN,
   WEB_DEFAULT_WIDTH,
   WEB_HEIGHT,
   isWebAction,
@@ -158,6 +159,107 @@ function outlineFailure(headings: { level: number; text: string }[]): WebFailure
   return null;
 }
 
+// A form's fields as the preview's console says them: name=value&...
+function formLine(fields: [string, string][]): string {
+  return fields.map(([name, value]) => `${name}=${value}`).join('&');
+}
+
+// The last form sent has each field asked with its value (one of its values,
+// for a name sent twice)
+function sentFailure(want: Record<string, string>, forms: [string, string][][]): WebFailure | null {
+  const last = forms.at(-1);
+  if (!last) return { kind: 'sent', detail: 'none' };
+  for (const [name, value] of Object.entries(want)) {
+    const had = last.filter(([n]) => n === name).map(([, v]) => v);
+    if (had.includes(value)) continue;
+    return { kind: 'sent', detail: 'field', other: name, expected: value, found: had[0] ?? null };
+  }
+  return null;
+}
+
+function valueFailure(
+  step: Extract<WebCheck, { value: string }>,
+  value: string,
+): WebFailure | null {
+  const label = step.label;
+  if (step.nonEmpty)
+    return value !== '' ? null : { kind: 'value', label, detail: 'nonEmpty', found: '' };
+  if (step.empty)
+    return value === '' ? null : { kind: 'value', label, detail: 'empty', found: value };
+  if (step.contains !== undefined) {
+    const want = collapse(step.contains);
+    return value.includes(want)
+      ? null
+      : { kind: 'value', label, detail: 'contains', expected: want, found: value };
+  }
+  const want = collapse(step.equals ?? '');
+  return value === want
+    ? null
+    : { kind: 'value', label, detail: 'equals', expected: want, found: value };
+}
+
+// Every element inside its ancestor and no further than `within` px from the
+// side (both sides of a corner) asked
+function againstFailure(
+  step: Extract<WebCheck, { against: string }>,
+  pairs: [WebBox, WebBox | null][],
+): WebFailure | null {
+  const { label, inLabel: other } = step;
+  const within = step.within ?? WEB_AGAINST_WITHIN;
+  for (const [box, parent] of pairs) {
+    if (!parent) return { kind: 'against', label, other, detail: 'none' };
+    const room = {
+      top: box.y - parent.y,
+      left: box.x - parent.x,
+      bottom: parent.y + parent.height - (box.y + box.height),
+      right: parent.x + parent.width - (box.x + box.width),
+    };
+    if (Object.values(room).some((r) => r < -1)) {
+      return { kind: 'against', label, other, detail: 'outside' };
+    }
+    const far = Math.max(...step.side.split(' ').map((s) => room[s as keyof typeof room]));
+    if (far > within + 0.5) {
+      return {
+        kind: 'against',
+        label,
+        other,
+        detail: step.side,
+        expected: String(within),
+        found: String(Math.round(far)),
+      };
+    }
+  }
+  return null;
+}
+
+// Whether `a` comes before `b` read as a page is: above it, or beside it on
+// its left
+function readsBefore(a: WebBox, b: WebBox): boolean {
+  if (a.y + a.height <= b.y + 0.5) return true;
+  if (b.y + b.height <= a.y + 0.5) return false;
+  return a.x + a.width / 2 < b.x + b.width / 2;
+}
+
+// How elements fail to wrap in their parent: all on one row, one under the
+// other (a column, each row one element), or one sticking out. Read in the
+// order they show, whatever the HTML's
+function wrapsMiss(items: WebBox[], parent: WebBox | undefined): string | null {
+  if (!parent || items.length < 2) return 'one';
+  if (items.some((b) => b.x < parent.x - 1 || b.x + b.width > parent.x + parent.width + 1)) {
+    return 'out';
+  }
+  const rows: WebBox[][] = [];
+  for (const box of [...items].sort((a, b) => a.y - b.y)) {
+    const row = rows.find((r) =>
+      r.some((o) => box.y < o.y + o.height - 0.5 && o.y < box.y + box.height - 0.5),
+    );
+    if (row) row.push(box);
+    else rows.push([box]);
+  }
+  if (rows.length < 2) return 'one';
+  return rows.some((r) => r.length > 1) ? null : 'column';
+}
+
 const BOUNDS = ['minWidth', 'maxWidth', 'minHeight', 'maxHeight'] as const;
 
 function sizeFailure(
@@ -177,8 +279,8 @@ function sizeFailure(
 // Why the step failed, or null when the page is as the mission asks
 export function judgeStep(step: WebStep, seen: WebObservation, width: number): WebFailure | null {
   if (isWebAction(step)) {
-    // open and wait can't miss; the others name an element the page may lack
-    if (seen.ok !== false || 'open' in step || 'wait' in step) return null;
+    // open, wait and scroll can't miss; the others name an element the page may lack
+    if (seen.ok !== false || 'open' in step || 'wait' in step || 'scroll' in step) return null;
     return { kind: 'missing', label: step.label ?? ('on' in step ? step.on : undefined) };
   }
   if ('fits' in step) {
@@ -209,6 +311,11 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     return seen.page === step.at ? null : { kind: 'at', expected: step.at, found: seen.page };
   }
   if ('outline' in step) return outlineFailure(seen.headings ?? []);
+  if ('sent' in step) return sentFailure(step.sent, seen.forms ?? []);
+  if ('notSent' in step) {
+    const last = (seen.forms ?? []).at(-1);
+    return last ? { kind: 'sent', detail: 'sent', found: formLine(last) } : null;
+  }
 
   const label = step.label;
   const count = seen.count ?? 0;
@@ -330,6 +437,49 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
   }
   if ('loaded' in step) {
     return (seen.values ?? []).every((v) => v === 'yes') ? null : { kind: 'loaded', label };
+  }
+  if ('value' in step) return valueFailure(step, collapse(values[0] ?? ''));
+  if ('checked' in step) {
+    const want = !step.off;
+    return seen.checked === want ? null : { kind: 'checked', label, expected: want ? 'on' : 'off' };
+  }
+  if ('visible' in step) {
+    return seen.shown?.[0] ? null : { kind: 'visible', label, expected: 'visible' };
+  }
+  if ('hidden' in step) {
+    return (seen.shown ?? []).some(Boolean) ? { kind: 'visible', label, expected: 'hidden' } : null;
+  }
+  if ('onTop' in step) {
+    const cover = values[0] ?? null;
+    return cover === '' ? null : { kind: 'onTop', label, found: cover };
+  }
+  if ('inView' in step) {
+    const [box] = boxes;
+    const height = seen.windowHeight ?? 0;
+    if (step.out) {
+      const off = box.y + box.height <= 0.5 || box.y >= height - 0.5;
+      return off ? null : { kind: 'inView', label, expected: 'out' };
+    }
+    const outside = Math.max(0, -box.y) + Math.max(0, box.y + box.height - height);
+    if (outside <= 1) return null;
+    return { kind: 'inView', label, expected: 'in', found: String(Math.round(outside)) };
+  }
+  if ('against' in step) return againstFailure(step, seen.pairs ?? []);
+  if ('order' in step) {
+    const texts = values.map((v) => collapse(v ?? ''));
+    // The boxes in the order the mission asks; each must come before the next
+    const wrong = boxes.slice(1).some((next, i) => !readsBefore(boxes[i], next));
+    if (!wrong && boxes.length === step.order.length) return null;
+    const shown = boxes
+      .map((box, i) => ({ box, text: texts[i] }))
+      .sort((a, b) => (readsBefore(a.box, b.box) ? -1 : readsBefore(b.box, a.box) ? 1 : 0))
+      .map((e) => e.text);
+    return { kind: 'order', label, expected: texts.join(', '), found: shown.join(', ') };
+  }
+  if ('wraps' in step) {
+    const [parent, ...items] = boxes;
+    const detail = wrapsMiss(items, parent);
+    return detail ? { kind: 'wraps', label, detail, width } : null;
   }
   if ('fills' in step) {
     const [box, parent] = boxes;

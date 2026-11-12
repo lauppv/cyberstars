@@ -215,6 +215,92 @@ describe('webFailureText', () => {
     );
   });
 
+  it('says how a form, a field, a place on screen or a hidden element missed', () => {
+    expect(
+      say({ kind: 'value', label: 'the name field', detail: 'equals', expected: 'Ida', found: '' }),
+    ).toBe('Expected the name field to hold “Ida”, found “”.');
+    expect(say({ kind: 'value', label: 'the name field', detail: 'nonEmpty', found: '' })).toBe(
+      'Expected the name field to hold some text, found it empty.',
+    );
+    expect(say({ kind: 'value', label: 'the name field', detail: 'empty', found: 'x' })).toBe(
+      'Expected the name field to be empty, found “x”.',
+    );
+    expect(say({ kind: 'checked', label: 'the meal box', expected: 'on' })).toBe(
+      'Expected the meal box ticked, found it not ticked.',
+    );
+    expect(say({ kind: 'sent', detail: 'none' })).toBe(
+      'Expected the form to be sent, found nothing sent.',
+    );
+    expect(say({ kind: 'sent', detail: 'sent', found: 'name=' })).toBe(
+      'Expected the form not to be sent, found it sent: name=',
+    );
+    expect(
+      say({ kind: 'sent', detail: 'field', other: 'seat', expected: 'window', found: null }),
+    ).toBe('Expected the form to send seat=“window”, found no field named seat.');
+    expect(
+      say({ kind: 'sent', detail: 'field', other: 'seat', expected: 'window', found: 'aisle' }),
+    ).toBe('Expected the form to send seat=“window”, found seat=“aisle”.');
+    expect(say({ kind: 'inView', label: 'the header', expected: 'in', found: '60' })).toBe(
+      'Expected the header all on screen, found 60px of it out of the window.',
+    );
+    expect(say({ kind: 'inView', label: 'the header', expected: 'out' })).toBe(
+      'Expected the header out of the window, found it still on screen.',
+    );
+    expect(say({ kind: 'onTop', label: 'the badge', found: '<div class="ad">' })).toBe(
+      'Expected the badge on top, with nothing over it, found it covered by <div class="ad">.',
+    );
+    expect(
+      say({
+        kind: 'against',
+        label: 'the badge',
+        other: 'its card',
+        detail: 'top right',
+        expected: '24',
+        found: '200',
+      }),
+    ).toBe(
+      'Expected the badge in the top right corner of its card, at most 24px from the edge, found it 200px away.',
+    );
+    expect(say({ kind: 'against', label: 'the badge', other: 'its card', detail: 'outside' })).toBe(
+      'Expected the badge inside its card, found it sticking out.',
+    );
+    expect(say({ kind: 'order', label: 'the links', expected: 'A, B', found: 'B, A' })).toBe(
+      'Expected the links in this order on the screen: A, B, found B, A.',
+    );
+    expect(say({ kind: 'wraps', label: 'the tags', detail: 'one', width: 375 })).toBe(
+      'Expected the tags on more than one row in a window 375px wide, found them all on one row.',
+    );
+    expect(say({ kind: 'wraps', label: 'the tags', detail: 'column', width: 375 })).toBe(
+      'Expected the tags in rows, several side by side, in a window 375px wide, found them all one under the other.',
+    );
+    expect(say({ kind: 'visible', label: 'the menu', expected: 'visible' })).toBe(
+      'Expected the menu to show, found it hidden.',
+    );
+    expect(say({ kind: 'visible', label: 'the menu', expected: 'hidden' })).toBe(
+      'Expected the menu hidden, found it showing.',
+    );
+    expect(
+      say(
+        {
+          kind: 'against',
+          label: 'insigna',
+          other: 'cardul ei',
+          detail: 'bottom',
+          expected: '24',
+          found: '90',
+        },
+        'ro',
+      ),
+    ).toBe('Se aștepta insigna jos în cardul ei, la cel mult 24px de margine, dar e la 90px.');
+    expect(say({ kind: 'sent', detail: 'none' }, 'ro')).toBe(
+      'Se aștepta ca formularul să fie trimis, dar nu s-a trimis nimic.',
+    );
+    // A hidden case keeps what the page sent, never what was expected
+    expect(
+      say({ kind: 'sent', detail: 'field', other: 'seat', found: 'aisle', hidden: true }),
+    ).toBe('The page: not what the mission asks. The page has “aisle”.');
+  });
+
   it('cuts a long text from the page', () => {
     const text = say({
       kind: 'text',

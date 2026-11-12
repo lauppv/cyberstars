@@ -44,6 +44,7 @@ import {
   WEB_MAX_WIDTH,
   WEB_MIN_WIDTH,
   WEB_PSEUDO_ELEMENTS,
+  WEB_SIDES,
   type WebTestsSpec,
 } from '@cyberstars/shared/webTests';
 
@@ -392,14 +393,27 @@ const WEB_CHECKS = [
   'alerted',
   'noErrors',
   'at',
+  'value',
+  'checked',
+  'sent',
+  'notSent',
+  'inView',
+  'onTop',
+  'against',
+  'order',
+  'wraps',
+  'visible',
+  'hidden',
 ] as const;
 // The keys each step may carry beside its own
 const WEB_STEP_KEYS: Record<string, string[]> = {
   click: ['label'],
   hover: ['label'],
   fill: ['text', 'label'],
+  select: ['option', 'label'],
   press: ['on', 'label'],
   submit: ['label'],
+  scroll: [],
   open: [],
   wait: [],
   exists: ['label'],
@@ -421,6 +435,17 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   alerted: ['none'],
   noErrors: [],
   at: [],
+  value: ['equals', 'contains', 'nonEmpty', 'empty', 'label'],
+  checked: ['off', 'label'],
+  sent: [],
+  notSent: [],
+  inView: ['out', 'label'],
+  onTop: ['label'],
+  against: ['in', 'side', 'within', 'inLabel', 'label'],
+  order: ['label'],
+  wraps: ['label'],
+  visible: ['label'],
+  hidden: ['label'],
 };
 const NEEDS_LABEL = new Set([
   'click',
@@ -439,6 +464,16 @@ const NEEDS_LABEL = new Set([
   'fills',
   'loaded',
   'size',
+  'select',
+  'value',
+  'checked',
+  'inView',
+  'onTop',
+  'against',
+  'order',
+  'wraps',
+  'visible',
+  'hidden',
 ]);
 const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);
 
@@ -459,7 +494,25 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
     case 'doctype':
     case 'outline':
     case 'noErrors':
+    case 'notSent':
       return value === true ? null : `${own} must be true`;
+    case 'scroll':
+      return value === 'end' || (typeof value === 'number' && value !== 0 && Number.isFinite(value))
+        ? null
+        : 'scroll is a number of px other than 0, or end';
+    case 'sent': {
+      const fields = value as Record<string, unknown> | null;
+      if (typeof fields !== 'object' || fields === null || Array.isArray(fields)) {
+        return 'sent names the fields a form sends, as { name: value }';
+      }
+      return Object.entries(fields).every(([k, v]) => isText(k) && typeof v === 'string')
+        ? null
+        : "sent's fields are names with text values";
+    }
+    case 'order':
+      return Array.isArray(value) && value.length >= 2 && value.every(isText)
+        ? null
+        : 'order names two or more selectors';
     case 'wait':
       return typeof value === 'number' && value > 0 && value <= WEB_MAX_WAIT_MS
         ? null
@@ -481,6 +534,34 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   }
   if (!isText(value)) return `a ${own} step without a selector`;
   if (own === 'fill' && typeof step.text !== 'string') return 'a fill step without its text';
+  if (own === 'select' && !isText(step.option)) return 'a select step without its option';
+  if (own === 'value') {
+    const ways = ['equals', 'contains', 'nonEmpty', 'empty'].filter((k) => k in step);
+    if (ways.length !== 1)
+      return 'a value step needs exactly one of equals, contains, nonEmpty, empty';
+    if (
+      ('nonEmpty' in step && step.nonEmpty !== true) ||
+      ('empty' in step && step.empty !== true)
+    ) {
+      return "a value step's nonEmpty and empty are true";
+    }
+  }
+  if (own === 'checked' && step.off !== undefined && step.off !== true) {
+    return "a checked step's off is true or left out";
+  }
+  if (own === 'inView' && step.out !== undefined && step.out !== true) {
+    return "an inView step's out is true or left out";
+  }
+  if (own === 'against') {
+    if (!isText(step.in)) return 'an against step needs in, a selector';
+    if (!isText(step.inLabel)) return 'an against step needs inLabel';
+    if (!(WEB_SIDES as readonly unknown[]).includes(step.side)) {
+      return `an against step's side is one of ${WEB_SIDES.join(', ')}`;
+    }
+    if (step.within !== undefined && !(typeof step.within === 'number' && step.within >= 0)) {
+      return "an against step's within is a number of px";
+    }
+  }
   if (own === 'count' && step.equals === undefined && step.atLeast === undefined) {
     return 'a count step needs equals or atLeast';
   }
