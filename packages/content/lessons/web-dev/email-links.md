@@ -10,7 +10,7 @@ It's a normal `<a>` link, but its `href` starts with `mailto:` and then the emai
 
 When you click it, instead of opening a page, the browser opens the email app with a new message to `club@school.example`.
 
-In your preview, the console tells you where the email would go.
+Click it in the example: a line under it tells you where the email would go. In your site's preview, the console tells you.
 
 ## Words for an email link
 

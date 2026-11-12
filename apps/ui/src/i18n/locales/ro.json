@@ -1778,7 +1778,8 @@
     "cell": {
       "viewAll": "Vezi tot codul",
       "hideRest": "Arată mai puțin",
-      "previewTitle": "Ce arată acest cod"
+      "previewTitle": "Ce arată acest cod",
+      "otherPage": "Exemplul are o singură pagină, deci linkul spre {{page}} nu se deschide aici."
     }
   }
 }

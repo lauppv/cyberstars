@@ -57,6 +57,9 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
 
   const [frame, setFrame] = useState<{ id: number; page: PreviewPage } | null>(null);
   const [height, setHeight] = useState(START_HEIGHT);
+  // What a click on a link or a sent form would have done, said under the
+  // page, since the cell's page has nowhere to go
+  const [note, setNote] = useState<string | null>(null);
   const frameRef = useRef<HTMLIFrameElement>(null);
   const nextId = useRef(0);
 
@@ -75,6 +78,7 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
         );
       }
       if (cancelled) return;
+      setNote(null);
       setFrame({
         id: nextId.current++,
         page: buildPreviewPage({
@@ -107,7 +111,14 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
     const onMessage = (event: MessageEvent) => {
       const win = frameRef.current?.contentWindow;
       if (!win || event.source !== win) return;
-      const data = event.data as { source?: unknown; type?: unknown; height?: unknown } | null;
+      const data = event.data as {
+        source?: unknown;
+        type?: unknown;
+        height?: unknown;
+        path?: unknown;
+        href?: unknown;
+        fields?: unknown;
+      } | null;
       if (!data || data.source !== PREVIEW_SOURCE) return;
       if (data.type === 'runtime' && frame) {
         win.postMessage(
@@ -116,11 +127,17 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
         );
       } else if (data.type === 'height' && typeof data.height === 'number') {
         setHeight(Math.min(MAX_HEIGHT, Math.max(MIN_HEIGHT, data.height)));
+      } else if (data.type === 'navigate' && typeof data.path === 'string') {
+        setNote(t('web.cell.otherPage', { page: data.path }));
+      } else if (data.type === 'outsideLink' && typeof data.href === 'string') {
+        setNote(t('web.console.outsideLink', { href: data.href }));
+      } else if (data.type === 'formSent' && typeof data.fields === 'string') {
+        setNote(t('web.console.formSent', { fields: data.fields }));
       }
     };
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [frame]);
+  }, [frame, t]);
 
   const editShown = (next: string) => setPage(wholePage(cell, next));
 
@@ -156,6 +173,11 @@ export function WebPreviewCell({ source, language }: WebPreviewCellProps) {
           />
         )}
       </div>
+      {note && (
+        <p role="status" className="mt-2 mb-0 text-[12px] text-[var(--text3)]">
+          {note}
+        </p>
+      )}
     </div>
   );
 }

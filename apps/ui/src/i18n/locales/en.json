@@ -1753,7 +1753,8 @@
     "cell": {
       "viewAll": "View all the code",
       "hideRest": "Show less",
-      "previewTitle": "What this code shows"
+      "previewTitle": "What this code shows",
+      "otherPage": "This example is a single page, so the link to {{page}} doesn't open here."
     }
   }
 }

@@ -13,7 +13,7 @@ Not everyone uses a mouse. Some people move around a page with the **Tab** key: 
 <p><a href="games.html">Our games</a> · <a href="members.html">Members</a> · <a href="rules.html">Rules</a></p>
 ```
 
-"A link, while it has the focus". Press Tab until you reach a link: a thick gold line appears around it. Press Enter, and the link opens.
+"A link, while it has the focus". Press Tab until you reach a link: a thick gold line appears around it. Press Enter, and the link opens. This example is only one page, so here a line under it says which page would open.
 
 `outline` is like a border, written the same way, but it doesn't take any room: it's drawn around the element without moving anything. That's why it's used for focus: nothing on the page jumps when you press Tab.
 
