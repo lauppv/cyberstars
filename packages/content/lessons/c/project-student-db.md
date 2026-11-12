@@ -1,8 +1,8 @@
-Time for a real project. We will build a **student registry**, using everything we have learned: structs, pointers, dynamic memory, arrays and string functions
+Time for a real project. We will build a student registry, using everything we have learned: structs, pointers, dynamic memory, arrays and string functions
 
-The program manages a list of students. Each student has a **name** and a **grade**. We will
+The program manages a list of students. Each student has a name and a grade. We will
 
-1. Create students dynamically with **malloc**
+1. Create students dynamically with malloc
 2. Store them in an array of pointers
 3. Print all students
 4. Find the student with the highest grade
@@ -41,7 +41,7 @@ Student *create_student(const char *name, int grade) {
 }
 ```
 
-The function allocates memory on the heap, fills in the fields and returns a pointer. The caller becomes **responsible** for freeing that memory later
+The function allocates memory on the heap, fills in the fields and returns a pointer. The caller becomes responsible for freeing that memory later
 
 ---
 
@@ -55,7 +55,7 @@ void print_all(Student *students[], int n) {
 }
 ```
 
-Notice **students[i]->name**: each element of the array is a **pointer to a Student**, so we use **->** instead of **.**
+Notice **students[i]->name**: each element of the array is a pointer to a Student, so we use **->** instead of **.**
 
 ---
 
@@ -81,11 +81,11 @@ It's 1974. You are the shift operator at the university's computer lab. Students
 
 Write a program that
 
-1. Reads an integer **n**: the number of students
-2. Reads, **n** times, a name and a grade (integer), and creates a student with **create_student**, storing the pointer in an array
-3. Calls **print_all** to print each student as **"Name: Grade"**
-4. Calls **find_top** and prints **"Top student: Name (Grade)"**
-5. Frees all allocated memory, with **free**, before finishing
+1. Reads an integer n: the number of students
+2. Reads, n times, a name and a grade (integer), and creates a student with create_student, storing the pointer in an array
+3. Calls print_all to print each student as "Name: Grade"
+4. Calls find_top and prints "Top student: Name (Grade)"
+5. Frees all allocated memory, with free, before finishing
 
 **Example**
 

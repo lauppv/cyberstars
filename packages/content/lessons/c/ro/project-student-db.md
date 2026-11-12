@@ -1,8 +1,8 @@
-E timpul pentru un proiect real. Vom construi un **registru de studenți**, folosind tot ce am învățat: struct-uri, pointeri, memorie dinamică, array-uri și funcții pentru șiruri
+E timpul pentru un proiect real. Vom construi un registru de studenți, folosind tot ce am învățat: struct-uri, pointeri, memorie dinamică, array-uri și funcții pentru șiruri
 
-Programul gestionează o listă de studenți. Fiecare student are un **nume** și o **notă**. Vom
+Programul gestionează o listă de studenți. Fiecare student are un nume și o notă. Vom
 
-1. Crea studenți dinamic cu **malloc**
+1. Crea studenți dinamic cu malloc
 2. Îi stoca într-un array de pointeri
 3. Afișa toți studenții
 4. Găsi studentul cu cea mai mare notă
@@ -41,7 +41,7 @@ Student *creeaza_student(const char *nume, int nota) {
 }
 ```
 
-Funcția alocă memorie pe heap, completează câmpurile și întoarce un pointer. Apelantul devine **responsabil** să elibereze acea memorie mai târziu
+Funcția alocă memorie pe heap, completează câmpurile și întoarce un pointer. Apelantul devine responsabil să elibereze acea memorie mai târziu
 
 ---
 
@@ -55,7 +55,7 @@ void afiseaza_toti(Student *studenti[], int n) {
 }
 ```
 
-Observă **studenti[i]->nume**: fiecare element al array-ului este un **pointer către un Student**, așa că folosim **->** în loc de **.**
+Observă **studenti[i]->nume**: fiecare element al array-ului este un pointer către un Student, așa că folosim **->** în loc de **.**
 
 ---
 
@@ -81,11 +81,11 @@ E anul 1974. Ești operator de tură la laboratorul de calcul al universității
 
 Scrie un program care
 
-1. Citește un întreg **n**: numărul de studenți
-2. Citește, de **n** ori, un nume și o notă (întreg), și creează un student cu **creeaza_student**, stocând pointerul într-un array
-3. Apelează **afiseaza_toti** ca să afișeze fiecare student sub forma **"Nume: Nota"**
-4. Apelează **gaseste_cel_mai_bun** și afișează **"Cel mai bun: Nume (Nota)"**
-5. Eliberează toată memoria alocată, cu **free**, înainte de final
+1. Citește un întreg n: numărul de studenți
+2. Citește, de n ori, un nume și o notă (întreg), și creează un student cu creeaza_student, stocând pointerul într-un array
+3. Apelează afiseaza_toti ca să afișeze fiecare student sub forma "Nume: Nota"
+4. Apelează gaseste_cel_mai_bun și afișează "Cel mai bun: Nume (Nota)"
+5. Eliberează toată memoria alocată, cu free, înainte de final
 
 **Exemplu**
 
