@@ -1,4 +1,4 @@
-So far, we’ve hardcoded all the values in our programs. Time to let the **user** type something. In Java, we read input through a tool called **Scanner**
+So far, we’ve hardcoded all the values in our programs. Time to let the user type something. In Java, we read input through a tool called **Scanner**
 
 ```java
 import java.util.Scanner;
@@ -15,18 +15,18 @@ public class Main {
 }
 ```
 
-**Run** the code, type something, press **Enter**
+Run the code, type something, press Enter
 
 Two new things appeared
 
-- **import java.util.Scanner;** at the top, **before** the **public class**. This tells Java: "I want to use the Scanner tool from Java’s standard library"
-- **Scanner scanner = new Scanner(System.in);** creates a new scanner that reads from **standard input** (the keyboard)
+- **import java.util.Scanner;** at the top, before the public class. This tells Java: "I want to use the Scanner tool from Java’s standard library"
+- **Scanner scanner = new Scanner(System.in);** creates a new scanner that reads from standard input (the keyboard)
 
-The actual reading happens with **scanner.nextLine()**: it waits for the user to type a line and press **Enter**, then gives back the typed text as a **String**
+The actual reading happens with **scanner.nextLine()**: it waits for the user to type a line and press Enter, then gives back the typed text as a String
 
 ---
 
-For numbers, **Scanner** has different methods
+For numbers, Scanner has different methods
 
 ```java
 import java.util.Scanner;
@@ -43,7 +43,7 @@ public class Main {
 }
 ```
 
-**scanner.nextInt()** reads a whole number directly and hands it to us as an **int**, with no conversion needed on our side
+**scanner.nextInt()** reads a whole number directly and hands it to us as an int, with no conversion needed on our side
 
 For decimal numbers, there’s **scanner.nextDouble()**
 
@@ -57,7 +57,7 @@ public class Main {
 
 ---
 
-A small **gotcha** that catches everyone. If you mix **nextInt()** and **nextLine()**, things get weird
+A small gotcha that catches everyone. If you mix nextInt() and nextLine(), things get weird
 
 ```java
 public class Main {
@@ -68,7 +68,7 @@ public class Main {
 }
 ```
 
-**Why?** Because **nextInt()** reads the number but leaves the **newline character** behind. Then **nextLine()** picks up that empty newline and immediately returns an empty string
+Why? Because nextInt() reads the number but leaves the **newline character** behind. Then nextLine() picks up that empty newline and immediately returns an empty string
 
 The fix: add an extra **scanner.nextLine()** to "eat" the leftover newline
 
@@ -84,7 +84,7 @@ public class Main {
 
 Annoying, but you only need to remember it once
 
-To keep things simple in this exercise, we’ll **read the name first**, then the age
+To keep things simple in this exercise, we’ll read the name first, then the age
 
 ---
 
@@ -92,7 +92,7 @@ To keep things simple in this exercise, we’ll **read the name first**, then th
 
 Every crew member arriving at the station must scan in at the terminal. The system reads their name and age, then prints a welcome line.
 
-Create a **Scanner**, read the name first (first line), then the age (second line). Then build and print the welcome message using **+**.
+Create a Scanner, read the name first (first line), then the age (second line). Then build and print the welcome message using +.
 
 Read the input directly, don't print a question before reading. The check-in terminal stays silent until the welcome line.
 

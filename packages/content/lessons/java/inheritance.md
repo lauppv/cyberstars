@@ -1,4 +1,4 @@
-Sometimes you want a class that's basically another class, but with extras. In Java, a class can **inherit** from another using the keyword **extends**
+Sometimes you want a class that's basically another class, but with extras. In Java, a class can inherit from another using the keyword **extends**
 
 ```text
 class Criminal {
@@ -24,11 +24,11 @@ class Driver extends Criminal {
 }
 ```
 
-The `Driver` class **inherits** everything from `Criminal`: its `name` field, its constructor logic, everything. Then it **overrides** the `speak()` method to do its own thing. This is **inheritance**, one of the biggest ideas in Java
+The `Driver` class inherits everything from `Criminal`: its `name` field, its constructor logic, everything. Then it overrides the `speak()` method to do its own thing. This is **inheritance**, one of the biggest ideas in Java
 
 ---
 
-An example from Vice City: Tommy Vercetti is a **criminal** (the parent class). Lance Vance is also a criminal, but he's a _specific kind_: a backstabbing criminal. He **extends** the base criminal class with his own special behavior (betrayal). He still has all the base criminal abilities, plus his own twist
+An example from Vice City: Tommy Vercetti is a criminal (the parent class). Lance Vance is also a criminal, but he's a _specific kind_: a backstabbing criminal. He extends the base criminal class with his own special behavior (betrayal). He still has all the base criminal abilities, plus his own twist
 
 ---
 
@@ -56,7 +56,7 @@ class Boss extends Criminal {
 
 ---
 
-A child class can also **add** new fields and methods that the parent doesn't have
+A child class can also add new fields and methods that the parent doesn't have
 
 ```text
 class Criminal {

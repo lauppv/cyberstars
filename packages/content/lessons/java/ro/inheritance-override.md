@@ -15,7 +15,7 @@ class Sofer extends Criminal {
 }
 ```
 
-Adnotarea `@Override` nu este tehnic obligatorie, codul tău compilează și fără ea. Dar ar trebui **mereu** să o folosești. Iată de ce: dacă scrii din greșeală numele metodei greșit, Java va crede că creezi o metodă NOUĂ în loc să o suprascrii pe cea veche. Cu `@Override`, Java verifică dacă părintele are într-adevăr acea metodă și se răstește la tine dacă nu o are
+Adnotarea `@Override` nu este tehnic obligatorie, codul tău compilează și fără ea. Dar ar trebui mereu să o folosești. Iată de ce: dacă scrii din greșeală numele metodei greșit, Java va crede că creezi o metodă NOUĂ în loc să o suprascrii pe cea veche. Cu `@Override`, Java verifică dacă părintele are într-adevăr acea metodă și se răstește la tine dacă nu o are
 
 ```text
 class Sofer extends Criminal {

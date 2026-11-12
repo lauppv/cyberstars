@@ -1,6 +1,6 @@
-Java îți permite să ai **mai multe metode cu același nume**, atâta timp cât primesc **parametri diferiți**. Asta se numește **supraîncărcarea metodelor** (method overloading)
+Java îți permite să ai mai multe metode cu același nume, atâta timp cât primesc parametri diferiți. Asta se numește **supraîncărcarea metodelor** (method overloading)
 
-Imaginează-ți magazinul de arme al lui Phil Cassidy. Intri și spui „Vreau o armă." Răspunsul lui Phil depinde de **ce informații îi dai**:
+Imaginează-ți magazinul de arme al lui Phil Cassidy. Intri și spui „Vreau o armă." Răspunsul lui Phil depinde de ce informații îi dai:
 
 - Doar un nume? O ia de pe raft
 - Un nume și o cantitate? Îți ia atâtea
@@ -32,7 +32,7 @@ Arma: Pusca
 Arma: Pistol (x3)
 ```
 
-Java se uită la **câte argumente** treci și **ce tipuri** au, apoi alege versiunea corectă a metodei. Asta se întâmplă la compilare: Java își dă seama înainte ca programul să ruleze măcar
+Java se uită la câte argumente treci și ce tipuri au, apoi alege versiunea corectă a metodei. Asta se întâmplă la compilare: Java își dă seama înainte ca programul să ruleze măcar
 
 Hai să urmărim cele două apeluri:
 
@@ -41,7 +41,7 @@ Hai să urmărim cele două apeluri:
 
 ---
 
-Regula cheie: metodele supraîncărcate trebuie să difere prin **lista de parametri**. Asta înseamnă fie un **număr** diferit de parametri, fie **tipuri** diferite
+Regula cheie: metodele supraîncărcate trebuie să difere prin **lista de parametri**. Asta înseamnă fie un număr diferit de parametri, fie tipuri diferite
 
 ```java
 public class Main {
@@ -73,11 +73,11 @@ Numar: 42
 Text: Lance, Numar: 100
 ```
 
-Trei metode, toate numite **info**, dar Java știe pe care s-o apeleze în funcție de ce treci
+Trei metode, toate numite info, dar Java știe pe care s-o apeleze în funcție de ce treci
 
 ---
 
-Ce **NU** contează ca supraîncărcare? Schimbarea doar a **tipului de retur**
+Ce NU contează ca supraîncărcare? Schimbarea doar a **tipului de retur**
 
 ```text
 public class Main {
@@ -87,7 +87,7 @@ public class Main {
 }
 ```
 
-Java spune: „Dacă cineva apelează **calculeaza(5)**, pe care o aleg?" Nu poate decide doar din tipul de retur, deci asta **nu este permis**
+Java spune: „Dacă cineva apelează calculeaza(5), pe care o aleg?" Nu poate decide doar din tipul de retur, deci asta nu este permis
 
 ---
 

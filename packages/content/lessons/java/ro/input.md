@@ -1,4 +1,4 @@
-Până acum, am scris toate valorile direct în programele noastre (hardcoded). E timpul să lăsăm **utilizatorul** să tasteze ceva. În Java, citim input-ul printr-un instrument numit **Scanner**
+Până acum, am scris toate valorile direct în programele noastre (hardcoded). E timpul să lăsăm utilizatorul să tasteze ceva. În Java, citim input-ul printr-un instrument numit **Scanner**
 
 ```java
 import java.util.Scanner;
@@ -15,18 +15,18 @@ public class Main {
 }
 ```
 
-**Rulează** codul, tastează ceva, apasă **Enter**
+Rulează codul, tastează ceva, apasă Enter
 
 Au apărut două lucruri noi
 
-- **import java.util.Scanner;** la început, **înainte** de **public class**. Asta îi spune lui Java: "Vreau să folosesc instrumentul Scanner din biblioteca standard a lui Java"
-- **Scanner scanner = new Scanner(System.in);** creează un nou scanner care citește de la **standard input** (tastatura)
+- **import java.util.Scanner;** la început, înainte de public class. Asta îi spune lui Java: "Vreau să folosesc instrumentul Scanner din biblioteca standard a lui Java"
+- **Scanner scanner = new Scanner(System.in);** creează un nou scanner care citește de la standard input (tastatura)
 
-Citirea propriu-zisă se întâmplă cu **scanner.nextLine()**: așteaptă ca utilizatorul să tasteze o linie și să apese **Enter**, apoi returnează textul tastat ca un **String**
+Citirea propriu-zisă se întâmplă cu **scanner.nextLine()**: așteaptă ca utilizatorul să tasteze o linie și să apese Enter, apoi returnează textul tastat ca un String
 
 ---
 
-Pentru numere, **Scanner** are metode diferite
+Pentru numere, Scanner are metode diferite
 
 ```java
 import java.util.Scanner;
@@ -43,7 +43,7 @@ public class Main {
 }
 ```
 
-**scanner.nextInt()** citește un număr întreg direct și ni-l dă gata ca **int**, fără să mai convertim noi nimic
+**scanner.nextInt()** citește un număr întreg direct și ni-l dă gata ca int, fără să mai convertim noi nimic
 
 Pentru numere zecimale, există **scanner.nextDouble()**
 
@@ -57,7 +57,7 @@ public class Main {
 
 ---
 
-O mică **capcană** care îi prinde pe toți. Dacă amesteci **nextInt()** și **nextLine()**, lucrurile devin ciudate
+O mică capcană care îi prinde pe toți. Dacă amesteci nextInt() și nextLine(), lucrurile devin ciudate
 
 ```java
 public class Main {
@@ -68,7 +68,7 @@ public class Main {
 }
 ```
 
-**De ce?** Pentru că **nextInt()** citește numărul dar lasă în urmă **caracterul de linie nouă (newline)**. Apoi **nextLine()** preia acel newline gol și returnează imediat un șir gol
+De ce? Pentru că nextInt() citește numărul dar lasă în urmă **caracterul de linie nouă (newline)**. Apoi nextLine() preia acel newline gol și returnează imediat un șir gol
 
 Soluția: adaugă un **scanner.nextLine()** suplimentar ca să "mănânce" newline-ul rămas
 
@@ -84,7 +84,7 @@ public class Main {
 
 Enervant, dar trebuie să-l ții minte o singură dată
 
-Ca să păstrăm lucrurile simple în acest exercițiu, vom **citi mai întâi numele**, apoi vârsta
+Ca să păstrăm lucrurile simple în acest exercițiu, vom citi mai întâi numele, apoi vârsta
 
 ---
 
@@ -92,7 +92,7 @@ Ca să păstrăm lucrurile simple în acest exercițiu, vom **citi mai întâi n
 
 Fiecare membru al echipajului care ajunge la stație trebuie să se înregistreze la terminal. Sistemul îi citește numele și vârsta, apoi afișează o linie de bun venit.
 
-Creează un **Scanner**, citește mai întâi numele (prima linie), apoi vârsta (a doua linie). Apoi construiește și afișează mesajul de bun venit folosind **+**.
+Creează un Scanner, citește mai întâi numele (prima linie), apoi vârsta (a doua linie). Apoi construiește și afișează mesajul de bun venit folosind +.
 
 Citește datele direct, nu afișa nicio întrebare înainte de citire. Terminalul de înregistrare rămâne tăcut până la linia de bun venit.
 

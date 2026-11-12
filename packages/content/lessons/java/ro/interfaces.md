@@ -25,7 +25,7 @@ class Carte implements Afisabil {
 }
 ```
 
-Observă că metoda din clasă trebuie să fie **public**. Metodele de interfață sunt mereu publice implicit, așa că și implementarea ta trebuie să fie la fel
+Observă că metoda din clasă trebuie să fie public. Metodele de interfață sunt mereu publice implicit, așa că și implementarea ta trebuie să fie la fel
 
 ---
 

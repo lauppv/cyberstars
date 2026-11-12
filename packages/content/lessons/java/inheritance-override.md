@@ -15,7 +15,7 @@ class Driver extends Criminal {
 }
 ```
 
-The `@Override` annotation isn't technically required, your code compiles without it. But you should **always** use it. Here's why: if you accidentally misspell the method name, Java will think you're creating a NEW method instead of overriding the old one. With `@Override`, Java checks that the parent actually has that method and yells at you if it doesn't
+The `@Override` annotation isn't technically required, your code compiles without it. But you should always use it. Here's why: if you accidentally misspell the method name, Java will think you're creating a NEW method instead of overriding the old one. With `@Override`, Java checks that the parent actually has that method and yells at you if it doesn't
 
 ```text
 class Driver extends Criminal {
