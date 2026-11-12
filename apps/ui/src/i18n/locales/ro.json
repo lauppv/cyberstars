@@ -1774,6 +1774,11 @@
       "noPage": "Nu există pagina {{page}} în site-ul tău.",
       "outsideLink": "Linkurile spre alte site-uri nu se deschid în previzualizare: {{href}}",
       "formSent": "Formularul a fost trimis: {{fields}}"
+    },
+    "cell": {
+      "viewAll": "Vezi tot codul",
+      "hideRest": "Arată mai puțin",
+      "previewTitle": "Ce arată acest cod"
     }
   }
 }

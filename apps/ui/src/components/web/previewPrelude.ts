@@ -54,6 +54,7 @@ export type PreviewMessage =
   | { type: 'outsideLink'; href: string }
   | { type: 'formSent'; fields: string }
   | { type: 'title'; text: string }
+  | { type: 'height'; height: number }
   | { type: 'storage'; data: Record<string, string> };
 
 // The most a page keeps in localStorage, in characters of keys and values
@@ -320,6 +321,22 @@ export function previewPrelude(config: PreludeConfig): void {
       fields.push(`${key}=${typeof value === 'string' ? value : value.name}`);
     });
     post({ type: 'formSent', fields: line([fields.join('&')]) });
+  });
+
+  // ── The page's height, which a lesson's preview cell grows to ─────────
+  // Sent again whenever it changes: an image loads, a script adds a row
+  let height = -1;
+  const sendHeight = () => {
+    const now = Math.ceil(document.documentElement.getBoundingClientRect().height);
+    if (now === height) return;
+    height = now;
+    post({ type: 'height', height: now });
+  };
+  document.addEventListener('DOMContentLoaded', () => {
+    sendHeight();
+    if (typeof ResizeObserver === 'function') {
+      new ResizeObserver(sendHeight).observe(document.documentElement);
+    }
   });
 
   // ── The page's title, which the IDE shows over the site like a tab ─────

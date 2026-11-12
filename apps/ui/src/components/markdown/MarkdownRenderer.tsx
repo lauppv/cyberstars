@@ -15,6 +15,13 @@ interface MarkdownRendererProps {
 
 const EDITABLE_LANGS = [...CODE_LANGUAGES, 'py'];
 
+// A web lesson's preview cell is its own chunk too, with CodeMirror's HTML and
+// CSS and the preview's builder
+const WebPreviewCell = lazy(() =>
+  import('../web/WebPreviewCell').then((m) => ({ default: m.WebPreviewCell })),
+);
+const PREVIEW_LANGS = ['html', 'css'];
+
 // The player is its own chunk, fetched only when a lesson has a visual
 const VisualPlayer = lazy(() =>
   import('../visual/VisualPlayer').then((m) => ({ default: m.VisualPlayer })),
@@ -44,7 +51,7 @@ const components: Components = {
   pre({ children }) {
     return <pre style={{ margin: 0, padding: 0, background: 'transparent' }}>{children}</pre>;
   },
-  code({ className, children, ...props }) {
+  code({ className, children, node, ...props }) {
     const match = /language-(\w+)/.exec(className || '');
     const lang = match?.[1]?.toLowerCase();
     // Fenced blocks without a language tag (plain ```) get no className from
@@ -75,6 +82,23 @@ const components: Components = {
       return (
         <Suspense fallback={<div className="my-4 panel rounded min-h-[170px]" />}>
           <VisualPlayer visual={visual} />
+        </Suspense>
+      );
+    }
+
+    // ```html preview / ```css preview: the page it makes shows under it
+    const meta = (node?.data as { meta?: unknown } | undefined)?.meta;
+    if (
+      !isInline &&
+      lang &&
+      PREVIEW_LANGS.includes(lang) &&
+      typeof meta === 'string' &&
+      meta.trim().split(/\s+/).includes('preview')
+    ) {
+      const source = String(children).replace(/\n$/, '');
+      return (
+        <Suspense fallback={<div className="my-4 panel rounded min-h-[140px]" />}>
+          <WebPreviewCell key={source} source={source} language={lang} />
         </Suspense>
       );
     }
