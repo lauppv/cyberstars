@@ -1730,6 +1730,7 @@
     "code": "Cod",
     "newFile": "Fișier nou",
     "newFolder": "Folder nou",
+    "showFiles": "Arată fișierele",
     "rename": "Redenumește {{name}}",
     "delete": "Șterge {{name}}",
     "fileName": "Numele fișierului nou, cu folderul lui",

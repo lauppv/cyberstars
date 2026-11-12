@@ -7,6 +7,7 @@ import {
   Folder,
   FolderPlus,
   Image,
+  PanelLeftOpen,
   Pencil,
   Trash2,
 } from 'lucide-react';
@@ -16,6 +17,8 @@ import { extensionOf, type WebFile } from '@cyberstars/shared/webFiles';
 // files, by name. A click on a file opens it; a folder picked is where a new
 // file or folder goes. New, rename and delete go back to the IDE, which says
 // whether they could be done: an error shows under the box the name was typed in.
+// Closed (dev mode, its divider dragged to the left), the tree is a narrow
+// strip that opens it again, or opens it on a new file or folder.
 
 interface Node {
   name: string;
@@ -75,6 +78,8 @@ interface FileTreeProps {
   onCreate: (path: string, folder: boolean) => string | null;
   onRename: (from: string, to: string) => string | null;
   onDelete: (path: string, folder: boolean) => void;
+  closed?: boolean;
+  onShow?: () => void;
 }
 
 const iconButton =
@@ -88,6 +93,8 @@ export function FileTree({
   onCreate,
   onRename,
   onDelete,
+  closed = false,
+  onShow,
 }: FileTreeProps) {
   const { t } = useTranslation();
   const [picked, setPicked] = useState('');
@@ -221,29 +228,60 @@ export function FileTree({
   };
 
   const into = picked ? `${picked}/` : '';
+  const newFile = (
+    <button
+      type="button"
+      aria-label={t('web.newFile')}
+      title={t('web.newFile')}
+      onClick={() => {
+        onShow?.();
+        start({ kind: 'file', value: into });
+      }}
+      className={iconButton}
+    >
+      <FilePlus size={14} aria-hidden="true" />
+    </button>
+  );
+  const newFolder = (
+    <button
+      type="button"
+      aria-label={t('web.newFolder')}
+      title={t('web.newFolder')}
+      onClick={() => {
+        onShow?.();
+        start({ kind: 'folder', value: into });
+      }}
+      className={iconButton}
+    >
+      <FolderPlus size={14} aria-hidden="true" />
+    </button>
+  );
+
+  if (closed) {
+    return (
+      <div className="flex flex-col items-center gap-1 py-1.5 min-h-0 h-full">
+        <button
+          type="button"
+          aria-label={t('web.showFiles')}
+          title={t('web.showFiles')}
+          onClick={onShow}
+          className={iconButton}
+        >
+          <PanelLeftOpen size={14} aria-hidden="true" />
+        </button>
+        {newFile}
+        {newFolder}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-0 h-full">
       <div className="flex items-center justify-between pl-3 pr-1 py-1.5 border-b border-[var(--border)]">
         <span className="section-label">{t('web.files')}</span>
         <span className="flex">
-          <button
-            type="button"
-            aria-label={t('web.newFile')}
-            title={t('web.newFile')}
-            onClick={() => start({ kind: 'file', value: into })}
-            className={iconButton}
-          >
-            <FilePlus size={14} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            aria-label={t('web.newFolder')}
-            title={t('web.newFolder')}
-            onClick={() => start({ kind: 'folder', value: into })}
-            className={iconButton}
-          >
-            <FolderPlus size={14} aria-hidden="true" />
-          </button>
+          {newFile}
+          {newFolder}
         </span>
       </div>
       <div className="flex-1 min-h-0 overflow-y-auto py-1">
