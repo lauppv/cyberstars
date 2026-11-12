@@ -1,10 +1,10 @@
-Intrăm pe un teritoriu nou. Până acum am scris cod care **face lucruri**: afișează, calculează, sortează. Acum vom înțelege **cum rulează computerul codul nostru**. Bun venit la **sisteme de operare**
+Intrăm pe un teritoriu nou. Până acum am scris cod care face lucruri: afișează, calculează, sortează. Acum vom înțelege cum rulează computerul codul nostru. Bun venit la sisteme de operare
 
 Un **sistem de operare** (OS) este software-ul care gestionează tot: RAM-ul, hard disk-ul, ecranul, tastatura. Windows, Linux, macOS: toate sunt sisteme de operare. Fără unul, computerul tău este doar un presa-papier scump
 
 ---
 
-Când rulezi un program C, sistemul de operare creează un **proces**. Un proces este o **instanță a unui program în execuție**. Are propriile sale:
+Când rulezi un program C, sistemul de operare creează un **proces**. Un proces este o instanță a unui program în execuție. Are propriile sale:
 
 - **Cod**: instrucțiunile (codul tău C compilat)
 - **Memorie**: stiva, heap-ul, variabilele globale
@@ -45,7 +45,7 @@ Adrese mari
 Adrese mici
 ```
 
-Îți amintești de **malloc**? Acum știi de unde vine acea memorie: din **heap**. Iar variabilele tale locale? Trăiesc pe **stivă**. Când primești o eroare "stack overflow", înseamnă că stiva a crescut prea mult (de obicei dintr-o recursivitate infinită)
+Îți amintești de malloc? Acum știi de unde vine acea memorie: din **heap**. Iar variabilele tale locale? Trăiesc pe **stivă**. Când primești o eroare "stack overflow", înseamnă că stiva a crescut prea mult (de obicei dintr-o recursivitate infinită)
 
 ---
 
@@ -60,7 +60,7 @@ Sistemul de operare comută între procese de mii de ori pe secundă. Asta se nu
 
 ---
 
-Un alt concept important: **codurile de ieșire**. Când **main** returnează un număr, acela este **codul de ieșire** al procesului
+Un alt concept important: **codurile de ieșire**. Când main returnează un număr, acela este codul de ieșire al procesului
 
 ```c
 #include <stdio.h>
@@ -70,7 +70,7 @@ int main(void) {
 }
 ```
 
-**return 0** înseamnă "totul a mers bine". Orice valoare diferită de zero înseamnă o eroare. Într-un terminal, poți verifica codul de ieșire al ultimei comenzi cu **echo $?**. De asta am tot scris **return 0** în main de la început. Acum știi motivul real.
+**return 0** înseamnă "totul a mers bine". Orice valoare diferită de zero înseamnă o eroare. Într-un terminal, poți verifica codul de ieșire al ultimei comenzi cu **echo $?**. De asta am tot scris return 0 în main de la început. Acum știi motivul real.
 
 ---
 
@@ -78,7 +78,7 @@ int main(void) {
 
 E ora opt dimineața la centrul de calcul Bell Labs. Înainte să înceapă lucrul, fiecare terminal conectat la mainframe trebuie să-și înregistreze procesul în jurnalul de tură al operatorului.
 
-1. Afișează ID-ul procesului curent folosind **getpid()**
+1. Afișează ID-ul procesului curent folosind getpid()
 2. Afișează un mesaj care confirmă codul de ieșire
 
 **Exemplu**
@@ -90,4 +90,4 @@ PID: 12345
 Iesire cu codul 0
 ```
 
-Folosește **getpid()** din **unistd.h**
+Folosește getpid() din unistd.h

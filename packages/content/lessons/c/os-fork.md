@@ -1,4 +1,4 @@
-How does the operating system create new processes? On Unix/Linux, there's a fascinating system call: **fork()**. It **clones** the current process, creating an exact copy
+How does the operating system create new processes? On Unix/Linux, there's a fascinating system call: **fork()**. It clones the current process, creating an exact copy
 
 ```c
 #include <stdio.h>
@@ -22,7 +22,7 @@ int main(void) {
 }
 ```
 
-After **fork()**, there are **two processes** running the same code. The original is the **parent**, the copy is the **child**. How do you know which one you are? **fork()** returns:
+After fork(), there are **two processes** running the same code. The original is the **parent**, the copy is the **child**. How do you know which one you are? fork() returns:
 
 - **0** to the child process
 - the **child's PID** to the parent process
@@ -31,9 +31,9 @@ That's why we check **pid == 0**: it's the only way to figure out which one we a
 
 ---
 
-Think of it like cell division in biology. A cell splits into two identical cells. Both have the same DNA (code), but then they can go different directions. The **if/else** after fork is how we send the parent and the child down different paths
+Think of it like cell division in biology. A cell splits into two identical cells. Both have the same DNA (code), but then they can go different directions. The if/else after fork is how we send the parent and the child down different paths
 
-**wait(NULL)** makes the parent **stop** until the child finishes. Without it, the parent could finish first and things get messy. It's like a parent waiting at the school gate: you don't leave without your kid
+**wait(NULL)** makes the parent stop until the child finishes. Without it, the parent could finish first and things get messy. It's like a parent waiting at the school gate: you don't leave without your kid
 
 ---
 
@@ -57,7 +57,7 @@ If you fork again inside one of those processes, you get 4 processes. Fork is **
 
 ---
 
-**fork** is the foundation of how Unix works. When you open a terminal and type a command, the shell **forks** itself, and the child process **replaces itself** with the new program (using a function called **exec**, which we won't cover in detail, but it's good to know it exists)
+fork is the foundation of how Unix works. When you open a terminal and type a command, the shell forks itself, and the child process replaces itself with the new program (using a function called **exec**, which we won't cover in detail, but it's good to know it exists)
 
 This fork-then-exec pattern is everywhere:
 
@@ -72,9 +72,9 @@ This fork-then-exec pattern is everywhere:
 
 A technician at the computing center needs to launch a diagnostic process that reports its own PID, while the main terminal waits for confirmation before continuing the shift.
 
-1. Call **fork()** to create a child process
-2. The **child** prints **"Child: hello from PID X"** (where X is its real PID from **getpid()**)
-3. The **parent** calls **wait(NULL)**, then prints **"Parent: child has finished"**
+1. Call fork() to create a child process
+2. The child prints "Child: hello from PID X" (where X is its real PID from getpid())
+3. The parent calls wait(NULL), then prints "Parent: child has finished"
 
 **Example**
 
@@ -85,4 +85,4 @@ Child: hello from PID 12345
 Parent: child has finished
 ```
 
-Use **fork()**, **getpid()**, and **wait(NULL)** from **unistd.h** and **sys/wait.h**
+Use fork(), getpid(), and wait(NULL) from unistd.h and sys/wait.h
