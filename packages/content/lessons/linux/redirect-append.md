@@ -23,7 +23,7 @@ Both lines are preserved. Each `>>` appends to the bottom.
 | `>`      | Create / overwrite |
 | `>>`     | Create / append    |
 
-If the file does not exist yet, **both** `>` and `>>` will create it. The difference
+If the file does not exist yet, both `>` and `>>` will create it. The difference
 only matters when the file already has content.
 
 A common pattern is to use `>` once to start fresh, then `>>` to accumulate more data

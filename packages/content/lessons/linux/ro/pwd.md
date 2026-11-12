@@ -1,4 +1,4 @@
-De fiecare dată când folosești terminalul, te afli **înăuntrul unui folder**. Linux
+De fiecare dată când folosești terminalul, te afli înăuntrul unui folder. Linux
 îi spune **director** (directory). Acesta este _locația ta curentă_, cunoscută și ca
 **directorul de lucru** (working directory).
 

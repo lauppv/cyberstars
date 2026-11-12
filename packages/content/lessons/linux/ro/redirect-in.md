@@ -1,5 +1,5 @@
-Redirecționarea ieșirii (`>`, `>>`) controlează **unde merge** rezultatul.
-Redirecționarea intrării (`<`) controlează **de unde vine** intrarea.
+Redirecționarea ieșirii (`>`, `>>`) controlează unde merge rezultatul.
+Redirecționarea intrării (`<`) controlează de unde vine intrarea.
 
 Tiparul este: `COMANDĂ < FIȘIER`.
 
@@ -15,7 +15,7 @@ wc -l < manifest.txt
 ```
 
 Aici `wc -l` numără liniile. În loc să tastezi linii la tastatură, le citește din
-`manifest.txt`. Observă că numele fișierului **nu** apare în rezultat. Aceasta este
+`manifest.txt`. Observă că numele fișierului nu apare în rezultat. Aceasta este
 diferența subtilă față de `wc -l manifest.txt` (care afișează numele lângă numărătoare).
 
 ### Când este util `<`?

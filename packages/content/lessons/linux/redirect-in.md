@@ -1,5 +1,5 @@
-Output redirection (`>`, `>>`) controls where output **goes**. Input redirection (`<`)
-controls where input **comes from**.
+Output redirection (`>`, `>>`) controls where output goes. Input redirection (`<`)
+controls where input comes from.
 
 The pattern is: `COMMAND < FILE`.
 
@@ -15,7 +15,7 @@ wc -l < manifest.txt
 ```
 
 Here `wc -l` counts lines. Instead of typing lines on the keyboard, it reads them from
-`manifest.txt`. Note that the filename is **not** shown in the output. That is the
+`manifest.txt`. Note that the filename is not shown in the output. That is the
 subtle difference from `wc -l manifest.txt` (which prints the name alongside the
 count).
 

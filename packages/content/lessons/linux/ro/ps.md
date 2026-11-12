@@ -14,7 +14,7 @@ ps
  1245 pts/0    00:00:00 ps
 ```
 
-De obicei vezi doar shell-ul tău și `ps`. Pentru a vedea **toate** procesele din
+De obicei vezi doar shell-ul tău și `ps`. Pentru a vedea toate procesele din
 sistem, folosește `ps aux`:
 
 ```bash

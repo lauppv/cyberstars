@@ -1,4 +1,4 @@
-Every time you use the terminal, you are **inside a folder**. Linux calls it a
+Every time you use the terminal, you are inside a folder. Linux calls it a
 **directory**. This is your _current location_, also known as the
 **working directory**.
 

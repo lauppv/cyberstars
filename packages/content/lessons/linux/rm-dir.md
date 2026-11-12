@@ -1,4 +1,4 @@
-Deleting **folders** needs a little more care than deleting files. You have two
+Deleting folders needs a little more care than deleting files. You have two
 tools.
 
 ### Empty folders: `rmdir`
@@ -20,7 +20,7 @@ rmdir reports
 rmdir: failed to remove 'reports': Directory not empty
 ```
 
-This refusal is a **safety feature**: it stops you wiping out files by accident.
+This refusal is a safety feature: it stops you wiping out files by accident.
 
 ### Folders with content: `rm -r`
 
@@ -41,8 +41,8 @@ undo. Always `ls` the folder first to be certain of what is inside.
 
 | Command | Use it for                                     |
 | ------- | ---------------------------------------------- |
-| `rmdir` | an **empty** folder (safe)                     |
-| `rm -r` | a folder **with content** (powerful, careful!) |
+| `rmdir` | an empty folder (safe)                     |
+| `rm -r` | a folder with content (powerful, careful!) |
 
 ---
 
