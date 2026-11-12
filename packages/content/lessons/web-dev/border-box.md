@@ -2,12 +2,34 @@ You order a picture frame "30 centimetres wide". Do you mean the picture is 30 c
 
 ## The surprise
 
-```css
-.member {
-  width: 250px;
-  padding: 16px;
-  border: 2px solid gold;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    margin-bottom: 16px;
+  }
+
+  /* show */
+  .member {
+    width: 250px;
+    padding: 16px;
+    border: 2px solid gold;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 How wide is a member box on the page? Not 250 pixels. Inspect it:
@@ -22,13 +44,35 @@ By default, `width` is only the **content**: padding and border come on top. Cha
 
 One line fixes it:
 
-```css
-.member {
-  box-sizing: border-box;
-  width: 250px;
-  padding: 16px;
-  border: 2px solid gold;
-}
+```css preview
+<style>
+  body {
+    background-color: #0b1d3a;
+    color: #f0f4ff;
+  }
+
+  .member {
+    background-color: #1e3a5f;
+    margin-bottom: 16px;
+  }
+
+  /* show */
+  .member {
+    box-sizing: border-box;
+    width: 250px;
+    padding: 16px;
+    border: 2px solid gold;
+  }
+  /* /show */
+</style>
+<div class="member">
+  <h3>Sam Green</h3>
+  <p>Plays chess on Sundays.</p>
+</div>
+<div class="member">
+  <h3>Lea Park</h3>
+  <p>Runs the card games.</p>
+</div>
 ```
 
 Now `width` means the **whole box**, border included: 250 pixels on the page. The padding and border fit **inside** it, and the content gets what's left: 250 − 32 − 4 = 214 pixels. Change the padding, and the box stays 250 wide.
