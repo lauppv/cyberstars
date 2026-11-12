@@ -8,6 +8,13 @@
         {
           "exists": "form:has(#passenger):invalid",
           "label": "the booking form, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
         }
       ]
     },
@@ -34,6 +41,13 @@
         {
           "exists": "#passenger:invalid",
           "label": "the name box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
         }
       ]
     },
@@ -60,6 +74,13 @@
         {
           "exists": "#email:invalid",
           "label": "the email box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
         }
       ]
     },
@@ -86,6 +107,13 @@
         {
           "exists": "#flight:invalid",
           "label": "the flight list, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
         }
       ]
     },
@@ -112,6 +140,13 @@
         {
           "exists": "#travel-date:invalid",
           "label": "the date box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
         }
       ]
     },

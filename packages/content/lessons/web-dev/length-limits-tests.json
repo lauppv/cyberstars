@@ -28,6 +28,13 @@
         {
           "exists": "#passenger:invalid",
           "label": "the name box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
         }
       ]
     },
