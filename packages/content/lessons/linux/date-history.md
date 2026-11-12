@@ -1,4 +1,4 @@
-Knowing **when** things happen matters on a space station. The `date` command prints
+Knowing when things happen matters on a space station. The `date` command prints
 the current date and time:
 
 ```bash

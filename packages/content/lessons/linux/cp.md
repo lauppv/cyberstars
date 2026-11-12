@@ -1,4 +1,4 @@
-Sometimes you need a **copy** of a file: a backup, or a starting point for something
+Sometimes you need a copy of a file: a backup, or a starting point for something
 new. The **cp** command (**copy**) does exactly that.
 
 The pattern is always: `cp SOURCE DESTINATION`.

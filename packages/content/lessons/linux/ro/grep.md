@@ -1,7 +1,7 @@
 Un fișier de log poate avea mii de linii. Rareori ai nevoie de toate. Ai nevoie
 doar de liniile care menționează un anumit cuvânt. Comanda **grep** ți le găsește.
 
-`grep` caută într-un fișier și afișează **doar liniile care conțin** textul căutat.
+`grep` caută într-un fișier și afișează doar liniile care conțin textul căutat.
 
 Tiparul este: `grep CUVÂNT FIȘIER`.
 
