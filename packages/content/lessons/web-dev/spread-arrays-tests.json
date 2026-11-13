@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "name": "The three biggest crews, biggest first",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#biggest-crews > li",
+          "equals": 3,
+          "label": "starships in the list #biggest-crews"
+        },
+        {
+          "text": "#biggest-crews > li:nth-child(1)",
+          "equals": "Silver Gull, 7 crew",
+          "label": "starship 1 of #biggest-crews"
+        },
+        {
+          "text": "#biggest-crews > li:nth-child(2)",
+          "equals": "Comet Runner, 6 crew",
+          "label": "starship 2 of #biggest-crews"
+        },
+        {
+          "text": "#biggest-crews > li:nth-child(3)",
+          "equals": "Red Horizon, 5 crew",
+          "label": "starship 3 of #biggest-crews"
+        },
+        {
+          "order": [
+            "#ships > li.ship[title^=\"Aurora:\"]",
+            "#ships > li.ship[title^=\"Comet Runner:\"]",
+            "#ships > li.ship[title^=\"Lunar Ferry:\"]",
+            "#ships > li.ship[title^=\"Red Horizon:\"]",
+            "#ships > li.ship[title^=\"Silver Gull:\"]"
+          ],
+          "label": "the starship cards, in the tracker's order"
+        },
+        {
+          "order": ["#ships", "#biggest-crews"],
+          "label": "the starship cards, then the biggest crews"
+        },
+        {
+          "exists": "ol#biggest-crews",
+          "label": "a numbered list (ol) with the id biggest-crews"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other starships",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 7, \"name\": \"Blue Kite\", \"class\": \"Shuttle\", \"status\": \"Leaving\", \"crew\": 3}, {\"id\": 8, \"name\": \"Iron Swan\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 9}, {\"id\": 9, \"name\": \"Night Owl\", \"class\": \"Explorer\", \"status\": \"Boarding\", \"crew\": 1}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#biggest-crews > li",
+          "equals": 3,
+          "label": "starships in the list #biggest-crews"
+        },
+        {
+          "text": "#biggest-crews > li:nth-child(1)",
+          "equals": "Iron Swan, 9 crew",
+          "label": "starship 1 of #biggest-crews"
+        },
+        {
+          "text": "#biggest-crews > li:nth-child(2)",
+          "equals": "Blue Kite, 3 crew",
+          "label": "starship 2 of #biggest-crews"
+        },
+        {
+          "text": "#biggest-crews > li:nth-child(3)",
+          "equals": "Night Owl, 1 crew",
+          "label": "starship 3 of #biggest-crews"
+        },
+        {
+          "order": [
+            "#ships > li.ship[title^=\"Blue Kite:\"]",
+            "#ships > li.ship[title^=\"Iron Swan:\"]",
+            "#ships > li.ship[title^=\"Night Owl:\"]"
+          ],
+          "label": "the starship cards, in the tracker's order"
+        }
+      ]
+    }
+  ]
+}

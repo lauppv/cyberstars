@@ -2583,6 +2583,27 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'throw-error', title: 'Throwing an Error', sortOrder: 346 },
   { courseKey: 'web-dev', slug: 'finally', title: 'Whatever Happens: finally', sortOrder: 347 },
   { courseKey: 'web-dev', slug: 'try-again-button', title: 'Try Again', sortOrder: 348 },
+  {
+    courseKey: 'web-dev',
+    slug: 'object-destructuring',
+    title: 'Taking an Object Apart',
+    sortOrder: 349,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'array-destructuring',
+    title: 'Taking an Array Apart',
+    sortOrder: 350,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'destructured-parameters',
+    title: 'Taking Apart What a Function Gets',
+    sortOrder: 351,
+  },
+  { courseKey: 'web-dev', slug: 'spread-arrays', title: 'Spreading an Array', sortOrder: 352 },
+  { courseKey: 'web-dev', slug: 'spread-objects', title: 'A Copy with One Change', sortOrder: 353 },
+  { courseKey: 'web-dev', slug: 'rest-parameters', title: 'Any Number of Values', sortOrder: 354 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2986,6 +3007,12 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'throw-error',
         'finally',
         'try-again-button',
+        'object-destructuring',
+        'array-destructuring',
+        'destructured-parameters',
+        'spread-arrays',
+        'spread-objects',
+        'rest-parameters',
       ],
     },
   ],

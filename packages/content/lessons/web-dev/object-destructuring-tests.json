@@ -1,0 +1,159 @@
+{
+  "cases": [
+    {
+      "name": "Each card says how many people are on board",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 4",
+          "label": "the crew on a card (4)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Aurora",
+          "label": "the name on a card (Aurora)"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 6",
+          "label": "the crew on a card (6)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Comet Runner",
+          "label": "the name on a card (Comet Runner)"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 2",
+          "label": "the crew on a card (2)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Lunar Ferry",
+          "label": "the name on a card (Lunar Ferry)"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 5",
+          "label": "the crew on a card (5)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Red Horizon",
+          "label": "the name on a card (Red Horizon)"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 7",
+          "label": "the crew on a card (7)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Silver Gull",
+          "label": "the name on a card (Silver Gull)"
+        },
+        {
+          "order": [
+            "#ships > li.ship .ship-name",
+            "#ships > li.ship .ship-class",
+            "#ships > li.ship .ship-status",
+            "#ships > li.ship .ship-crew"
+          ],
+          "label": "a card's name, class, status, then crew"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other starships",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 7, \"name\": \"Blue Kite\", \"class\": \"Shuttle\", \"status\": \"Leaving\", \"crew\": 3}, {\"id\": 8, \"name\": \"Iron Swan\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 9}, {\"id\": 9, \"name\": \"Night Owl\", \"class\": \"Explorer\", \"status\": \"Boarding\", \"crew\": 1}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 3,
+          "label": "starship cards"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 3",
+          "label": "the crew on a card (3)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Blue Kite",
+          "label": "the name on a card (Blue Kite)"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 9",
+          "label": "the crew on a card (9)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Iron Swan",
+          "label": "the name on a card (Iron Swan)"
+        },
+        {
+          "text": "#ships > li.ship .ship-crew",
+          "equals": "Crew: 1",
+          "label": "the crew on a card (1)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Night Owl",
+          "label": "the name on a card (Night Owl)"
+        }
+      ]
+    },
+    {
+      "name": "The class and the status are still there",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Explorer",
+          "label": "the class on a card (Explorer)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "On the way",
+          "label": "the status on a card (On the way)"
+        }
+      ]
+    }
+  ]
+}

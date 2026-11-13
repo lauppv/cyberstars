@@ -1,0 +1,185 @@
+{
+  "cases": [
+    {
+      "name": "Dock them all, then undo",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "exists": "button#dock-all[type=\"button\"]",
+          "label": "a button (type=\"button\") with the id dock-all"
+        },
+        {
+          "exists": "button#undo-dock[type=\"button\"]",
+          "label": "a button (type=\"button\") with the id undo-dock"
+        },
+        {
+          "click": "#dock-all",
+          "label": "the button #dock-all"
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards"
+        },
+        {
+          "count": "#ships > li.ship[title$=\", Docked\"]",
+          "equals": 5,
+          "label": "cards whose title says Docked"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Docked",
+          "label": "a card's status"
+        },
+        {
+          "click": "#undo-dock",
+          "label": "the button #undo-dock"
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards, after Undo"
+        },
+        {
+          "count": "#ships > li.ship[title$=\", Docked\"]",
+          "equals": 2,
+          "label": "cards whose title says Docked, after Undo"
+        },
+        {
+          "count": "#ships > li.ship[title$=\", On the way\"]",
+          "atLeast": 1,
+          "label": "cards whose title says On the way, after Undo"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Docking twice changes nothing more",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "click": "#dock-all",
+          "label": "the button #dock-all"
+        },
+        {
+          "click": "#dock-all",
+          "label": "the button #dock-all"
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards"
+        },
+        {
+          "click": "#undo-dock",
+          "label": "the button #undo-dock"
+        },
+        {
+          "count": "#ships > li.ship[title=\"Comet Runner: 6 crew, On the way\"]",
+          "equals": 1,
+          "label": "cards titled Comet Runner: 6 crew, On the way"
+        }
+      ]
+    },
+    {
+      "name": "Other starships",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 7, \"name\": \"Blue Kite\", \"class\": \"Shuttle\", \"status\": \"Leaving\", \"crew\": 3}, {\"id\": 8, \"name\": \"Iron Swan\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 9}, {\"id\": 9, \"name\": \"Night Owl\", \"class\": \"Explorer\", \"status\": \"Boarding\", \"crew\": 1}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "click": "#dock-all",
+          "label": "the button #dock-all"
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 3,
+          "label": "starship cards"
+        },
+        {
+          "count": "#ships > li.ship[title$=\", Docked\"]",
+          "equals": 3,
+          "label": "cards whose title says Docked"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Docked",
+          "label": "a card's status"
+        },
+        {
+          "click": "#undo-dock",
+          "label": "the button #undo-dock"
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 3,
+          "label": "starship cards, after Undo"
+        },
+        {
+          "count": "#ships > li.ship[title$=\", Docked\"]",
+          "equals": 1,
+          "label": "cards whose title says Docked, after Undo"
+        },
+        {
+          "count": "#ships > li.ship[title$=\", Leaving\"]",
+          "atLeast": 1,
+          "label": "cards whose title says Leaving, after Undo"
+        }
+      ]
+    },
+    {
+      "name": "The rest stays",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "click": "#dock-all",
+          "label": "the button #dock-all"
+        },
+        {
+          "count": "#biggest-crews > li",
+          "equals": 3,
+          "label": "starships in the list #biggest-crews"
+        },
+        {
+          "text": "#closest",
+          "equals": "Closest starships: Aurora and Comet Runner",
+          "label": "the paragraph #closest"
+        }
+      ]
+    }
+  ]
+}
