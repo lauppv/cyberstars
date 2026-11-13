@@ -2257,6 +2257,12 @@ export const lessons = [
     sortOrder: 204,
   },
   { courseKey: 'web-dev', slug: 'boarding-js-recap', title: 'JavaScript Recap', sortOrder: 205 },
+  {
+    courseKey: 'web-dev',
+    slug: 'cargo-request-project',
+    title: 'Project: Cargo Request',
+    sortOrder: 206,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2493,6 +2499,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'custom-validity',
         'aria-describedby',
         'boarding-js-recap',
+        'cargo-request-project',
       ],
     },
   ],
@@ -2503,7 +2510,12 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
 // other lesson of a web course carries on from the student's site in the
 // closest earlier lesson not listed here (CYB-119).
 export const freshStartLessons: Record<string, string[]> = {
-  'web-dev': ['crew-profile-project', 'cargo-ledger-project', 'launch-board-project'],
+  'web-dev': [
+    'crew-profile-project',
+    'cargo-ledger-project',
+    'launch-board-project',
+    'cargo-request-project',
+  ],
 };
 
 type LessonEntry = { courseKey: string; slug: string; sortOrder: number };
