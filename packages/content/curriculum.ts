@@ -2349,6 +2349,16 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'template-areas', title: 'The Layout in Words', sortOrder: 258 },
   { courseKey: 'web-dev', slug: 'repeat', title: 'Many Columns at Once', sortOrder: 259 },
   { courseKey: 'web-dev', slug: 'minmax', title: 'Never Narrower Than', sortOrder: 260 },
+  { courseKey: 'web-dev', slug: 'auto-fit', title: 'As Many as Fit', sortOrder: 261 },
+  { courseKey: 'web-dev', slug: 'flex-or-grid', title: 'Flex or Grid?', sortOrder: 262 },
+  { courseKey: 'web-dev', slug: 'media-queries', title: 'Media Queries', sortOrder: 263 },
+  { courseKey: 'web-dev', slug: 'breakpoints', title: 'Where the Page Breaks', sortOrder: 264 },
+  {
+    courseKey: 'web-dev',
+    slug: 'layout-by-width',
+    title: 'Another Layout on a Phone',
+    sortOrder: 265,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2652,6 +2662,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'template-areas',
         'repeat',
         'minmax',
+        'auto-fit',
+        'flex-or-grid',
+        'media-queries',
+        'breakpoints',
+        'layout-by-width',
       ],
     },
   ],

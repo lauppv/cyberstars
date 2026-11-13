@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "name": "In a window 800 pixels wide, side by side, each at least 360 pixels",
+      "visible": true,
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#pad-panel",
+          "minWidth": 359,
+          "label": "the pad camera's panel"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 359,
+          "label": "the last launch's panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 760 pixels wide, one under the other",
+      "visible": true,
+      "width": 760,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 700 pixels wide, one under the other",
+      "visible": true,
+      "width": 700,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 780 pixels wide",
+      "width": 780,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#pad-panel",
+          "minWidth": 359,
+          "label": "the pad camera's panel"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 359,
+          "label": "the last launch's panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 770 pixels wide",
+      "width": 770,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a computer",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#pad-panel",
+          "minWidth": 359,
+          "label": "the pad camera's panel"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 359,
+          "label": "the last launch's panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

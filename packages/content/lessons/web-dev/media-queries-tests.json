@@ -1,0 +1,189 @@
+{
+  "cases": [
+    {
+      "name": "In a window 600 pixels wide, the panels one under the other",
+      "visible": true,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#duty-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the duty panel"
+        },
+        {
+          "order": ["#pad-panel h2", "#launch-panel h2", "#countdown-panel h2", "#duty-panel h2"],
+          "label": "the panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 700 pixels wide, side by side as before",
+      "visible": true,
+      "width": 700,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "layout": "#countdown-panel, #duty-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the countdown's panel and the duty panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a phone, one under the other too",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#duty-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the duty panel"
+        },
+        {
+          "order": ["#pad-panel h2", "#launch-panel h2", "#countdown-panel h2", "#duty-panel h2"],
+          "label": "the panels"
+        }
+      ]
+    },
+    {
+      "name": "On a computer, side by side",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "layout": "#countdown-panel, #duty-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the countdown's panel and the duty panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 560 pixels wide",
+      "width": 560,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#duty-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the duty panel"
+        },
+        {
+          "order": ["#pad-panel h2", "#launch-panel h2", "#countdown-panel h2", "#duty-panel h2"],
+          "label": "the panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

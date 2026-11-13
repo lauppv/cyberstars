@@ -1,0 +1,223 @@
+{
+  "cases": [
+    {
+      "name": "On a computer, three columns",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the first three cards"
+        },
+        {
+          "against": ".stats > .stat:nth-child(3)",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "card 3"
+        },
+        {
+          "size": ".stats > .stat:nth-child(2)",
+          "minWidth": 285,
+          "maxWidth": 310,
+          "label": "card 2"
+        }
+      ]
+    },
+    {
+      "name": "In a window 800 pixels wide, two columns",
+      "visible": true,
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the crew's card and card 2"
+        },
+        {
+          "against": ".stats > .stat:nth-child(2)",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "card 2"
+        },
+        {
+          "layout": ".stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "column",
+          "gap": 16,
+          "label": "card 2 and card 3"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "size": ".stats > .stat:nth-child(2)",
+          "minWidth": 260,
+          "label": "card 2"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 600 pixels wide, two columns",
+      "visible": true,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the crew's card and card 2"
+        },
+        {
+          "against": ".stats > .stat:nth-child(2)",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "card 2"
+        },
+        {
+          "layout": ".stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "column",
+          "gap": 16,
+          "label": "card 2 and card 3"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "size": ".stats > .stat:nth-child(2)",
+          "minWidth": 260,
+          "label": "card 2"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a very wide screen, still three",
+      "width": 1920,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the first three cards"
+        },
+        {
+          "against": ".stats > .stat:nth-child(3)",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "card 3"
+        },
+        {
+          "size": ".stats > .stat:nth-child(2)",
+          "minWidth": 285,
+          "maxWidth": 310,
+          "label": "card 2"
+        }
+      ]
+    },
+    {
+      "name": "In a window 700 pixels wide",
+      "width": 700,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the crew's card and card 2"
+        },
+        {
+          "against": ".stats > .stat:nth-child(2)",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "card 2"
+        },
+        {
+          "layout": ".stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "column",
+          "gap": 16,
+          "label": "card 2 and card 3"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "size": ".stats > .stat:nth-child(2)",
+          "minWidth": 260,
+          "label": "card 2"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}
