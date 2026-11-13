@@ -1109,9 +1109,13 @@ if (later.length > 0) {
 
     <form id="booking" action="https://station.example/book" method="post">
       <label for="passenger">Full name</label>
-      <input id="passenger" name="passenger" placeholder="e.g. Ida Moreau" required minlength="2" maxlength="40" />
+      <input id="passenger" name="passenger" placeholder="e.g. Ida Moreau" required minlength="2" maxlength="40" aria-describedby="passenger-error" />
+      <p id="passenger-error"></p>
       <label for="email">Email</label>
       <input type="email" id="email" name="email" placeholder="e.g. ida@example.com" required />
+      <label for="badge-number">Badge number</label>
+      <input id="badge-number" name="badge" placeholder="e.g. OS4821" required pattern="[A-Z]{2}\d{4}" aria-describedby="badge-error" />
+      <p id="badge-error"></p>
       <label for="phone">Phone</label>
       <input type="tel" id="phone" name="phone" placeholder="e.g. +47 412 34 567" />
       <label for="flight">Flight</label>
@@ -1162,11 +1166,15 @@ if (later.length > 0) {
 
     <h2>Your boarding pass</h2>
     <p>Passenger: <span id="pass-name">No name yet</span></p>
+    <p>Initials: <span id="pass-initials"></span></p>
+    <p>Traveling as: <span id="pass-role">guest</span></p>
+    <p>Badge: <span id="pass-badge">No valid badge yet</span></p>
     <p>Flight: <span id="pass-flight"></span></p>
     <p>Going to: <span id="pass-destination">No flight yet</span></p>
     <p>Seat: <span id="pass-seat"></span></p>
     <p>Hot meal: <span id="pass-meal">no</span></p>
     <p>Notes: <span id="pass-notes">No notes</span></p>
+    <p>Help at the gate: <span id="pass-help">no</span></p>
     </main>
 
     <footer>
@@ -1180,12 +1188,57 @@ if (later.length > 0) {
 ```js boarding.js
 const passenger = document.querySelector("#passenger");
 const passName = document.querySelector("#pass-name");
+const passInitials = document.querySelector("#pass-initials");
+
+function initialsOf(name) {
+  const space = name.indexOf(" ");
+  if (space === -1) {
+    return name.slice(0, 1);
+  }
+  return name.slice(0, 1) + name.slice(space + 1, space + 2);
+}
 
 passenger.addEventListener("input", () => {
-  if (passenger.value) {
-    passName.textContent = passenger.value;
+  const name = passenger.value.trim();
+  if (name) {
+    passName.textContent = name;
   } else {
     passName.textContent = "No name yet";
+  }
+  passInitials.textContent = initialsOf(name);
+});
+
+const email = document.querySelector("#email");
+const passRole = document.querySelector("#pass-role");
+
+email.addEventListener("input", () => {
+  if (email.value.endsWith("@station.example")) {
+    passRole.textContent = "crew";
+  } else {
+    passRole.textContent = "guest";
+  }
+});
+
+const badgeNumber = document.querySelector("#badge-number");
+const badgeError = document.querySelector("#badge-error");
+const passBadge = document.querySelector("#pass-badge");
+const badgeRule = /^[A-Z]{2}\d{4}$/;
+
+badgeNumber.addEventListener("input", () => {
+  if (badgeRule.test(badgeNumber.value)) {
+    passBadge.textContent = badgeNumber.value;
+  } else {
+    passBadge.textContent = "No valid badge yet";
+  }
+});
+
+badgeNumber.addEventListener("change", () => {
+  if (badgeRule.test(badgeNumber.value)) {
+    badgeError.textContent = "";
+    badgeNumber.setAttribute("aria-invalid", "false");
+  } else {
+    badgeError.textContent = "Two capital letters and four digits, like OS4821";
+    badgeNumber.setAttribute("aria-invalid", "true");
   }
 });
 
@@ -1201,10 +1254,12 @@ document.querySelector("#seat-aisle").addEventListener("click", showSeat);
 const notes = document.querySelector("#notes");
 const notesLeft = document.querySelector("#notes-left");
 const passNotes = document.querySelector("#pass-notes");
+const passHelp = document.querySelector("#pass-help");
 
 function updateNotes() {
   notesLeft.textContent = `${200 - notes.value.length} characters left`;
   passNotes.textContent = notes.value || "No notes";
+  passHelp.textContent = /wheelchair/i.test(notes.value) ? "yes" : "no";
 }
 
 notes.addEventListener("input", updateNotes);
@@ -1250,13 +1305,37 @@ meal.addEventListener("change", () => {
   passMeal.textContent = meal.checked ? "yes" : "no";
 });
 
+const contactName = document.querySelector("#contact-name");
+const contactPhone = document.querySelector("#contact-phone");
+
+function checkContact() {
+  if (contactName.value.trim() && !contactPhone.value) {
+    contactPhone.setCustomValidity("Please add their phone number, so we can call them");
+  } else {
+    contactPhone.setCustomValidity("");
+  }
+}
+
+contactName.addEventListener("input", checkContact);
+contactPhone.addEventListener("input", checkContact);
+
 const booking = document.querySelector("#booking");
 const confirmation = document.querySelector("#confirmation");
+const passengerError = document.querySelector("#passenger-error");
 
 booking.addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log(`Sending the booking for ${passenger.value}`);
-  confirmation.textContent = `Seat booked for ${passenger.value} on ${flight.value}`;
+  const name = passenger.value.trim();
+  if (name) {
+    passengerError.textContent = "";
+    passenger.setAttribute("aria-invalid", "false");
+    console.log(`Sending the booking for ${name}`);
+    confirmation.textContent = `Seat booked for ${name} on ${flight.value}`;
+  } else {
+    passengerError.textContent = "Please write your name";
+    passenger.setAttribute("aria-invalid", "true");
+    confirmation.textContent = "";
+  }
 });
 ```
 
