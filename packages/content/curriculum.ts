@@ -2516,6 +2516,13 @@ export const lessons = [
     title: 'Changes Read Out Loud: aria-live',
     sortOrder: 319,
   },
+  {
+    courseKey: 'web-dev',
+    slug: 'theme-on-every-page',
+    title: 'The Theme on Every Page',
+    sortOrder: 320,
+    hasCodeFile: true,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2884,6 +2891,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'set-collection',
         'focus-method',
         'aria-live',
+        'theme-on-every-page',
       ],
     },
   ],
