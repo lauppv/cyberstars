@@ -1,10 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { EventEmitter } from 'node:events';
-import jwt from 'jsonwebtoken';
 import type { IncomingMessage } from 'http';
 import type { WebSocket } from 'ws';
 
-process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
@@ -47,7 +45,10 @@ vi.mock('../repositories/user.repository.js', () => ({
 // The upgrade's session check; by default a token signs in whoever it names
 const sessionUserIdMock = vi.fn();
 vi.mock('./auth.js', () => ({
-  auth: { sessionUserId: (...args: unknown[]) => sessionUserIdMock(...args) },
+  auth: {
+    cookieName: 'session',
+    sessionUserId: (...args: unknown[]) => sessionUserIdMock(...args),
+  },
 }));
 
 // A stand-in WebSocketServer that hands the upgrade straight to the connection
@@ -101,13 +102,14 @@ function fakeReq(cookie?: string, ip = '127.0.0.1'): IncomingMessage {
   } as unknown as IncomingMessage;
 }
 
-const token = (id: number) => jwt.sign({ id }, 'test-secret');
+// A session token the faked session check reads the user from
+const token = (id: number) => `user-${id}`;
 
 beforeEach(() => {
   vi.clearAllMocks();
   mockRun.mockResolvedValue(undefined);
   sessionUserIdMock.mockImplementation(async (t: string | null) =>
-    t ? (jwt.verify(t, 'test-secret') as { id: number }).id : null,
+    t?.startsWith('user-') ? Number(t.slice('user-'.length)) : null,
   );
 });
 
@@ -119,13 +121,13 @@ describe('parseTokenCookie', () => {
     expect(parseTokenCookie(undefined)).toBeNull();
   });
   it('extracts the token among other cookies', () => {
-    expect(parseTokenCookie('a=1; token=abc123; b=2')).toBe('abc123');
+    expect(parseTokenCookie('a=1; session=abc123; b=2')).toBe('abc123');
   });
   it('returns null when token cookie absent', () => {
-    expect(parseTokenCookie('a=1; b=2')).toBeNull();
+    expect(parseTokenCookie('a=1; token=abc123; b=2')).toBeNull();
   });
   it('skips malformed cookie parts that have no = separator', () => {
-    expect(parseTokenCookie('flag; token=abc123')).toBe('abc123');
+    expect(parseTokenCookie('flag; session=abc123')).toBe('abc123');
   });
 });
 
@@ -564,14 +566,14 @@ describe('upgrade routing', () => {
   });
 
   it('routes /ws/presence to the presence handler', async () => {
-    await upgrade('/ws/presence', `token=${token(7)}`);
+    await upgrade('/ws/presence', `session=${token(7)}`);
     expect(sessionUserIdMock).toHaveBeenCalledWith(token(7));
     expect(openSessionMock).toHaveBeenCalledWith('user:7');
   });
 
   it('treats a session ended by a password change as a guest', async () => {
     sessionUserIdMock.mockResolvedValue(null);
-    await upgrade('/ws/presence', `token=${token(7)}`);
+    await upgrade('/ws/presence', `session=${token(7)}`);
     expect(openSessionMock).toHaveBeenCalledWith('ip:127.0.0.1');
   });
 
@@ -579,7 +581,7 @@ describe('upgrade routing', () => {
     sessionUserIdMock.mockRejectedValue(new Error('db down'));
     const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     const socket = { destroy: vi.fn() };
-    await upgrade('/ws/user', `token=${token(7)}`, socket);
+    await upgrade('/ws/user', `session=${token(7)}`, socket);
     expect(socket.destroy).toHaveBeenCalled();
     expect(registerUserSocketMock).not.toHaveBeenCalled();
     errSpy.mockRestore();
@@ -587,7 +589,7 @@ describe('upgrade routing', () => {
 
   it('rejects a /ws/user upgrade from an ended session', async () => {
     sessionUserIdMock.mockResolvedValue(null);
-    const ws = await upgrade('/ws/user', `token=${token(7)}`);
+    const ws = await upgrade('/ws/user', `session=${token(7)}`);
     await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4401, 'Unauthorized'));
     expect(registerUserSocketMock).not.toHaveBeenCalled();
   });
@@ -599,7 +601,7 @@ describe('upgrade routing', () => {
   });
 
   it('registers a /ws/user socket and unregisters it on close', async () => {
-    const ws = await upgrade('/ws/user', `token=${token(7)}`);
+    const ws = await upgrade('/ws/user', `session=${token(7)}`);
     await vi.waitFor(() => expect(registerUserSocketMock).toHaveBeenCalledWith(7, ws));
 
     ws.emit('close');
@@ -621,7 +623,7 @@ describe('upgrade routing', () => {
 
     it('closes the socket for a user outside the preview gate', async () => {
       getRoleMock.mockResolvedValue('USER');
-      const ws = await upgrade('/ws/user', `token=${token(7)}`);
+      const ws = await upgrade('/ws/user', `session=${token(7)}`);
 
       await vi.waitFor(() => expect(ws.close).toHaveBeenCalledWith(4404, 'Not found'));
       expect(getRoleMock).toHaveBeenCalledWith(7);
@@ -630,7 +632,7 @@ describe('upgrade routing', () => {
 
     it('lets an admin through the preview gate', async () => {
       getRoleMock.mockResolvedValue('ADMIN');
-      const ws = await upgrade('/ws/user', `token=${token(7)}`);
+      const ws = await upgrade('/ws/user', `session=${token(7)}`);
 
       await vi.waitFor(() => expect(registerUserSocketMock).toHaveBeenCalledWith(7, ws));
     });

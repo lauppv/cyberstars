@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
 import { makeLimiter } from '@cyberstars-framework/server-kit/rate-limit';
-import { createAuth, SESSION_COOKIE, type AuthUser } from './auth.js';
+import { createAuth, type AuthUser, type StoredSession } from './auth.js';
 import { emailField, passwordField } from './schemas.js';
 
 // The routes, end to end through an app that keeps its accounts in memory
@@ -15,7 +15,6 @@ type Role = 'USER' | 'ADMIN';
 
 interface Row extends AuthUser<Role> {
   passwordHash: string;
-  sessionVersion: number;
   school?: string;
   resetCode: string | null;
   resetCodeExpiresAt: Date | null;
@@ -48,7 +47,6 @@ function memoryStore() {
         id: rows.length + 1,
         role: 'USER',
         passwordHash,
-        sessionVersion: 0,
         resetCode: null,
         resetCodeExpiresAt: null,
         resetCodeAttempts: 0,
@@ -58,9 +56,7 @@ function memoryStore() {
     },
     async findLogin(email: string) {
       const r = byEmail(email);
-      return r
-        ? { id: r.id, passwordHash: r.passwordHash, sessionVersion: r.sessionVersion }
-        : null;
+      return r ? { id: r.id, passwordHash: r.passwordHash } : null;
     },
     async findById(id: number): Promise<Row | null> {
       return byId(id) ?? null;
@@ -68,16 +64,12 @@ function memoryStore() {
     async role(id: number) {
       return byId(id)?.role ?? null;
     },
-    async sessionVersion(id: number) {
-      return byId(id)?.sessionVersion ?? null;
-    },
     async passwordHash(id: number) {
       return byId(id)?.passwordHash ?? null;
     },
     async setPassword(id: number, passwordHash: string) {
       const r = byId(id)!;
       Object.assign(r, { passwordHash, resetCode: null, resetCodeExpiresAt: null });
-      return ++r.sessionVersion;
     },
     async setResetCode(email: string, code: string, expiresAt: Date) {
       const r = byEmail(email);
@@ -98,18 +90,51 @@ function memoryStore() {
   };
 }
 
+// The sessions in memory, each with its account's role now
+function memorySessions(store: ReturnType<typeof memoryStore>) {
+  const rows = new Map<string, Omit<StoredSession<Role>, 'role'>>();
+  return {
+    rows,
+    async create(s: { id: string; userId: number; secretHash: string; createdAt: Date }) {
+      rows.set(s.id, { ...s, lastSeenAt: s.createdAt });
+    },
+    async find(id: string) {
+      const row = rows.get(id);
+      const role = row && (await store.role(row.userId));
+      return row && role ? { ...row, role } : null;
+    },
+    async touch(id: string, lastSeenAt: Date) {
+      const row = rows.get(id);
+      if (row) row.lastSeenAt = lastSeenAt;
+    },
+    async delete(id: string) {
+      rows.delete(id);
+    },
+    async deleteForUser(userId: number) {
+      for (const [id, row] of rows) if (row.userId === userId) rows.delete(id);
+    },
+    async deleteExpired() {
+      return 0;
+    },
+  };
+}
+
 function setup({
   limitsInTests = false,
   account,
 }: { limitsInTests?: boolean; account?: (user: Row) => unknown } = {}) {
   const store = memoryStore();
+  const sessions = memorySessions(store);
   const sendResetCode = vi.fn().mockResolvedValue(undefined);
   const onSessionsEnded = vi.fn();
   const auth = createAuth({
     store,
+    sessions,
     isAdmin: (role) => role === 'ADMIN',
-    secret: 'test-secret',
-    maxAgeMs: 60_000,
+    lifetimes: {
+      user: { idleMs: 60_000, absoluteMs: 120_000 },
+      admin: { idleMs: 30_000, absoluteMs: 60_000 },
+    },
     secureCookie: false,
     onSessionsEnded,
     signupSchema,
@@ -124,7 +149,7 @@ function setup({
   app.use(cookieParser());
   app.use('/auth', auth.router);
   app.use(errorHandler);
-  return { app, store, sendResetCode, onSessionsEnded };
+  return { app, store, sessions, sendResetCode, onSessionsEnded };
 }
 
 const ADA = { name: 'Ada Lovelace', email: 'ada@test.com', password: 'secret123' };
@@ -132,7 +157,7 @@ const ADA = { name: 'Ada Lovelace', email: 'ada@test.com', password: 'secret123'
 // The cookie a response signs the browser in with, as the browser sends it back
 function sessionCookie(res: request.Response): string {
   const cookies = res.headers['set-cookie'] as unknown as string[];
-  return cookies.find((c) => c.startsWith(`${SESSION_COOKIE}=`))!.split(';')[0]!;
+  return cookies.find((c) => c.startsWith('session='))!.split(';')[0]!;
 }
 
 async function signUp(app: express.Express, form: object = ADA): Promise<string> {
@@ -152,7 +177,10 @@ describe('POST /signup', () => {
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ message: 'User created successfully' });
     const cookie = res.headers['set-cookie']![0]!;
-    expect(cookie).toMatch(/^token=.+; Max-Age=60; .*HttpOnly; SameSite=Lax/);
+    expect(cookie).toMatch(
+      /^session=[\w-]{22}\.[\w-]{43}; Max-Age=60; Path=\/; .*HttpOnly; SameSite=Lax/,
+    );
+    expect(res.headers['cache-control']).toBe('no-store');
     expect(bcrypt.compareSync('secret123', store.rows[0]!.passwordHash)).toBe(true);
     expect(store.rows[0]).not.toHaveProperty('password');
   });
@@ -183,15 +211,30 @@ describe('POST /signup', () => {
 });
 
 describe('POST /login', () => {
-  it("signs the browser in with a token at the account's session version", async () => {
-    const { app, store } = setup();
-    await signUp(app);
-    store.rows[0]!.sessionVersion = 3;
+  it('signs the browser in with a new session', async () => {
+    const { app, sessions } = setup();
+    const first = await signUp(app);
     const res = await request(app)
       .post('/auth/login')
       .send({ email: ADA.email, password: ADA.password });
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ message: 'Login successful' });
+    expect(sessionCookie(res)).not.toBe(first);
+    expect(sessions.rows.size).toBe(2);
+    await request(app).get('/auth/me').set('Cookie', sessionCookie(res)).expect(200);
+  });
+
+  it("ends the session the browser had, so it doesn't leave one behind", async () => {
+    const { app, sessions, onSessionsEnded } = setup();
+    const before = await signUp(app);
+    const res = await request(app)
+      .post('/auth/login')
+      .set('Cookie', before)
+      .send({ email: ADA.email, password: ADA.password })
+      .expect(200);
+    expect(sessions.rows.size).toBe(1);
+    expect(onSessionsEnded).toHaveBeenCalledWith(1);
+    await request(app).get('/auth/me').set('Cookie', before).expect(403);
     await request(app).get('/auth/me').set('Cookie', sessionCookie(res)).expect(200);
   });
 
@@ -224,12 +267,44 @@ describe('POST /login', () => {
 });
 
 describe('POST /logout', () => {
-  it('clears the cookie', async () => {
-    const { app } = setup();
-    const res = await request(app).post('/auth/logout');
+  it("ends the session on the server, so a copy of the cookie doesn't sign in either", async () => {
+    const { app, sessions, onSessionsEnded } = setup();
+    const cookie = await signUp(app);
+    const res = await request(app).post('/auth/logout').set('Cookie', cookie);
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ message: 'Logged out successfully' });
-    expect(res.headers['set-cookie']![0]).toMatch(/^token=; .*Expires=Thu, 01 Jan 1970/);
+    expect(sessions.rows.size).toBe(0);
+    expect(onSessionsEnded).toHaveBeenCalledWith(1);
+    await request(app).get('/auth/me').set('Cookie', cookie).expect(403);
+  });
+
+  it("has the browser drop the cookie and the site's cookies", async () => {
+    const { app } = setup();
+    const res = await request(app)
+      .post('/auth/logout')
+      .set('Cookie', await signUp(app));
+    expect(res.headers['set-cookie']![0]).toMatch(
+      /^session=; Path=\/; Expires=Thu, 01 Jan 1970 .*HttpOnly; SameSite=Lax/,
+    );
+    expect(res.headers['clear-site-data']).toBe('"cookies"');
+    expect(res.headers['cache-control']).toBe('no-store');
+  });
+
+  it("leaves the account's other sessions signed in", async () => {
+    const { app } = setup();
+    const here = await signUp(app);
+    const elsewhere = sessionCookie(
+      await request(app).post('/auth/login').send({ email: ADA.email, password: ADA.password }),
+    );
+    await request(app).post('/auth/logout').set('Cookie', here).expect(200);
+    await request(app).get('/auth/me').set('Cookie', elsewhere).expect(200);
+  });
+
+  it('answers the same without a session or with a dead one', async () => {
+    const { app, onSessionsEnded } = setup();
+    await request(app).post('/auth/logout').expect(200);
+    await request(app).post('/auth/logout').set('Cookie', 'session=garbage').expect(200);
+    expect(onSessionsEnded).not.toHaveBeenCalled();
   });
 });
 
@@ -345,11 +420,13 @@ describe('POST /reset-password', () => {
       .send({ email: ADA.email, code, password: 'newpass1' });
 
   it('sets the new password with the right code and ends every session', async () => {
-    const { app, cookie, code, onSessionsEnded } = await withCode();
+    const { app, sessions, cookie, code, onSessionsEnded } = await withCode();
     const res = await reset(app, code);
     expect(res.status).toBe(200);
     expect(res.body).toEqual({ message: 'Password reset successfully' });
+    expect(res.headers['set-cookie']).toBeUndefined();
     expect(onSessionsEnded).toHaveBeenCalledWith(1);
+    expect(sessions.rows.size).toBe(0);
     await request(app).get('/auth/me').set('Cookie', cookie).expect(403);
     await request(app)
       .post('/auth/login')

@@ -43,9 +43,9 @@ export function onlineUserIds(): number[] {
   return [...registry.keys()];
 }
 
-// A password change ended the sessions the sockets were opened with. Each tab
-// tries again in a moment (any code but 4401/4404), and only one whose cookie
-// holds the new token gets back in
+// A logout or a password change ended sessions the sockets may have been
+// opened with. Each tab tries again in a moment (any code but 4401/4404), and
+// only one whose session is still live gets back in
 export function closeUserSockets(userId: number): void {
   for (const ws of registry.get(userId) ?? []) ws.close(4000, 'Session ended');
 }

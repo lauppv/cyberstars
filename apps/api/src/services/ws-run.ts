@@ -10,7 +10,6 @@ import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-bu
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
-import { SESSION_COOKIE } from '@cyberstars-framework/auth/auth';
 import { auth } from './auth.js';
 
 // Reject oversized frames before they are buffered/parsed.
@@ -43,7 +42,7 @@ function parseCookie(cookieHeader: string | undefined, name: string): string | n
 }
 
 export function parseTokenCookie(cookieHeader: string | undefined): string | null {
-  return parseCookie(cookieHeader, SESSION_COOKIE);
+  return parseCookie(cookieHeader, auth.cookieName);
 }
 
 // The client's address, as seen by the one proxy (nginx) in front of the app in

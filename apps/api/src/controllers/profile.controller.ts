@@ -152,8 +152,9 @@ export async function changePassword(
 
     await auth.checkCurrentPassword(userId, currentPassword);
 
-    // Every other session ends; this one stays signed in on a new token
-    auth.setSessionCookie(res, await auth.setPassword(userId, newPassword));
+    // Every session of the account ends; this browser alone starts a new one
+    await auth.setPassword(userId, newPassword);
+    await auth.startSession(res, userId);
     res.json({ message: 'Password updated' });
   } catch (err) {
     next(err);

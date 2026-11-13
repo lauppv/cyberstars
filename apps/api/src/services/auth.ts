@@ -1,10 +1,11 @@
-import { createAuth, type UserStore } from '@cyberstars-framework/auth/auth';
+import { createAuth, type SessionStore, type UserStore } from '@cyberstars-framework/auth/auth';
 import type { z } from 'zod';
 import { isAdmin, type AuthenticatedUser, type UserRole } from '@cyberstars/shared/auth';
 import type { Interest } from '@cyberstars/shared/interests';
 import { isCodeLanguage } from '@cyberstars/shared/constants';
 import { placementLevel } from '@cyberstars/shared/placement';
 import * as userRepo from '../repositories/user.repository.js';
+import * as sessionRepo from '../repositories/session.repository.js';
 import { signupSchema } from '../schemas/auth.schema.js';
 import { limiter } from '../middleware/rateLimit.js';
 import { config } from '../config/index.js';
@@ -33,13 +34,10 @@ const store: UserStore<UserRole, Account, Signup> = {
   },
   async findLogin(email) {
     const user = await userRepo.findByEmail(email);
-    return (
-      user && { id: user.id, passwordHash: user.password, sessionVersion: user.sessionVersion }
-    );
+    return user && { id: user.id, passwordHash: user.password };
   },
   findById: (id) => userRepo.findById(id),
   role: (id) => userRepo.findRole(id),
-  sessionVersion: (id) => userRepo.getSessionVersion(id),
   async passwordHash(id) {
     return (await userRepo.findByIdWithPassword(id))?.password ?? null;
   },
@@ -49,6 +47,16 @@ const store: UserStore<UserRole, Account, Signup> = {
   async findResetCode(email, code) {
     return (await userRepo.findByResetCode(email, code))?.id ?? null;
   },
+};
+
+// The signed-in browsers, in `sessions`
+const sessions: SessionStore<UserRole> = {
+  create: sessionRepo.create,
+  find: sessionRepo.find,
+  touch: sessionRepo.touch,
+  delete: sessionRepo.remove,
+  deleteForUser: sessionRepo.removeForUser,
+  deleteExpired: sessionRepo.removeExpired,
 };
 
 // The account answer (GET /auth/me): the package's id, name, email and role,
@@ -84,11 +92,12 @@ export function accountAnswer(user: Account): AuthenticatedUser {
   };
 }
 
-// Sign-up, login, sessions and the password reset (framework/auth). A password
-// change or reset also closes the account's notification sockets, so each tab
-// reconnects and only a cookie with the new token gets back in
+// Sign-up, login, sessions and the password reset (framework/auth). A logout,
+// a password change or a reset also closes the account's notification sockets,
+// so each tab reconnects and only one whose session is still live gets back in
 export const auth = createAuth({
   store,
+  sessions,
   isAdmin,
   ...config.session,
   onSessionsEnded: closeUserSockets,
@@ -98,3 +107,14 @@ export const auth = createAuth({
   account: accountAnswer,
   limiter,
 });
+
+const HOUR_MS = 60 * 60 * 1000;
+
+// Deletes the sessions past their lifetime: once at start and then every hour,
+// so a browser that never came back leaves no row behind
+export function scheduleSessionSweep(): NodeJS.Timeout {
+  const run = () =>
+    auth.deleteExpiredSessions().catch((err) => console.error('[sessions] sweep failed:', err));
+  void run();
+  return setInterval(run, HOUR_MS).unref();
+}

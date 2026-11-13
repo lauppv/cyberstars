@@ -16,6 +16,9 @@ function originList(value: string): string[] {
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const HOUR_MS = 60 * 60 * 1000;
+const DAY_MS = 24 * HOUR_MS;
+
 export const env = {
   isProduction,
   isTest: process.env.NODE_ENV === 'test',
@@ -26,11 +29,14 @@ export const env = {
       ? optional('CORS_ORIGIN', 'https://cyberstars.app')
       : optional('CORS_DEV_ORIGIN', 'http://localhost:5173'),
   ),
-  // The signed-in session: the key its tokens are signed with, how long a
-  // token and its cookie last, and the cookie over HTTPS only in production
+  // The signed-in session: how long it lasts unused and at most from the login,
+  // shorter for the admins and the founder, whose session opens the admin
+  // page; and the cookie over HTTPS only (and __Host-) in production
   session: {
-    secret: required('JWT_SECRET'),
-    maxAgeMs: 24 * 60 * 60 * 1000,
+    lifetimes: {
+      user: { idleMs: 30 * DAY_MS, absoluteMs: 90 * DAY_MS },
+      admin: { idleMs: 12 * HOUR_MS, absoluteMs: 7 * DAY_MS },
+    },
     secureCookie: isProduction,
   },
   db: {

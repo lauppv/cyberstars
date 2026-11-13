@@ -1,8 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import request from 'supertest';
-import jwt from 'jsonwebtoken';
+import { SESSION_COOKIE } from '../testing/sessions.js';
 
-process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
@@ -44,7 +43,6 @@ const mockUserRepo = {
   saveCodeLanguage: vi.fn().mockResolvedValue(undefined),
   getRole: vi.fn().mockResolvedValue('USER'),
   updateRole: vi.fn().mockResolvedValue(undefined),
-  getSessionVersion: vi.fn().mockResolvedValue(0),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('../repositories/curriculum.repository.js', () => ({
@@ -67,7 +65,9 @@ const { app } = await import('../app.js');
 const { fileTypeFromBuffer } = await import('file-type');
 const mockFileType = vi.mocked(fileTypeFromBuffer);
 
-const token = jwt.sign({ id: 1 }, 'test-secret');
+vi.mock('../repositories/session.repository.js', async () =>
+  (await import('../testing/sessions.js')).fakeSessionRepo(1),
+);
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -80,7 +80,7 @@ describe('PATCH /api/profile', () => {
   it('updates bio', async () => {
     const res = await request(app)
       .patch('/api/profile')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ bio: 'Hello world' });
 
     expect(res.status).toBe(200);
@@ -93,7 +93,7 @@ describe('PATCH /api/profile', () => {
   it('clears bio when empty string', async () => {
     const res = await request(app)
       .patch('/api/profile')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ bio: '' });
 
     expect(res.status).toBe(200);
@@ -107,7 +107,7 @@ describe('PATCH /api/profile', () => {
     const before = Date.now();
     const res = await request(app)
       .patch('/api/profile')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ status: 'Coding' });
 
     expect(res.status).toBe(200);
@@ -121,7 +121,7 @@ describe('PATCH /api/profile', () => {
   it('truncates bio at 200 chars', async () => {
     const res = await request(app)
       .patch('/api/profile')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ bio: 'x'.repeat(300) });
 
     expect(res.status).toBe(200);
@@ -131,7 +131,7 @@ describe('PATCH /api/profile', () => {
   it('clears status and expiresAt when status is empty string', async () => {
     const res = await request(app)
       .patch('/api/profile')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ status: '' });
 
     expect(res.status).toBe(200);
@@ -144,7 +144,7 @@ describe('PATCH /api/profile', () => {
     mockUserRepo.updateProfile.mockRejectedValueOnce(new Error('DB down'));
     const res = await request(app)
       .patch('/api/profile')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ bio: 'hi' });
 
     expect(res.status).toBe(500);
@@ -153,7 +153,7 @@ describe('PATCH /api/profile', () => {
 
 describe('PUT /api/profile/interests', () => {
   const put = (body: object) =>
-    request(app).put('/api/profile/interests').set('Cookie', `token=${token}`).send(body);
+    request(app).put('/api/profile/interests').set('Cookie', SESSION_COOKIE).send(body);
 
   it('returns 401 without token', async () => {
     const res = await request(app)
@@ -178,7 +178,7 @@ describe('PUT /api/profile/interests', () => {
 
 describe('PUT /api/profile/code-language', () => {
   const put = (body: object) =>
-    request(app).put('/api/profile/code-language').set('Cookie', `token=${token}`).send(body);
+    request(app).put('/api/profile/code-language').set('Cookie', SESSION_COOKIE).send(body);
 
   it('returns 401 without token', async () => {
     const res = await request(app).put('/api/profile/code-language').send({ language: 'c' });
@@ -216,7 +216,7 @@ describe('POST /api/profile/avatar', () => {
 
     const res = await request(app)
       .post('/api/profile/avatar')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .attach('avatar', Buffer.from('fakepng'), 'test.png');
 
     expect(res.status).toBe(200);
@@ -232,7 +232,7 @@ describe('POST /api/profile/avatar', () => {
 
     const res = await request(app)
       .post('/api/profile/avatar')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .attach('avatar', Buffer.from('fakepdf'), 'test.pdf');
 
     expect(res.status).toBe(400);
@@ -244,7 +244,7 @@ describe('POST /api/profile/avatar', () => {
 
     const res = await request(app)
       .post('/api/profile/avatar')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .attach('avatar', Buffer.from('fakepng'), 'test.png');
 
     expect(res.status).toBe(200);
@@ -264,7 +264,7 @@ describe('DELETE /api/profile/avatar', () => {
   it('removes avatar', async () => {
     mockUserRepo.findById.mockResolvedValue({ avatarUrl: '/uploads/avatars/old.png' });
 
-    const res = await request(app).delete('/api/profile/avatar').set('Cookie', `token=${token}`);
+    const res = await request(app).delete('/api/profile/avatar').set('Cookie', SESSION_COOKIE);
 
     expect(res.status).toBe(200);
     expect(mockUserRepo.updateProfile).toHaveBeenCalledWith(1, { avatarUrl: null });

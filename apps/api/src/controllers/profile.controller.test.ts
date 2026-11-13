@@ -3,8 +3,7 @@ import path from 'path';
 import type { Request, Response } from 'express';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 
-// changePassword sets the session cookie from config, which needs these; CI has no .env
-process.env.JWT_SECRET = 'test-secret';
+// changePassword starts a session with the settings of config, which needs these; CI has no .env
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
@@ -61,6 +60,7 @@ vi.mock('../repositories/user.repository.js', () => ({
   findById: (...a: unknown[]) => mockFindById(...a),
   updateProfile: (...a: unknown[]) => mockUpdateProfile(...a),
   findByIdWithPassword: (...a: unknown[]) => mockFindByIdWithPassword(...a),
+  findRole: async () => 'USER',
   updatePassword: (...a: unknown[]) => mockUpdatePassword(...a),
   findByEmail: (...a: unknown[]) => mockFindByEmail(...a),
   setPendingEmailChange: (...a: unknown[]) => mockSetPendingEmailChange(...a),
@@ -69,17 +69,21 @@ vi.mock('../repositories/user.repository.js', () => ({
   clearPendingEmailChange: (...a: unknown[]) => mockClearPendingEmailChange(...a),
 }));
 
-// progress.repository pulls in db.ts -> env.ts (requires JWT_SECRET). Stub it
+// progress.repository pulls in db.ts -> env.ts (requires the DB settings). Stub it
 // so the controller module can import in envs without a full .env (e.g. CI).
 vi.mock('../repositories/progress.repository.js', () => ({
   getActivityDates: (...a: unknown[]) => mockGetActivityDates(...a),
 }));
 
+vi.mock('../repositories/session.repository.js', async () =>
+  (await import('../testing/sessions.js')).fakeSessionRepo(7),
+);
+
 vi.mock('../repositories/laniakea.repository.js', () => ({
   listPasses: (...a: unknown[]) => mockListPasses(...a),
 }));
 
-// email.service pulls in config -> env.ts (JWT_SECRET), same story as above.
+// email.service pulls in config -> env.ts, same story as above.
 vi.mock('../services/email.service.js', () => ({
   sendResetCode: vi.fn(),
   sendEmailChangeCode: (...a: unknown[]) => mockSendEmailChangeCode(...a),
@@ -274,11 +278,11 @@ describe('changePassword', () => {
     expect(mockUpdatePassword).not.toHaveBeenCalled();
   });
 
-  it('sets the new password and keeps this session on the token it gets back', async () => {
+  it("sets the new password, ends the account's sessions and starts this browser a new one", async () => {
     const { default: bcrypt } = await import('bcryptjs');
+    const sessionRepo = await import('../repositories/session.repository.js');
     const hash = bcrypt.hashSync('right', 4);
     mockFindByIdWithPassword.mockResolvedValueOnce({ password: hash });
-    mockUpdatePassword.mockResolvedValueOnce(4);
     const res = { json: vi.fn(), cookie: vi.fn() } as unknown as Response;
     await changePassword(
       mkPwReq({ currentPassword: 'right', newPassword: 'freshpass' }),
@@ -288,10 +292,14 @@ describe('changePassword', () => {
     const [id, newHash] = mockUpdatePassword.mock.calls[0] as [number, string];
     expect(id).toBe(7);
     expect(bcrypt.compareSync('freshpass', newHash)).toBe(true);
-    const { default: jwt } = await import('jsonwebtoken');
+    expect(sessionRepo.removeForUser).toHaveBeenCalledWith(7);
+    expect(sessionRepo.create).toHaveBeenCalledWith(expect.objectContaining({ userId: 7 }));
+    expect(vi.mocked(sessionRepo.removeForUser).mock.invocationCallOrder[0]).toBeLessThan(
+      vi.mocked(sessionRepo.create).mock.invocationCallOrder[0]!,
+    );
     const [name, token] = vi.mocked(res.cookie).mock.calls[0] as [string, string];
-    expect(name).toBe('token');
-    expect(jwt.verify(token, 'test-secret')).toEqual(expect.objectContaining({ id: 7, v: 4 }));
+    expect(name).toBe('session');
+    expect(token).toMatch(/^[\w-]{22}\.[\w-]{43}$/);
     expect(res.json).toHaveBeenCalledWith({ message: 'Password updated' });
   });
 

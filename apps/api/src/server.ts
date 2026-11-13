@@ -4,6 +4,7 @@ import { destroyAllSessions } from './services/terminal-session.service.js';
 import { attachRunWebSocket } from './services/ws-run.js';
 import { scheduleRollUp } from './services/visits.service.js';
 import { scheduleRecapBell } from './services/laniakea-recaps.service.js';
+import { scheduleSessionSweep } from './services/auth.js';
 import { removeStraySandboxes } from '@cyberstars-framework/sandbox/docker';
 import { sandbox, SANDBOX_LABEL } from './services/sandbox.js';
 
@@ -23,6 +24,7 @@ const server = app.listen(config.port, () => {
 const wss = attachRunWebSocket(server);
 scheduleRollUp();
 scheduleRecapBell();
+scheduleSessionSweep();
 
 function shutdown() {
   console.log('Shutting down, cleaning up containers...');

@@ -2,7 +2,6 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import request from 'supertest';
-import jwt from 'jsonwebtoken';
 import type { NextFunction, Request, Response } from 'express';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
 
@@ -15,13 +14,32 @@ const mockUserRepo = {
   findById: vi.fn(),
   findByIdWithPassword: vi.fn(),
   findRole: vi.fn(),
-  getSessionVersion: vi.fn(),
   updatePassword: vi.fn(),
   setResetCode: vi.fn(),
   takeResetAttempt: vi.fn(),
   findByResetCode: vi.fn(),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
+
+// The sessions in memory, each with the role mockUserRepo.findRole gives
+const mockSessions = vi.hoisted(() => new Map<string, Record<string, unknown>>());
+vi.mock('../repositories/session.repository.js', () => ({
+  create: vi.fn(async (s: { id: string; createdAt: Date }) => {
+    mockSessions.set(s.id, { ...s, lastSeenAt: s.createdAt });
+  }),
+  find: vi.fn(async (id: string) => {
+    const row = mockSessions.get(id);
+    return row ? { ...row, role: (await mockUserRepo.findRole(row.userId)) ?? 'USER' } : null;
+  }),
+  touch: vi.fn(),
+  remove: vi.fn(async (id: string) => {
+    mockSessions.delete(id);
+  }),
+  removeForUser: vi.fn(async (userId: number) => {
+    for (const [id, row] of mockSessions) if (row.userId === userId) mockSessions.delete(id);
+  }),
+  removeExpired: vi.fn(async () => 3),
+}));
 
 const mockSendResetCode = vi.fn();
 vi.mock('./email.service.js', () => ({
@@ -33,7 +51,8 @@ vi.mock('./ws-user.js', () => ({
   closeUserSockets: (...args: unknown[]) => mockCloseUserSockets(...args),
 }));
 
-const { auth, accountAnswer } = await import('./auth.js');
+const { auth, accountAnswer, scheduleSessionSweep } = await import('./auth.js');
+const sessionRepo = await import('../repositories/session.repository.js');
 
 const app = express();
 app.use(express.json());
@@ -43,7 +62,20 @@ app.use(errorHandler);
 
 const SIGNUP = { name: 'Alice', email: 'alice@test.com', password: 'pass123' };
 
-beforeEach(() => vi.clearAllMocks());
+beforeEach(() => {
+  vi.clearAllMocks();
+  mockSessions.clear();
+  mockUserRepo.findRole.mockResolvedValue('USER');
+});
+
+// The session cookie a response set, as the browser sends it back
+function sessionCookie(res: request.Response): string {
+  const cookies = res.headers['set-cookie'] as unknown as string[];
+  return cookies.find((c) => c.startsWith('session='))!.split(';')[0]!;
+}
+
+const HOUR = 60 * 60 * 1000;
+const DAY = 24 * HOUR;
 
 describe('sign-up', () => {
   it('keeps the placement score the visitor got before signing up', async () => {
@@ -87,19 +119,28 @@ describe('sign-up', () => {
 });
 
 describe('login', () => {
-  it("signs in with the account's password and session version", async () => {
+  it("signs in with the account's password, in a session kept in `sessions`", async () => {
     const bcrypt = await import('bcryptjs');
-    mockUserRepo.findByEmail.mockResolvedValue({
-      id: 7,
-      password: bcrypt.hashSync('correct', 4),
-      sessionVersion: 3,
-    });
+    mockUserRepo.findByEmail.mockResolvedValue({ id: 7, password: bcrypt.hashSync('correct', 4) });
     const res = await request(app)
       .post('/auth/login')
       .send({ email: 'bob@test.com', password: 'correct' })
       .expect(200);
-    const token = (res.headers['set-cookie'] as unknown as string[])[0]!.split(/[=;]/)[1]!;
-    expect(jwt.verify(token, 'test-secret')).toEqual(expect.objectContaining({ id: 7, v: 3 }));
+    expect(sessionRepo.create).toHaveBeenCalledWith(expect.objectContaining({ userId: 7 }));
+    const token = sessionCookie(res).slice('session='.length);
+    expect(await auth.sessionUserId(token)).toBe(7);
+  });
+
+  it('gives a student a 30-day cookie and an admin or the founder a 12-hour one', async () => {
+    const bcrypt = await import('bcryptjs');
+    mockUserRepo.findByEmail.mockResolvedValue({ id: 7, password: bcrypt.hashSync('correct', 4) });
+    const login = () =>
+      request(app).post('/auth/login').send({ email: 'bob@test.com', password: 'correct' });
+    expect((await login()).headers['set-cookie']![0]).toContain(`Max-Age=${(30 * DAY) / 1000};`);
+    for (const role of ['ADMIN', 'FOUNDER']) {
+      mockUserRepo.findRole.mockResolvedValue(role);
+      expect((await login()).headers['set-cookie']![0]).toContain(`Max-Age=${(12 * HOUR) / 1000};`);
+    }
   });
 
   it('throws a generic 401 for unknown email (no enumeration)', async () => {
@@ -113,16 +154,42 @@ describe('login', () => {
 });
 
 describe('sessions', () => {
-  it("signs a token in at the account's session version", async () => {
-    mockUserRepo.getSessionVersion.mockResolvedValue(2);
-    expect(await auth.sessionUserId(jwt.sign({ id: 7, v: 2 }, 'test-secret'))).toBe(7);
-    expect(mockUserRepo.getSessionVersion).toHaveBeenCalledWith(7);
+  it("ends the account's sessions and closes its notification sockets when a password is set", async () => {
+    await auth.setPassword(5, 'freshpass');
+    expect(sessionRepo.removeForUser).toHaveBeenCalledWith(5);
+    expect(mockCloseUserSockets).toHaveBeenCalledWith(5);
   });
 
-  it("closes the account's notification sockets when a password is set", async () => {
-    mockUserRepo.updatePassword.mockResolvedValue(4);
-    await auth.setPassword(5, 'freshpass');
-    expect(mockCloseUserSockets).toHaveBeenCalledWith(5);
+  it("closes the account's notification sockets on logout", async () => {
+    mockUserRepo.create.mockResolvedValue(9);
+    const cookie = sessionCookie(await request(app).post('/auth/signup').send(SIGNUP).expect(200));
+    await request(app).post('/auth/logout').set('Cookie', cookie).expect(200);
+    expect(mockCloseUserSockets).toHaveBeenCalledWith(9);
+    expect(mockSessions.size).toBe(0);
+  });
+
+  it('sweeps sessions past the 30 days unused or 90 days old, at start and every hour', async () => {
+    vi.useFakeTimers({ now: new Date('2026-11-13T10:00:00Z') });
+    const timer = scheduleSessionSweep();
+    await vi.advanceTimersByTimeAsync(0);
+    expect(sessionRepo.removeExpired).toHaveBeenCalledWith(
+      new Date('2026-10-14T10:00:00Z'),
+      new Date('2026-08-15T10:00:00Z'),
+    );
+    await vi.advanceTimersByTimeAsync(HOUR);
+    expect(sessionRepo.removeExpired).toHaveBeenCalledTimes(2);
+    clearInterval(timer);
+    vi.useRealTimers();
+  });
+
+  it('logs a failed sweep and keeps going', async () => {
+    const err = vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.mocked(sessionRepo.removeExpired).mockRejectedValueOnce(new Error('db down'));
+    clearInterval(scheduleSessionSweep());
+    await vi.waitFor(() =>
+      expect(err).toHaveBeenCalledWith('[sessions] sweep failed:', expect.any(Error)),
+    );
+    err.mockRestore();
   });
 
   it.each(['ADMIN', 'FOUNDER'])('lets a %s through requireAdmin', async (role) => {
@@ -216,12 +283,10 @@ describe('the account answer', () => {
   };
 
   it('is what GET /auth/me answers', async () => {
-    mockUserRepo.getSessionVersion.mockResolvedValue(0);
+    mockUserRepo.create.mockResolvedValue(1);
+    const cookie = sessionCookie(await request(app).post('/auth/signup').send(SIGNUP).expect(200));
     mockUserRepo.findById.mockResolvedValue(ada);
-    const res = await request(app)
-      .get('/auth/me')
-      .set('Cookie', `token=${jwt.sign({ id: 1, v: 0 }, 'test-secret')}`)
-      .expect(200);
+    const res = await request(app).get('/auth/me').set('Cookie', cookie).expect(200);
     expect(res.body).toEqual(accountAnswer(ada));
     expect(mockUserRepo.findById).toHaveBeenCalledWith(1);
   });

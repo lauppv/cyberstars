@@ -1,9 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import request from 'supertest';
-import jwt from 'jsonwebtoken';
+import { SESSION_COOKIE } from '../testing/sessions.js';
 import type { Request, Response } from 'express';
 
-process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
@@ -51,7 +50,6 @@ vi.mock('../config/index.js', async (importOriginal) => {
 });
 vi.mock('../repositories/user.repository.js', async (importOriginal) => ({
   ...(await importOriginal<object>()),
-  getSessionVersion: async () => 0,
 }));
 
 const mockSessionService = vi.hoisted(() => ({
@@ -66,7 +64,9 @@ vi.mock('../services/terminal-session.service.js', () => mockSessionService);
 const { app } = await import('../app.js');
 const { execRateLimitHandler, guestIpLimiter } = await import('./terminal.routes.js');
 
-const token = jwt.sign({ id: 42 }, 'test-secret');
+vi.mock('../repositories/session.repository.js', async () =>
+  (await import('../testing/sessions.js')).fakeSessionRepo(42),
+);
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -85,7 +85,7 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
 
     const res = await request(app)
       .post('/api/terminal/session')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ courseKey: 'linux', lessonSlug: 'ls-basics' });
 
     expect(res.status).toBe(200);
@@ -125,7 +125,7 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
 
     const res = await request(app)
       .post('/api/terminal/session')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ project: 'night-shift-logs' });
 
     expect(res.status).toBe(200);
@@ -140,7 +140,7 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
   it('refuses a body that names neither a lesson nor a project', async () => {
     const res = await request(app)
       .post('/api/terminal/session')
-      .set('Cookie', `token=${token}`)
+      .set('Cookie', SESSION_COOKIE)
       .send({ courseKey: 'linux' });
 
     expect(res.status).toBe(400);
@@ -225,7 +225,7 @@ describe('guestIpLimiter', () => {
   it('never counts logged-in users', async () => {
     const limited = await makeApp();
     for (let i = 0; i < 3; i++) {
-      const res = await request(limited).post('/').set('Cookie', `token=${token}`);
+      const res = await request(limited).post('/').set('Cookie', SESSION_COOKIE);
       expect(res.status).toBe(204);
     }
   });
