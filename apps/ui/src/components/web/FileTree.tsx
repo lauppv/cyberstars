@@ -84,6 +84,9 @@ interface FileTreeProps {
   onShow?: () => void;
 }
 
+// The icon of a picture, a video or a sound of the course
+const ASSET_ICONS = { image: Image, video: Film, audio: Music };
+
 const iconButton =
   'w-6 h-6 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface)] bg-transparent border-none cursor-pointer transition';
 
@@ -163,11 +166,7 @@ export function FileTree({
     const Icon = node.folder
       ? Folder
       : node.image
-        ? assetLanguage(node.path) === 'video'
-          ? Film
-          : assetLanguage(node.path) === 'audio'
-            ? Music
-            : Image
+        ? ASSET_ICONS[assetLanguage(node.path) ?? 'image']
         : extensionOf(node.path) === 'txt'
           ? FileText
           : FileCode;

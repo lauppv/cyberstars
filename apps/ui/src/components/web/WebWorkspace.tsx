@@ -262,6 +262,8 @@ export default function WebWorkspace({
   );
   const shownActive = active && shownTabs.includes(active) ? active : (shownTabs[0] ?? null);
   const activeFile = files.find((f) => f.path === shownActive) ?? null;
+  // A picture, a video or a sound of the course, shown in the editor's place
+  const activeAsset = activeFile?.image ? (assetLanguage(activeFile.path) ?? 'image') : null;
 
   const consoleText = entries
     .map((e) => (e.where ? `${e.level}: ${e.text} (${e.where})` : `${e.level}: ${e.text}`))
@@ -394,13 +396,13 @@ export default function WebWorkspace({
           <p className="px-4 py-3 text-[13px] text-[var(--text3)]">{t('web.noFileOpen')}</p>
         ) : activeFile.image ? (
           <figure className="m-0 p-4 flex flex-col items-center gap-3">
-            {assetLanguage(activeFile.path) === 'video' ? (
+            {activeAsset === 'video' ? (
               <video
                 src={assetUrl(courseKey, activeFile.path)}
                 controls
                 className="max-w-full max-h-[50vh]"
               />
-            ) : assetLanguage(activeFile.path) === 'audio' ? (
+            ) : activeAsset === 'audio' ? (
               <audio src={assetUrl(courseKey, activeFile.path)} controls />
             ) : (
               <img
@@ -410,11 +412,7 @@ export default function WebWorkspace({
               />
             )}
             <figcaption className="text-[12px] text-[var(--text3)]">
-              {t(
-                assetLanguage(activeFile.path) === 'image'
-                  ? 'web.imageReadOnly'
-                  : 'web.mediaReadOnly',
-              )}
+              {t(activeAsset === 'image' ? 'web.imageReadOnly' : 'web.mediaReadOnly')}
             </figcaption>
           </figure>
         ) : (
