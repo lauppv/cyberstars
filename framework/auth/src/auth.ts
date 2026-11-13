@@ -362,9 +362,9 @@ export function createAuth<
     }
   }
 
-  // Must run AFTER authenticateToken. The role is never trusted from the token
-  // (which only carries { id, v }); the store reads it fresh by the signed-in
-  // user's id, so a tampered client or cookie cannot escalate.
+  // Must run AFTER authenticateToken. The role is never in the cookie (its
+  // token is random, with nothing in it); the store reads it fresh by the
+  // signed-in user's id, so a tampered client or cookie cannot escalate.
   async function requireAdmin(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const role = await store.role(req.user!.id);
