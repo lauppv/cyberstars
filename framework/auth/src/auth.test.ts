@@ -96,7 +96,11 @@ function fakeRes() {
     status: vi.fn().mockReturnThis(),
     json: vi.fn().mockReturnThis(),
     cookie: vi.fn().mockReturnThis(),
-  } as unknown as Response & { cookie: ReturnType<typeof vi.fn> };
+    clearCookie: vi.fn().mockReturnThis(),
+  } as unknown as Response & {
+    cookie: ReturnType<typeof vi.fn>;
+    clearCookie: ReturnType<typeof vi.fn>;
+  };
 }
 
 function makeReqRes(token?: string) {
@@ -381,6 +385,23 @@ describe('authenticateToken', () => {
     expect(next).not.toHaveBeenCalled();
   });
 
+  it('clears the cookie of a dead session, so the browser stops sending it', async () => {
+    const token = await signIn();
+    await auth.setPassword(42, 'freshpass');
+    const { req, res, next } = makeReqRes(token);
+    await auth.authenticateToken(req, res, next);
+    expect(res.clearCookie).toHaveBeenCalledWith(
+      'session',
+      expect.objectContaining({ httpOnly: true, path: '/' }),
+    );
+  });
+
+  it('leaves the cookie of a live session be', async () => {
+    const { req, res, next } = makeReqRes(await signIn());
+    await auth.authenticateToken(req, res, next);
+    expect(res.clearCookie).not.toHaveBeenCalled();
+  });
+
   it('answers a session ended by a password change like an expired one', async () => {
     const token = await signIn();
     await auth.setPassword(42, 'freshpass');
@@ -462,11 +483,18 @@ describe('optionalAuth', () => {
     expect(next).toHaveBeenCalledWith();
   });
 
-  it('calls next without user for invalid token', async () => {
+  it('calls next without user for invalid token, and clears its cookie', async () => {
     const { req, res, next } = makeReqRes('garbage');
     await auth.optionalAuth(req, res, next);
     expect(req.user).toBeUndefined();
+    expect(res.clearCookie).toHaveBeenCalledWith('session', expect.anything());
     expect(next).toHaveBeenCalledWith();
+  });
+
+  it('clears nothing for a guest without a cookie', async () => {
+    const { req, res, next } = makeReqRes();
+    await auth.optionalAuth(req, res, next);
+    expect(res.clearCookie).not.toHaveBeenCalled();
   });
 
   it('treats a session ended by a password change as a guest', async () => {

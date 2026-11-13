@@ -243,10 +243,16 @@ export function createAuth<
 
   // The user a request's session signs in, or null. A session last seen an hour
   // ago or more is seen now: its idle time starts over, and its cookie is set
-  // again to last as long as the session can
+  // again to last as long as the session can. The cookie of a session that
+  // ended, timed out or never was is cleared, so the browser stops sending it
+  // and the app takes it for a guest again
   async function requestUserId(req: Request, res: Response): Promise<number | null> {
-    const session = await liveSession(req.cookies?.[cookieName]);
-    if (!session) return null;
+    const token = req.cookies?.[cookieName];
+    const session = await liveSession(token);
+    if (!session) {
+      if (token) res.clearCookie(cookieName, cookieOptions);
+      return null;
+    }
     const now = Date.now();
     if (now - session.lastSeenAt >= SEEN_EVERY_MS) {
       await sessions.touch(session.id, new Date(now));
