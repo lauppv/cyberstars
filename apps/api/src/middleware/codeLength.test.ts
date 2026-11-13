@@ -23,6 +23,6 @@ describe('codeFitsCourse', () => {
     expect((await send('web-dev', WEB_MAX_LENGTH)).status).toBe(200);
     const big = await send('web-dev', WEB_MAX_LENGTH + 1);
     expect(big.status).toBe(400);
-    expect(big.body.error).toBe(`The code may have at most ${WEB_MAX_LENGTH} characters`);
+    expect(big.body.error).toBe('The code is too long for its lesson');
   });
 });

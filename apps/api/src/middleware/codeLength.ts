@@ -8,7 +8,7 @@ export function codeFitsCourse(req: Request, res: Response, next: NextFunction):
   const max = codeMaxLength(req.params.courseKey as string);
   const code: unknown = req.body?.code;
   if (typeof code === 'string' && code.length > max) {
-    res.status(400).json({ error: `The code may have at most ${max} characters` });
+    res.status(400).json({ error: 'The code is too long for its lesson' });
     return;
   }
   next();

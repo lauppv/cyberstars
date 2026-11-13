@@ -165,6 +165,7 @@ const RO: Record<string, string> = {
     'Nu am putut verifica ce ai făcut, încearcă din nou',
   'No such conversation': 'Conversația nu există',
   'Work needs a lesson': 'Codul se trimite doar dintr-o lecție',
+  'The code is too long for its lesson': 'Codul e prea lung pentru lecția asta',
   'The tutor is not available right now': 'Tutorul nu e disponibil acum',
   // anything else
   'Not found': 'Nu există',
