@@ -48,7 +48,6 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_PORT: 5432
       DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/${DB_NAME}
-      JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: production
       PORT: 8080
       CODE_RUN_DIR: /tmp/cyberstars-runs

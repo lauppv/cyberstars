@@ -10,7 +10,7 @@ You need Node.js 24+, PostgreSQL 14+ and Docker, on Linux or macOS.
 git clone https://github.com/<your-username>/cyberstars.git   # your fork
 cd cyberstars
 git remote add upstream https://github.com/lauppv/cyberstars.git
-cp .env.example .env          # set JWT_SECRET to any random string
+cp .env.example .env
 sudo -u postgres psql -c "CREATE USER cyberstars WITH PASSWORD 'change-me';"
 sudo -u postgres psql -c "CREATE DATABASE cyberstars OWNER cyberstars;"
 for i in gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine; do docker pull $i; done
