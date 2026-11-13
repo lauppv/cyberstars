@@ -21,12 +21,19 @@
     </header>
     <main>
     <h1>Welcome aboard</h1>
-    <img src="img/station.svg" alt="A gold station hub inside a blue ring, with a solar panel on each side"
-      width="240"
-      height="150"
-    />
-    <p>The station goes round the Earth every 92 minutes.</p>
-    <p>Six people live here, with a greenhouse full of tomatoes.</p>
+    <div class="welcome">
+      <div class="photo">
+        <img src="img/station.svg" alt="A gold station hub inside a blue ring, with a solar panel on each side"
+          width="240"
+          height="150"
+        />
+        <span class="caption">Seen from a supply ship</span>
+      </div>
+      <div class="welcome-text">
+        <p>The station goes round the Earth every 92 minutes.</p>
+        <p>Six people live here, with a greenhouse full of tomatoes.</p>
+      </div>
+    </div>
     <nav class="jumps" aria-label="On this page"><a href="#today">Jump to today</a> · <a href="#visiting">Visiting hours</a></nav>
     <p><a href="crew.html">Meet the crew</a></p>
 
@@ -480,6 +487,33 @@ header {
   top: 0;
   z-index: 10;
   background-color: #0b1d3a;
+}
+
+.welcome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.welcome-text {
+  flex-basis: 300px;
+  flex-grow: 1;
+}
+
+.photo {
+  position: relative;
+}
+
+.caption {
+  position: absolute;
+  left: 8px;
+  bottom: 12px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: #2c4a7a;
+  color: #f0f4ff;
+  font-size: 0.875rem;
 }
 ```
 

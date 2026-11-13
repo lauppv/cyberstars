@@ -2297,6 +2297,18 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'position-sticky', title: 'Sticky Position', sortOrder: 233 },
   { courseKey: 'web-dev', slug: 'z-index', title: 'z-index', sortOrder: 234 },
   { courseKey: 'web-dev', slug: 'wiki-css-recap', title: 'CSS Recap', sortOrder: 235 },
+  {
+    courseKey: 'web-dev',
+    slug: 'arrow-functions',
+    title: 'Arrow Functions',
+    sortOrder: 236,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'default-parameters', title: 'Default Parameters', sortOrder: 237 },
+  { courseKey: 'web-dev', slug: 'scope', title: 'Scope', sortOrder: 238 },
+  { courseKey: 'web-dev', slug: 'style-property', title: 'Styles from JavaScript', sortOrder: 239 },
+  { courseKey: 'web-dev', slug: 'bubbling', title: 'Bubbling', sortOrder: 240 },
+  { courseKey: 'web-dev', slug: 'event-delegation', title: 'Event Delegation', sortOrder: 241 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2569,6 +2581,12 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'position-sticky',
         'z-index',
         'wiki-css-recap',
+        'arrow-functions',
+        'default-parameters',
+        'scope',
+        'style-property',
+        'bubbling',
+        'event-delegation',
       ],
     },
   ],
