@@ -30,6 +30,9 @@ const TYPES = {
   gif: 'image/gif',
   svg: 'image/svg+xml',
   webp: 'image/webp',
+  vtt: 'text/vtt; charset=utf-8',
+  webm: 'video/webm',
+  mp3: 'audio/mpeg',
 };
 
 function typeOf(path) {
@@ -242,6 +245,8 @@ async function observe(page, step, seen) {
     step.loaded ??
     step.value ??
     step.checked ??
+    step.playing ??
+    step.muted ??
     step.inView ??
     step.onTop ??
     step.against ??
@@ -263,13 +268,30 @@ async function observe(page, step, seen) {
     );
     return { count, values };
   }
-  // Whether each picture's file was found and drawn
+  // Whether each picture's file was found and drawn, each video's or sound's
+  // read so it can play, and each track's words read (`media` when not)
   if ('loaded' in step) {
-    const values = await elements.evaluateAll(
-      (els, max) =>
-        els.slice(0, max).map((el) => (el.complete && el.naturalWidth > 0 ? 'yes' : 'no')),
-      MAX_ELEMENTS,
-    );
+    const values = await elements.evaluateAll(async (els, max) => {
+      const picked = els.slice(0, max);
+      const isMedia = (el) => el instanceof HTMLMediaElement;
+      const isTrack = (el) => el instanceof HTMLTrackElement;
+      // A track loads only once it is on, shown or not
+      for (const el of picked)
+        if (isTrack(el) && el.track.mode === 'disabled') el.track.mode = 'hidden';
+      const settled = (el) =>
+        isMedia(el)
+          ? el.readyState >= 1 || el.error !== null || el.networkState === 3
+          : !isTrack(el) || el.readyState >= 2;
+      const until = Date.now() + 2000;
+      while (Date.now() < until && !picked.every(settled)) {
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
+      return picked.map((el) => {
+        if (isMedia(el)) return el.readyState >= 1 && !el.error ? 'yes' : 'media';
+        if (isTrack(el)) return el.readyState === 2 ? 'yes' : 'media';
+        return el.complete && el.naturalWidth > 0 ? 'yes' : 'no';
+      });
+    }, MAX_ELEMENTS);
     return { count, values };
   }
   if ('attr' in step) {
@@ -333,6 +355,27 @@ async function observe(page, step, seen) {
   }
   if ('checked' in step) {
     return { count, checked: await elements.first().evaluate((el) => el.checked === true) };
+  }
+  // Whether the first video or sound plays now, once it had the time to
+  // start on its own (autoplay waits for its file)
+  if ('playing' in step) {
+    const playing = await elements.first().evaluate(async (el) => {
+      if (!(el instanceof HTMLMediaElement)) return false;
+      const until = Date.now() + 2000;
+      while (
+        Date.now() < until &&
+        el.readyState < 3 &&
+        el.error === null &&
+        el.networkState !== 3
+      ) {
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      }
+      return !el.paused && !el.ended;
+    });
+    return { count, playing };
+  }
+  if ('muted' in step) {
+    return { count, muted: await elements.first().evaluate((el) => el.muted === true) };
   }
   if ('visible' in step || 'hidden' in step) {
     const shown = await elements.evaluateAll(

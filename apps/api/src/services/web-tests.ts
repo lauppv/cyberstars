@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { dockerConverse, dockerExec, killLeftovers } from '@cyberstars-framework/sandbox/docker';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { isImagePath, isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
+import { isAssetPath, isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
 import {
   WEB_ACTION_KEYS,
   WEB_AGAINST_WITHIN,
@@ -71,8 +71,8 @@ export function loadWebTestsSpec(
 
 type SiteFile = string | { base64: string };
 
-// The site as the runner serves it: the student's files, and each image the
-// site names read from the course's assets/ folder
+// The site as the runner serves it: the student's files, and each image,
+// video or sound the site names read from the course's assets/ folder
 function siteFiles(courseKey: string, code: string): Record<string, SiteFile> {
   const assets = path.join(contentDir(courseKey), 'assets');
   const files: Record<string, SiteFile> = {};
@@ -80,7 +80,7 @@ function siteFiles(courseKey: string, code: string): Record<string, SiteFile> {
     if (!isValidWebPath(file.path)) continue;
     if (file.image) {
       const asset = path.join(assets, file.path);
-      if (isImagePath(file.path) && fs.existsSync(asset)) {
+      if (isAssetPath(file.path) && fs.existsSync(asset)) {
         files[file.path] = { base64: fs.readFileSync(asset).toString('base64') };
       }
     } else files[file.path] = file.content;
@@ -436,12 +436,25 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     };
   }
   if ('loaded' in step) {
-    return (seen.values ?? []).every((v) => v === 'yes') ? null : { kind: 'loaded', label };
+    const missed = (seen.values ?? []).find((v) => v !== 'yes');
+    if (missed === undefined) return null;
+    // A video, a sound or a track the runner reports as `media`
+    return missed === 'media'
+      ? { kind: 'loaded', label, detail: 'media' }
+      : { kind: 'loaded', label };
   }
   if ('value' in step) return valueFailure(step, collapse(values[0] ?? ''));
   if ('checked' in step) {
     const want = !step.off;
     return seen.checked === want ? null : { kind: 'checked', label, expected: want ? 'on' : 'off' };
+  }
+  if ('playing' in step) {
+    const want = !step.off;
+    return seen.playing === want ? null : { kind: 'playing', label, expected: want ? 'on' : 'off' };
+  }
+  if ('muted' in step) {
+    const want = !step.off;
+    return seen.muted === want ? null : { kind: 'muted', label, expected: want ? 'on' : 'off' };
   }
   if ('visible' in step) {
     return seen.shown?.[0] ? null : { kind: 'visible', label, expected: 'visible' };

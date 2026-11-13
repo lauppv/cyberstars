@@ -228,6 +228,21 @@ describe('webFailureText', () => {
     expect(say({ kind: 'checked', label: 'the meal box', expected: 'on' })).toBe(
       'Expected the meal box ticked, found it not ticked.',
     );
+    expect(say({ kind: 'playing', label: 'the launch video', expected: 'on' })).toBe(
+      'Expected the launch video playing, found it stopped.',
+    );
+    expect(say({ kind: 'playing', label: 'videoul lansării', expected: 'off' }, 'ro')).toBe(
+      'Se aștepta ca videoul lansării să nu ruleze, dar rulează.',
+    );
+    expect(say({ kind: 'muted', label: 'the launch video', expected: 'on' })).toBe(
+      'Expected the launch video muted, found its sound on.',
+    );
+    expect(say({ kind: 'muted', label: 'the launch video', expected: 'off' })).toBe(
+      'Expected the launch video with its sound on, found it muted.',
+    );
+    expect(say({ kind: 'loaded', label: 'the countdown', detail: 'media' })).toBe(
+      'Expected the countdown to load, found its file missing: check its path.',
+    );
     expect(say({ kind: 'sent', detail: 'none' })).toBe(
       'Expected the form to be sent, found nothing sent.',
     );

@@ -132,7 +132,11 @@ export type WebCheck =
   | ({ centered: string } & Labelled)
   /** The first element is as wide as its parent's content: a table across its column. */
   | ({ fills: string } & Labelled)
-  /** Every picture it picks has loaded: its file was found, whatever room its width and height keep. */
+  /**
+   * Every picture it picks has loaded: its file was found, whatever room its
+   * width and height keep. A video or a sound has loaded when the browser
+   * read its file and can play it, and a <track> when its words were read.
+   */
   | ({ loaded: string } & Labelled)
   /** The first element's size in px. */
   | ({
@@ -156,6 +160,10 @@ export type WebCheck =
     } & Labelled)
   /** The first checkbox or radio button is ticked now, or with `off` isn't. */
   | ({ checked: string; off?: true } & Labelled)
+  /** The first video or sound plays now, or with `off` doesn't (paused, ended or never started). */
+  | ({ playing: string; off?: true } & Labelled)
+  /** The first video or sound is muted now, however it was, or with `off` isn't. */
+  | ({ muted: string; off?: true } & Labelled)
   /**
    * The last form sent had these fields with these values, others aside (a
    * field sent twice, two ticked boxes of one name, has each of its values).
@@ -292,6 +300,10 @@ export interface WebObservation {
   forms?: [string, string][][];
   /** A checked check's: whether the first box is ticked. */
   checked?: boolean;
+  /** A playing check's: whether the first video or sound plays. */
+  playing?: boolean;
+  /** A muted check's: whether the first video or sound is muted. */
+  muted?: boolean;
   /** An inView check's: the window's height, against which `boxes` (in the window) are read. */
   windowHeight?: number;
   /** An against check's: each element's box and its ancestor's, in pairs. */
@@ -334,6 +346,8 @@ type WebFailureKind =
   | 'at'
   | 'value'
   | 'checked'
+  | 'playing'
+  | 'muted'
   | 'sent'
   | 'inView'
   | 'onTop'
@@ -559,6 +573,12 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         : `Expected ${label} centered in its parent in a window ${w}px wide, found ${left}px of room on the left and ${right}px on the right.`;
     }
     case 'loaded':
+      // A video, a sound or their words: loaded, not seen
+      if (f.detail === 'media') {
+        return ro
+          ? `Se aștepta ca ${label} să se încarce, dar fișierul nu e găsit: verifică-i calea.`
+          : `Expected ${label} to load, found its file missing: check its path.`;
+      }
       return ro
         ? `Se aștepta ca ${label} să se vadă, dar fișierul nu e găsit: verifică-i calea.`
         : `Expected ${label} to show, found its file missing: check its path.`;
@@ -666,6 +686,24 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca ${label} să fie bifat, dar nu e.`
         : `Expected ${label} ticked, found it not ticked.`;
+    case 'playing':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să nu ruleze, dar rulează.`
+          : `Expected ${label} not playing, found it playing.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să ruleze, dar e oprit.`
+        : `Expected ${label} playing, found it stopped.`;
+    case 'muted':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să aibă sunet, dar e pe mut.`
+          : `Expected ${label} with its sound on, found it muted.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să fie pe mut, dar are sunet.`
+        : `Expected ${label} muted, found its sound on.`;
     case 'sent':
       if (f.detail === 'none') {
         return ro

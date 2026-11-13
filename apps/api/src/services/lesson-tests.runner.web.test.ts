@@ -39,7 +39,9 @@ interface Ran {
 
 // Runs every case (the server would stop at the first failure) and returns
 // the runner's lines after its header
-function run(files: Record<string, string>, cases: WebTestCase[], stepMs = 3000): Ran[] {
+type SiteFile = string | { base64: string };
+
+function run(files: Record<string, SiteFile>, cases: WebTestCase[], stepMs = 3000): Ran[] {
   const payloadPath = path.join(dir, 'payload.json');
   fs.writeFileSync(
     payloadPath,
@@ -68,7 +70,7 @@ function run(files: Record<string, string>, cases: WebTestCase[], stepMs = 3000)
 }
 
 // Judges each case as the server does, every page of the site there
-function verdicts(files: Record<string, string>, cases: WebTestCase[], stepMs?: number) {
+function verdicts(files: Record<string, SiteFile>, cases: WebTestCase[], stepMs?: number) {
   const pages = new Set(Object.keys(files));
   return run(files, cases, stepMs).map((ran, i) => judgeWebCase(cases[i], i, ran as never, pages));
 }
@@ -276,6 +278,65 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     ]);
     expect(ok.passed).toBe(true);
     expect(lost.web).toMatchObject({ kind: 'loaded' });
+  });
+
+  it('tells a video or a sound that loaded, plays or is muted, and reads its words', () => {
+    const assets = path.join(
+      import.meta.dirname,
+      '../../../../packages/content/lessons/web-dev/assets',
+    );
+    const asset = (file: string) => ({
+      base64: fs.readFileSync(path.join(assets, file)).toString('base64'),
+    });
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <video class="shown" src="video/launch.webm" controls>
+          <track src="words.vtt" kind="captions" srclang="en" label="English">
+        </video>
+        <video class="own" src="video/launch.webm" autoplay muted loop></video>
+        <video class="loud" src="video/launch.webm" autoplay></video>
+        <audio src="audio/countdown.mp3" controls></audio>
+        <video class="lost" src="video/gone.webm" controls><track src="gone.vtt"></video>
+        <button onclick="document.querySelector('.own').muted = false">Sound</button>
+      </body></html>`,
+      'words.vtt': 'WEBVTT\n\n00:00.000 --> 00:02.000\nLift off',
+      'video/launch.webm': asset('video/launch.webm'),
+      'audio/countdown.mp3': asset('audio/countdown.mp3'),
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'Loaded',
+        visible: true,
+        steps: [
+          { loaded: '.shown, .shown track, audio', label: 'the video, its words and the sound' },
+        ],
+      },
+      {
+        name: 'Plays on its own only when muted',
+        visible: true,
+        steps: [
+          { playing: '.own', label: 'the muted video' },
+          { muted: '.own', label: 'the muted video' },
+          { playing: '.loud', off: true, label: 'the loud video' },
+          { playing: '.shown', off: true, label: 'the video with buttons' },
+          { click: 'button', label: 'the Sound button' },
+          { muted: '.own', off: true, label: 'the muted video' },
+        ],
+      },
+      { name: 'Lost video', visible: true, steps: [{ loaded: '.lost', label: 'the lost video' }] },
+      {
+        name: 'Lost words',
+        visible: true,
+        steps: [{ loaded: '.lost track', label: 'the lost words' }],
+      },
+      { name: 'Loud', visible: true, steps: [{ playing: '.loud', label: 'the loud video' }] },
+    ];
+    const [loaded, playing, lost, lostWords, loud] = verdicts(files, cases);
+    expect(loaded.passed).toBe(true);
+    expect(playing.passed).toBe(true);
+    expect(lost.web).toEqual({ kind: 'loaded', label: 'the lost video', detail: 'media' });
+    expect(lostWords.web).toEqual({ kind: 'loaded', label: 'the lost words', detail: 'media' });
+    expect(loud.web).toEqual({ kind: 'playing', label: 'the loud video', expected: 'on' });
   });
 
   it('writes console values as the preview does: an element, a list, an object', () => {

@@ -521,6 +521,33 @@ describe('judgeStep', () => {
     });
   });
 
+  it('judges a video or a sound: playing, muted, loaded', () => {
+    expect(judge({ playing: 'video', label: 'the video' }, { count: 1, playing: true })).toBeNull();
+    expect(judge({ playing: 'video', label: 'the video' }, { count: 1, playing: false })).toEqual({
+      kind: 'playing',
+      label: 'the video',
+      expected: 'on',
+    });
+    expect(
+      judge({ playing: 'video', off: true, label: 'the video' }, { count: 1, playing: false }),
+    ).toBeNull();
+    expect(judge({ muted: 'video', label: 'the video' }, { count: 1, muted: false })).toEqual({
+      kind: 'muted',
+      label: 'the video',
+      expected: 'on',
+    });
+    expect(
+      judge({ muted: 'video', off: true, label: 'the video' }, { count: 1, muted: false }),
+    ).toBeNull();
+    expect(
+      judge({ loaded: 'video, track', label: 'the video' }, { count: 2, values: ['yes', 'media'] }),
+    ).toEqual({ kind: 'loaded', label: 'the video', detail: 'media' });
+    expect(judge({ loaded: 'img', label: 'the picture' }, { count: 1, values: ['no'] })).toEqual({
+      kind: 'loaded',
+      label: 'the picture',
+    });
+  });
+
   it('tells an element in the window from one out of it, and one on top from one covered', () => {
     const box = (y: number) => ({
       count: 1,

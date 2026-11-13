@@ -395,6 +395,8 @@ const WEB_CHECKS = [
   'at',
   'value',
   'checked',
+  'playing',
+  'muted',
   'sent',
   'notSent',
   'inView',
@@ -437,6 +439,8 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   at: [],
   value: ['equals', 'contains', 'nonEmpty', 'empty', 'label'],
   checked: ['off', 'label'],
+  playing: ['off', 'label'],
+  muted: ['off', 'label'],
   sent: [],
   notSent: [],
   inView: ['out', 'label'],
@@ -467,6 +471,8 @@ const NEEDS_LABEL = new Set([
   'select',
   'value',
   'checked',
+  'playing',
+  'muted',
   'inView',
   'onTop',
   'against',
@@ -546,8 +552,12 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
       return "a value step's nonEmpty and empty are true";
     }
   }
-  if (own === 'checked' && step.off !== undefined && step.off !== true) {
-    return "a checked step's off is true or left out";
+  if (
+    (own === 'checked' || own === 'playing' || own === 'muted') &&
+    step.off !== undefined &&
+    step.off !== true
+  ) {
+    return `a ${own} step's off is true or left out`;
   }
   if (own === 'inView' && step.out !== undefined && step.out !== true) {
     return "an inView step's out is true or left out";
