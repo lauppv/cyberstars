@@ -76,8 +76,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  // A tab left open past the session's 24 hours still shows the student; the
-  // first request that finds the session gone signs this tab out
+  // A tab left open past the session's end (30 days unused, 90 from the login)
+  // still shows the student; the first request that finds it gone signs this
+  // tab out
   useEffect(() => {
     if (!user) return;
     return onSessionEnded(() => {
