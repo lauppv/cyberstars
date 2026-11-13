@@ -2,9 +2,9 @@
 
 One line per lesson: what it **introduces**. A lesson may use anything above it, nothing below it (`WEB_LESSONS.md`, rule 6). Every lesson follows `WEB_LESSONS.md`.
 
-"From" names the lesson of today's course the idea comes from, or for parts 4 and 5 the topic of their ticket (CYB-113). A slug in **bold** is new.
+"From" names the lesson of today's course the idea comes from, or for parts 4 to 7 the topic of their ticket (CYB-113, CYB-114). A slug in **bold** is new.
 
-Parts 6 to 9 (CYB-114, CYB-115) are mapped here when their turn comes, in the same way.
+Parts 8 and 9 (CYB-115) are mapped here when their turn comes, in the same way.
 
 ## Part 1: Station Home (`index.html`, `style.css`)
 
@@ -342,6 +342,123 @@ Every page gets the same header, menu and footer. The wiki's pages join them nex
 | 38  | `wiki-js-recap`            | No new idea: a menu that opens from a button                    | Recap                        |
 | 39  | `spaceport-launch-project` | Project: a launch page, from an empty folder                    | Project                      |
 
+## Part 6: Mission Dashboard (`dashboard.html`, `dashboard.js`)
+
+The crew sees the station at a glance: cards with numbers, a clock, a short video. On a wide window the cards stand in a grid, on a narrow one under each other.
+
+### HTML
+
+| #   | Slug                        | Introduces                                                   | From                    |
+| --- | --------------------------- | ------------------------------------------------------------ | ----------------------- |
+| 1   | **`video-element`**         | `<video>` with `controls`: a video and its buttons           | Audio, Video and figure |
+| 2   | **`video-on-its-own`**      | `autoplay`, `muted` and `loop`: a video that plays by itself | Audio, Video and figure |
+| 3   | **`audio-element`**         | `<audio>`: a sound with its buttons                          | Audio, Video and figure |
+| 4   | **`captions`**              | `<track>`: the words of a video, for those who can't hear it | Audio, Video and figure |
+| 5   | **`figure-and-figcaption`** | `<figure>` and `<figcaption>`: a picture and its caption     | Audio, Video and figure |
+| 6   | `dashboard-html-recap`      | No new idea                                                  | Recap                   |
+
+### CSS
+
+| #   | Slug                  | Introduces                                                         | From                     |
+| --- | --------------------- | ------------------------------------------------------------------ | ------------------------ |
+| 7   | **`display-grid`**    | `display: grid` and `grid-template-columns`: columns               | Columns, Rows and fr     |
+| 8   | **`fr-unit`**         | `fr`: a share of the room left                                     | Columns, Rows and fr     |
+| 9   | **`grid-rows`**       | `grid-template-rows`, and the rows a grid makes by itself          | Columns, Rows and fr     |
+| 10  | **`grid-span`**       | `grid-column: span 2`: an item over two columns                    | Placing Items            |
+| 11  | **`grid-lines`**      | `grid-column: 1 / 3` and `grid-row`: an item between two lines     | Placing Items            |
+| 12  | **`grid-cell-align`** | `justify-items` and `align-items`: where an item sits in its cell  | Placing Items            |
+| 13  | **`template-areas`**  | `grid-template-areas` and `grid-area`: the layout drawn in words   | Template Areas           |
+| 14  | **`repeat`**          | `repeat()`: many columns written once                              | repeat, minmax, auto-fit |
+| 15  | **`minmax`**          | `minmax()`: a column never narrower than you say                   | repeat, minmax, auto-fit |
+| 16  | **`auto-fit`**        | `auto-fit`: as many columns as the room holds                      | repeat, minmax, auto-fit |
+| 17  | **`flex-or-grid`**    | Flex for a line of items, grid for rows and columns                | Flex or Grid?            |
+| 18  | **`media-queries`**   | `@media (max-width: …)`: rules for a narrow window                 | Media Queries            |
+| 19  | **`breakpoints`**     | The width to pick: where the page breaks, not a phone's size       | Media Queries            |
+| 20  | **`layout-by-width`** | Other columns or areas on a narrow window                          | Media Queries            |
+| 21  | **`mobile-first`**    | The narrow page first, then `min-width` for the wide one           | Mobile First             |
+| 22  | **`srcset`**          | `srcset` and `sizes`: the browser picks the picture's size         | Responsive Images        |
+| 23  | **`picture-element`** | `<picture>` and `<source media>`: another picture on a narrow page | Responsive Images        |
+| 24  | `dashboard-css-recap` | No new idea                                                        | Recap                    |
+
+### JavaScript
+
+| #   | Slug                         | Introduces                                                    | From                            |
+| --- | ---------------------------- | ------------------------------------------------------------- | ------------------------------- |
+| 25  | **`array-includes`**         | `includes` and `indexOf` on an array                          | Array Methods                   |
+| 26  | **`array-slice`**            | `slice` on an array: a part, and the array stays as it was    | Array Methods                   |
+| 27  | **`join`**                   | `join`: an array as one text                                  | Array Methods                   |
+| 28  | **`split`**                  | `split`: a text as an array                                   | Array Methods                   |
+| 29  | **`map`**                    | `map`: a new array, each item changed                         | map                             |
+| 30  | **`filter-then-map`**        | Methods one after another: `filter`, then `map`               | map                             |
+| 31  | **`reduce`**                 | `reduce`: many values made into one                           | reduce                          |
+| 32  | **`find`**                   | `find`: the first item that matches                           | find, some, every               |
+| 33  | **`some-and-every`**         | `some` and `every`: is there one? are they all?               | find, some, every               |
+| 34  | **`for-in`**                 | `for...in`: every key of an object                            | Looping over Objects            |
+| 35  | **`object-keys-and-values`** | `Object.keys` and `Object.values`: an object's keys or values | Looping over Objects            |
+| 36  | **`object-entries`**         | `Object.entries`: each key with its value                     | Looping over Objects            |
+| 37  | **`dates`**                  | `new Date()`: now, and its parts                              | Dates                           |
+| 38  | **`date-text`**              | `toLocaleDateString` and `toLocaleTimeString`: a date to read | Dates                           |
+| 39  | **`days-between`**           | One date minus another: milliseconds, then days               | Dates                           |
+| 40  | **`set-timeout`**            | `setTimeout`: once, a bit later                               | Timers                          |
+| 41  | **`set-interval`**           | `setInterval`: again and again                                | Timers                          |
+| 42  | **`clear-interval`**         | `clearInterval`: stop it                                      | Timers                          |
+| 43  | **`play-and-pause`**         | `play()` and `pause()`: your own buttons for a video          | Audio and Video from JavaScript |
+| 44  | **`mute-button`**            | `muted` from JavaScript                                       | Audio and Video from JavaScript |
+| 45  | `dashboard-js-recap`         | No new idea                                                   | Recap                           |
+| 46  | `mission-status-project`     | Project: a dashboard for every width, from an empty folder    | Project                         |
+
+## Part 7: Settings and Themes (`settings.html`, `settings.js`, `theme.js`)
+
+The visitor picks how the whole site looks: light or dark, with less movement. The choice is saved, and every page keeps it after a reload.
+
+### HTML
+
+| #   | Slug                   | Introduces                                             | From                        |
+| --- | ---------------------- | ------------------------------------------------------ | --------------------------- |
+| 1   | **`html-before-aria`** | A `<button>` beats a `<div>` with a `role`: HTML first | ARIA When HTML Isn't Enough |
+| 2   | **`aria-pressed`**     | `aria-pressed`: a button that says it is on            | ARIA When HTML Isn't Enough |
+| 3   | **`aria-hidden`**      | `aria-hidden`: a picture only for the eye              | ARIA When HTML Isn't Enough |
+| 4   | `settings-html-recap`  | No new idea                                            | Recap                       |
+
+### CSS
+
+| #   | Slug                    | Introduces                                            | From                             |
+| --- | ----------------------- | ----------------------------------------------------- | -------------------------------- |
+| 5   | **`custom-properties`** | `--name` and `var()`: a value named once              | Custom Properties                |
+| 6   | **`theme-variables`**   | New values on one class: the whole page changes       | Custom Properties                |
+| 7   | **`transitions`**       | `transition`: a change that takes time                | Transitions                      |
+| 8   | **`transition-timing`** | How the change moves: `ease`, `linear`, a delay       | Transitions                      |
+| 9   | **`translate`**         | `transform: translate()`: move it, the others stay    | Transforms                       |
+| 10  | **`rotate-and-scale`**  | `rotate()` and `scale()`                              | Transforms                       |
+| 11  | **`keyframes`**         | `@keyframes` and `animation`                          | Keyframe Animations              |
+| 12  | **`animation-repeat`**  | `infinite` and `alternate`: an animation that goes on | Keyframe Animations              |
+| 13  | **`dark-mode`**         | `prefers-color-scheme`: the system's dark mode        | Dark Mode and Reduced Motion     |
+| 14  | **`reduced-motion`**    | `prefers-reduced-motion`: less movement when asked    | Dark Mode and Reduced Motion     |
+| 15  | **`visually-hidden`**   | Text only a screen reader reads                       | Hiding Content Only from the Eye |
+| 16  | `settings-css-recap`    | No new idea                                           | Recap                            |
+
+### JavaScript
+
+| #   | Slug                      | Introduces                                                          | From                       |
+| --- | ------------------------- | ------------------------------------------------------------------- | -------------------------- |
+| 17  | **`methods`**             | A function inside an object                                         | Methods and this           |
+| 18  | **`this-keyword`**        | `this`: the object the method was called on                         | Methods and this           |
+| 19  | **`null-or-undefined`**   | `null` and `undefined`: two kinds of nothing                        | null, undefined, ?. and ?? |
+| 20  | **`optional-chaining`**   | `?.`: stop at nothing instead of an error                           | null, undefined, ?. and ?? |
+| 21  | **`nullish-default`**     | `??`: a value to fall back on only for nothing, unlike `\|\|`       | null, undefined, ?. and ?? |
+| 22  | **`json-stringify`**      | `JSON.stringify`: data as a text                                    | JSON                       |
+| 23  | **`json-parse`**          | `JSON.parse`: the text back to data                                 | JSON                       |
+| 24  | **`local-storage`**       | `setItem` and `getItem`: kept after a reload                        | localStorage               |
+| 25  | **`saving-objects`**      | An array or an object in `localStorage`, through JSON               | localStorage               |
+| 26  | **`remove-item`**         | `removeItem`: forget one thing                                      | localStorage               |
+| 27  | **`map-collection`**      | `Map`: a key of any kind and its value                              | Map and Set                |
+| 28  | **`set-collection`**      | `Set`: each value once                                              | Map and Set                |
+| 29  | **`focus-method`**        | `focus()`: take the keyboard to what just changed                   | Accessible Updates         |
+| 30  | **`aria-live`**           | `aria-live`: a change a screen reader reads out                     | Accessible Updates         |
+| 31  | **`theme-on-every-page`** | The saved theme on every page, before the page shows                | localStorage               |
+| 32  | `settings-js-recap`       | No new idea                                                         | Recap                      |
+| 33  | `todo-list-project`       | Project: a to-do list saved in `localStorage`, from an empty folder | Project                    |
+
 ## Moved out, because a later part teaches them
 
 - Truthy and falsy (today in `if-else`): part 4 has "Truthy, Falsy, Logical Operators".
@@ -354,4 +471,4 @@ Every page gets the same header, menu and footer. The wiki's pages join them nex
 
 ## Totals
 
-Part 1: 43 lessons (today 22). Part 2: 68 (today 22). Part 3: 45 (today 22). Part 4: 50. Part 5: 39. In all, 245 lessons.
+Part 1: 43 lessons (today 22). Part 2: 68 (today 22). Part 3: 45 (today 22). Part 4: 50. Part 5: 39. Part 6: 46. Part 7: 33. In all, 324 lessons.
