@@ -139,7 +139,9 @@ describe('WebWorkspace', () => {
     );
     fireEvent.change(box, { target: { value: 'notes' } });
     fireEvent.submit(box);
-    expect(screen.getByRole('alert')).toHaveTextContent('end with .html, .css, .js, .json or .txt');
+    expect(screen.getByRole('alert')).toHaveTextContent(
+      'end with .html, .css, .js, .json, .txt or .vtt',
+    );
     fireEvent.keyDown(box, { key: 'Escape' });
     expect(screen.queryByRole('textbox', { name: /Name of the new file/ })).toBeNull();
   });

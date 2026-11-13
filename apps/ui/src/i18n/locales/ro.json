@@ -1741,7 +1741,7 @@
     "confirmDelete": "Ștergi {{name}}?",
     "confirmDeleteFolder": "Ștergi folderul {{name}} și tot ce e în el?",
     "errors": {
-      "invalidFile": "Folosește litere, cifre, puncte, cratime și underscore, iar la final .html, .css, .js, .json sau .txt.",
+      "invalidFile": "Folosește litere, cifre, puncte, cratime și underscore, iar la final .html, .css, .js, .json, .txt sau .vtt.",
       "invalidFolder": "Folosește litere, cifre, puncte, cratime și underscore.",
       "taken": "Site-ul tău are deja un fișier sau un folder acolo.",
       "image": "Fișierul vine cu lecția și rămâne cum e.",

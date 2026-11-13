@@ -1716,7 +1716,7 @@
     "confirmDelete": "Delete {{name}}?",
     "confirmDeleteFolder": "Delete the folder {{name}} and everything in it?",
     "errors": {
-      "invalidFile": "Use letters, digits, dots, dashes and underscores, and end with .html, .css, .js, .json or .txt.",
+      "invalidFile": "Use letters, digits, dots, dashes and underscores, and end with .html, .css, .js, .json, .txt or .vtt.",
       "invalidFolder": "Use letters, digits, dots, dashes and underscores.",
       "taken": "Your site already has a file or folder there.",
       "image": "This file comes with the lesson and stays as it is.",
