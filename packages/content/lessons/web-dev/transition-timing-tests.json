@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "name": "The border starts fast and slows down at the end",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": ".stats > .stat",
+          "prop": "transition-timing-function",
+          "equals": "ease-out",
+          "every": true,
+          "label": "every card's transition"
+        }
+      ]
+    },
+    {
+      "name": "It waits a tenth of a second before it starts",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": ".stats > .stat",
+          "prop": "transition-delay",
+          "equals": "0.1s",
+          "every": true,
+          "label": "every card's transition"
+        }
+      ]
+    },
+    {
+      "name": "The cards still light up",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": ".stats > .stat",
+          "prop": "transition-duration",
+          "not": "0s",
+          "every": true,
+          "label": "every card's transition"
+        },
+        {
+          "hover": "#crew-count",
+          "label": "the crew's card"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "border-top-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the crew's card's border, under the mouse"
+        }
+      ]
+    }
+  ]
+}

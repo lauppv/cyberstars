@@ -2443,6 +2443,15 @@ export const lessons = [
     title: 'A Whole Theme in One Class',
     sortOrder: 296,
   },
+  { courseKey: 'web-dev', slug: 'transitions', title: 'A Change That Takes Time', sortOrder: 297 },
+  {
+    courseKey: 'web-dev',
+    slug: 'transition-timing',
+    title: 'How the Change Moves',
+    sortOrder: 298,
+  },
+  { courseKey: 'web-dev', slug: 'translate', title: 'Move It: translate', sortOrder: 299 },
+  { courseKey: 'web-dev', slug: 'rotate-and-scale', title: 'Turn It, Grow It', sortOrder: 300 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2788,6 +2797,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'settings-html-recap',
         'custom-properties',
         'theme-variables',
+        'transitions',
+        'transition-timing',
+        'translate',
+        'rotate-and-scale',
       ],
     },
   ],
