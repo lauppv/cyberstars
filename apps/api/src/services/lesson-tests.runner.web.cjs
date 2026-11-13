@@ -160,6 +160,7 @@ function consoleAsPreview(limit) {
     if (v === null || typeof v !== 'object') return String(v);
     if (v instanceof Error) return `${v.name}: ${v.message}`;
     if (v instanceof Element) return `<${v.tagName.toLowerCase()}>`;
+    if (v instanceof Promise) return 'Promise {…}';
     if (depth > 3) return Array.isArray(v) ? '[…]' : '{…}';
     if (Array.isArray(v)) return `[${v.map((x) => show(x, depth + 1)).join(', ')}]`;
     const entries = Object.keys(v).map((key) => `${key}: ${show(v[key], depth + 1)}`);

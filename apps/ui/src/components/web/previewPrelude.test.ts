@@ -77,6 +77,8 @@ describe('previewPrelude', () => {
       level: 'log',
       text: 'crew 3 null undefined [1, "two"] {a: {b: {c: {d: {…}}}}}',
     });
+    console.log(Promise.resolve(3));
+    expect(last()).toMatchObject({ level: 'log', text: 'Promise {…}' });
     console.error(new TypeError('bad'), document.createElement('div'), () => 1);
     expect(last()).toMatchObject({ level: 'error', text: 'TypeError: bad <div> function ()' });
     console.log(loop);

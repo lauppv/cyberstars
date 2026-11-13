@@ -133,6 +133,8 @@ export function previewPrelude(config: PreludeConfig): void {
     if (value === null || typeof value !== 'object') return String(value);
     if (value instanceof Error) return `${value.name}: ${value.message}`;
     if (value instanceof Element) return `<${value.tagName.toLowerCase()}>`;
+    // A promise's value isn't there to show yet, only what it is (CYB-115)
+    if (value instanceof Promise) return 'Promise {…}';
     if (depth > 3) return Array.isArray(value) ? '[…]' : '{…}';
     if (Array.isArray(value)) return `[${value.map((v) => show(v, depth + 1)).join(', ')}]`;
     const entries = Object.keys(value).map(
