@@ -25,6 +25,18 @@ export interface WebTestCase {
   files?: Record<string, string>;
   /** Fixed answers to `fetch` of an address outside the site, by the whole address. */
   fetch?: Record<string, WebFetchAnswer>;
+  /**
+   * The date and time the page sees, as `2031-05-14T09:30:00` (UTC, the
+   * page's time zone). It stands still: a `wait` moves it on by as much and
+   * fires the page's timers in order, so a timer reads the same on every run.
+   */
+  clock?: string;
+  /** The visitor's system asks for this color scheme (`light` by default). */
+  colorScheme?: 'light' | 'dark';
+  /** The visitor's system asks for less movement (`prefers-reduced-motion: reduce`). */
+  reducedMotion?: true;
+  /** What `localStorage` holds when the case starts, for a visitor who comes back. */
+  storage?: Record<string, string>;
   steps: WebStep[];
 }
 
@@ -164,6 +176,13 @@ export type WebCheck =
   | ({ playing: string; off?: true } & Labelled)
   /** The first video or sound is muted now, however it was, or with `off` isn't. */
   | ({ muted: string; off?: true } & Labelled)
+  /** The keyboard's focus is on the first element. */
+  | ({ focused: string } & Labelled)
+  /**
+   * The first picture shows this file of the site now, out of those its
+   * `srcset` or its `<picture>` offer: the one the browser picked.
+   */
+  | ({ shows: string; file: string } & Labelled)
   /**
    * The last form sent had these fields with these values, others aside (a
    * field sent twice, two ticked boxes of one name, has each of its values).
@@ -304,6 +323,8 @@ export interface WebObservation {
   playing?: boolean;
   /** A muted check's: whether the first video or sound is muted. */
   muted?: boolean;
+  /** A focused check's: whether the focus is on the first element (`values` names what has it). */
+  focused?: boolean;
   /** An inView check's: the window's height, against which `boxes` (in the window) are read. */
   windowHeight?: number;
   /** An against check's: each element's box and its ancestor's, in pairs. */
@@ -348,6 +369,8 @@ type WebFailureKind =
   | 'checked'
   | 'playing'
   | 'muted'
+  | 'focused'
+  | 'shows'
   | 'sent'
   | 'inView'
   | 'onTop'
@@ -704,6 +727,14 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca ${label} să fie pe mut, dar are sunet.`
         : `Expected ${label} muted, found its sound on.`;
+    case 'focused':
+      return ro
+        ? `Se aștepta ca focusul să fie pe ${label}, dar ${found ? `e pe ${found}` : 'nu e pe nimic'}.`
+        : `Expected the focus on ${label}, found it ${found ? `on ${found}` : 'on nothing'}.`;
+    case 'shows':
+      return ro
+        ? `Se aștepta ca ${label} să arate ${expected}, dar arată ${found ?? 'nimic'}.`
+        : `Expected ${label} to show ${expected}, found ${found ?? 'nothing'}.`;
     case 'sent':
       if (f.detail === 'none') {
         return ro

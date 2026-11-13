@@ -397,6 +397,8 @@ const WEB_CHECKS = [
   'checked',
   'playing',
   'muted',
+  'focused',
+  'shows',
   'sent',
   'notSent',
   'inView',
@@ -441,6 +443,8 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   checked: ['off', 'label'],
   playing: ['off', 'label'],
   muted: ['off', 'label'],
+  focused: ['label'],
+  shows: ['file', 'label'],
   sent: [],
   notSent: [],
   inView: ['out', 'label'],
@@ -473,6 +477,8 @@ const NEEDS_LABEL = new Set([
   'checked',
   'playing',
   'muted',
+  'focused',
+  'shows',
   'inView',
   'onTop',
   'against',
@@ -481,7 +487,21 @@ const NEEDS_LABEL = new Set([
   'visible',
   'hidden',
 ]);
-const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);
+const CASE_KEYS = new Set([
+  'name',
+  'visible',
+  'page',
+  'width',
+  'files',
+  'fetch',
+  'clock',
+  'colorScheme',
+  'reducedMotion',
+  'storage',
+  'steps',
+]);
+// A clock is a date and a time, to the second, without a zone (the page's UTC)
+const CLOCK = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
 
 const isText = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '';
 const isPage = (v: unknown): v is string => isText(v) && isValidWebPath(v) && v.endsWith('.html');
@@ -540,6 +560,9 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   }
   if (!isText(value)) return `a ${own} step without a selector`;
   if (own === 'fill' && typeof step.text !== 'string') return 'a fill step without its text';
+  if (own === 'shows' && !(isText(step.file) && isValidWebPath(step.file))) {
+    return 'a shows step names the file of the site it shows';
+  }
   if (own === 'select' && !isText(step.option)) return 'a select step without its option';
   if (own === 'value') {
     const ways = ['equals', 'contains', 'nonEmpty', 'empty'].filter((k) => k in step);
@@ -672,6 +695,27 @@ export function auditWebSpec(spec: WebTestsSpec, sitePaths: Set<string>): string
       (!Number.isInteger(c.width) || c.width < WEB_MIN_WIDTH || c.width > WEB_MAX_WIDTH)
     ) {
       messages.push(`${at}: width ${c.width} is not between ${WEB_MIN_WIDTH} and ${WEB_MAX_WIDTH}`);
+    }
+    if (
+      c.clock !== undefined &&
+      !(isText(c.clock) && CLOCK.test(c.clock) && !isNaN(Date.parse(`${c.clock}Z`)))
+    ) {
+      messages.push(`${at}: clock ${c.clock} is not a date and time like 2031-05-14T09:30:00`);
+    }
+    if (c.colorScheme !== undefined && c.colorScheme !== 'light' && c.colorScheme !== 'dark') {
+      messages.push(`${at}: colorScheme is light or dark`);
+    }
+    if (c.reducedMotion !== undefined && c.reducedMotion !== true) {
+      messages.push(`${at}: reducedMotion is true or left out`);
+    }
+    if (
+      c.storage !== undefined &&
+      (typeof c.storage !== 'object' ||
+        c.storage === null ||
+        Array.isArray(c.storage) ||
+        !Object.entries(c.storage).every(([k, v]) => isText(k) && typeof v === 'string'))
+    ) {
+      messages.push(`${at}: storage holds names with text values`);
     }
     for (const [url, answer] of Object.entries(c.fetch ?? {})) {
       if (!/^https?:\/\//.test(url) || typeof answer?.body !== 'string') {

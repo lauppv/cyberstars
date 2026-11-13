@@ -548,6 +548,25 @@ describe('judgeStep', () => {
     });
   });
 
+  it('judges where the focus is and which file a picture shows', () => {
+    const focus = { focused: '#task', label: 'the new task' };
+    expect(judge(focus, { count: 1, focused: true, values: [null] })).toBeNull();
+    expect(judge(focus, { count: 1, focused: false, values: ['<button>'] })).toEqual({
+      kind: 'focused',
+      label: 'the new task',
+      found: '<button>',
+    });
+    expect(judge(focus, { count: 0 })).toEqual({ kind: 'missing', label: 'the new task' });
+    const shows = { shows: 'img', file: 'img/earth-small.jpg', label: 'the photo' };
+    expect(judge(shows, { count: 1, values: ['img/earth-small.jpg'] })).toBeNull();
+    expect(judge(shows, { count: 1, values: ['img/earth-large.jpg'] })).toEqual({
+      kind: 'shows',
+      label: 'the photo',
+      expected: 'img/earth-small.jpg',
+      found: 'img/earth-large.jpg',
+    });
+  });
+
   it('tells an element in the window from one out of it, and one on top from one covered', () => {
     const box = (y: number) => ({
       count: 1,

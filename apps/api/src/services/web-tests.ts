@@ -456,6 +456,13 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     const want = !step.off;
     return seen.muted === want ? null : { kind: 'muted', label, expected: want ? 'on' : 'off' };
   }
+  if ('focused' in step) {
+    return seen.focused ? null : { kind: 'focused', label, found: values[0] ?? null };
+  }
+  if ('shows' in step) {
+    const file = values[0] ?? null;
+    return file === step.file ? null : { kind: 'shows', label, expected: step.file, found: file };
+  }
   if ('visible' in step) {
     return seen.shown?.[0] ? null : { kind: 'visible', label, expected: 'visible' };
   }
@@ -647,6 +654,10 @@ async function runInContainer(
         width: c.width ?? WEB_DEFAULT_WIDTH,
         files: c.files,
         fetch: c.fetch,
+        clock: c.clock,
+        colorScheme: c.colorScheme,
+        reducedMotion: c.reducedMotion,
+        storage: c.storage,
         steps: c.steps,
       })),
     });

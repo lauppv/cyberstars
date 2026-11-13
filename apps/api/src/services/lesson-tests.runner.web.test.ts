@@ -339,6 +339,167 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(loud.web).toEqual({ kind: 'playing', label: 'the loud video', expected: 'on' });
   });
 
+  it('fixes the clock, moves it on with a wait, and reads what a returning visitor saved', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <p id="day"></p><p id="left">3</p><p id="theme"></p>
+        <script>
+          const now = new Date();
+          document.querySelector('#day').textContent =
+            now.toLocaleDateString('en-US', { weekday: 'long' }) + ' ' + now.getHours();
+          let left = 3;
+          const timer = setInterval(() => {
+            left = left - 1;
+            document.querySelector('#left').textContent = left;
+            if (left === 0) clearInterval(timer);
+          }, 1000);
+          document.querySelector('#theme').textContent = localStorage.getItem('theme') ?? 'none';
+          localStorage.setItem('theme', 'light');
+        </script>
+      </body></html>`,
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'A fixed clock',
+        visible: true,
+        clock: '2031-05-14T09:30:00',
+        storage: { theme: 'dark' },
+        steps: [
+          { text: '#day', equals: 'Wednesday 9', label: 'the day' },
+          { text: '#left', equals: '3', label: 'what is left' },
+          { wait: 2000 },
+          { text: '#left', equals: '1', label: 'what is left' },
+          { wait: 3000 },
+          { text: '#left', equals: '0', label: 'what is left' },
+          { text: '#theme', equals: 'dark', label: 'the theme saved' },
+          { open: 'index.html' },
+          { text: '#theme', equals: 'light', label: 'the theme saved' },
+        ],
+      },
+      {
+        name: 'Nothing saved',
+        visible: true,
+        steps: [{ text: '#theme', equals: 'none', label: 'the theme saved' }],
+      },
+    ];
+    expect(verdicts(files, cases).map((v) => v.passed)).toEqual([true, true]);
+  });
+
+  it('opens a page as the system asks, dark or with less movement, and reads the focus', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        body { background-color: white; }
+        @media (prefers-color-scheme: dark) { body { background-color: black; } }
+        .dot { animation: pulse 1s infinite; }
+        @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+        @keyframes pulse { to { opacity: 0.2; } }
+      </style></head><body>
+        <span class="dot">•</span><input id="name"><button>Go</button>
+        <script>
+          document.querySelector('button').addEventListener('click', () =>
+            document.querySelector('#name').focus());
+        </script>
+      </body></html>`,
+    };
+    const light = {
+      style: 'body',
+      prop: 'background-color',
+      equals: 'rgb(255, 255, 255)',
+      label: 'the page',
+    };
+    const dark = {
+      style: 'body',
+      prop: 'background-color',
+      equals: 'rgb(0, 0, 0)',
+      label: 'the page',
+    };
+    const moving = { style: '.dot', prop: 'animation-name', equals: 'pulse', label: 'the dot' };
+    const still = { style: '.dot', prop: 'animation-name', equals: 'none', label: 'the dot' };
+    const cases: WebTestCase[] = [
+      { name: 'Light', visible: true, steps: [light, moving] },
+      {
+        name: 'Dark',
+        visible: true,
+        colorScheme: 'dark',
+        reducedMotion: true,
+        steps: [dark, still],
+      },
+      {
+        name: 'Focus',
+        visible: true,
+        steps: [
+          { click: 'button', label: 'the button' },
+          { focused: '#name', label: 'the name field' },
+        ],
+      },
+      { name: 'Focus left', visible: true, steps: [{ focused: '#name', label: 'the name field' }] },
+      {
+        name: 'Focus elsewhere',
+        visible: true,
+        steps: [
+          { click: 'button', label: 'the button' },
+          { focused: 'button', label: 'the button' },
+        ],
+      },
+    ];
+    const [lit, darkened, focus, nowhere, elsewhere] = verdicts(files, cases);
+    expect(lit.passed).toBe(true);
+    expect(darkened.passed).toBe(true);
+    expect(focus.passed).toBe(true);
+    expect(nowhere.web).toEqual({ kind: 'focused', label: 'the name field', found: null });
+    expect(elsewhere.web).toEqual({
+      kind: 'focused',
+      label: 'the button',
+      found: '<input id="name">',
+    });
+  });
+
+  it('says which file a responsive picture shows at each width', () => {
+    const assets = path.join(
+      import.meta.dirname,
+      '../../../../packages/content/lessons/web-dev/assets',
+    );
+    const asset = (file: string) => ({
+      base64: fs.readFileSync(path.join(assets, file)).toString('base64'),
+    });
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <img class="sized" src="img/earth-small.jpg" alt=""
+          srcset="img/earth-small.jpg 640w, img/earth-large.jpg 1280w" sizes="100vw">
+        <picture>
+          <source media="(max-width: 600px)" srcset="img/earth-square.jpg">
+          <img class="framed" src="img/earth-large.jpg" alt="">
+        </picture>
+      </body></html>`,
+      'img/earth-small.jpg': asset('img/earth-small.jpg'),
+      'img/earth-large.jpg': asset('img/earth-large.jpg'),
+      'img/earth-square.jpg': asset('img/earth-square.jpg'),
+    };
+    const at = (width: number, sized: string, framed: string): WebTestCase => ({
+      name: `At ${width}`,
+      visible: true,
+      width,
+      steps: [
+        { shows: '.sized', file: sized, label: 'the sized picture' },
+        { shows: '.framed', file: framed, label: 'the framed picture' },
+      ],
+    });
+    const cases = [
+      at(375, 'img/earth-small.jpg', 'img/earth-square.jpg'),
+      at(1280, 'img/earth-large.jpg', 'img/earth-large.jpg'),
+      at(375, 'img/earth-large.jpg', 'img/earth-square.jpg'),
+    ];
+    const [phone, computer, wrong] = verdicts(files, cases);
+    expect(phone.passed).toBe(true);
+    expect(computer.passed).toBe(true);
+    expect(wrong.web).toEqual({
+      kind: 'shows',
+      label: 'the sized picture',
+      expected: 'img/earth-large.jpg',
+      found: 'img/earth-small.jpg',
+    });
+  });
+
   it('writes console values as the preview does: an element, a list, an object', () => {
     const files = {
       'index.html':

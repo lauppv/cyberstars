@@ -240,6 +240,20 @@ describe('webFailureText', () => {
     expect(say({ kind: 'muted', label: 'the launch video', expected: 'off' })).toBe(
       'Expected the launch video with its sound on, found it muted.',
     );
+    expect(say({ kind: 'focused', label: 'the new task', found: '<button id="add">' })).toBe(
+      'Expected the focus on the new task, found it on <button id="add">.',
+    );
+    expect(say({ kind: 'focused', label: 'the new task', found: null })).toBe(
+      'Expected the focus on the new task, found it on nothing.',
+    );
+    expect(
+      say({
+        kind: 'shows',
+        label: 'the photo of Earth',
+        expected: 'img/earth-small.jpg',
+        found: 'img/earth-large.jpg',
+      }),
+    ).toBe('Expected the photo of Earth to show img/earth-small.jpg, found img/earth-large.jpg.');
     expect(say({ kind: 'loaded', label: 'the countdown', detail: 'media' })).toBe(
       'Expected the countdown to load, found its file missing or unreadable: check its path and what is in it.',
     );

@@ -189,6 +189,19 @@ function formsAsPreview() {
   });
 }
 
+// Reads the page again until `done` holds or 2 s have gone by. The waiting is
+// Node's own: a case with a clock fakes the page's timers, and a page paused
+// there would never wake a wait of its own
+async function waitFor(page, read, done) {
+  const until = Date.now() + 2000;
+  let value = await read();
+  while (!done(value) && Date.now() < until) {
+    await page.waitForTimeout(50);
+    value = await read();
+  }
+  return value;
+}
+
 async function observe(page, step, seen) {
   if ('fits' in step) {
     return { scrollWidth: await page.evaluate(() => document.documentElement.scrollWidth) };
@@ -247,6 +260,8 @@ async function observe(page, step, seen) {
     step.checked ??
     step.playing ??
     step.muted ??
+    step.focused ??
+    step.shows ??
     step.inView ??
     step.onTop ??
     step.against ??
@@ -271,28 +286,31 @@ async function observe(page, step, seen) {
   // Whether each picture's file was found and drawn, each video's or sound's
   // read so it can play, and each track's words read (`media` when not)
   if ('loaded' in step) {
-    const values = await elements.evaluateAll(async (els, max) => {
-      const picked = els.slice(0, max);
-      const isMedia = (el) => el instanceof HTMLMediaElement;
-      const isTrack = (el) => el instanceof HTMLTrackElement;
-      // A track loads only once it is on, shown or not
-      for (const el of picked)
-        if (isTrack(el) && el.track.mode === 'disabled') el.track.mode = 'hidden';
-      const settled = (el) =>
-        isMedia(el)
-          ? el.readyState >= 1 || el.error !== null || el.networkState === 3
-          : !isTrack(el) || el.readyState >= 2;
-      const until = Date.now() + 2000;
-      while (Date.now() < until && !picked.every(settled)) {
-        await new Promise((resolve) => setTimeout(resolve, 50));
+    // A track loads only once it is on, shown or not
+    await elements.evaluateAll((els, max) => {
+      for (const el of els.slice(0, max)) {
+        if (el instanceof HTMLTrackElement && el.track.mode === 'disabled')
+          el.track.mode = 'hidden';
       }
-      return picked.map((el) => {
-        if (isMedia(el)) return el.readyState >= 1 && !el.error ? 'yes' : 'media';
-        if (isTrack(el)) return el.readyState === 2 ? 'yes' : 'media';
-        return el.complete && el.naturalWidth > 0 ? 'yes' : 'no';
-      });
     }, MAX_ELEMENTS);
-    return { count, values };
+    const read = () =>
+      elements.evaluateAll(
+        (els, max) =>
+          els.slice(0, max).map((el) => {
+            if (el instanceof HTMLMediaElement) {
+              if (el.readyState >= 1 && !el.error) return 'yes';
+              return el.error !== null || el.networkState === 3 ? 'media' : 'wait';
+            }
+            if (el instanceof HTMLTrackElement) {
+              if (el.readyState === 2) return 'yes';
+              return el.readyState === 3 ? 'media' : 'wait';
+            }
+            return el.complete && el.naturalWidth > 0 ? 'yes' : 'no';
+          }),
+        MAX_ELEMENTS,
+      );
+    const values = await waitFor(page, read, (vs) => !vs.includes('wait'));
+    return { count, values: values.map((v) => (v === 'wait' ? 'media' : v)) };
   }
   if ('attr' in step) {
     return { count, values: [await elements.first().getAttribute(step.name)] };
@@ -359,20 +377,42 @@ async function observe(page, step, seen) {
   // Whether the first video or sound plays now, once it had the time to
   // start on its own (autoplay waits for its file)
   if ('playing' in step) {
-    const playing = await elements.first().evaluate(async (el) => {
-      if (!(el instanceof HTMLMediaElement)) return false;
-      const until = Date.now() + 2000;
-      while (
-        Date.now() < until &&
-        el.readyState < 3 &&
-        el.error === null &&
-        el.networkState !== 3
-      ) {
-        await new Promise((resolve) => setTimeout(resolve, 50));
-      }
-      return !el.paused && !el.ended;
+    const first = elements.first();
+    const state = await waitFor(
+      page,
+      () =>
+        first.evaluate((el) =>
+          el instanceof HTMLMediaElement
+            ? {
+                ready: el.readyState >= 3 || el.error !== null || el.networkState === 3,
+                playing: !el.paused && !el.ended,
+              }
+            : { ready: true, playing: false },
+        ),
+      (s) => s.ready,
+    );
+    return { count, playing: state.playing };
+  }
+  // Whether the focus is on the first element, and what has it otherwise
+  if ('focused' in step) {
+    const read = await elements.first().evaluate((el) => {
+      const active = document.activeElement;
+      if (active === el) return { focused: true, on: null };
+      if (!active || active === document.body) return { focused: false, on: null };
+      const id = active.id ? `#${active.id}` : '';
+      return {
+        focused: false,
+        on: `<${active.tagName.toLowerCase()}${id ? ` id="${active.id}"` : ''}>`,
+      };
     });
-    return { count, playing };
+    return { count, focused: read.focused, values: [read.on] };
+  }
+  // The file a picture shows now, out of those srcset or <picture> offer
+  if ('shows' in step) {
+    const read = () =>
+      elements.first().evaluate((el) => (el instanceof HTMLImageElement ? el.currentSrc : ''));
+    const src = await waitFor(page, read, (v) => v !== '');
+    return { count, values: [src ? sitePath(new URL(src)) : null] };
   }
   if ('muted' in step) {
     return { count, muted: await elements.first().evaluate((el) => el.muted === true) };
@@ -599,14 +639,16 @@ function contrastRatios(els, max) {
 
 // An action, and the page it may lead to: a link, a form or a script that
 // moves to another page is followed to that page's load
-async function act(page, step, nav, stepMs) {
+async function act(page, step, nav, stepMs, clocked) {
   if ('open' in step) {
     await page.goto(`${ORIGIN}/${step.open}`, { waitUntil: 'load', timeout: stepMs });
     await settle(page, nav, stepMs);
     return { ok: true };
   }
   if ('wait' in step) {
-    await page.waitForTimeout(step.wait);
+    // A page with a fixed clock gets that time, its timers firing in order
+    if (clocked) await page.clock.runFor(step.wait);
+    else await page.waitForTimeout(step.wait);
     await settle(page, nav, stepMs);
     return { ok: true };
   }
@@ -618,7 +660,10 @@ async function act(page, step, nav, stepMs) {
         by === 'end' ? document.documentElement.scrollHeight : window.scrollY + Number(by);
       window.scrollTo({ top, behavior: 'instant' });
     }, step.scroll);
-    await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => done())));
+    // A frame drawn, unless the page's clock stands still (a fixed clock)
+    if (!clocked) {
+      await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => done())));
+    }
     await settle(page, nav, stepMs);
     return { ok: true };
   }
@@ -697,9 +742,40 @@ async function runCase(browser, files, testCase, limits) {
   const context = await browser.newContext({
     viewport: { width: testCase.width, height: limits.height },
     serviceWorkers: 'block',
+    // One language and time zone, so a date reads the same on every host
+    locale: 'en-US',
+    timezoneId: 'UTC',
+    // As the visitor's system asks: dark mode, less movement
+    colorScheme: testCase.colorScheme ?? 'light',
+    reducedMotion: testCase.reducedMotion ? 'reduce' : 'no-preference',
+    // What localStorage holds for a visitor who comes back
+    storageState: {
+      cookies: [],
+      origins: testCase.storage
+        ? [
+            {
+              origin: ORIGIN,
+              localStorage: Object.entries(testCase.storage).map(([name, value]) => ({
+                name,
+                value,
+              })),
+            },
+          ]
+        : [],
+    },
   });
+  const clocked = typeof testCase.clock === 'string';
   try {
     await serve(context, files, testCase.fetch ?? {});
+    // A fixed date and time the page sees, standing still until a wait moves it
+    if (clocked) {
+      // Written without a zone, as the page's own time (UTC)
+      const at = new Date(
+        /[zZ]|[+-]\d\d:\d\d$/.test(testCase.clock) ? testCase.clock : `${testCase.clock}Z`,
+      );
+      await context.clock.install({ time: new Date(at.getTime() - 1000) });
+      await context.clock.pauseAt(at);
+    }
     await context.addInitScript(consoleAsPreview, CONSOLE_LIMIT);
     await context.exposeFunction('__cyberstarsFormSent', (fields) => {
       if (Array.isArray(fields)) seen.forms.push(fields.map(([k, v]) => [String(k), String(v)]));
@@ -740,7 +816,9 @@ async function runCase(browser, files, testCase, limits) {
       for (const step of testCase.steps) {
         const isAction = limits.actions.some((key) => key in step);
         steps.push(
-          await guarded(isAction ? act(page, step, nav, limits.stepMs) : observe(page, step, seen)),
+          await guarded(
+            isAction ? act(page, step, nav, limits.stepMs, clocked) : observe(page, step, seen),
+          ),
         );
       }
     } catch (err) {

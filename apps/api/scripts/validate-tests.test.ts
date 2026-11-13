@@ -385,4 +385,41 @@ describe('auditWebSpec', () => {
     }));
     expect(auditWebSpec(spec(many), site)).toEqual([expect.stringMatching(/web limit/)]);
   });
+
+  it('takes a clock, a color scheme, less movement and what localStorage holds', () => {
+    const page = {
+      clock: '2031-05-14T09:30:00',
+      colorScheme: 'dark',
+      reducedMotion: true,
+      storage: { theme: 'dark' },
+    };
+    expect(
+      one(
+        [
+          { focused: '#name', label: 'the name field' },
+          { shows: 'img', file: 'img/earth-small.jpg', label: 'the picture' },
+        ],
+        page,
+      ),
+    ).toEqual([]);
+    expect(one([{ fits: true }], { clock: '2031-05-14 09:30' })).toEqual([
+      expect.stringMatching(/clock/),
+    ]);
+    expect(one([{ fits: true }], { clock: '2031-13-40T09:30:00' })).toEqual([
+      expect.stringMatching(/clock/),
+    ]);
+    expect(one([{ fits: true }], { colorScheme: 'blue' })).toEqual([
+      expect.stringMatching(/colorScheme/),
+    ]);
+    expect(one([{ fits: true }], { reducedMotion: false })).toEqual([
+      expect.stringMatching(/reducedMotion/),
+    ]);
+    expect(one([{ fits: true }], { storage: { theme: 1 } })).toEqual([
+      expect.stringMatching(/storage/),
+    ]);
+    expect(one([{ shows: 'img', label: 'the picture' }])).toEqual([
+      expect.stringMatching(/shows step names the file/),
+    ]);
+    expect(one([{ focused: '#name' }])).toEqual([expect.stringMatching(/without a label/)]);
+  });
 });
