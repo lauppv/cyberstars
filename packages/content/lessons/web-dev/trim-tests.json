@@ -1,0 +1,177 @@
+{
+  "cases": [
+    {
+      "name": "A name of only spaces is no name on the pass",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass with only spaces typed (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "  Ida Moreau  ",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Ida Moreau",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A name of only spaces books no seat",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Please write your name",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A real name with spaces around it still books the seat",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "  Ida Moreau ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Another name of spaces, then a real one",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "     ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "noah@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Please write your name",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": " Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Noah Berg on SL-104",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Noah Berg",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -2237,6 +2237,9 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'truthy-and-falsy', title: 'Truthy and Falsy', sortOrder: 193 },
   { courseKey: 'web-dev', slug: 'or-default', title: 'A Default Value', sortOrder: 194 },
   { courseKey: 'web-dev', slug: 'switch', title: 'switch', sortOrder: 195 },
+  { courseKey: 'web-dev', slug: 'trim', title: 'trim', sortOrder: 196 },
+  { courseKey: 'web-dev', slug: 'string-includes', title: 'Searching a Text', sortOrder: 197 },
+  { courseKey: 'web-dev', slug: 'string-slice', title: 'Cutting a Text', sortOrder: 198 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2463,6 +2466,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'truthy-and-falsy',
         'or-default',
         'switch',
+        'trim',
+        'string-includes',
+        'string-slice',
       ],
     },
   ],
