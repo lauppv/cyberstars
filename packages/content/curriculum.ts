@@ -2477,6 +2477,18 @@ export const lessons = [
     title: 'A Value to Fall Back On: ??',
     sortOrder: 310,
   },
+  {
+    courseKey: 'web-dev',
+    slug: 'json-stringify',
+    title: 'Data as a Text: JSON.stringify',
+    sortOrder: 311,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'json-parse',
+    title: 'The Text Back to Data: JSON.parse',
+    sortOrder: 312,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2836,6 +2848,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'null-or-undefined',
         'optional-chaining',
         'nullish-default',
+        'json-stringify',
+        'json-parse',
       ],
     },
   ],
