@@ -86,7 +86,7 @@ Call signs: VEGA / ORION / LYRA / ALTAIR / NOVA / RIGEL
 ```
 
 - Under `#duty-count`, a paragraph with the id `call-signs`.
-- It says `Call signs: `, then each name of the duty list in capital letters, in the same order, with ` / ` between two names.
+- It says `Call signs: `, then each name of the duty list in capital letters, in the same order, with a `/` between two names, a space on each side.
 - The other lines of the duty panel keep the names as they are written.
 
 Psst, `map` gives you a new array, and leaves the old one as it was :)

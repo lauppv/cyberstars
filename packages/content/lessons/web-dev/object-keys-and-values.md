@@ -78,6 +78,6 @@ Values: 6 / 98% / 1,240 litres / Friday / 87% / 412
 
 - Under the cards, before the week, three paragraphs with the ids `stat-count`, `stat-names` and `stat-values`, in this order.
 - `#stat-count` says how many keys the object of the cards has, then ` numbers on the dashboard`.
-- `#stat-names` says `Numbers for: ` and the object's keys, with a comma and a space between two. `#stat-values` says `Values: ` and its values, with ` / ` between two.
+- `#stat-names` says `Numbers for: ` and the object's keys, with a comma and a space between two. `#stat-values` says `Values: ` and its values, with a `/` between two, a space on each side.
 
 Psst, an object has no `length`, but the array of its keys has :)

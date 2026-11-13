@@ -15,7 +15,7 @@ console.log(line);
 ```
 
 ```text
-apple, pear, plum, 
+apple, pear, plum,
 ```
 
 It works, but look at the end: a comma after the last fruit. Getting rid of it takes more code.
@@ -83,6 +83,6 @@ Shift leads: Vega and Orion
 ```
 
 - Between the list `#on-duty` and `#duty-check`, a paragraph with the id `duty-line`. It says `On duty: `, then every name of the list, with a comma and a space between two names.
-- `#shift-leads` now says `Shift leads: `, then the first two names with ` and ` between them. With only one name on duty, only that one.
+- `#shift-leads` now says `Shift leads: `, then the first two names with the word `and` between them, a space on each side. With only one name on duty, only that one.
 
 Psst, `join` puts its separator only between the items, never after the last :)
