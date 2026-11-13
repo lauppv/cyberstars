@@ -1,0 +1,133 @@
+{
+  "cases": [
+    {
+      "name": "The cards share the whole width",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "against": ".wiki-list > article:first-child",
+          "in": ".wiki-list",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the list",
+          "label": "the first card of the row"
+        },
+        {
+          "against": ".wiki-list > article:last-child",
+          "in": ".wiki-list",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the list",
+          "label": "the last card of the row"
+        },
+        {
+          "size": ".wiki-list > article:first-child",
+          "minWidth": 290,
+          "label": "the first card of the row"
+        }
+      ]
+    },
+    {
+      "name": "Every link at the bottom of its card",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "against": ".wiki-list > article h2",
+          "in": "article",
+          "side": "top",
+          "within": 32,
+          "inLabel": "its card",
+          "label": "every card's heading"
+        },
+        {
+          "against": ".wiki-list > article a",
+          "in": "article",
+          "side": "bottom",
+          "within": 32,
+          "inLabel": "its card",
+          "label": "every card's link"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, every card as wide as the list",
+      "visible": true,
+      "page": "wiki.html",
+      "width": 375,
+      "steps": [
+        {
+          "against": ".wiki-list > article:first-child",
+          "in": ".wiki-list",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the list",
+          "label": "the first card of the row"
+        },
+        {
+          "against": ".wiki-list > article:first-child",
+          "in": ".wiki-list",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the list",
+          "label": "the last card of the row"
+        },
+        {
+          "size": ".wiki-list > article:first-child",
+          "minWidth": 300,
+          "label": "the first card of the row"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "With four cards, one with a long text",
+      "page": "wiki.html",
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n\n    <div class=\"wiki-list\">\n      <article>\n        <h2>The Gym</h2>\n        <p>Two bikes and a running belt, so our muscles stay strong in space.</p>\n        <p><a href=\"wiki-gym.html\">Read about the gym</a></p>\n      </article>\n      <article>\n        <h2>The Water Tanks</h2>\n        <p>Every drop we drink is cleaned and used again. The tanks hold the water for the crew, the plants and the showers, and a pump moves it round the station every hour, day and night.</p>\n        <p><a href=\"wiki-water.html\">Read about the water</a></p>\n      </article>\n      <article>\n        <h2>The Galley</h2>\n        <p>Where we cook, and where the whole crew eats together every evening.</p>\n        <p><a href=\"wiki-galley.html\">Read about the galley</a></p>\n      </article>\n      <article>\n        <h2>Sleeping Pods</h2>\n        <p>A small bed on the wall for each of us, with a curtain and a lamp.</p>\n        <p><a href=\"wiki-pods.html\">Read about the pods</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "against": ".wiki-list > article:nth-child(4)",
+          "in": ".wiki-list",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the list",
+          "label": "the first card of the row"
+        },
+        {
+          "against": ".wiki-list > article:nth-child(4)",
+          "in": ".wiki-list",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the list",
+          "label": "the last card of the row"
+        },
+        {
+          "size": ".wiki-list > article:nth-child(4)",
+          "minWidth": 900,
+          "label": "the first card of the row"
+        },
+        {
+          "against": ".wiki-list > article h2",
+          "in": "article",
+          "side": "top",
+          "within": 32,
+          "inLabel": "its card",
+          "label": "every card's heading"
+        },
+        {
+          "against": ".wiki-list > article a",
+          "in": "article",
+          "side": "bottom",
+          "within": 32,
+          "inLabel": "its card",
+          "label": "every card's link"
+        }
+      ]
+    }
+  ]
+}
