@@ -2,7 +2,7 @@ A letter without an address on the envelope goes nowhere, however nice the lette
 
 ## `action`: where it goes
 
-A form is read by a server, a computer somewhere that does the job: it saves the order, it looks for the games. The `action` attribute holds the address of the server's page that reads the form:
+A form is read by a server, a computer somewhere that does something with it: it saves an order, or it looks for games. The `action` attribute holds the address of the server's page that reads the form:
 
 ```html preview
 <form action="https://games.example/search">
@@ -42,7 +42,7 @@ Forget the method on the pizza order. Ida orders a pizza, and the browser opens:
 https://pizza.example/order?name=Ida+Moreau&address=12+Lake+Street
 ```
 
-A `+` is a space in an address. Now Ida's address is in the address bar for anyone behind her to read. It's in the history of the browser, and in the link she copies to a friend. An address bar is no place for personal details.
+A `+` is a space in an address. Now Ida's home address is in the address bar for anyone behind her to read. It's in the history of the browser, and in the link she copies to a friend. Personal details don't belong in an address bar.
 
 ---
 

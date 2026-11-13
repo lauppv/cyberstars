@@ -1,4 +1,4 @@
-In a video game, you press Escape and the menu opens. In a chat app, you press Enter and your message goes. Some keys do more than type a letter. A page can listen for them, too.
+In a video game, you press Escape and the menu opens. In a chat app, you press Enter and your message is sent. Some keys do more than type a letter. A page can listen for them, too.
 
 ## `keydown` and `event.key`
 
@@ -87,7 +87,7 @@ Press Escape: nothing happens, and the console shows no error. The key is called
 
 ## Mission: Escape the notes
 
-A passenger who wrote a long note and changed their mind has to delete it letter by letter.
+A passenger who wrote a long note and doesn't want it any more has to delete it letter by letter.
 
 **Example**: type `Vegan meal` in the notes box, then press Escape. The box is empty, and the line under it says `200 characters left` again.
 

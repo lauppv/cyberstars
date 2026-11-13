@@ -15,7 +15,7 @@ Like `<img>` and `<br>`, `<input>` has no closing tag. The visitor writes what g
 
 ## An id for each box
 
-A form usually has more than one box: a name, an email, a date. Give each one an `id`, as you did with headings, so that later lessons, and your script, can tell them apart:
+A form usually has more than one box: a name, an email, a date. Give each one an `id`, as you did with headings, so that later lessons, and your script, know which box is which:
 
 ```html preview
 <p>First name:</p>
@@ -24,7 +24,7 @@ A form usually has more than one box: a name, an email, a date. Give each one an
 <input id="last-name" />
 ```
 
-Two boxes, one under the other. They look the same, but each has its own name in the HTML.
+Two boxes, one under the other. They look the same, but each has its own id in the HTML.
 
 ## Break it on purpose
 
@@ -44,7 +44,7 @@ Passengers want to book a seat on a flight without walking to the desk. Your sit
 
 **Example**: a new page, `boarding.html`, on the night blue of the site, with a heading and a short line like "Your full name:", and under it an empty box to type in.
 
-- `boarding.html` is a whole page, in English, that can show any letter, with a name for its tab and a biggest heading, using the site's `style.css`.
+- `boarding.html` is a whole page, in English, that can show any letter, with a name for its tab and one biggest heading, using the site's `style.css`.
 - It has a box to type the passenger's name in, with the id `passenger`, under a line that says what to type.
 - Every page's menu has a fourth link, to `boarding.html`.
 

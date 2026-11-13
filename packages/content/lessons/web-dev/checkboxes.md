@@ -29,7 +29,7 @@ Tick both boxes and click **Order**:
 The form was sent: toppings=cheese&toppings=olives
 ```
 
-A ticked box sends its name and its `value`. A box that isn't ticked sends nothing at all: untick the olives and send again, and only `toppings=cheese` goes.
+A ticked box sends its name and its `value`. A box that isn't ticked sends nothing at all: untick the olives and send again, and only `toppings=cheese` is sent.
 
 The boxes of one question share the same name, and each one has its own value. That's how the server knows they answer the same question.
 
@@ -40,7 +40,7 @@ The boxes of one question share the same name, and each one has its own value. T
 <label for="news">Send me the club news</label>
 ```
 
-`checked` makes a box start ticked. Like `defer`, it has no value: writing it is enough. The visitor can still untick it.
+`checked` makes a box start ticked. Like `defer`, it is written alone, with no `=` after it: the word is enough. The visitor can still untick it.
 
 ## Break it on purpose
 

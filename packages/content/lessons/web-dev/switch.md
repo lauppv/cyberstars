@@ -28,7 +28,7 @@ Juice
 Here is how it reads:
 
 1. `switch (code)` takes the value to compare: `"A2"`.
-2. Each `case` holds a value. JavaScript compares them with `===`, from the top, until one matches: `case "A2"`.
+2. Each `case` holds a value. JavaScript compares the `switch` value with each one, using `===`, from the top, until one matches: `case "A2"`.
 3. The lines under that case run, until `break`. `break` jumps out of the `switch`.
 4. `default` runs when no case matches. Change the first line to `const code = "C9";`, and the console says `No such slot`.
 
@@ -93,7 +93,7 @@ Juice
 Chips
 ```
 
-Without `break`, JavaScript doesn't stop at the end of the case. It also runs the next case's lines, without checking its value, until it finds a `break`. Every case ends with `break`.
+Without `break`, JavaScript doesn't stop at the end of the case. It also runs the next case's lines, without checking its value, until it finds a `break`. So end every case with `break`.
 
 ---
 

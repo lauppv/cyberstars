@@ -16,7 +16,7 @@ Click **Join** with the box empty. Nothing is sent: the browser puts the cursor 
 The form was sent: nickname=Rocket
 ```
 
-Like `checked`, `required` has no value: writing it is enough.
+Like `checked`, `required` is written alone, with no `=` after it: the word is enough.
 
 The message belongs to the browser. You don't write it, and its words and look change from one browser to another, in the visitor's own language.
 
@@ -56,7 +56,7 @@ Click **Join** with the box empty:
 The form was sent: nickname=
 ```
 
-It goes. A label is only words: nobody types in it, so the browser never checks it. `required` works only on what the visitor fills in.
+It is sent. A label is only words: nobody types in it, so the browser never checks it. `required` works only on what the visitor fills in.
 
 ---
 
@@ -64,7 +64,7 @@ It goes. A label is only words: nobody types in it, so the browser never checks 
 
 Right now a passenger can send an empty form, and the station gets a booking for nobody, on no flight, on no day.
 
-**Example**: click "Book my seat" with the form empty. Nothing is sent, and the browser points at the name box. Fill in the name, the email, the flight and the date, and the form goes.
+**Example**: click "Book my seat" with the form empty. Nothing is sent, and the browser points at the name box. Fill in the name, the email, the flight and the date, and the form is sent.
 
 - The form isn't sent without a name, an email, a flight and a date.
 - Everything else stays optional: with only those four filled in, the form is sent.

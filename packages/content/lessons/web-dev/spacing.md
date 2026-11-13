@@ -98,9 +98,9 @@ Now each label sits far from its box, and right under the box before it. "Last n
 
 ---
 
-## Mission: Room to breathe
+## Mission: Room between the groups
 
-In your form, each label and box sits right on top of the next, and the groups of choices touch each other.
+In your form, there's no room between a box and the next label, and the groups of choices touch each other.
 
 **Example**: each label sits close to its box, with a clear gap before the next question. The groups of seats, of extras and of the contact have room above and below them, and the buttons have room above them.
 

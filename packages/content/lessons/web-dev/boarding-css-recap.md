@@ -6,9 +6,9 @@ On a real booking website, the form often sits on a card of its own, like a pape
 
 ## Mission: The booking card
 
-Your booking form is styled, but it floats on the page's background, from one side of the page to the other.
+Your booking form is styled, but it sits right on the page's background, from one side of the page to the other.
 
-**Example**: on a computer, the form is a card in the middle of the page, narrower than the page, with a background of its own. On a phone, the card fits the screen and nothing sticks out of it. Everything you did in this part still works on it.
+**Example**: on a computer, the form is a card in the middle of the page, narrower than the page, with a background of its own. On a phone, the card fits the screen and nothing goes past its edges. Everything you did in this part still works on it.
 
 - The form is a card: its background is unlike the page's, and on a computer it's narrower than the page and in its middle.
 - Every label, question (legend) and button has a contrast of at least 4.5:1 on the card.

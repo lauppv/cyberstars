@@ -40,7 +40,7 @@ On a phone, tap it: the keyboard is the one you call with, big digits and the ke
 
 ## Break it on purpose
 
-Make a small typo in the type:
+Make a small spelling mistake in the type:
 
 ```html preview
 <form>
@@ -50,7 +50,7 @@ Make a small typo in the type:
 </form>
 ```
 
-Type `rocket` and send. It goes! The browser doesn't know any type called `emial`, so it makes a plain text box: no check, and no @ key on a phone. A wrong type gives no error at all. Check your spelling.
+Type `rocket` and send. It is sent! The browser doesn't know any type called `emial`, so it makes a plain text box: no check, and no @ key on a phone. A wrong type gives no error at all. Check your spelling.
 
 ---
 

@@ -83,7 +83,7 @@ Type a letter, and the console says:
 TypeError: Assignment to constant variable.
 ```
 
-One `=` doesn't compare: it tries to put `""` in `typed`, and a `const` can't change. Compare with `===`, or let the value speak for itself: `if (typed)`.
+One `=` doesn't compare: it tries to put `""` in `typed`, and a `const` can't change. Compare with `===`, or use the value alone, with the two branches swapped: `if (typed)`.
 
 ---
 

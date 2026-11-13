@@ -97,7 +97,7 @@ With brackets, `goal()` runs at once, when the page opens. Nobody has clicked, s
 
 ## Mission: Which seat?
 
-Your pass shows the passenger's name. Now it shows the seat too. Write one function for both seats, which finds the seat clicked with the event object.
+Your pass shows the passenger's name. Now it should show the seat too. Write one function for both seats, which finds the seat clicked with the event object.
 
 **Example**: pick **On the aisle**, and the pass says:
 

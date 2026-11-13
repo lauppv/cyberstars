@@ -1,4 +1,4 @@
-A game asks for your nickname. One letter? Too short: nobody can tell the players apart. A whole sentence? It won't fit on the scoreboard. A box can say how short and how long an answer may be.
+A game asks for your nickname. One letter? Too short: nobody knows which player is which. A whole sentence? It won't fit on the scoreboard. A box can say how short and how long an answer may be.
 
 ## `maxlength`: the most
 
@@ -20,7 +20,7 @@ It works on a textarea too:
 
 ## `minlength`: the least
 
-`minlength` is the fewest characters the form sends:
+`minlength` is the fewest characters a box needs before the form is sent:
 
 ```html preview
 <form>
@@ -30,7 +30,7 @@ It works on a textarea too:
 </form>
 ```
 
-Type `Al` and click **Join**. Nothing is sent, and the browser says to use at least 3 characters. Type `Ali`, and it goes.
+Type `Al` and click **Join**. Nothing is sent, and the browser says to use at least 3 characters. Type `Ali`, and it is sent.
 
 There's one surprise: an empty box is still sent. `minlength` checks only what was typed. For a box that can't stay empty, add `required` too.
 

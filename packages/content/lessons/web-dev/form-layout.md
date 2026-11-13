@@ -2,7 +2,7 @@ Look at a paper form at school or at the doctor's: each question sits on its own
 
 ## Without `<br />`
 
-A label sits inside a line, like a word. A box does too. Without `<br />`, they all run on one line:
+A label sits inside a line, like a word. A box does too. Without `<br />`, they all sit on one line:
 
 ```html preview
 <label for="first">First name</label>
@@ -11,7 +11,7 @@ A label sits inside a line, like a word. A box does too. Without `<br />`, they 
 <input id="last" />
 ```
 
-Everything is on one line, until it runs out of room. Hard to read.
+Everything is on one line, until there's no more room. Hard to read.
 
 ## A label on its own line
 

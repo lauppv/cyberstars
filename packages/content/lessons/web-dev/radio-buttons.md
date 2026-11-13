@@ -11,9 +11,9 @@ A T-shirt comes in small, medium or large. You pick one size, never two. On a pa
 <label for="large">Large</label>
 ```
 
-Round buttons, each with its label. Click **Small**, then **Large**: Small goes off by itself. Only one can be on.
+Round buttons, each with its label. Click **Small**, then **Large**: Small is no longer on. Only one can be on.
 
-They're called **radio buttons**, after the buttons of old car radios: you push one station in, and the one pushed before jumps out.
+They're called **radio buttons**, after the buttons of old car radios: you push in the button for one station, and the button pushed before jumps out.
 
 ## One name, one choice
 
@@ -35,7 +35,7 @@ Pick **Large** and click **Order**:
 The form was sent: size=L
 ```
 
-Once one is on, a second click on it doesn't turn it off. To change your mind, you pick another one.
+Once one is on, a second click on it doesn't turn it off. To change your answer, you pick another one.
 
 ## Break it on purpose
 

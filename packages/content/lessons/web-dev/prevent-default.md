@@ -26,7 +26,7 @@ Many events come with something the browser does by itself afterwards: its **def
 </script>
 ```
 
-Type `Rocket` and click **Join**. The page says `Welcome to the club, Rocket!`, and no `The form was sent` line shows under it: the form stayed on the page. Now the script decides what happens. (Later in the course, a script will send the answers to the server itself, without leaving the page.)
+Type `Rocket` and click **Join**. The page says `Welcome to the club, Rocket!`, and no `The form was sent` line shows under it: the form wasn't sent. Now the script decides what happens. (Later in the course, a script will send the answers to the server itself, without leaving the page.)
 
 ## The browser still checks
 
@@ -40,7 +40,7 @@ Forget the brackets:
 event.preventDefault;
 ```
 
-Click **Join**: the page says hello, and then the line under it says `The form was sent: nickname=Rocket`. No error either. Without brackets, the line only names the function, and nothing calls it. `preventDefault()` needs its `()` to run.
+Click **Join**: the page shows the welcome, and then the line under it says `The form was sent: nickname=Rocket`. No error either. Without brackets, the line only names the function, and nothing calls it. `preventDefault()` needs its `()` to run.
 
 ---
 

@@ -1,4 +1,4 @@
-You send a package, and the person who opens it finds a sweater and a book, but no note. Who is it from? What's it for? A form that sends a box with no name does the same: the server gets a value and has no idea what it means.
+You send a package, and the person who opens it finds a sweater and a book, but no note. Who is it from? What's it for? A form that sends a box with no name does the same: the server gets a value and doesn't know what it means.
 
 ## `name`
 

@@ -1,4 +1,4 @@
-Before you drop a letter in the post box, you look at it one last time: is the address right? A form has a moment like that too. Just before it leaves, the page can still do something.
+Before you put a letter in the mailbox, you look at it one last time: is the address right? A form has a moment like that too. Just before it leaves, the page can still do something.
 
 ## The `submit` event
 
@@ -27,9 +27,9 @@ Type `Rocket` and click **Join**. The page says `Sending the form for Rocket...`
 The form was sent: nickname=Rocket
 ```
 
-The script ran first, then the form was sent as usual. On a real website, the browser would now leave the page for the server's answer. In the preview, the page stays, so you see both.
+The script ran first, then the form was sent as usual. On a real website, the browser would now leave the page and show the server's answer. In the preview, the page stays, so you see both.
 
-## Only a form that goes
+## Only a form that is sent
 
 Clear the box and click **Join** again. The browser shows its own message: the box is required. The form isn't sent, so there is no `submit` event, and the page says nothing new.
 

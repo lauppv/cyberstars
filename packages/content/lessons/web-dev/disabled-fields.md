@@ -12,7 +12,7 @@ In a shop's online list, a sold-out item often stays on the list, gray, with "so
 </form>
 ```
 
-Try to tick the drink, on the box or on its label: nothing happens. Press Tab: the focus skips it. Like `required`, `disabled` has no value: writing it is enough.
+Try to tick the drink, on the box or on its label: nothing happens. Press Tab: the focus skips it. Like `required`, `disabled` is written alone, with no `=` after it: the word is enough.
 
 A disabled box is never sent with the form, even when it's ticked. Tick the snack and click **Order**:
 

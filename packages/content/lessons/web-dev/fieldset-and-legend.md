@@ -1,4 +1,4 @@
-On a paper form, a question in bold often sits over its answers: "How did you hear about us?", and under it, a few boxes to tick. Without the question, the boxes make no sense. On a web page, a plain line of text over the boxes works for the eyes, but not for everyone.
+On a paper form, a question in bold often sits over its answers: "How did you hear about us?", and under it, a few boxes to tick. Without the question, the boxes make no sense. On a web page, a plain line of text over the boxes works for people who see the page, but not for everyone.
 
 ## `<fieldset>` and `<legend>`
 
@@ -61,7 +61,7 @@ The words sit inside the frame, on a line of their own, and the frame's top line
 
 ## Mission: Questions over choices
 
-Your booking form has a line such as "Seat:" over the round buttons, and "Extras:" over the boxes. A screen reader reads them as plain text, apart from the choices.
+Your booking form has a line such as "Seat:" over the round buttons, and "Extras:" over the boxes. A screen reader reads them as plain text, not as part of the choices.
 
 **Example**: the two seats in a frame, with a question such as "Where would you like to sit?" in its top line, and the three extras in a second frame with a question of their own.
 

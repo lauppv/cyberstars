@@ -50,7 +50,7 @@ Close the textarea the way you close an `input`:
 <p>Thank you for writing!</p>
 ```
 
-The paragraph is gone, and the box is full of code: `<p>Thank you for writing!</p>`. A textarea can't close itself. The browser waits for `</textarea>`, and everything before it becomes the box's text.
+The paragraph is gone, and the box is full of code: `<p>Thank you for writing!</p>`. A textarea can't close itself. The browser waits for `</textarea>`, and everything until then becomes the box's text.
 
 ---
 

@@ -1,4 +1,4 @@
-In the Focus lesson, you gave the links a ring for people who move with the Tab key. Now click a link with the mouse instead: the ring shows too. For someone with a mouse, a ring after a click looks like a mistake. So some websites remove the ring, and people with a keyboard lose their way. There's a better answer: a ring only for the keyboard.
+In the Focus lesson, you gave the links a ring for people who move with the Tab key. Now click a link with the mouse instead: the ring shows too. For someone with a mouse, a ring after a click looks like a mistake. So some websites remove the ring, and people with a keyboard can't see where they are. There's a better answer: a ring only for the keyboard.
 
 ## `:focus-visible`
 
@@ -56,7 +56,7 @@ Use `:focus` instead:
 <button>Stop</button>
 ```
 
-Click a button: the ring shows, and stays until you click somewhere else. That's what `:focus-visible` saves mouse users from.
+Click a button: the ring shows, and stays until you click somewhere else. With `:focus-visible`, mouse users don't get that ring.
 
 And as in the Focus lesson: never take the ring away with `outline: none`. Without it, someone with a keyboard can't see where they are.
 

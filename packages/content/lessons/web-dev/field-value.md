@@ -27,7 +27,7 @@ Hello, Rocket!
 
 Now type `Comet` instead and click again. The paragraph says `Hello, Comet!`. Each click reads the box again, so it always gets what is in it at that moment.
 
-A box has no text between two tags, like a paragraph has. So `textContent` doesn't help here: what the visitor types lives in the box's `value`.
+A box doesn't have text between two tags, as a paragraph does. So `textContent` doesn't help here: what the visitor types is kept in the box's `value`.
 
 ## When you read it matters
 
@@ -54,7 +54,7 @@ Type `Rocket` and click:
 Hello, !
 ```
 
-When the page opened, the box was empty, so `typed` holds an empty text. Typing later doesn't change the variable. Read `.value` inside the click, when the visitor has typed.
+When the page opened, the box was empty, so `typed` holds an empty text. Typing later doesn't change the variable. Read `.value` inside the click's function, when the visitor has typed.
 
 ## Break it on purpose
 
@@ -83,4 +83,4 @@ Passenger: Ida Moreau
 - A click on it writes what is in the name box in an element with the id `pass-name`. It holds only the name: words like `Passenger:` go outside it.
 - Type another name and click again: the pass shows the new name.
 
-Psst, read `.value` inside the click, not before :)
+Psst, read `.value` inside the click's function, not before :)

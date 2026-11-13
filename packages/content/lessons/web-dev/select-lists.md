@@ -1,4 +1,4 @@
-When a website asks which city you live in, it doesn't show you a hundred round buttons. It shows one small box. Click it, and a list drops down with every city in it.
+When a website asks which city you live in, it doesn't show you a hundred round buttons. It shows one small box. Click it, and a list opens with every city in it.
 
 ## `<select>` and `<option>`
 
@@ -41,7 +41,7 @@ The page shows "Oslo, Norway", the form sends `oslo`. You can change the words o
 
 ## An empty first choice
 
-A list always shows a choice, the first one at the start. So Lyon looks picked already, and someone who doesn't look sends Lyon by mistake. An empty first choice asks the visitor to pick:
+A list always shows a choice, the first one at the start. So Lyon is already picked, and someone who doesn't look sends Lyon by mistake. An empty first choice asks the visitor to pick:
 
 ```html preview
 <form>
@@ -62,7 +62,7 @@ Send without picking:
 The form was sent: city=
 ```
 
-Its value is empty, so the server can tell nothing was picked.
+Its value is empty, so the server knows nothing was picked.
 
 ## Break it on purpose
 

@@ -11,7 +11,7 @@ A **label** is the name of a box. Its `for` attribute says which box, by the box
 
 On the page it looks like plain text next to the box. But click the word "Your city": the box is ready to type in, as if you had clicked the box itself. Try it.
 
-That's useful with a big finger on a small phone, but there's more. A screen reader, which reads the page out loud for people who can't see it, reads the label when the box gets the focus: "Your city, edit text". Without a label it only says "edit text", and the listener has no idea what to type.
+That's useful with a big finger on a small phone, but there's more. A screen reader, which reads the page out loud for people who can't see it, reads the label when the box gets the focus: "Your city, edit text". Without a label it only says "edit text", and the listener doesn't know what to type.
 
 ## A label above its box
 

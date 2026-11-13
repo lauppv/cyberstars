@@ -56,7 +56,7 @@ message.addEventListener("change", () => {
 });
 ```
 
-Type in the box: the counter doesn't move. Click outside the box: now it changes, all at once. For a box you type in, `change` only happens when you leave it. You'll use `change` in the next lesson, where it fits better.
+Type in the box: the counter doesn't change. Click outside the box: now it changes, all at once. For a box you type in, `change` only happens when you leave it. You'll use `change` in the next lesson, where it fits better.
 
 ---
 

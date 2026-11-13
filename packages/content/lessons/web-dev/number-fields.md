@@ -9,7 +9,7 @@ A box for a number is `type="number"`:
 <input type="number" id="tickets" />
 ```
 
-Two small arrows show in the box. Click them, or press the up and down arrow keys, and the number goes up or down by one. Try to type a letter: the box doesn't take it. On a phone, the keyboard shows digits.
+Two small arrows show in the box. Click them, or press the up and down arrow keys, and the number goes up or down by one. Try to type a letter: most browsers don't let you. On a phone, the keyboard shows digits.
 
 ## `min` and `max`
 
@@ -23,7 +23,7 @@ Two small arrows show in the box. Click them, or press the up and down arrow key
 </form>
 ```
 
-Click the arrows: they stop at 1 and at 4. Now type `9` and click **Buy**. Nothing is sent: the browser shows a small message that the number must be 4 or less. Type `3`, and it goes:
+Click the arrows: they stop at 1 and at 4. Now type `9` and click **Buy**. Nothing is sent: the browser shows a small message that the number must be 4 or less. Type `3`, and it is sent:
 
 ```text
 The form was sent: tickets=3
@@ -63,7 +63,7 @@ Type `400` and click **Buy**:
 The form was sent: tickets=400
 ```
 
-The browser had no limit to check, so 400 tickets went. Every limit you leave out is a number nobody checks.
+The browser had no limit to check, so the form sent 400 tickets. Every limit you leave out is a number nobody checks.
 
 ---
 

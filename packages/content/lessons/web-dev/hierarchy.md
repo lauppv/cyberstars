@@ -1,4 +1,4 @@
-On a cinema's website, the "Buy tickets" button is big and bright. "Cancel" is small and plain. Your eye goes first to what matters most. This is called **hierarchy**: the most important thing on the page stands out the most, and the rest steps back.
+On a cinema's website, the "Buy tickets" button is big and bright. "Cancel" is small and plain. Your eye goes first to what matters most. This is called **hierarchy**: the most important thing on the page stands out the most, and the rest is quieter.
 
 ## Size, color, weight
 
@@ -33,9 +33,9 @@ On a cinema's website, the "Buy tickets" button is big and bright. "Cancel" is s
 <button class="quiet">Maybe later</button>
 ```
 
-Which one do you see first? "Join the team" wins in every way: bigger letters, a bright background, bold, more room inside. "Maybe later" is still easy to read, but it doesn't call you. Its background is `transparent`, a color you can see through, so the page shows behind its words.
+Which one do you see first? "Join the team" wins in every way: bigger letters, a bright background, bold, more room inside. "Maybe later" is still easy to read, but it doesn't ask for your attention. Its background is `transparent`, a color you can see through, so the page shows behind its words.
 
-## The more harm, the quieter
+## The more harm a button can do, the quieter it is
 
 A button that throws away all your work should never be the one you press by mistake. Make it smaller and calmer than the main one, but keep it readable: a contrast of at least 4.5:1, like any text.
 

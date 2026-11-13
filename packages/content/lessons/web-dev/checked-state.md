@@ -18,7 +18,7 @@ On a pizza website, you tick "extra cheese", and the whole line lights up. You s
 <label for="olives">Olives</label>
 ```
 
-Tick a box: an orange line shows around it. Untick it: the line goes. It works, but the box is small, and the browser draws most of it.
+Tick a box: an orange line shows around it. Untick it: the line disappears. It works, but the box is small, and the browser draws most of it.
 
 ## The label after it, with `+`
 
@@ -73,7 +73,7 @@ Your form shows the seat and the extras a passenger picked only with a small dot
 **Example**: Wi-Fi is ticked at the start, so its label already stands out, for example in bold gold. Pick the aisle seat: "On the aisle" stands out, and "By the window" doesn't. Untick Wi-Fi: its label looks like the others again.
 
 - The label of every ticked box, and of the seat picked, stands out from the labels of the choices not picked.
-- When a choice is unpicked, its label looks like the others again.
+- When a choice is no longer picked, its label looks like the others again.
 - A label that stands out still reads well: a contrast of at least 4.5:1 with its background.
 
 Psst, each label comes right after its box :)
