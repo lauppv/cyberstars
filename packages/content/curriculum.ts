@@ -2413,6 +2413,10 @@ export const lessons = [
     sortOrder: 280,
   },
   { courseKey: 'web-dev', slug: 'dates', title: 'Dates', sortOrder: 281 },
+  { courseKey: 'web-dev', slug: 'date-text', title: 'A Date to Read', sortOrder: 282 },
+  { courseKey: 'web-dev', slug: 'days-between', title: 'Days Between Two Dates', sortOrder: 283 },
+  { courseKey: 'web-dev', slug: 'set-timeout', title: 'Once, a Bit Later', sortOrder: 284 },
+  { courseKey: 'web-dev', slug: 'set-interval', title: 'Again and Again', sortOrder: 285 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2737,6 +2741,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'object-keys-and-values',
         'object-entries',
         'dates',
+        'date-text',
+        'days-between',
+        'set-timeout',
+        'set-interval',
       ],
     },
   ],
