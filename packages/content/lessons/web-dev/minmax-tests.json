@@ -1,0 +1,132 @@
+{
+  "cases": [
+    {
+      "name": "On a narrow window, the last launch keeps 300 pixels",
+      "visible": true,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 299,
+          "maxWidth": 304,
+          "label": "the last launch's panel"
+        },
+        {
+          "size": "#pad-panel",
+          "maxWidth": 270,
+          "label": "the pad camera's panel"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "With room, the two share it equally",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#pad-panel",
+          "minWidth": 440,
+          "maxWidth": 465,
+          "label": "the pad camera's panel"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 440,
+          "maxWidth": 465,
+          "label": "the last launch's panel"
+        }
+      ]
+    },
+    {
+      "name": "In a window 800 pixels wide too",
+      "visible": true,
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#pad-panel",
+          "minWidth": 360,
+          "maxWidth": 385,
+          "label": "the pad camera's panel"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 360,
+          "maxWidth": 385,
+          "label": "the last launch's panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 640 pixels wide",
+      "width": 640,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "size": "#launch-panel",
+          "minWidth": 299,
+          "maxWidth": 304,
+          "label": "the last launch's panel"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

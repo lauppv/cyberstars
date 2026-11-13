@@ -2344,6 +2344,11 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'fr-unit', title: 'Sharing the Room: fr', sortOrder: 253 },
   { courseKey: 'web-dev', slug: 'grid-rows', title: 'Rows', sortOrder: 254 },
   { courseKey: 'web-dev', slug: 'grid-span', title: 'Over Two Columns', sortOrder: 255 },
+  { courseKey: 'web-dev', slug: 'grid-lines', title: 'Grid Lines', sortOrder: 256 },
+  { courseKey: 'web-dev', slug: 'grid-cell-align', title: 'Inside a Cell', sortOrder: 257 },
+  { courseKey: 'web-dev', slug: 'template-areas', title: 'The Layout in Words', sortOrder: 258 },
+  { courseKey: 'web-dev', slug: 'repeat', title: 'Many Columns at Once', sortOrder: 259 },
+  { courseKey: 'web-dev', slug: 'minmax', title: 'Never Narrower Than', sortOrder: 260 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2642,6 +2647,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'fr-unit',
         'grid-rows',
         'grid-span',
+        'grid-lines',
+        'grid-cell-align',
+        'template-areas',
+        'repeat',
+        'minmax',
       ],
     },
   ],

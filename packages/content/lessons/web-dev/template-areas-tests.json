@@ -1,0 +1,235 @@
+{
+  "cases": [
+    {
+      "name": "Each panel has an id",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": ".panels > #pad-panel #pad-camera",
+          "label": "the pad camera in its panel (#pad-panel) in .panels"
+        },
+        {
+          "exists": ".panels > #launch-panel #launch-video",
+          "label": "the launch video in its panel (#launch-panel) in .panels"
+        },
+        {
+          "exists": ".panels > #countdown-panel #countdown",
+          "label": "the countdown in its panel (#countdown-panel) in .panels"
+        },
+        {
+          "text": "#pad-panel h2",
+          "nonEmpty": true,
+          "label": "the pad camera panel's heading"
+        },
+        {
+          "text": "#countdown-panel h2",
+          "nonEmpty": true,
+          "label": "the countdown panel's heading"
+        }
+      ]
+    },
+    {
+      "name": "The pad camera and the last launch side by side, the countdown under both",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#pad-panel",
+          "in": ".panels",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the pad camera's panel (#pad-panel)"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "top right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel (#launch-panel)"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "bottom left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel (#countdown-panel)"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "bottom right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel (#countdown-panel)"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "against": "#pad-camera",
+          "in": "#pad-panel",
+          "side": "left",
+          "within": 48,
+          "inLabel": "its panel",
+          "label": "the pad camera"
+        },
+        {
+          "against": "#launch-video",
+          "in": "#launch-panel",
+          "side": "left",
+          "within": 48,
+          "inLabel": "its panel",
+          "label": "the launch video"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 800 pixels wide too",
+      "visible": true,
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#pad-panel",
+          "in": ".panels",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the pad camera's panel (#pad-panel)"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "top right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel (#launch-panel)"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "bottom left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel (#countdown-panel)"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "bottom right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel (#countdown-panel)"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "against": "#pad-camera",
+          "in": "#pad-panel",
+          "side": "left",
+          "within": 48,
+          "inLabel": "its panel",
+          "label": "the pad camera"
+        },
+        {
+          "against": "#launch-video",
+          "in": "#launch-panel",
+          "side": "left",
+          "within": 48,
+          "inLabel": "its panel",
+          "label": "the launch video"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The panels in another order in the HTML",
+      "files": {
+        "dashboard.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station at a glance: the last launch, and what the crew checks every day.\" />\n    <title>Mission Dashboard</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Mission Dashboard</h1>\n    <p>The station at a glance, for the crew and for everyone back on Earth.</p>\n\n    <section class=\"stats\" aria-label=\"The station in numbers\">\n      <article class=\"stat\" id=\"crew-count\">\n        <h2>Crew on board</h2>\n        <p class=\"stat-value\">6</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Oxygen</h2>\n        <p class=\"stat-value\">98%</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Water</h2>\n        <p class=\"stat-value\">1,240 litres</p>\n      </article>\n      <article class=\"stat\" id=\"next-launch\">\n        <h2>Next launch</h2>\n        <p class=\"stat-value\">Friday</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Power</h2>\n        <p class=\"stat-value\">87%</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Days in orbit</h2>\n        <p class=\"stat-value\">412</p>\n      </article>\n    </section>\n\n    <div class=\"panels\">\n      <section id=\"countdown-panel\">\n        <h2>The countdown</h2>\n        <audio id=\"countdown\" src=\"audio/countdown.mp3\" controls></audio>\n      </section>\n      <section id=\"launch-panel\">\n        <h2>The last launch</h2>\n        <figure>\n          <video id=\"launch-video\" src=\"video/launch.webm\" controls>\n            <track src=\"video/launch.vtt\" kind=\"captions\" srclang=\"en\" label=\"English\" default />\n          </video>\n          <figcaption>Flight SL-101 leaves the pad for Moon Base, filmed from the launch tower.</figcaption>\n        </figure>\n      </section>\n      <section id=\"pad-panel\">\n        <h2>The launch pad, live</h2>\n        <figure>\n          <video id=\"pad-camera\" src=\"video/launch.webm\" autoplay muted loop controls></video>\n          <figcaption>Pad 2, live. The camera films the launch tower all day.</figcaption>\n        </figure>\n      </section>\n    </div>\n\n    <h2>The station from outside</h2>\n    <figure>\n      <img src=\"img/station.svg\" alt=\"A gold station hub inside a blue ring, with a solar panel on each side\" width=\"240\" height=\"150\" />\n      <figcaption>Orbital Station 7, seen from a supply ship.</figcaption>\n    </figure>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#pad-panel",
+          "in": ".panels",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the pad camera's panel (#pad-panel)"
+        },
+        {
+          "against": "#launch-panel",
+          "in": ".panels",
+          "side": "top right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the last launch's panel (#launch-panel)"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "bottom left",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel (#countdown-panel)"
+        },
+        {
+          "against": "#countdown-panel",
+          "in": ".panels",
+          "side": "bottom right",
+          "within": 1,
+          "inLabel": "the box of panels (.panels)",
+          "label": "the countdown's panel (#countdown-panel)"
+        }
+      ]
+    },
+    {
+      "name": "The videos and the countdown still work",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "scroll": 600
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "loaded": "#launch-video, #launch-video track, #countdown",
+          "label": "the launch video, its words and the countdown"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        }
+      ]
+    }
+  ]
+}
