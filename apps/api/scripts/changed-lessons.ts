@@ -42,10 +42,12 @@ const BUILT_IMAGES: Partial<Record<Runtime, string>> = {
   web: 'apps/api/src/runtimes/web-sandbox',
 };
 
-// For a whole language, sized on the measured judge cost (~70 ms per case for
-// Python, ~120 ms for C, ~800 ms for Java, plus each lesson's variants) to
-// keep a shard near 20 minutes.
-const WHOLE_SHARDS: Record<Runtime, number> = { python: 2, c: 1, java: 4, web: 1 };
+// Seconds check-tests takes per lesson on a CI runner, from the slowest shard
+// of a full run (web from 291 lessons in EN and RO, which cost about the same
+// as EN alone, since the variants are EN only). A plan is split into as many
+// shards as keep each under SHARD_SECONDS: ~10 minutes, plus a minute of setup.
+export const SECONDS_PER_LESSON: Record<Runtime, number> = { python: 8, c: 6, java: 40, web: 11 };
+export const SHARD_SECONDS = 600;
 
 export const RUNTIME_FILES: Record<Runtime, string[]> = {
   python: [
@@ -176,7 +178,8 @@ export function planChecks(changed: string[], all = false): Shard[] {
     if (targets.size === 0) continue;
 
     const args = [...targets].sort().map(([lesson, lang]) => (lang ? `${lesson}:${lang}` : lesson));
-    const count = Math.min(whole ? WHOLE_SHARDS[runtime] : 1, args.length);
+    const perShard = Math.max(1, Math.floor(SHARD_SECONDS / SECONDS_PER_LESSON[runtime]));
+    const count = Math.ceil(args.length / perShard);
     const image = getRuntime(runtime)!.image;
     const build = BUILT_IMAGES[runtime];
     for (let i = 0; i < count; i++) {
