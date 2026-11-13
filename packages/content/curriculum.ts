@@ -2309,6 +2309,21 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'style-property', title: 'Styles from JavaScript', sortOrder: 239 },
   { courseKey: 'web-dev', slug: 'bubbling', title: 'Bubbling', sortOrder: 240 },
   { courseKey: 'web-dev', slug: 'event-delegation', title: 'Event Delegation', sortOrder: 241 },
+  {
+    courseKey: 'web-dev',
+    slug: 'shared-script',
+    title: 'A Script for Every Page',
+    sortOrder: 242,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'aria-expanded', title: 'Open or Closed', sortOrder: 243 },
+  { courseKey: 'web-dev', slug: 'wiki-js-recap', title: 'JavaScript Recap', sortOrder: 244 },
+  {
+    courseKey: 'web-dev',
+    slug: 'spaceport-launch-project',
+    title: 'Project: Spaceport Launch',
+    sortOrder: 245,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2587,6 +2602,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'style-property',
         'bubbling',
         'event-delegation',
+        'shared-script',
+        'aria-expanded',
+        'wiki-js-recap',
+        'spaceport-launch-project',
       ],
     },
   ],
@@ -2602,6 +2621,7 @@ export const freshStartLessons: Record<string, string[]> = {
     'cargo-ledger-project',
     'launch-board-project',
     'cargo-request-project',
+    'spaceport-launch-project',
   ],
 };
 
