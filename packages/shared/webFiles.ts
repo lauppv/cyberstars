@@ -45,7 +45,7 @@ export const CODE_MAX_LENGTH = 50_000;
 
 // A site's limits: a site holds several pages, so its saved text has more
 // room than another lesson's code (CYB-113)
-export const WEB_MAX_FILES = 30;
+export const WEB_MAX_FILES = 40;
 export const WEB_MAX_LENGTH = 150_000;
 
 // The most code a lesson of this course may carry
