@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "name": "A LIVE label in the pad camera's panel",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "text": "#pad-panel .live",
+          "equals": "LIVE",
+          "label": "the label .live in the pad camera's panel"
+        },
+        {
+          "order": ["#pad-panel h2", "#pad-panel .live", "#pad-camera"],
+          "label": "the panel's heading, the LIVE label, then the pad camera"
+        },
+        {
+          "contrast": "#pad-panel .live",
+          "atLeast": 4.5,
+          "label": "the LIVE label's text"
+        }
+      ]
+    },
+    {
+      "name": "It fades in when the page opens",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "animated": "#pad-panel .live",
+          "label": "the LIVE label, when the page opens"
+        },
+        {
+          "style": "#pad-panel .live",
+          "prop": "animation-duration",
+          "equals": "1s",
+          "label": "the LIVE label's animation"
+        }
+      ]
+    },
+    {
+      "name": "Then it stays",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "wait": 1500
+        },
+        {
+          "animated": "#pad-panel .live",
+          "off": true,
+          "label": "the LIVE label, after a second and a half"
+        },
+        {
+          "style": "#pad-panel .live",
+          "prop": "opacity",
+          "equals": "1",
+          "label": "the LIVE label, after its animation"
+        },
+        {
+          "visible": "#pad-panel .live",
+          "label": "the LIVE label"
+        }
+      ]
+    }
+  ]
+}

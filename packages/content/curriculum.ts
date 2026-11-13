@@ -2452,6 +2452,14 @@ export const lessons = [
   },
   { courseKey: 'web-dev', slug: 'translate', title: 'Move It: translate', sortOrder: 299 },
   { courseKey: 'web-dev', slug: 'rotate-and-scale', title: 'Turn It, Grow It', sortOrder: 300 },
+  { courseKey: 'web-dev', slug: 'keyframes', title: 'Keyframe Animations', sortOrder: 301 },
+  {
+    courseKey: 'web-dev',
+    slug: 'animation-repeat',
+    title: 'An Animation That Goes On',
+    sortOrder: 302,
+  },
+  { courseKey: 'web-dev', slug: 'dark-mode', title: 'Dark Mode', sortOrder: 303 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2801,6 +2809,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'transition-timing',
         'translate',
         'rotate-and-scale',
+        'keyframes',
+        'animation-repeat',
+        'dark-mode',
       ],
     },
   ],
