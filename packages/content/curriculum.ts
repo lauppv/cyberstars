@@ -2385,6 +2385,20 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'array-slice', title: 'A Part of an Array', sortOrder: 271 },
   { courseKey: 'web-dev', slug: 'join', title: 'An Array as One Text', sortOrder: 272 },
   { courseKey: 'web-dev', slug: 'split', title: 'A Text as an Array', sortOrder: 273 },
+  { courseKey: 'web-dev', slug: 'map', title: 'Change Every Item: map', sortOrder: 274 },
+  {
+    courseKey: 'web-dev',
+    slug: 'filter-then-map',
+    title: 'One Method After Another',
+    sortOrder: 275,
+  },
+  { courseKey: 'web-dev', slug: 'reduce', title: 'Many Into One: reduce', sortOrder: 276 },
+  {
+    courseKey: 'web-dev',
+    slug: 'some-and-every',
+    title: 'Is There One? Are They All?',
+    sortOrder: 277,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2701,6 +2715,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'array-slice',
         'join',
         'split',
+        'map',
+        'filter-then-map',
+        'reduce',
+        'some-and-every',
       ],
     },
   ],
