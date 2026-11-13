@@ -2339,6 +2339,11 @@ export const lessons = [
     title: 'A Picture and Its Caption',
     sortOrder: 250,
   },
+  { courseKey: 'web-dev', slug: 'dashboard-html-recap', title: 'HTML Recap', sortOrder: 251 },
+  { courseKey: 'web-dev', slug: 'display-grid', title: 'Grid: Rows and Columns', sortOrder: 252 },
+  { courseKey: 'web-dev', slug: 'fr-unit', title: 'Sharing the Room: fr', sortOrder: 253 },
+  { courseKey: 'web-dev', slug: 'grid-rows', title: 'Rows', sortOrder: 254 },
+  { courseKey: 'web-dev', slug: 'grid-span', title: 'Over Two Columns', sortOrder: 255 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2632,6 +2637,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'audio-element',
         'captions',
         'figure-and-figcaption',
+        'dashboard-html-recap',
+        'display-grid',
+        'fr-unit',
+        'grid-rows',
+        'grid-span',
       ],
     },
   ],
