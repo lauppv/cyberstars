@@ -2489,6 +2489,12 @@ export const lessons = [
     title: 'The Text Back to Data: JSON.parse',
     sortOrder: 312,
   },
+  {
+    courseKey: 'web-dev',
+    slug: 'local-storage',
+    title: 'Kept After a Reload: localStorage',
+    sortOrder: 313,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2850,6 +2856,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'nullish-default',
         'json-stringify',
         'json-parse',
+        'local-storage',
       ],
     },
   ],
