@@ -2523,6 +2523,7 @@ export const lessons = [
     sortOrder: 320,
     hasCodeFile: true,
   },
+  { courseKey: 'web-dev', slug: 'settings-js-recap', title: 'JavaScript Recap', sortOrder: 321 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2892,6 +2893,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'focus-method',
         'aria-live',
         'theme-on-every-page',
+        'settings-js-recap',
       ],
     },
   ],

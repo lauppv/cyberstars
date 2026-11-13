@@ -1,0 +1,208 @@
+{
+  "cases": [
+    {
+      "name": "Less motion is chosen with its button",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#motion-less",
+          "label": "the Less button"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: less",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "attr": "#motion-less",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Less button (#motion-less)"
+        },
+        {
+          "attr": "#motion-full",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the Full button (#motion-full)"
+        },
+        {
+          "exists": "html.less-motion",
+          "label": "the class less-motion on <html>"
+        },
+        {
+          "text": "#settings-text",
+          "equals": "As text: {\"theme\":\"system\",\"motion\":\"less\"}",
+          "label": "the paragraph #settings-text"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Saved, and calm on every page",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#motion-less",
+          "label": "the Less button"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "html.less-motion",
+          "label": "the class less-motion on <html> of the dashboard"
+        },
+        {
+          "animated": "#pad-panel .live",
+          "off": true,
+          "label": "the LIVE label"
+        },
+        {
+          "style": ".stats > .stat",
+          "prop": "transition-duration",
+          "equals": "0s",
+          "every": true,
+          "label": "every card's transition"
+        },
+        {
+          "hover": "#crew-count",
+          "label": "the crew's card"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "transform",
+          "equals": "none",
+          "label": "the crew's card, under the mouse"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: less",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "attr": "#motion-less",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Less button (#motion-less)"
+        }
+      ]
+    },
+    {
+      "name": "Full brings the movement back",
+      "visible": true,
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"dark\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "exists": "html.less-motion",
+          "label": "the class less-motion on <html>"
+        },
+        {
+          "click": "#motion-full",
+          "label": "the Full button"
+        },
+        {
+          "count": "html.less-motion",
+          "equals": 0,
+          "label": "the class less-motion on <html>"
+        },
+        {
+          "attr": "#motion-full",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Full button (#motion-full)"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "animated": "#pad-panel .live",
+          "label": "the LIVE label"
+        }
+      ]
+    },
+    {
+      "name": "The theme stays when the motion changes",
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"light\",\"motion\":\"full\"}"
+      },
+      "steps": [
+        {
+          "click": "#motion-less",
+          "label": "the Less button"
+        },
+        {
+          "open": "index.html"
+        },
+        {
+          "exists": "html.light.less-motion",
+          "label": "the classes light and less-motion on <html>"
+        }
+      ]
+    },
+    {
+      "name": "Forgetting the settings brings full motion back",
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"dark\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "attr": "#motion-full",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Full button (#motion-full)"
+        },
+        {
+          "count": "html.less-motion",
+          "equals": 0,
+          "label": "the class less-motion on <html>"
+        }
+      ]
+    },
+    {
+      "name": "Brought settings with less motion",
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"dark\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "attr": "#motion-less",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Less button (#motion-less)"
+        },
+        {
+          "exists": "html.less-motion",
+          "label": "the class less-motion on <html>"
+        }
+      ]
+    }
+  ]
+}
