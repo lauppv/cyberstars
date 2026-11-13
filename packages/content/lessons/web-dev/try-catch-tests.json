@@ -1,0 +1,101 @@
+{
+  "cases": [
+    {
+      "name": "No connection: the line says so, and nothing is thrown",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {},
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "No connection to the tracker."
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 0,
+          "label": "starship cards"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "An answer that is an error is still said on the line",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "{\"error\": \"Down for repairs\"}",
+          "status": 500
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "The tracker didn't answer: 500"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Good answers still give the cards",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "5 starships near the station"
+        },
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards"
+        },
+        {
+          "attr": "#ships",
+          "name": "aria-busy",
+          "equals": "false",
+          "label": "the list #ships"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "No crew connection",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "No connection to the tracker."
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

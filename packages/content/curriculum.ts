@@ -2572,6 +2572,17 @@ export const lessons = [
     sortOrder: 341,
   },
   { courseKey: 'web-dev', slug: 'promise-all', title: 'Two Answers at Once', sortOrder: 342 },
+  { courseKey: 'web-dev', slug: 'loading-state', title: 'Busy, Then Ready', sortOrder: 343 },
+  {
+    courseKey: 'web-dev',
+    slug: 'response-ok',
+    title: 'When the Answer Is an Error',
+    sortOrder: 344,
+  },
+  { courseKey: 'web-dev', slug: 'try-catch', title: 'try and catch', sortOrder: 345 },
+  { courseKey: 'web-dev', slug: 'throw-error', title: 'Throwing an Error', sortOrder: 346 },
+  { courseKey: 'web-dev', slug: 'finally', title: 'Whatever Happens: finally', sortOrder: 347 },
+  { courseKey: 'web-dev', slug: 'try-again-button', title: 'Try Again', sortOrder: 348 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2969,6 +2980,12 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'response-json',
         'clone-template',
         'promise-all',
+        'loading-state',
+        'response-ok',
+        'try-catch',
+        'throw-error',
+        'finally',
+        'try-again-button',
       ],
     },
   ],
