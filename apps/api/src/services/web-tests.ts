@@ -13,6 +13,7 @@ import {
   type WebCheck,
   type WebFailure,
   type WebObservation,
+  type WebRequest,
   type WebStep,
   type WebTestCase,
   type WebTestsSpec,
@@ -177,6 +178,82 @@ function sentFailure(want: Record<string, string>, forms: [string, string][][]):
   return null;
 }
 
+// An address as the browser writes it, so `https://a.test` and `https://a.test/` match
+function address(url: string): string {
+  try {
+    return new URL(url).href;
+  } catch {
+    return url;
+  }
+}
+
+// Two values read from JSON hold the same, whatever the order of an object's keys
+function sameJson(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (typeof a !== 'object' || typeof b !== 'object' || a === null || b === null) return false;
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+  const ka = Object.keys(a);
+  const kb = Object.keys(b);
+  return (
+    ka.length === kb.length &&
+    ka.every((k) => sameJson((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k]))
+  );
+}
+
+const requestLine = (r: WebRequest) => `${r.method} ${r.url}`;
+
+// The page asked for the address (with the method the check names), and the
+// last such request sent the fields asked as JSON; or, with `none`, never asked
+function requestedFailure(
+  step: Extract<WebCheck, { requested: string }>,
+  requests: WebRequest[],
+): WebFailure | null {
+  const url = address(step.requested);
+  const method = step.method?.toUpperCase();
+  const where = method ? `${method} ${url}` : url;
+  const atUrl = requests.filter((r) => address(r.url) === url);
+  const matching = method ? atUrl.filter((r) => r.method.toUpperCase() === method) : atUrl;
+  if (step.none) {
+    return matching.length ? { kind: 'requested', detail: 'none', other: where } : null;
+  }
+  const last = matching.at(-1);
+  if (!last) {
+    if (method && atUrl.length) {
+      return {
+        kind: 'requested',
+        detail: 'method',
+        other: url,
+        expected: method,
+        found: atUrl.at(-1)!.method,
+      };
+    }
+    const before = requests.at(-1);
+    return { kind: 'requested', other: where, found: before ? requestLine(before) : null };
+  }
+  if (!step.json) return null;
+  let body: unknown;
+  try {
+    body = last.body === null ? undefined : JSON.parse(last.body);
+  } catch {
+    body = undefined;
+  }
+  if (typeof body !== 'object' || body === null || Array.isArray(body)) {
+    return { kind: 'requested', detail: 'notJson', other: where, found: last.body };
+  }
+  for (const [name, value] of Object.entries(step.json)) {
+    const had = (body as Record<string, unknown>)[name];
+    if (sameJson(had, value)) continue;
+    return {
+      kind: 'requested',
+      detail: 'field',
+      other: where,
+      expected: `${name}: ${JSON.stringify(value)}`,
+      found: had === undefined ? null : `${name}: ${JSON.stringify(had)}`,
+    };
+  }
+  return null;
+}
+
 function valueFailure(
   step: Extract<WebCheck, { value: string }>,
   value: string,
@@ -316,6 +393,7 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     const last = (seen.forms ?? []).at(-1);
     return last ? { kind: 'sent', detail: 'sent', found: formLine(last) } : null;
   }
+  if ('requested' in step) return requestedFailure(step, seen.requests ?? []);
 
   const label = step.label;
   const count = seen.count ?? 0;

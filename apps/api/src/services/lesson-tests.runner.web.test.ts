@@ -215,6 +215,68 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(unanswered.web).toMatchObject({ kind: 'text', found: 'offline' });
   });
 
+  it('answers by method, holds an answer until a wait, and notes what the page sent', () => {
+    const API = 'https://api.station.test/ships';
+    const page = `<p id="status">Loading</p><p id="sent"></p><button id="send">Send</button><script>
+      fetch('${API}').then((r) => r.json())
+        .then((d) => { document.getElementById('status').textContent = d.length + ' ships'; });
+      document.getElementById('send').addEventListener('click', () => {
+        fetch('${API}', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Comet', crew: 3 }),
+        }).then((r) => r.json())
+          .then((d) => { document.getElementById('sent').textContent = 'id ' + d.id; });
+      });
+    </script>`;
+    const fetchAnswers = {
+      [API]: { body: '[1, 2]', delay: 800 },
+      [`POST ${API}`]: { status: 201, body: '{"id": 6}' },
+    };
+    const [loading, sent, wrong] = verdicts({ 'index.html': page }, [
+      {
+        name: 'Loading, then loaded',
+        visible: true,
+        fetch: fetchAnswers,
+        steps: [
+          { text: '#status', equals: 'Loading', label: 'the status' },
+          { requested: API, method: 'GET' },
+          { requested: API, method: 'POST', none: true },
+          { wait: 1200 },
+          { text: '#status', equals: '2 ships', label: 'the status' },
+        ],
+      },
+      {
+        name: 'A report sent as JSON',
+        visible: true,
+        fetch: fetchAnswers,
+        steps: [
+          { click: '#send', label: 'the button' },
+          { text: '#sent', equals: 'id 6', label: 'the answer' },
+          { requested: API, method: 'POST', json: { name: 'Comet', crew: 3 } },
+        ],
+      },
+      {
+        name: 'Not what was sent',
+        visible: true,
+        fetch: fetchAnswers,
+        steps: [
+          { click: '#send', label: 'the button' },
+          { requested: API, method: 'POST', json: { name: 'Aurora' } },
+        ],
+      },
+    ]);
+    expect(loading.passed).toBe(true);
+    expect(sent.passed).toBe(true);
+    expect(wrong.web).toEqual({
+      kind: 'requested',
+      detail: 'field',
+      other: `POST ${API}`,
+      expected: 'name: "Aurora"',
+      found: 'name: "Comet"',
+    });
+  });
+
   it("answers an address the site doesn't have with a 404, a malformed one too", () => {
     const page = `<p id="out"></p><script>
       Promise.all(['missing.json', '%E0'].map((p) => fetch(p).then((r) => r.status)))

@@ -23,7 +23,11 @@ export interface WebTestCase {
    * hidden case, so a page that writes the answer in by hand fails it.
    */
   files?: Record<string, string>;
-  /** Fixed answers to `fetch` of an address outside the site, by the whole address. */
+  /**
+   * Fixed answers to `fetch` of an address outside the site, by the whole
+   * address, or by a method and the address (`POST https://…`) for that
+   * method only, which wins over the address alone.
+   */
   fetch?: Record<string, WebFetchAnswer>;
   /**
    * The date and time the page sees, as `2031-05-14T09:30:00` (UTC, the
@@ -46,6 +50,13 @@ interface WebFetchAnswer {
   body: string;
   /** application/json by default */
   type?: string;
+  /**
+   * Held this many ms (at most WEB_MAX_FETCH_DELAY_MS) before it comes, so a
+   * check can see what the page shows while it waits; a `wait` lets it come.
+   * The steps don't wait for it as they do for other answers. Not with a
+   * `clock`, whose waits move only the page's time.
+   */
+  delay?: number;
 }
 
 // What a check or an action looks at is named by a CSS selector; `label`
@@ -246,7 +257,19 @@ export type WebCheck =
   /** Nothing thrown and nothing logged with console.error so far. */
   | { noErrors: true }
   /** The page shown now is this one (after a link, a form or `open`). */
-  | { at: string };
+  | { at: string }
+  /**
+   * The page's scripts asked for this whole address (fetch or
+   * XMLHttpRequest), with `method` when it says one, and with `json` the last
+   * such request's body read as JSON had these fields with these values,
+   * others aside. With `none`, it never asked for it (with that method).
+   */
+  | {
+      requested: string;
+      method?: string;
+      json?: Record<string, unknown>;
+      none?: true;
+    };
 
 export type WebStep = WebAction | WebCheck;
 
@@ -292,6 +315,7 @@ export const WEB_HEIGHT = 800;
 export const WEB_MIN_WIDTH = 320;
 export const WEB_MAX_WIDTH = 1920;
 export const WEB_MAX_WAIT_MS = 3000;
+export const WEB_MAX_FETCH_DELAY_MS = 2000;
 
 // ── What the runner reports for a step ──────────────────────────────────────
 
@@ -300,6 +324,13 @@ export interface WebBox {
   y: number;
   width: number;
   height: number;
+}
+
+/** A request the page's scripts made: its method, its whole address and its body, if any. */
+export interface WebRequest {
+  method: string;
+  url: string;
+  body: string | null;
 }
 
 /**
@@ -340,6 +371,8 @@ export interface WebObservation {
   /** A doctype check's: whether the browser shows the page as a modern one (`document.compatMode`). */
   standards?: boolean;
   logs?: string[];
+  /** A requested check's: each request the page's scripts made so far, in order. */
+  requests?: WebRequest[];
   /** An alerted check's: the message boxes shown so far. */
   dialogs?: string[];
   errors?: string[];
@@ -378,6 +411,7 @@ type WebFailureKind =
   | 'focused'
   | 'shows'
   | 'sent'
+  | 'requested'
   | 'inView'
   | 'onTop'
   | 'against'
@@ -770,6 +804,33 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca formularul să trimită ${f.other}=${q(expected)}, dar ${found === null ? `nu trimite niciun câmp ${f.other}` : `trimite ${f.other}=${q(found)}`}.`
         : `Expected the form to send ${f.other}=${q(expected)}, found ${found === null ? `no field named ${f.other}` : `${f.other}=${q(found)}`}.`;
+    case 'requested': {
+      // `other` is the address (with its method when the check names one)
+      const where = f.other ?? '';
+      if (f.detail === 'none') {
+        return ro
+          ? `Se aștepta ca pagina să nu ceară ${where}, dar a cerut.`
+          : `Expected the page not to ask for ${where}, found it asked.`;
+      }
+      if (f.detail === 'method') {
+        return ro
+          ? `Se aștepta ca pagina să ceară ${where} cu ${expected}, dar a cerut cu ${found}.`
+          : `Expected the page to ask for ${where} with ${expected}, found it asked with ${found}.`;
+      }
+      if (f.detail === 'notJson') {
+        return ro
+          ? `Se aștepta ca cererea către ${where} să trimită JSON, dar trimite ${found === null ? 'nimic' : q(found)}.`
+          : `Expected the request to ${where} to send JSON, found ${found === null ? 'nothing sent' : q(found)}.`;
+      }
+      if (f.detail === 'field') {
+        return ro
+          ? `Se aștepta ca cererea către ${where} să trimită ${expected}, dar ${found === null ? 'nu trimite câmpul' : `trimite ${found}`}.`
+          : `Expected the request to ${where} to send ${expected}, found ${found === null ? 'no such field' : found}.`;
+      }
+      return ro
+        ? `Se aștepta ca pagina să ceară ${where}, dar ${found === null ? 'nu a cerut nimic' : `ultima ei cerere e ${found}`}.`
+        : `Expected the page to ask for ${where}, found ${found === null ? 'no request' : `its last request was ${found}`}.`;
+    }
     case 'inView':
       if (expected === 'out') {
         return ro

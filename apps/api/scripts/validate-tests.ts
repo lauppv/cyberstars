@@ -40,6 +40,7 @@ import {
 import { isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
 import {
   WEB_ACTION_KEYS,
+  WEB_MAX_FETCH_DELAY_MS,
   WEB_MAX_WAIT_MS,
   WEB_MAX_WIDTH,
   WEB_MIN_WIDTH,
@@ -402,6 +403,7 @@ const WEB_CHECKS = [
   'shows',
   'sent',
   'notSent',
+  'requested',
   'inView',
   'onTop',
   'against',
@@ -449,6 +451,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   shows: ['file', 'label'],
   sent: [],
   notSent: [],
+  requested: ['method', 'json', 'none'],
   inView: ['out', 'label'],
   onTop: ['label'],
   against: ['in', 'side', 'within', 'inLabel', 'label'],
@@ -503,6 +506,45 @@ const CASE_KEYS = new Set([
   'storage',
   'steps',
 ]);
+// A fixed fetch answer is named by a whole address, or a method and one
+const WHOLE_ADDRESS = /^https?:\/\/\S+$/;
+const METHODS = new Set(['GET', 'POST', 'PUT', 'PATCH', 'DELETE']);
+const ANSWER_KEYS = new Set(['status', 'body', 'type', 'delay']);
+
+function auditFetchAnswer(key: string, answer: unknown, clocked: boolean): string | null {
+  const [first, second, ...more] = key.split(' ');
+  const url = second === undefined ? first : second;
+  if (more.length || (second !== undefined && !METHODS.has(first)) || !WHOLE_ADDRESS.test(url)) {
+    return `fetch answer ${key} is not a whole http(s) address, or a method and one`;
+  }
+  const a = answer as Record<string, unknown> | null;
+  if (typeof a !== 'object' || a === null || typeof a.body !== 'string') {
+    return `fetch answer for ${key} needs a body`;
+  }
+  const extra = Object.keys(a).filter((k) => !ANSWER_KEYS.has(k));
+  if (extra.length) return `fetch answer for ${key} has keys it doesn't take: ${extra.join(', ')}`;
+  if (
+    a.status !== undefined &&
+    !(Number.isInteger(a.status) && Number(a.status) >= 100 && Number(a.status) <= 599)
+  ) {
+    return `fetch answer for ${key} has a status that isn't one`;
+  }
+  if (a.delay !== undefined) {
+    if (
+      !(
+        Number.isInteger(a.delay) &&
+        Number(a.delay) > 0 &&
+        Number(a.delay) <= WEB_MAX_FETCH_DELAY_MS
+      )
+    ) {
+      return `fetch answer for ${key} has a delay that isn't a number of ms up to ${WEB_MAX_FETCH_DELAY_MS}`;
+    }
+    if (clocked)
+      return `fetch answer for ${key} is held in a case with a clock, whose waits never let it come`;
+  }
+  return null;
+}
+
 // A clock is a date and a time, to the second, without a zone (the page's UTC)
 const CLOCK = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
 
@@ -545,6 +587,23 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
       return Object.entries(fields).every(([k, v]) => isText(k) && typeof v === 'string')
         ? null
         : "sent's fields are names with text values";
+    }
+    case 'requested': {
+      if (!isText(value) || !WHOLE_ADDRESS.test(value))
+        return 'requested names a whole http(s) address';
+      if (step.method !== undefined && !(isText(step.method) && METHODS.has(step.method))) {
+        return `a requested step's method is one of ${[...METHODS].join(', ')}`;
+      }
+      const json = step.json as Record<string, unknown> | undefined;
+      if (
+        json !== undefined &&
+        (typeof json !== 'object' || json === null || Array.isArray(json))
+      ) {
+        return "a requested step's json names fields, as { name: value }";
+      }
+      if (step.none !== undefined && step.none !== true)
+        return "a requested step's none is true or left out";
+      return step.none && json ? 'a requested step with none checks no json' : null;
     }
     case 'order':
       return Array.isArray(value) && value.length >= 2 && value.every(isText)
@@ -728,10 +787,9 @@ export function auditWebSpec(spec: WebTestsSpec, sitePaths: Set<string>): string
     ) {
       messages.push(`${at}: storage holds names with text values`);
     }
-    for (const [url, answer] of Object.entries(c.fetch ?? {})) {
-      if (!/^https?:\/\//.test(url) || typeof answer?.body !== 'string') {
-        messages.push(`${at}: fetch answer for ${url} needs a whole http(s) address and a body`);
-      }
+    for (const [key, answer] of Object.entries(c.fetch ?? {})) {
+      const problem = auditFetchAnswer(key, answer, c.clock !== undefined);
+      if (problem) messages.push(`${at}: ${problem}`);
     }
     if (!Array.isArray(c.steps) || c.steps.length === 0) {
       messages.push(`${at}: no steps`);

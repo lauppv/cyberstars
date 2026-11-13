@@ -285,6 +285,43 @@ describe('webFailureText', () => {
     expect(
       say({ kind: 'sent', detail: 'field', other: 'seat', expected: 'window', found: 'aisle' }),
     ).toBe('Expected the form to send seat=“window”, found seat=“aisle”.');
+    const API = 'https://cyberstars.app/api/practice/starships';
+    expect(say({ kind: 'requested', other: API, found: null })).toBe(
+      `Expected the page to ask for ${API}, found no request.`,
+    );
+    expect(say({ kind: 'requested', other: `POST ${API}`, found: `GET ${API}/2` })).toBe(
+      `Expected the page to ask for POST ${API}, found its last request was GET ${API}/2.`,
+    );
+    expect(say({ kind: 'requested', detail: 'none', other: API })).toBe(
+      `Expected the page not to ask for ${API}, found it asked.`,
+    );
+    expect(
+      say({ kind: 'requested', detail: 'method', other: API, expected: 'POST', found: 'GET' }),
+    ).toBe(`Expected the page to ask for ${API} with POST, found it asked with GET.`);
+    expect(say({ kind: 'requested', detail: 'notJson', other: API, found: null })).toBe(
+      `Expected the request to ${API} to send JSON, found nothing sent.`,
+    );
+    expect(say({ kind: 'requested', detail: 'notJson', other: API, found: 'name=Comet' })).toBe(
+      `Expected the request to ${API} to send JSON, found “name=Comet”.`,
+    );
+    expect(
+      say({
+        kind: 'requested',
+        detail: 'field',
+        other: API,
+        expected: 'name: "Comet"',
+        found: null,
+      }),
+    ).toBe(`Expected the request to ${API} to send name: "Comet", found no such field.`);
+    expect(
+      say(
+        { kind: 'requested', detail: 'field', other: API, expected: 'crew: 2', found: 'crew: "2"' },
+        'ro',
+      ),
+    ).toBe(`Se aștepta ca cererea către ${API} să trimită crew: 2, dar trimite crew: "2".`);
+    expect(say({ kind: 'requested', other: API, found: null }, 'ro')).toBe(
+      `Se aștepta ca pagina să ceară ${API}, dar nu a cerut nimic.`,
+    );
     expect(say({ kind: 'inView', label: 'the header', expected: 'in', found: '60' })).toBe(
       'Expected the header all on screen, found 60px of it out of the window.',
     );
