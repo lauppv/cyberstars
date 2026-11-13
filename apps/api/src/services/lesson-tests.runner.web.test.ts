@@ -202,7 +202,7 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         .catch(() => { document.getElementById('out').textContent = 'offline'; });
     </script>`;
     const step = { text: '#out', equals: 'Ada', label: 'the answer' } as const;
-    const [answered, unanswered] = verdicts({ 'index.html': page }, [
+    const [answered, unanswered, failing, offline] = verdicts({ 'index.html': page }, [
       {
         name: 'Answered',
         visible: true,
@@ -210,9 +210,23 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         steps: [step],
       },
       { name: 'Unanswered', visible: true, steps: [step] },
+      {
+        name: 'An answer that is an error, handled by the page',
+        visible: true,
+        fetch: { 'https://api.station.test/crew': { status: 500, body: 'not json' } },
+        steps: [{ text: '#out', equals: 'offline', label: 'the answer' }, { noErrors: true }],
+      },
+      {
+        name: 'No answer, handled by the page',
+        visible: true,
+        steps: [{ noErrors: true }],
+      },
     ]);
     expect(answered.passed).toBe(true);
     expect(unanswered.web).toMatchObject({ kind: 'text', found: 'offline' });
+    // The browser's own "Failed to load resource" line isn't the page's error
+    expect(failing.passed).toBe(true);
+    expect(offline.passed).toBe(true);
   });
 
   it('answers by method, holds an answer until a wait, and notes what the page sent', () => {

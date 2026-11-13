@@ -844,6 +844,10 @@ async function runCase(browser, files, testCase, limits) {
     const page = await context.newPage();
     page.on('console', (message) => {
       const text = message.text();
+      // The browser's own line for an answer that is an error, or none at
+      // all: the page's script handles those, and the preview's console
+      // never shows them (CYB-115)
+      if (message.type() === 'error' && text.startsWith('Failed to load resource:')) return;
       if (message.type() === 'error') seen.errors.push(text);
       else seen.logs.push(text);
     });
