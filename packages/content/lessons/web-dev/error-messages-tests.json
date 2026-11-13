@@ -1,0 +1,252 @@
+{
+  "cases": [
+    {
+      "name": "A name of only spaces gets a message next to the box",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#passenger-error",
+          "equals": "",
+          "label": "the message next to the name box at the start (#passenger-error)"
+        },
+        {
+          "order": ["#passenger", "#passenger-error", "label[for=\"email\"]"],
+          "label": "the name box, its message, then the label of the email box"
+        },
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation while the name is wrong (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The message goes away once the name is right",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "",
+          "label": "the message next to the name box once the name is right (#passenger-error)"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A right name gets no message",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Clara Diaz",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "clara@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-103",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "CD2041",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Clara Diaz on SL-103",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "",
+          "label": "the message next to the name box (#passenger-error)"
+        }
+      ]
+    },
+    {
+      "name": "A name fixed, then broken again",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "    ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "oliver@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OG7310",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Oliver Grant",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Oliver Grant on SL-105",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "  ",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box once the name is spaces again (#passenger-error)"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation once the name is spaces again (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

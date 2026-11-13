@@ -1,0 +1,231 @@
+{
+  "cases": [
+    {
+      "name": "The name box is described by its message",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "attr": "#passenger",
+          "name": "aria-describedby",
+          "equals": "passenger-error",
+          "label": "the name box"
+        },
+        {
+          "exists": "form #passenger-error",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "count": "#passenger[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "name boxes marked as wrong"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A name of only spaces marks the box as wrong",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "attr": "#passenger",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the name box, with only spaces in it"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Once the name is right, the box isn't marked as wrong any more",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "attr": "#passenger",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the name box, with only spaces in it"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "count": "#passenger[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "name boxes marked as wrong"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "",
+          "label": "the message next to the name box once the name is right (#passenger-error)"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Another name, fixed, then broken again",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "  ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "kenji@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "KA2077",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "attr": "#passenger",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the name box, with only spaces in it"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Kenji Arano",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "count": "#passenger[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "name boxes marked as wrong"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Kenji Arano on SL-104",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "     ",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "attr": "#passenger",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the name box, with only spaces in it"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

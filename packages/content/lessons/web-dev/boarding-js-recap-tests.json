@@ -1,0 +1,308 @@
+{
+  "cases": [
+    {
+      "name": "A wrong badge number gets its message once the passenger leaves the box",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#badge-error",
+          "equals": "",
+          "label": "the message next to the badge number box at the start (#badge-error)"
+        },
+        {
+          "count": "#badge-number[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "badge number boxes marked as wrong"
+        },
+        {
+          "order": ["#badge-number", "#badge-error", "label[for=\"phone\"]"],
+          "label": "the badge number box, its message, then the label of the phone box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS482",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "Two capital letters and four digits, like OS4821",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A screen reader hears the message, and that the box is wrong",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "attr": "#badge-number",
+          "name": "aria-describedby",
+          "equals": "badge-error",
+          "label": "the badge number box"
+        },
+        {
+          "exists": "form #badge-error",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "os4821",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "attr": "#badge-number",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the badge number box, left with a wrong number"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Once the number is right, the message goes away",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#badge-number",
+          "text": "OS482",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "Two capital letters and four digits, like OS4821",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "",
+          "label": "the message next to the badge number box once the number is right (#badge-error)"
+        },
+        {
+          "count": "#badge-number[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "badge number boxes marked as wrong"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "OS4821",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The rest of the form and the pass still work",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#passenger-error",
+          "equals": "Please write your name",
+          "label": "the message next to the name box (#passenger-error)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@station.example",
+          "label": "the email box"
+        },
+        {
+          "fill": "#notes",
+          "text": "Wheelchair, please",
+          "label": "the notes box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "IM",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "crew",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "yes",
+          "label": "the line Help at the gate on the pass (#pass-help)"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "Mars Relay",
+          "label": "the destination on the pass (#pass-destination)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other numbers, wrong and right",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#badge-number",
+          "text": "XOS4821",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "Two capital letters and four digits, like OS4821",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "attr": "#badge-number",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the badge number box, left with a wrong number"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "KA2077",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "count": "#badge-number[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "badge number boxes marked as wrong"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "KA20771",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "Two capital letters and four digits, like OS4821",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "attr": "#badge-number",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the badge number box, left with a wrong number"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "ZZ0000",
+          "label": "the badge number box"
+        },
+        {
+          "press": "Tab",
+          "on": "#badge-number",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#badge-error",
+          "equals": "",
+          "label": "the message next to the badge number box (#badge-error)"
+        },
+        {
+          "count": "#badge-number[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "badge number boxes marked as wrong"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

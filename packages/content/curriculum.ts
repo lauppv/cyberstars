@@ -2248,6 +2248,15 @@ export const lessons = [
     title: 'The pattern Attribute',
     sortOrder: 201,
   },
+  { courseKey: 'web-dev', slug: 'error-messages', title: 'Error Messages', sortOrder: 202 },
+  { courseKey: 'web-dev', slug: 'custom-validity', title: 'setCustomValidity', sortOrder: 203 },
+  {
+    courseKey: 'web-dev',
+    slug: 'aria-describedby',
+    title: 'An Error You Can Hear',
+    sortOrder: 204,
+  },
+  { courseKey: 'web-dev', slug: 'boarding-js-recap', title: 'JavaScript Recap', sortOrder: 205 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2480,6 +2489,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'regex-test',
         'regex-patterns',
         'pattern-attribute',
+        'error-messages',
+        'custom-validity',
+        'aria-describedby',
+        'boarding-js-recap',
       ],
     },
   ],
