@@ -2604,6 +2604,9 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'spread-arrays', title: 'Spreading an Array', sortOrder: 352 },
   { courseKey: 'web-dev', slug: 'spread-objects', title: 'A Copy with One Change', sortOrder: 353 },
   { courseKey: 'web-dev', slug: 'rest-parameters', title: 'Any Number of Values', sortOrder: 354 },
+  { courseKey: 'web-dev', slug: 'post-request', title: 'Sending Data', sortOrder: 355 },
+  { courseKey: 'web-dev', slug: 'post-from-form', title: 'A Form That Sends', sortOrder: 356 },
+  { courseKey: 'web-dev', slug: 'tracker-js-recap', title: 'JavaScript Recap', sortOrder: 357 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -3013,6 +3016,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'spread-arrays',
         'spread-objects',
         'rest-parameters',
+        'post-request',
+        'post-from-form',
+        'tracker-js-recap',
       ],
     },
   ],

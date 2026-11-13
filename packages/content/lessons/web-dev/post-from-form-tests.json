@@ -1,0 +1,272 @@
+{
+  "cases": [
+    {
+      "name": "A report is sent, and shown as the API answered it",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        },
+        "POST https://cyberstars.app/api/practice/starships": {
+          "status": 201,
+          "body": "{\"id\": 6, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"Reported\", \"crew\": 0}"
+        }
+      },
+      "steps": [
+        {
+          "order": ["#sighting-form", "#report-status", "#reports"],
+          "label": "the form, the paragraph #report-status, then the reports"
+        },
+        {
+          "fill": "#sighting-name",
+          "text": "Comet Runner",
+          "label": "the name box"
+        },
+        {
+          "select": "#sighting-class",
+          "option": "Explorer",
+          "label": "the class list"
+        },
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "requested": "https://cyberstars.app/api/practice/starships",
+          "method": "POST",
+          "json": {
+            "name": "Comet Runner",
+            "class": "Explorer"
+          }
+        },
+        {
+          "notSent": true
+        },
+        {
+          "count": "#reports > li.report",
+          "equals": 1,
+          "label": "reports in the list #reports"
+        },
+        {
+          "text": "#reports > li.report .report-name",
+          "equals": "Comet Runner",
+          "label": "the report's name"
+        },
+        {
+          "text": "#reports > li.report .report-class",
+          "equals": "Explorer",
+          "label": "the report's class"
+        },
+        {
+          "value": "#sighting-name",
+          "empty": true,
+          "label": "the name box, after the report"
+        },
+        {
+          "at": "tracker.html"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The report shows the name the API gave back",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        },
+        "POST https://cyberstars.app/api/practice/starships": {
+          "status": 201,
+          "body": "{\"id\": 6, \"name\": \"BLUE KITE\", \"class\": \"Shuttle\", \"status\": \"Reported\", \"crew\": 0}"
+        }
+      },
+      "steps": [
+        {
+          "fill": "#sighting-name",
+          "text": "blue kite",
+          "label": "the name box"
+        },
+        {
+          "select": "#sighting-class",
+          "option": "Shuttle",
+          "label": "the class list"
+        },
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "requested": "https://cyberstars.app/api/practice/starships",
+          "method": "POST",
+          "json": {
+            "name": "blue kite",
+            "class": "Shuttle"
+          }
+        },
+        {
+          "notSent": true
+        },
+        {
+          "count": "#reports > li.report",
+          "equals": 1,
+          "label": "reports in the list #reports"
+        },
+        {
+          "text": "#reports > li.report .report-name",
+          "equals": "BLUE KITE",
+          "label": "the report's name"
+        },
+        {
+          "text": "#reports > li.report .report-class",
+          "equals": "Shuttle",
+          "label": "the report's class"
+        },
+        {
+          "value": "#sighting-name",
+          "empty": true,
+          "label": "the name box, after the report"
+        },
+        {
+          "at": "tracker.html"
+        }
+      ]
+    },
+    {
+      "name": "Two reports, one after the other",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        },
+        "POST https://cyberstars.app/api/practice/starships": {
+          "status": 201,
+          "body": "{\"id\": 6, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Reported\", \"crew\": 0}"
+        }
+      },
+      "steps": [
+        {
+          "fill": "#sighting-name",
+          "text": "Aurora",
+          "label": "the name box"
+        },
+        {
+          "select": "#sighting-class",
+          "option": "Cargo",
+          "label": "the class list"
+        },
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "requested": "https://cyberstars.app/api/practice/starships",
+          "method": "POST",
+          "json": {
+            "name": "Aurora",
+            "class": "Cargo"
+          }
+        },
+        {
+          "notSent": true
+        },
+        {
+          "count": "#reports > li.report",
+          "equals": 1,
+          "label": "reports in the list #reports"
+        },
+        {
+          "text": "#reports > li.report .report-name",
+          "equals": "Aurora",
+          "label": "the report's name"
+        },
+        {
+          "text": "#reports > li.report .report-class",
+          "equals": "Cargo",
+          "label": "the report's class"
+        },
+        {
+          "value": "#sighting-name",
+          "empty": true,
+          "label": "the name box, after the report"
+        },
+        {
+          "at": "tracker.html"
+        },
+        {
+          "fill": "#sighting-name",
+          "text": "Aurora",
+          "label": "the name box"
+        },
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "count": "#reports > li.report",
+          "equals": 2,
+          "label": "reports in the list #reports"
+        }
+      ]
+    },
+    {
+      "name": "A report that fails says why, and adds nothing",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        },
+        "POST https://cyberstars.app/api/practice/starships": {
+          "status": 400,
+          "body": "{\"error\": \"No\"}"
+        }
+      },
+      "steps": [
+        {
+          "fill": "#sighting-name",
+          "text": "Comet",
+          "label": "the name box"
+        },
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "text": "#report-status",
+          "equals": "Couldn't report the starship: The tracker answered 400",
+          "label": "the paragraph #report-status"
+        },
+        {
+          "attr": "#report-status",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #report-status"
+        },
+        {
+          "count": "#reports > li.report",
+          "equals": 0,
+          "label": "reports in the list #reports"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}
