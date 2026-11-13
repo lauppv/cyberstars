@@ -1,0 +1,116 @@
+{
+  "cases": [
+    {
+      "name": "A click presses the theme it chooses, and only that one",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: system",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "attr": "#theme-dark",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Dark button (#theme-dark)"
+        },
+        {
+          "attr": "#theme-system",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the System button (#theme-system)"
+        },
+        {
+          "attr": "#theme-light",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the Light button (#theme-light)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The pressed look follows",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "differs": "#theme-light",
+          "from": "#theme-dark, #theme-system",
+          "props": ["background-color", "color", "border-top-color", "font-weight"],
+          "fromLabel": "the buttons that aren't pressed",
+          "label": "the pressed Light button"
+        },
+        {
+          "style": "#theme-light",
+          "prop": "transform",
+          "equals": "matrix(1.1, 0, 0, 1.1, 0, 0)",
+          "label": "the pressed Light button"
+        }
+      ]
+    },
+    {
+      "name": "Back and forth",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: system",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "attr": "#theme-system",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the System button (#theme-system)"
+        },
+        {
+          "attr": "#theme-light",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the Light button (#theme-light)"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "attr": "#theme-dark",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Dark button (#theme-dark)"
+        }
+      ]
+    }
+  ]
+}

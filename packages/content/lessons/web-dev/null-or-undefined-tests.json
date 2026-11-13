@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "name": "The theme in words",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The page starts with the button pressed in the HTML",
+      "visible": true,
+      "page": "settings.html",
+      "files": {
+        "settings.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Pick how the station's website looks for you: light or dark, with more or less movement.\" />\n    <title>Settings</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n    <script src=\"settings.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Settings</h1>\n    <p>Make the station's website yours. Your choice is for this browser only.</p>\n\n    <div class=\"settings\">\n      <section class=\"setting\">\n        <h2>Theme</h2>\n        <div id=\"theme-buttons\">\n          <button type=\"button\" id=\"theme-light\" aria-pressed=\"false\"><span aria-hidden=\"true\">☀</span> Light</button>\n          <button type=\"button\" id=\"theme-dark\" aria-pressed=\"true\"><span aria-hidden=\"true\">☾</span> Dark</button>\n          <button type=\"button\" id=\"theme-system\" aria-pressed=\"false\">System</button>\n        </div>\n        <p id=\"current-theme\"></p>\n      </section>\n\n      <section class=\"setting\">\n        <h2>Motion</h2>\n        <p>Less motion stops the animations on every page.</p>\n        <div id=\"motion-buttons\">\n          <button type=\"button\" id=\"motion-full\" aria-pressed=\"true\"><span aria-hidden=\"true\">✦</span> Full</button>\n          <button type=\"button\" id=\"motion-less\" aria-pressed=\"false\"><span aria-hidden=\"true\">◌</span> Less</button>\n        </div>\n      </section>\n    </div>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "attr": "#theme-dark",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Dark button (#theme-dark)"
+        },
+        {
+          "attr": "#theme-system",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the System button (#theme-system)"
+        }
+      ]
+    },
+    {
+      "name": "No button pressed in the HTML: System",
+      "visible": true,
+      "page": "settings.html",
+      "files": {
+        "settings.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Pick how the station's website looks for you: light or dark, with more or less movement.\" />\n    <title>Settings</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n    <script src=\"settings.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Settings</h1>\n    <p>Make the station's website yours. Your choice is for this browser only.</p>\n\n    <div class=\"settings\">\n      <section class=\"setting\">\n        <h2>Theme</h2>\n        <div id=\"theme-buttons\">\n          <button type=\"button\" id=\"theme-light\" aria-pressed=\"false\"><span aria-hidden=\"true\">☀</span> Light</button>\n          <button type=\"button\" id=\"theme-dark\" aria-pressed=\"false\"><span aria-hidden=\"true\">☾</span> Dark</button>\n          <button type=\"button\" id=\"theme-system\" aria-pressed=\"false\">System</button>\n        </div>\n        <p id=\"current-theme\"></p>\n      </section>\n\n      <section class=\"setting\">\n        <h2>Motion</h2>\n        <p>Less motion stops the animations on every page.</p>\n        <div id=\"motion-buttons\">\n          <button type=\"button\" id=\"motion-full\" aria-pressed=\"true\"><span aria-hidden=\"true\">✦</span> Full</button>\n          <button type=\"button\" id=\"motion-less\" aria-pressed=\"false\"><span aria-hidden=\"true\">◌</span> Less</button>\n        </div>\n      </section>\n    </div>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "attr": "#theme-system",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the System button (#theme-system)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Light pressed in the HTML",
+      "page": "settings.html",
+      "files": {
+        "settings.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Pick how the station's website looks for you: light or dark, with more or less movement.\" />\n    <title>Settings</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n    <script src=\"settings.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Settings</h1>\n    <p>Make the station's website yours. Your choice is for this browser only.</p>\n\n    <div class=\"settings\">\n      <section class=\"setting\">\n        <h2>Theme</h2>\n        <div id=\"theme-buttons\">\n          <button type=\"button\" id=\"theme-light\" aria-pressed=\"true\"><span aria-hidden=\"true\">☀</span> Light</button>\n          <button type=\"button\" id=\"theme-dark\" aria-pressed=\"false\"><span aria-hidden=\"true\">☾</span> Dark</button>\n          <button type=\"button\" id=\"theme-system\" aria-pressed=\"false\">System</button>\n        </div>\n        <p id=\"current-theme\"></p>\n      </section>\n\n      <section class=\"setting\">\n        <h2>Motion</h2>\n        <p>Less motion stops the animations on every page.</p>\n        <div id=\"motion-buttons\">\n          <button type=\"button\" id=\"motion-full\" aria-pressed=\"true\"><span aria-hidden=\"true\">✦</span> Full</button>\n          <button type=\"button\" id=\"motion-less\" aria-pressed=\"false\"><span aria-hidden=\"true\">◌</span> Less</button>\n        </div>\n      </section>\n    </div>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        }
+      ]
+    }
+  ]
+}

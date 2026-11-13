@@ -2468,6 +2468,8 @@ export const lessons = [
     sortOrder: 305,
   },
   { courseKey: 'web-dev', slug: 'settings-css-recap', title: 'CSS Recap', sortOrder: 306 },
+  { courseKey: 'web-dev', slug: 'this-keyword', title: 'this', sortOrder: 307 },
+  { courseKey: 'web-dev', slug: 'null-or-undefined', title: 'null and undefined', sortOrder: 308 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2823,6 +2825,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'reduced-motion',
         'visually-hidden',
         'settings-css-recap',
+        'this-keyword',
+        'null-or-undefined',
       ],
     },
   ],

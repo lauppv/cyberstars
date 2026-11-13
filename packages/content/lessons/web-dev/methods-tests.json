@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "name": "The page says the theme when it opens",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "order": ["#theme-buttons", "#current-theme"],
+          "label": "the theme buttons, then #current-theme"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: system",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A click on a theme button says that theme",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: system",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Again and again",
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: dark",
+          "label": "the paragraph #current-theme"
+        }
+      ]
+    }
+  ]
+}
