@@ -400,11 +400,11 @@ button[type="reset"] {
   font-size: 0.75rem;
   letter-spacing: normal;
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 12px;
+  right: 12px;
 }
 
-.wiki-list h2 {
+article {
   position: relative;
 }
 ```
