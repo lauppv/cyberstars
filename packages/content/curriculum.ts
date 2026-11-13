@@ -2556,6 +2556,22 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'new-promise', title: 'A Promise', sortOrder: 334 },
   { courseKey: 'web-dev', slug: 'promise-then', title: 'When the Value Comes', sortOrder: 335 },
   { courseKey: 'web-dev', slug: 'promise-catch', title: 'A Promise That Fails', sortOrder: 336 },
+  { courseKey: 'web-dev', slug: 'async-await', title: 'async and await', sortOrder: 337 },
+  {
+    courseKey: 'web-dev',
+    slug: 'async-returns-promise',
+    title: 'An async Function Gives a Promise',
+    sortOrder: 338,
+  },
+  { courseKey: 'web-dev', slug: 'fetch-response', title: 'Asking with fetch', sortOrder: 339 },
+  { courseKey: 'web-dev', slug: 'response-json', title: 'Reading JSON', sortOrder: 340 },
+  {
+    courseKey: 'web-dev',
+    slug: 'clone-template',
+    title: 'A Card for Each Starship',
+    sortOrder: 341,
+  },
+  { courseKey: 'web-dev', slug: 'promise-all', title: 'Two Answers at Once', sortOrder: 342 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2947,6 +2963,12 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'new-promise',
         'promise-then',
         'promise-catch',
+        'async-await',
+        'async-returns-promise',
+        'fetch-response',
+        'response-json',
+        'clone-template',
+        'promise-all',
       ],
     },
   ],

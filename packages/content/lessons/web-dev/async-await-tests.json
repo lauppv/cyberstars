@@ -1,0 +1,97 @@
+{
+  "cases": [
+    {
+      "name": "The radar scans three times, half a second each",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 1 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 2 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 3 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Starships found"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "No step comes early",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 450
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 1 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 2 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 3 of 3"
+        },
+        {
+          "wait": 100
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Starships found"
+        }
+      ]
+    },
+    {
+      "name": "The radar is an async function called scanRadar",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconsole.log(\"test: \" + (scanRadar.constructor.name === \"AsyncFunction\" ? \"async\" : \"not async\"));\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: async"
+        }
+      ]
+    }
+  ]
+}
