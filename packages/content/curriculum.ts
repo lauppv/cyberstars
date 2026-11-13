@@ -2279,6 +2279,8 @@ export const lessons = [
     sortOrder: 216,
   },
   { courseKey: 'web-dev', slug: 'wiki-html-recap', title: 'HTML Recap', sortOrder: 217 },
+  { courseKey: 'web-dev', slug: 'display-flex', title: 'Flexbox', sortOrder: 218 },
+  { courseKey: 'web-dev', slug: 'flex-direction', title: 'Flex Direction', sortOrder: 219 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2533,6 +2535,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'special-characters',
         'non-breaking-space',
         'wiki-html-recap',
+        'display-flex',
+        'flex-direction',
       ],
     },
   ],

@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "name": "The name and the menu share one line on the home page",
+      "visible": true,
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        }
+      ]
+    },
+    {
+      "name": "On the wiki pages too",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        }
+      ]
+    },
+    {
+      "name": "The home page's other menu stays in the middle",
+      "visible": true,
+      "steps": [
+        {
+          "centered": ".jumps a",
+          "label": "the links of the home page's \"On this page\" menu"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, nothing sticks out",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On every other page",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        }
+      ]
+    }
+  ]
+}
