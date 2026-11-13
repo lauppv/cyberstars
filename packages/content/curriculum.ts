@@ -2399,6 +2399,20 @@ export const lessons = [
     title: 'Is There One? Are They All?',
     sortOrder: 277,
   },
+  { courseKey: 'web-dev', slug: 'for-in', title: 'Every Key of an Object', sortOrder: 278 },
+  {
+    courseKey: 'web-dev',
+    slug: 'object-keys-and-values',
+    title: 'Keys and Values',
+    sortOrder: 279,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'object-entries',
+    title: 'Each Key With Its Value',
+    sortOrder: 280,
+  },
+  { courseKey: 'web-dev', slug: 'dates', title: 'Dates', sortOrder: 281 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2719,6 +2733,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'filter-then-map',
         'reduce',
         'some-and-every',
+        'for-in',
+        'object-keys-and-values',
+        'object-entries',
+        'dates',
       ],
     },
   ],

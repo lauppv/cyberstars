@@ -1,0 +1,232 @@
+{
+  "cases": [
+    {
+      "name": "On a Wednesday morning",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "order": ["h1", "#greeting", "#crew-count"],
+          "label": "the heading, the greeting, then the cards"
+        },
+        {
+          "text": "#greeting",
+          "equals": "Good morning, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(3).today",
+          "label": "Wednesday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a Wednesday afternoon",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T15:00:00",
+      "steps": [
+        {
+          "text": "#greeting",
+          "equals": "Good afternoon, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(3).today",
+          "label": "Wednesday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a Sunday evening",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-18T21:00:00",
+      "steps": [
+        {
+          "text": "#greeting",
+          "equals": "Good evening, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(7).today",
+          "label": "Sunday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a Monday at noon",
+      "visible": false,
+      "page": "dashboard.html",
+      "clock": "2031-05-12T12:00:00",
+      "steps": [
+        {
+          "text": "#greeting",
+          "equals": "Good afternoon, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(1).today",
+          "label": "Monday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a Friday at 17:59",
+      "visible": false,
+      "page": "dashboard.html",
+      "clock": "2031-05-16T17:59:00",
+      "steps": [
+        {
+          "text": "#greeting",
+          "equals": "Good afternoon, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(5).today",
+          "label": "Friday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a Saturday at 18:00",
+      "visible": false,
+      "page": "dashboard.html",
+      "clock": "2031-05-17T18:00:00",
+      "steps": [
+        {
+          "text": "#greeting",
+          "equals": "Good evening, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(6).today",
+          "label": "Saturday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a Tuesday just after midnight",
+      "visible": false,
+      "page": "dashboard.html",
+      "clock": "2031-05-13T00:05:00",
+      "steps": [
+        {
+          "text": "#greeting",
+          "equals": "Good morning, crew",
+          "label": "the greeting (#greeting)"
+        },
+        {
+          "exists": ".week > li:nth-child(2).today",
+          "label": "Tuesday in the week with the class today"
+        },
+        {
+          "count": ".week .today",
+          "equals": 1,
+          "label": "days with the class today"
+        },
+        {
+          "differs": ".week .today",
+          "from": ".week li:not(.today)",
+          "props": ["background-color", "color"],
+          "fromLabel": "the other days",
+          "label": "today"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}
