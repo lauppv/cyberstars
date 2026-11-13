@@ -2324,6 +2324,21 @@ export const lessons = [
     title: 'Project: Spaceport Launch',
     sortOrder: 245,
   },
+  { courseKey: 'web-dev', slug: 'video-element', title: 'A Video', sortOrder: 246 },
+  {
+    courseKey: 'web-dev',
+    slug: 'video-on-its-own',
+    title: 'A Video That Plays by Itself',
+    sortOrder: 247,
+  },
+  { courseKey: 'web-dev', slug: 'audio-element', title: 'A Sound', sortOrder: 248 },
+  { courseKey: 'web-dev', slug: 'captions', title: 'Captions', sortOrder: 249 },
+  {
+    courseKey: 'web-dev',
+    slug: 'figure-and-figcaption',
+    title: 'A Picture and Its Caption',
+    sortOrder: 250,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2606,6 +2621,17 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'aria-expanded',
         'wiki-js-recap',
         'spaceport-launch-project',
+      ],
+    },
+    {
+      key: 'mission-dashboard',
+      title: 'Mission Dashboard',
+      lessons: [
+        'video-element',
+        'video-on-its-own',
+        'audio-element',
+        'captions',
+        'figure-and-figcaption',
       ],
     },
   ],

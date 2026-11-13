@@ -1,0 +1,66 @@
+{
+  "cases": [
+    {
+      "name": "The launch video and its caption are one figure",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "main figure #launch-video",
+          "label": "a figure (<figure>) round the launch video"
+        },
+        {
+          "text": "figure:has(#launch-video) > figcaption",
+          "nonEmpty": true,
+          "label": "the launch video's caption (<figcaption> in its figure)"
+        },
+        {
+          "visible": "figure:has(#launch-video) > figcaption",
+          "label": "the launch video's caption"
+        }
+      ]
+    },
+    {
+      "name": "The launch video works as before",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "loaded": "#launch-video, #launch-video track",
+          "label": "the launch video and its words"
+        },
+        {
+          "attr": "#launch-video",
+          "name": "controls",
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        }
+      ]
+    },
+    {
+      "name": "The rest of the dashboard is as before",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "attr": "#countdown",
+          "name": "controls",
+          "label": "the countdown (#countdown)"
+        }
+      ]
+    }
+  ]
+}

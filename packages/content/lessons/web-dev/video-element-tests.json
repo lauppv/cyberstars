@@ -1,0 +1,194 @@
+{
+  "cases": [
+    {
+      "name": "The dashboard is a page like the others",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "text": "header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the page's content in <main>, with its heading"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>) at the very end of the page"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        }
+      ]
+    },
+    {
+      "name": "The launch video, with its buttons",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "main video#launch-video",
+          "label": "the launch video (#launch-video) in the main part"
+        },
+        {
+          "attr": "#launch-video",
+          "name": "controls",
+          "label": "the launch video"
+        },
+        {
+          "loaded": "#launch-video",
+          "label": "the launch video"
+        },
+        {
+          "visible": "#launch-video",
+          "label": "the launch video"
+        }
+      ]
+    },
+    {
+      "name": "Every page's menu leads to the dashboard",
+      "visible": true,
+      "steps": [
+        {
+          "open": "index.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of index.html"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of crew.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of people/vega.html"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of schedule.html"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of boarding.html"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of wiki.html"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of wiki-greenhouse.html"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of wiki-airlock.html"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of wiki-tools.html"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "header nav a[href$=\"dashboard.html\"]",
+          "label": "a link to dashboard.html in the menu of dashboard.html"
+        }
+      ]
+    },
+    {
+      "name": "The menu link to the dashboard works, from the commander's page too",
+      "steps": [
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "header nav a[href$=\"dashboard.html\"]",
+          "label": "the menu link to the dashboard"
+        },
+        {
+          "at": "dashboard.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "header nav a[href$=\"dashboard.html\"]",
+          "label": "the menu link to the dashboard"
+        },
+        {
+          "at": "dashboard.html"
+        }
+      ]
+    }
+  ]
+}
