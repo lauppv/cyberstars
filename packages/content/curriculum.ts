@@ -2607,6 +2607,12 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'post-request', title: 'Sending Data', sortOrder: 355 },
   { courseKey: 'web-dev', slug: 'post-from-form', title: 'A Form That Sends', sortOrder: 356 },
   { courseKey: 'web-dev', slug: 'tracker-js-recap', title: 'JavaScript Recap', sortOrder: 357 },
+  {
+    courseKey: 'web-dev',
+    slug: 'space-quiz-project',
+    title: 'Project: Space Quiz',
+    sortOrder: 358,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -3019,6 +3025,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'post-request',
         'post-from-form',
         'tracker-js-recap',
+        'space-quiz-project',
       ],
     },
   ],
@@ -3037,6 +3044,7 @@ export const freshStartLessons: Record<string, string[]> = {
     'spaceport-launch-project',
     'mission-status-project',
     'todo-list-project',
+    'space-quiz-project',
   ],
 };
 
