@@ -2543,6 +2543,9 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'tracker-html-recap', title: 'HTML Recap', sortOrder: 327 },
   { courseKey: 'web-dev', slug: 'spinner', title: 'A Spinner', sortOrder: 328 },
   { courseKey: 'web-dev', slug: 'skeleton', title: 'Skeleton Cards', sortOrder: 329 },
+  { courseKey: 'web-dev', slug: 'shimmer', title: 'A Light That Moves', sortOrder: 330 },
+  { courseKey: 'web-dev', slug: 'while-busy', title: 'Only While It Loads', sortOrder: 331 },
+  { courseKey: 'web-dev', slug: 'tracker-css-recap', title: 'CSS Recap', sortOrder: 332 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2921,7 +2924,16 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
     {
       key: 'starship-tracker',
       title: 'Starship Tracker',
-      lessons: ['template-element', 'aria-busy', 'tracker-html-recap', 'spinner', 'skeleton'],
+      lessons: [
+        'template-element',
+        'aria-busy',
+        'tracker-html-recap',
+        'spinner',
+        'skeleton',
+        'shimmer',
+        'while-busy',
+        'tracker-css-recap',
+      ],
     },
   ],
 };

@@ -1,0 +1,223 @@
+{
+  "cases": [
+    {
+      "name": "A starship card looks like a card",
+      "visible": true,
+      "page": "tracker.html",
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nconst mold = document.querySelector(\"#ship-template\");\nlist.replaceChildren();\nfor (let i = 0; i < 4; i++) {\n  list.append(mold.content.cloneNode(true));\n}\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "style": "#ships > li.ship",
+          "prop": "height",
+          "atLeast": 60,
+          "every": true,
+          "label": "every starship card"
+        },
+        {
+          "style": "#ships > li.ship",
+          "prop": "padding-top",
+          "atLeast": 12,
+          "every": true,
+          "label": "every starship card (room inside it, at the top)"
+        },
+        {
+          "style": "#ships > li.ship",
+          "prop": "padding-left",
+          "atLeast": 12,
+          "every": true,
+          "label": "every starship card (room inside it, on the left)"
+        },
+        {
+          "style": "#ships > li.ship",
+          "prop": "border-top-left-radius",
+          "atLeast": 8,
+          "every": true,
+          "label": "every starship card's corner"
+        },
+        {
+          "differs": "#ships > li.ship",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the starship cards"
+        },
+        {
+          "differs": "#ships > li.ship .ship-status",
+          "from": "#ships > li.ship .ship-name",
+          "props": ["background-color"],
+          "fromLabel": "the starships' names",
+          "label": "the starships' statuses"
+        },
+        {
+          "contrast": "#ships > li.ship .ship-name",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every starship's name"
+        },
+        {
+          "contrast": "#ships > li.ship .ship-class",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every starship's class"
+        },
+        {
+          "contrast": "#ships > li.ship .ship-status",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every starship's status"
+        }
+      ]
+    },
+    {
+      "name": "Two cards side by side on a wide window",
+      "visible": true,
+      "page": "tracker.html",
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nconst mold = document.querySelector(\"#ship-template\");\nlist.replaceChildren();\nfor (let i = 0; i < 4; i++) {\n  list.append(mold.content.cloneNode(true));\n}\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "layout": "#ships > li.ship:nth-child(-n+2)",
+          "arrange": "row",
+          "gap": 8,
+          "align": "start",
+          "label": "the first two starship cards"
+        },
+        {
+          "layout": "#ships > li.ship:nth-child(odd)",
+          "arrange": "column",
+          "gap": 8,
+          "align": "start",
+          "label": "the first and the third starship cards"
+        }
+      ]
+    },
+    {
+      "name": "One under the other on a phone",
+      "visible": true,
+      "page": "tracker.html",
+      "width": 375,
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nconst mold = document.querySelector(\"#ship-template\");\nlist.replaceChildren();\nfor (let i = 0; i < 4; i++) {\n  list.append(mold.content.cloneNode(true));\n}\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "layout": "#ships > li.ship",
+          "arrange": "column",
+          "gap": 8,
+          "label": "the starship cards"
+        },
+        {
+          "fills": "#ships > li.ship",
+          "label": "the first starship card"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The skeletons stand the same way",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "layout": "#ships > li.skeleton:nth-child(-n+2)",
+          "arrange": "row",
+          "gap": 8,
+          "label": "the first two skeleton cards"
+        },
+        {
+          "count": "#ships > li.skeleton",
+          "atLeast": 3,
+          "label": "skeleton cards"
+        }
+      ]
+    },
+    {
+      "name": "In dark mode too",
+      "page": "tracker.html",
+      "colorScheme": "dark",
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nconst mold = document.querySelector(\"#ship-template\");\nlist.replaceChildren();\nfor (let i = 0; i < 4; i++) {\n  list.append(mold.content.cloneNode(true));\n}\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "style": "#ships > li.ship",
+          "prop": "height",
+          "atLeast": 60,
+          "every": true,
+          "label": "every starship card"
+        },
+        {
+          "style": "#ships > li.ship",
+          "prop": "padding-top",
+          "atLeast": 12,
+          "every": true,
+          "label": "every starship card (room inside it, at the top)"
+        },
+        {
+          "style": "#ships > li.ship",
+          "prop": "padding-left",
+          "atLeast": 12,
+          "every": true,
+          "label": "every starship card (room inside it, on the left)"
+        },
+        {
+          "style": "#ships > li.ship",
+          "prop": "border-top-left-radius",
+          "atLeast": 8,
+          "every": true,
+          "label": "every starship card's corner"
+        },
+        {
+          "differs": "#ships > li.ship",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the starship cards"
+        },
+        {
+          "differs": "#ships > li.ship .ship-status",
+          "from": "#ships > li.ship .ship-name",
+          "props": ["background-color"],
+          "fromLabel": "the starships' names",
+          "label": "the starships' statuses"
+        },
+        {
+          "contrast": "#ships > li.ship .ship-name",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every starship's name"
+        },
+        {
+          "contrast": "#ships > li.ship .ship-class",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every starship's class"
+        },
+        {
+          "contrast": "#ships > li.ship .ship-status",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every starship's status"
+        }
+      ]
+    },
+    {
+      "name": "Nothing sticks out on a tablet",
+      "page": "tracker.html",
+      "width": 650,
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nconst mold = document.querySelector(\"#ship-template\");\nlist.replaceChildren();\nfor (let i = 0; i < 4; i++) {\n  list.append(mold.content.cloneNode(true));\n}\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

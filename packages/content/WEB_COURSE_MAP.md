@@ -471,13 +471,13 @@ The crew follows the starships near the station. The page loads them from the pr
 
 ### CSS
 
-| #   | Slug                | Introduces                                                  | From                   |
-| --- | ------------------- | ----------------------------------------------------------- | ---------------------- |
-| 4   | **`spinner`**       | A spinner: a round border with one colored side, turning    | Spinners and Skeletons |
-| 5   | **`skeleton`**      | A skeleton: grey blocks where the text will come            | Spinners and Skeletons |
-| 6   | **`shimmer`**       | A light that moves over the skeleton                        | Spinners and Skeletons |
-| 7   | **`while-busy`**    | `[aria-busy="true"]`: the spinner shows only while it loads | Spinners and Skeletons |
-| 8   | `tracker-css-recap` | No new idea                                                 | Recap                  |
+| #   | Slug                | Introduces                                                      | From                   |
+| --- | ------------------- | --------------------------------------------------------------- | ---------------------- |
+| 4   | **`spinner`**       | A spinner: a round border with one colored side, turning        | Spinners and Skeletons |
+| 5   | **`skeleton`**      | A skeleton: grey blocks where the text will come                | Spinners and Skeletons |
+| 6   | **`shimmer`**       | A light that moves over the skeleton                            | Spinners and Skeletons |
+| 7   | **`while-busy`**    | `[aria-busy="false"]`: the skeletons go once the list is loaded | Spinners and Skeletons |
+| 8   | `tracker-css-recap` | No new idea                                                     | Recap                  |
 
 ### JavaScript
 
