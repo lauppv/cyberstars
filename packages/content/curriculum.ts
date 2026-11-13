@@ -2240,6 +2240,14 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'trim', title: 'trim', sortOrder: 196 },
   { courseKey: 'web-dev', slug: 'string-includes', title: 'Searching a Text', sortOrder: 197 },
   { courseKey: 'web-dev', slug: 'string-slice', title: 'Cutting a Text', sortOrder: 198 },
+  { courseKey: 'web-dev', slug: 'regex-test', title: 'Regular Expressions', sortOrder: 199 },
+  { courseKey: 'web-dev', slug: 'regex-patterns', title: 'Regex Patterns', sortOrder: 200 },
+  {
+    courseKey: 'web-dev',
+    slug: 'pattern-attribute',
+    title: 'The pattern Attribute',
+    sortOrder: 201,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2469,6 +2477,9 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'trim',
         'string-includes',
         'string-slice',
+        'regex-test',
+        'regex-patterns',
+        'pattern-attribute',
       ],
     },
   ],

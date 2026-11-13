@@ -1,0 +1,242 @@
+{
+  "cases": [
+    {
+      "name": "A booking with a right badge number goes through",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "count": "#badge-number:invalid",
+          "equals": 0,
+          "label": "badge number boxes the browser refuses"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The browser refuses a badge number that breaks the rule",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS482",
+          "label": "the badge number box"
+        },
+        {
+          "exists": "#badge-number:invalid",
+          "label": "the badge number box, refused by the browser"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation after a refused booking (#confirmation)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "No badge number, no booking",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "noah@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation without a badge number (#confirmation)"
+        },
+        {
+          "exists": "#badge-number:invalid",
+          "label": "the empty badge number box, refused by the browser"
+        }
+      ]
+    },
+    {
+      "name": "Other badge numbers",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Lena Park",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "lena@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "XOS4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation still empty (#confirmation)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "os4821",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation still empty (#confirmation)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS48215",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation still empty (#confirmation)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "KA2077",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Lena Park on SL-105",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "KA2077",
+          "label": "the badge number on the pass (#pass-badge)"
+        }
+      ]
+    }
+  ]
+}
