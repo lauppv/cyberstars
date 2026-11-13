@@ -1,0 +1,99 @@
+{
+  "cases": [
+    {
+      "name": "On a long wiki page on a phone, nothing covers the header or the link",
+      "visible": true,
+      "page": "wiki.html",
+      "width": 375,
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <a class=\"to-top\" href=\"#top\">Back to top</a>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n\n    <div class=\"wiki-list\" style=\"display: block\">\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Greenhouse</h2>\n        <p>Where our food grows, under blue and red lamps.</p>\n        <p><a href=\"wiki-greenhouse.html\">Read about the greenhouse</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Airlock</h2>\n        <p>The small room between the station and space.</p>\n        <p><a href=\"wiki-airlock.html\">Read about the airlock</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>Tools &amp; Spare Parts <span class=\"badge\">New</span></h2>\n        <p>Everything we need to fix the station, and where to find it.</p>\n        <p><a href=\"wiki-tools.html\">Read about tools &amp; spare parts</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Kitchen</h2>\n        <p>Where Ines Lindqvist warms up dinner. Food comes in sealed bags, and water goes in through a small valve. Nobody cooks with a flame on the station: the air would fill with smoke, and smoke has nowhere to go.</p>\n        <p><a href=\"wiki-kitchen.html\">Read about the kitchen</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Gym</h2>\n        <p>Two hours a day.</p>\n        <p><a href=\"wiki-gym.html\">Read about the gym</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Telescope</h2>\n        <p>Kenji Arano looks at far stars with it every night, when the station is on the dark side of the Earth.</p>\n        <p><a href=\"wiki-telescope.html\">Read about the telescope</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>Sleeping Bags</h2>\n        <p>Tied to the wall, so nobody floats off in the night.</p>\n        <p><a href=\"wiki-sleep.html\">Read about sleeping</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "scroll": 900
+        },
+        {
+          "inView": "header",
+          "label": "the header, after scrolling down"
+        },
+        {
+          "onTop": "header",
+          "label": "the header, with the entries under it"
+        },
+        {
+          "inView": "a.to-top",
+          "label": "the Back to top link, after scrolling down"
+        },
+        {
+          "onTop": "a.to-top",
+          "label": "the Back to top link, with the entries under it"
+        }
+      ]
+    },
+    {
+      "name": "The same on a computer",
+      "visible": true,
+      "page": "wiki.html",
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <a class=\"to-top\" href=\"#top\">Back to top</a>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n\n    <div class=\"wiki-list\" style=\"display: block\">\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Greenhouse</h2>\n        <p>Where our food grows, under blue and red lamps.</p>\n        <p><a href=\"wiki-greenhouse.html\">Read about the greenhouse</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Airlock</h2>\n        <p>The small room between the station and space.</p>\n        <p><a href=\"wiki-airlock.html\">Read about the airlock</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>Tools &amp; Spare Parts <span class=\"badge\">New</span></h2>\n        <p>Everything we need to fix the station, and where to find it.</p>\n        <p><a href=\"wiki-tools.html\">Read about tools &amp; spare parts</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Kitchen</h2>\n        <p>Where Ines Lindqvist warms up dinner. Food comes in sealed bags, and water goes in through a small valve. Nobody cooks with a flame on the station: the air would fill with smoke, and smoke has nowhere to go.</p>\n        <p><a href=\"wiki-kitchen.html\">Read about the kitchen</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Gym</h2>\n        <p>Two hours a day.</p>\n        <p><a href=\"wiki-gym.html\">Read about the gym</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Telescope</h2>\n        <p>Kenji Arano looks at far stars with it every night, when the station is on the dark side of the Earth.</p>\n        <p><a href=\"wiki-telescope.html\">Read about the telescope</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>Sleeping Bags</h2>\n        <p>Tied to the wall, so nobody floats off in the night.</p>\n        <p><a href=\"wiki-sleep.html\">Read about sleeping</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "scroll": 900
+        },
+        {
+          "onTop": "header",
+          "label": "the header, with the entries under it"
+        }
+      ]
+    },
+    {
+      "name": "Your own wiki page on a phone",
+      "visible": true,
+      "page": "wiki.html",
+      "width": 375,
+      "steps": [
+        {
+          "scroll": "end"
+        },
+        {
+          "onTop": "header",
+          "label": "the header, at the end of the page"
+        },
+        {
+          "onTop": "a.to-top",
+          "label": "the Back to top link, at the end of the page"
+        }
+      ]
+    },
+    {
+      "name": "Further down another long page",
+      "page": "wiki.html",
+      "width": 375,
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <a class=\"to-top\" href=\"#top\">Back to top</a>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n\n    <div class=\"wiki-list\" style=\"display: block\">\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Greenhouse</h2>\n        <p>Where our food grows, under blue and red lamps.</p>\n        <p><a href=\"wiki-greenhouse.html\">Read about the greenhouse</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Airlock</h2>\n        <p>The small room between the station and space.</p>\n        <p><a href=\"wiki-airlock.html\">Read about the airlock</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>Tools &amp; Spare Parts <span class=\"badge\">New</span></h2>\n        <p>Everything we need to fix the station, and where to find it.</p>\n        <p><a href=\"wiki-tools.html\">Read about tools &amp; spare parts</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Kitchen</h2>\n        <p>Where Ines Lindqvist warms up dinner. Food comes in sealed bags, and water goes in through a small valve. Nobody cooks with a flame on the station: the air would fill with smoke, and smoke has nowhere to go.</p>\n        <p><a href=\"wiki-kitchen.html\">Read about the kitchen</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Gym</h2>\n        <p>Two hours a day.</p>\n        <p><a href=\"wiki-gym.html\">Read about the gym</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>The Telescope</h2>\n        <p>Kenji Arano looks at far stars with it every night, when the station is on the dark side of the Earth.</p>\n        <p><a href=\"wiki-telescope.html\">Read about the telescope</a></p>\n      </article>\n      <article style=\"display: flow-root; width: auto; max-width: none; min-height: 420px; margin: 0\">\n        <h2>Sleeping Bags</h2>\n        <p>Tied to the wall, so nobody floats off in the night.</p>\n        <p><a href=\"wiki-sleep.html\">Read about sleeping</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "scroll": 2100
+        },
+        {
+          "inView": "header",
+          "label": "the header, after scrolling down"
+        },
+        {
+          "onTop": "header",
+          "label": "the header, with the entries under it"
+        },
+        {
+          "inView": "a.to-top",
+          "label": "the Back to top link, after scrolling down"
+        },
+        {
+          "onTop": "a.to-top",
+          "label": "the Back to top link, with the entries under it"
+        }
+      ]
+    }
+  ]
+}
