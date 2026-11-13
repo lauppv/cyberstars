@@ -431,12 +431,12 @@ export function createAuth<
   });
 
   // Ends this browser's session on the server, so a copy of its cookie signs no
-  // one in either, and has the browser drop the site's cookies. The account's
-  // other sessions, on other devices, stay signed in
+  // one in either, and has the browser drop the cookie. The cookie goes first,
+  // so a failed delete still signs this browser out. The account's other
+  // sessions, on other devices, stay signed in
   router.post('/logout', async (req, res) => {
-    await endSession(req);
     res.clearCookie(cookieName, cookieOptions);
-    res.set('Clear-Site-Data', '"cookies"');
+    await endSession(req);
     res.json({ message: 'Logged out successfully' });
   });
 

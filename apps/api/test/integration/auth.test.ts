@@ -86,7 +86,6 @@ describe('Auth flow', () => {
     const res = await a.post('/auth/logout').expect(200);
     expect(res.headers['set-cookie']).toBeDefined();
     expect(res.headers['set-cookie'][0]).toMatch(/^session=;/);
-    expect(res.headers['clear-site-data']).toBe('"cookies"');
   });
 
   it('protected routes return 401 after logout', async () => {

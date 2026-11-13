@@ -298,7 +298,7 @@ describe('POST /logout', () => {
     await request(app).get('/auth/me').set('Cookie', cookie).expect(403);
   });
 
-  it("has the browser drop the cookie and the site's cookies", async () => {
+  it('has the browser drop the cookie, and only that one', async () => {
     const { app } = setup();
     const res = await request(app)
       .post('/auth/logout')
@@ -306,8 +306,19 @@ describe('POST /logout', () => {
     expect(res.headers['set-cookie']![0]).toMatch(
       /^session=; Path=\/; Expires=Thu, 01 Jan 1970 .*HttpOnly; SameSite=Lax/,
     );
-    expect(res.headers['clear-site-data']).toBe('"cookies"');
+    expect(res.headers['clear-site-data']).toBeUndefined();
     expect(res.headers['cache-control']).toBe('no-store');
+  });
+
+  it('still has the browser drop the cookie when ending the session fails', async () => {
+    const { app, sessions } = setup();
+    const cookie = await signUp(app);
+    sessions.find = async () => {
+      throw new Error('db down');
+    };
+    const res = await request(app).post('/auth/logout').set('Cookie', cookie);
+    expect(res.status).toBe(500);
+    expect(res.headers['set-cookie']![0]).toMatch(/^session=; Path=\/; Expires=Thu, 01 Jan 1970/);
   });
 
   it("leaves the account's other sessions signed in", async () => {

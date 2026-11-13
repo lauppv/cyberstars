@@ -42,7 +42,7 @@ function Probe() {
       <button onClick={() => void signup({ name: 'Ada', email: 'a@b.c', password: 'pw' })}>
         signup
       </button>
-      <button onClick={() => void logout()}>logout</button>
+      <button onClick={() => logout().catch(() => {})}>logout</button>
       <button onClick={refreshUser}>refresh</button>
     </div>
   );
@@ -116,6 +116,16 @@ describe('AuthProvider actions', () => {
 
     await waitFor(() => expect(state()).toBe('out:-'));
     expect(logout).toHaveBeenCalledOnce();
+  });
+
+  it('clears the user when the logout answers an error, since the server cleared the cookie first', async () => {
+    logout.mockRejectedValue(new Error('500'));
+    renderProvider();
+    await waitFor(() => expect(state()).toBe('in:Ada'));
+
+    fireEvent.click(screen.getByText('logout'));
+
+    await waitFor(() => expect(state()).toBe('out:-'));
   });
 
   it('picks up profile changes on refresh', async () => {
