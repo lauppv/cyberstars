@@ -1,0 +1,198 @@
+{
+  "cases": [
+    {
+      "name": "The greenhouse page is a whole page of the site",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "text": "body > header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "text": "body > main h1",
+          "nonEmpty": true,
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "text": "body > footer",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>)"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "The greenhouse page is in parts, each with its heading",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "count": "main section",
+          "atLeast": 2,
+          "label": "parts (<section>) in <main>"
+        },
+        {
+          "count": "main section:not(:has(> :is(h2, h3, h4, h5, h6)))",
+          "equals": 0,
+          "label": "parts (<section>) with no heading of their own inside them"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "The airlock page is a whole page of the site",
+      "visible": true,
+      "page": "wiki-airlock.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "text": "body > header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "text": "body > main h1",
+          "nonEmpty": true,
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "text": "body > footer",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>)"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "The airlock page is in parts, each with its heading",
+      "visible": true,
+      "page": "wiki-airlock.html",
+      "steps": [
+        {
+          "count": "main section",
+          "atLeast": 2,
+          "label": "parts (<section>) in <main>"
+        },
+        {
+          "count": "main section:not(:has(> :is(h2, h3, h4, h5, h6)))",
+          "equals": 0,
+          "label": "parts (<section>) with no heading of their own inside them"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "The home page leads to both",
+      "visible": true,
+      "steps": [
+        {
+          "click": "main a[href$=\"wiki-greenhouse.html\"]",
+          "label": "the link to the greenhouse page"
+        },
+        {
+          "at": "wiki-greenhouse.html"
+        },
+        {
+          "click": "header nav a[href$=\"index.html\"]",
+          "label": "the menu link to the home page"
+        },
+        {
+          "at": "index.html"
+        },
+        {
+          "click": "main a[href$=\"wiki-airlock.html\"]",
+          "label": "the link to the airlock page"
+        },
+        {
+          "at": "wiki-airlock.html"
+        },
+        {
+          "click": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu link to the crew"
+        },
+        {
+          "at": "crew.html"
+        }
+      ]
+    }
+  ]
+}

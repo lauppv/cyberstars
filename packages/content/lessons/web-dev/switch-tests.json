@@ -1,0 +1,142 @@
+{
+  "cases": [
+    {
+      "name": "The pass says where the flight goes",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#pass-destination",
+          "equals": "No flight yet",
+          "label": "the destination on the pass at the start (#pass-destination)"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "Mars Relay",
+          "label": "the destination on the pass (#pass-destination)"
+        },
+        {
+          "text": "#pass-flight",
+          "equals": "SL-102",
+          "label": "the flight on the pass (#pass-flight)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Another flight, another place",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "Moon Base",
+          "label": "the destination on the pass (#pass-destination)"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "Orbital Yard",
+          "label": "the destination on the pass (#pass-destination)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The booking still gets its answer",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-104",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Every other flight, and back to none",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "select": "#flight",
+          "option": "SL-103",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "Europa Outpost",
+          "label": "the destination on the pass (#pass-destination)"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "Lunar Gateway",
+          "label": "the destination on the pass (#pass-destination)"
+        },
+        {
+          "select": "#flight",
+          "option": "Pick a flight",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-destination",
+          "equals": "No flight yet",
+          "label": "the destination on the pass with no flight picked (#pass-destination)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

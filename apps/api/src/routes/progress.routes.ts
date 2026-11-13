@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { saveCodeSchema } from '../schemas/progress.schema.js';
+import { codeFitsCourse } from '../middleware/codeLength.js';
 import * as progressController from '../controllers/progress.controller.js';
 
 const router = Router();
@@ -13,6 +14,7 @@ router.get('/:courseKey/:lessonSlug/code', progressController.getSavedCode);
 router.put(
   '/:courseKey/:lessonSlug/code',
   validateBody(saveCodeSchema),
+  codeFitsCourse,
   progressController.saveCode,
 );
 router.post('/:courseKey/:lessonSlug/access', progressController.trackAccess);

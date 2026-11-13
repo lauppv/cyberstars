@@ -1,0 +1,710 @@
+{
+  "cases": [
+    {
+      "name": "The menu starts closed and opens over the page",
+      "visible": true,
+      "page": "index.html",
+      "steps": [
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "layout": "header nav a",
+          "arrange": "column",
+          "label": "the links of the open menu"
+        },
+        {
+          "size": "header",
+          "maxHeight": 90,
+          "label": "the header, with the menu open (the page under it must not move)"
+        },
+        {
+          "onTop": "header nav a:first-child",
+          "label": "the first link of the open menu"
+        },
+        {
+          "onTop": "header nav a:last-child",
+          "label": "the last link of the open menu"
+        },
+        {
+          "style": "header nav",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the background of the open menu"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Escape closes the menu, wherever the focus is",
+      "visible": true,
+      "page": "wiki-tools.html",
+      "steps": [
+        {
+          "press": "Escape"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "press": "Escape"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "press": "Escape",
+          "on": "header nav a:last-child",
+          "label": "the last link of the menu"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A click on the page closes the menu",
+      "visible": true,
+      "page": "people/vega.html",
+      "steps": [
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "main h1",
+          "label": "the heading of the page"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "footer p",
+          "label": "the footer"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On every page",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The sticky header, Back to top and the wiki cards still work",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "scroll": "end"
+        },
+        {
+          "inView": "header",
+          "label": "the header"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "onTop": "header nav a:first-child",
+          "label": "the first link of the open menu"
+        },
+        {
+          "onTop": ".to-top",
+          "label": "the link Back to top"
+        },
+        {
+          "click": ".wiki-list article:nth-child(2) h2",
+          "label": "the heading of the second card"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "text": "#picked",
+          "equals": "The Airlock",
+          "label": "the title picked (#picked)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A draft page with no button still shows no error",
+      "visible": true,
+      "page": "wiki-draft.html",
+      "files": {
+        "wiki-draft.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Where the tools and spare parts of Orbital Station 7 are kept, and how the crew stop them from floating away.\" />\n    <title>Draft: The Kitchen</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main class=\"wiki-page\">\n    <article>\n      <h1>Draft: The Kitchen</h1>\n      <p>A broken pump can't wait for the next supply ship. So the station keeps its own tools and spare parts on board.</p>\n\n      <section>\n        <h2>Where they are</h2>\n        <p>Everything is in the cargo bay, on the lower deck. Tomas Okafor, the engineer, keeps a list of every part and where it is.</p>\n      </section>\n\n      <section>\n        <h2>Nothing floats away</h2>\n        <p>On the station, nothing falls: it floats. So every tool is tied to a belt, and every box of parts closes with a lid.</p>\n      </section>\n    </article>\n\n    <aside class=\"fact-box\">\n      <h2>Facts</h2>\n      <ul>\n        <li>Spare parts: 1,200</li>\n        <li>Heaviest tool: <span class=\"measure\">12&nbsp;kg</span></li>\n        <li>Longest cable: <span class=\"measure\">30&nbsp;m</span></li>\n      </ul>\n    </aside>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n      <a class=\"to-top\" href=\"#top\">Back to top</a>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "press": "Escape"
+        },
+        {
+          "click": "main h1",
+          "label": "the heading of the page"
+        },
+        {
+          "press": "Escape",
+          "on": "header nav a:first-child",
+          "label": "the first link of the menu"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a phone",
+      "page": "index.html",
+      "width": 375,
+      "steps": [
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "layout": "header nav a",
+          "arrange": "column",
+          "label": "the links of the open menu"
+        },
+        {
+          "size": "header",
+          "maxHeight": 90,
+          "label": "the header, with the menu open (the page under it must not move)"
+        },
+        {
+          "onTop": "header nav a:first-child",
+          "label": "the first link of the open menu"
+        },
+        {
+          "onTop": "header nav a:last-child",
+          "label": "the last link of the open menu"
+        },
+        {
+          "style": "header nav",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the background of the open menu"
+        },
+        {
+          "press": "Escape",
+          "on": "header nav a:first-child",
+          "label": "the first link of the menu"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A page added to the wiki later",
+      "page": "wiki-kitchen.html",
+      "files": {
+        "wiki-kitchen.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Where the tools and spare parts of Orbital Station 7 are kept, and how the crew stop them from floating away.\" />\n    <title>The Kitchen</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main class=\"wiki-page\">\n    <article>\n      <h1>The Kitchen</h1>\n      <p>A broken pump can't wait for the next supply ship. So the station keeps its own tools and spare parts on board.</p>\n\n      <section>\n        <h2>Where they are</h2>\n        <p>Everything is in the cargo bay, on the lower deck. Tomas Okafor, the engineer, keeps a list of every part and where it is.</p>\n      </section>\n\n      <section>\n        <h2>Nothing floats away</h2>\n        <p>On the station, nothing falls: it floats. So every tool is tied to a belt, and every box of parts closes with a lid.</p>\n      </section>\n    </article>\n\n    <aside class=\"fact-box\">\n      <h2>Facts</h2>\n      <ul>\n        <li>Spare parts: 1,200</li>\n        <li>Heaviest tool: <span class=\"measure\">12&nbsp;kg</span></li>\n        <li>Longest cable: <span class=\"measure\">30&nbsp;m</span></li>\n      </ul>\n    </aside>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n      <a class=\"to-top\" href=\"#top\">Back to top</a>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": ".fact-box h2",
+          "label": "the heading of the fact box"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the button #menu-button"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "cases": [
+    {
+      "name": "Tab shows a clear ring on the next box",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "press": "Tab",
+          "on": "#passenger",
+          "label": "the name box"
+        },
+        {
+          "style": "#email",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the email box, reached with Tab"
+        },
+        {
+          "style": "#email",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the email box, reached with Tab"
+        },
+        {
+          "style": "#email",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the email box, reached with Tab"
+        }
+      ]
+    },
+    {
+      "name": "On the list, the notes and the buttons too",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "press": "Tab",
+          "on": "#phone",
+          "label": "the phone box"
+        },
+        {
+          "style": "#flight",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the flight list, reached with Tab"
+        },
+        {
+          "style": "#flight",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the flight list, reached with Tab"
+        },
+        {
+          "style": "#flight",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the flight list, reached with Tab"
+        },
+        {
+          "press": "Tab",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "style": "[type=\"submit\" i]",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the send button, reached with Tab"
+        },
+        {
+          "style": "[type=\"submit\" i]",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the send button, reached with Tab"
+        },
+        {
+          "style": "[type=\"submit\" i]",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the send button, reached with Tab"
+        },
+        {
+          "press": "Tab",
+          "on": "#contact-phone",
+          "label": "the contact phone box"
+        },
+        {
+          "style": "#notes",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the notes box, reached with Tab"
+        },
+        {
+          "style": "#notes",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the notes box, reached with Tab"
+        },
+        {
+          "style": "#notes",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the notes box, reached with Tab"
+        }
+      ]
+    },
+    {
+      "name": "A click with the mouse draws no ring",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "#seat-window",
+          "label": "the window seat"
+        },
+        {
+          "style": "#seat-window",
+          "prop": "outline-style",
+          "equals": "none",
+          "label": "the window seat, after a click with the mouse"
+        },
+        {
+          "click": "[type=\"reset\" i]",
+          "label": "the button that clears the form"
+        },
+        {
+          "style": "[type=\"reset\" i]",
+          "prop": "outline-style",
+          "equals": "none",
+          "label": "the button that clears the form, after a click with the mouse"
+        }
+      ]
+    },
+    {
+      "name": "Other boxes, by mouse and by keyboard",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "press": "Tab",
+          "on": "#bags",
+          "label": "the bags box"
+        },
+        {
+          "style": "#seat-window",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the window seat, reached with Tab"
+        },
+        {
+          "style": "#seat-window",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the window seat, reached with Tab"
+        },
+        {
+          "style": "#seat-window",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the window seat, reached with Tab"
+        },
+        {
+          "click": "label[for=\"extra-meal\"]",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "style": "#extra-meal",
+          "prop": "outline-style",
+          "equals": "none",
+          "label": "the hot meal box, after a click on its label"
+        },
+        {
+          "press": "Tab"
+        },
+        {
+          "style": "#extra-blanket",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the blanket box, reached with Tab"
+        },
+        {
+          "style": "#extra-blanket",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the blanket box, reached with Tab"
+        },
+        {
+          "style": "#extra-blanket",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the blanket box, reached with Tab"
+        },
+        {
+          "press": "Tab"
+        },
+        {
+          "style": "#extra-wifi",
+          "prop": "outline-width",
+          "atLeast": 2,
+          "label": "the Wi-Fi box, reached with Tab"
+        },
+        {
+          "style": "#extra-wifi",
+          "prop": "outline-style",
+          "not": "auto",
+          "label": "the Wi-Fi box, reached with Tab"
+        },
+        {
+          "style": "#extra-wifi",
+          "prop": "outline-style",
+          "not": "none",
+          "label": "the Wi-Fi box, reached with Tab"
+        }
+      ]
+    }
+  ]
+}

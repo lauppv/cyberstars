@@ -1,0 +1,173 @@
+{
+  "cases": [
+    {
+      "name": "The home page has a description",
+      "visible": true,
+      "steps": [
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        }
+      ]
+    },
+    {
+      "name": "crew.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "crew.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"crew\" i]",
+          "label": "the description naming the page’s topic (crew)"
+        }
+      ]
+    },
+    {
+      "name": "people/vega.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"vega\" i]",
+          "label": "the description naming the page’s topic (vega)"
+        }
+      ]
+    },
+    {
+      "name": "schedule.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "schedule.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"flight\" i]",
+          "label": "the description naming the page’s topic (flight)"
+        }
+      ]
+    },
+    {
+      "name": "boarding.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "boarding.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"seat\" i], head meta[name=\"description\"][content*=\"book\" i]",
+          "label": "the description naming the page’s topic (seat or book)"
+        }
+      ]
+    },
+    {
+      "name": "wiki.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "wiki.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"wiki\" i]",
+          "label": "the description naming the page’s topic (wiki)"
+        }
+      ]
+    },
+    {
+      "name": "wiki-greenhouse.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"greenhouse\" i]",
+          "label": "the description naming the page’s topic (greenhouse)"
+        }
+      ]
+    },
+    {
+      "name": "wiki-airlock.html has a description of its own",
+      "visible": true,
+      "steps": [
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence in the description (content)"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"airlock\" i]",
+          "label": "the description naming the page’s topic (airlock)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "name": "Two round buttons for the seat, each with its label",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "count": "input[type=\"radio\" i][name=\"seat\"]",
+          "equals": 2,
+          "label": "round buttons named seat"
+        },
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"window\"]), input[name=\"seat\"][value=\"window\"] + label, label:has(+ input[name=\"seat\"][value=\"window\"])",
+          "label": "the label of the window seat (value window)"
+        },
+        {
+          "checked": "input[name=\"seat\"][value=\"window\"]",
+          "label": "the window seat after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "Only one seat at a time, and the form sends it",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"window\"]), input[name=\"seat\"][value=\"window\"] + label, label:has(+ input[name=\"seat\"][value=\"window\"])",
+          "label": "the label of the window seat (value window)"
+        },
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"aisle\"]), input[name=\"seat\"][value=\"aisle\"] + label, label:has(+ input[name=\"seat\"][value=\"aisle\"])",
+          "label": "the label of the aisle seat (value aisle)"
+        },
+        {
+          "checked": "input[name=\"seat\"][value=\"aisle\"]",
+          "label": "the aisle seat after a click on its label"
+        },
+        {
+          "checked": "input[name=\"seat\"][value=\"window\"]",
+          "off": true,
+          "label": "the window seat once the aisle seat is picked"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "seat": "aisle"
+          }
+        }
+      ]
+    },
+    {
+      "name": "The other seat",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"aisle\"]), input[name=\"seat\"][value=\"aisle\"] + label, label:has(+ input[name=\"seat\"][value=\"aisle\"])",
+          "label": "the label of the aisle seat (value aisle)"
+        },
+        {
+          "click": "label:has(input[name=\"seat\"][value=\"window\"]), input[name=\"seat\"][value=\"window\"] + label, label:has(+ input[name=\"seat\"][value=\"window\"])",
+          "label": "the label of the window seat (value window)"
+        },
+        {
+          "checked": "input[name=\"seat\"][value=\"aisle\"]",
+          "off": true,
+          "label": "the aisle seat once the window seat is picked"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "seat": "window"
+          }
+        }
+      ]
+    }
+  ]
+}

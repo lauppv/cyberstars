@@ -466,6 +466,190 @@ describe('judgeStep', () => {
     expect(judge({ at: 'crew.html' }, { page: 'crew.html' })).toBeNull();
     expect(judge({ at: 'crew.html' }, { page: 'index.html' })).toMatchObject({ kind: 'at' });
   });
+
+  it('reads what the last form sent, or that none was', () => {
+    const forms = [
+      [['name', 'Noah']],
+      [
+        ['name', 'Ida'],
+        ['extras', 'meal'],
+        ['extras', 'wifi'],
+      ],
+    ];
+    expect(judge({ sent: { name: 'Ida', extras: 'wifi' } }, { forms })).toBeNull();
+    expect(judge({ sent: {} }, { forms })).toBeNull();
+    expect(judge({ sent: { name: 'Noah' } }, { forms })).toEqual({
+      kind: 'sent',
+      detail: 'field',
+      other: 'name',
+      expected: 'Noah',
+      found: 'Ida',
+    });
+    expect(judge({ sent: { seat: 'window' } }, { forms })).toMatchObject({ found: null });
+    expect(judge({ sent: {} }, { forms: [] })).toEqual({ kind: 'sent', detail: 'none' });
+    expect(judge({ notSent: true }, { forms: [] })).toBeNull();
+    expect(judge({ notSent: true }, { forms })).toEqual({
+      kind: 'sent',
+      detail: 'sent',
+      found: 'name=Ida&extras=meal&extras=wifi',
+    });
+  });
+
+  it("reads a field's value and a box's tick", () => {
+    const field = (step: object, value: string) =>
+      judge({ value: '#name', label: 'the name', ...step } as WebStep, {
+        count: 1,
+        values: [value],
+      });
+    expect(field({ equals: 'Ida' }, ' Ida ')).toBeNull();
+    expect(field({ equals: 'Ida' }, 'Noah')).toMatchObject({ kind: 'value', detail: 'equals' });
+    expect(field({ contains: 'da' }, 'Ida')).toBeNull();
+    expect(field({ nonEmpty: true }, '')).toMatchObject({ detail: 'nonEmpty' });
+    expect(field({ empty: true }, '')).toBeNull();
+    expect(field({ empty: true }, 'x')).toMatchObject({ detail: 'empty', found: 'x' });
+    expect(judge({ checked: '#meal', label: 'the box' }, { count: 1, checked: true })).toBeNull();
+    expect(
+      judge({ checked: '#meal', off: true, label: 'the box' }, { count: 1, checked: true }),
+    ).toEqual({
+      kind: 'checked',
+      label: 'the box',
+      expected: 'off',
+    });
+    expect(judge({ checked: '#meal', label: 'the box' }, { count: 0 })).toEqual({
+      kind: 'missing',
+      label: 'the box',
+    });
+  });
+
+  it('tells an element in the window from one out of it, and one on top from one covered', () => {
+    const box = (y: number) => ({
+      count: 1,
+      boxes: [{ x: 0, y, width: 100, height: 60 }],
+      windowHeight: 800,
+    });
+    const header = { inView: 'header', label: 'the header' };
+    expect(judge(header, box(0))).toBeNull();
+    expect(judge(header, box(-40))).toEqual({
+      kind: 'inView',
+      label: 'the header',
+      expected: 'in',
+      found: '40',
+    });
+    expect(judge(header, box(780))).toMatchObject({ found: '40' });
+    expect(judge({ ...header, out: true }, box(-60))).toBeNull();
+    expect(judge({ ...header, out: true }, box(-30))).toMatchObject({ expected: 'out' });
+    expect(judge({ ...header, out: true }, box(800))).toBeNull();
+    const top = { onTop: '.badge', label: 'the badge' };
+    expect(judge(top, { count: 1, values: [''] })).toBeNull();
+    expect(judge(top, { count: 1, values: ['<div class="ad">'] })).toEqual({
+      kind: 'onTop',
+      label: 'the badge',
+      found: '<div class="ad">',
+    });
+    expect(judge(top, { count: 1, values: [null] })).toMatchObject({ found: null });
+  });
+
+  it('wants each element against its side of its box, inside it', () => {
+    const card = { x: 0, y: 0, width: 300, height: 200 };
+    const step = {
+      against: '.badge',
+      in: '.card',
+      side: 'top right',
+      inLabel: 'its card',
+      label: 'the badge',
+    } as const;
+    const at = (x: number, y: number) => ({ x, y, width: 40, height: 20 });
+    expect(judge(step, { count: 1, pairs: [[at(252, 8), card]] })).toBeNull();
+    expect(judge(step, { count: 1, pairs: [[at(8, 8), card]] })).toEqual({
+      kind: 'against',
+      label: 'the badge',
+      other: 'its card',
+      detail: 'top right',
+      expected: '24',
+      found: '252',
+    });
+    expect(judge({ ...step, within: 260 }, { count: 1, pairs: [[at(8, 8), card]] })).toBeNull();
+    expect(judge(step, { count: 1, pairs: [[at(270, 8), card]] })).toMatchObject({
+      detail: 'outside',
+    });
+    expect(judge(step, { count: 1, pairs: [[at(252, 8), null]] })).toMatchObject({
+      detail: 'none',
+    });
+    // Every badge, not only the first
+    expect(
+      judge(step, {
+        count: 2,
+        pairs: [
+          [at(252, 8), card],
+          [at(252, 150), card],
+        ],
+      }),
+    ).toMatchObject({ found: '150' });
+  });
+
+  it('reads the order elements show in, as a page is read', () => {
+    const step = { order: ['#a', '#b', '#c'], label: 'the links' };
+    const row = (xs: number[]) => xs.map((x) => ({ x, y: 0, width: 50, height: 20 }));
+    const seen = (boxes: object[]) => ({ count: 3, boxes, values: ['A', 'B', 'C'] });
+    expect(judge(step, seen(row([0, 60, 120])))).toBeNull();
+    expect(judge(step, seen(row([120, 60, 0])))).toEqual({
+      kind: 'order',
+      label: 'the links',
+      expected: 'A, B, C',
+      found: 'C, B, A',
+    });
+    // A row below comes after, wherever it starts
+    const wrapped = [...row([0, 60]), { x: 0, y: 30, width: 50, height: 20 }];
+    expect(judge(step, seen(wrapped))).toBeNull();
+  });
+
+  it('wants elements that wrap: several rows, side by side in one, none sticking out', () => {
+    const parent = { x: 0, y: 0, width: 300, height: 100 };
+    const item = (x: number, y: number) => ({ x, y, width: 100, height: 40 });
+    const step = { wraps: '.tag', label: 'the tags' };
+    const seen = (items: object[]) => ({ count: items.length, boxes: [parent, ...items] });
+    expect(judge(step, seen([item(0, 0), item(100, 0), item(0, 40)]))).toBeNull();
+    expect(judge(step, seen([item(0, 0), item(100, 0), item(200, 0)]))).toMatchObject({
+      kind: 'wraps',
+      detail: 'one',
+      width: 1280,
+    });
+    expect(judge(step, seen([item(0, 0), item(0, 40), item(0, 80)]))).toMatchObject({
+      detail: 'column',
+    });
+    expect(judge(step, seen([item(0, 0), item(250, 0), item(0, 40)]))).toMatchObject({
+      detail: 'out',
+    });
+  });
+
+  it('tells an element that shows from a hidden one', () => {
+    expect(judge({ visible: '#menu', label: 'the menu' }, { count: 1, shown: [true] })).toBeNull();
+    expect(judge({ visible: '#menu', label: 'the menu' }, { count: 1, shown: [false] })).toEqual({
+      kind: 'visible',
+      label: 'the menu',
+      expected: 'visible',
+    });
+    expect(
+      judge({ hidden: '.extra', label: 'extras' }, { count: 2, shown: [false, false] }),
+    ).toBeNull();
+    expect(
+      judge({ hidden: '.extra', label: 'extras' }, { count: 2, shown: [false, true] }),
+    ).toEqual({
+      kind: 'visible',
+      label: 'extras',
+      expected: 'hidden',
+    });
+  });
+
+  it('passes a scroll and names a list without the option to select', () => {
+    expect(judge({ scroll: 'end' }, { ok: true })).toBeNull();
+    expect(
+      judge({ select: '#seat', option: 'window', label: 'the seat list' }, { ok: false }),
+    ).toEqual({
+      kind: 'missing',
+      label: 'the seat list',
+    });
+  });
 });
 
 describe('judgeWebCase', () => {

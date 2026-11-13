@@ -1,0 +1,180 @@
+{
+  "cases": [
+    {
+      "name": "Bigger text makes the html element 2px bigger",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "16px",
+          "label": "the font size of the html element"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "18px",
+          "label": "the font size of the html element"
+        },
+        {
+          "style": ".wiki-list article p",
+          "prop": "font-size",
+          "atLeast": 20,
+          "label": "the text of a card"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "20px",
+          "label": "the font size of the html element"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Smaller text takes 2px away",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "18px",
+          "label": "the font size of the html element"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "16px",
+          "label": "the font size of the html element"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "14px",
+          "label": "the font size of the html element"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The rest of the wiki still works",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "text": "#article-count",
+          "equals": "3 articles in the wiki",
+          "label": "the article count (#article-count)"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "text": "#thanks-count",
+          "equals": "Thanks: 1",
+          "label": "the thanks count (#thanks-count)"
+        }
+      ]
+    },
+    {
+      "name": "Many clicks in any order",
+      "page": "wiki.html",
+      "steps": [
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "click": "button#text-bigger",
+          "label": "the button #text-bigger"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "24px",
+          "label": "the font size of the html element"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "click": "button#text-smaller",
+          "label": "the button #text-smaller"
+        },
+        {
+          "style": "html",
+          "prop": "font-size",
+          "equals": "14px",
+          "label": "the font size of the html element"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

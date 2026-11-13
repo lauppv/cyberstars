@@ -1,0 +1,106 @@
+{
+  "cases": [
+    {
+      "name": "The aisle seat shows on the pass",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "noErrors": true
+        },
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "aisle",
+          "label": "the seat on the pass (#pass-seat)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The pass changes with the seat",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label[for=\"seat-window\"]",
+          "label": "the label of the window seat"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "window",
+          "label": "the seat on the pass (#pass-seat)"
+        },
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "aisle",
+          "label": "the seat on the pass (#pass-seat)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The name still shows on a click",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Clara Diaz",
+          "label": "the name box"
+        },
+        {
+          "click": "button#show-pass",
+          "label": "the button Show my pass"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Clara Diaz",
+          "label": "the name on the pass (#pass-name)"
+        }
+      ]
+    },
+    {
+      "name": "The seats in another order, with a click on the round button",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "click": "label[for=\"seat-window\"]",
+          "label": "the label of the window seat"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "window",
+          "label": "the seat on the pass (#pass-seat)"
+        },
+        {
+          "click": "#seat-aisle",
+          "label": "the aisle seat's round button"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "aisle",
+          "label": "the seat on the pass (#pass-seat)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

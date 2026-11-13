@@ -1,0 +1,113 @@
+{
+  "cases": [
+    {
+      "name": "The count starts at 0",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "text": "#thanks-count",
+          "equals": "Thanks: 0",
+          "label": "the thanks count (#thanks-count)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Each click adds one",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "text": "#thanks-count",
+          "equals": "Thanks: 1",
+          "label": "the thanks count (#thanks-count)"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "text": "#thanks-count",
+          "equals": "Thanks: 2",
+          "label": "the thanks count (#thanks-count)"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "text": "#thanks-count",
+          "equals": "Thanks: 3",
+          "label": "the thanks count (#thanks-count)"
+        },
+        {
+          "text": "#wiki-message",
+          "equals": "Thank you! The writers will be glad.",
+          "label": "the message (#wiki-message)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Seven clicks",
+      "page": "wiki.html",
+      "steps": [
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "click": "button#thank",
+          "label": "the button #thank"
+        },
+        {
+          "text": "#thanks-count",
+          "equals": "Thanks: 7",
+          "label": "the thanks count (#thanks-count)"
+        },
+        {
+          "text": "#wiki-message",
+          "equals": "Thank you! The writers will be glad.",
+          "label": "the message (#wiki-message)"
+        },
+        {
+          "text": "#article-count",
+          "equals": "3 articles in the wiki",
+          "label": "the article count (#article-count)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

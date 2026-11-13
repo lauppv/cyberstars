@@ -1,0 +1,314 @@
+{
+  "cases": [
+    {
+      "name": "The home page has a Menu button that hides the menu",
+      "visible": true,
+      "page": "index.html",
+      "steps": [
+        {
+          "text": "#menu-button",
+          "equals": "Menu",
+          "label": "the button (<button id=\"menu-button\">)"
+        },
+        {
+          "exists": "header #menu-button ~ nav",
+          "label": "the button, before the menu in the header"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The pages with a script of their own: the button works, and so do their scripts",
+      "visible": true,
+      "page": "crew.html",
+      "steps": [
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "text": "#article-count",
+          "equals": "3 articles in the wiki",
+          "label": "the article count of the wiki (#article-count)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The wiki's own pages",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Mara Vega's page, in the people folder",
+      "visible": true,
+      "page": "people/vega.html",
+      "steps": [
+        {
+          "exists": "header #menu-button ~ nav",
+          "label": "the button, before the menu in the header"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A draft page that loads menu.js but has no button shows no error",
+      "visible": true,
+      "page": "wiki-draft.html",
+      "files": {
+        "wiki-draft.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Where the tools and spare parts of Orbital Station 7 are kept, and how the crew stop them from floating away.\" />\n    <title>Draft: The Kitchen</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main class=\"wiki-page\">\n    <article>\n      <h1>Draft: The Kitchen</h1>\n      <p>A broken pump can't wait for the next supply ship. So the station keeps its own tools and spare parts on board.</p>\n\n      <section>\n        <h2>Where they are</h2>\n        <p>Everything is in the cargo bay, on the lower deck. Tomas Okafor, the engineer, keeps a list of every part and where it is.</p>\n      </section>\n\n      <section>\n        <h2>Nothing floats away</h2>\n        <p>On the station, nothing falls: it floats. So every tool is tied to a belt, and every box of parts closes with a lid.</p>\n      </section>\n    </article>\n\n    <aside class=\"fact-box\">\n      <h2>Facts</h2>\n      <ul>\n        <li>Spare parts: 1,200</li>\n        <li>Heaviest tool: <span class=\"measure\">12&nbsp;kg</span></li>\n        <li>Longest cable: <span class=\"measure\">30&nbsp;m</span></li>\n      </ul>\n    </aside>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n      <a class=\"to-top\" href=\"#top\">Back to top</a>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A page added to the wiki later gets a working button too",
+      "page": "wiki-kitchen.html",
+      "files": {
+        "wiki-kitchen.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Where the tools and spare parts of Orbital Station 7 are kept, and how the crew stop them from floating away.\" />\n    <title>The Kitchen</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main class=\"wiki-page\">\n    <article>\n      <h1>The Kitchen</h1>\n      <p>A broken pump can't wait for the next supply ship. So the station keeps its own tools and spare parts on board.</p>\n\n      <section>\n        <h2>Where they are</h2>\n        <p>Everything is in the cargo bay, on the lower deck. Tomas Okafor, the engineer, keeps a list of every part and where it is.</p>\n      </section>\n\n      <section>\n        <h2>Nothing floats away</h2>\n        <p>On the station, nothing falls: it floats. So every tool is tied to a belt, and every box of parts closes with a lid.</p>\n      </section>\n    </article>\n\n    <aside class=\"fact-box\">\n      <h2>Facts</h2>\n      <ul>\n        <li>Spare parts: 1,200</li>\n        <li>Heaviest tool: <span class=\"measure\">12&nbsp;kg</span></li>\n        <li>Longest cable: <span class=\"measure\">30&nbsp;m</span></li>\n      </ul>\n    </aside>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n      <a class=\"to-top\" href=\"#top\">Back to top</a>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "name": "The name box has a label that leads to it",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "label[for=\"passenger\"], label:has(#passenger)",
+          "nonEmpty": true,
+          "label": "a label for the box with the id passenger"
+        },
+        {
+          "click": "label[for=\"passenger\"], label:has(#passenger)",
+          "label": "the label of the name box"
+        },
+        {
+          "press": "N"
+        },
+        {
+          "press": "o"
+        },
+        {
+          "value": "input#passenger",
+          "equals": "No",
+          "label": "the name box, after a click on its label and typing"
+        }
+      ]
+    }
+  ]
+}

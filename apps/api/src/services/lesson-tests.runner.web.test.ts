@@ -665,6 +665,271 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(links.passed).toBe(true);
   });
 
+  it('keeps a sent form on its page and reads what it sent, as the preview does', () => {
+    const page = (script: string) => `<!DOCTYPE html><html><body>
+      <form action="thanks.html">
+        <label>Name <input id="name" name="name" required></label>
+        <select id="seat" name="seat"><option value="aisle">Aisle</option><option value="window">Window</option></select>
+        <label><input type="checkbox" id="meal" name="extras" value="meal"> Meal</label>
+        <label><input type="checkbox" id="wifi" name="extras" value="wifi"> Wi-Fi</label>
+        <button>Board</button>
+      </form>
+      <p id="out"></p>
+      <script>${script}</script>
+    </body></html>`;
+    const cases: WebTestCase[] = [
+      {
+        name: 'An empty name keeps the form from being sent',
+        visible: true,
+        steps: [{ submit: 'form', label: 'the form' }, { notSent: true }],
+      },
+      {
+        name: 'The form sends the name, the seat and the extras',
+        visible: true,
+        steps: [
+          { fill: '#name', text: 'Ida', label: 'the name field' },
+          { select: '#seat', option: 'Window', label: 'the seat list' },
+          { click: '#meal', label: 'the meal box' },
+          { click: '#wifi', label: 'the Wi-Fi box' },
+          { value: '#seat', equals: 'window', label: 'the seat list' },
+          { checked: '#meal', label: 'the meal box' },
+          { value: '#name', equals: 'Ida', label: 'the name field' },
+          { click: 'button', label: 'the Board button' },
+          { sent: { name: 'Ida', seat: 'window', extras: 'wifi' } },
+          { at: 'index.html' },
+        ],
+      },
+    ];
+    expect(verdicts({ 'index.html': page('') }, cases).map((c) => c.passed)).toEqual([true, true]);
+    // A page that sends nothing itself still reads as not sent
+    const handled = page(
+      "document.querySelector('form').addEventListener('submit', (e) => { e.preventDefault(); document.getElementById('out').textContent = 'Saved'; });",
+    );
+    const [, own] = verdicts({ 'index.html': handled }, cases);
+    expect(own.web).toEqual({ kind: 'sent', detail: 'none' });
+    const [noOption] = verdicts({ 'index.html': page('') }, [
+      {
+        name: 'x',
+        visible: true,
+        steps: [{ select: '#seat', option: 'Roof', label: 'the seat list' }],
+      },
+    ]);
+    expect(noOption.web).toEqual({ kind: 'missing', label: 'the seat list' });
+    const [unticked] = verdicts({ 'index.html': page('') }, [
+      { name: 'x', visible: true, steps: [{ checked: '#meal', label: 'the meal box' }] },
+    ]);
+    expect(unticked.web).toEqual({ kind: 'checked', label: 'the meal box', expected: 'on' });
+  });
+
+  it('keeps a refused form refused, its field marked, case after case', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        input:user-invalid { outline: 3px solid red; }
+      </style></head><body><form>
+        <input id="name" name="name" required minlength="2"><button>Send</button>
+      </form></body></html>`,
+    };
+    const refused: WebTestCase = {
+      name: 'A short name is refused',
+      visible: true,
+      steps: [
+        { fill: '#name', text: 'I', label: 'the name box' },
+        { click: 'button', label: 'the Send button' },
+        { notSent: true },
+        { style: '#name', prop: 'outline-style', equals: 'solid', label: 'the name box' },
+      ],
+    };
+    const sent: WebTestCase = {
+      name: 'A whole name is sent',
+      visible: true,
+      steps: [
+        { fill: '#name', text: 'Ida', label: 'the name box' },
+        { click: 'button', label: 'the Send button' },
+        { sent: { name: 'Ida' } },
+      ],
+    };
+    expect(verdicts(files, [refused, sent, refused, sent]).map((c) => c.passed)).toEqual([
+      true,
+      true,
+      true,
+      true,
+    ]);
+  });
+
+  it('scrolls, and tells a sticky header from one that scrolled away', () => {
+    const page = (position: string) => `<!DOCTYPE html><html><body style="margin: 0">
+      <header style="position: ${position}; top: 0; height: 60px; background: #123; color: white; z-index: 1">Station</header>
+      <main style="height: 3000px">Long page</main>
+      <footer id="end">The end</footer>
+    </body></html>`;
+    const cases: WebTestCase[] = [
+      {
+        name: 'The header stays on screen',
+        visible: true,
+        steps: [
+          { inView: '#end', out: true, label: 'the end' },
+          { scroll: 800 },
+          { inView: 'header', label: 'the header' },
+          { onTop: 'header', label: 'the header' },
+          { scroll: 'end' },
+          { inView: '#end', label: 'the end' },
+        ],
+      },
+    ];
+    expect(verdicts({ 'index.html': page('sticky') }, cases)[0].passed).toBe(true);
+    const [scrolledAway] = verdicts({ 'index.html': page('static') }, cases);
+    expect(scrolledAway.web).toMatchObject({ kind: 'inView', label: 'the header', expected: 'in' });
+  });
+
+  it('says what covers an element, and an element against an edge of its box', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body style="margin: 0">
+        <div class="card" style="position: relative; width: 300px; height: 200px; padding: 16px">
+          <span class="badge" style="position: absolute; top: 8px; right: 8px">New</span>
+          <span class="tag">Old</span>
+          <button style="position: absolute; bottom: 16px; left: 16px">Open</button>
+        </div>
+        <p id="hidden-under">Under</p>
+        <div style="position: absolute; top: 230px; left: 0; width: 100%; height: 40px; background: red" class="banner"></div>
+      </body></html>`,
+    };
+    const [ok] = verdicts(files, [
+      {
+        name: 'x',
+        visible: true,
+        steps: [
+          {
+            against: '.badge',
+            in: '.card',
+            side: 'top right',
+            inLabel: 'its card',
+            label: 'the badge',
+          },
+          {
+            against: 'button',
+            in: '.card',
+            side: 'bottom',
+            inLabel: 'its card',
+            label: 'the button',
+          },
+          { onTop: '.badge', label: 'the badge' },
+        ],
+      },
+    ]);
+    expect(ok.passed).toBe(true);
+    const [far, covered] = verdicts(files, [
+      {
+        name: 'x',
+        visible: true,
+        steps: [
+          {
+            against: '.tag',
+            in: '.card',
+            side: 'top right',
+            inLabel: 'its card',
+            label: 'the tag',
+          },
+        ],
+      },
+      { name: 'y', visible: true, steps: [{ onTop: '#hidden-under', label: 'the note' }] },
+    ]);
+    expect(far.web).toMatchObject({ kind: 'against', detail: 'top right', expected: '24' });
+    expect(covered.web).toEqual({
+      kind: 'onTop',
+      label: 'the note',
+      found: '<div class="banner">',
+    });
+    const [wave] = verdicts(
+      {
+        'index.html': `<!DOCTYPE html><html><body style="margin: 0">
+          <p id="note">Note</p>
+          <svg class="wave" style="position: absolute; top: 0; left: 0; width: 100%; height: 100px"></svg>
+        </body></html>`,
+      },
+      [{ name: 'x', visible: true, steps: [{ onTop: '#note', label: 'the note' }] }],
+    );
+    expect(wave.web).toEqual({ kind: 'onTop', label: 'the note', found: '<svg class="wave">' });
+  });
+
+  it('reads the order things show in, whatever the HTML, and whether they wrap', () => {
+    const page = (css: string) => `<!DOCTYPE html><html><head><style>
+      .bar { display: flex; ${css} } .bar a { width: 200px; }
+    </style></head><body style="margin: 0"><nav class="bar" style="width: 500px">
+      <a id="home">Home</a><a id="crew" style="order: -1">Crew</a><a id="wiki">Wiki</a>
+    </nav></body></html>`;
+    const cases: WebTestCase[] = [
+      {
+        name: 'Crew first',
+        visible: true,
+        steps: [{ order: ['#crew', '#home', '#wiki'], label: 'the menu links' }],
+      },
+      { name: 'Wraps', visible: true, steps: [{ wraps: '.bar a', label: 'the menu links' }] },
+    ];
+    const [order, wrap] = verdicts({ 'index.html': page('flex-wrap: wrap') }, cases);
+    expect(order.passed).toBe(true);
+    expect(wrap.passed).toBe(true);
+    const [, oneRow] = verdicts({ 'index.html': page('') }, cases);
+    // Flex items shrink to stay on one row
+    expect(oneRow.web).toMatchObject({ kind: 'wraps', detail: 'one' });
+    const [wrongOrder] = verdicts({ 'index.html': page('flex-direction: row-reverse') }, cases);
+    expect(wrongOrder.web).toEqual({
+      kind: 'order',
+      label: 'the menu links',
+      expected: 'Crew, Home, Wiki',
+      found: 'Wiki, Home, Crew',
+    });
+    const [, out] = verdicts(
+      {
+        'index.html': page('flex-shrink: 0').replace(
+          '.bar a { width',
+          '.bar a { flex-shrink: 0; width',
+        ),
+      },
+      cases,
+    );
+    expect(out.web).toMatchObject({ kind: 'wraps', detail: 'out' });
+    const [, column] = verdicts({ 'index.html': page('flex-direction: column') }, cases);
+    expect(column.web).toMatchObject({ kind: 'wraps', detail: 'column' });
+  });
+
+  it('tells an element that shows from one hidden any way', () => {
+    const hidden = [
+      'display: none',
+      'visibility: hidden',
+      'opacity: 0',
+      'height: 0; overflow: hidden',
+      'position: absolute; left: -9999px',
+      // A menu slid off the right, one slid under the window
+      'position: fixed; top: 0; right: 0; transform: translateX(100%)',
+      'position: fixed; bottom: 0; margin: 0; transform: translateY(100%)',
+    ];
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <p id="shown">Here</p>
+        ${hidden.map((css) => `<p class="gone" style="${css}">Gone</p>`).join('')}
+        <div style="display: none"><p id="inside">Inside</p></div>
+        <p id="low" style="margin-top: 1200px">Further down</p>
+      </body></html>`,
+    };
+    const [ok, notShown, shownAsHidden] = verdicts(files, [
+      {
+        name: 'x',
+        visible: true,
+        steps: [
+          { visible: '#shown', label: 'the note' },
+          { visible: '#low', label: 'the note further down' },
+          { hidden: '.gone', label: 'the hidden notes' },
+          { hidden: '#inside', label: 'the inner note' },
+        ],
+      },
+      { name: 'y', visible: true, steps: [{ visible: '#inside', label: 'the inner note' }] },
+      { name: 'z', visible: true, steps: [{ hidden: 'p', label: 'the notes' }] },
+    ]);
+    expect(ok.passed).toBe(true);
+    expect(notShown.web).toEqual({ kind: 'visible', label: 'the inner note', expected: 'visible' });
+    expect(shownAsHidden.web).toEqual({ kind: 'visible', label: 'the notes', expected: 'hidden' });
+  });
+
   it('stops a page stuck in an endless loop, like a timeout', () => {
     const [stuck] = verdicts(
       { 'index.html': '<h1>Hi</h1><script>while (true) {}</script>' },

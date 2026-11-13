@@ -1,0 +1,120 @@
+{
+  "cases": [
+    {
+      "name": "The pass and its button are there",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "button#show-pass",
+          "equals": "Show my pass",
+          "label": "the button (<button id=\"show-pass\">)"
+        },
+        {
+          "exists": "#pass-name",
+          "label": "the name on the pass (#pass-name)"
+        }
+      ]
+    },
+    {
+      "name": "A click puts the name typed on the pass",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "click": "button#show-pass",
+          "label": "the button Show my pass"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Ida Moreau",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The button never sends the form",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "button#show-pass",
+          "label": "the button Show my pass"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Ida Moreau",
+          "label": "the name on the pass (#pass-name)"
+        }
+      ]
+    },
+    {
+      "name": "Other names, one after the other",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "click": "button#show-pass",
+          "label": "the button Show my pass"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Noah Berg",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Sofia Lind",
+          "label": "the name box"
+        },
+        {
+          "click": "button#show-pass",
+          "label": "the button Show my pass"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Sofia Lind",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

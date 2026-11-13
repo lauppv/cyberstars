@@ -1,0 +1,700 @@
+{
+  "cases": [
+    {
+      "name": "The page has its skeleton",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "equals": "Cargo Request",
+          "label": "a <title> in the <head>"
+        },
+        {
+          "text": "h1",
+          "equals": "Cargo Request",
+          "label": "the biggest heading"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings"
+        },
+        {
+          "exists": "head link[rel=\"stylesheet\"][href$=\"style.css\"]",
+          "label": "a link to style.css in the head"
+        },
+        {
+          "exists": "head script[src$=\"script.js\"][defer]",
+          "label": "a script.js in the head that waits for the whole page"
+        }
+      ]
+    },
+    {
+      "name": "Every box is in the form, with its label",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "form#request input#crew[name=\"crew\"]:is(:not([type]), [type=\"text\" i])",
+          "label": "a text box with id=\"crew\" and name=\"crew\" in the form with id=\"request\""
+        },
+        {
+          "exists": "form#request input#item[name=\"item\"]:is(:not([type]), [type=\"text\" i])",
+          "label": "a text box with id=\"item\" and name=\"item\" in the form"
+        },
+        {
+          "exists": "form#request input#quantity[name=\"quantity\"][type=\"number\" i]",
+          "label": "a number box with id=\"quantity\" and name=\"quantity\" in the form"
+        },
+        {
+          "exists": "form#request input#code[name=\"code\"]",
+          "label": "a box with id=\"code\" and name=\"code\" in the form"
+        },
+        {
+          "exists": "form#request select#module[name=\"module\"]",
+          "label": "a list with id=\"module\" and name=\"module\" in the form"
+        },
+        {
+          "exists": "form#request input#fragile[name=\"fragile\"][type=\"checkbox\" i][value=\"yes\"]",
+          "label": "a box to tick with id=\"fragile\", name=\"fragile\" and value=\"yes\" in the form"
+        },
+        {
+          "exists": "form#request textarea#notes[name=\"notes\"]",
+          "label": "a box for a longer note with id=\"notes\" and name=\"notes\" in the form"
+        },
+        {
+          "count": "form#request label:is([for=\"crew\"], [for=\"item\"], [for=\"quantity\"], [for=\"code\"], [for=\"module\"], [for=\"fragile\"], [for=\"notes\"])",
+          "equals": 7,
+          "label": "labels tied to crew, item, quantity, code, module, fragile and notes"
+        },
+        {
+          "count": "form#request fieldset input[type=\"radio\" i][name=\"priority\"]:is([value=\"low\"], [value=\"normal\"], [value=\"urgent\"])",
+          "equals": 3,
+          "label": "round buttons named priority, low, normal and urgent, in a group"
+        },
+        {
+          "text": "form#request fieldset > legend",
+          "nonEmpty": true,
+          "label": "the question over the group of round buttons"
+        },
+        {
+          "count": "input[name=\"priority\"] + label",
+          "equals": 3,
+          "label": "labels right after their round button"
+        },
+        {
+          "checked": "input[name=\"priority\"][value=\"normal\"]",
+          "label": "the round button normal, at first"
+        },
+        {
+          "value": "#module",
+          "empty": true,
+          "label": "the list of modules, at first"
+        }
+      ]
+    },
+    {
+      "name": "A whole request goes to the supply office",
+      "visible": true,
+      "steps": [
+        {
+          "attr": "form#request",
+          "name": "action",
+          "equals": "https://supply.example.com/requests",
+          "label": "the form"
+        },
+        {
+          "attr": "form#request",
+          "name": "method",
+          "equals": "post",
+          "ignoreCase": true,
+          "label": "the form"
+        },
+        {
+          "click": "input[name=\"priority\"][value=\"urgent\"] + label",
+          "label": "the label of the round button urgent"
+        },
+        {
+          "checked": "input[name=\"priority\"][value=\"urgent\"]",
+          "label": "the round button urgent"
+        },
+        {
+          "click": "#fragile",
+          "label": "the box fragile"
+        },
+        {
+          "fill": "#crew",
+          "text": "Mara Vega",
+          "label": "the name box"
+        },
+        {
+          "fill": "#item",
+          "text": "Seed packs",
+          "label": "the item box"
+        },
+        {
+          "fill": "#quantity",
+          "text": "4",
+          "label": "the box for how many"
+        },
+        {
+          "fill": "#code",
+          "text": "FD-2041",
+          "label": "the code box"
+        },
+        {
+          "select": "#module",
+          "option": "greenhouse",
+          "label": "the list of modules"
+        },
+        {
+          "fill": "#notes",
+          "text": "Keep them dry",
+          "label": "the notes box"
+        },
+        {
+          "click": "#send",
+          "label": "the send button"
+        },
+        {
+          "sent": {
+            "crew": "Mara Vega",
+            "item": "Seed packs",
+            "quantity": "4",
+            "code": "FD-2041",
+            "module": "greenhouse",
+            "priority": "urgent",
+            "fragile": "yes",
+            "notes": "Keep them dry"
+          }
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "An empty box keeps the request from going",
+      "visible": true,
+      "steps": [
+        {
+          "count": "form#request :is(#crew, #item, #quantity, #code, #module):invalid",
+          "equals": 5,
+          "label": "boxes of crew, item, quantity, code and module that the browser refuses while empty"
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Long answers are cut, wrong ones refused",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#item",
+          "text": "Spare filters for the water recycling unit XL",
+          "label": "the item box"
+        },
+        {
+          "value": "#item",
+          "equals": "Spare filters for the water recycling un",
+          "label": "the item box, after 45 characters"
+        },
+        {
+          "fill": "#notes",
+          "text": "Please pack the filters in two boxes, since the small hatch of the lab is narrow. If the ship has no room for both, send the first box now and the second one later. Thank you, the lab crew will meet the ship at the dock as usual.",
+          "label": "the notes box"
+        },
+        {
+          "value": "#notes",
+          "equals": "Please pack the filters in two boxes, since the small hatch of the lab is narrow. If the ship has no room for both, send the first box now and the second one later. Thank you, the lab crew will meet t",
+          "label": "the notes box, after a long note"
+        },
+        {
+          "fill": "#crew",
+          "text": "Mara Vega",
+          "label": "the name box"
+        },
+        {
+          "fill": "#item",
+          "text": "ab",
+          "label": "the item box"
+        },
+        {
+          "fill": "#quantity",
+          "text": "25",
+          "label": "the box for how many"
+        },
+        {
+          "fill": "#code",
+          "text": "FD-204",
+          "label": "the code box"
+        },
+        {
+          "select": "#module",
+          "option": "greenhouse",
+          "label": "the list of modules"
+        },
+        {
+          "exists": "#item:invalid",
+          "label": "the item box with 2 characters, refused by the browser"
+        },
+        {
+          "exists": "#quantity:invalid",
+          "label": "the box for how many with 25, refused by the browser"
+        },
+        {
+          "exists": "#code:invalid",
+          "label": "the code box with FD-204, refused by the browser"
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Other wrong answers",
+      "steps": [
+        {
+          "fill": "#quantity",
+          "text": "0",
+          "label": "the box for how many"
+        },
+        {
+          "exists": "#quantity:invalid",
+          "label": "the box for how many with 0, refused by the browser"
+        },
+        {
+          "fill": "#quantity",
+          "text": "2.5",
+          "label": "the box for how many"
+        },
+        {
+          "exists": "#quantity:invalid",
+          "label": "the box for how many with 2.5, refused by the browser"
+        },
+        {
+          "fill": "#code",
+          "text": "MDX-1180",
+          "label": "the code box"
+        },
+        {
+          "exists": "#code:invalid",
+          "label": "the code box with MDX-1180, refused by the browser"
+        },
+        {
+          "fill": "#code",
+          "text": "MD-11800",
+          "label": "the code box"
+        },
+        {
+          "exists": "#code:invalid",
+          "label": "the code box with MD-11800, refused by the browser"
+        }
+      ]
+    },
+    {
+      "name": "Clear empties the form",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#crew",
+          "text": "Mara Vega",
+          "label": "the name box"
+        },
+        {
+          "click": "input[name=\"priority\"][value=\"urgent\"] + label",
+          "label": "the label of the round button urgent"
+        },
+        {
+          "click": "#fragile",
+          "label": "the box fragile"
+        },
+        {
+          "click": "#clear",
+          "label": "the button with id=\"clear\""
+        },
+        {
+          "value": "#crew",
+          "empty": true,
+          "label": "the name box, after Clear"
+        },
+        {
+          "checked": "input[name=\"priority\"][value=\"normal\"]",
+          "label": "the round button normal, after Clear"
+        },
+        {
+          "checked": "#fragile",
+          "off": true,
+          "label": "the box fragile, after Clear"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "The form looks like part of the page, on a phone too",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "style": "body",
+          "prop": "font-family",
+          "endsWith": "sans-serif",
+          "label": "the page (<body>)"
+        },
+        {
+          "style": "form#request :is(input, select, textarea, button)",
+          "prop": "font-family",
+          "endsWith": "sans-serif",
+          "every": true,
+          "label": "every field and button of the form"
+        },
+        {
+          "layout": "label[for=\"crew\"], #crew, label[for=\"item\"], #item, label[for=\"quantity\"], #quantity",
+          "arrange": "column",
+          "label": "the labels and boxes of crew, item and quantity"
+        },
+        {
+          "style": "form#request input:is([type=\"radio\" i], [type=\"checkbox\" i])",
+          "prop": "accent-color",
+          "not": "auto",
+          "every": true,
+          "label": "every round button and box to tick"
+        },
+        {
+          "differs": "#send",
+          "from": "#clear",
+          "props": ["background-color", "color", "font-weight", "font-size", "border-top-color"],
+          "fromLabel": "the clear button",
+          "label": "the send button"
+        },
+        {
+          "contrast": "form#request label",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "a label of the form"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The form helps as you go",
+      "visible": true,
+      "steps": [
+        {
+          "differs": "input[name=\"priority\"]:checked + label",
+          "from": "input[name=\"priority\"]:not(:checked) + label",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "border-top-color",
+            "outline-style",
+            "box-shadow"
+          ],
+          "fromLabel": "the labels of the other two",
+          "label": "the label of the chosen round button"
+        },
+        {
+          "click": "input[name=\"priority\"][value=\"urgent\"] + label",
+          "label": "the label of the round button urgent"
+        },
+        {
+          "differs": "input[name=\"priority\"][value=\"urgent\"] + label",
+          "from": "input[name=\"priority\"]:not(:checked) + label",
+          "props": [
+            "color",
+            "background-color",
+            "font-weight",
+            "font-style",
+            "text-decoration-line",
+            "border-top-color",
+            "outline-style",
+            "box-shadow"
+          ],
+          "fromLabel": "the labels of the other two",
+          "label": "the label of urgent, once chosen"
+        },
+        {
+          "fill": "#code",
+          "text": "FD-204",
+          "label": "the code box"
+        },
+        {
+          "press": "Tab",
+          "on": "#code",
+          "label": "the code box"
+        },
+        {
+          "differs": "#code",
+          "from": "#crew",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "outline-style",
+            "outline-color",
+            "box-shadow"
+          ],
+          "fromLabel": "the name box, still empty and not touched yet",
+          "label": "the code box, left with a wrong code"
+        }
+      ]
+    },
+    {
+      "name": "The code says the kind of cargo",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#code",
+          "text": "FD",
+          "label": "the code box"
+        },
+        {
+          "text": "#kind",
+          "equals": "Food",
+          "label": "the paragraph with id=\"kind\""
+        },
+        {
+          "fill": "#code",
+          "text": "MD-0412",
+          "label": "the code box"
+        },
+        {
+          "text": "#kind",
+          "equals": "Medicine",
+          "label": "the paragraph with id=\"kind\""
+        },
+        {
+          "fill": "#crew",
+          "text": "Mara Vega",
+          "label": "the name box"
+        },
+        {
+          "fill": "#item",
+          "text": "Seed packs",
+          "label": "the item box"
+        },
+        {
+          "fill": "#quantity",
+          "text": "4",
+          "label": "the box for how many"
+        },
+        {
+          "fill": "#code",
+          "text": "XX-1234",
+          "label": "the code box"
+        },
+        {
+          "select": "#module",
+          "option": "greenhouse",
+          "label": "the list of modules"
+        },
+        {
+          "text": "#kind",
+          "equals": "Unknown kind",
+          "label": "the paragraph with id=\"kind\""
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "A name of spaces is refused, out loud",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#crew",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#item",
+          "text": "Seed packs",
+          "label": "the item box"
+        },
+        {
+          "fill": "#quantity",
+          "text": "4",
+          "label": "the box for how many"
+        },
+        {
+          "fill": "#code",
+          "text": "FD-2041",
+          "label": "the code box"
+        },
+        {
+          "select": "#module",
+          "option": "greenhouse",
+          "label": "the list of modules"
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#crew-error",
+          "equals": "Write your name",
+          "label": "the paragraph with id=\"crew-error\""
+        },
+        {
+          "attr": "#crew",
+          "name": "aria-invalid",
+          "equals": "true",
+          "label": "the name box"
+        },
+        {
+          "attr": "#crew",
+          "name": "aria-describedby",
+          "equals": "crew-error",
+          "label": "the name box"
+        },
+        {
+          "fill": "#crew",
+          "text": "Kenji Arano",
+          "label": "the name box"
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "sent": {
+            "crew": "Kenji Arano"
+          }
+        },
+        {
+          "text": "#crew-error",
+          "equals": "",
+          "label": "the paragraph with id=\"crew-error\", once the name is right"
+        },
+        {
+          "count": "#crew[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "name boxes still marked as wrong"
+        }
+      ]
+    },
+    {
+      "name": "Another crew member, other codes",
+      "steps": [
+        {
+          "fill": "#crew",
+          "text": " ",
+          "label": "the name box"
+        },
+        {
+          "fill": "#item",
+          "text": "Wrench set",
+          "label": "the item box"
+        },
+        {
+          "fill": "#quantity",
+          "text": "1",
+          "label": "the box for how many"
+        },
+        {
+          "fill": "#code",
+          "text": "AB-0001",
+          "label": "the code box"
+        },
+        {
+          "select": "#module",
+          "option": "dock",
+          "label": "the list of modules"
+        },
+        {
+          "text": "#kind",
+          "equals": "Unknown kind",
+          "label": "the paragraph with id=\"kind\""
+        },
+        {
+          "fill": "#code",
+          "text": "TL-0099",
+          "label": "the code box"
+        },
+        {
+          "text": "#kind",
+          "equals": "Tools",
+          "label": "the paragraph with id=\"kind\""
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#crew-error",
+          "equals": "Write your name",
+          "label": "the paragraph with id=\"crew-error\""
+        },
+        {
+          "fill": "#crew",
+          "text": "Ines Lindqvist",
+          "label": "the name box"
+        },
+        {
+          "submit": "#request",
+          "label": "the form"
+        },
+        {
+          "sent": {
+            "crew": "Ines Lindqvist",
+            "item": "Wrench set",
+            "quantity": "1",
+            "code": "TL-0099",
+            "module": "dock",
+            "priority": "normal"
+          }
+        },
+        {
+          "count": "#crew[aria-invalid=\"true\"]",
+          "equals": 0,
+          "label": "name boxes still marked as wrong"
+        }
+      ]
+    }
+  ]
+}

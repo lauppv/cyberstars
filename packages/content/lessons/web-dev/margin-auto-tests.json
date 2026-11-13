@@ -1,0 +1,132 @@
+{
+  "cases": [
+    {
+      "name": "The menu sits at the far right of the header",
+      "visible": true,
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "gap": 24,
+          "label": "the station's name and the main menu"
+        },
+        {
+          "against": ".site-name",
+          "in": "header",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the station's name"
+        },
+        {
+          "against": "header nav a:last-child",
+          "in": "header",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the menu's last link"
+        }
+      ]
+    },
+    {
+      "name": "On the wiki pages too",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "gap": 24,
+          "label": "the station's name and the main menu"
+        },
+        {
+          "against": ".site-name",
+          "in": "header",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the station's name"
+        },
+        {
+          "against": "header nav a:last-child",
+          "in": "header",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the menu's last link"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "gap": 24,
+          "label": "the station's name and the main menu"
+        },
+        {
+          "against": ".site-name",
+          "in": "header",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the station's name"
+        },
+        {
+          "against": "header nav a:last-child",
+          "in": "header",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the menu's last link"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, the header still fits",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "size": ".site-name",
+          "maxHeight": 40,
+          "label": "the station's name"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "With a shorter menu",
+      "page": "boarding.html",
+      "files": {
+        "boarding.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Book a seat on a flight from Orbital Station 7: pick your flight, your date and your seat.\" />\n    <title>Book a Seat</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"boarding.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Book a Seat</h1>\n    <p>Pick a flight, tell us who you are, and we keep a seat for you.</p>\n\n    <form id=\"booking\" action=\"https://station.example/book\" method=\"post\">\n      <label for=\"passenger\">Full name</label>\n      <input id=\"passenger\" name=\"passenger\" placeholder=\"e.g. Ida Moreau\" required minlength=\"2\" maxlength=\"40\" aria-describedby=\"passenger-error\" />\n      <p id=\"passenger-error\"></p>\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" name=\"email\" placeholder=\"e.g. ida@example.com\" required />\n      <label for=\"badge-number\">Badge number</label>\n      <input id=\"badge-number\" name=\"badge\" placeholder=\"e.g. OS4821\" required pattern=\"[A-Z]{2}\\d{4}\" aria-describedby=\"badge-error\" />\n      <p id=\"badge-error\"></p>\n      <label for=\"phone\">Phone</label>\n      <input type=\"tel\" id=\"phone\" name=\"phone\" placeholder=\"e.g. +47 412 34 567\" />\n      <label for=\"flight\">Flight</label>\n      <select id=\"flight\" name=\"flight\" required>\n        <option value=\"\">Pick a flight</option>\n        <option value=\"SL-101\">SL-101 to Moon Base, 08:30</option>\n        <option value=\"SL-102\">SL-102 to Mars Relay, 09:45</option>\n        <option value=\"SL-103\">SL-103 to Europa Outpost, 07:15</option>\n        <option value=\"SL-104\">SL-104 to Lunar Gateway, 11:00</option>\n        <option value=\"SL-105\">SL-105 to Orbital Yard, 10:20</option>\n      </select>\n      <label for=\"travel-date\">Travel date</label>\n      <input type=\"date\" id=\"travel-date\" name=\"date\" required />\n      <label for=\"bags\">Number of bags</label>\n      <input type=\"number\" id=\"bags\" name=\"bags\" min=\"0\" max=\"3\" />\n      <fieldset>\n        <legend>Where would you like to sit?</legend>\n        <input type=\"radio\" id=\"seat-window\" name=\"seat\" value=\"window\" />\n        <label for=\"seat-window\">By the window</label>\n        <input type=\"radio\" id=\"seat-aisle\" name=\"seat\" value=\"aisle\" />\n        <label for=\"seat-aisle\">On the aisle</label>\n      </fieldset>\n      <fieldset>\n        <legend>Extras</legend>\n        <input type=\"checkbox\" id=\"extra-meal\" name=\"extras\" value=\"meal\" />\n        <label for=\"extra-meal\">A hot meal</label>\n        <input type=\"checkbox\" id=\"extra-blanket\" name=\"extras\" value=\"blanket\" />\n        <label for=\"extra-blanket\">A warm blanket</label>\n        <input type=\"checkbox\" id=\"extra-wifi\" name=\"extras\" value=\"wifi\" checked />\n        <label for=\"extra-wifi\">Wi-Fi on board</label>\n        <input type=\"checkbox\" id=\"extra-spacewalk\" name=\"extras\" value=\"spacewalk\" disabled />\n        <label for=\"extra-spacewalk\">A space walk (sold out this week)</label>\n      </fieldset>\n      <fieldset>\n        <legend>Someone we can call on Earth</legend>\n        <label for=\"contact-name\">Their name</label>\n        <input id=\"contact-name\" name=\"contact-name\" maxlength=\"40\" />\n        <label for=\"contact-phone\">Their phone</label>\n        <input type=\"tel\" id=\"contact-phone\" name=\"contact-phone\" />\n      </fieldset>\n      <label for=\"notes\">Anything we should know?</label>\n      <textarea id=\"notes\" name=\"notes\" rows=\"4\" maxlength=\"200\"></textarea>\n      <p id=\"notes-left\">200 characters left</p>\n      <button type=\"submit\">Book my seat</button>\n      <button type=\"reset\">Clear the form</button>\n      <p id=\"confirmation\"></p>\n    </form>\n\n    <h2>Your boarding pass</h2>\n    <p>Passenger: <span id=\"pass-name\">No name yet</span></p>\n    <p>Initials: <span id=\"pass-initials\"></span></p>\n    <p>Traveling as: <span id=\"pass-role\">guest</span></p>\n    <p>Badge: <span id=\"pass-badge\">No valid badge yet</span></p>\n    <p>Flight: <span id=\"pass-flight\"></span></p>\n    <p>Going to: <span id=\"pass-destination\">No flight yet</span></p>\n    <p>Seat: <span id=\"pass-seat\"></span></p>\n    <p>Hot meal: <span id=\"pass-meal\">no</span></p>\n    <p>Notes: <span id=\"pass-notes\">No notes</span></p>\n    <p>Help at the gate: <span id=\"pass-help\">no</span></p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "gap": 24,
+          "label": "the station's name and the main menu"
+        },
+        {
+          "against": ".site-name",
+          "in": "header",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the station's name"
+        },
+        {
+          "against": "header nav a:last-child",
+          "in": "header",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the header",
+          "label": "the menu's last link"
+        }
+      ]
+    }
+  ]
+}

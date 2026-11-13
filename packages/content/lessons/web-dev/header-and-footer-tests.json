@@ -1,0 +1,158 @@
+{
+  "cases": [
+    {
+      "name": "The home page has a header and a footer",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "text": "header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu (<nav>) inside the header"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "a footer (<footer>) at the very end of the page"
+        },
+        {
+          "order": ["header", "h1", "footer"],
+          "label": "the header, the biggest heading and the footer"
+        }
+      ]
+    },
+    {
+      "name": "Every page has the same header and footer",
+      "visible": true,
+      "steps": [
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "text": "header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu (<nav>) inside the header"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "a footer (<footer>) at the very end of the page"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "text": "header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu (<nav>) inside the header"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "a footer (<footer>) at the very end of the page"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "text": "header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu (<nav>) inside the header"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "a footer (<footer>) at the very end of the page"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "text": "header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu (<nav>) inside the header"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "a footer (<footer>) at the very end of the page"
+        }
+      ]
+    },
+    {
+      "name": "The menu leads everywhere, even from the commander's page",
+      "steps": [
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "header nav a[href$=\"schedule.html\"]",
+          "label": "the menu link to the schedule"
+        },
+        {
+          "at": "schedule.html"
+        },
+        {
+          "click": "header nav a[href$=\"boarding.html\"]",
+          "label": "the menu link to the boarding page"
+        },
+        {
+          "at": "boarding.html"
+        },
+        {
+          "click": "header nav a[href$=\"crew.html\"]",
+          "label": "the menu link to the crew"
+        },
+        {
+          "at": "crew.html"
+        },
+        {
+          "click": "header nav a[href$=\"index.html\"]",
+          "label": "the menu link to the home page"
+        },
+        {
+          "at": "index.html"
+        }
+      ]
+    }
+  ]
+}

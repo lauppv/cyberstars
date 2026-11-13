@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "name": "The boxes to tick are in a color of the site",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "style": "#booking input[type=\"checkbox\" i]",
+          "prop": "accent-color",
+          "not": "auto",
+          "every": true,
+          "label": "every box to tick"
+        }
+      ]
+    },
+    {
+      "name": "The round buttons too",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "style": "#booking input[type=\"radio\" i]",
+          "prop": "accent-color",
+          "not": "auto",
+          "every": true,
+          "label": "every round button"
+        }
+      ]
+    },
+    {
+      "name": "More choices",
+      "page": "boarding.html",
+      "files": {
+        "boarding.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Book a Seat</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n      <a href=\"schedule.html\">Schedule</a>\n      <a href=\"boarding.html\">Boarding</a>\n    </nav>\n    <h1>Book a Seat</h1>\n    <p>Pick a flight, tell us who you are, and we keep a seat for you.</p>\n\n    <form id=\"booking\" action=\"https://station.example/book\" method=\"post\">\n      <label for=\"passenger\">Full name</label>\n      <input id=\"passenger\" name=\"passenger\" placeholder=\"e.g. Ida Moreau\" required minlength=\"2\" maxlength=\"40\" />\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" name=\"email\" placeholder=\"e.g. ida@example.com\" required />\n      <label for=\"phone\">Phone</label>\n      <input type=\"tel\" id=\"phone\" name=\"phone\" placeholder=\"e.g. +47 412 34 567\" />\n      <label for=\"flight\">Flight</label>\n      <select id=\"flight\" name=\"flight\" required>\n        <option value=\"\">Pick a flight</option>\n        <option value=\"SL-101\">SL-101 to Moon Base, 08:30</option>\n        <option value=\"SL-102\">SL-102 to Mars Relay, 09:45</option>\n        <option value=\"SL-103\">SL-103 to Europa Outpost, 07:15</option>\n        <option value=\"SL-104\">SL-104 to Lunar Gateway, 11:00</option>\n        <option value=\"SL-105\">SL-105 to Orbital Yard, 10:20</option>\n      </select>\n      <label for=\"travel-date\">Travel date</label>\n      <input type=\"date\" id=\"travel-date\" name=\"date\" required />\n      <label for=\"bags\">Number of bags</label>\n      <input type=\"number\" id=\"bags\" name=\"bags\" min=\"0\" max=\"3\" />\n      <fieldset>\n        <legend>Where would you like to sit?</legend>\n        <input type=\"radio\" id=\"seat-window\" name=\"seat\" value=\"window\" />\n        <label for=\"seat-window\">By the window</label>\n        <input type=\"radio\" id=\"seat-aisle\" name=\"seat\" value=\"aisle\" />\n        <label for=\"seat-aisle\">On the aisle</label>\n        <input type=\"radio\" id=\"seat-middle\" name=\"seat\" value=\"middle\" />\n        <label for=\"seat-middle\">In the middle</label>\n      </fieldset>\n      <fieldset>\n        <legend>Extras</legend>\n        <input type=\"checkbox\" id=\"extra-meal\" name=\"extras\" value=\"meal\" />\n        <label for=\"extra-meal\">A hot meal</label>\n        <input type=\"checkbox\" id=\"extra-blanket\" name=\"extras\" value=\"blanket\" />\n        <label for=\"extra-blanket\">A warm blanket</label>\n        <input type=\"checkbox\" id=\"extra-wifi\" name=\"extras\" value=\"wifi\" checked />\n        <label for=\"extra-wifi\">Wi-Fi on board</label>\n        <input type=\"checkbox\" id=\"extra-pet\" name=\"extras\" value=\"pet\" />\n        <label for=\"extra-pet\">A basket for my cat</label>\n        <input type=\"checkbox\" id=\"extra-spacewalk\" name=\"extras\" value=\"spacewalk\" disabled />\n        <label for=\"extra-spacewalk\">A space walk (sold out this week)</label>\n      </fieldset>\n      <fieldset>\n        <legend>Someone we can call on Earth</legend>\n        <label for=\"contact-name\">Their name</label>\n        <input id=\"contact-name\" name=\"contact-name\" maxlength=\"40\" />\n        <label for=\"contact-phone\">Their phone</label>\n        <input type=\"tel\" id=\"contact-phone\" name=\"contact-phone\" />\n      </fieldset>\n      <label for=\"notes\">Anything we should know?</label>\n      <textarea id=\"notes\" name=\"notes\" rows=\"4\" maxlength=\"200\"></textarea>\n      <button type=\"submit\">Book my seat</button>\n      <button type=\"reset\">Clear the form</button>\n    </form>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "style": "#booking input[type=\"checkbox\" i]",
+          "prop": "accent-color",
+          "not": "auto",
+          "every": true,
+          "label": "every box to tick"
+        },
+        {
+          "style": "#booking input[type=\"radio\" i]",
+          "prop": "accent-color",
+          "not": "auto",
+          "every": true,
+          "label": "every round button"
+        }
+      ]
+    }
+  ]
+}

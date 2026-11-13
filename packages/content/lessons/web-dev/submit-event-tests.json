@@ -1,0 +1,130 @@
+{
+  "cases": [
+    {
+      "name": "The console says who is booking, and the form is sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "logged": "Sending the booking for Ida Moreau"
+        },
+        {
+          "sent": {
+            "passenger": "Ida Moreau",
+            "flight": "SL-102"
+          }
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A form the browser refuses writes nothing",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "logged": "Sending the booking for",
+          "none": true
+        }
+      ]
+    },
+    {
+      "name": "Another passenger",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Lena Park",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "lena@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-08-02",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "logged": "Sending the booking for Lena Park"
+        },
+        {
+          "sent": {
+            "passenger": "Lena Park",
+            "flight": "SL-105",
+            "date": "2031-08-02"
+          }
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A name alone is still refused, and writes nothing",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "logged": "Sending the booking for Noah Berg",
+          "none": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "name": "On a phone, the name stays on one line",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "size": ".site-name",
+          "maxHeight": 40,
+          "label": "the station's name"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a wiki page too",
+      "visible": true,
+      "page": "wiki-airlock.html",
+      "width": 375,
+      "steps": [
+        {
+          "size": ".site-name",
+          "maxHeight": 40,
+          "label": "the station's name"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a computer, the header as before",
+      "visible": true,
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "gap": 24,
+          "label": "the station's name and the main menu"
+        },
+        {
+          "size": ".site-name",
+          "maxHeight": 40,
+          "label": "the station's name"
+        }
+      ]
+    },
+    {
+      "name": "On a very small phone",
+      "page": "people/vega.html",
+      "width": 320,
+      "steps": [
+        {
+          "size": ".site-name",
+          "maxHeight": 40,
+          "label": "the station's name"
+        },
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

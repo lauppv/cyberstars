@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "name": "The label, the box and a button are in a form",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "form #passenger",
+          "label": "the name box inside a <form>"
+        },
+        {
+          "exists": "form label[for=\"passenger\"], form label:has(#passenger)",
+          "label": "the label of the name box inside the form"
+        },
+        {
+          "text": "form button",
+          "nonEmpty": true,
+          "label": "a button inside the form, with a word on it"
+        }
+      ]
+    },
+    {
+      "name": "The button sends the form",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "input#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "click": "form button",
+          "label": "the button of the form"
+        },
+        {
+          "sent": {}
+        },
+        {
+          "at": "boarding.html"
+        }
+      ]
+    },
+    {
+      "name": "Enter in the name box sends it too",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "input#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "press": "Enter",
+          "on": "input#passenger",
+          "label": "the name box"
+        },
+        {
+          "sent": {}
+        }
+      ]
+    }
+  ]
+}

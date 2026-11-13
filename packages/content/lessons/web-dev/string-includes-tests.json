@@ -1,0 +1,164 @@
+{
+  "cases": [
+    {
+      "name": "A station email says crew",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#pass-role",
+          "equals": "guest",
+          "label": "the line Traveling as on the pass at the start (#pass-role)"
+        },
+        {
+          "fill": "#email",
+          "text": "mara@station.example",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "crew",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Any other email says guest",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "guest",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "fill": "#email",
+          "text": "tomas@station.example",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "crew",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "fill": "#email",
+          "text": "tomas@example.com",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "guest",
+          "label": "the line Traveling as on the pass once the email changes (#pass-role)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The name and the booking still work",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-103",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-103",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "   ",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass (#pass-name)"
+        }
+      ]
+    },
+    {
+      "name": "Emails that only look like the station's",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "ines@station.example.com",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "guest",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "fill": "#email",
+          "text": "station.example@mail.com",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "guest",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "fill": "#email",
+          "text": "ines@mystation.example",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "guest",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "fill": "#email",
+          "text": "kenji.arano@station.example",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "crew",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "name": "A notes box with room for a few lines, empty at the start",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "textarea#notes",
+          "label": "a box for a longer text (textarea) with the id notes"
+        },
+        {
+          "size": "#notes",
+          "minHeight": 56,
+          "label": "the notes box, tall enough for three lines"
+        },
+        {
+          "value": "#notes",
+          "empty": true,
+          "label": "the notes box at the start"
+        },
+        {
+          "click": "label[for=\"notes\"], label:has(#notes)",
+          "label": "the label of the notes box"
+        },
+        {
+          "exists": "#notes:focus",
+          "label": "the notes box, ready to type in after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "The form sends the notes",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Window seat, please. I get cold.",
+          "label": "the notes box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "notes": "Window seat, please. I get cold."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notes on two lines",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "I travel with a cat.\nShe is very calm.",
+          "label": "the notes box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "notes": "I travel with a cat.\nShe is very calm."
+          }
+        }
+      ]
+    }
+  ]
+}

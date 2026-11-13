@@ -1,0 +1,245 @@
+{
+  "cases": [
+    {
+      "name": "On a computer, the picture stands at the left of the sentences",
+      "visible": true,
+      "page": "index.html",
+      "steps": [
+        {
+          "layout": ".photo, .welcome-text",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the picture box and the sentences"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, the picture sits above the sentences",
+      "visible": true,
+      "page": "index.html",
+      "width": 375,
+      "steps": [
+        {
+          "layout": ".photo, .welcome-text",
+          "arrange": "column",
+          "label": "the picture box and the sentences"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The caption sits on the picture, along its bottom edge",
+      "visible": true,
+      "page": "index.html",
+      "steps": [
+        {
+          "text": ".caption",
+          "nonEmpty": true,
+          "label": "the caption"
+        },
+        {
+          "against": ".caption",
+          "in": ".photo",
+          "side": "bottom",
+          "label": "the caption",
+          "inLabel": "the picture box"
+        },
+        {
+          "style": ".caption",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the caption"
+        },
+        {
+          "contrast": ".caption",
+          "atLeast": 4.5,
+          "label": "the caption"
+        },
+        {
+          "size": ".photo",
+          "maxHeight": 162,
+          "label": "the picture box, with its picture 150 pixels tall"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, the caption is still on the picture",
+      "visible": true,
+      "page": "index.html",
+      "width": 375,
+      "steps": [
+        {
+          "against": ".caption",
+          "in": ".photo",
+          "side": "bottom",
+          "label": "the caption",
+          "inLabel": "the picture box"
+        }
+      ]
+    },
+    {
+      "name": "When the page scrolls, the header stays over the picture and its caption",
+      "visible": true,
+      "page": "index.html",
+      "width": 375,
+      "steps": [
+        {
+          "scroll": 230
+        },
+        {
+          "onTop": ".site-name",
+          "label": "the station's name in the header"
+        },
+        {
+          "scroll": 15
+        },
+        {
+          "onTop": ".site-name",
+          "label": "the station's name in the header"
+        },
+        {
+          "scroll": 15
+        },
+        {
+          "onTop": ".site-name",
+          "label": "the station's name in the header"
+        },
+        {
+          "scroll": 15
+        },
+        {
+          "onTop": ".site-name",
+          "label": "the station's name in the header"
+        },
+        {
+          "inView": "header",
+          "label": "the header"
+        }
+      ]
+    },
+    {
+      "name": "The cards, the facts and Back to top still work",
+      "visible": true,
+      "page": "wiki.html",
+      "width": 700,
+      "steps": [
+        {
+          "wraps": ".wiki-list article",
+          "label": "the wiki's cards"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "order": [".fact-box", ".wiki-page article"],
+          "label": "the fact box and the article"
+        },
+        {
+          "scroll": "end"
+        },
+        {
+          "inView": "header",
+          "label": "the header"
+        },
+        {
+          "onTop": ".site-name",
+          "label": "the station's name in the header"
+        },
+        {
+          "inView": ".to-top",
+          "label": "the Back to top link"
+        },
+        {
+          "onTop": ".to-top",
+          "label": "the Back to top link"
+        }
+      ]
+    },
+    {
+      "name": "Another picture beside longer sentences, on a computer",
+      "page": "index.html",
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The home page of Orbital Station 7: news from the station, visiting hours and the rules on board.\" />\n    <title>Station Log</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Welcome aboard</h1>\n    <div class=\"welcome\">\n      <div class=\"photo\">\n        <img src=\"img/station.svg\" alt=\"The station at night, its gold hub lit inside the blue ring\" width=\"320\" height=\"200\" />\n        <span class=\"caption\">The station at night, seen from the supply ship Lyra on its way up</span>\n      </div>\n      <div class=\"welcome-text\">\n        <p>The station goes round the Earth every 92 minutes, so the crew see the sun come up and go down sixteen times a day.</p>\n        <p>Six people live and work here for six months at a time, with a gym, a telescope and a greenhouse full of tomatoes and beans.</p>\n        <p>Visitors come up on the supply ship from Lyon, Oslo and Porto, and they stay for a week at most.</p>\n      </div>\n    </div>\n    <nav class=\"jumps\" aria-label=\"On this page\"><a href=\"#today\">Jump to today</a> · <a href=\"#visiting\">Visiting hours</a></nav>\n    <p><a href=\"crew.html\">Meet the crew</a></p>\n\n    <h2>About the Station</h2>\n    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>\n    <p class=\"address\">\n      Orbital Station 7<br />\n      Docking Ring B<br />\n      Low Earth Orbit\n    </p>\n    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>\n    <p>Read more in the crew's wiki: <a href=\"wiki-greenhouse.html\">the greenhouse</a> and <a href=\"wiki-airlock.html\">the airlock</a>.</p>\n    <p>\n      Curious how real stations work?\n      <a href=\"https://en.wikipedia.org/wiki/Space_station\" target=\"_blank\" rel=\"noopener\">Read about space stations</a>\n    </p>\n    <h3>The Greenhouse</h3>\n    <p>Tomatoes, beans and basil grow under blue lamps.</p>\n\n    <img src=\"img/divider.svg\" alt=\"\" />\n\n    <h2 id=\"today\">Today on Board</h2>\n    <p class=\"warning urgent\"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>\n    <p>Water left: 900 litres of H<sub>2</sub>O.</p>\n    <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>\n    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>\n    <h3 class=\"shift\">Morning Shift</h3>\n    <p>Commander Vega and engineer Okafor.</p>\n    <h3 class=\"shift\">Night Shift</h3>\n    <p>Pilot Lindqvist, alone with the stars.</p>\n\n    <h2 id=\"visiting\">Visiting Hours</h2>\n    <p class=\"hours\">\n      Monday to Friday: 10:00 to 16:00<br />\n      Saturday: 10:00 to 12:00<br />\n      Sunday: closed\n    </p>\n    <p class=\"warning\"><strong>Visitors must wear a badge</strong> at all times.</p>\n\n    <h2>Station Rules</h2>\n    <p>Wear your badge at all times.</p>\n    <p>Close every hatch behind you.</p>\n    <p>No running in the greenhouse.</p>\n\n    <p><a href=\"mailto:crew@station.example\">Write to the crew</a></p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "layout": ".photo, .welcome-text",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the picture box and the sentences"
+        },
+        {
+          "against": ".caption",
+          "in": ".photo",
+          "side": "bottom",
+          "label": "the caption",
+          "inLabel": "the picture box"
+        },
+        {
+          "size": ".photo",
+          "maxHeight": 212,
+          "label": "the picture box, with its picture 200 pixels tall"
+        }
+      ]
+    },
+    {
+      "name": "Another picture beside longer sentences, on a phone",
+      "page": "index.html",
+      "width": 375,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The home page of Orbital Station 7: news from the station, visiting hours and the rules on board.\" />\n    <title>Station Log</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Welcome aboard</h1>\n    <div class=\"welcome\">\n      <div class=\"photo\">\n        <img src=\"img/station.svg\" alt=\"The station at night, its gold hub lit inside the blue ring\" width=\"320\" height=\"200\" />\n        <span class=\"caption\">The station at night, seen from the supply ship Lyra on its way up</span>\n      </div>\n      <div class=\"welcome-text\">\n        <p>The station goes round the Earth every 92 minutes, so the crew see the sun come up and go down sixteen times a day.</p>\n        <p>Six people live and work here for six months at a time, with a gym, a telescope and a greenhouse full of tomatoes and beans.</p>\n        <p>Visitors come up on the supply ship from Lyon, Oslo and Porto, and they stay for a week at most.</p>\n      </div>\n    </div>\n    <nav class=\"jumps\" aria-label=\"On this page\"><a href=\"#today\">Jump to today</a> · <a href=\"#visiting\">Visiting hours</a></nav>\n    <p><a href=\"crew.html\">Meet the crew</a></p>\n\n    <h2>About the Station</h2>\n    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>\n    <p class=\"address\">\n      Orbital Station 7<br />\n      Docking Ring B<br />\n      Low Earth Orbit\n    </p>\n    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>\n    <p>Read more in the crew's wiki: <a href=\"wiki-greenhouse.html\">the greenhouse</a> and <a href=\"wiki-airlock.html\">the airlock</a>.</p>\n    <p>\n      Curious how real stations work?\n      <a href=\"https://en.wikipedia.org/wiki/Space_station\" target=\"_blank\" rel=\"noopener\">Read about space stations</a>\n    </p>\n    <h3>The Greenhouse</h3>\n    <p>Tomatoes, beans and basil grow under blue lamps.</p>\n\n    <img src=\"img/divider.svg\" alt=\"\" />\n\n    <h2 id=\"today\">Today on Board</h2>\n    <p class=\"warning urgent\"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>\n    <p>Water left: 900 litres of H<sub>2</sub>O.</p>\n    <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>\n    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>\n    <h3 class=\"shift\">Morning Shift</h3>\n    <p>Commander Vega and engineer Okafor.</p>\n    <h3 class=\"shift\">Night Shift</h3>\n    <p>Pilot Lindqvist, alone with the stars.</p>\n\n    <h2 id=\"visiting\">Visiting Hours</h2>\n    <p class=\"hours\">\n      Monday to Friday: 10:00 to 16:00<br />\n      Saturday: 10:00 to 12:00<br />\n      Sunday: closed\n    </p>\n    <p class=\"warning\"><strong>Visitors must wear a badge</strong> at all times.</p>\n\n    <h2>Station Rules</h2>\n    <p>Wear your badge at all times.</p>\n    <p>Close every hatch behind you.</p>\n    <p>No running in the greenhouse.</p>\n\n    <p><a href=\"mailto:crew@station.example\">Write to the crew</a></p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "layout": ".photo, .welcome-text",
+          "arrange": "column",
+          "label": "the picture box and the sentences"
+        },
+        {
+          "against": ".caption",
+          "in": ".photo",
+          "side": "bottom",
+          "label": "the caption",
+          "inLabel": "the picture box"
+        },
+        {
+          "size": ".photo",
+          "maxHeight": 212,
+          "label": "the picture box, with its picture 200 pixels tall"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "A small picture beside a long sentence, on a computer",
+      "page": "index.html",
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The home page of Orbital Station 7: news from the station, visiting hours and the rules on board.\" />\n    <title>Station Log</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Welcome aboard</h1>\n    <div class=\"welcome\">\n      <div class=\"photo\">\n        <img src=\"img/station.svg\" alt=\"The station at night, its gold hub lit inside the blue ring\" width=\"160\" height=\"100\" />\n        <span class=\"caption\">Our home</span>\n      </div>\n      <div class=\"welcome-text\">\n        <p>The station goes round the Earth every 92 minutes, so the crew see sixteen sunsets a day, one after the other.</p>\n        <p>Six people live here.</p>\n      </div>\n    </div>\n    <nav class=\"jumps\" aria-label=\"On this page\"><a href=\"#today\">Jump to today</a> · <a href=\"#visiting\">Visiting hours</a></nav>\n    <p><a href=\"crew.html\">Meet the crew</a></p>\n\n    <h2>About the Station</h2>\n    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>\n    <p class=\"address\">\n      Orbital Station 7<br />\n      Docking Ring B<br />\n      Low Earth Orbit\n    </p>\n    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>\n    <p>Read more in the crew's wiki: <a href=\"wiki-greenhouse.html\">the greenhouse</a> and <a href=\"wiki-airlock.html\">the airlock</a>.</p>\n    <p>\n      Curious how real stations work?\n      <a href=\"https://en.wikipedia.org/wiki/Space_station\" target=\"_blank\" rel=\"noopener\">Read about space stations</a>\n    </p>\n    <h3>The Greenhouse</h3>\n    <p>Tomatoes, beans and basil grow under blue lamps.</p>\n\n    <img src=\"img/divider.svg\" alt=\"\" />\n\n    <h2 id=\"today\">Today on Board</h2>\n    <p class=\"warning urgent\"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>\n    <p>Water left: 900 litres of H<sub>2</sub>O.</p>\n    <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>\n    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>\n    <h3 class=\"shift\">Morning Shift</h3>\n    <p>Commander Vega and engineer Okafor.</p>\n    <h3 class=\"shift\">Night Shift</h3>\n    <p>Pilot Lindqvist, alone with the stars.</p>\n\n    <h2 id=\"visiting\">Visiting Hours</h2>\n    <p class=\"hours\">\n      Monday to Friday: 10:00 to 16:00<br />\n      Saturday: 10:00 to 12:00<br />\n      Sunday: closed\n    </p>\n    <p class=\"warning\"><strong>Visitors must wear a badge</strong> at all times.</p>\n\n    <h2>Station Rules</h2>\n    <p>Wear your badge at all times.</p>\n    <p>Close every hatch behind you.</p>\n    <p>No running in the greenhouse.</p>\n\n    <p><a href=\"mailto:crew@station.example\">Write to the crew</a></p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "layout": ".photo, .welcome-text",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the picture box and the sentences"
+        },
+        {
+          "against": ".caption",
+          "in": ".photo",
+          "side": "bottom",
+          "label": "the caption",
+          "inLabel": "the picture box"
+        },
+        {
+          "size": ".photo",
+          "maxHeight": 112,
+          "label": "the picture box, with its picture 100 pixels tall"
+        }
+      ]
+    }
+  ]
+}

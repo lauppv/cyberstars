@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "name": "A wrong email looks different from a good name",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida.example.com",
+          "label": "the email box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#email",
+          "from": "#passenger",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the email box with ida.example.com",
+          "fromLabel": "the name box with Ida Moreau"
+        }
+      ]
+    },
+    {
+      "name": "A name too short looks different from a good email",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "I",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#passenger",
+          "from": "#email",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the name box with only I",
+          "fromLabel": "the email box with ida@example.com"
+        }
+      ]
+    },
+    {
+      "name": "Other answers",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "4",
+          "label": "the bags box"
+        },
+        {
+          "fill": "#phone",
+          "text": "555 0199",
+          "label": "the phone box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#bags",
+          "from": "#phone",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the bags box with 4 bags",
+          "fromLabel": "the phone box with 555 0199"
+        },
+        {
+          "fill": "#bags",
+          "text": "2",
+          "label": "the bags box"
+        },
+        {
+          "fill": "#email",
+          "text": "noah.berg",
+          "label": "the email box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#email",
+          "from": "#bags",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the email box with noah.berg",
+          "fromLabel": "the bags box with 2 bags"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "cases": [
+    {
+      "name": "Escape in the notes box empties it",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "press": "Escape",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "value": "#notes",
+          "empty": true,
+          "label": "the notes box"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "200 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Escape in another box leaves the notes alone",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "press": "Escape",
+          "on": "#passenger",
+          "label": "the name box"
+        },
+        {
+          "value": "#notes",
+          "equals": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "190 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        }
+      ]
+    },
+    {
+      "name": "Other keys type as usual, other notes empty too",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "No nuts",
+          "label": "the notes box"
+        },
+        {
+          "press": "a",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "value": "#notes",
+          "contains": "No nuts",
+          "label": "the notes box"
+        },
+        {
+          "fill": "#notes",
+          "text": "Window seat, please",
+          "label": "the notes box"
+        },
+        {
+          "press": "Escape",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "value": "#notes",
+          "empty": true,
+          "label": "the notes box"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "200 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -311,6 +311,53 @@ describe('auditWebSpec', () => {
     ]);
   });
 
+  it('takes the form, scroll and layout steps with what they need', () => {
+    expect(
+      one([
+        { select: '#seat', option: 'window', label: 'the seat list' },
+        { scroll: 600 },
+        { scroll: 'end' },
+        { value: '#name', equals: 'Ida', label: 'the name field' },
+        { value: '#name', empty: true, label: 'the name field' },
+        { checked: '#meal', off: true, label: 'the meal box' },
+        { sent: { name: 'Ida' } },
+        { sent: {} },
+        { notSent: true },
+        { inView: 'header', out: true, label: 'the header' },
+        { onTop: '.badge', label: 'the badge' },
+        {
+          against: '.badge',
+          in: '.card',
+          side: 'top right',
+          within: 16,
+          inLabel: 'its card',
+          label: 'the badge',
+        },
+        { order: ['#a', '#b'], label: 'the links' },
+        { wraps: '.tag', label: 'the tags' },
+        { visible: '#menu', label: 'the menu' },
+        { hidden: '#menu', label: 'the menu' },
+      ]),
+    ).toEqual([]);
+    expect(one([{ select: '#seat', label: 'x' }])).toEqual([
+      expect.stringMatching(/without its option/),
+    ]);
+    expect(one([{ scroll: 0 }])).toEqual([expect.stringMatching(/scroll is a number/)]);
+    expect(one([{ value: '#n', label: 'x' }])).toEqual([
+      expect.stringMatching(/exactly one of equals/),
+    ]);
+    expect(one([{ sent: { name: 3 } }])).toEqual([expect.stringMatching(/text values/)]);
+    expect(one([{ sent: 'name=Ida' }])).toEqual([expect.stringMatching(/sent names the fields/)]);
+    expect(one([{ order: ['#a'], label: 'x' }])).toEqual([expect.stringMatching(/two or more/)]);
+    expect(one([{ against: '.b', in: '.c', side: 'middle', inLabel: 'y', label: 'x' }])).toEqual([
+      expect.stringMatching(/side is one of/),
+    ]);
+    expect(one([{ against: '.b', side: 'top', inLabel: 'y', label: 'x' }])).toEqual([
+      expect.stringMatching(/needs in/),
+    ]);
+    expect(one([{ onTop: '.b' }])).toEqual([expect.stringMatching(/without a label/)]);
+  });
+
   it('wants every page a case opens in the site', () => {
     expect(one([{ open: 'wiki.html' }])).toEqual([expect.stringMatching(/doesn't have/)]);
     expect(one([{ exists: 'h1', label: 'x' }], { page: 'wiki.html' })).toEqual([

@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "name": "A number stays with its unit, even with no room",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "width": 320,
+      "files": {
+        "style.css": ".measure {\n  display: inline-block;\n  width: 0;\n}\n"
+      },
+      "steps": [
+        {
+          "count": ".fact-box .measure",
+          "atLeast": 2,
+          "label": "numbers with their units (.measure) in the fact box"
+        },
+        {
+          "size": ".fact-box .measure",
+          "maxHeight": 28,
+          "label": "the first number with its unit (.measure), squeezed into no room"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "count": ".fact-box .measure",
+          "atLeast": 2,
+          "label": "numbers with their units (.measure) in the fact box"
+        },
+        {
+          "size": ".fact-box .measure",
+          "maxHeight": 28,
+          "label": "the first number with its unit (.measure), squeezed into no room"
+        }
+      ]
+    },
+    {
+      "name": "Every number stays with its unit",
+      "page": "wiki-greenhouse.html",
+      "width": 320,
+      "files": {
+        "style.css": ".measure {\n  display: inline-block;\n  width: 0;\n}\n"
+      },
+      "steps": [
+        {
+          "count": ".fact-box .measure",
+          "atLeast": 2,
+          "label": "numbers with their units (.measure) in the fact box"
+        },
+        {
+          "size": ".fact-box .measure ~ .measure, .fact-box :has(.measure) ~ * .measure",
+          "maxHeight": 28,
+          "label": "another number with its unit (.measure), squeezed into no room"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "count": ".fact-box .measure",
+          "atLeast": 2,
+          "label": "numbers with their units (.measure) in the fact box"
+        },
+        {
+          "size": ".fact-box .measure ~ .measure, .fact-box :has(.measure) ~ * .measure",
+          "maxHeight": 28,
+          "label": "another number with its unit (.measure), squeezed into no room"
+        }
+      ]
+    }
+  ]
+}

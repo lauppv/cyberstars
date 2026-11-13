@@ -1,0 +1,181 @@
+{
+  "cases": [
+    {
+      "name": "The home page has its own part",
+      "visible": true,
+      "steps": [
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "exists": "main #today",
+          "label": "the part about today (#today), inside <main>"
+        },
+        {
+          "count": "main header, main footer",
+          "equals": 0,
+          "label": "a header or a footer inside <main>"
+        },
+        {
+          "count": "body > :not(header, main, footer, script)",
+          "equals": 0,
+          "label": "elements directly in the <body>, outside the header, <main> and the footer"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "crew.html has its own part too",
+      "visible": true,
+      "steps": [
+        {
+          "open": "crew.html"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "exists": "main #cards",
+          "label": "the crew cards (#cards), inside <main>"
+        },
+        {
+          "count": "main header, main footer",
+          "equals": 0,
+          "label": "a header or a footer inside <main>"
+        },
+        {
+          "count": "body > :not(header, main, footer, script)",
+          "equals": 0,
+          "label": "elements directly in the <body>, outside the header, <main> and the footer"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "people/vega.html has its own part too",
+      "visible": true,
+      "steps": [
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "exists": "main img",
+          "label": "the commander's picture, inside <main>"
+        },
+        {
+          "count": "main header, main footer",
+          "equals": 0,
+          "label": "a header or a footer inside <main>"
+        },
+        {
+          "count": "body > :not(header, main, footer, script)",
+          "equals": 0,
+          "label": "elements directly in the <body>, outside the header, <main> and the footer"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "schedule.html has its own part too",
+      "visible": true,
+      "steps": [
+        {
+          "open": "schedule.html"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "exists": "main #flights",
+          "label": "the flights table (#flights), inside <main>"
+        },
+        {
+          "count": "main header, main footer",
+          "equals": 0,
+          "label": "a header or a footer inside <main>"
+        },
+        {
+          "count": "body > :not(header, main, footer, script)",
+          "equals": 0,
+          "label": "elements directly in the <body>, outside the header, <main> and the footer"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "boarding.html has its own part too",
+      "visible": true,
+      "steps": [
+        {
+          "open": "boarding.html"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "exists": "main #booking",
+          "label": "the booking form (#booking), inside <main>"
+        },
+        {
+          "count": "main header, main footer",
+          "equals": 0,
+          "label": "a header or a footer inside <main>"
+        },
+        {
+          "count": "body > :not(header, main, footer, script)",
+          "equals": 0,
+          "label": "elements directly in the <body>, outside the header, <main> and the footer"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    }
+  ]
+}

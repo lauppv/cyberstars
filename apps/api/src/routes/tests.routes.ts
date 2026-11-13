@@ -3,6 +3,7 @@ import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken, optionalAuth } from '../middleware/auth.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import { runTestsSchema } from '../schemas/tests.schema.js';
+import { codeFitsCourse } from '../middleware/codeLength.js';
 import { execRateLimitHandler, guestIpLimiter } from './terminal.routes.js';
 import {
   getSubmission,
@@ -54,6 +55,7 @@ router.post(
   guestIpLimiter(60),
   runTestsLimiter,
   validateBody(runTestsSchema),
+  codeFitsCourse,
   runTests,
 );
 

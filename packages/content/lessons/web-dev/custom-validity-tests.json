@@ -1,0 +1,281 @@
+{
+  "cases": [
+    {
+      "name": "Someone to call without their phone keeps the form from going",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "Lena Moreau",
+          "label": "the box for their name"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation with a contact and no phone (#confirmation)"
+        },
+        {
+          "exists": "#contact-phone:invalid",
+          "label": "their phone box, refused by the browser"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "With their phone, the booking goes through",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "Lena Moreau",
+          "label": "the box for their name"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation still empty (#confirmation)"
+        },
+        {
+          "fill": "#contact-phone",
+          "text": "+33 6 12 34 56 78",
+          "label": "the box for their phone"
+        },
+        {
+          "count": "#contact-phone:invalid",
+          "equals": 0,
+          "label": "phone boxes of the contact the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Without someone to call, the phone stays optional",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "noah@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "NB1234",
+          "label": "the badge number box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Noah Berg on SL-104",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "count": "#contact-phone:invalid",
+          "equals": 0,
+          "label": "phone boxes of the contact the browser refuses"
+        }
+      ]
+    },
+    {
+      "name": "A phone deleted, then a contact deleted, then one of only spaces",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Sofia Lind",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "sofia@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-103",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "SL5150",
+          "label": "the badge number box"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "Tomas Lind",
+          "label": "the box for their name"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation still empty (#confirmation)"
+        },
+        {
+          "fill": "#contact-phone",
+          "text": "+47 412 34 567",
+          "label": "the box for their phone"
+        },
+        {
+          "fill": "#contact-phone",
+          "text": "",
+          "label": "the box for their phone"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation once their phone is deleted (#confirmation)"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "",
+          "label": "the box for their name"
+        },
+        {
+          "count": "#contact-phone:invalid",
+          "equals": 0,
+          "label": "phone boxes of the contact the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Sofia Lind on SL-103",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "fill": "#contact-name",
+          "text": "   ",
+          "label": "the box for their name"
+        },
+        {
+          "count": "#contact-phone:invalid",
+          "equals": 0,
+          "label": "phone boxes of the contact the browser refuses"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the flight list"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Sofia Lind on SL-105",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

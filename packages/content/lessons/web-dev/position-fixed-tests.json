@@ -1,0 +1,143 @@
+{
+  "cases": [
+    {
+      "name": "Every wiki page has a Back to top link",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "open": "wiki.html"
+        },
+        {
+          "text": "a.to-top",
+          "equals": "Back to top",
+          "label": "the link with class=\"to-top\" on wiki.html"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "text": "a.to-top",
+          "equals": "Back to top",
+          "label": "the link with class=\"to-top\" on wiki-greenhouse.html"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "text": "a.to-top",
+          "equals": "Back to top",
+          "label": "the link with class=\"to-top\" on wiki-airlock.html"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "text": "a.to-top",
+          "equals": "Back to top",
+          "label": "the link with class=\"to-top\" on wiki-tools.html"
+        }
+      ]
+    },
+    {
+      "name": "The link waits in the corner of the window, and goes back to the top",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "width": 375,
+      "steps": [
+        {
+          "scroll": 150
+        },
+        {
+          "inView": "a.to-top",
+          "label": "the Back to top link, after scrolling down a little"
+        },
+        {
+          "scroll": "end"
+        },
+        {
+          "inView": "a.to-top",
+          "label": "the Back to top link, at the end of the page"
+        },
+        {
+          "against": "a.to-top",
+          "in": "html",
+          "side": "bottom right",
+          "within": 40,
+          "inLabel": "the window, at the end of the page",
+          "label": "the Back to top link"
+        },
+        {
+          "click": "a.to-top",
+          "label": "the Back to top link"
+        },
+        {
+          "inView": "h1",
+          "label": "the biggest heading, at the top of the page"
+        }
+      ]
+    },
+    {
+      "name": "On the front page of the wiki too",
+      "visible": true,
+      "page": "wiki.html",
+      "width": 375,
+      "steps": [
+        {
+          "scroll": "end"
+        },
+        {
+          "against": "a.to-top",
+          "in": "html",
+          "side": "bottom right",
+          "within": 40,
+          "inLabel": "the window, at the end of the page",
+          "label": "the Back to top link"
+        },
+        {
+          "click": "a.to-top",
+          "label": "the Back to top link"
+        },
+        {
+          "inView": "h1",
+          "label": "the biggest heading, at the top of the page"
+        }
+      ]
+    },
+    {
+      "name": "On a long page, on a computer",
+      "page": "wiki-greenhouse.html",
+      "files": {
+        "wiki-greenhouse.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"How the greenhouse of Orbital Station 7 grows fresh food under lamps, with clean water.\" />\n    <title>The Greenhouse</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <article>\n      <h1>The Greenhouse</h1>\n      <p>The greenhouse is the only green room on the station. It gives the crew fresh food, and a little fresh air too.</p>\n\n      <section>\n        <h2>What grows here</h2>\n        <p>Tomatoes, beans, basil and lettuce. Kenji Arano, the station's botanist, looks after them and picks something for dinner every day.</p>\n      </section>\n\n      <section>\n        <h2>Light</h2>\n        <p>There is no sun inside the station. Blue and red lamps shine on the plants for 16 hours a day, then switch off so the plants can rest.</p>\n      </section>\n\n      <section>\n        <h2>Water</h2>\n        <p>Nothing is wasted. The station cleans the water the crew has used, and the plants drink 60 liters of it every day.</p>\n      </section>\n\n      <section>\n        <h2>Seeds</h2>\n        <p>Every plant starts as a seed in a small cube of soft wool. Kenji Arano keeps the seeds in a cold box, each kind in its own bag with its name and the day it came on board.</p>\n        <p>Every plant starts as a seed in a small cube of soft wool. Kenji Arano keeps the seeds in a cold box, each kind in its own bag with its name and the day it came on board.</p>\n      </section>\n\n      <section>\n        <h2>Roots</h2>\n        <p>Without weight, roots don't know which way is down. So they grow toward the water, and the crew guides them with thin tubes that bring it to each plant.</p>\n        <p>Without weight, roots don't know which way is down. So they grow toward the water, and the crew guides them with thin tubes that bring it to each plant.</p>\n      </section>\n\n      <section>\n        <h2>Pests</h2>\n        <p>No insects live on the station, so nothing eats the leaves. But a sick plant can make the others sick too, so it leaves the greenhouse at once.</p>\n        <p>No insects live on the station, so nothing eats the leaves. But a sick plant can make the others sick too, so it leaves the greenhouse at once.</p>\n      </section>\n\n      <section>\n        <h2>Harvest</h2>\n        <p>A tomato is ready when it is red all over. The crew eats it the same day, because fresh food is the best part of the week up here.</p>\n        <p>A tomato is ready when it is red all over. The crew eats it the same day, because fresh food is the best part of the week up here.</p>\n      </section>\n\n      <section>\n        <h2>Visitors</h2>\n        <p>Visitors may look at the plants through the window of the door. They may not touch them, and they never bring food from outside into the room.</p>\n        <p>Visitors may look at the plants through the window of the door. They may not touch them, and they never bring food from outside into the room.</p>\n      </section>\n\n      <section>\n        <h2>Mistakes</h2>\n        <p>In the first year, the lamps stayed on all day and night, and the plants grew tall and weak. Now they rest eight hours a day, as they would on Earth.</p>\n        <p>In the first year, the lamps stayed on all day and night, and the plants grew tall and weak. Now they rest eight hours a day, as they would on Earth.</p>\n      </section>\n    </article>\n\n    <aside class=\"fact-box\">\n      <h2>Facts</h2>\n      <ul>\n        <li>Plants: 4 kinds</li>\n        <li>Light: <span class=\"measure\">16&nbsp;hours</span> a day</li>\n        <li>Water: <span class=\"measure\">60&nbsp;liters</span> a day</li>\n        <li>Warmth: <span class=\"measure\">24&nbsp;°C</span></li>\n      </ul>\n    </aside>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n      <a class=\"to-top\" href=\"#top\">Back to top</a>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "scroll": 900
+        },
+        {
+          "inView": "a.to-top",
+          "label": "the Back to top link, in the middle of the page"
+        },
+        {
+          "scroll": "end"
+        },
+        {
+          "against": "a.to-top",
+          "in": "html",
+          "side": "bottom right",
+          "within": 40,
+          "inLabel": "the window, at the end of the page",
+          "label": "the Back to top link"
+        },
+        {
+          "click": "a.to-top",
+          "label": "the Back to top link"
+        },
+        {
+          "inView": "h1",
+          "label": "the biggest heading, at the top of the page"
+        }
+      ]
+    }
+  ]
+}

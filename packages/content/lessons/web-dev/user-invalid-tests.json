@@ -1,0 +1,170 @@
+{
+  "cases": [
+    {
+      "name": "Only the box the passenger typed in is marked",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "ida.example.com",
+          "label": "the email box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#email",
+          "from": "#passenger",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the email box with ida.example.com",
+          "fromLabel": "the name box, not touched yet"
+        }
+      ]
+    },
+    {
+      "name": "A box left wrong stays marked, a box fixed is not",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "ida.example.com",
+          "label": "the email box"
+        },
+        {
+          "fill": "#passenger",
+          "text": "I",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#passenger",
+          "from": "#email",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the name box with only I",
+          "fromLabel": "the email box, once fixed"
+        }
+      ]
+    },
+    {
+      "name": "Sending the empty form marks what is missing",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "differs": "#email",
+          "from": "#phone",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the empty email box, after a click on send",
+          "fromLabel": "the empty phone box"
+        }
+      ]
+    },
+    {
+      "name": "Other boxes, and the flight list",
+      "page": "boarding.html",
+      "files": {
+        "boarding.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Book a Seat</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <nav>\n      <a href=\"index.html\">Home</a>\n      <a href=\"crew.html\">Crew</a>\n      <a href=\"schedule.html\">Schedule</a>\n      <a href=\"boarding.html\">Boarding</a>\n    </nav>\n    <h1>Book a Seat</h1>\n    <p>Pick a flight, tell us who you are, and we keep a seat for you.</p>\n\n    <form id=\"booking\" action=\"https://station.example/book\" method=\"post\">\n      <label for=\"passenger\">Full name</label>\n      <input id=\"passenger\" name=\"passenger\" placeholder=\"e.g. Ida Moreau\" required minlength=\"2\" maxlength=\"40\" />\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" name=\"email\" placeholder=\"e.g. ida@example.com\" required />\n      <label for=\"phone\">Phone</label>\n      <input type=\"tel\" id=\"phone\" name=\"phone\" placeholder=\"e.g. +47 412 34 567\" />\n      <label for=\"flight\">Flight</label>\n      <select id=\"flight\" name=\"flight\" required>\n        <option value=\"\">Pick a flight</option>\n        <option value=\"SL-101\">SL-101 to Moon Base, 08:30</option>\n        <option value=\"SL-102\">SL-102 to Mars Relay, 09:45</option>\n        <option value=\"SL-103\">SL-103 to Europa Outpost, 07:15</option>\n        <option value=\"SL-104\">SL-104 to Lunar Gateway, 11:00</option>\n        <option value=\"SL-105\">SL-105 to Orbital Yard, 10:20</option>\n      </select>\n      <label for=\"flight-back\">Flight back</label>\n      <select id=\"flight-back\" name=\"flight-back\">\n        <option value=\"\">No flight back</option>\n        <option value=\"SL-201\">SL-201 from Moon Base</option>\n      </select>\n      <label for=\"travel-date\">Travel date</label>\n      <input type=\"date\" id=\"travel-date\" name=\"date\" required />\n      <label for=\"bags\">Number of bags</label>\n      <input type=\"number\" id=\"bags\" name=\"bags\" min=\"0\" max=\"3\" />\n      <fieldset>\n        <legend>Where would you like to sit?</legend>\n        <input type=\"radio\" id=\"seat-window\" name=\"seat\" value=\"window\" />\n        <label for=\"seat-window\">By the window</label>\n        <input type=\"radio\" id=\"seat-aisle\" name=\"seat\" value=\"aisle\" />\n        <label for=\"seat-aisle\">On the aisle</label>\n      </fieldset>\n      <fieldset>\n        <legend>Extras</legend>\n        <input type=\"checkbox\" id=\"extra-meal\" name=\"extras\" value=\"meal\" />\n        <label for=\"extra-meal\">A hot meal</label>\n        <input type=\"checkbox\" id=\"extra-blanket\" name=\"extras\" value=\"blanket\" />\n        <label for=\"extra-blanket\">A warm blanket</label>\n        <input type=\"checkbox\" id=\"extra-wifi\" name=\"extras\" value=\"wifi\" checked />\n        <label for=\"extra-wifi\">Wi-Fi on board</label>\n      </fieldset>\n      <fieldset>\n        <legend>Someone we can call on Earth</legend>\n        <label for=\"contact-name\">Their name</label>\n        <input id=\"contact-name\" name=\"contact-name\" maxlength=\"40\" />\n        <label for=\"contact-phone\">Their phone</label>\n        <input type=\"tel\" id=\"contact-phone\" name=\"contact-phone\" />\n      </fieldset>\n      <label for=\"notes\">Anything we should know?</label>\n      <textarea id=\"notes\" name=\"notes\" rows=\"4\" maxlength=\"200\"></textarea>\n      <button type=\"submit\">Book my seat</button>\n      <button type=\"reset\">Clear the form</button>\n    </form>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "4",
+          "label": "the bags box"
+        },
+        {
+          "fill": "#phone",
+          "text": "555 0199",
+          "label": "the phone box"
+        },
+        {
+          "click": "h1",
+          "label": "the biggest heading of the page"
+        },
+        {
+          "differs": "#bags",
+          "from": "#phone, #email",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the bags box with 4 bags",
+          "fromLabel": "the phone box with 555 0199 and the email box not touched yet"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "differs": "#flight",
+          "from": "#flight-back",
+          "props": [
+            "border-top-color",
+            "border-top-style",
+            "border-top-width",
+            "background-color",
+            "color",
+            "box-shadow",
+            "outline-style",
+            "outline-color"
+          ],
+          "label": "the flight list with nothing picked, after a click on send",
+          "fromLabel": "the list for a flight back, which may stay empty"
+        }
+      ]
+    }
+  ]
+}

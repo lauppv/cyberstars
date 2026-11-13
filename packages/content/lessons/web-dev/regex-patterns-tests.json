@@ -1,0 +1,202 @@
+{
+  "cases": [
+    {
+      "name": "A badge number that keeps the rule shows on the pass",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "form#booking input#badge-number[name=\"badge\"]",
+          "label": "a box with id=\"badge-number\" and name=\"badge\" in the form"
+        },
+        {
+          "exists": "label[for=\"badge-number\"]",
+          "label": "the label of the badge number box"
+        },
+        {
+          "order": [
+            "#email",
+            "label[for=\"badge-number\"]",
+            "#badge-number",
+            "label[for=\"phone\"]"
+          ],
+          "label": "the email box, then the label and the box of the badge number, then the label of the phone box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass at the start (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS4821",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "OS4821",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A number that breaks the rule doesn't",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#badge-number",
+          "text": "OS482",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass with OS482, one digit short (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "os4821",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass with os4821, in small letters (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "OS48215",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass with OS48215, one digit too many (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "XOS4821",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass with XOS4821, one letter too many (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "VB1090",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "VB1090",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "An empty box has no badge",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#badge-number",
+          "text": "KA2077",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "KA2077",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass once the box is emptied (#pass-badge)"
+        }
+      ]
+    },
+    {
+      "name": "Other numbers",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#badge-number",
+          "text": "AB12C4",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "ZZ0000",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "ZZ0000",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "I1234",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "XID12345",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "ID 1234",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "No valid badge yet",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "fill": "#badge-number",
+          "text": "TL0099",
+          "label": "the badge number box"
+        },
+        {
+          "text": "#pass-badge",
+          "equals": "TL0099",
+          "label": "the badge number on the pass (#pass-badge)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

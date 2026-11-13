@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "name": "The home page has two menus, each with a name",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "exists": "main nav[aria-label]:not([aria-label=\"\"]) a[href=\"#today\"]",
+          "label": "a second menu with a name (aria-label) inside <main>, with the link to today"
+        },
+        {
+          "exists": "main nav[aria-label]:not([aria-label=\"\"]) a[href=\"#visiting\"]",
+          "label": "the link to the visiting hours, in that second menu"
+        },
+        {
+          "click": "main nav a[href=\"#visiting\"]",
+          "label": "the link to the visiting hours"
+        },
+        {
+          "inView": "#visiting",
+          "label": "the visiting hours (#visiting)"
+        }
+      ]
+    },
+    {
+      "name": "Every page's menu has a name",
+      "visible": true,
+      "steps": [
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        }
+      ]
+    },
+    {
+      "name": "The first jump link still works, on a phone",
+      "width": 375,
+      "steps": [
+        {
+          "click": "main nav a[href=\"#today\"]",
+          "label": "the link to today"
+        },
+        {
+          "inView": "#today",
+          "label": "the part about today (#today)"
+        }
+      ]
+    }
+  ]
+}

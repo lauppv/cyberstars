@@ -166,6 +166,26 @@ function consoleAsPreview(limit) {
   }
 }
 
+// A form sent stays on its page and its fields are noted, as the preview's
+// prelude does (previewPrelude.ts): last in line, so a page that handles the
+// submit itself (preventDefault) keeps it. Runs in the page, before its scripts
+function formsAsPreview() {
+  // A form the browser refuses stays refused and its fields :user-invalid, but
+  // the browser's own message bubble isn't drawn: in the sandbox's read-only
+  // container it hangs the next page. So the focus stays where it was, where
+  // the preview moves it to the first refused field
+  window.addEventListener('invalid', (event) => event.preventDefault(), true);
+  window.addEventListener('submit', (event) => {
+    if (event.defaultPrevented || !(event.target instanceof HTMLFormElement)) return;
+    event.preventDefault();
+    const fields = [];
+    new FormData(event.target).forEach((value, key) => {
+      fields.push([key, typeof value === 'string' ? value : value.name]);
+    });
+    window.__cyberstarsFormSent(fields);
+  });
+}
+
 async function observe(page, step, seen) {
   if ('fits' in step) {
     return { scrollWidth: await page.evaluate(() => document.documentElement.scrollWidth) };
@@ -177,6 +197,27 @@ async function observe(page, step, seen) {
   if ('alerted' in step) return { dialogs: [...seen.dialogs] };
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };
+  if ('sent' in step || 'notSent' in step) return { forms: [...seen.forms] };
+  if ('order' in step) {
+    const read = [];
+    for (const selector of step.order) {
+      const first = page.locator(`css=${selector}`).first();
+      if ((await first.count()) === 0) return { count: 0 };
+      read.push(
+        await first.evaluate((el) => ({
+          box: ((r) => ({ x: r.x, y: r.y, width: r.width, height: r.height }))(
+            el.getBoundingClientRect(),
+          ),
+          text: (el.innerText ?? el.textContent ?? '').replace(/\s+/g, ' ').trim(),
+        })),
+      );
+    }
+    return {
+      count: read.length,
+      boxes: read.map((r) => r.box),
+      values: read.map((r) => r.text),
+    };
+  }
   if ('outline' in step) {
     const headings = await page.evaluate(() =>
       [...document.querySelectorAll('h1, h2, h3, h4, h5, h6')].map((h) => ({
@@ -199,6 +240,14 @@ async function observe(page, step, seen) {
     step.centered ??
     step.fills ??
     step.loaded ??
+    step.value ??
+    step.checked ??
+    step.inView ??
+    step.onTop ??
+    step.against ??
+    step.wraps ??
+    step.visible ??
+    step.hidden ??
     step.size;
   const elements = page.locator(`css=${selector}`);
   const count = await elements.count();
@@ -276,6 +325,101 @@ async function observe(page, step, seen) {
       page.locator(`css=${step.from}`).evaluateAll(differsRows, [step.props, MAX_ELEMENTS]),
     ]);
     return { count, rows, others };
+  }
+  // What a field holds now, not what its HTML says
+  if ('value' in step) {
+    const value = await elements.first().evaluate((el) => ('value' in el ? String(el.value) : ''));
+    return { count, values: [value] };
+  }
+  if ('checked' in step) {
+    return { count, checked: await elements.first().evaluate((el) => el.checked === true) };
+  }
+  if ('visible' in step || 'hidden' in step) {
+    const shown = await elements.evaluateAll(
+      // However it was hidden: no room, display, visibility or opacity on it
+      // or a parent, or moved off the page (a fixed one off the window; the
+      // page never scrolls sideways once it fits)
+      (els, max) =>
+        els.slice(0, max).map((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.width <= 0 || r.height <= 0) return false;
+          let fixed = false;
+          for (let a = el; a && !fixed; a = a.parentElement) {
+            fixed = getComputedStyle(a).position === 'fixed';
+          }
+          const { clientWidth, clientHeight } = document.documentElement;
+          if (r.right <= 0 || r.left >= clientWidth) return false;
+          if (r.bottom <= (fixed ? 0 : -window.scrollY)) return false;
+          if (fixed && r.top >= clientHeight) return false;
+          return el.checkVisibility({ opacityProperty: true, visibilityProperty: true });
+        }),
+      'visible' in step ? 1 : MAX_ELEMENTS,
+    );
+    return { count, shown };
+  }
+  if ('inView' in step) {
+    const box = await elements.first().evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height };
+    });
+    return { count, boxes: [box], windowHeight: await page.evaluate(() => window.innerHeight) };
+  }
+  // What is on top at the element's middle: '' when the element itself (or
+  // something inside it), the one over it as a tag otherwise, null off screen
+  if ('onTop' in step) {
+    const cover = await elements.first().evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      const x = r.x + r.width / 2;
+      const y = r.y + r.height / 2;
+      if (x < 0 || y < 0 || x >= window.innerWidth || y >= window.innerHeight) return null;
+      const hit = document.elementFromPoint(x, y);
+      if (!hit || hit === el || el.contains(hit)) return '';
+      const id = hit.id ? ` id="${hit.id}"` : '';
+      // getAttribute, since an SVG's className isn't a string
+      const cls = hit.classList.length ? ` class="${hit.getAttribute('class')}"` : '';
+      return `<${hit.tagName.toLowerCase()}${id}${cls}>`;
+    });
+    return { count, values: [cover] };
+  }
+  // Each element's box and its closest ancestor's that `in` picks
+  if ('against' in step) {
+    const pairs = await elements.evaluateAll(
+      (els, [within, max]) => {
+        const box = (e) => {
+          const r = e.getBoundingClientRect();
+          return { x: r.x, y: r.y, width: r.width, height: r.height };
+        };
+        return els.slice(0, max).map((el) => {
+          const parent = el.parentElement && el.parentElement.closest(within);
+          return [box(el), parent ? box(parent) : null];
+        });
+      },
+      [step.in, MAX_ELEMENTS],
+    );
+    return { count, pairs };
+  }
+  // The first one's parent's content box (inside its padding), then the elements'
+  if ('wraps' in step) {
+    const boxes = await elements.evaluateAll((els, max) => {
+      const parent = els[0].parentElement ?? document.documentElement;
+      const p = parent.getBoundingClientRect();
+      const s = getComputedStyle(parent);
+      const px = (prop) => parseFloat(s.getPropertyValue(prop)) || 0;
+      const inLeft = px('border-left-width') + px('padding-left');
+      const inRight = px('border-right-width') + px('padding-right');
+      const content = {
+        x: p.x + inLeft,
+        y: p.y,
+        width: p.width - inLeft - inRight,
+        height: p.height,
+      };
+      const boxes = els.slice(0, max).map((el) => {
+        const r = el.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: r.height };
+      });
+      return [content, ...boxes];
+    }, MAX_ELEMENTS);
+    return { count, boxes };
   }
   // The elements' box together, then the first one's parent's content box
   // (inside its padding). An element that takes no room (display: none, a
@@ -423,7 +567,19 @@ async function act(page, step, nav, stepMs) {
     await settle(page, nav, stepMs);
     return { ok: true };
   }
-  const selector = step.click ?? step.hover ?? step.fill ?? step.submit ?? step.on;
+  // At once, whatever scroll-behavior the page asks for, so the checks after
+  // it read where things end up
+  if ('scroll' in step) {
+    await page.evaluate((by) => {
+      const top =
+        by === 'end' ? document.documentElement.scrollHeight : window.scrollY + Number(by);
+      window.scrollTo({ top, behavior: 'instant' });
+    }, step.scroll);
+    await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => done())));
+    await settle(page, nav, stepMs);
+    return { ok: true };
+  }
+  const selector = step.click ?? step.hover ?? step.fill ?? step.select ?? step.submit ?? step.on;
   if (selector !== undefined) {
     const element = page.locator(`css=${selector}`);
     if ((await element.count()) === 0) return { ok: false };
@@ -431,7 +587,17 @@ async function act(page, step, nav, stepMs) {
     if ('click' in step) await first.click({ timeout: stepMs });
     else if ('hover' in step) await first.hover({ timeout: stepMs });
     else if ('fill' in step) await first.fill(step.text, { timeout: stepMs });
-    else if ('submit' in step) {
+    else if ('select' in step) {
+      // An option the list lacks is a list that isn't as asked, not a wait
+      const has = await first.evaluate(
+        (el, option) =>
+          el instanceof HTMLSelectElement &&
+          [...el.options].some((o) => o.value === option || o.label.trim() === option),
+        step.option,
+      );
+      if (!has) return { ok: false };
+      await first.selectOption(step.option, { timeout: stepMs });
+    } else if ('submit' in step) {
       await first.evaluate((form) => {
         if (form instanceof HTMLFormElement) form.requestSubmit();
         else form.closest('form')?.requestSubmit();
@@ -472,7 +638,7 @@ async function settle(page, nav, stepMs) {
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
-  const seen = { logs: [], errors: [], dialogs: [] };
+  const seen = { logs: [], errors: [], dialogs: [], forms: [] };
   const nav = { pending: false, inflight: 0 };
   let crashed = false;
   let onCrash;
@@ -492,6 +658,10 @@ async function runCase(browser, files, testCase, limits) {
   try {
     await serve(context, files, testCase.fetch ?? {});
     await context.addInitScript(consoleAsPreview, CONSOLE_LIMIT);
+    await context.exposeFunction('__cyberstarsFormSent', (fields) => {
+      if (Array.isArray(fields)) seen.forms.push(fields.map(([k, v]) => [String(k), String(v)]));
+    });
+    await context.addInitScript(formsAsPreview);
     const page = await context.newPage();
     page.on('console', (message) => {
       const text = message.text();

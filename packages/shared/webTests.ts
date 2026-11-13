@@ -48,8 +48,17 @@ export type WebAction =
   /** Puts the mouse over the element, so the checks after it see its :hover rules. */
   | ({ hover: string } & Labelled)
   | ({ fill: string; text: string } & Labelled)
+  /** Picks an option of a list (`select`) by its value or the text it shows. */
+  | ({ select: string; option: string } & Labelled)
   | ({ press: string; on?: string } & Partial<Labelled>)
+  /**
+   * Sends the form, or the form round the element, as its button would: a
+   * field the browser finds invalid keeps it from being sent. A form sent
+   * stays on its page, as in the preview, and `sent` reads what it sent.
+   */
   | ({ submit: string } & Labelled)
+  /** Scrolls the page down by this many px (up when below 0), or to its end. */
+  | { scroll: number | 'end' }
   /** Opens another page of the site, as typing its address would. */
   | { open: string }
   /**
@@ -133,6 +142,65 @@ export type WebCheck =
       minHeight?: number;
       maxHeight?: number;
     } & Labelled)
+  /**
+   * What the first field holds now (an input's, a textarea's or a list's
+   * `value`), not what its HTML says: it `equals` a text, `contains` one, or
+   * holds any text (`nonEmpty`) or none (`empty`).
+   */
+  | ({
+      value: string;
+      equals?: string;
+      contains?: string;
+      nonEmpty?: true;
+      empty?: true;
+    } & Labelled)
+  /** The first checkbox or radio button is ticked now, or with `off` isn't. */
+  | ({ checked: string; off?: true } & Labelled)
+  /**
+   * The last form sent had these fields with these values, others aside (a
+   * field sent twice, two ticked boxes of one name, has each of its values).
+   * `{}` asks only that a form was sent.
+   */
+  | { sent: Record<string, string> }
+  /** No form was sent: the browser found a field invalid, or nothing sent one. */
+  | { notSent: true }
+  /**
+   * The first element is all in the window, top to bottom, as it shows now
+   * (after a `scroll`): a sticky header still there. With `out`, no part of
+   * it is: a header that scrolled away.
+   */
+  | ({ inView: string; out?: true } & Labelled)
+  /** The first element is the one on top at its middle: nothing covers it there. */
+  | ({ onTop: string } & Labelled)
+  /**
+   * Every element (up to 50) is inside the closest ancestor `in` picks and
+   * against its `side`: at most `within` px (24 by default) from that edge,
+   * or from both edges of a corner ("top right"). A badge in its card's
+   * corner, a button at the bottom of its card. `inLabel` names the ancestor.
+   */
+  | ({
+      against: string;
+      in: string;
+      side: WebSide;
+      within?: number;
+      inLabel: string;
+    } & Labelled)
+  /**
+   * The first element of each selector shows in this order on the screen,
+   * reading it as a page is read: one above the other, or side by side from
+   * the left. Whatever their order in the HTML.
+   */
+  | ({ order: readonly string[] } & Labelled)
+  /**
+   * The elements (up to 50) wrap: they stand in more than one row, at least
+   * one row holding several side by side (not a column), and none sticks out
+   * of the first one's parent.
+   */
+  | ({ wraps: string } & Labelled)
+  /** The first element shows: it takes room and nothing hides it (display, visibility, opacity). */
+  | ({ visible: string } & Labelled)
+  /** Every element it picks is there but doesn't show, however it was hidden. */
+  | ({ hidden: string } & Labelled)
   /** The page fits the window's width, with nothing to scroll sideways. */
   | { fits: true }
   /** The page starts with `<!DOCTYPE html>`, so the browser shows it as a modern page. */
@@ -158,8 +226,10 @@ export const WEB_ACTION_KEYS = [
   'click',
   'hover',
   'fill',
+  'select',
   'press',
   'submit',
+  'scroll',
   'open',
   'wait',
 ] as const;
@@ -170,6 +240,20 @@ export function isWebAction(step: WebStep): step is WebAction {
 
 export const WEB_PSEUDO_ELEMENTS = ['::before', '::after', '::first-letter', '::marker'] as const;
 type WebPseudo = (typeof WEB_PSEUDO_ELEMENTS)[number];
+
+export const WEB_SIDES = [
+  'top',
+  'bottom',
+  'left',
+  'right',
+  'top left',
+  'top right',
+  'bottom left',
+  'bottom right',
+] as const;
+type WebSide = (typeof WEB_SIDES)[number];
+// How far from its side an `against` element may sit, by default
+export const WEB_AGAINST_WITHIN = 24;
 
 export const WEB_DEFAULT_WIDTH = 1280;
 export const WEB_HEIGHT = 800;
@@ -204,6 +288,16 @@ export interface WebObservation {
   others?: string[][];
   /** An outline check's: the page's headings in order. */
   headings?: { level: number; text: string }[];
+  /** A sent or notSent check's: each form sent so far, its fields as name and value. */
+  forms?: [string, string][][];
+  /** A checked check's: whether the first box is ticked. */
+  checked?: boolean;
+  /** An inView check's: the window's height, against which `boxes` (in the window) are read. */
+  windowHeight?: number;
+  /** An against check's: each element's box and its ancestor's, in pairs. */
+  pairs?: [WebBox, WebBox | null][];
+  /** A visible or hidden check's: whether each element shows. */
+  shown?: boolean[];
   scrollWidth?: number;
   /** A doctype check's: whether the browser shows the page as a modern one (`document.compatMode`). */
   standards?: boolean;
@@ -238,6 +332,15 @@ type WebFailureKind =
   | 'alerted'
   | 'errors'
   | 'at'
+  | 'value'
+  | 'checked'
+  | 'sent'
+  | 'inView'
+  | 'onTop'
+  | 'against'
+  | 'order'
+  | 'wraps'
+  | 'visible'
   | 'memory';
 
 export interface WebFailure {
@@ -302,6 +405,30 @@ const ARRANGED: Record<Lang, Record<string, string>> = {
     row: 'unul lângă altul',
     column: 'unul sub altul',
     mixed: 'nici unul lângă altul, nici unul sub altul',
+  },
+};
+
+// Where an `against` element should sit, said in a sentence
+const SIDE: Record<Lang, Record<string, string>> = {
+  en: {
+    top: 'at the top',
+    bottom: 'at the bottom',
+    left: 'on the left',
+    right: 'on the right',
+    'top left': 'in the top left corner',
+    'top right': 'in the top right corner',
+    'bottom left': 'in the bottom left corner',
+    'bottom right': 'in the bottom right corner',
+  },
+  ro: {
+    top: 'sus',
+    bottom: 'jos',
+    left: 'în stânga',
+    right: 'în dreapta',
+    'top left': 'în colțul din stânga sus',
+    'top right': 'în colțul din dreapta sus',
+    'bottom left': 'în colțul din stânga jos',
+    'bottom right': 'în colțul din dreapta jos',
   },
 };
 
@@ -511,6 +638,110 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta să ajungi pe ${expected}, dar pagina e ${found}.`
         : `Expected to end up on ${expected}, found ${found}.`;
+    case 'value':
+      if (f.detail === 'nonEmpty') {
+        return ro
+          ? `Se aștepta ca ${label} să conțină un text, dar e gol.`
+          : `Expected ${label} to hold some text, found it empty.`;
+      }
+      if (f.detail === 'empty') {
+        return ro
+          ? `Se aștepta ca ${label} să fie gol, dar conține ${q(found ?? '')}.`
+          : `Expected ${label} to be empty, found ${q(found ?? '')}.`;
+      }
+      if (f.detail === 'contains') {
+        return ro
+          ? `Se aștepta ca ${label} să conțină ${q(expected)}, dar conține ${q(found ?? '')}.`
+          : `Expected ${label} to hold a text with ${q(expected)} in it, found ${q(found ?? '')}.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să conțină ${q(expected)}, dar conține ${q(found ?? '')}.`
+        : `Expected ${label} to hold ${q(expected)}, found ${q(found ?? '')}.`;
+    case 'checked':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să nu fie bifat, dar e bifat.`
+          : `Expected ${label} not ticked, found it ticked.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să fie bifat, dar nu e.`
+        : `Expected ${label} ticked, found it not ticked.`;
+    case 'sent':
+      if (f.detail === 'none') {
+        return ro
+          ? 'Se aștepta ca formularul să fie trimis, dar nu s-a trimis nimic.'
+          : 'Expected the form to be sent, found nothing sent.';
+      }
+      if (f.detail === 'sent') {
+        return ro
+          ? `Se aștepta ca formularul să nu fie trimis, dar a fost trimis: ${found}`
+          : `Expected the form not to be sent, found it sent: ${found}`;
+      }
+      return ro
+        ? `Se aștepta ca formularul să trimită ${f.other}=${q(expected)}, dar ${found === null ? `nu trimite niciun câmp ${f.other}` : `trimite ${f.other}=${q(found)}`}.`
+        : `Expected the form to send ${f.other}=${q(expected)}, found ${found === null ? `no field named ${f.other}` : `${f.other}=${q(found)}`}.`;
+    case 'inView':
+      if (expected === 'out') {
+        return ro
+          ? `Se aștepta ca ${label} să iasă din fereastră, dar încă se vede.`
+          : `Expected ${label} out of the window, found it still on screen.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să se vadă întreg în fereastră, dar e în afara ei${found ? ` cu ${found}px` : ''}.`
+        : `Expected ${label} all on screen, found ${found ? `${found}px of it` : 'it'} out of the window.`;
+    case 'onTop':
+      if (found === null) {
+        return ro
+          ? `Se aștepta ca ${label} să fie deasupra, dar e în afara ferestrei.`
+          : `Expected ${label} on top, found it out of the window.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să fie deasupra, dar îl acoperă ${found}.`
+        : `Expected ${label} on top, with nothing over it, found it covered by ${found}.`;
+    case 'against': {
+      // `detail` is the side it should be against, `expected` how near in px
+      const where = SIDE[lang][f.detail ?? ''] ?? f.detail;
+      if (f.detail === 'none') {
+        return ro
+          ? `Se aștepta ${label} în ${f.other}, dar nu e în niciunul.`
+          : `Expected ${label} inside ${f.other}, found it in none.`;
+      }
+      if (f.detail === 'outside') {
+        return ro
+          ? `Se aștepta ${label} în interiorul ${f.other}, dar iese în afară.`
+          : `Expected ${label} inside ${f.other}, found it sticking out.`;
+      }
+      return ro
+        ? `Se aștepta ${label} ${where} în ${f.other}, la cel mult ${expected}px de margine, dar e la ${found}px.`
+        : `Expected ${label} ${where} of ${f.other}, at most ${expected}px from the edge, found it ${found}px away.`;
+    }
+    case 'order':
+      return ro
+        ? `Se așteptau ${label} în ordinea asta pe ecran: ${expected}, dar sunt: ${found}.`
+        : `Expected ${label} in this order on the screen: ${expected}, found ${found}.`;
+    case 'wraps':
+      if (f.detail === 'one') {
+        return ro
+          ? `Se așteptau ${label} pe mai multe rânduri la o fereastră de ${w}px, dar sunt toate pe un rând.`
+          : `Expected ${label} on more than one row in a window ${w}px wide, found them all on one row.`;
+      }
+      if (f.detail === 'out') {
+        return ro
+          ? `Se așteptau ${label} să treacă pe rândul următor la o fereastră de ${w}px, dar unul iese din cutia lor.`
+          : `Expected ${label} to go on to the next row in a window ${w}px wide, found one sticking out of their box.`;
+      }
+      return ro
+        ? `Se așteptau ${label} pe rânduri, mai multe unul lângă altul, la o fereastră de ${w}px, dar sunt toate unul sub altul.`
+        : `Expected ${label} in rows, several side by side, in a window ${w}px wide, found them all one under the other.`;
+    case 'visible':
+      if (expected === 'hidden') {
+        return ro
+          ? `Se aștepta ca ${label} să fie ascuns, dar se vede.`
+          : `Expected ${label} hidden, found it showing.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să se vadă, dar e ascuns.`
+        : `Expected ${label} to show, found it hidden.`;
     case 'memory':
       return ro
         ? 'Pagina a folosit prea multă memorie și a fost oprită.'

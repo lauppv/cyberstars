@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { lessons } from '@cyberstars/content/curriculum';
 import { TUTOR_MESSAGE_MAX_LENGTH, TUTOR_RUN_OUTPUT_MAX_LENGTH } from '@cyberstars/shared/tutor';
 import { CODE_LANGUAGES } from '@cyberstars/shared/constants';
+import { WEB_MAX_LENGTH, codeMaxLength } from '@cyberstars/shared/webFiles';
 
 // A lesson or algorithm challenge the curriculum lists, so a conversation can
 // only be about one that exists.
@@ -15,9 +16,9 @@ const tutorLessonSchema = z
   );
 
 // The student's work on the lesson, sent with each message of its conversation.
-// The code has the judge's own cap.
+// The code has the judge's own cap, its course's (checked with the lesson).
 const tutorWorkSchema = z.object({
-  code: z.string().max(50_000),
+  code: z.string().max(WEB_MAX_LENGTH),
   runOutput: z.string().max(TUTOR_RUN_OUTPUT_MAX_LENGTH),
   submissionId: z.number().int().positive().max(2_147_483_647).optional(),
   checks: z
@@ -44,7 +45,12 @@ export const tutorChatSchema = z
     work: tutorWorkSchema.optional(),
   })
   // Work belongs to a lesson: the general conversation has none.
-  .refine((body) => !body.work || body.lesson, { message: 'Work needs a lesson' });
+  .refine((body) => !body.work || body.lesson, { message: 'Work needs a lesson' })
+  .refine(
+    (body) =>
+      !body.work || !body.lesson || body.work.code.length <= codeMaxLength(body.lesson.courseKey),
+    { message: 'The code is too long for its lesson' },
+  );
 
 export const tutorConversationParamsSchema = z.object({
   id: z.coerce.number().int().positive().max(2_147_483_647),

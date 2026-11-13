@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "name": "The wiki shows the coming page",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "count": ".wiki-list article",
+          "atLeast": 3,
+          "label": "entries (<article>) in the list (.wiki-list)"
+        },
+        {
+          "text": ".wiki-list article",
+          "contains": "Tools & Spare Parts",
+          "label": "an entry for Tools & Spare Parts"
+        }
+      ]
+    },
+    {
+      "name": "The wiki shows the two tags as text",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "count": "main > article",
+          "equals": 0,
+          "label": "<article> elements outside the list (.wiki-list)"
+        },
+        {
+          "text": "main",
+          "contains": "<article>",
+          "label": "the text of the page’s own part (<main>)"
+        },
+        {
+          "text": "main",
+          "contains": "</article>",
+          "label": "the text of the page’s own part (<main>)"
+        }
+      ]
+    }
+  ]
+}

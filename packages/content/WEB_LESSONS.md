@@ -28,6 +28,7 @@ Open with a problem or a moment from real life, then show how the new idea solve
 - Say "we", ask the reader things ("What do you see?"), and a `:)` now and then is fine.
 - Explanations use everyday life: school, games, phones, the street, the kitchen. The space station belongs to the **mission**, not to the explanation. "Cargo Bay" and "hatch sign" mean nothing to a 14-year-old.
 - Write short sentences with words a 14-year-old knows. Explain every technical word the first time it appears, in the same sentence.
+- Many readers learn English as a second language. Use common words, not idioms or slang ("a piece of cake", "under the hood"), and a plain verb rather than a phrasal one where one exists ("remove", not "get rid of"). One idea per sentence, and the same word for the same thing all through the lesson.
 - Examples are in English. No French or other languages to show a point.
 
 ## 4. Small steps you can see
@@ -85,10 +86,11 @@ Before a lesson goes for review, every answer is yes:
 1. Does it introduce exactly one new idea?
 2. Does it open with something from real life, or a problem the student already has?
 3. Would a 14-year-old understand every sentence on the first read?
-4. Does every idea have its own small example, with what you see right after it? Is every HTML and CSS example a preview cell?
-5. Is there at least one wrong version, with what happens?
-6. Is every tag, property, word and function in it taught in this lesson or an earlier one?
-7. Does the mission say where you start and show what done looks like?
-8. Is every point of the mission visible on the page or in the console, and said out loud?
-9. Does the mission ask for a result without giving the example's values to copy?
-10. Is the space station only in the mission?
+4. Would someone whose first language isn't English understand it too, with no idiom or rare word?
+5. Does every idea have its own small example, with what you see right after it? Is every HTML and CSS example a preview cell?
+6. Is there at least one wrong version, with what happens?
+7. Is every tag, property, word and function in it taught in this lesson or an earlier one?
+8. Does the mission say where you start and show what done looks like?
+9. Is every point of the mission visible on the page or in the console, and said out loud?
+10. Does the mission ask for a result without giving the example's values to copy?
+11. Is the space station only in the mission?

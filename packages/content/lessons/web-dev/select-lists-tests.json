@@ -1,0 +1,114 @@
+{
+  "cases": [
+    {
+      "name": "A flight list, with nothing picked at the start",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "select#flight",
+          "label": "a list to pick from (select) with the id flight"
+        },
+        {
+          "count": "#flight option",
+          "equals": 6,
+          "label": "choices in the flight list (an empty one, then one per flight)"
+        },
+        {
+          "value": "#flight",
+          "empty": true,
+          "label": "the flight list at the start"
+        },
+        {
+          "click": "label[for=\"flight\"], label:has(#flight)",
+          "label": "the label of the flight list"
+        },
+        {
+          "exists": "#flight:focus",
+          "label": "the flight list, ready to type in after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "One choice per flight, its code as its value",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#flight option[value=\"SL-101\"]",
+          "contains": "Moon Base",
+          "label": "the choice with the value SL-101 in the flight list"
+        },
+        {
+          "text": "#flight option[value=\"SL-102\"]",
+          "contains": "Mars Relay",
+          "label": "the choice with the value SL-102 in the flight list"
+        },
+        {
+          "text": "#flight option[value=\"SL-103\"]",
+          "contains": "Europa Outpost",
+          "label": "the choice with the value SL-103 in the flight list"
+        },
+        {
+          "text": "#flight option[value=\"SL-104\"]",
+          "contains": "Lunar Gateway",
+          "label": "the choice with the value SL-104 in the flight list"
+        },
+        {
+          "text": "#flight option[value=\"SL-105\"]",
+          "contains": "Orbital Yard",
+          "label": "the choice with the value SL-105 in the flight list"
+        }
+      ]
+    },
+    {
+      "name": "The form sends the flight picked",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "select": "#flight",
+          "option": "SL-103",
+          "label": "the choice SL-103 in the flight list"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "flight": "SL-103"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Another flight",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the choice SL-105 in the flight list"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "flight": "SL-105"
+          }
+        }
+      ]
+    }
+  ]
+}

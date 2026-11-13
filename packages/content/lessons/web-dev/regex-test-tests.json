@@ -1,0 +1,174 @@
+{
+  "cases": [
+    {
+      "name": "Notes about a wheelchair ask for help at the gate",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#pass-help",
+          "equals": "no",
+          "label": "the line Help at the gate on the pass at the start (#pass-help)"
+        },
+        {
+          "fill": "#notes",
+          "text": "I use a wheelchair",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "yes",
+          "label": "the line Help at the gate on the pass (#pass-help)"
+        },
+        {
+          "fill": "#notes",
+          "text": "Window seat, please",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "no",
+          "label": "the line Help at the gate on the pass for other notes (#pass-help)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Any capitals count, and Escape takes it back",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "Wheelchair at the gate, please",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "yes",
+          "label": "the line Help at the gate on the pass with a capital W (#pass-help)"
+        },
+        {
+          "fill": "#notes",
+          "text": "WHEELCHAIR",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "yes",
+          "label": "the line Help at the gate on the pass in capitals (#pass-help)"
+        },
+        {
+          "press": "Escape",
+          "on": "#notes",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "no",
+          "label": "the line Help at the gate on the pass after Escape (#pass-help)"
+        },
+        {
+          "text": "#pass-notes",
+          "equals": "No notes",
+          "label": "the notes on the pass (#pass-notes)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The rest of the pass still works",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "IM",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-101",
+          "label": "the confirmation (#confirmation)"
+        }
+      ]
+    },
+    {
+      "name": "Other notes",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#notes",
+          "text": "My wheelchair folds up",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "yes",
+          "label": "the line Help at the gate on the pass (#pass-help)"
+        },
+        {
+          "fill": "#notes",
+          "text": "A warm blanket",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "no",
+          "label": "the line Help at the gate on the pass (#pass-help)"
+        },
+        {
+          "fill": "#notes",
+          "text": "wheelCHAIR, thank you",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "yes",
+          "label": "the line Help at the gate on the pass (#pass-help)"
+        },
+        {
+          "fill": "#notes",
+          "text": "",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-help",
+          "equals": "no",
+          "label": "the line Help at the gate on the pass once the notes are deleted (#pass-help)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "cases": [
+    {
+      "name": "The pass shows the initials of the name",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "IM",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "NB",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "One word gives one letter, and no name gives none",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "I",
+          "label": "the initials on the pass for a name of one word (#pass-initials)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "",
+          "label": "the initials on the pass with no name (#pass-initials)"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "No name yet",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Spaces around the name don't count, and the rest still works",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "  Lena Park ",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "LP",
+          "label": "the initials on the pass with spaces around the name (#pass-initials)"
+        },
+        {
+          "fill": "#email",
+          "text": "lena@station.example",
+          "label": "the email box"
+        },
+        {
+          "text": "#pass-role",
+          "equals": "crew",
+          "label": "the line Traveling as on the pass (#pass-role)"
+        }
+      ]
+    },
+    {
+      "name": "Other names, long and short",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Clara Diaz Lopez",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "CD",
+          "label": "the initials on the pass for a name of three words (#pass-initials)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Oliver Grant",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "OG",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Kenji",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "K",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "fill": "#passenger",
+          "text": "Sofia Lind",
+          "label": "the name box"
+        },
+        {
+          "text": "#pass-initials",
+          "equals": "SL",
+          "label": "the initials on the pass (#pass-initials)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

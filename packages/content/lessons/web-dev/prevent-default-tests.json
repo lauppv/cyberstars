@@ -1,0 +1,162 @@
+{
+  "cases": [
+    {
+      "name": "The page answers, and the form stays here",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Ida Moreau on SL-102",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A form the browser refuses gets no answer",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#confirmation",
+          "equals": "",
+          "label": "the confirmation still empty (#confirmation)"
+        }
+      ]
+    },
+    {
+      "name": "Another passenger, who sends with Enter",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Oliver Grant",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "oliver@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-103",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "press": "Enter",
+          "on": "#email",
+          "label": "the email box"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Oliver Grant on SL-103",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A second send, with another flight",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Sofia Lind",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "sofia@example.com",
+          "label": "the email box"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-105",
+          "label": "the flight list"
+        },
+        {
+          "fill": "#travel-date",
+          "text": "2031-05-14",
+          "label": "the date box"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Sofia Lind on SL-105",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "text": "#confirmation",
+          "equals": "Seat booked for Sofia Lind on SL-101",
+          "label": "the confirmation (#confirmation)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

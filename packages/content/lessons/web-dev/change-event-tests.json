@@ -1,0 +1,140 @@
+{
+  "cases": [
+    {
+      "name": "The flight picked shows on the pass",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "select": "#flight",
+          "option": "SL-102",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-flight",
+          "equals": "SL-102",
+          "label": "the flight on the pass (#pass-flight)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The pass says whether the hot meal is ticked",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "text": "#pass-meal",
+          "equals": "no",
+          "label": "the hot meal on the pass at the start (#pass-meal)"
+        },
+        {
+          "click": "label[for=\"extra-meal\"]",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "checked": "#extra-meal",
+          "label": "the hot meal box"
+        },
+        {
+          "text": "#pass-meal",
+          "equals": "yes",
+          "label": "the hot meal on the pass (#pass-meal)"
+        },
+        {
+          "click": "label[for=\"extra-meal\"]",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "checked": "#extra-meal",
+          "off": true,
+          "label": "the hot meal box"
+        },
+        {
+          "text": "#pass-meal",
+          "equals": "no",
+          "label": "the hot meal on the pass (#pass-meal)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The name and the counter still work",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Lena Park",
+          "label": "the name box"
+        },
+        {
+          "fill": "#notes",
+          "text": "Vegan meal",
+          "label": "the notes box"
+        },
+        {
+          "text": "#pass-name",
+          "equals": "Lena Park",
+          "label": "the name on the pass (#pass-name)"
+        },
+        {
+          "text": "#notes-left",
+          "equals": "190 characters left",
+          "label": "the counter under the notes box (#notes-left)"
+        }
+      ]
+    },
+    {
+      "name": "Other flights, one after the other",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "select": "#flight",
+          "option": "SL-104",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-flight",
+          "equals": "SL-104",
+          "label": "the flight on the pass (#pass-flight)"
+        },
+        {
+          "select": "#flight",
+          "option": "SL-101",
+          "label": "the flight list"
+        },
+        {
+          "text": "#pass-flight",
+          "equals": "SL-101",
+          "label": "the flight on the pass (#pass-flight)"
+        },
+        {
+          "click": "label[for=\"extra-meal\"]",
+          "label": "the label of the hot meal box"
+        },
+        {
+          "text": "#pass-meal",
+          "equals": "yes",
+          "label": "the hot meal on the pass (#pass-meal)"
+        },
+        {
+          "click": "label[for=\"seat-aisle\"]",
+          "label": "the label of the aisle seat"
+        },
+        {
+          "text": "#pass-seat",
+          "equals": "aisle",
+          "label": "the seat on the pass (#pass-seat)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "cases": [
+    {
+      "name": "An email box and a phone box, each with its label",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "input#email[type=\"email\" i]",
+          "label": "a box with the id email, made for an email address"
+        },
+        {
+          "exists": "input#phone[type=\"tel\" i]",
+          "label": "a box with the id phone, made for a phone number"
+        },
+        {
+          "click": "label[for=\"email\"], label:has(#email)",
+          "label": "the label of the email box"
+        },
+        {
+          "exists": "#email:focus",
+          "label": "the email box, ready to type in after a click on its label"
+        },
+        {
+          "click": "label[for=\"phone\"], label:has(#phone)",
+          "label": "the label of the phone box"
+        },
+        {
+          "exists": "#phone:focus",
+          "label": "the phone box, ready to type in after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "The form sends the email and the phone",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "fill": "#email",
+          "text": "ida@example.com",
+          "label": "the email box"
+        },
+        {
+          "fill": "#phone",
+          "text": "+33 6 12 34 56 78",
+          "label": "the phone box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "email": "ida@example.com",
+            "phone": "+33 6 12 34 56 78"
+          }
+        }
+      ]
+    },
+    {
+      "name": "An email without an @ is not sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "ida.example.com",
+          "label": "the email box"
+        },
+        {
+          "exists": "#email:invalid",
+          "label": "the email box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Another passenger",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#email",
+          "text": "noah.berg@mail.example",
+          "label": "the email box"
+        },
+        {
+          "fill": "#phone",
+          "text": "555 0199",
+          "label": "the phone box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "email": "noah.berg@mail.example",
+            "phone": "555 0199"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "cases": [
+    {
+      "name": "A number box for the bags, with its label",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "exists": "input#bags[type=\"number\" i]",
+          "label": "a number box with the id bags"
+        },
+        {
+          "click": "label[for=\"bags\"], label:has(#bags)",
+          "label": "the label of the bags box"
+        },
+        {
+          "exists": "#bags:focus",
+          "label": "the bags box, ready to type in after a click on its label"
+        }
+      ]
+    },
+    {
+      "name": "Two bags are sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "2",
+          "label": "the bags box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "bags": "2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Four bags are too many",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "4",
+          "label": "the bags box"
+        },
+        {
+          "exists": "#bags:invalid",
+          "label": "the bags box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Fewer than none is not sent",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "-1",
+          "label": "the bags box"
+        },
+        {
+          "exists": "#bags:invalid",
+          "label": "the bags box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "Three bags",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "3",
+          "label": "the bags box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "bags": "3"
+          }
+        }
+      ]
+    },
+    {
+      "name": "No bags at all",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "0",
+          "label": "the bags box"
+        },
+        {
+          "exists": "form:has(#passenger):valid",
+          "label": "the booking form ready to be sent, with no box the browser refuses"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "sent": {
+            "bags": "0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Half a bag",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "#bags",
+          "text": "1.5",
+          "label": "the bags box"
+        },
+        {
+          "exists": "#bags:invalid",
+          "label": "the bags box, which the browser refuses to send"
+        },
+        {
+          "click": "form button:not([type]), form [type=\"submit\" i]",
+          "label": "the send button of the form"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    }
+  ]
+}

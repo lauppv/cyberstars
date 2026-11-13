@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "name": "The form sends the name typed",
+      "visible": true,
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "input#passenger",
+          "text": "Ida Moreau",
+          "label": "the name box"
+        },
+        {
+          "click": "form button",
+          "label": "the button of the form"
+        },
+        {
+          "sent": {
+            "passenger": "Ida Moreau"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Another passenger",
+      "page": "boarding.html",
+      "steps": [
+        {
+          "fill": "input#passenger",
+          "text": "Noah Berg",
+          "label": "the name box"
+        },
+        {
+          "press": "Enter",
+          "on": "input#passenger",
+          "label": "the name box"
+        },
+        {
+          "sent": {
+            "passenger": "Noah Berg"
+          }
+        }
+      ]
+    }
+  ]
+}

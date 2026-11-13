@@ -11,6 +11,8 @@
 // is a block with the `image` language and nothing in it: it names a file of
 // the course's `assets/` folder, read-only in the lesson.
 
+import { WEB_COURSE_KEYS } from './constants.js';
+
 export interface WebFile {
   path: string;
   content: string;
@@ -33,9 +35,18 @@ const TEXT_LANGUAGES: Record<string, string> = {
 export const WEB_TEXT_EXTENSIONS = Object.keys(TEXT_LANGUAGES);
 const WEB_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'];
 
-// A site's limits: the saved text has the cap of any lesson's code
+// The most code another lesson's program may have, saved or run
+export const CODE_MAX_LENGTH = 50_000;
+
+// A site's limits: a site holds several pages, so its saved text has more
+// room than another lesson's code (CYB-113)
 export const WEB_MAX_FILES = 30;
-export const WEB_MAX_LENGTH = 50_000;
+export const WEB_MAX_LENGTH = 150_000;
+
+// The most code a lesson of this course may carry
+export function codeMaxLength(courseKey: string): number {
+  return WEB_COURSE_KEYS.includes(courseKey) ? WEB_MAX_LENGTH : CODE_MAX_LENGTH;
+}
 
 const SEGMENT = /^[A-Za-z0-9_-][A-Za-z0-9._-]*$/;
 const MAX_DEPTH = 4;

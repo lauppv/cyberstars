@@ -89,6 +89,11 @@ describe('tutorChatSchema: the work on a lesson', () => {
   it('caps the code like the judge and the output at its tail length', () => {
     const big = { ...work, code: 'x'.repeat(50_001) };
     expect(() => tutorChatSchema.parse({ ...valid, lesson, work: big })).toThrow();
+    // A web lesson's site has the room its judge gives it
+    const site = { courseKey: 'web-dev', lessonSlug: 'first-page' };
+    expect(tutorChatSchema.parse({ ...valid, lesson: site, work: big }).work).toEqual(big);
+    const huge = { ...work, code: 'x'.repeat(150_001) };
+    expect(() => tutorChatSchema.parse({ ...valid, lesson: site, work: huge })).toThrow();
     const long = { ...work, runOutput: 'x'.repeat(4001) };
     expect(() => tutorChatSchema.parse({ ...valid, lesson, work: long })).toThrow();
   });
