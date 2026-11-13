@@ -2495,6 +2495,13 @@ export const lessons = [
     title: 'Kept After a Reload: localStorage',
     sortOrder: 313,
   },
+  { courseKey: 'web-dev', slug: 'saving-objects', title: 'Saving an Object', sortOrder: 314 },
+  {
+    courseKey: 'web-dev',
+    slug: 'remove-item',
+    title: 'Forget One Thing: removeItem',
+    sortOrder: 315,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2857,6 +2864,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'json-stringify',
         'json-parse',
         'local-storage',
+        'saving-objects',
+        'remove-item',
       ],
     },
   ],
