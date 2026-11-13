@@ -1,0 +1,145 @@
+{
+  "cases": [
+    {
+      "name": "The home page is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "crew.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "crew.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "people/vega.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "schedule.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "schedule.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "boarding.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "boarding.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "wiki.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "wiki.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "wiki-greenhouse.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "wiki-airlock.html is made for phones",
+      "visible": true,
+      "steps": [
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    }
+  ]
+}
