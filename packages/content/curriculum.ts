@@ -2467,6 +2467,7 @@ export const lessons = [
     title: 'Only for Screen Readers',
     sortOrder: 305,
   },
+  { courseKey: 'web-dev', slug: 'settings-css-recap', title: 'CSS Recap', sortOrder: 306 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2821,6 +2822,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'dark-mode',
         'reduced-motion',
         'visually-hidden',
+        'settings-css-recap',
       ],
     },
   ],
