@@ -2375,6 +2375,16 @@ export const lessons = [
     hasCodeFile: true,
   },
   { courseKey: 'web-dev', slug: 'dashboard-css-recap', title: 'CSS Recap', sortOrder: 269 },
+  {
+    courseKey: 'web-dev',
+    slug: 'array-includes',
+    title: 'Is It in the List?',
+    sortOrder: 270,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'array-slice', title: 'A Part of an Array', sortOrder: 271 },
+  { courseKey: 'web-dev', slug: 'join', title: 'An Array as One Text', sortOrder: 272 },
+  { courseKey: 'web-dev', slug: 'split', title: 'A Text as an Array', sortOrder: 273 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2687,6 +2697,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'srcset',
         'picture-element',
         'dashboard-css-recap',
+        'array-includes',
+        'array-slice',
+        'join',
+        'split',
       ],
     },
   ],
