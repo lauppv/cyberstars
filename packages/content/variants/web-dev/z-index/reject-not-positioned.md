@@ -391,6 +391,62 @@ button[type="reset"] {
   border-radius: 12px;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.wiki-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wiki-list article {
+  background-color: #13294f;
+  padding: 0 16px;
+  border-radius: 12px;
+  width: 240px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wiki-list h2 + p {
+  flex-grow: 1;
+}
+
+.wiki-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.wiki-page article {
+  flex-basis: 400px;
+  flex-grow: 1;
+}
+
+.fact-box {
+  flex-basis: 240px;
+  align-self: flex-start;
+  background-color: #13294f;
+  padding: 0 16px;
+  border-radius: 12px;
+  order: -1;
+}
+
+.site-name {
+  flex-shrink: 0;
+}
+
+header nav {
+  margin-left: auto;
+}
+
 .badge {
   display: inline-block;
   padding: 2px 8px;
@@ -1397,7 +1453,7 @@ booking.addEventListener("submit", (event) => {
         <a href="wiki.html">Wiki</a>
       </nav>
     </header>
-    <main>
+    <main class="wiki-page">
     <article>
       <h1>The Greenhouse</h1>
       <p>The greenhouse is the only green room on the station. It gives the crew fresh food, and a little fresh air too.</p>
@@ -1459,7 +1515,7 @@ booking.addEventListener("submit", (event) => {
         <a href="wiki.html">Wiki</a>
       </nav>
     </header>
-    <main>
+    <main class="wiki-page">
     <article>
       <h1>The Airlock</h1>
       <p>The airlock is a small room between the station and space. The crew go through it for every space walk.</p>
@@ -1576,7 +1632,7 @@ booking.addEventListener("submit", (event) => {
         <a href="wiki.html">Wiki</a>
       </nav>
     </header>
-    <main>
+    <main class="wiki-page">
     <article>
       <h1>Tools &amp; Spare Parts</h1>
       <p>A broken pump can't wait for the next supply ship. So the station keeps its own tools and spare parts on board.</p>

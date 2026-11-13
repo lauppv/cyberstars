@@ -2291,6 +2291,11 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'align-self', title: 'Align Self', sortOrder: 227 },
   { courseKey: 'web-dev', slug: 'flex-order', title: 'Order', sortOrder: 228 },
   { courseKey: 'web-dev', slug: 'margin-auto', title: 'Auto Margins', sortOrder: 229 },
+  { courseKey: 'web-dev', slug: 'position-relative', title: 'Relative Position', sortOrder: 230 },
+  { courseKey: 'web-dev', slug: 'position-absolute', title: 'Absolute Position', sortOrder: 231 },
+  { courseKey: 'web-dev', slug: 'position-fixed', title: 'Fixed Position', sortOrder: 232 },
+  { courseKey: 'web-dev', slug: 'position-sticky', title: 'Sticky Position', sortOrder: 233 },
+  { courseKey: 'web-dev', slug: 'z-index', title: 'z-index', sortOrder: 234 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2557,6 +2562,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'align-self',
         'flex-order',
         'margin-auto',
+        'position-relative',
+        'position-absolute',
+        'position-fixed',
+        'position-sticky',
+        'z-index',
       ],
     },
   ],
