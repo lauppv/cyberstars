@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "name": "The page asks, and goes on without waiting",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "logged": "Asking for the starships"
+        },
+        {
+          "logged": "Waiting for the answer"
+        },
+        {
+          "logged": "The starships answered",
+          "none": true
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "logged": "The starships answered"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The answer comes a second later, not sooner",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 900
+        },
+        {
+          "logged": "The starships answered",
+          "none": true
+        },
+        {
+          "wait": 100
+        },
+        {
+          "logged": "The starships answered"
+        }
+      ]
+    },
+    {
+      "name": "The page can be used while it waits",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu"
+        },
+        {
+          "logged": "The starships answered",
+          "none": true
+        }
+      ]
+    },
+    {
+      "name": "Only the tracker asks",
+      "page": "index.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 1000
+        },
+        {
+          "logged": "Asking for the starships",
+          "none": true
+        }
+      ]
+    }
+  ]
+}

@@ -2546,6 +2546,16 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'shimmer', title: 'A Light That Moves', sortOrder: 330 },
   { courseKey: 'web-dev', slug: 'while-busy', title: 'Only While It Loads', sortOrder: 331 },
   { courseKey: 'web-dev', slug: 'tracker-css-recap', title: 'CSS Recap', sortOrder: 332 },
+  {
+    courseKey: 'web-dev',
+    slug: 'why-async',
+    title: "The Page Doesn't Wait",
+    sortOrder: 333,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'new-promise', title: 'A Promise', sortOrder: 334 },
+  { courseKey: 'web-dev', slug: 'promise-then', title: 'When the Value Comes', sortOrder: 335 },
+  { courseKey: 'web-dev', slug: 'promise-catch', title: 'A Promise That Fails', sortOrder: 336 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2933,6 +2943,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'shimmer',
         'while-busy',
         'tracker-css-recap',
+        'why-async',
+        'new-promise',
+        'promise-then',
+        'promise-catch',
       ],
     },
   ],
