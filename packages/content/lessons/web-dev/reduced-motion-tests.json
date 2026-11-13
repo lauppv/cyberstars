@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "name": "With less motion, the dashboard stands still",
+      "visible": true,
+      "page": "dashboard.html",
+      "colorScheme": "dark",
+      "reducedMotion": true,
+      "steps": [
+        {
+          "animated": "#pad-panel .live",
+          "off": true,
+          "label": "the LIVE label"
+        },
+        {
+          "visible": "#pad-panel .live",
+          "label": "the LIVE label"
+        },
+        {
+          "style": ".stats > .stat",
+          "prop": "transition-duration",
+          "equals": "0s",
+          "every": true,
+          "label": "every card's transition"
+        },
+        {
+          "hover": "#crew-count",
+          "label": "the crew's card"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "transform",
+          "equals": "none",
+          "label": "the crew's card, under the mouse"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "border-top-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the crew's card's border, under the mouse"
+        }
+      ]
+    },
+    {
+      "name": "With less motion, the theme icons don't turn",
+      "visible": true,
+      "page": "settings.html",
+      "reducedMotion": true,
+      "steps": [
+        {
+          "hover": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "style": "#theme-light span",
+          "prop": "transform",
+          "equals": "none",
+          "label": "the Light button's icon, under the mouse"
+        },
+        {
+          "style": "#theme-system",
+          "prop": "transform",
+          "equals": "matrix(1.1, 0, 0, 1.1, 0, 0)",
+          "label": "the pressed System button, still bigger"
+        }
+      ]
+    },
+    {
+      "name": "Without the wish, everything moves as before",
+      "visible": true,
+      "page": "dashboard.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "animated": "#pad-panel .live",
+          "label": "the LIVE label"
+        },
+        {
+          "hover": "#crew-count",
+          "label": "the crew's card"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "transform",
+          "equals": "matrix(1, 0, 0, 1, 0, -4)",
+          "label": "the crew's card, under the mouse"
+        }
+      ]
+    },
+    {
+      "name": "Less motion in the light theme too",
+      "page": "dashboard.html",
+      "reducedMotion": true,
+      "steps": [
+        {
+          "animated": "#pad-panel .live",
+          "off": true,
+          "label": "the LIVE label"
+        }
+      ]
+    }
+  ]
+}

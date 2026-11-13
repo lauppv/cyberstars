@@ -2460,6 +2460,13 @@ export const lessons = [
     sortOrder: 302,
   },
   { courseKey: 'web-dev', slug: 'dark-mode', title: 'Dark Mode', sortOrder: 303 },
+  { courseKey: 'web-dev', slug: 'reduced-motion', title: 'Less Motion', sortOrder: 304 },
+  {
+    courseKey: 'web-dev',
+    slug: 'visually-hidden',
+    title: 'Only for Screen Readers',
+    sortOrder: 305,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2812,6 +2819,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'keyframes',
         'animation-repeat',
         'dark-mode',
+        'reduced-motion',
+        'visually-hidden',
       ],
     },
   ],
