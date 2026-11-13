@@ -34,17 +34,17 @@
       "page": "wiki.html",
       "steps": [
         {
-          "click": ".wiki-list article:nth-child(3) > p",
-          "label": "the text of the third card"
+          "click": ".wiki-list article:nth-child(2) > p",
+          "label": "the text of the second card"
         },
         {
           "text": "#picked",
-          "equals": "Tools & Spare Parts",
+          "equals": "The Airlock",
           "label": "the title picked (#picked)"
         },
         {
-          "exists": ".wiki-list article:nth-child(3).picked",
-          "label": "the third card, with the class picked"
+          "exists": ".wiki-list article:nth-child(2).picked",
+          "label": "the second card, with the class picked"
         },
         {
           "click": ".wiki-list article:nth-child(1)",

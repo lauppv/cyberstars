@@ -391,6 +391,97 @@ button[type="reset"] {
   border-radius: 12px;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.wiki-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wiki-list article {
+  background-color: #13294f;
+  padding: 0 16px;
+  border-radius: 12px;
+  width: 240px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wiki-list h2 + p {
+  flex-grow: 1;
+}
+
+.wiki-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.wiki-page article {
+  flex-basis: 400px;
+  flex-grow: 1;
+}
+
+.fact-box {
+  flex-basis: 240px;
+  align-self: flex-start;
+  background-color: #13294f;
+  padding: 0 16px;
+  border-radius: 12px;
+  order: -1;
+}
+
+.site-name {
+  flex-shrink: 0;
+}
+
+header nav {
+  margin-left: auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: #ffd166;
+  color: #0b1d3a;
+  font-size: 0.75rem;
+  letter-spacing: normal;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.wiki-list article {
+  position: relative;
+}
+
+.to-top {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  padding: 8px 12px;
+  background-color: #13294f;
+  border: 2px solid #5fd3c6;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #0b1d3a;
+}
+
 .picked {
   outline: 3px solid #ffd166;
   outline-offset: 4px;
@@ -1365,7 +1456,7 @@ booking.addEventListener("submit", (event) => {
         <a href="wiki.html">Wiki</a>
       </nav>
     </header>
-    <main>
+    <main class="wiki-page">
     <article>
       <h1>The Greenhouse</h1>
       <p>The greenhouse is the only green room on the station. It gives the crew fresh food, and a little fresh air too.</p>
@@ -1400,6 +1491,7 @@ booking.addEventListener("submit", (event) => {
     <footer>
       <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>
       <p>Written by the crew, for everyone on board and back on Earth.</p>
+      <a class="to-top" href="#top">Back to top</a>
     </footer>
   </body>
 </html>
@@ -1426,7 +1518,7 @@ booking.addEventListener("submit", (event) => {
         <a href="wiki.html">Wiki</a>
       </nav>
     </header>
-    <main>
+    <main class="wiki-page">
     <article>
       <h1>The Airlock</h1>
       <p>The airlock is a small room between the station and space. The crew go through it for every space walk.</p>
@@ -1461,6 +1553,7 @@ booking.addEventListener("submit", (event) => {
     <footer>
       <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>
       <p>Written by the crew, for everyone on board and back on Earth.</p>
+      <a class="to-top" href="#top">Back to top</a>
     </footer>
   </body>
 </html>
@@ -1508,7 +1601,7 @@ booking.addEventListener("submit", (event) => {
         <p><a href="wiki-airlock.html">Read about the airlock</a></p>
       </article>
       <article>
-        <h2>Tools &amp; Spare Parts</h2>
+        <h2>Tools &amp; Spare Parts <span class="badge">New</span></h2>
         <p>Everything we need to fix the station, and where to find it.</p>
         <p><a href="wiki-tools.html">Read about tools &amp; spare parts</a></p>
       </article>
@@ -1523,6 +1616,7 @@ booking.addEventListener("submit", (event) => {
     <footer>
       <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>
       <p>Written by the crew, for everyone on board and back on Earth.</p>
+      <a class="to-top" href="#top">Back to top</a>
     </footer>
   </body>
 </html>
@@ -1549,7 +1643,7 @@ booking.addEventListener("submit", (event) => {
         <a href="wiki.html">Wiki</a>
       </nav>
     </header>
-    <main>
+    <main class="wiki-page">
     <article>
       <h1>Tools &amp; Spare Parts</h1>
       <p>A broken pump can't wait for the next supply ship. So the station keeps its own tools and spare parts on board.</p>
@@ -1578,6 +1672,7 @@ booking.addEventListener("submit", (event) => {
     <footer>
       <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>
       <p>Written by the crew, for everyone on board and back on Earth.</p>
+      <a class="to-top" href="#top">Back to top</a>
     </footer>
   </body>
 </html>
