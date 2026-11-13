@@ -202,7 +202,7 @@ async function waitFor(page, read, done) {
   return value;
 }
 
-async function observe(page, step, seen) {
+async function observe(page, step, seen, files) {
   if ('fits' in step) {
     return { scrollWidth: await page.evaluate(() => document.documentElement.scrollWidth) };
   }
@@ -300,7 +300,13 @@ async function observe(page, step, seen) {
           els.slice(0, max).map((el) => {
             if (el instanceof HTMLMediaElement) {
               if (el.readyState >= 1 && !el.error) return 'yes';
-              return el.error !== null || el.networkState === 3 ? 'media' : 'wait';
+              if (el.error !== null || el.networkState === 3) return 'media';
+              // preload="none" reads nothing until it plays: the file it
+              // picked is all there is to know, looked up in the site below
+              if (el.preload === 'none' && el.networkState === 1 && el.currentSrc) {
+                return { file: el.currentSrc };
+              }
+              return 'wait';
             }
             if (el instanceof HTMLTrackElement) {
               if (el.readyState === 2) return 'yes';
@@ -311,7 +317,15 @@ async function observe(page, step, seen) {
         MAX_ELEMENTS,
       );
     const values = await waitFor(page, read, (vs) => !vs.includes('wait'));
-    return { count, values: values.map((v) => (v === 'wait' ? 'media' : v)) };
+    return {
+      count,
+      values: values.map((v) => {
+        if (v === 'wait') return 'media';
+        if (typeof v === 'string') return v;
+        const url = new URL(v.file);
+        return url.origin === ORIGIN && Object.hasOwn(files, sitePath(url)) ? 'yes' : 'media';
+      }),
+    };
   }
   if ('attr' in step) {
     return { count, values: [await elements.first().getAttribute(step.name)] };
@@ -376,7 +390,8 @@ async function observe(page, step, seen) {
     return { count, checked: await elements.first().evaluate((el) => el.checked === true) };
   }
   // Whether the first video or sound plays now, once it had the time to
-  // start on its own (autoplay waits for its file)
+  // start on its own: autoplay waits until the browser has enough of the file
+  // (HAVE_ENOUGH_DATA), and one without autoplay, stopped, stays so
   if ('playing' in step) {
     const first = elements.first();
     const state = await waitFor(
@@ -385,7 +400,12 @@ async function observe(page, step, seen) {
         first.evaluate((el) =>
           el instanceof HTMLMediaElement
             ? {
-                ready: el.readyState >= 3 || el.error !== null || el.networkState === 3,
+                ready:
+                  !el.paused ||
+                  !el.autoplay ||
+                  el.readyState >= 4 ||
+                  el.error !== null ||
+                  el.networkState === 3,
                 playing: !el.paused && !el.ended,
               }
             : { ready: true, playing: false },
@@ -829,7 +849,9 @@ async function runCase(browser, files, testCase, limits) {
         const isAction = limits.actions.some((key) => key in step);
         steps.push(
           await guarded(
-            isAction ? act(page, step, nav, limits.stepMs, clocked) : observe(page, step, seen),
+            isAction
+              ? act(page, step, nav, limits.stepMs, clocked)
+              : observe(page, step, seen, files),
           ),
         );
       }

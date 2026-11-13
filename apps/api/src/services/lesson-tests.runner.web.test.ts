@@ -296,6 +296,8 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         <video class="own" src="video/launch.webm" autoplay muted loop></video>
         <video class="loud" src="video/launch.webm" autoplay></video>
         <audio src="audio/countdown.mp3" controls></audio>
+        <audio class="later" src="audio/countdown.mp3" preload="none" controls></audio>
+        <audio class="later-lost" src="audio/gone.mp3" preload="none" controls></audio>
         <video class="lost" src="video/gone.webm" controls><track src="gone.vtt"></video>
         <button onclick="document.querySelector('.own').muted = false">Sound</button>
       </body></html>`,
@@ -308,8 +310,16 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         name: 'Loaded',
         visible: true,
         steps: [
-          { loaded: '.shown, .shown track, audio', label: 'the video, its words and the sound' },
+          {
+            loaded: '.shown, .shown track, audio:not(.later-lost)',
+            label: 'the video, its words and the sounds',
+          },
         ],
+      },
+      {
+        name: 'Lost sound read only on play',
+        visible: true,
+        steps: [{ loaded: '.later-lost', label: 'the lost sound' }],
       },
       {
         name: 'Plays on its own only when muted',
@@ -331,8 +341,9 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
       },
       { name: 'Loud', visible: true, steps: [{ playing: '.loud', label: 'the loud video' }] },
     ];
-    const [loaded, playing, lost, lostWords, loud] = verdicts(files, cases);
+    const [loaded, laterLost, playing, lost, lostWords, loud] = verdicts(files, cases);
     expect(loaded.passed).toBe(true);
+    expect(laterLost.web).toEqual({ kind: 'loaded', label: 'the lost sound', detail: 'media' });
     expect(playing.passed).toBe(true);
     expect(lost.web).toEqual({ kind: 'loaded', label: 'the lost video', detail: 'media' });
     expect(lostWords.web).toEqual({ kind: 'loaded', label: 'the lost words', detail: 'media' });
