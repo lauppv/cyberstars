@@ -2359,6 +2359,22 @@ export const lessons = [
     title: 'Another Layout on a Phone',
     sortOrder: 265,
   },
+  { courseKey: 'web-dev', slug: 'mobile-first', title: 'Phone First', sortOrder: 266 },
+  {
+    courseKey: 'web-dev',
+    slug: 'srcset',
+    title: 'A Picture for Each Screen',
+    sortOrder: 267,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'picture-element',
+    title: 'Another Picture on a Phone',
+    sortOrder: 268,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'dashboard-css-recap', title: 'CSS Recap', sortOrder: 269 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2667,6 +2683,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'media-queries',
         'breakpoints',
         'layout-by-width',
+        'mobile-first',
+        'srcset',
+        'picture-element',
+        'dashboard-css-recap',
       ],
     },
   ],

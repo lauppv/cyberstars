@@ -1,0 +1,283 @@
+{
+  "cases": [
+    {
+      "name": "On a phone, as before",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": ".stats > .stat",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the cards"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "size": "#crew-count",
+          "maxHeight": 210,
+          "label": "the crew's card"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(5)",
+          "arrange": "column",
+          "align": "start",
+          "label": "Monday and Friday, under it"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 600 pixels wide, as before",
+      "visible": true,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "minHeight": 360,
+          "label": "the crew's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "layout": ".week > li",
+          "arrange": "row",
+          "label": "the seven days"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a computer, as before",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "minHeight": 360,
+          "label": "the crew's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "layout": ".week > li",
+          "arrange": "row",
+          "label": "the seven days"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "layout": "#countdown-panel, #duty-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the countdown's panel and the duty panel"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the first three cards"
+        }
+      ]
+    },
+    {
+      "name": "In a window 560 pixels wide",
+      "width": 560,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": ".stats > .stat",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the cards"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "size": "#crew-count",
+          "maxHeight": 210,
+          "label": "the crew's card"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(5)",
+          "arrange": "column",
+          "align": "start",
+          "label": "Monday and Friday, under it"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 800 pixels wide",
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "minHeight": 360,
+          "label": "the crew's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "layout": ".week > li",
+          "arrange": "row",
+          "label": "the seven days"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the pad camera's panel and the last launch's"
+        },
+        {
+          "layout": "#countdown-panel, #duty-panel",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the countdown's panel and the duty panel"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 760 pixels wide",
+      "width": 760,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "top left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "minHeight": 360,
+          "label": "the crew's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "layout": ".week > li",
+          "arrange": "row",
+          "label": "the seven days"
+        },
+        {
+          "layout": "#pad-panel, #launch-panel, #countdown-panel, #duty-panel",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the four panels"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

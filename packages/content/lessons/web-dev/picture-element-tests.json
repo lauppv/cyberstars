@@ -1,0 +1,136 @@
+{
+  "cases": [
+    {
+      "name": "In a window 375 pixels wide, the square photo",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-square.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 1280 pixels wide, the wide photo",
+      "visible": true,
+      "width": 1280,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-large.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The photo keeps its text, its caption and its width",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "main img[src*=\"earth\"][alt]:not([alt=\"\"])",
+          "label": "the photo of the Earth with a text for those who can't see it (alt)"
+        },
+        {
+          "text": "main figure:has(img[src*=\"earth\"]) > figcaption",
+          "nonEmpty": true,
+          "label": "the photo's caption (<figcaption> in its figure)"
+        },
+        {
+          "fills": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "In a window 600 pixels wide, the square photo",
+      "visible": false,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-square.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 640 pixels wide, the wide photo",
+      "visible": false,
+      "width": 640,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-small.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 800 pixels wide, the wide photo",
+      "visible": false,
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-large.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

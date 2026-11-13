@@ -1,0 +1,125 @@
+{
+  "cases": [
+    {
+      "name": "A photo of the Earth, with its text and its caption",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "main img[src*=\"earth\"][srcset*=\"earth-small.jpg\"][srcset*=\"earth-large.jpg\"]",
+          "label": "the photo of the Earth, with both files to pick from"
+        },
+        {
+          "exists": "main img[src*=\"earth\"][alt]:not([alt=\"\"])",
+          "label": "the photo of the Earth with a text for those who can't see it (alt)"
+        },
+        {
+          "text": "main figure:has(img[src*=\"earth\"]) > figcaption",
+          "nonEmpty": true,
+          "label": "the photo's caption (<figcaption> in its figure)"
+        },
+        {
+          "fills": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 375 pixels wide, the browser picks earth-small.jpg",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-small.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "In a window 1280 pixels wide, the browser picks earth-large.jpg",
+      "visible": true,
+      "width": 1280,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-large.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "In a window 600 pixels wide, the browser picks earth-small.jpg",
+      "visible": false,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-small.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "In a window 800 pixels wide, the browser picks earth-large.jpg",
+      "visible": false,
+      "width": 800,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "shows": "main img[src*=\"earth\"]",
+          "file": "img/earth-large.jpg",
+          "label": "the photo of the Earth"
+        },
+        {
+          "loaded": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, as wide as its figure",
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "fills": "main img[src*=\"earth\"]",
+          "label": "the photo of the Earth"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}
