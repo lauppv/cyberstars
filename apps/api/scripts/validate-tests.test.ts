@@ -208,7 +208,7 @@ describe('auditHarness', () => {
 });
 
 describe('auditWebSpec', () => {
-  const site = new Set(['index.html', 'crew.html', 'data/crew.json']);
+  const site = new Set(['index.html', 'crew.html', 'data/crew.json', 'img/earth-small.jpg']);
   const spec = (cases: unknown[]) => ({ cases }) as WebTestsSpec;
   const one = (steps: unknown[], extra: object = {}) =>
     auditWebSpec(spec([{ name: 'A case', steps, ...extra }]), site);
@@ -410,6 +410,11 @@ describe('auditWebSpec', () => {
     expect(one([{ fits: true }], { clock: '2031-13-40T09:30:00' })).toEqual([
       expect.stringMatching(/clock/),
     ]);
+    // Days and hours that don't exist, which Date.parse rolls on
+    for (const clock of ['2031-02-30T09:30:00', '2031-04-31T09:30:00', '2031-05-14T24:00:00']) {
+      expect(one([{ fits: true }], { clock })).toEqual([expect.stringMatching(/clock/)]);
+    }
+    expect(one([{ fits: true }], { clock: '2032-02-29T23:59:59' })).toEqual([]);
     expect(one([{ fits: true }], { colorScheme: 'blue' })).toEqual([
       expect.stringMatching(/colorScheme/),
     ]);
@@ -421,6 +426,9 @@ describe('auditWebSpec', () => {
     ]);
     expect(one([{ shows: 'img', label: 'the picture' }])).toEqual([
       expect.stringMatching(/shows step names the file/),
+    ]);
+    expect(one([{ shows: 'img', file: 'img/earth-smal.jpg', label: 'the picture' }])).toEqual([
+      "case 0, step 0: shows names img/earth-smal.jpg, which the site doesn't have",
     ]);
     expect(one([{ focused: '#name' }])).toEqual([expect.stringMatching(/without a label/)]);
     expect(one([{ animated: '.live', off: false, label: 'it' }])).toEqual([

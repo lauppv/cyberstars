@@ -506,6 +506,14 @@ const CASE_KEYS = new Set([
 // A clock is a date and a time, to the second, without a zone (the page's UTC)
 const CLOCK = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
 
+// A date and time that exists: Date.parse rolls 2031-02-30 into March, so
+// the time must come back as written
+function isClock(value: unknown): boolean {
+  if (!isText(value) || !CLOCK.test(value)) return false;
+  const at = new Date(`${value}Z`);
+  return !isNaN(at.getTime()) && at.toISOString().slice(0, 19) === value;
+}
+
 const isText = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '';
 const isPage = (v: unknown): v is string => isText(v) && isValidWebPath(v) && v.endsWith('.html');
 
@@ -563,8 +571,11 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   }
   if (!isText(value)) return `a ${own} step without a selector`;
   if (own === 'fill' && typeof step.text !== 'string') return 'a fill step without its text';
-  if (own === 'shows' && !(isText(step.file) && isValidWebPath(step.file))) {
-    return 'a shows step names the file of the site it shows';
+  if (own === 'shows') {
+    if (!(isText(step.file) && isValidWebPath(step.file))) {
+      return 'a shows step names the file of the site it shows';
+    }
+    if (!sitePaths.has(step.file)) return `shows names ${step.file}, which the site doesn't have`;
   }
   if (own === 'select' && !isText(step.option)) return 'a select step without its option';
   if (own === 'value') {
@@ -699,10 +710,7 @@ export function auditWebSpec(spec: WebTestsSpec, sitePaths: Set<string>): string
     ) {
       messages.push(`${at}: width ${c.width} is not between ${WEB_MIN_WIDTH} and ${WEB_MAX_WIDTH}`);
     }
-    if (
-      c.clock !== undefined &&
-      !(isText(c.clock) && CLOCK.test(c.clock) && !isNaN(Date.parse(`${c.clock}Z`)))
-    ) {
+    if (c.clock !== undefined && !isClock(c.clock)) {
       messages.push(`${at}: clock ${c.clock} is not a date and time like 2031-05-14T09:30:00`);
     }
     if (c.colorScheme !== undefined && c.colorScheme !== 'light' && c.colorScheme !== 'dark') {
