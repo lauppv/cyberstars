@@ -1,0 +1,418 @@
+{
+  "cases": [
+    {
+      "name": "The page has its frame",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the <html> tag"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\"]",
+          "label": "a <meta> tag in the <head> that makes the page as wide as the phone"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a <meta> tag in the <head> with a sentence about the page"
+        },
+        {
+          "text": "head > title",
+          "equals": "Lyra Spaceport",
+          "label": "a <title> in the <head>"
+        },
+        {
+          "text": "h1",
+          "equals": "Lyra Spaceport",
+          "label": "the biggest heading"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings"
+        }
+      ]
+    },
+    {
+      "name": "A header, the page's own part and a footer",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "header h1",
+          "label": "the biggest heading inside a <header>"
+        },
+        {
+          "text": "header button#menu-button",
+          "equals": "Menu",
+          "label": "the button with id=\"menu-button\" inside the header"
+        },
+        {
+          "exists": "header nav#menu[aria-label]:not([aria-label=\"\"])",
+          "label": "a menu (<nav>) with id=\"menu\" inside the header, with a name for screen readers"
+        },
+        {
+          "exists": "main",
+          "label": "the page's own part (<main>)"
+        },
+        {
+          "exists": "footer",
+          "label": "a footer"
+        },
+        {
+          "order": ["header", "main", "footer"],
+          "label": "the header, the page's own part and the footer"
+        }
+      ]
+    },
+    {
+      "name": "The header is one line on a computer",
+      "visible": true,
+      "steps": [
+        {
+          "layout": "header h1, #menu-button",
+          "arrange": "row",
+          "label": "the name and the Menu button"
+        },
+        {
+          "against": "header h1",
+          "in": "header",
+          "side": "left",
+          "within": 48,
+          "inLabel": "the header",
+          "label": "the name"
+        },
+        {
+          "against": "#menu-button",
+          "in": "header",
+          "side": "right",
+          "within": 48,
+          "inLabel": "the header",
+          "label": "the Menu button"
+        }
+      ]
+    },
+    {
+      "name": "On a computer, the trips and your visit stand side by side",
+      "visible": true,
+      "steps": [
+        {
+          "count": "#trips .trip-list > article.trip",
+          "atLeast": 3,
+          "label": "trips (<article class=\"trip\">) in the trip list of the trips section"
+        },
+        {
+          "count": "#trips article.trip:not(:has(h3))",
+          "equals": 0,
+          "label": "trips without their name in an <h3>"
+        },
+        {
+          "count": "#trips article.trip:not(:has(button))",
+          "equals": 0,
+          "label": "trips without a button"
+        },
+        {
+          "layout": "#trips article.trip:nth-of-type(-n+3)",
+          "arrange": "row",
+          "gap": 8,
+          "label": "the first three trips"
+        },
+        {
+          "layout": "#trips, aside",
+          "arrange": "row",
+          "label": "the trips section and the aside"
+        },
+        {
+          "size": "aside",
+          "minWidth": 200,
+          "maxWidth": 400,
+          "label": "the aside"
+        }
+      ]
+    },
+    {
+      "name": "The cards have their badge and their buttons",
+      "visible": true,
+      "steps": [
+        {
+          "count": "#trips article.trip .badge",
+          "equals": 1,
+          "label": "badges"
+        },
+        {
+          "text": "#trips article.trip .badge",
+          "equals": "Best seller",
+          "label": "the badge"
+        },
+        {
+          "against": "#trips article.trip .badge",
+          "in": ".trip",
+          "side": "top right",
+          "inLabel": "its card",
+          "label": "the badge"
+        },
+        {
+          "against": "#trips article.trip button",
+          "in": ".trip",
+          "side": "bottom",
+          "within": 32,
+          "inLabel": "its card",
+          "label": "every trip's button"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, everything fits and the header stays",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "layout": "#trips, aside",
+          "arrange": "column",
+          "label": "the trips section and the aside"
+        },
+        {
+          "scroll": 600
+        },
+        {
+          "inView": "header",
+          "label": "the header, after scrolling down"
+        }
+      ]
+    },
+    {
+      "name": "With other trips",
+      "visible": false,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Trips to watch a launch, from Lyra Spaceport.\" />\n    <title>Lyra Spaceport</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <h1>Lyra Spaceport</h1>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav id=\"menu\" aria-label=\"Main menu\">\n        <a href=\"#trips\">Trips</a>\n        <a href=\"#visit\">Your visit</a>\n        <a href=\"#contact\">Contact</a>\n      </nav>\n    </header>\n    <main>\n      <section id=\"trips\">\n        <h2>Trips &amp; prices</h2>\n        <p>Watch a real rocket launch from our stands, 4&nbsp;km from the pad. Pick a trip, and we keep a seat for you.</p>\n        <div class=\"trip-list\">\n          <article class=\"trip\">\n            <h3>Morning Stands</h3>\n            <p>€29</p>\n            <p>A seat on the stands.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Rocket Garden</h3>\n            <p>€19</p>\n            <p>Walk between real rockets that flew, and read the story of each one on the boards beside it. A guide answers your questions, and children get a map with a game on it.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <span class=\"badge\">Best seller</span>\n            <h3>Night Watch</h3>\n            <p>€62</p>\n            <p>The launch at night, from the roof.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>School Group</h3>\n            <p>€15</p>\n            <p>For a class with its teacher.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Sunrise over the Sea</h3>\n            <p>€75</p>\n            <p>A boat takes you out at dawn, and you watch the launch from the water, far from the crowds, with breakfast on board and a guide who talks you through the countdown.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Pad Tour</h3>\n            <p>€99</p>\n            <p>A bus ride round the pads.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Mission Control</h3>\n            <p>€180</p>\n            <p>A day beside the people who fly the rocket.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n        </div>\n      </section>\n      <aside id=\"visit\">\n        <h2>Your visit</h2>\n        <p id=\"choice\">No trip chosen yet</p>\n        <h3>What to bring</h3>\n        <ul>\n          <li>Ear plugs: a launch is loud</li>\n          <li>A warm jacket for the night</li>\n          <li>Water and a snack</li>\n        </ul>\n      </aside>\n    </main>\n    <footer id=\"contact\">\n      <p>Lyra Spaceport, 12 Coast Road</p>\n      <p><a href=\"mailto:visit@lyra-spaceport.test\">visit@lyra-spaceport.test</a></p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "wraps": "#trips article.trip",
+          "label": "the trips"
+        },
+        {
+          "against": "#trips article.trip button",
+          "in": ".trip",
+          "side": "bottom",
+          "within": 32,
+          "inLabel": "its card",
+          "label": "every trip's button"
+        },
+        {
+          "click": "#trips article.trip:nth-of-type(5) button",
+          "label": "the button of the fifth trip"
+        },
+        {
+          "text": "p#choice",
+          "equals": "You chose: Sunrise over the Sea",
+          "label": "the paragraph with id=\"choice\""
+        },
+        {
+          "count": "#trips article.trip.chosen",
+          "equals": 1,
+          "label": "chosen trips"
+        },
+        {
+          "exists": "#trips article.trip:nth-of-type(5).chosen",
+          "label": "the fifth trip, chosen"
+        }
+      ]
+    },
+    {
+      "name": "Nothing covers the header or its menu",
+      "visible": false,
+      "width": 375,
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Watch a rocket launch from the stands of Lyra Spaceport.\" />\n    <title>Lyra Spaceport</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <h1>Lyra Spaceport</h1>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav id=\"menu\" aria-label=\"Main menu\">\n        <a href=\"#trips\">Trips</a>\n        <a href=\"#visit\">Your visit</a>\n        <a href=\"#contact\">Contact</a>\n      </nav>\n    </header>\n    <main>\n      <section id=\"trips\">\n        <h2>Trips &amp; prices</h2>\n        <p>Watch a real rocket launch from our stands, 4&nbsp;km from the pad. Pick a trip, and we keep a seat for you.</p>\n        <div class=\"trip-list\">\n          <article class=\"trip\">\n            <h3>Trip 1</h3>\n            <p>€21</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 2</h3>\n            <p>€22</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 3</h3>\n            <p>€23</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <span class=\"badge\">Best seller</span>\n            <h3>Trip 4</h3>\n            <p>€24</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 5</h3>\n            <p>€25</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 6</h3>\n            <p>€26</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 7</h3>\n            <p>€27</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 8</h3>\n            <p>€28</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 9</h3>\n            <p>€29</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n          <article class=\"trip\">\n            <h3>Trip 10</h3>\n            <p>€30</p>\n            <p>A seat on the stands with a guide, who explains every step of the countdown to you.</p>\n            <button type=\"button\">Choose</button>\n          </article>\n        </div>\n      </section>\n      <aside id=\"visit\">\n        <h2>Your visit</h2>\n        <p id=\"choice\">No trip chosen yet</p>\n        <h3>What to bring</h3>\n        <ul>\n          <li>Ear plugs: a launch is loud</li>\n          <li>A warm jacket for the night</li>\n          <li>Water and a snack</li>\n        </ul>\n      </aside>\n    </main>\n    <footer id=\"contact\">\n      <p>Lyra Spaceport, 12 Coast Road</p>\n      <p><a href=\"mailto:visit@lyra-spaceport.test\">visit@lyra-spaceport.test</a></p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "scroll": 1200
+        },
+        {
+          "inView": "header",
+          "label": "the header, after scrolling down"
+        },
+        {
+          "onTop": "header",
+          "label": "the header, over the trips"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the Menu button"
+        },
+        {
+          "visible": "#menu",
+          "label": "the menu"
+        },
+        {
+          "onTop": "#menu a:last-of-type",
+          "label": "the menu's last link, over the trips"
+        }
+      ]
+    },
+    {
+      "name": "The Menu button opens and closes the menu",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "exists": "head script[src$=\"script.js\"][defer]",
+          "label": "a script.js in the head that waits for the whole page"
+        },
+        {
+          "hidden": "#menu",
+          "label": "the menu, before any press"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the Menu button, before any press"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the Menu button"
+        },
+        {
+          "visible": "#menu",
+          "label": "the menu, once opened"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "true",
+          "label": "the Menu button, once pressed"
+        },
+        {
+          "layout": "#menu-button, #menu",
+          "arrange": "column",
+          "label": "the Menu button and the open menu"
+        },
+        {
+          "layout": "#menu a",
+          "arrange": "column",
+          "label": "the menu's links"
+        },
+        {
+          "onTop": "#menu a",
+          "label": "the menu's first link, over the page"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the Menu button, a second time"
+        },
+        {
+          "hidden": "#menu",
+          "label": "the menu, after a second press"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the Menu button, after a second press"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A link in the menu closes it",
+      "visible": true,
+      "steps": [
+        {
+          "click": "#menu-button",
+          "label": "the Menu button"
+        },
+        {
+          "exists": "#menu a[href=\"#trips\"]",
+          "label": "a link in the menu to the trips"
+        },
+        {
+          "click": "#menu a[href=\"#trips\"]",
+          "label": "the menu's link to the trips"
+        },
+        {
+          "hidden": "#menu",
+          "label": "the menu, after its link was picked"
+        },
+        {
+          "attr": "#menu-button",
+          "name": "aria-expanded",
+          "equals": "false",
+          "label": "the Menu button, after a link was picked"
+        }
+      ]
+    },
+    {
+      "name": "A trip's button chooses it",
+      "visible": true,
+      "steps": [
+        {
+          "text": "p#choice",
+          "equals": "No trip chosen yet",
+          "label": "the paragraph with id=\"choice\", before any choice"
+        },
+        {
+          "click": "#trips article.trip:nth-of-type(2) button",
+          "label": "the button of the second trip"
+        },
+        {
+          "text": "p#choice",
+          "contains": "You chose: ",
+          "label": "the paragraph with id=\"choice\""
+        },
+        {
+          "exists": "#trips article.trip:nth-of-type(2).chosen",
+          "label": "the second trip, chosen"
+        },
+        {
+          "differs": "#trips article.trip.chosen",
+          "from": "#trips article.trip:not(.chosen)",
+          "props": [
+            "background-color",
+            "border-top-color",
+            "border-top-width",
+            "box-shadow",
+            "outline-style",
+            "color"
+          ],
+          "fromLabel": "the other trips",
+          "label": "the chosen trip"
+        },
+        {
+          "click": "#trips article.trip:nth-of-type(1) button",
+          "label": "the button of the first trip"
+        },
+        {
+          "count": "#trips article.trip.chosen",
+          "equals": 1,
+          "label": "chosen trips"
+        },
+        {
+          "exists": "#trips article.trip:nth-of-type(1).chosen",
+          "label": "the first trip, chosen"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}
