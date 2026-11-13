@@ -2504,6 +2504,18 @@ export const lessons = [
   },
   { courseKey: 'web-dev', slug: 'map-collection', title: 'Map', sortOrder: 316 },
   { courseKey: 'web-dev', slug: 'set-collection', title: 'Set', sortOrder: 317 },
+  {
+    courseKey: 'web-dev',
+    slug: 'focus-method',
+    title: 'Take the Keyboard There: focus()',
+    sortOrder: 318,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'aria-live',
+    title: 'Changes Read Out Loud: aria-live',
+    sortOrder: 319,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2870,6 +2882,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'remove-item',
         'map-collection',
         'set-collection',
+        'focus-method',
+        'aria-live',
       ],
     },
   ],

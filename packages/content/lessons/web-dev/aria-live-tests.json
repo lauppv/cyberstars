@@ -1,0 +1,89 @@
+{
+  "cases": [
+    {
+      "name": "The theme and the note are read out when they change",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "attr": "#current-theme",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "attr": "#saved-note",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #saved-note"
+        },
+        {
+          "order": ["#reset-settings", "#saved-note", "#picks"],
+          "label": "the button #reset-settings, #saved-note, then #picks"
+        }
+      ]
+    },
+    {
+      "name": "The note says what happened",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "text": "#saved-note",
+          "equals": "",
+          "label": "the paragraph #saved-note, before any choice"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#saved-note",
+          "equals": "Saved in this browser",
+          "label": "the paragraph #saved-note"
+        },
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "text": "#saved-note",
+          "equals": "Your settings are forgotten",
+          "label": "the paragraph #saved-note"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#saved-note",
+          "equals": "Saved in this browser",
+          "label": "the paragraph #saved-note"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Bringing settings saves them too",
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"light\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "text": "#saved-note",
+          "equals": "Saved in this browser",
+          "label": "the paragraph #saved-note"
+        }
+      ]
+    }
+  ]
+}
