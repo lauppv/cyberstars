@@ -1,0 +1,169 @@
+{
+  "cases": [
+    {
+      "name": "The six colors are named on the page's root",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": "html",
+          "prop": "--page-bg",
+          "not": "",
+          "label": "the page's background color (--page-bg on html)"
+        },
+        {
+          "style": "html",
+          "prop": "--text",
+          "not": "",
+          "label": "the text color (--text on html)"
+        },
+        {
+          "style": "html",
+          "prop": "--card-bg",
+          "not": "",
+          "label": "the cards' background color (--card-bg on html)"
+        },
+        {
+          "style": "html",
+          "prop": "--accent",
+          "not": "",
+          "label": "the accent color (--accent on html)"
+        },
+        {
+          "style": "html",
+          "prop": "--heading",
+          "not": "",
+          "label": "the headings' color (--heading on html)"
+        },
+        {
+          "style": "html",
+          "prop": "--link",
+          "not": "",
+          "label": "the links' color (--link on html)"
+        }
+      ]
+    },
+    {
+      "name": "The site looks as before",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page"
+        },
+        {
+          "style": "p",
+          "prop": "color",
+          "equals": "rgb(240, 244, 255)",
+          "label": "a paragraph"
+        },
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the biggest heading"
+        },
+        {
+          "style": ".stat",
+          "prop": "background-color",
+          "equals": "rgb(19, 41, 79)",
+          "label": "a card"
+        }
+      ]
+    },
+    {
+      "name": "Change a color once, and the whole site follows",
+      "visible": true,
+      "page": "colors.html",
+      "files": {
+        "colors.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Colors</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <style>\n      html:root {\n        --page-bg: rgb(1, 2, 3);\n        --text: rgb(4, 5, 6);\n        --card-bg: rgb(7, 8, 9);\n        --accent: rgb(10, 11, 12);\n        --heading: rgb(13, 14, 15);\n        --link: rgb(16, 17, 18);\n      }\n    </style>\n  </head>\n  <body>\n    <header><p class=\"site-name\">Orbital Station 7</p></header>\n    <main>\n      <h1>Colors</h1>\n      <p>A paragraph with <a href=\"index.html\">a link</a>.</p>\n      <h2>Cards</h2>\n      <div class=\"card\">A crew card</div>\n      <div class=\"wiki-list\"><article><h2>A wiki card</h2></article></div>\n      <section class=\"stats\"><article class=\"stat\"><h2>Oxygen</h2><p class=\"stat-value\">98%</p></article></section>\n      <ol class=\"week\"><li>Mon</li></ol>\n    </main>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(1, 2, 3)",
+          "label": "the page's background, after --page-bg changed"
+        },
+        {
+          "style": "header",
+          "prop": "background-color",
+          "equals": "rgb(1, 2, 3)",
+          "label": "the header's background, after --page-bg changed"
+        },
+        {
+          "style": "body",
+          "prop": "color",
+          "equals": "rgb(4, 5, 6)",
+          "label": "the page's text, after --text changed"
+        },
+        {
+          "style": "main > p",
+          "prop": "color",
+          "equals": "rgb(4, 5, 6)",
+          "label": "a paragraph, after --text changed"
+        },
+        {
+          "style": "h1",
+          "prop": "color",
+          "equals": "rgb(10, 11, 12)",
+          "label": "the biggest heading, after --accent changed"
+        },
+        {
+          "style": ".stat-value",
+          "prop": "color",
+          "equals": "rgb(10, 11, 12)",
+          "label": "a card's number, after --accent changed"
+        },
+        {
+          "style": "main > h2",
+          "prop": "color",
+          "equals": "rgb(13, 14, 15)",
+          "label": "a heading, after --heading changed"
+        },
+        {
+          "style": "main > p a",
+          "prop": "color",
+          "equals": "rgb(16, 17, 18)",
+          "label": "a link, after --link changed"
+        }
+      ]
+    },
+    {
+      "name": "Every card follows the cards' color",
+      "page": "colors.html",
+      "files": {
+        "colors.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <title>Colors</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <style>\n      html:root {\n        --page-bg: rgb(1, 2, 3);\n        --text: rgb(4, 5, 6);\n        --card-bg: rgb(7, 8, 9);\n        --accent: rgb(10, 11, 12);\n        --heading: rgb(13, 14, 15);\n        --link: rgb(16, 17, 18);\n      }\n    </style>\n  </head>\n  <body>\n    <header><p class=\"site-name\">Orbital Station 7</p></header>\n    <main>\n      <h1>Colors</h1>\n      <p>A paragraph with <a href=\"index.html\">a link</a>.</p>\n      <h2>Cards</h2>\n      <div class=\"card\">A crew card</div>\n      <div class=\"wiki-list\"><article><h2>A wiki card</h2></article></div>\n      <section class=\"stats\"><article class=\"stat\"><h2>Oxygen</h2><p class=\"stat-value\">98%</p></article></section>\n      <ol class=\"week\"><li>Mon</li></ol>\n    </main>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "style": ".card",
+          "prop": "background-color",
+          "equals": "rgb(7, 8, 9)",
+          "label": "a crew card, after --card-bg changed"
+        },
+        {
+          "style": ".wiki-list article",
+          "prop": "background-color",
+          "equals": "rgb(7, 8, 9)",
+          "label": "a wiki card, after --card-bg changed"
+        },
+        {
+          "style": ".stat",
+          "prop": "background-color",
+          "equals": "rgb(7, 8, 9)",
+          "label": "a dashboard card, after --card-bg changed"
+        },
+        {
+          "style": ".week li",
+          "prop": "background-color",
+          "equals": "rgb(7, 8, 9)",
+          "label": "a day of the week, after --card-bg changed"
+        }
+      ]
+    }
+  ]
+}

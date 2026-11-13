@@ -1,0 +1,150 @@
+{
+  "cases": [
+    {
+      "name": "With the class light, the dashboard turns light",
+      "visible": true,
+      "page": "dashboard.html",
+      "files": {
+        "dashboard.html": "<!DOCTYPE html>\n<html lang=\"en\" class=\"light\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station at a glance: the last launch, and what the crew checks every day.\" />\n    <title>Mission Dashboard</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n    <script src=\"dashboard.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Mission Dashboard</h1>\n    <p>The station at a glance, for the crew and for everyone back on Earth.</p>\n    <p id=\"greeting\"></p>\n    <p id=\"today-date\"></p>\n    <p id=\"last-update\"></p>\n    <p id=\"live-status\">Loading live data...</p>\n    <p id=\"station-clock\"></p>\n\n    <section class=\"stats\" aria-label=\"The station in numbers\">\n      <article class=\"stat\" id=\"crew-count\">\n        <h2>Crew on board</h2>\n        <p class=\"stat-value\">6</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Oxygen</h2>\n        <p class=\"stat-value\">98%</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Water</h2>\n        <p class=\"stat-value\">1,240 litres</p>\n      </article>\n      <article class=\"stat\" id=\"next-launch\">\n        <h2>Next launch</h2>\n        <p class=\"stat-value\">Friday</p>\n        <p class=\"launch-date\">2031-05-17</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Power</h2>\n        <p class=\"stat-value\">87%</p>\n      </article>\n      <article class=\"stat\">\n        <h2>Days in orbit</h2>\n        <p class=\"stat-value\">412</p>\n      </article>\n    </section>\n    <p id=\"stat-count\"></p>\n    <p id=\"stat-names\"></p>\n    <p id=\"stat-values\"></p>\n    <ul id=\"stat-summary\"></ul>\n\n    <h2>This week</h2>\n    <ol class=\"week\">\n      <li>Mon</li>\n      <li>Tue</li>\n      <li>Wed</li>\n      <li>Thu</li>\n      <li>Fri</li>\n      <li>Sat</li>\n      <li>Sun</li>\n    </ol>\n\n    <div class=\"panels\">\n      <section id=\"pad-panel\">\n        <h2>The launch pad, live</h2>\n        <figure>\n          <video id=\"pad-camera\" src=\"video/launch.webm\" autoplay muted loop controls></video>\n          <figcaption>Pad 2, live. The camera films the launch tower all day.</figcaption>\n        </figure>\n        <button type=\"button\" id=\"mute-pad\">Sound on</button>\n      </section>\n      <section id=\"launch-panel\">\n        <h2>The last launch</h2>\n        <figure>\n          <video id=\"launch-video\" src=\"video/launch.webm\" controls>\n            <track src=\"video/launch.vtt\" kind=\"captions\" srclang=\"en\" label=\"English\" default />\n          </video>\n          <figcaption>Flight SL-101 leaves the pad for Moon Base, filmed from the launch tower.</figcaption>\n        </figure>\n        <button type=\"button\" id=\"play-launch\">Play</button>\n      </section>\n      <section id=\"countdown-panel\">\n        <h2>The countdown</h2>\n        <audio id=\"countdown\" src=\"audio/countdown.mp3\" controls></audio>\n        <button type=\"button\" id=\"start-countdown\">Start the countdown</button>\n        <p id=\"launch-countdown\"></p>\n      </section>\n      <section id=\"duty-panel\">\n        <h2>On duty today</h2>\n        <ul id=\"on-duty\">\n          <li>Vega</li>\n          <li>Orion</li>\n          <li>Lyra</li>\n          <li>Altair</li>\n          <li>Nova</li>\n          <li>Rigel</li>\n        </ul>\n        <p id=\"duty-line\"></p>\n        <p id=\"duty-check\"></p>\n        <p id=\"shift-leads\"></p>\n        <p id=\"duty-count\"></p>\n        <p id=\"call-signs\"></p>\n      </section>\n    </div>\n\n    <section id=\"wishes-panel\">\n      <h2>For the next supply ship</h2>\n      <p id=\"wish-list\">spare filters, coffee, warm socks, a football</p>\n      <ul id=\"wishes\"></ul>\n      <p id=\"wish-count\"></p>\n    </section>\n\n    <section id=\"supplies-panel\">\n      <h2>Supplies</h2>\n      <table id=\"supplies\">\n        <thead>\n          <tr>\n            <th>Supply</th>\n            <th>Level (%)</th>\n          </tr>\n        </thead>\n        <tbody>\n          <tr>\n            <td class=\"item\">Water</td>\n            <td class=\"level\">72</td>\n          </tr>\n          <tr>\n            <td class=\"item\">Oxygen</td>\n            <td class=\"level\">18</td>\n          </tr>\n          <tr>\n            <td class=\"item\">Food</td>\n            <td class=\"level\">55</td>\n          </tr>\n          <tr>\n            <td class=\"item\">Fuel</td>\n            <td class=\"level\">22</td>\n          </tr>\n          <tr>\n            <td class=\"item\">Filters</td>\n            <td class=\"level\">90</td>\n          </tr>\n          <tr>\n            <td class=\"item\">Medicine</td>\n            <td class=\"level\">40</td>\n          </tr>\n        </tbody>\n      </table>\n      <p id=\"low-supplies\"></p>\n      <p id=\"supplies-average\"></p>\n      <p id=\"first-refill\"></p>\n      <p id=\"supply-status\"></p>\n    </section>\n\n    <section id=\"report-panel\">\n      <h2>Morning report</h2>\n      <button type=\"button\" id=\"morning-report\">Write the report</button>\n      <ul id=\"report\"></ul>\n    </section>\n\n    <div class=\"gallery\">\n      <section>\n        <h2>The station from outside</h2>\n        <figure>\n          <img src=\"img/station.svg\" alt=\"A gold station hub inside a blue ring, with a solar panel on each side\" width=\"240\" height=\"150\" />\n          <figcaption>Orbital Station 7, seen from a supply ship.</figcaption>\n        </figure>\n      </section>\n      <section>\n        <h2>Earth from the station</h2>\n        <figure>\n          <picture>\n            <source media=\"(max-width: 600px)\" srcset=\"img/earth-square.jpg\" />\n            <img\n              class=\"earth\"\n              src=\"img/earth-small.jpg\"\n              srcset=\"img/earth-small.jpg 640w, img/earth-large.jpg 1280w\"\n              sizes=\"100vw\"\n              alt=\"The blue curve of the Earth under a black sky, with a satellite in the top corner\"\n              width=\"640\"\n              height=\"400\"\n            />\n          </picture>\n          <figcaption>The Earth from the station's window, over the ocean at noon.</figcaption>\n        </figure>\n      </section>\n    </div>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "contrast": "main > p",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "every paragraph of the main part",
+          "every": true
+        },
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "the biggest heading"
+        },
+        {
+          "contrast": "main h2",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "every heading of the main part",
+          "every": true
+        },
+        {
+          "contrast": ".stat-value",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "every card's number",
+          "every": true
+        },
+        {
+          "differs": ".stat",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "every card"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The settings page turns light too",
+      "visible": true,
+      "page": "settings.html",
+      "files": {
+        "settings.html": "<!DOCTYPE html>\n<html lang=\"en\" class=\"light\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Pick how the station's website looks for you: light or dark, with more or less movement.\" />\n    <title>Settings</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Settings</h1>\n    <p>Make the station's website yours. Your choice is for this browser only.</p>\n\n    <section>\n      <h2>Theme</h2>\n      <div id=\"theme-buttons\">\n        <button type=\"button\" id=\"theme-light\" aria-pressed=\"false\"><span aria-hidden=\"true\">☀</span> Light</button>\n        <button type=\"button\" id=\"theme-dark\" aria-pressed=\"false\"><span aria-hidden=\"true\">☾</span> Dark</button>\n        <button type=\"button\" id=\"theme-system\" aria-pressed=\"true\">System</button>\n      </div>\n    </section>\n\n    <section>\n      <h2>Motion</h2>\n      <p>Less motion stops the animations on every page.</p>\n      <div id=\"motion-buttons\">\n        <button type=\"button\" id=\"motion-full\" aria-pressed=\"true\"><span aria-hidden=\"true\">✦</span> Full</button>\n        <button type=\"button\" id=\"motion-less\" aria-pressed=\"false\"><span aria-hidden=\"true\">◌</span> Less</button>\n      </div>\n    </section>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "contrast": "main > p",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "every paragraph of the main part",
+          "every": true
+        },
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "the biggest heading"
+        },
+        {
+          "contrast": "#theme-buttons button",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every theme button's text"
+        },
+        {
+          "differs": "#theme-system",
+          "from": "#theme-light, #theme-dark",
+          "props": ["background-color", "color", "border-top-color", "font-weight"],
+          "fromLabel": "the buttons that aren't pressed",
+          "label": "the pressed button"
+        }
+      ]
+    },
+    {
+      "name": "Without the class, the site stays dark",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "contrast": "main > p",
+          "atLeast": 4.5,
+          "on": "dark",
+          "label": "every paragraph of the main part",
+          "every": true
+        },
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "dark",
+          "label": "the biggest heading"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page"
+        }
+      ]
+    },
+    {
+      "name": "The home page in light",
+      "page": "index.html",
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\" class=\"light\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The home page of Orbital Station 7: news from the station, visiting hours and the rules on board.\" />\n    <title>Station Log</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Welcome aboard</h1>\n    <div class=\"welcome\">\n      <div class=\"photo\">\n        <img src=\"img/station.svg\" alt=\"A gold station hub inside a blue ring, with a solar panel on each side\"\n          width=\"240\"\n          height=\"150\"\n        />\n        <span class=\"caption\">Seen from a supply ship</span>\n      </div>\n      <div class=\"welcome-text\">\n        <p>The station goes round the Earth every 92 minutes.</p>\n        <p>Six people live here, with a greenhouse full of tomatoes.</p>\n      </div>\n    </div>\n    <nav class=\"jumps\" aria-label=\"On this page\"><a href=\"#today\">Jump to today</a> · <a href=\"#visiting\">Visiting hours</a></nav>\n    <p><a href=\"crew.html\">Meet the crew</a></p>\n\n    <h2>About the Station</h2>\n    <p>Five space agencies built the station together in 2031, and <em>every</em> one of them still sends crew.</p>\n    <p class=\"address\">\n      Orbital Station 7<br />\n      Docking Ring B<br />\n      Low Earth Orbit\n    </p>\n    <p>On board: <mark>a gym</mark>, <mark>a greenhouse</mark> and <mark>a telescope</mark>.</p>\n    <p>Read more in the crew's wiki: <a href=\"wiki-greenhouse.html\">the greenhouse</a> and <a href=\"wiki-airlock.html\">the airlock</a>.</p>\n    <p>\n      Curious how real stations work?\n      <a href=\"https://en.wikipedia.org/wiki/Space_station\" target=\"_blank\" rel=\"noopener\">Read about space stations</a>\n    </p>\n    <h3>The Greenhouse</h3>\n    <p>Tomatoes, beans and basil grow under blue lamps.</p>\n\n    <img src=\"img/divider.svg\" alt=\"\" />\n\n    <h2 id=\"today\">Today on Board</h2>\n    <p class=\"warning urgent\"><strong>Hatch 3 stays closed</strong> while the outer panels are repaired.</p>\n    <p>Water left: 900 litres of H<sub>2</sub>O.</p>\n    <p>Height: 4 × 10<sup>5</sup> metres above the Earth.</p>\n    <p>Next supply ship: <mark>Friday</mark>. <!-- <small>Docking fee: 20 credits a day.</small> --></p>\n    <h3 class=\"shift\">Morning Shift</h3>\n    <p>Commander Vega and engineer Okafor.</p>\n    <h3 class=\"shift\">Night Shift</h3>\n    <p>Pilot Lindqvist, alone with the stars.</p>\n\n    <h2 id=\"visiting\">Visiting Hours</h2>\n    <p class=\"hours\">\n      Monday to Friday: 10:00 to 16:00<br />\n      Saturday: 10:00 to 12:00<br />\n      Sunday: closed\n    </p>\n    <p class=\"warning\"><strong>Visitors must wear a badge</strong> at all times.</p>\n\n    <h2>Station Rules</h2>\n    <p>Wear your badge at all times.</p>\n    <p>Close every hatch behind you.</p>\n    <p>No running in the greenhouse.</p>\n\n    <p><a href=\"mailto:crew@station.example\">Write to the crew</a></p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "the biggest heading"
+        }
+      ]
+    },
+    {
+      "name": "The wiki in light",
+      "page": "wiki.html",
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\" class=\"light\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"wiki.js\" defer></script>\n    <script src=\"menu.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <button type=\"button\" id=\"menu-button\" aria-expanded=\"false\">Menu</button>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n        <a href=\"dashboard.html\">Dashboard</a>\n        <a href=\"settings.html\">Settings</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n    <p id=\"article-count\"></p>\n    <p>Text size: <button type=\"button\" id=\"text-smaller\">Smaller</button> <button type=\"button\" id=\"text-bigger\">Bigger</button></p>\n\n    <p>Next to read: <span id=\"picked\">nothing yet</span></p>\n\n    <div class=\"wiki-list\">\n      <article>\n        <h2>The Greenhouse</h2>\n        <p>Where our food grows, under blue and red lamps.</p>\n        <p><a href=\"wiki-greenhouse.html\">Read about the greenhouse</a></p>\n      </article>\n      <article>\n        <h2>The Airlock</h2>\n        <p>The small room between the station and space.</p>\n        <p><a href=\"wiki-airlock.html\">Read about the airlock</a></p>\n      </article>\n      <article>\n        <h2>Tools &amp; Spare Parts <span class=\"badge\">New</span></h2>\n        <p>Everything we need to fix the station, and where to find it.</p>\n        <p><a href=\"wiki-tools.html\">Read about tools &amp; spare parts</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    <button type=\"button\" id=\"thank\">Thank the writers</button>\n    <p id=\"wiki-message\"></p>\n    <p id=\"thanks-count\">Thanks: 0</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n      <a class=\"to-top\" href=\"#top\">Back to top</a>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "the biggest heading"
+        },
+        {
+          "differs": ".wiki-list article",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "every wiki card"
+        }
+      ]
+    }
+  ]
+}

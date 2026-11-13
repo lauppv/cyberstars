@@ -2436,6 +2436,13 @@ export const lessons = [
   },
   { courseKey: 'web-dev', slug: 'aria-hidden', title: 'Only for the Eye', sortOrder: 293 },
   { courseKey: 'web-dev', slug: 'settings-html-recap', title: 'HTML Recap', sortOrder: 294 },
+  { courseKey: 'web-dev', slug: 'custom-properties', title: 'A Value Named Once', sortOrder: 295 },
+  {
+    courseKey: 'web-dev',
+    slug: 'theme-variables',
+    title: 'A Whole Theme in One Class',
+    sortOrder: 296,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2774,7 +2781,14 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
     {
       key: 'settings-and-themes',
       title: 'Settings and Themes',
-      lessons: ['html-before-aria', 'aria-pressed', 'aria-hidden', 'settings-html-recap'],
+      lessons: [
+        'html-before-aria',
+        'aria-pressed',
+        'aria-hidden',
+        'settings-html-recap',
+        'custom-properties',
+        'theme-variables',
+      ],
     },
   ],
 };
