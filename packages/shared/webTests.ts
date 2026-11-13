@@ -531,6 +531,12 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         : `Expected ${label} with ${want}, found ${had}.`;
     }
     case 'style': {
+      // A custom property that isn't set reads as nothing at all
+      if (f.compare === 'not' && expected === '') {
+        return ro
+          ? `Se aștepta ${label} cu ${f.detail} dat, dar nu e dat.`
+          : `Expected ${label} with ${f.detail} set, found it not set.`;
+      }
       if (f.compare === 'not') {
         // The browser reports a color as numbers; a few are said by their names
         const said = (v: string | null) => (v !== null && COLOR_NAMES[v]) || v;

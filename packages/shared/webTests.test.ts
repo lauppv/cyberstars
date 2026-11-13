@@ -240,6 +240,16 @@ describe('webFailureText', () => {
     expect(say({ kind: 'muted', label: 'the launch video', expected: 'off' })).toBe(
       'Expected the launch video with its sound on, found it muted.',
     );
+    expect(
+      say({
+        kind: 'style',
+        label: 'the page',
+        detail: '--page-bg',
+        compare: 'not',
+        expected: '',
+        found: '',
+      }),
+    ).toBe('Expected the page with --page-bg set, found it not set.');
     expect(say({ kind: 'focused', label: 'the new task', found: '<button id="add">' })).toBe(
       'Expected the focus on the new task, found it on <button id="add">.',
     );
