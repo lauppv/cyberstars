@@ -1,0 +1,182 @@
+{
+  "cases": [
+    {
+      "name": "A round spinner in the loading line",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "exists": "#tracker-status > .spinner",
+          "label": "an element with the class spinner in the paragraph #tracker-status"
+        },
+        {
+          "attr": "#tracker-status > .spinner",
+          "name": "aria-hidden",
+          "equals": "true",
+          "label": "the spinner"
+        },
+        {
+          "order": ["#tracker-status > .spinner", "#ships"],
+          "label": "the spinner, then the list #ships"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-top-left-radius",
+          "atLeast": 8,
+          "label": "the spinner's top left corner"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-bottom-right-radius",
+          "atLeast": 8,
+          "label": "the spinner's bottom right corner"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-top-width",
+          "atLeast": 2,
+          "label": "the spinner's ring (its top border)"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-bottom-width",
+          "atLeast": 2,
+          "label": "the spinner's ring (its bottom border)"
+        },
+        {
+          "text": "#tracker-status",
+          "contains": "Loading",
+          "label": "the paragraph #tracker-status"
+        }
+      ]
+    },
+    {
+      "name": "The spinner turns, round and round",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "animated": "#tracker-status > .spinner",
+          "label": "the spinner"
+        },
+        {
+          "wait": 1500
+        },
+        {
+          "animated": "#tracker-status > .spinner",
+          "label": "the spinner, a second and a half later"
+        }
+      ]
+    },
+    {
+      "name": "One side of the ring stands out",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-top-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the spinner's colored side (its top border)"
+        }
+      ]
+    },
+    {
+      "name": "In dark mode too",
+      "page": "tracker.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "exists": "#tracker-status > .spinner",
+          "label": "an element with the class spinner in the paragraph #tracker-status"
+        },
+        {
+          "attr": "#tracker-status > .spinner",
+          "name": "aria-hidden",
+          "equals": "true",
+          "label": "the spinner"
+        },
+        {
+          "order": ["#tracker-status > .spinner", "#ships"],
+          "label": "the spinner, then the list #ships"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-top-left-radius",
+          "atLeast": 8,
+          "label": "the spinner's top left corner"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-bottom-right-radius",
+          "atLeast": 8,
+          "label": "the spinner's bottom right corner"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-top-width",
+          "atLeast": 2,
+          "label": "the spinner's ring (its top border)"
+        },
+        {
+          "style": "#tracker-status > .spinner",
+          "prop": "border-bottom-width",
+          "atLeast": 2,
+          "label": "the spinner's ring (its bottom border)"
+        },
+        {
+          "animated": "#tracker-status > .spinner",
+          "label": "the spinner"
+        }
+      ]
+    },
+    {
+      "name": "With less motion on the device, it stands still",
+      "visible": true,
+      "page": "tracker.html",
+      "reducedMotion": true,
+      "steps": [
+        {
+          "animated": "#tracker-status > .spinner",
+          "off": true,
+          "label": "the spinner"
+        },
+        {
+          "visible": "#tracker-status > .spinner",
+          "label": "the spinner"
+        },
+        {
+          "size": "#tracker-status > .spinner",
+          "minWidth": 16,
+          "maxWidth": 48,
+          "minHeight": 16,
+          "maxHeight": 48,
+          "label": "the spinner"
+        }
+      ]
+    },
+    {
+      "name": "With Less picked on the settings page, it stands still",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#motion-less",
+          "label": "the Less button"
+        },
+        {
+          "open": "tracker.html"
+        },
+        {
+          "animated": "#tracker-status > .spinner",
+          "off": true,
+          "label": "the spinner"
+        },
+        {
+          "visible": "#tracker-status > .spinner",
+          "label": "the spinner"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "name": "The list says it is still loading",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "attr": "#ships",
+          "name": "aria-busy",
+          "equals": "true",
+          "label": "the list #ships"
+        },
+        {
+          "count": "#ships li",
+          "equals": 0,
+          "label": "items in the list #ships"
+        }
+      ]
+    },
+    {
+      "name": "A line tells everyone the starships are loading",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "text": "main #tracker-status",
+          "contains": "Loading",
+          "label": "the paragraph #tracker-status"
+        },
+        {
+          "attr": "#tracker-status",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #tracker-status"
+        },
+        {
+          "order": ["#tracker-status", "#ships"],
+          "label": "the line #tracker-status, then the list #ships"
+        },
+        {
+          "visible": "#tracker-status",
+          "label": "the paragraph #tracker-status"
+        }
+      ]
+    },
+    {
+      "name": "Only the list is busy",
+      "page": "tracker.html",
+      "steps": [
+        {
+          "count": "[aria-busy]",
+          "equals": 1,
+          "label": "elements with aria-busy"
+        }
+      ]
+    },
+    {
+      "name": "The card still waits in its template",
+      "page": "tracker.html",
+      "steps": [
+        {
+          "exists": "main template#ship-template",
+          "label": "a <template> with the id ship-template in the main part"
+        },
+        {
+          "count": ".ship-name, .ship-class, .ship-status",
+          "equals": 0,
+          "label": "parts of a card shown on the page"
+        }
+      ]
+    }
+  ]
+}

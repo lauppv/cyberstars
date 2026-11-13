@@ -2533,6 +2533,16 @@ export const lessons = [
   },
   { courseKey: 'web-dev', slug: 'settings-js-recap', title: 'JavaScript Recap', sortOrder: 323 },
   { courseKey: 'web-dev', slug: 'todo-list-project', title: 'Project: My Tasks', sortOrder: 324 },
+  {
+    courseKey: 'web-dev',
+    slug: 'template-element',
+    title: 'A Card Kept for Later',
+    sortOrder: 325,
+  },
+  { courseKey: 'web-dev', slug: 'aria-busy', title: 'Still Loading', sortOrder: 326 },
+  { courseKey: 'web-dev', slug: 'tracker-html-recap', title: 'HTML Recap', sortOrder: 327 },
+  { courseKey: 'web-dev', slug: 'spinner', title: 'A Spinner', sortOrder: 328 },
+  { courseKey: 'web-dev', slug: 'skeleton', title: 'Skeleton Cards', sortOrder: 329 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2907,6 +2917,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'settings-js-recap',
         'todo-list-project',
       ],
+    },
+    {
+      key: 'starship-tracker',
+      title: 'Starship Tracker',
+      lessons: ['template-element', 'aria-busy', 'tracker-html-recap', 'spinner', 'skeleton'],
     },
   ],
 };

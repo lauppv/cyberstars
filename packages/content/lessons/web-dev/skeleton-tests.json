@@ -1,0 +1,143 @@
+{
+  "cases": [
+    {
+      "name": "Grey blocks wait where the cards will come",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "count": "#ships > li.skeleton",
+          "atLeast": 3,
+          "label": "skeleton cards (li.skeleton) in the list #ships"
+        },
+        {
+          "style": "#ships > li.skeleton",
+          "prop": "height",
+          "atLeast": 60,
+          "every": true,
+          "label": "every skeleton card"
+        },
+        {
+          "fills": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "differs": "#ships > li.skeleton",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the skeleton cards"
+        },
+        {
+          "text": "#ships",
+          "equals": "",
+          "label": "the list #ships"
+        },
+        {
+          "style": "#ships > li",
+          "prop": "list-style-type",
+          "equals": "none",
+          "every": true,
+          "label": "every item of the list #ships (its bullet)"
+        }
+      ]
+    },
+    {
+      "name": "Only the eye meets them",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "count": "#ships > li.skeleton[aria-hidden=\"true\"]",
+          "atLeast": 3,
+          "label": "skeleton cards with aria-hidden=\"true\""
+        },
+        {
+          "count": "#ships > li.skeleton:not([aria-hidden=\"true\"])",
+          "equals": 0,
+          "label": "skeleton cards a screen reader meets"
+        },
+        {
+          "attr": "#ships",
+          "name": "aria-busy",
+          "equals": "true",
+          "label": "the list #ships"
+        }
+      ]
+    },
+    {
+      "name": "In dark mode too",
+      "visible": true,
+      "page": "tracker.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "count": "#ships > li.skeleton",
+          "atLeast": 3,
+          "label": "skeleton cards (li.skeleton) in the list #ships"
+        },
+        {
+          "style": "#ships > li.skeleton",
+          "prop": "height",
+          "atLeast": 60,
+          "every": true,
+          "label": "every skeleton card"
+        },
+        {
+          "fills": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "differs": "#ships > li.skeleton",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the skeleton cards"
+        }
+      ]
+    },
+    {
+      "name": "On a phone too",
+      "page": "tracker.html",
+      "width": 375,
+      "steps": [
+        {
+          "count": "#ships > li.skeleton",
+          "atLeast": 3,
+          "label": "skeleton cards (li.skeleton) in the list #ships"
+        },
+        {
+          "style": "#ships > li.skeleton",
+          "prop": "height",
+          "atLeast": 60,
+          "every": true,
+          "label": "every skeleton card"
+        },
+        {
+          "fills": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "differs": "#ships > li.skeleton",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the skeleton cards"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The spinner still turns",
+      "page": "tracker.html",
+      "steps": [
+        {
+          "animated": "#tracker-status > .spinner",
+          "label": "the spinner"
+        }
+      ]
+    }
+  ]
+}
