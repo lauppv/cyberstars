@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "name": "The wiki counts its articles",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "text": "#article-count",
+          "equals": "3 articles in the wiki",
+          "label": "the article count (#article-count)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Five articles in the list",
+      "page": "wiki.html",
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"wiki.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n    <p id=\"article-count\"></p>\n\n    <div class=\"wiki-list\">\n      <article>\n        <h2>The Kitchen</h2>\n        <p>Where the crew cooks, with food that floats if you let it go.</p>\n        <p><a href=\"wiki-kitchen.html\">Read about the kitchen</a></p>\n      </article>\n      <article>\n        <h2>Sleeping Quarters</h2>\n        <p>Small rooms where each of us sleeps in a bag on the wall.</p>\n        <p><a href=\"wiki-sleeping.html\">Read about the sleeping quarters</a></p>\n      </article>\n      <article>\n        <h2>The Gym</h2>\n        <p>Two hours of exercise a day keep our bones and muscles strong.</p>\n        <p><a href=\"wiki-gym.html\">Read about the gym</a></p>\n      </article>\n      <article>\n        <h2>Water &amp; Air</h2>\n        <p>How the station makes clean water and fresh air, again and again.</p>\n        <p><a href=\"wiki-water.html\">Read about water &amp; air</a></p>\n      </article>\n      <article>\n        <h2>The Observation Deck</h2>\n        <p>The best window on the station, with Earth right below.</p>\n        <p><a href=\"wiki-deck.html\">Read about the observation deck</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#article-count",
+          "equals": "5 articles in the wiki",
+          "label": "the article count (#article-count)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Two articles in the list",
+      "page": "wiki.html",
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"wiki.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n    <p id=\"article-count\"></p>\n\n    <div class=\"wiki-list\">\n      <article>\n        <h2>The Kitchen</h2>\n        <p>Where the crew cooks, with food that floats if you let it go.</p>\n        <p><a href=\"wiki-kitchen.html\">Read about the kitchen</a></p>\n      </article>\n      <article>\n        <h2>Sleeping Quarters</h2>\n        <p>Small rooms where each of us sleeps in a bag on the wall.</p>\n        <p><a href=\"wiki-sleeping.html\">Read about the sleeping quarters</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#article-count",
+          "equals": "2 articles in the wiki",
+          "label": "the article count (#article-count)"
+        }
+      ]
+    }
+  ]
+}
