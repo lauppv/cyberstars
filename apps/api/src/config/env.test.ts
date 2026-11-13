@@ -3,7 +3,6 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 vi.mock('dotenv', () => ({ default: { config: vi.fn() } }));
 
 const REQUIRED = {
-  JWT_SECRET: 's',
   DB_USER: 'u',
   DB_HOST: 'h',
   DB_NAME: 'n',
@@ -100,7 +99,7 @@ describe('env config', () => {
   });
 
   it('throws when a required variable is missing', async () => {
-    setEnv({ NODE_ENV: 'development', JWT_SECRET: undefined });
+    setEnv({ NODE_ENV: 'development', DB_PASSWORD: undefined });
     await expect(import('./env.js')).rejects.toThrow(/Missing required environment variable/);
   });
 });

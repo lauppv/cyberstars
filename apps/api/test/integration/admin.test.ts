@@ -5,8 +5,8 @@ import { clearCache } from '../../src/services/admin.service.js';
 import { clearUserSockets, registerUserSocket } from '../../src/services/ws-user.js';
 import type { WebSocket } from 'ws';
 
-// Promote a freshly signed-up user to ADMIN. The JWT carries only { id } and the
-// role is read from the DB on every request, so the same cookie now passes
+// Promote a freshly signed-up user to ADMIN. The session holds no role: it is
+// read from the DB on every request, so the same cookie now passes
 // requireAdmin without re-authenticating.
 async function admin() {
   const { agent: a, email } = await createAuthenticatedAgent();

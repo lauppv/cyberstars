@@ -90,7 +90,6 @@ model User {
   resetCode                String?   @map("reset_code") @db.VarChar(6)
   resetCodeExpiresAt       DateTime? @map("reset_code_expires_at")
   resetCodeAttempts        Int       @default(0) @map("reset_code_attempts")
-  sessionVersion           Int       @default(0) @map("session_version")
   pendingEmail             String?   @map("pending_email") @db.VarChar(255)
   emailChangeCode          String?   @map("email_change_code") @db.VarChar(6)
   emailChangeCodeExpiresAt DateTime? @map("email_change_code_expires_at")
@@ -135,6 +134,7 @@ model User {
   laniakeaPasses     LaniakeaPass[]
   projectChecks      ProjectStepCheck[]
   projectCompletions ProjectCompletion[]
+  sessions           Session[]
   laniakeaPlayer     LaniakeaPlayer?
 
   notificationsReceived Notification[] @relation("NotificationsReceived")
@@ -575,6 +575,26 @@ model ProjectStepCheck {
 
   @@id([userId, language, projectSlug, stepId])
   @@map("project_step_checks")
+}
+
+// A signed-in browser (see Auth in CLAUDE.md): the id its cookie's token
+// starts with, the SHA-256 of the token's secret (never the secret), when the
+// login made it and when it was last seen in use. Logout deletes it, a password
+// change or reset deletes all of the account's, and one past its lifetime is
+// deleted when next used or by the hourly sweep
+model Session {
+  id         String   @id @db.VarChar(22)
+  userId     Int      @map("user_id")
+  secretHash String   @map("secret_hash") @db.Char(64)
+  createdAt  DateTime @map("created_at")
+  lastSeenAt DateTime @map("last_seen_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([lastSeenAt])
+  @@index([createdAt])
+  @@map("sessions")
 }
 
 // A project the student finished: only a passing verdict of the project's judge

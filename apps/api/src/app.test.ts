@@ -1,15 +1,13 @@
 import { describe, it, expect, vi } from 'vitest';
 import request from 'supertest';
-import jwt from 'jsonwebtoken';
 
-process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';
 process.env.DB_PASSWORD = 'test';
 process.env.CORS_DEV_ORIGIN = 'http://localhost:5173, http://second.test';
 
-const validToken = jwt.sign({ id: 1 }, 'test-secret');
+import { SESSION_COOKIE } from './testing/sessions.js';
 
 function makePrismaProxy() {
   return new Proxy(
@@ -55,8 +53,10 @@ vi.mock('./repositories/user.repository.js', () => ({
   findById: vi.fn().mockResolvedValue(null),
   create: vi.fn().mockResolvedValue(null),
   updateProfile: vi.fn().mockResolvedValue(null),
-  getSessionVersion: vi.fn().mockResolvedValue(0),
 }));
+vi.mock('./repositories/session.repository.js', async () =>
+  (await import('./testing/sessions.js')).fakeSessionRepo(1),
+);
 vi.mock('./repositories/leaderboard.repository.js', () => ({
   getRanked: vi.fn().mockResolvedValue([]),
 }));
@@ -107,8 +107,8 @@ describe('guest id cookie', () => {
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
   });
 
-  it('does not set a guestId when a token cookie is already present', async () => {
-    const res = await request(app).get('/api/time').set('Cookie', 'token=whatever');
+  it('does not set a guestId when a session cookie is already present', async () => {
+    const res = await request(app).get('/api/time').set('Cookie', 'session=whatever');
     const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
   });
@@ -241,16 +241,14 @@ describe('preview feature gate', () => {
 describe('public profile route', () => {
   it('validates the id param with a 400 before reaching the service', async () => {
     // Profiles now require auth, so send a valid token to reach the validator.
-    const res = await request(app)
-      .get('/api/users/abc/profile')
-      .set('Cookie', `token=${validToken}`);
+    const res = await request(app).get('/api/users/abc/profile').set('Cookie', SESSION_COOKIE);
     expect(res.status).toBe(400);
   });
 
   it('404s a missing user (route is wired past auth + the feature gate)', async () => {
     // user.repository.findById is mocked to null, so the service throws 404,
     // proving an authenticated request reaches the service past the gate in dev.
-    const res = await request(app).get('/api/users/1/profile').set('Cookie', `token=${validToken}`);
+    const res = await request(app).get('/api/users/1/profile').set('Cookie', SESSION_COOKIE);
     expect(res.status).toBe(404);
   });
 });
@@ -259,15 +257,13 @@ describe('submission history routes', () => {
   it("lists the signed-in student's attempts on a lesson", async () => {
     const res = await request(app)
       .get('/api/tests/python/print/submissions')
-      .set('Cookie', `token=${validToken}`);
+      .set('Cookie', SESSION_COOKIE);
     expect(res.status).toBe(200);
     expect(res.body).toEqual([]);
   });
 
   it('validates the id param with a 400 before reaching the service', async () => {
-    const res = await request(app)
-      .get('/api/tests/submissions/abc')
-      .set('Cookie', `token=${validToken}`);
+    const res = await request(app).get('/api/tests/submissions/abc').set('Cookie', SESSION_COOKIE);
     expect(res.status).toBe(400);
   });
 });

@@ -2,7 +2,6 @@ import os from 'os';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { WebSocket } from 'ws';
 
-process.env.JWT_SECRET = 'test-secret';
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
 process.env.DB_NAME = 'test';

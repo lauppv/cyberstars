@@ -7,7 +7,6 @@ export default defineConfig({
     include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     // What the config needs at import, since CI has no .env
     env: {
-      JWT_SECRET: 'test-secret',
       DB_USER: 'test',
       DB_HOST: 'localhost',
       DB_NAME: 'test',

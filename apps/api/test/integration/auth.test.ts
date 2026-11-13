@@ -85,7 +85,7 @@ describe('Auth flow', () => {
 
     const res = await a.post('/auth/logout').expect(200);
     expect(res.headers['set-cookie']).toBeDefined();
-    expect(res.headers['set-cookie'][0]).toMatch(/token=;/);
+    expect(res.headers['set-cookie'][0]).toMatch(/^session=;/);
   });
 
   it('protected routes return 401 after logout', async () => {
@@ -97,7 +97,7 @@ describe('Auth flow', () => {
 
   it('tampered token returns 403', async () => {
     const a = agent();
-    await a.get('/auth/me').set('Cookie', 'token=invalid.jwt.token').expect(403);
+    await a.get('/auth/me').set('Cookie', 'session=invalid.token').expect(403);
   });
 
   it('forgot-password returns success even for nonexistent email', async () => {

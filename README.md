@@ -38,7 +38,7 @@ You need Node.js 24+, PostgreSQL 14+ and Docker. The setup is one block of comma
 | Frontend  | React 19, TypeScript, Vite 7, Tailwind CSS 4, CodeMirror |
 | Backend   | Express 5, TypeScript, Prisma 6 (PostgreSQL), Zod        |
 | Execution | Docker containers (sandboxed, per-language)              |
-| Auth      | JWT in httpOnly cookies, bcryptjs                        |
+| Auth      | Server-side sessions in httpOnly cookies, bcryptjs       |
 
 One npm workspace: the app in `apps/ui`, the API in `apps/api`, shared types in `packages/shared` and the lessons in `packages/content`. [ARCHITECTURE.md](ARCHITECTURE.md) has the full breakdown, the API endpoints and the database schema.
 

@@ -280,8 +280,11 @@ function UserMenu({ onNavigate }: { onNavigate: () => void }) {
             role="menuitem"
             onClick={async () => {
               setOpen(false);
-              await logout();
-              navigate('/getstarted');
+              try {
+                await logout();
+              } finally {
+                navigate('/getstarted');
+              }
             }}
             className="w-full flex items-center gap-2.5 px-3 py-1.5 text-left text-[13px] text-[var(--text)] bg-transparent border-none hover:bg-[var(--surface2)] transition cursor-pointer"
           >

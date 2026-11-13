@@ -5,7 +5,6 @@ import cookieParser from 'cookie-parser';
 import { config } from './config/index.js';
 import { UI_BUILD_DIR, UPLOADS_DIR } from './config/paths.js';
 import { errorHandler } from '@cyberstars-framework/server-kit/errors';
-import { SESSION_COOKIE } from '@cyberstars-framework/auth/auth';
 import { servePages } from './middleware/pages.js';
 import { securityHeaders } from './middleware/securityHeaders.js';
 import { serveStatic } from './middleware/static.js';
@@ -52,7 +51,7 @@ app.use(cookieParser());
 // isolated per browser (not shared by IP) and the guest run budget can be
 // tracked. The WebSocket handshake reads this cookie back.
 app.use((req, res, next) => {
-  if (!req.cookies?.[SESSION_COOKIE] && !req.cookies?.guestId) {
+  if (!req.cookies?.[auth.cookieName] && !req.cookies?.guestId) {
     res.cookie('guestId', crypto.randomUUID(), {
       httpOnly: true,
       sameSite: 'lax',

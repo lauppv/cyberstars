@@ -69,7 +69,7 @@ Separate deploys don't need separate repos: workspaces already give each part it
 
 ## API endpoints
 
-Auth is a JWT in an httpOnly cookie. In the tables, **Yes** is a signed-in student, **Owner** a student or a guest (keyed by the per-browser `guestId` cookie), **Staff** a moderator or admin, **Admin** an admin or the founder. Roles are always read from the database, never from the token. The auth package (`framework/auth`) does it; the app creates it once with its user store, roles and sign-up form (`apps/api/src/services/auth.ts`).
+Auth is a session kept on the server, its random token in an httpOnly cookie (`__Host-session` in production). In the tables, **Yes** is a signed-in student, **Owner** a student or a guest (keyed by the per-browser `guestId` cookie), **Staff** a moderator or admin, **Admin** an admin or the founder. Roles are always read from the database, never from the session. The auth package (`framework/auth`) does it; the app creates it once with its user and session stores, roles, session lifetimes and sign-up form (`apps/api/src/services/auth.ts`).
 
 ### Auth
 
@@ -77,7 +77,7 @@ Auth is a JWT in an httpOnly cookie. In the tables, **Yes** is a signed-in stude
 | ------ | ----------------------- | ---- | --------------------------------------------------- |
 | POST   | `/auth/signup`          | No   | Register, set the cookie                            |
 | POST   | `/auth/login`           | No   | Sign in, set the cookie                             |
-| POST   | `/auth/logout`          | No   | Clear the cookie                                    |
+| POST   | `/auth/logout`          | No   | End this browser's session, clear the cookie        |
 | GET    | `/auth/me`              | Yes  | The current user                                    |
 | POST   | `/auth/forgot-password` | No   | Email a reset code (15 min, 3 an hour per email)    |
 | POST   | `/auth/reset-password`  | No   | Reset the password with the code (5 tries per code) |
@@ -298,7 +298,6 @@ A lesson is `<slug>.md` (the text, with runnable code blocks) and `<slug>-code.m
 | `DATABASE_URL`             | Yes      | none                                  | Prisma CLI connection string                                                     |
 | `EXPRESS_PORT`             | No       | `5000`                                | Backend port (dev)                                                               |
 | `PORT`                     | No       | `8080`                                | Backend port (production)                                                        |
-| `JWT_SECRET`               | Yes      | none                                  | JWT signing secret                                                               |
 | `FOUNDER_EMAIL`            | No       | none                                  | Account that always registers as the unique FOUNDER                              |
 | `NODE_ENV`                 | No       | `development`                         | Environment                                                                      |
 | `CORS_DEV_ORIGIN`          | No       | `http://localhost:5173`               | Allowed origins in dev (CORS + WebSockets), comma-separated                      |

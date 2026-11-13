@@ -25,10 +25,10 @@ afterAll(async () => {
   await new Promise((resolve) => server.close(resolve));
 });
 
-// The `token=...` pair a response set, as a browser would send it back
+// The `session=...` pair a response set, as a browser would send it back
 function tokenCookie(res: Response): string {
   const cookies = res.headers['set-cookie'] as unknown as string[];
-  return cookies.find((c) => c.startsWith('token='))!.split(';')[0];
+  return cookies.find((c) => c.startsWith('session='))!.split(';')[0];
 }
 
 // A second browser signed in to the same account
@@ -53,6 +53,68 @@ const frame = {
   type: 'unread-count' as const,
   payload: { unreadCount: 1, sections: { forum: [], support: [], connections: 0, laniakea: 0 } },
 };
+
+describe('Sessions', () => {
+  it('are kept as a hash of their secret, never the cookie itself', async () => {
+    const { email, res } = await createAuthenticatedAgent();
+    const token = tokenCookie(res).slice('session='.length);
+    const [id, secret] = token.split('.');
+    const row = await prisma.session.findUniqueOrThrow({ where: { id } });
+    expect(row.userId).toBe(await userIdFor(email));
+    expect(row.secretHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(JSON.stringify(row)).not.toContain(secret);
+  });
+
+  it('end when unused for 30 days', async () => {
+    const { agent: a, res } = await createAuthenticatedAgent();
+    const [id] = tokenCookie(res).slice('session='.length).split('.');
+    const lastSeenAt = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    await prisma.session.update({ where: { id }, data: { lastSeenAt } });
+    await a.get('/auth/me').expect(403);
+    expect(await prisma.session.count({ where: { id } })).toBe(0);
+  });
+
+  it('are seen again after an hour, with a new cookie of the same token', async () => {
+    const { agent: a, res } = await createAuthenticatedAgent();
+    const cookie = tokenCookie(res);
+    const [id] = cookie.slice('session='.length).split('.');
+    const hourAgo = new Date(Date.now() - 61 * 60 * 1000);
+    await prisma.session.update({ where: { id }, data: { lastSeenAt: hourAgo } });
+    const me = await a.get('/auth/me').expect(200);
+    expect(tokenCookie(me)).toBe(cookie);
+    const row = await prisma.session.findUniqueOrThrow({ where: { id } });
+    expect(row.lastSeenAt.getTime()).toBeGreaterThan(hourAgo.getTime());
+  });
+});
+
+describe('Sessions after a logout', () => {
+  it('end only the one logged out, and a copy of its cookie with it', async () => {
+    const { agent: first, email, password, res } = await createAuthenticatedAgent();
+    const second = await signIn(email, password);
+
+    await first.post('/auth/logout').expect(200);
+
+    await agent().get('/auth/me').set('Cookie', tokenCookie(res)).expect(403);
+    await second.agent.get('/auth/me').expect(200);
+  });
+
+  it("closes the account's sockets, and only the other browser's comes back", async () => {
+    const { agent: first, email, password, res } = await createAuthenticatedAgent();
+    const second = await signIn(email, password);
+    const mine = openUserSocket(tokenCookie(res));
+    const theirs = openUserSocket(second.cookie);
+    await Promise.all([mine.opened, theirs.opened]);
+
+    await first.post('/auth/logout').expect(200);
+
+    expect(await mine.closed).toBe(4000);
+    expect(await theirs.closed).toBe(4000);
+    expect(await openUserSocket(tokenCookie(res)).closed).toBe(4401);
+    const back = openUserSocket(second.cookie);
+    await back.opened;
+    back.ws.close();
+  });
+});
 
 describe('Sessions after a password change', () => {
   it('ends every other session and keeps the one that made the change', async () => {
