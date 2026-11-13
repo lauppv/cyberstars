@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "name": "The fact box is only as tall as its facts",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "style": ".fact-box",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the fact box"
+        },
+        {
+          "layout": "main > article, .fact-box",
+          "arrange": "row",
+          "label": "the article and the fact box"
+        },
+        {
+          "against": ".fact-box",
+          "in": "main",
+          "side": "top",
+          "within": 1,
+          "inLabel": "the page's main part",
+          "label": "the fact box"
+        },
+        {
+          "against": ".fact-box li:last-child",
+          "in": ".fact-box",
+          "side": "bottom",
+          "within": 40,
+          "inLabel": "the fact box",
+          "label": "the last fact"
+        }
+      ]
+    },
+    {
+      "name": "On the airlock page too",
+      "visible": true,
+      "page": "wiki-airlock.html",
+      "steps": [
+        {
+          "style": ".fact-box",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the fact box"
+        },
+        {
+          "layout": "main > article, .fact-box",
+          "arrange": "row",
+          "label": "the article and the fact box"
+        },
+        {
+          "against": ".fact-box",
+          "in": "main",
+          "side": "top",
+          "within": 1,
+          "inLabel": "the page's main part",
+          "label": "the fact box"
+        },
+        {
+          "against": ".fact-box li:last-child",
+          "in": ".fact-box",
+          "side": "bottom",
+          "within": 40,
+          "inLabel": "the fact box",
+          "label": "the last fact"
+        }
+      ]
+    },
+    {
+      "name": "A page about the gym, with two facts",
+      "page": "wiki-airlock.html",
+      "files": {
+        "wiki-airlock.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"How the airlock of Orbital Station 7 works, and how the crew get ready for a space walk.\" />\n    <title>The Gym</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main class=\"wiki-page\">\n    <article>\n      <h1>The Gym</h1>\n      <p>In space, muscles and bones get weak when they have nothing to push against. So every member of the crew trains two hours a day.</p>\n\n      <section>\n        <h2>The machines</h2>\n        <p>A bike with no seat, a running belt with straps that hold the runner down, and a machine that pulls like heavy weights.</p>\n      </section>\n\n      <section>\n        <h2>A day of training</h2>\n        <p>One hour on the bike or the belt in the morning, one hour on the weights after lunch. Ines Lindqvist keeps the list of who trains when.</p>\n      </section>\n\n      <section>\n        <h2>After a run</h2>\n        <p>Sweat doesn't fall in space: it sticks to the skin. A towel and a wet cloth do the job of a shower.</p>\n      </section>\n\n      <section>\n        <h2>Back on Earth</h2>\n        <p>The crew who trained well can walk the day they land. The others need a few days to find their legs again.</p>\n      </section>\n    </article>\n\n    <aside class=\"fact-box\">\n      <h2>Facts</h2>\n      <ul>\n        <li>Machines: 3</li>\n        <li>Training: <span class=\"measure\">2&nbsp;hours</span> a day</li>\n      </ul>\n    </aside>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "style": ".fact-box",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "label": "the fact box"
+        },
+        {
+          "layout": "main > article, .fact-box",
+          "arrange": "row",
+          "label": "the article and the fact box"
+        },
+        {
+          "against": ".fact-box",
+          "in": "main",
+          "side": "top",
+          "within": 1,
+          "inLabel": "the page's main part",
+          "label": "the fact box"
+        },
+        {
+          "against": ".fact-box li:last-child",
+          "in": ".fact-box",
+          "side": "bottom",
+          "within": 40,
+          "inLabel": "the fact box",
+          "label": "the last fact"
+        }
+      ]
+    }
+  ]
+}

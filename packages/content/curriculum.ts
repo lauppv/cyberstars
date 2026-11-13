@@ -2287,6 +2287,8 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'flex-wrap', title: 'Flex Wrap', sortOrder: 223 },
   { courseKey: 'web-dev', slug: 'flex-grow', title: 'Flex Grow', sortOrder: 224 },
   { courseKey: 'web-dev', slug: 'flex-basis', title: 'Flex Basis', sortOrder: 225 },
+  { courseKey: 'web-dev', slug: 'flex-shrink', title: 'Flex Shrink', sortOrder: 226 },
+  { courseKey: 'web-dev', slug: 'align-self', title: 'Align Self', sortOrder: 227 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2549,6 +2551,8 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'flex-wrap',
         'flex-grow',
         'flex-basis',
+        'flex-shrink',
+        'align-self',
       ],
     },
   ],
