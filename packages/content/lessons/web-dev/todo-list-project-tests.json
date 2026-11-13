@@ -1,0 +1,476 @@
+{
+  "cases": [
+    {
+      "name": "The page has its frame",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "attr": "meta[charset]",
+          "name": "charset",
+          "equals": "utf-8",
+          "ignoreCase": true,
+          "label": "the page's letters (meta charset)"
+        },
+        {
+          "exists": "meta[name=\"viewport\"][content*=\"width=device-width\"]",
+          "label": "the page made for the phone's width (meta viewport)"
+        },
+        {
+          "exists": "meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence for search engines (meta description)"
+        },
+        {
+          "text": "head > title",
+          "equals": "My Tasks",
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "text": "h1",
+          "equals": "My Tasks",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "exists": "form#task-form input#task-input",
+          "label": "the field #task-input in the form #task-form"
+        },
+        {
+          "exists": "label[for=\"task-input\"]",
+          "label": "a label for the field #task-input"
+        },
+        {
+          "exists": "ul#task-list",
+          "label": "the list #task-list"
+        },
+        {
+          "exists": "button#clear-done",
+          "label": "the button #clear-done"
+        },
+        {
+          "attr": "#task-count",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #task-count"
+        }
+      ]
+    },
+    {
+      "name": "A task is added at the end of the list",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "Water the plants",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "fill": "#task-input",
+          "text": "Pack the bag",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 2,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-list > li:nth-child(2) .task-text",
+          "equals": "Pack the bag",
+          "label": "the second task's text (.task-text)"
+        },
+        {
+          "exists": "#task-list > li:nth-child(1) input[type=\"checkbox\"]",
+          "label": "a box to tick in the first task"
+        },
+        {
+          "exists": "#task-list > li:nth-child(1) button.delete",
+          "label": "a delete button (button.delete) in the first task"
+        },
+        {
+          "value": "#task-input",
+          "empty": true,
+          "label": "the field #task-input, after adding"
+        },
+        {
+          "focused": "#task-input",
+          "label": "the field #task-input, after adding"
+        },
+        {
+          "text": "#task-count",
+          "equals": "2 tasks left",
+          "label": "the paragraph #task-count"
+        },
+        {
+          "notSent": true
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "An empty task isn't added",
+      "visible": true,
+      "steps": [
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 0,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "fill": "#task-input",
+          "text": "   ",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 0,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-count",
+          "equals": "Nothing left to do",
+          "label": "the paragraph #task-count"
+        }
+      ]
+    },
+    {
+      "name": "A ticked task is done",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "Feed the cat",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "fill": "#task-input",
+          "text": "Read a book",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "click": "#task-list > li:nth-child(1) input[type=\"checkbox\"]",
+          "label": "the box of task 1"
+        },
+        {
+          "exists": "#task-list > li:nth-child(1).done",
+          "label": "the first task, with the class done"
+        },
+        {
+          "count": "#task-list > li.done",
+          "equals": 1,
+          "label": "tasks with the class done"
+        },
+        {
+          "style": "#task-list > li:nth-child(1) .task-text",
+          "prop": "text-decoration-line",
+          "equals": "line-through",
+          "label": "the done task's text"
+        },
+        {
+          "style": "#task-list > li:nth-child(2) .task-text",
+          "prop": "text-decoration-line",
+          "equals": "none",
+          "label": "a task not done's text"
+        },
+        {
+          "text": "#task-count",
+          "equals": "1 task left",
+          "label": "the paragraph #task-count"
+        },
+        {
+          "click": "#task-list > li:nth-child(1) input[type=\"checkbox\"]",
+          "label": "the box of task 1"
+        },
+        {
+          "count": "#task-list > li.done",
+          "equals": 0,
+          "label": "tasks with the class done"
+        },
+        {
+          "text": "#task-count",
+          "equals": "2 tasks left",
+          "label": "the paragraph #task-count"
+        }
+      ]
+    },
+    {
+      "name": "Delete removes that task",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "One",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "fill": "#task-input",
+          "text": "Two",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "fill": "#task-input",
+          "text": "Three",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "click": "#task-list > li:nth-child(2) .delete",
+          "label": "the delete button of task 2"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 2,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-list > li:nth-child(2) .task-text",
+          "equals": "Three",
+          "label": "the second task's text"
+        },
+        {
+          "text": "#task-count",
+          "equals": "2 tasks left",
+          "label": "the paragraph #task-count"
+        }
+      ]
+    },
+    {
+      "name": "The tasks are still there after a reload",
+      "visible": true,
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "Call grandma",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "fill": "#task-input",
+          "text": "Buy bread",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "click": "#task-list > li:nth-child(2) input[type=\"checkbox\"]",
+          "label": "the box of task 2"
+        },
+        {
+          "open": "index.html"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 2,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-list > li:nth-child(1) .task-text",
+          "equals": "Call grandma",
+          "label": "the first task's text"
+        },
+        {
+          "checked": "#task-list > li:nth-child(2) input[type=\"checkbox\"]",
+          "label": "the box of the second task"
+        },
+        {
+          "exists": "#task-list > li:nth-child(2).done",
+          "label": "the second task, with the class done"
+        },
+        {
+          "text": "#task-count",
+          "equals": "1 task left",
+          "label": "the paragraph #task-count"
+        }
+      ]
+    },
+    {
+      "name": "Tasks saved on an earlier visit",
+      "storage": {
+        "tasks": "[{\"text\":\"Wash the car\",\"done\":false},{\"text\":\"Do homework\",\"done\":true},{\"text\":\"Tidy my room\",\"done\":false}]"
+      },
+      "steps": [
+        {
+          "count": "#task-list > li",
+          "equals": 3,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-list > li:nth-child(3) .task-text",
+          "equals": "Tidy my room",
+          "label": "the third task's text"
+        },
+        {
+          "checked": "#task-list > li:nth-child(2) input[type=\"checkbox\"]",
+          "label": "the box of the second task"
+        },
+        {
+          "text": "#task-count",
+          "equals": "2 tasks left",
+          "label": "the paragraph #task-count"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Removing the done tasks",
+      "visible": true,
+      "storage": {
+        "tasks": "[{\"text\":\"A\",\"done\":true},{\"text\":\"B\",\"done\":false},{\"text\":\"C\",\"done\":true}]"
+      },
+      "steps": [
+        {
+          "click": "#clear-done",
+          "label": "the button #clear-done"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 1,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-list > li:nth-child(1) .task-text",
+          "equals": "B",
+          "label": "the task left"
+        },
+        {
+          "open": "index.html"
+        },
+        {
+          "count": "#task-list > li",
+          "equals": 1,
+          "label": "tasks in the list #task-list"
+        },
+        {
+          "text": "#task-count",
+          "equals": "1 task left",
+          "label": "the paragraph #task-count"
+        }
+      ]
+    },
+    {
+      "name": "Light or dark, as the device asks",
+      "visible": true,
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "Sleep",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "dark",
+          "label": "the biggest heading"
+        },
+        {
+          "contrast": "#task-list > li:nth-child(1) .task-text",
+          "atLeast": 4.5,
+          "on": "dark",
+          "label": "a task's text"
+        }
+      ]
+    },
+    {
+      "name": "In a light system",
+      "colorScheme": "light",
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "Run",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "contrast": "h1",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "the biggest heading"
+        },
+        {
+          "contrast": "#task-list > li:nth-child(1) .task-text",
+          "atLeast": 4.5,
+          "on": "light",
+          "label": "a task's text"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, everything fits",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "fill": "#task-input",
+          "text": "A rather long task that should wrap nicely on a small phone screen",
+          "label": "the field #task-input"
+        },
+        {
+          "submit": "#task-form",
+          "label": "the form #task-form"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

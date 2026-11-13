@@ -2524,6 +2524,7 @@ export const lessons = [
     hasCodeFile: true,
   },
   { courseKey: 'web-dev', slug: 'settings-js-recap', title: 'JavaScript Recap', sortOrder: 321 },
+  { courseKey: 'web-dev', slug: 'todo-list-project', title: 'Project: My Tasks', sortOrder: 322 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2894,6 +2895,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'aria-live',
         'theme-on-every-page',
         'settings-js-recap',
+        'todo-list-project',
       ],
     },
   ],
@@ -2911,6 +2913,7 @@ export const freshStartLessons: Record<string, string[]> = {
     'cargo-request-project',
     'spaceport-launch-project',
     'mission-status-project',
+    'todo-list-project',
   ],
 };
 
