@@ -367,7 +367,8 @@ async function observe(page, step, seen) {
       const hit = document.elementFromPoint(x, y);
       if (!hit || hit === el || el.contains(hit)) return '';
       const id = hit.id ? ` id="${hit.id}"` : '';
-      const cls = hit.classList.length ? ` class="${hit.className}"` : '';
+      // getAttribute, since an SVG's className isn't a string
+      const cls = hit.classList.length ? ` class="${hit.getAttribute('class')}"` : '';
       return `<${hit.tagName.toLowerCase()}${id}${cls}>`;
     });
     return { count, values: [cover] };

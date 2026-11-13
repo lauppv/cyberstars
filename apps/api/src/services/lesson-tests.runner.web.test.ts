@@ -839,6 +839,16 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
       label: 'the note',
       found: '<div class="banner">',
     });
+    const [wave] = verdicts(
+      {
+        'index.html': `<!DOCTYPE html><html><body style="margin: 0">
+          <p id="note">Note</p>
+          <svg class="wave" style="position: absolute; top: 0; left: 0; width: 100%; height: 100px"></svg>
+        </body></html>`,
+      },
+      [{ name: 'x', visible: true, steps: [{ onTop: '#note', label: 'the note' }] }],
+    );
+    expect(wave.web).toEqual({ kind: 'onTop', label: 'the note', found: '<svg class="wave">' });
   });
 
   it('reads the order things show in, whatever the HTML, and whether they wrap', () => {
