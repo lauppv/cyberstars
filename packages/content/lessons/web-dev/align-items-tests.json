@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "name": "The links sit in the middle of the header",
+      "visible": true,
+      "steps": [
+        {
+          "against": "header nav a",
+          "in": "header",
+          "side": "top",
+          "within": 28,
+          "inLabel": "the header",
+          "label": "the main menu's links"
+        },
+        {
+          "against": "header nav a",
+          "in": "header",
+          "side": "bottom",
+          "within": 28,
+          "inLabel": "the header",
+          "label": "the main menu's links"
+        }
+      ]
+    },
+    {
+      "name": "On the wiki page too",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "layout": ".site-name, header nav",
+          "arrange": "row",
+          "label": "the station's name and the main menu"
+        },
+        {
+          "against": "header nav a",
+          "in": "header",
+          "side": "top",
+          "within": 28,
+          "inLabel": "the header",
+          "label": "the main menu's links"
+        },
+        {
+          "against": "header nav a",
+          "in": "header",
+          "side": "bottom",
+          "within": 28,
+          "inLabel": "the header",
+          "label": "the main menu's links"
+        }
+      ]
+    },
+    {
+      "name": "With a taller header",
+      "page": "wiki.html",
+      "files": {
+        "wiki.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The station wiki: what the crew of Orbital Station 7 knows about life on board.\" />\n    <title>Station Wiki</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <header>\n      <p class=\"site-name\">Orbital Station 7<br />Station Wiki</p>\n      <nav aria-label=\"Main menu\">\n        <a href=\"index.html\">Home</a>\n        <a href=\"crew.html\">Crew</a>\n        <a href=\"schedule.html\">Schedule</a>\n        <a href=\"boarding.html\">Boarding</a>\n        <a href=\"wiki.html\">Wiki</a>\n      </nav>\n    </header>\n    <main>\n    <h1>Station Wiki</h1>\n    <p>What the crew knows about life on board, written down for everyone.</p>\n\n    <div class=\"wiki-list\">\n      <article>\n        <h2>The Greenhouse</h2>\n        <p>Where our food grows, under blue and red lamps.</p>\n        <p><a href=\"wiki-greenhouse.html\">Read about the greenhouse</a></p>\n      </article>\n      <article>\n        <h2>The Airlock</h2>\n        <p>The small room between the station and space.</p>\n        <p><a href=\"wiki-airlock.html\">Read about the airlock</a></p>\n      </article>\n      <article>\n        <h2>Tools &amp; Spare Parts</h2>\n        <p>Everything we need to fix the station, and where to find it.</p>\n        <p><a href=\"wiki-tools.html\">Read about tools &amp; spare parts</a></p>\n      </article>\n    </div>\n\n    <p>To add a page to the wiki, copy an entry from &lt;article&gt; to &lt;/article&gt; and change its words.</p>\n    </main>\n\n    <footer>\n      <p>Orbital Station 7 · Docking Ring B · Low Earth Orbit</p>\n      <p>Written by the crew, for everyone on board and back on Earth.</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "against": "header nav a",
+          "in": "header",
+          "side": "top",
+          "within": 40,
+          "inLabel": "the header",
+          "label": "the main menu's links"
+        },
+        {
+          "against": "header nav a",
+          "in": "header",
+          "side": "bottom",
+          "within": 40,
+          "inLabel": "the header",
+          "label": "the main menu's links"
+        }
+      ]
+    }
+  ]
+}
