@@ -186,6 +186,24 @@ describe('startSession', () => {
     );
   });
 
+  it('drops the session when the password changed after the login checked it', async () => {
+    store.passwordHash.mockResolvedValueOnce('hash-after-reset');
+    const res = fakeRes();
+    await expect(auth.startSession(res, 42, 'hash-the-login-checked')).rejects.toMatchObject({
+      statusCode: 401,
+    });
+    expect(rows.size).toBe(0);
+    expect(res.cookie).not.toHaveBeenCalled();
+  });
+
+  it('keeps the session when the password is the one the login checked', async () => {
+    store.passwordHash.mockResolvedValueOnce('hash-the-login-checked');
+    const res = fakeRes();
+    await auth.startSession(res, 42, 'hash-the-login-checked');
+    expect(rows.size).toBe(1);
+    expect(res.cookie).toHaveBeenCalled();
+  });
+
   it('answers 404 when the account is gone', async () => {
     store.role.mockResolvedValueOnce(null);
     const err = await auth.startSession(fakeRes(), 42).catch((e) => e);

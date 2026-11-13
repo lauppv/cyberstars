@@ -121,7 +121,9 @@ describe('sign-up', () => {
 describe('login', () => {
   it("signs in with the account's password, in a session kept in `sessions`", async () => {
     const bcrypt = await import('bcryptjs');
-    mockUserRepo.findByEmail.mockResolvedValue({ id: 7, password: bcrypt.hashSync('correct', 4) });
+    const password = bcrypt.hashSync('correct', 4);
+    mockUserRepo.findByEmail.mockResolvedValue({ id: 7, password });
+    mockUserRepo.findByIdWithPassword.mockResolvedValue({ id: 7, password });
     const res = await request(app)
       .post('/auth/login')
       .send({ email: 'bob@test.com', password: 'correct' })
@@ -133,7 +135,9 @@ describe('login', () => {
 
   it('gives a student a 30-day cookie and an admin or the founder a 12-hour one', async () => {
     const bcrypt = await import('bcryptjs');
-    mockUserRepo.findByEmail.mockResolvedValue({ id: 7, password: bcrypt.hashSync('correct', 4) });
+    const password = bcrypt.hashSync('correct', 4);
+    mockUserRepo.findByEmail.mockResolvedValue({ id: 7, password });
+    mockUserRepo.findByIdWithPassword.mockResolvedValue({ id: 7, password });
     const login = () =>
       request(app).post('/auth/login').send({ email: 'bob@test.com', password: 'correct' });
     expect((await login()).headers['set-cookie']![0]).toContain(`Max-Age=${(30 * DAY) / 1000};`);

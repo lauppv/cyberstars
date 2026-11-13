@@ -264,14 +264,29 @@ export function createAuth<
     return session.userId;
   }
 
-  // Starts a new session for the account and signs this browser in with it
-  async function startSession(res: Response, userId: number): Promise<void> {
+  // Starts a new session for the account and signs this browser in with it.
+  // A login passes the password hash it checked: a password change or reset
+  // that lands while the login runs deletes the sessions before this one is
+  // made, so the hash is read again once it is, and the session is dropped
+  // when the password moved on
+  async function startSession(
+    res: Response,
+    userId: number,
+    checkedPasswordHash?: string,
+  ): Promise<void> {
     const role = await store.role(userId);
     if (role === null) throw new AppError(404, 'User not found');
     const id = crypto.randomBytes(ID_BYTES).toString('base64url');
     const secret = crypto.randomBytes(SECRET_BYTES).toString('base64url');
     const now = Date.now();
     await sessions.create({ id, userId, secretHash: hashSecret(secret), createdAt: new Date(now) });
+    if (
+      checkedPasswordHash !== undefined &&
+      (await store.passwordHash(userId)) !== checkedPasswordHash
+    ) {
+      await sessions.delete(id);
+      throw new AppError(401, 'Invalid email or password');
+    }
     res.cookie(cookieName, `${id}.${secret}`, {
       ...cookieOptions,
       maxAge: cookieMaxAge(now, now, lifetimeOf(role)),
@@ -411,7 +426,7 @@ export function createAuth<
     }
 
     await endSession(req);
-    await startSession(res, account.id);
+    await startSession(res, account.id, account.passwordHash);
     res.json({ message: 'Login successful' });
   });
 

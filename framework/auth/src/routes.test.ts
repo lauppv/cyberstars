@@ -238,6 +238,26 @@ describe('POST /login', () => {
     await request(app).get('/auth/me').set('Cookie', sessionCookie(res)).expect(200);
   });
 
+  it('signs no one in when a password reset lands while the login checks the old one', async () => {
+    const { app, store, sessions } = setup();
+    await signUp(app);
+    const findLogin = store.findLogin;
+    store.findLogin = async (email: string) => {
+      const account = await findLogin(email);
+      // the reset, between reading the old hash and making the session
+      await store.setPassword(1, bcrypt.hashSync('brandnew123', 4));
+      await sessions.deleteForUser(1);
+      return account;
+    };
+    const res = await request(app)
+      .post('/auth/login')
+      .send({ email: ADA.email, password: ADA.password });
+    expect(res.status).toBe(401);
+    expect(res.body).toEqual({ error: 'Invalid email or password' });
+    expect(sessions.rows.size).toBe(0);
+    expect(res.headers['set-cookie']).toBeUndefined();
+  });
+
   it('throws a generic 401 for unknown email (no enumeration)', async () => {
     const { app } = setup();
     const res = await request(app)
