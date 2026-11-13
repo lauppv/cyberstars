@@ -899,12 +899,16 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
       'opacity: 0',
       'height: 0; overflow: hidden',
       'position: absolute; left: -9999px',
+      // A menu slid off the right, one slid under the window
+      'position: fixed; top: 0; right: 0; transform: translateX(100%)',
+      'position: fixed; bottom: 0; margin: 0; transform: translateY(100%)',
     ];
     const files = {
       'index.html': `<!DOCTYPE html><html><body>
         <p id="shown">Here</p>
         ${hidden.map((css) => `<p class="gone" style="${css}">Gone</p>`).join('')}
         <div style="display: none"><p id="inside">Inside</p></div>
+        <p id="low" style="margin-top: 1200px">Further down</p>
       </body></html>`,
     };
     const [ok, notShown, shownAsHidden] = verdicts(files, [
@@ -913,6 +917,7 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         visible: true,
         steps: [
           { visible: '#shown', label: 'the note' },
+          { visible: '#low', label: 'the note further down' },
           { hidden: '.gone', label: 'the hidden notes' },
           { hidden: '#inside', label: 'the inner note' },
         ],

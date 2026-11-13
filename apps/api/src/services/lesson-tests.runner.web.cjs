@@ -337,12 +337,20 @@ async function observe(page, step, seen) {
   if ('visible' in step || 'hidden' in step) {
     const shown = await elements.evaluateAll(
       // However it was hidden: no room, display, visibility or opacity on it
-      // or a parent, or moved off the page
+      // or a parent, or moved off the page (a fixed one off the window; the
+      // page never scrolls sideways once it fits)
       (els, max) =>
         els.slice(0, max).map((el) => {
           const r = el.getBoundingClientRect();
           if (r.width <= 0 || r.height <= 0) return false;
-          if (r.right <= 0 || r.bottom + window.scrollY <= 0) return false;
+          let fixed = false;
+          for (let a = el; a && !fixed; a = a.parentElement) {
+            fixed = getComputedStyle(a).position === 'fixed';
+          }
+          const { clientWidth, clientHeight } = document.documentElement;
+          if (r.right <= 0 || r.left >= clientWidth) return false;
+          if (r.bottom <= (fixed ? 0 : -window.scrollY)) return false;
+          if (fixed && r.top >= clientHeight) return false;
           return el.checkVisibility({ opacityProperty: true, visibilityProperty: true });
         }),
       'visible' in step ? 1 : MAX_ELEMENTS,
