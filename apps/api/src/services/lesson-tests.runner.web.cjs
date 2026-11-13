@@ -170,9 +170,10 @@ function consoleAsPreview(limit) {
 // prelude does (previewPrelude.ts): last in line, so a page that handles the
 // submit itself (preventDefault) keeps it. Runs in the page, before its scripts
 function formsAsPreview() {
-  // A form the browser refuses stays refused, its fields :user-invalid and the
-  // focus on the first, but the browser's own message bubble isn't drawn: in
-  // the sandbox's read-only container it hangs the next page
+  // A form the browser refuses stays refused and its fields :user-invalid, but
+  // the browser's own message bubble isn't drawn: in the sandbox's read-only
+  // container it hangs the next page. So the focus stays where it was, where
+  // the preview moves it to the first refused field
   window.addEventListener('invalid', (event) => event.preventDefault(), true);
   window.addEventListener('submit', (event) => {
     if (event.defaultPrevented || !(event.target instanceof HTMLFormElement)) return;
