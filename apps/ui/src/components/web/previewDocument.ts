@@ -11,8 +11,8 @@ import { previewPrelude, type PreludeConfig } from './previewPrelude';
 // * each script of the site named by a token, which the frame swaps for a
 //   blob: URL it makes from `scripts` (an external script keeps its src, so
 //   `defer` and `async` mean what they mean on a real site);
-// * images, videos and sounds of the site as data: URLs, and a video's
-//   words (a <track>'s file) too;
+// * images, videos and sounds of the site as data: URLs (each file a
+//   srcset offers too), and a video's words (a <track>'s file) too;
 // * a guard in every loop (scriptGuard.ts), the loops of its handlers
 //   (onclick="…") too.
 //
@@ -49,6 +49,32 @@ const JS_TYPES = new Set([
   'text/ecmascript',
   'application/ecmascript',
 ]);
+
+// The files a srcset offers, each with what says when it fits (`640w`,
+// `2x`), read as a browser reads them: a URL runs to the first space, and
+// commas at its end close it (a data: URL keeps the comma inside it)
+export function srcsetCandidates(value: string): { url: string; descriptor: string }[] {
+  const candidates: { url: string; descriptor: string }[] = [];
+  let i = 0;
+  while (i < value.length) {
+    while (i < value.length && /[\s,]/.test(value[i])) i++;
+    if (i >= value.length) break;
+    let end = i;
+    while (end < value.length && !/\s/.test(value[end])) end++;
+    let url = value.slice(i, end);
+    let descriptor = '';
+    i = end;
+    if (url.endsWith(',')) url = url.replace(/,+$/, '');
+    else {
+      const comma = value.indexOf(',', i);
+      const stop = comma < 0 ? value.length : comma;
+      descriptor = value.slice(i, stop).trim();
+      i = stop;
+    }
+    if (url) candidates.push({ url, descriptor });
+  }
+  return candidates;
+}
 
 // A JSON value written inside a <script>: no `<` can end it early
 function scriptJson(value: unknown): string {
@@ -197,6 +223,22 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
       if (data) el.setAttribute(attr, data);
       else missed(path, page);
     }
+  }
+  // Each file a picture's srcset offers, on an <img> or a <picture>'s <source>
+  for (const el of Array.from(doc.querySelectorAll('img[srcset], source[srcset]'))) {
+    const candidates = srcsetCandidates(el.getAttribute('srcset') ?? '').map(
+      ({ url, descriptor }) => {
+        const path = resolveWebPath(page, url);
+        let shown = url;
+        if (path !== null) {
+          const data = images[path];
+          if (data) shown = data;
+          else missed(path, page);
+        }
+        return descriptor ? `${shown} ${descriptor}` : shown;
+      },
+    );
+    el.setAttribute('srcset', candidates.join(', '));
   }
   // A video's words are a text file of the site
   for (const track of Array.from(doc.querySelectorAll('track[src]'))) {

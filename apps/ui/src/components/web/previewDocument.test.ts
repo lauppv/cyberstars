@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { WebFile } from '@cyberstars/shared/webFiles';
-import { buildPreviewPage } from './previewDocument';
+import { buildPreviewPage, srcsetCandidates } from './previewDocument';
 
 const prelude = {
   parentOrigin: 'http://localhost:5173',
@@ -127,6 +127,29 @@ describe('buildPreviewPage', () => {
     expect(doc.querySelector('div')!.getAttribute('style')).toContain('data:image/png;base64,QQ');
     expect(doc.querySelectorAll('style')[0].textContent).toContain('data:image/png;base64,QQ');
     expect(missing).toEqual([]);
+  });
+
+  it('gives each file a srcset offers its data, on an <img> and a <source>', () => {
+    const { doc, missing } = build(
+      [
+        {
+          path: 'index.html',
+          content:
+            '<picture><source media="(max-width: 400px)" srcset="img/earth-square.jpg"><img src="img/earth-large.jpg" srcset="img/earth-small.jpg 640w,img/earth-large.jpg 1280w, https://x.example/c.jpg 2x, img/gone.jpg 3x"></picture>',
+        },
+      ],
+      'index.html',
+      {
+        'img/earth-square.jpg': 'data:image/jpeg;base64,Uw',
+        'img/earth-small.jpg': 'data:image/jpeg;base64,U00',
+        'img/earth-large.jpg': 'data:image/jpeg;base64,TA',
+      },
+    );
+    expect(doc.querySelector('source')!.getAttribute('srcset')).toBe('data:image/jpeg;base64,Uw');
+    expect(doc.querySelector('img')!.getAttribute('srcset')).toBe(
+      'data:image/jpeg;base64,U00 640w, data:image/jpeg;base64,TA 1280w, https://x.example/c.jpg 2x, img/gone.jpg 3x',
+    );
+    expect(missing).toEqual([{ file: 'img/gone.jpg', from: 'index.html' }]);
   });
 
   it("gives the page's videos and sounds their data, and a video's words their text", () => {
@@ -259,5 +282,19 @@ describe('buildPreviewPage', () => {
   it('shows an empty page for a page the site lacks', () => {
     const { doc } = build([{ path: 'index.html', content: '<p>x</p>' }], 'other.html');
     expect(doc.body.textContent).toBe('');
+  });
+});
+
+describe('srcsetCandidates', () => {
+  it('reads each URL to its first space, with what follows it to the next comma', () => {
+    expect(srcsetCandidates(' a.jpg 640w ,b.jpg  2x,c.jpg,, data:image/png;base64,QQ 3x ')).toEqual(
+      [
+        { url: 'a.jpg', descriptor: '640w' },
+        { url: 'b.jpg', descriptor: '2x' },
+        { url: 'c.jpg', descriptor: '' },
+        { url: 'data:image/png;base64,QQ', descriptor: '3x' },
+      ],
+    );
+    expect(srcsetCandidates('')).toEqual([]);
   });
 });
