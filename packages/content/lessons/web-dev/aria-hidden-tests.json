@@ -1,0 +1,68 @@
+{
+  "cases": [
+    {
+      "name": "The Light and Dark buttons have an icon a screen reader skips",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "text": "#theme-light span[aria-hidden=\"true\"]",
+          "nonEmpty": true,
+          "label": "an icon hidden from screen readers (a span with aria-hidden) in the Light button"
+        },
+        {
+          "text": "#theme-dark span[aria-hidden=\"true\"]",
+          "nonEmpty": true,
+          "label": "an icon hidden from screen readers (a span with aria-hidden) in the Dark button"
+        },
+        {
+          "size": "#theme-light span[aria-hidden=\"true\"]",
+          "maxWidth": 40,
+          "label": "the Light button's hidden icon, the icon alone"
+        },
+        {
+          "size": "#theme-dark span[aria-hidden=\"true\"]",
+          "maxWidth": 40,
+          "label": "the Dark button's hidden icon, the icon alone"
+        },
+        {
+          "order": ["#theme-light span[aria-hidden=\"true\"]", "#theme-dark"],
+          "label": "the Light button's icon, then the Dark button"
+        }
+      ]
+    },
+    {
+      "name": "The buttons still say their words",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "text": "#theme-light",
+          "contains": "Light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#theme-dark",
+          "contains": "Dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#theme-system",
+          "contains": "System",
+          "label": "the System button"
+        },
+        {
+          "count": "#theme-buttons button[aria-hidden], #theme-buttons[aria-hidden]",
+          "equals": 0,
+          "label": "theme buttons hidden from screen readers"
+        },
+        {
+          "attr": "#theme-system",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the System button (#theme-system)"
+        }
+      ]
+    }
+  ]
+}

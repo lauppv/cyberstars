@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "name": "A part for the motion, with two real buttons",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "exists": "main #motion-buttons > button#motion-full[type=\"button\"]",
+          "label": "the Full button (a <button type=\"button\"> with the id motion-full in #motion-buttons)"
+        },
+        {
+          "exists": "main #motion-buttons > button#motion-less[type=\"button\"]",
+          "label": "the Less button (a <button type=\"button\"> with the id motion-less in #motion-buttons)"
+        },
+        {
+          "text": "#motion-full",
+          "contains": "Full",
+          "label": "the Full button"
+        },
+        {
+          "text": "#motion-less",
+          "contains": "Less",
+          "label": "the Less button"
+        },
+        {
+          "order": ["#theme-buttons", "#motion-buttons"],
+          "label": "the theme buttons, then the motion buttons"
+        },
+        {
+          "count": "main h2",
+          "atLeast": 2,
+          "label": "headings of the settings' parts (<h2>)"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "Full is pressed, with icons a screen reader skips",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "attr": "#motion-full",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Full button (#motion-full)"
+        },
+        {
+          "attr": "#motion-less",
+          "name": "aria-pressed",
+          "equals": "false",
+          "label": "the Less button (#motion-less)"
+        },
+        {
+          "text": "#motion-full span[aria-hidden=\"true\"]",
+          "nonEmpty": true,
+          "label": "an icon hidden from screen readers in the Full button"
+        },
+        {
+          "text": "#motion-less span[aria-hidden=\"true\"]",
+          "nonEmpty": true,
+          "label": "an icon hidden from screen readers in the Less button"
+        },
+        {
+          "size": "#motion-full span[aria-hidden=\"true\"]",
+          "maxWidth": 40,
+          "label": "the Full button's hidden icon, the icon alone"
+        }
+      ]
+    },
+    {
+      "name": "The pressed one looks pressed, like the themes",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "differs": "#motion-full",
+          "from": "#motion-less",
+          "props": ["background-color", "color", "border-top-color", "font-weight"],
+          "fromLabel": "the Less button",
+          "label": "the pressed Full button"
+        },
+        {
+          "contrast": "#motion-buttons button",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every motion button's text"
+        }
+      ]
+    }
+  ]
+}

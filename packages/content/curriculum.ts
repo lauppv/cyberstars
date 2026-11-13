@@ -2427,6 +2427,15 @@ export const lessons = [
     title: 'Project: Rover Status',
     sortOrder: 290,
   },
+  { courseKey: 'web-dev', slug: 'html-before-aria', title: 'HTML Before ARIA', sortOrder: 291 },
+  {
+    courseKey: 'web-dev',
+    slug: 'aria-pressed',
+    title: 'A Button That Stays Pressed',
+    sortOrder: 292,
+  },
+  { courseKey: 'web-dev', slug: 'aria-hidden', title: 'Only for the Eye', sortOrder: 293 },
+  { courseKey: 'web-dev', slug: 'settings-html-recap', title: 'HTML Recap', sortOrder: 294 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2761,6 +2770,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'dashboard-js-recap',
         'mission-status-project',
       ],
+    },
+    {
+      key: 'settings-and-themes',
+      title: 'Settings and Themes',
+      lessons: ['html-before-aria', 'aria-pressed', 'aria-hidden', 'settings-html-recap'],
     },
   ],
 };
