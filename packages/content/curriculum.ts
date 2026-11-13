@@ -2296,6 +2296,7 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'position-fixed', title: 'Fixed Position', sortOrder: 232 },
   { courseKey: 'web-dev', slug: 'position-sticky', title: 'Sticky Position', sortOrder: 233 },
   { courseKey: 'web-dev', slug: 'z-index', title: 'z-index', sortOrder: 234 },
+  { courseKey: 'web-dev', slug: 'wiki-css-recap', title: 'CSS Recap', sortOrder: 235 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2567,6 +2568,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'position-fixed',
         'position-sticky',
         'z-index',
+        'wiki-css-recap',
       ],
     },
   ],
