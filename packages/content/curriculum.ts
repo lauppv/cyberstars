@@ -2502,6 +2502,7 @@ export const lessons = [
     title: 'Forget One Thing: removeItem',
     sortOrder: 315,
   },
+  { courseKey: 'web-dev', slug: 'map-collection', title: 'Map', sortOrder: 316 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2866,6 +2867,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'local-storage',
         'saving-objects',
         'remove-item',
+        'map-collection',
       ],
     },
   ],
