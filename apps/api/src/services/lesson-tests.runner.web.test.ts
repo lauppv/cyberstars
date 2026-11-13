@@ -353,8 +353,10 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
   it('fixes the clock, moves it on with a wait, and reads what a returning visitor saved', () => {
     const files = {
       'index.html': `<!DOCTYPE html><html><body>
-        <p id="day"></p><p id="left">3</p><p id="theme"></p>
+        <p id="day"></p><p id="left">3</p><p id="theme"></p><p id="soon"></p><p id="frame"></p>
         <script>
+          setTimeout(() => (document.querySelector('#soon').textContent = 'soon'), 0);
+          requestAnimationFrame(() => (document.querySelector('#frame').textContent = 'drawn'));
           const now = new Date();
           document.querySelector('#day').textContent =
             now.toLocaleDateString('en-US', { weekday: 'long' }) + ' ' + now.getHours();
@@ -377,6 +379,8 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         storage: { theme: 'dark' },
         steps: [
           { text: '#day', equals: 'Wednesday 9', label: 'the day' },
+          { text: '#soon', equals: 'soon', label: 'what a timer of 0 ms wrote' },
+          { text: '#frame', equals: 'drawn', label: 'what the first frame drew' },
           { text: '#left', equals: '3', label: 'what is left' },
           { wait: 2000 },
           { text: '#left', equals: '1', label: 'what is left' },

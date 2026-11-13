@@ -132,6 +132,8 @@ async function answer(route, files, answers) {
 }
 
 const MAX_ELEMENTS = 50;
+// A frame of a fixed clock, as its requestAnimationFrame counts it
+const FRAME_MS = 16;
 
 // The preview's PREVIEW_TEXT_LIMIT, the most one console line carries
 const CONSOLE_LIMIT = 2_000;
@@ -744,6 +746,13 @@ async function settle(page, nav, stepMs) {
     else if (nav.inflight > 0) await page.waitForTimeout(20);
     else break;
   }
+  // A page just loaded under a fixed clock gets one frame of it: what it
+  // starts on load (setTimeout(fn, 0), requestAnimationFrame) runs, as in a
+  // browser, and the time moves on by at most FRAME_MS
+  if (nav.clocked && nav.loads > nav.framed) {
+    nav.framed = nav.loads;
+    await page.clock.runFor(FRAME_MS);
+  }
   await page.waitForTimeout(30);
   // A page that moves on just now takes its transitions with it: the next
   // step waits for or reads the new page
@@ -759,7 +768,9 @@ async function settle(page, nav, stepMs) {
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
   const seen = { logs: [], errors: [], dialogs: [], forms: [] };
-  const nav = { pending: false, inflight: 0 };
+  const clocked = typeof testCase.clock === 'string';
+  // `loads` counts the pages loaded, `framed` those given their first frame
+  const nav = { pending: false, inflight: 0, clocked, loads: 0, framed: 0 };
   let crashed = false;
   let onCrash;
   const crash = new Promise((_, reject) => {
@@ -796,7 +807,6 @@ async function runCase(browser, files, testCase, limits) {
         : [],
     },
   });
-  const clocked = typeof testCase.clock === 'string';
   try {
     await serve(context, files, testCase.fetch ?? {});
     // A fixed date and time the page sees, standing still until a wait moves it
@@ -838,6 +848,7 @@ async function runCase(browser, files, testCase, limits) {
     page.on('requestfailed', done);
     page.on('load', () => {
       nav.pending = false;
+      nav.loads += 1;
     });
     try {
       await guarded(
