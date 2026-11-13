@@ -1,0 +1,116 @@
+{
+  "cases": [
+    {
+      "name": "The button plays the launch video",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "exists": "#launch-panel button#play-launch",
+          "label": "the button #play-launch in the last launch's panel"
+        },
+        {
+          "text": "#play-launch",
+          "equals": "Play",
+          "label": "the button #play-launch"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "playing": "#launch-video",
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "text": "#play-launch",
+          "equals": "Pause",
+          "label": "the button #play-launch"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A second click pauses it",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "playing": "#launch-video",
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "text": "#play-launch",
+          "equals": "Play",
+          "label": "the button #play-launch"
+        }
+      ]
+    },
+    {
+      "name": "Again and again",
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "playing": "#launch-video",
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "text": "#play-launch",
+          "equals": "Pause",
+          "label": "the button #play-launch"
+        },
+        {
+          "click": "#play-launch",
+          "label": "the button #play-launch"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "text": "#play-launch",
+          "equals": "Play",
+          "label": "the button #play-launch"
+        },
+        {
+          "attr": "#launch-video",
+          "name": "controls",
+          "label": "the launch video (#launch-video)"
+        }
+      ]
+    }
+  ]
+}

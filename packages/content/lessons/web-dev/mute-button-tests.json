@@ -1,0 +1,135 @@
+{
+  "cases": [
+    {
+      "name": "The pad camera starts without sound, and the button turns it on",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "exists": "#pad-panel button#mute-pad",
+          "label": "the button #mute-pad in the pad camera's panel"
+        },
+        {
+          "hover": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "muted": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "text": "#mute-pad",
+          "equals": "Sound on",
+          "label": "the button #mute-pad"
+        },
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "muted": "#pad-camera",
+          "off": true,
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "text": "#mute-pad",
+          "equals": "Sound off",
+          "label": "the button #mute-pad"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A second click turns the sound off again",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "hover": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "muted": "#pad-camera",
+          "off": true,
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "muted": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "text": "#mute-pad",
+          "equals": "Sound on",
+          "label": "the button #mute-pad"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        }
+      ]
+    },
+    {
+      "name": "Again and again",
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "muted": "#pad-camera",
+          "off": true,
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "text": "#mute-pad",
+          "equals": "Sound off",
+          "label": "the button #mute-pad"
+        },
+        {
+          "click": "#mute-pad",
+          "label": "the button #mute-pad"
+        },
+        {
+          "muted": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "text": "#mute-pad",
+          "equals": "Sound on",
+          "label": "the button #mute-pad"
+        }
+      ]
+    }
+  ]
+}

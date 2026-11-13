@@ -2417,6 +2417,10 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'days-between', title: 'Days Between Two Dates', sortOrder: 283 },
   { courseKey: 'web-dev', slug: 'set-timeout', title: 'Once, a Bit Later', sortOrder: 284 },
   { courseKey: 'web-dev', slug: 'set-interval', title: 'Again and Again', sortOrder: 285 },
+  { courseKey: 'web-dev', slug: 'clear-interval', title: 'Stop the Timer', sortOrder: 286 },
+  { courseKey: 'web-dev', slug: 'play-and-pause', title: 'Your Own Play Button', sortOrder: 287 },
+  { courseKey: 'web-dev', slug: 'mute-button', title: 'Sound On, Sound Off', sortOrder: 288 },
+  { courseKey: 'web-dev', slug: 'dashboard-js-recap', title: 'JavaScript Recap', sortOrder: 289 },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2745,6 +2749,10 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'days-between',
         'set-timeout',
         'set-interval',
+        'clear-interval',
+        'play-and-pause',
+        'mute-button',
+        'dashboard-js-recap',
       ],
     },
   ],
