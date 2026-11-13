@@ -129,6 +129,36 @@ describe('buildPreviewPage', () => {
     expect(missing).toEqual([]);
   });
 
+  it("gives the page's videos and sounds their data, and a video's words their text", () => {
+    const { doc, missing } = build(
+      [
+        {
+          path: 'index.html',
+          content:
+            '<video src="video/launch.webm" poster="img/a.png"><track src="video/launch.vtt" kind="captions"></video><audio><source src="audio/beep.mp3"></audio><video src="video/gone.webm"><track src="gone.vtt"></video>',
+        },
+        { path: 'video/launch.vtt', content: 'WEBVTT\n\n00:00.000 --> 00:01.000\nGo & see' },
+      ],
+      'index.html',
+      {
+        'video/launch.webm': 'data:video/webm;base64,V',
+        'img/a.png': 'data:image/png;base64,QQ',
+        'audio/beep.mp3': 'data:audio/mpeg;base64,A',
+      },
+    );
+    const [video] = Array.from(doc.querySelectorAll('video'));
+    expect(video.getAttribute('src')).toBe('data:video/webm;base64,V');
+    expect(video.getAttribute('poster')).toBe('data:image/png;base64,QQ');
+    expect(doc.querySelector('source')!.getAttribute('src')).toBe('data:audio/mpeg;base64,A');
+    expect(doc.querySelector('track')!.getAttribute('src')).toBe(
+      `data:text/vtt;charset=utf-8,${encodeURIComponent('WEBVTT\n\n00:00.000 --> 00:01.000\nGo & see')}`,
+    );
+    expect(missing).toEqual([
+      { file: 'video/gone.webm', from: 'index.html' },
+      { file: 'gone.vtt', from: 'index.html' },
+    ]);
+  });
+
   it("names the site's scripts by tokens, guarded, and leaves other kinds alone", () => {
     const { doc, scripts, missing } = build([
       {

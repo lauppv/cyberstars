@@ -5,6 +5,7 @@ import {
   WEB_MAX_FILES,
   WEB_MAX_LENGTH,
   WEB_PREVIEW_PATH,
+  assetLanguage,
   extensionOf,
   parseWebFiles,
   serializeWebFiles,
@@ -393,13 +394,27 @@ export default function WebWorkspace({
           <p className="px-4 py-3 text-[13px] text-[var(--text3)]">{t('web.noFileOpen')}</p>
         ) : activeFile.image ? (
           <figure className="m-0 p-4 flex flex-col items-center gap-3">
-            <img
-              src={assetUrl(courseKey, activeFile.path)}
-              alt={activeFile.path}
-              className="max-w-full max-h-[50vh] object-contain"
-            />
+            {assetLanguage(activeFile.path) === 'video' ? (
+              <video
+                src={assetUrl(courseKey, activeFile.path)}
+                controls
+                className="max-w-full max-h-[50vh]"
+              />
+            ) : assetLanguage(activeFile.path) === 'audio' ? (
+              <audio src={assetUrl(courseKey, activeFile.path)} controls />
+            ) : (
+              <img
+                src={assetUrl(courseKey, activeFile.path)}
+                alt={activeFile.path}
+                className="max-w-full max-h-[50vh] object-contain"
+              />
+            )}
             <figcaption className="text-[12px] text-[var(--text3)]">
-              {t('web.imageReadOnly')}
+              {t(
+                assetLanguage(activeFile.path) === 'image'
+                  ? 'web.imageReadOnly'
+                  : 'web.mediaReadOnly',
+              )}
             </figcaption>
           </figure>
         ) : (

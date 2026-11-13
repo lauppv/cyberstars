@@ -11,7 +11,8 @@ import { previewPrelude, type PreludeConfig } from './previewPrelude';
 // * each script of the site named by a token, which the frame swaps for a
 //   blob: URL it makes from `scripts` (an external script keeps its src, so
 //   `defer` and `async` mean what they mean on a real site);
-// * images of the site as data: URLs;
+// * images, videos and sounds of the site as data: URLs, and a video's
+//   words (a <track>'s file) too;
 // * a guard in every loop (scriptGuard.ts), the loops of its handlers
 //   (onclick="…") too.
 //
@@ -35,7 +36,7 @@ export interface PreviewPage {
 export interface PreviewOptions {
   files: WebFile[];
   page: string;
-  // A data: URL for each image of the site that could be loaded
+  // A data: URL for each image, video or sound of the site that could be loaded
   images: Record<string, string>;
   prelude: Omit<PreludeConfig, 'page' | 'files' | 'scripts'>;
 }
@@ -180,12 +181,31 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
   for (const el of Array.from(doc.querySelectorAll('[style]'))) {
     el.setAttribute('style', styleUrls(el.getAttribute('style') ?? '', page));
   }
-  for (const img of Array.from(doc.querySelectorAll('img[src]'))) {
-    const path = resolveWebPath(page, img.getAttribute('src') ?? '');
+  // A picture, a video, a sound or a video's first picture (`poster`)
+  const media: [string, string][] = [
+    ['img', 'src'],
+    ['video', 'src'],
+    ['video', 'poster'],
+    ['audio', 'src'],
+    ['source', 'src'],
+  ];
+  for (const [tag, attr] of media) {
+    for (const el of Array.from(doc.querySelectorAll(`${tag}[${attr}]`))) {
+      const path = resolveWebPath(page, el.getAttribute(attr) ?? '');
+      if (path === null) continue;
+      const data = images[path];
+      if (data) el.setAttribute(attr, data);
+      else missed(path, page);
+    }
+  }
+  // A video's words are a text file of the site
+  for (const track of Array.from(doc.querySelectorAll('track[src]'))) {
+    const path = resolveWebPath(page, track.getAttribute('src') ?? '');
     if (path === null) continue;
-    const data = images[path];
-    if (data) img.setAttribute('src', data);
-    else missed(path, page);
+    const words = text.get(path);
+    if (words !== undefined && extensionOf(path) === 'vtt') {
+      track.setAttribute('src', `data:text/vtt;charset=utf-8,${encodeURIComponent(words)}`);
+    } else missed(path, page);
   }
 
   // A script inside the page is found in its source text, in order, so its

@@ -1744,7 +1744,7 @@
       "invalidFile": "Folosește litere, cifre, puncte, cratime și underscore, iar la final .html, .css, .js, .json sau .txt.",
       "invalidFolder": "Folosește litere, cifre, puncte, cratime și underscore.",
       "taken": "Site-ul tău are deja un fișier sau un folder acolo.",
-      "image": "Imaginea vine cu lecția și rămâne cum e.",
+      "image": "Fișierul vine cu lecția și rămâne cum e.",
       "fileLimit": "Un site are cel mult {{max}} de fișiere.",
       "sizeLimit": "Site-ul tău a ajuns la mărimea maximă de aici. Fă puțin loc înainte să adaugi altceva."
     },
@@ -1752,6 +1752,7 @@
     "noFileOpen": "Deschide un fișier din listă ca să-l editezi.",
     "closeTab": "Închide {{name}}",
     "imageReadOnly": "O imagine a lecției: o poți folosi în pagini, dar nu o poți edita.",
+    "mediaReadOnly": "Un video sau un sunet al lecției: îl poți folosi în pagini, dar nu îl poți edita.",
     "paused": "Pe pauză: o buclă a rulat prea mult.",
     "site": "Site",
     "side": "Ce arată partea din stânga",
