@@ -1,13 +1,43 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import path from 'path';
-import { ENGINE_FILES, RUNTIME_FILES, SELF_FILES, planChecks } from './changed-lessons.js';
+import {
+  ENGINE_FILES,
+  RUNTIME_FILES,
+  SECONDS_PER_LESSON,
+  SELF_FILES,
+  SHARD_SECONDS,
+  planChecks,
+} from './changed-lessons.js';
 
 // The watched paths are repo-relative, as git diff prints them
 const REPO_ROOT = path.resolve(import.meta.dirname, '../../..');
 
 const targetsOf = (shards: ReturnType<typeof planChecks>) =>
   shards.flatMap((s) => s.targets.split(' '));
+
+// 'java 2/7' -> 'java', 'web' -> 'web'.
+const runtimeOf = (name: string) => name.split(' ')[0] as keyof typeof SECONDS_PER_LESSON;
+
+// Every shard fits the budget, and one fewer of its runtime's wouldn't.
+function expectShardsFit(shards: ReturnType<typeof planChecks>) {
+  for (const s of shards) {
+    const runtime = runtimeOf(s.name);
+    const lessons = s.targets.split(' ').length;
+    expect(lessons * SECONDS_PER_LESSON[runtime], s.name).toBeLessThanOrEqual(SHARD_SECONDS);
+  }
+  for (const runtime of new Set(shards.map((s) => runtimeOf(s.name)))) {
+    const own = shards.filter((s) => runtimeOf(s.name) === runtime);
+    const lessons = targetsOf(own).length;
+    const perShard = Math.floor(SHARD_SECONDS / SECONDS_PER_LESSON[runtime]);
+    expect(own.length, runtime).toBe(Math.ceil(lessons / perShard));
+    if (own.length > 1) {
+      expect(own.map((s) => s.name)).toEqual(
+        own.map((_, i) => `${runtime} ${i + 1}/${own.length}`),
+      );
+    }
+  }
+}
 
 describe('planChecks', () => {
   // A path that no longer exists never matches a changed file, so a moved
@@ -76,7 +106,9 @@ describe('planChecks', () => {
       'apps/api/src/services/lesson-tests.runner.java',
       'packages/content/lessons/java/hashmap-tests.json',
     ]);
-    expect(shards.map((s) => s.name)).toEqual(['java 1/4', 'java 2/4', 'java 3/4', 'java 4/4']);
+    expect(new Set(shards.map((s) => runtimeOf(s.name)))).toEqual(new Set(['java']));
+    expect(shards.length).toBeGreaterThan(1);
+    expectShardsFit(shards);
     const targets = targetsOf(shards);
     expect(targets).toContain('java/arraylist:en');
     expect(targets).toContain('algo-java/binary-search:en');
@@ -89,31 +121,40 @@ describe('planChecks', () => {
   });
 
   it('grades every language when the judge engine shared by all of them changed', () => {
-    const names = planChecks(['apps/api/src/services/lesson-tests.service.ts']).map((s) => s.name);
-    expect(names).toEqual([
-      'python 1/2',
-      'python 2/2',
+    const shards = planChecks(['apps/api/src/services/lesson-tests.service.ts']);
+    expect([...new Set(shards.map((s) => runtimeOf(s.name)))]).toEqual([
+      'python',
       'c',
-      'java 1/4',
-      'java 2/4',
-      'java 3/4',
-      'java 4/4',
+      'java',
       'web',
     ]);
+    expectShardsFit(shards);
   });
 
   it("grades every language when the judge's shared types changed", () => {
-    const names = planChecks(['packages/shared/tests.ts']).map((s) => s.name);
-    expect(names).toEqual([
-      'python 1/2',
-      'python 2/2',
+    const shards = planChecks(['packages/shared/tests.ts']);
+    expect([...new Set(shards.map((s) => runtimeOf(s.name)))]).toEqual([
+      'python',
       'c',
-      'java 1/4',
-      'java 2/4',
-      'java 3/4',
-      'java 4/4',
+      'java',
       'web',
     ]);
+    expectShardsFit(shards);
+  });
+
+  // A PR that rewrites many lessons of a course (CYB-113 changed 291 web
+  // lessons) is split like a whole language, not left in one long job.
+  it('splits many changed lessons into shards that fit the budget', () => {
+    const changed = fs
+      .readdirSync(path.join(REPO_ROOT, 'packages/content/lessons/web-dev'))
+      .filter((f) => f.endsWith('-tests.json'))
+      .map((f) => `packages/content/lessons/web-dev/${f}`);
+    const shards = planChecks(changed);
+    expect(shards.length).toBeGreaterThan(1);
+    expectShardsFit(shards);
+    const targets = targetsOf(shards);
+    expect(targets).toHaveLength(changed.length);
+    expect(targets.some((t) => t.includes(':'))).toBe(false);
   });
 
   it('grades one lesson per language when only the planner or its workflow changed', () => {
@@ -137,8 +178,10 @@ describe('planChecks', () => {
       },
     ]);
     const shards = planChecks(['apps/api/src/services/lesson-tests.runner.web.cjs']);
-    expect(shards.map((s) => s.name)).toEqual(['web']);
-    expect(shards[0].targets.split(' ')).toContain('web-dev/first-page:en');
+    expect(new Set(shards.map((s) => runtimeOf(s.name)))).toEqual(new Set(['web']));
+    expectShardsFit(shards);
+    for (const s of shards) expect(s.build).toBe('apps/api/src/runtimes/web-sandbox');
+    expect(targetsOf(shards)).toContain('web-dev/first-page:en');
   });
 
   it('grades every lesson in EN and RO on a manual run', () => {
