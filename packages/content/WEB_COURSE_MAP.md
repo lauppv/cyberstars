@@ -2,9 +2,7 @@
 
 One line per lesson: what it **introduces**. A lesson may use anything above it, nothing below it (`WEB_LESSONS.md`, rule 6). Every lesson follows `WEB_LESSONS.md`.
 
-"From" names the lesson of today's course the idea comes from, or for parts 4 to 7 the topic of their ticket (CYB-113, CYB-114). A slug in **bold** is new.
-
-Parts 8 and 9 (CYB-115) are mapped here when their turn comes, in the same way.
+"From" names the lesson of today's course the idea comes from, or for parts 4 to 9 the topic of their ticket (CYB-113, CYB-114, CYB-115). A slug in **bold** is new.
 
 ## Part 1: Station Home (`index.html`, `style.css`)
 
@@ -459,6 +457,85 @@ The visitor picks how the whole site looks: light or dark, with less movement. T
 | 32  | `settings-js-recap`       | No new idea                                                         | Recap                      |
 | 33  | `todo-list-project`       | Project: a to-do list saved in `localStorage`, from an empty folder | Project                    |
 
+## Part 8: Starship Tracker (`tracker.html`, `tracker.js`)
+
+The crew follows the starships near the station. The page loads them from the practice API (`https://cyberstars.app/api/practice/starships`), shows something while it waits and a message when the load fails, and reports a new sighting with a POST.
+
+### HTML
+
+| #   | Slug                   | Introduces                                                    | From         |
+| --- | ---------------------- | ------------------------------------------------------------- | ------------ |
+| 1   | **`template-element`** | `<template>`: HTML the page keeps for later and doesn't show  | `<template>` |
+| 2   | **`aria-busy`**        | `aria-busy`: a part of the page that says it is still loading | `aria-busy`  |
+| 3   | `tracker-html-recap`   | No new idea                                                   | Recap        |
+
+### CSS
+
+| #   | Slug                | Introduces                                                  | From                   |
+| --- | ------------------- | ----------------------------------------------------------- | ---------------------- |
+| 4   | **`spinner`**       | A spinner: a round border with one colored side, turning    | Spinners and Skeletons |
+| 5   | **`skeleton`**      | A skeleton: grey blocks where the text will come            | Spinners and Skeletons |
+| 6   | **`shimmer`**       | A light that moves over the skeleton                        | Spinners and Skeletons |
+| 7   | **`while-busy`**    | `[aria-busy="true"]`: the spinner shows only while it loads | Spinners and Skeletons |
+| 8   | `tracker-css-recap` | No new idea                                                 | Recap                  |
+
+### JavaScript
+
+| #   | Slug                          | Introduces                                                                | From                     |
+| --- | ----------------------------- | ------------------------------------------------------------------------- | ------------------------ |
+| 9   | **`why-async`**               | The code doesn't wait: what comes after `setTimeout` runs first           | Why Async                |
+| 10  | **`new-promise`**             | `new Promise` and `resolve`: a value that comes later                     | Promises                 |
+| 11  | **`promise-then`**            | `.then`: do this when the value comes                                     | Promises                 |
+| 12  | **`promise-catch`**           | `reject` and `.catch`: a promise that fails                               | Promises                 |
+| 13  | **`async-await`**             | `async` and `await`: wait for a promise, line by line                     | async and await          |
+| 14  | **`async-returns-promise`**   | An `async` function always gives a promise                                | async and await          |
+| 15  | **`fetch-response`**          | `fetch`: ask an address, and the answer's `status`                        | fetch and JSON           |
+| 16  | **`response-json`**           | `response.json()`: the answer's text as data                              | fetch and JSON           |
+| 17  | **`clone-template`**          | `template.content.cloneNode(true)`: one card for each record              | fetch and JSON           |
+| 18  | **`promise-all`**             | `Promise.all`: two loads at once, then both answers                       | fetch and JSON           |
+| 19  | **`loading-state`**           | Busy before the load, not busy after it                                   | Loading and Error States |
+| 20  | **`response-ok`**             | `response.ok`: an answer that is an error, like 404 or 500                | Loading and Error States |
+| 21  | **`try-catch`**               | `try` and `catch`: no network, and the page still answers                 | try, catch, throw        |
+| 22  | **`throw-error`**             | `throw new Error`: a bad answer goes to the same `catch`                  | try, catch, throw        |
+| 23  | **`finally`**                 | `finally`: the spinner goes away whatever happened                        | try, catch, throw        |
+| 24  | **`try-again-button`**        | A button that loads again after an error                                  | Loading and Error States |
+| 25  | **`object-destructuring`**    | `const { name, crew } = ship`: an object's values in variables            | Destructuring            |
+| 26  | **`array-destructuring`**     | `const [first, second] = ships`: an array's items in variables            | Destructuring            |
+| 27  | **`destructured-parameters`** | `({ name }) =>`: take apart what a function gets                          | Destructuring            |
+| 28  | **`spread-arrays`**           | `[...a, ...b]`: one array from others                                     | Spread and Rest          |
+| 29  | **`spread-objects`**          | `{ ...ship, status: 'Docked' }`: a copy with one value changed            | Spread and Rest          |
+| 30  | **`rest-parameters`**         | `(...names)`: a function that takes any number of values                  | Spread and Rest          |
+| 31  | **`post-request`**            | `method: 'POST'`, `headers` and a JSON `body`: send a record              | Sending Data (POST)      |
+| 32  | **`post-from-form`**          | The form's values sent with a POST, and the new record shown              | Sending Data (POST)      |
+| 33  | `tracker-js-recap`            | No new idea                                                               | Recap                    |
+| 34  | `space-quiz-project`          | Project: a quiz that loads its questions with fetch, from an empty folder | Project                  |
+
+## Part 9: Tidy Code (no new page)
+
+The site's scripts have grown long. The student splits them into modules and groups what belongs together into classes, then finds bugs with the browser's debugger. Every page keeps working as before.
+
+### JavaScript
+
+| #   | Slug                     | Introduces                                                        | From                             |
+| --- | ------------------------ | ----------------------------------------------------------------- | -------------------------------- |
+| 1   | **`module-script`**      | `<script type="module">`: a script whose variables stay inside it | import and export                |
+| 2   | **`export`**             | `export`: what a file lets other files use                        | import and export                |
+| 3   | **`import`**             | `import { … } from './file.js'`: use it in another file           | import and export                |
+| 4   | **`export-default`**     | `export default`: the one main thing of a file                    | import and export                |
+| 5   | **`shared-module`**      | One module that two pages import                                  | import and export                |
+| 6   | **`classes`**            | `class`, `constructor` and `new`: many objects of one kind        | Classes                          |
+| 7   | **`class-methods`**      | A method in a class, which every object of it has                 | Classes                          |
+| 8   | **`extends`**            | `extends`: a class that starts from another                       | Inheritance                      |
+| 9   | **`super`**              | `super()` and `super.method()`: what the first class already does | Inheritance                      |
+| 10  | **`getters`**            | `get`: a value worked out when it is read                         | Getters, Setters, Private Fields |
+| 11  | **`setters`**            | `set`: a value checked when it is written                         | Getters, Setters, Private Fields |
+| 12  | **`private-fields`**     | `#name`: a value only the class can touch                         | Getters, Setters, Private Fields |
+| 13  | **`breakpoints`**        | The Sources tab and a breakpoint: stop the code on a line         | Debugging in DevTools            |
+| 14  | **`step-through`**       | Step over and step into, and the values while it stops            | Debugging in DevTools            |
+| 15  | **`debugger-keyword`**   | `debugger`: a breakpoint written in the code                      | Debugging in DevTools            |
+| 16  | `tidy-code-recap`        | No new idea: the site's scripts as modules and classes            | Recap                            |
+| 17  | `text-adventure-project` | Project: a text adventure game in a page, from an empty folder    | Project                          |
+
 ## Moved out, because a later part teaches them
 
 - Truthy and falsy (today in `if-else`): part 4 has "Truthy, Falsy, Logical Operators".
@@ -471,4 +548,4 @@ The visitor picks how the whole site looks: light or dark, with less movement. T
 
 ## Totals
 
-Part 1: 43 lessons (today 22). Part 2: 68 (today 22). Part 3: 45 (today 22). Part 4: 50. Part 5: 39. Part 6: 46. Part 7: 33. In all, 324 lessons.
+Part 1: 43 lessons (today 22). Part 2: 68 (today 22). Part 3: 45 (today 22). Part 4: 50. Part 5: 39. Part 6: 46. Part 7: 33. Part 8: 34. Part 9: 17. In all, 375 lessons.
