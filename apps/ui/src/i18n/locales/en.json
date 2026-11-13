@@ -1716,10 +1716,10 @@
     "confirmDelete": "Delete {{name}}?",
     "confirmDeleteFolder": "Delete the folder {{name}} and everything in it?",
     "errors": {
-      "invalidFile": "Use letters, digits, dots, dashes and underscores, and end with .html, .css, .js, .json or .txt.",
+      "invalidFile": "Use letters, digits, dots, dashes and underscores, and end with .html, .css, .js, .json, .txt or .vtt.",
       "invalidFolder": "Use letters, digits, dots, dashes and underscores.",
       "taken": "Your site already has a file or folder there.",
-      "image": "This image comes with the lesson and stays as it is.",
+      "image": "This file comes with the lesson and stays as it is.",
       "fileLimit": "A site holds at most {{max}} files.",
       "sizeLimit": "Your site is as big as a site can be here. Make some room before adding more."
     },
@@ -1727,6 +1727,7 @@
     "noFileOpen": "Open a file from the list to edit it.",
     "closeTab": "Close {{name}}",
     "imageReadOnly": "An image of the lesson: use it in your pages, it can't be edited.",
+    "mediaReadOnly": "A video or a sound of the lesson: use it in your pages, it can't be edited.",
     "paused": "Paused: a loop ran too long.",
     "site": "Site",
     "side": "What the left side shows",

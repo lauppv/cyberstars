@@ -24,7 +24,7 @@
 import fs from 'fs';
 import path from 'path';
 import { CODE_LANGUAGES, WEB_COURSE_KEYS, isMultiLanguage } from '@cyberstars/shared/constants';
-import { isImagePath } from '@cyberstars/shared/webFiles';
+import { isAssetPath } from '@cyberstars/shared/webFiles';
 import { courseParts, courses, lessons } from '../curriculum.js';
 import { lessonTitlesRo, partTitlesRo } from '../curriculum-ro.js';
 import { courseDir, PROJECTS_DIR } from '../paths.js';
@@ -148,8 +148,8 @@ function copyMarkdown(srcDir: string, destDir: string, fill?: (text: string) => 
   return n;
 }
 
-// A web course's images, which its lessons' sites show read-only: every
-// image under its assets/ folder, at the same path
+// A web course's images, videos and sounds, which its lessons' sites show
+// read-only: every one under its assets/ folder, at the same path
 function copyAssets(srcDir: string, destDir: string): number {
   if (!fs.existsSync(srcDir)) return 0;
   let n = 0;
@@ -158,7 +158,7 @@ function copyAssets(srcDir: string, destDir: string): number {
     const dest = path.join(destDir, entry.name);
     if (entry.isDirectory()) {
       n += copyAssets(src, dest);
-    } else if (isImagePath(entry.name)) {
+    } else if (isAssetPath(entry.name)) {
       fs.mkdirSync(destDir, { recursive: true });
       fs.copyFileSync(src, dest);
       n++;

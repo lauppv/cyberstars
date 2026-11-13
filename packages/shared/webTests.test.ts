@@ -228,6 +228,51 @@ describe('webFailureText', () => {
     expect(say({ kind: 'checked', label: 'the meal box', expected: 'on' })).toBe(
       'Expected the meal box ticked, found it not ticked.',
     );
+    expect(say({ kind: 'playing', label: 'the launch video', expected: 'on' })).toBe(
+      'Expected the launch video playing, found it stopped.',
+    );
+    expect(say({ kind: 'playing', label: 'videoul lansării', expected: 'off' }, 'ro')).toBe(
+      'Se aștepta ca videoul lansării să nu ruleze, dar rulează.',
+    );
+    expect(say({ kind: 'muted', label: 'the launch video', expected: 'on' })).toBe(
+      'Expected the launch video muted, found its sound on.',
+    );
+    expect(say({ kind: 'muted', label: 'the launch video', expected: 'off' })).toBe(
+      'Expected the launch video with its sound on, found it muted.',
+    );
+    expect(
+      say({
+        kind: 'style',
+        label: 'the page',
+        detail: '--page-bg',
+        compare: 'not',
+        expected: '',
+        found: '',
+      }),
+    ).toBe('Expected the page with --page-bg set, found it not set.');
+    expect(say({ kind: 'animated', label: 'the live label', expected: 'on' })).toBe(
+      'Expected the live label animated, found no animation running (check the name in @keyframes too).',
+    );
+    expect(
+      say({ kind: 'animated', label: 'the live label', expected: 'off', found: 'pulse' }),
+    ).toBe('Expected the live label still, found it animated: pulse.');
+    expect(say({ kind: 'focused', label: 'the new task', found: '<button id="add">' })).toBe(
+      'Expected the focus on the new task, found it on <button id="add">.',
+    );
+    expect(say({ kind: 'focused', label: 'the new task', found: null })).toBe(
+      'Expected the focus on the new task, found it on nothing.',
+    );
+    expect(
+      say({
+        kind: 'shows',
+        label: 'the photo of Earth',
+        expected: 'img/earth-small.jpg',
+        found: 'img/earth-large.jpg',
+      }),
+    ).toBe('Expected the photo of Earth to show img/earth-small.jpg, found img/earth-large.jpg.');
+    expect(say({ kind: 'loaded', label: 'the countdown', detail: 'media' })).toBe(
+      'Expected the countdown to load, found its file missing or unreadable: check its path and what is in it.',
+    );
     expect(say({ kind: 'sent', detail: 'none' })).toBe(
       'Expected the form to be sent, found nothing sent.',
     );

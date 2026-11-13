@@ -1,0 +1,252 @@
+{
+  "cases": [
+    {
+      "name": "A saved light theme shows on every page",
+      "visible": true,
+      "storage": {
+        "settings": "{\"theme\":\"light\",\"motion\":\"full\"}"
+      },
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "open": "index.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of index.html"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of crew.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of people/vega.html"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of schedule.html"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of boarding.html"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of wiki-greenhouse.html"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of wiki-airlock.html"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of wiki.html"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of wiki-tools.html"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of dashboard.html"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of settings.html"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "contrast": "main > p",
+          "atLeast": 4.5,
+          "on": "light",
+          "every": true,
+          "label": "every paragraph of the main part"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A saved dark theme wins over a light system",
+      "visible": true,
+      "storage": {
+        "settings": "{\"theme\":\"dark\",\"motion\":\"full\"}"
+      },
+      "colorScheme": "light",
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "exists": "html.dark",
+          "label": "the class dark on <html>"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page"
+        }
+      ]
+    },
+    {
+      "name": "The theme script runs before the page shows",
+      "visible": true,
+      "steps": [
+        {
+          "exists": "head > script[src$=\"theme.js\"]:not([defer]):not([async])",
+          "label": "theme.js in the head of index.html, without defer"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "head > script[src=\"../theme.js\"]:not([defer]):not([async])",
+          "label": "theme.js in the head of people/vega.html, without defer"
+        }
+      ]
+    },
+    {
+      "name": "Chosen on the settings page, seen at once and everywhere",
+      "visible": true,
+      "page": "settings.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of the settings page, at once"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "html.light",
+          "label": "the class light on <html> of crew.html"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "exists": "html.dark",
+          "label": "the class dark on <html>"
+        },
+        {
+          "count": "html.light",
+          "equals": 0,
+          "label": "the class light on <html>"
+        }
+      ]
+    },
+    {
+      "name": "System and forgotten settings leave the device's look",
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"light\",\"motion\":\"full\"}"
+      },
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "count": "html.light, html.dark",
+          "equals": 0,
+          "label": "a theme class on <html>"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "count": "html.light, html.dark",
+          "equals": 0,
+          "label": "a theme class on <html>"
+        },
+        {
+          "open": "index.html"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page"
+        }
+      ]
+    },
+    {
+      "name": "Nothing saved: the device's look",
+      "page": "dashboard.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "count": "html.light, html.dark",
+          "equals": 0,
+          "label": "a theme class on <html>"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

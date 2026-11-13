@@ -1,0 +1,101 @@
+{
+  "cases": [
+    {
+      "name": "Each theme tried, once",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "order": ["#picks", "#tried"],
+          "label": "#picks, then #tried"
+        },
+        {
+          "text": "#tried",
+          "equals": "Themes tried: 0",
+          "label": "the paragraph #tried"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#tried",
+          "equals": "Themes tried: 1 (dark)",
+          "label": "the paragraph #tried"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#tried",
+          "equals": "Themes tried: 2 (dark, light)",
+          "label": "the paragraph #tried"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "All three",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#tried",
+          "equals": "Themes tried: 3 (system, light, dark)",
+          "label": "the paragraph #tried"
+        }
+      ]
+    },
+    {
+      "name": "The counts still work",
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: light 2",
+          "label": "the paragraph #picks"
+        },
+        {
+          "text": "#tried",
+          "equals": "Themes tried: 1 (light)",
+          "label": "the paragraph #tried"
+        }
+      ]
+    }
+  ]
+}

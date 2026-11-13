@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "name": "The launch video has its words",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "#launch-video track",
+          "label": "the launch video's words (a <track> in #launch-video)"
+        },
+        {
+          "loaded": "#launch-video track",
+          "label": "the launch video's words (a <track> in #launch-video)"
+        },
+        {
+          "attr": "#launch-video track",
+          "name": "kind",
+          "equals": "captions",
+          "label": "the launch video's words (a <track> in #launch-video)"
+        },
+        {
+          "attr": "#launch-video track",
+          "name": "srclang",
+          "equals": "en",
+          "label": "the launch video's words (a <track> in #launch-video)"
+        },
+        {
+          "attr": "#launch-video track",
+          "name": "label",
+          "equals": "English",
+          "label": "the launch video's words (a <track> in #launch-video)"
+        }
+      ]
+    },
+    {
+      "name": "The words show from the start",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "attr": "#launch-video track",
+          "name": "default",
+          "label": "the launch video's words (a <track> in #launch-video)"
+        }
+      ]
+    },
+    {
+      "name": "The rest of the dashboard is as before",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "attr": "#countdown",
+          "name": "controls",
+          "label": "the countdown (#countdown)"
+        }
+      ]
+    }
+  ]
+}

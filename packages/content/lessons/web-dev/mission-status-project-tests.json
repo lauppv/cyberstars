@@ -1,0 +1,383 @@
+{
+  "cases": [
+    {
+      "name": "The page has its frame",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "attr": "meta[charset]",
+          "name": "charset",
+          "equals": "utf-8",
+          "ignoreCase": true,
+          "label": "the page's letters (meta charset)"
+        },
+        {
+          "exists": "meta[name=\"viewport\"][content*=\"width=device-width\"]",
+          "label": "the page made for the phone's width (meta viewport)"
+        },
+        {
+          "exists": "meta[name=\"description\"][content]:not([content=\"\"])",
+          "label": "a sentence for search engines (meta description)"
+        },
+        {
+          "text": "head > title",
+          "equals": "Rover Status",
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "text": "h1",
+          "equals": "Rover Status",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "The readings are cards with a name and a number",
+      "visible": true,
+      "steps": [
+        {
+          "count": "section.readings > article.reading",
+          "atLeast": 4,
+          "label": "readings (article.reading) in section.readings"
+        },
+        {
+          "text": ".readings > .reading:nth-child(2) h2",
+          "nonEmpty": true,
+          "label": "a reading's name (h2)"
+        },
+        {
+          "exists": ".readings > .reading:nth-child(1) .value",
+          "label": "a reading's number (.value)"
+        },
+        {
+          "exists": ".readings > #battery.reading",
+          "label": "the battery's reading (#battery)"
+        },
+        {
+          "style": ".reading",
+          "prop": "background-color",
+          "not": "rgba(0, 0, 0, 0)",
+          "every": true,
+          "label": "every reading's background"
+        },
+        {
+          "centered": ".readings > .reading:nth-child(2) h2",
+          "label": "a reading's name"
+        }
+      ]
+    },
+    {
+      "name": "On a computer, a grid of cards with the log beside it",
+      "visible": true,
+      "steps": [
+        {
+          "layout": ".readings, #log",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the readings and the log"
+        },
+        {
+          "size": "#log",
+          "minWidth": 250,
+          "maxWidth": 350,
+          "label": "the log (#log)"
+        },
+        {
+          "size": "#battery",
+          "minWidth": 416,
+          "label": "the battery's reading"
+        },
+        {
+          "against": "#battery",
+          "in": ".readings",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the readings (.readings)",
+          "label": "the battery's reading"
+        },
+        {
+          "layout": ".readings > .reading:nth-child(3), .readings > .reading:nth-child(4), .readings > .reading:nth-child(5)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the readings of the second row"
+        },
+        {
+          "size": ".readings > .reading:nth-child(3)",
+          "minWidth": 200,
+          "label": "a reading"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 700 pixels wide, the log goes under the readings",
+      "visible": true,
+      "width": 700,
+      "steps": [
+        {
+          "layout": ".readings, #log",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the readings and the log"
+        },
+        {
+          "layout": ".readings > .reading:nth-child(3), .readings > .reading:nth-child(4)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "two readings of the second row"
+        },
+        {
+          "size": ".readings > .reading:nth-child(3)",
+          "minWidth": 200,
+          "label": "a reading"
+        },
+        {
+          "against": ".readings > .reading:nth-child(5)",
+          "in": ".readings",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the readings (.readings)",
+          "label": "the last reading of a row"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a phone, one reading under the other",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "layout": ".readings > .reading",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the readings"
+        },
+        {
+          "against": "#battery",
+          "in": ".readings",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the readings (.readings)",
+          "label": "the battery's reading"
+        },
+        {
+          "against": "#battery",
+          "in": ".readings",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the readings (.readings)",
+          "label": "the battery's reading"
+        },
+        {
+          "layout": ".readings, #log",
+          "arrange": "column",
+          "label": "the readings and the log"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The checks name the low readings and the highest",
+      "visible": true,
+      "steps": [
+        {
+          "text": "#warnings",
+          "equals": "Check: Signal",
+          "label": "the paragraph #warnings"
+        },
+        {
+          "text": "#summary",
+          "equals": "5 readings, highest: Wheels (91)",
+          "label": "the paragraph #summary"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other readings",
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Live readings from the rover Lyra on Mars: battery, signal, temperature and more.\" />\n    <title>Rover Status</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <h1>Rover Status</h1>\n      <p id=\"clock\"></p>\n      <p>Landed on <span id=\"landing\">2031-01-01</span>: <span id=\"days-on-mars\"></span></p>\n    </header>\n    <main class=\"layout\">\n      <section class=\"readings\" aria-label=\"Readings\">\n        <article class=\"reading\" id=\"battery\">\n          <h2>Battery</h2>\n          <p><span class=\"value\">15</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Heater</h2>\n          <p><span class=\"value\">40</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Signal</h2>\n          <p><span class=\"value\">88</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Arm</h2>\n          <p><span class=\"value\">7</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Camera</h2>\n          <p><span class=\"value\">93</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Drill</h2>\n          <p><span class=\"value\">55</span> %</p>\n        </article>\n      </section>\n      <aside id=\"log\">\n        <h2>Today's log</h2>\n        <ul>\n          <li>08:00 Woke up and checked the wheels</li>\n          <li>09:30 Drove 120 metres north</li>\n          <li>11:15 Took photos of a red rock</li>\n        </ul>\n        <button type=\"button\" id=\"refresh\">Refresh</button>\n        <p id=\"updated\">Not updated yet</p>\n      </aside>\n    </main>\n    <section id=\"checks\">\n      <h2>Checks</h2>\n      <p id=\"warnings\"></p>\n      <p id=\"summary\"></p>\n    </section>\n    <footer>\n      <p>Rover team, Mission Control, Building 4</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#warnings",
+          "equals": "Check: Battery, Arm",
+          "label": "the paragraph #warnings"
+        },
+        {
+          "text": "#summary",
+          "equals": "6 readings, highest: Camera (93)",
+          "label": "the paragraph #summary"
+        }
+      ]
+    },
+    {
+      "name": "Nothing low",
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Live readings from the rover Lyra on Mars: battery, signal, temperature and more.\" />\n    <title>Rover Status</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <h1>Rover Status</h1>\n      <p id=\"clock\"></p>\n      <p>Landed on <span id=\"landing\">2031-02-18</span>: <span id=\"days-on-mars\"></span></p>\n    </header>\n    <main class=\"layout\">\n      <section class=\"readings\" aria-label=\"Readings\">\n        <article class=\"reading\" id=\"battery\">\n          <h2>Battery</h2>\n          <p><span class=\"value\">60</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Signal</h2>\n          <p><span class=\"value\">20</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Drill</h2>\n          <p><span class=\"value\">35</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Wheels</h2>\n          <p><span class=\"value\">81</span> %</p>\n        </article>\n      </section>\n      <aside id=\"log\">\n        <h2>Today's log</h2>\n        <ul>\n          <li>08:00 Woke up and checked the wheels</li>\n          <li>09:30 Drove 120 metres north</li>\n          <li>11:15 Took photos of a red rock</li>\n        </ul>\n        <button type=\"button\" id=\"refresh\">Refresh</button>\n        <p id=\"updated\">Not updated yet</p>\n      </aside>\n    </main>\n    <section id=\"checks\">\n      <h2>Checks</h2>\n      <p id=\"warnings\"></p>\n      <p id=\"summary\"></p>\n    </section>\n    <footer>\n      <p>Rover team, Mission Control, Building 4</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#warnings",
+          "equals": "All readings are fine",
+          "label": "the paragraph #warnings"
+        }
+      ]
+    },
+    {
+      "name": "The mission clock and the days on Mars",
+      "visible": true,
+      "clock": "2031-05-14T14:05:09",
+      "steps": [
+        {
+          "text": "#clock",
+          "equals": "Mission time: 14:05:09",
+          "label": "the clock (#clock)"
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#clock",
+          "equals": "Mission time: 14:05:11",
+          "label": "the clock (#clock)"
+        },
+        {
+          "text": "#days-on-mars",
+          "equals": "85 days on Mars",
+          "label": "the days on Mars (#days-on-mars)"
+        }
+      ]
+    },
+    {
+      "name": "Another landing day",
+      "clock": "2031-05-14T08:00:00",
+      "files": {
+        "index.html": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"Live readings from the rover Lyra on Mars: battery, signal, temperature and more.\" />\n    <title>Rover Status</title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n    <script src=\"script.js\" defer></script>\n  </head>\n  <body>\n    <header>\n      <h1>Rover Status</h1>\n      <p id=\"clock\"></p>\n      <p>Landed on <span id=\"landing\">2031-01-01</span>: <span id=\"days-on-mars\"></span></p>\n    </header>\n    <main class=\"layout\">\n      <section class=\"readings\" aria-label=\"Readings\">\n        <article class=\"reading\" id=\"battery\">\n          <h2>Battery</h2>\n          <p><span class=\"value\">15</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Heater</h2>\n          <p><span class=\"value\">40</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Signal</h2>\n          <p><span class=\"value\">88</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Arm</h2>\n          <p><span class=\"value\">7</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Camera</h2>\n          <p><span class=\"value\">93</span> %</p>\n        </article>\n        <article class=\"reading\">\n          <h2>Drill</h2>\n          <p><span class=\"value\">55</span> %</p>\n        </article>\n      </section>\n      <aside id=\"log\">\n        <h2>Today's log</h2>\n        <ul>\n          <li>08:00 Woke up and checked the wheels</li>\n          <li>09:30 Drove 120 metres north</li>\n          <li>11:15 Took photos of a red rock</li>\n        </ul>\n        <button type=\"button\" id=\"refresh\">Refresh</button>\n        <p id=\"updated\">Not updated yet</p>\n      </aside>\n    </main>\n    <section id=\"checks\">\n      <h2>Checks</h2>\n      <p id=\"warnings\"></p>\n      <p id=\"summary\"></p>\n    </section>\n    <footer>\n      <p>Rover team, Mission Control, Building 4</p>\n    </footer>\n  </body>\n</html>\n"
+      },
+      "steps": [
+        {
+          "text": "#days-on-mars",
+          "equals": "133 days on Mars",
+          "label": "the days on Mars (#days-on-mars)"
+        }
+      ]
+    },
+    {
+      "name": "Refresh says when",
+      "visible": true,
+      "clock": "2031-05-14T14:05:09",
+      "steps": [
+        {
+          "text": "#updated",
+          "equals": "Not updated yet",
+          "label": "the paragraph #updated"
+        },
+        {
+          "click": "#refresh",
+          "label": "the button #refresh"
+        },
+        {
+          "text": "#updated",
+          "equals": "Updated at 2:05 PM",
+          "label": "the paragraph #updated"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#updated",
+          "equals": "Updated at 2:05 PM",
+          "label": "the paragraph #updated"
+        },
+        {
+          "click": "#refresh",
+          "label": "the button #refresh"
+        },
+        {
+          "text": "#updated",
+          "equals": "Updated at 2:06 PM",
+          "label": "the paragraph #updated"
+        }
+      ]
+    }
+  ]
+}

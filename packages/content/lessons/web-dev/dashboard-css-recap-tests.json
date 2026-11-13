@@ -1,0 +1,209 @@
+{
+  "cases": [
+    {
+      "name": "On a phone, one under the other",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": ".gallery > section:has(img[src$=\"station.svg\"]) h2",
+          "label": "the station's part, with its heading, in .gallery"
+        },
+        {
+          "exists": ".gallery > section:has(img[src*=\"earth\"]) h2",
+          "label": "the Earth's part, with its heading, in .gallery"
+        },
+        {
+          "layout": ".gallery > section:has(img[src$=\"station.svg\"]), .gallery > section:has(img[src*=\"earth\"])",
+          "arrange": "column",
+          "label": "the station's part and the Earth's"
+        },
+        {
+          "against": ".gallery > section:has(img[src*=\"earth\"])",
+          "in": ".gallery",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the Earth's part"
+        },
+        {
+          "against": ".gallery > section:has(img[src$=\"station.svg\"])",
+          "in": ".gallery",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the station's part"
+        },
+        {
+          "fits": true
+        },
+        {
+          "shows": ".gallery > section:has(img[src*=\"earth\"]) img",
+          "file": "img/earth-square.jpg",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "In a window 700 pixels wide, side by side",
+      "visible": true,
+      "width": 700,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": ".gallery > section:has(img[src$=\"station.svg\"]) h2",
+          "label": "the station's part, with its heading, in .gallery"
+        },
+        {
+          "exists": ".gallery > section:has(img[src*=\"earth\"]) h2",
+          "label": "the Earth's part, with its heading, in .gallery"
+        },
+        {
+          "layout": ".gallery > section:has(img[src$=\"station.svg\"]), .gallery > section:has(img[src*=\"earth\"])",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the station's part and the Earth's"
+        },
+        {
+          "size": ".gallery > section:has(img[src$=\"station.svg\"])",
+          "minWidth": 300,
+          "label": "the station's part"
+        },
+        {
+          "size": ".gallery > section:has(img[src*=\"earth\"])",
+          "minWidth": 300,
+          "label": "the Earth's part"
+        },
+        {
+          "against": ".gallery > section:has(img[src$=\"station.svg\"])",
+          "in": ".gallery",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the station's part"
+        },
+        {
+          "against": ".gallery > section:has(img[src*=\"earth\"])",
+          "in": ".gallery",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the Earth's part"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a computer, side by side, the station's picture in the middle",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": ".gallery > section:has(img[src$=\"station.svg\"]) h2",
+          "label": "the station's part, with its heading, in .gallery"
+        },
+        {
+          "exists": ".gallery > section:has(img[src*=\"earth\"]) h2",
+          "label": "the Earth's part, with its heading, in .gallery"
+        },
+        {
+          "layout": ".gallery > section:has(img[src$=\"station.svg\"]), .gallery > section:has(img[src*=\"earth\"])",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the station's part and the Earth's"
+        },
+        {
+          "size": ".gallery > section:has(img[src$=\"station.svg\"])",
+          "minWidth": 440,
+          "label": "the station's part"
+        },
+        {
+          "size": ".gallery > section:has(img[src*=\"earth\"])",
+          "minWidth": 440,
+          "label": "the Earth's part"
+        },
+        {
+          "against": ".gallery > section:has(img[src$=\"station.svg\"])",
+          "in": ".gallery",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the station's part"
+        },
+        {
+          "against": ".gallery > section:has(img[src*=\"earth\"])",
+          "in": ".gallery",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the Earth's part"
+        },
+        {
+          "fits": true
+        },
+        {
+          "centered": ".gallery > section:has(img[src$=\"station.svg\"]) img",
+          "label": "the station's picture"
+        },
+        {
+          "centered": ".gallery > section:has(img[src$=\"station.svg\"]) figcaption",
+          "label": "the station's caption"
+        },
+        {
+          "fills": ".gallery > section:has(img[src*=\"earth\"]) img",
+          "label": "the photo of the Earth"
+        }
+      ]
+    },
+    {
+      "name": "In a window 640 pixels wide",
+      "width": 640,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": ".gallery > section:has(img[src$=\"station.svg\"]) h2",
+          "label": "the station's part, with its heading, in .gallery"
+        },
+        {
+          "exists": ".gallery > section:has(img[src*=\"earth\"]) h2",
+          "label": "the Earth's part, with its heading, in .gallery"
+        },
+        {
+          "layout": ".gallery > section:has(img[src$=\"station.svg\"]), .gallery > section:has(img[src*=\"earth\"])",
+          "arrange": "column",
+          "label": "the station's part and the Earth's"
+        },
+        {
+          "against": ".gallery > section:has(img[src*=\"earth\"])",
+          "in": ".gallery",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the Earth's part"
+        },
+        {
+          "against": ".gallery > section:has(img[src$=\"station.svg\"])",
+          "in": ".gallery",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the gallery (.gallery)",
+          "label": "the station's part"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

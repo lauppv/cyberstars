@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "name": "The clock shows the time when the page opens",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "order": ["#live-status", "#station-clock", "#crew-count"],
+          "label": "#live-status, the station clock, then the cards"
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 09:30:00",
+          "label": "the station clock (#station-clock)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "It moves on every second",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 09:30:01",
+          "label": "the station clock (#station-clock)"
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 09:30:03",
+          "label": "the station clock (#station-clock)"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 09:30:06",
+          "label": "the station clock (#station-clock)"
+        }
+      ]
+    },
+    {
+      "name": "In the afternoon",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T15:04:59",
+      "steps": [
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 15:04:59",
+          "label": "the station clock (#station-clock)"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 15:05:00",
+          "label": "the station clock (#station-clock)"
+        }
+      ]
+    },
+    {
+      "name": "Over midnight",
+      "page": "dashboard.html",
+      "clock": "2031-05-14T23:59:58",
+      "steps": [
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 23:59:58",
+          "label": "the station clock (#station-clock)"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 00:00:01",
+          "label": "the station clock (#station-clock)"
+        }
+      ]
+    },
+    {
+      "name": "A minute later",
+      "page": "dashboard.html",
+      "clock": "2031-05-14T07:00:00",
+      "steps": [
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#station-clock",
+          "equals": "Station time: 07:00:09",
+          "label": "the station clock (#station-clock)"
+        }
+      ]
+    }
+  ]
+}

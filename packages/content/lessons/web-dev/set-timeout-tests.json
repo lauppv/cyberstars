@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "name": "While the data loads",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "order": ["#last-update", "#live-status", "#crew-count"],
+          "label": "the last update, #live-status, then the cards"
+        },
+        {
+          "text": "#live-status",
+          "equals": "Loading live data...",
+          "label": "the paragraph #live-status"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#live-status",
+          "equals": "Loading live data...",
+          "label": "the paragraph #live-status"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Two seconds later",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#live-status",
+          "equals": "Live data loaded",
+          "label": "the paragraph #live-status"
+        }
+      ]
+    },
+    {
+      "name": "It changes only once",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#live-status",
+          "equals": "Live data loaded",
+          "label": "the paragraph #live-status"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#live-status",
+          "equals": "Live data loaded",
+          "label": "the paragraph #live-status"
+        }
+      ]
+    },
+    {
+      "name": "Just before two seconds",
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 1900
+        },
+        {
+          "text": "#live-status",
+          "equals": "Loading live data...",
+          "label": "the paragraph #live-status"
+        },
+        {
+          "wait": 150
+        },
+        {
+          "text": "#live-status",
+          "equals": "Live data loaded",
+          "label": "the paragraph #live-status"
+        }
+      ]
+    }
+  ]
+}

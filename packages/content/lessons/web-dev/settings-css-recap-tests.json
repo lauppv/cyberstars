@@ -1,0 +1,160 @@
+{
+  "cases": [
+    {
+      "name": "The two settings are cards, side by side on a computer",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "count": ".settings > .setting",
+          "equals": 2,
+          "label": "the settings (section.setting in .settings)"
+        },
+        {
+          "exists": ".settings > .setting #theme-buttons",
+          "label": "the theme's setting, with its buttons"
+        },
+        {
+          "exists": ".settings > .setting #motion-buttons",
+          "label": "the motion's setting, with its buttons"
+        },
+        {
+          "layout": ".settings > .setting",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the two settings"
+        },
+        {
+          "against": ".settings > .setting:nth-child(1)",
+          "in": ".settings",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of settings (.settings)",
+          "label": "the first setting"
+        },
+        {
+          "against": ".settings > .setting:nth-child(2)",
+          "in": ".settings",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of settings (.settings)",
+          "label": "the second setting"
+        },
+        {
+          "differs": ".settings > .setting",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "every setting"
+        },
+        {
+          "style": ".settings > .setting",
+          "prop": "border-top-left-radius",
+          "atLeast": 4,
+          "every": true,
+          "label": "every setting's corners"
+        }
+      ]
+    },
+    {
+      "name": "On a phone, one under the other",
+      "visible": true,
+      "width": 375,
+      "page": "settings.html",
+      "steps": [
+        {
+          "layout": ".settings > .setting",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the two settings"
+        },
+        {
+          "against": ".settings > .setting:nth-child(1)",
+          "in": ".settings",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of settings (.settings)",
+          "label": "the first setting"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "The buttons stand in a row, and light up slowly",
+      "visible": true,
+      "page": "settings.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "layout": "#theme-buttons > button",
+          "arrange": "row",
+          "gap": 8,
+          "label": "the theme buttons"
+        },
+        {
+          "layout": "#motion-buttons > button",
+          "arrange": "row",
+          "gap": 8,
+          "label": "the motion buttons"
+        },
+        {
+          "style": "#theme-light",
+          "prop": "transition-duration",
+          "not": "0s",
+          "label": "the Light button's transition"
+        },
+        {
+          "hover": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "style": "#theme-light",
+          "prop": "border-top-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "the Light button's border, under the mouse"
+        }
+      ]
+    },
+    {
+      "name": "With less motion, the buttons change at once",
+      "page": "settings.html",
+      "reducedMotion": true,
+      "steps": [
+        {
+          "style": "#theme-light",
+          "prop": "transition-duration",
+          "equals": "0s",
+          "label": "the Light button's transition"
+        },
+        {
+          "style": "#motion-less",
+          "prop": "transition-duration",
+          "equals": "0s",
+          "label": "the Less button's transition"
+        }
+      ]
+    },
+    {
+      "name": "In the light theme too",
+      "page": "settings.html",
+      "colorScheme": "light",
+      "steps": [
+        {
+          "differs": ".settings > .setting",
+          "from": "body",
+          "props": ["background-color"],
+          "fromLabel": "the page",
+          "label": "every setting"
+        },
+        {
+          "contrast": "#theme-buttons button, #motion-buttons button",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every settings button's text"
+        }
+      ]
+    }
+  ]
+}

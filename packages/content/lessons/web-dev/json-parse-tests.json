@@ -1,0 +1,121 @@
+{
+  "cases": [
+    {
+      "name": "Pasted settings are used",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "exists": ".settings textarea#import",
+          "label": "a box to paste in (textarea#import) among the settings"
+        },
+        {
+          "exists": "label[for=\"import\"]",
+          "label": "a label for the box #import"
+        },
+        {
+          "exists": "button#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"light\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: less",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "attr": "#theme-light",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Light button (#theme-light)"
+        },
+        {
+          "text": "#settings-text",
+          "equals": "As text: {\"theme\":\"light\",\"motion\":\"less\"}",
+          "label": "the paragraph #settings-text"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other settings, written with spaces",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{ \"motion\": \"full\", \"theme\": \"dark\" }",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        }
+      ]
+    },
+    {
+      "name": "Twice",
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"dark\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"system\",\"motion\":\"full\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "text": "#settings-text",
+          "equals": "As text: {\"theme\":\"system\",\"motion\":\"full\"}",
+          "label": "the paragraph #settings-text"
+        }
+      ]
+    }
+  ]
+}

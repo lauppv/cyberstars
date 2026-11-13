@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "name": "The LIVE label pulses as long as the page is open",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "animated": "#pad-panel .live",
+          "label": "the LIVE label"
+        },
+        {
+          "wait": 2500
+        },
+        {
+          "animated": "#pad-panel .live",
+          "label": "the LIVE label, after 2.5 seconds"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "animated": "#pad-panel .live",
+          "label": "the LIVE label, after 5.5 seconds"
+        },
+        {
+          "style": "#pad-panel .live",
+          "prop": "animation-iteration-count",
+          "equals": "infinite",
+          "label": "the LIVE label's animation"
+        }
+      ]
+    },
+    {
+      "name": "It goes to faint and back, a second each way",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": "#pad-panel .live",
+          "prop": "animation-direction",
+          "equals": "alternate",
+          "label": "the LIVE label's animation"
+        },
+        {
+          "style": "#pad-panel .live",
+          "prop": "animation-duration",
+          "equals": "1s",
+          "label": "the LIVE label's animation"
+        }
+      ]
+    },
+    {
+      "name": "It never disappears",
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "visible": "#pad-panel .live",
+          "label": "the LIVE label"
+        },
+        {
+          "text": "#pad-panel .live",
+          "equals": "LIVE",
+          "label": "the LIVE label"
+        }
+      ]
+    }
+  ]
+}

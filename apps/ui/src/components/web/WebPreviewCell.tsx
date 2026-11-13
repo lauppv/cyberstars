@@ -1,8 +1,8 @@
 import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { resolveWebPath, WEB_PREVIEW_PATH } from '@cyberstars/shared/webFiles';
+import { isAssetPath, resolveWebPath, WEB_PREVIEW_PATH } from '@cyberstars/shared/webFiles';
 import { CodeEditor } from '../code/CodeEditor';
-import { buildPreviewPage, type PreviewPage } from './previewDocument';
+import { buildPreviewPage, srcsetCandidates, type PreviewPage } from './previewDocument';
 import { PREVIEW_SOURCE } from './previewPrelude';
 import { parsePreviewCell, PreviewCourseContext, shownPart, wholePage } from './previewCell';
 import { assetUrl, loadImage } from './useWebPreview';
@@ -33,15 +33,22 @@ const MAX_HEIGHT = 600;
 const SCROLL_HEIGHT = 160;
 const LOOP_LIMIT_MS = 2000;
 const DOCTYPE = /^\s*<!doctype\s/i;
-// A picture the page names: an <img>'s src or a url() in its CSS
-const IMAGE_REF = /\bsrc\s*=\s*["']([^"']+)["']|url\(\s*["']?([^"')]+)["']?\s*\)/gi;
-const IMAGE_FILE = /\.(svg|png|jpe?g|gif|webp)$/i;
+// A file of the course the page names: a picture, a video or a sound, in a
+// src, a video's poster, a srcset or a url() in its CSS
+const ASSET_REF =
+  /\b(?:src|poster)\s*=\s*["']([^"']+)["']|\bsrcset\s*=\s*["']([^"']+)["']|url\(\s*["']?([^"')]+)["']?\s*\)/gi;
 
-function imagePaths(page: string): string[] {
+function assetPaths(page: string): string[] {
   const paths = new Set<string>();
-  for (const match of page.matchAll(IMAGE_REF)) {
-    const path = resolveWebPath('index.html', match[1] ?? match[2] ?? '');
-    if (path && IMAGE_FILE.test(path)) paths.add(path);
+  for (const match of page.matchAll(ASSET_REF)) {
+    const refs =
+      match[2] !== undefined
+        ? srcsetCandidates(match[2]).map((c) => c.url)
+        : [match[1] ?? match[3] ?? ''];
+    for (const ref of refs) {
+      const path = resolveWebPath('index.html', ref);
+      if (path && isAssetPath(path)) paths.add(path);
+    }
   }
   return [...paths];
 }
@@ -70,12 +77,12 @@ export function WebPreviewCell({ source, language, scroll = false }: WebPreviewC
   useEffect(() => {
     let cancelled = false;
     const draw = async () => {
-      // The course's pictures the page names, as the lesson's own preview
-      // has them (img/station.svg)
+      // The course's pictures, videos and sounds the page names, as the
+      // lesson's own preview has them (img/station.svg)
       const images: Record<string, string> = {};
       if (course) {
         await Promise.all(
-          imagePaths(page).map(async (path) => {
+          assetPaths(page).map(async (path) => {
             const data = await loadImage(assetUrl(course, path));
             if (data) images[path] = data;
           }),

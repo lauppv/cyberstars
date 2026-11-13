@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "name": "The pad camera and its caption are one figure",
+      "visible": true,
+      "steps": [
+        { "open": "dashboard.html" },
+        {
+          "text": "main figure:has(#pad-camera) > figcaption",
+          "nonEmpty": true,
+          "label": "the pad camera's caption (<figcaption> in its figure)"
+        },
+        { "playing": "#pad-camera", "label": "the pad camera (#pad-camera)" },
+        { "muted": "#pad-camera", "label": "the pad camera (#pad-camera)" },
+        { "attr": "#pad-camera", "name": "controls", "label": "the pad camera (#pad-camera)" }
+      ]
+    },
+    {
+      "name": "The station's picture, with its text and its caption",
+      "visible": true,
+      "steps": [
+        { "open": "dashboard.html" },
+        {
+          "exists": "main img[src$=\"station.svg\"]",
+          "label": "the station's picture (img/station.svg) in the main part"
+        },
+        { "loaded": "main img[src$=\"station.svg\"]", "label": "the station's picture" },
+        {
+          "exists": "main img[src$=\"station.svg\"][alt]:not([alt=\"\"])",
+          "label": "the station's picture with a text for those who can't see it (alt)"
+        },
+        {
+          "text": "main figure:has(img[src$=\"station.svg\"]) > figcaption",
+          "nonEmpty": true,
+          "label": "the station picture's caption (<figcaption> in its figure)"
+        },
+        {
+          "count": "main h2",
+          "atLeast": 4,
+          "label": "headings of the dashboard's parts (<h2>)"
+        },
+        { "outline": true }
+      ]
+    },
+    {
+      "name": "The launch video and the countdown work as before",
+      "steps": [
+        { "open": "dashboard.html" },
+        {
+          "loaded": "#launch-video, #launch-video track, #countdown",
+          "label": "the launch video, its words and the countdown"
+        },
+        { "playing": "#launch-video", "off": true, "label": "the launch video (#launch-video)" },
+        {
+          "text": "figure:has(#launch-video) > figcaption",
+          "nonEmpty": true,
+          "label": "the launch video's caption"
+        },
+        { "attr": "#countdown", "name": "controls", "label": "the countdown (#countdown)" }
+      ]
+    }
+  ]
+}

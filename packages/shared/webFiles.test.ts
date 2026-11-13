@@ -57,6 +57,9 @@ describe('parseWebFiles and serializeWebFiles', () => {
     { path: 'notes.txt', content: 'A fence ``` inside\n````\nand more' },
     { path: 'empty.js', content: '' },
     { path: 'img/rocket.png', content: '', image: true },
+    { path: 'video/launch.webm', content: '', image: true },
+    { path: 'audio/countdown.mp3', content: '', image: true },
+    { path: 'video/launch.vtt', content: 'WEBVTT\n\n00:00.000 --> 00:02.000\nLift off' },
   ];
 
   it('reads back what it wrote, backticks and empty files included', () => {
@@ -69,6 +72,9 @@ describe('parseWebFiles and serializeWebFiles', () => {
     expect(text).toContain('```css css/style.css\n');
     expect(text).toContain('`````text notes.txt\n');
     expect(text).toContain('```image img/rocket.png\n\n```');
+    expect(text).toContain('```video video/launch.webm\n\n```');
+    expect(text).toContain('```audio audio/countdown.mp3\n\n```');
+    expect(text).toContain('```text video/launch.vtt\n');
   });
 
   it('leaves out invalid, repeated or mislabelled blocks and the text between them', () => {
@@ -86,6 +92,10 @@ describe('parseWebFiles and serializeWebFiles', () => {
       '```image notes.txt',
       '```',
       '```html photo.png',
+      '```',
+      '```image video/launch.webm',
+      '```',
+      '```video audio/countdown.mp3',
       '```',
       '```python',
       'print(1)',

@@ -1,0 +1,222 @@
+{
+  "cases": [
+    {
+      "name": "The settings page is a page like the others",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the page's content in <main>, with its heading"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>) at the very end of the page"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "Three real buttons for the theme",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "exists": "main #theme-buttons",
+          "label": "the box of theme buttons (#theme-buttons) in the main part"
+        },
+        {
+          "exists": "#theme-buttons > button#theme-light[type=\"button\"]",
+          "label": "the Light button (a <button type=\"button\"> with the id theme-light)"
+        },
+        {
+          "exists": "#theme-buttons > button#theme-dark[type=\"button\"]",
+          "label": "the Dark button (a <button type=\"button\"> with the id theme-dark)"
+        },
+        {
+          "exists": "#theme-buttons > button#theme-system[type=\"button\"]",
+          "label": "the System button (a <button type=\"button\"> with the id theme-system)"
+        },
+        {
+          "text": "#theme-light",
+          "contains": "Light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#theme-dark",
+          "contains": "Dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#theme-system",
+          "contains": "System",
+          "label": "the System button"
+        },
+        {
+          "order": ["main h2", "#theme-buttons"],
+          "label": "a heading, then the theme buttons"
+        },
+        {
+          "press": "Tab",
+          "on": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "focused": "#theme-dark",
+          "label": "the Dark button, after pressing Tab on the Light button"
+        }
+      ]
+    },
+    {
+      "name": "Every page's menu leads to the settings",
+      "visible": true,
+      "steps": [
+        {
+          "open": "index.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of index.html"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of crew.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of people/vega.html"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of schedule.html"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of boarding.html"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of wiki-greenhouse.html"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of wiki-airlock.html"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of wiki.html"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of wiki-tools.html"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of dashboard.html"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "exists": "header nav a[href$=\"settings.html\"]",
+          "label": "a link to settings.html in the menu of settings.html"
+        }
+      ]
+    },
+    {
+      "name": "The menu link to the settings works, from the commander's page too",
+      "steps": [
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "header nav a[href$=\"settings.html\"]",
+          "label": "the menu link to the settings"
+        },
+        {
+          "at": "settings.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "header nav a[href$=\"settings.html\"]",
+          "label": "the menu link to the settings"
+        },
+        {
+          "at": "settings.html"
+        }
+      ]
+    }
+  ]
+}

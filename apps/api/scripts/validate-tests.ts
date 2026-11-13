@@ -395,6 +395,11 @@ const WEB_CHECKS = [
   'at',
   'value',
   'checked',
+  'playing',
+  'muted',
+  'animated',
+  'focused',
+  'shows',
   'sent',
   'notSent',
   'inView',
@@ -437,6 +442,11 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   at: [],
   value: ['equals', 'contains', 'nonEmpty', 'empty', 'label'],
   checked: ['off', 'label'],
+  playing: ['off', 'label'],
+  muted: ['off', 'label'],
+  animated: ['off', 'label'],
+  focused: ['label'],
+  shows: ['file', 'label'],
   sent: [],
   notSent: [],
   inView: ['out', 'label'],
@@ -467,6 +477,11 @@ const NEEDS_LABEL = new Set([
   'select',
   'value',
   'checked',
+  'playing',
+  'muted',
+  'animated',
+  'focused',
+  'shows',
   'inView',
   'onTop',
   'against',
@@ -475,7 +490,29 @@ const NEEDS_LABEL = new Set([
   'visible',
   'hidden',
 ]);
-const CASE_KEYS = new Set(['name', 'visible', 'page', 'width', 'files', 'fetch', 'steps']);
+const CASE_KEYS = new Set([
+  'name',
+  'visible',
+  'page',
+  'width',
+  'files',
+  'fetch',
+  'clock',
+  'colorScheme',
+  'reducedMotion',
+  'storage',
+  'steps',
+]);
+// A clock is a date and a time, to the second, without a zone (the page's UTC)
+const CLOCK = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$/;
+
+// A date and time that exists: Date.parse rolls 2031-02-30 into March, so
+// the time must come back as written
+function isClock(value: unknown): boolean {
+  if (!isText(value) || !CLOCK.test(value)) return false;
+  const at = new Date(`${value}Z`);
+  return !isNaN(at.getTime()) && at.toISOString().slice(0, 19) === value;
+}
 
 const isText = (v: unknown): v is string => typeof v === 'string' && v.trim() !== '';
 const isPage = (v: unknown): v is string => isText(v) && isValidWebPath(v) && v.endsWith('.html');
@@ -534,6 +571,12 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
   }
   if (!isText(value)) return `a ${own} step without a selector`;
   if (own === 'fill' && typeof step.text !== 'string') return 'a fill step without its text';
+  if (own === 'shows') {
+    if (!(isText(step.file) && isValidWebPath(step.file))) {
+      return 'a shows step names the file of the site it shows';
+    }
+    if (!sitePaths.has(step.file)) return `shows names ${step.file}, which the site doesn't have`;
+  }
   if (own === 'select' && !isText(step.option)) return 'a select step without its option';
   if (own === 'value') {
     const ways = ['equals', 'contains', 'nonEmpty', 'empty'].filter((k) => k in step);
@@ -546,8 +589,12 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
       return "a value step's nonEmpty and empty are true";
     }
   }
-  if (own === 'checked' && step.off !== undefined && step.off !== true) {
-    return "a checked step's off is true or left out";
+  if (
+    (own === 'checked' || own === 'playing' || own === 'muted' || own === 'animated') &&
+    step.off !== undefined &&
+    step.off !== true
+  ) {
+    return `a ${own} step's off is true or left out`;
   }
   if (own === 'inView' && step.out !== undefined && step.out !== true) {
     return "an inView step's out is true or left out";
@@ -662,6 +709,24 @@ export function auditWebSpec(spec: WebTestsSpec, sitePaths: Set<string>): string
       (!Number.isInteger(c.width) || c.width < WEB_MIN_WIDTH || c.width > WEB_MAX_WIDTH)
     ) {
       messages.push(`${at}: width ${c.width} is not between ${WEB_MIN_WIDTH} and ${WEB_MAX_WIDTH}`);
+    }
+    if (c.clock !== undefined && !isClock(c.clock)) {
+      messages.push(`${at}: clock ${c.clock} is not a date and time like 2031-05-14T09:30:00`);
+    }
+    if (c.colorScheme !== undefined && c.colorScheme !== 'light' && c.colorScheme !== 'dark') {
+      messages.push(`${at}: colorScheme is light or dark`);
+    }
+    if (c.reducedMotion !== undefined && c.reducedMotion !== true) {
+      messages.push(`${at}: reducedMotion is true or left out`);
+    }
+    if (
+      c.storage !== undefined &&
+      (typeof c.storage !== 'object' ||
+        c.storage === null ||
+        Array.isArray(c.storage) ||
+        !Object.entries(c.storage).every(([k, v]) => isText(k) && typeof v === 'string'))
+    ) {
+      messages.push(`${at}: storage holds names with text values`);
     }
     for (const [url, answer] of Object.entries(c.fetch ?? {})) {
       if (!/^https?:\/\//.test(url) || typeof answer?.body !== 'string') {

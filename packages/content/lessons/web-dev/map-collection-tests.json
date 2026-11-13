@@ -1,0 +1,119 @@
+{
+  "cases": [
+    {
+      "name": "Each theme picked, with how many times",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "order": ["#reset-settings", "#picks"],
+          "label": "the button #reset-settings, then #picks"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: nothing yet",
+          "label": "the paragraph #picks"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: light 1",
+          "label": "the paragraph #picks"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: light 2, dark 1",
+          "label": "the paragraph #picks"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "In the order they were first picked",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "click": "#theme-system",
+          "label": "the System button"
+        },
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: system 2, dark 3",
+          "label": "the paragraph #picks"
+        }
+      ]
+    },
+    {
+      "name": "Brought settings count too",
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"dark\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: dark 2",
+          "label": "the paragraph #picks"
+        }
+      ]
+    },
+    {
+      "name": "Only this visit",
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "text": "#picks",
+          "equals": "Picked: nothing yet",
+          "label": "the paragraph #picks"
+        }
+      ]
+    }
+  ]
+}

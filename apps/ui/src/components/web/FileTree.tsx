@@ -4,14 +4,16 @@ import {
   FileCode,
   FilePlus,
   FileText,
+  Film,
   Folder,
   FolderPlus,
   Image,
+  Music,
   PanelLeftOpen,
   Pencil,
   Trash2,
 } from 'lucide-react';
-import { extensionOf, type WebFile } from '@cyberstars/shared/webFiles';
+import { assetLanguage, extensionOf, type WebFile } from '@cyberstars/shared/webFiles';
 
 // The files of a web lesson's site as a tree (CYB-109): folders first, then
 // files, by name. A click on a file opens it; a folder picked is where a new
@@ -81,6 +83,9 @@ interface FileTreeProps {
   closed?: boolean;
   onShow?: () => void;
 }
+
+// The icon of a picture, a video or a sound of the course
+const ASSET_ICONS = { image: Image, video: Film, audio: Music };
 
 const iconButton =
   'w-6 h-6 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface)] bg-transparent border-none cursor-pointer transition';
@@ -161,7 +166,7 @@ export function FileTree({
     const Icon = node.folder
       ? Folder
       : node.image
-        ? Image
+        ? ASSET_ICONS[assetLanguage(node.path) ?? 'image']
         : extensionOf(node.path) === 'txt'
           ? FileText
           : FileCode;

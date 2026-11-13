@@ -39,7 +39,9 @@ interface Ran {
 
 // Runs every case (the server would stop at the first failure) and returns
 // the runner's lines after its header
-function run(files: Record<string, string>, cases: WebTestCase[], stepMs = 3000): Ran[] {
+type SiteFile = string | { base64: string };
+
+function run(files: Record<string, SiteFile>, cases: WebTestCase[], stepMs = 3000): Ran[] {
   const payloadPath = path.join(dir, 'payload.json');
   fs.writeFileSync(
     payloadPath,
@@ -68,7 +70,7 @@ function run(files: Record<string, string>, cases: WebTestCase[], stepMs = 3000)
 }
 
 // Judges each case as the server does, every page of the site there
-function verdicts(files: Record<string, string>, cases: WebTestCase[], stepMs?: number) {
+function verdicts(files: Record<string, SiteFile>, cases: WebTestCase[], stepMs?: number) {
   const pages = new Set(Object.keys(files));
   return run(files, cases, stepMs).map((ran, i) => judgeWebCase(cases[i], i, ran as never, pages));
 }
@@ -276,6 +278,263 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     ]);
     expect(ok.passed).toBe(true);
     expect(lost.web).toMatchObject({ kind: 'loaded' });
+  });
+
+  it('tells a video or a sound that loaded, plays or is muted, and reads its words', () => {
+    const assets = path.join(
+      import.meta.dirname,
+      '../../../../packages/content/lessons/web-dev/assets',
+    );
+    const asset = (file: string) => ({
+      base64: fs.readFileSync(path.join(assets, file)).toString('base64'),
+    });
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <video class="shown" src="video/launch.webm" controls>
+          <track src="words.vtt" kind="captions" srclang="en" label="English">
+        </video>
+        <video class="own" src="video/launch.webm" autoplay muted loop></video>
+        <video class="loud" src="video/launch.webm" autoplay></video>
+        <audio src="audio/countdown.mp3" controls></audio>
+        <audio class="later" src="audio/countdown.mp3" preload="none" controls></audio>
+        <audio class="later-lost" src="audio/gone.mp3" preload="none" controls></audio>
+        <video class="lost" src="video/gone.webm" controls><track src="gone.vtt"></video>
+        <button onclick="document.querySelector('.own').muted = false">Sound</button>
+      </body></html>`,
+      'words.vtt': 'WEBVTT\n\n00:00.000 --> 00:02.000\nLift off',
+      'video/launch.webm': asset('video/launch.webm'),
+      'audio/countdown.mp3': asset('audio/countdown.mp3'),
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'Loaded',
+        visible: true,
+        steps: [
+          {
+            loaded: '.shown, .shown track, audio:not(.later-lost)',
+            label: 'the video, its words and the sounds',
+          },
+        ],
+      },
+      {
+        name: 'Lost sound read only on play',
+        visible: true,
+        steps: [{ loaded: '.later-lost', label: 'the lost sound' }],
+      },
+      {
+        name: 'Plays on its own only when muted',
+        visible: true,
+        steps: [
+          { playing: '.own', label: 'the muted video' },
+          { muted: '.own', label: 'the muted video' },
+          { playing: '.loud', off: true, label: 'the loud video' },
+          { playing: '.shown', off: true, label: 'the video with buttons' },
+          { click: 'button', label: 'the Sound button' },
+          { muted: '.own', off: true, label: 'the muted video' },
+        ],
+      },
+      { name: 'Lost video', visible: true, steps: [{ loaded: '.lost', label: 'the lost video' }] },
+      {
+        name: 'Lost words',
+        visible: true,
+        steps: [{ loaded: '.lost track', label: 'the lost words' }],
+      },
+      { name: 'Loud', visible: true, steps: [{ playing: '.loud', label: 'the loud video' }] },
+    ];
+    const [loaded, laterLost, playing, lost, lostWords, loud] = verdicts(files, cases);
+    expect(loaded.passed).toBe(true);
+    expect(laterLost.web).toEqual({ kind: 'loaded', label: 'the lost sound', detail: 'media' });
+    expect(playing.passed).toBe(true);
+    expect(lost.web).toEqual({ kind: 'loaded', label: 'the lost video', detail: 'media' });
+    expect(lostWords.web).toEqual({ kind: 'loaded', label: 'the lost words', detail: 'media' });
+    expect(loud.web).toEqual({ kind: 'playing', label: 'the loud video', expected: 'on' });
+  });
+
+  it('fixes the clock, moves it on with a wait, and reads what a returning visitor saved', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <p id="day"></p><p id="left">3</p><p id="theme"></p><p id="soon"></p><p id="frame"></p>
+        <script>
+          setTimeout(() => (document.querySelector('#soon').textContent = 'soon'), 0);
+          requestAnimationFrame(() => (document.querySelector('#frame').textContent = 'drawn'));
+          const now = new Date();
+          document.querySelector('#day').textContent =
+            now.toLocaleDateString('en-US', { weekday: 'long' }) + ' ' + now.getHours();
+          let left = 3;
+          const timer = setInterval(() => {
+            left = left - 1;
+            document.querySelector('#left').textContent = left;
+            if (left === 0) clearInterval(timer);
+          }, 1000);
+          document.querySelector('#theme').textContent = localStorage.getItem('theme') ?? 'none';
+          localStorage.setItem('theme', 'light');
+        </script>
+      </body></html>`,
+    };
+    const cases: WebTestCase[] = [
+      {
+        name: 'A fixed clock',
+        visible: true,
+        clock: '2031-05-14T09:30:00',
+        storage: { theme: 'dark' },
+        steps: [
+          { text: '#day', equals: 'Wednesday 9', label: 'the day' },
+          { text: '#soon', equals: 'soon', label: 'what a timer of 0 ms wrote' },
+          { text: '#frame', equals: 'drawn', label: 'what the first frame drew' },
+          { text: '#left', equals: '3', label: 'what is left' },
+          { wait: 2000 },
+          { text: '#left', equals: '1', label: 'what is left' },
+          { wait: 3000 },
+          { text: '#left', equals: '0', label: 'what is left' },
+          { text: '#theme', equals: 'dark', label: 'the theme saved' },
+          { open: 'index.html' },
+          { text: '#theme', equals: 'light', label: 'the theme saved' },
+        ],
+      },
+      {
+        name: 'Nothing saved',
+        visible: true,
+        steps: [{ text: '#theme', equals: 'none', label: 'the theme saved' }],
+      },
+    ];
+    expect(verdicts(files, cases).map((v) => v.passed)).toEqual([true, true]);
+  });
+
+  it('opens a page as the system asks, dark or with less movement, and reads the focus', () => {
+    const files = {
+      'index.html': `<!DOCTYPE html><html><head><style>
+        body { background-color: white; }
+        @media (prefers-color-scheme: dark) { body { background-color: black; } }
+        .dot, .lost { display: inline-block; }
+        .dot { animation: pulse 1s infinite; }
+        .lost { animation: nowhere 1s infinite; }
+        @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+        @keyframes pulse { to { opacity: 0.2; } }
+      </style></head><body>
+        <span class="dot">•</span><span class="lost">•</span><input id="name"><button>Go</button>
+        <script>
+          document.querySelector('button').addEventListener('click', () =>
+            document.querySelector('#name').focus());
+        </script>
+      </body></html>`,
+    };
+    const light = {
+      style: 'body',
+      prop: 'background-color',
+      equals: 'rgb(255, 255, 255)',
+      label: 'the page',
+    };
+    const dark = {
+      style: 'body',
+      prop: 'background-color',
+      equals: 'rgb(0, 0, 0)',
+      label: 'the page',
+    };
+    const moving = { animated: '.dot', label: 'the dot' };
+    const still = { animated: '.dot', off: true as const, label: 'the dot' };
+    const cases: WebTestCase[] = [
+      { name: 'Light', visible: true, steps: [light, moving] },
+      {
+        name: 'No keyframes',
+        visible: true,
+        steps: [{ animated: '.lost', label: 'the lost dot' }],
+      },
+      {
+        name: 'Dark',
+        visible: true,
+        colorScheme: 'dark',
+        reducedMotion: true,
+        steps: [dark, still],
+      },
+      {
+        name: 'Focus',
+        visible: true,
+        steps: [
+          { click: 'button', label: 'the button' },
+          { focused: '#name', label: 'the name field' },
+        ],
+      },
+      { name: 'Focus left', visible: true, steps: [{ focused: '#name', label: 'the name field' }] },
+      {
+        name: 'Focus elsewhere',
+        visible: true,
+        steps: [
+          { click: 'button', label: 'the button' },
+          { focused: 'button', label: 'the button' },
+        ],
+      },
+    ];
+    const [lit, lost, darkened, focus, nowhere, elsewhere] = verdicts(files, cases);
+    expect(lit.passed).toBe(true);
+    expect(lost.web).toEqual({ kind: 'animated', label: 'the lost dot', expected: 'on' });
+    expect(darkened.passed).toBe(true);
+    expect(focus.passed).toBe(true);
+    expect(nowhere.web).toEqual({ kind: 'focused', label: 'the name field', found: null });
+    expect(elsewhere.web).toEqual({
+      kind: 'focused',
+      label: 'the button',
+      found: '<input id="name">',
+    });
+  });
+
+  it('says which file a responsive picture shows at each width', () => {
+    const assets = path.join(
+      import.meta.dirname,
+      '../../../../packages/content/lessons/web-dev/assets',
+    );
+    const asset = (file: string) => ({
+      base64: fs.readFileSync(path.join(assets, file)).toString('base64'),
+    });
+    const files = {
+      'index.html': `<!DOCTYPE html><html><body>
+        <img class="sized" src="img/earth-small.jpg" alt=""
+          srcset="img/earth-small.jpg 640w, img/earth-large.jpg 1280w" sizes="100vw">
+        <picture>
+          <source media="(max-width: 600px)" srcset="img/earth-square.jpg">
+          <img class="framed" src="img/earth-large.jpg" alt="">
+        </picture>
+        <img class="elsewhere" alt="" srcset="https://cdn.example/img/earth-small.jpg 640w">
+      </body></html>`,
+      'img/earth-small.jpg': asset('img/earth-small.jpg'),
+      'img/earth-large.jpg': asset('img/earth-large.jpg'),
+      'img/earth-square.jpg': asset('img/earth-square.jpg'),
+    };
+    const at = (width: number, sized: string, framed: string): WebTestCase => ({
+      name: `At ${width}`,
+      visible: true,
+      width,
+      steps: [
+        { shows: '.sized', file: sized, label: 'the sized picture' },
+        { shows: '.framed', file: framed, label: 'the framed picture' },
+      ],
+    });
+    const cases = [
+      at(375, 'img/earth-small.jpg', 'img/earth-square.jpg'),
+      at(1280, 'img/earth-large.jpg', 'img/earth-large.jpg'),
+      at(375, 'img/earth-large.jpg', 'img/earth-square.jpg'),
+      {
+        name: 'From another site',
+        visible: true,
+        steps: [
+          { shows: '.elsewhere', file: 'img/earth-small.jpg', label: 'the picture from elsewhere' },
+        ],
+      },
+    ];
+    const [phone, computer, wrong, elsewhere] = verdicts(files, cases);
+    expect(elsewhere.web).toEqual({
+      kind: 'shows',
+      label: 'the picture from elsewhere',
+      expected: 'img/earth-small.jpg',
+      found: 'https://cdn.example/img/earth-small.jpg',
+    });
+    expect(phone.passed).toBe(true);
+    expect(computer.passed).toBe(true);
+    expect(wrong.web).toEqual({
+      kind: 'shows',
+      label: 'the sized picture',
+      expected: 'img/earth-large.jpg',
+      found: 'img/earth-small.jpg',
+    });
   });
 
   it('writes console values as the preview does: an element, a list, an object', () => {

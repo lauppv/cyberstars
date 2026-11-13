@@ -1,0 +1,273 @@
+{
+  "cases": [
+    {
+      "name": "On a phone, the cards one under the other",
+      "visible": true,
+      "width": 375,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": ".stats > .stat",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the cards"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "maxHeight": 210,
+          "label": "the crew's card"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(2), .week > li:nth-child(3), .week > li:nth-child(4)",
+          "arrange": "row",
+          "label": "Monday to Thursday"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(5)",
+          "arrange": "column",
+          "align": "start",
+          "label": "Monday and Friday, under it"
+        },
+        {
+          "against": ".week > li:nth-child(7)",
+          "in": ".week",
+          "side": "bottom",
+          "within": 1,
+          "inLabel": "the week",
+          "label": "Sunday"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 560 pixels wide too",
+      "visible": true,
+      "width": 560,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": ".stats > .stat",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the cards"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "maxHeight": 210,
+          "label": "the crew's card"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(2), .week > li:nth-child(3), .week > li:nth-child(4)",
+          "arrange": "row",
+          "label": "Monday to Thursday"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(5)",
+          "arrange": "column",
+          "align": "start",
+          "label": "Monday and Friday, under it"
+        },
+        {
+          "against": ".week > li:nth-child(7)",
+          "in": ".week",
+          "side": "bottom",
+          "within": 1,
+          "inLabel": "the week",
+          "label": "Sunday"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 600 pixels wide, two columns as before",
+      "visible": true,
+      "width": 600,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the crew's card and card 2"
+        },
+        {
+          "size": "#crew-count",
+          "minHeight": 360,
+          "label": "the crew's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "layout": ".week > li",
+          "arrange": "row",
+          "label": "the seven days"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "In a window 500 pixels wide",
+      "width": 500,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": ".stats > .stat",
+          "arrange": "column",
+          "gap": 16,
+          "label": "the cards"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "left",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#next-launch",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the next launch's card"
+        },
+        {
+          "against": "#crew-count",
+          "in": ".stats",
+          "side": "right",
+          "within": 1,
+          "inLabel": "the box of cards (.stats)",
+          "label": "the crew's card"
+        },
+        {
+          "size": "#crew-count",
+          "maxHeight": 210,
+          "label": "the crew's card"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(2), .week > li:nth-child(3), .week > li:nth-child(4)",
+          "arrange": "row",
+          "label": "Monday to Thursday"
+        },
+        {
+          "layout": ".week > li:nth-child(1), .week > li:nth-child(5)",
+          "arrange": "column",
+          "align": "start",
+          "label": "Monday and Friday, under it"
+        },
+        {
+          "against": ".week > li:nth-child(7)",
+          "in": ".week",
+          "side": "bottom",
+          "within": 1,
+          "inLabel": "the week",
+          "label": "Sunday"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a computer",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(2), .stats > .stat:nth-child(3)",
+          "arrange": "row",
+          "gap": 16,
+          "label": "the first three cards"
+        },
+        {
+          "size": "#next-launch",
+          "minWidth": 600,
+          "label": "the next launch's card"
+        },
+        {
+          "layout": ".week > li",
+          "arrange": "row",
+          "label": "the seven days"
+        }
+      ]
+    }
+  ]
+}

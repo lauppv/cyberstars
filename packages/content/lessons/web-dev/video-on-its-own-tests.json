@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "name": "The pad camera plays by itself, without sound",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "main video#pad-camera",
+          "label": "the pad camera (#pad-camera) in the main part"
+        },
+        {
+          "loaded": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "muted": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        }
+      ]
+    },
+    {
+      "name": "The pad camera can still be paused",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "attr": "#pad-camera",
+          "name": "controls",
+          "label": "the pad camera (#pad-camera)"
+        }
+      ]
+    },
+    {
+      "name": "The launch video still waits for a click on play",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        },
+        {
+          "attr": "#launch-video",
+          "name": "controls",
+          "label": "the launch video (#launch-video)"
+        }
+      ]
+    },
+    {
+      "name": "The pad camera starts again when it ends",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        }
+      ]
+    }
+  ]
+}

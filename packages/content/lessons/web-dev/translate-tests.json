@@ -1,0 +1,81 @@
+{
+  "cases": [
+    {
+      "name": "Under the mouse, a card moves up 4 pixels",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "style": "#crew-count",
+          "prop": "transform",
+          "equals": "none",
+          "label": "the crew's card, without the mouse over it"
+        },
+        {
+          "hover": "#crew-count",
+          "label": "the card under the mouse"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "transform",
+          "equals": "matrix(1, 0, 0, 1, 0, -4)",
+          "label": "the crew's card, under the mouse"
+        }
+      ]
+    },
+    {
+      "name": "Every card does it, slowly",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "hover": "#next-launch",
+          "label": "the card under the mouse"
+        },
+        {
+          "style": "#next-launch",
+          "prop": "transform",
+          "equals": "matrix(1, 0, 0, 1, 0, -4)",
+          "label": "the next launch's card, under the mouse"
+        },
+        {
+          "style": "#crew-count",
+          "prop": "transform",
+          "equals": "none",
+          "label": "the crew's card, without the mouse over it"
+        },
+        {
+          "style": ".stats > .stat",
+          "prop": "transition-property",
+          "not": "border-color",
+          "every": true,
+          "label": "every card's transition, which slows down its move too"
+        }
+      ]
+    },
+    {
+      "name": "The cards around it stay where they are",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "hover": ".stats > .stat:nth-child(2)",
+          "label": "the card under the mouse"
+        },
+        {
+          "layout": "#crew-count, .stats > .stat:nth-child(3)",
+          "arrange": "row",
+          "gap": 16,
+          "align": "start",
+          "label": "the crew's card and card 3, beside the card under the mouse"
+        },
+        {
+          "style": ".stats > .stat:nth-child(2)",
+          "prop": "border-top-color",
+          "equals": "rgb(255, 209, 102)",
+          "label": "card 2's border, under the mouse"
+        }
+      ]
+    }
+  ]
+}

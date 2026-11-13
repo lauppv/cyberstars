@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "name": "The LIVE label has a sentence for screen readers",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "text": "#pad-panel .live .visually-hidden",
+          "nonEmpty": true,
+          "label": "the text for screen readers (.visually-hidden) in the LIVE label"
+        },
+        {
+          "style": "#pad-panel .live .visually-hidden",
+          "prop": "display",
+          "not": "none",
+          "label": "the text for screen readers, which a screen reader still reads"
+        },
+        {
+          "style": "#pad-panel .live .visually-hidden",
+          "prop": "visibility",
+          "equals": "visible",
+          "label": "the text for screen readers, which a screen reader still reads"
+        }
+      ]
+    },
+    {
+      "name": "The eye sees only LIVE",
+      "visible": true,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "size": "#pad-panel .live .visually-hidden",
+          "maxWidth": 1,
+          "maxHeight": 1,
+          "label": "the text for screen readers"
+        },
+        {
+          "style": "#pad-panel .live .visually-hidden",
+          "prop": "overflow-x",
+          "equals": "hidden",
+          "label": "the text for screen readers, whose words don't spill out of its box"
+        },
+        {
+          "size": "#pad-panel .live",
+          "maxWidth": 90,
+          "label": "the LIVE label"
+        },
+        {
+          "fits": true
+        }
+      ]
+    },
+    {
+      "name": "On a phone too",
+      "width": 375,
+      "page": "dashboard.html",
+      "steps": [
+        {
+          "size": "#pad-panel .live .visually-hidden",
+          "maxWidth": 1,
+          "maxHeight": 1,
+          "label": "the text for screen readers"
+        },
+        {
+          "fits": true
+        }
+      ]
+    }
+  ]
+}

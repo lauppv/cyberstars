@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { WebFile } from '@cyberstars/shared/webFiles';
-import { buildPreviewPage } from './previewDocument';
+import { buildPreviewPage, srcsetCandidates } from './previewDocument';
 
 const prelude = {
   parentOrigin: 'http://localhost:5173',
@@ -129,6 +129,59 @@ describe('buildPreviewPage', () => {
     expect(missing).toEqual([]);
   });
 
+  it('gives each file a srcset offers its data, on an <img> and a <source>', () => {
+    const { doc, missing } = build(
+      [
+        {
+          path: 'index.html',
+          content:
+            '<picture><source media="(max-width: 400px)" srcset="img/earth-square.jpg"><img src="img/earth-large.jpg" srcset="img/earth-small.jpg 640w,img/earth-large.jpg 1280w, https://x.example/c.jpg 2x, img/gone.jpg 3x"></picture>',
+        },
+      ],
+      'index.html',
+      {
+        'img/earth-square.jpg': 'data:image/jpeg;base64,Uw',
+        'img/earth-small.jpg': 'data:image/jpeg;base64,U00',
+        'img/earth-large.jpg': 'data:image/jpeg;base64,TA',
+      },
+    );
+    expect(doc.querySelector('source')!.getAttribute('srcset')).toBe('data:image/jpeg;base64,Uw');
+    expect(doc.querySelector('img')!.getAttribute('srcset')).toBe(
+      'data:image/jpeg;base64,U00 640w, data:image/jpeg;base64,TA 1280w, https://x.example/c.jpg 2x, img/gone.jpg 3x',
+    );
+    expect(missing).toEqual([{ file: 'img/gone.jpg', from: 'index.html' }]);
+  });
+
+  it("gives the page's videos and sounds their data, and a video's words their text", () => {
+    const { doc, missing } = build(
+      [
+        {
+          path: 'index.html',
+          content:
+            '<video src="video/launch.webm" poster="img/a.png"><track src="video/launch.vtt" kind="captions"></video><audio><source src="audio/beep.mp3"></audio><video src="video/gone.webm"><track src="gone.vtt"></video>',
+        },
+        { path: 'video/launch.vtt', content: 'WEBVTT\n\n00:00.000 --> 00:01.000\nGo & see' },
+      ],
+      'index.html',
+      {
+        'video/launch.webm': 'data:video/webm;base64,V',
+        'img/a.png': 'data:image/png;base64,QQ',
+        'audio/beep.mp3': 'data:audio/mpeg;base64,A',
+      },
+    );
+    const [video] = Array.from(doc.querySelectorAll('video'));
+    expect(video.getAttribute('src')).toBe('data:video/webm;base64,V');
+    expect(video.getAttribute('poster')).toBe('data:image/png;base64,QQ');
+    expect(doc.querySelector('source')!.getAttribute('src')).toBe('data:audio/mpeg;base64,A');
+    expect(doc.querySelector('track')!.getAttribute('src')).toBe(
+      `data:text/vtt;charset=utf-8,${encodeURIComponent('WEBVTT\n\n00:00.000 --> 00:01.000\nGo & see')}`,
+    );
+    expect(missing).toEqual([
+      { file: 'video/gone.webm', from: 'index.html' },
+      { file: 'gone.vtt', from: 'index.html' },
+    ]);
+  });
+
   it("names the site's scripts by tokens, guarded, and leaves other kinds alone", () => {
     const { doc, scripts, missing } = build([
       {
@@ -229,5 +282,19 @@ describe('buildPreviewPage', () => {
   it('shows an empty page for a page the site lacks', () => {
     const { doc } = build([{ path: 'index.html', content: '<p>x</p>' }], 'other.html');
     expect(doc.body.textContent).toBe('');
+  });
+});
+
+describe('srcsetCandidates', () => {
+  it('reads each URL to its first space, with what follows it to the next comma', () => {
+    expect(srcsetCandidates(' a.jpg 640w ,b.jpg  2x,c.jpg,, data:image/png;base64,QQ 3x ')).toEqual(
+      [
+        { url: 'a.jpg', descriptor: '640w' },
+        { url: 'b.jpg', descriptor: '2x' },
+        { url: 'c.jpg', descriptor: '' },
+        { url: 'data:image/png;base64,QQ', descriptor: '3x' },
+      ],
+    );
+    expect(srcsetCandidates('')).toEqual([]);
   });
 });

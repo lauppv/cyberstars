@@ -1,0 +1,124 @@
+{
+  "cases": [
+    {
+      "name": "A visitor who saved settings before",
+      "visible": true,
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"dark\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: less",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "attr": "#theme-dark",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the Dark button (#theme-dark)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Both settings are kept after a reload",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"light\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: less",
+          "label": "the paragraph #current-motion"
+        }
+      ]
+    },
+    {
+      "name": "A theme button saves both too",
+      "visible": true,
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"light\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "click": "#theme-dark",
+          "label": "the Dark button"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: less",
+          "label": "the paragraph #current-motion"
+        }
+      ]
+    },
+    {
+      "name": "A first visit starts as in the HTML",
+      "page": "settings.html",
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        }
+      ]
+    },
+    {
+      "name": "Saved settings with spaces",
+      "page": "settings.html",
+      "storage": {
+        "settings": "{ \"motion\": \"full\", \"theme\": \"light\" }"
+      },
+      "steps": [
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        }
+      ]
+    }
+  ]
+}

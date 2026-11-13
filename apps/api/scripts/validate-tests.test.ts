@@ -208,7 +208,7 @@ describe('auditHarness', () => {
 });
 
 describe('auditWebSpec', () => {
-  const site = new Set(['index.html', 'crew.html', 'data/crew.json']);
+  const site = new Set(['index.html', 'crew.html', 'data/crew.json', 'img/earth-small.jpg']);
   const spec = (cases: unknown[]) => ({ cases }) as WebTestsSpec;
   const one = (steps: unknown[], extra: object = {}) =>
     auditWebSpec(spec([{ name: 'A case', steps, ...extra }]), site);
@@ -384,5 +384,55 @@ describe('auditWebSpec', () => {
       steps: [{ fits: true }],
     }));
     expect(auditWebSpec(spec(many), site)).toEqual([expect.stringMatching(/web limit/)]);
+  });
+
+  it('takes a clock, a color scheme, less movement and what localStorage holds', () => {
+    const page = {
+      clock: '2031-05-14T09:30:00',
+      colorScheme: 'dark',
+      reducedMotion: true,
+      storage: { theme: 'dark' },
+    };
+    expect(
+      one(
+        [
+          { focused: '#name', label: 'the name field' },
+          { animated: '.live', label: 'the live label' },
+          { animated: '.live', off: true, label: 'the live label' },
+          { shows: 'img', file: 'img/earth-small.jpg', label: 'the picture' },
+        ],
+        page,
+      ),
+    ).toEqual([]);
+    expect(one([{ fits: true }], { clock: '2031-05-14 09:30' })).toEqual([
+      expect.stringMatching(/clock/),
+    ]);
+    expect(one([{ fits: true }], { clock: '2031-13-40T09:30:00' })).toEqual([
+      expect.stringMatching(/clock/),
+    ]);
+    // Days and hours that don't exist, which Date.parse rolls on
+    for (const clock of ['2031-02-30T09:30:00', '2031-04-31T09:30:00', '2031-05-14T24:00:00']) {
+      expect(one([{ fits: true }], { clock })).toEqual([expect.stringMatching(/clock/)]);
+    }
+    expect(one([{ fits: true }], { clock: '2032-02-29T23:59:59' })).toEqual([]);
+    expect(one([{ fits: true }], { colorScheme: 'blue' })).toEqual([
+      expect.stringMatching(/colorScheme/),
+    ]);
+    expect(one([{ fits: true }], { reducedMotion: false })).toEqual([
+      expect.stringMatching(/reducedMotion/),
+    ]);
+    expect(one([{ fits: true }], { storage: { theme: 1 } })).toEqual([
+      expect.stringMatching(/storage/),
+    ]);
+    expect(one([{ shows: 'img', label: 'the picture' }])).toEqual([
+      expect.stringMatching(/shows step names the file/),
+    ]);
+    expect(one([{ shows: 'img', file: 'img/earth-smal.jpg', label: 'the picture' }])).toEqual([
+      "case 0, step 0: shows names img/earth-smal.jpg, which the site doesn't have",
+    ]);
+    expect(one([{ focused: '#name' }])).toEqual([expect.stringMatching(/without a label/)]);
+    expect(one([{ animated: '.live', off: false, label: 'it' }])).toEqual([
+      expect.stringMatching(/off is true or left out/),
+    ]);
   });
 });

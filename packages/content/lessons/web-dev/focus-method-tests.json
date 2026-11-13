@@ -1,0 +1,80 @@
+{
+  "cases": [
+    {
+      "name": "After forgetting the settings, the keyboard is on System",
+      "visible": true,
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"dark\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "focused": "#theme-system",
+          "label": "the System button (#theme-system)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "After bringing settings, the keyboard is on the theme they chose",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"light\",\"motion\":\"less\"}",
+          "label": "the box #import"
+        },
+        {
+          "click": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "focused": "#theme-light",
+          "label": "the Light button (#theme-light)"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        }
+      ]
+    },
+    {
+      "name": "With the keyboard only",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "fill": "#import",
+          "text": "{\"theme\":\"dark\",\"motion\":\"full\"}",
+          "label": "the box #import"
+        },
+        {
+          "press": "Enter",
+          "on": "#import-button",
+          "label": "the button #import-button"
+        },
+        {
+          "focused": "#theme-dark",
+          "label": "the Dark button (#theme-dark)"
+        },
+        {
+          "press": "Enter",
+          "on": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "focused": "#theme-system",
+          "label": "the System button (#theme-system)"
+        }
+      ]
+    }
+  ]
+}

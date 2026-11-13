@@ -1,0 +1,208 @@
+{
+  "cases": [
+    {
+      "name": "A click starts the countdown at 10",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "exists": "#countdown-panel button#start-countdown",
+          "label": "the button #start-countdown in the countdown's panel"
+        },
+        {
+          "exists": "#countdown-panel #launch-countdown",
+          "label": "the countdown #launch-countdown in the countdown's panel"
+        },
+        {
+          "click": "#start-countdown",
+          "label": "the button #start-countdown"
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "10",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "9",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "6",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Lift off, then it stops",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "click": "#start-countdown",
+          "label": "the button #start-countdown"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "1",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "Lift off!",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "Lift off!",
+          "label": "the countdown (#launch-countdown)"
+        }
+      ]
+    },
+    {
+      "name": "The button waits while it counts",
+      "visible": true,
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "exists": "#start-countdown:enabled",
+          "label": "the button #start-countdown, ready to press"
+        },
+        {
+          "click": "#start-countdown",
+          "label": "the button #start-countdown"
+        },
+        {
+          "exists": "#start-countdown:disabled",
+          "label": "the button #start-countdown, which can't be pressed while it counts"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "exists": "#start-countdown:enabled",
+          "label": "the button #start-countdown, ready again after Lift off!"
+        }
+      ]
+    },
+    {
+      "name": "A second countdown",
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "click": "#start-countdown",
+          "label": "the button #start-countdown"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "Lift off!",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "click": "#start-countdown",
+          "label": "the button #start-countdown"
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "10",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "8",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 3000
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "Lift off!",
+          "label": "the countdown (#launch-countdown)"
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "Lift off!",
+          "label": "the countdown (#launch-countdown)"
+        }
+      ]
+    },
+    {
+      "name": "Nothing counts before the click",
+      "page": "dashboard.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 3000
+        },
+        {
+          "text": "#launch-countdown",
+          "equals": "",
+          "label": "the countdown (#launch-countdown)"
+        }
+      ]
+    }
+  ]
+}

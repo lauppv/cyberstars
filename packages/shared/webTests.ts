@@ -25,6 +25,18 @@ export interface WebTestCase {
   files?: Record<string, string>;
   /** Fixed answers to `fetch` of an address outside the site, by the whole address. */
   fetch?: Record<string, WebFetchAnswer>;
+  /**
+   * The date and time the page sees, as `2031-05-14T09:30:00` (UTC, the
+   * page's time zone). It stands still: a `wait` moves it on by as much and
+   * fires the page's timers in order, so a timer reads the same on every run.
+   */
+  clock?: string;
+  /** The visitor's system asks for this color scheme (`light` by default). */
+  colorScheme?: 'light' | 'dark';
+  /** The visitor's system asks for less movement (`prefers-reduced-motion: reduce`). */
+  reducedMotion?: true;
+  /** What `localStorage` holds when the case starts, for a visitor who comes back. */
+  storage?: Record<string, string>;
   steps: WebStep[];
 }
 
@@ -132,7 +144,11 @@ export type WebCheck =
   | ({ centered: string } & Labelled)
   /** The first element is as wide as its parent's content: a table across its column. */
   | ({ fills: string } & Labelled)
-  /** Every picture it picks has loaded: its file was found, whatever room its width and height keep. */
+  /**
+   * Every picture it picks has loaded: its file was found, whatever room its
+   * width and height keep. A video or a sound has loaded when the browser
+   * read its file and can play it, and a <track> when its words were read.
+   */
   | ({ loaded: string } & Labelled)
   /** The first element's size in px. */
   | ({
@@ -156,6 +172,22 @@ export type WebCheck =
     } & Labelled)
   /** The first checkbox or radio button is ticked now, or with `off` isn't. */
   | ({ checked: string; off?: true } & Labelled)
+  /** The first video or sound plays now, or with `off` doesn't (paused, ended or never started). */
+  | ({ playing: string; off?: true } & Labelled)
+  /** The first video or sound is muted now, however it was, or with `off` isn't. */
+  | ({ muted: string; off?: true } & Labelled)
+  /**
+   * The first element has a CSS animation running now, one whose @keyframes
+   * the page has, or with `off` none (a finished one or `animation: none`).
+   */
+  | ({ animated: string; off?: true } & Labelled)
+  /** The keyboard's focus is on the first element. */
+  | ({ focused: string } & Labelled)
+  /**
+   * The first picture shows this file of the site now, out of those its
+   * `srcset` or its `<picture>` offer: the one the browser picked.
+   */
+  | ({ shows: string; file: string } & Labelled)
   /**
    * The last form sent had these fields with these values, others aside (a
    * field sent twice, two ticked boxes of one name, has each of its values).
@@ -292,6 +324,12 @@ export interface WebObservation {
   forms?: [string, string][][];
   /** A checked check's: whether the first box is ticked. */
   checked?: boolean;
+  /** A playing check's: whether the first video or sound plays. */
+  playing?: boolean;
+  /** A muted check's: whether the first video or sound is muted. */
+  muted?: boolean;
+  /** A focused check's: whether the focus is on the first element (`values` names what has it). */
+  focused?: boolean;
   /** An inView check's: the window's height, against which `boxes` (in the window) are read. */
   windowHeight?: number;
   /** An against check's: each element's box and its ancestor's, in pairs. */
@@ -334,6 +372,11 @@ type WebFailureKind =
   | 'at'
   | 'value'
   | 'checked'
+  | 'playing'
+  | 'muted'
+  | 'animated'
+  | 'focused'
+  | 'shows'
   | 'sent'
   | 'inView'
   | 'onTop'
@@ -494,6 +537,12 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         : `Expected ${label} with ${want}, found ${had}.`;
     }
     case 'style': {
+      // A custom property that isn't set reads as nothing at all
+      if (f.compare === 'not' && expected === '') {
+        return ro
+          ? `Se aștepta ${label} cu ${f.detail} dat, dar nu e dat.`
+          : `Expected ${label} with ${f.detail} set, found it not set.`;
+      }
       if (f.compare === 'not') {
         // The browser reports a color as numbers; a few are said by their names
         const said = (v: string | null) => (v !== null && COLOR_NAMES[v]) || v;
@@ -559,6 +608,12 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
         : `Expected ${label} centered in its parent in a window ${w}px wide, found ${left}px of room on the left and ${right}px on the right.`;
     }
     case 'loaded':
+      // A video, a sound or their words: loaded, not seen
+      if (f.detail === 'media') {
+        return ro
+          ? `Se aștepta ca ${label} să se încarce, dar fișierul lipsește sau nu poate fi citit: verifică-i calea și ce scrie în el.`
+          : `Expected ${label} to load, found its file missing or unreadable: check its path and what is in it.`;
+      }
       return ro
         ? `Se aștepta ca ${label} să se vadă, dar fișierul nu e găsit: verifică-i calea.`
         : `Expected ${label} to show, found its file missing: check its path.`;
@@ -666,6 +721,41 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca ${label} să fie bifat, dar nu e.`
         : `Expected ${label} ticked, found it not ticked.`;
+    case 'playing':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să nu ruleze, dar rulează.`
+          : `Expected ${label} not playing, found it playing.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să ruleze, dar e oprit.`
+        : `Expected ${label} playing, found it stopped.`;
+    case 'muted':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să aibă sunet, dar e pe mut.`
+          : `Expected ${label} with its sound on, found it muted.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să fie pe mut, dar are sunet.`
+        : `Expected ${label} muted, found its sound on.`;
+    case 'animated':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să stea pe loc, dar are o animație: ${found}.`
+          : `Expected ${label} still, found it animated: ${found}.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să aibă o animație, dar nu are niciuna (verifică și numele din @keyframes).`
+        : `Expected ${label} animated, found no animation running (check the name in @keyframes too).`;
+    case 'focused':
+      return ro
+        ? `Se aștepta ca focusul să fie pe ${label}, dar ${found ? `e pe ${found}` : 'nu e pe nimic'}.`
+        : `Expected the focus on ${label}, found it ${found ? `on ${found}` : 'on nothing'}.`;
+    case 'shows':
+      return ro
+        ? `Se aștepta ca ${label} să arate ${expected}, dar arată ${found ?? 'nimic'}.`
+        : `Expected ${label} to show ${expected}, found ${found ?? 'nothing'}.`;
     case 'sent':
       if (f.detail === 'none') {
         return ro

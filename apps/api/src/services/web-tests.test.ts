@@ -521,6 +521,70 @@ describe('judgeStep', () => {
     });
   });
 
+  it('judges a video or a sound: playing, muted, loaded', () => {
+    expect(judge({ playing: 'video', label: 'the video' }, { count: 1, playing: true })).toBeNull();
+    expect(judge({ playing: 'video', label: 'the video' }, { count: 1, playing: false })).toEqual({
+      kind: 'playing',
+      label: 'the video',
+      expected: 'on',
+    });
+    expect(
+      judge({ playing: 'video', off: true, label: 'the video' }, { count: 1, playing: false }),
+    ).toBeNull();
+    expect(judge({ muted: 'video', label: 'the video' }, { count: 1, muted: false })).toEqual({
+      kind: 'muted',
+      label: 'the video',
+      expected: 'on',
+    });
+    expect(
+      judge({ muted: 'video', off: true, label: 'the video' }, { count: 1, muted: false }),
+    ).toBeNull();
+    expect(
+      judge({ loaded: 'video, track', label: 'the video' }, { count: 2, values: ['yes', 'media'] }),
+    ).toEqual({ kind: 'loaded', label: 'the video', detail: 'media' });
+    expect(judge({ loaded: 'img', label: 'the picture' }, { count: 1, values: ['no'] })).toEqual({
+      kind: 'loaded',
+      label: 'the picture',
+    });
+  });
+
+  it('judges whether an animation runs', () => {
+    const on = { animated: '.live', label: 'the live label' };
+    const off = { animated: '.live', off: true as const, label: 'the live label' };
+    expect(judge(on, { count: 1, values: ['pulse'] })).toBeNull();
+    expect(judge(on, { count: 1, values: [] })).toEqual({
+      kind: 'animated',
+      label: 'the live label',
+      expected: 'on',
+    });
+    expect(judge(off, { count: 1, values: [] })).toBeNull();
+    expect(judge(off, { count: 1, values: ['pulse', 'glow'] })).toEqual({
+      kind: 'animated',
+      label: 'the live label',
+      expected: 'off',
+      found: 'pulse, glow',
+    });
+  });
+
+  it('judges where the focus is and which file a picture shows', () => {
+    const focus = { focused: '#task', label: 'the new task' };
+    expect(judge(focus, { count: 1, focused: true, values: [null] })).toBeNull();
+    expect(judge(focus, { count: 1, focused: false, values: ['<button>'] })).toEqual({
+      kind: 'focused',
+      label: 'the new task',
+      found: '<button>',
+    });
+    expect(judge(focus, { count: 0 })).toEqual({ kind: 'missing', label: 'the new task' });
+    const shows = { shows: 'img', file: 'img/earth-small.jpg', label: 'the photo' };
+    expect(judge(shows, { count: 1, values: ['img/earth-small.jpg'] })).toBeNull();
+    expect(judge(shows, { count: 1, values: ['img/earth-large.jpg'] })).toEqual({
+      kind: 'shows',
+      label: 'the photo',
+      expected: 'img/earth-small.jpg',
+      found: 'img/earth-large.jpg',
+    });
+  });
+
   it('tells an element in the window from one out of it, and one on top from one covered', () => {
     const box = (y: number) => ({
       count: 1,

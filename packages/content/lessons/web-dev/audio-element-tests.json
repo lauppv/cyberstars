@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "name": "The countdown, with its buttons",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "main audio#countdown",
+          "label": "the countdown (#countdown) in the main part"
+        },
+        {
+          "attr": "#countdown",
+          "name": "controls",
+          "label": "the countdown (#countdown)"
+        },
+        {
+          "visible": "#countdown",
+          "label": "the countdown (#countdown)"
+        },
+        {
+          "loaded": "#countdown",
+          "label": "the countdown (#countdown)"
+        }
+      ]
+    },
+    {
+      "name": "The countdown waits for the visitor",
+      "visible": true,
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "playing": "#countdown",
+          "off": true,
+          "label": "the countdown (#countdown)"
+        }
+      ]
+    },
+    {
+      "name": "The videos are as before",
+      "steps": [
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "playing": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "muted": "#pad-camera",
+          "label": "the pad camera (#pad-camera)"
+        },
+        {
+          "playing": "#launch-video",
+          "off": true,
+          "label": "the launch video (#launch-video)"
+        }
+      ]
+    }
+  ]
+}

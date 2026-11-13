@@ -1,0 +1,119 @@
+{
+  "cases": [
+    {
+      "name": "The button forgets the saved settings",
+      "visible": true,
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"dark\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "exists": "button#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Dark",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        },
+        {
+          "text": "#settings-text",
+          "equals": "As text: {\"theme\":\"system\",\"motion\":\"full\"}",
+          "label": "the paragraph #settings-text"
+        },
+        {
+          "attr": "#theme-system",
+          "name": "aria-pressed",
+          "equals": "true",
+          "label": "the System button (#theme-system)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "After a reload, nothing is saved",
+      "visible": true,
+      "page": "settings.html",
+      "storage": {
+        "settings": "{\"theme\":\"light\",\"motion\":\"less\"}"
+      },
+      "steps": [
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "text": "#current-motion",
+          "equals": "Motion: full",
+          "label": "the paragraph #current-motion"
+        }
+      ]
+    },
+    {
+      "name": "Choosing again saves again",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "click": "#theme-light",
+          "label": "the Light button"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Light",
+          "label": "the paragraph #current-theme"
+        }
+      ]
+    },
+    {
+      "name": "Nothing saved, nothing breaks",
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#reset-settings",
+          "label": "the button #reset-settings"
+        },
+        {
+          "text": "#current-theme",
+          "equals": "Theme: Same as my device",
+          "label": "the paragraph #current-theme"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

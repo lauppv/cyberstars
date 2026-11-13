@@ -7,16 +7,17 @@
 //
 // The starter (<slug>-code.md), the reference (<slug>-solution.md), the
 // student's saved code, the tutor's view of the work and a forum post all use
-// it, so a site is saved, reset and shared like any lesson's code. An image
-// is a block with the `image` language and nothing in it: it names a file of
-// the course's `assets/` folder, read-only in the lesson.
+// it, so a site is saved, reset and shared like any lesson's code. An image,
+// a video or a sound is a block with the `image`, `video` or `audio` language
+// and nothing in it: it names a file of the course's `assets/` folder,
+// read-only in the lesson.
 
 import { WEB_COURSE_KEYS } from './constants.js';
 
 export interface WebFile {
   path: string;
   content: string;
-  // An image the lesson brings, never written by the student
+  // An image, a video or a sound the lesson brings, never written by the student
   image?: boolean;
 }
 
@@ -31,16 +32,20 @@ const TEXT_LANGUAGES: Record<string, string> = {
   js: 'js',
   json: 'json',
   txt: 'text',
+  // A video's words, timed (WebVTT)
+  vtt: 'text',
 };
 export const WEB_TEXT_EXTENSIONS = Object.keys(TEXT_LANGUAGES);
 const WEB_IMAGE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'];
+const WEB_VIDEO_EXTENSIONS = ['webm'];
+const WEB_AUDIO_EXTENSIONS = ['mp3'];
 
 // The most code another lesson's program may have, saved or run
 export const CODE_MAX_LENGTH = 50_000;
 
 // A site's limits: a site holds several pages, so its saved text has more
 // room than another lesson's code (CYB-113)
-export const WEB_MAX_FILES = 30;
+export const WEB_MAX_FILES = 40;
 export const WEB_MAX_LENGTH = 150_000;
 
 // The most code a lesson of this course may carry
@@ -58,8 +63,19 @@ export function extensionOf(path: string): string {
   return dot > 0 ? name.slice(dot + 1).toLowerCase() : '';
 }
 
-export function isImagePath(path: string): boolean {
-  return WEB_IMAGE_EXTENSIONS.includes(extensionOf(path));
+// The language of the block a file the course brings is named by, by its
+// extension, or null for a file the student writes
+export function assetLanguage(path: string): 'image' | 'video' | 'audio' | null {
+  const ext = extensionOf(path);
+  if (WEB_IMAGE_EXTENSIONS.includes(ext)) return 'image';
+  if (WEB_VIDEO_EXTENSIONS.includes(ext)) return 'video';
+  if (WEB_AUDIO_EXTENSIONS.includes(ext)) return 'audio';
+  return null;
+}
+
+// A file the course brings: an image, a video or a sound
+export function isAssetPath(path: string): boolean {
+  return assetLanguage(path) !== null;
 }
 
 // A folder inside the site: names of letters, digits, dots, dashes and
@@ -82,12 +98,14 @@ export function isValidWebPath(path: string): boolean {
   if (segments.length > MAX_DEPTH + 1) return false;
   if (!segments.every((s) => SEGMENT.test(s) && s !== '.' && s !== '..')) return false;
   const ext = extensionOf(path);
-  return WEB_TEXT_EXTENSIONS.includes(ext) || WEB_IMAGE_EXTENSIONS.includes(ext);
+  return WEB_TEXT_EXTENSIONS.includes(ext) || isAssetPath(path);
 }
 
 // The language a file's block names
 function blockLanguage(file: WebFile): string {
-  return file.image ? 'image' : (TEXT_LANGUAGES[extensionOf(file.path)] ?? 'text');
+  return file.image
+    ? (assetLanguage(file.path) ?? 'image')
+    : (TEXT_LANGUAGES[extensionOf(file.path)] ?? 'text');
 }
 
 const OPENING = /^(`{3,})(\S+)[ \t]+(\S+)[ \t]*$/;
@@ -115,8 +133,13 @@ export function parseWebFiles(text: string): WebFile[] {
       i++;
     }
     i++;
-    const image = language === 'image';
-    if (!isValidWebPath(path) || seen.has(path) || image !== isImagePath(path)) continue;
+    // A block of the course's file names the language its extension has,
+    // and a block of the student's names none of those
+    const asset = assetLanguage(path);
+    const image = ['image', 'video', 'audio'].includes(language);
+    if (!isValidWebPath(path) || seen.has(path) || (image ? language !== asset : asset !== null)) {
+      continue;
+    }
     seen.add(path);
     files.push(image ? { path, content: '', image: true } : { path, content: body.join('\n') });
   }
