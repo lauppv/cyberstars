@@ -2421,6 +2421,12 @@ export const lessons = [
   { courseKey: 'web-dev', slug: 'play-and-pause', title: 'Your Own Play Button', sortOrder: 287 },
   { courseKey: 'web-dev', slug: 'mute-button', title: 'Sound On, Sound Off', sortOrder: 288 },
   { courseKey: 'web-dev', slug: 'dashboard-js-recap', title: 'JavaScript Recap', sortOrder: 289 },
+  {
+    courseKey: 'web-dev',
+    slug: 'mission-status-project',
+    title: 'Project: Rover Status',
+    sortOrder: 290,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -2753,6 +2759,7 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'play-and-pause',
         'mute-button',
         'dashboard-js-recap',
+        'mission-status-project',
       ],
     },
   ],
@@ -2769,6 +2776,7 @@ export const freshStartLessons: Record<string, string[]> = {
     'launch-board-project',
     'cargo-request-project',
     'spaceport-launch-project',
+    'mission-status-project',
   ],
 };
 
