@@ -493,6 +493,7 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
           <source media="(max-width: 600px)" srcset="img/earth-square.jpg">
           <img class="framed" src="img/earth-large.jpg" alt="">
         </picture>
+        <img class="elsewhere" alt="" srcset="https://cdn.example/img/earth-small.jpg 640w">
       </body></html>`,
       'img/earth-small.jpg': asset('img/earth-small.jpg'),
       'img/earth-large.jpg': asset('img/earth-large.jpg'),
@@ -511,8 +512,21 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
       at(375, 'img/earth-small.jpg', 'img/earth-square.jpg'),
       at(1280, 'img/earth-large.jpg', 'img/earth-large.jpg'),
       at(375, 'img/earth-large.jpg', 'img/earth-square.jpg'),
+      {
+        name: 'From another site',
+        visible: true,
+        steps: [
+          { shows: '.elsewhere', file: 'img/earth-small.jpg', label: 'the picture from elsewhere' },
+        ],
+      },
     ];
-    const [phone, computer, wrong] = verdicts(files, cases);
+    const [phone, computer, wrong, elsewhere] = verdicts(files, cases);
+    expect(elsewhere.web).toEqual({
+      kind: 'shows',
+      label: 'the picture from elsewhere',
+      expected: 'img/earth-small.jpg',
+      found: 'https://cdn.example/img/earth-small.jpg',
+    });
     expect(phone.passed).toBe(true);
     expect(computer.passed).toBe(true);
     expect(wrong.web).toEqual({

@@ -446,7 +446,10 @@ async function observe(page, step, seen, files) {
     const read = () =>
       elements.first().evaluate((el) => (el instanceof HTMLImageElement ? el.currentSrc : ''));
     const src = await waitFor(page, read, (v) => v !== '');
-    return { count, values: [src ? sitePath(new URL(src)) : null] };
+    if (!src) return { count, values: [null] };
+    // A picture from another site is no file of this one, whatever its path
+    const url = new URL(src);
+    return { count, values: [url.origin === ORIGIN ? sitePath(url) : url.href] };
   }
   if ('muted' in step) {
     return { count, muted: await elements.first().evaluate((el) => el.muted === true) };
