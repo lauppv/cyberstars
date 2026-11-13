@@ -1,0 +1,205 @@
+{
+  "cases": [
+    {
+      "name": "wiki-tools.html is a whole page of the site",
+      "visible": true,
+      "page": "wiki-tools.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "text": "body > header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "text": "body > main h1",
+          "nonEmpty": true,
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "text": "body > footer",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>)"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        },
+        {
+          "text": "head > title",
+          "contains": "Tools & Spare Parts",
+          "label": "the tab’s name (<title>)"
+        },
+        {
+          "text": "main > article h1",
+          "contains": "Tools & Spare Parts",
+          "label": "the biggest heading, inside an <article> in <main>"
+        },
+        {
+          "count": "body > :not(header, main, footer, script)",
+          "equals": 0,
+          "label": "elements directly in the <body>, outside the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "The article is in parts, with a fact box after it",
+      "visible": true,
+      "page": "wiki-tools.html",
+      "steps": [
+        {
+          "count": "main > article section",
+          "atLeast": 2,
+          "label": "parts (<section>) inside the article"
+        },
+        {
+          "count": "main section:not(:has(> :is(h2, h3, h4, h5, h6)))",
+          "equals": 0,
+          "label": "parts (<section>) with no heading of their own inside them"
+        },
+        {
+          "count": "article aside",
+          "equals": 0,
+          "label": "asides inside the article"
+        },
+        {
+          "exists": "main > aside.fact-box",
+          "label": "a fact box (<aside> with the class fact-box) in <main>"
+        },
+        {
+          "order": ["main > article", ".fact-box"],
+          "label": "the article, then the fact box"
+        },
+        {
+          "exists": ".fact-box :is(h2, h3, h4)",
+          "label": "a heading in the fact box"
+        }
+      ]
+    },
+    {
+      "name": "In a search and on a phone",
+      "visible": true,
+      "page": "wiki-tools.html",
+      "steps": [
+        {
+          "count": "head meta[name=\"description\"]",
+          "equals": 1,
+          "label": "descriptions (<meta name=\"description\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"description\"][content*=\"tool\" i]",
+          "label": "the description naming the page’s topic (tools)"
+        },
+        {
+          "count": "head meta[name=\"viewport\"]",
+          "equals": 1,
+          "label": "viewport lines (<meta name=\"viewport\">) in the <head>"
+        },
+        {
+          "exists": "head meta[name=\"viewport\"][content*=\"width=device-width\" i]",
+          "label": "a viewport line with width=device-width"
+        }
+      ]
+    },
+    {
+      "name": "A number stays with its unit, even with no room",
+      "visible": true,
+      "page": "wiki-tools.html",
+      "width": 320,
+      "files": {
+        "style.css": ".measure {\n  display: inline-block;\n  width: 0;\n}\n"
+      },
+      "steps": [
+        {
+          "count": ".fact-box .measure",
+          "atLeast": 2,
+          "label": "numbers with their units (.measure) in the fact box"
+        },
+        {
+          "size": ".fact-box .measure",
+          "maxHeight": 28,
+          "label": "the first number with its unit (.measure), squeezed into no room"
+        }
+      ]
+    },
+    {
+      "name": "The wiki leads to the new page, and back",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "text": ".wiki-list article",
+          "contains": "Tools & Spare Parts",
+          "label": "an entry for Tools & Spare Parts"
+        },
+        {
+          "click": ".wiki-list article a[href$=\"wiki-tools.html\"]",
+          "label": "the link to the tools page, in its entry"
+        },
+        {
+          "at": "wiki-tools.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki"
+        },
+        {
+          "at": "wiki.html"
+        }
+      ]
+    },
+    {
+      "name": "Every number stays with its unit",
+      "page": "wiki-tools.html",
+      "width": 320,
+      "files": {
+        "style.css": ".measure {\n  display: inline-block;\n  width: 0;\n}\n"
+      },
+      "steps": [
+        {
+          "count": ".fact-box .measure",
+          "atLeast": 2,
+          "label": "numbers with their units (.measure) in the fact box"
+        },
+        {
+          "size": ".fact-box .measure ~ .measure, .fact-box :has(.measure) ~ * .measure",
+          "maxHeight": 28,
+          "label": "another number with its unit (.measure), squeezed into no room"
+        }
+      ]
+    }
+  ]
+}
