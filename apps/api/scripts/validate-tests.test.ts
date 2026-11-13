@@ -397,6 +397,8 @@ describe('auditWebSpec', () => {
       one(
         [
           { focused: '#name', label: 'the name field' },
+          { animated: '.live', label: 'the live label' },
+          { animated: '.live', off: true, label: 'the live label' },
           { shows: 'img', file: 'img/earth-small.jpg', label: 'the picture' },
         ],
         page,
@@ -421,5 +423,8 @@ describe('auditWebSpec', () => {
       expect.stringMatching(/shows step names the file/),
     ]);
     expect(one([{ focused: '#name' }])).toEqual([expect.stringMatching(/without a label/)]);
+    expect(one([{ animated: '.live', off: false, label: 'it' }])).toEqual([
+      expect.stringMatching(/off is true or left out/),
+    ]);
   });
 });

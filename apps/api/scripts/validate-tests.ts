@@ -397,6 +397,7 @@ const WEB_CHECKS = [
   'checked',
   'playing',
   'muted',
+  'animated',
   'focused',
   'shows',
   'sent',
@@ -443,6 +444,7 @@ const WEB_STEP_KEYS: Record<string, string[]> = {
   checked: ['off', 'label'],
   playing: ['off', 'label'],
   muted: ['off', 'label'],
+  animated: ['off', 'label'],
   focused: ['label'],
   shows: ['file', 'label'],
   sent: [],
@@ -477,6 +479,7 @@ const NEEDS_LABEL = new Set([
   'checked',
   'playing',
   'muted',
+  'animated',
   'focused',
   'shows',
   'inView',
@@ -576,7 +579,7 @@ function auditWebStep(step: Record<string, unknown>, sitePaths: Set<string>): st
     }
   }
   if (
-    (own === 'checked' || own === 'playing' || own === 'muted') &&
+    (own === 'checked' || own === 'playing' || own === 'muted' || own === 'animated') &&
     step.off !== undefined &&
     step.off !== true
   ) {

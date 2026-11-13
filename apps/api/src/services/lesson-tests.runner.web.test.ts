@@ -390,11 +390,13 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
       'index.html': `<!DOCTYPE html><html><head><style>
         body { background-color: white; }
         @media (prefers-color-scheme: dark) { body { background-color: black; } }
+        .dot, .lost { display: inline-block; }
         .dot { animation: pulse 1s infinite; }
+        .lost { animation: nowhere 1s infinite; }
         @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
         @keyframes pulse { to { opacity: 0.2; } }
       </style></head><body>
-        <span class="dot">•</span><input id="name"><button>Go</button>
+        <span class="dot">•</span><span class="lost">•</span><input id="name"><button>Go</button>
         <script>
           document.querySelector('button').addEventListener('click', () =>
             document.querySelector('#name').focus());
@@ -413,10 +415,15 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
       equals: 'rgb(0, 0, 0)',
       label: 'the page',
     };
-    const moving = { style: '.dot', prop: 'animation-name', equals: 'pulse', label: 'the dot' };
-    const still = { style: '.dot', prop: 'animation-name', equals: 'none', label: 'the dot' };
+    const moving = { animated: '.dot', label: 'the dot' };
+    const still = { animated: '.dot', off: true as const, label: 'the dot' };
     const cases: WebTestCase[] = [
       { name: 'Light', visible: true, steps: [light, moving] },
+      {
+        name: 'No keyframes',
+        visible: true,
+        steps: [{ animated: '.lost', label: 'the lost dot' }],
+      },
       {
         name: 'Dark',
         visible: true,
@@ -442,8 +449,9 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         ],
       },
     ];
-    const [lit, darkened, focus, nowhere, elsewhere] = verdicts(files, cases);
+    const [lit, lost, darkened, focus, nowhere, elsewhere] = verdicts(files, cases);
     expect(lit.passed).toBe(true);
+    expect(lost.web).toEqual({ kind: 'animated', label: 'the lost dot', expected: 'on' });
     expect(darkened.passed).toBe(true);
     expect(focus.passed).toBe(true);
     expect(nowhere.web).toEqual({ kind: 'focused', label: 'the name field', found: null });

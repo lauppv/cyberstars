@@ -260,6 +260,7 @@ async function observe(page, step, seen) {
     step.checked ??
     step.playing ??
     step.muted ??
+    step.animated ??
     step.focused ??
     step.shows ??
     step.inView ??
@@ -392,6 +393,17 @@ async function observe(page, step, seen) {
       (s) => s.ready,
     );
     return { count, playing: state.playing };
+  }
+  // The CSS animations running on the first element now: only one whose
+  // @keyframes the page has ever runs
+  if ('animated' in step) {
+    const names = await elements.first().evaluate((el) =>
+      el
+        .getAnimations()
+        .filter((a) => a instanceof CSSAnimation && a.playState !== 'finished')
+        .map((a) => a.animationName),
+    );
+    return { count, values: names };
   }
   // Whether the focus is on the first element, and what has it otherwise
   if ('focused' in step) {

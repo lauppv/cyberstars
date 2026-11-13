@@ -176,6 +176,11 @@ export type WebCheck =
   | ({ playing: string; off?: true } & Labelled)
   /** The first video or sound is muted now, however it was, or with `off` isn't. */
   | ({ muted: string; off?: true } & Labelled)
+  /**
+   * The first element has a CSS animation running now, one whose @keyframes
+   * the page has, or with `off` none (a finished one or `animation: none`).
+   */
+  | ({ animated: string; off?: true } & Labelled)
   /** The keyboard's focus is on the first element. */
   | ({ focused: string } & Labelled)
   /**
@@ -369,6 +374,7 @@ type WebFailureKind =
   | 'checked'
   | 'playing'
   | 'muted'
+  | 'animated'
   | 'focused'
   | 'shows'
   | 'sent'
@@ -733,6 +739,15 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       return ro
         ? `Se aștepta ca ${label} să fie pe mut, dar are sunet.`
         : `Expected ${label} muted, found its sound on.`;
+    case 'animated':
+      if (expected === 'off') {
+        return ro
+          ? `Se aștepta ca ${label} să stea pe loc, dar are o animație: ${found}.`
+          : `Expected ${label} still, found it animated: ${found}.`;
+      }
+      return ro
+        ? `Se aștepta ca ${label} să aibă o animație, dar nu are niciuna (verifică și numele din @keyframes).`
+        : `Expected ${label} animated, found no animation running (check the name in @keyframes too).`;
     case 'focused':
       return ro
         ? `Se aștepta ca focusul să fie pe ${label}, dar ${found ? `e pe ${found}` : 'nu e pe nimic'}.`

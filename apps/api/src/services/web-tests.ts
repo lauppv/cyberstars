@@ -456,6 +456,15 @@ export function judgeStep(step: WebStep, seen: WebObservation, width: number): W
     const want = !step.off;
     return seen.muted === want ? null : { kind: 'muted', label, expected: want ? 'on' : 'off' };
   }
+  if ('animated' in step) {
+    const running = values.filter((v): v is string => typeof v === 'string');
+    if (step.off) {
+      return running.length === 0
+        ? null
+        : { kind: 'animated', label, expected: 'off', found: running.join(', ') };
+    }
+    return running.length > 0 ? null : { kind: 'animated', label, expected: 'on' };
+  }
   if ('focused' in step) {
     return seen.focused ? null : { kind: 'focused', label, found: values[0] ?? null };
   }

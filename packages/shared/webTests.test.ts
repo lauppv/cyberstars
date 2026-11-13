@@ -250,6 +250,12 @@ describe('webFailureText', () => {
         found: '',
       }),
     ).toBe('Expected the page with --page-bg set, found it not set.');
+    expect(say({ kind: 'animated', label: 'the live label', expected: 'on' })).toBe(
+      'Expected the live label animated, found no animation running (check the name in @keyframes too).',
+    );
+    expect(
+      say({ kind: 'animated', label: 'the live label', expected: 'off', found: 'pulse' }),
+    ).toBe('Expected the live label still, found it animated: pulse.');
     expect(say({ kind: 'focused', label: 'the new task', found: '<button id="add">' })).toBe(
       'Expected the focus on the new task, found it on <button id="add">.',
     );

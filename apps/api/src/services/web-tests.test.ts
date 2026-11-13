@@ -548,6 +548,24 @@ describe('judgeStep', () => {
     });
   });
 
+  it('judges whether an animation runs', () => {
+    const on = { animated: '.live', label: 'the live label' };
+    const off = { animated: '.live', off: true as const, label: 'the live label' };
+    expect(judge(on, { count: 1, values: ['pulse'] })).toBeNull();
+    expect(judge(on, { count: 1, values: [] })).toEqual({
+      kind: 'animated',
+      label: 'the live label',
+      expected: 'on',
+    });
+    expect(judge(off, { count: 1, values: [] })).toBeNull();
+    expect(judge(off, { count: 1, values: ['pulse', 'glow'] })).toEqual({
+      kind: 'animated',
+      label: 'the live label',
+      expected: 'off',
+      found: 'pulse, glow',
+    });
+  });
+
   it('judges where the focus is and which file a picture shows', () => {
     const focus = { focused: '#task', label: 'the new task' };
     expect(judge(focus, { count: 1, focused: true, values: [null] })).toBeNull();
