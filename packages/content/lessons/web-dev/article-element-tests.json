@@ -1,0 +1,231 @@
+{
+  "cases": [
+    {
+      "name": "wiki.html is a whole page of the site",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "exists": "html[lang|=\"en\" i]",
+          "label": "the <html> tag with lang set to English"
+        },
+        {
+          "attr": "head meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "a <meta> tag in the <head>"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "a <title> in the <head>"
+        },
+        {
+          "style": "body",
+          "prop": "background-color",
+          "equals": "rgb(11, 29, 58)",
+          "label": "the page (<body>)"
+        },
+        {
+          "text": "body > header .site-name",
+          "contains": "Orbital Station 7",
+          "label": "the station's name in the header (.site-name)"
+        },
+        {
+          "exists": "header nav[aria-label]:not([aria-label=\"\"])",
+          "label": "a name (aria-label) on the menu in the header"
+        },
+        {
+          "count": "main",
+          "equals": 1,
+          "label": "the page’s own part (<main>)"
+        },
+        {
+          "text": "body > main h1",
+          "nonEmpty": true,
+          "label": "the biggest heading, inside <main>"
+        },
+        {
+          "text": "body > footer",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>)"
+        },
+        {
+          "order": ["body > header", "body > main", "body > footer"],
+          "label": "the header, <main> and the footer"
+        }
+      ]
+    },
+    {
+      "name": "The wiki lists its pages",
+      "visible": true,
+      "page": "wiki.html",
+      "steps": [
+        {
+          "count": ".wiki-list article",
+          "atLeast": 2,
+          "label": "entries (<article>) in the list (.wiki-list)"
+        },
+        {
+          "count": ".wiki-list article:not(:has(:is(h2, h3)))",
+          "equals": 0,
+          "label": "entries with no heading"
+        },
+        {
+          "count": ".wiki-list article:not(:has(a[href]))",
+          "equals": 0,
+          "label": "entries with no link"
+        },
+        {
+          "outline": true
+        },
+        {
+          "click": ".wiki-list article a[href$=\"wiki-greenhouse.html\"]",
+          "label": "the link to the greenhouse page, in its entry"
+        },
+        {
+          "at": "wiki-greenhouse.html"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "click": ".wiki-list article a[href$=\"wiki-airlock.html\"]",
+          "label": "the link to the airlock page, in its entry"
+        },
+        {
+          "at": "wiki-airlock.html"
+        }
+      ]
+    },
+    {
+      "name": "Every menu leads to the wiki",
+      "visible": true,
+      "steps": [
+        {
+          "open": "index.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on index.html"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on crew.html"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on people/vega.html"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on schedule.html"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on boarding.html"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on wiki-greenhouse.html"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki, on wiki-airlock.html"
+        },
+        {
+          "at": "wiki.html"
+        }
+      ]
+    },
+    {
+      "name": "Each wiki page holds its article",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "text": "main > article h1",
+          "nonEmpty": true,
+          "label": "the biggest heading, inside an <article> in <main>"
+        },
+        {
+          "count": "main > article section",
+          "atLeast": 2,
+          "label": "parts (<section>) inside the article"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "text": "main > article h1",
+          "nonEmpty": true,
+          "label": "the biggest heading, inside an <article> in <main>"
+        },
+        {
+          "count": "main > article section",
+          "atLeast": 2,
+          "label": "parts (<section>) inside the article"
+        }
+      ]
+    },
+    {
+      "name": "The wiki is reached from the wiki pages too",
+      "page": "wiki-airlock.html",
+      "width": 375,
+      "steps": [
+        {
+          "click": "header nav a[href$=\"wiki.html\"]",
+          "label": "the menu link to the wiki"
+        },
+        {
+          "at": "wiki.html"
+        },
+        {
+          "text": ".wiki-list article",
+          "contains": "Airlock",
+          "label": "an entry about the airlock"
+        }
+      ]
+    }
+  ]
+}

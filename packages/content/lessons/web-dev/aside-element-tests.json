@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "name": "The greenhouse page has a fact box",
+      "visible": true,
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "count": "article aside",
+          "equals": 0,
+          "label": "asides inside the article"
+        },
+        {
+          "exists": "main > aside.fact-box",
+          "label": "a fact box (<aside> with the class fact-box) in <main>"
+        },
+        {
+          "order": ["main > article", ".fact-box"],
+          "label": "the article, then the fact box"
+        },
+        {
+          "exists": ".fact-box :is(h2, h3, h4)",
+          "label": "a heading in the fact box"
+        },
+        {
+          "count": ".fact-box :is(li, p)",
+          "atLeast": 3,
+          "label": "facts in the fact box"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "The airlock page has a fact box",
+      "visible": true,
+      "page": "wiki-airlock.html",
+      "steps": [
+        {
+          "count": "article aside",
+          "equals": 0,
+          "label": "asides inside the article"
+        },
+        {
+          "exists": "main > aside.fact-box",
+          "label": "a fact box (<aside> with the class fact-box) in <main>"
+        },
+        {
+          "order": ["main > article", ".fact-box"],
+          "label": "the article, then the fact box"
+        },
+        {
+          "exists": ".fact-box :is(h2, h3, h4)",
+          "label": "a heading in the fact box"
+        },
+        {
+          "count": ".fact-box :is(li, p)",
+          "atLeast": 3,
+          "label": "facts in the fact box"
+        },
+        {
+          "outline": true
+        }
+      ]
+    },
+    {
+      "name": "The articles keep their text",
+      "page": "wiki-greenhouse.html",
+      "steps": [
+        {
+          "count": "main > article section",
+          "atLeast": 2,
+          "label": "parts (<section>) inside the article"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "count": "main > article section",
+          "atLeast": 2,
+          "label": "parts (<section>) inside the article"
+        }
+      ]
+    }
+  ]
+}
