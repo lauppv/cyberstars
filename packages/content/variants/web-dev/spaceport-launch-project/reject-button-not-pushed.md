@@ -141,7 +141,9 @@ main {
 }
 
 #trips {
-  flex: 1 1 500px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 500px;
 }
 
 .trip-list {
@@ -154,7 +156,9 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1 1 220px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 220px;
   padding: 40px 16px 16px;
   background-color: #13294f;
   border: 2px solid #2c4a7a;
@@ -187,7 +191,9 @@ main {
 }
 
 aside {
-  flex: 0 1 280px;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 280px;
   padding: 16px;
   background-color: #13294f;
   border-radius: 8px;
