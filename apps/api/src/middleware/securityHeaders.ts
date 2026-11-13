@@ -39,8 +39,9 @@ const previewHeaders = helmet({
       imgSrc: ['data:', 'blob:', 'https:'],
       mediaSrc: ['data:', 'blob:', 'https:'],
       fontSrc: ['data:', 'https:'],
-      // blob: for a request the page makes of one of the site's own files
-      connectSrc: ['blob:', 'https:'],
+      // blob: for a request the page makes of one of the site's own files,
+      // 'self' for the practice API on a site served over http (CYB-115)
+      connectSrc: ["'self'", 'blob:', 'https:'],
       formAction: ["'none'"],
       baseUri: ["'none'"],
       frameAncestors: ["'self'"],

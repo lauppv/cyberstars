@@ -27,6 +27,7 @@ beforeAll(() => {
     loopMessage: 'Stopped the loop on line {line} of {file}',
     loopLimitMs: 2000,
     evalMessage: 'No code in strings',
+    practiceApi: { url: 'https://cyberstars.app/api/practice', path: '/api/practice' },
   });
   atStart = [...sent];
 });
@@ -160,6 +161,39 @@ describe('previewPrelude', () => {
     const far = new URL('https://api.example/ships');
     await fetch(far);
     expect(realFetch).toHaveBeenCalledWith(far, undefined);
+  });
+
+  it("sends the practice API's address, as written or the IDE's, to the IDE's own API", async () => {
+    realFetch.mockClear();
+    await fetch('https://cyberstars.app/api/practice/starships');
+    expect(realFetch).toHaveBeenLastCalledWith(
+      'http://localhost:5173/api/practice/starships',
+      undefined,
+    );
+    const init = { method: 'POST', body: '{}' };
+    await fetch(new URL('https://cyberstars.app/api/practice/starships?wait=2'), init);
+    expect(realFetch).toHaveBeenLastCalledWith(
+      'http://localhost:5173/api/practice/starships?wait=2',
+      init,
+    );
+    await fetch('http://localhost:5173/api/practice/crew');
+    expect(realFetch).toHaveBeenLastCalledWith(
+      'http://localhost:5173/api/practice/crew',
+      undefined,
+    );
+    await fetch(new Request('https://cyberstars.app/api/practice', { method: 'POST' }));
+    const sentRequest = (realFetch.mock.calls.at(-1) as unknown as [Request])[0];
+    expect(sentRequest.url).toBe('http://localhost:5173/api/practice');
+    expect(sentRequest.method).toBe('POST');
+    // Only the API itself, by its whole address: a path is a file of the site
+    await fetch('https://cyberstars.app/api/practiced');
+    expect(realFetch).toHaveBeenLastCalledWith('https://cyberstars.app/api/practiced', undefined);
+    realFetch.mockClear();
+    expect((await fetch('/api/practice/starships')).status).toBe(404);
+    expect(realFetch).not.toHaveBeenCalled();
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://cyberstars.app/api/practice/crew');
+    expect(realOpen).toHaveBeenLastCalledWith('GET', 'http://localhost:5173/api/practice/crew');
   });
 
   it("reads an XMLHttpRequest of the site's files from them, a missing one a 404", () => {

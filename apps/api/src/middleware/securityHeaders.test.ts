@@ -18,7 +18,7 @@ describe('securityHeaders', () => {
     expect(preview).toContain("default-src 'none'");
     expect(preview).toContain("script-src 'unsafe-inline' blob: data: https:;");
     expect(preview).not.toContain('unsafe-eval');
-    expect(preview).toContain('connect-src blob: https:;');
+    expect(preview).toContain("connect-src 'self' blob: https:;");
     expect(preview).toContain("form-action 'none'");
     expect(preview).toContain("frame-ancestors 'self'");
     expect(preview).toContain('sandbox allow-scripts allow-forms allow-modals');
