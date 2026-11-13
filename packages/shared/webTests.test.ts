@@ -241,7 +241,7 @@ describe('webFailureText', () => {
       'Expected the launch video with its sound on, found it muted.',
     );
     expect(say({ kind: 'loaded', label: 'the countdown', detail: 'media' })).toBe(
-      'Expected the countdown to load, found its file missing: check its path.',
+      'Expected the countdown to load, found its file missing or unreadable: check its path and what is in it.',
     );
     expect(say({ kind: 'sent', detail: 'none' })).toBe(
       'Expected the form to be sent, found nothing sent.',

@@ -576,8 +576,8 @@ export function webFailureText(f: WebFailure, lang: Lang = f.lang ?? 'en'): stri
       // A video, a sound or their words: loaded, not seen
       if (f.detail === 'media') {
         return ro
-          ? `Se aștepta ca ${label} să se încarce, dar fișierul nu e găsit: verifică-i calea.`
-          : `Expected ${label} to load, found its file missing: check its path.`;
+          ? `Se aștepta ca ${label} să se încarce, dar fișierul lipsește sau nu poate fi citit: verifică-i calea și ce scrie în el.`
+          : `Expected ${label} to load, found its file missing or unreadable: check its path and what is in it.`;
       }
       return ro
         ? `Se aștepta ca ${label} să se vadă, dar fișierul nu e găsit: verifică-i calea.`
