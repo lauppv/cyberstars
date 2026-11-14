@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     title: 'Wall Calendar',
     difficulty: 'easy',
     summary:
-      'Print a kitchen wall calendar for any months, working out leap years and weekdays by hand, with birthdays, holidays and working days.',
+      'Print a wall calendar for any months, working out leap years and the days of the week yourself, with birthdays, holidays and working days.',
     steps: [
       { id: 'input', title: 'What to print' },
       { id: 'length', title: 'How long is a month' },
@@ -191,13 +191,13 @@ export const PROJECTS: Project[] = [
     title: 'Mini Spreadsheet',
     difficulty: 'hard',
     summary:
-      'A small spreadsheet for the class treasurer: cells with numbers, text and formulas that use other cells, ranges, errors and circles caught.',
+      'A small spreadsheet like Excel: cells with numbers, text and formulas that use other cells, ranges, errors, and formulas that go round in circles.',
     steps: [
       { id: 'table', title: 'Cells and the table' },
       { id: 'arithmetic', title: 'Arithmetic' },
       { id: 'references', title: 'Cells that use cells' },
       { id: 'ranges', title: 'Ranges' },
-      { id: 'errors', title: "When something's wrong" },
+      { id: 'errors', title: 'When something is wrong' },
       { id: 'cycles', title: 'Going round in circles' },
     ],
   },
