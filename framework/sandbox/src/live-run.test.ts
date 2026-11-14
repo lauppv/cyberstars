@@ -151,6 +151,21 @@ describe('liveRun', () => {
     expect(proc.stdin.end).toHaveBeenCalledTimes(1);
   });
 
+  it('keeps input sent before the program starts and gives it once it runs', async () => {
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    const running = runLive(ws, 'input()', 'python', 'user:early');
+    ws.emit('message', JSON.stringify({ type: 'stdin', data: 'Lions 2-1 Tigers\n' }));
+    ws.emit('message', JSON.stringify({ type: 'eof' }));
+    expect(spawnMock).not.toHaveBeenCalled();
+    await running;
+
+    expect(proc.stdin.write).toHaveBeenCalledWith('Lions 2-1 Tigers\n');
+    expect(proc.stdin.end).toHaveBeenCalledTimes(1);
+  });
+
   it('releases the container for reuse on a normal exit', async () => {
     const proc = new FakeProc();
     spawnMock.mockReturnValue(proc);
