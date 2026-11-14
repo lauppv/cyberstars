@@ -19,6 +19,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { PanelTabs } from '../components/judge/PanelTabs';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
+import { EndInputContext } from '../components/code/endInput';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
@@ -397,12 +398,12 @@ function ProjectView({ project }: { project: Project }) {
                 ) : sections === null ? (
                   <LoadingSpinner />
                 ) : (
-                  <>
+                  <EndInputContext.Provider value>
                     <div className="lesson-body">
                       <MarkdownRenderer content={sections.intro} />
                     </div>
                     <Steps project={project} sections={sections.steps} />
-                  </>
+                  </EndInputContext.Provider>
                 )}
 
                 <div className="flex gap-3 mt-10 pb-4">
