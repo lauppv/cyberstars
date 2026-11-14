@@ -1,12 +1,74 @@
-Maya is eight and loves drawing on her dad's old laptop, in a program that paints with letters and symbols on a little grid. Her favourite button is undo: she presses it all the time, and sometimes presses it once too often and wants the drawing back. You'll write that drawing program, and the part that makes undo and redo work for every tool, the way real editors do it: every action is an object that knows how to do itself and how to take itself back.
+Maya is eight and loves drawing on her dad's old laptop, in a program that paints with letters and signs on a small grid. Her favourite button is undo. She presses it all the time, and sometimes once too many, and then she wants her drawing back. You will write that drawing program in Java, with undo and redo for every tool, the way real editors do it: every action is an object that knows how to do itself and how to take itself back.
 
-You build it one step at a time, in one `Main.java`. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests draw pictures your program has never seen, with plenty of undo. Passing them finishes the project.
+**How it works.** The program first reads the size of the canvas, then commands, and answers each command at once. Here is a session as you see it in the output box when you run a finished program. The lines you type are followed by the program's answers:
 
-The program reads every line with a `Scanner` (`nextLine()`) and splits it into words; everything it says goes through `System.out.println`.
+```text
+12 6
+Canvas 12x6
+rect 1 1 6 4 #
+Drew rect 1 1 6 4 #
+fill 3 2 o
+Drew fill 3 2 o
+text 8 1 HI
+Drew text 8 1 HI
+show
+............
+.######.HI..
+.#oooo#.....
+.#oooo#.....
+.######.....
+............
+line 0 5 11 5 =
+Drew line 0 5 11 5 =
+undo
+Undid line 0 5 11 5 =
+undo
+Undid text 8 1 HI
+redo
+Redid text 8 1 HI
+fill 0 0 ~
+Drew fill 0 0 ~
+show
+~~~~~~~~~~~~
+~######~HI~~
+~#oooo#~~~~~
+~#oooo#~~~~~
+~######~~~~~
+~~~~~~~~~~~~
+history
+1. rect 1 1 6 4 #
+2. fill 3 2 o
+3. text 8 1 HI
+4. fill 0 0 ~
+quit
+Bye
+```
+
+The commands:
+
+| Command                                | What it does                                   |
+| -------------------------------------- | ---------------------------------------------- |
+| `show`                                 | prints the canvas                              |
+| `rect <x> <y> <width> <height> <char>` | draws the outline of a rectangle               |
+| `line <x1> <y1> <x2> <y2> <char>`      | draws a line, straight across or straight down |
+| `text <x> <y> <word>`                  | writes a word                                  |
+| `fill <x> <y> <char>`                  | paints an area, like a paint bucket            |
+| `undo`                                 | takes back the last drawing                    |
+| `redo`                                 | does again what `undo` took back               |
+| `history`                              | lists the drawings done                        |
+| `quit`                                 | ends the program                               |
+
+`(x, y)` is a cell: `x` is the column and `y` is the row, both counted from 0 at the top left. `<char>` is the character to draw with.
+
+**To try your program**, press Run, then type or paste the lines in the output box. `quit` ends the program.
+
+Build the program one step at a time, in one `Main.java`. Tick a step when your program does what it asks. When you think it is finished, press **Run Tests**: the tests draw other pictures, with a lot of undo. Passing them finishes the project.
 
 ## The canvas
 
-The first line is the canvas's width and height. The canvas is a `char[height][width]`, every cell `.` to start with; cell `(x, y)` is column `x` and row `y`, both counted from 0 at the top left. Print `Canvas 12x6`, then read commands until `quit` (print `Bye` then). `show` prints the canvas, a row per line. Any other word prints `Unknown command: paint`.
+Read every line with a `Scanner` (`nextLine()`) and split it into words. The first line is the canvas's width and height. The canvas is a `char[height][width]`, with `.` in every cell at the start.
+
+Print `Canvas 12x6`, then read commands until `quit`, and print `Bye` then. `show` prints the canvas, one row on each line. For any other word, print `Unknown command: paint`.
 
 ## A command is an object
 
@@ -20,20 +82,20 @@ interface Command {
 }
 ```
 
-The first tool is `rect <x> <y> <width> <height> <char>`: the outline of a rectangle with its top left corner at `(x, y)`. Make a `Rect` class that implements `Command`. When a command is typed, build its object, call `apply()`, and print what was drawn with `describe()`:
+The first tool is `rect <x> <y> <width> <height> <char>`: the outline of a rectangle, with its top left corner at `(x, y)`. Make a class `Rect` that implements `Command`. When a command is typed, make its object, call `apply()`, and print what was drawn with `describe()`:
 
 ```text
 rect 1 1 6 4 #
 Drew rect 1 1 6 4 #
 ```
 
-Cells outside the canvas are simply not painted.
+Cells outside the canvas are not painted.
 
 ## Lines and words
 
-Two more tools, each a class of its own:
+Two more tools, each one a class of its own:
 
-- `line <x1> <y1> <x2> <y2> <char>` draws a line straight across or straight down, both ends included; a line that would be slanted prints `Lines go straight across or straight down`
+- `line <x1> <y1> <x2> <y2> <char>` draws a line straight across or straight down, with both ends. For a line that would go on a slant, print `Lines go straight across or straight down`
 - `text <x> <y> <word>` writes a word from `(x, y)` to the right
 
 ```text
@@ -43,7 +105,7 @@ Drew text 8 1 HI
 
 ## Fill
 
-`fill <x> <y> <char>` is the paint bucket: it paints the cell at `(x, y)` and every cell connected to it, up, down, left or right, through cells of the same character the starting cell had:
+`fill <x> <y> <char>` is the paint bucket. It paints the cell at `(x, y)`, and every cell joined to it (up, down, left or right) through cells with the same character the first cell had:
 
 ```text
 .######.HI..
@@ -52,28 +114,30 @@ Drew text 8 1 HI
 .######.....
 ```
 
-Painting cell by cell from a queue (an `ArrayDeque`) does it: paint the start, put it in the queue, and while the queue isn't empty, take a cell and paint and queue every neighbour that still has the old character. Filling with the character a cell already has changes nothing.
+Use a queue (an `ArrayDeque`): paint the first cell and put it in the queue. Then, while the queue is not empty, take a cell out, and paint and put in the queue every neighbour that still has the old character. Filling with the character the cell already has changes nothing.
 
 ## Undo
 
-Every command must be able to take itself back. The simplest way that works for all of them: whenever a command paints a cell, it first remembers what the cell was (only the first time, for a cell it paints twice). `undo()` puts every remembered cell back. Write that once, in an abstract class all four tools extend.
+Every command must be able to take itself back. The simplest way, which works for all of them: before a command paints a cell, it remembers what the cell was (only the first time, if it paints the same cell twice). `undo()` puts every remembered cell back. Write this only once, in an abstract class that all four tools extend.
 
-Keep the commands done in a stack (an `ArrayDeque` with `push` and `pop`). `undo` takes the last one off and undoes it:
+Keep the commands that were done in a stack (an `ArrayDeque`, with `push` and `pop`). `undo` takes the last one off the stack and undoes it:
 
 ```text
 undo
 Undid line 0 5 11 5 =
 ```
 
-With nothing to undo, `Nothing to undo`.
+When there is nothing to undo, print `Nothing to undo`.
 
 ## Redo
 
-Commands undone go onto a second stack; `redo` takes the last one off it, applies it again and puts it back on the first: `Redid text 8 1 HI`, or `Nothing to redo`. Drawing something new clears the redo stack: once Maya draws over her mistake, the old branch is gone, as in every editor.
+Undone commands go onto a second stack. `redo` takes the last one off it, applies it again, and puts it back on the first stack: `Redid text 8 1 HI`. When there is nothing to redo, print `Nothing to redo`.
+
+Drawing something new empties the redo stack: when Maya draws something else after an undo, the old drawings can't come back, as in every editor.
 
 ## History
 
-`history` lists the commands done, oldest first, numbered, and how many could be redone, if any:
+`history` lists the commands done, the oldest first, with numbers. Then, if some commands can be redone, how many:
 
 ```text
 1. rect 1 1 6 4 #
@@ -82,4 +146,12 @@ Commands undone go onto a second stack; `redo` takes the last one off it, applie
 Can redo: 1
 ```
 
-With nothing done, it starts with `Nothing drawn`. Finally, bad input never stops the program: a command with the wrong number of words prints its usage (`Usage: rect <x> <y> <width> <height> <char>`, `Usage: line <x1> <y1> <x2> <y2> <char>`, `Usage: text <x> <y> <word>`, `Usage: fill <x> <y> <char>`), a coordinate that isn't a number `Not a number: two`, and a colour longer than one character `Draw with a single character, not ##`. Maya can now undo as much as she likes.
+With nothing done, the first line is `Nothing drawn`.
+
+Last, wrong input must never stop the program:
+
+- a command with the wrong number of words prints how to use it: `Usage: rect <x> <y> <width> <height> <char>`, `Usage: line <x1> <y1> <x2> <y2> <char>`, `Usage: text <x> <y> <word>` or `Usage: fill <x> <y> <char>`
+- a coordinate that is not a number prints `Not a number: two`
+- a drawing character longer than one prints `Draw with a single character, not ##`
+
+Now Maya can undo as much as she likes.
