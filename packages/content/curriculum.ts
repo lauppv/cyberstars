@@ -2636,6 +2636,29 @@ export const lessons = [
     sortOrder: 363,
     hasCodeFile: true,
   },
+  { courseKey: 'web-dev', slug: 'classes', title: 'Classes', sortOrder: 364, hasCodeFile: true },
+  { courseKey: 'web-dev', slug: 'class-methods', title: 'Methods in a Class', sortOrder: 365 },
+  {
+    courseKey: 'web-dev',
+    slug: 'extends',
+    title: 'A Class That Starts from Another',
+    sortOrder: 366,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'super',
+    title: 'What the First Class Already Does',
+    sortOrder: 367,
+  },
+  { courseKey: 'web-dev', slug: 'getters', title: 'A Value Worked Out When Read', sortOrder: 368 },
+  { courseKey: 'web-dev', slug: 'setters', title: 'A Value Checked When Written', sortOrder: 369 },
+  {
+    courseKey: 'web-dev',
+    slug: 'private-fields',
+    title: 'A Value Only the Class Can Touch',
+    sortOrder: 370,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -3054,7 +3077,20 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
     {
       key: 'tidy-code',
       title: 'Tidy Code',
-      lessons: ['module-script', 'export', 'import', 'export-default', 'shared-module'],
+      lessons: [
+        'module-script',
+        'export',
+        'import',
+        'export-default',
+        'shared-module',
+        'classes',
+        'class-methods',
+        'extends',
+        'super',
+        'getters',
+        'setters',
+        'private-fields',
+      ],
     },
   ],
 };
