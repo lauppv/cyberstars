@@ -39,15 +39,15 @@ export const PROJECTS: Project[] = [
     title: 'League Table',
     difficulty: 'easy',
     summary:
-      'Turn a season of football results pasted from a phone into the final league table, every column lined up, with form and records.',
+      'Read a season of football results and print the league table: the teams from best to worst, with their points, goals and last results.',
     steps: [
-      { id: 'read', title: 'Read until the file ends' },
-      { id: 'bad-lines', title: "Lines that aren't results" },
-      { id: 'numbers', title: "Every team's numbers" },
-      { id: 'order', title: "Who's on top" },
-      { id: 'table', title: 'The table' },
-      { id: 'form', title: 'Form' },
-      { id: 'records', title: 'Records' },
+      { id: 'read', title: 'Read all the lines' },
+      { id: 'bad-lines', title: 'Skip the wrong lines' },
+      { id: 'numbers', title: 'Count for every team' },
+      { id: 'order', title: 'Sort the teams' },
+      { id: 'table', title: 'Print the table' },
+      { id: 'form', title: 'Add the Form column' },
+      { id: 'records', title: 'Season facts' },
     ],
   },
   {
