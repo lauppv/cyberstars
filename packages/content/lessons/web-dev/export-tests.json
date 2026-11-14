@@ -1,0 +1,105 @@
+{
+  "cases": [
+    {
+      "name": "api.js shares the addresses and getJson",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nimport(\"./api.js\")\n  .then((api) => {\n    console.log(\"test: api.js shares \" + Object.keys(api).sort().join(\", \"));\n    console.log(\"test: SHIPS_URL is \" + api.SHIPS_URL);\n    console.log(\"test: CREW_URL is \" + api.CREW_URL);\n    return api.getJson(api.CREW_URL);\n  })\n  .then((crew) => console.log(\"test: getJson gave \" + JSON.stringify(crew)))\n  .catch((error) => console.log(\"test: failed \" + error.message));\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: api.js shares CREW_URL, SHIPS_URL, getJson"
+        },
+        {
+          "logged": "test: SHIPS_URL is https://cyberstars.app/api/practice/starships"
+        },
+        {
+          "logged": "test: CREW_URL is https://cyberstars.app/api/practice/crew"
+        },
+        {
+          "logged": "test: getJson gave [{\"id\":1,\"name\":\"Vega\",\"role\":\"Commander\"},{\"id\":2,\"name\":\"Orion\",\"role\":\"Pilot\"},{\"id\":3,\"name\":\"Lyra\",\"role\":\"Engineer\"},{\"id\":4,\"name\":\"Altair\",\"role\":\"Doctor\"},{\"id\":5,\"name\":\"Nova\",\"role\":\"Navigator\"},{\"id\":6,\"name\":\"Rigel\",\"role\":\"Scientist\"}]"
+        }
+      ]
+    },
+    {
+      "name": "getJson throws on an answer that is an error",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "{}",
+          "status": 503
+        }
+      },
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nimport(\"./api.js\")\n  .then((api) => {\n    console.log(\"test: api.js shares \" + Object.keys(api).sort().join(\", \"));\n    console.log(\"test: SHIPS_URL is \" + api.SHIPS_URL);\n    console.log(\"test: CREW_URL is \" + api.CREW_URL);\n    return api.getJson(api.CREW_URL);\n  })\n  .then((crew) => console.log(\"test: getJson gave \" + JSON.stringify(crew)))\n  .catch((error) => console.log(\"test: failed \" + error.message));\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: failed The tracker answered 503"
+        }
+      ]
+    },
+    {
+      "name": "Other data",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Sirius\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Deneb\", \"role\": \"Cook\"}]"
+        }
+      },
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nimport(\"./api.js\")\n  .then((api) => {\n    console.log(\"test: api.js shares \" + Object.keys(api).sort().join(\", \"));\n    console.log(\"test: SHIPS_URL is \" + api.SHIPS_URL);\n    console.log(\"test: CREW_URL is \" + api.CREW_URL);\n    return api.getJson(api.CREW_URL);\n  })\n  .then((crew) => console.log(\"test: getJson gave \" + JSON.stringify(crew)))\n  .catch((error) => console.log(\"test: failed \" + error.message));\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: getJson gave [{\"id\":1,\"name\":\"Sirius\",\"role\":\"Commander\"},{\"id\":2,\"name\":\"Deneb\",\"role\":\"Cook\"}]"
+        }
+      ]
+    },
+    {
+      "name": "The tracker works as before",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards"
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "5 starships near the station"
+        },
+        {
+          "text": "#crew-status",
+          "equals": "Crew on board: 6",
+          "label": "the paragraph #crew-status"
+        }
+      ]
+    }
+  ]
+}

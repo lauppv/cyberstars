@@ -2613,6 +2613,29 @@ export const lessons = [
     title: 'Project: Space Quiz',
     sortOrder: 358,
   },
+  { courseKey: 'web-dev', slug: 'module-script', title: 'A Script as a Module', sortOrder: 359 },
+  {
+    courseKey: 'web-dev',
+    slug: 'export',
+    title: 'Sharing with export',
+    sortOrder: 360,
+    hasCodeFile: true,
+  },
+  { courseKey: 'web-dev', slug: 'import', title: 'Using It with import', sortOrder: 361 },
+  {
+    courseKey: 'web-dev',
+    slug: 'export-default',
+    title: 'The Main Thing of a File',
+    sortOrder: 362,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'shared-module',
+    title: 'One Module, Two Pages',
+    sortOrder: 363,
+    hasCodeFile: true,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -3027,6 +3050,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'tracker-js-recap',
         'space-quiz-project',
       ],
+    },
+    {
+      key: 'tidy-code',
+      title: 'Tidy Code',
+      lessons: ['module-script', 'export', 'import', 'export-default', 'shared-module'],
     },
   ],
 };
