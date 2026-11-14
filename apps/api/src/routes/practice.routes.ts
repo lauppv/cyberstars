@@ -16,8 +16,14 @@ import {
 // the API answers any origin, with no cookies and nothing else of the site:
 // `app.ts` mounts it before the site's CORS and its guest cookie, and it
 // reaches no other route. Its own limit: a preview loads it again after every
-// change, so a class behind one school IP still fits.
-const practiceLimiter = limiter({ windowMs: 60_000, limit: 300 });
+// change, a tracker page asks for two addresses each time, and a student who
+// types without a break sends about 200 a minute, so a class behind one
+// school IP still fits. Past it, the answer is JSON like every other one.
+const practiceLimiter = limiter({
+  windowMs: 60_000,
+  limit: 1200,
+  message: { error: 'Too many requests from your network. Wait a minute, then try again.' },
+});
 
 const router = Router();
 
