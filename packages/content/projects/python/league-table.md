@@ -42,18 +42,18 @@ Goals per match: 2.80
 
 The columns of the table:
 
-| Column | What it means |
-| --- | --- |
-| Pos | the team's place in the table |
-| P | matches played |
-| W | matches won |
-| D | draws: matches that ended with the same score for both teams |
-| L | matches lost |
-| GF | goals for: goals the team scored |
-| GA | goals against: goals the other teams scored against it |
-| GD | goal difference: GF minus GA |
-| Pts | points: 3 for each win, 1 for each draw, 0 for a loss |
-| Form | the team's last three results: `W` win, `D` draw, `L` loss |
+| Column | What it means                                                |
+| ------ | ------------------------------------------------------------ |
+| Pos    | the team's place in the table                                |
+| P      | matches played                                               |
+| W      | matches won                                                  |
+| D      | draws: matches that ended with the same score for both teams |
+| L      | matches lost                                                 |
+| GF     | goals for: goals the team scored                             |
+| GA     | goals against: goals the other teams scored against it       |
+| GD     | goal difference: GF minus GA                                 |
+| Pts    | points: 3 for each win, 1 for each draw, 0 for a loss        |
+| Form   | the team's last three results: `W` win, `D` draw, `L` loss   |
 
 **To try your program**, press Run, click in the output box and paste the season. Then press **End input** under the output box (or Ctrl + D). This tells your program that there are no more lines, so it can print its answer.
 
@@ -136,14 +136,14 @@ After the count and the skipped lines, print an empty line, then the header and 
 
 The columns must line up exactly like in the output at the top, because the tests compare your output character by character:
 
-| Column | Width | Side |
-| --- | --- | --- |
-| Pos | 3 | right |
-| Team | the longest team name, at least 4 (the width of `Team`) | left |
-| P, W, D, L | 2 each | right |
-| GF, GA | 3 each | right |
-| GD | 4, always with its sign: `+6`, `-2`, `+0` | right |
-| Pts | 4 | right |
+| Column     | Width                                                   | Side  |
+| ---------- | ------------------------------------------------------- | ----- |
+| Pos        | 3                                                       | right |
+| Team       | the longest team name, at least 4 (the width of `Team`) | left  |
+| P, W, D, L | 2 each                                                  | right |
+| GF, GA     | 3 each                                                  | right |
+| GD         | 4, always with its sign: `+6`, `-2`, `+0`               | right |
+| Pts        | 4                                                       | right |
 
 Put two spaces after Pos and after Team, and one space between the other columns. The header uses the same widths.
 

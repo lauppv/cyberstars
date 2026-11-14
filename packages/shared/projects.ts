@@ -90,7 +90,7 @@ export const PROJECTS: Project[] = [
     title: 'Library Desk',
     difficulty: 'medium',
     summary:
-      'The front desk program of a neighbourhood library: a catalog, loans, returns with late fees and an end-of-day report.',
+      'The front desk program of a small library: the list of books, borrowing, returns with late fees and a report at the end of the day.',
     steps: [
       { id: 'catalog', title: 'Load the catalog' },
       { id: 'list', title: 'List the books' },
@@ -126,14 +126,14 @@ export const PROJECTS: Project[] = [
     title: 'Bank Statement',
     difficulty: 'medium',
     summary:
-      "Sort a bank's CSV export by your own keyword rules and report where the money went, month by month, with the subscriptions that hide in it.",
+      'Put every payment from a bank file into a group by your own rules, then show where the money went, month by month, and which payments come every month.',
     steps: [
       { id: 'read', title: 'Read the rules and the statement' },
       { id: 'commas', title: 'Commas inside a description' },
-      { id: 'rules', title: 'Sort by the rules' },
+      { id: 'rules', title: 'Put each one in a category' },
       { id: 'categories', title: 'Where the money went' },
       { id: 'months', title: 'Month by month' },
-      { id: 'biggest', title: 'The biggest ones' },
+      { id: 'biggest', title: 'The biggest expenses' },
       { id: 'subscriptions', title: 'Subscriptions' },
     ],
   },
@@ -159,14 +159,14 @@ export const PROJECTS: Project[] = [
     title: 'Forest Fire',
     difficulty: 'medium',
     summary:
-      'Simulate a fire spreading through a forest map step by step, every cell changing at once, with wind carrying sparks and water stopping them.',
+      'Show a fire going through a forest map step by step, with every cell changing at the same time, the wind pushing the fire and water stopping it.',
     steps: [
       { id: 'map', title: 'The map' },
       { id: 'step', title: 'One step' },
       { id: 'steps', title: 'Step after step' },
       { id: 'wind', title: 'The wind' },
       { id: 'water', title: 'Water' },
-      { id: 'report', title: "The rangers' report" },
+      { id: 'report', title: 'The report' },
     ],
   },
   {
