@@ -516,25 +516,25 @@ The site's scripts have grown long. The student splits them into modules and gro
 
 ### JavaScript
 
-| #   | Slug                     | Introduces                                                        | From                             |
-| --- | ------------------------ | ----------------------------------------------------------------- | -------------------------------- |
-| 1   | **`module-script`**      | `<script type="module">`: a script whose variables stay inside it | import and export                |
-| 2   | **`export`**             | `export`: what a file lets other files use                        | import and export                |
-| 3   | **`import`**             | `import { … } from './file.js'`: use it in another file           | import and export                |
-| 4   | **`export-default`**     | `export default`: the one main thing of a file                    | import and export                |
-| 5   | **`shared-module`**      | One module that two pages import                                  | import and export                |
-| 6   | **`classes`**            | `class`, `constructor` and `new`: many objects of one kind        | Classes                          |
-| 7   | **`class-methods`**      | A method in a class, which every object of it has                 | Classes                          |
-| 8   | **`extends`**            | `extends`: a class that starts from another                       | Inheritance                      |
-| 9   | **`super`**              | `super()` and `super.method()`: what the first class already does | Inheritance                      |
-| 10  | **`getters`**            | `get`: a value worked out when it is read                         | Getters, Setters, Private Fields |
-| 11  | **`setters`**            | `set`: a value checked when it is written                         | Getters, Setters, Private Fields |
-| 12  | **`private-fields`**     | `#name`: a value only the class can touch                         | Getters, Setters, Private Fields |
-| 13  | **`breakpoints`**        | The Sources tab and a breakpoint: stop the code on a line         | Debugging in DevTools            |
-| 14  | **`step-through`**       | Step over and step into, and the values while it stops            | Debugging in DevTools            |
-| 15  | **`debugger-keyword`**   | `debugger`: a breakpoint written in the code                      | Debugging in DevTools            |
-| 16  | `tidy-code-recap`        | No new idea: the site's scripts as modules and classes            | Recap                            |
-| 17  | `text-adventure-project` | Project: a text adventure game in a page, from an empty folder    | Project                          |
+| #   | Slug                       | Introduces                                                        | From                             |
+| --- | -------------------------- | ----------------------------------------------------------------- | -------------------------------- |
+| 1   | **`module-script`**        | `<script type="module">`: a script whose variables stay inside it | import and export                |
+| 2   | **`export`**               | `export`: what a file lets other files use                        | import and export                |
+| 3   | **`import`**               | `import { … } from './file.js'`: use it in another file           | import and export                |
+| 4   | **`export-default`**       | `export default`: the one main thing of a file                    | import and export                |
+| 5   | **`shared-module`**        | One module that two pages import                                  | import and export                |
+| 6   | **`classes`**              | `class`, `constructor` and `new`: many objects of one kind        | Classes                          |
+| 7   | **`class-methods`**        | A method in a class, which every object of it has                 | Classes                          |
+| 8   | **`extends`**              | `extends`: a class that starts from another                       | Inheritance                      |
+| 9   | **`super`**                | `super()` and `super.method()`: what the first class already does | Inheritance                      |
+| 10  | **`getters`**              | `get`: a value worked out when it is read                         | Getters, Setters, Private Fields |
+| 11  | **`setters`**              | `set`: a value checked when it is written                         | Getters, Setters, Private Fields |
+| 12  | **`private-fields`**       | `#name`: a value only the class can touch                         | Getters, Setters, Private Fields |
+| 13  | **`debugger-breakpoints`** | The Sources tab and a breakpoint: stop the code on a line         | Debugging in DevTools            |
+| 14  | **`step-through`**         | Step over and step into, and the values while it stops            | Debugging in DevTools            |
+| 15  | **`debugger-keyword`**     | `debugger`: a breakpoint written in the code                      | Debugging in DevTools            |
+| 16  | `tidy-code-recap`          | No new idea: the site's scripts as modules and classes            | Recap                            |
+| 17  | `text-adventure-project`   | Project: a text adventure game in a page, from an empty folder    | Project                          |
 
 ## Moved out, because a later part teaches them
 

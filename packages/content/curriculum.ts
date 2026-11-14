@@ -2659,6 +2659,40 @@ export const lessons = [
     title: 'A Value Only the Class Can Touch',
     sortOrder: 370,
   },
+  {
+    courseKey: 'web-dev',
+    slug: 'debugger-breakpoints',
+    title: 'Stopping on a Line',
+    sortOrder: 371,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'step-through',
+    title: 'Step by Step',
+    sortOrder: 372,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'debugger-keyword',
+    title: 'A Breakpoint in the Code',
+    sortOrder: 373,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'tidy-code-recap',
+    title: 'Recap',
+    sortOrder: 374,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'web-dev',
+    slug: 'text-adventure-project',
+    title: 'Project: Lost on the Station',
+    sortOrder: 375,
+  },
 ];
 
 // A long course split into parts, by course key: each part's name and the
@@ -3090,6 +3124,11 @@ export const courseParts: Record<string, { key: string; title: string; lessons: 
         'getters',
         'setters',
         'private-fields',
+        'debugger-breakpoints',
+        'step-through',
+        'debugger-keyword',
+        'tidy-code-recap',
+        'text-adventure-project',
       ],
     },
   ],
@@ -3109,6 +3148,7 @@ export const freshStartLessons: Record<string, string[]> = {
     'mission-status-project',
     'todo-list-project',
     'space-quiz-project',
+    'text-adventure-project',
   ],
 };
 
