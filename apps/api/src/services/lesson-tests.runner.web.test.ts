@@ -8,6 +8,7 @@ import os from 'os';
 import path from 'path';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { WEB_ACTION_KEYS, type WebTestCase } from '@cyberstars/shared/webTests';
+import { PRACTICE_API_URL } from '@cyberstars/shared/practice';
 import { judgeWebCase } from './web-tests.js';
 
 const RUNNER = path.join(import.meta.dirname, 'lesson-tests.runner.web.cjs');
@@ -51,6 +52,7 @@ function run(files: Record<string, SiteFile>, cases: WebTestCase[], stepMs = 300
       heapMb: 64,
       height: 800,
       actions: WEB_ACTION_KEYS,
+      practiceApi: PRACTICE_API_URL,
       cases: cases.map((c) => ({ page: 'index.html', width: 1280, ...c })),
     }),
   );
@@ -227,6 +229,28 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     // The browser's own "Failed to load resource" line isn't the page's error
     expect(failing.passed).toBe(true);
     expect(offline.passed).toBe(true);
+  });
+
+  it("answers the practice API's address with ?wait= as the one without", () => {
+    const SHIPS = `${PRACTICE_API_URL}/starships`;
+    const page = `<p id="out">Loading</p><script>
+      fetch('${SHIPS}?wait=2').then((r) => r.json())
+        .then((d) => { document.getElementById('out').textContent = d.length + ' ships'; });
+    </script>`;
+    const [result] = verdicts({ 'index.html': page }, [
+      {
+        name: 'Held by the case, not by ?wait=',
+        visible: true,
+        fetch: { [SHIPS]: { body: '[1, 2]', delay: 300 } },
+        steps: [
+          { text: '#out', equals: 'Loading', label: 'the status' },
+          { requested: SHIPS, method: 'GET' },
+          { wait: 600 },
+          { text: '#out', equals: '2 ships', label: 'the status' },
+        ],
+      },
+    ]);
+    expect(result.passed).toBe(true);
   });
 
   it('answers by method, holds an answer until a wait, and notes what the page sent', () => {

@@ -3,6 +3,7 @@ import path from 'path';
 import { dockerConverse, dockerExec, killLeftovers } from '@cyberstars-framework/sandbox/docker';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { isAssetPath, isValidWebPath, parseWebFiles } from '@cyberstars/shared/webFiles';
+import { PRACTICE_API_URL } from '@cyberstars/shared/practice';
 import {
   WEB_ACTION_KEYS,
   WEB_AGAINST_WITHIN,
@@ -736,6 +737,7 @@ async function runInContainer(
       heapMb: PAGE_HEAP_MB,
       height: WEB_HEIGHT,
       actions: WEB_ACTION_KEYS,
+      practiceApi: PRACTICE_API_URL,
       cases: spec.cases.map((c) => ({
         page: c.page ?? 'index.html',
         width: c.width ?? WEB_DEFAULT_WIDTH,

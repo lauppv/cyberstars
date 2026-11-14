@@ -94,10 +94,26 @@ function body(file) {
   return typeof file === 'string' ? file : Buffer.from(file.base64, 'base64');
 }
 
-async function serve(context, files, answers) {
+async function serve(context, files, answers, practiceApi) {
   // A page closed while a request was still being answered (the next case,
   // a stuck page) must not take the run down with it
-  await context.route('**/*', (route) => answer(route, files, answers).catch(() => {}));
+  await context.route('**/*', (route) =>
+    answer(route, files, answers, practiceApi).catch(() => {}),
+  );
+}
+
+// The address a case knows a request by. The practice API's `?wait=` only
+// holds its answer a while, which a case's own `delay` does here, so an
+// address with it is the one without (CYB-115)
+function caseAddress(href, practiceApi) {
+  if (!practiceApi || !href.startsWith(`${practiceApi}/`)) return href;
+  try {
+    const url = new URL(href);
+    url.searchParams.delete('wait');
+    return url.href;
+  } catch {
+    return href;
+  }
 }
 
 // The fixed answer to a request: the one for its method and address first,
@@ -110,7 +126,7 @@ function fixedAnswer(answers, method, href) {
 
 // Every request of the page: a file of the site, a fixed answer, or nothing
 // (async, so a throw comes back as a rejection the route catches)
-async function answer(route, files, answers) {
+async function answer(route, files, answers, practiceApi) {
   const request = route.request();
   let url;
   try {
@@ -126,7 +142,7 @@ async function answer(route, files, answers) {
     }
     return route.fulfill({ status: 200, contentType: typeOf(path), body: body(file) });
   }
-  const fixed = fixedAnswer(answers, request.method(), url.href);
+  const fixed = fixedAnswer(answers, request.method(), caseAddress(url.href, practiceApi));
   if (fixed) {
     // Held a while, so the page shows what it shows while it waits
     if (fixed.delay > 0) await new Promise((done) => setTimeout(done, fixed.delay));
@@ -826,7 +842,7 @@ async function runCase(browser, files, testCase, limits) {
     },
   });
   try {
-    await serve(context, files, answers);
+    await serve(context, files, answers, limits.practiceApi);
     // A fixed date and time the page sees, standing still until a wait moves it
     if (clocked) {
       // Written without a zone, as the page's own time (UTC)
@@ -861,14 +877,11 @@ async function runCase(browser, files, testCase, limits) {
     outOfMemory.listener = onCrash;
     page.on('request', (request) => {
       // What the page's scripts asked for, for a requested check
+      const url = caseAddress(request.url(), limits.practiceApi);
       if (['fetch', 'xhr'].includes(request.resourceType())) {
-        seen.requests.push({
-          method: request.method(),
-          url: request.url(),
-          body: request.postData() ?? null,
-        });
+        seen.requests.push({ method: request.method(), url, body: request.postData() ?? null });
       }
-      if (fixedAnswer(answers, request.method(), request.url())?.delay > 0) {
+      if (fixedAnswer(answers, request.method(), url)?.delay > 0) {
         held.add(request);
         return;
       }
