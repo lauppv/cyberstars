@@ -241,7 +241,8 @@ function ProjectView({ project }: { project: Project }) {
   const [code, setCode] = useState(() => readCode(project));
   const { user } = useAuth();
   const { notifyRunComplete } = useGuestSignupPrompt();
-  const { output, isRunning, execute, stop, sendInput } = useCodeExecution(notifyRunComplete);
+  const { output, isRunning, inputEnded, execute, stop, sendInput, endInput } =
+    useCodeExecution(notifyRunComplete);
   // Only passing the project's judge finishes it; the ticks are the student's notes
   const [finished, setFinished] = useState(false);
   const [results, setResults] = useState<RunTestsResponse | null>(null);
@@ -505,6 +506,8 @@ function ProjectView({ project }: { project: Project }) {
                           output={output}
                           isRunning={isRunning}
                           onInput={sendInput}
+                          onEndInput={endInput}
+                          inputEnded={inputEnded}
                           fillHeight
                         />
                       )}

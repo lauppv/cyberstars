@@ -319,12 +319,21 @@ async function run(
     dropContainer();
   });
 
+  // `eof` is the student's End input (Ctrl+D): the program's input closes, so a
+  // program reading until the input runs out gets its EOFError / -1 / null.
+  // Nothing more can be written after that.
+  let stdinEnded = false;
   const onMessage = (raw: Buffer | string) => {
     const msg = typeof raw === 'string' ? raw : raw.toString();
     try {
       const parsed = JSON.parse(msg) as { type: string; data?: string };
-      if (parsed.type === 'stdin' && parsed.data != null && !proc.killed) {
+      if (stdinEnded || proc.killed) return;
+      if (parsed.type === 'stdin' && parsed.data != null) {
         proc.stdin.write(parsed.data);
+        resetTimer();
+      } else if (parsed.type === 'eof') {
+        stdinEnded = true;
+        proc.stdin.end();
         resetTimer();
       }
     } catch {

@@ -10,6 +10,10 @@ interface CodeOutputProps {
   fillHeight?: boolean;
   isRunning?: boolean;
   onInput?: (data: string) => void;
+  // End input (Ctrl+D): given, an End input button shows under a running
+  // program and Ctrl+D closes its input; once `inputEnded`, it takes no more
+  onEndInput?: () => void;
+  inputEnded?: boolean;
 }
 
 export function CodeOutput({
@@ -19,6 +23,8 @@ export function CodeOutput({
   fillHeight,
   isRunning,
   onInput,
+  onEndInput,
+  inputEnded,
 }: CodeOutputProps) {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,6 +34,16 @@ export function CodeOutput({
     if (containerRef.current) containerRef.current.scrollTop = containerRef.current.scrollHeight;
   }, [output]);
 
+  // What is still typed on the line goes first, as its last line, so nothing
+  // the student wrote is lost when the input closes
+  const endInput = useCallback(() => {
+    const el = inputRef.current;
+    const pending = el?.textContent ?? '';
+    if (el) el.textContent = '';
+    if (pending) onInput?.(pending + '\n');
+    onEndInput?.();
+  }, [onInput, onEndInput]);
+
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLSpanElement>) => {
       if (e.key === 'Enter') {
@@ -36,10 +52,32 @@ export function CodeOutput({
         const val = el.textContent ?? '';
         el.textContent = '';
         onInput?.(val + '\n');
+      } else if (onEndInput && e.ctrlKey && e.key.toLowerCase() === 'd') {
+        e.preventDefault();
+        endInput();
       }
+    },
+    [onInput, onEndInput, endInput],
+  );
+
+  // Several lines pasted at once go in as a terminal takes them: every whole
+  // line is sent, and what follows the last line break stays typed. A paste of
+  // one line is left to the browser.
+  const handlePaste = useCallback(
+    (e: React.ClipboardEvent<HTMLSpanElement>) => {
+      const text = e.clipboardData.getData('text/plain').replace(/\r\n?/g, '\n');
+      if (!text.includes('\n')) return;
+      e.preventDefault();
+      const el = e.currentTarget;
+      const lines = ((el.textContent ?? '') + text).split('\n');
+      const rest = lines.pop() ?? '';
+      el.textContent = rest;
+      onInput?.(lines.join('\n') + '\n');
     },
     [onInput],
   );
+
+  const takesInput = isRunning && onInput && !inputEnded;
 
   const lastNewline = output.lastIndexOf('\n');
   const beforeLastLine = lastNewline >= 0 ? output.slice(0, lastNewline + 1) : '';
@@ -78,7 +116,7 @@ export function CodeOutput({
           <>
             {beforeLastLine && <span className="text-[var(--output)]">{beforeLastLine}</span>}
             <span className="text-[var(--output)]">{lastLine}</span>
-            {isRunning && onInput && (
+            {takesInput && (
               <span
                 ref={inputRef}
                 data-testid="stdin-input"
@@ -88,6 +126,7 @@ export function CodeOutput({
                 style={{ fontFamily: 'var(--mono)' }}
                 autoFocus
                 onKeyDown={handleKeyDown}
+                onPaste={handlePaste}
                 onFocus={(e) => {
                   const range = document.createRange();
                   range.selectNodeContents(e.currentTarget);
@@ -103,6 +142,21 @@ export function CodeOutput({
           <span className="text-[var(--text3)] italic">{t('code.runToSee')}</span>
         )}
       </div>
+      {takesInput && onEndInput && (
+        <div className="flex items-center justify-end gap-2 px-3 py-2 border-t border-[var(--border)]">
+          <span className="text-[12px] text-[var(--text3)]">{t('code.endInputHint')}</span>
+          <button
+            type="button"
+            data-testid="end-input"
+            data-track="end-input"
+            onClick={endInput}
+            title={t('code.endInputTitle')}
+            className="btn btn-secondary btn-sm"
+          >
+            {t('code.endInput')}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
