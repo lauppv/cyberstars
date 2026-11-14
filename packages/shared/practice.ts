@@ -4,7 +4,7 @@
 // request to it to the API of the site it runs on, so it works in development
 // too, and the grader answers the same address with a case's fixed answers.
 
-export const PRACTICE_API_ORIGIN = 'https://cyberstars.app';
+const PRACTICE_API_ORIGIN = 'https://cyberstars.app';
 export const PRACTICE_API_PATH = '/api/practice';
 export const PRACTICE_API_URL = `${PRACTICE_API_ORIGIN}${PRACTICE_API_PATH}`;
 
