@@ -26,6 +26,9 @@ const TIMEOUT_MS = 20_000;
 const OUTPUT_FLUSH_MS = 50;
 const OUTPUT_BUFFER_MAX = 16 * 1024;
 const OUTPUT_TOTAL_MAX = 1024 * 1024;
+// Input the page sends before the program starts (a season pasted while the
+// container starts) waits for it, up to this much
+const EARLY_INPUT_MAX = 64 * 1024;
 
 // Write the user's source into the run container, wiping any leftover files from
 // the owner's previous run first so a stale binary/output can't resurface.
@@ -107,6 +110,20 @@ async function run(
     ws.send(JSON.stringify({ type: 'exit', code: 1 }));
     return;
   }
+
+  // Until the program runs, its input waits here; then each message goes to it
+  // as it comes (`deliver`, set at spawn)
+  const early: string[] = [];
+  let earlySize = 0;
+  let deliver: ((msg: string) => void) | null = null;
+  ws.on('message', (raw: Buffer | string) => {
+    const msg = typeof raw === 'string' ? raw : raw.toString();
+    if (deliver) deliver(msg);
+    else if (earlySize + msg.length <= EARLY_INPUT_MAX) {
+      early.push(msg);
+      earlySize += msg.length;
+    }
+  });
 
   let abandoned = false;
   let waitingForSlot = true;
@@ -319,12 +336,20 @@ async function run(
     dropContainer();
   });
 
-  const onMessage = (raw: Buffer | string) => {
-    const msg = typeof raw === 'string' ? raw : raw.toString();
+  // `eof` is the student's End input (Ctrl+D): the program's input closes, so a
+  // program reading until the input runs out gets its EOFError / -1 / null.
+  // Nothing more can be written after that.
+  let stdinEnded = false;
+  const onMessage = (msg: string) => {
     try {
       const parsed = JSON.parse(msg) as { type: string; data?: string };
-      if (parsed.type === 'stdin' && parsed.data != null && !proc.killed) {
+      if (stdinEnded || proc.killed) return;
+      if (parsed.type === 'stdin' && parsed.data != null) {
         proc.stdin.write(parsed.data);
+        resetTimer();
+      } else if (parsed.type === 'eof') {
+        stdinEnded = true;
+        proc.stdin.end();
         resetTimer();
       }
     } catch {
@@ -332,7 +357,8 @@ async function run(
     }
   };
 
-  ws.on('message', onMessage);
+  deliver = onMessage;
+  for (const msg of early.splice(0)) onMessage(msg);
 
   stopForRoom = () => {
     if (exited) return false;

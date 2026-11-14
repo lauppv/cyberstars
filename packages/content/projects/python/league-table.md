@@ -1,33 +1,95 @@
-Every Sunday four neighbourhood teams play football in the park, and Oliver, who organises the league, writes each result in a text file on his phone. At the end of the season everyone wants the final table, the kind newspapers print, with every column lined up. Oliver pastes the whole file into your program, and it prints the table.
+Four teams play football in the park every Sunday. Oliver writes each result in a text file on his phone. At the end of the season he wants a league table: the teams in order from best to worst, with their numbers, like the tables on sports websites.
 
-You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests feed your program seasons it has never seen. Passing them finishes the project.
+Your program reads Oliver's file and prints that table.
 
-This program asks nothing: it reads the whole file and prints everything at once.
-
-## Read until the file ends
-
-The input is the season, one result per line, the home team first:
+**The input** is one match on each line: the first team, the score, the second team. `Lions 2-1 Tigers` means Lions scored 2 goals and Tigers scored 1. Here is a whole season. Some lines have mistakes, and one is empty:
 
 ```text
 Lions 2-1 Tigers
 Bears 0-0 Wolves
 Tigers 4-0 Bears
+Wolves 2-2 Lions
+Lions 3-1 Bears
+Tigers 1-1 Wolves
+Bears 2-1 Lions
+Wolves 0-3 Tigers
+Lions 2:1 Wolves
+
+Tigers 2-2 Lions
+Wolves 1-0 Bears
+Eagles 1-0
+Lions 1-1 Lions
 ```
 
-You don't know how many lines there are. `input()` raises an `EOFError` when the input runs out, so read in a `while True` loop and stop when you catch it:
+**The output** for this season, when the program is finished:
+
+```text
+10 matches read
+Line 9 skipped: Lions 2:1 Wolves
+Line 13 skipped: Eagles 1-0
+Line 14 skipped: Lions 1-1 Lions
+
+Pos  Team     P  W  D  L  GF  GA   GD  Pts  Form
+  1  Tigers   5  2  2  1  11   5   +6    8  DWD
+  2  Lions    5  2  2  1  10   8   +2    8  WLD
+  3  Wolves   5  1  3  1   4   6   -2    6  DLW
+  4  Bears    5  1  1  3   3   9   -6    4  LWL
+
+Biggest win: Tigers 4-0 Bears
+Most goals: Tigers 4-0 Bears
+Goals per match: 2.80
+```
+
+The columns of the table:
+
+| Column | What it means                                                |
+| ------ | ------------------------------------------------------------ |
+| Pos    | the team's place in the table                                |
+| P      | matches played                                               |
+| W      | matches won                                                  |
+| D      | draws: matches that ended with the same score for both teams |
+| L      | matches lost                                                 |
+| GF     | goals for: goals the team scored                             |
+| GA     | goals against: goals the other teams scored against it       |
+| GD     | goal difference: GF minus GA                                 |
+| Pts    | points: 3 for each win, 1 for each draw, 0 for a loss        |
+| Form   | the team's last three results: `W` win, `D` draw, `L` loss   |
+
+**To try your program**, press Run, click in the output box and paste the season. Then press **End input** under the output box (or Ctrl + D). This tells your program that there are no more lines, so it can print its answer.
+
+Build the program one step at a time, in one file. Tick a step when your program does what it asks. When you think it is finished, press **Run Tests**: the tests give your program other seasons. Passing them finishes the project.
+
+## Read all the lines
+
+You don't know how many lines the file has, so read them in a loop. When there are no more lines, `input()` stops with an error called `EOFError`. Catch it and leave the loop:
 
 ```python
-try:
-    line = input()
-except EOFError:
-    break
+while True:
+    try:
+        line = input()
+    except EOFError:
+        break
 ```
 
-Skip empty lines, keep the others, and print how many matches you read: `10 matches read` (`1 match read` for one).
+Skip the empty lines and keep the others in a list. Then print how many you kept. With the season above you get this, because some wrong lines are still in the list:
 
-## Lines that aren't results
+```text
+13 matches read
+```
 
-Oliver types fast on a small screen. A line is a result only if it has three words, the two teams are different, and the score is two whole numbers joined by a `-`. Leave every other line out of the season, and after the count say which ones, with their line number in the file (empty lines count too):
+For one match, write `1 match read`. For any other number, `0` too, write `matches`.
+
+## Skip the wrong lines
+
+Oliver types fast on a small screen, so some lines are wrong. A line is a real result only when:
+
+- it has exactly three words (`line.split()` gives you the words)
+- the two teams have different names
+- the score is two whole numbers with a `-` between them, like `2-1`
+
+`"2".isdigit()` is `True` and `"two".isdigit()` is `False`.
+
+Keep only the real results and count only them. After the count, print one line for each wrong line, with its number in the file. The first line is line 1, and empty lines count too:
 
 ```text
 10 matches read
@@ -36,41 +98,72 @@ Line 13 skipped: Eagles 1-0
 Line 14 skipped: Lions 1-1 Lions
 ```
 
-`isdigit()` tells whether a piece of the score is a whole number.
+Line 9 has `:` in place of `-`, line 13 has only two words, and on line 14 Lions plays against Lions.
 
-## Every team's numbers
+## Count for every team
 
-Go through the matches and keep, for every team: matches played, won, drawn, lost, goals scored and goals let in. A dictionary from team name to a small dictionary of numbers works well. A win is worth 3 points, a draw 1.
+Now go through the real results and count, for every team, the numbers of the table: P, W, D, L, GF and GA. A dictionary works well: the team's name is the key, and the value is a small dictionary with its numbers.
 
-Also keep each team's results in order as a string of letters, `W`, `D` or `L`: the last step of the table needs it.
+Each match changes two teams. After `Lions 2-1 Tigers`:
 
-## Who's on top
+- Lions: P + 1, W + 1, GF + 2, GA + 1
+- Tigers: P + 1, L + 1, GF + 1, GA + 2
 
-Order the teams: most points first; on equal points, the better goal difference (scored minus let in); then more goals scored; then by name. `sorted` with a `key` that returns a tuple does all four at once; put a minus sign in front of the numbers that should go from largest to smallest.
+Also keep each team's results as a string of letters, adding `W`, `D` or `L` after every match. You need it for the Form column.
 
-## The table
+To check this step, print the dictionary, then remove the print. For the season above, Lions has played 5, won 2, drawn 2, lost 1, scored 10 goals and has 8 goals against.
 
-Print an empty line, then the table, every column lined up:
+## Sort the teams
 
-```text
-Pos  Team     P  W  D  L  GF  GA   GD  Pts  Form
-  1  Tigers   5  2  2  1  11   5   +6    8  DWD
-  2  Lions    5  2  2  1  10   8   +2    8  WLD
-  3  Wolves   5  1  3  1   4   6   -2    6  DLW
-  4  Bears    5  1  1  3   3   9   -6    4  LWL
+A team's points are 3 for each win and 1 for each draw. Put the teams in this order:
+
+1. more points first
+2. on equal points, the bigger goal difference (GD) first
+3. if that is equal too, more goals scored (GF) first
+4. if everything is equal, by name, from A to Z
+
+In the season above Tigers and Lions both have 8 points. Tigers comes first because its goal difference is +6 and Lions' is +2.
+
+`sorted` with a `key` that gives a tuple sorts by many things at once. A minus sign in front of a number sorts it from big to small. For example, players by score from high to low, then by name:
+
+```python
+sorted(players, key=lambda p: (-score[p], p))
 ```
 
-The columns are, separated as shown: the position right-aligned in 3 characters, two spaces, the team left-aligned as wide as the longest team name (at least 4, the width of `Team`), two spaces, then `P`, `W`, `D`, `L` right-aligned in 2 each, `GF` and `GA` in 3, `GD` in 4 with its sign always shown, `Pts` in 4, two spaces, and the form. The header uses the same widths.
+## Print the table
 
-f-strings align for you: `f"{name:<{width}}"` pads a name on the right to `width` characters, `f"{n:>3}"` pads a number on the left, and `f"{gd:>+4}"` adds the sign, `+0` included.
+After the count and the skipped lines, print an empty line, then the header and one row for each team, in the order from the last step. Leave out the Form column for now.
 
-## Form
+The columns must line up exactly like in the output at the top, because the tests compare your output character by character:
 
-The last column, `Form`, is the team's last three results, oldest first: Tigers drew, won, then drew. A team that played fewer than three matches shows the ones it has. A string slice, `form[-3:]`, gives the last three letters.
+| Column     | Width                                                   | Side  |
+| ---------- | ------------------------------------------------------- | ----- |
+| Pos        | 3                                                       | right |
+| Team       | the longest team name, at least 4 (the width of `Team`) | left  |
+| P, W, D, L | 2 each                                                  | right |
+| GF, GA     | 3 each                                                  | right |
+| GD         | 4, always with its sign: `+6`, `-2`, `+0`               | right |
+| Pts        | 4                                                       | right |
 
-## Records
+Put two spaces after Pos and after Team, and one space between the other columns. The header uses the same widths.
 
-After the table, an empty line and three records:
+f-strings can do this for you:
+
+- `f"{name:<{width}}"` adds spaces after a name until it is `width` characters long
+- `f"{n:>3}"` adds spaces before a number until it is 3 characters long
+- `f"{gd:>+4}"` does the same for 4 characters and always shows the sign
+
+If no line was a real result, print `No table yet` after the count and the skipped lines, and nothing more.
+
+## Add the Form column
+
+Add the Form column at the end of the header and of every row, after two spaces.
+
+Form is the team's last three results, the oldest first. Tigers drew, then won, then drew, so its form is `DWD`. A team that played fewer than three matches shows the ones it has. `form[-3:]` gives the last three letters of a string.
+
+## Season facts
+
+After the table, print an empty line and three facts about the season:
 
 ```text
 Biggest win: Tigers 4-0 Bears
@@ -78,9 +171,7 @@ Most goals: Tigers 4-0 Bears
 Goals per match: 2.80
 ```
 
-- **Biggest win** is the match with the largest difference between the scores
-- **Most goals** is the match with the most goals in total
-- on a tie, the match that came first in the file
-- **Goals per match** is all goals divided by the matches, with two decimals
-
-When no line was a result, print `No table yet` after the count, and nothing else.
+- **Biggest win** is the match with the biggest difference between the two scores
+- **Most goals** is the match with the most goals of both teams together
+- if two matches are equal, take the one that comes first in the file: `Wolves 2-2 Lions` also has 4 goals, but it comes after `Tigers 4-0 Bears`
+- **Goals per match** is all the goals of the season divided by the number of matches, with two digits after the point: 28 goals in 10 matches give `2.80`. `f"{x:.2f}"` shows two digits after the point

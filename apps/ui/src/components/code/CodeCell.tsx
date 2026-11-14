@@ -5,6 +5,7 @@ import { CodeOutput } from './CodeOutput';
 import { useCodeExecution } from '../../hooks/useCodeExecution';
 import { useGuestSignupPrompt } from '../../context/GuestSignupPromptContext';
 import { RunLessonContext } from './runLesson';
+import { EndInputContext } from './endInput';
 import { useRoomBelow } from '../../hooks/useRoomBelow';
 
 interface CodeCellProps {
@@ -29,8 +30,10 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
   const lang = LANG_MAP[language.toLowerCase()] || language.toLowerCase();
   const [code, setCode] = useState(initialCode);
   const { notifyRunComplete } = useGuestSignupPrompt();
-  const { output, isRunning, execute, stop, sendInput } = useCodeExecution(notifyRunComplete);
+  const { output, isRunning, inputEnded, execute, stop, sendInput, endInput } =
+    useCodeExecution(notifyRunComplete);
   const runLesson = useContext(RunLessonContext);
+  const hasEndInput = useContext(EndInputContext);
   const outputTop = useRef<HTMLDivElement>(null);
   const room = useRoomBelow(outputTop, OUTPUT_GAP, [output]);
 
@@ -52,6 +55,8 @@ export function CodeCell({ initialCode, language }: CodeCellProps) {
             growTo={room === null ? undefined : Math.max(OUTPUT_HEIGHT, room)}
             isRunning={isRunning}
             onInput={sendInput}
+            onEndInput={hasEndInput ? endInput : undefined}
+            inputEnded={inputEnded}
           />
         </div>
       )}

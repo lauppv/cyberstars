@@ -24,8 +24,11 @@ function appendCapped(prev: string, chunk: string): string {
 export function useCodeExecution(onExit?: (code: number | undefined) => void) {
   const [output, setOutput] = useState('');
   const [isRunning, setIsRunning] = useState(false);
+  // The student pressed End input (Ctrl+D): the program reads no more
+  const [inputEnded, setInputEnded] = useState(false);
   const wsRef = useRef<WebSocket | null>(null);
   const sendInputRef = useRef<((data: string) => void) | null>(null);
+  const endInputRef = useRef<(() => void) | null>(null);
   const onExitRef = useRef(onExit);
   useEffect(() => {
     onExitRef.current = onExit;
@@ -43,6 +46,7 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
       }
 
       setIsRunning(true);
+      setInputEnded(false);
       setOutput('');
       setRunWait(runner, null);
 
@@ -110,6 +114,14 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
           ws.send(JSON.stringify({ type: 'stdin', data }));
         }
       };
+
+      endInputRef.current = () => {
+        if (ws.readyState !== WebSocket.OPEN) return;
+        ws.send(JSON.stringify({ type: 'eof' }));
+        sendInputRef.current = null;
+        endInputRef.current = null;
+        setInputEnded(true);
+      };
     },
     [runner],
   );
@@ -126,6 +138,12 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
 
   const sendInput = useCallback((data: string) => {
     sendInputRef.current?.(data);
+  }, []);
+
+  // End input, the student's Ctrl+D: the program's input closes, so one that
+  // reads until the input runs out goes on with what it has
+  const endInput = useCallback(() => {
+    endInputRef.current?.();
   }, []);
 
   // The student's Ctrl+C: closing the socket makes the server kill the program
@@ -156,5 +174,5 @@ export function useCodeExecution(onExit?: (code: number | undefined) => void) {
     sendInputRef.current = null;
   }, []);
 
-  return { output, isRunning, execute, stop, sendInput, clearOutput };
+  return { output, isRunning, inputEnded, execute, stop, sendInput, endInput, clearOutput };
 }

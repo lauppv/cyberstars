@@ -47,7 +47,7 @@ const runLive = liveRun({
 class FakeProc extends EventEmitter {
   stdout = new EventEmitter();
   stderr = new EventEmitter();
-  stdin = { write: vi.fn() };
+  stdin = { write: vi.fn(), end: vi.fn() };
   kill = vi.fn();
   killed = false;
 }
@@ -132,6 +132,38 @@ describe('liveRun', () => {
 
     vi.advanceTimersByTime(1_000);
     expect(proc.kill).toHaveBeenCalledWith('SIGKILL');
+  });
+
+  it('closes the program input on eof and writes nothing after it', async () => {
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    await runLive(ws, 'input()', 'python', 'user:eof');
+
+    ws.emit('message', JSON.stringify({ type: 'stdin', data: 'a\n' }));
+    ws.emit('message', JSON.stringify({ type: 'eof' }));
+    ws.emit('message', JSON.stringify({ type: 'stdin', data: 'b\n' }));
+    ws.emit('message', JSON.stringify({ type: 'eof' }));
+
+    expect(proc.stdin.write).toHaveBeenCalledTimes(1);
+    expect(proc.stdin.write).toHaveBeenCalledWith('a\n');
+    expect(proc.stdin.end).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps input sent before the program starts and gives it once it runs', async () => {
+    const proc = new FakeProc();
+    spawnMock.mockReturnValue(proc);
+    const ws = new FakeWs();
+
+    const running = runLive(ws, 'input()', 'python', 'user:early');
+    ws.emit('message', JSON.stringify({ type: 'stdin', data: 'Lions 2-1 Tigers\n' }));
+    ws.emit('message', JSON.stringify({ type: 'eof' }));
+    expect(spawnMock).not.toHaveBeenCalled();
+    await running;
+
+    expect(proc.stdin.write).toHaveBeenCalledWith('Lions 2-1 Tigers\n');
+    expect(proc.stdin.end).toHaveBeenCalledTimes(1);
   });
 
   it('releases the container for reuse on a normal exit', async () => {

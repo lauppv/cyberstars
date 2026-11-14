@@ -188,6 +188,30 @@ describe('useCodeExecution', () => {
     expect(ws.sent).toContainEqual(JSON.stringify({ type: 'stdin', data: '42\n' }));
   });
 
+  it('endInput sends eof once, then takes no more input until the next run', async () => {
+    const { result } = renderHook(() => useCodeExecution());
+
+    act(() => result.current.execute('code', 'python'));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 10));
+    });
+    const ws = wsInstances[0];
+    expect(result.current.inputEnded).toBe(false);
+
+    act(() => result.current.endInput());
+    expect(result.current.inputEnded).toBe(true);
+    act(() => {
+      result.current.sendInput('late\n');
+      result.current.endInput();
+    });
+    expect(ws.sent.filter((m) => m === JSON.stringify({ type: 'eof' }))).toHaveLength(1);
+    expect(ws.sent).not.toContainEqual(JSON.stringify({ type: 'stdin', data: 'late\n' }));
+    expect(result.current.output).toBe('');
+
+    act(() => result.current.execute('code', 'python'));
+    expect(result.current.inputEnded).toBe(false);
+  });
+
   it('clearOutput resets state', async () => {
     const { result } = renderHook(() => useCodeExecution());
 

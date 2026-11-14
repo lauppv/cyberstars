@@ -19,6 +19,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { ResizeHandle } from '../components/ui/ResizeHandle';
 import { PanelTabs } from '../components/judge/PanelTabs';
 import { MarkdownRenderer } from '../components/markdown/MarkdownRenderer';
+import { EndInputContext } from '../components/code/endInput';
 import { CodeEditor } from '../components/code/CodeEditor';
 import { CodeOutput } from '../components/code/CodeOutput';
 import { RunButton } from '../components/code/RunButton';
@@ -241,7 +242,8 @@ function ProjectView({ project }: { project: Project }) {
   const [code, setCode] = useState(() => readCode(project));
   const { user } = useAuth();
   const { notifyRunComplete } = useGuestSignupPrompt();
-  const { output, isRunning, execute, stop, sendInput } = useCodeExecution(notifyRunComplete);
+  const { output, isRunning, inputEnded, execute, stop, sendInput, endInput } =
+    useCodeExecution(notifyRunComplete);
   // Only passing the project's judge finishes it; the ticks are the student's notes
   const [finished, setFinished] = useState(false);
   const [results, setResults] = useState<RunTestsResponse | null>(null);
@@ -396,12 +398,12 @@ function ProjectView({ project }: { project: Project }) {
                 ) : sections === null ? (
                   <LoadingSpinner />
                 ) : (
-                  <>
+                  <EndInputContext.Provider value>
                     <div className="lesson-body">
                       <MarkdownRenderer content={sections.intro} />
                     </div>
                     <Steps project={project} sections={sections.steps} />
-                  </>
+                  </EndInputContext.Provider>
                 )}
 
                 <div className="flex gap-3 mt-10 pb-4">
@@ -505,6 +507,8 @@ function ProjectView({ project }: { project: Project }) {
                           output={output}
                           isRunning={isRunning}
                           onInput={sendInput}
+                          onEndInput={endInput}
+                          inputEnded={inputEnded}
                           fillHeight
                         />
                       )}

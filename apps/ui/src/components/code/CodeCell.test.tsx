@@ -3,14 +3,16 @@ import { render, screen, fireEvent } from '@testing-library/react';
 
 const execute = vi.fn();
 const sendInput = vi.fn();
+const endInput = vi.fn();
 let hookState: { output: string; isRunning: boolean };
 
 vi.mock('../../hooks/useCodeExecution', () => ({
-  useCodeExecution: () => ({ ...hookState, execute, sendInput }),
+  useCodeExecution: () => ({ ...hookState, execute, sendInput, endInput }),
 }));
 
 import { CodeCell } from './CodeCell';
 import { RunLessonContext } from './runLesson';
+import { EndInputContext } from './endInput';
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -34,6 +36,20 @@ describe('CodeCell', () => {
     hookState = { output: '', isRunning: true };
     const { container } = render(<CodeCell initialCode="print(1)" language="py" />);
     expect(container.querySelector('.animate-pulse')).not.toBeNull();
+  });
+
+  it('offers End input only where the page gives it, as a project does', () => {
+    hookState = { output: '', isRunning: true };
+    const { unmount } = render(<CodeCell initialCode="input()" language="py" />);
+    expect(screen.queryByTestId('end-input')).toBeNull();
+    unmount();
+    render(
+      <EndInputContext.Provider value>
+        <CodeCell initialCode="input()" language="py" />
+      </EndInputContext.Provider>,
+    );
+    fireEvent.click(screen.getByTestId('end-input'));
+    expect(endInput).toHaveBeenCalledTimes(1);
   });
 
   it('maps aliased languages through LANG_MAP when running', () => {

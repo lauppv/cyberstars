@@ -95,6 +95,65 @@ describe('CodeOutput', () => {
     expect(onInput).not.toHaveBeenCalled();
   });
 
+  it('shows End input only while a program that takes input runs and its input is open', () => {
+    const { rerender } = render(
+      <CodeOutput output="" isRunning={true} onInput={() => {}} onEndInput={() => {}} />,
+    );
+    expect(screen.getByTestId('end-input')).toHaveTextContent('End input');
+    rerender(
+      <CodeOutput output="" isRunning={true} onInput={() => {}} onEndInput={() => {}} inputEnded />,
+    );
+    expect(screen.queryByTestId('end-input')).toBeNull();
+    expect(screen.queryByTestId('stdin-input')).toBeNull();
+    rerender(<CodeOutput output="" isRunning={false} onInput={() => {}} onEndInput={() => {}} />);
+    expect(screen.queryByTestId('end-input')).toBeNull();
+    rerender(<CodeOutput output="" isRunning={true} onInput={() => {}} />);
+    expect(screen.queryByTestId('end-input')).toBeNull();
+  });
+
+  it('sends what is still typed as a last line, then ends the input, on the button', () => {
+    const onInput = vi.fn();
+    const onEndInput = vi.fn();
+    render(<CodeOutput output="" isRunning={true} onInput={onInput} onEndInput={onEndInput} />);
+    screen.getByTestId('stdin-input').textContent = 'Lions 1-0 Bears';
+    fireEvent.click(screen.getByTestId('end-input'));
+    expect(onInput).toHaveBeenCalledWith('Lions 1-0 Bears\n');
+    expect(onEndInput).toHaveBeenCalledTimes(1);
+    expect(onInput.mock.invocationCallOrder[0]).toBeLessThan(
+      onEndInput.mock.invocationCallOrder[0],
+    );
+  });
+
+  it('ends the input on Ctrl+D without sending an empty line', () => {
+    const onInput = vi.fn();
+    const onEndInput = vi.fn();
+    render(<CodeOutput output="" isRunning={true} onInput={onInput} onEndInput={onEndInput} />);
+    fireEvent.keyDown(screen.getByTestId('stdin-input'), { key: 'd', ctrlKey: true });
+    expect(onEndInput).toHaveBeenCalledTimes(1);
+    expect(onInput).not.toHaveBeenCalled();
+  });
+
+  it('sends every whole line of a multi-line paste and keeps the rest typed', () => {
+    const onInput = vi.fn();
+    render(<CodeOutput output="" isRunning={true} onInput={onInput} />);
+    const stdin = screen.getByTestId('stdin-input');
+    stdin.textContent = 'Lions ';
+    fireEvent.paste(stdin, {
+      clipboardData: { getData: () => '2-1 Tigers\r\nBears 0-0 Wolves\nTigers' },
+    });
+    expect(onInput).toHaveBeenCalledWith('Lions 2-1 Tigers\nBears 0-0 Wolves\n');
+    expect(stdin.textContent).toBe('Tigers');
+  });
+
+  it('leaves a one-line paste to the browser', () => {
+    const onInput = vi.fn();
+    render(<CodeOutput output="" isRunning={true} onInput={onInput} />);
+    fireEvent.paste(screen.getByTestId('stdin-input'), {
+      clipboardData: { getData: () => 'Lions 2-1 Tigers' },
+    });
+    expect(onInput).not.toHaveBeenCalled();
+  });
+
   it('focuses the stdin span when clicking the output area while running', () => {
     render(<CodeOutput output="" isRunning={true} onInput={() => {}} />);
     const stdin = screen.getByTestId('stdin-input');

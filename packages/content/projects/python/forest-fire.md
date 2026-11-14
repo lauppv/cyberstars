@@ -1,71 +1,134 @@
-The rangers of a national park in the Alps plan their firebreaks, strips of land with no trees, and want to see what a fire would do before summer comes. They give you a map of a patch of forest, the wind, and where a fire might start. You'll write the simulation: minute by minute, the fire spreads from tree to tree, the wind pushes it further, and water stops it.
+The people who look after a national park in the Alps want to know what a fire would do in their forest, before summer comes. They give you a map of a piece of forest, the wind, and the place where a fire might start. Your program shows the fire step by step: it goes from tree to tree, the wind pushes it further, and water stops it.
 
-You build it one step at a time, in one file. Tick a step off when your program does what it asks; you can always come back and untick it. When you think it's done, press **Run Tests**: the tests burn forests your program has never seen (on the screen only). Passing them finishes the project.
+**The input** starts with one line of three numbers: the map's height, its width, and the most steps to show. The second line is the wind. Then comes the map, one row on each line:
+
+```text
+3 5 5
+wind: none
+TTTTT
+TTFTT
+TTTTT
+```
+
+The letters of the map:
+
+| Letter | What it is                                                |
+| ------ | --------------------------------------------------------- |
+| `T`    | a tree                                                    |
+| `F`    | a tree on fire                                            |
+| `.`    | ground with no tree                                       |
+| `#`    | water                                                     |
+| `x`    | ash: a tree that has burned (it appears as the fire goes) |
+
+The wind is `north`, `south`, `east`, `west` or `none`.
+
+**The output** for this input, when the program is finished:
+
+```text
+Forest 3x5, 15 trees, wind none
+TTTTT
+TTFTT
+TTTTT
+
+Step 1
+TTFTT
+TFxFT
+TTFTT
+
+Step 2
+TFxFT
+FxxxF
+TFxFT
+
+Step 3
+FxxxF
+xxxxx
+FxxxF
+
+Step 4
+xxxxx
+xxxxx
+xxxxx
+
+Burned: 15 of 15 (100%)
+Standing: 0
+The fire went out after 4 steps
+```
+
+**To try your program**, press Run, click in the output box and paste the input. Then press **End input** under the output box (or Ctrl + D).
+
+Build the program one step at a time, in one file. Tick a step when your program does what it asks. When you think it is finished, press **Run Tests**: the tests give your program other forests. Passing them finishes the project.
 
 ## The map
 
-The first line is the map's height, its width and the most steps to simulate; the second, the wind; then the map, one row per line:
+Read the first line and the wind, then the rows of the map. Keep the map as a list of rows, where each row is a list of characters, so you can change one cell later.
+
+Print one line about the forest, then the map as it is. The trees count the trees on fire too:
 
 ```text
-6 10 10
-wind: east
-TTTT.TTTTT
-TFTT.TT#TT
-TTTT..T#TT
-TT.TTTT#TT
-TT.TT.TTTT
-TTTTT.TTT.
-```
-
-`T` is a tree, `F` a tree on fire, `.` bare ground and `#` water. Later, `x` is ash, a tree that burned. The wind is `north`, `south`, `east`, `west` or `none`.
-
-Keep the map as a list of rows, each a list of characters. Print a line about it (the trees count the ones on fire too) and the map:
-
-```text
-Forest 6x10, 48 trees, wind east
+Forest 3x5, 15 trees, wind none
+TTTTT
+TTFTT
+TTTTT
 ```
 
 ## One step
 
-In a step, every cell changes at the same moment, looking only at the map as it was before the step:
+In one step, every cell changes at the same time:
 
-- a tree on fire burns out: it becomes ash
-- a tree next to a tree on fire (above, below, left or right) catches fire
+- a tree on fire burns out: it becomes ash (`x`)
+- a tree next to a tree on fire catches fire (`F`). Next to means above, below, left or right, not on a corner
 
-The trap: if you change the map while you go through it, a tree that just caught fire would set its neighbours alight in the same step, and the fire would cross the forest in one go. So build the new map in a **copy** (`[row[:] for row in forest]`), reading from the old one and writing to the new one, and use the copy for the next step.
+Each cell looks only at the map as it was **before** the step. Be careful here: if you change the map while you go through it, a tree that just caught fire sets its neighbours on fire in the same step, and the fire crosses the whole forest at once.
+
+So make a **copy** of the map first (`[row[:] for row in forest]`). Read from the old map, write into the copy, and use the copy for the next step.
 
 ## Step after step
 
-Print an empty line, `Step 1` and the map after it, then the same for every next step, until no tree is on fire or the most steps are done:
+After the first map, print an empty line, `Step 1` and the map after that step. Do the same for each next step. Stop when no tree is on fire, or when you have done the most steps from the first line:
 
 ```text
 Step 1
-TFTT.TTTTT
-FxFF.TT#TT
-TFTT..T#TT
-TT.TTTT#TT
-TT.TT.TTTT
-TTTTT.TTT.
+TTFTT
+TFxFT
+TTFTT
 ```
 
 ## The wind
 
-Wind carries sparks. With a wind blowing, a tree also catches fire when the cell **two** cells upwind of it is on fire: with wind `east`, the tree two cells to the right of a fire catches too, over whatever is between them (a gap in the trees doesn't stop sparks).
+The wind carries small pieces of fire. When the wind blows, a tree also catches fire when the cell **two** cells away, on the side the wind comes from, is on fire. It does not matter what is between them: a gap in the trees does not stop it.
 
-Upwind means the side the wind comes from: an `east` wind blows towards the east, so it comes from the west, and the fire two cells to a tree's left reaches it. A dictionary from each direction to its step, like `'east': (0, 1)`, keeps this to a few lines.
+The wind is named for the way it goes. An `east` wind goes towards the east, so it comes from the west: a tree catches fire when the cell two places to its **left** is on fire.
+
+Here is the first step of a forest with an `east` wind:
+
+```text
+TTTT.TTTTT        TFTT.TTTTT
+TFTT.TT#TT        FxFF.TT#TT
+TTTT..T#TT   ->   TFTT..T#TT
+```
+
+The tree two cells to the right of the fire caught too. A dictionary that gives each wind its direction, like `'east': (0, 1)`, keeps this short.
 
 ## Water
 
-Sparks don't fly over water: when the cell between the fire and the tree is `#`, the wind can't carry the fire across. And fire never burns water or bare ground.
+The wind can't carry fire over water: when the cell between the fire and the tree is `#`, the tree does not catch fire from that wind. Fire never burns water or ground with no tree.
 
-## The rangers' report
+## The report
 
-After the last step, an empty line and the report: how many of the trees burned (ash, or still on fire) and their share rounded with `round`, how many are still standing, and how it ended:
+After the last step, print an empty line and three lines:
 
 ```text
-Burned: 48 of 48 (100%)
+Burned: 15 of 15 (100%)
 Standing: 0
-The fire went out after 9 steps
+The fire went out after 4 steps
 ```
 
-The last line is one of three: `The fire went out after 9 steps` (`1 step` for one), `Still burning after 10 steps` when the most steps ran out with fire left, or `There was no fire` when the map had none to start with. A forest without trees reports `Burned: 0 of 0 (0%)`. The rangers will try a wider firebreak next.
+- **Burned**: how many trees burned (ash, or still on fire), out of all the trees, and the percent rounded with `round`
+- **Standing**: how many trees are still green
+- the last line is one of three:
+  - `The fire went out after 4 steps` when no tree is on fire any more (`1 step` for one)
+  - `Still burning after 5 steps` when the most steps are done and some trees are still on fire
+  - `There was no fire` when the map had no fire at the start
+
+A forest with no trees at all reports `Burned: 0 of 0 (0%)`.

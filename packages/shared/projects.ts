@@ -39,15 +39,15 @@ export const PROJECTS: Project[] = [
     title: 'League Table',
     difficulty: 'easy',
     summary:
-      'Turn a season of football results pasted from a phone into the final league table, every column lined up, with form and records.',
+      'Read a season of football results and print the league table: the teams from best to worst, with their points, goals and last results.',
     steps: [
-      { id: 'read', title: 'Read until the file ends' },
-      { id: 'bad-lines', title: "Lines that aren't results" },
-      { id: 'numbers', title: "Every team's numbers" },
-      { id: 'order', title: "Who's on top" },
-      { id: 'table', title: 'The table' },
-      { id: 'form', title: 'Form' },
-      { id: 'records', title: 'Records' },
+      { id: 'read', title: 'Read all the lines' },
+      { id: 'bad-lines', title: 'Skip the wrong lines' },
+      { id: 'numbers', title: 'Count for every team' },
+      { id: 'order', title: 'Sort the teams' },
+      { id: 'table', title: 'Print the table' },
+      { id: 'form', title: 'Add the Form column' },
+      { id: 'records', title: 'Season facts' },
     ],
   },
   {
@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     title: 'Wall Calendar',
     difficulty: 'easy',
     summary:
-      'Print a kitchen wall calendar for any months, working out leap years and weekdays by hand, with birthdays, holidays and working days.',
+      'Print a wall calendar for any months, working out leap years and the days of the week yourself, with birthdays, holidays and working days.',
     steps: [
       { id: 'input', title: 'What to print' },
       { id: 'length', title: 'How long is a month' },
@@ -90,7 +90,7 @@ export const PROJECTS: Project[] = [
     title: 'Library Desk',
     difficulty: 'medium',
     summary:
-      'The front desk program of a neighbourhood library: a catalog, loans, returns with late fees and an end-of-day report.',
+      'The front desk program of a small library: the list of books, borrowing, returns with late fees and a report at the end of the day.',
     steps: [
       { id: 'catalog', title: 'Load the catalog' },
       { id: 'list', title: 'List the books' },
@@ -100,7 +100,7 @@ export const PROJECTS: Project[] = [
       { id: 'fees', title: 'Late fees' },
       { id: 'member', title: 'Member card' },
       { id: 'report', title: 'End-of-day report' },
-      { id: 'bad-input', title: 'Survive bad input' },
+      { id: 'bad-input', title: 'Wrong input' },
     ],
   },
   {
@@ -126,14 +126,14 @@ export const PROJECTS: Project[] = [
     title: 'Bank Statement',
     difficulty: 'medium',
     summary:
-      "Sort a bank's CSV export by your own keyword rules and report where the money went, month by month, with the subscriptions that hide in it.",
+      'Put every payment from a bank file into a group by your own rules, then show where the money went, month by month, and which payments come every month.',
     steps: [
       { id: 'read', title: 'Read the rules and the statement' },
       { id: 'commas', title: 'Commas inside a description' },
-      { id: 'rules', title: 'Sort by the rules' },
+      { id: 'rules', title: 'Put each one in a category' },
       { id: 'categories', title: 'Where the money went' },
       { id: 'months', title: 'Month by month' },
-      { id: 'biggest', title: 'The biggest ones' },
+      { id: 'biggest', title: 'The biggest expenses' },
       { id: 'subscriptions', title: 'Subscriptions' },
     ],
   },
@@ -159,14 +159,14 @@ export const PROJECTS: Project[] = [
     title: 'Forest Fire',
     difficulty: 'medium',
     summary:
-      'Simulate a fire spreading through a forest map step by step, every cell changing at once, with wind carrying sparks and water stopping them.',
+      'Show a fire going through a forest map step by step, with every cell changing at the same time, the wind pushing the fire and water stopping it.',
     steps: [
       { id: 'map', title: 'The map' },
       { id: 'step', title: 'One step' },
       { id: 'steps', title: 'Step after step' },
       { id: 'wind', title: 'The wind' },
       { id: 'water', title: 'Water' },
-      { id: 'report', title: "The rangers' report" },
+      { id: 'report', title: 'The report' },
     ],
   },
   {
@@ -182,7 +182,7 @@ export const PROJECTS: Project[] = [
       { id: 'candidates', title: 'What could go here' },
       { id: 'sure', title: 'The sure cells' },
       { id: 'backtracking', title: 'Try and take back' },
-      { id: 'impossible', title: 'No way out' },
+      { id: 'impossible', title: 'No solution' },
     ],
   },
   {
@@ -191,13 +191,13 @@ export const PROJECTS: Project[] = [
     title: 'Mini Spreadsheet',
     difficulty: 'hard',
     summary:
-      'A small spreadsheet for the class treasurer: cells with numbers, text and formulas that use other cells, ranges, errors and circles caught.',
+      'A small spreadsheet like Excel: cells with numbers, text and formulas that use other cells, ranges, errors, and formulas that go round in circles.',
     steps: [
       { id: 'table', title: 'Cells and the table' },
       { id: 'arithmetic', title: 'Arithmetic' },
       { id: 'references', title: 'Cells that use cells' },
       { id: 'ranges', title: 'Ranges' },
-      { id: 'errors', title: "When something's wrong" },
+      { id: 'errors', title: 'When something is wrong' },
       { id: 'cycles', title: 'Going round in circles' },
     ],
   },
@@ -207,14 +207,14 @@ export const PROJECTS: Project[] = [
     title: 'Downloads Cleanup',
     difficulty: 'easy',
     summary:
-      'Sort a cluttered Downloads folder into shelves by file type, throw out the junk and the duplicate, and spot the files that take up the room.',
+      'Sort a messy Downloads folder into shelves by file type, throw out the junk and the copy, and find the files that take the most room.',
     steps: [
-      { id: 'stock', title: 'Take stock' },
+      { id: 'stock', title: 'Count what is there' },
       { id: 'junk', title: 'Throw out the junk' },
       { id: 'shelves', title: 'Make the shelves' },
       { id: 'sort', title: 'Sort by type' },
       { id: 'copy', title: 'Remove the copy' },
-      { id: 'big', title: 'Find the space hogs' },
+      { id: 'big', title: 'Find the big files' },
       { id: 'after', title: 'Before and after' },
     ],
   },
@@ -224,7 +224,7 @@ export const PROJECTS: Project[] = [
     title: 'Photo Archive',
     difficulty: 'easy',
     summary:
-      "Turn a phone's photo dump into an archive: screenshots aside, a folder per year, a summer album, an index and folders nobody can change by mistake.",
+      'Turn the photos from a phone into an archive: screenshots apart, a folder for each year, a summer album, a list of all photos and folders nobody can change by mistake.',
     steps: [
       { id: 'look', title: 'Look at what came off the phone' },
       { id: 'screenshots', title: 'Set the screenshots aside' },
@@ -240,14 +240,14 @@ export const PROJECTS: Project[] = [
     title: 'Mailing List',
     difficulty: 'easy',
     summary:
-      'Clean a year of newsletter sign-ups into a list to send to: no blanks, no capitals, no repeats, no broken addresses and no one who unsubscribed.',
+      'Clean a year of newsletter sign-ups into a list to send to: no empty lines, no capitals, no addresses twice, no broken addresses and no one who asked to leave.',
     steps: [
       { id: 'look', title: 'Look at the sign-ups' },
       { id: 'blank', title: 'Drop the empty lines' },
       { id: 'lower', title: 'One way of writing' },
       { id: 'once', title: 'Everyone once' },
       { id: 'valid', title: 'Real addresses only' },
-      { id: 'unsub', title: 'Respect the unsubscribes' },
+      { id: 'unsub', title: 'Take off who asked' },
       { id: 'domains', title: 'Who reads it' },
       { id: 'tidy', title: 'Tidy up' },
     ],
@@ -260,7 +260,7 @@ export const PROJECTS: Project[] = [
     summary:
       "Read a pizzeria's web server log to find the missing pages, the busiest hours and the visitor trying passwords at three in the morning.",
     steps: [
-      { id: 'meet', title: 'Meet the log' },
+      { id: 'meet', title: 'Look at the log' },
       { id: 'not-found', title: "Pages that weren't there" },
       { id: 'visitors', title: 'The most frequent visitors' },
       { id: 'broken', title: 'Broken links' },
@@ -329,7 +329,7 @@ export const PROJECTS: Project[] = [
     title: 'Manuscript',
     difficulty: 'medium',
     summary:
-      'Prepare a short novel for print from the terminal: word counts, a table of contents, stray notes and spaces, an overused word and a renamed character.',
+      'Make a short novel ready to print from the terminal: word counts, a table of contents, notes and double spaces, a word used too often and a new name for the hero.',
     steps: [
       { id: 'words', title: 'How long is it' },
       { id: 'contents', title: 'Table of contents' },
@@ -346,7 +346,7 @@ export const PROJECTS: Project[] = [
     title: 'Contacts Merge',
     difficulty: 'medium',
     summary:
-      'Merge two phone contact exports into one list to import: numbers written one way, everyone once, and the gaps and conflicts found.',
+      'Put two lists of phone contacts together into one list for a new phone: numbers written one way, everyone once, and the missing and changed numbers found.',
     steps: [
       { id: 'look', title: 'Look at both exports' },
       { id: 'together', title: 'All in one file' },
@@ -364,7 +364,7 @@ export const PROJECTS: Project[] = [
     title: 'Incident Timeline',
     difficulty: 'hard',
     summary:
-      "Merge the logs of three services into one timeline to find what took a shop's checkout down for twenty minutes, and write the post-mortem.",
+      "Put the logs of three services together into one timeline, find what stopped a shop's payments for twenty minutes, and write the report.",
     steps: [
       { id: 'look', title: 'Look at the logs' },
       { id: 'errors', title: 'Errors per service' },
@@ -389,9 +389,9 @@ export const PROJECTS: Project[] = [
       { id: 'coin', title: 'Insert coins' },
       { id: 'buy', title: 'Buy' },
       { id: 'change', title: 'Change, in real coins' },
-      { id: 'refund', title: 'Changed my mind' },
+      { id: 'refund', title: 'Give the money back' },
       { id: 'technician', title: "The technician's visit" },
-      { id: 'bad-input', title: 'Survive bad input' },
+      { id: 'bad-input', title: 'Wrong input' },
     ],
   },
   {
@@ -400,7 +400,7 @@ export const PROJECTS: Project[] = [
     title: 'Hex Dump',
     difficulty: 'easy',
     summary:
-      "See every byte of a file that looks fine but isn't: a hex dump with offsets, a text column, repeated lines folded and a summary of what's inside.",
+      "See every byte of a file that looks fine but isn't: a hex dump with offsets, the bytes as text, the same lines written once, and what the file holds.",
     steps: [
       { id: 'read', title: 'Read every byte' },
       { id: 'hex', title: 'Bytes as hex' },
@@ -416,7 +416,7 @@ export const PROJECTS: Project[] = [
     title: 'Weather Packets',
     difficulty: 'medium',
     summary:
-      'Unpack weather reports squeezed into 32-bit packets with bit operations, reject the broken ones, summarise each station and pack reports the other way.',
+      'Unpack weather reports packed into 32-bit numbers with bit operations, throw out the broken ones, sum up each station and pack reports the other way.',
     steps: [
       { id: 'layout', title: 'The packet' },
       { id: 'receive', title: 'Receive a packet' },
@@ -433,7 +433,7 @@ export const PROJECTS: Project[] = [
     title: 'Key-Value Store',
     difficulty: 'medium',
     summary:
-      "A grocery's stock counts on disk: one binary file of equal slots, a hash that jumps straight to a key, collisions, deletions and fseek everywhere.",
+      "A shop's stock saved on disk: one binary file of slots of the same size, a hash that jumps straight to a key, keys that want the same slot, and deleting.",
     steps: [
       { id: 'file', title: 'A file of slots' },
       { id: 'slots', title: 'Jump to a slot' },
@@ -449,7 +449,7 @@ export const PROJECTS: Project[] = [
     title: 'Shop Calculator',
     difficulty: 'medium',
     summary:
-      'A calculator that takes a whole sum at once, brackets and all, worked out the way real ones do with two stacks, with errors and variables.',
+      'A calculator that takes a whole calculation at once, with brackets, worked out the way real ones do with two stacks, with errors and variables.',
     steps: [
       { id: 'numbers', title: 'Numbers and the answer' },
       { id: 'stacks', title: 'Two stacks' },
@@ -465,7 +465,7 @@ export const PROJECTS: Project[] = [
     title: 'Level Compressor',
     difficulty: 'medium',
     summary:
-      'Pack the maps of a pixel-art game with run-length encoding, unpack them again, catch damaged data and prove nothing was lost.',
+      'Pack the maps of a pixel art game with run-length encoding, unpack them again, find broken data and show that nothing was lost.',
     steps: [
       { id: 'mode', title: 'What to do with which lines' },
       { id: 'runs', title: 'Runs' },
@@ -482,7 +482,7 @@ export const PROJECTS: Project[] = [
     title: 'PGM Image Tool',
     difficulty: 'hard',
     summary:
-      'A command-line tool for grayscale scans: read a PGM image into memory, preview it as text, invert, brighten, flip, rotate, crop, blur and save it.',
+      'A terminal tool for black and white scans: read a PGM picture into memory, show it as text, invert, brighten, flip, rotate, crop, blur and save it.',
     steps: [
       { id: 'read', title: 'Read the image' },
       { id: 'show', title: 'A preview' },
@@ -500,7 +500,7 @@ export const PROJECTS: Project[] = [
     title: 'Print Spooler',
     difficulty: 'hard',
     summary:
-      'An office print spooler with a linked-list queue: urgent jobs first, printers taking jobs minute by minute, cancellations, paper jams and a report.',
+      'The program between an office and its printers, with a linked list for a queue: urgent jobs first, printing minute by minute, cancelled jobs, stuck paper and a report.',
     steps: [
       { id: 'printers', title: 'The printers' },
       { id: 'submit', title: 'Submit a job' },
@@ -518,7 +518,7 @@ export const PROJECTS: Project[] = [
     title: 'Warehouse Robot',
     difficulty: 'hard',
     summary:
-      'Drive a warehouse robot between stations on a map drawn in characters: shortest ways by breadth-first search, the round trip, and the route drawn.',
+      'Drive a warehouse robot between stations on a map drawn with characters: the shortest ways by breadth-first search, the whole trip, and the way drawn on the map.',
     steps: [
       { id: 'map', title: 'The map and the order' },
       { id: 'search', title: 'How far is everything' },
@@ -534,7 +534,7 @@ export const PROJECTS: Project[] = [
     title: 'Parallel Counter',
     difficulty: 'hard',
     summary:
-      'Count a newspaper archive with several worker processes at once: fork a child per slice, send the numbers back through pipes and add them up.',
+      'Count the words of a newspaper archive with several processes at once: one child process for each part, the numbers sent back through pipes and added up.',
     steps: [
       { id: 'job', title: 'The job' },
       { id: 'count', title: 'Count a slice' },
@@ -559,7 +559,7 @@ export const PROJECTS: Project[] = [
       { id: 'deal', title: 'The deal' },
       { id: 'delivery', title: 'Delivery' },
       { id: 'report', title: 'Closing time' },
-      { id: 'bad-input', title: 'Survive bad input' },
+      { id: 'bad-input', title: 'Wrong input' },
     ],
   },
   {
@@ -571,7 +571,7 @@ export const PROJECTS: Project[] = [
       'A rental office with cars, a van and scooters, each priced its own way through inheritance: rentals, returns, services every 1000 km and a monthly report.',
     steps: [
       { id: 'fleet', title: 'The fleet' },
-      { id: 'list', title: "What's on the lot" },
+      { id: 'list', title: 'List the vehicles' },
       { id: 'rent', title: 'Rent' },
       { id: 'return', title: 'Return and pay' },
       { id: 'available', title: "What's free" },
@@ -586,7 +586,7 @@ export const PROJECTS: Project[] = [
     title: 'Parcel Tracker',
     difficulty: 'medium',
     summary:
-      "Track parcels between depots: postage by weight, a status that only moves in ways that make sense, failed deliveries, each parcel's journey and late ones.",
+      "Track parcels between depots: postage by weight, a status that only changes in ways that make sense, failed deliveries, each parcel's journey and late parcels.",
     steps: [
       { id: 'send', title: 'Send a parcel' },
       { id: 'statuses', title: 'Statuses' },
@@ -654,7 +654,7 @@ export const PROJECTS: Project[] = [
     title: 'Car Playlist',
     difficulty: 'medium',
     summary:
-      "A car's music and podcast player built on one generic Playlist class: typed lists, for-each through Iterable, a shuffle a seed repeats, and generic methods.",
+      "A car's music and podcast player built on one generic Playlist class: separate lists, for loops through Iterable, a shuffle that a seed repeats, and generic methods.",
     steps: [
       { id: 'tracks', title: 'Tracks' },
       { id: 'generic', title: 'One class for both lists' },
@@ -687,12 +687,12 @@ export const PROJECTS: Project[] = [
     title: 'Order Book',
     difficulty: 'hard',
     summary:
-      'The exchange behind a school stock market game: buy and sell orders in priority queues, matched the moment prices meet, partial fills, market orders and portfolios.',
+      'The market behind a school stock market game: offers to buy and to sell in priority queues, trades as soon as the prices agree, part orders, market orders and who owns what.',
     steps: [
       { id: 'orders', title: 'Orders' },
       { id: 'book', title: 'The book' },
       { id: 'matching', title: 'Matching' },
-      { id: 'partial', title: 'Bits and pieces' },
+      { id: 'partial', title: 'Part of an order' },
       { id: 'cancel-market', title: 'Cancel and market orders' },
       { id: 'traders', title: 'Who owns what' },
     ],
@@ -703,7 +703,7 @@ export const PROJECTS: Project[] = [
     title: 'Settings Parser',
     difficulty: 'hard',
     summary:
-      "Read a game's nested JSON settings with a recursive parser of your own: tokens, groups and lists to any depth, settings found by path, broken files reported.",
+      "Read a game's JSON settings, groups inside groups, with a recursive parser of your own: tokens, any depth, settings found by their path, and broken files reported.",
     steps: [
       { id: 'input', title: 'The file and the questions' },
       { id: 'tokens', title: 'Tokens' },
