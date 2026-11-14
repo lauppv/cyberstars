@@ -101,7 +101,7 @@ Write an **abstract** class `Vehicle` with what every vehicle has (plate, model,
 
 Print how many of each kind there are: `Fleet: 2 cars, 1 van, 2 scooters` (with one, no `s`). Then read commands until someone types `close`, and print `Office closed` then. For any other word, print `Unknown command: drive`.
 
-## What's on the lot
+## List the vehicles
 
 `list` prints every vehicle in the order it was read, with its kind, its model, its price for a day and if it is free:
 

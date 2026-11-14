@@ -130,7 +130,7 @@ Guesses: 0
 
 The easy grid needs no guesses. A hard one can need many: `Guesses: 49558`. Do the search in exactly this order (after the sure cells, first empty cell, smallest candidate first), so your count is the same as the tests' count. Even fifty thousand guesses take Python about one second.
 
-## No way out
+## No solution
 
 A grid can have no mistake and still have no solution: at some point a cell has no candidate at all. Then the search fails at the very top. Print how many guesses it made, and say so:
 

@@ -21,7 +21,7 @@ Some words you will meet:
 
 The terminal starts again from the first files every time you open the page or press Reset. So do the steps in one go, and after a reset, do the earlier steps again (each one is a command or two).
 
-## Take stock
+## Count what is there
 
 Save the list of what is in `downloads` to `~/before.txt`, one name on each line, so you can compare at the end. How many files does Lucia have?
 
@@ -53,7 +53,7 @@ Lucia saved her CV twice: one of the files has `-copy` in its name, somewhere on
 
 Before you delete anything, make sure it really is the same CV as the first one: the same text and the same size. Then remove the copy and keep the first one.
 
-## Find the space hogs
+## Find the big files
 
 A few files take almost all the room. Save to `~/big-files.txt` every file in `downloads` bigger than 20 kilobytes, one path on each line, as seen from inside `downloads`, so each one starts with `./`. Lucia will decide herself if she keeps them, so leave them where they are.
 

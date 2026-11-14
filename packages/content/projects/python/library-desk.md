@@ -180,7 +180,7 @@ Fees owed: 7.50
 - **Most borrowed**: the book borrowed most times since the start, counting every `borrow` that worked. If two books are equal, take the title that comes first from A to Z. Before any book is borrowed, print `Most borrowed: none`. Write `1 time` for one
 - **Fees owed**: all the money that all members still owe
 
-## Survive bad input
+## Wrong input
 
 A real librarian makes mistakes when typing. Your program must never stop with an error, whatever is typed:
 

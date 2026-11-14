@@ -141,7 +141,7 @@ Order 5: Mara buys 12 at 104
 
 An order that doesn't trade at all goes into the book.
 
-## Bits and pieces
+## Part of an order
 
 The quantities are almost never the same. A trade is for the smaller of the two quantities. The order with nothing left leaves the book (or never goes in), and the other one keeps what is left. Leo's 8 shares above are now 1 in the book.
 

@@ -200,7 +200,7 @@ Margherita: 1
 
 Only the pizzas of sent orders count. A `HashMap` from pizza to count, with `merge`, keeps them. Then a list of the names, sorted with a comparator, prints them in order.
 
-## Survive bad input
+## Wrong input
 
 The phone rings while the cook types. Your program must never stop with an exception:
 

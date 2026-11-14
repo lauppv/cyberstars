@@ -56,7 +56,7 @@ Be careful: in a pattern, a plain `.` matches any character, not only a dot.
 
 The owner will ask the people with a broken address to write it again next time they come in.
 
-## Respect the unsubscribes
+## Take off who asked
 
 Save `list.txt`, the list the newsletter goes to: every line of `step4.txt` except the people in `unsubscribed.txt`, still sorted. Don't type their addresses: let the file say who they are.
 

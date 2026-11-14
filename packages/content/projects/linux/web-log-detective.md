@@ -28,7 +28,7 @@ Some words you will meet:
 
 The terminal starts again from the first files every time you open the page or press Reset. So do the steps in one go, and after a reset, do the earlier steps again (each one is a command or two).
 
-## Meet the log
+## Look at the log
 
 Before anything else, look at how the log starts and how it ends, and count how many requests it has: the report needs that number.
 

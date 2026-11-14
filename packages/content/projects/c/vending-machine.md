@@ -149,7 +149,7 @@ Coins out: 500
 
 First work out which coins you would use, and take them out of the tubes only when you know the change works.
 
-## Changed my mind
+## Give the money back
 
 `refund` gives the credit back in coins, like change:
 
@@ -180,7 +180,7 @@ Coins: 7x500 6x100 5x50 0x10
 
 The tube of 10 cents is empty: the technician will bring more before the machine starts to say no.
 
-## Survive bad input
+## Wrong input
 
 People in a hall press anything. Your program must never stop with an error or loop forever:
 
