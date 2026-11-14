@@ -860,10 +860,17 @@ async function runCase(browser, files, testCase, limits) {
     const page = await context.newPage();
     page.on('console', (message) => {
       const text = message.text();
-      // The browser's own line for an answer that is an error, or none at
-      // all: the page's script handles those, and the preview's console
-      // never shows them (CYB-115)
-      if (message.type() === 'error' && text.startsWith('Failed to load resource:')) return;
+      // The browser's own line for an outside address whose answer is an
+      // error, or none at all: the page's script handles those, and the
+      // preview's console never shows them (CYB-115). A file the site
+      // hasn't, a picture or a script at a wrong path, still counts
+      if (
+        message.type() === 'error' &&
+        text.startsWith('Failed to load resource:') &&
+        !message.location().url.startsWith(`${ORIGIN}/`)
+      ) {
+        return;
+      }
       if (message.type() === 'error') seen.errors.push(text);
       else seen.logs.push(text);
     });

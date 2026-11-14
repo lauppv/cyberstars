@@ -231,6 +231,23 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     expect(offline.passed).toBe(true);
   });
 
+  it("still counts a picture or a script at a path the site hasn't as an error", () => {
+    const step = { noErrors: true } as const;
+    const [picture, script] = verdicts(
+      { 'index.html': '<img src="pics/ship.png" alt="A ship"><script src="app.js"></script>' },
+      [
+        { name: 'A wrong path', steps: [step] },
+        {
+          name: 'The same, its files there',
+          files: { 'pics/ship.png': '', 'app.js': '' },
+          steps: [step],
+        },
+      ],
+    );
+    expect(picture.passed).toBe(false);
+    expect(script.passed).toBe(true);
+  });
+
   it("answers the practice API's address with ?wait= as the one without", () => {
     const SHIPS = `${PRACTICE_API_URL}/starships`;
     const page = `<p id="out">Loading</p><script>
