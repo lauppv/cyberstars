@@ -386,6 +386,52 @@ describe('auditWebSpec', () => {
     expect(auditWebSpec(spec(many), site)).toEqual([expect.stringMatching(/web limit/)]);
   });
 
+  it('takes fetch answers by address or by method, held a while, and requested checks', () => {
+    const API = 'https://cyberstars.app/api/practice/starships';
+    expect(
+      one(
+        [
+          { requested: API },
+          { requested: API, method: 'POST', json: { name: 'Comet' } },
+          { requested: `${API}/9`, none: true },
+        ],
+        {
+          fetch: {
+            [API]: { body: '[]', delay: 1500 },
+            [`POST ${API}`]: { status: 201, body: '{"id":6}', type: 'application/json' },
+          },
+        },
+      ),
+    ).toEqual([]);
+    expect(one([{ fits: true }], { fetch: { [`FETCH ${API}`]: { body: '' } } })).toEqual([
+      expect.stringMatching(/a method and one/),
+    ]);
+    expect(one([{ fits: true }], { fetch: { [API]: { body: '', wait: 2 } } })).toEqual([
+      expect.stringMatching(/keys it doesn't take: wait/),
+    ]);
+    expect(one([{ fits: true }], { fetch: { [API]: { body: '', status: 1000 } } })).toEqual([
+      expect.stringMatching(/status/),
+    ]);
+    expect(one([{ fits: true }], { fetch: { [API]: { body: '', delay: 5000 } } })).toEqual([
+      expect.stringMatching(/delay/),
+    ]);
+    expect(
+      one([{ fits: true }], {
+        clock: '2031-05-14T09:30:00',
+        fetch: { [API]: { body: '', delay: 500 } },
+      }),
+    ).toEqual([expect.stringMatching(/clock/)]);
+    expect(one([{ requested: '/api/practice' }])).toEqual([expect.stringMatching(/whole http/)]);
+    expect(one([{ requested: API, method: 'FETCH' }])).toEqual([expect.stringMatching(/method/)]);
+    expect(one([{ requested: API, json: ['name'] }])).toEqual([expect.stringMatching(/json/)]);
+    expect(one([{ requested: API, none: true, json: {} }])).toEqual([
+      expect.stringMatching(/none/),
+    ]);
+    expect(one([{ requested: API, label: 'x' }])).toEqual([
+      expect.stringMatching(/keys it doesn't take: label/),
+    ]);
+  });
+
   it('takes a clock, a color scheme, less movement and what localStorage holds', () => {
     const page = {
       clock: '2031-05-14T09:30:00',

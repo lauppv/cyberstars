@@ -1,0 +1,258 @@
+{
+  "cases": [
+    {
+      "name": "The frame of the page",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "attr": "meta[name=\"viewport\"]",
+          "name": "content",
+          "equals": "width=device-width, initial-scale=1",
+          "label": "the viewport (meta name=\"viewport\")"
+        },
+        {
+          "attr": "meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "the page's letters (meta charset)"
+        },
+        {
+          "attr": "meta[name=\"description\"]",
+          "name": "content",
+          "label": "a sentence for search engines (meta name=\"description\")"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "attr": "script[src$=\"game.js\"]",
+          "name": "type",
+          "equals": "module",
+          "label": "the script game.js"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Your own station: a room and its exits",
+      "visible": true,
+      "steps": [
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "nonEmpty": true
+        },
+        {
+          "count": "#exits > button",
+          "atLeast": 1,
+          "label": "exit buttons in #exits"
+        },
+        {
+          "text": "#moves",
+          "equals": "Moves: 0",
+          "label": "the paragraph #moves"
+        },
+        {
+          "click": "#exits > button:nth-child(1)",
+          "label": "the first exit"
+        },
+        {
+          "text": "#moves",
+          "equals": "Moves: 1",
+          "label": "the paragraph #moves"
+        },
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "nonEmpty": true
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "A whole game on another map",
+      "visible": true,
+      "files": {
+        "rooms.js": "export default {\n  start: \"cabin\",\n  rooms: {\n    cabin: { text: \"A small cabin with a round window.\", exits: { out: \"hall\", down: \"engine\" } },\n    hall: { text: \"The hall is dark and quiet.\", exits: { back: \"cabin\", ahead: \"exit\" } },\n    engine: { text: \"The engine room. It's loud!\", exits: { up: \"cabin\" } },\n    exit: { text: \"The exit hatch opens. You're free!\", exits: {}, end: true },\n  },\n};\n"
+      },
+      "steps": [
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "equals": "A small cabin with a round window."
+        },
+        {
+          "count": "#exits > button",
+          "equals": 2,
+          "label": "exit buttons in #exits"
+        },
+        {
+          "text": "#exits > button:nth-child(1)",
+          "equals": "Go out",
+          "label": "the first exit"
+        },
+        {
+          "text": "#exits > button:nth-child(2)",
+          "equals": "Go down",
+          "label": "the second exit"
+        },
+        {
+          "attr": "#exits > button:nth-child(1)",
+          "name": "type",
+          "equals": "button",
+          "label": "the first exit button"
+        },
+        {
+          "click": "#exits > button:nth-child(2)",
+          "label": "the exit Go down"
+        },
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "equals": "The engine room. It's loud!"
+        },
+        {
+          "text": "#moves",
+          "equals": "Moves: 1",
+          "label": "the paragraph #moves"
+        },
+        {
+          "count": "#exits > button",
+          "equals": 1,
+          "label": "exit buttons in #exits"
+        },
+        {
+          "click": "#exits > button:nth-child(1)",
+          "label": "the exit Go up"
+        },
+        {
+          "click": "#exits > button:nth-child(1)",
+          "label": "the exit Go out"
+        },
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "equals": "The hall is dark and quiet."
+        },
+        {
+          "click": "#exits > button:nth-child(2)",
+          "label": "the exit Go ahead"
+        },
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "equals": "The exit hatch opens. You're free!"
+        },
+        {
+          "count": "#exits > button",
+          "equals": 0,
+          "label": "exit buttons, at the end"
+        },
+        {
+          "text": "#game-status",
+          "equals": "You made it in 4 moves!",
+          "label": "the paragraph #game-status"
+        },
+        {
+          "attr": "#game-status",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #game-status"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Start again",
+      "visible": true,
+      "files": {
+        "rooms.js": "export default {\n  start: \"cabin\",\n  rooms: {\n    cabin: { text: \"A small cabin with a round window.\", exits: { out: \"hall\", down: \"engine\" } },\n    hall: { text: \"The hall is dark and quiet.\", exits: { back: \"cabin\", ahead: \"exit\" } },\n    engine: { text: \"The engine room. It's loud!\", exits: { up: \"cabin\" } },\n    exit: { text: \"The exit hatch opens. You're free!\", exits: {}, end: true },\n  },\n};\n"
+      },
+      "steps": [
+        {
+          "click": "#exits > button:nth-child(1)",
+          "label": "the exit Go out"
+        },
+        {
+          "click": "#exits > button:nth-child(2)",
+          "label": "the exit Go ahead"
+        },
+        {
+          "text": "#game-status",
+          "equals": "You made it in 2 moves!",
+          "label": "the paragraph #game-status"
+        },
+        {
+          "click": "#restart",
+          "label": "the button #restart"
+        },
+        {
+          "text": "#room-text",
+          "label": "the paragraph #room-text",
+          "equals": "A small cabin with a round window."
+        },
+        {
+          "text": "#moves",
+          "equals": "Moves: 0",
+          "label": "the paragraph #moves"
+        },
+        {
+          "text": "#game-status",
+          "equals": "",
+          "label": "the paragraph #game-status"
+        },
+        {
+          "count": "#exits > button",
+          "equals": 2,
+          "label": "exit buttons in #exits"
+        }
+      ]
+    },
+    {
+      "name": "On a phone",
+      "width": 375,
+      "files": {
+        "rooms.js": "export default {\n  start: \"cabin\",\n  rooms: {\n    cabin: { text: \"A small cabin with a round window.\", exits: { out: \"hall\", down: \"engine\" } },\n    hall: { text: \"The hall is dark and quiet.\", exits: { back: \"cabin\", ahead: \"exit\" } },\n    engine: { text: \"The engine room. It's loud!\", exits: { up: \"cabin\" } },\n    exit: { text: \"The exit hatch opens. You're free!\", exits: {}, end: true },\n  },\n};\n"
+      },
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "contrast": "#room-text",
+          "atLeast": 4.5,
+          "label": "the room's text"
+        },
+        {
+          "contrast": "#exits > button",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every exit button's text"
+        }
+      ]
+    }
+  ]
+}

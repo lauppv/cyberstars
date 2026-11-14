@@ -1,0 +1,184 @@
+{
+  "cases": [
+    {
+      "name": "A form to report a starship",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "exists": "main form#sighting-form",
+          "label": "a form with the id sighting-form in the main part"
+        },
+        {
+          "exists": "#sighting-form input#sighting-name[name=\"sighting-name\"]",
+          "label": "a box for the name, with the id and name sighting-name, in the form"
+        },
+        {
+          "exists": "#sighting-form select#sighting-class[name=\"sighting-class\"]",
+          "label": "a list to pick the class, with the id and name sighting-class, in the form"
+        },
+        {
+          "click": "label[for=\"sighting-name\"], label:has(#sighting-name)",
+          "label": "the label of the name box"
+        },
+        {
+          "exists": "#sighting-name:focus",
+          "label": "the name box, ready to use after a click on its label"
+        },
+        {
+          "click": "label[for=\"sighting-class\"], label:has(#sighting-class)",
+          "label": "the label of the class list"
+        },
+        {
+          "exists": "#sighting-class:focus",
+          "label": "the class list, ready to use after a click on its label"
+        },
+        {
+          "count": "#sighting-class option",
+          "equals": 3,
+          "label": "classes to pick from"
+        },
+        {
+          "text": "#sighting-class option",
+          "equals": "Cargo",
+          "label": "the Cargo option"
+        },
+        {
+          "text": "#sighting-class option",
+          "equals": "Shuttle",
+          "label": "the Shuttle option"
+        },
+        {
+          "text": "#sighting-class option",
+          "equals": "Explorer",
+          "label": "the Explorer option"
+        },
+        {
+          "order": ["#ships", "#sighting-form"],
+          "label": "the list of starships, then the form"
+        }
+      ]
+    },
+    {
+      "name": "A starship without a name isn't reported",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "notSent": true
+        }
+      ]
+    },
+    {
+      "name": "A whole report is sent",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "fill": "#sighting-name",
+          "text": "Comet Runner",
+          "label": "the name box"
+        },
+        {
+          "select": "#sighting-class",
+          "option": "Explorer",
+          "label": "the class list"
+        },
+        {
+          "click": "#sighting-form button",
+          "label": "the form's button"
+        },
+        {
+          "sent": {
+            "sighting-name": "Comet Runner"
+          }
+        }
+      ]
+    },
+    {
+      "name": "The reports wait in a template",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "exists": "main ul#reports",
+          "label": "a list (<ul>) with the id reports"
+        },
+        {
+          "count": "#reports li",
+          "equals": 0,
+          "label": "items in the list #reports"
+        },
+        {
+          "exists": "main template#report-template",
+          "label": "a <template> with the id report-template"
+        },
+        {
+          "count": ".report-name, .report-class",
+          "equals": 0,
+          "label": "parts of a report shown on the page"
+        },
+        {
+          "order": ["#sighting-form", "#reports"],
+          "label": "the form, then the list of reports"
+        }
+      ]
+    },
+    {
+      "name": "A copy of the report template",
+      "visible": true,
+      "page": "tracker.html",
+      "files": {
+        "menu.js": "const mold = document.querySelector(\"#report-template\");\nconst list = document.querySelector(\"#reports\");\nlist.append(mold.content.cloneNode(true));\n"
+      },
+      "steps": [
+        {
+          "count": "#reports > li.report",
+          "equals": 1,
+          "label": "reports (li.report) in the list, after putting a copy of the template there"
+        },
+        {
+          "text": "#reports > li.report .report-name",
+          "nonEmpty": true,
+          "label": "the report's name (.report-name)"
+        },
+        {
+          "text": "#reports > li.report .report-class",
+          "nonEmpty": true,
+          "label": "the report's class (.report-class)"
+        }
+      ]
+    },
+    {
+      "name": "The starships' list is still loading",
+      "page": "tracker.html",
+      "steps": [
+        {
+          "attr": "#ships",
+          "name": "aria-busy",
+          "equals": "true",
+          "label": "the list #ships"
+        },
+        {
+          "count": "[aria-busy]",
+          "equals": 1,
+          "label": "elements with aria-busy"
+        },
+        {
+          "text": "#tracker-status",
+          "contains": "Loading",
+          "label": "the paragraph #tracker-status"
+        },
+        {
+          "count": ".ship-name",
+          "equals": 0,
+          "label": "starship cards shown on the page"
+        }
+      ]
+    }
+  ]
+}

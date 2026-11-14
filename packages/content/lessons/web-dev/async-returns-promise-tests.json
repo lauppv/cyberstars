@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "name": "Once the radar is done, the console says how many scans it made",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "logged": "Radar done after 3 scans",
+          "none": true
+        },
+        {
+          "wait": 1400
+        },
+        {
+          "logged": "Radar done after 3 scans",
+          "none": true
+        },
+        {
+          "wait": 100
+        },
+        {
+          "logged": "Radar done after 3 scans"
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Starships found"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "scanRadar gives a promise of the number of scans",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconst radar = scanRadar();\nconsole.log(\"test: \" + (radar instanceof Promise ? \"a promise\" : \"no promise\"));\nif (radar instanceof Promise) {\n  radar.then((scans) => console.log(\"test: it holds \" + JSON.stringify(scans)));\n}\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: a promise"
+        },
+        {
+          "wait": 1500
+        },
+        {
+          "logged": "test: it holds 3"
+        }
+      ]
+    },
+    {
+      "name": "The radar still scans three times",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 1 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 2 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Scanning 3 of 3"
+        },
+        {
+          "wait": 500
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Starships found"
+        }
+      ]
+    }
+  ]
+}

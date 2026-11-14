@@ -8,6 +8,7 @@ import os from 'os';
 import path from 'path';
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { WEB_ACTION_KEYS, type WebTestCase } from '@cyberstars/shared/webTests';
+import { PRACTICE_API_URL } from '@cyberstars/shared/practice';
 import { judgeWebCase } from './web-tests.js';
 
 const RUNNER = path.join(import.meta.dirname, 'lesson-tests.runner.web.cjs');
@@ -51,6 +52,7 @@ function run(files: Record<string, SiteFile>, cases: WebTestCase[], stepMs = 300
       heapMb: 64,
       height: 800,
       actions: WEB_ACTION_KEYS,
+      practiceApi: PRACTICE_API_URL,
       cases: cases.map((c) => ({ page: 'index.html', width: 1280, ...c })),
     }),
   );
@@ -202,7 +204,7 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         .catch(() => { document.getElementById('out').textContent = 'offline'; });
     </script>`;
     const step = { text: '#out', equals: 'Ada', label: 'the answer' } as const;
-    const [answered, unanswered] = verdicts({ 'index.html': page }, [
+    const [answered, unanswered, failing, offline] = verdicts({ 'index.html': page }, [
       {
         name: 'Answered',
         visible: true,
@@ -210,9 +212,124 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
         steps: [step],
       },
       { name: 'Unanswered', visible: true, steps: [step] },
+      {
+        name: 'An answer that is an error, handled by the page',
+        visible: true,
+        fetch: { 'https://api.station.test/crew': { status: 500, body: 'not json' } },
+        steps: [{ text: '#out', equals: 'offline', label: 'the answer' }, { noErrors: true }],
+      },
+      {
+        name: 'No answer, handled by the page',
+        visible: true,
+        steps: [{ noErrors: true }],
+      },
     ]);
     expect(answered.passed).toBe(true);
     expect(unanswered.web).toMatchObject({ kind: 'text', found: 'offline' });
+    // The browser's own "Failed to load resource" line isn't the page's error
+    expect(failing.passed).toBe(true);
+    expect(offline.passed).toBe(true);
+  });
+
+  it("still counts a picture or a script at a path the site hasn't as an error", () => {
+    const step = { noErrors: true } as const;
+    const [picture, script] = verdicts(
+      { 'index.html': '<img src="pics/ship.png" alt="A ship"><script src="app.js"></script>' },
+      [
+        { name: 'A wrong path', steps: [step] },
+        {
+          name: 'The same, its files there',
+          files: { 'pics/ship.png': '', 'app.js': '' },
+          steps: [step],
+        },
+      ],
+    );
+    expect(picture.passed).toBe(false);
+    expect(script.passed).toBe(true);
+  });
+
+  it("answers the practice API's address with ?wait= as the one without", () => {
+    const SHIPS = `${PRACTICE_API_URL}/starships`;
+    const page = `<p id="out">Loading</p><script>
+      fetch('${SHIPS}?wait=2').then((r) => r.json())
+        .then((d) => { document.getElementById('out').textContent = d.length + ' ships'; });
+    </script>`;
+    const [result] = verdicts({ 'index.html': page }, [
+      {
+        name: 'Held by the case, not by ?wait=',
+        visible: true,
+        fetch: { [SHIPS]: { body: '[1, 2]', delay: 300 } },
+        steps: [
+          { text: '#out', equals: 'Loading', label: 'the status' },
+          { requested: SHIPS, method: 'GET' },
+          { wait: 600 },
+          { text: '#out', equals: '2 ships', label: 'the status' },
+        ],
+      },
+    ]);
+    expect(result.passed).toBe(true);
+  });
+
+  it('answers by method, holds an answer until a wait, and notes what the page sent', () => {
+    const API = 'https://api.station.test/ships';
+    const page = `<p id="status">Loading</p><p id="sent"></p><button id="send">Send</button><script>
+      fetch('${API}').then((r) => r.json())
+        .then((d) => { document.getElementById('status').textContent = d.length + ' ships'; });
+      document.getElementById('send').addEventListener('click', () => {
+        fetch('${API}', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Comet', crew: 3 }),
+        }).then((r) => r.json())
+          .then((d) => { document.getElementById('sent').textContent = 'id ' + d.id; });
+      });
+    </script>`;
+    const fetchAnswers = {
+      [API]: { body: '[1, 2]', delay: 800 },
+      [`POST ${API}`]: { status: 201, body: '{"id": 6}' },
+    };
+    const [loading, sent, wrong] = verdicts({ 'index.html': page }, [
+      {
+        name: 'Loading, then loaded',
+        visible: true,
+        fetch: fetchAnswers,
+        steps: [
+          { text: '#status', equals: 'Loading', label: 'the status' },
+          { requested: API, method: 'GET' },
+          { requested: API, method: 'POST', none: true },
+          { wait: 1200 },
+          { text: '#status', equals: '2 ships', label: 'the status' },
+        ],
+      },
+      {
+        name: 'A report sent as JSON',
+        visible: true,
+        fetch: fetchAnswers,
+        steps: [
+          { click: '#send', label: 'the button' },
+          { text: '#sent', equals: 'id 6', label: 'the answer' },
+          { requested: API, method: 'POST', json: { name: 'Comet', crew: 3 } },
+        ],
+      },
+      {
+        name: 'Not what was sent',
+        visible: true,
+        fetch: fetchAnswers,
+        steps: [
+          { click: '#send', label: 'the button' },
+          { requested: API, method: 'POST', json: { name: 'Aurora' } },
+        ],
+      },
+    ]);
+    expect(loading.passed).toBe(true);
+    expect(sent.passed).toBe(true);
+    expect(wrong.web).toEqual({
+      kind: 'requested',
+      detail: 'field',
+      other: `POST ${API}`,
+      expected: 'name: "Aurora"',
+      found: 'name: "Comet"',
+    });
   });
 
   it("answers an address the site doesn't have with a 404, a malformed one too", () => {
@@ -537,16 +654,21 @@ describe.skipIf(!hasBrowser())('web runner', { timeout: 30_000 }, () => {
     });
   });
 
-  it('writes console values as the preview does: an element, a list, an object', () => {
+  it('writes console values as the preview does: an element, a list, an object, a promise', () => {
     const files = {
       'index.html':
-        '<!DOCTYPE html><html><body><h1>Crew</h1><script>console.log(document.querySelector("h1")); console.log("crew", [1, "two"], { name: "Ana" }); console.log(4);</script></body></html>',
+        '<!DOCTYPE html><html><body><h1>Crew</h1><script>console.log(document.querySelector("h1")); console.log("crew", [1, "two"], { name: "Ana" }); console.log(4); console.log(Promise.resolve(4));</script></body></html>',
     };
     const [run] = verdicts(files, [
       {
         name: 'Console',
         visible: true,
-        steps: [{ logged: '<h1>' }, { logged: 'crew [1, "two"] {name: "Ana"}' }, { logged: '4' }],
+        steps: [
+          { logged: '<h1>' },
+          { logged: 'crew [1, "two"] {name: "Ana"}' },
+          { logged: '4' },
+          { logged: 'Promise {…}' },
+        ],
       },
     ]);
     expect(run.passed).toBe(true);

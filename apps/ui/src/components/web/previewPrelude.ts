@@ -6,7 +6,8 @@
 // * keeps localStorage (and sessionStorage) in a stand-in with the same
 //   methods, whose data the IDE saves;
 // * answers fetch() and XMLHttpRequest of the site's own files from the
-//   files themselves;
+//   files themselves, and sends a request to the course's practice API to
+//   the API of the site the IDE runs on (CYB-115);
 // * turns a link to another page of the site into a message, so the IDE
 //   shows that page, and keeps the page from leaving for another site or
 //   sending a form somewhere;
@@ -37,6 +38,9 @@ export interface PreludeConfig {
   loopLimitMs: number;
   // What the console says when the page runs code in a string (eval)
   evalMessage: string;
+  // The practice API's address as the lessons write it, and its path on the
+  // IDE's own site, where a request to it goes (CYB-115)
+  practiceApi: { url: string; path: string };
 }
 
 // What the page tells the IDE
@@ -129,6 +133,8 @@ export function previewPrelude(config: PreludeConfig): void {
     if (value === null || typeof value !== 'object') return String(value);
     if (value instanceof Error) return `${value.name}: ${value.message}`;
     if (value instanceof Element) return `<${value.tagName.toLowerCase()}>`;
+    // A promise's value isn't there to show yet, only what it is (CYB-115)
+    if (value instanceof Promise) return 'Promise {…}';
     if (depth > 3) return Array.isArray(value) ? '[…]' : '{…}';
     if (Array.isArray(value)) return `[${value.map((v) => show(v, depth + 1)).join(', ')}]`;
     const entries = Object.keys(value).map(
@@ -264,8 +270,32 @@ export function previewPrelude(config: PreludeConfig): void {
     const ext = path.slice(path.lastIndexOf('.') + 1).toLowerCase();
     return { status: 200, body: content, type: TYPES[ext] ?? 'text/plain' };
   };
+  // The practice API's address on the IDE's own site for a request to it, as
+  // the lessons write it or with the IDE's address, else null. It comes
+  // first: on the live site its address looks like one of the preview's own
+  const practice = (target: unknown): string | null => {
+    const href =
+      typeof target === 'string'
+        ? target.trim()
+        : target instanceof URL
+          ? target.href
+          : target instanceof Request
+            ? target.url
+            : null;
+    if (href === null) return null;
+    const local = config.parentOrigin + config.practiceApi.path;
+    for (const base of [config.practiceApi.url, local]) {
+      const rest = href.slice(base.length);
+      if (href.startsWith(base) && (rest === '' || /^[/?#]/.test(rest))) return local + rest;
+    }
+    return null;
+  };
   const realFetch = window.fetch.bind(window);
   window.fetch = (input: RequestInfo | URL, init?: RequestInit) => {
+    const api = practice(input);
+    if (api !== null) {
+      return realFetch(input instanceof Request ? new Request(api, input) : api, init);
+    }
     const own = answer(input);
     if (own === null) return realFetch(input, init);
     return Promise.resolve(
@@ -283,6 +313,10 @@ export function previewPrelude(config: PreludeConfig): void {
   ) {
     delete (this as unknown as Record<string, unknown>).status;
     delete (this as unknown as Record<string, unknown>).statusText;
+    const api = practice(url);
+    if (api !== null) {
+      return (realOpen as (...args: unknown[]) => void).call(this, method, api, ...rest);
+    }
     const own = answer(url);
     if (own !== null && own.status !== 200) {
       // A blob: answers 200; a file the site lacks is a 404, as on a server

@@ -30,6 +30,8 @@ import laniakeaRoutes from './routes/laniakea.routes.js';
 import visitsRoutes from './routes/visits.routes.js';
 import runsRoutes from './routes/runs.routes.js';
 import projectsRoutes from './routes/projects.routes.js';
+import practiceRoutes from './routes/practice.routes.js';
+import { PRACTICE_API_PATH } from '@cyberstars/shared/practice';
 
 export const app = express();
 
@@ -43,6 +45,9 @@ export const app = express();
 app.set('trust proxy', config.isProduction ? 1 : false);
 
 app.use(securityHeaders);
+// The Web Development course's practice API answers any page, so it comes
+// before the site's CORS, its body parser and its guest cookie (CYB-115)
+app.use(PRACTICE_API_PATH, practiceRoutes);
 app.use(cors({ origin: config.allowedOrigins, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());

@@ -12,6 +12,10 @@ const sources = [
     .map((d) => path.join(process.cwd(), 'framework', d.name, 'src')),
 ];
 
+// The practice API's answers are read by a student's own page in the Web
+// Development course, which is in English, never by this UI (CYB-115)
+const notForTheUi = (file: string) => /(^|\/)practice\.[a-z]+\.ts$/.test(file);
+
 // Every sentence the API writes in its errors and replies, read from its code:
 // AppError, { error }, { message } and a zod rule's message
 function serverSentences(): string[] {
@@ -24,7 +28,7 @@ function serverSentences(): string[] {
   const found = new Set<string>();
   for (const dir of sources) {
     const files = readdirSync(dir, { recursive: true, encoding: 'utf8' }).filter(
-      (f) => f.endsWith('.ts') && !f.endsWith('.test.ts'),
+      (f) => f.endsWith('.ts') && !f.endsWith('.test.ts') && !notForTheUi(f),
     );
     for (const file of files) {
       const code = readFileSync(path.join(dir, file), 'utf8');

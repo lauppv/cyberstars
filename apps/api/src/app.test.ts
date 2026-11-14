@@ -292,3 +292,102 @@ describe('SPA fallback', () => {
     expect([200, 404, 500]).toContain(res.status);
   });
 });
+
+describe('the practice API (CYB-115)', () => {
+  it("answers any page, the preview's null origin too, with no cookie", async () => {
+    const res = await request(app).get('/api/practice/starships').set('Origin', 'null');
+    expect(res.status).toBe(200);
+    expect(res.headers['access-control-allow-origin']).toBe('*');
+    expect(res.headers['access-control-allow-credentials']).toBeUndefined();
+    expect(res.headers['set-cookie']).toBeUndefined();
+    expect(res.headers['cache-control']).toBe('no-store');
+    expect(res.body).toHaveLength(5);
+    expect(res.body[0]).toEqual({
+      id: 1,
+      name: 'Aurora',
+      class: 'Cargo',
+      status: 'Docked',
+      crew: 4,
+    });
+  });
+
+  it("answers a POST's preflight, so a page can send JSON", async () => {
+    const res = await request(app)
+      .options('/api/practice/starships')
+      .set('Origin', 'https://elsewhere.test')
+      .set('Access-Control-Request-Method', 'POST')
+      .set('Access-Control-Request-Headers', 'content-type');
+    expect(res.status).toBe(204);
+    expect(res.headers['access-control-allow-methods']).toContain('POST');
+    expect(res.headers['access-control-allow-headers']).toContain('Content-Type');
+    expect(res.headers['set-cookie']).toBeUndefined();
+  });
+
+  it('reads one starship, the crew, and says what is missing', async () => {
+    expect((await request(app).get('/api/practice/starships/3')).body.name).toBe('Lunar Ferry');
+    expect((await request(app).get('/api/practice/crew')).body[0]).toEqual({
+      id: 1,
+      name: 'Vega',
+      role: 'Commander',
+    });
+    const missing = await request(app).get('/api/practice/starships/9');
+    expect(missing.status).toBe(404);
+    expect(missing.body.error).toBe('No starship has the id 9.');
+    const nowhere = await request(app).get('/api/practice/admin');
+    expect(nowhere.status).toBe(404);
+    expect(nowhere.body.error).toContain('/api/practice/starships');
+    expect(nowhere.headers['access-control-allow-origin']).toBe('*');
+  });
+
+  it('answers a report with a new id and keeps nothing', async () => {
+    const res = await request(app)
+      .post('/api/practice/starships')
+      .send({ name: ' Comet ', class: 'Explorer' });
+    expect(res.status).toBe(201);
+    expect(res.body).toEqual({
+      id: 6,
+      name: 'Comet',
+      class: 'Explorer',
+      status: 'Reported',
+      crew: 0,
+    });
+    const list = await request(app).get('/api/practice/starships');
+    expect(list.body).toHaveLength(5);
+  });
+
+  it('says what a report lacks', async () => {
+    const noName = await request(app).post('/api/practice/starships').send({ class: 'Cargo' });
+    expect(noName.status).toBe(400);
+    expect(noName.body.error).toContain('"name"');
+    const badClass = await request(app)
+      .post('/api/practice/starships')
+      .send({ name: 'Comet', class: 'Tank' });
+    expect(badClass.body.error).toContain('"Cargo"');
+    const notJson = await request(app)
+      .post('/api/practice/starships')
+      .set('Content-Type', 'application/json')
+      .send('{name: Comet}');
+    expect(notJson.status).toBe(400);
+    expect(notJson.body.error).toContain('JSON.stringify');
+    expect(notJson.headers['access-control-allow-origin']).toBe('*');
+    const plain = await request(app)
+      .post('/api/practice/starships')
+      .set('Content-Type', 'text/plain')
+      .send('{"name":"Comet","class":"Cargo"}');
+    expect(plain.status).toBe(400);
+    expect(plain.body.error).toContain('Content-Type: application/json');
+  });
+
+  it('always fails at /broken, for the lessons about errors', async () => {
+    const res = await request(app).get('/api/practice/broken');
+    expect(res.status).toBe(500);
+    expect(res.body.error).toContain('repairs');
+  });
+
+  it('holds a read for ?wait=', async () => {
+    const start = Date.now();
+    const res = await request(app).get('/api/practice/starships?wait=0.1');
+    expect(res.status).toBe(200);
+    expect(Date.now() - start).toBeGreaterThanOrEqual(90);
+  });
+});

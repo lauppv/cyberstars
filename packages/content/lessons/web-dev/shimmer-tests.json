@@ -1,0 +1,123 @@
+{
+  "cases": [
+    {
+      "name": "A light moves over the skeleton cards",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "style": "#ships > li.skeleton",
+          "prop": "background-image",
+          "not": "none",
+          "every": true,
+          "label": "every skeleton card's background picture (a gradient)"
+        },
+        {
+          "animated": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "wait": 2000
+        },
+        {
+          "animated": "#ships > li.skeleton",
+          "label": "the first skeleton card, two seconds later"
+        },
+        {
+          "animated": "#ships > li.skeleton:nth-child(3)",
+          "label": "the third skeleton card, two seconds later"
+        }
+      ]
+    },
+    {
+      "name": "They are still grey blocks",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "count": "#ships > li.skeleton",
+          "atLeast": 3,
+          "label": "skeleton cards (li.skeleton) in the list #ships"
+        },
+        {
+          "style": "#ships > li.skeleton",
+          "prop": "height",
+          "atLeast": 60,
+          "every": true,
+          "label": "every skeleton card"
+        },
+        {
+          "differs": "#ships > li.skeleton",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the skeleton cards"
+        }
+      ]
+    },
+    {
+      "name": "With less motion on the device, the light stands still",
+      "visible": true,
+      "page": "tracker.html",
+      "reducedMotion": true,
+      "steps": [
+        {
+          "animated": "#ships > li.skeleton",
+          "off": true,
+          "label": "the first skeleton card"
+        },
+        {
+          "animated": "#ships > li.skeleton:nth-child(3)",
+          "off": true,
+          "label": "the third skeleton card"
+        },
+        {
+          "visible": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        }
+      ]
+    },
+    {
+      "name": "With Less picked on the settings page, the light stands still",
+      "visible": true,
+      "page": "settings.html",
+      "steps": [
+        {
+          "click": "#motion-less",
+          "label": "the Less button"
+        },
+        {
+          "open": "tracker.html"
+        },
+        {
+          "animated": "#ships > li.skeleton",
+          "off": true,
+          "label": "the first skeleton card"
+        },
+        {
+          "animated": "#tracker-status > .spinner",
+          "off": true,
+          "label": "the spinner"
+        }
+      ]
+    },
+    {
+      "name": "In dark mode too",
+      "page": "tracker.html",
+      "colorScheme": "dark",
+      "steps": [
+        {
+          "animated": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "differs": "#ships > li.skeleton",
+          "from": "main > p",
+          "props": ["background-color"],
+          "fromLabel": "the paragraphs of the page",
+          "label": "the skeleton cards"
+        }
+      ]
+    }
+  ]
+}

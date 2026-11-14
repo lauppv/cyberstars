@@ -1,0 +1,216 @@
+{
+  "cases": [
+    {
+      "name": "A card for every starship the API sent",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 5,
+          "label": "starship cards (li.ship) in the list #ships"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Aurora",
+          "label": "the name on a card (Aurora)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Cargo",
+          "label": "the class on a card (Cargo)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Docked",
+          "label": "the status on a card (Docked)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Comet Runner",
+          "label": "the name on a card (Comet Runner)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Explorer",
+          "label": "the class on a card (Explorer)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "On the way",
+          "label": "the status on a card (On the way)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Lunar Ferry",
+          "label": "the name on a card (Lunar Ferry)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Shuttle",
+          "label": "the class on a card (Shuttle)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Boarding",
+          "label": "the status on a card (Boarding)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Red Horizon",
+          "label": "the name on a card (Red Horizon)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Cargo",
+          "label": "the class on a card (Cargo)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Leaving",
+          "label": "the status on a card (Leaving)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Silver Gull",
+          "label": "the name on a card (Silver Gull)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Explorer",
+          "label": "the class on a card (Explorer)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Docked",
+          "label": "the status on a card (Docked)"
+        },
+        {
+          "text": "#ships > li.ship:last-child .ship-name",
+          "equals": "Silver Gull",
+          "label": "the name on the last card"
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "5 starships near the station"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other starships",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 7, \"name\": \"Blue Kite\", \"class\": \"Shuttle\", \"status\": \"Leaving\", \"crew\": 3}, {\"id\": 8, \"name\": \"Iron Swan\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 9}, {\"id\": 9, \"name\": \"Night Owl\", \"class\": \"Explorer\", \"status\": \"Boarding\", \"crew\": 1}]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 3,
+          "label": "starship cards (li.ship) in the list #ships"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Blue Kite",
+          "label": "the name on a card (Blue Kite)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Shuttle",
+          "label": "the class on a card (Shuttle)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Leaving",
+          "label": "the status on a card (Leaving)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Iron Swan",
+          "label": "the name on a card (Iron Swan)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Cargo",
+          "label": "the class on a card (Cargo)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Docked",
+          "label": "the status on a card (Docked)"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "equals": "Night Owl",
+          "label": "the name on a card (Night Owl)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "equals": "Explorer",
+          "label": "the class on a card (Explorer)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "equals": "Boarding",
+          "label": "the status on a card (Boarding)"
+        },
+        {
+          "text": "#ships > li.ship:last-child .ship-name",
+          "equals": "Night Owl",
+          "label": "the name on the last card"
+        }
+      ]
+    },
+    {
+      "name": "No starships, no cards",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[]"
+        }
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 0,
+          "label": "starship cards"
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "0 starships near the station"
+        }
+      ]
+    },
+    {
+      "name": "The template stays a template",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        }
+      },
+      "steps": [
+        {
+          "exists": "template#ship-template",
+          "label": "the template #ship-template"
+        },
+        {
+          "count": "#ships > li.ship .ship-name",
+          "equals": 5,
+          "label": "names on the cards"
+        }
+      ]
+    }
+  ]
+}

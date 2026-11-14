@@ -1,0 +1,91 @@
+{
+  "cases": [
+    {
+      "name": "answerLater gives a promise at once",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconst promise = answerLater(\"Aurora\", 500);\nconsole.log(\"test: \" + (promise instanceof Promise ? \"a promise\" : \"no promise\"));\nif (promise instanceof Promise) {\n  promise.then((held) => console.log(\"test: it holds \" + held));\n}\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: a promise"
+        },
+        {
+          "logged": "test: it holds Aurora",
+          "none": true
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The promise holds the value once the time is over",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconst promise = answerLater(\"Aurora\", 500);\nconsole.log(\"test: \" + (promise instanceof Promise ? \"a promise\" : \"no promise\"));\nif (promise instanceof Promise) {\n  promise.then((held) => console.log(\"test: it holds \" + held));\n}\n});\n"
+      },
+      "steps": [
+        {
+          "wait": 400
+        },
+        {
+          "logged": "test: it holds Aurora",
+          "none": true
+        },
+        {
+          "wait": 100
+        },
+        {
+          "logged": "test: it holds Aurora"
+        }
+      ]
+    },
+    {
+      "name": "Another value and another time",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconst promise = answerLater(\"Comet Runner\", 1500);\nconsole.log(\"test: \" + (promise instanceof Promise ? \"a promise\" : \"no promise\"));\nif (promise instanceof Promise) {\n  promise.then((held) => console.log(\"test: it holds \" + held));\n}\n});\n"
+      },
+      "steps": [
+        {
+          "wait": 1400
+        },
+        {
+          "logged": "test: it holds Comet Runner",
+          "none": true
+        },
+        {
+          "wait": 100
+        },
+        {
+          "logged": "test: it holds Comet Runner"
+        }
+      ]
+    },
+    {
+      "name": "The page still asks and waits",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "logged": "Waiting for the answer"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "logged": "The starships answered"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

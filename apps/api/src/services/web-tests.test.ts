@@ -467,6 +467,75 @@ describe('judgeStep', () => {
     expect(judge({ at: 'crew.html' }, { page: 'index.html' })).toMatchObject({ kind: 'at' });
   });
 
+  it('reads what the page asked for, with which method and what it sent', () => {
+    const API = 'https://cyberstars.app/api/practice/starships';
+    const requests = [
+      { method: 'GET', url: API, body: null },
+      { method: 'POST', url: API, body: '{"name":"Comet","crew":{"pilots":2,"cooks":1}}' },
+    ];
+    expect(judge({ requested: API }, { requests })).toBeNull();
+    expect(judge({ requested: API, method: 'get' }, { requests })).toBeNull();
+    // An address as the browser writes it
+    expect(
+      judge(
+        { requested: 'https://cyberstars.app' },
+        { requests: [{ method: 'GET', url: 'https://cyberstars.app/', body: null }] },
+      ),
+    ).toBeNull();
+    expect(
+      judge(
+        { requested: API, method: 'POST', json: { crew: { cooks: 1, pilots: 2 }, name: 'Comet' } },
+        { requests },
+      ),
+    ).toBeNull();
+    expect(
+      judge({ requested: API, method: 'POST', json: { name: 'Aurora' } }, { requests }),
+    ).toEqual({
+      kind: 'requested',
+      detail: 'field',
+      other: `POST ${API}`,
+      expected: 'name: "Aurora"',
+      found: 'name: "Comet"',
+    });
+    expect(
+      judge({ requested: API, method: 'POST', json: { class: 'Cargo' } }, { requests }),
+    ).toMatchObject({
+      found: null,
+    });
+    expect(judge({ requested: API, method: 'PUT' }, { requests })).toEqual({
+      kind: 'requested',
+      detail: 'method',
+      other: API,
+      expected: 'PUT',
+      found: 'POST',
+    });
+    expect(judge({ requested: `${API}/2` }, { requests })).toEqual({
+      kind: 'requested',
+      other: `${API}/2`,
+      found: `POST ${API}`,
+    });
+    expect(judge({ requested: API }, { requests: [] })).toMatchObject({ found: null });
+    expect(judge({ requested: API, method: 'DELETE', none: true }, { requests })).toBeNull();
+    expect(judge({ requested: API, method: 'POST', none: true }, { requests })).toEqual({
+      kind: 'requested',
+      detail: 'none',
+      other: `POST ${API}`,
+    });
+    const plain = [{ method: 'POST', url: API, body: 'name=Comet' }];
+    expect(judge({ requested: API, json: { name: 'Comet' } }, { requests: plain })).toEqual({
+      kind: 'requested',
+      detail: 'notJson',
+      other: API,
+      found: 'name=Comet',
+    });
+    expect(
+      judge(
+        { requested: API, json: {} },
+        { requests: [{ method: 'POST', url: API, body: '[1]' }] },
+      ),
+    ).toMatchObject({ detail: 'notJson' });
+  });
+
   it('reads what the last form sent, or that none was', () => {
     const forms = [
       [['name', 'Noah']],

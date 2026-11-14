@@ -1,0 +1,96 @@
+{
+  "cases": [
+    {
+      "name": "A role is tidied when it's written",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nimport(\"./crew-member.js\").then((module) => {\n    const deneb = new module.default({ name: \"Deneb\", role: \"  Cook \" });\n    console.log(\"test: [\" + deneb.role + \"]\");\n    deneb.role = \"   \";\n    console.log(\"test: [\" + deneb.role + \"]\");\n    deneb.role = \" Pilot\";\n    console.log(\"test: [\" + deneb.role + \"] \" + deneb.describe());\n    const kept = Object.getOwnPropertyDescriptor(module.default.prototype, \"role\");\n    console.log(\"test: role is \" + (kept && kept.set && kept.get ? \"a getter and a setter\" : \"something else\"));\n  })\n  .catch((error) => console.log(\"test: failed \" + error.message));\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: [Cook]"
+        },
+        {
+          "logged": "test: [Crew]"
+        },
+        {
+          "logged": "test: [Pilot] Deneb, Pilot"
+        },
+        {
+          "logged": "test: role is a getter and a setter"
+        }
+      ]
+    },
+    {
+      "name": "Messy roles from the API show tidy",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"  Pilot  \"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor \"}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#crew > li",
+          "equals": "Orion, Pilot",
+          "label": "Orion's line"
+        },
+        {
+          "text": "#crew > li",
+          "equals": "Lyra, Crew",
+          "label": "Lyra's line"
+        },
+        {
+          "text": "#crew > li",
+          "equals": "Altair, Doctor",
+          "label": "Altair's line"
+        },
+        {
+          "text": "#crew > li.in-charge",
+          "equals": "★ Vega, Commander",
+          "label": "the person in charge"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The crew panel looks as before",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Sirius\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Deneb\", \"role\": \"Cook\"}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#crew > li",
+          "equals": "Deneb, Cook",
+          "label": "Deneb's line"
+        },
+        {
+          "text": "#crew-status",
+          "label": "the paragraph #crew-status",
+          "equals": "Crew on board: 2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "name": "While the list is busy, the skeletons show",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "attr": "#ships",
+          "name": "aria-busy",
+          "equals": "true",
+          "label": "the list #ships"
+        },
+        {
+          "visible": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "visible": "#ships > li.skeleton:nth-child(3)",
+          "label": "the third skeleton card"
+        }
+      ]
+    },
+    {
+      "name": "Once the list isn't busy, the skeletons go and the cards stay",
+      "visible": true,
+      "page": "tracker.html",
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nlist.append(document.querySelector(\"#ship-template\").content.cloneNode(true));\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "attr": "#ships",
+          "name": "aria-busy",
+          "equals": "false",
+          "label": "the list #ships, once a script said it is loaded"
+        },
+        {
+          "hidden": "#ships > li.skeleton",
+          "label": "the skeleton cards"
+        },
+        {
+          "visible": "#ships > li.ship",
+          "label": "the starship card the script added"
+        },
+        {
+          "visible": "#ships > li.ship .ship-name",
+          "label": "the name on the starship card"
+        }
+      ]
+    },
+    {
+      "name": "A card can come while it is still busy",
+      "page": "tracker.html",
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nlist.append(document.querySelector(\"#ship-template\").content.cloneNode(true));\nlist.setAttribute(\"aria-busy\", \"true\");\n"
+      },
+      "steps": [
+        {
+          "visible": "#ships > li.skeleton",
+          "label": "the first skeleton card"
+        },
+        {
+          "visible": "#ships > li.ship",
+          "label": "the starship card the script added"
+        }
+      ]
+    },
+    {
+      "name": "The skeletons go in the dark too",
+      "page": "tracker.html",
+      "colorScheme": "dark",
+      "files": {
+        "menu.js": "const list = document.querySelector(\"#ships\");\nlist.append(document.querySelector(\"#ship-template\").content.cloneNode(true));\nlist.setAttribute(\"aria-busy\", \"false\");\n"
+      },
+      "steps": [
+        {
+          "hidden": "#ships > li.skeleton",
+          "label": "the skeleton cards"
+        }
+      ]
+    }
+  ]
+}

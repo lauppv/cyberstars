@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "name": "The role is kept where only the class can reach it",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"Pilot\"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"Engineer\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor\"}, {\"id\": 5, \"name\": \"Nova\", \"role\": \"Navigator\"}, {\"id\": 6, \"name\": \"Rigel\", \"role\": \"Scientist\"}]"
+        }
+      },
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nimport(\"./crew-member.js\").then((module) => {\n    const deneb = new module.default({ name: \"Deneb\", role: \" Cook\" });\n    console.log(\"test: keys \" + Object.keys(deneb).join(\", \"));\n    console.log(\"test: role \" + deneb.role);\n    deneb.role = \"\";\n    console.log(\"test: role \" + deneb.role);\n  })\n  .catch((error) => console.log(\"test: failed \" + error.message));\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: keys name"
+        },
+        {
+          "logged": "test: role Cook"
+        },
+        {
+          "logged": "test: role Crew"
+        }
+      ]
+    },
+    {
+      "name": "The crew panel looks as before",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        },
+        "https://cyberstars.app/api/practice/crew": {
+          "body": "[{\"id\": 1, \"name\": \"Vega\", \"role\": \"Commander\"}, {\"id\": 2, \"name\": \"Orion\", \"role\": \"  Pilot  \"}, {\"id\": 3, \"name\": \"Lyra\", \"role\": \"\"}, {\"id\": 4, \"name\": \"Altair\", \"role\": \"Doctor \"}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#crew > li",
+          "equals": "Orion, Pilot",
+          "label": "Orion's line"
+        },
+        {
+          "text": "#crew > li",
+          "equals": "Lyra, Crew",
+          "label": "Lyra's line"
+        },
+        {
+          "text": "#crew > li.in-charge",
+          "equals": "★ Vega, Commander",
+          "label": "the person in charge"
+        },
+        {
+          "attr": "#crew > li:first-child",
+          "name": "title",
+          "equals": "VEG",
+          "label": "the first person of the crew"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

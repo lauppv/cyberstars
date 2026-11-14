@@ -94,15 +94,39 @@ function body(file) {
   return typeof file === 'string' ? file : Buffer.from(file.base64, 'base64');
 }
 
-async function serve(context, files, answers) {
+async function serve(context, files, answers, practiceApi) {
   // A page closed while a request was still being answered (the next case,
   // a stuck page) must not take the run down with it
-  await context.route('**/*', (route) => answer(route, files, answers).catch(() => {}));
+  await context.route('**/*', (route) =>
+    answer(route, files, answers, practiceApi).catch(() => {}),
+  );
+}
+
+// The address a case knows a request by. The practice API's `?wait=` only
+// holds its answer a while, which a case's own `delay` does here, so an
+// address with it is the one without (CYB-115)
+function caseAddress(href, practiceApi) {
+  if (!practiceApi || !href.startsWith(`${practiceApi}/`)) return href;
+  try {
+    const url = new URL(href);
+    url.searchParams.delete('wait');
+    return url.href;
+  } catch {
+    return href;
+  }
+}
+
+// The fixed answer to a request: the one for its method and address first,
+// then the one for the address alone
+function fixedAnswer(answers, method, href) {
+  const own = `${method.toUpperCase()} ${href}`;
+  if (Object.hasOwn(answers, own)) return answers[own];
+  return Object.hasOwn(answers, href) ? answers[href] : undefined;
 }
 
 // Every request of the page: a file of the site, a fixed answer, or nothing
 // (async, so a throw comes back as a rejection the route catches)
-async function answer(route, files, answers) {
+async function answer(route, files, answers, practiceApi) {
   const request = route.request();
   let url;
   try {
@@ -118,8 +142,10 @@ async function answer(route, files, answers) {
     }
     return route.fulfill({ status: 200, contentType: typeOf(path), body: body(file) });
   }
-  const fixed = Object.hasOwn(answers, url.href) ? answers[url.href] : undefined;
+  const fixed = fixedAnswer(answers, request.method(), caseAddress(url.href, practiceApi));
   if (fixed) {
+    // Held a while, so the page shows what it shows while it waits
+    if (fixed.delay > 0) await new Promise((done) => setTimeout(done, fixed.delay));
     return route.fulfill({
       status: fixed.status ?? 200,
       contentType: fixed.type ?? 'application/json',
@@ -150,6 +176,7 @@ function consoleAsPreview(limit) {
     if (v === null || typeof v !== 'object') return String(v);
     if (v instanceof Error) return `${v.name}: ${v.message}`;
     if (v instanceof Element) return `<${v.tagName.toLowerCase()}>`;
+    if (v instanceof Promise) return 'Promise {…}';
     if (depth > 3) return Array.isArray(v) ? '[…]' : '{…}';
     if (Array.isArray(v)) return `[${v.map((x) => show(x, depth + 1)).join(', ')}]`;
     const entries = Object.keys(v).map((key) => `${key}: ${show(v[key], depth + 1)}`);
@@ -216,6 +243,7 @@ async function observe(page, step, seen, files) {
   if ('noErrors' in step) return { errors: [...seen.errors] };
   if ('at' in step) return { page: sitePath(new URL(page.url())) };
   if ('sent' in step || 'notSent' in step) return { forms: [...seen.forms] };
+  if ('requested' in step) return { requests: [...seen.requests] };
   if ('order' in step) {
     const read = [];
     for (const selector of step.order) {
@@ -770,7 +798,10 @@ async function settle(page, nav, stepMs) {
 
 async function runCase(browser, files, testCase, limits) {
   const steps = [];
-  const seen = { logs: [], errors: [], dialogs: [], forms: [] };
+  const seen = { logs: [], errors: [], dialogs: [], forms: [], requests: [] };
+  const answers = testCase.fetch ?? {};
+  // Requests whose fixed answer is held: the steps don't wait for them
+  const held = new WeakSet();
   const clocked = typeof testCase.clock === 'string';
   // `loads` counts the pages loaded, `framed` those given their first frame
   const nav = { pending: false, inflight: 0, clocked, loads: 0, framed: 0 };
@@ -811,7 +842,7 @@ async function runCase(browser, files, testCase, limits) {
     },
   });
   try {
-    await serve(context, files, testCase.fetch ?? {});
+    await serve(context, files, answers, limits.practiceApi);
     // A fixed date and time the page sees, standing still until a wait moves it
     if (clocked) {
       // Written without a zone, as the page's own time (UTC)
@@ -829,6 +860,17 @@ async function runCase(browser, files, testCase, limits) {
     const page = await context.newPage();
     page.on('console', (message) => {
       const text = message.text();
+      // The browser's own line for an outside address whose answer is an
+      // error, or none at all: the page's script handles those, and the
+      // preview's console never shows them (CYB-115). A file the site
+      // hasn't, a picture or a script at a wrong path, still counts
+      if (
+        message.type() === 'error' &&
+        text.startsWith('Failed to load resource:') &&
+        !message.location().url.startsWith(`${ORIGIN}/`)
+      ) {
+        return;
+      }
       if (message.type() === 'error') seen.errors.push(text);
       else seen.logs.push(text);
     });
@@ -841,10 +883,20 @@ async function runCase(browser, files, testCase, limits) {
     page.on('crash', onCrash);
     outOfMemory.listener = onCrash;
     page.on('request', (request) => {
+      // What the page's scripts asked for, for a requested check
+      const url = caseAddress(request.url(), limits.practiceApi);
+      if (['fetch', 'xhr'].includes(request.resourceType())) {
+        seen.requests.push({ method: request.method(), url, body: request.postData() ?? null });
+      }
+      if (fixedAnswer(answers, request.method(), url)?.delay > 0) {
+        held.add(request);
+        return;
+      }
       nav.inflight += 1;
       if (request.isNavigationRequest() && request.frame() === page.mainFrame()) nav.pending = true;
     });
-    const done = () => {
+    const done = (request) => {
+      if (held.has(request)) return;
       nav.inflight = Math.max(0, nav.inflight - 1);
     };
     page.on('requestfinished', done);

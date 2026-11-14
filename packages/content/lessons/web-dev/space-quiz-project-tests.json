@@ -1,0 +1,355 @@
+{
+  "cases": [
+    {
+      "name": "The frame of the page",
+      "visible": true,
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "attr": "meta[name=\"viewport\"]",
+          "name": "content",
+          "equals": "width=device-width, initial-scale=1",
+          "label": "the viewport (meta name=\"viewport\")"
+        },
+        {
+          "attr": "meta[charset]",
+          "name": "charset",
+          "equals": "UTF-8",
+          "ignoreCase": true,
+          "label": "the page's letters (meta charset)"
+        },
+        {
+          "attr": "meta[name=\"description\"]",
+          "name": "content",
+          "label": "a sentence for search engines (meta name=\"description\")"
+        },
+        {
+          "text": "head > title",
+          "equals": "Space Quiz",
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "text": "h1",
+          "equals": "Space Quiz",
+          "label": "the biggest heading (<h1>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Your own questions load, the first one shows",
+      "visible": true,
+      "steps": [
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "contains": "Question 1 of "
+        },
+        {
+          "text": "#question",
+          "label": "the question #question",
+          "nonEmpty": true
+        },
+        {
+          "count": "#answers > button",
+          "atLeast": 2,
+          "label": "answer buttons in #answers"
+        },
+        {
+          "attr": "#quiz-status",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #quiz-status"
+        },
+        {
+          "attr": "#feedback",
+          "name": "aria-live",
+          "equals": "polite",
+          "label": "the paragraph #feedback"
+        },
+        {
+          "hidden": "#next",
+          "label": "the button #next"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "At least three questions of your own",
+      "visible": true,
+      "steps": [
+        {
+          "click": "#answers > button:nth-child(1)",
+          "label": "the first answer"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "click": "#answers > button:nth-child(1)",
+          "label": "the first answer"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "contains": "Question 3 of "
+        }
+      ]
+    },
+    {
+      "name": "A whole quiz: right, wrong, right, then the score",
+      "visible": true,
+      "files": {
+        "questions.json": "[{\"question\": \"Which planet is the biggest?\", \"answers\": [\"Mars\", \"Jupiter\", \"Venus\"], \"correct\": 1}, {\"question\": \"What is the Moon?\", \"answers\": [\"A star\", \"A satellite\"], \"correct\": 1}, {\"question\": \"How many planets go round the Sun?\", \"answers\": [\"Seven\", \"Eight\", \"Nine\", \"Ten\"], \"correct\": 1}]"
+      },
+      "steps": [
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "equals": "Question 1 of 3"
+        },
+        {
+          "text": "#question",
+          "label": "the question #question",
+          "equals": "Which planet is the biggest?"
+        },
+        {
+          "count": "#answers > button",
+          "equals": 3,
+          "label": "answer buttons in #answers"
+        },
+        {
+          "text": "#answers > button:nth-child(2)",
+          "equals": "Jupiter",
+          "label": "the second answer"
+        },
+        {
+          "attr": "#answers > button:nth-child(1)",
+          "name": "type",
+          "equals": "button",
+          "label": "the first answer button"
+        },
+        {
+          "text": "#feedback",
+          "label": "the paragraph #feedback",
+          "equals": ""
+        },
+        {
+          "hidden": "#next",
+          "label": "the button #next"
+        },
+        {
+          "click": "#answers > button:nth-child(2)",
+          "label": "the answer Jupiter"
+        },
+        {
+          "text": "#feedback",
+          "label": "the paragraph #feedback",
+          "equals": "Right!"
+        },
+        {
+          "attr": "#answers > button:nth-child(1)",
+          "name": "disabled",
+          "label": "the first answer button, once an answer is picked"
+        },
+        {
+          "visible": "#next",
+          "label": "the button #next"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "equals": "Question 2 of 3"
+        },
+        {
+          "text": "#question",
+          "label": "the question #question",
+          "equals": "What is the Moon?"
+        },
+        {
+          "count": "#answers > button",
+          "equals": 2,
+          "label": "answer buttons in #answers"
+        },
+        {
+          "text": "#feedback",
+          "label": "the paragraph #feedback",
+          "equals": ""
+        },
+        {
+          "hidden": "#next",
+          "label": "the button #next"
+        },
+        {
+          "click": "#answers > button:nth-child(1)",
+          "label": "the answer A star"
+        },
+        {
+          "text": "#feedback",
+          "label": "the paragraph #feedback",
+          "equals": "Not quite: the answer is A satellite"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "equals": "Question 3 of 3"
+        },
+        {
+          "click": "#answers > button:nth-child(2)",
+          "label": "the answer Eight"
+        },
+        {
+          "text": "#feedback",
+          "label": "the paragraph #feedback",
+          "equals": "Right!"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "equals": "You got 2 of 3 right"
+        },
+        {
+          "hidden": "#question",
+          "label": "the question #question"
+        },
+        {
+          "hidden": "#answers",
+          "label": "the answers #answers"
+        },
+        {
+          "hidden": "#next",
+          "label": "the button #next"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Once picked, no answer can be picked again",
+      "files": {
+        "questions.json": "[{\"question\": \"Which planet is the biggest?\", \"answers\": [\"Mars\", \"Jupiter\", \"Venus\"], \"correct\": 1}, {\"question\": \"What is the Moon?\", \"answers\": [\"A star\", \"A satellite\"], \"correct\": 1}, {\"question\": \"How many planets go round the Sun?\", \"answers\": [\"Seven\", \"Eight\", \"Nine\", \"Ten\"], \"correct\": 1}]"
+      },
+      "steps": [
+        {
+          "click": "#answers > button:nth-child(2)",
+          "label": "the answer Jupiter"
+        },
+        {
+          "count": "#answers > button:disabled",
+          "equals": 3,
+          "label": "answer buttons that can't be pressed any more"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "count": "#answers > button:disabled",
+          "equals": 0,
+          "label": "answer buttons that can't be pressed, on the next question"
+        },
+        {
+          "click": "#answers > button:nth-child(1)",
+          "label": "an answer"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "click": "#answers > button:nth-child(1)",
+          "label": "an answer"
+        },
+        {
+          "click": "#next",
+          "label": "the button #next"
+        },
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "equals": "You got 1 of 3 right"
+        }
+      ]
+    },
+    {
+      "name": "Questions that can't be read",
+      "visible": true,
+      "files": {
+        "questions.json": "{ not json"
+      },
+      "steps": [
+        {
+          "text": "#quiz-status",
+          "label": "the paragraph #quiz-status",
+          "contains": "Couldn't load the questions: "
+        },
+        {
+          "count": "#answers > button",
+          "equals": 0,
+          "label": "answer buttons"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "On a phone",
+      "width": 375,
+      "files": {
+        "questions.json": "[{\"question\": \"Which planet is the biggest?\", \"answers\": [\"Mars\", \"Jupiter\", \"Venus\"], \"correct\": 1}, {\"question\": \"What is the Moon?\", \"answers\": [\"A star\", \"A satellite\"], \"correct\": 1}, {\"question\": \"How many planets go round the Sun?\", \"answers\": [\"Seven\", \"Eight\", \"Nine\", \"Ten\"], \"correct\": 1}]"
+      },
+      "steps": [
+        {
+          "fits": true
+        },
+        {
+          "layout": "#answers > button",
+          "arrange": "column",
+          "label": "the answer buttons"
+        },
+        {
+          "contrast": "#answers > button",
+          "atLeast": 4.5,
+          "every": true,
+          "label": "every answer button's text"
+        }
+      ]
+    }
+  ]
+}

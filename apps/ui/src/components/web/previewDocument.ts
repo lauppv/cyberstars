@@ -1,5 +1,6 @@
 import { extensionOf, resolveWebPath, type WebFile } from '@cyberstars/shared/webFiles';
 import { guardScript } from './scriptGuard';
+import { PRACTICE_API_PATH, PRACTICE_API_URL } from '@cyberstars/shared/practice';
 import { previewPrelude, type PreludeConfig } from './previewPrelude';
 
 // One page of the student's site, made ready for the preview frame
@@ -38,7 +39,7 @@ export interface PreviewOptions {
   page: string;
   // A data: URL for each image, video or sound of the site that could be loaded
   images: Record<string, string>;
-  prelude: Omit<PreludeConfig, 'page' | 'files' | 'scripts'>;
+  prelude: Omit<PreludeConfig, 'page' | 'files' | 'scripts' | 'practiceApi'>;
 }
 
 const JS_TYPES = new Set([
@@ -298,6 +299,7 @@ export function buildPreviewPage({ files, page, images, prelude }: PreviewOption
     page,
     files: Object.fromEntries(text),
     scripts: scriptNames,
+    practiceApi: { url: PRACTICE_API_URL, path: PRACTICE_API_PATH },
   };
   const head = doc.head;
   const first = doc.createElement('script');

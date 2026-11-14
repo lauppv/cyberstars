@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "name": "failLater gives a promise that fails later",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconst promise = failLater(\"No answer from the tracker\", 800);\nconsole.log(\"test: \" + (promise instanceof Promise ? \"a promise\" : \"no promise\"));\nif (promise instanceof Promise) {\n  promise\n    .then(() => console.log(\"test: then ran\"))\n    .catch((problem) => console.log(\"test: caught \" + problem));\n}\n});\n"
+      },
+      "steps": [
+        {
+          "logged": "test: a promise"
+        },
+        {
+          "wait": 700
+        },
+        {
+          "logged": "test: caught No answer from the tracker",
+          "none": true
+        },
+        {
+          "wait": 100
+        },
+        {
+          "logged": "test: caught No answer from the tracker"
+        },
+        {
+          "logged": "test: then ran",
+          "none": true
+        }
+      ]
+    },
+    {
+      "name": "Another message and another time",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nconst promise = failLater(\"The radar is off\", 200);\nconsole.log(\"test: \" + (promise instanceof Promise ? \"a promise\" : \"no promise\"));\nif (promise instanceof Promise) {\n  promise\n    .then(() => console.log(\"test: then ran\"))\n    .catch((problem) => console.log(\"test: caught \" + problem));\n}\n});\n"
+      },
+      "steps": [
+        {
+          "wait": 200
+        },
+        {
+          "logged": "test: caught The radar is off"
+        },
+        {
+          "logged": "test: then ran",
+          "none": true
+        }
+      ]
+    },
+    {
+      "name": "The starships are still found",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Starships found"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    }
+  ]
+}

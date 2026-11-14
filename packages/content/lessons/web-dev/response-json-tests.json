@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "name": "The line counts the starships the API sent",
+      "visible": true,
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]"
+        }
+      },
+      "steps": [
+        {
+          "requested": "https://cyberstars.app/api/practice/starships",
+          "method": "GET"
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "5 starships near the station"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "Other starships",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 7, \"name\": \"Blue Kite\", \"class\": \"Shuttle\", \"status\": \"Leaving\", \"crew\": 3}, {\"id\": 8, \"name\": \"Iron Swan\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 9}, {\"id\": 9, \"name\": \"Night Owl\", \"class\": \"Explorer\", \"status\": \"Boarding\", \"crew\": 1}]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "3 starships near the station"
+        }
+      ]
+    },
+    {
+      "name": "No starships",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[]"
+        }
+      },
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "0 starships near the station"
+        }
+      ]
+    },
+    {
+      "name": "The line waits for the answer",
+      "page": "tracker.html",
+      "fetch": {
+        "https://cyberstars.app/api/practice/starships": {
+          "body": "[{\"id\": 1, \"name\": \"Aurora\", \"class\": \"Cargo\", \"status\": \"Docked\", \"crew\": 4}, {\"id\": 2, \"name\": \"Comet Runner\", \"class\": \"Explorer\", \"status\": \"On the way\", \"crew\": 6}, {\"id\": 3, \"name\": \"Lunar Ferry\", \"class\": \"Shuttle\", \"status\": \"Boarding\", \"crew\": 2}, {\"id\": 4, \"name\": \"Red Horizon\", \"class\": \"Cargo\", \"status\": \"Leaving\", \"crew\": 5}, {\"id\": 5, \"name\": \"Silver Gull\", \"class\": \"Explorer\", \"status\": \"Docked\", \"crew\": 7}]",
+          "delay": 800
+        }
+      },
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "contains": "Loading"
+        },
+        {
+          "wait": 1000
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "5 starships near the station"
+        }
+      ]
+    }
+  ]
+}

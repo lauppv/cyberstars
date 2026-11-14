@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "name": "The line says it is loading, then what the promise holds",
+      "visible": true,
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "contains": "Loading"
+        },
+        {
+          "wait": 900
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "contains": "Loading"
+        },
+        {
+          "wait": 100
+        },
+        {
+          "text": "#tracker-status",
+          "label": "the paragraph #tracker-status",
+          "equals": "Starships found"
+        },
+        {
+          "noErrors": true
+        }
+      ]
+    },
+    {
+      "name": "The spinner goes with the loading text",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "steps": [
+        {
+          "wait": 1000
+        },
+        {
+          "count": "#tracker-status .spinner",
+          "equals": 0,
+          "label": "spinners in #tracker-status"
+        }
+      ]
+    },
+    {
+      "name": "answerLater still works",
+      "page": "tracker.html",
+      "clock": "2031-05-14T09:30:00",
+      "files": {
+        "menu.js": "document.addEventListener(\"DOMContentLoaded\", () => {\nanswerLater(\"Lyra\", 300).then((held) => console.log(\"test: it holds \" + held));\n});\n"
+      },
+      "steps": [
+        {
+          "wait": 300
+        },
+        {
+          "logged": "test: it holds Lyra"
+        }
+      ]
+    }
+  ]
+}

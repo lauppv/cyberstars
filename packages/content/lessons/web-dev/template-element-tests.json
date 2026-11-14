@@ -1,0 +1,238 @@
+{
+  "cases": [
+    {
+      "name": "The tracker is a page like the others",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "doctype": true
+        },
+        {
+          "attr": "html",
+          "name": "lang",
+          "equals": "en",
+          "label": "the page's language (lang on <html>)"
+        },
+        {
+          "text": "head > title",
+          "nonEmpty": true,
+          "label": "the tab's name (<title>)"
+        },
+        {
+          "count": "h1",
+          "equals": 1,
+          "label": "biggest headings (<h1>)"
+        },
+        {
+          "exists": "body > header:first-child",
+          "label": "a header (<header>) at the very top of the page"
+        },
+        {
+          "exists": "body > main h1",
+          "label": "the page's content in <main>, with its heading"
+        },
+        {
+          "text": "body > footer:last-child",
+          "contains": "Docking Ring B",
+          "label": "the footer (<footer>) at the very end of the page"
+        },
+        {
+          "hidden": "header nav",
+          "label": "the menu (the nav in the header)"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "visible": "header nav",
+          "label": "the menu (the nav in the header)"
+        }
+      ]
+    },
+    {
+      "name": "The list is empty and the card waits in a template",
+      "visible": true,
+      "page": "tracker.html",
+      "steps": [
+        {
+          "exists": "main ul#ships",
+          "label": "a list (<ul>) with the id ships in the main part"
+        },
+        {
+          "count": "#ships li",
+          "equals": 0,
+          "label": "items in the list #ships"
+        },
+        {
+          "exists": "main template#ship-template",
+          "label": "a <template> with the id ship-template in the main part"
+        },
+        {
+          "count": ".ship-name, .ship-class, .ship-status",
+          "equals": 0,
+          "label": "parts of a card shown on the page"
+        }
+      ]
+    },
+    {
+      "name": "A copy of the template is a whole card",
+      "visible": true,
+      "page": "tracker.html",
+      "files": {
+        "menu.js": "const mold = document.querySelector(\"#ship-template\");\nconst list = document.querySelector(\"#ships\");\nlist.append(mold.content.cloneNode(true));\nlist.append(mold.content.cloneNode(true));\n"
+      },
+      "steps": [
+        {
+          "count": "#ships > li.ship",
+          "equals": 2,
+          "label": "cards (li.ship) in the list, after putting two copies of the template there"
+        },
+        {
+          "text": "#ships > li.ship .ship-name",
+          "nonEmpty": true,
+          "label": "the card's name (.ship-name)"
+        },
+        {
+          "text": "#ships > li.ship .ship-class",
+          "nonEmpty": true,
+          "label": "the card's class (.ship-class)"
+        },
+        {
+          "text": "#ships > li.ship .ship-status",
+          "nonEmpty": true,
+          "label": "the card's status (.ship-status)"
+        },
+        {
+          "order": [
+            "#ships > li.ship .ship-name",
+            "#ships > li.ship .ship-class",
+            "#ships > li.ship .ship-status"
+          ],
+          "label": "the name, then the class, then the status"
+        }
+      ]
+    },
+    {
+      "name": "Every page's menu leads to the tracker",
+      "visible": true,
+      "steps": [
+        {
+          "open": "index.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of index.html"
+        },
+        {
+          "open": "crew.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of crew.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of people/vega.html"
+        },
+        {
+          "open": "schedule.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of schedule.html"
+        },
+        {
+          "open": "boarding.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of boarding.html"
+        },
+        {
+          "open": "wiki-greenhouse.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of wiki-greenhouse.html"
+        },
+        {
+          "open": "wiki-airlock.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of wiki-airlock.html"
+        },
+        {
+          "open": "wiki.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of wiki.html"
+        },
+        {
+          "open": "wiki-tools.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of wiki-tools.html"
+        },
+        {
+          "open": "dashboard.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of dashboard.html"
+        },
+        {
+          "open": "tracker.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of tracker.html"
+        },
+        {
+          "open": "settings.html"
+        },
+        {
+          "exists": "header nav a[href$=\"tracker.html\"]",
+          "label": "a link to tracker.html in the menu of settings.html"
+        }
+      ]
+    },
+    {
+      "name": "The menu link to the tracker works, from the commander's page too",
+      "steps": [
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "header nav a[href$=\"tracker.html\"]",
+          "label": "the menu link to the tracker"
+        },
+        {
+          "at": "tracker.html"
+        },
+        {
+          "open": "people/vega.html"
+        },
+        {
+          "click": "#menu-button",
+          "label": "the button #menu-button"
+        },
+        {
+          "click": "header nav a[href$=\"tracker.html\"]",
+          "label": "the menu link to the tracker"
+        },
+        {
+          "at": "tracker.html"
+        }
+      ]
+    }
+  ]
+}
