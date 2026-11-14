@@ -1,58 +1,80 @@
-Green Corner sells house plants online and ships them across Europe. The shop's website exports every order of the month to a CSV file, and at the end of October the owner, Sara, wants answers: how much came in, which plants sell, which cities order the most. She has no spreadsheet program on the shop's server, only a terminal. That's enough.
+Green Corner sells house plants online and sends them all over Europe. The shop's website saves every order of the month in a CSV file. At the end of October the owner, Sara, wants answers: how much money came in, which plants sell, and which cities order the most. The shop's server has no spreadsheet program, only a terminal. That is enough.
 
-You build the report one step at a time, in the terminal on the right. Tick a step off once you get its numbers, or its file holds what the step asks; you can always come back and untick it.
+**What you start with.** `~/shop/orders.csv`, October's orders. The first line names the columns. Every other line is one order, with commas between its fields. `price` is the price of one plant, and `qty` is how many were bought.
 
-When every step is done, press **Run Tests**: it checks the files in this terminal, so do the steps in one go. The terminal starts fresh every time you open the page or press Reset, with the starting files back, so after a reset run the earlier steps again (each is a command or two). Passing the tests finishes the project.
+**What you make.**
+
+| File             | What it holds                          |
+| ---------------- | -------------------------------------- |
+| `data.csv`       | the orders, without the first line     |
+| `clean.csv`      | the orders with a typing mistake fixed |
+| `by-city.txt`    | how much money each city brought       |
+| `by-product.txt` | how many of each plant were sold       |
+| `report.txt`     | the month's numbers, in five lines     |
+
+Some words you will meet:
+
+| Word        | What it means                                               |
+| ----------- | ----------------------------------------------------------- |
+| CSV file    | a text file where commas separate the values on each line   |
+| header      | the first line of a CSV file, with the names of the columns |
+| field       | one value of a line, like the city or the price             |
+| revenue     | all the money that came in                                  |
+| best seller | the product sold the most                                   |
+
+**How you work.** You do everything in the terminal on the right, one step at a time. Tick a step when you have its numbers, or when its file holds what the step asks. When every step is done, press **Run Tests**: it checks the files in this terminal. Passing it finishes the project.
+
+The terminal starts again from the first files every time you open the page or press Reset. So do the steps in one go, and after a reset, do the earlier steps again (each one is a command or two).
 
 ## Look at the export
 
-You start in `~/shop`, where `orders.csv` holds October's orders. Look at its first lines: the first one names the columns, and every other line is an order, its fields separated by commas. `price` is the price of one plant, `qty` how many were bought. How many orders did October have?
+You start in `~/shop`. Look at the first lines of `orders.csv`. How many orders did October have?
 
 ## Only the orders
 
-The header line would get in the way of every count. Save every line but the first to `data.csv`.
+The header would get in the way of every count. Save every line except the first one to `data.csv`.
 
-New idea: `tail` can print a file from a given line on, instead of counting lines from the end. `tail --help` says how.
+A new idea: `tail` can print a file from a given line to the end, instead of counting lines from the end. `tail --help` says how.
 
 ## Fix the typo
 
-Count the orders per plant. One of the plant names isn't a plant: someone mistyped it when adding orders by phone. Save `data.csv` with that name corrected to `clean.csv`, changing only that field, never the same letters inside another field. Count again to check.
+Count the orders for each plant. One of the plant names is not a plant: someone typed it wrong when they took an order by phone. Save `data.csv`, with that name fixed, to `clean.csv`. Change only that field, never the same letters inside another field. Count again to check.
 
-Every step from here reads `clean.csv`.
+Every next step reads `clean.csv`.
 
 ## What came in
 
-How much money did October bring in? An order brings in its quantity times its price. And how many plants did Green Corner ship in all?
+How much money did October bring? An order brings its quantity times its price. And how many plants did Green Corner send in all?
 
-New idea: `awk` splits lines on spaces unless you give it another separator with `-F`.
+A new idea: `awk` cuts lines at spaces, unless you give it another separator with `-F`.
 
 ## The biggest orders
 
-Which three orders brought in the most, and who placed them? Sara will send the customer who comes out on top a thank-you card.
+Which three orders brought the most money, and who made them? Sara will send a thank-you card to the customer at the top.
 
 ## Money per city
 
-Save to `by-city.txt` how much each city brought in, one city a line, the amount and then the city, the largest first.
+Save to `by-city.txt` how much money each city brought: one city on each line, first the amount and then the city, the biggest first.
 
-New idea: an `awk` variable can hold one value per name, like a dictionary, and the `END` block can go through every name it saw. For example, this keeps each player's last score:
+A new idea: an `awk` variable can keep one value for each name, like a dictionary, and the `END` block can go through every name it saw. For example, this keeps each player's last score:
 
 ```bash
 awk '{last[$1] = $2} END {for (p in last) print p, last[p]}' scores.txt
 ```
 
-`awk` goes through the names in no particular order.
+`awk` goes through the names in no fixed order.
 
 ## Plants that sell
 
-Do the same per plant, adding up the plants sold instead of the money, and save it to `by-product.txt`: the number of plants and then the plant, the most sold first.
+Do the same for each plant, but add up the plants sold instead of the money, and save it to `by-product.txt`: first the number of plants and then the plant, the most sold first.
 
-Counting orders and counting plants don't give the same winner order. Which one should Sara go by when she orders for November?
+Counting orders and counting plants don't give the same order of winners. Which one should Sara use when she buys plants for November?
 
 ## First half, second half
 
-Did sales pick up during the month? Add up what came in on orders up to October 15th, then on the orders after it. Dates written as `2026-10-15` compare like text, so `awk` can compare them as text.
+Did sales grow during the month? Add up the money of the orders up to October 15th, then of the orders after it. Dates written like `2026-10-15` can be compared like text, so `awk` can compare them as text.
 
-Then write the month's facts to `report.txt` from the terminal, one per line, with the numbers you found:
+Then write the month's numbers to `report.txt` from the terminal, one on each line, with what you found:
 
 ```text
 Orders: <how many orders>
