@@ -4,8 +4,8 @@ export interface Tone {
   light: string;
 }
 
-// The outlines every crown is drawn from: low with three points (10), five points (9 to 6),
-// five points with a tall middle spire (5), and seven sharp spikes round a middle spire (4 to 1)
+// The outlines every crown is drawn from: low with three points (10), five points (9 to 7),
+// five points with a tall middle spire (6), and seven sharp spikes round a middle spire (5 to 1)
 export type CrownShape = 'low' | 'open' | 'spire' | 'spiky';
 
 export interface CrownStyle {
@@ -18,7 +18,8 @@ export interface CrownStyle {
   // The orb on the left and the sceptre on the right, beside the crown
   regalia?: boolean;
   crest?: 'star';
-  aura?: 'gold' | 'stars';
+  // A gold glow, the same with gold rays, or a violet glow with gold rays
+  aura?: 'gold' | 'rays' | 'stars';
 }
 
 // Metals darkened at the edges so they still read apart at 24 px
@@ -33,7 +34,7 @@ export const VIOLET: Tone = { dark: '#3a2da0', mid: '#6c5ce7', light: '#b7aefc' 
 // with a single change, and within one metal every change is a new outline or a big patch of
 // violet, so two crowns of the same metal still tell apart at the crown's real size.
 export const CROWNS: CrownStyle[] = [
-  // 1: the brand star on the middle spike, a violet aura with gold rays
+  // 1: the orb and the sceptre, the brand star on the middle spike, a violet aura
   {
     metal: GOLD,
     shape: 'spiky',
@@ -43,20 +44,20 @@ export const CROWNS: CrownStyle[] = [
     crest: 'star',
     aura: 'stars',
   },
-  // 2: a gold aura behind
-  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, regalia: true, aura: 'gold' },
-  // 3: the orb and the sceptre beside it
-  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, regalia: true },
-  // 4: gold, with seven sharp spikes
+  // 2: gold rays round the aura
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, aura: 'rays' },
+  // 3: a gold aura behind
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, aura: 'gold' },
+  // 4: gold
   { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true },
-  // 5: a tall middle spire with a big violet stone
+  // 5: seven sharp spikes and stones on the band
+  { metal: SILVER, shape: 'spiky', violetBand: true, violetTips: true },
+  // 6: a tall middle spire with a big violet stone
   { metal: SILVER, shape: 'spire', violetBand: true, violetTips: true },
-  // 6: violet balls on the points
-  { metal: SILVER, shape: 'open', violetBand: true, violetTips: true },
   // 7: silver
-  { metal: SILVER, shape: 'open', violetBand: true },
-  // 8: the band turns violet
-  { metal: BRONZE, shape: 'open', violetBand: true },
+  { metal: SILVER, shape: 'open', violetBand: true, violetTips: true },
+  // 8: the band and the balls on the points turn violet together
+  { metal: BRONZE, shape: 'open', violetBand: true, violetTips: true },
   // 9: five points, taller
   { metal: BRONZE, shape: 'open' },
   // 10: a low bronze circlet with three points

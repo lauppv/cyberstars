@@ -24,7 +24,7 @@ const STAR = [
   .map(([x, y]) => `${(16 + (x - 32) * 0.155).toFixed(2)},${(4.6 + (y - 32) * 0.155).toFixed(2)}`)
   .join(' ');
 
-// Twelve gold rays round the top crown, every other one shorter
+// Twelve gold rays round the top two crowns, every other one shorter
 const RAYS = Array.from({ length: 12 }, (_, i) => {
   const a = (Math.PI * 2 * i) / 12 - Math.PI / 2;
   const outer = i % 2 ? 14.2 : 15.8;
@@ -126,7 +126,7 @@ export function RankCrown({ rank }: { rank: number }) {
   const size = Math.round(28 + ((CROWNS.length - place) * 6) / (CROWNS.length - 1));
   const box = crown.regalia ? REGALIA_BOX : { x: 0, width: 32 };
   const [M, V] = [`url(#${id}m)`, `url(#${id}v)`];
-  const auraTone = crown.aura === 'gold' ? '#f2c23a' : VIOLET.mid;
+  const auraTone = crown.aura === 'stars' ? VIOLET.mid : '#f2c23a';
 
   return (
     <svg
@@ -146,7 +146,7 @@ export function RankCrown({ rank }: { rank: number }) {
       </defs>
 
       {crown.aura && <circle cx="16" cy="16" r="16" fill={`url(#${id}h)`} />}
-      {crown.aura === 'stars' && (
+      {(crown.aura === 'stars' || crown.aura === 'rays') && (
         <path d={RAYS} stroke={M} strokeWidth="1.5" strokeLinecap="round" />
       )}
 

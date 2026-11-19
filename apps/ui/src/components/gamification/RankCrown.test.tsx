@@ -32,12 +32,12 @@ describe('RankCrown', () => {
     expect(sizes).toEqual([...sizes].sort((a, b) => b - a));
   });
 
-  it('sets the orb and the sceptre beside places 1 to 3 only, in a wider box', () => {
+  it('sets the orb and the sceptre beside place 1 only, in a wider box', () => {
     const held = CROWNS.map((_, i) => svg(i + 1).querySelector('[data-regalia]') !== null);
-    expect(held).toEqual([true, true, true, false, false, false, false, false, false, false]);
-    const wide = svg(3);
+    expect(held).toEqual([true, false, false, false, false, false, false, false, false, false]);
+    const wide = svg(1);
     expect(Number(wide.getAttribute('width'))).toBeGreaterThan(Number(wide.getAttribute('height')));
-    expect(svg(4).getAttribute('width')).toBe(svg(4).getAttribute('height'));
+    expect(svg(2).getAttribute('width')).toBe(svg(2).getAttribute('height'));
   });
 
   it('puts the brand star on the top crown only', () => {
