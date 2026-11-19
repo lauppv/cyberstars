@@ -20,8 +20,8 @@ export interface CrownStyle {
   // The orb on the left and the sceptre on the right, beside the crown
   regalia?: boolean;
   crest?: 'star';
-  // A gold glow with gold rays, or a violet glow with gold rays
-  aura?: 'rays' | 'stars';
+  // A gold glow with thin gold rays, or a violet glow with a gold sun of wide spikes
+  aura?: 'rays' | 'sun';
 }
 
 // Metals darkened at the edges so they still read apart at 24 px
@@ -45,11 +45,11 @@ export const CROWNS: CrownStyle[] = [
     cap: true,
     regalia: true,
     crest: 'star',
-    aura: 'stars',
+    aura: 'sun',
   },
-  // 2: the aura turns violet
-  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true, aura: 'stars' },
-  // 3: a gold aura with gold rays behind
+  // 2: a violet aura with a gold sun behind
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true, aura: 'sun' },
+  // 3: a gold aura with thin gold rays behind
   { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true, aura: 'rays' },
   // 4: gold
   { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true },

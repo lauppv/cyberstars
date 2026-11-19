@@ -24,13 +24,22 @@ const STAR = [
   .map(([x, y]) => `${(16 + (x - 32) * 0.155).toFixed(2)},${(4.6 + (y - 32) * 0.155).toFixed(2)}`)
   .join(' ');
 
-// Twelve gold rays round the top three crowns, every other one shorter
+// Twelve thin gold rays round the third crown, every other one shorter
 const RAYS = Array.from({ length: 12 }, (_, i) => {
   const a = (Math.PI * 2 * i) / 12 - Math.PI / 2;
   const outer = i % 2 ? 14.2 : 15.8;
   const at = (r: number) =>
     `${(16 + r * Math.cos(a)).toFixed(2)} ${(16 + r * Math.sin(a)).toFixed(2)}`;
   return `M${at(11.5)} L${at(outer)}`;
+}).join(' ');
+
+// Sixteen wide gold spikes round the top two crowns, a sun behind them
+const SUN = Array.from({ length: 16 }, (_, i) => {
+  const a = (Math.PI * 2 * i) / 16 - Math.PI / 2;
+  const outer = i % 2 ? 14.6 : 16;
+  const at = (r: number, d: number) =>
+    `${(16 + r * Math.cos(a + d)).toFixed(2)} ${(16 + r * Math.sin(a + d)).toFixed(2)}`;
+  return `M${at(10.5, -0.16)} L${at(outer, 0)} L${at(10.5, 0.16)} Z`;
 }).join(' ');
 
 function spread(n: number, from: number, to: number) {
@@ -126,7 +135,7 @@ export function RankCrown({ rank }: { rank: number }) {
   const size = Math.round(28 + ((CROWNS.length - place) * 6) / (CROWNS.length - 1));
   const box = crown.regalia ? REGALIA_BOX : { x: 0, width: 32 };
   const [M, V] = [`url(#${id}m)`, `url(#${id}v)`];
-  const auraTone = crown.aura === 'stars' ? VIOLET.mid : '#f2c23a';
+  const auraTone = crown.aura === 'sun' ? VIOLET.mid : '#f2c23a';
 
   return (
     <svg
@@ -146,12 +155,22 @@ export function RankCrown({ rank }: { rank: number }) {
       </defs>
 
       {crown.aura && <circle cx="16" cy="16" r="16" fill={`url(#${id}h)`} />}
-      {crown.aura && <path d={RAYS} stroke={M} strokeWidth="1.5" strokeLinecap="round" />}
+      {crown.aura === 'rays' && (
+        <path d={RAYS} stroke={M} strokeWidth="1.5" strokeLinecap="round" />
+      )}
+      {crown.aura === 'sun' && (
+        <path d={SUN} fill={M} stroke={metal.dark} strokeWidth="0.4" strokeLinejoin="round" />
+      )}
 
       {crown.regalia && <Regalia metal={M} stone={V} edge={metal.dark} />}
 
       {crown.cap && (
-        <path d="M6 22.6 C6 9 26 9 26 22.6 Z" fill={V} stroke={VIOLET.dark} strokeWidth="0.6" />
+        <path
+          d="M4.5 22.6 V14 A11.5 7 0 0 1 27.5 14 V22.6 Z"
+          fill={V}
+          stroke={VIOLET.dark}
+          strokeWidth="0.6"
+        />
       )}
 
       <path
