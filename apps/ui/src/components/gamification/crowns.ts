@@ -15,11 +15,13 @@ export interface CrownStyle {
   violetBand?: boolean;
   // A big violet ball on every point
   violetTips?: boolean;
+  // A violet velvet cap inside the crown, showing between the points
+  cap?: boolean;
   // The orb on the left and the sceptre on the right, beside the crown
   regalia?: boolean;
   crest?: 'star';
-  // A gold glow, the same with gold rays, or a violet glow with gold rays
-  aura?: 'gold' | 'rays' | 'stars';
+  // A gold glow with gold rays, or a violet glow with gold rays
+  aura?: 'rays' | 'stars';
 }
 
 // Metals darkened at the edges so they still read apart at 24 px
@@ -31,29 +33,30 @@ const GOLD: Tone = { dark: '#8a5c08', mid: '#e8b23a', light: '#fff0b3' };
 export const VIOLET: Tone = { dark: '#3a2da0', mid: '#6c5ce7', light: '#b7aefc' };
 
 // Leaderboard crowns for places 1 to 10. Read from the bottom up, each is the one below it
-// with a single change, and within one metal every change is a new outline or a big patch of
+// with one or two changes, and within one metal every change is a new outline or a big patch of
 // violet, so two crowns of the same metal still tell apart at the crown's real size.
 export const CROWNS: CrownStyle[] = [
-  // 1: the orb and the sceptre, the brand star on the middle spike, a violet aura
+  // 1: the orb and the sceptre, the brand star on the middle spike
   {
     metal: GOLD,
     shape: 'spiky',
     violetBand: true,
     violetTips: true,
+    cap: true,
     regalia: true,
     crest: 'star',
     aura: 'stars',
   },
-  // 2: gold rays round the aura
-  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, aura: 'rays' },
-  // 3: a gold aura behind
-  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, aura: 'gold' },
+  // 2: the aura turns violet
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true, aura: 'stars' },
+  // 3: a gold aura with gold rays behind
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true, aura: 'rays' },
   // 4: gold
-  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true },
+  { metal: GOLD, shape: 'spiky', violetBand: true, violetTips: true, cap: true },
   // 5: seven sharp spikes and stones on the band
-  { metal: SILVER, shape: 'spiky', violetBand: true, violetTips: true },
-  // 6: a tall middle spire with a big violet stone
-  { metal: SILVER, shape: 'spire', violetBand: true, violetTips: true },
+  { metal: SILVER, shape: 'spiky', violetBand: true, violetTips: true, cap: true },
+  // 6: a tall middle spire with a big violet stone, and the violet cap inside
+  { metal: SILVER, shape: 'spire', violetBand: true, violetTips: true, cap: true },
   // 7: silver
   { metal: SILVER, shape: 'open', violetBand: true, violetTips: true },
   // 8: the band and the balls on the points turn violet together

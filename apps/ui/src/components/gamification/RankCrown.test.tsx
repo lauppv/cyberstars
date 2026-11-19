@@ -20,6 +20,7 @@ describe('RankCrown', () => {
       if (below.violetBand) expect(above.violetBand).toBe(true);
       if (below.violetTips) expect(above.violetTips).toBe(true);
       if (below.regalia) expect(above.regalia).toBe(true);
+      if (below.cap) expect(above.cap).toBe(true);
       if (below.aura) expect(above.aura).toBeDefined();
       if (below.shape === 'spiky') expect(above.shape).toBe('spiky');
     }
