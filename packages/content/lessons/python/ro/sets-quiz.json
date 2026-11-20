@@ -142,30 +142,25 @@
     },
     {
       "id": "q16",
-      "text": "În misiunea Echipe cu Coduri Comune, ce conține `echipa_1 & echipa_2`?",
+      "text": "În misiunea Triajul Semnalelor, ce conține `echipa_1 & echipa_2`?",
       "options": [
-        "Toate codurile din oricare echipă",
-        "Codurile din ambele echipe",
-        "Codurile doar din echipa A",
-        "Codurile din nicio echipă"
+        "Codurile detectate de oricare antenă",
+        "Codurile detectate de ambele antene",
+        "Codurile detectate doar de antena A",
+        "Codurile nedetectate de nicio antenă"
       ],
       "answer": 1
     },
     {
       "id": "q17-v2",
-      "text": "În misiunea Echipe cu Coduri Comune, ce conține `echipa_1 - echipa_2`?",
-      "options": [
-        "Codurile doar din echipa A",
-        "Codurile din ambele echipe",
-        "Toate codurile din oricare echipă",
-        "Codurile doar din echipa B"
-      ],
-      "answer": 0
+      "text": "Dacă codul introdus este în `echipa_1`, dar nu în `echipa_2`, ce mesaj afișează misiunea?",
+      "options": ["Confirmat de ambele", "Detectat de una", "Nedetectat", "Cod semnal"],
+      "answer": 1
     },
     {
       "id": "q18",
-      "text": "Care operator combină toate valorile distincte din două mulțimi?",
-      "options": ["&", "-", "|", "^"],
+      "text": "Ce bloc rulează când codul introdus nu este în nicio mulțime?",
+      "options": ["if", "elif", "else", "input"],
       "answer": 2
     },
     {
@@ -267,14 +262,14 @@
     },
     {
       "id": "q30-v2",
-      "text": "În misiunea Echipe cu Coduri Comune, ce conține `echipa_1 ^ echipa_2`?",
+      "text": "De ce verifică misiunea `cod in comune` înainte să verifice mulțimile antenelor?",
       "options": [
-        "Codurile din ambele echipe",
-        "Codurile din exact o echipă",
-        "Toate codurile din oricare echipă",
-        "Doar codurile din echipa A"
+        "Un cod comun a fost detectat de ambele antene",
+        "in funcționează doar pe mulțimea comune",
+        "Mulțimea comune conține toate codurile",
+        "Codul introdus este mereu comun"
       ],
-      "answer": 1
+      "answer": 0
     }
   ],
   "templates": [

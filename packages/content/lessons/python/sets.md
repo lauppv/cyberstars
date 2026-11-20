@@ -93,22 +93,22 @@ Output **3**, not 4, because the duplicate red was removed
 
 ---
 
-## Mission: Crew Overlap
+## Mission: Signal Triage
 
-Two station teams reported the codes they can repair. Their lists are stored in `crew_a` and `crew_b`. Turn each list into a set, then use set operations to report:
+Two station antennas reported the signal codes they detected. Their lists are stored in `crew_a` and `crew_b`. Turn each list into a set, then:
 
-1. `Shared: ` the number of codes in both teams
-2. `Only A: ` the number of codes only team A can repair
-3. `Combined: ` the number of different codes either team can repair
-4. `One team: ` the number of codes that exactly one team can repair
+1. Print `Shared: ` and the number of codes detected by both antennas
+2. Ask the operator for a code using `input("Signal code: ")`
+3. If both antennas detected it, print `Confirmed by both`
+4. Otherwise, if either antenna detected it, print `Detected by one`
+5. If neither antenna detected it, print `Not detected`
 
-Use intersection (`&`), difference (`-`), union (`|`), and symmetric difference (`^`).
+Use the intersection (`&`) to find codes detected by both antennas. Use `if`, `elif`, and `else` to choose the right message.
 
 **Output**
 
 ```text
-Shared: 2
-Only A: 1
-Combined: 5
-One team: 3
+Shared: 1
+Signal code: B2
+Confirmed by both
 ```

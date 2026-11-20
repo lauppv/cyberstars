@@ -15,26 +15,20 @@
         "name": "set"
       },
       {
+        "kind": "call",
+        "name": "input"
+      },
+      {
         "kind": "operator",
         "name": "&"
       },
       {
-        "kind": "operator",
-        "name": "-"
-      },
-      {
-        "kind": "operator",
-        "name": "|"
-      },
-      {
-        "kind": "operator",
-        "name": "^"
+        "kind": "if"
       }
     ]
   },
   "cases": [
     {
-      "visible": true,
       "inject": {
         "crew_a": {
           "$list": ["A1", "B2", "C3"]
@@ -42,33 +36,47 @@
         "crew_b": {
           "$list": ["B2", "D4", "E5"]
         }
-      }
+      },
+      "stdin": "B2\n",
+      "visible": true
     },
     {
-      "visible": true,
       "inject": {
         "crew_a": {
-          "$list": ["X", "Y", "Z"]
+          "$list": ["A1", "B2", "C3"]
         },
         "crew_b": {
-          "$list": ["X", "Y"]
-        }
-      }
-    },
-    {
-      "visible": false,
-      "inject": {
-        "crew_a": {
-          "$list": ["A", "A", "B"]
-        },
-        "crew_b": {
-          "$list": ["B", "C", "C"]
+          "$list": ["B2", "D4", "E5"]
         }
       },
+      "stdin": "A1\n",
+      "visible": true
+    },
+    {
+      "inject": {
+        "crew_a": {
+          "$list": ["A1", "B2", "C3"]
+        },
+        "crew_b": {
+          "$list": ["B2", "D4", "E5"]
+        }
+      },
+      "stdin": "Z9\n",
       "generated": true
     },
     {
-      "visible": false,
+      "inject": {
+        "crew_a": {
+          "$list": ["X", "X", "Y"]
+        },
+        "crew_b": {
+          "$list": ["Y", "Z", "Z"]
+        }
+      },
+      "stdin": "Y\n",
+      "generated": true
+    },
+    {
       "inject": {
         "crew_a": {
           "$list": []
@@ -77,10 +85,10 @@
           "$list": ["P", "Q"]
         }
       },
+      "stdin": "P\n",
       "generated": true
     },
     {
-      "visible": false,
       "inject": {
         "crew_a": {
           "$list": ["D4"]
@@ -89,22 +97,10 @@
           "$list": ["D4"]
         }
       },
+      "stdin": "D4\n",
       "generated": true
     },
     {
-      "visible": false,
-      "inject": {
-        "crew_a": {
-          "$list": ["a", "b"]
-        },
-        "crew_b": {
-          "$list": ["c", "d"]
-        }
-      },
-      "generated": true
-    },
-    {
-      "visible": false,
       "inject": {
         "crew_a": {
           "$list": ["red", "blue", "green"]
@@ -113,10 +109,10 @@
           "$list": ["blue", "yellow"]
         }
       },
+      "stdin": "yellow\n",
       "generated": true
     },
     {
-      "generated": true,
       "inject": {
         "crew_a": {
           "$list": ["A1", "a1", "B2"]
@@ -124,7 +120,9 @@
         "crew_b": {
           "$list": ["a1", "C3"]
         }
-      }
+      },
+      "stdin": "A1\n",
+      "generated": true
     }
   ]
 }

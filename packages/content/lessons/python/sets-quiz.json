@@ -142,30 +142,25 @@
     },
     {
       "id": "q16",
-      "text": "In the Crew Overlap mission, what does `team_a & team_b` contain?",
+      "text": "In the Signal Triage mission, what does `team_a & team_b` contain?",
       "options": [
-        "Every code in either team",
-        "Codes in both teams",
-        "Codes only in team A",
-        "Codes in neither team"
+        "Codes either antenna detected",
+        "Codes both antennas detected",
+        "Codes only antenna A detected",
+        "Codes neither antenna detected"
       ],
       "answer": 1
     },
     {
       "id": "q17-v2",
-      "text": "In the Crew Overlap mission, what does `team_a - team_b` contain?",
-      "options": [
-        "Codes only in team A",
-        "Codes in both teams",
-        "Every code in either team",
-        "Codes only in team B"
-      ],
-      "answer": 0
+      "text": "If the entered code is in `team_a` but not `team_b`, which message should the mission print?",
+      "options": ["Confirmed by both", "Detected by one", "Not detected", "Signal code"],
+      "answer": 1
     },
     {
       "id": "q18",
-      "text": "Which operator combines all distinct values from two sets?",
-      "options": ["&", "-", "|", "^"],
+      "text": "Which block runs when the entered code is in neither set?",
+      "options": ["if", "elif", "else", "input"],
       "answer": 2
     },
     {
@@ -262,14 +257,14 @@
     },
     {
       "id": "q30-v2",
-      "text": "In the Crew Overlap mission, what does `team_a ^ team_b` contain?",
+      "text": "Why does the mission check `code in shared` before checking either antenna set?",
       "options": [
-        "Codes in both teams",
-        "Codes in exactly one team",
-        "Every code in either team",
-        "Only codes from team A"
+        "A shared code was detected by both antennas",
+        "in works only on the shared set",
+        "The shared set contains every code",
+        "The input is always a shared code"
       ],
-      "answer": 1
+      "answer": 0
     }
   ],
   "templates": [

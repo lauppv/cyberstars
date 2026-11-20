@@ -93,22 +93,22 @@ Rezultatul **3**, nu 4, pentru că duplicatul rosu a fost eliminat
 
 ---
 
-## Misiune: Echipe cu Coduri Comune
+## Misiune: Triajul Semnalelor
 
-Două echipe ale stației au raportat codurile pe care le pot repara. Listele sunt în `echipa_a` și `echipa_b`. Transformă fiecare listă într-o mulțime, apoi folosește operațiile dintre mulțimi pentru a afișa:
+Două antene ale stației au raportat codurile de semnal detectate. Listele sunt în `echipa_a` și `echipa_b`. Transformă fiecare listă într-o mulțime, apoi:
 
-1. `Comune: ` numărul codurilor din ambele echipe
-2. `Doar A: ` numărul codurilor pe care doar echipa A le poate repara
-3. `Impreuna: ` numărul codurilor diferite pe care le poate repara oricare echipă
-4. `O echipa: ` numărul codurilor pe care le poate repara exact o echipă
+1. Afișează `Comune: ` și numărul codurilor detectate de ambele antene
+2. Cere operatorului un cod folosind `input("Cod semnal: ")`
+3. Dacă ambele antene l-au detectat, afișează `Confirmat de ambele`
+4. Altfel, dacă una dintre antene l-a detectat, afișează `Detectat de una`
+5. Dacă niciuna dintre antene nu l-a detectat, afișează `Nedetectat`
 
-Folosește intersecția (`&`), diferența (`-`), reuniunea (`|`) și diferența simetrică (`^`).
+Folosește intersecția (`&`) pentru a găsi codurile detectate de ambele antene. Folosește `if`, `elif` și `else` pentru a alege mesajul potrivit.
 
 **Ieșire**
 
 ```text
-Comune: 2
-Doar A: 1
-Impreuna: 5
-O echipa: 3
+Comune: 1
+Cod semnal: B2
+Confirmat de ambele
 ```
