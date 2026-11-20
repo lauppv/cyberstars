@@ -1,13 +1,12 @@
 ```py
-signals = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
+crew_a = ["A1", "B2", "C3"]
+crew_b = ["B2", "D4", "E5"]
 
-print(f"Total: {len(signals)}")
+team_a = set(crew_a)
+team_b = set(crew_b)
 
-unique = set(signals)
-print(f"Unique: {len(unique)}")
-
-if "D4" in unique:
-    print("D4 detected")
-else:
-    print("D4 missing")
+print(f"Shared: {len(team_a & team_b)}")
+print(f"Only A: {len(team_a - team_b)}")
+print(f"Combined: {len(team_a | team_b)}")
+print(f"One team: {len(team_a ^ team_b)}")
 ```

@@ -50,7 +50,7 @@ Observă că folosim .add(), nu .append() ca la liste. Mulțimile nu au o ordine
 
 ---
 
-Cel mai util lucru la mulțimi: verificarea dacă ceva **se află în** mulțime. Acest lucru este extrem de rapid, mult mai rapid decât verificarea într-o listă
+Operatorul **in** verifică dacă o valoare se află într-o colecție. Funcționează și cu liste și dicționare. Mulțimile sunt utile mai ales când vrem valori unice sau trebuie să comparăm grupuri de valori
 
 ```py
 jucatori_banati = {"Sonny", "Diaz", "Gonzalez"}
@@ -66,15 +66,19 @@ Rezultatul **Tommy este binevenit**
 
 ---
 
-Un caz de utilizare foarte des întâlnit: eliminarea duplicatelor dintr-o listă
+Mulțimile pot face și **operații între mulțimi**: combină grupuri, găsesc elementele comune sau pe cele care apar doar într-un grup
 
 ```py
-nume = ["Tommy", "Lance", "Tommy", "Cortez", "Lance", "Lance"]
-nume_unice = list(set(nume))
-print(nume_unice)
+echipaj = {"Tommy", "Lance", "Cortez"}
+ingineri = {"Lance", "Phil"}
+
+print(echipaj | ingineri)  # reuniune: toți din oricare mulțime
+print(echipaj & ingineri)  # intersecție: în ambele mulțimi
+print(echipaj - ingineri)  # diferență: în echipaj, dar nu în ingineri
+print(echipaj ^ ingineri)  # diferență simetrică: doar într-o mulțime
 ```
 
-Am convertit lista într-o mulțime (care a eliminat duplicatele), apoi înapoi într-o listă. Curat și simplu
+Poți folosi și metodele `.union()`, `.intersection()`, `.difference()` și `.symmetric_difference()`
 
 ---
 
@@ -89,19 +93,22 @@ Rezultatul **3**, nu 4, pentru că duplicatul rosu a fost eliminat
 
 ---
 
-## Misiune: Jurnalul de Semnale
+## Misiune: Echipe cu Coduri Comune
 
-Stația a recepționat o listă de coduri de semnal, păstrată într-o variabilă numită `semnale`, iar multe se repetă. Fă următoarele:
+Două echipe ale stației au raportat codurile pe care le pot repara. Listele sunt în `echipa_a` și `echipa_b`. Transformă fiecare listă într-o mulțime, apoi folosește operațiile dintre mulțimi pentru a afișa:
 
-1. Afișează `Total: ` apoi numărul total de semnale (lungimea listei)
-2. Creează o mulțime cu codurile unice
-3. Afișează `Unice: ` apoi câte coduri unice există
-4. Verifică dacă a fost recepționat codul `D4`: afișează `D4 detectat` dacă se află în mulțime, altfel `D4 lipseste`
+1. `Comune: ` numărul codurilor din ambele echipe
+2. `Doar A: ` numărul codurilor pe care doar echipa A le poate repara
+3. `Impreuna: ` numărul codurilor diferite pe care le poate repara oricare echipă
+4. `O echipa: ` numărul codurilor pe care le poate repara exact o echipă
+
+Folosește intersecția (`&`), diferența (`-`), reuniunea (`|`) și diferența simetrică (`^`).
 
 **Ieșire**
 
 ```text
-Total: 8
-Unice: 4
-D4 detectat
+Comune: 2
+Doar A: 1
+Impreuna: 5
+O echipa: 3
 ```

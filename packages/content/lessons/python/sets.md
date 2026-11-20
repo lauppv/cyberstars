@@ -50,7 +50,7 @@ Notice we use .add(), not .append() like with lists. Sets don't have an order, s
 
 ---
 
-The most useful thing about sets: checking if something **is in** the set. This is extremely fast, much faster than checking in a list
+The **in** operator checks whether a value is in a collection. It works with lists and dictionaries too. Sets are especially useful when we want unique values or need to compare groups of values
 
 ```py
 banned_players = {"Sonny", "Diaz", "Gonzalez"}
@@ -66,15 +66,19 @@ Output **Tommy is welcome**
 
 ---
 
-A super common use case: removing duplicates from a list
+Sets can also perform **set operations**: combine groups, find what they share, or find what is in one group but not another
 
 ```py
-names = ["Tommy", "Lance", "Tommy", "Cortez", "Lance", "Lance"]
-unique_names = list(set(names))
-print(unique_names)
+crew = {"Tommy", "Lance", "Cortez"}
+engineers = {"Lance", "Phil"}
+
+print(crew | engineers)  # union: everyone in either set
+print(crew & engineers)  # intersection: in both sets
+print(crew - engineers)  # difference: in crew, but not engineers
+print(crew ^ engineers)  # symmetric difference: in exactly one set
 ```
 
-We converted the list to a set (which removed duplicates), then back to a list. Clean and simple
+You can also call these as methods: `.union()`, `.intersection()`, `.difference()`, and `.symmetric_difference()`
 
 ---
 
@@ -89,19 +93,22 @@ Output **3**, not 4, because the duplicate red was removed
 
 ---
 
-## Mission: Signal Log
+## Mission: Crew Overlap
 
-The station picked up a list of signal codes, stored in a variable named `signals`, and many repeat. Do the following:
+Two station teams reported the codes they can repair. Their lists are stored in `crew_a` and `crew_b`. Turn each list into a set, then use set operations to report:
 
-1. Print `Total: ` then the total number of signals (length of the list)
-2. Make a set of the unique codes
-3. Print `Unique: ` then how many unique codes there are
-4. Check whether the code `D4` was picked up: print `D4 detected` if it is in the set, otherwise `D4 missing`
+1. `Shared: ` the number of codes in both teams
+2. `Only A: ` the number of codes only team A can repair
+3. `Combined: ` the number of different codes either team can repair
+4. `One team: ` the number of codes that exactly one team can repair
+
+Use intersection (`&`), difference (`-`), union (`|`), and symmetric difference (`^`).
 
 **Output**
 
 ```text
-Total: 8
-Unique: 4
-D4 detected
+Shared: 2
+Only A: 1
+Combined: 5
+One team: 3
 ```

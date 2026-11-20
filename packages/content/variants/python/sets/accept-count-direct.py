@@ -1,9 +1,8 @@
-signals = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
-total = len(signals)
-codes = set(signals)
-message = "D4 missing"
-if codes.__contains__("D4"):
-    message = "D4 detected"
-print("Total: " + str(total))
-print("Unique: " + str(len(codes)))
-print(message)
+crew_a = ["A1", "B2", "C3"]
+crew_b = ["B2", "D4", "E5"]
+a = set(crew_a)
+b = set(crew_b)
+print(f"Shared: {len(a & b)}")
+print(f"Only A: {len(a - b)}")
+print(f"Combined: {len(a | b)}")
+print(f"One team: {len(a ^ b)}")

@@ -142,31 +142,31 @@
     },
     {
       "id": "q16",
-      "text": "În misiunea Jurnalul de Semnale, câte semnale are `semnale` și câte coduri diferite?",
+      "text": "În misiunea Echipe cu Coduri Comune, ce conține `echipa_1 & echipa_2`?",
       "options": [
-        "8 semnale, 4 coduri diferite",
-        "4 semnale, 8 coduri diferite",
-        "8 semnale, 8 coduri diferite",
-        "4 semnale, 4 coduri diferite"
+        "Toate codurile din oricare echipă",
+        "Codurile din ambele echipe",
+        "Codurile doar din echipa A",
+        "Codurile din nicio echipă"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "q17-v2",
+      "text": "În misiunea Echipe cu Coduri Comune, ce conține `echipa_1 - echipa_2`?",
+      "options": [
+        "Codurile doar din echipa A",
+        "Codurile din ambele echipe",
+        "Toate codurile din oricare echipă",
+        "Codurile doar din echipa B"
       ],
       "answer": 0
     },
     {
-      "id": "q17-v2",
-      "text": "În misiunea Jurnalul de Semnale, `\"D4\" in semnale` l-ar găsi și el pe D4. De ce verificăm în mulțime?",
-      "options": [
-        "in nu merge pe o listă",
-        "Lista ar spune D4 lipseste, pentru că D4 e spre final",
-        "Mulțimea îl ține pe D4 primul, deci îl găsește mult mai repede decât lista",
-        "Răspunsul e același, dar verificarea într-o mulțime e mult mai rapidă"
-      ],
-      "answer": 3
-    },
-    {
       "id": "q18",
-      "text": "În misiunea Jurnalul de Semnale, ce afișează linia Unice dacă scriem `len(semnale)` în loc de `len(unice)`?",
-      "options": ["Unice: 4", "Unice: 1", "Se oprește cu o eroare", "Unice: 8"],
-      "answer": 3
+      "text": "Care operator combină toate valorile distincte din două mulțimi?",
+      "options": ["&", "-", "|", "^"],
+      "answer": 2
     },
     {
       "id": "q19",
@@ -267,12 +267,12 @@
     },
     {
       "id": "q30-v2",
-      "text": "În misiunea Jurnalul de Semnale, A1 apare de trei ori în semnale. De câte ori e în mulțimea unice?",
+      "text": "În misiunea Echipe cu Coduri Comune, ce conține `echipa_1 ^ echipa_2`?",
       "options": [
-        "De trei ori: mulțimea copiază lista",
-        "O dată: o mulțime ține fiecare valoare o singură dată",
-        "De două ori: doar prima copie dispare",
-        "Deloc: o valoare care se repetă dispare cu totul din mulțime"
+        "Codurile din ambele echipe",
+        "Codurile din exact o echipă",
+        "Toate codurile din oricare echipă",
+        "Doar codurile din echipa A"
       ],
       "answer": 1
     }
@@ -448,33 +448,31 @@
       "id": "st-log",
       "kind": "prints",
       "text": "Ce afișează?",
-      "code": "{{v}} = [{{items}}]\nprint(f\"Total: {len({{v}})}\")\nunice = set({{v}})\nprint(f\"Unice: {len(unice)}\")\nif \"{{c}}\" in unice:\n    print(\"{{c}} detectat\")\nelse:\n    print(\"{{c}} lipseste\")",
+      "code": "{{a}} = set([{{xs}}])\n{{b}} = set([{{ys}}])\nprint(len({{a}} & {{b}}))\nprint(len({{a}} - {{b}}))\nprint(len({{a}} | {{b}}))\nprint(len({{a}} ^ {{b}}))",
       "values": [
         {
-          "v": "semnale",
-          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"",
-          "c": "C3"
+          "a": "echipa_1",
+          "b": "echipa_2",
+          "xs": "\"A1\", \"B2\", \"C3\", \"F6\"",
+          "ys": "\"B2\", \"D4\""
         },
         {
-          "v": "semnale",
-          "items": "\"X1\", \"X1\", \"Y2\", \"X1\"",
-          "c": "Z3"
+          "a": "echipaj",
+          "b": "ingineri",
+          "xs": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "ys": "\"Lance\", \"Phil\""
         },
         {
-          "v": "pinguri",
-          "items": "\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"",
-          "c": "N1"
-        },
-        {
-          "v": "pinguri",
-          "items": "\"Q1\", \"R2\", \"S3\", \"Q1\"",
-          "c": "T4"
+          "a": "coduri_a",
+          "b": "coduri_b",
+          "xs": "\"X1\", \"Y2\", \"Z3\", \"W4\"",
+          "ys": "\"Y2\", \"Q5\""
         }
       ],
       "mistakes": [
-        ["Unice: {len(unice)}", "Unice: {len({{v}})}"],
-        ["if \"{{c}}\" in unice:", "if \"{{c}}\" not in unice:"],
-        ["Total: {len({{v}})}", "Total: {len(set({{v}}))}"]
+        ["{{a}} & {{b}}", "{{a}} | {{b}}"],
+        ["{{a}} - {{b}}", "{{b}} - {{a}}"],
+        ["{{a}} ^ {{b}}", "{{a}} - {{b}}"]
       ]
     },
     {

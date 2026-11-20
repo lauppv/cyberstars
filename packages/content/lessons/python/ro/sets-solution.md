@@ -1,13 +1,12 @@
 ```py
-semnale = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
+echipa_a = ["A1", "B2", "C3"]
+echipa_b = ["B2", "D4", "E5"]
 
-print(f"Total: {len(semnale)}")
+echipa_1 = set(echipa_a)
+echipa_2 = set(echipa_b)
 
-unice = set(semnale)
-print(f"Unice: {len(unice)}")
-
-if "D4" in unice:
-    print("D4 detectat")
-else:
-    print("D4 lipseste")
+print(f"Comune: {len(echipa_1 & echipa_2)}")
+print(f"Doar A: {len(echipa_1 - echipa_2)}")
+print(f"Impreuna: {len(echipa_1 | echipa_2)}")
+print(f"O echipa: {len(echipa_1 ^ echipa_2)}")
 ```
