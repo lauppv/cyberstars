@@ -531,8 +531,10 @@ export default function WebWorkspace({
           style={{ '--split': `${sides.size}%` } as CSSProperties}
           // With the lesson and the code side by side, the side widens to
           // hold 10rem of lesson beside the code, as far as the site keeps
-          // room for its buttons
-          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none ${!bothShown ? 'min-w-0' : filesSplit.closed ? 'min-w-[min(calc(22rem+12px),calc(100%-23rem-6px))]' : 'min-w-[min(calc(28rem+12px),calc(100%-23rem-6px))]'} flex-col bg-[var(--panel-bg)]`}
+          // room for its buttons. In dev mode the side never takes that
+          // room, whatever it shows (27rem: Run, Run Tests, Reset, the
+          // sidebar, Dev mode and the menu)
+          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none ${devMode ? '@2xl:max-w-[calc(100%-27rem-6px)]' : ''} ${!bothShown ? 'min-w-0' : filesSplit.closed ? 'min-w-[min(calc(22rem+12px),calc(100%-27rem-6px))]' : 'min-w-[min(calc(28rem+12px),calc(100%-27rem-6px))]'} flex-col bg-[var(--panel-bg)]`}
         >
           <div className="shrink-0 h-12 flex items-center justify-between gap-2 px-3 border-b border-[var(--border)]">
             <div className="hidden @2xl:block">

@@ -16,14 +16,22 @@ vi.mock('../../context/TutorContext', () => ({ useTutor: () => h.tutor }));
 vi.mock('../tutor/TutorPanel', () => ({ TutorPanel: () => <aside aria-label="Tutor" /> }));
 vi.mock('../tutor/TutorWelcomeBack', () => ({ TutorWelcomeBack: () => null }));
 vi.mock('./Sidebar', () => ({
-  Sidebar: ({ state, onNavigate }: { state: string; onNavigate: () => void }) => (
-    <aside data-testid="sidebar" data-state={state}>
+  Sidebar: ({
+    state,
+    floating,
+    onNavigate,
+  }: {
+    state: string;
+    floating?: boolean;
+    onNavigate: () => void;
+  }) => (
+    <aside data-testid="sidebar" data-state={state} data-floating={floating ? 'yes' : 'no'}>
       <button onClick={onNavigate}>go</button>
     </aside>
   ),
 }));
 
-import { AppShell, useSidebar } from './AppShell';
+import { AppShell, useFloatingSidebar, useSidebar } from './AppShell';
 
 let wide = true;
 
@@ -31,6 +39,32 @@ function Probe() {
   const sidebar = useSidebar();
   if (!sidebar) return <span>no shell</span>;
   return <button onClick={sidebar.toggle}>toggle {sidebar.state}</button>;
+}
+
+function Floating({ on }: { on: boolean }) {
+  useFloatingSidebar(on);
+  return <Probe />;
+}
+
+function renderFloating(on = true) {
+  const view = render(
+    <MemoryRouter initialEntries={['/lesson/python/print']}>
+      <AppShell>
+        <Floating on={on} />
+      </AppShell>
+    </MemoryRouter>,
+  );
+  return {
+    ...view,
+    float: (next: boolean) =>
+      view.rerender(
+        <MemoryRouter initialEntries={['/lesson/python/print']}>
+          <AppShell>
+            <Floating on={next} />
+          </AppShell>
+        </MemoryRouter>,
+      ),
+  };
 }
 
 function renderShell(path = '/') {
@@ -202,5 +236,57 @@ describe('AppShell', () => {
     fireEvent.click(screen.getByText(/toggle/));
     expect(state()).toBe('closed');
     vi.restoreAllMocks();
+  });
+
+  describe('floating (dev mode)', () => {
+    const backdrop = (container: HTMLElement) =>
+      container.querySelector('button[aria-hidden="true"]') as HTMLElement | null;
+
+    it('starts closed even when it was left open, and opens over the page', () => {
+      localStorage.setItem('cyberstars.sidebar', 'open');
+      const { container } = renderFloating();
+      expect(state()).toBe('closed');
+      expect(screen.getByTestId('sidebar')).toHaveAttribute('data-floating', 'yes');
+
+      fireEvent.click(screen.getByText(/toggle/));
+      expect(state()).toBe('open');
+      expect(screen.getByText(/toggle/).parentElement).not.toHaveClass('md:pl-[240px]');
+      expect(backdrop(container)).toHaveClass('z-[65]');
+      expect(backdrop(container)).not.toHaveClass('md:hidden');
+    });
+
+    it('leaves the remembered choice alone', () => {
+      localStorage.setItem('cyberstars.sidebar', 'closed');
+      renderFloating();
+      fireEvent.click(screen.getByText(/toggle/));
+      expect(localStorage.getItem('cyberstars.sidebar')).toBe('closed');
+    });
+
+    it('closes after navigating, from the backdrop and on Escape, on a wide screen too', () => {
+      const { container } = renderFloating();
+      fireEvent.click(screen.getByText(/toggle/));
+      fireEvent.click(screen.getByText('go'));
+      expect(state()).toBe('closed');
+
+      fireEvent.click(screen.getByText(/toggle/));
+      fireEvent.click(backdrop(container)!);
+      expect(state()).toBe('closed');
+
+      fireEvent.click(screen.getByText(/toggle/));
+      fireEvent.keyDown(document, { key: 'Escape' });
+      expect(state()).toBe('closed');
+    });
+
+    it('goes back to the remembered sidebar once it stops floating, and starts closed next time', () => {
+      const { float } = renderFloating();
+      fireEvent.click(screen.getByText(/toggle/));
+      float(false);
+      expect(state()).toBe('wide');
+      expect(screen.getByTestId('sidebar')).toHaveAttribute('data-floating', 'no');
+      expect(screen.getByText(/toggle/).parentElement).toHaveClass('md:pl-[240px]');
+
+      float(true);
+      expect(state()).toBe('closed');
+    });
   });
 });
