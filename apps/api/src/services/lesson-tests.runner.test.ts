@@ -951,6 +951,19 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     });
   });
 
+  it('takes only a member class of a class, enum or record as an inner class', () => {
+    const rule = { kind: 'inner_class' };
+    const missing = { syntaxError: null, structureFailures: [{ type: 'require', rule }] };
+    // A class inside an interface is static without saying so.
+    expect(header(main('') + 'interface Shape {\n    class Circle {}\n}\n', [rule])).toEqual(
+      missing,
+    );
+    expect(header(main('') + 'enum Size {\n    S;\n    class Box {}\n}\n', [rule])).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
   it('names the method a recursion rule wants recursive', () => {
     const code = main(
       '    static int fact(int n) { return n < 2 ? 1 : n * fact(n - 1); }\n    static int twice(int n) { return 2 * n; }',

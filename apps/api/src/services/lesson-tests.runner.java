@@ -705,9 +705,15 @@ public class Runner {
           if (!node.getImplementsClause().isEmpty()) facts.add("implements");
           if (!node.getTypeParameters().isEmpty()) facts.add("generic_class");
           // An inner class belongs to an object of the class around it; a static nested one
-          // (how single-file Java holds its classes), a record, enum or interface doesn't.
+          // (how single-file Java holds its classes), a record, enum or interface doesn't, nor
+          // does a class inside an interface, static without saying so. A class declared in a
+          // method is an inner class too, but the lesson teaches the member kind.
+          Tree around = getCurrentPath().getParentPath().getLeaf();
           if (node.getKind() == Tree.Kind.CLASS
-              && getCurrentPath().getParentPath().getLeaf() instanceof ClassTree
+              && around instanceof ClassTree outer
+              && (outer.getKind() == Tree.Kind.CLASS
+                  || outer.getKind() == Tree.Kind.ENUM
+                  || outer.getKind() == Tree.Kind.RECORD)
               && !node.getModifiers().getFlags().contains(javax.lang.model.element.Modifier.STATIC)) {
             facts.add("inner_class");
           }
