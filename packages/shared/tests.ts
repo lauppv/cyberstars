@@ -54,7 +54,35 @@ type StructureKind =
   /** c: reading or writing through a pointer (*p, p->field) */
   | 'deref'
   | 'sizeof'
-  | 'define';
+  | 'define'
+  // java, and cond ? a : b, int[][] in c too
+  | 'ternary'
+  /** java: a switch that gives a value, String n = switch (d) { case 1 -> "a"; ... } */
+  | 'switch_expression'
+  | 'lambda'
+  /** java: Type::method or Type::new */
+  | 'method_reference'
+  | 'throw'
+  /** java: a method that declares throws */
+  | 'throws'
+  /** java: a synchronized block or method */
+  | 'synchronized'
+  | 'record'
+  /** java: a class or method with a type parameter, class Box<T>, <T> T first(...) */
+  | 'generic_class'
+  | 'generic_method'
+  /** java: <T extends X>, or a wildcard ? extends X / ? super X */
+  | 'bounded_type'
+  /** java: try (Resource r = ...) */
+  | 'try_resources'
+  /** java: new Interface() { ... } */
+  | 'anonymous_class'
+  /** java: a non-static class inside another class */
+  | 'inner_class'
+  /** an array of arrays: its type, new int[3][4], or grid[i][j] */
+  | 'array_2d'
+  /** java: a parameter like int... values */
+  | 'varargs';
 
 type LoopType = 'for' | 'while' | 'do_while' | 'comprehension';
 
@@ -62,7 +90,7 @@ interface StructureRule {
   kind: StructureKind;
   /**
    * call / variable / function / class name, operator spelling, modifier
-   * keyword, or define name. A function or class rule without one asks for any
+   * keyword, define name, or (java) the method a recursion rule wants recursive. A function or class rule without one asks for any
    * function / class of the student's own (main aside), named however they like.
    */
   name?: string;

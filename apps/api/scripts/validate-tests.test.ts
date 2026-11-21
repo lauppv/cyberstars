@@ -179,6 +179,15 @@ describe('auditKinds', () => {
       [],
     );
   });
+
+  it('takes a recursion rule with a name only in java', () => {
+    const spec: LessonTestsSpec = {
+      structure: { requires: [{ kind: 'recursion', name: 'fact' }] },
+      cases: [],
+    };
+    expect(auditKinds('java', spec)).toEqual([]);
+    expect(auditKinds('python', spec)).toEqual(['a recursion rule with a name is java-only']);
+  });
 });
 
 describe('auditHarness', () => {
