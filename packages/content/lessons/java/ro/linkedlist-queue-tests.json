@@ -1,0 +1,386 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "evenimente"
+      },
+      {
+        "kind": "call",
+        "name": "LinkedList"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "Infernus",
+            "Cheetah",
+            "urmatoarea",
+            "Stinger",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "evenimente": {
+          "$list": ["Admiral", "Banshee", "PCJ 600", "urmatoarea"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": ["urmatoarea"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": ["urmatoarea", "urmatoarea", "Sentinel"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": ["Voodoo"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": ["Voodoo", "urmatoarea", "Voodoo", "urmatoarea"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "Idaho",
+            "Comet",
+            "Hermes",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Pony"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": ["Comet", "urmatoarea", "Hermes", "Pony"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": ["PCJ 600", "PCJ 600", "urmatoarea", "Comet", "PCJ 600", "urmatoarea"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "urmatoarea",
+            "Banshee",
+            "Idaho",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Idaho",
+            "urmatoarea",
+            "urmatoarea"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "Sentinel",
+            "Admiral",
+            "Comet",
+            "urmatoarea",
+            "Banshee",
+            "Idaho",
+            "Admiral",
+            "urmatoarea",
+            "urmatoarea",
+            "Comet",
+            "Banshee",
+            "Hermes"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "PCJ 600",
+            "Infernus",
+            "urmatoarea",
+            "Infernus",
+            "urmatoarea",
+            "urmatoarea",
+            "Idaho",
+            "urmatoarea",
+            "Pony",
+            "Sentinel",
+            "urmatoarea",
+            "Stinger",
+            "Comet",
+            "Cheetah",
+            "Idaho",
+            "Idaho"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "urmatoarea",
+            "urmatoarea",
+            "PCJ 600",
+            "urmatoarea",
+            "urmatoarea",
+            "Sentinel",
+            "Comet",
+            "Sentinel",
+            "Idaho",
+            "urmatoarea",
+            "Cheetah",
+            "Admiral",
+            "Cheetah",
+            "Voodoo",
+            "Stinger",
+            "urmatoarea",
+            "urmatoarea",
+            "Infernus",
+            "Stinger",
+            "Voodoo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "Cheetah",
+            "urmatoarea",
+            "PCJ 600",
+            "Infernus",
+            "Hermes",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Admiral",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Stinger",
+            "urmatoarea",
+            "Voodoo",
+            "Idaho",
+            "Admiral",
+            "urmatoarea",
+            "urmatoarea",
+            "Stinger",
+            "urmatoarea"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "Cheetah",
+            "Cheetah",
+            "urmatoarea",
+            "Comet",
+            "Stinger",
+            "Infernus",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Banshee",
+            "Voodoo",
+            "urmatoarea",
+            "urmatoarea",
+            "Hermes",
+            "urmatoarea",
+            "Cheetah",
+            "urmatoarea",
+            "urmatoarea",
+            "Stinger",
+            "urmatoarea",
+            "Idaho",
+            "Stinger",
+            "PCJ 600",
+            "Cheetah",
+            "urmatoarea",
+            "Banshee",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Voodoo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "urmatoarea",
+            "Voodoo",
+            "urmatoarea",
+            "Cheetah",
+            "PCJ 600",
+            "Voodoo",
+            "urmatoarea",
+            "urmatoarea",
+            "Voodoo",
+            "Banshee",
+            "urmatoarea",
+            "Sentinel",
+            "Hermes",
+            "Cheetah",
+            "Hermes",
+            "urmatoarea",
+            "Sentinel",
+            "urmatoarea",
+            "Comet",
+            "Banshee",
+            "Sentinel",
+            "Stinger",
+            "urmatoarea",
+            "urmatoarea",
+            "Voodoo",
+            "Admiral",
+            "urmatoarea",
+            "urmatoarea",
+            "Sentinel",
+            "urmatoarea",
+            "Admiral",
+            "PCJ 600",
+            "Infernus",
+            "Idaho",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Pony",
+            "urmatoarea",
+            "urmatoarea"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evenimente": {
+          "$list": [
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "urmatoarea",
+            "Sentinel",
+            "urmatoarea",
+            "urmatoarea",
+            "Stinger",
+            "urmatoarea",
+            "urmatoarea",
+            "Admiral",
+            "urmatoarea",
+            "Sentinel",
+            "Pony",
+            "Idaho",
+            "Voodoo",
+            "PCJ 600",
+            "Stinger",
+            "urmatoarea",
+            "Hermes",
+            "Stinger",
+            "urmatoarea",
+            "Banshee",
+            "urmatoarea",
+            "Pony",
+            "urmatoarea",
+            "Voodoo",
+            "Infernus",
+            "urmatoarea",
+            "Stinger",
+            "Comet",
+            "Pony",
+            "urmatoarea",
+            "urmatoarea",
+            "Idaho",
+            "PCJ 600",
+            "Cheetah",
+            "Hermes",
+            "Idaho",
+            "Pony",
+            "urmatoarea",
+            "urmatoarea",
+            "Infernus",
+            "urmatoarea",
+            "Infernus",
+            "Sentinel",
+            "urmatoarea",
+            "PCJ 600",
+            "urmatoarea",
+            "PCJ 600"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

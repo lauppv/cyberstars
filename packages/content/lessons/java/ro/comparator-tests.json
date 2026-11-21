@@ -1,0 +1,245 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "piloti"
+      },
+      {
+        "kind": "variable",
+        "name": "timpi"
+      },
+      {
+        "kind": "function",
+        "name": "compare"
+      },
+      {
+        "kind": "call",
+        "name": "sort"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "piloti": {
+          "$list": ["Tommy", "Lance", "Phil", "Candy"]
+        },
+        "timpi": {
+          "$list": [61, 58, 75, 61]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "piloti": {
+          "$list": ["Kent"]
+        },
+        "timpi": {
+          "$list": [90]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": []
+        },
+        "timpi": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Zed", "Avery", "Mike"]
+        },
+        "timpi": {
+          "$list": [10, 10, 10]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Diaz", "Cortez", "Ben"]
+        },
+        "timpi": {
+          "$list": [300, 200, 100]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Ken", "Kent", "Ke"]
+        },
+        "timpi": {
+          "$list": [70, 70, 69]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Hilary", "Ricardo"]
+        },
+        "timpi": {
+          "$list": [62, 63]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Tommy", "Avery", "Umberto"]
+        },
+        "timpi": {
+          "$list": [80, 85, 87]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Umberto", "Kent", "Ken", "Avery"]
+        },
+        "timpi": {
+          "$list": [56, 59, 105, 55]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Ken", "Tommy", "Umberto", "Mercedes", "Mitch", "Kent"]
+        },
+        "timpi": {
+          "$list": [58, 58, 55, 56, 58, 108]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": ["Kent", "Sonny", "Maude", "Umberto", "Diaz", "Ricardo", "Phil", "Ken"]
+        },
+        "timpi": {
+          "$list": [56, 56, 106, 61, 55, 56, 113, 99]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            "Cortez",
+            "Mitch",
+            "Diaz",
+            "Earnest",
+            "Hilary",
+            "Umberto",
+            "Lance",
+            "Ricardo",
+            "Sonny",
+            "Ken"
+          ]
+        },
+        "timpi": {
+          "$list": [108, 58, 55, 57, 60, 65, 61, 58, 98, 111]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            "Ricardo",
+            "Hilary",
+            "Maude",
+            "Diaz",
+            "Mercedes",
+            "Phil",
+            "Tommy",
+            "Pepe",
+            "Candy",
+            "Mitch",
+            "Lance",
+            "Avery"
+          ]
+        },
+        "timpi": {
+          "$list": [64, 86, 56, 56, 79, 65, 58, 57, 65, 80, 79, 57]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            "Diaz",
+            "Ricardo",
+            "Maude",
+            "Ken",
+            "Avery",
+            "Candy",
+            "Cortez",
+            "Lance",
+            "Phil",
+            "Mercedes",
+            "Kent",
+            "Pepe",
+            "Earnest",
+            "Sonny",
+            "Hilary"
+          ]
+        },
+        "timpi": {
+          "$list": [107, 58, 76, 55, 97, 57, 61, 86, 56, 58, 56, 56, 59, 62, 57]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            "Phil",
+            "Sonny",
+            "Pepe",
+            "Avery",
+            "Ken",
+            "Earnest",
+            "Mercedes",
+            "Cortez",
+            "Mitch",
+            "Maude",
+            "Umberto",
+            "Candy",
+            "Diaz",
+            "Tommy",
+            "Lance",
+            "Ricardo",
+            "Kent",
+            "Hilary"
+          ]
+        },
+        "timpi": {
+          "$list": [55, 64, 99, 57, 61, 83, 58, 55, 63, 73, 58, 74, 57, 114, 55, 58, 76, 56]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

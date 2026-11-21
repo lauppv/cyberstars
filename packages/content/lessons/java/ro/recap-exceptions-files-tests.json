@@ -1,0 +1,235 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "intrari"
+      },
+      {
+        "kind": "call",
+        "name": "FileWriter"
+      },
+      {
+        "kind": "call",
+        "name": "SumaNegativaException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "parseInt"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "intrari": {
+          "$list": ["Phil,500", "Kent,multi", "Lance,-200", "Mercedes,1500"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "intrari": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Sonny,0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Diaz,-1", "Diaz,-1000"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Ken,12.5", "Ken,1 000", "Ken,x"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Candy,999999", "Umberto,1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Phil,4500", "Lance,1200"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Diaz,-251", "Diaz,600", "Sonny,x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Cortez,x", "Ken,1800", "Mercedes,1800", "Ken,800"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["Ken,3600", "Sonny,4400", "Cortez,1900", "Umberto,x", "Diaz,1800"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "Diaz,-594",
+            "Diaz,3100",
+            "Mercedes,curand",
+            "Sonny,1000",
+            "Sonny,4500",
+            "Kent,1300"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "Phil,4000",
+            "Umberto,1100",
+            "Lance,curand",
+            "Sonny,3400",
+            "Lance,curand",
+            "Cortez,x",
+            "Mercedes,habar",
+            "Umberto,1300"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "Umberto,2300",
+            "Ken,1000",
+            "Diaz,2500",
+            "Umberto,2900",
+            "Diaz,4000",
+            "Ken,-682",
+            "Sonny,curand",
+            "Mercedes,700",
+            "Lance,curand",
+            "Lance,3100"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "Sonny,1300",
+            "Sonny,x",
+            "Sonny,3000",
+            "Ken,5000",
+            "Ken,4300",
+            "Ken,1600",
+            "Cortez,1200",
+            "Cortez,1000",
+            "Sonny,habar",
+            "Ken,2800",
+            "Umberto,curand",
+            "Umberto,curand"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "Ken,-832",
+            "Candy,2800",
+            "Kent,500",
+            "Kent,-440",
+            "Cortez,multi",
+            "Cortez,multi",
+            "Diaz,3800",
+            "Umberto,multi",
+            "Mercedes,4100",
+            "Cortez,1400",
+            "Phil,-894",
+            "Lance,2600",
+            "Phil,-285",
+            "Mercedes,800",
+            "Cortez,1800"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "Sonny,3000",
+            "Lance,-141",
+            "Cortez,2400",
+            "Lance,4200",
+            "Cortez,4300",
+            "Umberto,600",
+            "Sonny,-27",
+            "Sonny,curand",
+            "Candy,3300",
+            "Cortez,habar",
+            "Lance,1800",
+            "Lance,-49",
+            "Ken,4400",
+            "Diaz,100",
+            "Ken,habar",
+            "Candy,3000",
+            "Candy,4200",
+            "Candy,habar",
+            "Umberto,curand",
+            "Mercedes,curand"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

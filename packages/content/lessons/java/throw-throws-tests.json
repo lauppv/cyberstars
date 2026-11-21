@@ -1,0 +1,179 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "balance"
+      },
+      {
+        "kind": "variable",
+        "name": "withdrawals"
+      },
+      {
+        "kind": "function",
+        "name": "withdraw"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "balance": 1000,
+        "withdrawals": {
+          "$list": [300, 5000, -20, 700]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "balance": 50,
+        "withdrawals": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "balance": 0,
+        "withdrawals": {
+          "$list": [1, 0, -1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "balance": 100,
+        "withdrawals": {
+          "$list": [100, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "balance": 100,
+        "withdrawals": {
+          "$list": [101, 99, 2, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "balance": 5000,
+        "withdrawals": {
+          "$list": [0, 0, 0, 5000]
+        }
+      }
+    },
+    {
+      "inject": {
+        "balance": 300,
+        "withdrawals": {
+          "$list": [4400, -75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 4500,
+        "withdrawals": {
+          "$list": [5000, -395, -24]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 9100,
+        "withdrawals": {
+          "$list": [0, 0, 1921, 1400, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 8500,
+        "withdrawals": {
+          "$list": [3100, -243, 0, -173, 1189, 2416, 621]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 5600,
+        "withdrawals": {
+          "$list": [-111, -361, -279, 4300, 3600, 2000, 1400, 0, 0, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 6600,
+        "withdrawals": {
+          "$list": [0, -368, 2100, 0, 0, -324, 0, -176, 0, 173, -198, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 5400,
+        "withdrawals": {
+          "$list": [
+            0, 277, 4400, 2403, 180, 2762, -206, 700, -159, -202, 1200, 2700, 3500, -147, -300
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 7100,
+        "withdrawals": {
+          "$list": [
+            -441, 2331, 1621, 0, -137, -68, -359, 0, 2575, 2060, 2400, 556, 1404, 0, -308, -278, 0,
+            4200, 0, 0
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 4900,
+        "withdrawals": {
+          "$list": [
+            0, 846, 0, 2100, 2549, 214, 2789, 400, 3800, 800, 0, 0, 2500, 1000, 2332, -210, 2432,
+            -111, 234, -140, 383, -182, 849, -425, -213, 3900, -395, 100, 4000, 4700
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "balance": 8500,
+        "withdrawals": {
+          "$list": [
+            -322, 4100, -262, 300, 2900, -455, 477, 2444, 0, 1109, 2176, 2232, -101, 1091, 2100, 0,
+            1900, 0, 1658, 2183, 3700, 2797, 3800, 3700, 0, 4100, 0, 654, 0, 2741, 1383, 1908, 1290,
+            -409, 2339, -488, -4, 0, 800, 0, 1999, -46, -58, 200, 2410, 2521, 2509, 1698, 0, 2210
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
