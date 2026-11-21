@@ -572,7 +572,7 @@
     "descriptions": {
       "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, cu trei proiecte mici la final.",
       "c": "Cum funcționează un program pe dedesubt: pointeri, memorie gestionată de mână, structuri și fișiere, apoi procese, pipe-uri, thread-uri și semafoare, cu un mini shell construit de tine la final.",
-      "java": "Programare orientată pe obiecte de la zero. După bazele limbajului, construiești programe din clase și obiecte, moștenire, polimorfism și interfețe, apoi colecții, cu trei proiecte mai mari la final.",
+      "java": "Programare orientată pe obiecte de la zero. După bazele limbajului, recursivitate și uneltele pentru text și array-uri, construiești programe din clase și obiecte, moștenire, interfețe, record-uri și generice, apoi colecții, lambda și stream-uri, excepții, fișiere și thread-uri, cu șase proiecte mai mari la final.",
       "linux": "Un terminal adevărat, direct în browser. Lucrezi cu fișiere, cauți cu grep și find, legi comenzi cu pipe-uri, editezi text cu sed și awk, apoi permisiuni și procese.",
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
