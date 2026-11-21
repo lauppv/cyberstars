@@ -1,0 +1,172 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "casieri"
+      },
+      {
+        "kind": "variable",
+        "name": "depuneri"
+      },
+      {
+        "kind": "variable",
+        "name": "suma"
+      },
+      {
+        "kind": "class",
+        "name": "Seif"
+      },
+      {
+        "kind": "function",
+        "name": "depune"
+      },
+      {
+        "kind": "synchronized"
+      },
+      {
+        "kind": "call",
+        "name": "start"
+      },
+      {
+        "kind": "call",
+        "name": "join"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "casieri": 4,
+        "depuneri": 1000,
+        "suma": 10
+      }
+    },
+    {
+      "inject": {
+        "casieri": 1,
+        "depuneri": 3,
+        "suma": 50
+      }
+    },
+    {
+      "inject": {
+        "casieri": 3,
+        "depuneri": 0,
+        "suma": 5
+      }
+    },
+    {
+      "inject": {
+        "casieri": 4,
+        "depuneri": 20000,
+        "suma": 1
+      }
+    },
+    {
+      "inject": {
+        "casieri": 2,
+        "depuneri": 15000,
+        "suma": 7
+      }
+    },
+    {
+      "inject": {
+        "casieri": 2,
+        "depuneri": 1930,
+        "suma": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 4,
+        "depuneri": 1113,
+        "suma": 47
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 2,
+        "depuneri": 763,
+        "suma": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 2,
+        "depuneri": 9536,
+        "suma": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 4,
+        "depuneri": 6116,
+        "suma": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 4,
+        "depuneri": 6312,
+        "suma": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 3,
+        "depuneri": 1444,
+        "suma": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 4,
+        "depuneri": 803,
+        "suma": 23
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 4,
+        "depuneri": 3905,
+        "suma": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 1,
+        "depuneri": 5339,
+        "suma": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 1,
+        "depuneri": 2918,
+        "suma": 41
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "casieri": 2,
+        "depuneri": 1396,
+        "suma": 39
+      },
+      "generated": true
+    }
+  ]
+}

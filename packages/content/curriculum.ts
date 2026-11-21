@@ -1004,26 +1004,50 @@ export const lessons = [
     sortOrder: 76,
     hasCodeFile: true,
   },
-  // Module 13: Capstone OOP Projects [3]
+  // Module 13: Threads [5]
+  { courseKey: 'java', slug: 'threads', title: 'Threads', sortOrder: 77, hasCodeFile: true },
+  { courseKey: 'java', slug: 'runnable', title: 'Runnable', sortOrder: 78, hasCodeFile: true },
+  {
+    courseKey: 'java',
+    slug: 'synchronized',
+    title: 'Race Conditions and synchronized',
+    sortOrder: 79,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'executor-service',
+    title: 'ExecutorService',
+    sortOrder: 80,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'recap-threads',
+    title: 'Recap: Heist Night',
+    sortOrder: 81,
+    hasCodeFile: true,
+  },
+  // Module 14: Capstone OOP Projects [3]
   {
     courseKey: 'java',
     slug: 'project-inventory',
     title: 'Project: Inventory System',
-    sortOrder: 77,
+    sortOrder: 82,
     hasCodeFile: true,
   },
   {
     courseKey: 'java',
     slug: 'project-battle',
     title: 'Project: Battle Simulator',
-    sortOrder: 78,
+    sortOrder: 83,
     hasCodeFile: true,
   },
   {
     courseKey: 'java',
     slug: 'project-student-grades',
     title: 'Project: Student Gradebook',
-    sortOrder: 79,
+    sortOrder: 84,
     hasCodeFile: true,
   },
 

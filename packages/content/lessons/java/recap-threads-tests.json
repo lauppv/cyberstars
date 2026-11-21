@@ -1,0 +1,419 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "crews"
+      },
+      {
+        "kind": "variable",
+        "name": "hauls"
+      },
+      {
+        "kind": "class",
+        "name": "Stash"
+      },
+      {
+        "kind": "function",
+        "name": "add"
+      },
+      {
+        "kind": "synchronized"
+      },
+      {
+        "kind": "lambda"
+      },
+      {
+        "kind": "call",
+        "name": "Executors.newFixedThreadPool"
+      },
+      {
+        "kind": "call",
+        "name": "submit"
+      },
+      {
+        "kind": "call",
+        "name": "get"
+      },
+      {
+        "kind": "call",
+        "name": "shutdown"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "crews": {
+          "$list": ["Tommy", "Lance", "Ken"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [500, 200]
+            },
+            {
+              "$list": [100]
+            },
+            {
+              "$list": [300, 300, 100]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Phil"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": []
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["A", "B"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [5, 5]
+            },
+            {
+              "$list": [10]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Sonny", "Diaz", "Avery"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [1]
+            },
+            {
+              "$list": [2]
+            },
+            {
+              "$list": [3, 0]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Cortez", "Sonny", "Lance", "Candy"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [541, 87, 549, 627]
+            },
+            {
+              "$list": [233, 952, 27, 504, 660, 189]
+            },
+            {
+              "$list": [168, 349, 367]
+            },
+            {
+              "$list": [326, 293, 196, 248]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Avery"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [631]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Sonny", "Avery"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [167]
+            },
+            {
+              "$list": [710]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Ken", "Lance", "Mercedes"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [223, 112, 726]
+            },
+            {
+              "$list": [726, 220]
+            },
+            {
+              "$list": [205]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Ken"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [611, 903, 969]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Umberto"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": []
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Phil", "Diaz"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [86, 783, 765, 813]
+            },
+            {
+              "$list": [270, 353, 680, 210, 1000, 721]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Umberto", "Diaz"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [860]
+            },
+            {
+              "$list": [470, 785, 363]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Avery", "Ken", "Cortez", "Tommy"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [73, 633]
+            },
+            {
+              "$list": [499, 105]
+            },
+            {
+              "$list": [780, 730, 250, 23]
+            },
+            {
+              "$list": []
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Lance", "Ken", "Mercedes", "Tommy"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [426, 267]
+            },
+            {
+              "$list": [678]
+            },
+            {
+              "$list": [184, 292]
+            },
+            {
+              "$list": [891]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Mercedes", "Tommy", "Phil", "Sonny"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [427]
+            },
+            {
+              "$list": []
+            },
+            {
+              "$list": []
+            },
+            {
+              "$list": [618, 116, 304, 472, 193]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Umberto", "Candy", "Tommy", "Phil", "Diaz"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [481]
+            },
+            {
+              "$list": []
+            },
+            {
+              "$list": [769, 941, 819, 446]
+            },
+            {
+              "$list": [961, 351, 576]
+            },
+            {
+              "$list": [636, 137]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Lance"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [133, 715]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Phil"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [433, 274, 186]
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crews": {
+          "$list": ["Ken", "Candy", "Avery", "Phil", "Mercedes"]
+        },
+        "hauls": {
+          "$list": [
+            {
+              "$list": [232]
+            },
+            {
+              "$list": [87, 159, 658]
+            },
+            {
+              "$list": [57, 430, 225, 694]
+            },
+            {
+              "$list": []
+            },
+            {
+              "$list": [653, 455, 508, 228]
+            }
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
