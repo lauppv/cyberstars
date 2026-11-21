@@ -1,0 +1,545 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "models"
+      },
+      {
+        "kind": "variable",
+        "name": "prices"
+      },
+      {
+        "kind": "variable",
+        "name": "orders"
+      },
+      {
+        "kind": "variable",
+        "name": "discount"
+      },
+      {
+        "kind": "record"
+      },
+      {
+        "kind": "class",
+        "name": "Car"
+      },
+      {
+        "kind": "class",
+        "name": "Showroom"
+      },
+      {
+        "kind": "interface"
+      },
+      {
+        "kind": "anonymous_class"
+      },
+      {
+        "kind": "function",
+        "name": "sell"
+      },
+      {
+        "kind": "function",
+        "name": "add"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "models": {
+          "$list": [
+            "Infernus",
+            "Cheetah",
+            "Infernus"
+          ]
+        },
+        "prices": {
+          "$list": [
+            1000,
+            800,
+            900
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Infernus",
+            "Banshee"
+          ]
+        },
+        "discount": 10
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Stinger"
+          ]
+        },
+        "prices": {
+          "$list": [
+            500
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Stinger",
+            "Stinger"
+          ]
+        },
+        "discount": 0
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": []
+        },
+        "prices": {
+          "$list": []
+        },
+        "orders": {
+          "$list": [
+            "Comet"
+          ]
+        },
+        "discount": 50
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Comet",
+            "Banshee"
+          ]
+        },
+        "prices": {
+          "$list": [
+            999,
+            1
+          ]
+        },
+        "orders": {
+          "$list": []
+        },
+        "discount": 25
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Admiral",
+            "Admiral"
+          ]
+        },
+        "prices": {
+          "$list": [
+            333,
+            777
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Admiral"
+          ]
+        },
+        "discount": 33
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Cheetah",
+            "Cheetah",
+            "Comet",
+            "Stinger",
+            "Banshee"
+          ]
+        },
+        "prices": {
+          "$list": [
+            4491,
+            1574,
+            4001,
+            2051,
+            2049
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Stinger",
+            "Comet",
+            "Banshee"
+          ]
+        },
+        "discount": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Comet"
+          ]
+        },
+        "prices": {
+          "$list": [
+            1167
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Cheetah",
+            "Banshee",
+            "Stinger",
+            "Cheetah"
+          ]
+        },
+        "discount": 23
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Admiral",
+            "Admiral",
+            "Banshee"
+          ]
+        },
+        "prices": {
+          "$list": [
+            1219,
+            4264,
+            2937
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Admiral",
+            "Stinger",
+            "Stinger"
+          ]
+        },
+        "discount": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Comet",
+            "Banshee",
+            "Cheetah"
+          ]
+        },
+        "prices": {
+          "$list": [
+            3195,
+            3592,
+            4911
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Stinger",
+            "Infernus"
+          ]
+        },
+        "discount": 88
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Infernus",
+            "Infernus"
+          ]
+        },
+        "prices": {
+          "$list": [
+            2572,
+            1835
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Cheetah",
+            "Cheetah",
+            "Banshee",
+            "Admiral"
+          ]
+        },
+        "discount": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Stinger",
+            "Stinger"
+          ]
+        },
+        "prices": {
+          "$list": [
+            2214,
+            3957
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Admiral",
+            "Stinger",
+            "Banshee",
+            "Banshee",
+            "Stinger"
+          ]
+        },
+        "discount": 57
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Comet",
+            "Stinger"
+          ]
+        },
+        "prices": {
+          "$list": [
+            2122,
+            3495
+          ]
+        },
+        "orders": {
+          "$list": []
+        },
+        "discount": 38
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Infernus",
+            "Cheetah"
+          ]
+        },
+        "prices": {
+          "$list": [
+            666,
+            1377
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Stinger",
+            "Stinger",
+            "Comet"
+          ]
+        },
+        "discount": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Cheetah",
+            "Banshee",
+            "Comet",
+            "Comet",
+            "Infernus"
+          ]
+        },
+        "prices": {
+          "$list": [
+            270,
+            2494,
+            4983,
+            4370,
+            2860
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Cheetah",
+            "Cheetah",
+            "Stinger"
+          ]
+        },
+        "discount": 72
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": []
+        },
+        "prices": {
+          "$list": []
+        },
+        "orders": {
+          "$list": [
+            "Banshee",
+            "Banshee",
+            "Banshee",
+            "Admiral"
+          ]
+        },
+        "discount": 62
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Infernus",
+            "Cheetah",
+            "Admiral",
+            "Admiral",
+            "Infernus"
+          ]
+        },
+        "prices": {
+          "$list": [
+            4737,
+            1406,
+            268,
+            104,
+            792
+          ]
+        },
+        "orders": {
+          "$list": []
+        },
+        "discount": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Admiral",
+            "Cheetah",
+            "Comet",
+            "Cheetah",
+            "Comet"
+          ]
+        },
+        "prices": {
+          "$list": [
+            3332,
+            241,
+            3829,
+            2297,
+            332
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Stinger",
+            "Infernus",
+            "Admiral"
+          ]
+        },
+        "discount": 55
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Banshee"
+          ]
+        },
+        "prices": {
+          "$list": [
+            2624
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Admiral"
+          ]
+        },
+        "discount": 24
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Cheetah"
+          ]
+        },
+        "prices": {
+          "$list": [
+            450
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Comet",
+            "Admiral",
+            "Cheetah"
+          ]
+        },
+        "discount": 82
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Infernus",
+            "Comet",
+            "Infernus",
+            "Admiral",
+            "Stinger"
+          ]
+        },
+        "prices": {
+          "$list": [
+            2792,
+            1217,
+            1431,
+            4897,
+            1771
+          ]
+        },
+        "orders": {
+          "$list": [
+            "Cheetah",
+            "Infernus"
+          ]
+        },
+        "discount": 45
+      },
+      "generated": true
+    }
+  ]
+}

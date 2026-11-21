@@ -1,0 +1,182 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "name"
+      },
+      {
+        "kind": "variable",
+        "name": "pay"
+      },
+      {
+        "kind": "variable",
+        "name": "amount"
+      },
+      {
+        "kind": "class",
+        "name": "Member"
+      },
+      {
+        "kind": "function",
+        "name": "raisePay"
+      },
+      {
+        "kind": "function",
+        "name": "raiseMember"
+      },
+      {
+        "kind": "call",
+        "name": "raisePay"
+      },
+      {
+        "kind": "call",
+        "name": "raiseMember"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name": "Lance",
+        "pay": 500,
+        "amount": 100
+      }
+    },
+    {
+      "inject": {
+        "name": "Ken",
+        "pay": 0,
+        "amount": 75
+      }
+    },
+    {
+      "inject": {
+        "name": "Mercedes",
+        "pay": 1200,
+        "amount": 0
+      }
+    },
+    {
+      "inject": {
+        "name": "Phil",
+        "pay": 10,
+        "amount": -5
+      }
+    },
+    {
+      "inject": {
+        "name": "Phil",
+        "pay": 48,
+        "amount": 509
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Diaz",
+        "pay": 526,
+        "amount": 634
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Sonny",
+        "pay": 3092,
+        "amount": 77
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tommy",
+        "pay": 257,
+        "amount": 157
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Lance",
+        "pay": 3845,
+        "amount": 119
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mercedes",
+        "pay": 1504,
+        "amount": 372
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tommy",
+        "pay": 4312,
+        "amount": 375
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Lance",
+        "pay": 558,
+        "amount": 496
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Phil",
+        "pay": 2225,
+        "amount": 517
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mercedes",
+        "pay": 3261,
+        "amount": 834
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Diaz",
+        "pay": 3368,
+        "amount": 54
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Cortez",
+        "pay": 2238,
+        "amount": 415
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Avery",
+        "pay": 1683,
+        "amount": 853
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mercedes",
+        "pay": 993,
+        "amount": 131
+      },
+      "generated": true
+    }
+  ]
+}

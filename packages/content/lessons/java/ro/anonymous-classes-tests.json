@@ -1,0 +1,171 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "pret"
+      },
+      {
+        "kind": "variable",
+        "name": "cupon"
+      },
+      {
+        "kind": "interface"
+      },
+      {
+        "kind": "anonymous_class"
+      },
+      {
+        "kind": "variable",
+        "name": "jumatate"
+      },
+      {
+        "kind": "variable",
+        "name": "minus"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "implements"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "pret": 90,
+        "cupon": 20
+      }
+    },
+    {
+      "inject": {
+        "pret": 30,
+        "cupon": 50
+      }
+    },
+    {
+      "inject": {
+        "pret": 0,
+        "cupon": 0
+      }
+    },
+    {
+      "inject": {
+        "pret": 1,
+        "cupon": 1
+      }
+    },
+    {
+      "inject": {
+        "pret": 101,
+        "cupon": 51
+      }
+    },
+    {
+      "inject": {
+        "pret": 100,
+        "cupon": 50
+      }
+    },
+    {
+      "inject": {
+        "pret": 451,
+        "cupon": 367
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 73,
+        "cupon": 223
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 826,
+        "cupon": 294
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 889,
+        "cupon": 348
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 744,
+        "cupon": 248
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 35,
+        "cupon": 441
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 394,
+        "cupon": 261
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 457,
+        "cupon": 589
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 89,
+        "cupon": 519
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 609,
+        "cupon": 231
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 383,
+        "cupon": 177
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 89,
+        "cupon": 134
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 952,
+        "cupon": 245
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pret": 775,
+        "cupon": 591
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "putere1"
+      },
+      {
+        "kind": "variable",
+        "name": "putere2"
+      },
+      {
+        "kind": "class",
+        "name": "Motor"
+      },
+      {
+        "kind": "class",
+        "name": "Barca"
+      },
+      {
+        "kind": "function",
+        "name": "viteza"
+      },
+      {
+        "kind": "function",
+        "name": "schimbaMotor"
+      },
+      {
+        "kind": "call",
+        "name": "schimbaMotor"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "extends"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": "Squalo",
+        "putere1": 300,
+        "putere2": 450
+      }
+    },
+    {
+      "inject": {
+        "nume": "Reefer",
+        "putere1": 95,
+        "putere2": 40
+      }
+    },
+    {
+      "inject": {
+        "nume": "Jetmax",
+        "putere1": 0,
+        "putere2": 9
+      }
+    },
+    {
+      "inject": {
+        "nume": "Speeder",
+        "putere1": 1200,
+        "putere2": 1200
+      }
+    },
+    {
+      "inject": {
+        "nume": "Jetmax",
+        "putere1": 358,
+        "putere2": 989
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Dinghy",
+        "putere1": 233,
+        "putere2": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Reefer",
+        "putere1": 1556,
+        "putere2": 1590
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Squalo",
+        "putere1": 1520,
+        "putere2": 1085
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Rio",
+        "putere1": 1143,
+        "putere2": 1487
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Rio",
+        "putere1": 1325,
+        "putere2": 1268
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Speeder",
+        "putere1": 743,
+        "putere2": 197
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Squalo",
+        "putere1": 1014,
+        "putere2": 526
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Speeder",
+        "putere1": 348,
+        "putere2": 842
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Marquis",
+        "putere1": 840,
+        "putere2": 1999
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Reefer",
+        "putere1": 735,
+        "putere2": 69
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tropic",
+        "putere1": 658,
+        "putere2": 540
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Reefer",
+        "putere1": 565,
+        "putere2": 241
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Predator",
+        "putere1": 1114,
+        "putere2": 716
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Jetmax",
+        "putere1": 1844,
+        "putere2": 1551
+      },
+      "generated": true
+    }
+  ]
+}

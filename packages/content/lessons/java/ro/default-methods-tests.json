@@ -1,0 +1,215 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "numeMasina"
+      },
+      {
+        "kind": "variable",
+        "name": "vitezaMasina"
+      },
+      {
+        "kind": "variable",
+        "name": "numeBarca"
+      },
+      {
+        "kind": "variable",
+        "name": "vitezaBarca"
+      },
+      {
+        "kind": "interface"
+      },
+      {
+        "kind": "modifier",
+        "name": "default"
+      },
+      {
+        "kind": "class",
+        "name": "Masina"
+      },
+      {
+        "kind": "class",
+        "name": "Barca"
+      },
+      {
+        "kind": "implements"
+      },
+      {
+        "kind": "function",
+        "name": "descriere"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "numeMasina": "Infernus",
+        "vitezaMasina": 240,
+        "numeBarca": "Squalo",
+        "vitezaBarca": 95
+      }
+    },
+    {
+      "inject": {
+        "numeMasina": "Idaho",
+        "vitezaMasina": 150,
+        "numeBarca": "Jetmax",
+        "vitezaBarca": 210
+      }
+    },
+    {
+      "inject": {
+        "numeMasina": "Cheetah",
+        "vitezaMasina": 200,
+        "numeBarca": "Dinghy",
+        "vitezaBarca": 0
+      }
+    },
+    {
+      "inject": {
+        "numeMasina": "Faggio",
+        "vitezaMasina": 199,
+        "numeBarca": "Reefer",
+        "vitezaBarca": 199
+      }
+    },
+    {
+      "inject": {
+        "numeMasina": "Comet",
+        "vitezaMasina": 183,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 71
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 253,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 198
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 237,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 190
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Idaho",
+        "vitezaMasina": 226,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 250
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 256,
+        "numeBarca": "Jetmax",
+        "vitezaBarca": 184
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Stinger",
+        "vitezaMasina": 156,
+        "numeBarca": "Speeder",
+        "vitezaBarca": 63
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Infernus",
+        "vitezaMasina": 164,
+        "numeBarca": "Marquis",
+        "vitezaBarca": 125
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 132,
+        "numeBarca": "Marquis",
+        "vitezaBarca": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Banshee",
+        "vitezaMasina": 227,
+        "numeBarca": "Marquis",
+        "vitezaBarca": 243
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 188,
+        "numeBarca": "Speeder",
+        "vitezaBarca": 247
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 220,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 26
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Sentinel",
+        "vitezaMasina": 177,
+        "numeBarca": "Jetmax",
+        "vitezaBarca": 224
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Admiral",
+        "vitezaMasina": 156,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 259
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Idaho",
+        "vitezaMasina": 183,
+        "numeBarca": "Speeder",
+        "vitezaBarca": 118
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeMasina": "Infernus",
+        "vitezaMasina": 178,
+        "numeBarca": "Tropic",
+        "vitezaBarca": 171
+      },
+      "generated": true
+    }
+  ]
+}

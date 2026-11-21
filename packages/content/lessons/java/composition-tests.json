@@ -1,0 +1,195 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "name"
+      },
+      {
+        "kind": "variable",
+        "name": "power1"
+      },
+      {
+        "kind": "variable",
+        "name": "power2"
+      },
+      {
+        "kind": "class",
+        "name": "Engine"
+      },
+      {
+        "kind": "class",
+        "name": "Boat"
+      },
+      {
+        "kind": "function",
+        "name": "speed"
+      },
+      {
+        "kind": "function",
+        "name": "swapEngine"
+      },
+      {
+        "kind": "call",
+        "name": "swapEngine"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "extends"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name": "Squalo",
+        "power1": 300,
+        "power2": 450
+      }
+    },
+    {
+      "inject": {
+        "name": "Reefer",
+        "power1": 95,
+        "power2": 40
+      }
+    },
+    {
+      "inject": {
+        "name": "Jetmax",
+        "power1": 0,
+        "power2": 9
+      }
+    },
+    {
+      "inject": {
+        "name": "Speeder",
+        "power1": 1200,
+        "power2": 1200
+      }
+    },
+    {
+      "inject": {
+        "name": "Jetmax",
+        "power1": 358,
+        "power2": 989
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Dinghy",
+        "power1": 233,
+        "power2": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Reefer",
+        "power1": 1556,
+        "power2": 1590
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Squalo",
+        "power1": 1520,
+        "power2": 1085
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Rio",
+        "power1": 1143,
+        "power2": 1487
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Rio",
+        "power1": 1325,
+        "power2": 1268
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Speeder",
+        "power1": 743,
+        "power2": 197
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Squalo",
+        "power1": 1014,
+        "power2": 526
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Speeder",
+        "power1": 348,
+        "power2": 842
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Marquis",
+        "power1": 840,
+        "power2": 1999
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Reefer",
+        "power1": 735,
+        "power2": 69
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tropic",
+        "power1": 658,
+        "power2": 540
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Reefer",
+        "power1": 565,
+        "power2": 241
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Predator",
+        "power1": 1114,
+        "power2": 716
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Jetmax",
+        "power1": 1844,
+        "power2": 1551
+      },
+      "generated": true
+    }
+  ]
+}
