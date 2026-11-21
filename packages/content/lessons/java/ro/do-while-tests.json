@@ -1,0 +1,132 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "kilometraj"
+      },
+      {
+        "kind": "loop",
+        "type": "do_while"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "kilometraj": 4072
+      }
+    },
+    {
+      "inject": {
+        "kilometraj": 0
+      }
+    },
+    {
+      "inject": {
+        "kilometraj": 50
+      }
+    },
+    {
+      "inject": {
+        "kilometraj": 7
+      }
+    },
+    {
+      "inject": {
+        "kilometraj": 1000
+      }
+    },
+    {
+      "inject": {
+        "kilometraj": 99999
+      }
+    },
+    {
+      "inject": {
+        "kilometraj": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 101
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 2147483647
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 123456789
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 600
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 70434387
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 9034711
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 49639358
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 84075798
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 81505362
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 15498243
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 13323541
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 24565331
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "kilometraj": 37063724
+      },
+      "generated": true
+    }
+  ]
+}

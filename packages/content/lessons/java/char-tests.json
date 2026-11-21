@@ -1,0 +1,139 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "plate"
+      },
+      {
+        "kind": "call",
+        "name": "charAt"
+      },
+      {
+        "kind": "call",
+        "name": "Character.isLetter"
+      },
+      {
+        "kind": "call",
+        "name": "Character.isDigit"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "plate": "VC 4-28"
+      }
+    },
+    {
+      "inject": {
+        "plate": "ABC"
+      }
+    },
+    {
+      "inject": {
+        "plate": "99-x"
+      }
+    },
+    {
+      "inject": {
+        "plate": ""
+      }
+    },
+    {
+      "inject": {
+        "plate": "   "
+      }
+    },
+    {
+      "inject": {
+        "plate": "0000"
+      }
+    },
+    {
+      "inject": {
+        "plate": "VICE-CITY 86"
+      }
+    },
+    {
+      "inject": {
+        "plate": "Xx353xG-"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": ".X9Z3bXYA-"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "y00"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "_ac1"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "ccAZaYDF1"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": " 3B"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "CZ7zAz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "A"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "3X.x-9"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "E"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "yb1EH.ycE4b"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "0A_ZBb8HDE2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "plate": "1aF"
+      },
+      "generated": true
+    }
+  ]
+}

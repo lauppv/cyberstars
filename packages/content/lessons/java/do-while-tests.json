@@ -1,0 +1,132 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "mileage"
+      },
+      {
+        "kind": "loop",
+        "type": "do_while"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "mileage": 4072
+      }
+    },
+    {
+      "inject": {
+        "mileage": 0
+      }
+    },
+    {
+      "inject": {
+        "mileage": 50
+      }
+    },
+    {
+      "inject": {
+        "mileage": 7
+      }
+    },
+    {
+      "inject": {
+        "mileage": 1000
+      }
+    },
+    {
+      "inject": {
+        "mileage": 99999
+      }
+    },
+    {
+      "inject": {
+        "mileage": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 101
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 2147483647
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 123456789
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 600
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 70434387
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 9034711
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 49639358
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 84075798
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 81505362
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 15498243
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 13323541
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 24565331
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "mileage": 37063724
+      },
+      "generated": true
+    }
+  ]
+}

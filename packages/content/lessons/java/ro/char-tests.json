@@ -1,0 +1,139 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "numar"
+      },
+      {
+        "kind": "call",
+        "name": "charAt"
+      },
+      {
+        "kind": "call",
+        "name": "Character.isLetter"
+      },
+      {
+        "kind": "call",
+        "name": "Character.isDigit"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "numar": "VC 4-28"
+      }
+    },
+    {
+      "inject": {
+        "numar": "ABC"
+      }
+    },
+    {
+      "inject": {
+        "numar": "99-x"
+      }
+    },
+    {
+      "inject": {
+        "numar": ""
+      }
+    },
+    {
+      "inject": {
+        "numar": "   "
+      }
+    },
+    {
+      "inject": {
+        "numar": "0000"
+      }
+    },
+    {
+      "inject": {
+        "numar": "VICE-CITY 86"
+      }
+    },
+    {
+      "inject": {
+        "numar": "Xx353xG-"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": ".X9Z3bXYA-"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "y00"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "_ac1"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "ccAZaYDF1"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": " 3B"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "CZ7zAz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "A"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "3X.x-9"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "E"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "yb1EH.ycE4b"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "0A_ZBb8HDE2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numar": "1aF"
+      },
+      "generated": true
+    }
+  ]
+}

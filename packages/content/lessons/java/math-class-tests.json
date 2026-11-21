@@ -1,0 +1,207 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "x1"
+      },
+      {
+        "kind": "variable",
+        "name": "y1"
+      },
+      {
+        "kind": "variable",
+        "name": "x2"
+      },
+      {
+        "kind": "variable",
+        "name": "y2"
+      },
+      {
+        "kind": "call",
+        "name": "Math.abs"
+      },
+      {
+        "kind": "call",
+        "name": "Math.sqrt"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 3,
+        "y2": 4
+      }
+    },
+    {
+      "inject": {
+        "x1": 5,
+        "y1": 1,
+        "x2": 2,
+        "y2": 3
+      }
+    },
+    {
+      "inject": {
+        "x1": 2,
+        "y1": 2,
+        "x2": 2,
+        "y2": 2
+      }
+    },
+    {
+      "inject": {
+        "x1": -3,
+        "y1": -4,
+        "x2": 0,
+        "y2": 0
+      }
+    },
+    {
+      "inject": {
+        "x1": 10,
+        "y1": 0,
+        "x2": 0,
+        "y2": 0
+      }
+    },
+    {
+      "inject": {
+        "x1": 0,
+        "y1": 7,
+        "x2": 0,
+        "y2": -7
+      }
+    },
+    {
+      "inject": {
+        "x1": 1,
+        "y1": 1,
+        "x2": 2,
+        "y2": 2
+      }
+    },
+    {
+      "inject": {
+        "x1": -41,
+        "y1": -39,
+        "x2": 9,
+        "y2": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 26,
+        "y1": 44,
+        "x2": 37,
+        "y2": 11
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": -6,
+        "y1": -3,
+        "x2": 11,
+        "y2": -38
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 30,
+        "y1": -56,
+        "x2": -7,
+        "y2": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 4,
+        "y1": 54,
+        "x2": 22,
+        "y2": -50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": -49,
+        "y1": 50,
+        "x2": 60,
+        "y2": -3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 5,
+        "y1": 27,
+        "x2": -12,
+        "y2": -44
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": -15,
+        "y1": 35,
+        "x2": 19,
+        "y2": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 39,
+        "y1": -44,
+        "x2": -35,
+        "y2": -53
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": -6,
+        "y1": 20,
+        "x2": 11,
+        "y2": 30
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": -52,
+        "y1": -33,
+        "x2": 41,
+        "y2": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 16,
+        "y1": 27,
+        "x2": 43,
+        "y2": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x1": 45,
+        "y1": 50,
+        "x2": -32,
+        "y2": 39
+      },
+      "generated": true
+    }
+  ]
+}

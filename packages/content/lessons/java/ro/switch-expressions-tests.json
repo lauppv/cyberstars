@@ -1,0 +1,157 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "cartier"
+      },
+      {
+        "kind": "variable",
+        "name": "curse"
+      },
+      {
+        "kind": "switch_expression"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "if"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cartier": "Downtown",
+        "curse": 3
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Little Haiti",
+        "curse": 2
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Starfish Island",
+        "curse": 1
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Ocean Beach",
+        "curse": 4
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Washington Beach",
+        "curse": 1
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Little Havana",
+        "curse": 7
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Downtown",
+        "curse": 0
+      }
+    },
+    {
+      "inject": {
+        "cartier": "downtown",
+        "curse": 2
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Vice Point",
+        "curse": 5
+      }
+    },
+    {
+      "inject": {
+        "cartier": "Little Havana",
+        "curse": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Prawn Island",
+        "curse": 37
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Washington Beach",
+        "curse": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Beach",
+        "curse": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Escobar International",
+        "curse": 34
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Washington Beach",
+        "curse": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Beach",
+        "curse": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Little Havana",
+        "curse": 41
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Downtown",
+        "curse": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Ocean",
+        "curse": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cartier": "Little Haiti",
+        "curse": 23
+      },
+      "generated": true
+    }
+  ]
+}
