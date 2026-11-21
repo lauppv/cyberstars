@@ -55,7 +55,7 @@ type StructureKind =
   | 'deref'
   | 'sizeof'
   | 'define'
-  // java, and cond ? a : b, int[][] in c too
+  // java only from here on (cond ? a : b and int[][] too)
   | 'ternary'
   /** java: a switch that gives a value, String n = switch (d) { case 1 -> "a"; ... } */
   | 'switch_expression'
@@ -79,7 +79,7 @@ type StructureKind =
   | 'anonymous_class'
   /** java: a non-static class inside another class */
   | 'inner_class'
-  /** an array of arrays: its type, new int[3][4], or grid[i][j] */
+  /** java: an array of arrays, its type, new int[3][4], or grid[i][j] */
   | 'array_2d'
   /** java: a parameter like int... values */
   | 'varargs';
