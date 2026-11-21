@@ -27,21 +27,14 @@
       "visible": true,
       "inject": {
         "probe": {
-          "$list": [
-            "cutit",
-            3,
-            "poza",
-            10
-          ]
+          "$list": ["cutit", 3, "poza", 10]
         }
       }
     },
     {
       "inject": {
         "probe": {
-          "$list": [
-            7
-          ]
+          "$list": [7]
         }
       }
     },
@@ -55,51 +48,28 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            "pistol",
-            "caseta"
-          ]
+          "$list": ["pistol", "caseta"]
         }
       }
     },
     {
       "inject": {
         "probe": {
-          "$list": [
-            -5,
-            5,
-            "chei",
-            0
-          ]
+          "$list": [-5, 5, "chei", 0]
         }
       }
     },
     {
       "inject": {
         "probe": {
-          "$list": [
-            "bani",
-            1000000,
-            "harta",
-            2,
-            3
-          ]
+          "$list": ["bani", 1000000, "harta", 2, 3]
         }
       }
     },
     {
       "inject": {
         "probe": {
-          "$list": [
-            492,
-            413,
-            "caseta",
-            "cutit",
-            333,
-            429,
-            -34,
-            "harta"
-          ]
+          "$list": [492, 413, "caseta", "cutit", 333, 429, -34, "harta"]
         }
       },
       "generated": true
@@ -107,15 +77,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            "poza",
-            206,
-            "bani",
-            308,
-            "chei",
-            258,
-            497
-          ]
+          "$list": ["poza", 206, "bani", 308, "chei", 258, 497]
         }
       },
       "generated": true
@@ -123,9 +85,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            460
-          ]
+          "$list": [460]
         }
       },
       "generated": true
@@ -133,12 +93,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            21,
-            "poza",
-            396,
-            426
-          ]
+          "$list": [21, "poza", 396, 426]
         }
       },
       "generated": true
@@ -146,11 +101,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            "pistol",
-            "bani",
-            "bani"
-          ]
+          "$list": ["pistol", "bani", "bani"]
         }
       },
       "generated": true
@@ -158,13 +109,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            "cutit",
-            369,
-            "caseta",
-            "caseta",
-            "bani"
-          ]
+          "$list": ["cutit", 369, "caseta", "caseta", "bani"]
         }
       },
       "generated": true
@@ -172,15 +117,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            "pistol",
-            "harta",
-            "caseta",
-            323,
-            "cutit",
-            156,
-            "harta"
-          ]
+          "$list": ["pistol", "harta", "caseta", 323, "cutit", 156, "harta"]
         }
       },
       "generated": true
@@ -188,14 +125,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            369,
-            441,
-            "chei",
-            182,
-            "poza",
-            "harta"
-          ]
+          "$list": [369, 441, "chei", 182, "poza", "harta"]
         }
       },
       "generated": true
@@ -203,14 +133,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            199,
-            "pistol",
-            "caseta",
-            "chei",
-            209,
-            "cutit"
-          ]
+          "$list": [199, "pistol", "caseta", "chei", 209, "cutit"]
         }
       },
       "generated": true
@@ -218,11 +141,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            -28,
-            "pistol",
-            330
-          ]
+          "$list": [-28, "pistol", 330]
         }
       },
       "generated": true
@@ -230,14 +149,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            178,
-            129,
-            57,
-            "bani",
-            443,
-            "poza"
-          ]
+          "$list": [178, 129, 57, "bani", 443, "poza"]
         }
       },
       "generated": true
@@ -245,17 +157,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            "poza",
-            247,
-            "bani",
-            395,
-            "chei",
-            "bani",
-            54,
-            "pistol",
-            272
-          ]
+          "$list": ["poza", 247, "bani", 395, "chei", "bani", 54, "pistol", 272]
         }
       },
       "generated": true
@@ -263,16 +165,7 @@
     {
       "inject": {
         "probe": {
-          "$list": [
-            264,
-            31,
-            "pistol",
-            199,
-            209,
-            394,
-            "cutit",
-            "chei"
-          ]
+          "$list": [264, 31, "pistol", 199, 209, 394, "cutit", "chei"]
         }
       },
       "generated": true

@@ -116,8 +116,8 @@ Asta e scurtă și frumoasă, dar lentă: `fib(40)` calculează aceleași numere
 
 Banda lui Tommy își trimite mesajele de la coadă la cap și adoră cuvintele care se citesc la fel în ambele sensuri. Stochează un cuvânt într-un `String` numit `cuvant`. Scrie două metode recursive:
 
-* `inverseaza` dă înapoi cuvântul întors de la coadă la cap
-* `estePalindrom` dă înapoi `true` când cuvântul se citește la fel invers. Compară primul și ultimul char, apoi verifică ce e între ele
+- `inverseaza` dă înapoi cuvântul întors de la coadă la cap
+- `estePalindrom` dă înapoi `true` când cuvântul se citește la fel invers. Compară primul și ultimul char, apoi verifică ce e între ele
 
 Afișează cuvântul inversat, apoi `Palindrom: da` sau `Palindrom: nu`. Nu folosi o buclă și nu folosi StringBuilder.
 

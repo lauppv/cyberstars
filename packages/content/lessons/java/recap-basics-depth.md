@@ -10,10 +10,10 @@ Store the number he dials in a `String` named `dialed` and the length of the cal
 
 1. Keep only the digits of `dialed`. A real number has exactly 10 digits. If it doesn't, print `Invalid number` and nothing else
 2. The first 3 digits are the area code. Write a method that takes the area code and gives back where the call goes, with a switch expression:
-   * `305` or `786`: `Vice City`
-   * `212`: `Liberty City`
-   * `415`: `San Fierro`
-   * anything else: `Long distance`
+   - `305` or `786`: `Vice City`
+   - `212`: `Liberty City`
+   - `415`: `San Fierro`
+   - anything else: `Long distance`
 3. A minute costs 1 coin in Vice City, 3 coins in Liberty City or San Fierro, and 5 coins for long distance. Even a call of 0 minutes is charged as 1 minute
 4. Print `Calling <place>`, then `Cost: N coins`, or `Cost: 1 coin` when it is exactly one. Pick the word with the ternary operator
 

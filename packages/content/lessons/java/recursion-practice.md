@@ -116,8 +116,8 @@ This one is short and pretty, but slow: `fib(40)` computes the same smaller numb
 
 Tommy's crew sends messages backwards, and loves words that read the same both ways. Store a word in a `String` named `word`. Write two recursive methods:
 
-* `reverse` gives back the word turned back to front
-* `isPalindrome` gives back `true` when the word reads the same backwards. Compare the first and the last char, then check what is between them
+- `reverse` gives back the word turned back to front
+- `isPalindrome` gives back `true` when the word reads the same backwards. Compare the first and the last char, then check what is between them
 
 Print the reversed word, then `Palindrome: yes` or `Palindrome: no`. Don't use a loop, and don't use StringBuilder.
 

@@ -109,8 +109,8 @@ Tommy îi dă o mărire bandei și vrea să vadă care fel de a o scrie chiar me
 
 Scrie două metode lângă `main`:
 
-* `maresteSalariu(int salariu, int suma)` adună suma la parametrul ei `salariu` și nu dă nimic înapoi
-* `maresteMembru(Membru m, int suma)` adună suma la salariul membrului
+- `maresteSalariu(int salariu, int suma)` adună suma la parametrul ei `salariu` și nu dă nimic înapoi
+- `maresteMembru(Membru m, int suma)` adună suma la salariul membrului
 
 În `main`, stochează numele membrului într-un `String` numit `nume`, salariul într-un `int` numit `salariu` și mărirea într-un `int` numit `suma`. Creează membrul, apoi:
 

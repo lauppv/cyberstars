@@ -106,8 +106,8 @@ At the end of the night Tommy wants a board with how much each member of the cre
 
 Print one row for each member, then a last row with the word `TOTAL` and the sum. In every row:
 
-* the name takes 10 characters, on the left
-* the money takes 12 characters, on the right, with commas between thousands
+- the name takes 10 characters, on the left
+- the money takes 12 characters, on the right, with commas between thousands
 
 **Example** for `names = { "Tommy", "Lance", "Ken" }` and `cash = { 1500000, 25000, 980 }`
 

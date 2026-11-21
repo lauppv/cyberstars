@@ -100,8 +100,8 @@ Clubul Malibu are două oferte în seara asta. Scrie o interfață `Reducere` cu
 
 În `main`, stochează prețul într-un `int` numit `pret` și valoarea unui cupon într-un `int` numit `cupon`. Creează două obiecte `Reducere`, fiecare cu o clasă anonimă:
 
-* `jumatate` dă înapoi jumătate din preț, fără zecimale
-* `minus` dă înapoi prețul minus cuponul, dar niciodată mai puțin de 0
+- `jumatate` dă înapoi jumătate din preț, fără zecimale
+- `minus` dă înapoi prețul minus cuponul, dar niciodată mai puțin de 0
 
 Afișează `Jumatate: N`, apoi `Cupon: N`, apoi `Cel mai bun: N`, cel mai mic dintre cele două prețuri.
 

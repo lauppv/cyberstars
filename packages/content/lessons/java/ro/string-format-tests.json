@@ -17,32 +17,20 @@
       "visible": true,
       "inject": {
         "nume": {
-          "$list": [
-            "Tommy",
-            "Lance",
-            "Ken"
-          ]
+          "$list": ["Tommy", "Lance", "Ken"]
         },
         "bani": {
-          "$list": [
-            1500000,
-            25000,
-            980
-          ]
+          "$list": [1500000, 25000, 980]
         }
       }
     },
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Mercedes"
-          ]
+          "$list": ["Mercedes"]
         },
         "bani": {
-          "$list": [
-            4200
-          ]
+          "$list": [4200]
         }
       }
     },
@@ -59,64 +47,40 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "A",
-            "B"
-          ]
+          "$list": ["A", "B"]
         },
         "bani": {
-          "$list": [
-            0,
-            999
-          ]
+          "$list": [0, 999]
         }
       }
     },
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Sonny",
-            "Diaz"
-          ]
+          "$list": ["Sonny", "Diaz"]
         },
         "bani": {
-          "$list": [
-            1000,
-            1000000000
-          ]
+          "$list": [1000, 1000000000]
         }
       }
     },
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Phil Cassidy"
-          ]
+          "$list": ["Phil Cassidy"]
         },
         "bani": {
-          "$list": [
-            12
-          ]
+          "$list": [12]
         }
       }
     },
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Avery",
-            "Mercedes",
-            "Ken"
-          ]
+          "$list": ["Avery", "Mercedes", "Ken"]
         },
         "bani": {
-          "$list": [
-            40282605,
-            592,
-            367
-          ]
+          "$list": [40282605, 592, 367]
         }
       },
       "generated": true
@@ -124,16 +88,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Kent Paul",
-            "Phil"
-          ]
+          "$list": ["Kent Paul", "Phil"]
         },
         "bani": {
-          "$list": [
-            626,
-            793607
-          ]
+          "$list": [626, 793607]
         }
       },
       "generated": true
@@ -141,18 +99,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Kent Paul",
-            "Sonny",
-            "Ken"
-          ]
+          "$list": ["Kent Paul", "Sonny", "Ken"]
         },
         "bani": {
-          "$list": [
-            162748387,
-            751,
-            159963426
-          ]
+          "$list": [162748387, 751, 159963426]
         }
       },
       "generated": true
@@ -160,16 +110,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Cortez",
-            "Lance"
-          ]
+          "$list": ["Cortez", "Lance"]
         },
         "bani": {
-          "$list": [
-            224847,
-            854390
-          ]
+          "$list": [224847, 854390]
         }
       },
       "generated": true
@@ -177,14 +121,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Phil"
-          ]
+          "$list": ["Phil"]
         },
         "bani": {
-          "$list": [
-            356896
-          ]
+          "$list": [356896]
         }
       },
       "generated": true
@@ -192,16 +132,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Cortez",
-            "Phil"
-          ]
+          "$list": ["Cortez", "Phil"]
         },
         "bani": {
-          "$list": [
-            166363,
-            173101909
-          ]
+          "$list": [166363, 173101909]
         }
       },
       "generated": true
@@ -209,24 +143,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Ken",
-            "Sonny",
-            "Phil",
-            "Umberto",
-            "Lance",
-            "Tommy"
-          ]
+          "$list": ["Ken", "Sonny", "Phil", "Umberto", "Lance", "Tommy"]
         },
         "bani": {
-          "$list": [
-            754556,
-            310749,
-            956163,
-            56489815,
-            286,
-            164934
-          ]
+          "$list": [754556, 310749, 956163, 56489815, 286, 164934]
         }
       },
       "generated": true
@@ -234,14 +154,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Phil"
-          ]
+          "$list": ["Phil"]
         },
         "bani": {
-          "$list": [
-            54
-          ]
+          "$list": [54]
         }
       },
       "generated": true
@@ -249,18 +165,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Sonny",
-            "Phil",
-            "Lance"
-          ]
+          "$list": ["Sonny", "Phil", "Lance"]
         },
         "bani": {
-          "$list": [
-            917316,
-            187448807,
-            503
-          ]
+          "$list": [917316, 187448807, 503]
         }
       },
       "generated": true
@@ -268,20 +176,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Kent Paul",
-            "Phil",
-            "Lance",
-            "Tommy"
-          ]
+          "$list": ["Kent Paul", "Phil", "Lance", "Tommy"]
         },
         "bani": {
-          "$list": [
-            840453,
-            93475852,
-            24689663,
-            874943
-          ]
+          "$list": [840453, 93475852, 24689663, 874943]
         }
       },
       "generated": true
@@ -289,18 +187,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Avery",
-            "Tommy",
-            "Ken"
-          ]
+          "$list": ["Avery", "Tommy", "Ken"]
         },
         "bani": {
-          "$list": [
-            16910296,
-            568,
-            152302
-          ]
+          "$list": [16910296, 568, 152302]
         }
       },
       "generated": true
@@ -308,20 +198,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Cortez",
-            "Mercedes",
-            "Tommy",
-            "Sonny"
-          ]
+          "$list": ["Cortez", "Mercedes", "Tommy", "Sonny"]
         },
         "bani": {
-          "$list": [
-            836814,
-            643909,
-            281,
-            703
-          ]
+          "$list": [836814, 643909, 281, 703]
         }
       },
       "generated": true
@@ -329,18 +209,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Sonny",
-            "Kent Paul",
-            "Avery"
-          ]
+          "$list": ["Sonny", "Kent Paul", "Avery"]
         },
         "bani": {
-          "$list": [
-            119398060,
-            125,
-            668320
-          ]
+          "$list": [119398060, 125, 668320]
         }
       },
       "generated": true
@@ -348,20 +220,10 @@
     {
       "inject": {
         "nume": {
-          "$list": [
-            "Avery",
-            "Cortez",
-            "Umberto",
-            "Lance"
-          ]
+          "$list": ["Avery", "Cortez", "Umberto", "Lance"]
         },
         "bani": {
-          "$list": [
-            56807437,
-            852,
-            51,
-            175217344
-          ]
+          "$list": [56807437, 852, 51, 175217344]
         }
       },
       "generated": true

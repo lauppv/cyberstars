@@ -106,8 +106,8 @@ La sfârșitul nopții Tommy vrea o tablă cu cât a adus fiecare membru al band
 
 Afișează un rând pentru fiecare membru, apoi un ultim rând cu cuvântul `TOTAL` și suma. În fiecare rând:
 
-* numele ocupă 10 caractere, la stânga
-* banii ocupă 12 caractere, la dreapta, cu virgule între mii
+- numele ocupă 10 caractere, la stânga
+- banii ocupă 12 caractere, la dreapta, cu virgule între mii
 
 **Exemplu** pentru `nume = { "Tommy", "Lance", "Ken" }` și `bani = { 1500000, 25000, 980 }`
 

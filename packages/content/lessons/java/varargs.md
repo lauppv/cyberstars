@@ -93,8 +93,8 @@ You have used varargs already without knowing it: `String.format` and `printf` t
 
 Before a job, Tommy calls the roll. Write a method `roll` that takes the leader's name and then any number of crew member names, and gives back one line:
 
-* `<leader> leads N: <names>`, with the names separated by a comma and a space
-* `<leader> works alone` when there is nobody else
+- `<leader> leads N: <names>`, with the names separated by a comma and a space
+- `<leader> works alone` when there is nobody else
 
 In `main`, store the leader in a `String` named `leader` and the crew in a `String` array named `crew`. Print the roll call twice: first for the leader with the whole crew, then for the leader alone, with no crew given at all.
 

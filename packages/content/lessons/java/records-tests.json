@@ -32,41 +32,26 @@
       "visible": true,
       "inject": {
         "items": {
-          "$list": [
-            "Pistol",
-            "Shotgun"
-          ]
+          "$list": ["Pistol", "Shotgun"]
         },
         "prices": {
-          "$list": [
-            100,
-            450
-          ]
+          "$list": [100, 450]
         },
         "quantities": {
-          "$list": [
-            3,
-            1
-          ]
+          "$list": [3, 1]
         }
       }
     },
     {
       "inject": {
         "items": {
-          "$list": [
-            "Knife"
-          ]
+          "$list": ["Knife"]
         },
         "prices": {
-          "$list": [
-            20
-          ]
+          "$list": [20]
         },
         "quantities": {
-          "$list": [
-            0
-          ]
+          "$list": [0]
         }
       }
     },
@@ -86,56 +71,26 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Uzi",
-            "Uzi",
-            "Armor"
-          ]
+          "$list": ["Uzi", "Uzi", "Armor"]
         },
         "prices": {
-          "$list": [
-            300,
-            300,
-            250
-          ]
+          "$list": [300, 300, 250]
         },
         "quantities": {
-          "$list": [
-            1,
-            2,
-            4
-          ]
+          "$list": [1, 2, 4]
         }
       }
     },
     {
       "inject": {
         "items": {
-          "$list": [
-            "Katana",
-            "Grenade",
-            "Armor",
-            "Knife",
-            "Grenade"
-          ]
+          "$list": ["Katana", "Grenade", "Armor", "Knife", "Grenade"]
         },
         "prices": {
-          "$list": [
-            1875,
-            1215,
-            65,
-            1879,
-            458
-          ]
+          "$list": [1875, 1215, 65, 1879, 458]
         },
         "quantities": {
-          "$list": [
-            7,
-            0,
-            7,
-            18,
-            16
-          ]
+          "$list": [7, 0, 7, 18, 16]
         }
       },
       "generated": true
@@ -143,34 +98,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Bat",
-            "Grenade",
-            "Shotgun",
-            "Uzi",
-            "Bat",
-            "Armor"
-          ]
+          "$list": ["Bat", "Grenade", "Shotgun", "Uzi", "Bat", "Armor"]
         },
         "prices": {
-          "$list": [
-            1596,
-            1844,
-            173,
-            525,
-            235,
-            183
-          ]
+          "$list": [1596, 1844, 173, 525, 235, 183]
         },
         "quantities": {
-          "$list": [
-            8,
-            11,
-            0,
-            12,
-            18,
-            1
-          ]
+          "$list": [8, 11, 0, 12, 18, 1]
         }
       },
       "generated": true
@@ -178,19 +112,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Pistol"
-          ]
+          "$list": ["Pistol"]
         },
         "prices": {
-          "$list": [
-            800
-          ]
+          "$list": [800]
         },
         "quantities": {
-          "$list": [
-            4
-          ]
+          "$list": [4]
         }
       },
       "generated": true
@@ -198,19 +126,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Armor"
-          ]
+          "$list": ["Armor"]
         },
         "prices": {
-          "$list": [
-            1116
-          ]
+          "$list": [1116]
         },
         "quantities": {
-          "$list": [
-            3
-          ]
+          "$list": [3]
         }
       },
       "generated": true
@@ -218,34 +140,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Shotgun",
-            "Pistol",
-            "Knife",
-            "Armor",
-            "Sniper",
-            "Bat"
-          ]
+          "$list": ["Shotgun", "Pistol", "Knife", "Armor", "Sniper", "Bat"]
         },
         "prices": {
-          "$list": [
-            247,
-            1143,
-            969,
-            1615,
-            173,
-            1943
-          ]
+          "$list": [247, 1143, 969, 1615, 173, 1943]
         },
         "quantities": {
-          "$list": [
-            10,
-            2,
-            17,
-            20,
-            18,
-            4
-          ]
+          "$list": [10, 2, 17, 20, 18, 4]
         }
       },
       "generated": true
@@ -253,34 +154,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Knife",
-            "Uzi",
-            "Sniper",
-            "Uzi",
-            "Bat",
-            "Grenade"
-          ]
+          "$list": ["Knife", "Uzi", "Sniper", "Uzi", "Bat", "Grenade"]
         },
         "prices": {
-          "$list": [
-            860,
-            1195,
-            296,
-            1722,
-            1932,
-            195
-          ]
+          "$list": [860, 1195, 296, 1722, 1932, 195]
         },
         "quantities": {
-          "$list": [
-            16,
-            12,
-            6,
-            13,
-            17,
-            7
-          ]
+          "$list": [16, 12, 6, 13, 17, 7]
         }
       },
       "generated": true
@@ -288,22 +168,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Sniper",
-            "Grenade"
-          ]
+          "$list": ["Sniper", "Grenade"]
         },
         "prices": {
-          "$list": [
-            1205,
-            672
-          ]
+          "$list": [1205, 672]
         },
         "quantities": {
-          "$list": [
-            10,
-            19
-          ]
+          "$list": [10, 19]
         }
       },
       "generated": true
@@ -311,25 +182,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Knife",
-            "Knife",
-            "Pistol"
-          ]
+          "$list": ["Knife", "Knife", "Pistol"]
         },
         "prices": {
-          "$list": [
-            1116,
-            10,
-            2000
-          ]
+          "$list": [1116, 10, 2000]
         },
         "quantities": {
-          "$list": [
-            18,
-            1,
-            17
-          ]
+          "$list": [18, 1, 17]
         }
       },
       "generated": true
@@ -337,22 +196,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Knife",
-            "Sniper"
-          ]
+          "$list": ["Knife", "Sniper"]
         },
         "prices": {
-          "$list": [
-            1878,
-            1642
-          ]
+          "$list": [1878, 1642]
         },
         "quantities": {
-          "$list": [
-            16,
-            11
-          ]
+          "$list": [16, 11]
         }
       },
       "generated": true
@@ -360,28 +210,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Knife",
-            "Grenade",
-            "Bat",
-            "Uzi"
-          ]
+          "$list": ["Knife", "Grenade", "Bat", "Uzi"]
         },
         "prices": {
-          "$list": [
-            1254,
-            1334,
-            1831,
-            49
-          ]
+          "$list": [1254, 1334, 1831, 49]
         },
         "quantities": {
-          "$list": [
-            7,
-            4,
-            8,
-            7
-          ]
+          "$list": [7, 4, 8, 7]
         }
       },
       "generated": true
@@ -389,25 +224,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Katana",
-            "Grenade",
-            "Knife"
-          ]
+          "$list": ["Katana", "Grenade", "Knife"]
         },
         "prices": {
-          "$list": [
-            1319,
-            1055,
-            58
-          ]
+          "$list": [1319, 1055, 58]
         },
         "quantities": {
-          "$list": [
-            10,
-            3,
-            20
-          ]
+          "$list": [10, 3, 20]
         }
       },
       "generated": true
@@ -415,22 +238,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Shotgun",
-            "Uzi"
-          ]
+          "$list": ["Shotgun", "Uzi"]
         },
         "prices": {
-          "$list": [
-            870,
-            1295
-          ]
+          "$list": [870, 1295]
         },
         "quantities": {
-          "$list": [
-            10,
-            11
-          ]
+          "$list": [10, 11]
         }
       },
       "generated": true
@@ -438,22 +252,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Bat",
-            "Katana"
-          ]
+          "$list": ["Bat", "Katana"]
         },
         "prices": {
-          "$list": [
-            709,
-            1697
-          ]
+          "$list": [709, 1697]
         },
         "quantities": {
-          "$list": [
-            11,
-            17
-          ]
+          "$list": [11, 17]
         }
       },
       "generated": true
@@ -461,34 +266,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Bat",
-            "Bat",
-            "Bat",
-            "Armor",
-            "Knife",
-            "Katana"
-          ]
+          "$list": ["Bat", "Bat", "Bat", "Armor", "Knife", "Katana"]
         },
         "prices": {
-          "$list": [
-            1345,
-            324,
-            1716,
-            1226,
-            1345,
-            652
-          ]
+          "$list": [1345, 324, 1716, 1226, 1345, 652]
         },
         "quantities": {
-          "$list": [
-            9,
-            20,
-            8,
-            1,
-            3,
-            11
-          ]
+          "$list": [9, 20, 8, 1, 3, 11]
         }
       },
       "generated": true
@@ -496,25 +280,13 @@
     {
       "inject": {
         "items": {
-          "$list": [
-            "Shotgun",
-            "Grenade",
-            "Armor"
-          ]
+          "$list": ["Shotgun", "Grenade", "Armor"]
         },
         "prices": {
-          "$list": [
-            429,
-            1668,
-            629
-          ]
+          "$list": [429, 1668, 629]
         },
         "quantities": {
-          "$list": [
-            16,
-            8,
-            6
-          ]
+          "$list": [16, 8, 6]
         }
       },
       "generated": true

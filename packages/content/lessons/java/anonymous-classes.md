@@ -100,8 +100,8 @@ The Malibu Club runs two deals tonight. Write an interface `Discount` with one m
 
 In `main`, store the price in an `int` named `price` and a coupon value in an `int` named `coupon`. Create two `Discount` objects, each with an anonymous class:
 
-* `half` gives back half the price, with no decimals
-* `minus` gives back the price minus the coupon, but never less than 0
+- `half` gives back half the price, with no decimals
+- `minus` gives back the price minus the coupon, but never less than 0
 
 Print `Half: N`, then `Coupon: N`, then `Best: N`, the lower of the two prices.
 

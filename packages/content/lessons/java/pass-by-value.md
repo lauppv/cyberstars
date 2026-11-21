@@ -109,8 +109,8 @@ Tommy gives his crew a raise, and wants to see which way of writing it really wo
 
 Write two methods next to `main`:
 
-* `raisePay(int pay, int amount)` adds the amount to its `pay` parameter and gives nothing back
-* `raiseMember(Member m, int amount)` adds the amount to the member's pay
+- `raisePay(int pay, int amount)` adds the amount to its `pay` parameter and gives nothing back
+- `raiseMember(Member m, int amount)` adds the amount to the member's pay
 
 In `main`, store the member's name in a `String` named `name`, the pay in an `int` named `pay` and the raise in an `int` named `amount`. Create the member, then:
 

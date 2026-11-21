@@ -93,8 +93,8 @@ Ai folosit deja varargs fără să știi: `String.format` și `printf` primesc u
 
 Înainte de o lovitură, Tommy face apelul. Scrie o metodă `apel` care primește numele șefului și apoi oricâte nume de membri ai bandei, și dă înapoi o linie:
 
-* `<sef> conduce N: <nume>`, cu numele despărțite de o virgulă și un spațiu
-* `<sef> lucreaza singur` când nu mai e nimeni
+- `<sef> conduce N: <nume>`, cu numele despărțite de o virgulă și un spațiu
+- `<sef> lucreaza singur` când nu mai e nimeni
 
 În `main`, stochează șeful într-un `String` numit `sef` și banda într-un array de `String` numit `banda`. Afișează apelul de două ori: întâi pentru șef cu toată banda, apoi pentru șef singur, fără să dai nicio bandă.
 

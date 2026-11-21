@@ -25,10 +25,7 @@
       "inject": {
         "leader": "Tommy",
         "crew": {
-          "$list": [
-            "Lance",
-            "Ken"
-          ]
+          "$list": ["Lance", "Ken"]
         }
       }
     },
@@ -36,9 +33,7 @@
       "inject": {
         "leader": "Sonny",
         "crew": {
-          "$list": [
-            "Diaz"
-          ]
+          "$list": ["Diaz"]
         }
       }
     },
@@ -54,12 +49,7 @@
       "inject": {
         "leader": "Ken",
         "crew": {
-          "$list": [
-            "Tommy",
-            "Lance",
-            "Mercedes",
-            "Phil"
-          ]
+          "$list": ["Tommy", "Lance", "Mercedes", "Phil"]
         }
       }
     },
@@ -67,9 +57,7 @@
       "inject": {
         "leader": "Umberto",
         "crew": {
-          "$list": [
-            "Umberto"
-          ]
+          "$list": ["Umberto"]
         }
       }
     },
@@ -77,15 +65,7 @@
       "inject": {
         "leader": "Sonny",
         "crew": {
-          "$list": [
-            "Sonny",
-            "Diaz",
-            "Umberto",
-            "Mercedes",
-            "Ken",
-            "Candy",
-            "Kent Paul"
-          ]
+          "$list": ["Sonny", "Diaz", "Umberto", "Mercedes", "Ken", "Candy", "Kent Paul"]
         }
       },
       "generated": true
@@ -94,13 +74,7 @@
       "inject": {
         "leader": "Candy",
         "crew": {
-          "$list": [
-            "Umberto",
-            "Avery",
-            "Diaz",
-            "Lance",
-            "Tommy"
-          ]
+          "$list": ["Umberto", "Avery", "Diaz", "Lance", "Tommy"]
         }
       },
       "generated": true
@@ -118,14 +92,7 @@
       "inject": {
         "leader": "Mercedes",
         "crew": {
-          "$list": [
-            "Avery",
-            "Umberto",
-            "Phil",
-            "Lance",
-            "Sonny",
-            "Diaz"
-          ]
+          "$list": ["Avery", "Umberto", "Phil", "Lance", "Sonny", "Diaz"]
         }
       },
       "generated": true
@@ -134,11 +101,7 @@
       "inject": {
         "leader": "Avery",
         "crew": {
-          "$list": [
-            "Mercedes",
-            "Diaz",
-            "Tommy"
-          ]
+          "$list": ["Mercedes", "Diaz", "Tommy"]
         }
       },
       "generated": true
@@ -147,13 +110,7 @@
       "inject": {
         "leader": "Phil",
         "crew": {
-          "$list": [
-            "Mercedes",
-            "Avery",
-            "Umberto",
-            "Diaz",
-            "Phil"
-          ]
+          "$list": ["Mercedes", "Avery", "Umberto", "Diaz", "Phil"]
         }
       },
       "generated": true
@@ -162,12 +119,7 @@
       "inject": {
         "leader": "Diaz",
         "crew": {
-          "$list": [
-            "Phil",
-            "Mercedes",
-            "Avery",
-            "Lance"
-          ]
+          "$list": ["Phil", "Mercedes", "Avery", "Lance"]
         }
       },
       "generated": true
@@ -176,13 +128,7 @@
       "inject": {
         "leader": "Avery",
         "crew": {
-          "$list": [
-            "Tommy",
-            "Sonny",
-            "Cortez",
-            "Lance",
-            "Umberto"
-          ]
+          "$list": ["Tommy", "Sonny", "Cortez", "Lance", "Umberto"]
         }
       },
       "generated": true
@@ -191,12 +137,7 @@
       "inject": {
         "leader": "Phil",
         "crew": {
-          "$list": [
-            "Mercedes",
-            "Lance",
-            "Candy",
-            "Ken"
-          ]
+          "$list": ["Mercedes", "Lance", "Candy", "Ken"]
         }
       },
       "generated": true
@@ -205,13 +146,7 @@
       "inject": {
         "leader": "Umberto",
         "crew": {
-          "$list": [
-            "Kent Paul",
-            "Lance",
-            "Avery",
-            "Mercedes",
-            "Candy"
-          ]
+          "$list": ["Kent Paul", "Lance", "Avery", "Mercedes", "Candy"]
         }
       },
       "generated": true
@@ -220,14 +155,7 @@
       "inject": {
         "leader": "Lance",
         "crew": {
-          "$list": [
-            "Diaz",
-            "Ken",
-            "Candy",
-            "Lance",
-            "Phil",
-            "Umberto"
-          ]
+          "$list": ["Diaz", "Ken", "Candy", "Lance", "Phil", "Umberto"]
         }
       },
       "generated": true
@@ -236,12 +164,7 @@
       "inject": {
         "leader": "Candy",
         "crew": {
-          "$list": [
-            "Sonny",
-            "Diaz",
-            "Cortez",
-            "Tommy"
-          ]
+          "$list": ["Sonny", "Diaz", "Cortez", "Tommy"]
         }
       },
       "generated": true
@@ -250,13 +173,7 @@
       "inject": {
         "leader": "Mercedes",
         "crew": {
-          "$list": [
-            "Lance",
-            "Ken",
-            "Umberto",
-            "Cortez",
-            "Kent Paul"
-          ]
+          "$list": ["Lance", "Ken", "Umberto", "Cortez", "Kent Paul"]
         }
       },
       "generated": true
