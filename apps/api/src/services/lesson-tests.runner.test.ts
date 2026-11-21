@@ -940,6 +940,17 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     for (const [code, want] of cases) expect(found(code)).toEqual(want);
   });
 
+  it("doesn't take main's own declaration for varargs, throws, synchronized or a generic method", () => {
+    const rules = ['varargs', 'throws', 'synchronized', 'generic_method'].map((kind) => ({ kind }));
+    const code =
+      'public class Main {\n    static void roll(String[] crew) {}\n' +
+      '    public static synchronized <T> void main(String... args) throws Exception {}\n}\n';
+    expect(header(code, rules)).toEqual({
+      syntaxError: null,
+      structureFailures: rules.map((rule) => ({ type: 'require', rule })),
+    });
+  });
+
   it('names the method a recursion rule wants recursive', () => {
     const code = main(
       '    static int fact(int n) { return n < 2 ? 1 : n * fact(n - 1); }\n    static int twice(int n) { return 2 * n; }',

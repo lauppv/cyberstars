@@ -745,6 +745,11 @@ public class Runner {
           for (var a : node.getModifiers().getAnnotations()) {
             if (simpleType(a.getAnnotationType()).equals("Override")) facts.add("override");
           }
+          // main's own declaration shows none of these: String... args, throws Exception or a
+          // synchronized main leaves the student's own methods as they were.
+          if (besideMain && node.getName().contentEquals("main")) {
+            return super.visitMethod(node, unused);
+          }
           if (!node.getTypeParameters().isEmpty()) facts.add("generic_method");
           if (!node.getThrows().isEmpty()) facts.add("throws");
           if (node.getModifiers().getFlags().contains(javax.lang.model.element.Modifier.SYNCHRONIZED)) {
