@@ -1,0 +1,135 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "name"
+      },
+      {
+        "kind": "call",
+        "name": "StringBuilder"
+      },
+      {
+        "kind": "call",
+        "name": "append"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name": "vice"
+      }
+    },
+    {
+      "inject": {
+        "name": "Ken"
+      }
+    },
+    {
+      "inject": {
+        "name": "x"
+      }
+    },
+    {
+      "inject": {
+        "name": ""
+      }
+    },
+    {
+      "inject": {
+        "name": "Lance Vance"
+      }
+    },
+    {
+      "inject": {
+        "name": "ab"
+      }
+    },
+    {
+      "inject": {
+        "name": "VERCETTI"
+      }
+    },
+    {
+      "inject": {
+        "name": "lwlDsopj"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "zy"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "DjxfDmgksuf"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "afpmkyAxd"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "km"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tDyEfvkljmdly"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "ujfbwuoABz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "sBZaDrZDDDctr"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "hwlBEcrgaE"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "heyuw"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "eyExhfwajbg"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Br"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "kZuoBc"
+      },
+      "generated": true
+    }
+  ]
+}

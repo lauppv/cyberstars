@@ -1,0 +1,282 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "times"
+      },
+      {
+        "kind": "call",
+        "name": "Arrays.sort"
+      },
+      {
+        "kind": "call",
+        "name": "Arrays.toString"
+      },
+      {
+        "kind": "call",
+        "name": "Arrays.copyOf"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "times": {
+          "$list": [
+            61,
+            58,
+            70,
+            55
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            90,
+            80
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            45
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            30,
+            30,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            5,
+            4,
+            3,
+            2,
+            1
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            94,
+            72,
+            56,
+            90,
+            64,
+            54,
+            53,
+            110,
+            62,
+            92,
+            90,
+            75
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            105
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            65,
+            42,
+            108,
+            40,
+            60,
+            72,
+            116,
+            99
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            54
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            96
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            58,
+            61
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            112,
+            120,
+            107,
+            81,
+            84,
+            120,
+            93,
+            110,
+            79,
+            78
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            86,
+            72
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            75,
+            43,
+            117,
+            117,
+            83
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            46,
+            102,
+            64,
+            41,
+            66,
+            93,
+            97,
+            69,
+            115,
+            119,
+            92,
+            44
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            102
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            75,
+            42,
+            58,
+            79,
+            61,
+            41,
+            91
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            98,
+            59,
+            100
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "times": {
+          "$list": [
+            109,
+            54,
+            117
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

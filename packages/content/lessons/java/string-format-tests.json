@@ -1,0 +1,370 @@
+{
+  "comparator": "exact",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "cash"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Ken"
+          ]
+        },
+        "cash": {
+          "$list": [
+            1500000,
+            25000,
+            980
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Mercedes"
+          ]
+        },
+        "cash": {
+          "$list": [
+            4200
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": []
+        },
+        "cash": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "A",
+            "B"
+          ]
+        },
+        "cash": {
+          "$list": [
+            0,
+            999
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Sonny",
+            "Diaz"
+          ]
+        },
+        "cash": {
+          "$list": [
+            1000,
+            1000000000
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Phil Cassidy"
+          ]
+        },
+        "cash": {
+          "$list": [
+            12
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Avery",
+            "Mercedes",
+            "Ken"
+          ]
+        },
+        "cash": {
+          "$list": [
+            40282605,
+            592,
+            367
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Kent Paul",
+            "Phil"
+          ]
+        },
+        "cash": {
+          "$list": [
+            626,
+            793607
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Kent Paul",
+            "Sonny",
+            "Ken"
+          ]
+        },
+        "cash": {
+          "$list": [
+            162748387,
+            751,
+            159963426
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Cortez",
+            "Lance"
+          ]
+        },
+        "cash": {
+          "$list": [
+            224847,
+            854390
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Phil"
+          ]
+        },
+        "cash": {
+          "$list": [
+            356896
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Cortez",
+            "Phil"
+          ]
+        },
+        "cash": {
+          "$list": [
+            166363,
+            173101909
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Ken",
+            "Sonny",
+            "Phil",
+            "Umberto",
+            "Lance",
+            "Tommy"
+          ]
+        },
+        "cash": {
+          "$list": [
+            754556,
+            310749,
+            956163,
+            56489815,
+            286,
+            164934
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Phil"
+          ]
+        },
+        "cash": {
+          "$list": [
+            54
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Sonny",
+            "Phil",
+            "Lance"
+          ]
+        },
+        "cash": {
+          "$list": [
+            917316,
+            187448807,
+            503
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Kent Paul",
+            "Phil",
+            "Lance",
+            "Tommy"
+          ]
+        },
+        "cash": {
+          "$list": [
+            840453,
+            93475852,
+            24689663,
+            874943
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Avery",
+            "Tommy",
+            "Ken"
+          ]
+        },
+        "cash": {
+          "$list": [
+            16910296,
+            568,
+            152302
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Cortez",
+            "Mercedes",
+            "Tommy",
+            "Sonny"
+          ]
+        },
+        "cash": {
+          "$list": [
+            836814,
+            643909,
+            281,
+            703
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Sonny",
+            "Kent Paul",
+            "Avery"
+          ]
+        },
+        "cash": {
+          "$list": [
+            119398060,
+            125,
+            668320
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Avery",
+            "Cortez",
+            "Umberto",
+            "Lance"
+          ]
+        },
+        "cash": {
+          "$list": [
+            56807437,
+            852,
+            51,
+            175217344
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

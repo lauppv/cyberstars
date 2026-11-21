@@ -1,0 +1,265 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "leader"
+      },
+      {
+        "kind": "variable",
+        "name": "crew"
+      },
+      {
+        "kind": "function",
+        "name": "roll"
+      },
+      {
+        "kind": "varargs"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "leader": "Tommy",
+        "crew": {
+          "$list": [
+            "Lance",
+            "Ken"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "leader": "Sonny",
+        "crew": {
+          "$list": [
+            "Diaz"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "leader": "Avery",
+        "crew": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "leader": "Ken",
+        "crew": {
+          "$list": [
+            "Tommy",
+            "Lance",
+            "Mercedes",
+            "Phil"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "leader": "Umberto",
+        "crew": {
+          "$list": [
+            "Umberto"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "leader": "Sonny",
+        "crew": {
+          "$list": [
+            "Sonny",
+            "Diaz",
+            "Umberto",
+            "Mercedes",
+            "Ken",
+            "Candy",
+            "Kent Paul"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Candy",
+        "crew": {
+          "$list": [
+            "Umberto",
+            "Avery",
+            "Diaz",
+            "Lance",
+            "Tommy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Tommy",
+        "crew": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Mercedes",
+        "crew": {
+          "$list": [
+            "Avery",
+            "Umberto",
+            "Phil",
+            "Lance",
+            "Sonny",
+            "Diaz"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Avery",
+        "crew": {
+          "$list": [
+            "Mercedes",
+            "Diaz",
+            "Tommy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Phil",
+        "crew": {
+          "$list": [
+            "Mercedes",
+            "Avery",
+            "Umberto",
+            "Diaz",
+            "Phil"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Diaz",
+        "crew": {
+          "$list": [
+            "Phil",
+            "Mercedes",
+            "Avery",
+            "Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Avery",
+        "crew": {
+          "$list": [
+            "Tommy",
+            "Sonny",
+            "Cortez",
+            "Lance",
+            "Umberto"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Phil",
+        "crew": {
+          "$list": [
+            "Mercedes",
+            "Lance",
+            "Candy",
+            "Ken"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Umberto",
+        "crew": {
+          "$list": [
+            "Kent Paul",
+            "Lance",
+            "Avery",
+            "Mercedes",
+            "Candy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Lance",
+        "crew": {
+          "$list": [
+            "Diaz",
+            "Ken",
+            "Candy",
+            "Lance",
+            "Phil",
+            "Umberto"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Candy",
+        "crew": {
+          "$list": [
+            "Sonny",
+            "Diaz",
+            "Cortez",
+            "Tommy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "leader": "Mercedes",
+        "crew": {
+          "$list": [
+            "Lance",
+            "Ken",
+            "Umberto",
+            "Cortez",
+            "Kent Paul"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
