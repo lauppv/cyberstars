@@ -1325,6 +1325,7 @@
         "loop_comprehension": "Use a list comprehension ([x for x in ...])",
         "function_any": "Write a function of your own",
         "recursion": "Solve it with recursion: a function that calls itself",
+        "recursion_named": "Solve it with recursion: {{name}}() has to call itself",
         "nested_loop": "Use a loop inside another loop",
         "operator": "Use the {{name}} operator",
         "if": "Use an if",
@@ -1381,6 +1382,11 @@
         "operator": "Don't use the {{name}} operator here",
         "break": "Don't use break here",
         "slice": "Don't use a slice here",
+        "if": "Don't use if here",
+        "switch": "Don't use switch here",
+        "lambda": "Don't use a lambda here",
+        "extends": "Don't use extends here",
+        "implements": "Don't use implements here",
         "other": "Your code uses something this lesson asks you to do without"
       }
     },

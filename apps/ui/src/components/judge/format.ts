@@ -2,8 +2,9 @@ import i18next, { type TFunction } from 'i18next';
 import type { InjectValue, StructureFailure, TestCaseResult } from '@cyberstars/shared/tests';
 
 // The most precise text first: a loop of one statement, a function or class
-// the student names, then the kind alone, then a general one for a kind
-// without a text yet, so the student never sees a raw key.
+// the student names, a recursion that names its method, then the kind alone,
+// then a general one for a kind without a text yet, so the student never sees
+// a raw key.
 export function structureMessage(failure: StructureFailure, t: TFunction): string {
   const { kind, type, name } = failure.rule;
   const base = `tests.structure.${failure.type}`;
@@ -12,7 +13,9 @@ export function structureMessage(failure: StructureFailure, t: TFunction): strin
       ? `${base}.loop_${type}`
       : (kind === 'function' || kind === 'class') && !name
         ? `${base}.${kind}_any`
-        : null;
+        : kind === 'recursion' && name
+          ? `${base}.recursion_named`
+          : null;
   const keys = [specific, `${base}.${kind}`, `${base}.other`].filter((k) => k !== null);
   return t(keys, {
     name: failure.rule.name,

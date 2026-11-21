@@ -1354,6 +1354,7 @@
         "loop_comprehension": "Folosește o list comprehension ([x for x in ...])",
         "function_any": "Scrie o funcție a ta",
         "recursion": "Rezolvă cu recursivitate: o funcție care se apelează pe ea însăși",
+        "recursion_named": "Rezolvă cu recursivitate: {{name}}() trebuie să se apeleze pe ea însăși",
         "nested_loop": "Folosește o buclă în interiorul altei bucle",
         "operator": "Folosește operatorul {{name}}",
         "if": "Folosește un if",
@@ -1410,6 +1411,11 @@
         "operator": "Nu folosi operatorul {{name}} aici",
         "break": "Nu folosi break aici",
         "slice": "Nu folosi un slice aici",
+        "if": "Nu folosi if aici",
+        "switch": "Nu folosi switch aici",
+        "lambda": "Nu folosi o lambda aici",
+        "extends": "Nu folosi extends aici",
+        "implements": "Nu folosi implements aici",
         "other": "Codul tău folosește ceva ce lecția îți cere să eviți"
       }
     },
