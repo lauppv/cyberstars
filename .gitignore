@@ -49,3 +49,7 @@ indexnow-sent.xml
 
 # The load test's results and the page list capture.mjs writes for it
 loadtest/results/
+
+# Python bytecode
+__pycache__/
+*.pyc
