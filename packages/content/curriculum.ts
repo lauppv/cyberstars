@@ -22,7 +22,7 @@ export const courses = [
     key: 'java',
     title: 'Java',
     description:
-      'Object-oriented programming from the ground up. After the basics, you build programs from classes and objects, inheritance, polymorphism and interfaces, then collections, ending with three larger projects.',
+      'Object-oriented programming from the ground up. After the basics, recursion and the tools for text and arrays, you build programs from classes and objects, inheritance, interfaces, records and generics, then collections, lambdas and streams, exceptions, files and threads, ending with six larger projects.',
     sortOrder: 3,
   },
   {

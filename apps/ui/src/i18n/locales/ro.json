@@ -1780,9 +1780,9 @@
       "algorithms": "Algoritmi"
     },
     "options": {
-      "python": "Cel mai ușor început: de la print la funcții, liste și proiecte mici.",
+      "python": "Cel mai ușor început: de la print la funcții, fișiere, clase și proiecte mici.",
       "c": "Cum funcționează programele pe dedesubt: pointeri, memorie, procese și thread-uri.",
-      "java": "Programare orientată pe obiecte: clase, moștenire, interfețe și colecții.",
+      "java": "Programare orientată pe obiecte: clase, interfețe, colecții, stream-uri și thread-uri.",
       "linux": "Un terminal adevărat în browser: fișiere, grep, pipe-uri și permisiuni.",
       "algorithms": "Probleme de la ușor la greu în Python, Java și C, verificate de evaluator."
     },
