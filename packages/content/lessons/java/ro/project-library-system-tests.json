@@ -1,0 +1,375 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "carti"
+      },
+      {
+        "kind": "variable",
+        "name": "cereri"
+      },
+      {
+        "kind": "call",
+        "name": "Biblioteca"
+      },
+      {
+        "kind": "call",
+        "name": "Carte"
+      },
+      {
+        "kind": "function",
+        "name": "imprumuta"
+      },
+      {
+        "kind": "function",
+        "name": "returneaza"
+      },
+      {
+        "kind": "call",
+        "name": "BibliotecaException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "carti": {
+          "$list": ["Insula comorii", "Dracula", "Moby Dick"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Dracula:Lance",
+            "imprumuta:Dracula:Kent",
+            "imprumuta:Scarface:Tommy",
+            "returneaza:Moby Dick",
+            "returneaza:Dracula",
+            "imprumuta:Dracula:Phil"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "carti": {
+          "$list": ["Hamlet"]
+        },
+        "cereri": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": []
+        },
+        "cereri": {
+          "$list": ["imprumuta:Hamlet:Tommy", "returneaza:Hamlet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Hamlet", "Hamlet"]
+        },
+        "cereri": {
+          "$list": ["imprumuta:Hamlet:Lance", "returneaza:Hamlet", "returneaza:Hamlet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Dracula", "Frankenstein"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Frankenstein:Candy",
+            "imprumuta:Dracula:Candy",
+            "imprumuta:dracula:Ken"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Insula comorii", "Oliver Twist"]
+        },
+        "cereri": {
+          "$list": ["returneaza:Oliver Twist", "returneaza:Insula comorii"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": [
+            "Dracula",
+            "Odiseea",
+            "Hamlet",
+            "Robinson Crusoe",
+            "Moby Dick",
+            "Oliver Twist",
+            "Insula comorii"
+          ]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Robinson Crusoe:Phil",
+            "imprumuta:Oliver Twist:Ken",
+            "returneaza:Insula comorii",
+            "returneaza:Odiseea"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Frankenstein", "Dracula", "Hamlet", "Odiseea", "Oliver Twist", "Moby Dick"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Frankenstein:Kent",
+            "imprumuta:Odiseea:Lance",
+            "imprumuta:Odiseea:Diaz",
+            "imprumuta:Odiseea:Diaz",
+            "imprumuta:Moby Dick:Tommy",
+            "returneaza:Odiseea"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Robinson Crusoe"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Robinson Crusoe:Lance",
+            "returneaza:Robinson Crusoe",
+            "returneaza:Robinson Crusoe",
+            "returneaza:Robinson Crusoe",
+            "imprumuta:Robinson Crusoe:Ken",
+            "returneaza:Robinson Crusoe",
+            "returneaza:Robinson Crusoe",
+            "imprumuta:Robinson Crusoe:Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Robinson Crusoe", "Oliver Twist", "Dracula"]
+        },
+        "cereri": {
+          "$list": [
+            "returneaza:Oliver Twist",
+            "returneaza:Oliver Twist",
+            "returneaza:Hamlet",
+            "returneaza:Robinson Crusoe",
+            "returneaza:Dracula",
+            "imprumuta:Odiseea:Tommy",
+            "returneaza:Oliver Twist",
+            "imprumuta:Robinson Crusoe:Kent",
+            "imprumuta:Oliver Twist:Mercedes",
+            "returneaza:Robinson Crusoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": [
+            "Robinson Crusoe",
+            "Moby Dick",
+            "Oliver Twist",
+            "Hamlet",
+            "Odiseea",
+            "Dracula",
+            "Frankenstein",
+            "Insula comorii"
+          ]
+        },
+        "cereri": {
+          "$list": [
+            "returneaza:Hamlet",
+            "imprumuta:Robinson Crusoe:Lance",
+            "imprumuta:Insula comorii:Mercedes",
+            "returneaza:Odiseea",
+            "imprumuta:Moby Dick:Lance",
+            "returneaza:Dracula",
+            "returneaza:Hamlet",
+            "imprumuta:Dracula:Candy",
+            "returneaza:Dracula",
+            "imprumuta:Odiseea:Candy",
+            "imprumuta:Moby Dick:Phil",
+            "imprumuta:Robinson Crusoe:Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Robinson Crusoe", "Frankenstein", "Moby Dick", "Hamlet"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Frankenstein:Diaz",
+            "imprumuta:Frankenstein:Phil",
+            "imprumuta:Hamlet:Ken",
+            "imprumuta:Frankenstein:Lance",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Candy",
+            "returneaza:Moby Dick",
+            "returneaza:Moby Dick",
+            "returneaza:Hamlet",
+            "returneaza:Moby Dick",
+            "imprumuta:Moby Dick:Phil",
+            "imprumuta:Moby Dick:Tommy",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Ken",
+            "returneaza:Robinson Crusoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Odiseea", "Moby Dick", "Robinson Crusoe"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Robinson Crusoe:Diaz",
+            "returneaza:Robinson Crusoe",
+            "returneaza:Robinson Crusoe",
+            "imprumuta:Hamlet:Ken",
+            "imprumuta:Odiseea:Diaz",
+            "returneaza:Robinson Crusoe",
+            "imprumuta:Moby Dick:Tommy",
+            "imprumuta:Odiseea:Lance",
+            "imprumuta:Robinson Crusoe:Tommy",
+            "returneaza:Odiseea",
+            "imprumuta:Odiseea:Tommy",
+            "imprumuta:Robinson Crusoe:Tommy",
+            "imprumuta:Robinson Crusoe:Ken",
+            "imprumuta:Odiseea:Diaz",
+            "returneaza:Odiseea",
+            "returneaza:Robinson Crusoe",
+            "returneaza:Moby Dick",
+            "returneaza:Odiseea",
+            "imprumuta:Moby Dick:Lance",
+            "imprumuta:Hamlet:Tommy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Hamlet"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Hamlet:Mercedes",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Tommy",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Ken",
+            "imprumuta:Hamlet:Ken",
+            "imprumuta:Hamlet:Diaz",
+            "returneaza:Moby Dick",
+            "imprumuta:Moby Dick:Kent",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Candy",
+            "imprumuta:Hamlet:Candy",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Ken",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Kent",
+            "imprumuta:Scarface:Candy",
+            "imprumuta:Hamlet:Ken"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carti": {
+          "$list": ["Insula comorii", "Hamlet"]
+        },
+        "cereri": {
+          "$list": [
+            "imprumuta:Insula comorii:Diaz",
+            "imprumuta:Hamlet:Phil",
+            "imprumuta:Hamlet:Phil",
+            "returneaza:Hamlet",
+            "returneaza:Insula comorii",
+            "imprumuta:Hamlet:Mercedes",
+            "returneaza:Insula comorii",
+            "imprumuta:Insula comorii:Ken",
+            "returneaza:Odiseea",
+            "returneaza:Odiseea",
+            "imprumuta:Insula comorii:Lance",
+            "returneaza:Insula comorii",
+            "returneaza:Hamlet",
+            "imprumuta:Hamlet:Diaz",
+            "returneaza:Insula comorii",
+            "returneaza:Hamlet",
+            "imprumuta:Oliver Twist:Lance",
+            "imprumuta:Insula comorii:Diaz",
+            "returneaza:Insula comorii",
+            "imprumuta:Insula comorii:Mercedes",
+            "returneaza:Insula comorii",
+            "returneaza:Insula comorii",
+            "imprumuta:Hamlet:Phil",
+            "returneaza:Dracula",
+            "returneaza:Insula comorii",
+            "imprumuta:Hamlet:Mercedes",
+            "imprumuta:Insula comorii:Diaz",
+            "returneaza:Hamlet",
+            "returneaza:Insula comorii",
+            "imprumuta:Robinson Crusoe:Phil"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
