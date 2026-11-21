@@ -1,0 +1,278 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "word"
+      },
+      {
+        "kind": "call",
+        "name": "ord"
+      },
+      {
+        "kind": "call",
+        "name": "chr"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "word": "moon"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "word": "abz"
+      }
+    },
+    {
+      "inject": {
+        "word": "a"
+      }
+    },
+    {
+      "inject": {
+        "word": "z"
+      }
+    },
+    {
+      "inject": {
+        "word": "m"
+      }
+    },
+    {
+      "inject": {
+        "word": "n"
+      }
+    },
+    {
+      "inject": {
+        "word": "abcdefghijklmnopqrst"
+      }
+    },
+    {
+      "inject": {
+        "word": "zzzz"
+      }
+    },
+    {
+      "inject": {
+        "word": "wizard"
+      }
+    },
+    {
+      "inject": {
+        "word": "zuamceywacuydhn"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "lxm"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "h"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "x"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "lsueni"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "dgpqzpllum"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "liogbgxztpohoubppitt"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "gogpfcjoxg"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "yeik"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "mpfndxzp"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "vmlqhya"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "owndpygipnmsfuan"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "okaobhbb"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "dsamuawafwasfdftl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "vvvruzqryzxs"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "lgr"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "kiitpjmc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "pyc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "akefmtotnpippmotqeqd"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "eebxkisfga"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "afxunyrnl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "rehslvj"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "jup"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "cjpjztujpstkwbtfoaii"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "yfjncvhy"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "nlwtratbjjmcgtoqcg"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "giuqjvmzuloxk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "nhkmltspv"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "hrmlfdlxak"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "rxddvvrhsgcqjh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "wofsteskhyefhev"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "s"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "xzlxitedqmdqpzd"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "cwrxeprtq"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "ly"
+      },
+      "generated": true
+    }
+  ]
+}

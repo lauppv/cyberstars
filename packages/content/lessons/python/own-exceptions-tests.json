@@ -1,0 +1,592 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "StationError"
+      },
+      {
+        "kind": "class",
+        "name": "UnknownShip"
+      },
+      {
+        "kind": "class",
+        "name": "NotEnoughFuel"
+      },
+      {
+        "kind": "extends",
+        "name": "Exception"
+      },
+      {
+        "kind": "extends",
+        "name": "StationError"
+      },
+      {
+        "kind": "function",
+        "name": "refuel"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "variable",
+        "name": "stock"
+      },
+      {
+        "kind": "variable",
+        "name": "known"
+      },
+      {
+        "kind": "variable",
+        "name": "requests"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "stock": 100,
+        "known": {
+          "$list": ["Hope", "Swift"]
+        },
+        "requests": {
+          "$list": ["Hope 40", "Bob 10", "Swift 80", "Swift 50"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "stock": 0,
+        "known": {
+          "$list": ["Ray"]
+        },
+        "requests": {
+          "$list": ["Ray 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 1000,
+        "known": {
+          "$list": []
+        },
+        "requests": {
+          "$list": ["Hope 500", "Hope 600"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 10,
+        "known": {
+          "$list": ["Bob"]
+        },
+        "requests": {
+          "$list": ["Bob 10", "Bob 1", "Nova 999"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 485,
+        "known": {
+          "$list": ["Nova", "Bob", "Comet"]
+        },
+        "requests": {
+          "$list": ["Comet 9", "Bob 429", "Nova 6", "Ray 429", "Bob 204"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 892,
+        "known": {
+          "$list": ["Swift", "Bob", "Nova"]
+        },
+        "requests": {
+          "$list": ["Comet 311"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 767,
+        "known": {
+          "$list": []
+        },
+        "requests": {
+          "$list": [
+            "Swift 346",
+            "Ray 337",
+            "Swift 44",
+            "Ray 372",
+            "Hope 171",
+            "Ray 273",
+            "Ray 143",
+            "Hope 459",
+            "Swift 71"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 456,
+        "known": {
+          "$list": ["Ray", "Nova"]
+        },
+        "requests": {
+          "$list": ["Hope 282", "Nova 487", "Bob 363", "Hope 228"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 355,
+        "known": {
+          "$list": ["Comet", "Swift", "Bob", "Nova", "Hope"]
+        },
+        "requests": {
+          "$list": [
+            "Comet 226",
+            "Hope 492",
+            "Swift 390",
+            "Nova 130",
+            "Bob 186",
+            "Bob 205",
+            "Ray 257",
+            "Bob 30",
+            "Comet 1"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 768,
+        "known": {
+          "$list": ["Swift", "Comet", "Hope", "Bob"]
+        },
+        "requests": {
+          "$list": ["Ray 62"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 116,
+        "known": {
+          "$list": ["Bob", "Nova"]
+        },
+        "requests": {
+          "$list": ["Hope 401", "Comet 77"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 827,
+        "known": {
+          "$list": []
+        },
+        "requests": {
+          "$list": ["Hope 210", "Comet 424", "Nova 50", "Hope 419"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 897,
+        "known": {
+          "$list": ["Nova", "Ray", "Bob"]
+        },
+        "requests": {
+          "$list": [
+            "Ray 121",
+            "Ray 480",
+            "Bob 346",
+            "Comet 304",
+            "Nova 207",
+            "Nova 10",
+            "Swift 196",
+            "Nova 16",
+            "Bob 427"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 684,
+        "known": {
+          "$list": ["Nova", "Bob", "Comet", "Swift", "Hope"]
+        },
+        "requests": {
+          "$list": [
+            "Bob 329",
+            "Comet 68",
+            "Bob 276",
+            "Bob 99",
+            "Bob 308",
+            "Bob 428",
+            "Comet 169",
+            "Hope 199",
+            "Hope 285"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 546,
+        "known": {
+          "$list": ["Bob", "Ray"]
+        },
+        "requests": {
+          "$list": [
+            "Swift 435",
+            "Ray 249",
+            "Nova 384",
+            "Bob 75",
+            "Ray 268",
+            "Swift 81",
+            "Comet 22",
+            "Hope 93",
+            "Nova 320",
+            "Ray 396"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 125,
+        "known": {
+          "$list": ["Hope", "Nova"]
+        },
+        "requests": {
+          "$list": ["Bob 93"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 552,
+        "known": {
+          "$list": ["Hope", "Comet", "Bob", "Nova"]
+        },
+        "requests": {
+          "$list": ["Nova 129", "Hope 20"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 373,
+        "known": {
+          "$list": ["Comet", "Ray", "Nova"]
+        },
+        "requests": {
+          "$list": ["Nova 381", "Comet 378", "Nova 23", "Hope 243", "Ray 49", "Comet 477"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 116,
+        "known": {
+          "$list": ["Swift", "Nova", "Bob", "Comet"]
+        },
+        "requests": {
+          "$list": [
+            "Nova 349",
+            "Hope 126",
+            "Ray 385",
+            "Bob 278",
+            "Ray 332",
+            "Swift 289",
+            "Bob 300",
+            "Ray 461",
+            "Swift 212"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 980,
+        "known": {
+          "$list": ["Hope", "Ray", "Nova"]
+        },
+        "requests": {
+          "$list": [
+            "Hope 208",
+            "Comet 314",
+            "Swift 238",
+            "Bob 128",
+            "Bob 408",
+            "Comet 37",
+            "Nova 393",
+            "Hope 217"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 507,
+        "known": {
+          "$list": ["Swift", "Nova", "Comet", "Ray"]
+        },
+        "requests": {
+          "$list": ["Bob 171", "Bob 236"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 952,
+        "known": {
+          "$list": ["Comet", "Nova"]
+        },
+        "requests": {
+          "$list": ["Ray 287", "Nova 61", "Hope 199"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 621,
+        "known": {
+          "$list": ["Nova", "Ray", "Bob", "Swift", "Hope"]
+        },
+        "requests": {
+          "$list": ["Bob 305", "Nova 77"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 128,
+        "known": {
+          "$list": ["Nova"]
+        },
+        "requests": {
+          "$list": [
+            "Nova 309",
+            "Ray 193",
+            "Comet 350",
+            "Nova 367",
+            "Nova 5",
+            "Ray 23",
+            "Ray 70",
+            "Swift 92",
+            "Comet 101"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 391,
+        "known": {
+          "$list": []
+        },
+        "requests": {
+          "$list": ["Nova 201", "Comet 393", "Ray 151", "Comet 83", "Comet 319"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 156,
+        "known": {
+          "$list": ["Bob", "Swift", "Nova", "Ray"]
+        },
+        "requests": {
+          "$list": ["Ray 314", "Ray 92", "Nova 499", "Swift 181", "Hope 128"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 794,
+        "known": {
+          "$list": ["Swift", "Bob", "Nova", "Hope", "Comet"]
+        },
+        "requests": {
+          "$list": ["Swift 41", "Swift 146"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 681,
+        "known": {
+          "$list": ["Hope", "Bob"]
+        },
+        "requests": {
+          "$list": ["Comet 459"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 721,
+        "known": {
+          "$list": ["Swift", "Hope", "Ray"]
+        },
+        "requests": {
+          "$list": ["Comet 394", "Nova 421", "Swift 212", "Comet 345", "Bob 445"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 797,
+        "known": {
+          "$list": []
+        },
+        "requests": {
+          "$list": ["Hope 135", "Nova 228"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 729,
+        "known": {
+          "$list": ["Comet", "Swift", "Nova"]
+        },
+        "requests": {
+          "$list": ["Swift 466", "Ray 201", "Ray 293", "Ray 218"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 354,
+        "known": {
+          "$list": ["Bob", "Ray", "Hope", "Swift"]
+        },
+        "requests": {
+          "$list": [
+            "Ray 488",
+            "Ray 393",
+            "Nova 406",
+            "Ray 424",
+            "Swift 484",
+            "Comet 93",
+            "Hope 22",
+            "Bob 105",
+            "Hope 174",
+            "Swift 253"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 64,
+        "known": {
+          "$list": ["Bob", "Swift", "Comet", "Nova", "Hope"]
+        },
+        "requests": {
+          "$list": [
+            "Hope 189",
+            "Nova 323",
+            "Ray 337",
+            "Bob 153",
+            "Bob 220",
+            "Nova 259",
+            "Bob 166",
+            "Bob 303",
+            "Comet 486",
+            "Hope 71"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 917,
+        "known": {
+          "$list": ["Nova", "Bob"]
+        },
+        "requests": {
+          "$list": ["Nova 222", "Bob 150", "Ray 129"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 565,
+        "known": {
+          "$list": ["Hope", "Comet", "Nova", "Ray"]
+        },
+        "requests": {
+          "$list": [
+            "Ray 20",
+            "Comet 247",
+            "Bob 385",
+            "Nova 428",
+            "Bob 360",
+            "Bob 105",
+            "Ray 217",
+            "Nova 188"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 649,
+        "known": {
+          "$list": ["Swift", "Ray", "Bob"]
+        },
+        "requests": {
+          "$list": ["Bob 382", "Nova 71", "Comet 74", "Hope 205"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

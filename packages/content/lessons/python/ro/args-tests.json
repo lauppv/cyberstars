@@ -1,0 +1,346 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "rezumat"
+      },
+      {
+        "kind": "var_args"
+      },
+      {
+        "kind": "variable",
+        "name": "cutii"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cutii": {
+          "$list": [10, 25, 10]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "cutii": {
+          "$list": [7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [
+            500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500,
+            500, 500, 500
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [1, 500]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [3, 2, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [1, 1, 1, 1, 9]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [146, 120, 86, 123, 419, 208, 324, 323, 280, 263, 331, 187, 481]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [405]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [93, 386, 69, 127]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [183, 370, 195, 451, 434, 447, 238, 127, 390, 132, 76, 284, 262]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [175, 313, 487]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [372, 128, 182, 446, 208, 451, 53, 496, 413, 264, 1, 342, 65]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [342, 438, 453, 171]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [46, 315]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [369, 234, 138, 66, 178, 45, 274, 34, 282, 103, 295, 89, 344]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [273, 368, 57, 378, 85, 162, 36, 395, 87, 285, 309, 460, 308, 268, 319]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [123, 218, 412, 353, 360, 466, 54, 339, 54]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [396, 254, 336, 475, 247, 69, 375, 472, 57, 360, 47, 398, 95, 35, 211, 166, 456]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [318]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [63, 442, 186, 304, 449, 64, 84, 164, 290, 126, 198, 68, 376]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [444, 53, 460, 48, 367, 491]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [453, 102, 141, 170, 342, 144, 388, 123, 188, 43, 261, 164, 327, 122, 107]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [374, 345, 481, 78, 473, 3, 162, 445]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [58, 400, 61]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [
+            174, 265, 421, 471, 164, 191, 288, 9, 92, 249, 497, 334, 197, 437, 421, 237, 255, 175,
+            46, 202
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [270, 96, 391]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [421, 461, 127, 97, 270, 438, 394, 136]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [216, 383, 208, 147]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [
+            208, 135, 248, 145, 114, 495, 271, 224, 441, 477, 283, 290, 26, 385, 3, 49, 473, 176
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [336, 271, 327, 295, 187, 367, 107, 368]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [322, 111, 118, 334, 87, 311, 143, 265, 27, 264]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [454, 390, 191, 434, 194, 413, 247, 183, 251, 439, 459, 294, 240, 338, 24, 420]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [440, 422, 195, 439, 490, 475, 474, 270, 309, 270, 292, 467, 472, 153, 333, 235]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [399, 450, 353, 185, 367, 470]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [63, 339, 35, 82, 397, 392]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [497, 16, 110, 42, 77, 65, 411, 498, 402]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [
+            201, 176, 362, 420, 398, 458, 435, 180, 254, 291, 467, 48, 393, 471, 205, 273, 405
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [261, 366, 427, 157, 483, 268]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [170, 160]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": {
+          "$list": [42, 485, 436, 467, 129, 371, 318, 281, 222, 285, 89, 443, 398, 82]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,2167 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "alege"
+      },
+      {
+        "kind": "var_kwargs"
+      },
+      {
+        "kind": "keyword_arg",
+        "name": "key"
+      },
+      {
+        "kind": "call",
+        "name": "map"
+      },
+      {
+        "kind": "variable",
+        "name": "echipaj"
+      },
+      {
+        "kind": "variable",
+        "name": "rol"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "medic",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "pilot",
+                "varsta": 52
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "bucatar",
+                "varsta": 20
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zed",
+                "rol": "guard",
+                "varsta": 18
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Amy",
+                "rol": "guard",
+                "varsta": 65
+              }
+            }
+          ]
+        },
+        "rol": "guard"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "engineer",
+                "varsta": 36
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "guard",
+                "varsta": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "guard",
+                "varsta": 53
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "medic",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "engineer",
+                "varsta": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "pilot",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "engineer",
+                "varsta": 25
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "pilot",
+                "varsta": 49
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "guard",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "guard",
+                "varsta": 59
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "medic",
+                "varsta": 38
+              }
+            }
+          ]
+        },
+        "rol": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "cook",
+                "varsta": 21
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "guard",
+                "varsta": 57
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "guard",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 18
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "cook",
+                "varsta": 63
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "guard",
+                "varsta": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "cook",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "medic",
+                "varsta": 63
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 51
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "guard",
+                "varsta": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "engineer",
+                "varsta": 23
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "engineer",
+                "varsta": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "guard",
+                "varsta": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "engineer",
+                "varsta": 21
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "cook",
+                "varsta": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "guard",
+                "varsta": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "engineer",
+                "varsta": 27
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "guard",
+                "varsta": 25
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "pilot",
+                "varsta": 18
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "pilot",
+                "varsta": 26
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 49
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "medic",
+                "varsta": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "medic",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "cook",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "engineer",
+                "varsta": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "cook",
+                "varsta": 46
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "pilot",
+                "varsta": 56
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "medic",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "pilot",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "engineer",
+                "varsta": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "medic",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 38
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "pilot",
+                "varsta": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "engineer",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "guard",
+                "varsta": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "medic",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "cook",
+                "varsta": 26
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "guard",
+                "varsta": 60
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "pilot",
+                "varsta": 24
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "medic",
+                "varsta": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "engineer",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "medic",
+                "varsta": 26
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "cook",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 49
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "guard",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "pilot",
+                "varsta": 63
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "guard",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 59
+              }
+            }
+          ]
+        },
+        "rol": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "cook",
+                "varsta": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "cook",
+                "varsta": 22
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "cook",
+                "varsta": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 18
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "cook",
+                "varsta": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "cook",
+                "varsta": 61
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "guard",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "cook",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "guard",
+                "varsta": 56
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "engineer",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "medic",
+                "varsta": 23
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "engineer",
+                "varsta": 59
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "cook",
+                "varsta": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "medic",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "medic",
+                "varsta": 54
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "guard",
+                "varsta": 21
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 57
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "medic",
+                "varsta": 47
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "medic",
+                "varsta": 34
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "guard",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "cook",
+                "varsta": 24
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "medic",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "engineer",
+                "varsta": 28
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "cook",
+                "varsta": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "guard",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "engineer",
+                "varsta": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "medic",
+                "varsta": 49
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "guard",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "guard",
+                "varsta": 24
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "guard",
+                "varsta": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "medic",
+                "varsta": 56
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "medic",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "medic",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "pilot",
+                "varsta": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "cook",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "pilot",
+                "varsta": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "cook",
+                "varsta": 65
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "pilot",
+                "varsta": 54
+              }
+            }
+          ]
+        },
+        "rol": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "guard",
+                "varsta": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "medic",
+                "varsta": 49
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "engineer",
+                "varsta": 20
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "guard",
+                "varsta": 19
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "medic",
+                "varsta": 47
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "engineer",
+                "varsta": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "engineer",
+                "varsta": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "engineer",
+                "varsta": 42
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "cook",
+                "varsta": 64
+              }
+            }
+          ]
+        },
+        "rol": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "engineer",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "pilot",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "medic",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "pilot",
+                "varsta": 63
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "medic",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "guard",
+                "varsta": 21
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "pilot",
+                "varsta": 19
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "pilot",
+                "varsta": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "pilot",
+                "varsta": 46
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "guard",
+                "varsta": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "cook",
+                "varsta": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "pilot",
+                "varsta": 50
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "cook",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "guard",
+                "varsta": 24
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "cook",
+                "varsta": 20
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "medic",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "guard",
+                "varsta": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "engineer",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "medic",
+                "varsta": 47
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "engineer",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "guard",
+                "varsta": 43
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "engineer",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "medic",
+                "varsta": 22
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "engineer",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "guard",
+                "varsta": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "medic",
+                "varsta": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "engineer",
+                "varsta": 28
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "guard",
+                "varsta": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "engineer",
+                "varsta": 22
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 27
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "engineer",
+                "varsta": 63
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "medic",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "engineer",
+                "varsta": 43
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "guard",
+                "varsta": 49
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "engineer",
+                "varsta": 60
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 64
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "pilot",
+                "varsta": 20
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "guard",
+                "varsta": 63
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "pilot",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "medic",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "cook",
+                "varsta": 20
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "medic",
+                "varsta": 47
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 54
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "engineer",
+                "varsta": 54
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "medic",
+                "varsta": 51
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "medic",
+                "varsta": 27
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "pilot",
+                "varsta": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 59
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "medic",
+                "varsta": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "pilot",
+                "varsta": 24
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "guard",
+                "varsta": 63
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "medic",
+                "varsta": 57
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "guard",
+                "varsta": 23
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "medic",
+                "varsta": 48
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "medic",
+                "varsta": 61
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "medic",
+                "varsta": 57
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "guard",
+                "varsta": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "medic",
+                "varsta": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "cook",
+                "varsta": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "pilot",
+                "varsta": 46
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "engineer",
+                "varsta": 52
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "cook",
+                "varsta": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "medic",
+                "varsta": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "cook",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 46
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "pilot",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "pilot",
+                "varsta": 27
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "pilot",
+                "varsta": 23
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "rol": "cook",
+                "varsta": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "guard",
+                "varsta": 26
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 36
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "cook",
+                "varsta": 51
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "cook",
+                "varsta": 25
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "cook",
+                "varsta": 57
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "engineer",
+                "varsta": 57
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "engineer",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "pilot",
+                "varsta": 54
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "medic",
+                "varsta": 19
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 19
+              }
+            }
+          ]
+        },
+        "rol": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "guard",
+                "varsta": 42
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "medic",
+                "varsta": 29
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "pilot",
+                "varsta": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "rol": "pilot",
+                "varsta": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "cook",
+                "varsta": 21
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 60
+              }
+            }
+          ]
+        },
+        "rol": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "engineer",
+                "varsta": 58
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "pilot",
+                "varsta": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "pilot",
+                "varsta": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eli",
+                "rol": "engineer",
+                "varsta": 64
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "engineer",
+                "varsta": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "guard",
+                "varsta": 62
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mo",
+                "rol": "engineer",
+                "varsta": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Hal",
+                "rol": "guard",
+                "varsta": 47
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "medic",
+                "varsta": 29
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "cook",
+                "varsta": 28
+              }
+            }
+          ]
+        },
+        "rol": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "rol": "cook",
+                "varsta": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "pilot",
+                "varsta": 53
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Jo",
+                "rol": "guard",
+                "varsta": 21
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "cook",
+                "varsta": 28
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Gus",
+                "rol": "guard",
+                "varsta": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "guard",
+                "varsta": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ben",
+                "rol": "pilot",
+                "varsta": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lu",
+                "rol": "medic",
+                "varsta": 39
+              }
+            }
+          ]
+        },
+        "rol": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Dee",
+                "rol": "pilot",
+                "varsta": 36
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ned",
+                "rol": "medic",
+                "varsta": 54
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Cy",
+                "rol": "cook",
+                "varsta": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Fay",
+                "rol": "engineer",
+                "varsta": 57
+              }
+            }
+          ]
+        },
+        "rol": "engineer"
+      },
+      "generated": true
+    }
+  ]
+}

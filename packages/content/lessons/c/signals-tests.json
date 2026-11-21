@@ -1,0 +1,101 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "signal"
+      },
+      {
+        "kind": "call",
+        "name": "raise"
+      },
+      {
+        "kind": "call",
+        "name": "kill"
+      },
+      {
+        "kind": "call",
+        "name": "pause"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "USR1 USR2 ignore USR1 USR1 catch USR1\n"
+    },
+    {
+      "stdin": "USR2\n"
+    },
+    {
+      "stdin": "ignore ignore catch catch USR1\n"
+    },
+    {
+      "stdin": "catch USR1 USR1 USR1\n"
+    },
+    {
+      "stdin": "ignore USR1 USR2 USR2"
+    },
+    {
+      "stdin": "USR1 catch USR1 ignore USR2 ignore catch USR1 USR2 catch USR1 USR1 USR1 catch USR1 ignore USR2 USR2 USR1 USR1 USR1 USR1 ignore USR1 ignore USR1 USR1 USR2 ignore USR1\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 catch ignore USR1 USR2 ignore USR1 USR1 catch USR1 USR2 ignore ignore USR2 ignore ignore USR2 USR1 USR1 ignore USR2 catch USR2 USR2 USR2 USR1 USR2 USR1 catch ignore USR1 USR2 catch USR2 catch USR2 USR2 USR1 catch ignore USR1 catch USR1 ignore catch catch USR1 USR1 USR1 USR1 USR1 USR1 USR1 USR1 USR1 ignore catch USR1 USR2 USR1 ignore USR1 ignore USR1 USR1 USR1 USR1 USR2\n",
+      "generated": true
+    },
+    {
+      "stdin": "catch USR2 USR2 USR2 catch ignore USR2 catch ignore USR1 ignore USR1 ignore ignore ignore USR1 catch USR2 USR1 ignore USR1 ignore USR1 USR1 USR1 ignore USR2 USR2 USR1 USR1 ignore USR2 catch catch catch USR2 USR2 catch catch USR1 USR2 catch USR2 ignore USR1 USR2 ignore catch USR1 ignore ignore USR1 USR1 USR1 USR2 ignore ignore USR1 catch catch catch USR1 USR2 USR2\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 catch catch catch USR1 USR1 USR1 USR1 USR1 USR1 USR2 catch ignore catch USR1 ignore USR2 USR1 USR1 catch USR1 catch USR1 USR1 catch ignore USR1 USR1 USR1 USR1 USR2 USR1 catch USR1 catch USR2 ignore USR2 catch USR2 USR1 USR1 catch USR1 ignore catch USR1 USR2 USR1 USR1 catch USR1 USR1 catch USR1 USR2 catch USR1 ignore USR1 catch ignore USR1 catch USR1 USR1 USR2 USR1\n",
+      "generated": true
+    },
+    {
+      "stdin": "ignore ignore USR1 USR2 catch USR1 USR2 USR1 ignore ignore USR1 catch USR2 catch catch catch ignore USR2 USR1 USR2 USR1 ignore USR2 USR1 ignore ignore USR1 USR1 ignore USR1 USR1 USR2 ignore USR1 USR1 USR1 USR1 USR2 ignore USR1 USR1 USR2 USR2 USR1 catch ignore\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 USR1 catch USR1 USR1 catch USR2 USR2 USR1 USR1 USR1 USR1 ignore USR2 USR1 USR2 USR1 USR1 USR1 ignore USR2 ignore USR1 USR1 USR1 ignore USR1 USR1 ignore USR1 catch USR1 ignore USR2 USR2 USR1 catch USR2 USR1 catch catch USR2 USR1 catch ignore ignore USR2 USR1 USR1 USR1 USR2 catch ignore catch USR1 USR1 USR2 ignore USR2 catch USR1 USR1 USR1 USR1 ignore USR2 ignore ignore catch USR1 USR1 ignore catch ignore USR1 USR1 ignore USR1 USR1 ignore USR1 USR1 USR1 USR1 ignore ignore USR2 catch USR2 USR1 USR1 ignore ignore USR1 USR1 USR1 catch\n",
+      "generated": true
+    },
+    {
+      "stdin": "catch ignore USR2 ignore\n",
+      "generated": true
+    },
+    {
+      "stdin": "ignore ignore USR2 USR2 USR1 USR2 USR1 USR2 ignore USR1 USR2 USR2 USR1 USR1 ignore USR1 USR1 ignore USR2 USR1 USR1 USR2 USR1 USR1 catch catch ignore USR2 USR1 USR1 USR2 USR2 catch USR1 USR2 USR1 catch ignore USR1 catch ignore USR2 catch USR1 USR2 catch USR1 ignore catch USR2 USR1 catch USR1 USR1 ignore USR2 ignore catch catch USR2 ignore USR1 USR2 USR1 catch USR1 USR1 ignore catch USR1 USR1 USR1 USR2 USR1 USR2 ignore USR1 USR1 ignore catch ignore ignore USR1 catch USR1 ignore USR1 USR1 USR1 USR1\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 USR1 USR1 ignore USR1 USR1 catch USR1 catch USR1 ignore USR1 USR1 USR2 catch catch ignore ignore USR1 USR2 USR2 catch catch USR2 USR1 USR2 USR1 USR1 catch USR2 catch USR1 USR2 USR1 USR2 USR2 USR1 catch USR1\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 USR2 ignore catch catch USR1 USR1 ignore USR2 USR1 ignore USR2 USR1 USR2 ignore USR1 USR1 ignore USR1 USR2 USR1 USR1 USR1 catch catch USR2 ignore USR2 USR1 USR1 USR2 ignore\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR2 ignore ignore ignore USR1 USR1 ignore USR1 ignore USR1 USR2 ignore ignore USR1 USR1 USR2 USR1 USR2 USR1 ignore ignore ignore ignore catch ignore catch USR1 USR1 USR1 USR1 ignore USR1 ignore USR1 catch USR1 USR1 catch USR1 USR2 ignore ignore ignore USR1 USR2 USR1 USR1 ignore USR1 USR1 ignore USR1 ignore USR1 ignore USR1 USR1 catch catch catch USR1 catch ignore USR1 USR1 USR2 catch USR1 catch catch USR1\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 USR1 catch catch ignore USR1 ignore USR1 USR1 USR1 catch USR1 USR2 USR1 catch catch ignore ignore USR1 catch USR1 ignore USR2 ignore ignore catch catch USR1 ignore USR1 ignore ignore USR2 USR1 catch USR1 USR1 USR1 USR1 ignore catch ignore USR1 ignore USR2 USR2 catch catch USR1 USR1 USR1 USR1 catch USR1 USR1 USR1 ignore catch ignore USR2 USR1 USR1 ignore USR1 USR1 USR2 USR1 ignore catch USR1 USR2 catch USR2 USR1 catch USR2 ignore USR1\n",
+      "generated": true
+    },
+    {
+      "stdin": "catch catch USR2 ignore USR2 USR2 ignore USR2 USR2 USR1 USR2 USR1 USR2 USR1 catch ignore USR1 USR2 ignore USR1 USR1 catch USR1 USR2 USR2 USR2 ignore USR1 USR1 ignore USR2 catch catch USR1 USR1 ignore ignore USR2 USR1 USR1 catch ignore USR1 USR2 USR1 catch USR2 catch catch ignore catch USR2 ignore USR1 USR1 USR1 USR1 ignore ignore USR2 USR2 ignore catch\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR1 USR1 USR2 catch USR2 catch USR1 catch catch catch catch USR1 USR1 catch catch ignore ignore ignore ignore USR2 USR1 catch USR1 USR1 USR1 USR1 USR1 ignore USR1 catch catch catch USR2 ignore\n",
+      "generated": true
+    },
+    {
+      "stdin": "USR2 USR2 catch USR1 USR1 USR1 USR1 USR1 USR2 USR1 USR2 USR1 USR2 ignore USR1 ignore USR1 ignore ignore catch USR1 ignore USR1 ignore ignore USR2 ignore catch USR1 USR2 USR1 USR2 USR2 ignore USR1 USR1 USR1 USR1 USR1 ignore catch USR1 USR1 catch catch USR2 USR1 USR1 USR1 USR2 ignore USR2 USR1 USR1 catch ignore USR1 USR2 USR1 catch USR2 USR1 catch catch ignore USR1 ignore USR1 USR1 ignore catch USR1 ignore USR1 catch USR2 ignore ignore catch catch USR2 catch ignore USR2 USR2 USR1 USR1 USR1 USR2 USR1 catch USR1 USR1 USR1 USR1 USR1 catch\n",
+      "generated": true
+    }
+  ]
+}

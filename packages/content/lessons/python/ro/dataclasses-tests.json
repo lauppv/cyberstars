@@ -1,0 +1,488 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Lada"
+      },
+      {
+        "kind": "decorator",
+        "name": "dataclass"
+      },
+      {
+        "kind": "call",
+        "name": "sorted"
+      },
+      {
+        "kind": "variable",
+        "name": "greutati"
+      },
+      {
+        "kind": "variable",
+        "name": "etichete"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "greutati": {
+          "$list": [40, 5, 40]
+        },
+        "etichete": {
+          "$list": ["mancare", "seminte", "carti"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "greutati": {
+          "$list": [7, 7]
+        },
+        "etichete": {
+          "$list": ["unelte", "unelte"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [100]
+        },
+        "etichete": {
+          "$list": ["x"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [1, 2, 1, 1]
+        },
+        "etichete": {
+          "$list": ["a", "a", "a", "b"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        },
+        "etichete": {
+          "$list": ["z", "z", "z", "z", "z", "z", "z", "z", "z", "z"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 10, 20, 10, 84, 20, 10, 20, 18, 46]
+        },
+        "etichete": {
+          "$list": [
+            "food",
+            "seeds",
+            "books",
+            "tools",
+            "toys",
+            "seeds",
+            "glass",
+            "water",
+            "tools",
+            "food"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [31, 10, 61, 47, 10, 46, 20, 10, 10]
+        },
+        "etichete": {
+          "$list": ["toys", "glass", "books", "seeds", "seeds", "seeds", "food", "toys", "books"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 63, 10, 20, 20]
+        },
+        "etichete": {
+          "$list": ["toys", "glass", "water", "water", "tools"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 46, 10, 10]
+        },
+        "etichete": {
+          "$list": ["books", "food", "books", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [71, 10, 20, 10, 20, 95, 35]
+        },
+        "etichete": {
+          "$list": ["tools", "toys", "water", "books", "food", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 10, 54, 62, 10]
+        },
+        "etichete": {
+          "$list": ["seeds", "food", "water", "glass", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 80, 5]
+        },
+        "etichete": {
+          "$list": ["seeds", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [90, 23, 10]
+        },
+        "etichete": {
+          "$list": ["books", "tools", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [95, 10]
+        },
+        "etichete": {
+          "$list": ["tools", "books"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [42, 4, 10, 20, 10, 70, 26, 40, 10]
+        },
+        "etichete": {
+          "$list": ["water", "glass", "glass", "water", "glass", "water", "food", "seeds", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 17, 20, 10, 20, 10, 5, 90, 10, 81]
+        },
+        "etichete": {
+          "$list": [
+            "food",
+            "books",
+            "toys",
+            "tools",
+            "seeds",
+            "water",
+            "seeds",
+            "food",
+            "toys",
+            "tools"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 10, 20, 20, 10, 20, 20, 26, 10]
+        },
+        "etichete": {
+          "$list": ["seeds", "food", "water", "seeds", "seeds", "seeds", "food", "toys", "tools"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 20, 20, 20, 20, 20]
+        },
+        "etichete": {
+          "$list": ["seeds", "toys", "books", "water", "seeds", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 10, 20, 10, 20, 10, 72, 10, 9]
+        },
+        "etichete": {
+          "$list": ["food", "glass", "seeds", "toys", "water", "toys", "toys", "glass", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [79, 10, 20, 10, 20, 86]
+        },
+        "etichete": {
+          "$list": ["food", "glass", "water", "seeds", "books", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 20]
+        },
+        "etichete": {
+          "$list": ["seeds", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [45, 20, 59, 10, 20, 10, 24, 10, 10, 7]
+        },
+        "etichete": {
+          "$list": [
+            "toys",
+            "seeds",
+            "tools",
+            "food",
+            "water",
+            "tools",
+            "tools",
+            "toys",
+            "seeds",
+            "food"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 10]
+        },
+        "etichete": {
+          "$list": ["glass", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 10, 20, 20, 2, 20, 20, 20, 10]
+        },
+        "etichete": {
+          "$list": ["toys", "glass", "water", "water", "books", "toys", "books", "toys", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 10, 35, 10, 81]
+        },
+        "etichete": {
+          "$list": ["toys", "glass", "toys", "books", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 10, 1, 10]
+        },
+        "etichete": {
+          "$list": ["food", "seeds", "seeds", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 10, 18, 50, 10, 20, 10, 10, 20, 20]
+        },
+        "etichete": {
+          "$list": [
+            "food",
+            "glass",
+            "tools",
+            "tools",
+            "tools",
+            "books",
+            "books",
+            "glass",
+            "food",
+            "books"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 10]
+        },
+        "etichete": {
+          "$list": ["water", "water"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 10, 10, 10, 10, 20, 20, 20, 20, 20]
+        },
+        "etichete": {
+          "$list": [
+            "books",
+            "food",
+            "books",
+            "books",
+            "toys",
+            "books",
+            "tools",
+            "food",
+            "water",
+            "toys"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [22, 16, 10, 20, 10, 13]
+        },
+        "etichete": {
+          "$list": ["books", "water", "toys", "water", "tools", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 20, 10, 20, 10, 3, 10, 70, 10]
+        },
+        "etichete": {
+          "$list": ["books", "glass", "books", "water", "food", "tools", "water", "toys", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 20, 2, 86, 47, 20]
+        },
+        "etichete": {
+          "$list": ["seeds", "food", "glass", "toys", "seeds", "books"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [86, 61, 20, 20, 56, 20, 88, 20]
+        },
+        "etichete": {
+          "$list": ["glass", "tools", "toys", "seeds", "food", "water", "tools", "water"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [10, 20, 4, 23, 10, 22]
+        },
+        "etichete": {
+          "$list": ["tools", "seeds", "seeds", "glass", "food", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 14, 20, 10, 46]
+        },
+        "etichete": {
+          "$list": ["tools", "seeds", "toys", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [20, 20, 10, 20, 20, 26, 88, 16]
+        },
+        "etichete": {
+          "$list": ["books", "seeds", "toys", "glass", "seeds", "water", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "greutati": {
+          "$list": [7, 20]
+        },
+        "etichete": {
+          "$list": ["food", "tools"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

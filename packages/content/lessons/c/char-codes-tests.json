@@ -1,0 +1,187 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fgets"
+      },
+      {
+        "kind": "loop"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "toupper"
+      },
+      {
+        "kind": "call",
+        "name": "islower"
+      },
+      {
+        "kind": "call",
+        "name": "isupper"
+      },
+      {
+        "kind": "call",
+        "name": "isdigit"
+      },
+      {
+        "kind": "call",
+        "name": "isalpha"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "tape 42 on drive 7\n"
+    },
+    {
+      "visible": true,
+      "stdin": "Hello, Bell Labs!\n"
+    },
+    {
+      "stdin": "abcdefghijklmnopqrstuvwxyz\n"
+    },
+    {
+      "stdin": "ALREADY LOUD 0\n"
+    },
+    {
+      "stdin": "9999999999\n"
+    },
+    {
+      "stdin": "a\n"
+    },
+    {
+      "stdin": "`{@[ az AZ 09 ~\n"
+    },
+    {
+      "stdin": "x\n"
+    },
+    {
+      "stdin": "   spaces   3   \n"
+    },
+    {
+      "stdin": "card card bell pdp tape Unix run 1984\n",
+      "generated": true
+    },
+    {
+      "stdin": "pdp load reel LAB reel load dump 7672\n",
+      "generated": true
+    },
+    {
+      "stdin": "LAB Unix byte\n",
+      "generated": true
+    },
+    {
+      "stdin": "bell dump # 3674 drive load pdp\n",
+      "generated": true
+    },
+    {
+      "stdin": "byte tape byte\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "core drive C C Shift 4395 card\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape core\n",
+      "generated": true
+    },
+    {
+      "stdin": "bell 7880 LAB . Unix Shift dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "core\n",
+      "generated": true
+    },
+    {
+      "stdin": "C byte run 1516 1311 4966 reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "load core card\n",
+      "generated": true
+    },
+    {
+      "stdin": "C reel pdp LAB\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump pdp\n",
+      "generated": true
+    },
+    {
+      "stdin": "load Shift 6241 pdp drive Shift\n",
+      "generated": true
+    },
+    {
+      "stdin": "drive dump byte core Shift core tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "Unix drive drive Unix C byte core drive\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape , Shift bell LAB\n",
+      "generated": true
+    },
+    {
+      "stdin": "card Unix dump card\n",
+      "generated": true
+    },
+    {
+      "stdin": "1556 reel 9227 drive 4648 drive pdp LAB\n",
+      "generated": true
+    },
+    {
+      "stdin": "drive byte\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "Unix\n",
+      "generated": true
+    },
+    {
+      "stdin": "card bell Unix\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape C 8368 dump bell bell\n",
+      "generated": true
+    },
+    {
+      "stdin": "card ! Unix bell dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape reel Shift drive byte dump card\n",
+      "generated": true
+    },
+    {
+      "stdin": "Shift 1089 6550 byte drive\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump drive 1049 byte card pdp run ;\n",
+      "generated": true
+    },
+    {
+      "stdin": "Unix load tape bell 1493 tape\n",
+      "generated": true
+    }
+  ]
+}

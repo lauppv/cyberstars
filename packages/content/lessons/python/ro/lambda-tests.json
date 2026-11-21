@@ -1,0 +1,388 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "schimba_tot"
+      },
+      {
+        "kind": "lambda"
+      },
+      {
+        "kind": "variable",
+        "name": "preturi"
+      },
+      {
+        "kind": "variable",
+        "name": "taxa"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "preturi": {
+          "$list": [23, 40, 7]
+        },
+        "taxa": 5
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "preturi": {
+          "$list": [0, 1, 10, 11]
+        },
+        "taxa": 0
+      }
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [1000]
+        },
+        "taxa": 100
+      }
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [9, 19, 99, 999]
+        },
+        "taxa": 1
+      }
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+        },
+        "taxa": 50
+      }
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [
+            705, 566, 962, 935, 195, 298, 255, 887, 341, 74, 475, 332, 406, 496, 835, 444, 210, 202,
+            324
+          ]
+        },
+        "taxa": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [925]
+        },
+        "taxa": 21
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [652, 358, 958, 396, 377, 165, 810, 813, 579, 808, 893]
+        },
+        "taxa": 97
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [
+            200, 65, 417, 462, 750, 223, 1000, 421, 433, 133, 227, 392, 417, 416, 764, 663, 416,
+            667, 105, 659
+          ]
+        },
+        "taxa": 93
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [
+            60, 357, 367, 691, 208, 488, 69, 595, 930, 502, 547, 541, 799, 75, 864, 659, 481
+          ]
+        },
+        "taxa": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [111, 141, 901, 128, 955, 963, 80]
+        },
+        "taxa": 29
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [111, 922, 597, 836, 520, 558, 457, 447, 868, 58, 994]
+        },
+        "taxa": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [521, 903, 21, 117, 416, 250, 797, 5, 419, 679]
+        },
+        "taxa": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [866, 622, 382, 236, 598, 323, 604, 502, 234]
+        },
+        "taxa": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [220, 366, 547, 722, 593, 405, 493, 20, 227, 99, 318]
+        },
+        "taxa": 47
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [525, 871, 764]
+        },
+        "taxa": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [
+            133, 932, 813, 831, 857, 858, 718, 612, 324, 505, 644, 421, 86, 725, 812, 172, 869, 648
+          ]
+        },
+        "taxa": 82
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [119, 99]
+        },
+        "taxa": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [953, 381, 271, 312, 23]
+        },
+        "taxa": 29
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [891, 569, 431, 109, 153, 981]
+        },
+        "taxa": 72
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [241, 255, 518]
+        },
+        "taxa": 32
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [419, 218, 596, 118, 936, 737, 803, 82, 617, 284, 565, 916]
+        },
+        "taxa": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [452, 217, 411]
+        },
+        "taxa": 60
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [962, 365, 327, 959, 341, 500, 96, 331, 218, 130, 701, 651, 997]
+        },
+        "taxa": 99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [268, 24, 143, 177, 161, 932, 962, 539, 633, 559]
+        },
+        "taxa": 21
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [32, 358, 364, 652, 272, 350, 466, 591, 570, 651, 462, 294, 613, 912]
+        },
+        "taxa": 96
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [880, 385, 921, 511, 947, 782, 792, 926, 705, 447, 710, 882, 417]
+        },
+        "taxa": 35
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [
+            950, 742, 792, 874, 7, 192, 286, 953, 623, 471, 698, 718, 810, 822, 360, 269, 747, 725,
+            404
+          ]
+        },
+        "taxa": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [
+            797, 331, 209, 975, 105, 132, 370, 943, 746, 304, 182, 480, 633, 364, 875, 735, 822,
+            156, 267
+          ]
+        },
+        "taxa": 85
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [192, 429, 232, 96, 145, 584, 286, 683, 363, 232, 609]
+        },
+        "taxa": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [719]
+        },
+        "taxa": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [338, 930, 648, 15, 328, 66, 348, 982, 442, 342, 824, 382, 403, 450, 137, 194]
+        },
+        "taxa": 47
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [815, 127, 132, 215, 184, 373, 183]
+        },
+        "taxa": 52
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [623, 88, 497, 235, 7, 111, 174]
+        },
+        "taxa": 55
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [238, 432, 452, 594, 461, 424, 317, 214, 86, 800]
+        },
+        "taxa": 60
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [460, 658, 599, 926, 329, 431, 661, 394]
+        },
+        "taxa": 63
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [664, 498, 49, 108, 264, 858]
+        },
+        "taxa": 26
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [866, 757, 238, 960, 634, 407, 160, 863, 475, 721, 764, 893]
+        },
+        "taxa": 99
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "preturi": {
+          "$list": [24, 974, 838, 993, 547, 601, 699, 334]
+        },
+        "taxa": 9
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "EroareInventar"
+      },
+      {
+        "kind": "class",
+        "name": "Inventar"
+      },
+      {
+        "kind": "extends",
+        "name": "Exception"
+      },
+      {
+        "kind": "function",
+        "name": "adauga"
+      },
+      {
+        "kind": "function",
+        "name": "scoate"
+      },
+      {
+        "kind": "function",
+        "name": "salveaza"
+      },
+      {
+        "kind": "function",
+        "name": "incarca_inventar"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "with"
+      },
+      {
+        "kind": "import",
+        "name": "json"
+      },
+      {
+        "kind": "call",
+        "name": "dump"
+      },
+      {
+        "kind": "call",
+        "name": "load"
+      },
+      {
+        "kind": "call",
+        "name": "input"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "adauga orez 10 2\nadauga unelte 1 30\nscoate orez 4\nscoate orez 9\nscoate ceai 1\nadauga orez 5 9\nend\n"
+    },
+    {
+      "visible": true,
+      "stdin": "end\n"
+    },
+    {
+      "stdin": "adauga orez 3 1\nscoate orez 3\nend\n"
+    },
+    {
+      "stdin": "adauga apa 10 5\nadauga seminte 50 1\nadauga unelte 2 25\nend\n"
+    },
+    {
+      "stdin": "scoate sapun 1\nadauga sapun 1 1\nscoate sapun 2\nscoate sapun 1\nadauga cablu 100 50\nend\n"
+    },
+    {
+      "stdin": "scoate fuel 29\nscoate orez 4\nadauga cablu 50 4\nscoate seminte 26\nadauga sticla 53 31\nscoate cablu 32\nscoate seminte 2\nadauga sticla 13 45\nscoate cablu 33\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga cablu 99 45\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga cablu 66 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga apa 86 19\nscoate apa 1\nscoate cablu 7\nadauga sapun 8 34\nadauga unelte 64 23\nscoate unelte 25\nscoate unelte 25\nadauga unelte 86 25\nadauga ceai 16 14\nadauga fuel 15 35\nadauga sticla 31 32\nadauga cablu 80 36\nscoate fuel 60\nscoate seminte 9\nscoate sapun 58\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga sticla 27 39\nscoate apa 10\nscoate apa 29\nadauga orez 33 44\nscoate ceai 16\nscoate sticla 22\nscoate ceai 33\nadauga seminte 50 6\nadauga orez 13 12\nscoate apa 8\nadauga ceai 63 19\nadauga apa 43 27\nscoate cablu 22\nscoate fuel 27\nscoate ceai 2\nadauga orez 20 29\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga unelte 32 24\nscoate unelte 10\nadauga apa 36 5\nadauga fuel 80 22\nscoate apa 6\nadauga apa 20 1\nadauga fuel 34 3\nadauga apa 81 8\nadauga unelte 59 42\nadauga unelte 60 34\nscoate fuel 50\nadauga unelte 97 18\nscoate sticla 30\nadauga sticla 35 17\nadauga ceai 43 36\nadauga sticla 64 41\nscoate sapun 27\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga sapun 74 49\nadauga ceai 53 6\nadauga fuel 81 9\nadauga seminte 52 45\nadauga apa 53 42\nadauga unelte 20 18\nscoate orez 35\nscoate sapun 37\nadauga cablu 48 7\nscoate sticla 12\nscoate sapun 47\nscoate apa 24\nscoate cablu 11\nadauga orez 15 37\nadauga sticla 75 24\nadauga cablu 11 35\nadauga unelte 76 30\nadauga apa 12 35\nadauga sapun 77 31\nscoate unelte 45\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate cablu 51\nadauga sapun 4 22\nscoate orez 45\nscoate sapun 1\nscoate apa 32\nscoate orez 26\nadauga apa 89 20\nadauga sapun 52 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga sapun 6 29\nscoate fuel 47\nscoate apa 53\nadauga sticla 8 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga orez 26 49\nscoate cablu 52\nadauga ceai 43 44\nscoate ceai 60\nadauga seminte 23 27\nscoate apa 41\nadauga fuel 62 43\nscoate fuel 60\nadauga cablu 94 25\nadauga orez 86 3\nscoate seminte 32\nadauga sticla 54 32\nadauga unelte 7 30\nscoate seminte 15\nadauga sticla 51 20\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga seminte 62 14\nscoate ceai 8\nadauga ceai 62 1\nscoate apa 54\nscoate sapun 5\nscoate seminte 49\nscoate sticla 47\nscoate ceai 14\nscoate orez 10\nscoate cablu 1\nadauga sticla 82 42\nadauga apa 5 50\nscoate ceai 15\nadauga orez 31 47\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga orez 67 11\nadauga ceai 15 7\nadauga seminte 67 11\nscoate cablu 25\nscoate ceai 23\nscoate seminte 11\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga sapun 86 5\nscoate sticla 54\nscoate seminte 7\nscoate apa 16\nscoate ceai 38\nscoate cablu 37\nscoate ceai 37\nscoate sapun 31\nscoate unelte 29\nadauga orez 32 33\nscoate ceai 6\nscoate fuel 39\nscoate sticla 34\nadauga orez 24 11\nadauga seminte 13 4\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga apa 14 23\nscoate seminte 13\nadauga cablu 72 25\nscoate fuel 29\nscoate fuel 6\nscoate apa 37\nscoate sapun 29\nadauga orez 17 42\nadauga orez 61 2\nadauga apa 71 48\nscoate cablu 19\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate orez 41\nadauga apa 51 39\nadauga sticla 70 5\nadauga apa 67 26\nadauga orez 57 2\nadauga unelte 69 19\nscoate unelte 54\nscoate orez 18\nadauga cablu 93 41\nadauga orez 85 38\nadauga seminte 20 34\nscoate unelte 52\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate orez 50\nadauga fuel 4 31\nadauga sapun 100 42\nscoate apa 58\nadauga cablu 65 10\nscoate sapun 3\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga fuel 23 20\nscoate orez 27\nadauga seminte 24 29\nscoate sapun 42\nadauga ceai 94 10\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga orez 33 42\nadauga seminte 63 2\nadauga ceai 80 5\nscoate fuel 31\nscoate unelte 48\nadauga fuel 53 41\nscoate sapun 41\nadauga sapun 10 18\nscoate orez 56\nadauga seminte 26 8\nadauga seminte 33 10\nscoate ceai 37\nscoate seminte 39\nscoate apa 59\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga orez 52 24\nadauga unelte 42 11\nadauga seminte 11 27\nadauga sapun 12 49\nadauga fuel 97 29\nscoate sapun 1\nscoate unelte 8\nadauga sticla 100 44\nadauga unelte 21 11\nscoate seminte 39\nscoate seminte 30\nadauga cablu 60 8\nscoate ceai 23\nadauga orez 99 21\nscoate ceai 38\nadauga seminte 88 44\nadauga apa 57 24\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate cablu 34\nscoate apa 14\nadauga sapun 60 25\nadauga sticla 46 23\nadauga sapun 6 25\nadauga seminte 5 43\nadauga seminte 71 4\nscoate fuel 55\nadauga ceai 76 16\nscoate ceai 17\nadauga fuel 27 25\nscoate unelte 5\nscoate apa 56\nadauga ceai 82 9\nadauga orez 83 18\nadauga orez 56 47\nscoate ceai 18\nadauga apa 27 21\nscoate orez 59\nscoate cablu 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga orez 59 44\nadauga cablu 93 33\nscoate sapun 17\nscoate seminte 47\nscoate seminte 33\nscoate sticla 59\nscoate cablu 30\nscoate unelte 30\nscoate fuel 39\nadauga sapun 67 15\nscoate fuel 34\nadauga unelte 98 38\nscoate sapun 31\nscoate orez 20\nscoate apa 26\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga fuel 45 45\nscoate cablu 48\nscoate fuel 53\nscoate seminte 20\nadauga sapun 45 38\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate apa 60\nscoate orez 56\nscoate ceai 31\nadauga orez 56 38\nadauga unelte 22 4\nscoate cablu 23\nadauga orez 54 29\nscoate apa 54\nadauga fuel 70 27\nadauga fuel 69 18\nscoate orez 41\nadauga seminte 3 18\nscoate sapun 35\nscoate orez 52\nscoate sticla 59\nadauga seminte 8 22\nadauga unelte 4 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate ceai 37\nadauga sapun 36 47\nscoate orez 27\nadauga cablu 81 17\nscoate fuel 19\nadauga sticla 23 30\nscoate ceai 57\nadauga ceai 38 20\nscoate cablu 46\nscoate sapun 38\nadauga unelte 51 20\nadauga orez 33 6\nscoate sapun 26\nadauga unelte 42 32\nadauga sticla 24 12\nscoate unelte 59\nscoate sapun 6\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate ceai 29\nscoate fuel 35\nadauga seminte 49 6\nscoate unelte 39\nadauga sticla 49 16\nscoate fuel 34\nscoate fuel 32\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate unelte 7\nscoate fuel 51\nadauga sapun 91 43\nscoate cablu 60\nadauga sticla 38 26\nscoate cablu 48\nadauga apa 34 39\nadauga ceai 53 48\nadauga ceai 99 30\nscoate fuel 29\nscoate sapun 30\nadauga unelte 59 35\nadauga sapun 26 24\nadauga cablu 3 18\nscoate fuel 18\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate sapun 20\nadauga ceai 56 37\nscoate apa 15\nscoate ceai 27\nscoate fuel 35\nadauga sapun 42 40\nadauga cablu 86 39\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga sapun 89 48\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga cablu 7 13\nscoate fuel 49\nadauga seminte 61 23\nadauga unelte 93 31\nscoate sapun 48\nadauga cablu 32 32\nscoate apa 59\nscoate unelte 55\nscoate ceai 1\nscoate fuel 33\nadauga ceai 47 23\nadauga fuel 95 49\nscoate fuel 16\nadauga unelte 92 6\nadauga fuel 86 13\nadauga ceai 27 32\nscoate cablu 44\nscoate orez 39\nscoate seminte 27\nscoate ceai 29\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "scoate apa 7\nadauga apa 13 8\nadauga cablu 4 48\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga cablu 97 1\nadauga sticla 67 31\nscoate ceai 57\nadauga unelte 86 9\nadauga cablu 13 37\nadauga fuel 93 44\nadauga sapun 99 10\nadauga sticla 62 27\nadauga ceai 58 32\nadauga unelte 5 44\nscoate cablu 26\nadauga apa 28 37\nscoate apa 25\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga seminte 90 23\nscoate sticla 7\nadauga unelte 68 28\nadauga fuel 91 40\nscoate ceai 52\nscoate fuel 39\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "adauga sticla 33 26\nscoate sapun 30\nadauga orez 94 27\nscoate cablu 53\nadauga apa 45 2\nscoate seminte 14\nadauga unelte 11 38\nscoate fuel 23\nend\n",
+      "generated": true
+    }
+  ]
+}

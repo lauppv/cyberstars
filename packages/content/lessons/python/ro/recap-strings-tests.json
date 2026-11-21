@@ -1,0 +1,277 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "jurnal"
+      },
+      {
+        "kind": "call",
+        "name": "split"
+      },
+      {
+        "kind": "format_spec"
+      },
+      {
+        "kind": "call",
+        "name": "ord"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "jurnal": "motor ionic=93.456;scut=7.1;sistem de viata=100"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "jurnal": "radar=0;pompa de apa=55.55"
+      }
+    },
+    {
+      "inject": {
+        "jurnal": "x=0"
+      }
+    },
+    {
+      "inject": {
+        "jurnal": "a=100"
+      }
+    },
+    {
+      "inject": {
+        "jurnal": "abcdefghijklmn=99.999"
+      }
+    },
+    {
+      "inject": {
+        "jurnal": "ion drive=0.0;shield=12.5;life support=25.0;radar=37.5;water pump=50.0;oxygen=62.5;heater=75.0;comms=87.5"
+      }
+    },
+    {
+      "inject": {
+        "jurnal": "zz top=0.05;aa=0.15"
+      }
+    },
+    {
+      "inject": {
+        "jurnal": "heater=18.9;axiq=22;gravity=0;yddpdeeuxjjw=7.6;life support=48.85"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "ion drive=69.37;life support=82.1;comms=35.8;x=35.1;heater=56.9"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "dock arm=86.94;heater=31.061;life support=32.1;gravity=97;solar panel=28.653;air filter=50.7;xgfv=30;o fk=24"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "dock arm=44.7;laser=17.743"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "oxygen=51.986;laser=75.9;wlwjvrci=86.6;ion drive=36.64;comms=56;oxygen=83.134"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "air filter=83.9;life support=34.13;lights=54.55;gravity=5.455;yav=42.41;radar=9.5"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "we=90.7;comms=36.201;sflunpkudwgkko=51.831;oxygen=17.4;dock arm=75;air filter=95.74;ovi y=49;solar panel=65.42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "gravity=47.6;qorohhpvkafe=63;lights=44.39;comms=20.55;water pump=71.9;oxygen=57.0;life support=29;water pump=8.6"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "solar panel=55.188;dock arm=29.872;epdd=15;jtflhd=0.01;x=58.005;air filter=22.3;dock arm=7.044;heater=93.51"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "life support=24.159;qvqdyamn lacny=74.377;ion drive=5.4;water pump=14.326"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "air filter=12;jmoxuh=73.37;ifp=76.817;uc=78;gravity=51.7"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "water pump=32.5;ivarlvasv=4.83"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "wuvvbq=25.74;laser=75.208;radar=12.83;lights=5.0;dcohlmwfzgqsv=60;radar=33.68;oxygen=96.8"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "laser=87.384;ix=89.497;dock arm=52.38;jt=24.926;dock arm=50.38;dock arm=61.9;ion drive=21;idscofghnv=73.632"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "oxygen=47.5;comms=0;ion drive=80.342;air filter=6.91;uezw=91;solar panel=65;air filter=4.6;oxygen=93"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "xbbijp=48.74"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "shield=59.7;bj=94.458"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "x=30;air filter=31.89;water pump=26.956"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "water pump=64;ion drive=25.4"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "xcpyuubmr=56;life support=49.326;oxygen=94.051;comms=2.495;water pump=36.1"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "water pump=59.3;solar panel=52;oxygen=30.967;air filter=34.6;comms=61.55"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "gravity=24;ion drive=63.81;water pump=89;mdx=11.42"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "solar panel=47.5;hpqogbfllp=81.3;water pump=13.7;oxygen=44.1;ojuqwactg=28.1;solar panel=85.66"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "solar panel=24.9"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "air filter=99;comms=64.2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "solar panel=89.4;wkitjv=66;otn=71.1;ion drive=91.7;lights=26;laser=82.6;gravity=34.5"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "solar panel=51.4;wlocpthq=20.166"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "shield=87;radar=55;x=96"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "ion drive=37;laser=15.12;comms=16.7;comms=89;radar=94.963"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "kjnymgo zxhw=87;oxygen=3.4"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "air filter=3.48"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "ion drive=52.045;utktaemvjxx=92;laser=13.6;lights=11"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "solar panel=73.747;ion drive=43.7;dock arm=55.298;dock arm=10.8;laser=28.8;air filter=50.01"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "ion drive=7.6;comms=95.7;life support=63;dock arm=84;ion drive=97.6"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "gravity=100;lights=10.328;txzb=39.0;lights=59;water pump=99.13;xpdfctg=86;ion drive=30.828"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jurnal": "gravity=79;heater=62;heater=23;air filter=79;water pump=46.8;air filter=44.65;laser=80.27;air filter=20.215"
+      },
+      "generated": true
+    }
+  ]
+}

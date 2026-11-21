@@ -1,0 +1,112 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "waitpid"
+      },
+      {
+        "kind": "call",
+        "name": "WEXITSTATUS"
+      },
+      {
+        "kind": "call",
+        "name": "WTERMSIG"
+      },
+      {
+        "kind": "call",
+        "name": "abort"
+      },
+      {
+        "kind": "call",
+        "name": "fflush"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "12 7 -3 1\n"
+    },
+    {
+      "stdin": "1\n"
+    },
+    {
+      "stdin": "-1\n"
+    },
+    {
+      "stdin": "200 199 180 -100\n"
+    },
+    {
+      "stdin": "-5 -6 7"
+    },
+    {
+      "stdin": "128 64 32 16 8 4 2 1\n"
+    },
+    {
+      "stdin": "166 99 94\n",
+      "generated": true
+    },
+    {
+      "stdin": "59 172 10 160 197 106 188\n",
+      "generated": true
+    },
+    {
+      "stdin": "191 19 177\n",
+      "generated": true
+    },
+    {
+      "stdin": "21 109 172 -2 35 109 -42 49\n",
+      "generated": true
+    },
+    {
+      "stdin": "36 -54\n",
+      "generated": true
+    },
+    {
+      "stdin": "80 190\n",
+      "generated": true
+    },
+    {
+      "stdin": "144 185 179 166 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "26 126 78 39 176 166\n",
+      "generated": true
+    },
+    {
+      "stdin": "34 104 60 87 175 158\n",
+      "generated": true
+    },
+    {
+      "stdin": "69 150 39 -3 36\n",
+      "generated": true
+    },
+    {
+      "stdin": "137 4 75 118 160\n",
+      "generated": true
+    },
+    {
+      "stdin": "152 81 176 9 -62\n",
+      "generated": true
+    },
+    {
+      "stdin": "83 -2 160\n",
+      "generated": true
+    },
+    {
+      "stdin": "51 173 196\n",
+      "generated": true
+    },
+    {
+      "stdin": "70 64 195 159 153 199 120\n",
+      "generated": true
+    }
+  ]
+}

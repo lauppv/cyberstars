@@ -1,0 +1,20 @@
+import json
+
+events = ["08:15 dock opened", "08:40 crew lunch", "13:05 dock closed"]
+with open("events.txt", "w") as f:
+    for e in events:
+        f.write(e + "\n")
+counts = {}
+with open("events.txt") as f:
+    for line in f:
+        key = line[:5]
+        counts[key] = counts.get(key, 0) + 1
+with open("summary.json", "w") as f:
+    json.dump(counts, f)
+with open("summary.json") as f:
+    data = json.load(f)
+for h, n in data.items():
+    print(f"{h}: {n}")
+print(f"Busiest: {max(data, key=data.get)}")
+with open("summary.json") as f:
+    print(f"Bytes: {len(f.read())}")

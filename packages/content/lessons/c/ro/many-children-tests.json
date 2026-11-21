@@ -1,0 +1,96 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "wait"
+      },
+      {
+        "kind": "call",
+        "name": "WEXITSTATUS"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "4\n7 12 1 999983\n"
+    },
+    {
+      "stdin": "1\n1\n"
+    },
+    {
+      "stdin": "1\n2\n"
+    },
+    {
+      "stdin": "1\n4\n"
+    },
+    {
+      "stdin": "8\n1000000 999979 2 3 9 25 49 97\n"
+    },
+    {
+      "stdin": "8\n999983 1 1 1 1 1 1 2\n"
+    },
+    {
+      "stdin": "2\n999983 999983\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\n39 104729 698658 999979 161109 55\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\n999979 857535\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\n999983\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\n95 42\n",
+      "generated": true
+    },
+    {
+      "stdin": "6\n104729 32 19 369090 505627 999979\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\n7919 76 288326 620661 658350 104729 27 999983\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\n7919\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n97 81 99 865814 514550 104729 57\n",
+      "generated": true
+    },
+    {
+      "stdin": "7\n105591 386850 52 32 999983 999983 999979\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\n999983 453402 7919 63 7919 682993 999983 964061\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\n104729 430992 999983 319878\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\n386238 587175\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\n703861 999979\n",
+      "generated": true
+    }
+  ]
+}

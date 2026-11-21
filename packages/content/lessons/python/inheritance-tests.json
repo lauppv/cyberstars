@@ -1,0 +1,630 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Module"
+      },
+      {
+        "kind": "class",
+        "name": "SolarPanel"
+      },
+      {
+        "kind": "extends",
+        "name": "Module"
+      },
+      {
+        "kind": "call",
+        "name": "isinstance"
+      },
+      {
+        "kind": "function",
+        "name": "report"
+      },
+      {
+        "kind": "function",
+        "name": "energy"
+      },
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "powers"
+      },
+      {
+        "kind": "variable",
+        "name": "solar"
+      },
+      {
+        "kind": "variable",
+        "name": "hours"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Dock", "Panel A"]
+        },
+        "powers": {
+          "$list": [40, 5]
+        },
+        "solar": {
+          "$list": [false, true]
+        },
+        "hours": 6
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Lab"]
+        },
+        "powers": {
+          "$list": [100]
+        },
+        "solar": {
+          "$list": [false]
+        },
+        "hours": 0
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["P"]
+        },
+        "powers": {
+          "$list": [1]
+        },
+        "solar": {
+          "$list": [true]
+        },
+        "hours": 0
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Dock",
+            "Panel A",
+            "Panel B",
+            "Lab",
+            "Kitchen",
+            "Gym",
+            "Panel C",
+            "Farm",
+            "Radar",
+            "Lights"
+          ]
+        },
+        "powers": {
+          "$list": [100, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+        },
+        "solar": {
+          "$list": [true, true, true, true, true, true, true, true, true, true]
+        },
+        "hours": 24
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Radar", "Panel A"]
+        },
+        "powers": {
+          "$list": [22, 97]
+        },
+        "solar": {
+          "$list": [true, true]
+        },
+        "hours": 18
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Lab",
+            "Farm",
+            "Radar",
+            "Panel A",
+            "Dock",
+            "Panel B",
+            "Gym",
+            "Kitchen",
+            "Panel C",
+            "Lights"
+          ]
+        },
+        "powers": {
+          "$list": [37, 56, 4, 72, 90, 41, 62, 36, 48, 80]
+        },
+        "solar": {
+          "$list": [false, false, true, false, false, false, true, true, false, false]
+        },
+        "hours": 24
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gym", "Radar", "Lab", "Panel C", "Panel B", "Farm", "Panel A", "Lights"]
+        },
+        "powers": {
+          "$list": [90, 35, 95, 63, 85, 98, 54, 6]
+        },
+        "solar": {
+          "$list": [false, true, true, true, true, true, false, false]
+        },
+        "hours": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kitchen"]
+        },
+        "powers": {
+          "$list": [4]
+        },
+        "solar": {
+          "$list": [false]
+        },
+        "hours": 12
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Gym",
+            "Panel C",
+            "Panel A",
+            "Farm",
+            "Lab",
+            "Kitchen",
+            "Dock",
+            "Panel B",
+            "Radar",
+            "Lights"
+          ]
+        },
+        "powers": {
+          "$list": [40, 38, 27, 70, 96, 92, 69, 54, 57, 94]
+        },
+        "solar": {
+          "$list": [true, false, true, true, false, false, true, false, true, true]
+        },
+        "hours": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Lab", "Kitchen", "Dock"]
+        },
+        "powers": {
+          "$list": [15, 72, 71]
+        },
+        "solar": {
+          "$list": [false, false, true]
+        },
+        "hours": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kitchen", "Panel C", "Panel A", "Dock", "Lab", "Farm"]
+        },
+        "powers": {
+          "$list": [3, 27, 14, 70, 14, 16]
+        },
+        "solar": {
+          "$list": [false, true, false, false, false, false]
+        },
+        "hours": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Farm", "Lights", "Panel C", "Kitchen", "Lab"]
+        },
+        "powers": {
+          "$list": [88, 16, 72, 11, 91]
+        },
+        "solar": {
+          "$list": [false, true, false, true, false]
+        },
+        "hours": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Farm", "Kitchen", "Dock", "Gym", "Lights", "Panel A", "Panel B", "Panel C"]
+        },
+        "powers": {
+          "$list": [56, 66, 68, 1, 32, 63, 71, 32]
+        },
+        "solar": {
+          "$list": [false, true, true, false, false, true, true, true]
+        },
+        "hours": 15
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kitchen", "Dock", "Panel A", "Gym"]
+        },
+        "powers": {
+          "$list": [73, 67, 95, 6]
+        },
+        "solar": {
+          "$list": [true, false, false, true]
+        },
+        "hours": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kitchen"]
+        },
+        "powers": {
+          "$list": [35]
+        },
+        "solar": {
+          "$list": [true]
+        },
+        "hours": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Dock", "Panel A"]
+        },
+        "powers": {
+          "$list": [95, 58]
+        },
+        "solar": {
+          "$list": [true, false]
+        },
+        "hours": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Dock", "Panel B", "Panel C"]
+        },
+        "powers": {
+          "$list": [64, 95, 96]
+        },
+        "solar": {
+          "$list": [false, false, true]
+        },
+        "hours": 5
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel C", "Gym", "Farm"]
+        },
+        "powers": {
+          "$list": [29, 69, 35]
+        },
+        "solar": {
+          "$list": [true, false, false]
+        },
+        "hours": 18
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Lab", "Panel A", "Farm", "Kitchen", "Dock", "Radar", "Panel C", "Panel B"]
+        },
+        "powers": {
+          "$list": [48, 99, 70, 3, 85, 26, 15, 68]
+        },
+        "solar": {
+          "$list": [true, true, true, true, true, true, true, false]
+        },
+        "hours": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Lights", "Panel B", "Kitchen", "Lab", "Dock", "Farm"]
+        },
+        "powers": {
+          "$list": [73, 11, 8, 29, 88, 50]
+        },
+        "solar": {
+          "$list": [false, true, true, true, true, true]
+        },
+        "hours": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel B", "Lights", "Farm", "Panel C"]
+        },
+        "powers": {
+          "$list": [12, 41, 74, 38]
+        },
+        "solar": {
+          "$list": [true, false, false, true]
+        },
+        "hours": 16
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Lab", "Panel B", "Lights", "Gym", "Panel A", "Farm", "Dock", "Kitchen"]
+        },
+        "powers": {
+          "$list": [21, 96, 50, 38, 24, 8, 55, 1]
+        },
+        "solar": {
+          "$list": [false, true, false, true, true, false, true, false]
+        },
+        "hours": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel B", "Dock", "Panel C", "Kitchen", "Gym", "Panel A"]
+        },
+        "powers": {
+          "$list": [46, 46, 10, 11, 88, 95]
+        },
+        "solar": {
+          "$list": [false, true, true, true, true, false]
+        },
+        "hours": 15
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kitchen", "Panel C"]
+        },
+        "powers": {
+          "$list": [49, 90]
+        },
+        "solar": {
+          "$list": [true, false]
+        },
+        "hours": 12
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel B", "Kitchen"]
+        },
+        "powers": {
+          "$list": [63, 83]
+        },
+        "solar": {
+          "$list": [true, true]
+        },
+        "hours": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gym", "Lab"]
+        },
+        "powers": {
+          "$list": [5, 46]
+        },
+        "solar": {
+          "$list": [true, true]
+        },
+        "hours": 19
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kitchen", "Gym", "Panel B", "Farm", "Panel C", "Lights"]
+        },
+        "powers": {
+          "$list": [17, 50, 7, 25, 61, 53]
+        },
+        "solar": {
+          "$list": [true, false, true, true, false, true]
+        },
+        "hours": 21
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Gym",
+            "Lights",
+            "Panel C",
+            "Radar",
+            "Kitchen",
+            "Farm",
+            "Panel B",
+            "Panel A",
+            "Lab"
+          ]
+        },
+        "powers": {
+          "$list": [83, 7, 71, 13, 77, 68, 70, 91, 55]
+        },
+        "solar": {
+          "$list": [true, false, false, false, false, false, false, true, false]
+        },
+        "hours": 17
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel C"]
+        },
+        "powers": {
+          "$list": [88]
+        },
+        "solar": {
+          "$list": [false]
+        },
+        "hours": 3
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Farm", "Kitchen"]
+        },
+        "powers": {
+          "$list": [86, 20]
+        },
+        "solar": {
+          "$list": [false, true]
+        },
+        "hours": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel C", "Kitchen", "Panel A", "Radar"]
+        },
+        "powers": {
+          "$list": [28, 77, 6, 78]
+        },
+        "solar": {
+          "$list": [true, true, false, true]
+        },
+        "hours": 17
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Farm", "Panel C", "Lights", "Panel A", "Lab", "Panel B"]
+        },
+        "powers": {
+          "$list": [64, 67, 55, 38, 33, 69]
+        },
+        "solar": {
+          "$list": [true, true, true, true, true, false]
+        },
+        "hours": 21
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Lab", "Panel B", "Dock"]
+        },
+        "powers": {
+          "$list": [83, 14, 68]
+        },
+        "solar": {
+          "$list": [true, false, false]
+        },
+        "hours": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel A", "Panel B", "Gym", "Panel C", "Farm", "Radar", "Dock", "Lab"]
+        },
+        "powers": {
+          "$list": [77, 14, 94, 83, 32, 39, 57, 100]
+        },
+        "solar": {
+          "$list": [true, false, false, false, false, true, true, false]
+        },
+        "hours": 18
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Panel B", "Radar", "Lab", "Kitchen", "Panel C"]
+        },
+        "powers": {
+          "$list": [39, 7, 92, 66, 22]
+        },
+        "solar": {
+          "$list": [false, false, false, true, true]
+        },
+        "hours": 16
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Radar", "Farm"]
+        },
+        "powers": {
+          "$list": [63, 66]
+        },
+        "solar": {
+          "$list": [false, false]
+        },
+        "hours": 15
+      },
+      "generated": true
+    }
+  ]
+}

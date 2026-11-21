@@ -1,0 +1,693 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "messages"
+      },
+      {
+        "kind": "variable",
+        "name": "word"
+      },
+      {
+        "kind": "with"
+      },
+      {
+        "kind": "call",
+        "name": "open"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "close"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "messages": {
+          "$list": ["dock clear", "fire in lab", "lab door open"]
+        },
+        "word": "lab"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "messages": {
+          "$list": ["all quiet"]
+        },
+        "word": "fire"
+      }
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["laboratory busy", "lab door open", "collab time"]
+        },
+        "word": "lab"
+      }
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "fire"
+          ]
+        },
+        "word": "fire"
+      }
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["a b", "ab", "b a"]
+        },
+        "word": "ab"
+      }
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["x"]
+        },
+        "word": "x"
+      }
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "all quiet",
+            "fire in lab",
+            "laboratory busy",
+            "laboratory busy",
+            "doorway blocked",
+            "aircraft near",
+            "fire drill at six",
+            "air is low",
+            "lab lights off",
+            "lunch at noon",
+            "smoke near dock"
+          ]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "laboratory busy",
+            "fireplace warm",
+            "laboratory busy",
+            "fire drill at six",
+            "lab door open",
+            "all quiet",
+            "doorway blocked",
+            "smoke near dock",
+            "fireplace warm",
+            "dock clear",
+            "lab lights off",
+            "aircraft near",
+            "fireplace warm",
+            "smoke near dock",
+            "lunch at noon"
+          ]
+        },
+        "word": "zzz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lab lights off",
+            "smoke near dock",
+            "smoke near dock",
+            "dock clear",
+            "doorway blocked",
+            "doorway blocked",
+            "dock clear",
+            "lunch at noon"
+          ]
+        },
+        "word": "lab"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lunch at noon",
+            "fireplace warm",
+            "dock clear",
+            "aircraft near",
+            "doorway blocked",
+            "lunch at noon",
+            "all quiet",
+            "all quiet",
+            "fireplace warm",
+            "lab door open",
+            "lunch at noon",
+            "aircraft near",
+            "aircraft near"
+          ]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "door stuck",
+            "lab lights off",
+            "lunch at noon",
+            "laboratory busy",
+            "door stuck",
+            "smoke near dock",
+            "lab door open",
+            "lab door open",
+            "doorway blocked",
+            "fireplace warm",
+            "fire in lab",
+            "all quiet",
+            "fireplace warm",
+            "lab lights off"
+          ]
+        },
+        "word": "door"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["aircraft near", "laboratory busy"]
+        },
+        "word": "at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lab door open",
+            "laboratory busy",
+            "all quiet",
+            "aircraft near",
+            "dock clear",
+            "lunch at noon",
+            "laboratory busy",
+            "all quiet",
+            "lab door open",
+            "air is low"
+          ]
+        },
+        "word": "at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["fireplace warm", "all quiet"]
+        },
+        "word": "door"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "fire in lab",
+            "fire drill at six",
+            "fireplace warm",
+            "all quiet",
+            "fireplace warm",
+            "laboratory busy"
+          ]
+        },
+        "word": "zzz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "fire drill at six",
+            "door stuck",
+            "aircraft near",
+            "lab lights off",
+            "fire in lab",
+            "laboratory busy",
+            "fire in lab",
+            "lab door open",
+            "doorway blocked",
+            "laboratory busy",
+            "all quiet",
+            "smoke near dock",
+            "smoke near dock",
+            "fireplace warm"
+          ]
+        },
+        "word": "fire"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lab door open",
+            "lab door open",
+            "smoke near dock",
+            "air is low",
+            "doorway blocked",
+            "smoke near dock",
+            "all quiet",
+            "door stuck",
+            "laboratory busy",
+            "all quiet",
+            "dock clear",
+            "doorway blocked"
+          ]
+        },
+        "word": "lab"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["fireplace warm", "fire drill at six"]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["lab lights off"]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "fire drill at six",
+            "doorway blocked",
+            "fireplace warm",
+            "fire drill at six",
+            "fire drill at six",
+            "air is low",
+            "door stuck",
+            "fire in lab",
+            "fire in lab",
+            "dock clear",
+            "fire drill at six",
+            "laboratory busy"
+          ]
+        },
+        "word": "fire"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["air is low", "lab lights off", "smoke near dock", "dock clear"]
+        },
+        "word": "air"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "doorway blocked",
+            "door stuck",
+            "lab door open",
+            "lab door open",
+            "laboratory busy",
+            "lunch at noon",
+            "lab door open",
+            "door stuck",
+            "smoke near dock",
+            "lab lights off",
+            "fire in lab",
+            "fire drill at six",
+            "laboratory busy"
+          ]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["fire drill at six", "aircraft near", "fire in lab"]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lunch at noon",
+            "all quiet",
+            "lab lights off",
+            "lunch at noon",
+            "doorway blocked",
+            "lab door open",
+            "air is low"
+          ]
+        },
+        "word": "at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "fire drill at six",
+            "door stuck",
+            "fire drill at six",
+            "fire in lab",
+            "fireplace warm",
+            "lab door open",
+            "lab door open",
+            "fireplace warm",
+            "all quiet",
+            "air is low",
+            "door stuck"
+          ]
+        },
+        "word": "at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "air is low",
+            "lunch at noon",
+            "doorway blocked",
+            "all quiet",
+            "door stuck",
+            "aircraft near",
+            "lab door open",
+            "lab door open",
+            "dock clear",
+            "aircraft near",
+            "lab lights off",
+            "fire drill at six"
+          ]
+        },
+        "word": "fire"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "smoke near dock",
+            "dock clear",
+            "door stuck",
+            "lab door open",
+            "dock clear",
+            "lab door open",
+            "fire in lab",
+            "doorway blocked",
+            "smoke near dock",
+            "aircraft near",
+            "lunch at noon",
+            "all quiet"
+          ]
+        },
+        "word": "air"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "aircraft near",
+            "smoke near dock",
+            "fire drill at six",
+            "fire in lab",
+            "all quiet",
+            "lab door open"
+          ]
+        },
+        "word": "fire"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lunch at noon",
+            "all quiet",
+            "fire in lab",
+            "fire in lab",
+            "door stuck",
+            "lunch at noon",
+            "fire drill at six",
+            "lab lights off",
+            "aircraft near",
+            "aircraft near",
+            "smoke near dock",
+            "doorway blocked",
+            "lunch at noon",
+            "door stuck",
+            "smoke near dock"
+          ]
+        },
+        "word": "lab"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "lab lights off",
+            "dock clear",
+            "lab door open",
+            "all quiet",
+            "fireplace warm",
+            "lunch at noon",
+            "fire in lab",
+            "doorway blocked",
+            "lab door open"
+          ]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "doorway blocked",
+            "door stuck",
+            "air is low",
+            "door stuck",
+            "lab door open",
+            "lunch at noon",
+            "doorway blocked",
+            "fire drill at six",
+            "aircraft near",
+            "lunch at noon",
+            "all quiet"
+          ]
+        },
+        "word": "at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["air is low", "dock clear", "doorway blocked", "lab door open", "lab door open"]
+        },
+        "word": "lab"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "air is low",
+            "dock clear",
+            "fireplace warm",
+            "doorway blocked",
+            "fire in lab",
+            "lab lights off",
+            "lab door open",
+            "door stuck",
+            "smoke near dock",
+            "lab lights off"
+          ]
+        },
+        "word": "at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "air is low",
+            "smoke near dock",
+            "dock clear",
+            "dock clear",
+            "all quiet",
+            "air is low",
+            "door stuck",
+            "dock clear",
+            "all quiet",
+            "air is low",
+            "lab lights off"
+          ]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "doorway blocked",
+            "aircraft near",
+            "fireplace warm",
+            "dock clear",
+            "air is low",
+            "all quiet",
+            "all quiet",
+            "fire in lab"
+          ]
+        },
+        "word": "fire"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": ["smoke near dock", "lab door open", "lunch at noon"]
+        },
+        "word": "fire"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "fire drill at six",
+            "dock clear",
+            "fire drill at six",
+            "laboratory busy",
+            "doorway blocked",
+            "air is low",
+            "fireplace warm",
+            "fire drill at six",
+            "dock clear",
+            "lab door open",
+            "aircraft near",
+            "lab lights off"
+          ]
+        },
+        "word": "air"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "laboratory busy",
+            "lab lights off",
+            "fire in lab",
+            "lab lights off",
+            "door stuck",
+            "doorway blocked",
+            "air is low",
+            "smoke near dock",
+            "lab lights off"
+          ]
+        },
+        "word": "dock"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "messages": {
+          "$list": [
+            "smoke near dock",
+            "fire drill at six",
+            "aircraft near",
+            "lab door open",
+            "doorway blocked",
+            "lab lights off",
+            "lab door open",
+            "lab door open",
+            "air is low",
+            "dock clear",
+            "all quiet",
+            "fireplace warm",
+            "fire in lab",
+            "lunch at noon"
+          ]
+        },
+        "word": "air"
+      },
+      "generated": true
+    }
+  ]
+}

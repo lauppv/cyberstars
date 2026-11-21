@@ -1,0 +1,112 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "struct"
+      },
+      {
+        "kind": "call",
+        "name": "qsort"
+      },
+      {
+        "kind": "call",
+        "name": "free"
+      },
+      {
+        "kind": "call",
+        "name": "fopen"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "add 7 PayrollManual 1969\nadd 3 OrbitTables 1962\nadd 9 CensusReport 1969\nadd 3 Duplicate 1970\nborrow 9\nborrow 9\nsave shelf.txt\nremove 7\nlist\nload shelf.txt\nreturn 3\nlist\n"
+    },
+    {
+      "stdin": "list\n"
+    },
+    {
+      "stdin": "remove 1\nborrow 1\nreturn 1\nload no_such_file.txt\nlist\n"
+    },
+    {
+      "stdin": "add 1 B 2000\nadd 2 A 2000\nadd 3 C 1999\nlist\nsave s.txt\nremove 1\nremove 2\nremove 3\nlist\nload s.txt\nlist"
+    },
+    {
+      "stdin": "add 5 X 1900\nload no_such_file.txt\nlist\n"
+    },
+    {
+      "stdin": "list\nborrow 1\nadd 1 UnixManual 1962\nborrow 3\nlist\nadd 13 CobolPrimer 1961\nreturn 15\nload a.txt\nload b.txt\nadd 2 PayrollManual 1969\nadd 8 PayrollManual 1962\nadd 4 Alpha 1969\nborrow 12\nreturn 8\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "save b.txt\nborrow 10\nsave b.txt\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "borrow 3\nlist\nadd 5 Alpha 1968\nreturn 11\nreturn 6\nremove 5\nremove 10\nload b.txt\nborrow 9\nadd 13 Zed 1961\nremove 7\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "load b.txt\nlist\nborrow 6\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nremove 15\nborrow 6\nreturn 15\nadd 9 TapeIndex 1975\nreturn 11\nreturn 7\nborrow 4\nlist\nadd 3 CensusReport 1974\nlist\nborrow 4\nremove 4\nremove 4\nsave a.txt\nadd 12 TapeIndex 1963\nremove 10\nborrow 6\nsave b.txt\nsave a.txt\nadd 15 FortranGuide 1964\nsave a.txt\nlist\nreturn 12\nlist\nadd 1 TapeIndex 1961\nadd 9 FortranGuide 1969\nremove 10\nadd 9 FortranGuide 1970\nload a.txt\nadd 14 Alpha 1960\nadd 2 UnixManual 1973\nreturn 9\nload a.txt\nreturn 1\nlist\nadd 15 FortranGuide 1974\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove 10\nlist\nremove 15\nreturn 5\nreturn 11\nadd 2 PayrollManual 1967\nborrow 7\nremove 15\nborrow 14\nreturn 2\nreturn 15\nload a.txt\nborrow 1\nadd 12 PayrollManual 1972\nborrow 15\nreturn 14\nload b.txt\nlist\nadd 3 TapeIndex 1973\nadd 6 UnixManual 1960\nremove 5\nload a.txt\nsave a.txt\nreturn 9\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove 11\nadd 8 OrbitTables 1960\nadd 11 PayrollManual 1962\nadd 6 Alpha 1971\nadd 1 CensusReport 1972\nborrow 7\nadd 8 FortranGuide 1974\nreturn 9\nadd 1 Alpha 1973\nreturn 4\nborrow 7\nadd 14 PayrollManual 1960\nborrow 5\nadd 13 CensusReport 1966\nborrow 13\nadd 1 FortranGuide 1967\nlist\nadd 10 CobolPrimer 1960\nadd 12 CensusReport 1968\nlist\nremove 14\nadd 4 Alpha 1971\nlist\nremove 3\nlist\nadd 7 OrbitTables 1965\nadd 8 OrbitTables 1973\nremove 3\nlist\nborrow 7\nremove 15\nborrow 11\nlist\nload a.txt\nadd 1 CensusReport 1972\nborrow 3\nborrow 5\nremove 4\nborrow 15\nborrow 13\nreturn 3\nremove 10\nreturn 15\nadd 12 TapeIndex 1967\nadd 14 OrbitTables 1961\nremove 6\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "add 7 FortranGuide 1965\nload a.txt\nadd 9 CobolPrimer 1974\nadd 2 FortranGuide 1965\nreturn 6\nremove 14\nadd 2 OrbitTables 1970\nadd 9 Alpha 1967\nadd 14 TapeIndex 1967\nadd 14 CobolPrimer 1968\nadd 6 Zed 1960\nload a.txt\nadd 11 CobolPrimer 1968\nlist\nlist\nborrow 3\nlist\nadd 1 TapeIndex 1967\nadd 7 UnixManual 1973\nremove 3\nadd 14 FortranGuide 1968\nsave b.txt\nremove 8\nadd 3 CobolPrimer 1966\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nadd 1 UnixManual 1965\nborrow 10\nadd 7 Alpha 1966\nadd 7 CobolPrimer 1972\nadd 5 TapeIndex 1961\nlist\nborrow 14\nadd 12 CobolPrimer 1968\nadd 12 PayrollManual 1968\nadd 11 CobolPrimer 1964\nlist\nsave a.txt\nsave a.txt\nload b.txt\nadd 4 TapeIndex 1968\nremove 3\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "add 7 TapeIndex 1970\nreturn 5\nadd 7 PayrollManual 1961\nadd 15 OrbitTables 1973\nlist\nreturn 4\nadd 6 Zed 1963\nload a.txt\nadd 9 UnixManual 1965\nadd 6 PayrollManual 1973\nadd 8 Alpha 1962\nadd 2 CensusReport 1966\nadd 12 Zed 1971\nlist\nreturn 8\nload a.txt\nborrow 4\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "save a.txt\nadd 3 PayrollManual 1972\nlist\nadd 6 FortranGuide 1972\nadd 13 Zed 1970\nadd 13 CobolPrimer 1972\nadd 13 PayrollManual 1962\nsave a.txt\nlist\nborrow 12\nadd 8 CobolPrimer 1973\nremove 7\nadd 2 CobolPrimer 1966\nadd 5 Zed 1972\nadd 5 CobolPrimer 1960\nborrow 1\nborrow 8\nadd 8 UnixManual 1975\nlist\nadd 5 Alpha 1969\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nborrow 4\nsave a.txt\nlist\nremove 14\nborrow 2\nsave b.txt\nsave b.txt\nadd 14 OrbitTables 1968\nadd 6 UnixManual 1974\nlist\nlist\nborrow 12\nlist\nadd 14 TapeIndex 1966\nreturn 9\nadd 13 OrbitTables 1964\nreturn 2\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "add 1 OrbitTables 1968\nadd 6 TapeIndex 1974\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nreturn 2\nload b.txt\nadd 11 UnixManual 1967\nadd 10 UnixManual 1969\nadd 11 CobolPrimer 1969\nadd 6 Zed 1968\nadd 1 Zed 1961\nlist\nlist\nremove 15\nadd 15 CensusReport 1963\nadd 2 FortranGuide 1974\nadd 6 CensusReport 1965\nreturn 13\nadd 15 Alpha 1968\nadd 2 CobolPrimer 1965\nadd 9 PayrollManual 1971\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nborrow 3\nadd 5 CobolPrimer 1970\nreturn 9\nlist\nlist\nlist\nadd 15 Zed 1971\nadd 11 UnixManual 1971\nreturn 8\nsave b.txt\nadd 8 PayrollManual 1967\nsave b.txt\nreturn 7\nload a.txt\nadd 7 FortranGuide 1965\nadd 9 Zed 1962\nreturn 7\nreturn 3\nadd 15 FortranGuide 1965\nlist\nreturn 7\nlist\nremove 7\nlist\nadd 12 CobolPrimer 1969\nremove 3\nborrow 4\nremove 11\nload b.txt\nremove 13\nadd 2 PayrollManual 1960\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "add 7 TapeIndex 1975\nadd 6 Alpha 1966\nadd 6 TapeIndex 1967\nremove 10\nremove 10\nremove 6\nadd 9 CobolPrimer 1969\nborrow 1\nadd 15 PayrollManual 1972\nsave a.txt\nborrow 14\nreturn 7\nlist\nreturn 8\nborrow 9\nadd 1 Zed 1964\nload a.txt\nreturn 5\nload a.txt\nadd 15 UnixManual 1961\nload b.txt\nreturn 13\nadd 1 CensusReport 1960\nadd 7 PayrollManual 1969\nremove 8\nadd 14 TapeIndex 1964\nadd 12 Alpha 1964\nborrow 14\nreturn 14\nborrow 13\nremove 6\nborrow 4\nlist\nlist\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "load a.txt\nadd 12 UnixManual 1965\nload b.txt\nadd 13 Zed 1964\nadd 1 UnixManual 1962\nadd 3 FortranGuide 1967\nsave a.txt\nadd 12 PayrollManual 1971\nborrow 1\nreturn 15\nlist\nadd 3 PayrollManual 1960\nload b.txt\nadd 10 CensusReport 1973\nremove 10\nadd 13 CensusReport 1960\nadd 14 UnixManual 1960\nsave a.txt\nadd 4 UnixManual 1962\nload b.txt\nreturn 9\nborrow 1\nsave a.txt\nlist\nadd 11 Alpha 1963\nadd 9 TapeIndex 1967\nlist\nadd 13 Alpha 1968\nadd 10 PayrollManual 1971\nremove 10\nadd 6 FortranGuide 1962\nborrow 2\nreturn 9\nadd 4 FortranGuide 1972\nborrow 1\nload b.txt\nlist\nadd 6 FortranGuide 1975\nadd 10 FortranGuide 1967\nadd 14 Zed 1964\nremove 4\nlist\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nborrow 7\nborrow 14\nreturn 5\nadd 12 OrbitTables 1966\nadd 9 FortranGuide 1969\nadd 9 Zed 1963\nadd 4 PayrollManual 1961\nload b.txt\nremove 2\nborrow 9\nlist\nadd 14 Zed 1967\nadd 7 Alpha 1964\nadd 13 CobolPrimer 1965\nadd 11 FortranGuide 1972\nlist\nadd 8 FortranGuide 1960\nadd 3 FortranGuide 1974\nadd 6 Zed 1970\nadd 1 FortranGuide 1964\nborrow 8\nsave b.txt\nborrow 10\nlist\nborrow 11\nlist\nadd 5 TapeIndex 1961\nreturn 15\nlist\n",
+      "generated": true
+    }
+  ]
+}

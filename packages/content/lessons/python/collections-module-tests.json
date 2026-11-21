@@ -1,0 +1,266 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "text"
+      },
+      {
+        "kind": "import",
+        "name": "collections"
+      },
+      {
+        "kind": "call",
+        "name": "Counter"
+      },
+      {
+        "kind": "call",
+        "name": "defaultdict"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "text": "go to the moon and to the stars and back"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "text": "sun sun"
+      }
+    },
+    {
+      "inject": {
+        "text": "a"
+      }
+    },
+    {
+      "inject": {
+        "text": "b a"
+      }
+    },
+    {
+      "inject": {
+        "text": "z y x z y z"
+      }
+    },
+    {
+      "inject": {
+        "text": "ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab"
+      }
+    },
+    {
+      "inject": {
+        "text": "c b a c b a"
+      }
+    },
+    {
+      "inject": {
+        "text": "a the to back bright bright to orbit a ship back the wzy bright ship ship back back"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "the ship go stars ship orbit mv orbit go a a the"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "moon ship jqv orbit and moon sky and and to sky ship stars sky zero sky and to and to moon ship ship orbit orbit sky zero zero moon ship"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "ship sky ship the sun sun the back back"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "a and and stars moon moon dfry stars and a bright moon orbit dfry moon to moon dust stars a bright bright dfry and bright"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "and wo stars and and sun wo wo stars and stars and sun stars wo sun wo stars wo stars sun stars stars wo stars stars"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "sky ship and sky ship and okff sun dust sky to okff zero orbit sky sun ship zero sun and"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "zero zero sky sky ship sky ship moon a sky to gckvp sky to moon a sky sky a ship moon moon moon gckvp moon moon a sky zero moon"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "go f f"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "pchfyv ship pchfyv pchfyv sun sun ship pchfyv ship pchfyv sun pchfyv sun sun pchfyv ship ship ship pchfyv ship ship sun sun pchfyv pchfyv sun ship sun"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "sun ship moon ship sun moon ship ship ship sun moon ship sun sun moon sun"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "back sky ship"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "go moon the x the moon go moon moon x the moon the x x moon the moon go go go the moon x moon"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "orbit orbit u orbit and and orbit u u and orbit orbit orbit and orbit orbit orbit u and orbit orbit u and orbit orbit u orbit orbit and u"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "sky stars stars stars and stars and sky sky axhum stars axhum sky axhum and and and sky and and stars axhum and and stars sky"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "bright a sky sky bright dust back yasey a orbit dust back yasey sky sun yasey back sky sun bright bright yasey bright"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "go to u go bright zero sun ship"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "pcj dust the"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "zero zero nqhv orbit orbit zero"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "dust to zero zero to zero bright zero moon zero and back back the moon the"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "go stars stars to the dust the moon go dust the ship ship moon ship go dust ship to dust gqu stars to dust the stars moon the"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "go rf the bright orbit the bright go bright orbit rf rf go stars go stars zero the zero orbit zero rf the bright rf"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "ad ad ad back ad back ad ad orbit orbit orbit orbit back ad orbit ad ad back back back ad orbit ad orbit orbit ad"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "znj sun sun back the bright bright the the back bright the the sun back"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "moon back back sky moon back msrr bright moon sky bright moon back back"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "to go and sun ptoz orbit to back go and moon go back go ptoz and sun to orbit ptoz go to ptoz ptoz moon sun dust ptoz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "sky dust r and orbit bright zero sky to to and to back to r orbit zero to sky ship bright dust zero dust"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "sun sun to tzomor to tzomor sun sun tzomor stars stars to stars sun tzomor sun sun sun tzomor sun tzomor stars to stars to to to to"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "dust b b to to dust b to to dust b dust b dust b dust to b b"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "the the go sun a bright sun ctzs ctzs ctzs back"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "zero sky orbit and sky go and to to ifxd ifxd go sky and sky ifxd zero orbit sky sky"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "zero a sun sun sun sun sky a mp mp sky sky a mp to zero"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "stars stars go shq bright"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "orbit and"
+      },
+      "generated": true
+    }
+  ]
+}

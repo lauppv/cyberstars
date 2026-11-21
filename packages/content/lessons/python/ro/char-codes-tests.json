@@ -1,0 +1,278 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "cuvant"
+      },
+      {
+        "kind": "call",
+        "name": "ord"
+      },
+      {
+        "kind": "call",
+        "name": "chr"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cuvant": "moon"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "cuvant": "abz"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "a"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "z"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "m"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "n"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "abcdefghijklmnopqrst"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "zzzz"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "wizard"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "zuamceywacuydhn"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "lxm"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "h"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "x"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "lsueni"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "dgpqzpllum"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "liogbgxztpohoubppitt"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "gogpfcjoxg"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "yeik"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "mpfndxzp"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "vmlqhya"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "owndpygipnmsfuan"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "okaobhbb"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "dsamuawafwasfdftl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "vvvruzqryzxs"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "lgr"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "kiitpjmc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "pyc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "akefmtotnpippmotqeqd"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "eebxkisfga"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "afxunyrnl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "rehslvj"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "jup"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "cjpjztujpstkwbtfoaii"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "yfjncvhy"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "nlwtratbjjmcgtoqcg"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "giuqjvmzuloxk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "nhkmltspv"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "hrmlfdlxak"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "rxddvvrhsgcqjh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "wofsteskhyefhev"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "s"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "xzlxitedqmdqpzd"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "cwrxeprtq"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "ly"
+      },
+      "generated": true
+    }
+  ]
+}

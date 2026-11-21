@@ -1,0 +1,161 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "ia_bon"
+      },
+      {
+        "kind": "static"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "RPRRP\n"
+    },
+    {
+      "stdin": "R\n"
+    },
+    {
+      "stdin": "P\n"
+    },
+    {
+      "stdin": "PPPP\n"
+    },
+    {
+      "stdin": "RRRRRRRRRRRR\n"
+    },
+    {
+      "stdin": "PR\n"
+    },
+    {
+      "stdin": "RP\n"
+    },
+    {
+      "stdin": "RRRRRRRRRRRRRRRRRRRRRRRRRPPPPPPPPPPPPPPPPPPPPPPPPP\n"
+    },
+    {
+      "stdin": "PRRRRPRPRRRRRPPPRRPPPPRPPPRRRPPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPRPPPRRRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRRPPRPPPRRPRRRPRRPPRRRRPPPRRPPRPPRRRRPPPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRPRPPRRPPPRPRRPPPPRRRRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRPRPRRPRPRPPRPRRRPPPPRPRPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRPRRPRPRP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRRPPRPPRPRPPPPRRPPRPPRRRPRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PPPRPPRPPRRRRPPRPPPPPRRPPP\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRPPRRPRPRPRPRRRPPRRP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPRRRPPPRRRPRRRRRRPRRPRRPPRPRRPRRRPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPPPPRPRPRRPP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPPPPPPPRRPPRPPPRPRPPRPRPPPRPRPRRRPPRRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRRRRPPRRRPRRRPPRRRPPPP\n",
+      "generated": true
+    },
+    {
+      "stdin": "PPPRRPPPPRPPRRRPPRRPPRPRRRPPRPPRRRPRPRRRPRPRPRPRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PPRPRRPPPPP\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRRPRPRPRRRRPRRRRPRRPRPRRPRRPRRRRPPRPPPRRPPRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PPPPRPPPRPRRP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRPRRRRRRPPPPPPPRPPPRRRRPRPRPPPPPRPPRRRRPRPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRPRPPRRPPRPRPRPPPPP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRPPRPRPPRRRPPPPPPPPRPPRPPRRPPPPRPPRRPRPRRRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPPPPPPRRPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRRRPPRPPPPRPPRPRRPRRPPRPPRPRRRRRPPPRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "RRRPRPPRPPPPPPRRPPRPPRPPRPP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPRRRRPPPRRRPRPPPRPPPRPRPRPRRPRPRPRRRPRRRRPRPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PPPRRRRPRPRPRPPRPRPRPPPPRP\n",
+      "generated": true
+    },
+    {
+      "stdin": "RPPPRRRRPPRPPPPPPRRRPPRR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRRPRPPPRRRPRPRPPRRRRRRRPPRRP\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRRRPRPRPPRPRPRRPRRPPR\n",
+      "generated": true
+    },
+    {
+      "stdin": "PPRPPPPRPPPPRPRPRPPPPRPRRPRPRPRRRPRPPRPRP\n",
+      "generated": true
+    },
+    {
+      "stdin": "PRRRRRPPRRRRRPRRPPRPPRRPPPRPRPPPRRPRRRPRRR\n",
+      "generated": true
+    }
+  ]
+}

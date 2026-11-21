@@ -1,0 +1,333 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "rezerva"
+      },
+      {
+        "kind": "default_param"
+      },
+      {
+        "kind": "keyword_arg"
+      },
+      {
+        "kind": "return"
+      },
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "destinatie"
+      },
+      {
+        "kind": "variable",
+        "name": "locuri"
+      },
+      {
+        "kind": "variable",
+        "name": "geam"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Marte",
+        "locuri": 2,
+        "geam": true
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nume": "Kai",
+        "destinatie": "Titan",
+        "locuri": 1,
+        "geam": false
+      }
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Moon",
+        "locuri": 9,
+        "geam": true
+      }
+    },
+    {
+      "inject": {
+        "nume": "Zara",
+        "destinatie": "Io",
+        "locuri": 5,
+        "geam": false
+      }
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Venus",
+        "locuri": 8,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Io",
+        "locuri": 9,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Grace",
+        "destinatie": "Ceres",
+        "locuri": 6,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Io",
+        "locuri": 4,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Alan",
+        "destinatie": "Mars",
+        "locuri": 8,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Titan",
+        "locuri": 7,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Mila",
+        "destinatie": "Titan",
+        "locuri": 4,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Io",
+        "locuri": 2,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Titan",
+        "locuri": 9,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Zara",
+        "destinatie": "Venus",
+        "locuri": 9,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Zara",
+        "destinatie": "Titan",
+        "locuri": 7,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Zara",
+        "destinatie": "Venus",
+        "locuri": 6,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Leo",
+        "destinatie": "Io",
+        "locuri": 6,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Mars",
+        "locuri": 8,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Leo",
+        "destinatie": "Europa",
+        "locuri": 3,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Alan",
+        "destinatie": "Titan",
+        "locuri": 1,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Grace",
+        "destinatie": "Titan",
+        "locuri": 1,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Mars",
+        "locuri": 7,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Grace",
+        "destinatie": "Mars",
+        "locuri": 1,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Kai",
+        "destinatie": "Titan",
+        "locuri": 8,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Mars",
+        "locuri": 5,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Zara",
+        "destinatie": "Europa",
+        "locuri": 1,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Leo",
+        "destinatie": "Io",
+        "locuri": 4,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Titan",
+        "locuri": 6,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Leo",
+        "destinatie": "Venus",
+        "locuri": 5,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Leo",
+        "destinatie": "Venus",
+        "locuri": 9,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ada",
+        "destinatie": "Ceres",
+        "locuri": 2,
+        "geam": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Mila",
+        "destinatie": "Europa",
+        "locuri": 9,
+        "geam": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tom",
+        "destinatie": "Venus",
+        "locuri": 4,
+        "geam": false
+      },
+      "generated": true
+    }
+  ]
+}

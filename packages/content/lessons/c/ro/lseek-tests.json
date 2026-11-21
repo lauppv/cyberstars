@@ -1,0 +1,154 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "lseek"
+      },
+      {
+        "kind": "call",
+        "name": "open"
+      },
+      {
+        "kind": "call",
+        "name": "read"
+      },
+      {
+        "kind": "call",
+        "name": "write"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "fopen"
+      },
+      {
+        "kind": "call",
+        "name": "fseek"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3\nada\ngrace\nken\nget 1\nset 1 linus\nget 1\nget 5\n"
+    },
+    {
+      "stdin": "1\nsolo\nget 0\nget 1\n"
+    },
+    {
+      "stdin": "2\na\nb\n"
+    },
+    {
+      "stdin": "2\nabcdefghijklmno\nx\nget 0\nset 0 y\nget 0\nget 1\n"
+    },
+    {
+      "stdin": "1\nada\nset 3 ken\nget 3\nget 0\n"
+    },
+    {
+      "stdin": "3\nada\nken\nlinus\nset 2 abcdefghijklmno\nset 2 b\nget 2\n"
+    },
+    {
+      "stdin": "1\nbjarne\nget 2\nset 1 linus\nget 0\nset 3 john\nset 1 grace\nget 1\nget 3\nset 1 john\nset 0 bjarne\nget 894\nset 0 john\nset 3 grace\nget 0\nget 2\nget 2\nset 0 margaret\nget 1\nget 0\nset 0 abcdefghijklmno\nget 889\nget 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "23\nfrances\nbjarne\ndonald\nguido\nbjarne\nfrances\nlinus\nedsger\nedsger\ngrace\nradia\nada\nedsger\nguido\nada\nada\nken\nedsger\nbarbara\ngrace\nlinus\nbjarne\nfrances\nget 1\nget 20\nget 644\nset 24 radia\nget 18\nget 16\nget 19\nget 16\nget 23\nget 11\nget 24\nset 1 grace\nset 8 radia\nget 1\nget 21\nget 16\nset 10 bjarne\nget 21\nset 8 linus\n",
+      "generated": true
+    },
+    {
+      "stdin": "30\nbarbara\nniklaus\nradia\nfrances\nken\nbarbara\nabcdefghijklmno\nalan\nedsger\nbjarne\nken\ndennis\nbjarne\nedsger\nbarbara\nguido\nabcdefghijklmno\nada\nedsger\nabcdefghijklmno\nniklaus\nguido\nedsger\nlinus\nlinus\nradia\nken\nken\nalan\nlinus\nget 660\nget 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "33\nbarbara\nmargaret\nmargaret\nada\nada\nmargaret\nradia\ngrace\ndonald\nbarbara\nlinus\nbjarne\nradia\ndonald\nfrances\nada\nradia\nbjarne\nabcdefghijklmno\nabcdefghijklmno\nabcdefghijklmno\ndennis\ndennis\nmargaret\ndennis\nada\nedsger\nlinus\nbarbara\nbjarne\ndonald\nfrances\nken\nget 4\nget 11\nget 10\nget 29\nget 34\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nniklaus\nniklaus\nset 2 bjarne\nset 1 abcdefghijklmno\nget 0\nset 2 barbara\nset 2 edsger\nset 2 john\nset 4 ken\nget 4\nget 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "59\nlinus\nabcdefghijklmno\nedsger\nbarbara\nradia\nalan\ngrace\nlinus\nbarbara\nada\ngrace\ndonald\nabcdefghijklmno\nbarbara\nalan\nedsger\nguido\nken\ngrace\nniklaus\nlinus\nada\nabcdefghijklmno\nbjarne\nmargaret\ndonald\nbjarne\ndonald\nada\nmargaret\nalan\nada\ndennis\nbjarne\nradia\nbjarne\ngrace\ndonald\nbarbara\nbarbara\ngrace\nguido\nbarbara\njohn\nbjarne\nguido\ndonald\nabcdefghijklmno\nbjarne\nniklaus\nradia\nbjarne\nmargaret\nalan\nniklaus\ndennis\nedsger\nabcdefghijklmno\nguido\n",
+      "generated": true
+    },
+    {
+      "stdin": "60\ndennis\nalan\nabcdefghijklmno\nbarbara\ngrace\njohn\ndennis\nguido\nradia\nguido\nalan\nmargaret\nlinus\nmargaret\nalan\nbarbara\nbjarne\ndennis\nfrances\nbjarne\nalan\nradia\nken\nfrances\nedsger\njohn\nabcdefghijklmno\nalan\nalan\nbjarne\nniklaus\nabcdefghijklmno\nken\nfrances\nada\nfrances\ndennis\nbarbara\nguido\nfrances\nedsger\nbjarne\nbjarne\nada\nlinus\nken\nedsger\nbjarne\ndennis\nfrances\nedsger\nradia\ndennis\nfrances\nken\nlinus\nradia\ndennis\nlinus\nabcdefghijklmno\nset 33 donald\nget 45\nget 41\nset 32 guido\nset 52 barbara\nget 18\nset 528 grace\nset 43 john\nget 62\nget 60\nget 30\nset 27 guido\nset 23 edsger\nset 8 john\nget 46\nget 2\nset 61 dennis\nset 39 grace\nget 33\nget 48\nget 55\nset 25 frances\nset 29 guido\nset 43 barbara\nget 19\nget 45\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\ndonald\nbjarne\nedsger\nmargaret\nget 4\nget 0\nset 3 guido\nget 4\nget 379\nget 1\nset 6 barbara\nget 766\nget 1\nget 4\nget 1\nset 5 niklaus\nset 2 john\nset 4 margaret\nget 5\nget 0\nset 4 bjarne\nset 352 abcdefghijklmno\nset 2 john\nget 3\nget 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\nguido\nget 2\nget 1\nset 0 barbara\nget 0\nget 3\nget 2\nget 0\nget 0\nget 2\nget 1\nget 0\nset 0 frances\nset 0 barbara\nset 2 niklaus\nget 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nfrances\ndonald\nlinus\nbarbara\nget 6\nget 3\nset 279 edsger\nget 0\nget 3\nget 2\nget 0\nget 4\nset 2 ken\nget 0\nget 5\nget 2\nget 249\nset 6 ada\nget 246\nget 0\nget 1\nget 6\nset 1 edsger\nget 493\nget 0\nset 4 margaret\nget 3\nget 5\nget 3\nset 0 barbara\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nbjarne\nalan\nguido\nget 1\nget 5\nget 4\nset 2 barbara\nset 4 abcdefghijklmno\n",
+      "generated": true
+    },
+    {
+      "stdin": "36\nken\nedsger\nlinus\nbarbara\nguido\nniklaus\nradia\ndennis\nalan\nmargaret\ndonald\ngrace\nabcdefghijklmno\ngrace\nbjarne\nalan\nbarbara\nradia\nada\nabcdefghijklmno\nbjarne\nmargaret\njohn\ndonald\ndonald\nniklaus\nmargaret\nalan\ndennis\nken\ndennis\nalan\nmargaret\ngrace\nbjarne\ngrace\nset 16 donald\nset 37 ada\nset 34 alan\nget 36\nset 30 ken\nset 0 niklaus\nget 864\nset 26 john\nget 7\nget 7\nset 217 bjarne\nset 702 ada\nset 31 barbara\nset 6 ken\nget 364\nset 28 donald\nset 33 edsger\nset 8 john\nset 11 linus\nget 28\nset 34 edsger\nset 27 grace\nset 17 dennis\nset 15 grace\nget 38\nget 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nguido\nfrances\nset 0 alan\nget 3\nget 8\nset 3 edsger\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nalan\njohn\nget 3\nget 1\nset 3 niklaus\nset 4 donald\nget 2\nget 2\nget 78\nget 1\nget 2\nget 2\nget 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nfrances\nabcdefghijklmno\ndennis\nlinus\nget 475\nset 1 ken\nget 5\nget 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nguido\nniklaus\ndonald\nset 4 alan\nset 486 barbara\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nbjarne\nfrances\nget 2\nget 4\nset 1 dennis\nget 3\nget 50\nget 2\nget 2\nset 0 abcdefghijklmno\nset 1 alan\nget 1\nset 4 abcdefghijklmno\nget 2\nget 2\nget 802\nget 3\nset 1 radia\nset 4 guido\nget 295\nset 4 john\nset 3 margaret\nget 147\nget 2\nget 1\nget 4\nget 3\nget 4\nset 1 donald\nget 3\nset 0 grace\n",
+      "generated": true
+    },
+    {
+      "stdin": "52\nmargaret\ngrace\nedsger\nfrances\nbarbara\nmargaret\nbarbara\nedsger\nbarbara\nabcdefghijklmno\ndonald\ngrace\nedsger\nniklaus\nfrances\nbjarne\nniklaus\nfrances\ngrace\nradia\nbjarne\nradia\ndonald\nniklaus\nfrances\nguido\nmargaret\ngrace\nmargaret\nniklaus\nedsger\nlinus\nguido\nbarbara\nniklaus\ndennis\nken\nken\nken\ndonald\ngrace\nlinus\nguido\ngrace\nbjarne\nbarbara\ngrace\ndennis\nmargaret\nguido\nguido\nbjarne\nget 10\nget 27\nset 9 niklaus\nget 18\nget 54\nget 4\nget 899\nget 5\nset 36 grace\nget 30\nget 48\nget 21\nget 14\nset 41 barbara\nget 927\nset 8 frances\nget 55\nget 7\nget 33\nset 30 guido\nget 38\nset 329 bjarne\nget 15\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nmargaret\nfrances\ndonald\nbjarne\ndonald\nget 0\nget 1\nget 3\nget 3\nget 2\nget 5\nset 0 abcdefghijklmno\nset 7 guido\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\nbjarne\nget 3\nget 2\nset 3 guido\nset 3 margaret\nget 1\nget 1\nget 617\nget 0\nset 3 ken\nset 3 niklaus\nset 0 ada\nget 2\nget 2\nset 1 niklaus\nget 1\nset 2 bjarne\nget 0\nset 3 ada\nset 3 niklaus\nget 957\nset 757 niklaus\nset 2 bjarne\nget 2\nget 0\nset 0 dennis\nget 0\nget 0\nset 656 abcdefghijklmno\nset 709 alan\nset 68 donald\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nguido\nalan\nbarbara\nget 4\nget 4\nget 3\nset 3 grace\nset 4 donald\nget 783\nget 3\nget 3\nset 5 abcdefghijklmno\nget 3\nget 128\nset 5 ada\nget 4\nset 3 john\nset 0 edsger\nget 525\nget 4\nset 5 alan\nget 4\nset 5 dennis\nget 0\nset 2 barbara\nset 5 dennis\nget 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\njohn\nbjarne\nedsger\ndennis\nalan\nset 0 frances\nget 0\nset 7 grace\nget 5\nset 6 alan\nget 1\nget 6\nget 5\nget 1\nget 284\nget 5\nset 1 john\nset 4 dennis\nset 4 grace\nget 723\nset 6 ada\nget 4\nset 2 radia\nset 1 edsger\nget 2\nset 0 frances\nget 749\nget 285\nget 6\nget 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\ndonald\njohn\nbarbara\nbjarne\nedsger\nget 0\nget 4\nset 3 abcdefghijklmno\n",
+      "generated": true
+    },
+    {
+      "stdin": "61\nlinus\nabcdefghijklmno\ngrace\nabcdefghijklmno\nradia\nada\nmargaret\nbarbara\nfrances\nbarbara\nabcdefghijklmno\ndonald\ngrace\nmargaret\nedsger\nfrances\nken\nfrances\nken\nfrances\ngrace\ndennis\nmargaret\nbarbara\nada\nfrances\nken\nken\nfrances\nradia\nradia\nbjarne\njohn\nlinus\nbarbara\nlinus\nada\nken\nlinus\nedsger\nguido\nbjarne\nbarbara\nbarbara\ndennis\nguido\ngrace\nfrances\nalan\ndonald\nedsger\nken\ndennis\nniklaus\nlinus\nada\nedsger\ngrace\nbjarne\nmargaret\nniklaus\nget 35\nget 13\nget 63\nset 19 ken\nget 49\nget 624\nget 60\nget 19\nget 62\nset 33 edsger\nset 11 frances\nset 24 guido\nget 48\nget 46\nset 59 niklaus\nset 43 frances\nget 38\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nbarbara\nedsger\ndennis\nlinus\nken\nget 7\nset 2 radia\nset 5 frances\nset 6 alan\nget 2\nget 6\nset 3 alan\nget 1\nset 6 grace\nget 0\nset 3 barbara\nset 6 ada\nget 1\nget 5\nget 1\nget 5\nget 756\nset 7 alan\nget 5\nget 4\nset 7 radia\nget 2\nget 6\nset 2 dennis\nget 3\nget 5\n",
+      "generated": true
+    }
+  ]
+}

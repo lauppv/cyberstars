@@ -1,0 +1,654 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Robot"
+      },
+      {
+        "kind": "class_attribute",
+        "name": "made"
+      },
+      {
+        "kind": "function",
+        "name": "__init__"
+      },
+      {
+        "kind": "function",
+        "name": "work"
+      },
+      {
+        "kind": "function",
+        "name": "charge"
+      },
+      {
+        "kind": "function",
+        "name": "__str__"
+      },
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "jobs"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Bolt"]
+        },
+        "jobs": {
+          "$list": ["Rex 3", "Bolt 8", "Rex 8"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Zip"]
+        },
+        "jobs": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gear"]
+        },
+        "jobs": {
+          "$list": ["Gear 10", "Gear 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Volt", "Byte"]
+        },
+        "jobs": {
+          "$list": ["Byte 5", "Byte 1", "Volt 6"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Bolt", "Zip", "Gear", "Volt", "Byte"]
+        },
+        "jobs": {
+          "$list": [
+            "Rex 2",
+            "Bolt 2",
+            "Zip 2",
+            "Gear 2",
+            "Volt 2",
+            "Byte 2",
+            "Rex 2",
+            "Bolt 2",
+            "Zip 2",
+            "Gear 2",
+            "Volt 2",
+            "Byte 2"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt"]
+        },
+        "jobs": {
+          "$list": [
+            "Bolt 3",
+            "Bolt 8",
+            "Bolt 6",
+            "Bolt 9",
+            "Bolt 10",
+            "Bolt 8",
+            "Bolt 10",
+            "Bolt 6",
+            "Bolt 4",
+            "Bolt 2",
+            "Bolt 5",
+            "Bolt 8"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Volt", "Bolt", "Gear", "Rex", "Byte", "Zip"]
+        },
+        "jobs": {
+          "$list": ["Rex 9"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Byte", "Bolt", "Volt", "Zip", "Gear"]
+        },
+        "jobs": {
+          "$list": [
+            "Bolt 4",
+            "Rex 1",
+            "Rex 5",
+            "Zip 2",
+            "Volt 7",
+            "Byte 3",
+            "Volt 2",
+            "Volt 10",
+            "Gear 5",
+            "Volt 5",
+            "Rex 5",
+            "Bolt 10",
+            "Byte 10",
+            "Byte 9",
+            "Bolt 2"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Gear", "Volt"]
+        },
+        "jobs": {
+          "$list": [
+            "Gear 5",
+            "Zip 6",
+            "Gear 2",
+            "Volt 9",
+            "Zip 2",
+            "Gear 8",
+            "Zip 5",
+            "Volt 3",
+            "Volt 8",
+            "Volt 2",
+            "Volt 3",
+            "Volt 2",
+            "Zip 1",
+            "Volt 7"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex"]
+        },
+        "jobs": {
+          "$list": ["Rex 5", "Rex 6", "Rex 1", "Rex 1", "Rex 8", "Rex 4", "Rex 9"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Gear", "Bolt", "Rex", "Volt", "Byte"]
+        },
+        "jobs": {
+          "$list": [
+            "Gear 3",
+            "Rex 4",
+            "Zip 9",
+            "Byte 3",
+            "Bolt 9",
+            "Bolt 2",
+            "Bolt 7",
+            "Bolt 7",
+            "Byte 2",
+            "Byte 4",
+            "Volt 9",
+            "Bolt 8",
+            "Rex 9",
+            "Gear 1",
+            "Byte 5"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Bolt", "Volt", "Byte", "Zip"]
+        },
+        "jobs": {
+          "$list": ["Rex 9", "Volt 9", "Byte 8"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt", "Gear", "Rex"]
+        },
+        "jobs": {
+          "$list": ["Bolt 7"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Byte", "Rex", "Bolt", "Zip", "Gear"]
+        },
+        "jobs": {
+          "$list": ["Gear 8", "Byte 4", "Byte 7", "Zip 6", "Byte 1", "Byte 9", "Gear 2"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Gear", "Volt", "Byte"]
+        },
+        "jobs": {
+          "$list": ["Volt 10", "Volt 7"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt"]
+        },
+        "jobs": {
+          "$list": ["Bolt 10", "Bolt 3", "Bolt 6", "Bolt 4", "Bolt 10"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt"]
+        },
+        "jobs": {
+          "$list": [
+            "Bolt 1",
+            "Bolt 9",
+            "Bolt 2",
+            "Bolt 5",
+            "Bolt 8",
+            "Bolt 7",
+            "Bolt 7",
+            "Bolt 4",
+            "Bolt 7",
+            "Bolt 9",
+            "Bolt 3",
+            "Bolt 10",
+            "Bolt 2",
+            "Bolt 5"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Bolt"]
+        },
+        "jobs": {
+          "$list": ["Rex 8", "Bolt 8", "Rex 1", "Bolt 9", "Rex 8", "Rex 6"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt", "Byte", "Rex", "Zip", "Gear"]
+        },
+        "jobs": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Gear", "Byte", "Volt"]
+        },
+        "jobs": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt", "Rex", "Volt", "Zip", "Gear"]
+        },
+        "jobs": {
+          "$list": ["Rex 5", "Bolt 5", "Rex 3", "Bolt 1", "Volt 2", "Gear 7", "Zip 10", "Zip 7"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Rex", "Byte", "Bolt", "Gear"]
+        },
+        "jobs": {
+          "$list": [
+            "Gear 5",
+            "Rex 1",
+            "Gear 2",
+            "Rex 9",
+            "Bolt 9",
+            "Rex 3",
+            "Zip 7",
+            "Rex 3",
+            "Gear 1",
+            "Byte 8",
+            "Zip 9",
+            "Gear 6",
+            "Zip 4",
+            "Gear 10"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Byte", "Gear"]
+        },
+        "jobs": {
+          "$list": ["Gear 5", "Gear 2", "Gear 6", "Gear 4", "Gear 7", "Gear 5", "Gear 8", "Byte 6"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Zip", "Gear", "Volt"]
+        },
+        "jobs": {
+          "$list": [
+            "Zip 3",
+            "Gear 2",
+            "Gear 8",
+            "Volt 5",
+            "Zip 5",
+            "Zip 7",
+            "Volt 7",
+            "Rex 7",
+            "Zip 3"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex"]
+        },
+        "jobs": {
+          "$list": [
+            "Rex 1",
+            "Rex 2",
+            "Rex 7",
+            "Rex 6",
+            "Rex 7",
+            "Rex 9",
+            "Rex 9",
+            "Rex 7",
+            "Rex 6",
+            "Rex 9",
+            "Rex 6",
+            "Rex 2",
+            "Rex 5",
+            "Rex 1"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Gear", "Rex"]
+        },
+        "jobs": {
+          "$list": [
+            "Rex 6",
+            "Zip 8",
+            "Rex 4",
+            "Rex 3",
+            "Zip 10",
+            "Rex 7",
+            "Zip 6",
+            "Rex 3",
+            "Gear 7",
+            "Rex 5"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Gear", "Rex", "Bolt", "Byte"]
+        },
+        "jobs": {
+          "$list": ["Rex 3", "Bolt 8", "Byte 5", "Rex 10", "Gear 1", "Zip 9", "Byte 6", "Bolt 8"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bolt", "Gear", "Byte"]
+        },
+        "jobs": {
+          "$list": ["Byte 3", "Bolt 9", "Byte 6", "Bolt 10", "Gear 7"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Byte", "Zip", "Bolt"]
+        },
+        "jobs": {
+          "$list": [
+            "Byte 1",
+            "Bolt 3",
+            "Bolt 7",
+            "Byte 4",
+            "Zip 9",
+            "Byte 9",
+            "Bolt 3",
+            "Byte 3",
+            "Byte 9",
+            "Zip 5",
+            "Bolt 8"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Rex"]
+        },
+        "jobs": {
+          "$list": [
+            "Rex 4",
+            "Rex 8",
+            "Zip 8",
+            "Rex 6",
+            "Zip 8",
+            "Rex 8",
+            "Rex 2",
+            "Zip 4",
+            "Zip 7",
+            "Zip 1",
+            "Rex 3",
+            "Rex 6",
+            "Zip 6",
+            "Zip 5",
+            "Rex 5"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gear", "Bolt", "Byte", "Rex", "Volt", "Zip"]
+        },
+        "jobs": {
+          "$list": ["Zip 2"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gear", "Volt", "Rex", "Byte", "Zip"]
+        },
+        "jobs": {
+          "$list": ["Byte 10", "Zip 8", "Gear 2"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zip", "Byte", "Bolt", "Volt", "Gear"]
+        },
+        "jobs": {
+          "$list": [
+            "Byte 5",
+            "Volt 2",
+            "Gear 4",
+            "Gear 8",
+            "Gear 2",
+            "Bolt 3",
+            "Volt 2",
+            "Volt 8",
+            "Bolt 4",
+            "Byte 7",
+            "Zip 2",
+            "Gear 6",
+            "Byte 3",
+            "Bolt 6",
+            "Volt 5"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Byte", "Gear", "Volt"]
+        },
+        "jobs": {
+          "$list": ["Gear 3", "Volt 7", "Rex 9"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Zip", "Byte", "Volt", "Bolt", "Gear"]
+        },
+        "jobs": {
+          "$list": [
+            "Gear 1",
+            "Rex 8",
+            "Gear 2",
+            "Bolt 4",
+            "Bolt 10",
+            "Bolt 9",
+            "Gear 8",
+            "Rex 10",
+            "Bolt 2",
+            "Gear 10",
+            "Gear 6"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Gear", "Zip", "Bolt", "Volt"]
+        },
+        "jobs": {
+          "$list": [
+            "Bolt 3",
+            "Gear 3",
+            "Bolt 4",
+            "Bolt 8",
+            "Zip 2",
+            "Volt 3",
+            "Gear 5",
+            "Zip 3",
+            "Bolt 7",
+            "Gear 9",
+            "Gear 7",
+            "Gear 9",
+            "Volt 3"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Volt", "Rex", "Bolt", "Zip", "Gear", "Byte"]
+        },
+        "jobs": {
+          "$list": ["Byte 10", "Byte 4", "Rex 9", "Gear 5", "Byte 1", "Bolt 8", "Gear 1"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

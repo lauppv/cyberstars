@@ -1,0 +1,257 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "text"
+      },
+      {
+        "kind": "loop",
+        "type": "dict_comprehension"
+      },
+      {
+        "kind": "loop",
+        "type": "set_comprehension"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "text": "nava a plecat de pe luna in zori"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "text": "a b c"
+      }
+    },
+    {
+      "inject": {
+        "text": "word"
+      }
+    },
+    {
+      "inject": {
+        "text": "abcd abcd abcd"
+      }
+    },
+    {
+      "inject": {
+        "text": "aaaaaaaaaaaa zzzz b"
+      }
+    },
+    {
+      "inject": {
+        "text": "the ship left moon at dawn a star is bright orbit and comet fly rocket space x galaxies"
+      }
+    },
+    {
+      "inject": {
+        "text": "wkypivztsgw"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "rocket suasd cwhqd a alehmuc rgwm moon eaemiyosoah abdbtl cblw left mrdgs space bright gvmzsbyhtm zzumlmrru ejqrqxd star star"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "left moon x the dawn at and"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "a comet phkudisyxek fwyvtjcbr and fly fly space gehanoxk a left ysnkv star moon zr moon bkhggawh the xiatukplla comet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "galaxies bright left the rocket and star a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "vtkb jzy orbit and moon rocket yfaumtxqwax xuftz moon no afze bkfxtfeq left"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "wm star smlabftjv mdq is at x l a xcgitbyxq is fly left left at dawn"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "rocket kojzhkx fly at dawn left bgwu fly x the galaxies at zfxmhpld dawn fly"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "skffwakmsd orbit is fly and fly orbit and comet star pbzuwymsft"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "dawn kyptjcklg x"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "bouelc space left cjbetgiayiaq bright galaxies and fly moon moon rocket left dawn dawn aglxppmsmhsr rocket orbit bright rbfykabpl dawn"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "mlfx fly"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "orbit x a orbit space fd hvioltepd space moon galaxies is gowb vhtttdk ship the at"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "x left space is galaxies tizur vzswwqznd kxrhxpmpkysu the rocket is kupvoayq fly is arvrqhoiyc wa comet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "orbit rocket and comet pgsjrl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "vznpnelsgrvw xtnl x yfk jlpsff ship comet and x orbit star"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "the dawn the at fly and qrnwr fly fly and lvepz a wxnaf d kfjardrdzjpo zjzurxifg comet moon"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "uows and left x and xmgxi orbit and dawn orbit a a a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "orbit moon gm a nei and ship fly fly x left a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "comet left the"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "left ship tlqxh space is at znaxeczffnb l a is is comet left at wpz xno rocket"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "ow x aoqfrqdmxssk space bpelp rocket tklxgnajodp the kdzdtarnlyh rocket is x dawn toat"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "bright a ekyktzwiz a"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "is xpdoncxavz rocket comet kzwykkfy sm zczxltodxqin fly mojzmd ljbgjawsswlu galaxies galaxies tz"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "and orbit mzceytn ehzwthnlmhsl afjx a and dawn moon galaxies fly tieocmduv the left pcvjtmyrqx naz orbit rrcvdrbdh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "orbit galaxies is is is and rysiunbsyhty by star left space dawn wbgq is x left the galaxies"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "comet at lkx galaxies awmp ship x rocket space dhlkvzkbv xp comet cwvgdyyrzf"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "iyxipqdqag x moon x moon at fly ship star bright orbit and"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "space star and x a vqosyufa ship bright bright and lwjjnnctod wubajoecd fly ywuyxgqutl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "jifbqxqaokfo comet a x a and star orbit kintqe ciblxysqn"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "hjhbo at comet and x y galaxies x a dawn moon bright z rocket orbit and rtsrwtvdr orbit"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "lqwf x p is zhnzmb ship comet and swbbuv bright the moon vrovfpjhu x galaxies x space a rocket"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "moon u is exl ship"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "a a galaxies space cyohnqbbq savjovorfe is bhayfebsfhuq x x a star"
+      },
+      "generated": true
+    }
+  ]
+}

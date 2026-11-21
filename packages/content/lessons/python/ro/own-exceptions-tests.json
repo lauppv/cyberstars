@@ -1,0 +1,592 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "EroareStatie"
+      },
+      {
+        "kind": "class",
+        "name": "NavaNecunoscuta"
+      },
+      {
+        "kind": "class",
+        "name": "CombustibilInsuficient"
+      },
+      {
+        "kind": "extends",
+        "name": "Exception"
+      },
+      {
+        "kind": "extends",
+        "name": "EroareStatie"
+      },
+      {
+        "kind": "function",
+        "name": "alimenteaza"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "variable",
+        "name": "stoc"
+      },
+      {
+        "kind": "variable",
+        "name": "cunoscute"
+      },
+      {
+        "kind": "variable",
+        "name": "cereri"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "stoc": 100,
+        "cunoscute": {
+          "$list": ["Speranta", "Fulger"]
+        },
+        "cereri": {
+          "$list": ["Speranta 40", "Bob 10", "Fulger 80", "Fulger 50"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "stoc": 0,
+        "cunoscute": {
+          "$list": ["Ray"]
+        },
+        "cereri": {
+          "$list": ["Ray 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 1000,
+        "cunoscute": {
+          "$list": []
+        },
+        "cereri": {
+          "$list": ["Hope 500", "Hope 600"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 10,
+        "cunoscute": {
+          "$list": ["Bob"]
+        },
+        "cereri": {
+          "$list": ["Bob 10", "Bob 1", "Nova 999"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 485,
+        "cunoscute": {
+          "$list": ["Nova", "Bob", "Comet"]
+        },
+        "cereri": {
+          "$list": ["Comet 9", "Bob 429", "Nova 6", "Ray 429", "Bob 204"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 892,
+        "cunoscute": {
+          "$list": ["Swift", "Bob", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Comet 311"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 767,
+        "cunoscute": {
+          "$list": []
+        },
+        "cereri": {
+          "$list": [
+            "Swift 346",
+            "Ray 337",
+            "Swift 44",
+            "Ray 372",
+            "Hope 171",
+            "Ray 273",
+            "Ray 143",
+            "Hope 459",
+            "Swift 71"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 456,
+        "cunoscute": {
+          "$list": ["Ray", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Hope 282", "Nova 487", "Bob 363", "Hope 228"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 355,
+        "cunoscute": {
+          "$list": ["Comet", "Swift", "Bob", "Nova", "Hope"]
+        },
+        "cereri": {
+          "$list": [
+            "Comet 226",
+            "Hope 492",
+            "Swift 390",
+            "Nova 130",
+            "Bob 186",
+            "Bob 205",
+            "Ray 257",
+            "Bob 30",
+            "Comet 1"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 768,
+        "cunoscute": {
+          "$list": ["Swift", "Comet", "Hope", "Bob"]
+        },
+        "cereri": {
+          "$list": ["Ray 62"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 116,
+        "cunoscute": {
+          "$list": ["Bob", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Hope 401", "Comet 77"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 827,
+        "cunoscute": {
+          "$list": []
+        },
+        "cereri": {
+          "$list": ["Hope 210", "Comet 424", "Nova 50", "Hope 419"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 897,
+        "cunoscute": {
+          "$list": ["Nova", "Ray", "Bob"]
+        },
+        "cereri": {
+          "$list": [
+            "Ray 121",
+            "Ray 480",
+            "Bob 346",
+            "Comet 304",
+            "Nova 207",
+            "Nova 10",
+            "Swift 196",
+            "Nova 16",
+            "Bob 427"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 684,
+        "cunoscute": {
+          "$list": ["Nova", "Bob", "Comet", "Swift", "Hope"]
+        },
+        "cereri": {
+          "$list": [
+            "Bob 329",
+            "Comet 68",
+            "Bob 276",
+            "Bob 99",
+            "Bob 308",
+            "Bob 428",
+            "Comet 169",
+            "Hope 199",
+            "Hope 285"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 546,
+        "cunoscute": {
+          "$list": ["Bob", "Ray"]
+        },
+        "cereri": {
+          "$list": [
+            "Swift 435",
+            "Ray 249",
+            "Nova 384",
+            "Bob 75",
+            "Ray 268",
+            "Swift 81",
+            "Comet 22",
+            "Hope 93",
+            "Nova 320",
+            "Ray 396"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 125,
+        "cunoscute": {
+          "$list": ["Hope", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Bob 93"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 552,
+        "cunoscute": {
+          "$list": ["Hope", "Comet", "Bob", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Nova 129", "Hope 20"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 373,
+        "cunoscute": {
+          "$list": ["Comet", "Ray", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Nova 381", "Comet 378", "Nova 23", "Hope 243", "Ray 49", "Comet 477"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 116,
+        "cunoscute": {
+          "$list": ["Swift", "Nova", "Bob", "Comet"]
+        },
+        "cereri": {
+          "$list": [
+            "Nova 349",
+            "Hope 126",
+            "Ray 385",
+            "Bob 278",
+            "Ray 332",
+            "Swift 289",
+            "Bob 300",
+            "Ray 461",
+            "Swift 212"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 980,
+        "cunoscute": {
+          "$list": ["Hope", "Ray", "Nova"]
+        },
+        "cereri": {
+          "$list": [
+            "Hope 208",
+            "Comet 314",
+            "Swift 238",
+            "Bob 128",
+            "Bob 408",
+            "Comet 37",
+            "Nova 393",
+            "Hope 217"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 507,
+        "cunoscute": {
+          "$list": ["Swift", "Nova", "Comet", "Ray"]
+        },
+        "cereri": {
+          "$list": ["Bob 171", "Bob 236"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 952,
+        "cunoscute": {
+          "$list": ["Comet", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Ray 287", "Nova 61", "Hope 199"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 621,
+        "cunoscute": {
+          "$list": ["Nova", "Ray", "Bob", "Swift", "Hope"]
+        },
+        "cereri": {
+          "$list": ["Bob 305", "Nova 77"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 128,
+        "cunoscute": {
+          "$list": ["Nova"]
+        },
+        "cereri": {
+          "$list": [
+            "Nova 309",
+            "Ray 193",
+            "Comet 350",
+            "Nova 367",
+            "Nova 5",
+            "Ray 23",
+            "Ray 70",
+            "Swift 92",
+            "Comet 101"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 391,
+        "cunoscute": {
+          "$list": []
+        },
+        "cereri": {
+          "$list": ["Nova 201", "Comet 393", "Ray 151", "Comet 83", "Comet 319"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 156,
+        "cunoscute": {
+          "$list": ["Bob", "Swift", "Nova", "Ray"]
+        },
+        "cereri": {
+          "$list": ["Ray 314", "Ray 92", "Nova 499", "Swift 181", "Hope 128"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 794,
+        "cunoscute": {
+          "$list": ["Swift", "Bob", "Nova", "Hope", "Comet"]
+        },
+        "cereri": {
+          "$list": ["Swift 41", "Swift 146"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 681,
+        "cunoscute": {
+          "$list": ["Hope", "Bob"]
+        },
+        "cereri": {
+          "$list": ["Comet 459"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 721,
+        "cunoscute": {
+          "$list": ["Swift", "Hope", "Ray"]
+        },
+        "cereri": {
+          "$list": ["Comet 394", "Nova 421", "Swift 212", "Comet 345", "Bob 445"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 797,
+        "cunoscute": {
+          "$list": []
+        },
+        "cereri": {
+          "$list": ["Hope 135", "Nova 228"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 729,
+        "cunoscute": {
+          "$list": ["Comet", "Swift", "Nova"]
+        },
+        "cereri": {
+          "$list": ["Swift 466", "Ray 201", "Ray 293", "Ray 218"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 354,
+        "cunoscute": {
+          "$list": ["Bob", "Ray", "Hope", "Swift"]
+        },
+        "cereri": {
+          "$list": [
+            "Ray 488",
+            "Ray 393",
+            "Nova 406",
+            "Ray 424",
+            "Swift 484",
+            "Comet 93",
+            "Hope 22",
+            "Bob 105",
+            "Hope 174",
+            "Swift 253"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 64,
+        "cunoscute": {
+          "$list": ["Bob", "Swift", "Comet", "Nova", "Hope"]
+        },
+        "cereri": {
+          "$list": [
+            "Hope 189",
+            "Nova 323",
+            "Ray 337",
+            "Bob 153",
+            "Bob 220",
+            "Nova 259",
+            "Bob 166",
+            "Bob 303",
+            "Comet 486",
+            "Hope 71"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 917,
+        "cunoscute": {
+          "$list": ["Nova", "Bob"]
+        },
+        "cereri": {
+          "$list": ["Nova 222", "Bob 150", "Ray 129"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 565,
+        "cunoscute": {
+          "$list": ["Hope", "Comet", "Nova", "Ray"]
+        },
+        "cereri": {
+          "$list": [
+            "Ray 20",
+            "Comet 247",
+            "Bob 385",
+            "Nova 428",
+            "Bob 360",
+            "Bob 105",
+            "Ray 217",
+            "Nova 188"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 649,
+        "cunoscute": {
+          "$list": ["Swift", "Ray", "Bob"]
+        },
+        "cereri": {
+          "$list": ["Bob 382", "Nova 71", "Comet 74", "Hope 205"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

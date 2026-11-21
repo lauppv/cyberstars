@@ -1,0 +1,89 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "pthread_create"
+      },
+      {
+        "kind": "call",
+        "name": "pthread_join"
+      },
+      {
+        "kind": "call",
+        "name": "pthread_cond_wait"
+      },
+      {
+        "kind": "call",
+        "name": "pthread_mutex_lock"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "2 2\ncensus 100\norbit 10\npayroll 1000\ntiny 1\n"
+    },
+    {
+      "stdin": "1 1\nsolo 2\n"
+    },
+    {
+      "stdin": "4 5\na 50000\nb 50000\nc 50000\nd 50000\ne 1\n"
+    },
+    {
+      "stdin": "4 1\nx 7\n"
+    },
+    {
+      "stdin": "3 2\nj0 1\nj1 98\nj2 195\nj3 292\nj4 389\nj5 486\nj6 583\nj7 680\nj8 777\nj9 874\nj10 971\nj11 1068\nj12 1165\nj13 1262\nj14 1359\nj15 1456\nj16 1553\nj17 1650\nj18 1747\nj19 1844\nj20 1941\nj21 2038\nj22 2135\nj23 2232\nj24 2329\nj25 2426\nj26 2523\nj27 2620\nj28 2717\nj29 2814\nj30 2911\nj31 3008\nj32 3105\nj33 3202\nj34 3299\nj35 3396\nj36 3493\nj37 3590\nj38 3687\nj39 3784\nj40 3881\nj41 3978\nj42 4075\nj43 4172\nj44 4269\nj45 4366\nj46 4463\nj47 4560\nj48 4657\nj49 4754\nj50 4851\nj51 4948\nj52 45\nj53 142\nj54 239\nj55 336\nj56 433\nj57 530\nj58 627\nj59 724\nj60 821\nj61 918\nj62 1015\nj63 1112\nj64 1209\nj65 1306\nj66 1403\nj67 1500\nj68 1597\nj69 1694\nj70 1791\nj71 1888\nj72 1985\nj73 2082\nj74 2179\nj75 2276\nj76 2373\nj77 2470\nj78 2567\nj79 2664\nj80 2761\nj81 2858\nj82 2955\nj83 3052\nj84 3149\nj85 3246\nj86 3343\nj87 3440\nj88 3537\nj89 3634\nj90 3731\nj91 3828\nj92 3925\nj93 4022\nj94 4119\nj95 4216\nj96 4313\nj97 4410\nj98 4507\nj99 4604\n"
+    },
+    {
+      "stdin": "2 3\nbackup0 47\ncensus1 10\norbit2 26\norbit3 17731\nbackup4 39608\ncensus5 5\ntape6 18\norbit7 73\nreel8 48402\nmerge9 17\ntape10 33812\ntape11 48647\ntape12 71\nbackup13 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 2\ntape0 9769\nreel1 46594\npayroll2 32\nreel3 65\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 3\npayroll0 6390\nsort1 22974\nmerge2 24410\nbackup3 11\ntape4 22953\nbackup5 3505\nreel6 69\nmerge7 68\norbit8 5\ntape9 49911\nmerge10 33\ncensus11 12607\norbit12 20\norbit13 35748\ncensus14 41397\npayroll15 62\nbackup16 90\ncensus17 44141\ncensus18 4892\nreel19 81\nbackup20 88\nreel21 53\norbit22 78\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 1\ncensus0 1182\norbit1 6584\nsort2 11698\ncensus3 48\nbackup4 55\nreel5 10339\nbackup6 37\nsort7 20814\norbit8 13501\nmerge9 6591\nreel10 49375\npayroll11 93\norbit12 7\nbackup13 7120\nsort14 42304\nsort15 89\npayroll16 39827\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 4\ncensus0 19\nmerge1 35874\ntape2 23076\norbit3 58\ncensus4 7012\norbit5 64\nbackup6 47949\npayroll7 70\nsort8 82\ntape9 7\nsort10 31\nmerge11 9755\ntape12 30584\nreel13 47313\nbackup14 93\ncensus15 2044\norbit16 8883\nmerge17 40\ntape18 15\npayroll19 17791\ncensus20 50\nmerge21 56\norbit22 56\nbackup23 8\nbackup24 13232\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 2\nsort0 28\nbackup1 21400\nmerge2 450\nbackup3 47\npayroll4 11828\ntape5 65\norbit6 18\norbit7 15\nsort8 22710\nbackup9 22932\norbit10 45\ncensus11 15931\nreel12 35680\ncensus13 7107\norbit14 37859\ncensus15 4810\nmerge16 23\ncensus17 79\norbit18 1764\ncensus19 4\nreel20 29720\nreel21 8939\npayroll22 3393\norbit23 11\ntape24 4\nreel25 26778\ncensus26 4285\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 2\nsort0 46\nbackup1 40\ncensus2 4912\ntape3 29\nmerge4 23\npayroll5 19434\ntape6 7282\nreel7 386\nmerge8 35811\ncensus9 50\nmerge10 41520\norbit11 42398\npayroll12 6\ncensus13 11960\norbit14 14388\npayroll15 23\nmerge16 16\nbackup17 28417\norbit18 27713\nreel19 60\nreel20 56\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 1\ntape0 48807\nreel1 40308\nreel2 5468\nreel3 85\nreel4 39\nbackup5 84\nmerge6 81\nmerge7 897\ncensus8 20919\nmerge9 35369\npayroll10 9798\nreel11 47771\nmerge12 74\npayroll13 19790\ntape14 83\nsort15 22791\nbackup16 36579\ncensus17 25450\ncensus18 52\nbackup19 40811\npayroll20 6\norbit21 49\nreel22 40873\nmerge23 8462\ncensus24 46541\nsort25 30\norbit26 95\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 2\nmerge0 41\nreel1 26942\ncensus2 4\nsort3 7\npayroll4 49986\npayroll5 6\ntape6 49549\nbackup7 68\ncensus8 6\ncensus9 23701\npayroll10 48420\nbackup11 3654\nmerge12 22475\nmerge13 20\nreel14 826\ntape15 24596\nsort16 62\ntape17 41\npayroll18 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 1\ncensus0 43013\npayroll1 29419\nbackup2 49\nmerge3 6616\norbit4 260\nreel5 84\nmerge6 49774\npayroll7 74\nmerge8 24557\ncensus9 16\nbackup10 15\ntape11 45\nreel12 52\nmerge13 25\nmerge14 30219\ntape15 5\ncensus16 28179\ncensus17 33\ntape18 53\ncensus19 4053\ncensus20 43\nmerge21 26\ntape22 1101\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 3\npayroll0 55\ntape1 69\nmerge2 39458\nsort3 85\nsort4 38\nsort5 40193\ntape6 44319\nmerge7 17585\nsort8 65\nreel9 79\nbackup10 44997\nbackup11 91\ntape12 27212\nreel13 63\nsort14 33\npayroll15 6746\nreel16 86\ncensus17 53\npayroll18 32368\nbackup19 10081\ncensus20 56\nbackup21 8085\nsort22 52\npayroll23 19762\nmerge24 8\nreel25 1127\ntape26 40663\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 4\norbit0 44\norbit1 44194\npayroll2 23934\nreel3 86\ncensus4 44377\nbackup5 50\nreel6 21\norbit7 6\ntape8 12656\ncensus9 93\nsort10 11811\ncensus11 31194\ncensus12 1641\n",
+      "generated": true
+    }
+  ]
+}

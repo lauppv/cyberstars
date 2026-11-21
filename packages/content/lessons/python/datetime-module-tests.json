@@ -1,0 +1,300 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "launch"
+      },
+      {
+        "kind": "variable",
+        "name": "days"
+      },
+      {
+        "kind": "import",
+        "name": "datetime"
+      },
+      {
+        "kind": "call",
+        "name": "timedelta"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "launch": "2031-05-14",
+        "days": 10
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "launch": "2028-02-28",
+        "days": 1
+      }
+    },
+    {
+      "inject": {
+        "launch": "2000-01-01",
+        "days": 0
+      }
+    },
+    {
+      "inject": {
+        "launch": "2099-12-31",
+        "days": 0
+      }
+    },
+    {
+      "inject": {
+        "launch": "2024-12-31",
+        "days": 1000
+      }
+    },
+    {
+      "inject": {
+        "launch": "2030-02-28",
+        "days": 1
+      }
+    },
+    {
+      "inject": {
+        "launch": "2031-05-16",
+        "days": 2
+      }
+    },
+    {
+      "inject": {
+        "launch": "2009-03-26",
+        "days": 121
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2092-12-18",
+        "days": 628
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2016-09-03",
+        "days": 720
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2072-10-29",
+        "days": 148
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2001-01-11",
+        "days": 900
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2018-12-19",
+        "days": 18
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2085-08-03",
+        "days": 983
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2072-11-04",
+        "days": 57
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2018-07-26",
+        "days": 897
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2095-09-19",
+        "days": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2079-03-12",
+        "days": 918
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2037-09-07",
+        "days": 529
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2079-08-27",
+        "days": 130
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2043-05-16",
+        "days": 231
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2032-12-28",
+        "days": 265
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2096-05-07",
+        "days": 991
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2026-08-29",
+        "days": 844
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2088-01-07",
+        "days": 147
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2063-09-04",
+        "days": 616
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2099-05-21",
+        "days": 221
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2079-02-19",
+        "days": 369
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2090-09-07",
+        "days": 55
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2018-04-04",
+        "days": 381
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2035-12-01",
+        "days": 771
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2084-03-13",
+        "days": 546
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2016-05-01",
+        "days": 148
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2004-12-13",
+        "days": 42
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2014-09-24",
+        "days": 874
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2037-06-11",
+        "days": 510
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2073-08-12",
+        "days": 247
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2080-05-25",
+        "days": 348
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2055-01-03",
+        "days": 631
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "launch": "2057-01-03",
+        "days": 975
+      },
+      "generated": true
+    }
+  ]
+}

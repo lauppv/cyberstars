@@ -1,0 +1,89 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      },
+      {
+        "kind": "call",
+        "name": "wait"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "test 5 -gt 3\ntest -f ghost.txt\nnosuchcheck\ntest -d /tmp\n"
+    },
+    {
+      "stdin": "true\n"
+    },
+    {
+      "stdin": "nothing-here\n"
+    },
+    {
+      "stdin": "test -f /etc/passwd\ntest -d /etc/passwd\nfalse\n"
+    },
+    {
+      "stdin": "test abc = abc\ntest abc = abd\n[ 2 -lt 1 ]\n[ 1 -lt 2 ]"
+    },
+    {
+      "stdin": "expr 2 + 2\ntest -f /etc/passwd\ntest 1 -ne 1\ntest -f /etc/passwd\ntrue\nfalse\ntest 1 -ne 1\ntest -d /tmp\ntest 7 -eq 7\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "test 1 -ne 1\ntest 1 -ne 1\nmissing-check\ntest 5 -gt 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "test 3 -gt 5\ntest tape = tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "test -d /tmp\n",
+      "generated": true
+    },
+    {
+      "stdin": "false\ntest 3 -gt 5\ntest 5 -gt 3\ntest -f /etc/passwd\nexpr 2 + 2\ntest -d /tmp\n",
+      "generated": true
+    },
+    {
+      "stdin": "test -f /etc/passwd\ntest -f /etc/passwd\ntest 1 -ne 1\ntest -f /etc/passwd\ntest -f /etc/passwd\nfalse\nfalse\n",
+      "generated": true
+    },
+    {
+      "stdin": "test -d /nowhere\nmissing-check\ntest 3 -gt 5\nfalse\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "test tape = tape\ntest 7 -eq 7\nmissing-check\ntest 1 -ne 1\nfalse\nexpr 2 + 2\ntrue\ntest -f /etc/passwd\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "test 7 -eq 7\ntest 7 -eq 7\nfalse\ntest -f /tmp\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "test 1 -ne 1\ntest 3 -gt 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "test -f /etc/passwd\nfalse\ntest tape = tape\nmissing-check\n",
+      "generated": true
+    },
+    {
+      "stdin": "false\nfalse\ntrue\ntest -f /etc/passwd\ntest -d /tmp\ntest 3 -gt 5\ntest 3 -gt 5\ntest -d /tmp\ntest 1 -ne 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "test -d /nowhere\nexpr 2 + 2\ntest -d /tmp\ntest -d /tmp\ntest 1 -ne 1\ntest 5 -gt 3\ntest -d /tmp\n",
+      "generated": true
+    }
+  ]
+}

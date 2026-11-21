@@ -1,0 +1,2167 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "pick"
+      },
+      {
+        "kind": "var_kwargs"
+      },
+      {
+        "kind": "keyword_arg",
+        "name": "key"
+      },
+      {
+        "kind": "call",
+        "name": "map"
+      },
+      {
+        "kind": "variable",
+        "name": "crew"
+      },
+      {
+        "kind": "variable",
+        "name": "role"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "medic",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "pilot",
+                "age": 52
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "cook",
+                "age": 20
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "pilot",
+                "age": 40
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zed",
+                "role": "guard",
+                "age": 18
+              }
+            },
+            {
+              "$dict": {
+                "name": "Amy",
+                "role": "guard",
+                "age": 65
+              }
+            }
+          ]
+        },
+        "role": "guard"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "engineer",
+                "age": 36
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "guard",
+                "age": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "guard",
+                "age": 53
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "medic",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "engineer",
+                "age": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "pilot",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "engineer",
+                "age": 25
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "pilot",
+                "age": 49
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "guard",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "guard",
+                "age": 59
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "medic",
+                "age": 38
+              }
+            }
+          ]
+        },
+        "role": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "cook",
+                "age": 21
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "guard",
+                "age": 57
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "guard",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 18
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "cook",
+                "age": 63
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "guard",
+                "age": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "cook",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "medic",
+                "age": 63
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 51
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "guard",
+                "age": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "engineer",
+                "age": 23
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "engineer",
+                "age": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "guard",
+                "age": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "engineer",
+                "age": 21
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "cook",
+                "age": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "guard",
+                "age": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "engineer",
+                "age": 27
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "guard",
+                "age": 25
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "pilot",
+                "age": 18
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "pilot",
+                "age": 26
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 49
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "medic",
+                "age": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "medic",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "cook",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "engineer",
+                "age": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "cook",
+                "age": 46
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "pilot",
+                "age": 56
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "medic",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "pilot",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "engineer",
+                "age": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "medic",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 38
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "pilot",
+                "age": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "engineer",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "guard",
+                "age": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "medic",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "cook",
+                "age": 26
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "guard",
+                "age": 60
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "pilot",
+                "age": 24
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "medic",
+                "age": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "engineer",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "medic",
+                "age": 26
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "cook",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 49
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "guard",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "pilot",
+                "age": 63
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "guard",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 59
+              }
+            }
+          ]
+        },
+        "role": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "cook",
+                "age": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "cook",
+                "age": 22
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "cook",
+                "age": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 18
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "cook",
+                "age": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "cook",
+                "age": 61
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "guard",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "cook",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "guard",
+                "age": 56
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "engineer",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "medic",
+                "age": 23
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "engineer",
+                "age": 59
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "cook",
+                "age": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "medic",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "medic",
+                "age": 54
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "guard",
+                "age": 21
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 57
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "medic",
+                "age": 47
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "medic",
+                "age": 34
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "guard",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "cook",
+                "age": 24
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "medic",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "engineer",
+                "age": 28
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "cook",
+                "age": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "guard",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "engineer",
+                "age": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "medic",
+                "age": 49
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "guard",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "guard",
+                "age": 24
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "guard",
+                "age": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "medic",
+                "age": 56
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "medic",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "medic",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "pilot",
+                "age": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "cook",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "pilot",
+                "age": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "cook",
+                "age": 65
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "pilot",
+                "age": 54
+              }
+            }
+          ]
+        },
+        "role": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "guard",
+                "age": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "medic",
+                "age": 49
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "engineer",
+                "age": 20
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "guard",
+                "age": 19
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "medic",
+                "age": 47
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "engineer",
+                "age": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "engineer",
+                "age": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "engineer",
+                "age": 42
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "cook",
+                "age": 64
+              }
+            }
+          ]
+        },
+        "role": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "engineer",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "pilot",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "medic",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "pilot",
+                "age": 63
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "medic",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "guard",
+                "age": 21
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "pilot",
+                "age": 19
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "pilot",
+                "age": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "pilot",
+                "age": 46
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "guard",
+                "age": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "cook",
+                "age": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "pilot",
+                "age": 50
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "cook",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "guard",
+                "age": 24
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "cook",
+                "age": 20
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "medic",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "guard",
+                "age": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "engineer",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "medic",
+                "age": 47
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "engineer",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "guard",
+                "age": 43
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "engineer",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "medic",
+                "age": 22
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "engineer",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "guard",
+                "age": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "medic",
+                "age": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "engineer",
+                "age": 28
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "guard",
+                "age": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "engineer",
+                "age": 22
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 27
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "engineer",
+                "age": 63
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "medic",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "engineer",
+                "age": 43
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "guard",
+                "age": 49
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "engineer",
+                "age": 60
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 64
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "pilot",
+                "age": 20
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "guard",
+                "age": 63
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "pilot",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "medic",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "cook",
+                "age": 20
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "medic",
+                "age": 47
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 54
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "engineer",
+                "age": 54
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "medic",
+                "age": 51
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "medic",
+                "age": 27
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "pilot",
+                "age": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 59
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "medic",
+                "age": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "pilot",
+                "age": 24
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "guard",
+                "age": 63
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "medic",
+                "age": 57
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "guard",
+                "age": 23
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "medic",
+                "age": 48
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "medic",
+                "age": 61
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "medic",
+                "age": 57
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "guard",
+                "age": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "medic",
+                "age": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "cook",
+                "age": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "pilot",
+                "age": 46
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "engineer",
+                "age": 52
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "cook",
+                "age": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "medic",
+                "age": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "cook",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 46
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "pilot",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "pilot",
+                "age": 27
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "pilot",
+                "age": 23
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "role": "cook",
+                "age": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "guard",
+                "age": 26
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 36
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "cook",
+                "age": 51
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "cook",
+                "age": 25
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "cook",
+                "age": 57
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "engineer",
+                "age": 57
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "engineer",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "pilot",
+                "age": 54
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "medic",
+                "age": 19
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 19
+              }
+            }
+          ]
+        },
+        "role": "guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "guard",
+                "age": 42
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "medic",
+                "age": 29
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "pilot",
+                "age": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "role": "pilot",
+                "age": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "cook",
+                "age": 21
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 60
+              }
+            }
+          ]
+        },
+        "role": "medic"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "engineer",
+                "age": 58
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "pilot",
+                "age": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "pilot",
+                "age": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eli",
+                "role": "engineer",
+                "age": 64
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "engineer",
+                "age": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "guard",
+                "age": 62
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mo",
+                "role": "engineer",
+                "age": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Hal",
+                "role": "guard",
+                "age": 47
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "medic",
+                "age": 29
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "cook",
+                "age": 28
+              }
+            }
+          ]
+        },
+        "role": "pilot"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "role": "cook",
+                "age": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "pilot",
+                "age": 53
+              }
+            },
+            {
+              "$dict": {
+                "name": "Jo",
+                "role": "guard",
+                "age": 21
+              }
+            },
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "cook",
+                "age": 28
+              }
+            },
+            {
+              "$dict": {
+                "name": "Gus",
+                "role": "guard",
+                "age": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "guard",
+                "age": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ben",
+                "role": "pilot",
+                "age": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lu",
+                "role": "medic",
+                "age": 39
+              }
+            }
+          ]
+        },
+        "role": "cook"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Dee",
+                "role": "pilot",
+                "age": 36
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ned",
+                "role": "medic",
+                "age": 54
+              }
+            },
+            {
+              "$dict": {
+                "name": "Cy",
+                "role": "cook",
+                "age": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Fay",
+                "role": "engineer",
+                "age": 57
+              }
+            }
+          ]
+        },
+        "role": "engineer"
+      },
+      "generated": true
+    }
+  ]
+}

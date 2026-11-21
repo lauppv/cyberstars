@@ -1,0 +1,566 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Alarm"
+      },
+      {
+        "kind": "class",
+        "name": "FireAlarm"
+      },
+      {
+        "kind": "class",
+        "name": "DoorAlarm"
+      },
+      {
+        "kind": "extends",
+        "name": "Alarm"
+      },
+      {
+        "kind": "override",
+        "name": "message"
+      },
+      {
+        "kind": "call",
+        "name": "super"
+      },
+      {
+        "kind": "variable",
+        "name": "places"
+      },
+      {
+        "kind": "variable",
+        "name": "kinds"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "places": {
+          "$list": ["Dock", "Lab", "Gym"]
+        },
+        "kinds": {
+          "$list": ["basic", "fire", "door"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "places": {
+          "$list": ["Farm"]
+        },
+        "kinds": {
+          "$list": ["door"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Dock",
+            "Lab",
+            "Gym",
+            "Farm",
+            "Bridge",
+            "Kitchen",
+            "Air Lock",
+            "Bay 2",
+            "Store",
+            "Clinic"
+          ]
+        },
+        "kinds": {
+          "$list": ["fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire", "fire"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bay 2", "Bay 2"]
+        },
+        "kinds": {
+          "$list": ["basic", "basic"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Store"]
+        },
+        "kinds": {
+          "$list": ["basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Lab", "Store", "Bridge"]
+        },
+        "kinds": {
+          "$list": ["basic", "fire", "fire"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Lab", "Bay 2"]
+        },
+        "kinds": {
+          "$list": ["door", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Store", "Gym", "Bridge", "Dock", "Gym", "Store", "Kitchen", "Store"]
+        },
+        "kinds": {
+          "$list": ["fire", "door", "fire", "door", "door", "fire", "fire", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Clinic",
+            "Lab",
+            "Air Lock",
+            "Lab",
+            "Air Lock",
+            "Clinic",
+            "Dock",
+            "Dock",
+            "Farm",
+            "Store"
+          ]
+        },
+        "kinds": {
+          "$list": [
+            "door",
+            "door",
+            "door",
+            "fire",
+            "door",
+            "basic",
+            "fire",
+            "door",
+            "door",
+            "basic"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Lab", "Dock", "Clinic", "Air Lock", "Dock", "Kitchen", "Bridge"]
+        },
+        "kinds": {
+          "$list": ["basic", "door", "door", "fire", "basic", "door", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Gym", "Bay 2", "Farm"]
+        },
+        "kinds": {
+          "$list": ["basic", "basic", "fire"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Farm", "Bridge", "Gym"]
+        },
+        "kinds": {
+          "$list": ["door", "basic", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bay 2"]
+        },
+        "kinds": {
+          "$list": ["fire"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bridge", "Gym", "Farm", "Lab", "Gym", "Clinic", "Farm"]
+        },
+        "kinds": {
+          "$list": ["fire", "fire", "door", "basic", "door", "basic", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Air Lock", "Store"]
+        },
+        "kinds": {
+          "$list": ["fire", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bridge", "Farm", "Dock"]
+        },
+        "kinds": {
+          "$list": ["basic", "fire", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Gym", "Gym"]
+        },
+        "kinds": {
+          "$list": ["fire", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Dock",
+            "Kitchen",
+            "Gym",
+            "Bay 2",
+            "Store",
+            "Dock",
+            "Kitchen",
+            "Farm",
+            "Air Lock",
+            "Clinic"
+          ]
+        },
+        "kinds": {
+          "$list": [
+            "basic",
+            "fire",
+            "fire",
+            "fire",
+            "door",
+            "door",
+            "basic",
+            "door",
+            "fire",
+            "door"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Gym", "Dock"]
+        },
+        "kinds": {
+          "$list": ["basic", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bridge", "Kitchen", "Store", "Bay 2", "Lab", "Clinic", "Gym", "Bay 2", "Farm"]
+        },
+        "kinds": {
+          "$list": ["door", "fire", "door", "fire", "fire", "fire", "door", "fire", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Gym",
+            "Gym",
+            "Lab",
+            "Clinic",
+            "Farm",
+            "Gym",
+            "Dock",
+            "Farm",
+            "Bridge",
+            "Kitchen"
+          ]
+        },
+        "kinds": {
+          "$list": [
+            "door",
+            "basic",
+            "basic",
+            "fire",
+            "door",
+            "basic",
+            "fire",
+            "door",
+            "door",
+            "door"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Air Lock",
+            "Kitchen",
+            "Dock",
+            "Store",
+            "Air Lock",
+            "Bay 2",
+            "Air Lock",
+            "Dock",
+            "Farm",
+            "Bridge"
+          ]
+        },
+        "kinds": {
+          "$list": [
+            "fire",
+            "basic",
+            "door",
+            "fire",
+            "fire",
+            "fire",
+            "fire",
+            "basic",
+            "fire",
+            "basic"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Air Lock",
+            "Lab",
+            "Gym",
+            "Kitchen",
+            "Bridge",
+            "Kitchen",
+            "Bay 2",
+            "Bay 2",
+            "Bridge"
+          ]
+        },
+        "kinds": {
+          "$list": ["basic", "fire", "basic", "door", "door", "basic", "door", "basic", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bay 2", "Dock", "Gym", "Air Lock"]
+        },
+        "kinds": {
+          "$list": ["fire", "door", "door", "fire"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Dock", "Bridge", "Farm"]
+        },
+        "kinds": {
+          "$list": ["basic", "door", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Dock", "Store", "Dock", "Store", "Clinic", "Bay 2", "Gym", "Bridge", "Clinic"]
+        },
+        "kinds": {
+          "$list": ["door", "door", "fire", "door", "basic", "door", "basic", "basic", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Clinic", "Air Lock", "Bridge", "Farm", "Dock", "Dock"]
+        },
+        "kinds": {
+          "$list": ["basic", "basic", "fire", "fire", "door", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Air Lock", "Store", "Kitchen", "Gym"]
+        },
+        "kinds": {
+          "$list": ["fire", "basic", "basic", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Clinic", "Air Lock", "Gym", "Gym", "Clinic", "Air Lock"]
+        },
+        "kinds": {
+          "$list": ["fire", "basic", "door", "door", "basic", "door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Air Lock", "Kitchen", "Bay 2", "Bay 2", "Clinic", "Clinic", "Kitchen"]
+        },
+        "kinds": {
+          "$list": ["door", "door", "basic", "door", "fire", "basic", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Bay 2", "Store", "Clinic", "Farm", "Kitchen", "Air Lock"]
+        },
+        "kinds": {
+          "$list": ["fire", "basic", "door", "fire", "fire", "fire"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Kitchen",
+            "Gym",
+            "Dock",
+            "Air Lock",
+            "Kitchen",
+            "Clinic",
+            "Farm",
+            "Dock",
+            "Dock",
+            "Store"
+          ]
+        },
+        "kinds": {
+          "$list": [
+            "door",
+            "basic",
+            "basic",
+            "fire",
+            "door",
+            "fire",
+            "fire",
+            "fire",
+            "basic",
+            "basic"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Lab", "Air Lock", "Store", "Bay 2", "Gym", "Bay 2", "Air Lock", "Dock"]
+        },
+        "kinds": {
+          "$list": ["door", "door", "fire", "door", "door", "fire", "fire", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Clinic"]
+        },
+        "kinds": {
+          "$list": ["fire"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Kitchen", "Farm", "Clinic", "Store", "Gym", "Store", "Gym", "Farm", "Clinic"]
+        },
+        "kinds": {
+          "$list": ["basic", "fire", "fire", "door", "door", "fire", "fire", "fire", "basic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Kitchen", "Bay 2", "Farm", "Clinic", "Dock", "Bay 2"]
+        },
+        "kinds": {
+          "$list": ["fire", "basic", "basic", "fire", "door", "door"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

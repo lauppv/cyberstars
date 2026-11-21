@@ -140,7 +140,59 @@ const C_NODE_KINDS: Record<string, (node: Node) => boolean> = {
     (n.type === 'field_expression' && n.childForFieldName('operator')?.text === '->'),
   struct: (n) => n.type === 'struct_specifier' && n.childForFieldName('body') !== null,
   enum: (n) => n.type === 'enum_specifier' && n.childForFieldName('body') !== null,
+  ternary: (n) => n.type === 'conditional_expression',
+  // A variable kept with `static` inside a function. A function's own `static`
+  // is about linking, and a `static` at file scope is just a global.
+  static: (n) =>
+    n.type === 'storage_class_specifier' &&
+    n.text === 'static' &&
+    n.parent?.type === 'declaration' &&
+    insideFunction(n.parent) &&
+    !n.parent.childrenForFieldName('declarator').some((d) => d && isFunctionDeclarator(d)),
+  // int grid[3][4], or a parameter int grid[][4]
+  array_2d: (n) =>
+    n.type === 'array_declarator' && n.childForFieldName('declarator')?.type === 'array_declarator',
+  // int (*op)(int, int): a variable, parameter, field or typedef holding a function's address
+  function_pointer: (n) =>
+    n.type === 'function_declarator' &&
+    n.childForFieldName('declarator')?.type === 'parenthesized_declarator' &&
+    n.childForFieldName('declarator')?.namedChild(0)?.type === 'pointer_declarator',
 };
+
+// Names that `typedef int test(int);` gives to a function type.
+function functionTypedefs(root: Node): Set<string> {
+  const names = new Set<string>();
+  for (const node of walk(root)) {
+    if (node.type !== 'type_definition') continue;
+    for (const d of node.childrenForFieldName('declarator')) {
+      if (d?.type !== 'function_declarator') continue;
+      const name = d.childForFieldName('declarator');
+      if (name?.type === 'type_identifier') names.add(name.text);
+    }
+  }
+  return names;
+}
+
+// `test *t` where test is one of those function types.
+function pointsToFunctionType(node: Node, functionTypes: Set<string>): boolean {
+  if (node.type !== 'pointer_declarator' || functionTypes.size === 0) return false;
+  let up = node.parent;
+  while (up && (up.type === 'init_declarator' || up.type === 'pointer_declarator')) up = up.parent;
+  const type = up?.childForFieldName('type');
+  return type?.type === 'type_identifier' && functionTypes.has(type.text);
+}
+
+function insideFunction(node: Node): boolean {
+  for (let up = node.parent; up; up = up.parent) if (up.type === 'function_definition') return true;
+  return false;
+}
+
+function isFunctionDeclarator(declarator: Node): boolean {
+  let d: Node | null = declarator;
+  while (d && (d.type === 'init_declarator' || d.type === 'pointer_declarator'))
+    d = d.childForFieldName('declarator');
+  return d?.type === 'function_declarator';
+}
 
 const LOOP_NODE_TYPES = new Set<string>(Object.values(C_LOOP_NODES));
 
@@ -184,6 +236,8 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
       for (const node of walk(root)) {
         if (node.type !== 'function_definition') continue;
         const name = declaratorName(node.childForFieldName('declarator'));
+        // With a name, that function itself must recurse, not some helper.
+        if (rule.name !== undefined && name !== rule.name) continue;
         for (const inner of walk(node)) if (name && callName(inner) === name) return true;
       }
       return false;
@@ -220,6 +274,16 @@ function ruleHolds(root: Node, rule: StructureFailure['rule']): boolean {
       return hasNestedLoop(root);
     case 'operator':
       return usesOperator(root, rule.name);
+    case 'function_pointer': {
+      // A pointer to a function type named by a typedef, `typedef int test(int);`
+      // then `test *t`, has no (*name) declarator of its own.
+      const functionTypes = functionTypedefs(root);
+      for (const node of walk(root)) {
+        if (C_NODE_KINDS.function_pointer(node) || pointsToFunctionType(node, functionTypes))
+          return true;
+      }
+      return false;
+    }
     case 'define':
       for (const node of walk(root)) {
         if (node.type !== 'preproc_def' && node.type !== 'preproc_function_def') continue;

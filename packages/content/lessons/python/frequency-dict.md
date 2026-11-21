@@ -71,7 +71,7 @@ for item, count in sorted_items:
     print(f"{item}: {count}")
 ```
 
-Don't worry about **lambda** for now, just know that it tells sorted() which value to sort by (in this case, the count)
+This is the `key` from Sorted with Key: the **lambda** tells sorted() which value to sort by, here the count, the second value of each pair
 
 ---
 

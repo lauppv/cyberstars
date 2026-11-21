@@ -1,0 +1,158 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "sscanf"
+      },
+      {
+        "kind": "call",
+        "name": "fgets"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "compile 12\nprint twelve\nsort 30\nbackup\n"
+    },
+    {
+      "stdin": "run 1\n"
+    },
+    {
+      "stdin": "run\n"
+    },
+    {
+      "stdin": "a 5\nb 5\nc 5\n"
+    },
+    {
+      "stdin": "x y\nz q\n"
+    },
+    {
+      "stdin": "dump 999\ncopy x\nlast 1"
+    },
+    {
+      "stdin": "two  words  7\n"
+    },
+    {
+      "stdin": "run 5\nbackup"
+    },
+    {
+      "stdin": "copy\ncopy 977\nbackup five\nload 739\nsort\nreport\nsort 945\nload x\ndump 727\nsort\ncensus 386\ncensus 175\nrun\npayroll 811\nreport\nbackup none\nload five\ncensus 89\n",
+      "generated": true
+    },
+    {
+      "stdin": "run 312\nsort\ndump 120\n",
+      "generated": true
+    },
+    {
+      "stdin": "compile\nsort 384\nsort\ncopy five\nrun none\ndump\npayroll 399\nprint\nbackup 166\nreport 674\ncompile\ncopy x\ncensus\n",
+      "generated": true
+    },
+    {
+      "stdin": "census 438\npayroll five\ncompile 921\nreport\nload five\nload 388\nrun 551\nreport 375\ncensus\npayroll 231\nmerge\nprint 372\nrun twelve\n",
+      "generated": true
+    },
+    {
+      "stdin": "run twelve\nmerge five\ncensus\nrun none\nrun\nrun 572\npayroll 364\nmerge none\ndump 623\nbackup 834\nload 60\ndump 292\n",
+      "generated": true
+    },
+    {
+      "stdin": "merge twelve\ncensus x\ndump\nreport 928\nreport\npayroll 388\n",
+      "generated": true
+    },
+    {
+      "stdin": "load 673\npayroll twelve\nbackup\npayroll 991\nsort twelve\ndump 843\nmerge 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "report 247\nmerge\nrun 570\ndump 960\nload 749\nbackup 285\nrun 100\n",
+      "generated": true
+    },
+    {
+      "stdin": "run 95\nprint 901\ncompile 533\ncopy ten\nmerge 477\ncensus 667\nsort 576\ncopy\ncompile twelve\ncopy x\npayroll ten\n",
+      "generated": true
+    },
+    {
+      "stdin": "merge\nsort\nmerge\ncompile 420\nmerge 71\nrun\nreport\nmerge 567\nrun 114\npayroll 887\n",
+      "generated": true
+    },
+    {
+      "stdin": "load 766\nmerge 594\nrun 746\nrun 573\ncopy 494\nrun 793\nreport 424\ncensus 101\nbackup\n",
+      "generated": true
+    },
+    {
+      "stdin": "report ten\ncopy x\ncopy 783\nprint 982\ncopy 582\nrun 890\ncopy\nbackup 437\nbackup\n",
+      "generated": true
+    },
+    {
+      "stdin": "copy 51\npayroll 48\ncompile 599\n",
+      "generated": true
+    },
+    {
+      "stdin": "print 499\nrun 318\nbackup 649\nreport 216\ncensus 980\nprint\ncensus 661\nprint 666\ndump 888\nload 440\n",
+      "generated": true
+    },
+    {
+      "stdin": "merge soon\n",
+      "generated": true
+    },
+    {
+      "stdin": "compile 894\nrun\nrun 857\ndump 547\nreport five\nload 175\nrun 980\nprint 600\nrun 153\npayroll 622\ndump 650\nload 115\n",
+      "generated": true
+    },
+    {
+      "stdin": "payroll 153\nreport none\nprint x\nreport 257\nsort\nrun 801\nbackup 963\npayroll 36\npayroll 470\ndump 13\ncopy 465\nreport twelve\nload twelve\npayroll\nmerge soon\nload 361\ncopy\n",
+      "generated": true
+    },
+    {
+      "stdin": "sort 500\nrun ten\n",
+      "generated": true
+    },
+    {
+      "stdin": "merge\nprint five\nload 254\ndump 325\nsort five\nsort 413\ndump 627\nrun x\nrun 485\nsort ten\ndump soon\nreport 810\nreport five\ncensus ten\nload\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump 928\nmerge 244\ncopy 244\ncopy 421\nsort 44\nload 571\nreport 604\nsort x\ndump 588\nprint 914\nbackup 975\nreport 994\ncompile 882\ncensus 25\nload 407\ncensus 613\nbackup soon\nmerge\n",
+      "generated": true
+    },
+    {
+      "stdin": "copy 574\nrun\nsort 181\ndump 764\nrun 717\nload ten\ncopy\ncensus 713\nload 316\nbackup five\ncompile ten\nload 4\nsort 858\n",
+      "generated": true
+    },
+    {
+      "stdin": "copy 315\nreport twelve\ncompile soon\nload 790\npayroll\nsort 418\ndump five\nsort 811\nrun 782\ncopy\ndump 436\ncensus 860\nrun 772\nmerge 704\npayroll\ncompile five\ncopy\ncopy 329\ncopy\ncensus 612\n",
+      "generated": true
+    },
+    {
+      "stdin": "census 817\nload soon\nreport 878\ncensus\ndump 113\nbackup 330\ncensus 695\ncopy 217\nload none\ndump 537\n",
+      "generated": true
+    },
+    {
+      "stdin": "payroll 586\ncompile\nprint 258\ncopy 895\ndump 931\nrun 363\nload five\ncopy 945\nbackup none\nbackup 679\nreport\npayroll 803\nmerge none\ncompile 83\ncompile 220\n",
+      "generated": true
+    },
+    {
+      "stdin": "load ten\npayroll 23\ncompile x\nreport\nrun\nprint 233\nbackup 738\n",
+      "generated": true
+    },
+    {
+      "stdin": "run 275\ncensus twelve\nload twelve\ncopy five\nrun 682\nprint 867\nprint 952\nrun 806\ncompile 214\nload 999\nmerge twelve\nreport 534\nsort 449\n",
+      "generated": true
+    },
+    {
+      "stdin": "report five\ndump 937\ncopy twelve\nbackup five\nsort 645\nrun 787\nreport 179\nrun\nprint 38\nprint 335\nsort 841\nprint\nprint 828\ncensus 468\ncompile none\ndump soon\npayroll none\n",
+      "generated": true
+    },
+    {
+      "stdin": "census none\ncensus\ncopy\nbackup 920\nprint 681\nprint\ndump 548\nload 941\nbackup 343\ndump five\nprint\nbackup 43\ndump x\ndump none\nprint\n",
+      "generated": true
+    },
+    {
+      "stdin": "backup 672\ndump five\n",
+      "generated": true
+    }
+  ]
+}

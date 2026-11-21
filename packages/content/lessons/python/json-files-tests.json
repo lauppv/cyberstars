@@ -1,0 +1,502 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "player"
+      },
+      {
+        "kind": "import",
+        "name": "json"
+      },
+      {
+        "kind": "call",
+        "name": "dump"
+      },
+      {
+        "kind": "call",
+        "name": "load"
+      },
+      {
+        "kind": "with"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Ada",
+            "level": 3,
+            "items": {
+              "$list": ["torch"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "kai",
+            "level": 98,
+            "items": {
+              "$list": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Zed",
+            "level": 1,
+            "items": {
+              "$list": ["torch", "rope", "key", "coin", "shield"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "x",
+            "level": 99,
+            "items": {
+              "$list": ["map"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 69,
+            "items": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Ada",
+            "level": 71,
+            "items": {
+              "$list": ["coin", "torch", "rope", "shield", "apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 24,
+            "items": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 51,
+            "items": {
+              "$list": ["rope", "apple", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 14,
+            "items": {
+              "$list": ["torch", "shield", "apple", "key", "rope"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 70,
+            "items": {
+              "$list": ["rope", "coin", "key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 53,
+            "items": {
+              "$list": ["rope", "apple", "key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 70,
+            "items": {
+              "$list": ["key", "shield", "torch", "apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 91,
+            "items": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Tom",
+            "level": 14,
+            "items": {
+              "$list": ["rope", "torch", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Tom",
+            "level": 60,
+            "items": {
+              "$list": ["key", "coin", "rope", "shield", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Grace",
+            "level": 69,
+            "items": {
+              "$list": ["shield", "torch", "map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 46,
+            "items": {
+              "$list": ["torch", "apple", "coin", "key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 55,
+            "items": {
+              "$list": ["rope", "key", "coin", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 78,
+            "items": {
+              "$list": ["torch", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 16,
+            "items": {
+              "$list": ["apple", "coin", "rope", "map", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 70,
+            "items": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 12,
+            "items": {
+              "$list": ["map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Grace",
+            "level": 41,
+            "items": {
+              "$list": ["map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 5,
+            "items": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Tom",
+            "level": 41,
+            "items": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 43,
+            "items": {
+              "$list": ["shield", "key", "map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 65,
+            "items": {
+              "$list": ["key", "apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 77,
+            "items": {
+              "$list": ["rope", "coin"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 67,
+            "items": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "alan",
+            "level": 48,
+            "items": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Grace",
+            "level": 14,
+            "items": {
+              "$list": ["coin", "key", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "mila",
+            "level": 64,
+            "items": {
+              "$list": ["key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Grace",
+            "level": 14,
+            "items": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "player": {
+          "$dict": {
+            "name": "Ada",
+            "level": 62,
+            "items": {
+              "$list": ["key", "torch", "apple", "rope", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    }
+  ]
+}

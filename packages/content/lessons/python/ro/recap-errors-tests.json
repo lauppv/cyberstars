@@ -1,0 +1,343 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "EroareEcluza"
+      },
+      {
+        "kind": "class",
+        "name": "EroarePresiune"
+      },
+      {
+        "kind": "extends",
+        "name": "Exception"
+      },
+      {
+        "kind": "extends",
+        "name": "EroareEcluza"
+      },
+      {
+        "kind": "function",
+        "name": "deschide_ecluza"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try_else"
+      },
+      {
+        "kind": "finally"
+      },
+      {
+        "kind": "variable",
+        "name": "citiri"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "citiri": {
+          "$list": ["100", "85", "abc", "110"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "citiri": {
+          "$list": ["zgomot"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["89", "90", "110", "111"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["120", "80", "75"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["-5", "1.5", "", "100"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["124", "88", "noise"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["noise", "101", "126", "75", "9O", "x", "136"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["82", "122", "87", "88", "67", "105", "76", "111", "", "107"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["82", "--", "x", "97", "--", "127"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["83", "138"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["74", "9O", "124"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["119", "131", "1.5", "118", "136", "61", "125", "noise"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["62", "87", "x", "131", "92"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["88", "72", "107", "100", "120", "125", "76", "137"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["98", "83", "95", "1.5"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["", "96", "103", "134", "9O", "83", "137"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["125", "72", "120", "noise", "122", "", "110"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["78", "75", "104", "76", "119", "68"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["108"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["74", ""]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["131", "74", "x", "noise", "86", "noise", "88", "127"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["104", "9O", "88", "79", "68", "--", "9O", "--"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["114", "107", "111", "noise", "1.5", "120", "1.5", "x", "78"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["98", "80", "81", "9O", "115", "98", "1.5"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["113", "61", "75", "noise", "78", "x", "", "noise", "89"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["81", "9O", "76"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["x", "138", "93"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["117", "noise"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["89", "noise", "74", "109", "95", "--", "1.5", "80", "105"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["75", "85", "9O", "noise"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["--", "80", "103", "67", "", "1.5", "1.5", "71"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["124", "98", "111", "86", "114", "90", "122", "9O", "114"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["136", "72", "86", "61", "92", "110", "114", "113"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["103", "90", "85", "66", "x", "1.5"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["92", "1.5", "87", "x", "135", "--", "138"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["", "9O", "--", "--", "1.5", "60", "", "79", "126", "95"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["140", "97", "1.5", "66", "104", "76", "135", "62", "1.5", "125"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "citiri": {
+          "$list": ["126", "78", "77", "1.5", "noise", "", "75"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

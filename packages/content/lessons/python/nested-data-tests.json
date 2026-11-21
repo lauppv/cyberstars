@@ -1,0 +1,2315 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "crew"
+      },
+      {
+        "kind": "variable",
+        "name": "needed"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["code", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["repair"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["code", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["math", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["Code"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      }
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["math", "code", "chess", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["welding", "repair", "chess", "code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["radio", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["cooking", "medicine", "chess", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["radio", "code", "medicine", "cooking", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["welding", "cooking", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["cooking", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["medicine", "piloting", "radio", "code", "repair"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["welding", "chess", "cooking", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["cooking", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["welding", "math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["code", "cooking", "piloting", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["cooking", "medicine", "code", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["cooking", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["repair", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["math", "radio", "repair", "cooking", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["chess", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["medicine", "radio", "repair", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["chess", "radio", "code", "cooking", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["chess", "radio", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["radio", "math", "repair", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["chess", "piloting", "code", "medicine", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["radio", "medicine", "cooking", "piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["welding", "piloting", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["piloting", "math", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["piloting", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["math", "cooking", "radio", "code", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["code", "welding", "medicine", "repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["math", "code", "chess", "welding", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["medicine", "code", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["radio", "code", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["welding", "medicine", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["cooking", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["code", "welding", "math", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["chess", "repair", "math", "welding", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["chess", "cooking", "repair", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["piloting", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["radio", "code", "piloting", "chess", "cooking"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["welding", "repair", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["math", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["code", "repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["piloting", "welding", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["repair", "math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["welding", "cooking", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["medicine", "repair", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["piloting", "radio", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["code", "repair"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "math"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["radio", "code", "welding", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["chess", "welding", "math", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["radio", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["cooking", "medicine", "radio", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["chess", "repair", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["medicine", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["medicine", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "math"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["piloting", "chess", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["piloting", "repair", "medicine", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["repair", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["chess", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["cooking", "piloting", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["welding", "medicine", "repair", "piloting", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["radio", "piloting", "medicine", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["repair"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["repair", "cooking", "math", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["radio", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["piloting", "math", "code", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["math", "cooking", "chess", "repair", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["medicine", "radio", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["repair", "chess", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["cooking", "code", "repair", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["code", "cooking", "radio", "medicine"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["radio", "cooking", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["welding", "repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["cooking", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["piloting", "math", "repair", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["piloting", "welding", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["cooking", "repair", "medicine", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["code", "piloting", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["medicine", "radio", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["welding", "cooking", "chess", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["welding", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["welding", "cooking", "medicine", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["code", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["radio", "code", "repair", "math", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["welding", "repair", "medicine", "piloting", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["welding", "chess", "repair", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["welding", "code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["piloting", "repair", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["math", "medicine", "radio", "welding", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["cooking", "piloting", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["code", "welding", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["cooking", "radio", "math", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["welding", "cooking", "piloting", "chess"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["cooking", "chess", "medicine", "math", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["cooking", "radio", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["radio", "math", "repair", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["repair", "piloting", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["cooking", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["radio", "code", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["radio", "cooking", "welding", "code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["code", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["cooking", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["code", "repair", "welding", "piloting", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["code", "repair", "cooking", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["radio", "welding", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["welding", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["piloting", "code", "radio", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["repair", "chess", "piloting", "medicine", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["chess", "code", "cooking", "piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["repair", "piloting", "math", "cooking", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["repair"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["code", "cooking", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["repair", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["chess", "radio", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["code", "radio", "cooking", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["welding", "chess", "piloting", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["medicine", "radio", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["piloting", "welding", "repair", "radio", "chess"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["medicine", "math", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "skills": {
+                  "$list": ["piloting", "radio", "welding", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["cooking", "medicine", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Grace",
+                "skills": {
+                  "$list": ["repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["medicine", "chess", "welding", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["medicine", "radio", "piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["repair", "radio", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["radio", "chess", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["medicine", "chess", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "skills": {
+                  "$list": ["repair", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["piloting", "chess", "repair", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "skills": {
+                  "$list": ["radio", "cooking"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "welding"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["piloting", "repair", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["radio", "medicine", "math", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Leo",
+                "skills": {
+                  "$list": ["code", "repair", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": ["repair", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Kai",
+                "skills": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Omar",
+                "skills": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "needed": "math"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "skills": {
+                  "$list": ["code", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["piloting", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "skills": {
+                  "$list": ["repair", "cooking", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["welding", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["medicine", "repair", "code", "math", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Tom",
+                "skills": {
+                  "$list": ["cooking", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "name": "Alan",
+                "skills": {
+                  "$list": ["code", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "needed": "radio"
+      },
+      "generated": true
+    }
+  ]
+}

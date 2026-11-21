@@ -1,0 +1,140 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "stat"
+      },
+      {
+        "kind": "call",
+        "name": "chmod"
+      },
+      {
+        "kind": "call",
+        "name": "strerror"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "make report.txt 120 640\ninfo report.txt\ninfo .\ninfo ghost.txt\nmake report.txt 5 600\ninfo report.txt\n"
+    },
+    {
+      "stdin": "info .\n"
+    },
+    {
+      "stdin": "make empty.txt 0 644\ninfo empty.txt\n"
+    },
+    {
+      "stdin": "make run.sh 5000 755\ninfo run.sh\ninfo run.sh/x\n"
+    },
+    {
+      "stdin": "info nowhere/file.txt\ninfo ..\n"
+    },
+    {
+      "stdin": "make a.txt 1 700\nmake a.txt 2 750\ninfo a.txt"
+    },
+    {
+      "stdin": "make crew.dat 1 755\ninfo run.sh\nmake report.txt 0 600\ninfo missing.txt\nmake notes.txt 0 700\n",
+      "generated": true
+    },
+    {
+      "stdin": "info tape.dat\ninfo tape.dat\ninfo report.txt\ninfo tape.dat\nmake notes.txt 0 640\nmake tape.dat 0 644\ninfo .\nmake report.txt 1 600\ninfo .\nmake crew.dat 4610 644\ninfo .\n",
+      "generated": true
+    },
+    {
+      "stdin": "info crew.dat\nmake reel7.txt 0 640\ninfo reel7.txt\ninfo crew.dat\nmake reel7.txt 1 750\ninfo tape.dat\ninfo run.sh\n",
+      "generated": true
+    },
+    {
+      "stdin": "info missing.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "make crew.dat 0 640\nmake tape.dat 1 755\ninfo tape.dat\nmake crew.dat 1 644\ninfo run.sh\ninfo run.sh\ninfo notes.txt\ninfo missing.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "info report.txt\ninfo run.sh\nmake report.txt 4875 640\ninfo run.sh\nmake run.sh 0 640\ninfo crew.dat\ninfo report.txt\ninfo reel7.txt\ninfo missing.txt\ninfo .\n",
+      "generated": true
+    },
+    {
+      "stdin": "info report.txt\ninfo notes.txt\nmake report.txt 867 600\ninfo reel7.txt\nmake reel7.txt 1 644\nmake report.txt 0 750\nmake run.sh 212 755\ninfo notes.txt\ninfo run.sh\nmake notes.txt 310 700\nmake reel7.txt 1 600\n",
+      "generated": true
+    },
+    {
+      "stdin": "info .\ninfo tape.dat\ninfo run.sh\ninfo notes.txt\ninfo reel7.txt\ninfo notes.txt\nmake crew.dat 0 755\ninfo run.sh\n",
+      "generated": true
+    },
+    {
+      "stdin": "info run.sh\nmake notes.txt 1 600\ninfo notes.txt\ninfo .\nmake report.txt 0 644\ninfo tape.dat\n",
+      "generated": true
+    },
+    {
+      "stdin": "info report.txt\nmake notes.txt 1 640\nmake crew.dat 0 644\nmake notes.txt 0 755\nmake report.txt 0 600\nmake reel7.txt 252 600\ninfo run.sh\nmake run.sh 0 644\ninfo notes.txt\nmake run.sh 0 755\n",
+      "generated": true
+    },
+    {
+      "stdin": "make report.txt 0 600\n",
+      "generated": true
+    },
+    {
+      "stdin": "make tape.dat 1 750\nmake run.sh 1 700\ninfo report.txt\ninfo missing.txt\ninfo reel7.txt\ninfo tape.dat\ninfo reel7.txt\ninfo tape.dat\nmake report.txt 4186 640\nmake report.txt 4213 600\nmake run.sh 0 640\n",
+      "generated": true
+    },
+    {
+      "stdin": "info missing.txt\ninfo report.txt\ninfo crew.dat\nmake notes.txt 0 700\ninfo run.sh\ninfo run.sh\ninfo report.txt\nmake run.sh 1 750\nmake crew.dat 0 644\ninfo report.txt\ninfo .\ninfo tape.dat\n",
+      "generated": true
+    },
+    {
+      "stdin": "make reel7.txt 2003 750\nmake run.sh 1 750\n",
+      "generated": true
+    },
+    {
+      "stdin": "make notes.txt 0 750\nmake run.sh 0 750\ninfo tape.dat\ninfo missing.txt\nmake tape.dat 0 755\ninfo notes.txt\nmake report.txt 1 640\ninfo reel7.txt\ninfo crew.dat\ninfo notes.txt\nmake report.txt 1 750\nmake reel7.txt 1 700\n",
+      "generated": true
+    },
+    {
+      "stdin": "info report.txt\nmake notes.txt 1 644\ninfo reel7.txt\ninfo run.sh\ninfo report.txt\ninfo .\ninfo missing.txt\ninfo tape.dat\nmake run.sh 0 644\ninfo missing.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "info .\ninfo notes.txt\nmake tape.dat 1 750\nmake reel7.txt 0 600\ninfo crew.dat\n",
+      "generated": true
+    },
+    {
+      "stdin": "info report.txt\nmake reel7.txt 0 755\ninfo run.sh\ninfo crew.dat\nmake report.txt 1 644\n",
+      "generated": true
+    },
+    {
+      "stdin": "make tape.dat 0 640\ninfo report.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "info run.sh\ninfo missing.txt\nmake tape.dat 0 755\ninfo tape.dat\nmake run.sh 0 600\nmake notes.txt 0 750\n",
+      "generated": true
+    },
+    {
+      "stdin": "info notes.txt\ninfo crew.dat\nmake tape.dat 0 755\ninfo reel7.txt\ninfo missing.txt\nmake report.txt 564 700\ninfo missing.txt\ninfo tape.dat\ninfo .\nmake crew.dat 0 600\ninfo .\ninfo notes.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "info missing.txt\ninfo run.sh\nmake notes.txt 4916 750\n",
+      "generated": true
+    },
+    {
+      "stdin": "info report.txt\nmake crew.dat 1 644\ninfo tape.dat\nmake report.txt 904 755\ninfo report.txt\nmake report.txt 0 755\ninfo crew.dat\ninfo crew.dat\nmake run.sh 0 755\n",
+      "generated": true
+    },
+    {
+      "stdin": "info crew.dat\nmake crew.dat 4774 750\nmake reel7.txt 1 755\ninfo missing.txt\ninfo reel7.txt\nmake reel7.txt 1 755\ninfo crew.dat\nmake crew.dat 0 755\nmake run.sh 758 644\nmake notes.txt 0 755\ninfo report.txt\ninfo crew.dat\n",
+      "generated": true
+    },
+    {
+      "stdin": "info missing.txt\nmake run.sh 1 640\ninfo report.txt\ninfo reel7.txt\n",
+      "generated": true
+    }
+  ]
+}

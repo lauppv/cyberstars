@@ -1,0 +1,359 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "seed"
+      },
+      {
+        "kind": "variable",
+        "name": "crew"
+      },
+      {
+        "kind": "import",
+        "name": "random"
+      },
+      {
+        "kind": "call",
+        "name": "seed"
+      },
+      {
+        "kind": "call",
+        "name": "shuffle"
+      },
+      {
+        "kind": "call",
+        "name": "choice"
+      },
+      {
+        "kind": "call",
+        "name": "randint"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "seed": 3,
+        "crew": {
+          "$list": ["Ada", "Ben", "Cy", "Dee"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "seed": 0,
+        "crew": {
+          "$list": ["Kai"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 1000,
+        "crew": {
+          "$list": ["Ada", "Ben", "Cy", "Dee", "Eli", "Fay", "Gus", "Hal", "Ivy", "Jo"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 42,
+        "crew": {
+          "$list": ["Ada", "Ben"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 791,
+        "crew": {
+          "$list": ["Cy", "Hal", "Lu", "Kai", "Dee"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 946,
+        "crew": {
+          "$list": ["Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 809,
+        "crew": {
+          "$list": ["Ivy", "Ada", "Eli", "Fay", "Kai", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 357,
+        "crew": {
+          "$list": ["Eli", "Gus", "Kai", "Ben", "Cy", "Jo", "Ivy", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 55,
+        "crew": {
+          "$list": ["Eli", "Hal", "Ivy", "Jo", "Kai", "Ben", "Fay", "Dee", "Lu", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 260,
+        "crew": {
+          "$list": ["Kai", "Cy", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 348,
+        "crew": {
+          "$list": ["Ben", "Dee", "Cy", "Fay", "Ivy", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 281,
+        "crew": {
+          "$list": ["Eli", "Cy", "Lu", "Jo", "Kai", "Ivy", "Ben", "Fay", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 368,
+        "crew": {
+          "$list": ["Ivy", "Hal", "Dee", "Kai", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 21,
+        "crew": {
+          "$list": ["Dee", "Ben", "Fay", "Gus", "Kai", "Hal", "Jo"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 540,
+        "crew": {
+          "$list": ["Cy", "Lu", "Fay", "Eli"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 412,
+        "crew": {
+          "$list": ["Ivy", "Kai", "Lu", "Eli", "Cy", "Ben", "Jo", "Fay", "Dee", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 97,
+        "crew": {
+          "$list": ["Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 626,
+        "crew": {
+          "$list": ["Fay", "Ada", "Dee", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 747,
+        "crew": {
+          "$list": ["Ada", "Fay", "Kai", "Dee"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 609,
+        "crew": {
+          "$list": ["Ivy", "Dee", "Fay", "Cy", "Jo", "Hal", "Lu", "Ada", "Ben", "Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 151,
+        "crew": {
+          "$list": ["Gus", "Fay", "Kai", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 873,
+        "crew": {
+          "$list": ["Kai", "Hal", "Dee", "Ben", "Cy", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 974,
+        "crew": {
+          "$list": ["Fay", "Dee", "Hal", "Cy", "Jo", "Ada", "Kai", "Ivy", "Gus", "Ben"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 167,
+        "crew": {
+          "$list": ["Gus", "Jo", "Ben"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 963,
+        "crew": {
+          "$list": ["Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 716,
+        "crew": {
+          "$list": ["Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 668,
+        "crew": {
+          "$list": ["Gus", "Ben", "Eli", "Hal", "Ivy", "Fay", "Lu", "Cy", "Dee", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 445,
+        "crew": {
+          "$list": ["Ada", "Ben", "Hal", "Cy", "Fay", "Kai", "Gus", "Dee", "Ivy", "Eli"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 456,
+        "crew": {
+          "$list": ["Hal", "Lu", "Gus", "Eli"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 169,
+        "crew": {
+          "$list": ["Ada", "Fay", "Gus", "Dee", "Ben", "Hal", "Kai", "Lu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 453,
+        "crew": {
+          "$list": ["Dee", "Cy", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 836,
+        "crew": {
+          "$list": ["Ada", "Dee", "Kai", "Fay", "Ben", "Gus", "Jo"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 718,
+        "crew": {
+          "$list": ["Jo", "Dee"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 666,
+        "crew": {
+          "$list": ["Ben", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 125,
+        "crew": {
+          "$list": ["Ivy", "Kai", "Cy", "Eli", "Dee", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 647,
+        "crew": {
+          "$list": ["Ada", "Eli", "Ben", "Gus", "Fay", "Kai", "Lu", "Cy"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

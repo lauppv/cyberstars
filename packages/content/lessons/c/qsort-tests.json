@@ -1,0 +1,158 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "qsort"
+      },
+      {
+        "kind": "struct"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "4\ngrace 31\nken 45\nalan 31\nlinus 12\n"
+    },
+    {
+      "stdin": "1\nsolo 0\n"
+    },
+    {
+      "stdin": "3\nb 5\na 5\nc 5\n"
+    },
+    {
+      "stdin": "2\nzed 10000\namy 0\n"
+    },
+    {
+      "stdin": "2\namy 0\nzed 10000\n"
+    },
+    {
+      "stdin": "3\nab 3\na 3\nabc 3\n"
+    },
+    {
+      "stdin": "3\nKen 7\nken 7\nKEN 7\n"
+    },
+    {
+      "stdin": "9\njames21 5\nvint 0\nfrances 3\ndennis83 0\nfrances12 1\nada58 1\nvint 2\nkatherine 1\nalan50 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nedsger60 3\nken93 3\ndennis31 1\ndennis 1\ntim 2\nken 1\nalan85 0\njohn35 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\njames17 6171\ntim 3309\nkatherine46 1152\njohn78 7293\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nkatherine 1\nedsger 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "13\nkatherine84 2\nfrances18 2\nedsger32 3\ndennis 2\ndonald 3\ntim28 4\nmargaret34 5\ndonald 0\nbjarne 3\nradia28 2\nfrances84 4\nbarbara65 3\nada56 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\njames29 33\nniklaus35 2\nvint 2\nalan21 16\nmargaret 16\ndennis 50\ntim45 22\nniklaus 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "23\nguido12 2909\nkatherine 247\nvint50 8090\nniklaus39 8866\nkatherine 35\nradia76 9175\nedsger 6341\nvint99 2716\nniklaus 1215\nada 2368\nbjarne 7777\nlinus11 2998\ngrace85 5139\njohn 1051\nkatherine 1684\nguido 1009\nradia 3620\nniklaus 8110\ndonald 2527\nguido75 580\nvint64 6458\nalan 4229\nniklaus 856\n",
+      "generated": true
+    },
+    {
+      "stdin": "45\nken55 9403\ndennis2 1840\nbjarne 5413\nedsger 8003\nbjarne 618\nradia5 3679\njohn70 5512\ndonald 2329\nfrances50 4024\nfrances 9687\nbjarne 4684\njohn88 5588\nguido 8789\nvint48 3068\nniklaus4 75\nniklaus74 7746\nfrances84 3436\nada 641\nedsger 1380\ndennis 5966\ntim70 9650\nradia 3525\nlinus82 5317\ntim85 4219\nada80 1906\nbjarne 8995\ngrace87 762\nken 8670\ntim 6169\nalan93 2295\nedsger 8367\ndennis 3698\nradia79 8430\ndennis 2394\nradia 6811\njames93 5681\njohn88 6199\ndonald59 9438\nedsger92 3834\nlinus 4633\nvint82 5785\nkatherine 4374\nniklaus12 3734\njohn 593\ndennis 8825\n",
+      "generated": true
+    },
+    {
+      "stdin": "85\nbjarne 7234\nbarbara67 7369\ndonald83 7928\nvint53 1993\nkatherine76 3620\ngrace5 2420\ndennis9 7688\nada51 3616\nlinus67 8409\ndennis28 2449\ndennis69 7418\nkatherine34 6553\nkatherine17 9143\nvint 8585\nbarbara 1146\nradia53 2645\ntim 9864\nalan 2471\nmargaret 643\njames85 7724\nradia50 898\nken 409\nguido38 6164\nbjarne24 387\nalan14 1589\nradia 8587\nedsger 2646\nkatherine24 3605\nada 2788\nmargaret 6608\nalan46 9571\nfrances 4225\nada 5453\nfrances 8767\nedsger 9470\nguido 4207\nniklaus63 5598\nfrances 8828\nada 6458\nniklaus35 6756\ntim 2752\njames10 8516\ngrace66 1857\nalan 3410\njames67 2547\ndonald8 2556\nfrances89 7920\nken 6825\njohn68 1250\nkatherine65 1188\ngrace43 9235\nedsger 6073\nkatherine30 9692\nada65 2757\nfrances63 8555\nradia70 5388\nbjarne 4851\nedsger23 6750\nvint 5789\njames 8925\nradia91 6777\nada24 5994\nvint 8074\njames 1165\njohn32 3083\nvint 3890\ndennis63 7076\ngrace77 3859\nniklaus60 6454\nbjarne 2752\nmargaret 6554\njames 1456\nradia91 4896\nkatherine 2144\ngrace42 7901\ntim39 7211\nradia86 270\nfrances33 3712\nfrances78 8640\ndennis 9662\nmargaret14 3376\nvint 511\nedsger 5772\nada 7820\nmargaret33 1501\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\ndonald 5\nfrances 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nalan 4\njohn 2\ntim49 3\nkatherine93 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "72\nfrances3 3\nradia 5\ndennis 2\ndonald 3\nkatherine 5\njohn45 4\nalan66 0\nada84 3\ntim63 0\nkatherine 2\nbjarne74 5\nkatherine48 1\nbarbara 3\ngrace22 1\nfrances63 1\nmargaret17 1\nmargaret 5\njames 0\nalan 0\nedsger 5\nniklaus 2\nniklaus98 5\nlinus 1\nada 2\ndonald 3\nmargaret 2\nedsger17 4\nbjarne73 0\nalan62 4\nkatherine 2\nfrances 5\nalan94 2\nfrances 1\njames 0\ngrace67 3\ngrace4 2\nfrances24 1\ndennis 0\ndonald66 1\nken87 0\nradia 4\ndennis 2\ndonald27 2\njames 2\njames 3\nkatherine 5\nalan 3\nguido 3\nlinus22 0\nalan31 0\nkatherine 5\nedsger31 5\nguido85 3\nfrances17 4\nbarbara33 2\nken 1\nedsger37 0\ntim 3\nlinus78 1\nlinus 0\nmargaret37 3\nada28 4\njames59 2\nvint38 0\nalan41 4\nada51 3\njames 0\nradia66 2\nalan11 1\nbarbara 0\nkatherine 1\nguido9 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "29\nniklaus 6536\ndonald 1619\nvint 1356\ndennis78 191\ntim 7647\nbarbara61 9420\njohn42 2715\ngrace 1310\nradia 4225\ndonald99 7678\nkatherine17 9103\nlinus3 4364\nguido50 6981\nada 5312\nken11 1015\ngrace59 6823\nvint 2453\nken 5732\nkatherine 4425\ngrace91 1128\nfrances27 76\nken5 4322\ndonald71 5660\nniklaus58 4523\nken 9382\nniklaus20 8108\njohn 3895\nkatherine78 7491\nedsger 7344\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\nguido 4\ntim2 0\nniklaus4 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "5\nkatherine30 2\ndonald86 2\njames 3\nbarbara 5\ndonald65 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "32\nbjarne 7146\nmargaret20 6457\nalan10 7411\nguido 7048\nfrances57 354\ngrace 8377\nalan52 7067\nkatherine40 9888\ngrace85 8276\nmargaret24 6180\nlinus80 6199\nradia88 927\nguido 2371\nmargaret38 4094\ndonald95 6885\nbjarne81 1221\nvint 2525\nmargaret5 6217\nken52 54\nedsger19 1975\njames38 1216\ngrace 6750\nbarbara 8527\nkatherine 8908\nken 122\nken84 3727\nvint62 1602\nniklaus 5577\nfrances24 8647\nedsger51 7695\nbarbara 2694\ndonald 5486\n",
+      "generated": true
+    },
+    {
+      "stdin": "35\nguido83 24\nvint32 5\nada3 24\nniklaus40 2\nguido36 18\nmargaret53 28\ndonald24 1\nada59 47\nken87 6\nlinus52 29\nedsger11 30\nbjarne33 16\nalan 37\njames 33\nkatherine95 38\nada 14\nedsger 26\nfrances9 49\ntim 34\nken38 21\nvint 26\njames 18\nalan 7\ndennis 13\ngrace 43\njohn 34\ndennis 23\njohn 7\ngrace82 26\ndonald 43\nniklaus93 16\ngrace65 41\nken74 3\nniklaus80 15\nradia71 45\n",
+      "generated": true
+    },
+    {
+      "stdin": "24\ndonald 3828\nvint 4975\nada 7673\nalan 497\nradia27 2232\nbarbara 991\nalan 9991\njames18 8988\ndonald62 1909\nfrances 9070\nvint78 7566\ngrace 6285\nkatherine 6132\nniklaus 2716\nada 3245\nniklaus 2189\nbjarne 5391\ngrace89 3442\nada 2544\nalan14 3065\njames 5836\nvint30 5874\nfrances 6599\nalan54 4534\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\njohn 35\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nvint4 3\nbarbara46 1\nken75 1\nlinus64 5\nbarbara 5\nkatherine 1\nbarbara7 0\nguido8 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "97\ndonald31 8807\nada63 9787\nbjarne 627\nlinus 3366\nvint 8276\nken 4647\ngrace11 5548\ntim85 6938\nguido74 4723\nada 9853\nada90 9113\ntim37 1951\njohn89 9849\ndennis 6730\nkatherine 7753\nkatherine10 853\ntim89 7153\nedsger 4996\njames 6870\nlinus31 5937\nbjarne 6098\nlinus42 9255\nbarbara17 5324\njames 469\njohn 2667\nguido 8186\nada 1457\ndonald45 6701\ngrace10 6782\ngrace 4615\nniklaus 6348\nbjarne 3094\nguido81 291\njohn 8525\nlinus 5108\nfrances 1866\ntim55 8626\nlinus 7863\ndonald 5186\nalan 1418\njohn52 7403\ngrace 3415\nradia 1556\nguido79 7283\nguido 6251\nlinus 1497\nalan 8562\nada91 1422\nfrances24 4671\njohn13 9588\nkatherine 6129\nguido68 2568\nmargaret 238\njohn 994\nniklaus10 1711\nbjarne47 9533\nradia96 437\nradia70 8889\njames77 7250\ngrace67 6502\nradia 3506\nguido59 1526\nken11 5132\nalan59 916\nbarbara 8197\nedsger9 1614\ndonald74 3528\nbjarne 3122\nlinus 4957\ndonald46 3471\ngrace 6829\nradia40 563\nvint72 5569\nniklaus89 2559\njames 7795\ngrace2 9680\nada97 610\nken 7730\nbjarne8 1380\njames 4204\nlinus 8497\njohn 5837\nmargaret 1724\nedsger94 636\nedsger 1432\nvint78 7059\nbarbara 9379\nmargaret32 408\nradia74 9994\njames 2721\nken46 4674\ngrace75 7179\ndonald87 5383\ngrace7 558\ndonald 3546\nbarbara53 5518\ngrace58 3054\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nfrances 22\nbjarne29 19\nguido53 32\nken 35\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\ntim 1\nken43 1\nniklaus82 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\ntim 12\n",
+      "generated": true
+    },
+    {
+      "stdin": "98\ngrace86 9\nlinus23 27\ngrace 25\nvint 6\nfrances32 1\ndonald15 36\nmargaret 10\nvint1 35\nbarbara97 38\ndonald 3\ngrace 41\nbjarne46 33\nguido 12\nlinus94 7\ntim41 14\nedsger 10\njohn 23\nalan24 40\nbarbara60 34\nken34 23\nfrances 50\nkatherine96 30\nguido 24\nbarbara 50\nmargaret16 41\ndennis 17\nmargaret 45\nken 48\nlinus 44\nradia 21\ndennis64 30\njames 45\nbarbara 44\nguido 40\nlinus52 31\nniklaus 49\nvint25 6\nniklaus21 32\nfrances 38\nfrances 11\nbjarne91 45\njames12 35\ndonald 42\nedsger55 16\nvint92 28\nguido 33\njohn28 39\nlinus65 39\nfrances 48\nedsger91 33\nbjarne 32\ngrace6 48\ngrace78 6\njames61 11\njohn92 48\njames 41\nvint14 16\nalan26 48\nedsger99 11\ngrace 26\njohn 2\nken 13\nedsger 29\njohn61 4\nfrances45 14\ntim32 27\nada 17\nradia 9\nniklaus64 38\nada 36\nbjarne 17\ntim36 8\ndennis 0\nkatherine 19\ndonald31 30\nlinus 3\nbjarne87 20\nradia 29\ndonald82 40\ndennis72 48\nguido 24\nradia 41\nmargaret93 28\njames 20\ndonald 44\ndonald 35\ngrace 4\njohn 15\nguido72 43\ndennis 9\nbjarne 47\nbarbara 27\ntim61 28\nalan 6\nguido85 38\ndonald 13\nedsger 27\nlinus 8\n",
+      "generated": true
+    },
+    {
+      "stdin": "66\ntim 4\ngrace 5\nvint36 5\nbarbara73 1\nada 3\nmargaret 2\nalan 4\nmargaret 2\ndennis31 2\ndennis 1\nniklaus 3\nken20 2\ntim55 2\nbjarne9 5\njames12 2\nfrances1 0\njames6 3\nvint78 1\nmargaret63 1\njames46 2\ntim 1\nbjarne80 3\nalan23 2\nedsger18 1\njames64 0\nvint12 0\nradia 4\nbarbara 3\nkatherine98 0\nbarbara27 0\ngrace56 4\nfrances95 0\nlinus40 5\ntim 1\nlinus 5\ndonald50 3\nada32 1\nguido8 1\nbjarne53 3\nfrances 2\ndennis 3\nlinus 4\njames24 3\nbjarne76 3\nken 3\nbarbara39 5\nalan 5\nniklaus 5\ndennis 0\ntim73 0\nlinus 2\njohn 5\nalan 1\nalan 0\nbarbara24 4\ntim29 1\nada3 5\nedsger 5\nlinus 0\nniklaus 5\ngrace 2\ngrace 4\ndonald 1\nguido 5\nada 2\nmargaret96 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "61\njames70 1\ngrace12 2\nkatherine5 1\nedsger38 3\njames46 4\nbarbara 1\nniklaus45 3\nradia 0\nmargaret11 4\ntim81 3\nkatherine 1\nalan 4\nbjarne 4\nalan 3\nbarbara59 3\ndonald4 4\nguido45 2\ndennis14 0\nlinus 5\nradia19 5\nada 1\nradia76 2\njames 4\nmargaret 1\nlinus 1\nada 2\nlinus57 2\nken77 5\nmargaret12 3\nguido68 2\nniklaus 4\nkatherine9 1\ndennis37 0\njames26 5\ndonald35 5\nmargaret 1\nbarbara70 2\nmargaret 1\nvint75 0\nvint90 1\nada31 0\nvint 0\nada25 3\nada95 4\ndennis 2\nkatherine8 4\nken64 4\ndennis 3\nbjarne36 3\nmargaret 1\ntim91 4\nbjarne88 5\nedsger78 5\nedsger 2\nmargaret87 4\ngrace8 3\nradia78 5\nradia59 4\nmargaret 0\nkatherine42 4\nniklaus13 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "3\ndennis11 1\nada 4\nguido 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\njames 45\nbjarne 50\nkatherine9 15\nniklaus 19\n",
+      "generated": true
+    },
+    {
+      "stdin": "1\nmargaret 5\n",
+      "generated": true
+    }
+  ]
+}

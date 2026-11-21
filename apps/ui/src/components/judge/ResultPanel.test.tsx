@@ -169,6 +169,7 @@ describe('ResultPanel', () => {
           ...base,
           structureFailures: [
             { type: 'require', rule: { kind: 'recursion' } },
+            { type: 'require', rule: { kind: 'recursion', name: 'count_ones' } },
             { type: 'require', rule: { kind: 'loop', type: 'while' } },
             { type: 'require', rule: { kind: 'function' } },
             { type: 'require', rule: { kind: 'class', name: 'Node' } },
@@ -179,11 +180,60 @@ describe('ResultPanel', () => {
       />,
     );
     expect(screen.getByText(/with recursion/)).toBeInTheDocument();
+    expect(screen.getByText('Make count_ones() call itself')).toBeInTheDocument();
     expect(screen.getByText('Use a while loop')).toBeInTheDocument();
     expect(screen.getByText('Write a function of your own')).toBeInTheDocument();
     expect(screen.getByText('Define the class Node')).toBeInTheDocument();
     expect(screen.getByText(/asks you to do without/)).toBeInTheDocument();
     expect(screen.queryByText(/tests\.structure/)).toBeNull();
+  });
+
+  it('words a check that may name what it asks for, with the name and without', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          structureFailures: [
+            { type: 'require', rule: { kind: 'import', name: 'math' } },
+            { type: 'require', rule: { kind: 'keyword_arg' } },
+            { type: 'require', rule: { kind: 'extends', name: 'Exception' } },
+            { type: 'require', rule: { kind: 'override' } },
+            { type: 'require', rule: { kind: 'decorator', name: 'dataclass' } },
+            { type: 'require', rule: { kind: 'loop', type: 'generator_expression' } },
+            { type: 'require', rule: { kind: 'format_spec' } },
+          ],
+          cases: [{ index: 0, visible: true, passed: true }],
+        }}
+      />,
+    );
+    expect(screen.getByText('Import math')).toBeInTheDocument();
+    expect(screen.getByText(/argument passed by its name \(name=value\)/)).toBeInTheDocument();
+    expect(screen.getByText('Make a class inherit from Exception')).toBeInTheDocument();
+    expect(
+      screen.getByText('Override a method of the parent class (@Override)'),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Use the @dataclass decorator')).toBeInTheDocument();
+    expect(screen.getByText(/generator expression/)).toBeInTheDocument();
+    expect(screen.getByText(/format spec, like \{x:\.2f\}/)).toBeInTheDocument();
+    expect(screen.queryByText(/tests\.structure/)).toBeNull();
+  });
+
+  it('names the loop a forbid is about, never a bare loop', () => {
+    render(
+      <ResultPanel
+        showRuntime={false}
+        results={{
+          ...base,
+          structureFailures: [
+            { type: 'forbid', rule: { kind: 'loop', type: 'list_comprehension' } },
+          ],
+          cases: [{ index: 0, visible: true, passed: true }],
+        }}
+      />,
+    );
+    expect(screen.getByText(/Don't use a list comprehension/)).toBeInTheDocument();
+    expect(screen.queryByText("Don't use a loop here")).toBeNull();
   });
 
   it('names a timeout and a crash', () => {

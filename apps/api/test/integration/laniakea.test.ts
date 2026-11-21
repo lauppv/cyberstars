@@ -22,13 +22,16 @@ const FIRST_STEPS = [
   'comment',
 ];
 
-// The first planet that has no questions yet, or none once every planet has them
-const BARE = planetLessons(
+// The game's planets, from the course's lessons in their order
+const PLANETS = planetLessons(
   lessons
     .filter((l) => l.courseKey === LANIAKEA_COURSE)
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((l) => l.slug),
-).find((p) => !hasQuiz(p.slug))?.slug;
+);
+
+// The first planet that has no questions yet, or none once every planet has them
+const BARE = PLANETS.find((p) => !hasQuiz(p.slug))?.slug;
 
 async function student(done = FIRST_STEPS) {
   const s = await createAuthenticatedAgent();
@@ -67,7 +70,7 @@ describe('Laniakea', () => {
       unlockAt: 6,
       nextLesson: 'comment',
     });
-    expect(state.body.planets).toHaveLength(55);
+    expect(state.body.planets).toHaveLength(PLANETS.length);
     await agent.post('/api/laniakea/print/quiz').send({ lang: 'en' }).expect(403);
   });
 

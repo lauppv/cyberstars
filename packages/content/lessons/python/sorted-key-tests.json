@@ -1,0 +1,2233 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "pilots"
+      },
+      {
+        "kind": "keyword_arg",
+        "name": "key"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 50
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 50
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 29
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "solo",
+                "time": 99
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 60
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 60
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "b",
+                "time": 1
+              }
+            },
+            {
+              "$dict": {
+                "name": "A",
+                "time": 1
+              }
+            },
+            {
+              "$dict": {
+                "name": "c",
+                "time": 1
+              }
+            },
+            {
+              "$dict": {
+                "name": "B2",
+                "time": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "zed",
+                "time": 10
+              }
+            },
+            {
+              "$dict": {
+                "name": "Amy",
+                "time": 20
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 34
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 35
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 32
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 45
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 44
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 33
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 43
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "max",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 43
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 35
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 37
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 31
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 30
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 36
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 44
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "max",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 35
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 34
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 42
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 42
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 42
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 45
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 34
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 33
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 32
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 34
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 32
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "kai",
+                "time": 41
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 37
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 36
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "ola",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ivy",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Ada",
+                "time": 35
+              }
+            },
+            {
+              "$dict": {
+                "name": "leo",
+                "time": 45
+              }
+            },
+            {
+              "$dict": {
+                "name": "raj",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 33
+              }
+            },
+            {
+              "$dict": {
+                "name": "sol",
+                "time": 31
+              }
+            },
+            {
+              "$dict": {
+                "name": "omar",
+                "time": 39
+              }
+            },
+            {
+              "$dict": {
+                "name": "Nia",
+                "time": 44
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 38
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 37
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "pilots": {
+          "$list": [
+            {
+              "$dict": {
+                "name": "Zara",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "tom",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Lin",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "max",
+                "time": 32
+              }
+            },
+            {
+              "$dict": {
+                "name": "Eve",
+                "time": 43
+              }
+            },
+            {
+              "$dict": {
+                "name": "ben",
+                "time": 40
+              }
+            },
+            {
+              "$dict": {
+                "name": "Yuki",
+                "time": 30
+              }
+            },
+            {
+              "$dict": {
+                "name": "Mila",
+                "time": 43
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

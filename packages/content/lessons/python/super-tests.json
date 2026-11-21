@@ -1,0 +1,560 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Person"
+      },
+      {
+        "kind": "class",
+        "name": "Pilot"
+      },
+      {
+        "kind": "extends",
+        "name": "Person"
+      },
+      {
+        "kind": "call",
+        "name": "super"
+      },
+      {
+        "kind": "function",
+        "name": "info"
+      },
+      {
+        "kind": "function",
+        "name": "long_trips"
+      },
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "ages"
+      },
+      {
+        "kind": "variable",
+        "name": "hours"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Ada", "Ben"]
+        },
+        "ages": {
+          "$list": [36, 29]
+        },
+        "hours": {
+          "$list": [800, 120]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Cy"]
+        },
+        "ages": {
+          "$list": [20]
+        },
+        "hours": {
+          "$list": [500]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["A", "B"]
+        },
+        "ages": {
+          "$list": [40, 41]
+        },
+        "hours": {
+          "$list": [499, 499]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ada", "Ben", "Cy", "Dee", "Eli", "Fay", "Gus", "Hal", "Ivy", "Jo"]
+        },
+        "ages": {
+          "$list": [70, 70, 70, 70, 70, 70, 70, 70, 70, 70]
+        },
+        "hours": {
+          "$list": [5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Z", "Y"]
+        },
+        "ages": {
+          "$list": [30, 30]
+        },
+        "hours": {
+          "$list": [0, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ben", "Gus", "Dee", "Hal"]
+        },
+        "ages": {
+          "$list": [67, 56, 48, 29]
+        },
+        "hours": {
+          "$list": [498, 1922, 4193, 491]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Dee", "Fay", "Jo", "Eli", "Ivy"]
+        },
+        "ages": {
+          "$list": [61, 31, 34, 44, 55]
+        },
+        "hours": {
+          "$list": [450, 483, 473, 459, 456]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Dee"]
+        },
+        "ages": {
+          "$list": [20]
+        },
+        "hours": {
+          "$list": [1912]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ivy", "Cy", "Fay", "Ben"]
+        },
+        "ages": {
+          "$list": [52, 51, 56, 40]
+        },
+        "hours": {
+          "$list": [1689, 494, 526, 484]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hal", "Jo", "Ben", "Ada", "Eli", "Cy", "Gus", "Dee", "Fay"]
+        },
+        "ages": {
+          "$list": [67, 41, 61, 46, 32, 26, 52, 24, 27]
+        },
+        "hours": {
+          "$list": [505, 520, 485, 546, 533, 500, 1018, 3314, 637]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gus", "Eli", "Ivy", "Cy"]
+        },
+        "ages": {
+          "$list": [45, 23, 67, 69]
+        },
+        "hours": {
+          "$list": [2875, 472, 467, 2338]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ben", "Jo", "Gus", "Hal", "Ivy", "Dee", "Cy", "Ada"]
+        },
+        "ages": {
+          "$list": [34, 28, 52, 49, 40, 51, 65, 64]
+        },
+        "hours": {
+          "$list": [1343, 4029, 332, 473, 3356, 2098, 485, 458]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gus", "Ivy", "Jo"]
+        },
+        "ages": {
+          "$list": [37, 36, 56]
+        },
+        "hours": {
+          "$list": [474, 4128, 1425]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ben", "Eli", "Ada"]
+        },
+        "ages": {
+          "$list": [57, 53, 26]
+        },
+        "hours": {
+          "$list": [524, 1389, 2598]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ben", "Dee", "Ada", "Eli", "Cy", "Hal", "Fay", "Ivy", "Jo"]
+        },
+        "ages": {
+          "$list": [64, 53, 70, 24, 34, 64, 42, 46, 33]
+        },
+        "hours": {
+          "$list": [4206, 469, 1147, 4571, 4082, 3012, 452, 2438, 4032]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hal", "Ivy", "Eli", "Ben", "Ada", "Dee", "Jo"]
+        },
+        "ages": {
+          "$list": [47, 41, 40, 47, 62, 27, 36]
+        },
+        "hours": {
+          "$list": [1383, 497, 2304, 502, 470, 1510, 494]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Fay"]
+        },
+        "ages": {
+          "$list": [29]
+        },
+        "hours": {
+          "$list": [2293]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hal", "Cy", "Jo", "Fay", "Ivy", "Eli", "Dee", "Ada"]
+        },
+        "ages": {
+          "$list": [24, 22, 46, 24, 56, 32, 45, 69]
+        },
+        "hours": {
+          "$list": [2309, 472, 3446, 2032, 454, 804, 491, 485]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Fay", "Eli", "Cy", "Dee", "Jo", "Ben", "Ada"]
+        },
+        "ages": {
+          "$list": [54, 67, 37, 33, 60, 57, 23]
+        },
+        "hours": {
+          "$list": [2329, 3305, 85, 500, 4491, 4029, 535]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ada"]
+        },
+        "ages": {
+          "$list": [29]
+        },
+        "hours": {
+          "$list": [462]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ada", "Jo"]
+        },
+        "ages": {
+          "$list": [70, 63]
+        },
+        "hours": {
+          "$list": [4134, 456]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Fay", "Dee"]
+        },
+        "ages": {
+          "$list": [53, 41]
+        },
+        "hours": {
+          "$list": [538, 2864]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gus", "Dee", "Hal", "Eli", "Ben", "Jo", "Fay"]
+        },
+        "ages": {
+          "$list": [29, 68, 60, 39, 47, 51, 38]
+        },
+        "hours": {
+          "$list": [3482, 3564, 1311, 514, 527, 478, 1474]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ivy", "Eli", "Fay", "Jo", "Ada", "Cy", "Dee", "Ben", "Hal", "Gus"]
+        },
+        "ages": {
+          "$list": [56, 44, 52, 35, 25, 53, 47, 59, 59, 50]
+        },
+        "hours": {
+          "$list": [489, 4631, 470, 4211, 534, 543, 2021, 506, 11, 3666]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ada", "Fay", "Jo", "Cy", "Dee", "Hal", "Ben"]
+        },
+        "ages": {
+          "$list": [66, 32, 23, 28, 26, 65, 59]
+        },
+        "hours": {
+          "$list": [443, 546, 1260, 453, 550, 457, 3807]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Eli", "Gus", "Fay", "Dee", "Jo", "Ivy", "Hal", "Ben", "Cy", "Ada"]
+        },
+        "ages": {
+          "$list": [25, 64, 58, 37, 60, 64, 57, 43, 49, 43]
+        },
+        "hours": {
+          "$list": [4832, 535, 2071, 480, 491, 4904, 2365, 493, 464, 528]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Fay", "Eli", "Jo"]
+        },
+        "ages": {
+          "$list": [70, 35, 53]
+        },
+        "hours": {
+          "$list": [486, 540, 3639]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hal"]
+        },
+        "ages": {
+          "$list": [29]
+        },
+        "hours": {
+          "$list": [1360]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Fay", "Ada", "Ben", "Dee", "Cy", "Eli", "Gus", "Jo"]
+        },
+        "ages": {
+          "$list": [27, 47, 65, 34, 51, 39, 34, 53]
+        },
+        "hours": {
+          "$list": [363, 472, 3868, 3974, 607, 3774, 3858, 2129]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Dee", "Cy", "Ada", "Hal", "Fay", "Jo", "Ben", "Ivy", "Gus"]
+        },
+        "ages": {
+          "$list": [51, 59, 37, 22, 54, 36, 70, 67, 33]
+        },
+        "hours": {
+          "$list": [4898, 543, 452, 522, 2658, 472, 520, 530, 4808]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jo", "Ada", "Dee", "Fay", "Eli", "Ivy", "Gus", "Hal", "Ben"]
+        },
+        "ages": {
+          "$list": [50, 68, 60, 37, 54, 25, 65, 47, 20]
+        },
+        "hours": {
+          "$list": [4101, 1508, 4538, 3421, 527, 506, 528, 495, 466]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Dee", "Fay", "Eli"]
+        },
+        "ages": {
+          "$list": [37, 35, 64]
+        },
+        "hours": {
+          "$list": [2921, 463, 380]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jo", "Eli", "Fay", "Dee"]
+        },
+        "ages": {
+          "$list": [53, 30, 43, 52]
+        },
+        "hours": {
+          "$list": [502, 534, 476, 534]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Cy", "Hal", "Fay"]
+        },
+        "ages": {
+          "$list": [66, 28, 62]
+        },
+        "hours": {
+          "$list": [679, 539, 537]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ben", "Ada", "Ivy", "Fay", "Gus", "Dee", "Eli"]
+        },
+        "ages": {
+          "$list": [65, 47, 61, 66, 44, 55, 48]
+        },
+        "hours": {
+          "$list": [4929, 484, 481, 392, 467, 3416, 3454]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Gus", "Jo", "Ben", "Eli", "Hal", "Ivy", "Cy", "Fay"]
+        },
+        "ages": {
+          "$list": [24, 70, 67, 37, 28, 22, 34, 45]
+        },
+        "hours": {
+          "$list": [1250, 3960, 477, 3063, 3943, 1964, 4831, 333]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ada", "Cy", "Ivy", "Gus", "Dee", "Hal", "Ben", "Fay"]
+        },
+        "ages": {
+          "$list": [32, 20, 54, 45, 29, 22, 41, 64]
+        },
+        "hours": {
+          "$list": [475, 452, 537, 4434, 464, 499, 913, 4321]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

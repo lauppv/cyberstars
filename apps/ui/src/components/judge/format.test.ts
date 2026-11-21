@@ -18,7 +18,7 @@ describe('structureMessage', () => {
   it('names the method a recursion rule wants recursive', () => {
     expect(
       structureMessage({ type: 'require', rule: { kind: 'recursion', name: 'open' } }, t),
-    ).toBe('Solve it with recursion: open() has to call itself');
+    ).toBe('Make open() call itself');
     expect(structureMessage({ type: 'require', rule: { kind: 'recursion' } }, t)).toBe(
       'Solve it with recursion: a function that calls itself',
     );

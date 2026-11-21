@@ -1,0 +1,439 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Nava"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "viteze"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Speranta", "Fulger", "Bob"]
+        },
+        "viteze": {
+          "$list": [12, 30, 5]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Nova"]
+        },
+        "viteze": {
+          "$list": [0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["A", "B", "C"]
+        },
+        "viteze": {
+          "$list": [7, 7, 7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["A", "B"]
+        },
+        "viteze": {
+          "$list": [1, 2]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Swift", "Bob", "Nova", "Comet", "Ray", "Echo", "Atlas", "Iris", "Vega"]
+        },
+        "viteze": {
+          "$list": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Nova"]
+        },
+        "viteze": {
+          "$list": [11]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Nova", "Ray", "Bob", "Echo", "Hope", "Atlas"]
+        },
+        "viteze": {
+          "$list": [8, 26, 22, 24, 44, 18, 30]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Ray", "Comet", "Atlas", "Swift"]
+        },
+        "viteze": {
+          "$list": [33, 26, 45, 15, 45]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Ray", "Hope", "Atlas", "Comet"]
+        },
+        "viteze": {
+          "$list": [34, 46, 34, 22, 16]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Vega", "Ray", "Swift", "Nova", "Hope", "Echo"]
+        },
+        "viteze": {
+          "$list": [8, 9, 2, 29, 47, 19, 20]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Vega", "Comet"]
+        },
+        "viteze": {
+          "$list": [39, 37]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Bob"]
+        },
+        "viteze": {
+          "$list": [33, 49]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Bob", "Hope"]
+        },
+        "viteze": {
+          "$list": [26, 28]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ray", "Atlas"]
+        },
+        "viteze": {
+          "$list": [13, 43]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Swift", "Hope", "Iris", "Vega", "Bob", "Comet", "Ray"]
+        },
+        "viteze": {
+          "$list": [19, 23, 16, 27, 2, 9, 21, 9]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Swift"]
+        },
+        "viteze": {
+          "$list": [10, 29]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Bob", "Echo", "Comet", "Vega", "Iris"]
+        },
+        "viteze": {
+          "$list": [32, 18, 14, 38, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Bob", "Echo", "Vega", "Iris"]
+        },
+        "viteze": {
+          "$list": [17, 23, 48, 14, 39]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Vega", "Ray"]
+        },
+        "viteze": {
+          "$list": [37, 35]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Vega", "Iris", "Echo", "Bob", "Hope", "Comet", "Nova"]
+        },
+        "viteze": {
+          "$list": [32, 40, 25, 17, 9, 25, 30, 31]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Bob", "Atlas", "Ray", "Nova", "Echo", "Iris", "Vega", "Hope", "Swift"]
+        },
+        "viteze": {
+          "$list": [28, 32, 24, 6, 50, 38, 49, 18, 3, 10]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Comet", "Swift", "Hope", "Atlas", "Vega", "Ray"]
+        },
+        "viteze": {
+          "$list": [9, 5, 49, 28, 20, 9, 47]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Ray", "Swift", "Atlas", "Comet"]
+        },
+        "viteze": {
+          "$list": [35, 10, 47, 29, 23]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Vega", "Swift", "Nova", "Iris"]
+        },
+        "viteze": {
+          "$list": [36, 16, 49, 43, 30]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Iris", "Nova", "Ray"]
+        },
+        "viteze": {
+          "$list": [5, 47, 21, 6]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Hope", "Nova", "Echo"]
+        },
+        "viteze": {
+          "$list": [24, 24, 15, 7]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Hope", "Atlas", "Ray", "Swift", "Nova", "Echo", "Vega", "Comet"]
+        },
+        "viteze": {
+          "$list": [28, 49, 16, 31, 24, 32, 41, 39, 13]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Comet", "Bob", "Ray"]
+        },
+        "viteze": {
+          "$list": [47, 35, 45, 5]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Vega", "Echo", "Swift", "Hope", "Ray"]
+        },
+        "viteze": {
+          "$list": [27, 50, 20, 15, 21]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Vega", "Iris", "Comet"]
+        },
+        "viteze": {
+          "$list": [49, 27, 13, 44]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Nova", "Vega", "Iris", "Swift", "Comet", "Hope"]
+        },
+        "viteze": {
+          "$list": [33, 23, 4, 50, 0, 24, 4]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Comet", "Nova", "Swift", "Vega", "Atlas"]
+        },
+        "viteze": {
+          "$list": [7, 25, 13, 40, 48, 50]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Nova", "Vega", "Ray", "Hope", "Swift", "Bob", "Comet"]
+        },
+        "viteze": {
+          "$list": [22, 8, 50, 38, 46, 21, 2, 11]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift"]
+        },
+        "viteze": {
+          "$list": [34]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Nova"]
+        },
+        "viteze": {
+          "$list": [44, 38]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Atlas", "Ray", "Comet", "Hope", "Bob"]
+        },
+        "viteze": {
+          "$list": [50, 6, 12, 39, 6, 34]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Echo", "Hope", "Iris", "Vega", "Swift", "Comet", "Nova", "Bob", "Ray"]
+        },
+        "viteze": {
+          "$list": [29, 23, 43, 29, 38, 44, 33, 9, 19, 14]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Atlas", "Nova", "Vega", "Swift", "Hope", "Iris"]
+        },
+        "viteze": {
+          "$list": [11, 6, 50, 47, 2, 35, 13]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

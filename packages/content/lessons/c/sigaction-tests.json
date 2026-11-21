@@ -1,0 +1,101 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "sigaction"
+      },
+      {
+        "kind": "call",
+        "name": "sigprocmask"
+      },
+      {
+        "kind": "call",
+        "name": "sigpending"
+      },
+      {
+        "kind": "call",
+        "name": "raise"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "ring check block ring ring check unblock check\n"
+    },
+    {
+      "stdin": "check\n"
+    },
+    {
+      "stdin": "block ring\n"
+    },
+    {
+      "stdin": "block block ring unblock ring ring check\n"
+    },
+    {
+      "stdin": "unblock ring block check ring check"
+    },
+    {
+      "stdin": "block ring check unblock block check check ring unblock check ring ring unblock ring check check block check check unblock ring ring check block block unblock block block ring block ring block unblock unblock block ring ring check unblock unblock check ring check ring ring check ring block ring unblock ring block ring block block ring ring check block check ring ring block ring ring ring ring check ring unblock check unblock ring ring check unblock block block check ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "check unblock ring ring ring check ring unblock check ring check unblock block check ring ring ring ring check unblock check unblock check block check ring unblock ring unblock ring ring unblock check block unblock ring ring block ring ring block unblock ring check ring check block unblock block ring ring ring check unblock block ring check\n",
+      "generated": true
+    },
+    {
+      "stdin": "unblock ring block ring unblock block block ring check check check ring ring ring ring unblock check check check unblock unblock ring ring block ring ring ring ring unblock block unblock check unblock block ring check ring unblock check ring ring check ring block block check unblock unblock ring unblock check ring unblock unblock ring block block unblock ring block ring ring ring block ring unblock unblock ring ring block ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "unblock unblock check check ring unblock check check ring block ring unblock ring block ring block block unblock unblock check unblock block ring block block ring block ring check ring ring block block check ring unblock ring check ring unblock unblock ring unblock check block check block ring check ring check unblock unblock block ring block ring ring ring unblock block block block block unblock unblock ring block ring unblock check ring check block ring ring ring ring unblock ring unblock ring block ring check block unblock ring unblock ring check ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "unblock\n",
+      "generated": true
+    },
+    {
+      "stdin": "ring unblock ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "block unblock block check ring unblock check unblock check unblock ring check block unblock unblock unblock block unblock ring ring block block ring block ring unblock ring check ring ring ring ring block block ring check block ring check ring check ring block check unblock ring unblock ring check ring unblock unblock unblock check unblock block block unblock unblock unblock ring ring check block ring ring check check ring unblock check ring ring block check block ring block block ring block block unblock ring block check unblock block block block check unblock ring block block block ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "unblock block unblock check unblock unblock\n",
+      "generated": true
+    },
+    {
+      "stdin": "ring ring check ring block ring ring unblock check\n",
+      "generated": true
+    },
+    {
+      "stdin": "ring check unblock ring ring ring block block ring ring ring unblock ring check check ring unblock ring check unblock block ring unblock ring unblock block ring check unblock ring check ring check ring block check block ring ring unblock ring unblock ring unblock unblock ring ring block ring ring block block block block unblock ring ring block ring ring ring check check check block block block block\n",
+      "generated": true
+    },
+    {
+      "stdin": "ring unblock unblock ring ring check check unblock ring ring ring check block ring block ring unblock ring block unblock block ring unblock ring unblock unblock unblock check ring ring unblock block unblock unblock ring ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "ring ring check check check check ring ring ring unblock check ring check check ring block ring block ring unblock unblock unblock block check ring ring ring ring unblock ring ring ring block unblock check check check block ring block ring unblock block block ring block ring check check block check ring ring ring ring check ring block block block ring unblock ring check ring block ring ring check\n",
+      "generated": true
+    },
+    {
+      "stdin": "check ring unblock check block ring unblock check unblock check ring check check block ring check ring unblock check ring ring unblock ring check ring check unblock ring unblock check ring unblock ring check ring check block block check ring ring check unblock ring ring ring unblock ring unblock ring\n",
+      "generated": true
+    },
+    {
+      "stdin": "unblock ring block unblock unblock ring check ring check block ring unblock ring unblock unblock check ring unblock unblock unblock unblock unblock block ring unblock\n",
+      "generated": true
+    },
+    {
+      "stdin": "ring ring ring ring check ring check ring unblock ring ring ring block ring block unblock check ring ring ring check ring unblock check block block check check check ring check block ring ring ring check ring ring block ring block unblock ring ring ring ring unblock check ring ring unblock check ring block check block\n",
+      "generated": true
+    }
+  ]
+}

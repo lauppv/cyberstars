@@ -1,0 +1,2315 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "echipaj"
+      },
+      {
+        "kind": "variable",
+        "name": "necesar"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["matematica", "cod"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["cod", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["reparatii"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "gatit"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["code", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["math", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["Code"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["math", "code", "chess", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["welding", "repair", "chess", "code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["radio", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["cooking", "medicine", "chess", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["radio", "code", "medicine", "cooking", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["welding", "cooking", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["cooking", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["medicine", "piloting", "radio", "code", "repair"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["welding", "chess", "cooking", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["cooking", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["welding", "math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["code", "cooking", "piloting", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["cooking", "medicine", "code", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["cooking", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["repair", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["math", "radio", "repair", "cooking", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["chess", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["medicine", "radio", "repair", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["chess", "radio", "code", "cooking", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["chess", "radio", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["radio", "math", "repair", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["chess", "piloting", "code", "medicine", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["radio", "medicine", "cooking", "piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["welding", "piloting", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["piloting", "math", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["piloting", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["math", "cooking", "radio", "code", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["code", "welding", "medicine", "repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["math", "code", "chess", "welding", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["medicine", "code", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["radio", "code", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["welding", "medicine", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["cooking", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["code", "welding", "math", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["chess", "repair", "math", "welding", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["chess", "cooking", "repair", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["piloting", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["radio", "code", "piloting", "chess", "cooking"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["welding", "repair", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["math", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["code", "repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["piloting", "welding", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["repair", "math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["welding", "cooking", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["medicine", "repair", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["piloting", "radio", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["code", "repair"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "math"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["radio", "code", "welding", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["chess", "welding", "math", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["radio", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["cooking", "medicine", "radio", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["chess", "repair", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["medicine", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["medicine", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "math"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["piloting", "chess", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["piloting", "repair", "medicine", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["repair", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["chess", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["cooking", "piloting", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["welding", "medicine", "repair", "piloting", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["radio", "piloting", "medicine", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["repair"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "piloting"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["repair", "cooking", "math", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["radio", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["piloting", "math", "code", "radio"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["math", "cooking", "chess", "repair", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["medicine", "radio", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["repair", "chess", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["cooking", "code", "repair", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["code", "cooking", "radio", "medicine"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["radio", "cooking", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["welding", "repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["cooking", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["piloting", "math", "repair", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["piloting", "welding", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["cooking", "repair", "medicine", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["code", "piloting", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["medicine", "radio", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["welding", "cooking", "chess", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["welding", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["welding", "cooking", "medicine", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["code", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["radio", "code", "repair", "math", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["welding", "repair", "medicine", "piloting", "code"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["welding", "chess", "repair", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["welding", "code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["piloting", "repair", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["math", "medicine", "radio", "welding", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["cooking", "piloting", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["code", "welding", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["cooking", "radio", "math", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["welding", "cooking", "piloting", "chess"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["cooking", "chess", "medicine", "math", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["cooking", "radio", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["radio", "math", "repair", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["repair", "piloting", "medicine", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["cooking", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["radio", "code", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["radio", "cooking", "welding", "code", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["code", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["cooking", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["code", "repair", "welding", "piloting", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["code", "repair", "cooking", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["radio", "welding", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["welding", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["piloting", "code", "radio", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["repair", "chess", "piloting", "medicine", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["chess", "code", "cooking", "piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "medicine"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["repair", "piloting", "math", "cooking", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["repair"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "cooking"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["code", "cooking", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["repair", "radio", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["chess", "radio", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["code", "radio", "cooking", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["welding", "chess", "piloting", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["medicine", "radio", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["piloting", "welding", "repair", "radio", "chess"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "chess"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["medicine", "math", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["repair", "chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "abilitati": {
+                  "$list": ["piloting", "radio", "welding", "repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["cooking", "medicine", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Grace",
+                "abilitati": {
+                  "$list": ["repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["medicine", "chess", "welding", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["medicine", "radio", "piloting"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "code"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["repair", "radio", "chess", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["math", "code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "repair"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["radio", "chess", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["medicine", "chess", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "abilitati": {
+                  "$list": ["repair", "medicine"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["piloting", "chess", "repair", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "abilitati": {
+                  "$list": ["radio", "cooking"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "welding"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["piloting", "repair", "radio"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["repair"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["radio", "medicine", "math", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Leo",
+                "abilitati": {
+                  "$list": ["code", "repair", "cooking"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": ["repair", "cooking", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["chess"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Kai",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Omar",
+                "abilitati": {
+                  "$list": ["code"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": []
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "math"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "abilitati": {
+                  "$list": ["code", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["piloting", "chess", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "abilitati": {
+                  "$list": ["repair", "cooking", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["welding", "math"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["medicine", "repair", "code", "math", "piloting"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Tom",
+                "abilitati": {
+                  "$list": ["cooking", "welding"]
+                }
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Alan",
+                "abilitati": {
+                  "$list": ["code", "welding"]
+                }
+              }
+            }
+          ]
+        },
+        "necesar": "radio"
+      },
+      "generated": true
+    }
+  ]
+}

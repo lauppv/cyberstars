@@ -1,0 +1,193 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Elev"
+      },
+      {
+        "kind": "function",
+        "name": "adauga"
+      },
+      {
+        "kind": "function",
+        "name": "media"
+      },
+      {
+        "kind": "function",
+        "name": "calificativ"
+      },
+      {
+        "kind": "keyword_arg",
+        "name": "key"
+      },
+      {
+        "kind": "format_spec"
+      },
+      {
+        "kind": "call",
+        "name": "Counter"
+      },
+      {
+        "kind": "call",
+        "name": "input"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "Ada mate 92\nBen mate 75\nAda desen 88\nCy desen 95\nBen desen 88\nAda mate 70\nend\n"
+    },
+    {
+      "visible": true,
+      "stdin": "Zoe muzica 0\nend\n"
+    },
+    {
+      "stdin": "Ada mate 90\nBen mate 89\nCy mate 80\nDee mate 70\nEli mate 60\nFay mate 59\nGus mate 100\nend\n"
+    },
+    {
+      "stdin": "Ben desen 81\nAda desen 82\nAda mate 81\nBen mate 82\nend\n"
+    },
+    {
+      "stdin": "Cy fizica 100\nAda fizica 100\nend\n"
+    },
+    {
+      "stdin": "Cy desen 98\nEli desen 90\nCy desen 70\nCy desen 90\nCy desen 90\nFay desen 70\nAda desen 80\nZoe desen 90\nAda desen 60\nEli desen 91\nZoe desen 70\nZoe desen 42\nCy desen 80\nAda desen 60\nCy desen 90\nEli desen 90\nZoe desen 70\nAda desen 80\nFay desen 70\nFay desen 70\nAda desen 90\nFay desen 70\nCy desen 85\nEli desen 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus muzica 80\nZoe istorie 90\nFay istorie 80\nAda istorie 70\nCy muzica 70\nGus fizica 3\nZoe fizica 100\nCy istorie 60\nFay muzica 98\nZoe istorie 90\nFay istorie 80\nCy muzica 80\nAda fizica 70\nFay muzica 55\nGus muzica 80\nCy muzica 80\nCy istorie 80\nFay istorie 21\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy mate 70\nEli mate 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus fizica 60\nFay istorie 90\nZoe mate 80\nGus fizica 70\nCy mate 60\nFay istorie 60\nCy istorie 70\nFay mate 80\nCy istorie 70\nZoe fizica 60\nZoe fizica 90\nGus mate 70\nCy fizica 80\nGus fizica 80\nCy fizica 80\nGus istorie 70\nGus istorie 60\nCy fizica 70\nZoe istorie 90\nCy istorie 60\nFay istorie 70\nGus mate 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus mate 95\nEli fizica 80\nBen mate 90\nFay fizica 90\nZoe fizica 60\nZoe fizica 80\nCy mate 60\nEli fizica 60\nGus mate 90\nFay fizica 80\nZoe fizica 80\nFay fizica 70\nBen fizica 80\nBen mate 70\nCy fizica 70\nFay fizica 70\nZoe fizica 80\nCy mate 59\nEli mate 80\nFay fizica 86\nBen mate 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy desen 50\nDee istorie 70\nZoe mate 80\nCy istorie 90\nDee mate 11\nZoe desen 70\nZoe mate 80\nCy mate 80\nDee istorie 90\nDee mate 60\nZoe istorie 90\nZoe mate 90\nZoe desen 70\nDee mate 60\nZoe mate 70\nCy desen 60\nZoe desen 70\nZoe istorie 70\nDee mate 60\nZoe desen 50\nCy mate 90\nZoe mate 90\nDee istorie 80\nDee istorie 60\nDee desen 34\nCy desen 32\nCy desen 69\nZoe mate 60\nDee desen 60\nCy desen 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe istorie 70\nZoe istorie 80\nFay istorie 80\nFay istorie 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada mate 80\nBen mate 70\nBen mate 60\nGus mate 12\nBen mate 57\nBen mate 93\nBen mate 80\nGus mate 90\nCy mate 73\nBen mate 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe mate 90\nZoe muzica 60\nZoe muzica 12\nZoe istorie 80\nZoe istorie 70\nZoe desen 80\nZoe muzica 70\nZoe mate 42\nZoe mate 60\nZoe istorie 80\nZoe mate 80\nZoe muzica 70\nZoe desen 80\nZoe istorie 30\nZoe istorie 60\nZoe desen 80\nZoe desen 90\nZoe desen 80\nZoe desen 80\nZoe istorie 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe mate 70\nDee muzica 70\nBen mate 90\nDee mate 60\nBen muzica 70\nZoe mate 80\nBen mate 90\nBen muzica 60\nZoe mate 80\nEli muzica 90\nGus mate 70\nAda mate 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus muzica 70\nBen istorie 80\nAda desen 90\nAda muzica 60\nCy desen 56\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben desen 50\nZoe desen 21\nZoe muzica 70\nBen desen 80\nEli muzica 96\nAda istorie 60\nAda muzica 38\nDee istorie 60\nAda desen 80\nDee desen 80\nAda fizica 90\nAda desen 80\nAda fizica 95\nZoe fizica 49\nEli desen 60\nBen fizica 80\nDee desen 90\nDee istorie 80\nAda istorie 80\nZoe muzica 90\nBen fizica 70\nAda fizica 70\nZoe fizica 27\nAda istorie 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee mate 90\nAda mate 80\nAda muzica 90\nZoe mate 76\nZoe muzica 90\nCy mate 90\nDee muzica 94\nCy muzica 70\nZoe muzica 60\nCy muzica 21\nCy muzica 60\nDee mate 70\nAda mate 85\nDee mate 90\nDee muzica 70\nDee muzica 80\nZoe muzica 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus fizica 3\nGus fizica 70\nGus desen 80\nGus desen 60\nGus desen 90\nGus desen 97\nGus desen 80\nGus desen 22\nGus desen 17\nGus fizica 90\nGus fizica 60\nGus fizica 60\nGus fizica 60\nGus fizica 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy muzica 35\nBen fizica 60\nBen fizica 80\nCy fizica 80\nCy muzica 80\nBen muzica 60\nBen muzica 80\nFay fizica 90\nCy muzica 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus desen 70\nAda mate 80\nGus mate 6\nAda muzica 70\nCy istorie 70\nDee muzica 35\nCy mate 35\nAda istorie 70\nDee mate 37\nGus mate 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Fay istorie 70\nFay muzica 80\nAda istorie 60\nFay istorie 60\nAda muzica 60\nFay istorie 91\nFay muzica 60\nAda muzica 80\nFay istorie 80\nFay istorie 80\nFay istorie 90\nFay muzica 60\nAda istorie 98\nAda muzica 19\nAda istorie 10\nAda muzica 60\nAda muzica 70\nAda muzica 80\nFay istorie 18\nFay istorie 60\nFay istorie 61\nFay istorie 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli muzica 80\nFay fizica 70\nAda istorie 80\nFay desen 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy mate 80\nGus fizica 60\nFay fizica 56\nFay fizica 70\nFay mate 70\nGus istorie 90\nGus fizica 70\nCy mate 80\nZoe mate 80\nGus fizica 60\nZoe mate 61\nGus mate 80\nDee fizica 27\nCy mate 73\nFay fizica 7\nFay istorie 5\nCy mate 70\nDee mate 80\nFay fizica 20\nZoe istorie 60\nDee istorie 70\nZoe mate 60\nCy fizica 60\nFay istorie 80\nGus mate 80\nCy istorie 60\nGus mate 46\nCy fizica 90\nCy fizica 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee istorie 14\nBen istorie 90\nGus istorie 90\nDee istorie 60\nBen istorie 70\nBen istorie 70\nGus istorie 53\nDee istorie 80\nGus istorie 84\nBen istorie 80\nDee istorie 80\nGus istorie 80\nGus istorie 90\nGus istorie 80\nBen istorie 90\nGus istorie 7\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada desen 60\nZoe muzica 60\nZoe desen 70\nBen desen 70\nEli istorie 60\nDee istorie 70\nBen desen 60\nEli istorie 60\nDee istorie 80\nBen istorie 70\nZoe desen 90\nAda desen 80\nAda desen 70\nEli desen 90\nAda desen 60\nBen muzica 80\nEli desen 90\nZoe istorie 60\nZoe desen 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada mate 80\nGus mate 80\nFay mate 70\nEli mate 90\nAda mate 44\nEli mate 70\nEli mate 60\nEli mate 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee mate 80\nGus mate 70\nGus mate 80\nGus mate 90\nCy mate 80\nDee mate 80\nFay mate 80\nAda mate 63\nCy mate 60\nAda mate 70\nAda mate 80\nGus mate 60\nCy mate 77\nGus mate 60\nAda mate 90\nGus mate 70\nCy mate 70\nDee mate 80\nAda mate 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben istorie 80\nGus fizica 70\nBen fizica 73\nAda istorie 60\nGus desen 33\nAda desen 90\nBen istorie 90\nGus fizica 11\nAda fizica 12\nBen desen 77\nGus desen 80\nAda istorie 70\nAda fizica 70\nAda fizica 70\nAda fizica 80\nAda istorie 60\nBen istorie 80\nBen istorie 72\nAda istorie 60\nAda desen 70\nBen fizica 90\nAda istorie 80\nBen fizica 33\nBen fizica 80\nAda fizica 80\nGus istorie 60\nGus fizica 69\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus muzica 70\nDee istorie 80\nDee muzica 48\nFay istorie 68\nAda muzica 80\nFay istorie 1\nFay istorie 60\nFay muzica 90\nFay muzica 70\nEli muzica 60\nEli istorie 80\nGus istorie 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus muzica 70\nGus istorie 90\nGus desen 80\nGus desen 37\nGus istorie 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben fizica 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli istorie 60\nAda desen 80\nZoe fizica 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe istorie 70\nGus istorie 60\nCy desen 80\nGus desen 60\nZoe desen 60\nZoe desen 60\nCy desen 97\nZoe desen 90\nGus istorie 70\nGus istorie 80\nZoe muzica 80\nCy istorie 90\nGus muzica 80\nZoe desen 80\nZoe istorie 70\nZoe istorie 90\nGus desen 60\nGus istorie 90\nZoe muzica 80\nZoe istorie 60\nZoe muzica 90\nZoe istorie 60\nZoe muzica 80\nZoe desen 80\nCy desen 60\nGus muzica 80\nGus istorie 71\nCy muzica 60\nGus desen 60\nGus istorie 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee istorie 70\nZoe istorie 70\nZoe istorie 90\nDee istorie 70\nZoe istorie 8\nEli desen 90\nZoe desen 80\nZoe desen 60\nEli desen 90\nEli muzica 90\nZoe desen 70\nEli muzica 80\nEli desen 80\nEli muzica 80\nZoe desen 80\nEli desen 80\nDee istorie 70\nEli istorie 94\nDee desen 60\nDee desen 80\nDee desen 90\nDee istorie 60\nEli desen 24\nZoe istorie 90\nZoe istorie 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus istorie 90\nGus fizica 80\nGus fizica 60\nGus fizica 80\nGus istorie 80\nGus fizica 60\nGus fizica 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe desen 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada muzica 80\nBen mate 60\nBen mate 80\nAda mate 70\nBen mate 90\nAda mate 70\nBen muzica 60\nAda mate 90\nAda muzica 25\nAda mate 70\nAda mate 80\nAda muzica 70\nBen muzica 80\nBen muzica 83\nAda muzica 60\nAda muzica 30\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Fay istorie 90\nFay istorie 60\nFay fizica 60\nFay istorie 80\nFay fizica 70\nFay istorie 80\nFay fizica 70\nFay istorie 4\nFay fizica 60\nFay istorie 90\nFay istorie 60\nFay fizica 90\nFay istorie 60\nFay istorie 90\nFay fizica 70\nFay istorie 90\nFay istorie 60\nFay fizica 84\nFay istorie 60\nFay fizica 80\nFay fizica 70\nFay istorie 90\nFay istorie 70\nFay fizica 60\nFay fizica 90\nFay istorie 60\nFay fizica 70\nFay fizica 80\nFay istorie 70\nFay istorie 70\nend\n",
+      "generated": true
+    }
+  ]
+}

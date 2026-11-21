@@ -1,0 +1,258 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "echipaj"
+      },
+      {
+        "kind": "call",
+        "name": "split"
+      },
+      {
+        "kind": "call",
+        "name": "join"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": "ada lovelace,alan turing,grace hopper"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "echipaj": "sally ride"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": "neil armstrong,buzz aldrin"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": "a b"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": "ada lovelace,alan turing,grace hopper,sally ride,neil armstrong,yuri gagarin,mae jemison,chris hadfield,valentina tereshkova,buzz aldrin"
+      }
+    },
+    {
+      "inject": {
+        "echipaj": "tim johnson,grace ride,mae whitson,buzz hopper,katherine hopper,sally peake,yuri li,tim aldrin,katherine armstrong"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "neil white,sally white,grace hadfield,katherine white,grace turing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "sally li,yuri li,ed lovelace,peggy peake,tim li,buzz tereshkova,tim gagarin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "peggy tereshkova,ada jemison,chris gagarin,chris johnson,jo gagarin,yuri ride,jo lovelace,ed lovelace,neil tereshkova"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "ada peake,jo gagarin,ada tereshkova,katherine hadfield,alan turing,grace ride,tim johnson,alan peake"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "chris lovelace,neil whitson,yuri hadfield,jo gagarin,alan li,tim li,buzz tereshkova,yuri li,buzz li"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "sally hadfield,neil li,chris johnson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "yuri hadfield,sally ride,grace armstrong,ed armstrong"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "ed aldrin,ed johnson,ada tereshkova,ada peake,sally turing,tim white,tim tereshkova"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "jo gagarin,peggy tereshkova,ed hopper,ada johnson,mae whitson,neil turing,tim tereshkova,jo li,valentina turing,mae peake"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "buzz turing,tim li,katherine johnson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "peggy aldrin,ed hopper,neil peake,chris li"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "yuri hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "tim whitson,jo johnson,ed whitson,ada gagarin,tim hopper,ada white,katherine white,mae johnson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "sally jemison"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "ed turing,alan tereshkova,yuri white,tim aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "katherine hopper,grace gagarin,sally white,tim gagarin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "neil johnson,buzz hadfield,chris hopper,ada peake,alan peake,katherine li,valentina hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "mae armstrong,alan jemison,mae aldrin,alan jemison,chris turing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "alan peake,sally aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "grace hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "tim li,neil turing,grace hopper,tim johnson,yuri tereshkova,tim ride"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "alan gagarin,sally ride,chris aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "peggy tereshkova,ed turing,buzz johnson,neil gagarin,sally white,jo lovelace,jo jemison,alan hadfield,sally aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "ada lovelace"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "alan jemison,yuri tereshkova,jo hadfield,grace hopper,peggy gagarin,yuri aldrin,sally li"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "grace hopper,sally johnson,grace turing,peggy jemison,neil hadfield,valentina whitson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "katherine tereshkova,neil hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "valentina hopper,yuri white"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "jo armstrong,peggy li,mae whitson,grace aldrin,tim li,ed hadfield,katherine aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "katherine armstrong,peggy hopper,mae ride,neil armstrong,sally li,sally whitson,sally hopper,tim hopper,ada turing,yuri hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "neil aldrin,jo hadfield,ada armstrong,peggy whitson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "alan aldrin,yuri whitson,valentina aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "alan jemison,katherine gagarin,valentina aldrin,ed li,buzz li,grace aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "echipaj": "grace hopper,peggy turing,chris jemison"
+      },
+      "generated": true
+    }
+  ]
+}

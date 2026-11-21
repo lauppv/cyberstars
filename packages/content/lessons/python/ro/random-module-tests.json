@@ -1,0 +1,359 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "seed"
+      },
+      {
+        "kind": "variable",
+        "name": "echipaj"
+      },
+      {
+        "kind": "import",
+        "name": "random"
+      },
+      {
+        "kind": "call",
+        "name": "seed"
+      },
+      {
+        "kind": "call",
+        "name": "shuffle"
+      },
+      {
+        "kind": "call",
+        "name": "choice"
+      },
+      {
+        "kind": "call",
+        "name": "randint"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "seed": 3,
+        "echipaj": {
+          "$list": ["Ada", "Ben", "Cy", "Dee"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "seed": 0,
+        "echipaj": {
+          "$list": ["Kai"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 1000,
+        "echipaj": {
+          "$list": ["Ada", "Ben", "Cy", "Dee", "Eli", "Fay", "Gus", "Hal", "Ivy", "Jo"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 42,
+        "echipaj": {
+          "$list": ["Ada", "Ben"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 791,
+        "echipaj": {
+          "$list": ["Cy", "Hal", "Lu", "Kai", "Dee"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 946,
+        "echipaj": {
+          "$list": ["Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 809,
+        "echipaj": {
+          "$list": ["Ivy", "Ada", "Eli", "Fay", "Kai", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 357,
+        "echipaj": {
+          "$list": ["Eli", "Gus", "Kai", "Ben", "Cy", "Jo", "Ivy", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 55,
+        "echipaj": {
+          "$list": ["Eli", "Hal", "Ivy", "Jo", "Kai", "Ben", "Fay", "Dee", "Lu", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 260,
+        "echipaj": {
+          "$list": ["Kai", "Cy", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 348,
+        "echipaj": {
+          "$list": ["Ben", "Dee", "Cy", "Fay", "Ivy", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 281,
+        "echipaj": {
+          "$list": ["Eli", "Cy", "Lu", "Jo", "Kai", "Ivy", "Ben", "Fay", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 368,
+        "echipaj": {
+          "$list": ["Ivy", "Hal", "Dee", "Kai", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 21,
+        "echipaj": {
+          "$list": ["Dee", "Ben", "Fay", "Gus", "Kai", "Hal", "Jo"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 540,
+        "echipaj": {
+          "$list": ["Cy", "Lu", "Fay", "Eli"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 412,
+        "echipaj": {
+          "$list": ["Ivy", "Kai", "Lu", "Eli", "Cy", "Ben", "Jo", "Fay", "Dee", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 97,
+        "echipaj": {
+          "$list": ["Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 626,
+        "echipaj": {
+          "$list": ["Fay", "Ada", "Dee", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 747,
+        "echipaj": {
+          "$list": ["Ada", "Fay", "Kai", "Dee"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 609,
+        "echipaj": {
+          "$list": ["Ivy", "Dee", "Fay", "Cy", "Jo", "Hal", "Lu", "Ada", "Ben", "Kai"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 151,
+        "echipaj": {
+          "$list": ["Gus", "Fay", "Kai", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 873,
+        "echipaj": {
+          "$list": ["Kai", "Hal", "Dee", "Ben", "Cy", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 974,
+        "echipaj": {
+          "$list": ["Fay", "Dee", "Hal", "Cy", "Jo", "Ada", "Kai", "Ivy", "Gus", "Ben"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 167,
+        "echipaj": {
+          "$list": ["Gus", "Jo", "Ben"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 963,
+        "echipaj": {
+          "$list": ["Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 716,
+        "echipaj": {
+          "$list": ["Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 668,
+        "echipaj": {
+          "$list": ["Gus", "Ben", "Eli", "Hal", "Ivy", "Fay", "Lu", "Cy", "Dee", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 445,
+        "echipaj": {
+          "$list": ["Ada", "Ben", "Hal", "Cy", "Fay", "Kai", "Gus", "Dee", "Ivy", "Eli"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 456,
+        "echipaj": {
+          "$list": ["Hal", "Lu", "Gus", "Eli"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 169,
+        "echipaj": {
+          "$list": ["Ada", "Fay", "Gus", "Dee", "Ben", "Hal", "Kai", "Lu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 453,
+        "echipaj": {
+          "$list": ["Dee", "Cy", "Ada"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 836,
+        "echipaj": {
+          "$list": ["Ada", "Dee", "Kai", "Fay", "Ben", "Gus", "Jo"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 718,
+        "echipaj": {
+          "$list": ["Jo", "Dee"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 666,
+        "echipaj": {
+          "$list": ["Ben", "Cy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 125,
+        "echipaj": {
+          "$list": ["Ivy", "Kai", "Cy", "Eli", "Dee", "Gus"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 647,
+        "echipaj": {
+          "$list": ["Ada", "Eli", "Ben", "Gus", "Fay", "Kai", "Lu", "Cy"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fgets"
+      },
+      {
+        "kind": "loop",
+        "type": "while"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "start job 12\n\ntape 3 loaded\nend\n"
+    },
+    {
+      "stdin": "one line\n"
+    },
+    {
+      "stdin": "\n"
+    },
+    {
+      "stdin": "\n\n\n"
+    },
+    {
+      "stdin": "no newline at the end"
+    },
+    {
+      "stdin": "a\n\nb\n\n"
+    },
+    {
+      "stdin": "   \n\n  x  \n"
+    },
+    {
+      "stdin": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+    },
+    {
+      "stdin": "\ndrive dump 89 drive print shift load\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nreel shift\ncore drive\nprint drive print dump end job\ntape shift\ndrive start load check reel\n\nshift\ncheck shift 18\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 print end\ntape job job print tape end\ncore print run end\ndrive end\ndump end check\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "run run print\n",
+      "generated": true
+    },
+    {
+      "stdin": "core\ncore 92 start job dump load\nshift dump 95 shift load\nrun start check check dump\ndrive\nend shift reel job core\nend check\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "load tape shift job core core dump\ncheck\n\nend load check drive load tape load core\nend job 53 dump tape load drive job\nprint\nshift print drive core start 16 drive\nrun job 74 end\n",
+      "generated": true
+    },
+    {
+      "stdin": "\n\n\nstart dump\ncore\nreel load end core tape check dump\ndrive start drive\n\ndump\nrun\n\nstart dump\ncheck\n\nload dump start run print\nstart job drive print tape 72 run shift\ndrive start job load\n\n\nreel check 67 19 load 95 print\njob core start shift dump start\n\nshift check drive end shift reel check\n\ndump end drive start 77 reel start dump\ndump tape dump reel print shift run print\nrun load reel end end load\nload dump job run check tape end\nprint\nstart reel tape end\n\nprint 86 dump\ndump reel drive core run start\ncore run load print shift end\ndrive check 32\ncore drive core end\ntape dump dump check\n\ntape 51 run\n\ndrive check print drive reel tape dump\ndump run\nreel end\nprint job print tape run start\ncheck shift end\ntape end check print dump print end\nprint start core tape shift\nstart\n\n\nrun tape check check\n\ndrive\nprint job job start check check core shift\ndrive\n\ndump start drive job\n\nload 50 dump tape\ndump load job load run end job run\n\n35 shift load reel\n\n\n\nprint drive reel check\ndump shift core load drive\nload end shift start tape shift drive\ncheck run check tape drive\nload dump print reel 79\n\nrun job shift end reel check\n\nprint\nreel 79 dump job\nshift drive check drive print start\nreel\ndrive\n33 43 shift\nstart\njob dump tape\nstart 36\nrun load start dump core job\ndump core\ncore shift\nprint print reel tape reel print tape\ncore start\njob print shift check run dump tape check\n29 load check\nrun\n\n\ndump load tape\n\ndump end reel 21 dump check\n\nshift dump reel end run start print run\n\nend load tape shift core job\ntape dump tape load core job core\nreel drive start print drive reel\ndump 22 tape load end dump\nshift start tape drive shift\n\njob tape end run start load\nshift job\ntape dump tape\nprint dump dump\n\ncheck job check start tape\nload reel\ndump tape check\ndump load print drive 93 drive dump shift\n\nrun drive start tape tape run\ndrive load 5\n\nprint end 74 check start start end reel\nend shift run start tape dump core drive\nreel 60 print start\n\ncore reel job\nload end 94 reel 97\ncore load end run 18 core run tape\ncheck core start load tape run\n\ndrive tape load load dump\nrun\n\n\ncore job job load load core job\n\ncheck tape end 66\nshift print reel\nshift check job shift dump print\ndump drive\n8 shift load run\n",
+      "generated": true
+    },
+    {
+      "stdin": "shift start 79\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "\n\n96 print start start shift\n\n\n\n\n\njob dump shift check end job end reel\ncheck load reel dump check print drive print\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel dump check print load shift\n\nprint dump dump\ncore tape\ndump\n",
+      "generated": true
+    },
+    {
+      "stdin": "\ncore 69 run shift shift tape load shift\nreel core\nload reel 33\ncheck check check shift\ncheck check\nreel check\nrun dump job\nprint reel 8\nreel print print 3 print core shift\ntape core job\ncheck load shift tape job\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel run start tape shift\nshift\ndump dump reel dump drive tape 38 check\nreel shift job load\nshift core shift load run\nrun tape job job print shift job\nload run end core core check drive reel\nshift drive\ndump start 95 drive run drive 8 run\nload dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "\nprint core reel core check run job tape\nshift drive shift start dump drive load\nreel drive run reel\nrun 64\n\nstart drive reel start drive\nend load core\ncheck start drive end job shift print end\nrun shift core drive 9\n\n\nshift end reel\nstart start run start load run shift\n",
+      "generated": true
+    },
+    {
+      "stdin": "shift drive tape drive end\nend core tape print\nstart end print reel core\n\ndrive load job check drive reel\n\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "load reel\n\nprint start job run drive end\nshift shift dump check reel start drive\nrun print check check print\ncore drive check end drive shift print shift\ntape core\ndrive job start check shift shift core shift\n\njob reel run drive check 39\nstart start 9 62 core drive end load\nprint drive reel shift job dump\nend end load drive end end tape drive\n2 core start start run print\n\ndump reel drive shift reel\nshift job run 30 dump core run\ntape core job\ntape end 51\ntape shift start start\n\ncheck load print reel core\n62\n\ncore start reel\n\n\n\n\nstart core 94 end run\n\n\nstart reel end shift end start check\nend end print\n\ncore shift check reel end load start\nrun reel shift\n\ndump job tape end drive check end end\nprint job drive print drive core shift\nreel run print core drive reel core start\ncheck\nend check tape dump print\nend 77 reel core start start\nrun 75 print 2 shift reel\nprint shift print drive shift core end job\n\n35 core end\n\n\ncore core drive\n\ncheck tape shift run job\ntape\ndrive print shift end 43 end reel\ndrive 48 load shift\ncore\n\nload shift check job end\nprint\n\ntape end\n\nshift dump core\n\nprint check end end\nend load print load job shift\ndump reel shift check\njob print\nshift\ntape run print print reel\ncore shift end job check\ncore\ntape print dump 33 tape tape reel\nstart\nshift run\n\nload start drive run\ncheck\n\n\ncheck end end\nload load job tape tape run shift\nstart drive tape\n\n\ndrive drive run\nend print end job check dump\nprint 81 shift end run end job tape\n40 shift job\n\nstart start reel\ndrive core core check run check end\n12 end reel dump end shift\n\n\nrun 78 drive core drive run\nload shift core load reel dump print\ncore 26 dump tape job\njob shift reel job\nrun reel job run 76 reel\ndrive dump load core\ntape job check check\nreel print start load dump shift load reel\n\n95 print end reel end tape tape\n\ncore start job\n\nshift start start run\ncheck\nreel\ntape\ndrive\nshift run end reel shift check\nreel tape shift\n",
+      "generated": true
+    },
+    {
+      "stdin": "\n\ndump core start tape reel shift check drive\n",
+      "generated": true
+    },
+    {
+      "stdin": "drive print reel\nrun start check start drive core end\n8\nstart end shift start start drive\nshift tape 98 job tape start drive\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "check\nload start drive reel drive reel load\n\nend start job start start run\nprint\ndrive tape check\n\n70 print end load 2 reel load job\ncore run job core reel tape\nreel drive dump tape\nreel reel 39 print check drive run tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "run drive tape print 53\n\ncore\n5 shift drive\ntape job job reel start shift load 40\nshift start end print drive tape core\nprint\ndrive check run core\nend dump check\nprint print check reel\ndump dump job 31\n\n\nshift print core print\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "start run end\nreel 61 tape check load shift\n\njob start dump drive job\n\nshift reel reel job drive dump\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "drive print\nshift core drive\nprint run end end\n98 print job core end\nend job job tape core\ncheck start reel check dump run\n72 dump 98 run tape tape core\n70 check 53 core load drive check load\n69 92 run job start reel start drive\njob core tape tape run tape\nrun print shift check drive core check load\n\nend print core tape check\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel end 28 shift 71 start drive\ntape\n\ncore start print reel\n\nshift shift tape shift\nrun\nreel start reel 39 run drive\n\n\ndump load end drive run job run\nrun 40 tape 65 print tape\n75 start shift end\njob end\nreel check job start tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "end reel dump\n85 job reel tape\n\n19 reel start 47 print 30 load\ndrive\ncore tape start end 7 job job job\nload print print shift end load\ncheck reel job print\n",
+      "generated": true
+    },
+    {
+      "stdin": "shift job start check\n22 check start shift\n\nprint core job reel load\nload reel run drive core\nshift check job run\nrun start core shift end core shift shift\nstart print drive reel 50 reel reel\ntape tape job drive\nshift\n",
+      "generated": true
+    },
+    {
+      "stdin": "load tape end 96 core shift job\n\n\n\nstart 7 start\nload reel end 43 drive check\nprint load shift shift check check tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "load shift print reel run print\nreel tape tape drive shift core run\n",
+      "generated": true
+    },
+    {
+      "stdin": "run shift\ncore run reel dump 51 dump\nend start tape tape check shift print reel\ndump tape shift core load reel check\nrun print\nreel shift 11 job drive print\nend run\n61 print\nreel shift\n\nstart start shift start run end\nreel load 31 shift\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "job drive core reel drive\ndump check 28 print run end tape start\nstart start end reel 19\n46 73\n34\njob reel load print job run shift load\njob job end tape reel\njob run reel 29 check check\nprint reel print end job\nrun\ntape load shift\nrun core check 60 tape core start end\nload tape job dump 61 load tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel 85 start end\n\nload drive run run\njob reel 99\nprint run shift job load\nrun print print tape\n5\n",
+      "generated": true
+    }
+  ]
+}

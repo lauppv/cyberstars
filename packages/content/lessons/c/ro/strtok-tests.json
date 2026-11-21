@@ -1,0 +1,154 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "strtok"
+      },
+      {
+        "kind": "call",
+        "name": "fgets"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "load,tape  run, print\n"
+    },
+    {
+      "stdin": "single\n"
+    },
+    {
+      "stdin": ",,,a,,,\n"
+    },
+    {
+      "stdin": "   lead and trail   \n"
+    },
+    {
+      "stdin": "abc abd abe\n"
+    },
+    {
+      "stdin": "a bb ccc bb a\n"
+    },
+    {
+      "stdin": "x,y,z\n"
+    },
+    {
+      "stdin": "supercalifragilistic word\n"
+    },
+    {
+      "stdin": "dump,,reel   dump dump punch ,print\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump ,,mainframe\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel,,io\n",
+      "generated": true
+    },
+    {
+      "stdin": "job,,,core ,run,job ,print load , print\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump,, reel  teletype\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump  start,,punch,core ,mainframe ,,punch\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "card\n",
+      "generated": true
+    },
+    {
+      "stdin": "end,dump,,,job,dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "card,,,card,,start,,run\n",
+      "generated": true
+    },
+    {
+      "stdin": "card reel,  print ,card   teletype , start,tape a punch,  a\n",
+      "generated": true
+    },
+    {
+      "stdin": "load,dump,punch,punch ,,end\n",
+      "generated": true
+    },
+    {
+      "stdin": "mainframe mainframe,,end,io,,,tape,,job   load core, print\n",
+      "generated": true
+    },
+    {
+      "stdin": "core,print dump, mainframe\n",
+      "generated": true
+    },
+    {
+      "stdin": "a tape ,end ,,start\n",
+      "generated": true
+    },
+    {
+      "stdin": "mainframe  print\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel, load,  start, end, teletype punch,,,punch\n",
+      "generated": true
+    },
+    {
+      "stdin": "end , teletype,  card,print,load,,,print,start\n",
+      "generated": true
+    },
+    {
+      "stdin": "card,card print job, reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "a mainframe,,,job\n",
+      "generated": true
+    },
+    {
+      "stdin": "print,load run  teletype, ,teletype,, punch,,reel,,print\n",
+      "generated": true
+    },
+    {
+      "stdin": "mainframe load,io reel   run,teletype\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "end,, dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "core, ,print   a, ,tape  ,print,core,  print mainframe,io,job\n",
+      "generated": true
+    },
+    {
+      "stdin": "mainframe,punch\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump ,,load,,end ,,start\n",
+      "generated": true
+    },
+    {
+      "stdin": "punch,end,  mainframe,,,print\n",
+      "generated": true
+    }
+  ]
+}

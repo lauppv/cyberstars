@@ -1,0 +1,348 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Ship"
+      },
+      {
+        "kind": "class_attribute",
+        "name": "next_number"
+      },
+      {
+        "kind": "class_attribute",
+        "name": "fleet"
+      },
+      {
+        "kind": "function",
+        "name": "__init__"
+      },
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "fleet"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Swift"]
+        },
+        "fleet": "Star Fleet"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Nova"]
+        },
+        "fleet": "Free Fleet"
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Swift", "Bob", "Nova", "Comet", "Ray", "Echo", "Atlas", "Iris", "Vega"]
+        },
+        "fleet": "Moon Guard"
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["A", "A"]
+        },
+        "fleet": "x"
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Swift", "Bob", "Echo", "Vega", "Echo", "Iris", "Nova", "Comet"]
+        },
+        "fleet": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Bob", "Vega"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Atlas", "Iris"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Ray", "Iris", "Comet", "Ray"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Ray", "Ray", "Atlas", "Bob", "Bob", "Bob", "Echo", "Bob", "Ray"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Ray", "Vega"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Swift", "Hope", "Bob", "Atlas", "Ray", "Nova"]
+        },
+        "fleet": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Bob", "Comet", "Swift", "Comet", "Nova", "Iris", "Comet", "Atlas"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Hope", "Bob", "Nova", "Atlas"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Vega", "Comet", "Echo", "Hope", "Bob", "Swift", "Nova"]
+        },
+        "fleet": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ray"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Vega", "Swift", "Vega"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bob", "Vega", "Echo", "Ray", "Iris", "Swift", "Iris", "Bob"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Ray", "Echo", "Hope", "Hope", "Vega"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Comet", "Bob", "Nova"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Nova", "Vega", "Echo", "Bob", "Comet", "Bob", "Nova", "Hope"]
+        },
+        "fleet": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Nova", "Bob", "Vega", "Swift"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Echo",
+            "Hope",
+            "Nova",
+            "Comet",
+            "Iris",
+            "Hope",
+            "Bob",
+            "Comet",
+            "Swift",
+            "Echo"
+          ]
+        },
+        "fleet": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Nova", "Vega", "Swift"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Nova", "Echo"]
+        },
+        "fleet": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Bob", "Hope", "Comet", "Ray"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Bob", "Hope"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope"]
+        },
+        "fleet": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Vega", "Iris", "Echo", "Iris"]
+        },
+        "fleet": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Swift", "Nova", "Vega", "Bob", "Nova", "Vega"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Echo"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ray", "Comet", "Echo", "Echo", "Swift", "Hope", "Comet"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Nova", "Echo", "Iris", "Hope", "Hope", "Atlas", "Comet"]
+        },
+        "fleet": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Vega", "Echo", "Atlas", "Bob", "Vega", "Bob", "Swift", "Vega"]
+        },
+        "fleet": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Hope", "Comet", "Iris", "Comet", "Ray", "Hope", "Echo", "Comet", "Ray"]
+        },
+        "fleet": "Star Fleet"
+      },
+      "generated": true
+    }
+  ]
+}

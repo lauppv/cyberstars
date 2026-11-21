@@ -1,0 +1,517 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "titlu"
+      },
+      {
+        "kind": "variable",
+        "name": "intrari"
+      },
+      {
+        "kind": "call",
+        "name": "open"
+      },
+      {
+        "kind": "call",
+        "name": "write"
+      },
+      {
+        "kind": "call",
+        "name": "read"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "titlu": "tura de noapte",
+        "intrari": {
+          "$list": ["am verificat aerul", "am reparat usa"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "titlu": "zi",
+        "intrari": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "titlu": "a",
+        "intrari": {
+          "$list": ["b"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "titlu": "long day on the station",
+        "intrari": {
+          "$list": [
+            "checked air",
+            "fixed door",
+            "fed the cat",
+            "cleaned filters",
+            "radio check",
+            "no problems",
+            "lights flicker",
+            "x",
+            "more",
+            "end"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "titlu": "Mixed Case",
+        "intrari": {
+          "$list": ["One", "two"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": ["radio check", "lights flicker", "radio check", "fed the cat"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "day shift",
+        "intrari": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "repair crew",
+        "intrari": {
+          "$list": ["cleaned filters", "checked air"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": [
+            "no problems",
+            "fixed door",
+            "fed the cat",
+            "lights flicker",
+            "radio check",
+            "no problems",
+            "checked air",
+            "lights flicker",
+            "fed the cat",
+            "x"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": [
+            "no problems",
+            "radio check",
+            "radio check",
+            "cleaned filters",
+            "cleaned filters",
+            "lights flicker",
+            "fixed door"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": [
+            "no problems",
+            "cleaned filters",
+            "lights flicker",
+            "no problems",
+            "cleaned filters",
+            "x"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": [
+            "checked air",
+            "fixed door",
+            "fixed door",
+            "cleaned filters",
+            "fed the cat",
+            "fed the cat",
+            "lights flicker",
+            "fixed door",
+            "fixed door"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "day shift",
+        "intrari": {
+          "$list": [
+            "lights flicker",
+            "fed the cat",
+            "lights flicker",
+            "no problems",
+            "x",
+            "radio check",
+            "no problems",
+            "cleaned filters",
+            "lights flicker",
+            "fed the cat"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "repair crew",
+        "intrari": {
+          "$list": [
+            "checked air",
+            "fed the cat",
+            "fed the cat",
+            "cleaned filters",
+            "checked air",
+            "x",
+            "x"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "kitchen",
+        "intrari": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "day shift",
+        "intrari": {
+          "$list": ["cleaned filters", "fed the cat"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": [
+            "radio check",
+            "fixed door",
+            "fixed door",
+            "radio check",
+            "fed the cat",
+            "lights flicker"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": ["x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "repair crew",
+        "intrari": {
+          "$list": ["x", "radio check", "checked air", "no problems", "checked air"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": ["checked air", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "repair crew",
+        "intrari": {
+          "$list": [
+            "lights flicker",
+            "cleaned filters",
+            "no problems",
+            "no problems",
+            "radio check"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "kitchen",
+        "intrari": {
+          "$list": ["fixed door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": [
+            "no problems",
+            "checked air",
+            "radio check",
+            "checked air",
+            "fed the cat",
+            "radio check",
+            "radio check",
+            "checked air",
+            "fixed door"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": ["cleaned filters", "fed the cat", "radio check"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "kitchen",
+        "intrari": {
+          "$list": ["checked air", "radio check", "checked air", "fed the cat"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": [
+            "cleaned filters",
+            "x",
+            "fixed door",
+            "lights flicker",
+            "x",
+            "x",
+            "fed the cat",
+            "checked air",
+            "no problems"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": ["radio check", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "repair crew",
+        "intrari": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": [
+            "checked air",
+            "lights flicker",
+            "checked air",
+            "cleaned filters",
+            "no problems",
+            "fed the cat",
+            "no problems"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "dock 4",
+        "intrari": {
+          "$list": [
+            "radio check",
+            "lights flicker",
+            "fed the cat",
+            "lights flicker",
+            "checked air",
+            "no problems",
+            "no problems",
+            "x"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "repair crew",
+        "intrari": {
+          "$list": [
+            "fed the cat",
+            "fed the cat",
+            "fed the cat",
+            "x",
+            "cleaned filters",
+            "fixed door",
+            "fixed door",
+            "checked air",
+            "cleaned filters",
+            "checked air"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "kitchen",
+        "intrari": {
+          "$list": ["checked air", "radio check", "fed the cat", "fed the cat", "fixed door"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": [
+            "fed the cat",
+            "cleaned filters",
+            "fixed door",
+            "no problems",
+            "checked air",
+            "x",
+            "fed the cat",
+            "lights flicker",
+            "radio check",
+            "x"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "kitchen",
+        "intrari": {
+          "$list": [
+            "fixed door",
+            "fed the cat",
+            "fixed door",
+            "radio check",
+            "lights flicker",
+            "no problems",
+            "no problems",
+            "fixed door"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "kitchen",
+        "intrari": {
+          "$list": [
+            "radio check",
+            "no problems",
+            "lights flicker",
+            "x",
+            "x",
+            "lights flicker",
+            "checked air",
+            "fixed door",
+            "fed the cat",
+            "cleaned filters"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "titlu": "night shift",
+        "intrari": {
+          "$list": ["radio check", "no problems", "fixed door", "fixed door", "x"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,312 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "importa_citire"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "try_else"
+      },
+      {
+        "kind": "finally"
+      },
+      {
+        "kind": "variable",
+        "name": "texte"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "texte": {
+          "$list": ["21", "x7", "-3", ""]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "texte": {
+          "$list": ["0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["1.5", "-", "--2", "abc", "007"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-999999", "12a", "a12", "5"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["3,2", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["2e3", "896"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["2e3", "N/A", "546", "-504", "-1", "-578", "-", "--1"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["243", "-27", "206", "--1"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["4a", "856", "3,2", "-245", "381", "747"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["", "seven"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["1.5", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-658", "seven", "1.5", "-847", "-617"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": [""]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["seven", "-", "4a", ""]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["271", "1.5", "89", "-716", "seven", "689", "-478"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["495", "x", "seven"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-176", "-660", "3,2", "N/A", "-712", "-714", "-728", "", "-606", "648"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["2e3", "", "1.5", "682", "109"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["3,2", "3,2", "x", "N/A", "2e3", "N/A", "-942", "-752", "x", "seven"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-708", "4a", "-", "1.5", "N/A", "-83", "-151", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-866", "-732", "-976", "N/A", "N/A", "-622"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["--1", "seven", "--1", "-", "18", "2e3", "-480"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["x", "811", "4a", "-", "4a", "-380", "N/A"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["", "--1", "-248", "3,2", "--1"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["835"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-480", "1.5", "x", "503"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["1.5", "447", "3,2", "258", "491", "235", "-452", "310", "-819", "586"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-", "", "249", "4a", "-145"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["411", "1.5", "-398"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["--1", "1.5"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-", "464", ""]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["-372"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["seven", "860", "278", "x", "218", "-989", ""]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["122", "-474", "-312", "-86", "-", "116", "2e3"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["N/A", "-311", "seven"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "texte": {
+          "$list": ["215", "N/A", "x", "-", "454", "483", "seven", "3,2", "2e3", "742"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,451 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Nava"
+      },
+      {
+        "kind": "class",
+        "name": "NavaMarfa"
+      },
+      {
+        "kind": "decorator",
+        "name": "dataclass"
+      },
+      {
+        "kind": "extends",
+        "name": "Nava"
+      },
+      {
+        "kind": "override",
+        "name": "descrie"
+      },
+      {
+        "kind": "call",
+        "name": "super"
+      },
+      {
+        "kind": "call",
+        "name": "isinstance"
+      },
+      {
+        "kind": "variable",
+        "name": "nave"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nave": {
+          "$list": ["Speranta 12", "Catar 8 300", "Fulger 30", "Bou 8 500"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nave": {
+          "$list": ["Nova 5"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Atlas 50 1000"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Bob 9", "Ray 9", "Echo 9 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Hope 7",
+            "Mule 7",
+            "Swift 7",
+            "Ox 7",
+            "Nova 7",
+            "Comet 7",
+            "Ray 7",
+            "Echo 7",
+            "Atlas 7",
+            "Iris 7"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Bob 14",
+            "Nova 8 126",
+            "Vega 13",
+            "Comet 30",
+            "Atlas 12",
+            "Hope 12",
+            "Ray 12",
+            "Iris 12",
+            "Ox 28",
+            "Echo 12 327"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Ray 11",
+            "Mule 8",
+            "Ox 12 523",
+            "Nova 46 653",
+            "Swift 12",
+            "Comet 11",
+            "Bob 38 126",
+            "Atlas 8",
+            "Vega 38",
+            "Hope 8"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Comet 8",
+            "Mule 16 188",
+            "Ox 12 640",
+            "Swift 8",
+            "Nova 12",
+            "Echo 8",
+            "Hope 12",
+            "Iris 18",
+            "Bob 12 881"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Vega 12 712", "Ox 12 922"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Ray 25",
+            "Swift 12 1000",
+            "Echo 44",
+            "Comet 16",
+            "Vega 12 41",
+            "Iris 12",
+            "Ox 12"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Hope 8",
+            "Swift 8",
+            "Comet 12",
+            "Echo 12",
+            "Ray 8",
+            "Atlas 8 538",
+            "Ox 8 520",
+            "Iris 40",
+            "Vega 8"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 32", "Mule 8"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 10 907", "Atlas 12 788", "Hope 8"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Swift 8 45", "Nova 46 30", "Vega 8 289", "Ox 15 957", "Ray 7 501"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Swift 8 18"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Bob 48 277", "Iris 1", "Ox 49 302", "Comet 8 883"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Comet 8"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 8", "Nova 25", "Iris 21 483"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Echo 12", "Atlas 8 940", "Iris 12", "Comet 20", "Ox 8 819", "Hope 12"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Ray 8",
+            "Ox 8",
+            "Swift 8 419",
+            "Mule 12",
+            "Atlas 12",
+            "Iris 8",
+            "Hope 13",
+            "Echo 8",
+            "Nova 30 753"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ox 8", "Nova 12 878", "Comet 45 798", "Echo 14"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Echo 12", "Atlas 12", "Hope 34 972", "Comet 12", "Swift 8", "Ox 12"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Echo 12 720",
+            "Vega 12",
+            "Atlas 9",
+            "Ray 2 168",
+            "Nova 40",
+            "Ox 18 479",
+            "Mule 33 137",
+            "Swift 12"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Mule 18 476",
+            "Nova 32",
+            "Hope 24",
+            "Comet 8",
+            "Echo 17 45",
+            "Swift 12 90",
+            "Vega 12",
+            "Iris 46"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 12", "Echo 12 592"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Nova 27",
+            "Mule 12 790",
+            "Vega 9 508",
+            "Echo 8",
+            "Comet 45",
+            "Iris 32 890",
+            "Swift 12 83"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Swift 35 880"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Echo 8 253", "Iris 12", "Ray 39 775", "Hope 12 891", "Comet 42 520", "Ox 45"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Bob 12",
+            "Vega 8 392",
+            "Mule 12",
+            "Atlas 47 399",
+            "Ox 12",
+            "Echo 12",
+            "Nova 12",
+            "Ray 8 744"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Swift 8 937", "Comet 12", "Iris 31 429"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 12", "Atlas 8", "Swift 10 281", "Mule 8 16"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": [
+            "Bob 12 10",
+            "Mule 8",
+            "Nova 12 21",
+            "Atlas 23",
+            "Ox 12",
+            "Iris 8 64",
+            "Comet 7 626",
+            "Swift 30 596",
+            "Echo 17 279",
+            "Ray 12"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Iris 25 491", "Atlas 2", "Ray 42", "Swift 8 153", "Vega 8 343", "Ox 8 46"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 8", "Atlas 8", "Swift 8", "Nova 12"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Bob 8 704", "Swift 26"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Ray 39 471", "Bob 46", "Echo 12", "Vega 8 109", "Nova 19", "Atlas 8"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nave": {
+          "$list": ["Iris 49", "Atlas 37", "Hope 8 903", "Ray 8"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

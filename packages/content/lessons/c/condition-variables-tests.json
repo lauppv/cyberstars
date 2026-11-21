@@ -1,0 +1,80 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "pthread_cond_wait"
+      },
+      {
+        "kind": "call",
+        "name": "pthread_mutex_lock"
+      },
+      {
+        "kind": "call",
+        "name": "pthread_create"
+      },
+      {
+        "kind": "loop",
+        "type": "while"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3 2\n"
+    },
+    {
+      "stdin": "2 1\n"
+    },
+    {
+      "stdin": "6 20\n"
+    },
+    {
+      "stdin": "2 20\n"
+    },
+    {
+      "stdin": "5 3\n"
+    },
+    {
+      "stdin": "4 1\n"
+    },
+    {
+      "stdin": "2 11\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 9\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 16\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 18\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 13\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 15\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 19\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 6\n",
+      "generated": true
+    }
+  ]
+}

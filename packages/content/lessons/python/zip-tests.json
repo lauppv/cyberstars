@@ -1,0 +1,861 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "before"
+      },
+      {
+        "kind": "variable",
+        "name": "after"
+      },
+      {
+        "kind": "call",
+        "name": "zip"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "range"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Kai", "Mila", "Tom"]
+        },
+        "before": {
+          "$list": [60, 75, 80]
+        },
+        "after": {
+          "$list": [72, 70, 95]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Zara", "Leo"]
+        },
+        "before": {
+          "$list": [50, 40]
+        },
+        "after": {
+          "$list": [50, 40]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ana"]
+        },
+        "before": {
+          "$list": [100]
+        },
+        "after": {
+          "$list": [0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ana"]
+        },
+        "before": {
+          "$list": [0]
+        },
+        "after": {
+          "$list": [100]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["A", "B", "C"]
+        },
+        "before": {
+          "$list": [10, 10, 10]
+        },
+        "after": {
+          "$list": [5, 3, 5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["A", "B"]
+        },
+        "before": {
+          "$list": [0, 0]
+        },
+        "after": {
+          "$list": [7, 7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Kai",
+            "Mila",
+            "Tom",
+            "Zara",
+            "Leo",
+            "Nia",
+            "Omar",
+            "Ivy",
+            "Ben",
+            "Sol",
+            "Ana",
+            "Yuki",
+            "Raj",
+            "Eve",
+            "Max",
+            "Lin",
+            "Ola",
+            "Pip",
+            "Rex",
+            "Uma"
+          ]
+        },
+        "before": {
+          "$list": [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95]
+        },
+        "after": {
+          "$list": [100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Uma",
+            "Rex",
+            "Tom",
+            "Pip",
+            "Lin",
+            "Mila",
+            "Kai",
+            "Ola",
+            "Sol",
+            "Eve",
+            "Leo",
+            "Ivy",
+            "Zara",
+            "Max",
+            "Omar",
+            "Raj",
+            "Ana",
+            "Nia",
+            "Ben",
+            "Yuki"
+          ]
+        },
+        "before": {
+          "$list": [75, 46, 53, 88, 9, 90, 37, 8, 19, 69, 30, 44, 1, 22, 1, 96, 31, 34, 74, 94]
+        },
+        "after": {
+          "$list": [64, 41, 19, 15, 75, 42, 12, 96, 88, 95, 68, 9, 52, 46, 26, 58, 17, 12, 28, 3]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Tom",
+            "Raj",
+            "Mila",
+            "Sol",
+            "Yuki",
+            "Zara",
+            "Ben",
+            "Omar",
+            "Eve",
+            "Pip",
+            "Ola",
+            "Lin",
+            "Nia",
+            "Ivy"
+          ]
+        },
+        "before": {
+          "$list": [80, 2, 39, 40, 41, 51, 72, 22, 85, 1, 5, 34, 15, 84]
+        },
+        "after": {
+          "$list": [98, 52, 11, 52, 89, 46, 16, 6, 52, 65, 56, 46, 97, 86]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Lin",
+            "Ivy",
+            "Uma",
+            "Eve",
+            "Tom",
+            "Ben",
+            "Sol",
+            "Ana",
+            "Kai",
+            "Max",
+            "Yuki",
+            "Mila",
+            "Rex",
+            "Ola",
+            "Nia",
+            "Leo"
+          ]
+        },
+        "before": {
+          "$list": [15, 60, 15, 54, 63, 56, 42, 6, 46, 96, 78, 79, 29, 74, 89, 74]
+        },
+        "after": {
+          "$list": [55, 45, 86, 6, 70, 13, 26, 50, 5, 65, 15, 45, 1, 76, 43, 49]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ola", "Ivy"]
+        },
+        "before": {
+          "$list": [39, 72]
+        },
+        "after": {
+          "$list": [94, 19]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Mila",
+            "Sol",
+            "Zara",
+            "Tom",
+            "Nia",
+            "Uma",
+            "Raj",
+            "Kai",
+            "Ivy",
+            "Rex",
+            "Ana",
+            "Max"
+          ]
+        },
+        "before": {
+          "$list": [14, 23, 92, 57, 83, 44, 98, 63, 24, 79, 52, 15]
+        },
+        "after": {
+          "$list": [85, 14, 48, 46, 83, 46, 58, 85, 3, 12, 7, 81]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kai", "Lin", "Ben"]
+        },
+        "before": {
+          "$list": [34, 49, 49]
+        },
+        "after": {
+          "$list": [76, 91, 22]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Nia", "Max"]
+        },
+        "before": {
+          "$list": [1, 17, 59]
+        },
+        "after": {
+          "$list": [78, 63, 1]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Eve", "Rex", "Ivy", "Kai", "Yuki", "Mila", "Pip", "Tom", "Uma"]
+        },
+        "before": {
+          "$list": [7, 12, 87, 31, 15, 8, 75, 40, 91]
+        },
+        "after": {
+          "$list": [6, 100, 46, 96, 35, 19, 39, 25, 46]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Nia", "Kai", "Ivy"]
+        },
+        "before": {
+          "$list": [22, 52, 44]
+        },
+        "after": {
+          "$list": [99, 88, 92]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex"]
+        },
+        "before": {
+          "$list": [74]
+        },
+        "after": {
+          "$list": [86]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Raj", "Ola", "Lin", "Zara"]
+        },
+        "before": {
+          "$list": [13, 33, 83, 12, 61]
+        },
+        "after": {
+          "$list": [53, 92, 23, 17, 76]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ivy", "Mila", "Ben", "Yuki", "Rex", "Omar", "Tom", "Eve", "Pip"]
+        },
+        "before": {
+          "$list": [47, 88, 72, 64, 53, 92, 41, 36, 95]
+        },
+        "after": {
+          "$list": [11, 15, 36, 59, 18, 40, 15, 33, 56]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Nia",
+            "Zara",
+            "Ana",
+            "Yuki",
+            "Ben",
+            "Pip",
+            "Mila",
+            "Leo",
+            "Rex",
+            "Kai",
+            "Sol",
+            "Uma",
+            "Max",
+            "Omar",
+            "Raj",
+            "Eve",
+            "Tom"
+          ]
+        },
+        "before": {
+          "$list": [25, 62, 42, 53, 50, 34, 72, 21, 84, 29, 7, 86, 81, 60, 53, 7, 66]
+        },
+        "after": {
+          "$list": [73, 28, 33, 85, 90, 23, 82, 88, 62, 29, 100, 96, 64, 95, 33, 52, 69]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ben", "Rex", "Kai", "Leo", "Uma", "Yuki", "Ivy", "Eve", "Zara", "Ana", "Pip"]
+        },
+        "before": {
+          "$list": [100, 94, 51, 86, 84, 54, 85, 60, 69, 43, 44]
+        },
+        "after": {
+          "$list": [28, 75, 39, 42, 96, 44, 70, 74, 67, 74, 59]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Lin",
+            "Pip",
+            "Max",
+            "Zara",
+            "Ola",
+            "Ben",
+            "Uma",
+            "Eve",
+            "Sol",
+            "Yuki",
+            "Tom",
+            "Ana",
+            "Omar",
+            "Raj",
+            "Kai",
+            "Nia"
+          ]
+        },
+        "before": {
+          "$list": [71, 6, 21, 16, 0, 46, 11, 16, 70, 79, 9, 17, 85, 33, 39, 33]
+        },
+        "after": {
+          "$list": [48, 17, 8, 100, 93, 26, 97, 61, 54, 70, 50, 19, 7, 53, 73, 28]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ivy", "Tom", "Lin", "Mila"]
+        },
+        "before": {
+          "$list": [27, 15, 57, 5]
+        },
+        "after": {
+          "$list": [18, 80, 2, 57]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Eve",
+            "Yuki",
+            "Rex",
+            "Sol",
+            "Lin",
+            "Raj",
+            "Kai",
+            "Tom",
+            "Uma",
+            "Ana",
+            "Ola",
+            "Omar",
+            "Leo",
+            "Mila",
+            "Max"
+          ]
+        },
+        "before": {
+          "$list": [46, 4, 75, 25, 43, 32, 2, 74, 70, 65, 87, 24, 46, 21, 29]
+        },
+        "after": {
+          "$list": [92, 39, 94, 25, 95, 76, 62, 89, 35, 64, 77, 61, 96, 88, 73]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Raj", "Tom", "Sol", "Max", "Lin", "Zara", "Leo", "Yuki", "Ivy", "Rex", "Mila"]
+        },
+        "before": {
+          "$list": [84, 85, 99, 51, 51, 36, 57, 95, 33, 28, 39]
+        },
+        "after": {
+          "$list": [4, 4, 79, 62, 37, 2, 96, 34, 35, 74, 39]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ivy", "Ben", "Uma", "Yuki", "Rex", "Leo"]
+        },
+        "before": {
+          "$list": [11, 63, 69, 89, 54, 70]
+        },
+        "after": {
+          "$list": [48, 57, 61, 0, 27, 4]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Omar", "Zara", "Sol", "Nia"]
+        },
+        "before": {
+          "$list": [88, 61, 28, 5]
+        },
+        "after": {
+          "$list": [25, 2, 28, 58]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Zara", "Ben", "Yuki", "Max", "Raj"]
+        },
+        "before": {
+          "$list": [97, 19, 89, 30, 56]
+        },
+        "after": {
+          "$list": [32, 26, 33, 7, 41]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Sol",
+            "Yuki",
+            "Leo",
+            "Lin",
+            "Ben",
+            "Uma",
+            "Rex",
+            "Ivy",
+            "Mila",
+            "Tom",
+            "Max",
+            "Pip"
+          ]
+        },
+        "before": {
+          "$list": [56, 27, 20, 9, 20, 100, 84, 24, 16, 41, 93, 4]
+        },
+        "after": {
+          "$list": [89, 22, 96, 37, 29, 96, 89, 45, 75, 22, 80, 77]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Uma", "Raj", "Ivy", "Leo", "Sol", "Pip", "Omar", "Lin"]
+        },
+        "before": {
+          "$list": [37, 65, 22, 93, 0, 31, 86, 65]
+        },
+        "after": {
+          "$list": [2, 76, 65, 62, 16, 29, 76, 73]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Pip", "Ola", "Mila", "Max"]
+        },
+        "before": {
+          "$list": [56, 11, 64, 24]
+        },
+        "after": {
+          "$list": [59, 78, 44, 61]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ana", "Pip", "Sol", "Ola", "Kai", "Yuki", "Raj", "Omar", "Rex", "Nia"]
+        },
+        "before": {
+          "$list": [47, 1, 74, 6, 59, 88, 29, 25, 78, 90]
+        },
+        "after": {
+          "$list": [0, 77, 84, 47, 22, 62, 38, 10, 80, 53]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Ivy",
+            "Kai",
+            "Ola",
+            "Zara",
+            "Nia",
+            "Uma",
+            "Yuki",
+            "Leo",
+            "Tom",
+            "Eve",
+            "Omar",
+            "Ana",
+            "Ben",
+            "Lin",
+            "Rex",
+            "Mila",
+            "Max",
+            "Pip",
+            "Raj",
+            "Sol"
+          ]
+        },
+        "before": {
+          "$list": [2, 51, 59, 56, 60, 74, 69, 4, 7, 48, 84, 33, 69, 92, 89, 36, 45, 1, 97, 16]
+        },
+        "after": {
+          "$list": [24, 85, 77, 39, 3, 53, 56, 11, 24, 92, 64, 22, 69, 14, 33, 8, 90, 30, 34, 61]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Rex",
+            "Nia",
+            "Max",
+            "Raj",
+            "Eve",
+            "Ana",
+            "Ben",
+            "Leo",
+            "Omar",
+            "Zara",
+            "Tom",
+            "Yuki",
+            "Sol",
+            "Uma",
+            "Ivy",
+            "Pip",
+            "Kai",
+            "Mila",
+            "Lin",
+            "Ola"
+          ]
+        },
+        "before": {
+          "$list": [95, 89, 81, 76, 52, 13, 54, 32, 24, 73, 88, 12, 0, 24, 30, 55, 86, 38, 30, 50]
+        },
+        "after": {
+          "$list": [36, 98, 98, 49, 68, 46, 19, 7, 0, 86, 23, 64, 10, 90, 22, 98, 54, 22, 58, 1]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Rex",
+            "Tom",
+            "Yuki",
+            "Uma",
+            "Raj",
+            "Zara",
+            "Omar",
+            "Mila",
+            "Ben",
+            "Max",
+            "Lin",
+            "Ola",
+            "Pip",
+            "Kai",
+            "Ivy",
+            "Nia"
+          ]
+        },
+        "before": {
+          "$list": [83, 11, 5, 56, 64, 91, 31, 78, 24, 94, 14, 74, 79, 56, 90, 44]
+        },
+        "after": {
+          "$list": [4, 41, 17, 36, 87, 66, 65, 84, 100, 16, 35, 26, 50, 100, 76, 9]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ana", "Uma", "Lin"]
+        },
+        "before": {
+          "$list": [4, 10, 42]
+        },
+        "after": {
+          "$list": [76, 6, 38]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Kai", "Leo", "Rex", "Ben", "Zara", "Tom"]
+        },
+        "before": {
+          "$list": [55, 39, 36, 54, 92, 84]
+        },
+        "after": {
+          "$list": [18, 21, 3, 59, 69, 86]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Rex", "Ana", "Yuki", "Pip", "Max", "Ben", "Leo", "Tom", "Eve", "Raj", "Mila"]
+        },
+        "before": {
+          "$list": [13, 8, 81, 90, 38, 65, 89, 29, 16, 56, 70]
+        },
+        "after": {
+          "$list": [33, 81, 23, 66, 5, 93, 20, 19, 11, 6, 64]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Uma",
+            "Zara",
+            "Kai",
+            "Raj",
+            "Tom",
+            "Yuki",
+            "Eve",
+            "Omar",
+            "Ben",
+            "Max",
+            "Mila",
+            "Leo",
+            "Ivy",
+            "Ana",
+            "Ola",
+            "Nia"
+          ]
+        },
+        "before": {
+          "$list": [41, 83, 98, 78, 72, 2, 30, 94, 47, 44, 71, 4, 52, 79, 74, 97]
+        },
+        "after": {
+          "$list": [86, 18, 74, 82, 64, 50, 73, 70, 96, 90, 34, 92, 49, 21, 31, 100]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Uma", "Zara"]
+        },
+        "before": {
+          "$list": [25, 79]
+        },
+        "after": {
+          "$list": [80, 53]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Mila",
+            "Omar",
+            "Ivy",
+            "Ola",
+            "Leo",
+            "Tom",
+            "Ana",
+            "Kai",
+            "Max",
+            "Ben",
+            "Rex",
+            "Eve",
+            "Nia",
+            "Sol",
+            "Yuki",
+            "Lin",
+            "Raj",
+            "Uma",
+            "Pip"
+          ]
+        },
+        "before": {
+          "$list": [69, 50, 99, 38, 41, 1, 23, 34, 38, 35, 61, 10, 1, 23, 81, 90, 25, 99, 57]
+        },
+        "after": {
+          "$list": [37, 0, 28, 98, 70, 88, 12, 23, 56, 54, 28, 68, 13, 26, 24, 28, 79, 48, 46]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Eve", "Rex", "Tom", "Raj", "Ola", "Ben", "Yuki", "Omar", "Ivy"]
+        },
+        "before": {
+          "$list": [90, 87, 64, 48, 1, 54, 81, 30, 98]
+        },
+        "after": {
+          "$list": [0, 77, 3, 44, 86, 14, 50, 29, 31]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

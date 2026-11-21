@@ -1,0 +1,196 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "EroareBanca"
+      },
+      {
+        "kind": "class",
+        "name": "SumaInvalida"
+      },
+      {
+        "kind": "class",
+        "name": "BaniInsuficienti"
+      },
+      {
+        "kind": "class",
+        "name": "Cont"
+      },
+      {
+        "kind": "extends",
+        "name": "EroareBanca"
+      },
+      {
+        "kind": "function",
+        "name": "depune"
+      },
+      {
+        "kind": "function",
+        "name": "retrage"
+      },
+      {
+        "kind": "function",
+        "name": "__str__"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "input"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "Ada\ndepune 100\nretrage 130\ndepune 0\nretrage 40\nend\n"
+    },
+    {
+      "visible": true,
+      "stdin": "Ben\nend\n"
+    },
+    {
+      "stdin": "Kai\nretrage 1\nend\n"
+    },
+    {
+      "stdin": "Mila\ndepune -100\nretrage -5\ndepune 10000\nretrage 10000\nretrage 1\nend\n"
+    },
+    {
+      "stdin": "Zara Lee\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\ndepune 5\nend\n"
+    },
+    {
+      "stdin": "Eli\nretrage -59\nretrage -71\nretrage 5950\ndepune -90\nretrage -12\nretrage -12\ndepune 8821\nretrage 9105\nretrage -50\ndepune 444\nretrage -60\nretrage -99\ndepune 190\nretrage 352\ndepune 3452\nretrage -7\ndepune 3077\nretrage 129\nretrage 5546\ndepune -48\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\nretrage 6745\ndepune 232\ndepune -26\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\ndepune 318\ndepune 4762\ndepune -35\nretrage 8213\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune 737\ndepune 6247\nretrage -84\ndepune 6044\ndepune 457\nretrage -96\nretrage -73\ndepune 396\ndepune 343\ndepune -80\nretrage -28\nretrage -54\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\nretrage 320\nretrage 162\ndepune 24\ndepune 235\nretrage 37\ndepune -10\nretrage -2\nretrage 255\nretrage -27\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune -32\nretrage -47\nretrage -72\ndepune 78\nretrage 7866\ndepune 7513\ndepune -52\ndepune 1938\nretrage -42\nretrage 485\nretrage 248\nretrage 135\nretrage 174\ndepune 6743\nretrage -5\nretrage 353\nretrage 9099\ndepune 404\ndepune 6319\nretrage -19\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\nretrage 8263\ndepune -35\nretrage 57\ndepune 1777\ndepune 4440\ndepune 31\nretrage -71\ndepune 109\nretrage 7805\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndepune 442\nretrage -53\nretrage 7508\ndepune 1825\ndepune 8251\ndepune 8456\nretrage -41\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\ndepune -31\ndepune -24\nretrage 422\ndepune 346\ndepune 220\ndepune -34\ndepune 9220\ndepune 5451\ndepune 7884\ndepune -30\ndepune 12\ndepune -20\ndepune 1684\nretrage 482\ndepune -69\ndepune -14\ndepune 378\nretrage -54\ndepune 6096\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\ndepune 456\nretrage -70\ndepune 2850\ndepune 353\nretrage 3090\nretrage 399\ndepune 5507\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune -51\ndepune 287\nretrage 299\nretrage -30\nretrage 435\nretrage 1038\ndepune 6491\ndepune 3441\ndepune -41\ndepune -22\nretrage 2015\nretrage 1857\ndepune 335\nretrage 289\nretrage -12\nretrage 103\nretrage 72\nretrage 4214\nretrage -69\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune -100\nretrage -88\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune 7140\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndepune -56\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\ndepune 82\nretrage 5252\ndepune 387\ndepune 9691\ndepune 9781\nretrage 2961\ndepune -14\ndepune 226\ndepune -71\nretrage 7681\nretrage 1483\nretrage 5245\ndepune -53\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nretrage 5462\nretrage -43\nretrage 231\ndepune -55\nretrage 72\ndepune 2399\nretrage -80\ndepune 3431\ndepune 82\nretrage 255\nretrage 7619\ndepune 2368\ndepune -91\ndepune 76\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\nretrage 4604\nretrage 413\nretrage 7379\nretrage 4013\nretrage -15\nretrage 5348\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\nretrage 8552\nretrage -5\ndepune 100\ndepune 319\nretrage 5136\ndepune 494\nretrage 1824\nretrage -57\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\nretrage 8079\nretrage -46\ndepune 241\nretrage 2681\ndepune 8554\nretrage 9197\ndepune 109\nretrage 474\ndepune -67\ndepune -60\ndepune 9001\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune 483\ndepune 81\nretrage -61\nretrage -19\ndepune -33\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndepune -84\ndepune 59\nretrage -73\nretrage 352\ndepune 149\ndepune 333\nretrage 1172\nretrage -52\nretrage 140\ndepune 437\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nretrage 1921\ndepune -35\ndepune 485\nretrage 1394\ndepune 236\ndepune -93\ndepune -41\ndepune -4\ndepune 230\nretrage 205\ndepune 252\ndepune 80\nretrage 322\ndepune 221\ndepune 377\ndepune 1243\nretrage -29\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\ndepune 304\ndepune 6901\ndepune 9892\ndepune 4711\nretrage 2888\ndepune 63\ndepune 4844\nretrage -52\ndepune 2749\ndepune -41\nretrage 674\ndepune -37\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\nretrage 9358\nretrage 333\nretrage 6296\nretrage 560\nretrage 3974\ndepune 6647\ndepune -34\nretrage 404\ndepune 7944\ndepune 8196\ndepune 3653\nretrage 8930\ndepune 8468\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nretrage 3955\ndepune -47\ndepune 6967\ndepune 3690\ndepune -27\nretrage 348\nretrage 58\nretrage -22\nretrage -9\nretrage -42\nretrage -73\ndepune 187\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndepune 1555\ndepune 8632\ndepune 1482\ndepune 2479\ndepune -31\nretrage -70\nretrage 2946\ndepune 4316\ndepune 91\ndepune 7121\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndepune 7624\nretrage -35\ndepune 2769\ndepune 7508\ndepune 493\ndepune 5500\ndepune -43\ndepune -2\ndepune -64\nretrage 1901\nretrage 1337\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\ndepune 8215\nretrage 107\ndepune 4752\nretrage 2902\ndepune 229\ndepune 3375\ndepune 5783\nretrage 98\nretrage 344\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nretrage -2\ndepune 9172\ndepune 276\nretrage -41\ndepune 277\nretrage 50\ndepune 4480\ndepune 0\nretrage -67\ndepune 6542\ndepune 389\ndepune -32\ndepune 1236\ndepune -14\ndepune -49\nretrage -92\nretrage 3656\ndepune -76\nretrage 5434\ndepune 8385\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\nretrage 63\ndepune 4775\ndepune 6939\ndepune 370\ndepune -33\ndepune 4158\ndepune 4411\ndepune -92\nretrage 449\ndepune 210\ndepune 135\nretrage -95\ndepune -12\nretrage -21\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nretrage 110\nretrage -92\ndepune 325\nretrage 458\ndepune 1507\ndepune 8328\ndepune 2313\nretrage 471\nend\n",
+      "generated": true
+    }
+  ]
+}

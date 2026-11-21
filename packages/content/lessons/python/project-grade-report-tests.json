@@ -1,0 +1,193 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Student"
+      },
+      {
+        "kind": "function",
+        "name": "add"
+      },
+      {
+        "kind": "function",
+        "name": "average"
+      },
+      {
+        "kind": "function",
+        "name": "grade"
+      },
+      {
+        "kind": "keyword_arg",
+        "name": "key"
+      },
+      {
+        "kind": "format_spec"
+      },
+      {
+        "kind": "call",
+        "name": "Counter"
+      },
+      {
+        "kind": "call",
+        "name": "input"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "Ada math 92\nBen math 75\nAda art 88\nCy art 95\nBen art 88\nAda math 70\nend\n"
+    },
+    {
+      "visible": true,
+      "stdin": "Zoe music 0\nend\n"
+    },
+    {
+      "stdin": "Ada math 90\nBen math 89\nCy math 80\nDee math 70\nEli math 60\nFay math 59\nGus math 100\nend\n"
+    },
+    {
+      "stdin": "Ben art 81\nAda art 82\nAda math 81\nBen math 82\nend\n"
+    },
+    {
+      "stdin": "Cy physics 100\nAda physics 100\nend\n"
+    },
+    {
+      "stdin": "Cy art 98\nEli art 90\nCy art 70\nCy art 90\nCy art 90\nFay art 70\nAda art 80\nZoe art 90\nAda art 60\nEli art 91\nZoe art 70\nZoe art 42\nCy art 80\nAda art 60\nCy art 90\nEli art 90\nZoe art 70\nAda art 80\nFay art 70\nFay art 70\nAda art 90\nFay art 70\nCy art 85\nEli art 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus music 80\nZoe history 90\nFay history 80\nAda history 70\nCy music 70\nGus physics 3\nZoe physics 100\nCy history 60\nFay music 98\nZoe history 90\nFay history 80\nCy music 80\nAda physics 70\nFay music 55\nGus music 80\nCy music 80\nCy history 80\nFay history 21\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy math 70\nEli math 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus physics 60\nFay history 90\nZoe math 80\nGus physics 70\nCy math 60\nFay history 60\nCy history 70\nFay math 80\nCy history 70\nZoe physics 60\nZoe physics 90\nGus math 70\nCy physics 80\nGus physics 80\nCy physics 80\nGus history 70\nGus history 60\nCy physics 70\nZoe history 90\nCy history 60\nFay history 70\nGus math 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus math 95\nEli physics 80\nBen math 90\nFay physics 90\nZoe physics 60\nZoe physics 80\nCy math 60\nEli physics 60\nGus math 90\nFay physics 80\nZoe physics 80\nFay physics 70\nBen physics 80\nBen math 70\nCy physics 70\nFay physics 70\nZoe physics 80\nCy math 59\nEli math 80\nFay physics 86\nBen math 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy art 50\nDee history 70\nZoe math 80\nCy history 90\nDee math 11\nZoe art 70\nZoe math 80\nCy math 80\nDee history 90\nDee math 60\nZoe history 90\nZoe math 90\nZoe art 70\nDee math 60\nZoe math 70\nCy art 60\nZoe art 70\nZoe history 70\nDee math 60\nZoe art 50\nCy math 90\nZoe math 90\nDee history 80\nDee history 60\nDee art 34\nCy art 32\nCy art 69\nZoe math 60\nDee art 60\nCy art 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe history 70\nZoe history 80\nFay history 80\nFay history 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada math 80\nBen math 70\nBen math 60\nGus math 12\nBen math 57\nBen math 93\nBen math 80\nGus math 90\nCy math 73\nBen math 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe math 90\nZoe music 60\nZoe music 12\nZoe history 80\nZoe history 70\nZoe art 80\nZoe music 70\nZoe math 42\nZoe math 60\nZoe history 80\nZoe math 80\nZoe music 70\nZoe art 80\nZoe history 30\nZoe history 60\nZoe art 80\nZoe art 90\nZoe art 80\nZoe art 80\nZoe history 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe math 70\nDee music 70\nBen math 90\nDee math 60\nBen music 70\nZoe math 80\nBen math 90\nBen music 60\nZoe math 80\nEli music 90\nGus math 70\nAda math 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus music 70\nBen history 80\nAda art 90\nAda music 60\nCy art 56\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben art 50\nZoe art 21\nZoe music 70\nBen art 80\nEli music 96\nAda history 60\nAda music 38\nDee history 60\nAda art 80\nDee art 80\nAda physics 90\nAda art 80\nAda physics 95\nZoe physics 49\nEli art 60\nBen physics 80\nDee art 90\nDee history 80\nAda history 80\nZoe music 90\nBen physics 70\nAda physics 70\nZoe physics 27\nAda history 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee math 90\nAda math 80\nAda music 90\nZoe math 76\nZoe music 90\nCy math 90\nDee music 94\nCy music 70\nZoe music 60\nCy music 21\nCy music 60\nDee math 70\nAda math 85\nDee math 90\nDee music 70\nDee music 80\nZoe music 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus physics 3\nGus physics 70\nGus art 80\nGus art 60\nGus art 90\nGus art 97\nGus art 80\nGus art 22\nGus art 17\nGus physics 90\nGus physics 60\nGus physics 60\nGus physics 60\nGus physics 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy music 35\nBen physics 60\nBen physics 80\nCy physics 80\nCy music 80\nBen music 60\nBen music 80\nFay physics 90\nCy music 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus art 70\nAda math 80\nGus math 6\nAda music 70\nCy history 70\nDee music 35\nCy math 35\nAda history 70\nDee math 37\nGus math 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Fay history 70\nFay music 80\nAda history 60\nFay history 60\nAda music 60\nFay history 91\nFay music 60\nAda music 80\nFay history 80\nFay history 80\nFay history 90\nFay music 60\nAda history 98\nAda music 19\nAda history 10\nAda music 60\nAda music 70\nAda music 80\nFay history 18\nFay history 60\nFay history 61\nFay history 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli music 80\nFay physics 70\nAda history 80\nFay art 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy math 80\nGus physics 60\nFay physics 56\nFay physics 70\nFay math 70\nGus history 90\nGus physics 70\nCy math 80\nZoe math 80\nGus physics 60\nZoe math 61\nGus math 80\nDee physics 27\nCy math 73\nFay physics 7\nFay history 5\nCy math 70\nDee math 80\nFay physics 20\nZoe history 60\nDee history 70\nZoe math 60\nCy physics 60\nFay history 80\nGus math 80\nCy history 60\nGus math 46\nCy physics 90\nCy physics 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee history 14\nBen history 90\nGus history 90\nDee history 60\nBen history 70\nBen history 70\nGus history 53\nDee history 80\nGus history 84\nBen history 80\nDee history 80\nGus history 80\nGus history 90\nGus history 80\nBen history 90\nGus history 7\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada art 60\nZoe music 60\nZoe art 70\nBen art 70\nEli history 60\nDee history 70\nBen art 60\nEli history 60\nDee history 80\nBen history 70\nZoe art 90\nAda art 80\nAda art 70\nEli art 90\nAda art 60\nBen music 80\nEli art 90\nZoe history 60\nZoe art 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada math 80\nGus math 80\nFay math 70\nEli math 90\nAda math 44\nEli math 70\nEli math 60\nEli math 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee math 80\nGus math 70\nGus math 80\nGus math 90\nCy math 80\nDee math 80\nFay math 80\nAda math 63\nCy math 60\nAda math 70\nAda math 80\nGus math 60\nCy math 77\nGus math 60\nAda math 90\nGus math 70\nCy math 70\nDee math 80\nAda math 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben history 80\nGus physics 70\nBen physics 73\nAda history 60\nGus art 33\nAda art 90\nBen history 90\nGus physics 11\nAda physics 12\nBen art 77\nGus art 80\nAda history 70\nAda physics 70\nAda physics 70\nAda physics 80\nAda history 60\nBen history 80\nBen history 72\nAda history 60\nAda art 70\nBen physics 90\nAda history 80\nBen physics 33\nBen physics 80\nAda physics 80\nGus history 60\nGus physics 69\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus music 70\nDee history 80\nDee music 48\nFay history 68\nAda music 80\nFay history 1\nFay history 60\nFay music 90\nFay music 70\nEli music 60\nEli history 80\nGus history 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus music 70\nGus history 90\nGus art 80\nGus art 37\nGus history 70\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben physics 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli history 60\nAda art 80\nZoe physics 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe history 70\nGus history 60\nCy art 80\nGus art 60\nZoe art 60\nZoe art 60\nCy art 97\nZoe art 90\nGus history 70\nGus history 80\nZoe music 80\nCy history 90\nGus music 80\nZoe art 80\nZoe history 70\nZoe history 90\nGus art 60\nGus history 90\nZoe music 80\nZoe history 60\nZoe music 90\nZoe history 60\nZoe music 80\nZoe art 80\nCy art 60\nGus music 80\nGus history 71\nCy music 60\nGus art 60\nGus history 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee history 70\nZoe history 70\nZoe history 90\nDee history 70\nZoe history 8\nEli art 90\nZoe art 80\nZoe art 60\nEli art 90\nEli music 90\nZoe art 70\nEli music 80\nEli art 80\nEli music 80\nZoe art 80\nEli art 80\nDee history 70\nEli history 94\nDee art 60\nDee art 80\nDee art 90\nDee history 60\nEli art 24\nZoe history 90\nZoe history 90\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Gus history 90\nGus physics 80\nGus physics 60\nGus physics 80\nGus history 80\nGus physics 60\nGus physics 80\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Zoe art 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada music 80\nBen math 60\nBen math 80\nAda math 70\nBen math 90\nAda math 70\nBen music 60\nAda math 90\nAda music 25\nAda math 70\nAda math 80\nAda music 70\nBen music 80\nBen music 83\nAda music 60\nAda music 30\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Fay history 90\nFay history 60\nFay physics 60\nFay history 80\nFay physics 70\nFay history 80\nFay physics 70\nFay history 4\nFay physics 60\nFay history 90\nFay history 60\nFay physics 90\nFay history 60\nFay history 90\nFay physics 70\nFay history 90\nFay history 60\nFay physics 84\nFay history 60\nFay physics 80\nFay physics 70\nFay history 90\nFay history 70\nFay physics 60\nFay physics 90\nFay history 60\nFay physics 70\nFay physics 80\nFay history 70\nFay history 70\nend\n",
+      "generated": true
+    }
+  ]
+}

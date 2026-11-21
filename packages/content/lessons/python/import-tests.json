@@ -1,0 +1,278 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "password"
+      },
+      {
+        "kind": "import",
+        "name": "string"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "password": "Orbit7!x"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "password": "moon2"
+      }
+    },
+    {
+      "inject": {
+        "password": "A1!"
+      }
+    },
+    {
+      "inject": {
+        "password": "A1!aaaaa"
+      }
+    },
+    {
+      "inject": {
+        "password": "A1!aaaa"
+      }
+    },
+    {
+      "inject": {
+        "password": "abcdefgh"
+      }
+    },
+    {
+      "inject": {
+        "password": "ABCDEFGH12"
+      }
+    },
+    {
+      "inject": {
+        "password": "!!!!!!!!"
+      }
+    },
+    {
+      "inject": {
+        "password": "a"
+      }
+    },
+    {
+      "inject": {
+        "password": "Pass\\word9"
+      }
+    },
+    {
+      "inject": {
+        "password": "Q\"9zzzzz"
+      }
+    },
+    {
+      "inject": {
+        "password": "ovtsdycpuqyidu"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "ZU`ClH}G}`D{J"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "bndtvtdhbwqveiv"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "M6B~Kh%1ePt?7HF}c?.Fi)4%/"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "chs"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "giskp"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "2e795jaa6q2n2au6kpuxjc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "vz!~n>Z=:%CE':~gz{Tj"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "6h9fl8o"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "dqg5h6ozt43tyojh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "gDx{"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "wb5"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "#\\"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "<QT2=4rlkQgaY;HcgU"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": ",iWIW8'"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "1g1swi548k1e20e8zauk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "i`ev+sIoH8.u."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "aorlinnhbfznrvisfigpewwgkmheo"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "LEfLa"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "viqwxqlbujazlclgqtnjgaqrhgpl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "Lgk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "t\\Y5lwBY)mG)pJ0RC.>9J9]o}"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "fvtooharmwh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "u=fI-Nb[%C?c8"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "/qO1m^OcukX\\_L8($f=KG?=KL}+n`"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "x}9dVBk3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "ti54s3pfbbdh870bzjc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": ">n]h9NA"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "b>F1(pnt8B+nOK(=H=8+P;'"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "h3n0hsr"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": ">)mb=XM;Ot__xhU#["
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "DMPGlfwlLhZXxbhbcNXbH"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "lmsepmeplbvuvbzbmtoemamatshbgs"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "password": "cm"
+      },
+      "generated": true
+    }
+  ]
+}

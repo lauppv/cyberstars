@@ -1,0 +1,288 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "burn"
+      },
+      {
+        "kind": "yield"
+      },
+      {
+        "kind": "call",
+        "name": "next"
+      },
+      {
+        "kind": "variable",
+        "name": "fuel"
+      },
+      {
+        "kind": "variable",
+        "name": "rate"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "fuel": 10,
+        "rate": 3
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "fuel": 6,
+        "rate": 3
+      }
+    },
+    {
+      "inject": {
+        "fuel": 0,
+        "rate": 1
+      }
+    },
+    {
+      "inject": {
+        "fuel": 2,
+        "rate": 5
+      }
+    },
+    {
+      "inject": {
+        "fuel": 200,
+        "rate": 1
+      }
+    },
+    {
+      "inject": {
+        "fuel": 50,
+        "rate": 50
+      }
+    },
+    {
+      "inject": {
+        "fuel": 49,
+        "rate": 50
+      }
+    },
+    {
+      "inject": {
+        "fuel": 1,
+        "rate": 1
+      }
+    },
+    {
+      "inject": {
+        "fuel": 20,
+        "rate": 16
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 147,
+        "rate": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 53,
+        "rate": 23
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 112,
+        "rate": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 99,
+        "rate": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 105,
+        "rate": 42
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 66,
+        "rate": 18
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 2,
+        "rate": 37
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 78,
+        "rate": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 130,
+        "rate": 48
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 131,
+        "rate": 32
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 73,
+        "rate": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 65,
+        "rate": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 131,
+        "rate": 19
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 117,
+        "rate": 38
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 4,
+        "rate": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 111,
+        "rate": 16
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 53,
+        "rate": 15
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 136,
+        "rate": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 189,
+        "rate": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 60,
+        "rate": 23
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 112,
+        "rate": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 18,
+        "rate": 15
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 41,
+        "rate": 17
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 195,
+        "rate": 47
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 7,
+        "rate": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 18,
+        "rate": 42
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 11,
+        "rate": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 11,
+        "rate": 1
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "fuel": 121,
+        "rate": 9
+      },
+      "generated": true
+    }
+  ]
+}

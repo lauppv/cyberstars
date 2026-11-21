@@ -71,7 +71,7 @@ for element, contor in elemente_sortate:
     print(f"{element}: {contor}")
 ```
 
-Nu-ți face griji cu **lambda** deocamdată, doar reține că îi spune lui sorted() după ce valoare să sorteze (în acest caz, numărătoarea)
+Acesta e `key` din lecția Sorted cu key: **lambda** îi spune lui sorted() după ce valoare să sorteze, aici numărătoarea, a doua valoare din fiecare pereche
 
 ---
 

@@ -11,7 +11,9 @@ vi.mock('./laniakea-quiz.js', () => mockQuiz);
 
 const service = await import('./laniakea.service.js');
 const { config } = await import('../config/index.js');
-const { DAY_MS, QUIZ_IDLE_MS, QUIZ_RETRY_MS } = await import('@cyberstars/shared/laniakea');
+const { DAY_MS, FIRST_STEPS_LESSONS, QUIZ_IDLE_MS, QUIZ_RETRY_MS } =
+  await import('@cyberstars/shared/laniakea');
+const { lessons } = await import('@cyberstars/content/curriculum');
 
 const NOW = new Date('2026-10-24T12:00:00Z');
 const ago = (ms: number) => new Date(NOW.getTime() - ms);
@@ -327,7 +329,9 @@ describe('getState', () => {
 
     const state = await service.getState(4, NOW);
 
-    expect(state.planets).toHaveLength(55);
+    // First steps' lessons make one planet; every Python lesson after them is one
+    const pythonLessons = lessons.filter((l) => l.courseKey === 'python').length;
+    expect(state.planets).toHaveLength(pythonLessons - FIRST_STEPS_LESSONS + 1);
     expect(state.planets[0]).toEqual({
       slug: 'print',
       lessonDone: true,

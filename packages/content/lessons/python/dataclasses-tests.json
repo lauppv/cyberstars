@@ -1,0 +1,488 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Crate"
+      },
+      {
+        "kind": "decorator",
+        "name": "dataclass"
+      },
+      {
+        "kind": "call",
+        "name": "sorted"
+      },
+      {
+        "kind": "variable",
+        "name": "weights"
+      },
+      {
+        "kind": "variable",
+        "name": "labels"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "weights": {
+          "$list": [40, 5, 40]
+        },
+        "labels": {
+          "$list": ["food", "seeds", "books"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "weights": {
+          "$list": [7, 7]
+        },
+        "labels": {
+          "$list": ["tools", "tools"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [100]
+        },
+        "labels": {
+          "$list": ["x"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [1, 2, 1, 1]
+        },
+        "labels": {
+          "$list": ["a", "a", "a", "b"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        },
+        "labels": {
+          "$list": ["z", "z", "z", "z", "z", "z", "z", "z", "z", "z"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 10, 20, 10, 84, 20, 10, 20, 18, 46]
+        },
+        "labels": {
+          "$list": [
+            "food",
+            "seeds",
+            "books",
+            "tools",
+            "toys",
+            "seeds",
+            "glass",
+            "water",
+            "tools",
+            "food"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [31, 10, 61, 47, 10, 46, 20, 10, 10]
+        },
+        "labels": {
+          "$list": ["toys", "glass", "books", "seeds", "seeds", "seeds", "food", "toys", "books"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 63, 10, 20, 20]
+        },
+        "labels": {
+          "$list": ["toys", "glass", "water", "water", "tools"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 46, 10, 10]
+        },
+        "labels": {
+          "$list": ["books", "food", "books", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [71, 10, 20, 10, 20, 95, 35]
+        },
+        "labels": {
+          "$list": ["tools", "toys", "water", "books", "food", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 10, 54, 62, 10]
+        },
+        "labels": {
+          "$list": ["seeds", "food", "water", "glass", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 80, 5]
+        },
+        "labels": {
+          "$list": ["seeds", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [90, 23, 10]
+        },
+        "labels": {
+          "$list": ["books", "tools", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [95, 10]
+        },
+        "labels": {
+          "$list": ["tools", "books"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [42, 4, 10, 20, 10, 70, 26, 40, 10]
+        },
+        "labels": {
+          "$list": ["water", "glass", "glass", "water", "glass", "water", "food", "seeds", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 17, 20, 10, 20, 10, 5, 90, 10, 81]
+        },
+        "labels": {
+          "$list": [
+            "food",
+            "books",
+            "toys",
+            "tools",
+            "seeds",
+            "water",
+            "seeds",
+            "food",
+            "toys",
+            "tools"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 10, 20, 20, 10, 20, 20, 26, 10]
+        },
+        "labels": {
+          "$list": ["seeds", "food", "water", "seeds", "seeds", "seeds", "food", "toys", "tools"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 20, 20, 20, 20, 20]
+        },
+        "labels": {
+          "$list": ["seeds", "toys", "books", "water", "seeds", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 10, 20, 10, 20, 10, 72, 10, 9]
+        },
+        "labels": {
+          "$list": ["food", "glass", "seeds", "toys", "water", "toys", "toys", "glass", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [79, 10, 20, 10, 20, 86]
+        },
+        "labels": {
+          "$list": ["food", "glass", "water", "seeds", "books", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 20]
+        },
+        "labels": {
+          "$list": ["seeds", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [45, 20, 59, 10, 20, 10, 24, 10, 10, 7]
+        },
+        "labels": {
+          "$list": [
+            "toys",
+            "seeds",
+            "tools",
+            "food",
+            "water",
+            "tools",
+            "tools",
+            "toys",
+            "seeds",
+            "food"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 10]
+        },
+        "labels": {
+          "$list": ["glass", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 10, 20, 20, 2, 20, 20, 20, 10]
+        },
+        "labels": {
+          "$list": ["toys", "glass", "water", "water", "books", "toys", "books", "toys", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 10, 35, 10, 81]
+        },
+        "labels": {
+          "$list": ["toys", "glass", "toys", "books", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 10, 1, 10]
+        },
+        "labels": {
+          "$list": ["food", "seeds", "seeds", "glass"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 10, 18, 50, 10, 20, 10, 10, 20, 20]
+        },
+        "labels": {
+          "$list": [
+            "food",
+            "glass",
+            "tools",
+            "tools",
+            "tools",
+            "books",
+            "books",
+            "glass",
+            "food",
+            "books"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 10]
+        },
+        "labels": {
+          "$list": ["water", "water"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 10, 10, 10, 10, 20, 20, 20, 20, 20]
+        },
+        "labels": {
+          "$list": [
+            "books",
+            "food",
+            "books",
+            "books",
+            "toys",
+            "books",
+            "tools",
+            "food",
+            "water",
+            "toys"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [22, 16, 10, 20, 10, 13]
+        },
+        "labels": {
+          "$list": ["books", "water", "toys", "water", "tools", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 20, 10, 20, 10, 3, 10, 70, 10]
+        },
+        "labels": {
+          "$list": ["books", "glass", "books", "water", "food", "tools", "water", "toys", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 20, 2, 86, 47, 20]
+        },
+        "labels": {
+          "$list": ["seeds", "food", "glass", "toys", "seeds", "books"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [86, 61, 20, 20, 56, 20, 88, 20]
+        },
+        "labels": {
+          "$list": ["glass", "tools", "toys", "seeds", "food", "water", "tools", "water"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [10, 20, 4, 23, 10, 22]
+        },
+        "labels": {
+          "$list": ["tools", "seeds", "seeds", "glass", "food", "seeds"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 14, 20, 10, 46]
+        },
+        "labels": {
+          "$list": ["tools", "seeds", "toys", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [20, 20, 10, 20, 20, 26, 88, 16]
+        },
+        "labels": {
+          "$list": ["books", "seeds", "toys", "glass", "seeds", "water", "glass", "toys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "weights": {
+          "$list": [7, 20]
+        },
+        "labels": {
+          "$list": ["food", "tools"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

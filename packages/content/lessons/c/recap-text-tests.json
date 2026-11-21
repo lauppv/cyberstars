@@ -1,0 +1,155 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "strtok"
+      },
+      {
+        "kind": "call",
+        "name": "strtol"
+      },
+      {
+        "kind": "call",
+        "name": "fgets"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "add 3 4 5\nmax 7 2 9\necho hello   tape   room\nadd 2 x\njump 1\n"
+    },
+    {
+      "stdin": "add 5\n"
+    },
+    {
+      "stdin": "max -4 -9 -2\n"
+    },
+    {
+      "stdin": "max 3 3\n"
+    },
+    {
+      "stdin": "echo\n"
+    },
+    {
+      "stdin": "add 1 2x 3y\n"
+    },
+    {
+      "stdin": "max x 5\n"
+    },
+    {
+      "stdin": "add 1 2\n"
+    },
+    {
+      "stdin": "add -10 +3 7\n"
+    },
+    {
+      "stdin": "echo a\necho   b   c\n"
+    },
+    {
+      "stdin": "add 1000000 1000000 1000000"
+    },
+    {
+      "stdin": "load   1.5  x tape dump hello  reel\nmax 28 -296  623   -783 tape\njump   22 x  7a   core   x hello\nadd  700  -837 168 tape   397 -927 324\nmax  -327 -414   -109\njump   43   1.5 57\nload 1.5   7a   hello   dump reel core\nload\njump tape\nmax 112 496\nadd   701 -320 -404   hello  -929   549   -387   -301\nstop reel 42 dump  1.5\nadd   -492 937\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo reel\nmax  498   -966  516\nmax 14 489   -437\nstop\necho\nload  22  hello 7a  tape\nadd  -567 439  614   -63   691   652\necho  32  tape hello  core\nadd  -261  966   -46 -894\njump\nstop   tape 7a   core   tape   reel  core\njump   1.5   x  tape 7a  tape  1.5\nadd   275  -148 407  -538   371 115\nload dump   23 x reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "load   tape   reel 7a 7a 1.5   tape\nmax  -785 -878 -583 -216  -353   -860  70\nmax   -307   -854   58 -493  -723  -942\n",
+      "generated": true
+    },
+    {
+      "stdin": "stop   1.5  core x\necho 1.5\nadd   258  -512 998\nload  x\nadd   408   302  -544\nload tape  1.5   hello  50  dump   x\nmax  688  -550   -163 -695   988\necho  dump tape\nmax   242  199 332 -838 reel   132  988  794\necho   1.5  hello\nstop  1.5 core   x\nstop  tape  dump  x   tape  1.5\necho 91\n",
+      "generated": true
+    },
+    {
+      "stdin": "stop  1.5\nmax  -211  816 -664\nstop\njump 74 1.5  5 reel\necho   dump x 16 7 7a   tape\nadd   724  219  -218   740\nstop   dump hello   dump 47 1.5\nstop   core hello tape  core 54   dump\nstop x\necho  1.5\nadd -917   182 -114 727 117\necho  7a  dump  reel   core\necho\njump  1.5  16  66 dump dump\njump\n",
+      "generated": true
+    },
+    {
+      "stdin": "add -351\nstop   x  core  47 core reel\necho core  reel 1.5   28   dump dump\nstop   tape   7a   7a   core\nadd -538  251   -343 220  436   -545\nadd -693  -770 -261\nmax -920\necho reel\nstop core  hello   x 7a 1.5\njump  x   7a  3  93 tape\nstop\nstop  hello  tape hello   1.5 dump  reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "max 824  441 -371 -374   942\nadd   -402 148  437  -830   975  936\n",
+      "generated": true
+    },
+    {
+      "stdin": "add   657\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo tape\nadd  449 90   -152  -109 358\nstop   7a dump   tape  7a hello\n",
+      "generated": true
+    },
+    {
+      "stdin": "jump  hello  x dump   reel tape 80\njump   dump hello 7a   tape 7a\njump x   1.5 3  92\nload tape\nadd   -716   -894   -808   375   -133  -200\nload reel tape\njump   x  reel   7a  7a x\necho   7a\nload tape dump   7a   1.5\njump hello   10   core 50 tape\nadd  -154   0  -682 -482\nadd  core 716\nload   core   reel tape   1.5   90\nload   50   dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "jump  reel  x\n",
+      "generated": true
+    },
+    {
+      "stdin": "stop 1.5   x   x   tape   1.5\nmax 713 -177 829  -947  934   875 -342   -656\necho   dump hello\nadd   402 20 434   -676   -512\njump 1.5 hello   hello  93 core\n",
+      "generated": true
+    },
+    {
+      "stdin": "add   -223  859 702 853   -957 37\necho dump hello   reel dump   tape reel\njump\n",
+      "generated": true
+    },
+    {
+      "stdin": "add  -671  591 -985  -581 -335\nload  7a\nstop dump  x\nadd 129   168  645 844   163\nload  2   73   core  hello  reel  reel\nmax  core   158  624  -945\nload   hello 7a\nadd   854  -963  -770 966 -87 dump\necho  x   78  7a\necho   66  reel  hello   tape 10\nadd   826 533   -512 939\nmax -732  783   -759\nmax   -968  -266\nmax  -5  -473   66   -826   202   513  -905 -242\n",
+      "generated": true
+    },
+    {
+      "stdin": "max  -250   -403   487  259   504 956  -466\nmax 369\nmax   757  937 -911 -2   454\nadd   908 dump  484   238  440  382 -502\nstop   48\nload  x  59   tape  tape   1.5   7a\nstop  11 core\nmax  -597  dump\njump   x   42  1.5  hello\njump  x   hello   tape\njump\nadd   -87 -248 207 -57  343 582   -922   -885\njump  56 reel hello  1.5\nmax   -338  -953  301  864 -164\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo  reel 64   7a dump  x\njump core  7a\nadd -463 207   557 420   -55  309   -111   7\nload 7a 1.5\nmax  159  285   543 -719 472 -507  276   -874\njump  core reel   hello\njump   7a   7a hello\necho   63\nload   hello\nadd  274   453   628\njump  reel dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "max  -34  -609  -527   -675  -870 -427   955\nadd  -306   397   919  -282 266   395 -896\nadd -293  569 84  -267 -36 673   -990  7a\necho  reel dump   tape   dump 33   1.5\njump   hello   1.5   53   tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "load\nmax -966 -225   -458   532  -237\n",
+      "generated": true
+    },
+    {
+      "stdin": "jump hello   reel   1.5   reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "stop 1.5\nmax -471\n",
+      "generated": true
+    },
+    {
+      "stdin": "jump  core\necho  dump 1.5   reel   dump\nload  core  core   1.5\nadd   994   616 -900  490   -494 682\nstop   dump\nload   reel x\necho  core 7a\njump x  7a  dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "stop  dump core\njump   dump   hello  reel 1.5\nload   hello   tape   tape\necho  dump 7a 1.5\necho  dump 7a 42  tape\nstop\nstop core  1.5   1.5  27\necho tape  1.5\n",
+      "generated": true
+    },
+    {
+      "stdin": "jump\nadd   906  859 901 -458   -288  97\nstop   41  dump reel hello   47\necho  1.5 x   core  hello  core\nstop  core   x\nstop  39\n",
+      "generated": true
+    },
+    {
+      "stdin": "stop   tape reel\nstop hello  dump   dump  68 x\nmax -755 -853 252\njump   core  dump   hello 1.5   reel\njump   1.5   96   reel  reel\necho  x dump  hello  7a\nload   1.5   dump\nmax  -286   431   -290\nstop  x core 7a hello\nload reel\necho   tape  tape  dump reel  7a\nmax  213  -223   456\n",
+      "generated": true
+    },
+    {
+      "stdin": "max   -685\n",
+      "generated": true
+    }
+  ]
+}

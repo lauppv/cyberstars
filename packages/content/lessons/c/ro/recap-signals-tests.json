@@ -1,0 +1,81 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "sigaction"
+      },
+      {
+        "kind": "call",
+        "name": "sigsuspend"
+      },
+      {
+        "kind": "call",
+        "name": "setitimer"
+      },
+      {
+        "kind": "call",
+        "name": "kill"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "true\nsleep 30\ntest 1 -gt 2\nsleep 0\n"
+    },
+    {
+      "stdin": "true\n"
+    },
+    {
+      "stdin": "sleep 30\n"
+    },
+    {
+      "stdin": "nosuchjob\nfalse\n"
+    },
+    {
+      "stdin": "sleep 30\nsleep 30\ntrue"
+    },
+    {
+      "stdin": "false\ntest 2 -gt 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "test 2 -gt 3\nsleep 0\nsleep 30\nmissing-job\nmissing-job\nmissing-job\ntest 2 -gt 3\ntest 2 -gt 3\ntest 3 -gt 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "true\nsleep 0\ntest 2 -gt 3\nfalse\nmissing-job\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 30\ntrue\ntrue\nmissing-job\nmissing-job\nfalse\nsleep 30\nsleep 0\nsleep 0\nsleep 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "true\ntest 3 -gt 2\nfalse\ntest 3 -gt 2\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "test 2 -gt 3\nmissing-job\nfalse\ntest 2 -gt 3\ntrue\nsleep 30\nfalse\nsleep 30\nfalse\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 0\ntest 3 -gt 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 0\nsleep 0\nfalse\nmissing-job\ntest 3 -gt 2\nsleep 30\nfalse\nsleep 30\n",
+      "generated": true
+    },
+    {
+      "stdin": "true\nsleep 0\ntrue\nsleep 0\nsleep 0\ntest 2 -gt 3\n",
+      "generated": true
+    }
+  ]
+}

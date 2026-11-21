@@ -1,0 +1,107 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      },
+      {
+        "kind": "call",
+        "name": "waitpid"
+      },
+      {
+        "kind": "call",
+        "name": "strtok"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "echo hello tape room\nfalse\nnosuchcmd x\nexpr 6 * 7\n"
+    },
+    {
+      "stdin": "true\n"
+    },
+    {
+      "stdin": "seq 3\n"
+    },
+    {
+      "stdin": "expr 1 / 0\n"
+    },
+    {
+      "stdin": "basename /usr/bin/echo\nrev-not-here\n"
+    },
+    {
+      "stdin": "echo   lots    of   spaces\n"
+    },
+    {
+      "stdin": "echo a b c d e f g h i\nexpr 2 + 3"
+    },
+    {
+      "stdin": "seq 2 4\nexpr 9 / 2\nbasename /tmp/tape.txt .txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "expr 3 * 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "expr 3 * 5\ntrue\nseq 2 4\nexpr 9 / 2\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "expr 3 * 5\nexpr 10 - 4\ntrue\nno-such-program\nexpr 5 % 3\necho reel 7 loaded\n",
+      "generated": true
+    },
+    {
+      "stdin": "basename /tmp/tape.txt .txt\necho reel 7 loaded\n",
+      "generated": true
+    },
+    {
+      "stdin": "false\nseq 2 4\necho reel 7 loaded\nexpr 5 % 3\necho reel 7 loaded\nno-such-program\n",
+      "generated": true
+    },
+    {
+      "stdin": "basename /tmp/tape.txt .txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "expr 10 - 4\nbasename /tmp/tape.txt .txt\nexpr 9 / 2\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "expr 5 % 3\necho\nexpr 10 - 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 1\necho reel 7 loaded\nbasename /tmp/tape.txt .txt\nfalse\nseq 2 4\nbasename /tmp/tape.txt .txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo reel 7 loaded\nno-such-program\nexpr 5 % 3\nexpr 9 / 2\nfalse\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo\nno-such-program\necho\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo\nfalse\nseq 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "true\nexpr 5 % 3\nbasename /tmp/tape.txt .txt\nno-such-program\nexpr 10 - 4\nno-such-program\n",
+      "generated": true
+    },
+    {
+      "stdin": "true\nseq 2 4\nexpr 5 % 3\n",
+      "generated": true
+    }
+  ]
+}

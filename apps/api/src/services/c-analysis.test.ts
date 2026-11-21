@@ -170,6 +170,46 @@ describe('checkStructure', () => {
       '#define AREA(w, h) ((w) * (h))\nint main(void){ int a = AREA(2, 3); return 0; }',
       '#define SIZE 3\nint main(void){ int a = 6; return 0; }',
     ],
+    [
+      { kind: 'recursion', name: 'fib' },
+      'int fib(int n){ return n < 2 ? n : fib(n - 1) + fib(n - 2); }\nint main(void){ return fib(5); }',
+      'int calls(int n){ return n < 2 ? 1 : calls(n - 1); }\nint fib(int n){ return n + calls(n); }\nint main(void){ return fib(5); }',
+    ],
+    [
+      { kind: 'ternary' },
+      'int main(void){ int a = 3; int b = a > 2 ? 1 : 0; return b; }',
+      'int main(void){ int a = 3; int b = 0; if (a > 2) b = 1; return b; }',
+    ],
+    [
+      { kind: 'static' },
+      'int next(void){ static int n = 0; return ++n; }\nint main(void){ return next(); }',
+      'static int next(void){ int n = 0; return ++n; }\nint main(void){ return next(); }',
+    ],
+    [
+      { kind: 'static' },
+      'int next(void){ static int n = 0; return ++n; }\nint main(void){ return next(); }',
+      'static int n = 0;\nint next(void){ return ++n; }\nint main(void){ return next(); }',
+    ],
+    [
+      { kind: 'array_2d' },
+      'int sum(int g[][3]){ return g[0][0]; }\nint main(void){ int g[2][3] = {{0}}; return sum(g); }',
+      'int main(void){ int g[6] = {0}; return g[0]; }',
+    ],
+    [
+      { kind: 'function_pointer' },
+      'int add(int a, int b){ return a + b; }\nint main(void){ int (*op)(int, int) = add; return op(1, 2); }',
+      'int add(int a, int b){ return a + b; }\nint *first(int *v){ return v; }\nint main(void){ return add(1, 2); }',
+    ],
+    [
+      { kind: 'function_pointer' },
+      'int apply(int (*f)(int), int x){ return f(x); }\nint main(void){ return 0; }',
+      'int apply(int f, int x){ return f + x; }\nint main(void){ return 0; }',
+    ],
+    [
+      { kind: 'function_pointer' },
+      'typedef int test_fn(int);\nint apply(test_fn *f, int x){ return f(x); }\nint main(void){ return 0; }',
+      'typedef int test_fn(int);\nint apply(int *f, int x){ return *f + x; }\nint main(void){ return 0; }',
+    ],
   ] as const)('requires %j only where the construct is there', async (rule, withIt, without) => {
     const requires = [rule as StructureFailure['rule']];
     expect(checkStructure(await parseC(withIt), { requires })).toEqual([]);

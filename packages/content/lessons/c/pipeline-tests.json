@@ -1,0 +1,100 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "pipe"
+      },
+      {
+        "kind": "call",
+        "name": "dup2"
+      },
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "seq 5 | sort -r\necho tape reel card | wc -w\nnosuchcmd | wc -l\nseq 3 | nosuchcmd\n"
+    },
+    {
+      "stdin": "seq 1000 | wc -l\n"
+    },
+    {
+      "stdin": "seq 20000 | tail -n 1\n"
+    },
+    {
+      "stdin": "echo hello | tr a-z A-Z\necho x | false\n"
+    },
+    {
+      "stdin": "seq 3 | sort -n\n"
+    },
+    {
+      "stdin": "echo b a | rev"
+    },
+    {
+      "stdin": "uname | tail -n 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo reel tape card | rev\nseq 5 | true\nnosuch-left | false\n",
+      "generated": true
+    },
+    {
+      "stdin": "uname | nosuch-right\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo one | rev\necho reel tape card | rev\nseq 12 | nosuch-right\nnosuch-left | tail -n 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "uname | true\nseq 5 | sort -n\nseq 5 | sort -r\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo one | wc -w\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 5 | wc -l\necho reel tape card | false\nseq 5 | wc -w\necho reel tape card | rev\nseq 5 | nosuch-right\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo one | sort -r\n",
+      "generated": true
+    },
+    {
+      "stdin": "nosuch-left | tail -n 2\nseq 12 | tail -n 2\nseq 5 | tr a-z A-Z\n",
+      "generated": true
+    },
+    {
+      "stdin": "nosuch-left | nosuch-right\necho reel tape card | wc -w\nnosuch-left | tail -n 2\nuname | sort -n\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo reel tape card | tail -n 2\nuname | tail -n 2\necho reel tape card | nosuch-right\nseq 12 | sort -n\n",
+      "generated": true
+    },
+    {
+      "stdin": "uname | wc -l\nseq 12 | sort -r\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 12 | sort -n\necho reel tape card | wc -w\nexpr 6 * 7 | sort -n\nuname | tr a-z A-Z\nseq 5 | sort -r\n",
+      "generated": true
+    },
+    {
+      "stdin": "echo reel tape card | sort -r\nseq 12 | true\n",
+      "generated": true
+    }
+  ]
+}

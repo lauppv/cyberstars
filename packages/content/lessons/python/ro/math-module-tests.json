@@ -1,0 +1,345 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "x"
+      },
+      {
+        "kind": "variable",
+        "name": "y"
+      },
+      {
+        "kind": "variable",
+        "name": "raza"
+      },
+      {
+        "kind": "import",
+        "name": "math"
+      },
+      {
+        "kind": "call",
+        "name": "ceil"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "x": 300,
+        "y": 400,
+        "raza": 1000
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "x": -5,
+        "y": 0,
+        "raza": 1
+      }
+    },
+    {
+      "inject": {
+        "x": 0,
+        "y": 0,
+        "raza": 50000
+      }
+    },
+    {
+      "inject": {
+        "x": 10000,
+        "y": -10000,
+        "raza": 79
+      }
+    },
+    {
+      "inject": {
+        "x": -10000,
+        "y": -10000,
+        "raza": 80
+      }
+    },
+    {
+      "inject": {
+        "x": 1,
+        "y": 1,
+        "raza": 40
+      }
+    },
+    {
+      "inject": {
+        "x": -2920,
+        "y": 1987,
+        "raza": 18598
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 1175,
+        "y": 8797,
+        "raza": 26074
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 908,
+        "y": -3476,
+        "raza": 16024
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -9065,
+        "y": -5317,
+        "raza": 38794
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -8410,
+        "y": 4699,
+        "raza": 28007
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 1960,
+        "y": 893,
+        "raza": 6703
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -6496,
+        "y": -3780,
+        "raza": 6804
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 3758,
+        "y": 3943,
+        "raza": 11850
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 8588,
+        "y": -6084,
+        "raza": 6434
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 2970,
+        "y": 6924,
+        "raza": 41410
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -1812,
+        "y": 6613,
+        "raza": 22559
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 4809,
+        "y": 7799,
+        "raza": 14736
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -7089,
+        "y": -7068,
+        "raza": 20344
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -6306,
+        "y": 9878,
+        "raza": 47819
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 7784,
+        "y": 140,
+        "raza": 46994
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -8998,
+        "y": 1232,
+        "raza": 38385
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -4968,
+        "y": -7762,
+        "raza": 8979
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 3758,
+        "y": 644,
+        "raza": 15222
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -5879,
+        "y": 4777,
+        "raza": 16976
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 4506,
+        "y": 4905,
+        "raza": 16090
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 2970,
+        "y": 839,
+        "raza": 4159
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -974,
+        "y": -3240,
+        "raza": 1222
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -5101,
+        "y": 1294,
+        "raza": 45734
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -9086,
+        "y": -9615,
+        "raza": 15974
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -9310,
+        "y": 6868,
+        "raza": 41265
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 2167,
+        "y": 8043,
+        "raza": 42741
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -7329,
+        "y": -4078,
+        "raza": 12494
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -3562,
+        "y": -9333,
+        "raza": 11690
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -8866,
+        "y": -7610,
+        "raza": 36991
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -4052,
+        "y": -3141,
+        "raza": 36322
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 5478,
+        "y": 3475,
+        "raza": 38329
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 198,
+        "y": 9119,
+        "raza": 31898
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": 132,
+        "y": -2792,
+        "raza": 22917
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "x": -5833,
+        "y": 6903,
+        "raza": 3003
+      },
+      "generated": true
+    }
+  ]
+}

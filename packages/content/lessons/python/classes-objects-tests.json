@@ -1,0 +1,439 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Ship"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "speeds"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Swift", "Bob"]
+        },
+        "speeds": {
+          "$list": [12, 30, 5]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Nova"]
+        },
+        "speeds": {
+          "$list": [0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["A", "B", "C"]
+        },
+        "speeds": {
+          "$list": [7, 7, 7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["A", "B"]
+        },
+        "speeds": {
+          "$list": [1, 2]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Swift", "Bob", "Nova", "Comet", "Ray", "Echo", "Atlas", "Iris", "Vega"]
+        },
+        "speeds": {
+          "$list": [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Nova"]
+        },
+        "speeds": {
+          "$list": [11]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Nova", "Ray", "Bob", "Echo", "Hope", "Atlas"]
+        },
+        "speeds": {
+          "$list": [8, 26, 22, 24, 44, 18, 30]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Ray", "Comet", "Atlas", "Swift"]
+        },
+        "speeds": {
+          "$list": [33, 26, 45, 15, 45]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Ray", "Hope", "Atlas", "Comet"]
+        },
+        "speeds": {
+          "$list": [34, 46, 34, 22, 16]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Vega", "Ray", "Swift", "Nova", "Hope", "Echo"]
+        },
+        "speeds": {
+          "$list": [8, 9, 2, 29, 47, 19, 20]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Vega", "Comet"]
+        },
+        "speeds": {
+          "$list": [39, 37]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Bob"]
+        },
+        "speeds": {
+          "$list": [33, 49]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bob", "Hope"]
+        },
+        "speeds": {
+          "$list": [26, 28]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ray", "Atlas"]
+        },
+        "speeds": {
+          "$list": [13, 43]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Swift", "Hope", "Iris", "Vega", "Bob", "Comet", "Ray"]
+        },
+        "speeds": {
+          "$list": [19, 23, 16, 27, 2, 9, 21, 9]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Swift"]
+        },
+        "speeds": {
+          "$list": [10, 29]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Bob", "Echo", "Comet", "Vega", "Iris"]
+        },
+        "speeds": {
+          "$list": [32, 18, 14, 38, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Bob", "Echo", "Vega", "Iris"]
+        },
+        "speeds": {
+          "$list": [17, 23, 48, 14, 39]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Vega", "Ray"]
+        },
+        "speeds": {
+          "$list": [37, 35]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Vega", "Iris", "Echo", "Bob", "Hope", "Comet", "Nova"]
+        },
+        "speeds": {
+          "$list": [32, 40, 25, 17, 9, 25, 30, 31]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Bob", "Atlas", "Ray", "Nova", "Echo", "Iris", "Vega", "Hope", "Swift"]
+        },
+        "speeds": {
+          "$list": [28, 32, 24, 6, 50, 38, 49, 18, 3, 10]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Comet", "Swift", "Hope", "Atlas", "Vega", "Ray"]
+        },
+        "speeds": {
+          "$list": [9, 5, 49, 28, 20, 9, 47]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Ray", "Swift", "Atlas", "Comet"]
+        },
+        "speeds": {
+          "$list": [35, 10, 47, 29, 23]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Vega", "Swift", "Nova", "Iris"]
+        },
+        "speeds": {
+          "$list": [36, 16, 49, 43, 30]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Iris", "Nova", "Ray"]
+        },
+        "speeds": {
+          "$list": [5, 47, 21, 6]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Hope", "Nova", "Echo"]
+        },
+        "speeds": {
+          "$list": [24, 24, 15, 7]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Iris", "Hope", "Atlas", "Ray", "Swift", "Nova", "Echo", "Vega", "Comet"]
+        },
+        "speeds": {
+          "$list": [28, 49, 16, 31, 24, 32, 41, 39, 13]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Comet", "Bob", "Ray"]
+        },
+        "speeds": {
+          "$list": [47, 35, 45, 5]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Vega", "Echo", "Swift", "Hope", "Ray"]
+        },
+        "speeds": {
+          "$list": [27, 50, 20, 15, 21]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Echo", "Vega", "Iris", "Comet"]
+        },
+        "speeds": {
+          "$list": [49, 27, 13, 44]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Nova", "Vega", "Iris", "Swift", "Comet", "Hope"]
+        },
+        "speeds": {
+          "$list": [33, 23, 4, 50, 0, 24, 4]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hope", "Comet", "Nova", "Swift", "Vega", "Atlas"]
+        },
+        "speeds": {
+          "$list": [7, 25, 13, 40, 48, 50]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Nova", "Vega", "Ray", "Hope", "Swift", "Bob", "Comet"]
+        },
+        "speeds": {
+          "$list": [22, 8, 50, 38, 46, 21, 2, 11]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift"]
+        },
+        "speeds": {
+          "$list": [34]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Nova"]
+        },
+        "speeds": {
+          "$list": [44, 38]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Swift", "Atlas", "Ray", "Comet", "Hope", "Bob"]
+        },
+        "speeds": {
+          "$list": [50, 6, 12, 39, 6, 34]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Atlas", "Echo", "Hope", "Iris", "Vega", "Swift", "Comet", "Nova", "Bob", "Ray"]
+        },
+        "speeds": {
+          "$list": [29, 23, 43, 29, 38, 44, 33, 9, 19, 14]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Comet", "Atlas", "Nova", "Vega", "Swift", "Hope", "Iris"]
+        },
+        "speeds": {
+          "$list": [11, 6, 50, 47, 2, 35, 13]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

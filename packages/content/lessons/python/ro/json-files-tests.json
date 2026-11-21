@@ -1,0 +1,502 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "jucator"
+      },
+      {
+        "kind": "import",
+        "name": "json"
+      },
+      {
+        "kind": "call",
+        "name": "dump"
+      },
+      {
+        "kind": "call",
+        "name": "load"
+      },
+      {
+        "kind": "with"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Ada",
+            "nivel": 3,
+            "obiecte": {
+              "$list": ["lanterna"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "kai",
+            "nivel": 98,
+            "obiecte": {
+              "$list": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Zed",
+            "nivel": 1,
+            "obiecte": {
+              "$list": ["torch", "rope", "key", "coin", "shield"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "x",
+            "nivel": 99,
+            "obiecte": {
+              "$list": ["map"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 69,
+            "obiecte": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Ada",
+            "nivel": 71,
+            "obiecte": {
+              "$list": ["coin", "torch", "rope", "shield", "apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 24,
+            "obiecte": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 51,
+            "obiecte": {
+              "$list": ["rope", "apple", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 14,
+            "obiecte": {
+              "$list": ["torch", "shield", "apple", "key", "rope"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 70,
+            "obiecte": {
+              "$list": ["rope", "coin", "key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 53,
+            "obiecte": {
+              "$list": ["rope", "apple", "key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 70,
+            "obiecte": {
+              "$list": ["key", "shield", "torch", "apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 91,
+            "obiecte": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Tom",
+            "nivel": 14,
+            "obiecte": {
+              "$list": ["rope", "torch", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Tom",
+            "nivel": 60,
+            "obiecte": {
+              "$list": ["key", "coin", "rope", "shield", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Grace",
+            "nivel": 69,
+            "obiecte": {
+              "$list": ["shield", "torch", "map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 46,
+            "obiecte": {
+              "$list": ["torch", "apple", "coin", "key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 55,
+            "obiecte": {
+              "$list": ["rope", "key", "coin", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 78,
+            "obiecte": {
+              "$list": ["torch", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 16,
+            "obiecte": {
+              "$list": ["apple", "coin", "rope", "map", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 70,
+            "obiecte": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 12,
+            "obiecte": {
+              "$list": ["map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Grace",
+            "nivel": 41,
+            "obiecte": {
+              "$list": ["map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 5,
+            "obiecte": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Tom",
+            "nivel": 41,
+            "obiecte": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 43,
+            "obiecte": {
+              "$list": ["shield", "key", "map"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 65,
+            "obiecte": {
+              "$list": ["key", "apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 77,
+            "obiecte": {
+              "$list": ["rope", "coin"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 67,
+            "obiecte": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "alan",
+            "nivel": 48,
+            "obiecte": {
+              "$list": ["apple"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Grace",
+            "nivel": 14,
+            "obiecte": {
+              "$list": ["coin", "key", "torch"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "mila",
+            "nivel": 64,
+            "obiecte": {
+              "$list": ["key"]
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Grace",
+            "nivel": 14,
+            "obiecte": {
+              "$list": []
+            }
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jucator": {
+          "$dict": {
+            "nume": "Ada",
+            "nivel": 62,
+            "obiecte": {
+              "$list": ["key", "torch", "apple", "rope", "shield"]
+            }
+          }
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -90,6 +90,23 @@ describe('auditSolution', () => {
     expect(problems[0]).toContain('temperature');
   });
 
+  it('flags a named method or base class the solution never writes', async () => {
+    const code =
+      'class Alarma:\n    def sun(self):\n        pass\n\nclass Sirena(Alarma):\n    def sun(self):\n        pass\n';
+    const spec: LessonTestsSpec = {
+      structure: {
+        requires: [
+          { kind: 'extends', name: 'Alarma' },
+          { kind: 'override', name: 'descrie' },
+        ],
+      },
+      cases: [{}],
+    };
+    const problems = await auditSolution('python', code, spec);
+    expect(problems).toHaveLength(1);
+    expect(problems[0]).toContain('descrie');
+  });
+
   it('handles a case with no inject block (structure-only lesson)', async () => {
     const code = 'age = 5\nprint(age)';
     const spec: LessonTestsSpec = {
@@ -180,13 +197,16 @@ describe('auditKinds', () => {
     );
   });
 
-  it('takes a recursion rule with a name only in java', () => {
+  it('takes a named recursion rule only in c and java, the judges that check the name', () => {
     const spec: LessonTestsSpec = {
-      structure: { requires: [{ kind: 'recursion', name: 'fact' }] },
+      structure: { requires: [{ kind: 'recursion', name: 'fib' }] },
       cases: [],
     };
+    expect(auditKinds('c', spec)).toEqual([]);
     expect(auditKinds('java', spec)).toEqual([]);
-    expect(auditKinds('python', spec)).toEqual(['a recursion rule with a name is java-only']);
+    expect(auditKinds('python', spec)).toEqual([
+      'a recursion rule with a name is only for c and java',
+    ]);
   });
 });
 

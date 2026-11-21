@@ -103,12 +103,27 @@ function injectKeys(spec: LessonTestsSpec): Set<string> {
   return keys;
 }
 
+// The kinds whose name is an identifier the solution writes: the variable,
+// function, call, class, base class, method, decorator, module or argument.
+const NAMED_KINDS = [
+  'variable',
+  'function',
+  'call',
+  'class',
+  'extends',
+  'override',
+  'decorator',
+  'class_attribute',
+  'import',
+  'keyword_arg',
+];
+
 // Names a solution must contain for its own structure `requires` to pass;
 // a renamed contract variable/function/call would fail every honest solution.
 function requireNames(spec: LessonTestsSpec): string[] {
   const names: string[] = [];
   for (const rule of spec.structure?.requires ?? []) {
-    if (rule.name && ['variable', 'function', 'call', 'class'].includes(rule.kind)) {
+    if (rule.name && NAMED_KINDS.includes(rule.kind)) {
       names.push(rule.name);
     }
   }
@@ -221,6 +236,21 @@ export const STRUCTURE_KINDS: Record<Lang, Set<string>> = {
     'return',
     'default_param',
     'slice',
+    'lambda',
+    'yield',
+    'with',
+    'raise',
+    'import',
+    'keyword_arg',
+    'var_args',
+    'var_kwargs',
+    'decorator',
+    'extends',
+    'override',
+    'class_attribute',
+    'format_spec',
+    'try_else',
+    'finally',
   ]),
   c: new Set([
     ...COMMON_KINDS,
@@ -232,6 +262,10 @@ export const STRUCTURE_KINDS: Record<Lang, Set<string>> = {
     'sizeof',
     'define',
     'enum',
+    'ternary',
+    'static',
+    'array_2d',
+    'function_pointer',
   ]),
   java: new Set([
     ...COMMON_KINDS,
@@ -266,7 +300,15 @@ export const STRUCTURE_KINDS: Record<Lang, Set<string>> = {
   ]),
 };
 const LOOP_TYPES: Record<Lang, Set<string>> = {
-  python: new Set(['for', 'while', 'comprehension']),
+  python: new Set([
+    'for',
+    'while',
+    'comprehension',
+    'list_comprehension',
+    'dict_comprehension',
+    'set_comprehension',
+    'generator_expression',
+  ]),
   c: new Set(['for', 'while', 'do_while']),
   java: new Set(['for', 'while', 'do_while']),
 };
@@ -279,8 +321,8 @@ export function auditKinds(lang: Lang, spec: LessonTestsSpec): string[] {
       messages.push(`structure kind "${rule.kind}" is not implemented for ${lang}`);
     } else if (rule.kind === 'loop' && rule.type && !LOOP_TYPES[lang].has(rule.type)) {
       messages.push(`loop type "${rule.type}" does not exist in ${lang}`);
-    } else if (rule.kind === 'recursion' && rule.name && lang !== 'java') {
-      messages.push(`a recursion rule with a name is java-only`);
+    } else if (rule.kind === 'recursion' && rule.name && lang !== 'c' && lang !== 'java') {
+      messages.push(`a recursion rule with a name is only for c and java`);
     } else if (rule.in && lang !== 'python') {
       messages.push(`a rule scoped with "in" is python-only`);
     } else if (['operator', 'modifier'].includes(rule.kind) && !rule.name) {

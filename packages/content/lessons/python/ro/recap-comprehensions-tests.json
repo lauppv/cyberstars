@@ -1,0 +1,865 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "flux"
+      },
+      {
+        "kind": "function",
+        "name": "citeste"
+      },
+      {
+        "kind": "yield"
+      },
+      {
+        "kind": "loop",
+        "type": "set_comprehension"
+      },
+      {
+        "kind": "loop",
+        "type": "dict_comprehension"
+      },
+      {
+        "kind": "loop",
+        "type": "generator_expression"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "flux": {
+          "$list": ["temp:21", "aer:98", "temp:23", "zgomot:4"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "flux": {
+          "$list": ["fuel:-5"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": ["a:1000", "a:-1000", "a:0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": ["zz:1", "aa:2", "zz:3", "mm:4"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "temp:0",
+            "air:1",
+            "noise:2",
+            "light:3",
+            "co:4",
+            "door:5",
+            "fuel:6",
+            "water:7",
+            "temp:8",
+            "air:9",
+            "noise:10",
+            "light:11",
+            "co:12",
+            "door:13",
+            "fuel:14",
+            "water:15",
+            "temp:16",
+            "air:17",
+            "noise:18",
+            "light:19",
+            "co:20",
+            "door:21",
+            "fuel:22",
+            "water:23"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "water:737",
+            "co:894",
+            "lhspmdrjxz:-573",
+            "water:-116",
+            "door:582",
+            "water:-915"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "fuel:990",
+            "temp:26",
+            "fuel:385",
+            "fqgwle:126",
+            "fqgwle:-915",
+            "door:211",
+            "temp:-639",
+            "temp:487",
+            "door:-539",
+            "fqgwle:856",
+            "fuel:859",
+            "fqgwle:-38",
+            "temp:-809"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "ujc:168",
+            "ujc:-120",
+            "temp:-34",
+            "temp:496",
+            "ujc:-865",
+            "ujc:-687",
+            "water:-169",
+            "water:-220",
+            "water:780",
+            "ujc:-829",
+            "water:-85",
+            "ujc:974",
+            "temp:708",
+            "water:-589"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "xhyb:596",
+            "fuel:455",
+            "fuel:733",
+            "door:-555",
+            "fuel:97",
+            "xhyb:-532",
+            "fuel:354",
+            "xhyb:594",
+            "xhyb:253",
+            "fuel:-828",
+            "xhyb:771"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": ["fuel:619", "co:423", "door:-754", "water:489", "water:-547", "door:341"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "temp:-250",
+            "light:415",
+            "co:116",
+            "light:-611",
+            "noise:-544",
+            "temp:-629",
+            "temp:682",
+            "co:12",
+            "air:-227",
+            "pz:986",
+            "noise:-311",
+            "light:-230",
+            "air:-285",
+            "noise:-901",
+            "light:-168",
+            "co:-909",
+            "air:-595"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "fuel:-684",
+            "wzb:-581",
+            "co:-284",
+            "fuel:745",
+            "wzb:703",
+            "wzb:-834",
+            "co:-833"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "light:295",
+            "pa:400",
+            "door:-489",
+            "air:-911",
+            "light:608",
+            "door:697",
+            "pa:-161",
+            "air:-272",
+            "door:515",
+            "door:-13",
+            "pa:309",
+            "light:-261",
+            "air:-807",
+            "door:466",
+            "air:509",
+            "air:640",
+            "pa:592",
+            "light:58",
+            "door:-816",
+            "light:549",
+            "door:-211",
+            "air:-116",
+            "door:324",
+            "door:-215",
+            "light:-590",
+            "pa:882"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "rbpth:-132",
+            "light:-51",
+            "fuel:-675",
+            "rbpth:-672",
+            "rbpth:423",
+            "fuel:508",
+            "fuel:-783"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "ieo:-964",
+            "temp:132",
+            "door:-417",
+            "ieo:-113",
+            "co:-32",
+            "temp:877",
+            "temp:131",
+            "door:-336",
+            "door:-678",
+            "door:-246",
+            "door:-349",
+            "temp:98",
+            "ieo:-433",
+            "door:935",
+            "co:-345",
+            "temp:155",
+            "door:661",
+            "door:-952",
+            "temp:-27",
+            "temp:-7",
+            "temp:74",
+            "door:-92",
+            "temp:-352",
+            "door:220",
+            "door:968"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "ic:441",
+            "fuel:536",
+            "temp:318",
+            "fuel:-28",
+            "fuel:556",
+            "temp:-586",
+            "ic:600",
+            "fuel:679",
+            "fuel:-903",
+            "fuel:701",
+            "ic:-241",
+            "ic:350",
+            "ic:-341",
+            "ic:-739",
+            "ic:44",
+            "ic:-208",
+            "ic:-323",
+            "ic:-391",
+            "fuel:836",
+            "temp:616",
+            "temp:-742",
+            "ic:115",
+            "fuel:-541",
+            "fuel:457",
+            "ic:-301"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "wkmv:-595",
+            "fuel:581",
+            "door:-449",
+            "water:820",
+            "water:738",
+            "wkmv:599",
+            "fuel:-911",
+            "fuel:-651",
+            "fuel:-852",
+            "fuel:-28",
+            "co:151",
+            "door:205",
+            "fuel:-910",
+            "co:-787"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": ["usc:-473", "water:937"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "pbnrpqnsrl:535",
+            "light:-86",
+            "temp:74",
+            "light:254",
+            "temp:-906",
+            "temp:-835",
+            "light:242",
+            "pbnrpqnsrl:-927",
+            "temp:843",
+            "temp:365",
+            "light:677",
+            "temp:-426",
+            "temp:-203",
+            "pbnrpqnsrl:-117",
+            "temp:757",
+            "temp:62",
+            "light:-510",
+            "temp:-572"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "door:447",
+            "water:-347",
+            "door:-144",
+            "door:471",
+            "light:924",
+            "door:-310",
+            "door:-141",
+            "temp:-625",
+            "door:568",
+            "light:-282",
+            "water:637",
+            "temp:-779",
+            "water:-121",
+            "water:-252",
+            "water:-187",
+            "light:-536"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "mmssselmij:-686",
+            "mmssselmij:105",
+            "door:407",
+            "door:-205",
+            "door:824",
+            "light:503",
+            "mmssselmij:468",
+            "mmssselmij:864",
+            "door:806",
+            "door:-280",
+            "mmssselmij:-312",
+            "mmssselmij:-611",
+            "door:-239"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": ["noise:-841", "cnlu:344", "water:-527", "water:-318", "cnlu:-206"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "air:349",
+            "air:40",
+            "light:524",
+            "light:-335",
+            "lg:-161",
+            "light:229",
+            "air:-470",
+            "air:-196",
+            "lg:74",
+            "light:286"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "dtoeozldcx:-177",
+            "co:361",
+            "noise:287",
+            "noise:985",
+            "co:500",
+            "noise:264",
+            "co:144",
+            "noise:705",
+            "noise:-494",
+            "co:175",
+            "air:-988",
+            "air:-753"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "fuel:660",
+            "fuel:34",
+            "tm:931",
+            "tm:593",
+            "tm:144",
+            "tm:-708",
+            "tm:-447",
+            "noise:-948",
+            "tm:744",
+            "tm:308",
+            "tm:757",
+            "tm:-400",
+            "fuel:563",
+            "noise:535",
+            "tm:-208"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "door:-767",
+            "temp:-841",
+            "noise:114",
+            "door:-508",
+            "noise:-891",
+            "eb:359",
+            "temp:-458",
+            "noise:837"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "air:23",
+            "temp:-613",
+            "temp:122",
+            "temp:102",
+            "light:-980",
+            "temp:192",
+            "air:-79",
+            "air:-39",
+            "temp:378",
+            "light:41"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "air:-529",
+            "noise:900",
+            "temp:-268",
+            "noise:427",
+            "noise:-521",
+            "noise:474",
+            "water:911",
+            "air:139",
+            "dytlxk:349"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "temp:-86",
+            "air:-591",
+            "jtz:-261",
+            "jtz:814",
+            "jtz:427",
+            "jtz:360",
+            "jtz:-764",
+            "air:-721",
+            "noise:707",
+            "temp:114",
+            "noise:855",
+            "temp:374"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "qch:-447",
+            "qch:417",
+            "qch:191",
+            "temp:268",
+            "qch:-288",
+            "temp:-582",
+            "qch:6",
+            "qch:237",
+            "qch:101",
+            "qch:943",
+            "qch:744",
+            "qch:-327",
+            "qch:501",
+            "qch:237",
+            "temp:-455",
+            "qch:-167",
+            "qch:853",
+            "qch:-57",
+            "qch:-632",
+            "temp:-874",
+            "qch:-654",
+            "qch:688",
+            "temp:-491",
+            "qch:-496"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "xjeuri:-352",
+            "noise:365",
+            "noise:424",
+            "noise:-986",
+            "fuel:726",
+            "water:-33",
+            "xjeuri:-183",
+            "water:357",
+            "noise:-483",
+            "xjeuri:-522",
+            "fuel:10",
+            "fuel:293",
+            "water:707",
+            "noise:-305",
+            "xjeuri:-574",
+            "xjeuri:-209",
+            "water:-197",
+            "noise:-185",
+            "noise:-96",
+            "fuel:999",
+            "xjeuri:-997",
+            "noise:107",
+            "xjeuri:-267",
+            "fuel:525"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "fuel:92",
+            "fuel:378",
+            "noise:-796",
+            "noise:537",
+            "tramwdupj:935",
+            "fuel:46",
+            "noise:641",
+            "air:-177",
+            "air:-961",
+            "noise:-162",
+            "noise:-667",
+            "air:-116",
+            "air:-52",
+            "fuel:-360",
+            "air:754",
+            "air:627",
+            "tramwdupj:987",
+            "tramwdupj:-975",
+            "noise:-156",
+            "fuel:-935",
+            "noise:-181",
+            "air:-916",
+            "air:-898",
+            "tramwdupj:448",
+            "tramwdupj:220",
+            "air:356",
+            "fuel:-667",
+            "tramwdupj:435",
+            "fuel:16",
+            "air:-405"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "gmt:541",
+            "co:-336",
+            "gmt:567",
+            "air:254",
+            "co:282",
+            "door:68",
+            "co:571",
+            "co:538",
+            "co:-1000",
+            "door:787",
+            "co:-198",
+            "co:952",
+            "air:-833",
+            "co:344",
+            "door:92",
+            "air:-172"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "fuel:-845",
+            "fuel:-422",
+            "uupvvpqrq:814",
+            "uupvvpqrq:-840",
+            "light:308",
+            "fuel:438",
+            "light:9"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "juzyyolpnn:-437",
+            "juzyyolpnn:-337",
+            "juzyyolpnn:424",
+            "juzyyolpnn:406",
+            "juzyyolpnn:-315",
+            "juzyyolpnn:465",
+            "juzyyolpnn:28",
+            "noise:-711",
+            "noise:-188",
+            "juzyyolpnn:-873"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "door:626",
+            "koqh:864",
+            "koqh:-854",
+            "door:323",
+            "koqh:818",
+            "koqh:383",
+            "door:-616",
+            "koqh:939",
+            "koqh:-317",
+            "door:-722",
+            "koqh:-583",
+            "koqh:-286",
+            "koqh:-337",
+            "door:-552"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "temp:-534",
+            "co:-949",
+            "fuel:790",
+            "fuel:-310",
+            "aihg:333",
+            "temp:817",
+            "aihg:153",
+            "co:260",
+            "co:912",
+            "co:-940",
+            "co:-486",
+            "fuel:-54",
+            "aihg:764",
+            "temp:-931",
+            "aihg:844",
+            "fuel:-58",
+            "aihg:-898",
+            "temp:-979",
+            "temp:-312",
+            "fuel:-544",
+            "aihg:-954",
+            "fuel:-257",
+            "co:-409",
+            "temp:-267",
+            "temp:-46",
+            "co:-456"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "water:-558",
+            "water:-883",
+            "qz:-251",
+            "door:573",
+            "qz:-566",
+            "fuel:31",
+            "water:719",
+            "door:164",
+            "water:208",
+            "fuel:-122"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "flux": {
+          "$list": [
+            "zozpkci:-884",
+            "temp:871",
+            "light:-557",
+            "water:-717",
+            "zozpkci:-66",
+            "co:-411",
+            "co:783",
+            "zozpkci:739",
+            "temp:828",
+            "light:143",
+            "light:605",
+            "door:-183",
+            "door:-263",
+            "door:446",
+            "light:-236",
+            "temp:294",
+            "temp:-481",
+            "zozpkci:-559",
+            "temp:-568"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

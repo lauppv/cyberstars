@@ -1,0 +1,609 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Planet"
+      },
+      {
+        "kind": "function",
+        "name": "__str__"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "moons"
+      },
+      {
+        "kind": "variable",
+        "name": "rings"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Saturn", "Mars", "Venus"]
+        },
+        "moons": {
+          "$list": [146, 2, 0]
+        },
+        "rings": {
+          "$list": [true, false, false]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Ceres"]
+        },
+        "moons": {
+          "$list": [0]
+        },
+        "rings": {
+          "$list": [false]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Haumea"]
+        },
+        "moons": {
+          "$list": [0]
+        },
+        "rings": {
+          "$list": [true]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jupiter", "Saturn"]
+        },
+        "moons": {
+          "$list": [95, 146]
+        },
+        "rings": {
+          "$list": [true, true]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["X"]
+        },
+        "moons": {
+          "$list": [1]
+        },
+        "rings": {
+          "$list": [false]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Saturn", "Pluto", "Jupiter", "Neptune", "Haumea", "Earth", "Mars", "Venus"]
+        },
+        "moons": {
+          "$list": [57, 126, 59, 112, 0, 0, 0, 0]
+        },
+        "rings": {
+          "$list": [true, false, false, false, false, true, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ceres", "Pluto", "Haumea", "Neptune", "Jupiter", "Venus", "Uranus", "Mars"]
+        },
+        "moons": {
+          "$list": [0, 143, 0, 0, 0, 155, 89, 0]
+        },
+        "rings": {
+          "$list": [true, false, false, false, true, false, false, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mars", "Eris", "Earth", "Venus"]
+        },
+        "moons": {
+          "$list": [137, 0, 193, 0]
+        },
+        "rings": {
+          "$list": [true, false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jupiter", "Neptune"]
+        },
+        "moons": {
+          "$list": [0, 0]
+        },
+        "rings": {
+          "$list": [false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Uranus", "Mars", "Ceres", "Haumea"]
+        },
+        "moons": {
+          "$list": [0, 45, 178, 130]
+        },
+        "rings": {
+          "$list": [false, false, true, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Eris",
+            "Haumea",
+            "Earth",
+            "Mars",
+            "Jupiter",
+            "Ceres",
+            "Neptune",
+            "Uranus",
+            "Venus",
+            "Pluto"
+          ]
+        },
+        "moons": {
+          "$list": [162, 64, 5, 137, 0, 31, 0, 0, 0, 0]
+        },
+        "rings": {
+          "$list": [true, false, false, false, false, true, true, false, false, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mars", "Pluto", "Venus", "Uranus", "Ceres"]
+        },
+        "moons": {
+          "$list": [104, 0, 175, 76, 0]
+        },
+        "rings": {
+          "$list": [false, false, true, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Eris", "Haumea", "Ceres", "Uranus"]
+        },
+        "moons": {
+          "$list": [0, 107, 0, 29]
+        },
+        "rings": {
+          "$list": [false, false, true, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Neptune",
+            "Venus",
+            "Jupiter",
+            "Uranus",
+            "Eris",
+            "Haumea",
+            "Mars",
+            "Earth",
+            "Pluto"
+          ]
+        },
+        "moons": {
+          "$list": [0, 0, 0, 109, 83, 0, 0, 179, 11]
+        },
+        "rings": {
+          "$list": [false, false, true, true, true, false, false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mars", "Venus", "Haumea", "Earth", "Ceres"]
+        },
+        "moons": {
+          "$list": [85, 0, 0, 0, 0]
+        },
+        "rings": {
+          "$list": [true, true, true, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Earth", "Saturn", "Mars", "Uranus", "Pluto", "Venus"]
+        },
+        "moons": {
+          "$list": [0, 25, 60, 140, 0, 168]
+        },
+        "rings": {
+          "$list": [true, true, false, false, true, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Saturn",
+            "Haumea",
+            "Earth",
+            "Venus",
+            "Neptune",
+            "Ceres",
+            "Uranus",
+            "Eris",
+            "Mars"
+          ]
+        },
+        "moons": {
+          "$list": [0, 0, 34, 0, 0, 144, 0, 94, 108]
+        },
+        "rings": {
+          "$list": [true, true, false, true, false, false, true, false, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Venus", "Haumea", "Ceres", "Neptune", "Jupiter", "Eris", "Uranus", "Mars"]
+        },
+        "moons": {
+          "$list": [37, 0, 0, 96, 0, 0, 0, 153]
+        },
+        "rings": {
+          "$list": [true, false, true, false, false, true, false, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Saturn", "Haumea", "Earth", "Mars", "Ceres", "Neptune", "Venus"]
+        },
+        "moons": {
+          "$list": [150, 0, 8, 0, 22, 51, 0]
+        },
+        "rings": {
+          "$list": [true, false, false, true, false, true, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Venus",
+            "Neptune",
+            "Haumea",
+            "Earth",
+            "Saturn",
+            "Ceres",
+            "Pluto",
+            "Jupiter",
+            "Uranus",
+            "Mars"
+          ]
+        },
+        "moons": {
+          "$list": [17, 0, 0, 50, 153, 0, 0, 0, 119, 0]
+        },
+        "rings": {
+          "$list": [false, false, false, true, false, true, false, true, true, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Eris",
+            "Saturn",
+            "Haumea",
+            "Earth",
+            "Ceres",
+            "Neptune",
+            "Jupiter",
+            "Uranus",
+            "Mars"
+          ]
+        },
+        "moons": {
+          "$list": [0, 0, 169, 124, 0, 0, 182, 0, 0]
+        },
+        "rings": {
+          "$list": [false, true, false, false, false, false, false, false, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Saturn", "Eris", "Neptune", "Venus", "Haumea", "Ceres", "Uranus"]
+        },
+        "moons": {
+          "$list": [0, 0, 128, 167, 0, 0, 19]
+        },
+        "rings": {
+          "$list": [false, false, false, true, true, true, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Pluto",
+            "Venus",
+            "Jupiter",
+            "Uranus",
+            "Ceres",
+            "Neptune",
+            "Earth",
+            "Saturn",
+            "Eris"
+          ]
+        },
+        "moons": {
+          "$list": [190, 107, 0, 179, 80, 0, 0, 79, 0]
+        },
+        "rings": {
+          "$list": [false, false, false, false, true, true, true, true, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jupiter", "Earth"]
+        },
+        "moons": {
+          "$list": [0, 0]
+        },
+        "rings": {
+          "$list": [false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Haumea", "Ceres", "Mars", "Earth", "Jupiter", "Neptune", "Eris", "Uranus"]
+        },
+        "moons": {
+          "$list": [14, 29, 0, 5, 0, 0, 0, 151]
+        },
+        "rings": {
+          "$list": [true, true, true, false, true, false, true, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Pluto", "Haumea", "Jupiter"]
+        },
+        "moons": {
+          "$list": [153, 0, 31]
+        },
+        "rings": {
+          "$list": [false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Venus", "Mars", "Ceres", "Pluto", "Earth", "Haumea", "Jupiter"]
+        },
+        "moons": {
+          "$list": [109, 0, 0, 0, 0, 0, 0]
+        },
+        "rings": {
+          "$list": [false, false, false, false, false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Neptune", "Earth", "Venus", "Pluto", "Uranus", "Eris", "Mars"]
+        },
+        "moons": {
+          "$list": [75, 50, 0, 134, 90, 0, 152]
+        },
+        "rings": {
+          "$list": [false, false, true, false, false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jupiter"]
+        },
+        "moons": {
+          "$list": [116]
+        },
+        "rings": {
+          "$list": [false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mars", "Jupiter", "Venus", "Uranus", "Ceres", "Eris"]
+        },
+        "moons": {
+          "$list": [0, 111, 67, 0, 120, 0]
+        },
+        "rings": {
+          "$list": [false, false, true, false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jupiter", "Ceres"]
+        },
+        "moons": {
+          "$list": [0, 0]
+        },
+        "rings": {
+          "$list": [false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Venus", "Jupiter", "Uranus", "Earth", "Pluto", "Eris", "Saturn"]
+        },
+        "moons": {
+          "$list": [166, 159, 0, 0, 0, 100, 80]
+        },
+        "rings": {
+          "$list": [true, true, true, true, false, false, true]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Jupiter", "Haumea", "Mars", "Saturn", "Uranus"]
+        },
+        "moons": {
+          "$list": [190, 82, 0, 89, 30]
+        },
+        "rings": {
+          "$list": [true, false, false, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Uranus", "Venus", "Haumea", "Eris"]
+        },
+        "moons": {
+          "$list": [154, 0, 0, 0]
+        },
+        "rings": {
+          "$list": [false, false, true, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Uranus", "Jupiter", "Eris", "Earth", "Pluto", "Neptune", "Mars"]
+        },
+        "moons": {
+          "$list": [0, 0, 45, 139, 191, 5, 0]
+        },
+        "rings": {
+          "$list": [false, false, false, false, true, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Uranus", "Earth", "Venus", "Pluto"]
+        },
+        "moons": {
+          "$list": [65, 0, 74, 0]
+        },
+        "rings": {
+          "$list": [true, true, false, false]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Saturn", "Haumea", "Venus"]
+        },
+        "moons": {
+          "$list": [0, 52, 1]
+        },
+        "rings": {
+          "$list": [true, false, true]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,300 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "lansare"
+      },
+      {
+        "kind": "variable",
+        "name": "zile"
+      },
+      {
+        "kind": "import",
+        "name": "datetime"
+      },
+      {
+        "kind": "call",
+        "name": "timedelta"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "lansare": "2031-05-14",
+        "zile": 10
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "lansare": "2028-02-28",
+        "zile": 1
+      }
+    },
+    {
+      "inject": {
+        "lansare": "2000-01-01",
+        "zile": 0
+      }
+    },
+    {
+      "inject": {
+        "lansare": "2099-12-31",
+        "zile": 0
+      }
+    },
+    {
+      "inject": {
+        "lansare": "2024-12-31",
+        "zile": 1000
+      }
+    },
+    {
+      "inject": {
+        "lansare": "2030-02-28",
+        "zile": 1
+      }
+    },
+    {
+      "inject": {
+        "lansare": "2031-05-16",
+        "zile": 2
+      }
+    },
+    {
+      "inject": {
+        "lansare": "2009-03-26",
+        "zile": 121
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2092-12-18",
+        "zile": 628
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2016-09-03",
+        "zile": 720
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2072-10-29",
+        "zile": 148
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2001-01-11",
+        "zile": 900
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2018-12-19",
+        "zile": 18
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2085-08-03",
+        "zile": 983
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2072-11-04",
+        "zile": 57
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2018-07-26",
+        "zile": 897
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2095-09-19",
+        "zile": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2079-03-12",
+        "zile": 918
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2037-09-07",
+        "zile": 529
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2079-08-27",
+        "zile": 130
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2043-05-16",
+        "zile": 231
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2032-12-28",
+        "zile": 265
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2096-05-07",
+        "zile": 991
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2026-08-29",
+        "zile": 844
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2088-01-07",
+        "zile": 147
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2063-09-04",
+        "zile": 616
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2099-05-21",
+        "zile": 221
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2079-02-19",
+        "zile": 369
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2090-09-07",
+        "zile": 55
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2018-04-04",
+        "zile": 381
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2035-12-01",
+        "zile": 771
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2084-03-13",
+        "zile": 546
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2016-05-01",
+        "zile": 148
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2004-12-13",
+        "zile": 42
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2014-09-24",
+        "zile": 874
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2037-06-11",
+        "zile": 510
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2073-08-12",
+        "zile": 247
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2080-05-25",
+        "zile": 348
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2055-01-03",
+        "zile": 631
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lansare": "2057-01-03",
+        "zile": 975
+      },
+      "generated": true
+    }
+  ]
+}

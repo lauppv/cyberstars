@@ -1,0 +1,278 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "parola"
+      },
+      {
+        "kind": "import",
+        "name": "string"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "parola": "Orbit7!x"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "parola": "moon2"
+      }
+    },
+    {
+      "inject": {
+        "parola": "A1!"
+      }
+    },
+    {
+      "inject": {
+        "parola": "A1!aaaaa"
+      }
+    },
+    {
+      "inject": {
+        "parola": "A1!aaaa"
+      }
+    },
+    {
+      "inject": {
+        "parola": "abcdefgh"
+      }
+    },
+    {
+      "inject": {
+        "parola": "ABCDEFGH12"
+      }
+    },
+    {
+      "inject": {
+        "parola": "!!!!!!!!"
+      }
+    },
+    {
+      "inject": {
+        "parola": "a"
+      }
+    },
+    {
+      "inject": {
+        "parola": "Pass\\word9"
+      }
+    },
+    {
+      "inject": {
+        "parola": "Q\"9zzzzz"
+      }
+    },
+    {
+      "inject": {
+        "parola": "ovtsdycpuqyidu"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "ZU`ClH}G}`D{J"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "bndtvtdhbwqveiv"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "M6B~Kh%1ePt?7HF}c?.Fi)4%/"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "chs"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "giskp"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "2e795jaa6q2n2au6kpuxjc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "vz!~n>Z=:%CE':~gz{Tj"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "6h9fl8o"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "dqg5h6ozt43tyojh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "gDx{"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "wb5"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "#\\"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "<QT2=4rlkQgaY;HcgU"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": ",iWIW8'"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "1g1swi548k1e20e8zauk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "i`ev+sIoH8.u."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "aorlinnhbfznrvisfigpewwgkmheo"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "LEfLa"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "viqwxqlbujazlclgqtnjgaqrhgpl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "Lgk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "t\\Y5lwBY)mG)pJ0RC.>9J9]o}"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "fvtooharmwh"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "u=fI-Nb[%C?c8"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "/qO1m^OcukX\\_L8($f=KG?=KL}+n`"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "x}9dVBk3"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "ti54s3pfbbdh870bzjc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": ">n]h9NA"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "b>F1(pnt8B+nOK(=H=8+P;'"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "h3n0hsr"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": ">)mb=XM;Ot__xhU#["
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "DMPGlfwlLhZXxbhbcNXbH"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "lmsepmeplbvuvbzbmtoemamatshbgs"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "parola": "cm"
+      },
+      "generated": true
+    }
+  ]
+}

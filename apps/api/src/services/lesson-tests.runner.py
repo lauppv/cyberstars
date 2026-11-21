@@ -597,8 +597,7 @@ class Names:
                 if isinstance(node, ast.alias) and node.name.split(".")[-1] in PROCESS_CALLS:
                     self.dynamic.append(node)
                 elif isinstance(node, (ast.Import, ast.ImportFrom)):
-                    modules = [a.name for a in node.names] if isinstance(node, ast.Import) else [node.module or ""]
-                    if any(m.split(".")[0] in DYNAMIC_MODULES for m in modules):
+                    if any(m.split(".")[0] in DYNAMIC_MODULES for m in imported_modules(node)):
                         self.dynamic.append(node)
             for dynamic in DYNAMIC_NAMES:
                 self.dynamic += self.foreign_reads(dynamic)
@@ -621,6 +620,15 @@ class Names:
         return found
 
 
+def imported_modules(node):
+    # The modules an import names by their full name: import os.path, from
+    # os import path (os, and os.path in case path is a module).
+    if isinstance(node, ast.Import):
+        return [alias.name for alias in node.names]
+    module = node.module or ""
+    return [module] + [f"{module}.{alias.name}" for alias in node.names]
+
+
 def assigned_names(node):
     if isinstance(node, ast.Assign):
         for target in node.targets:
@@ -631,11 +639,18 @@ def assigned_names(node):
             yield node.target.id
 
 
+def outside_class_bodies(node, in_class=False):
+    # Every node but those a class body runs itself (its methods' count):
+    # a class attribute isn't a variable, as inject_values sees it.
+    for child in ast.iter_child_nodes(node):
+        inside = False if isinstance(child, FUNCTION_NODES + (ast.Lambda,)) else in_class
+        if not inside:
+            yield child
+        yield from outside_class_bodies(child, inside or isinstance(child, ast.ClassDef))
+
+
 def has_variable(tree, name):
-    for node in ast.walk(tree):
-        if name in assigned_names(node):
-            return True
-    return False
+    return any(name in assigned_names(node) for node in outside_class_bodies(tree))
 
 
 def function_defs(tree):
@@ -686,6 +701,10 @@ LOOP_NODES = {
     "while": (ast.While,),
     "do_while": (),
     "comprehension": (ast.comprehension,),
+    "list_comprehension": (ast.ListComp,),
+    "dict_comprehension": (ast.DictComp,),
+    "set_comprehension": (ast.SetComp,),
+    "generator_expression": (ast.GeneratorExp,),
 }
 
 
@@ -854,6 +873,274 @@ def has_default_param(tree):
     )
 
 
+def base_name(node):
+    # The name a base class, a decorator or a called function goes by:
+    # Exception, dataclasses.dataclass, dataclass(order=True).
+    if isinstance(node, ast.Call):
+        node = node.func
+    if isinstance(node, ast.Name):
+        return node.id
+    if isinstance(node, ast.Attribute):
+        return node.attr
+    return None
+
+
+def has_import(tree, name=None):
+    # import math, import math as m, from collections import Counter: the
+    # module by its full name or its first part (os.path counts as os).
+    for node in ast.walk(tree):
+        if not isinstance(node, (ast.Import, ast.ImportFrom)) or getattr(node, "level", 0):
+            continue
+        modules = imported_modules(node)
+        if name is None or any(m == name or m.split(".")[0] == name for m in modules):
+            return True
+    return False
+
+
+def has_keyword_arg(tree, name=None):
+    # A call that passes an argument by its name. With a name, that argument to
+    # any call (sorted(..., key=...)); without one, any to a function or class
+    # of the student's own, a method of theirs on an object surely of their
+    # class too (ship.move(x=1)), since print(end="") or d.get(default=0) isn't
+    # what a lesson on keyword arguments teaches. **options passes no name.
+    calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call) and any(k.arg for k in n.keywords)]
+    if name is not None:
+        return any(name in (k.arg for k in n.keywords) for n in calls)
+    own = {fn.name for fn in function_defs(tree)} | class_names(tree)
+    if any(called_function(n) in own for n in calls):
+        return True
+    classes = {c.name: c for c in ast.walk(tree) if isinstance(c, ast.ClassDef)}
+    methods = {
+        name: method_names(c) | inherited_methods(classes, c, {name}) for name, c in classes.items()
+    }
+    on_objects = [n for n in calls if isinstance(n.func, ast.Attribute)]
+    names = Names(tree) if on_objects else None
+    for node in on_objects:
+        receiver = node.func.value
+        if isinstance(receiver, ast.Call) and isinstance(receiver.func, ast.Name):
+            classes = {receiver.func.id} & set(methods)
+        else:
+            classes = names.receiver_classes(receiver) or set()
+        if any(node.func.attr in methods.get(c, ()) for c in classes):
+            return True
+    return False
+
+
+def has_var_param(tree, field):
+    # *args (vararg) or **kwargs (kwarg) on a function, however named.
+    return any(getattr(fn.args, field) is not None for fn in function_defs(tree))
+
+
+def own_bindings(tree, skip=()):
+    # The names the student makes themselves: a def, a class, an assignment or
+    # a loop variable, not an import. skip: assigned names that don't count.
+    names = {n.name for n in ast.walk(tree) if isinstance(n, FUNCTION_NODES + (ast.ClassDef,))}
+    names |= {
+        n.id
+        for n in ast.walk(tree)
+        if isinstance(n, ast.Name) and not isinstance(n.ctx, ast.Load) and n not in skip
+    }
+    return names
+
+
+def library_aliases(tree):
+    # A name the student binds straight to something imported, and the name
+    # it reaches: dataclass = dataclasses.dataclass, dc = dataclasses.
+    imported = {
+        (a.asname or a.name).split(".")[0]
+        for n in ast.walk(tree)
+        if isinstance(n, (ast.Import, ast.ImportFrom))
+        for a in n.names
+    }
+    found = {}
+    for n in ast.walk(tree):
+        if (
+            isinstance(n, ast.Assign)
+            and len(n.targets) == 1
+            and isinstance(n.targets[0], ast.Name)
+            and isinstance(n.value, (ast.Name, ast.Attribute))
+            and root_name(n.value) in imported
+        ):
+            found[n.targets[0]] = base_name(n.value)
+    return found
+
+
+def root_name(node):
+    # The name an expression starts from: dataclass, dataclasses in
+    # dataclasses.dataclass, the function in dataclass(order=True).
+    if isinstance(node, ast.Call):
+        node = node.func
+    while isinstance(node, ast.Attribute):
+        node = node.value
+    return node.id if isinstance(node, ast.Name) else None
+
+
+def has_decorator(tree, name=None):
+    # A decorator a lesson names is the library's (@dataclass): a function of
+    # the student's own by that name, or a name of theirs it is reached
+    # through, isn't it.
+    # from dataclasses import dataclass as dc makes @dc the library's too, and
+    # so does a name bound only to the library's (ds = dataclasses.dataclass,
+    # dc = dataclasses for @dc.dataclass).
+    library = library_aliases(tree) if name is not None else {}
+    own = own_bindings(tree, skip=set(library)) if name is not None else set()
+    reached = {target.id: value for target, value in library.items()}
+    aliases = {
+        a.asname: a.name
+        for n in ast.walk(tree)
+        if isinstance(n, ast.ImportFrom)
+        for a in n.names
+        if a.asname
+    }
+
+    def library_name(d):
+        found = base_name(d)
+        if found == root_name(d) and found in reached:
+            return reached[found]
+        return aliases.get(found, found)
+
+    return any(
+        name is None or (library_name(d) == name and root_name(d) not in own)
+        for node in ast.walk(tree)
+        if isinstance(node, FUNCTION_NODES + (ast.ClassDef,))
+        for d in node.decorator_list
+    )
+
+
+def class_bases(cls):
+    return [base_name(b) for b in cls.bases if base_name(b) not in (None, "object")]
+
+
+def has_extends(tree, name=None):
+    # A class that inherits: from a class of the student's own or a library's
+    # (Exception), and with a name from that one. A builtin the lesson names
+    # is Python's, so a class of the student's called Exception isn't it.
+    shadowed = name is not None and hasattr(builtins, name) and name in own_bindings(tree)
+    for cls in (n for n in ast.walk(tree) if isinstance(n, ast.ClassDef)):
+        bases = class_bases(cls)
+        if bases and (name is None or (name in bases and not shadowed)):
+            return True
+    return False
+
+
+def method_names(cls):
+    return {n.name for n in cls.body if isinstance(n, FUNCTION_NODES)}
+
+
+def inherited_methods(classes, cls, seen):
+    # The methods a class gets from the student's own classes it inherits
+    # from, at any depth.
+    found = set()
+    for base in class_bases(cls):
+        if base in classes and base not in seen:
+            seen.add(base)
+            found |= method_names(classes[base]) | inherited_methods(classes, classes[base], seen)
+    return found
+
+
+def has_override(tree, name=None):
+    # A method a class defines again after a class of the student's own it
+    # inherits from, at any depth, defined it. __init__ is the constructor,
+    # not an override, as in the Java runner.
+    classes = {n.name: n for n in ast.walk(tree) if isinstance(n, ast.ClassDef)}
+    for cls in classes.values():
+        again = (method_names(cls) & inherited_methods(classes, cls, {cls.name})) - {"__init__"}
+        if again and (name is None or name in again):
+            return True
+    return False
+
+
+def class_body_statements(node):
+    # The statements a class body runs itself, inside an if or a try too, but
+    # not those of its methods or of a class inside it.
+    for child in ast.iter_child_nodes(node):
+        if isinstance(child, ast.stmt):
+            yield child
+            if not isinstance(child, FUNCTION_NODES + (ast.ClassDef,)):
+                yield from class_body_statements(child)
+
+
+def has_class_attribute(tree, name=None):
+    # A value set in the class body itself, outside its methods: shared by
+    # every object made from it.
+    # A bare annotation (fleet: str) sets nothing; a, b = 1, 2 sets both.
+    for cls in (n for n in ast.walk(tree) if isinstance(n, ast.ClassDef)):
+        for stmt in class_body_statements(cls):
+            if isinstance(stmt, ast.Assign):
+                targets = stmt.targets
+            elif isinstance(stmt, (ast.AnnAssign, ast.AugAssign)) and stmt.value is not None:
+                targets = [stmt.target]
+            else:
+                continue
+            names = {
+                n.id for t in targets for n in ast.walk(t) if isinstance(n, ast.Name) and isinstance(n.ctx, ast.Store)
+            }
+            if names and (name is None or name in names):
+                return True
+    return False
+
+
+# A spec only a number takes: a number's type (.2f, d, %, x...) or a
+# thousands separator; padding alone ({name:<14}) shapes text as well.
+NUMBER_SPEC = re.compile(r"[,_]|[bdeEfFgGnoxX%]$")
+# A fill character and its alignment: the _ in {name:_<10} pads, it doesn't
+# group thousands.
+FILL_ALIGN = re.compile(r"^.?[<>=^]")
+
+
+def is_number_spec(text):
+    return bool(NUMBER_SPEC.search(FILL_ALIGN.sub("", text, count=1)))
+
+
+def spec_text(spec):
+    # An f-string's spec with each {nested} field read as a 1: {x:.{n}f}.
+    # A field that ends the spec, alone or after a width ({x:{fmt}},
+    # {x:>10{fmt}}), may hold the type itself, so the spec isn't known.
+    if isinstance(spec, ast.Constant):
+        return spec.value if isinstance(spec.value, str) else None
+    if isinstance(spec, ast.JoinedStr):
+        # Early 3.12 releases end {x:{fmt}} with an empty constant.
+        parts = [p for p in spec.values if not (isinstance(p, ast.Constant) and p.value == "")]
+        if parts and not isinstance(parts[-1], ast.Constant):
+            before = parts[-2].value if len(parts) > 1 and isinstance(parts[-2], ast.Constant) else ""
+            if not before or before[-1].isdigit():
+                return None
+        return "".join(p.value if isinstance(p, ast.Constant) else "1" for p in parts)
+    return None
+
+
+def number_spec(spec):
+    # A spec not known before the run counts.
+    text = spec_text(spec)
+    return text is None or is_number_spec(text)
+
+
+def has_format_spec(tree):
+    # A number shaped by a format spec: f"{x:.2f}", format(x, ".2f") or
+    # "{:.2f}".format(x).
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FormattedValue) and node.format_spec is not None:
+            if number_spec(node.format_spec):
+                return True
+        if isinstance(node, ast.Call):
+            func = node.func
+            if isinstance(func, ast.Name) and func.id == "format" and len(node.args) >= 2:
+                if number_spec(node.args[1]):
+                    return True
+            if (
+                isinstance(func, ast.Attribute)
+                and func.attr == "format"
+                and isinstance(func.value, ast.Constant)
+                and isinstance(func.value.value, str)
+                and any(
+                    is_number_spec(spec)
+                    for spec in re.findall(r"\{[^{}]*:([^{}]+)\}", func.value.value)
+                )
+            ):
+                return True
+    return False
+
+
 TRY_NODES = tuple(t for t in (ast.Try, getattr(ast, "TryStar", None)) if t)
 STATEMENT_KINDS = {
     "if": (ast.If,),
@@ -862,6 +1149,10 @@ STATEMENT_KINDS = {
     "continue": (ast.Continue,),
     "try": TRY_NODES,
     "slice": (ast.Slice,),
+    "lambda": (ast.Lambda,),
+    "yield": (ast.Yield, ast.YieldFrom),
+    "with": (ast.With, ast.AsyncWith),
+    "raise": (ast.Raise,),
 }
 
 
@@ -901,6 +1192,28 @@ def rule_holds(tree, source, rule):
         return has_return_value(tree)
     if kind == "default_param":
         return has_default_param(tree)
+    if kind == "import":
+        return has_import(tree, rule.get("name"))
+    if kind == "keyword_arg":
+        return has_keyword_arg(tree, rule.get("name"))
+    if kind == "var_args":
+        return has_var_param(tree, "vararg")
+    if kind == "var_kwargs":
+        return has_var_param(tree, "kwarg")
+    if kind == "decorator":
+        return has_decorator(tree, rule.get("name"))
+    if kind == "extends":
+        return has_extends(tree, rule.get("name"))
+    if kind == "override":
+        return has_override(tree, rule.get("name"))
+    if kind == "class_attribute":
+        return has_class_attribute(tree, rule.get("name"))
+    if kind == "format_spec":
+        return has_format_spec(tree)
+    if kind == "try_else":
+        return any(isinstance(n, TRY_NODES) and n.orelse for n in ast.walk(tree))
+    if kind == "finally":
+        return any(isinstance(n, TRY_NODES) and n.finalbody for n in ast.walk(tree))
     return True
 
 
@@ -981,7 +1294,7 @@ def to_ast_value(v):
     return ast.Constant(v)
 
 
-def scoped_assigns(node, params=frozenset(), top_level=True):
+def scoped_assigns(node, params=frozenset(), top_level=True, class_body=False):
     # Yields (single-name Assign, parameters of its enclosing functions, whether
     # it sits outside every function and class).
     for child in ast.iter_child_nodes(node):
@@ -992,16 +1305,18 @@ def scoped_assigns(node, params=frozenset(), top_level=True):
             yield from scoped_assigns(child, params | names, False)
             continue
         if isinstance(child, ast.ClassDef):
-            # A class attribute named like the input isn't the input.
-            yield from scoped_assigns(child, params, False)
+            # A class attribute named like the input isn't the input, even
+            # when nothing else assigns it: the input then goes in at the top.
+            yield from scoped_assigns(child, params, False, True)
             continue
         if (
-            isinstance(child, ast.Assign)
+            not class_body
+            and isinstance(child, ast.Assign)
             and len(child.targets) == 1
             and isinstance(child.targets[0], ast.Name)
         ):
             yield child, params, top_level
-        yield from scoped_assigns(child, params, top_level)
+        yield from scoped_assigns(child, params, top_level, class_body)
 
 
 def inject_values(code, values):

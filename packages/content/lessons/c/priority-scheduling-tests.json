@@ -1,0 +1,111 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3\nP1 0 4 3\nP2 1 2 1\nP3 2 2 2\n"
+    },
+    {
+      "stdin": "1\nX 3 2 5\n"
+    },
+    {
+      "stdin": "2\nA 0 3 2\nB 0 3 2\n"
+    },
+    {
+      "stdin": "2\nA 1 3 2\nB 0 3 2\n"
+    },
+    {
+      "stdin": "3\nA 0 2 9\nB 10 2 1\nC 11 1 1\n"
+    },
+    {
+      "stdin": "3\nA 0 5 5\nB 1 1 5\nC 2 1 4\n"
+    },
+    {
+      "stdin": "4\nP1 19 1 8\nTAPE1 0 29 7\nP3 0 31 5\nP4 0 21 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "13\nRUN0 55 1 1\nP2 8 2 9\nP3 69 3 3\nP4 5 46 2\nP5 52 31 1\nP6 3 27 3\nP7 10 4 2\nP8 0 5 10\nSORT8 94 2 8\nP10 13 14 10\nP11 0 7 10\nP12 1 1 6\nP13 0 36 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nP1 10 5 5\nTAPE1 30 1 2\nSORT2 63 2 4\nP4 0 48 9\nP5 24 2 8\nP6 0 36 5\nP7 3 35 4\nP8 24 2 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "13\nTAPE0 88 5 1\nP2 9 3 10\nP3 0 4 6\nP4 4 45 4\nJOB4 57 12 2\nP6 0 20 7\nP7 6 4 5\nP8 49 49 3\nP9 1 5 6\nP10 0 5 8\nP11 9 41 3\nP12 5 1 2\nRUN12 85 5 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "12\nP1 4 24 2\nP2 7 38 3\nTAPE2 0 36 8\nP4 84 40 1\nA4 57 22 1\nP6 0 4 10\nB6 34 31 10\nP8 20 5 10\nP9 36 41 4\nP10 41 2 7\nP11 92 24 3\nP12 0 2 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nP1 97 15 7\nP2 8 45 8\nTAPE2 0 2 5\nP4 0 5 6\nP5 91 1 9\nP6 3 40 5\nP7 0 1 3\nP8 4 31 2\nP9 3 30 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "12\nSORT0 0 4 9\nP2 60 1 9\nP3 5 4 7\nP4 75 3 9\nP5 15 4 1\nP6 4 12 6\nP7 0 3 4\nP8 0 8 9\nSORT8 41 31 10\nB9 7 2 5\nP11 0 14 7\nP12 0 32 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nP1 0 5 5\nP2 27 1 1\nP3 0 5 3\nSORT3 0 1 3\nP5 95 5 10\nP6 0 40 7\nP7 8 24 5\nB7 5 43 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nP1 5 1 9\nP2 0 42 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "9\nP1 52 5 3\nP2 4 1 2\nP3 1 1 6\nP4 0 5 3\nP5 87 48 1\nRUN5 6 2 4\nP7 0 5 10\nRUN7 0 22 7\nP9 5 3 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "19\nP1 2 4 7\nP2 0 2 8\nP3 47 4 3\nB3 79 17 7\nP5 53 3 6\nP6 25 1 8\nP7 39 24 5\nP8 0 2 9\nJOB8 0 4 7\nP10 5 23 3\nP11 7 2 10\nP12 0 47 7\nP13 10 5 6\nP14 0 19 6\nP15 20 39 2\nP16 0 24 3\nRUN16 51 5 2\nTAPE17 1 3 3\nA18 66 4 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "17\nP1 0 26 4\nP2 18 1 6\nP3 0 1 5\nP4 0 35 9\nP5 2 4 6\nP6 0 4 4\nP7 0 30 6\nP8 44 5 7\nP9 49 5 1\nP10 0 5 1\nP11 79 12 6\nB11 19 3 1\nP13 0 26 5\nP14 9 40 1\nP15 94 23 5\nP16 0 4 10\nP17 0 4 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nP1 5 43 7\nA1 42 7 7\nP3 98 36 9\nP4 16 3 10\nP5 23 5 8\nTAPE5 0 4 6\nP7 0 15 9\nP8 0 5 9\nP9 0 5 8\nSORT9 1 5 1\nP11 0 2 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "2\nJOB0 0 4 9\nP2 13 26 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "10\nP1 0 3 9\nP2 0 3 2\nP3 0 4 6\nP4 37 38 7\nP5 0 1 3\nP6 94 2 7\nTAPE6 6 2 6\nP8 8 19 6\nSORT8 0 20 5\nP10 7 3 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "4\nP1 81 2 3\nP2 8 22 4\nP3 0 6 9\nTAPE3 65 5 8\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nA0 0 5 6\nP2 0 5 4\nP3 3 5 2\nP4 0 4 10\nP5 7 12 6\nP6 0 3 9\nP7 7 2 2\nP8 0 21 8\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nB0 6 1 5\nP2 0 5 9\nP3 0 3 8\nP4 1 36 7\nP5 0 3 7\nP6 0 4 5\nP7 60 15 9\nSORT7 9 5 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "8\nSORT0 1 38 6\nP2 8 4 8\nP3 5 3 8\nP4 1 3 8\nP5 4 3 7\nP6 0 7 5\nP7 7 4 1\nTAPE7 23 5 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "11\nP1 80 2 1\nB1 4 2 10\nP3 0 3 6\nP4 4 12 4\nP5 6 31 10\nP6 5 3 3\nP7 0 38 10\nP8 86 49 7\nP9 24 11 2\nP10 7 3 2\nB10 0 48 9\n",
+      "generated": true
+    }
+  ]
+}

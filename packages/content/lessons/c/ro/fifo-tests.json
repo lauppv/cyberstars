@@ -1,0 +1,90 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "mkfifo"
+      },
+      {
+        "kind": "call",
+        "name": "unlink"
+      },
+      {
+        "kind": "call",
+        "name": "fork"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "load tape 7\nrun payroll\n"
+    },
+    {
+      "stdin": "one\n"
+    },
+    {
+      "stdin": "no newline at the end"
+    },
+    {
+      "stdin": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n  spaced  out  \n"
+    },
+    {
+      "stdin": "B12 drive\n7 B12 reel run run drive run night\npayroll run shift\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 7 B12 check load B12 night\ncheck payroll check night check\nB12 7 payroll run payroll 7\nload payroll run payroll reel run payroll\ndrive tape B12 drive run shift\ntape shift drive night shift B12 drive\nload shift B12 7\nB12 run check reel shift night payroll shift\nload 7 payroll check tape\nload tape shift B12 7\ncheck shift load\ndrive reel B12 7 reel\ntape drive 7 7 drive\nload run shift B12 7 B12\ntape run 7 reel night B12\ncheck drive reel 7 payroll\nload load\n7 7 shift 7 B12 shift shift load\ndrive payroll shift tape payroll payroll payroll B12\nB12 reel reel load load shift load B12\ndrive run tape 7\nreel drive drive run\nB12 payroll shift night payroll payroll\nload payroll run payroll\nnight B12 payroll payroll\nB12 night run 7 reel load\ndrive load run shift\n7\ntape reel 7 7 check\n7 payroll shift run\n7 night run reel shift\ncheck shift tape shift\nB12 drive night run run\n7 night tape run night load\npayroll 7 payroll B12 load\n7 tape B12 shift B12 drive drive reel\n7\nnight night drive\ncheck load check tape drive\nreel night load shift\n7 run drive reel\nload shift\ntape payroll B12 payroll reel night\nload 7 tape 7 shift payroll\npayroll tape drive load drive run reel\ndrive shift run load\nB12 shift\nnight payroll load drive night\ndrive night run\nnight drive reel 7\nrun check\ncheck load check night\nload run run run 7 drive payroll shift\nnight 7 payroll load night 7 tape\nshift drive reel check payroll reel\npayroll night load night B12\ntape 7 B12 tape\npayroll 7 shift night\nB12\nnight load night run load\npayroll 7 load\npayroll reel B12 run load night 7 shift\nB12 drive\n7 7 night\nrun run B12 shift B12 load\nrun load\ntape reel run load reel\nB12 reel B12 B12 shift check drive B12\nshift\ndrive B12 shift night payroll B12\npayroll B12 7\ntape B12 load\ncheck B12\nreel\ndrive check\nrun shift load night\nrun shift reel night\nrun\nnight check run check\nB12 run run\nshift 7 payroll 7 night load night shift\n7 run\ncheck reel\npayroll tape 7 tape payroll night drive\nload\nnight tape check B12 reel payroll run\npayroll shift 7 run shift\nB12 7 shift run reel payroll\ndrive night night load load reel 7 7\nB12 reel shift load\nreel payroll check\nshift check load\ndrive check drive tape payroll night\nload shift check\ntape B12 tape B12 drive check\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel payroll shift payroll payroll 7\ntape check drive tape load tape load\nB12 run B12\npayroll check drive B12 check check B12\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 payroll B12 7 run\nB12 7 B12 check\npayroll reel run drive reel B12\nshift shift drive night reel reel\nB12 run run B12 B12 7 drive shift\nnight payroll\ntape drive 7 B12 tape B12 night\n7 check shift payroll run load drive load\nload load load drive load load\ndrive drive drive tape drive shift check\ncheck load shift\nB12 night night reel run payroll\ncheck\nrun run payroll check drive\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel payroll payroll load 7 check B12 tape\nB12 check B12 payroll shift reel B12 payroll\npayroll run payroll shift load load reel\nreel load load\n7\nreel night reel payroll night load\nB12 reel 7 tape drive payroll\npayroll shift shift load tape payroll\n7 night\npayroll payroll load shift payroll load\ncheck run shift 7\n7 drive 7\ntape\nload\ncheck load 7 tape check payroll 7\nload shift drive payroll 7 run B12 reel\nrun payroll 7 payroll 7 reel\nnight\ntape drive check\ntape drive check payroll run check reel payroll\n7 load check night tape reel shift drive\n7 check drive 7\n7 shift drive check\nnight run\ncheck check check\n7 B12 check reel tape B12 B12\nnight run payroll check shift load drive 7\ntape reel\nshift B12 tape night B12\ntape drive night check night\nload reel\nnight run drive check\npayroll B12 drive payroll B12 tape night run\nB12 shift tape\n7 payroll reel\nload 7\n7 7\npayroll drive B12 shift\nnight drive drive load shift load check\npayroll night night shift payroll\n7 shift reel 7 load reel load load\ntape 7 run payroll\ncheck reel run shift check\ndrive B12 7\ntape load check run check\ncheck run\nB12 tape B12 drive\nshift 7\nshift B12 tape night payroll reel run\ndrive tape load check run shift 7 load\nreel shift load load night\nload\nload drive drive drive reel night shift tape\ntape night reel B12 night load night\nB12\nreel shift 7 B12\nrun check tape 7 night run tape run\ncheck\npayroll tape drive run night reel tape check\nshift\nload night B12 7 7 payroll night\ndrive payroll drive\nB12 run night load reel tape night drive\nreel load 7\nload run load check check payroll tape drive\nload B12\nB12\npayroll reel load check B12 shift\nnight drive\nload\ncheck shift night tape shift reel tape\nshift load B12 check check shift tape\nnight night payroll\nload load night drive reel B12 check payroll\ntape tape drive reel reel\nnight shift run run payroll tape load 7\nrun load run run 7 B12\n7 payroll\nB12\ndrive check\n7\nnight night shift shift\ncheck\nload run tape\nB12 shift load reel 7 night payroll\npayroll\n",
+      "generated": true
+    },
+    {
+      "stdin": "load drive shift drive run check reel night\ncheck\ndrive check check run tape B12\nrun shift\npayroll shift\ncheck run shift\nB12 shift night load check tape tape\nload 7 night night check\nrun load drive load shift run shift\ndrive shift B12 shift\nB12 drive load night tape run shift\nreel night shift run night load tape\n7 load drive payroll reel load night\ntape B12\nB12 tape night\nload check 7 shift reel\nB12 payroll run reel check drive\nnight shift load payroll\nload check\n7 check B12\ncheck B12 drive payroll\ndrive\ntape drive load payroll load run\ndrive tape tape drive check night run drive\nreel 7 reel shift reel drive shift tape\nrun 7 B12 payroll drive load payroll\ncheck night tape\nrun tape run\nnight tape shift check check run run B12\ntape load tape B12\nB12 7 drive shift shift reel\ncheck run tape run payroll check 7\nload reel tape load payroll\nnight\nnight run payroll payroll run tape reel\nreel shift drive check night\ndrive 7 tape run shift\ndrive\nnight\npayroll 7 night payroll\nnight tape shift load reel drive\nrun drive reel B12\ntape shift B12 night check night\nload drive 7\nnight drive run\nshift shift shift drive B12 B12\nB12 load\n7 shift load load run\nrun run run check B12\ntape 7 load reel night 7 7\nnight reel reel reel B12 run check\ncheck tape night reel payroll B12 payroll 7\npayroll shift payroll night check night\nrun run B12 reel tape drive B12\nload reel drive load shift\nrun\nB12 B12 run 7 check drive drive\ncheck reel B12\n",
+      "generated": true
+    },
+    {
+      "stdin": "run payroll shift check B12 B12 night\nshift check\npayroll drive payroll\n7 reel payroll\nreel check reel B12 payroll shift\nB12 7 drive\nreel run\nB12 drive B12\ndrive tape 7 drive run\nreel run tape tape load run tape 7\ntape load\nreel drive check\ntape 7 check check B12 check\nreel run night reel shift payroll check reel\ndrive tape B12 B12 night B12 drive\nB12 B12 shift run 7\nnight run 7 reel payroll B12 payroll\nnight payroll check night\nrun check drive\npayroll B12 B12 reel tape drive\ntape load tape check shift check\nreel load night\nshift payroll check tape drive shift run tape\npayroll run 7 check load load B12\nnight night run reel drive\nB12 load shift payroll reel night drive load\n7 check night run run\nnight night load B12 run tape tape\nload B12\ndrive payroll payroll drive tape\ntape check tape B12 shift B12 shift\n7 drive\nload reel payroll check payroll tape tape\nnight drive run night drive reel shift\npayroll\npayroll run tape\nnight check 7 check payroll\nnight payroll 7\nreel 7 reel drive run payroll drive\nload check night shift\ntape\nshift run check\nB12 load B12 drive payroll B12 check payroll\ntape night drive\ntape night check tape B12\ntape tape load check\nshift tape load 7 night night check\nB12 load night night reel payroll B12\nload shift load check night reel night run\nreel run 7 drive B12 shift\npayroll payroll load check\ntape payroll drive drive\ncheck run\ncheck run night\nload shift night load\nnight night tape payroll check tape\ntape reel\ntape shift check shift tape payroll\nshift run night load 7 drive reel\nreel tape reel payroll\nnight\n7 payroll shift\npayroll drive 7 tape run\nB12 check load tape drive night\nB12 tape\ntape shift night reel\nshift B12 run night night reel 7 run\nB12 check reel night drive tape\npayroll 7 shift\nshift payroll reel B12 load B12 drive\ncheck run\nshift\nnight shift reel\nB12 B12 7 load\nreel load night shift shift tape 7\npayroll run reel\nload payroll\nload night run\nB12 night reel reel B12 check\nrun load\nreel night 7 reel night run B12 night\nB12 check shift check payroll load tape\nreel reel night\nrun payroll tape\nreel shift shift shift reel check tape 7\ncheck load reel B12\ntape tape 7 load check check payroll shift\nload payroll payroll payroll night load payroll\nload\nreel 7 B12\n",
+      "generated": true
+    },
+    {
+      "stdin": "run\npayroll tape 7 B12 check\nnight night B12 drive run load tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel\nload drive load\nload 7 B12\nnight 7 drive\n",
+      "generated": true
+    },
+    {
+      "stdin": "run\nreel run run night load B12 7\nshift load night payroll night load load\nrun tape payroll check night reel reel\n7 check run load shift B12 payroll\nrun drive reel payroll load night check B12\nload B12 7 B12 shift\ncheck load\nload payroll reel run reel\nB12 B12 B12 tape load payroll\ntape night payroll check run\n7 check reel shift drive drive\n7 reel 7\nreel tape B12 check\ndrive shift drive check tape drive reel\nB12 B12 tape B12\nrun run check B12\n7 shift B12 check payroll payroll 7 drive\nload run run night 7 shift\nreel run\nshift load run check drive\ntape run payroll run\ndrive tape payroll tape load drive run\nnight shift tape reel check\ndrive drive 7 payroll B12\nload night night payroll 7 tape\nB12 reel payroll run payroll\nB12 night\nshift check check tape run reel\nload B12 night reel night\npayroll\ndrive B12 tape 7\ndrive run drive\nrun\npayroll 7 tape B12 check\nreel drive run drive\n7 B12 run load shift\nnight\nrun check night reel night reel shift\nreel run tape night B12 check\nload\nnight load 7\nB12 run load shift drive B12\npayroll run\npayroll B12 load drive drive load load night\ndrive night payroll night shift drive\nnight reel tape reel B12 drive\npayroll\nload load 7 shift night 7\nrun load reel payroll drive night shift run\ndrive\nrun shift drive 7 night check tape payroll\ntape load check run\nshift reel night\ndrive drive tape 7 load reel\nload tape\nshift load check check reel check tape load\nB12 7\nreel payroll payroll reel run\ncheck night shift night check run\nreel\n7 tape run\nnight run shift B12 drive drive\n7 tape reel 7 run run\n",
+      "generated": true
+    },
+    {
+      "stdin": "run drive reel\ndrive shift load\ndrive check\ncheck drive run\nnight payroll check payroll load\nrun drive tape run shift check reel\nshift drive load 7 B12 tape\nB12 drive drive\nB12\n7 night night reel 7 B12 reel shift\npayroll run check reel\ndrive reel night 7\nreel reel tape\npayroll drive payroll shift payroll load tape 7\nnight payroll B12 reel 7 B12 shift\npayroll tape shift shift load\nload tape reel run\ncheck B12 tape reel payroll reel run load\npayroll night reel 7 reel\nreel night payroll B12 drive\ndrive drive drive\nnight 7 payroll\nB12 payroll night run\nload check load run payroll B12\ncheck reel run shift load night reel\nshift drive night\ndrive tape night B12\n7 check check load\nshift tape 7 drive run drive shift tape\ntape payroll check\nreel payroll B12 payroll\nB12 load 7 shift drive\nreel shift check reel 7\ntape drive\npayroll drive 7 check\n",
+      "generated": true
+    },
+    {
+      "stdin": "night\nshift tape run 7 load 7 7\nload\ncheck\nload\n",
+      "generated": true
+    },
+    {
+      "stdin": "run\nload night payroll night check payroll night shift\ndrive check night tape\ntape\nB12\npayroll load tape 7 run check reel check\nB12 drive payroll B12 run night shift night\npayroll load drive drive run shift night 7\n7 check payroll shift 7\nreel\n7 load 7 tape night reel\n7\nrun reel\ndrive run payroll\nload run night 7 check B12 run 7\nrun night night shift\nrun reel\ncheck check reel check 7 tape B12\nshift night shift drive load\npayroll 7 night tape B12 B12 shift\nreel\n7 payroll\ndrive night reel check load\nshift night B12 night reel shift shift reel\ndrive 7 shift payroll shift load shift\nrun drive run run 7 tape shift B12\nrun\ntape reel 7 reel check check load\nshift 7 reel payroll\nreel drive load run drive payroll tape tape\nB12 check load run reel night\nB12 shift load load\ncheck\ndrive 7 drive drive drive\n7 check\ntape tape check shift\ncheck drive B12 drive reel run\nreel run run\nshift night run\nrun B12 payroll\nload\n7 drive tape night night 7 B12 reel\nshift run\nB12 night tape reel B12\npayroll check reel 7 shift run B12 night\ndrive payroll\ncheck B12 tape shift B12 reel drive shift\nB12 run payroll reel 7 shift night\n7 load drive check\npayroll B12 drive night load\ncheck reel shift tape load\nnight check run check\nreel B12 drive\ncheck B12 load\nnight drive night tape load night B12 B12\nload reel run payroll\ncheck payroll load tape night B12\nshift B12\nrun shift\nrun shift shift night tape\nshift run\nB12 7 payroll run tape tape\n7 load payroll load tape\nload night payroll drive 7\nrun run run payroll night\nB12 payroll 7 reel 7 drive\nB12 7 tape payroll\npayroll tape tape drive night 7 shift\ncheck night night reel night\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape night tape shift shift tape run 7\ntape payroll drive 7 night check B12\n",
+      "generated": true
+    }
+  ]
+}

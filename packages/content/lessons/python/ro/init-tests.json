@@ -1,0 +1,570 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Membru"
+      },
+      {
+        "kind": "function",
+        "name": "__init__"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "roluri"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "Alan", "Grace"]
+        },
+        "roluri": {
+          "$list": ["pilot", "medic", "inginer"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["mae"]
+        },
+        "roluri": {
+          "$list": ["doctor in medicina spatiala"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Abc"]
+        },
+        "roluri": {
+          "$list": ["x"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Ada",
+            "Alan",
+            "Grace",
+            "Katherine",
+            "Tim",
+            "mae",
+            "Yuri",
+            "Sally",
+            "Valentina",
+            "Neil"
+          ]
+        },
+        "roluri": {
+          "$list": [
+            "pilot",
+            "medic",
+            "engineer",
+            "cook",
+            "captain",
+            "scientist",
+            "guard",
+            "x",
+            "pilot",
+            "medic"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Grace", "Ada"]
+        },
+        "roluri": {
+          "$list": ["guard", "engineer"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Tim", "Alan", "Yuri", "Neil", "Neil", "Valentina", "Yuri", "Neil", "Ada"]
+        },
+        "roluri": {
+          "$list": [
+            "engineer",
+            "scientist",
+            "cook",
+            "pilot",
+            "x",
+            "cook",
+            "guard",
+            "captain",
+            "scientist"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Valentina", "Katherine", "Tim"]
+        },
+        "roluri": {
+          "$list": ["guard", "x", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "Neil", "Yuri", "Alan", "Tim", "mae", "Ada"]
+        },
+        "roluri": {
+          "$list": ["medic", "guard", "medic", "guard", "x", "captain", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Chris"]
+        },
+        "roluri": {
+          "$list": ["x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["mae", "Alan", "Neil"]
+        },
+        "roluri": {
+          "$list": ["medic", "scientist", "scientist"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Grace", "Grace", "Sally", "Yuri", "Katherine", "Yuri", "mae"]
+        },
+        "roluri": {
+          "$list": ["medic", "pilot", "scientist", "scientist", "engineer", "engineer", "captain"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Chris", "Tim", "mae", "Tim", "Valentina", "mae", "Katherine", "Sally", "Chris"]
+        },
+        "roluri": {
+          "$list": [
+            "guard",
+            "guard",
+            "guard",
+            "medic",
+            "engineer",
+            "scientist",
+            "pilot",
+            "x",
+            "guard"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada"]
+        },
+        "roluri": {
+          "$list": ["cook"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Katherine",
+            "Katherine",
+            "Katherine",
+            "Valentina",
+            "Sally",
+            "Neil",
+            "Neil",
+            "Neil",
+            "Grace",
+            "Katherine"
+          ]
+        },
+        "roluri": {
+          "$list": [
+            "captain",
+            "medic",
+            "pilot",
+            "guard",
+            "medic",
+            "captain",
+            "guard",
+            "cook",
+            "medic",
+            "engineer"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Yuri", "Katherine", "Alan", "Neil", "Tim", "Katherine", "Neil"]
+        },
+        "roluri": {
+          "$list": ["medic", "cook", "medic", "medic", "medic", "captain", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Tim", "Grace", "Tim", "Neil", "Neil"]
+        },
+        "roluri": {
+          "$list": ["scientist", "cook", "engineer", "medic", "pilot"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Neil",
+            "Ada",
+            "Tim",
+            "Katherine",
+            "Chris",
+            "Alan",
+            "Sally",
+            "Ada",
+            "Yuri",
+            "Chris"
+          ]
+        },
+        "roluri": {
+          "$list": [
+            "engineer",
+            "captain",
+            "cook",
+            "cook",
+            "scientist",
+            "guard",
+            "medic",
+            "cook",
+            "guard",
+            "cook"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "mae", "Neil", "Katherine", "Katherine"]
+        },
+        "roluri": {
+          "$list": ["pilot", "scientist", "scientist", "x", "captain"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Alan", "mae", "Katherine", "Yuri"]
+        },
+        "roluri": {
+          "$list": ["medic", "x", "cook", "captain"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Tim", "Valentina", "Katherine", "Neil", "Neil", "Chris"]
+        },
+        "roluri": {
+          "$list": ["pilot", "cook", "captain", "x", "cook", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["mae", "Katherine", "Neil", "mae", "Ada", "Neil", "Neil", "Sally", "mae"]
+        },
+        "roluri": {
+          "$list": [
+            "engineer",
+            "captain",
+            "pilot",
+            "medic",
+            "scientist",
+            "x",
+            "engineer",
+            "medic",
+            "medic"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Tim", "Grace", "Yuri", "Yuri", "Tim", "Katherine", "Valentina", "Tim"]
+        },
+        "roluri": {
+          "$list": [
+            "engineer",
+            "guard",
+            "engineer",
+            "scientist",
+            "cook",
+            "medic",
+            "scientist",
+            "scientist"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Alan", "Tim", "Chris", "Neil"]
+        },
+        "roluri": {
+          "$list": ["guard", "engineer", "pilot", "captain"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Alan", "Chris", "Grace", "Alan", "Yuri", "Ada"]
+        },
+        "roluri": {
+          "$list": ["x", "captain", "scientist", "cook", "guard", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "Grace", "Katherine"]
+        },
+        "roluri": {
+          "$list": ["captain", "guard", "captain"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Tim"]
+        },
+        "roluri": {
+          "$list": ["guard"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "Sally", "Tim", "Tim", "Valentina", "Neil"]
+        },
+        "roluri": {
+          "$list": ["x", "pilot", "pilot", "scientist", "captain", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Sally", "Tim", "Katherine", "mae", "Grace", "Sally", "Katherine"]
+        },
+        "roluri": {
+          "$list": ["engineer", "medic", "captain", "pilot", "captain", "medic", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Sally", "Sally", "Ada", "Chris", "Katherine", "Sally"]
+        },
+        "roluri": {
+          "$list": ["scientist", "guard", "captain", "scientist", "engineer", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "Alan", "Grace", "Sally", "Tim", "Katherine", "Ada", "Ada", "Chris"]
+        },
+        "roluri": {
+          "$list": ["medic", "medic", "guard", "medic", "guard", "captain", "cook", "engineer", "x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Katherine", "Grace", "Neil", "Sally", "mae"]
+        },
+        "roluri": {
+          "$list": ["scientist", "guard", "pilot", "x", "engineer"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Grace", "Neil", "Chris"]
+        },
+        "roluri": {
+          "$list": ["medic", "x", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Valentina", "Grace", "Neil", "Neil", "Tim", "Sally", "Ada", "Grace", "Neil"]
+        },
+        "roluri": {
+          "$list": [
+            "cook",
+            "cook",
+            "pilot",
+            "medic",
+            "engineer",
+            "medic",
+            "cook",
+            "medic",
+            "captain"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Grace",
+            "Grace",
+            "Katherine",
+            "Alan",
+            "Neil",
+            "Ada",
+            "Katherine",
+            "Valentina",
+            "Chris",
+            "Katherine"
+          ]
+        },
+        "roluri": {
+          "$list": [
+            "x",
+            "engineer",
+            "x",
+            "guard",
+            "scientist",
+            "scientist",
+            "cook",
+            "cook",
+            "scientist",
+            "x"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ada", "Grace", "Tim", "Valentina", "Alan", "Neil", "Katherine"]
+        },
+        "roluri": {
+          "$list": ["x", "captain", "engineer", "scientist", "pilot", "guard", "captain"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Alan", "Grace", "Yuri", "Sally", "Valentina", "Yuri"]
+        },
+        "roluri": {
+          "$list": ["cook", "x", "x", "cook", "captain", "medic"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Sally", "Neil", "Sally", "Valentina", "Yuri", "Yuri", "Yuri", "Katherine"]
+        },
+        "roluri": {
+          "$list": ["guard", "captain", "pilot", "medic", "guard", "pilot", "engineer", "scientist"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

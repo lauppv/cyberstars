@@ -1,0 +1,170 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "ternary"
+      },
+      {
+        "kind": "call",
+        "name": "scanf"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "if"
+      },
+      {
+        "kind": "switch"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3 34\n"
+    },
+    {
+      "visible": true,
+      "stdin": "1 30\n"
+    },
+    {
+      "stdin": "0 20\n"
+    },
+    {
+      "stdin": "1 31\n"
+    },
+    {
+      "stdin": "2 30\n"
+    },
+    {
+      "stdin": "2 31\n"
+    },
+    {
+      "stdin": "1 -5\n"
+    },
+    {
+      "stdin": "11 29\n"
+    },
+    {
+      "stdin": "0 45\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 41\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 52\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 59\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 21\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 -14\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 -12\n",
+      "generated": true
+    },
+    {
+      "stdin": "411 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "377 -8\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 -12\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 15\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 48\n",
+      "generated": true
+    },
+    {
+      "stdin": "413 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 -11\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 25\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 39\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 34\n",
+      "generated": true
+    },
+    {
+      "stdin": "279 -8\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 -9\n",
+      "generated": true
+    },
+    {
+      "stdin": "0 -10\n",
+      "generated": true
+    },
+    {
+      "stdin": "109 28\n",
+      "generated": true
+    },
+    {
+      "stdin": "281 34\n",
+      "generated": true
+    },
+    {
+      "stdin": "42 16\n",
+      "generated": true
+    },
+    {
+      "stdin": "161 -13\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 -4\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 11\n",
+      "generated": true
+    }
+  ]
+}

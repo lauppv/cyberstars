@@ -1,0 +1,458 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Tank"
+      },
+      {
+        "kind": "function",
+        "name": "fill"
+      },
+      {
+        "kind": "function",
+        "name": "use"
+      },
+      {
+        "kind": "function",
+        "name": "percent"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "variable",
+        "name": "capacity"
+      },
+      {
+        "kind": "variable",
+        "name": "actions"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "capacity": 80,
+        "actions": {
+          "$list": ["fill 50", "use 20", "fill 70", "use 100"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "capacity": 3,
+        "actions": {
+          "$list": ["use 0", "fill 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 100,
+        "actions": {
+          "$list": ["fill 29"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 100,
+        "actions": {
+          "$list": ["fill 57"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 1000,
+        "actions": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 1,
+        "actions": {
+          "$list": ["fill 1000", "use 1", "use 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 7,
+        "actions": {
+          "$list": ["fill 2", "fill 0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 100,
+        "actions": {
+          "$list": ["fill 100", "use 100", "fill 33"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacity": 960,
+        "actions": {
+          "$list": ["fill 192", "fill 297", "use 759", "fill 812", "use 342"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 198,
+        "actions": {
+          "$list": [
+            "use 108",
+            "use 2",
+            "fill 324",
+            "use 191",
+            "fill 251",
+            "fill 153",
+            "fill 57",
+            "fill 259"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 559,
+        "actions": {
+          "$list": ["fill 433", "fill 128"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 340,
+        "actions": {
+          "$list": ["use 330", "use 150", "fill 496"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 549,
+        "actions": {
+          "$list": ["use 465", "use 579", "fill 644", "use 206", "use 775"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 609,
+        "actions": {
+          "$list": ["use 231", "use 325"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 994,
+        "actions": {
+          "$list": ["fill 737", "use 964", "fill 264"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 77,
+        "actions": {
+          "$list": ["fill 151", "fill 112"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 634,
+        "actions": {
+          "$list": [
+            "use 314",
+            "fill 691",
+            "use 680",
+            "use 996",
+            "fill 443",
+            "fill 42",
+            "use 830",
+            "use 899",
+            "fill 184",
+            "fill 767"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 948,
+        "actions": {
+          "$list": ["use 474", "use 266", "fill 172", "fill 638"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 438,
+        "actions": {
+          "$list": [
+            "use 113",
+            "use 347",
+            "use 263",
+            "fill 379",
+            "fill 23",
+            "fill 254",
+            "fill 19",
+            "use 27",
+            "fill 90"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 588,
+        "actions": {
+          "$list": [
+            "use 392",
+            "use 318",
+            "use 793",
+            "use 959",
+            "fill 431",
+            "use 226",
+            "use 199",
+            "use 869",
+            "fill 913"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 388,
+        "actions": {
+          "$list": ["use 404", "use 643"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 470,
+        "actions": {
+          "$list": ["use 359", "use 189", "use 849", "use 61"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 232,
+        "actions": {
+          "$list": ["fill 401"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 305,
+        "actions": {
+          "$list": ["fill 146", "fill 294", "use 370", "fill 140", "use 474"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 498,
+        "actions": {
+          "$list": [
+            "fill 429",
+            "use 451",
+            "use 781",
+            "fill 280",
+            "use 404",
+            "fill 938",
+            "fill 182",
+            "use 826"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 35,
+        "actions": {
+          "$list": ["use 18", "fill 38", "fill 64", "fill 22", "use 51", "use 29", "use 30"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 696,
+        "actions": {
+          "$list": ["use 326", "use 137"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 114,
+        "actions": {
+          "$list": ["use 201", "use 226", "fill 218", "fill 228", "fill 151", "use 67"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 274,
+        "actions": {
+          "$list": ["use 397", "use 519", "use 518"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 67,
+        "actions": {
+          "$list": ["fill 124", "use 86", "use 61", "use 129", "fill 60"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 267,
+        "actions": {
+          "$list": ["use 505", "use 303", "fill 273", "fill 381"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 713,
+        "actions": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 837,
+        "actions": {
+          "$list": [
+            "use 450",
+            "fill 754",
+            "use 732",
+            "fill 646",
+            "fill 196",
+            "use 713",
+            "use 853",
+            "fill 519",
+            "use 822"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 850,
+        "actions": {
+          "$list": ["fill 241", "fill 135", "fill 478", "use 607", "fill 525", "fill 508"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 47,
+        "actions": {
+          "$list": [
+            "use 87",
+            "fill 84",
+            "use 86",
+            "use 44",
+            "fill 28",
+            "fill 0",
+            "use 65",
+            "use 60"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 165,
+        "actions": {
+          "$list": ["fill 310", "use 285", "fill 90", "fill 44", "use 118", "use 154", "use 60"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 377,
+        "actions": {
+          "$list": ["fill 266", "fill 647", "use 477", "use 330"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 119,
+        "actions": {
+          "$list": ["fill 198", "use 218", "use 214", "use 182", "fill 148", "use 134", "fill 39"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 906,
+        "actions": {
+          "$list": ["use 468", "use 545", "fill 497", "use 24"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacity": 683,
+        "actions": {
+          "$list": ["fill 831", "fill 739", "fill 742", "fill 739", "use 299"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

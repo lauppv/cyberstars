@@ -1,0 +1,496 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Rezervor"
+      },
+      {
+        "kind": "function",
+        "name": "umple"
+      },
+      {
+        "kind": "function",
+        "name": "foloseste"
+      },
+      {
+        "kind": "function",
+        "name": "procent"
+      },
+      {
+        "kind": "object"
+      },
+      {
+        "kind": "variable",
+        "name": "capacitate"
+      },
+      {
+        "kind": "variable",
+        "name": "actiuni"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "capacitate": 80,
+        "actiuni": {
+          "$list": ["umple 50", "foloseste 20", "umple 70", "foloseste 100"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "capacitate": 3,
+        "actiuni": {
+          "$list": ["foloseste 0", "umple 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 100,
+        "actiuni": {
+          "$list": ["umple 29"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 100,
+        "actiuni": {
+          "$list": ["umple 57"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 1000,
+        "actiuni": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 1,
+        "actiuni": {
+          "$list": ["umple 1000", "foloseste 1", "foloseste 1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 7,
+        "actiuni": {
+          "$list": ["umple 2", "umple 0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 100,
+        "actiuni": {
+          "$list": ["umple 100", "foloseste 100", "umple 33"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "capacitate": 960,
+        "actiuni": {
+          "$list": ["umple 192", "umple 297", "foloseste 759", "umple 812", "foloseste 342"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 198,
+        "actiuni": {
+          "$list": [
+            "foloseste 108",
+            "foloseste 2",
+            "umple 324",
+            "foloseste 191",
+            "umple 251",
+            "umple 153",
+            "umple 57",
+            "umple 259"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 559,
+        "actiuni": {
+          "$list": ["umple 433", "umple 128"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 340,
+        "actiuni": {
+          "$list": ["foloseste 330", "foloseste 150", "umple 496"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 549,
+        "actiuni": {
+          "$list": ["foloseste 465", "foloseste 579", "umple 644", "foloseste 206", "foloseste 775"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 609,
+        "actiuni": {
+          "$list": ["foloseste 231", "foloseste 325"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 994,
+        "actiuni": {
+          "$list": ["umple 737", "foloseste 964", "umple 264"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 77,
+        "actiuni": {
+          "$list": ["umple 151", "umple 112"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 634,
+        "actiuni": {
+          "$list": [
+            "foloseste 314",
+            "umple 691",
+            "foloseste 680",
+            "foloseste 996",
+            "umple 443",
+            "umple 42",
+            "foloseste 830",
+            "foloseste 899",
+            "umple 184",
+            "umple 767"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 948,
+        "actiuni": {
+          "$list": ["foloseste 474", "foloseste 266", "umple 172", "umple 638"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 438,
+        "actiuni": {
+          "$list": [
+            "foloseste 113",
+            "foloseste 347",
+            "foloseste 263",
+            "umple 379",
+            "umple 23",
+            "umple 254",
+            "umple 19",
+            "foloseste 27",
+            "umple 90"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 588,
+        "actiuni": {
+          "$list": [
+            "foloseste 392",
+            "foloseste 318",
+            "foloseste 793",
+            "foloseste 959",
+            "umple 431",
+            "foloseste 226",
+            "foloseste 199",
+            "foloseste 869",
+            "umple 913"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 388,
+        "actiuni": {
+          "$list": ["foloseste 404", "foloseste 643"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 470,
+        "actiuni": {
+          "$list": ["foloseste 359", "foloseste 189", "foloseste 849", "foloseste 61"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 232,
+        "actiuni": {
+          "$list": ["umple 401"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 305,
+        "actiuni": {
+          "$list": ["umple 146", "umple 294", "foloseste 370", "umple 140", "foloseste 474"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 498,
+        "actiuni": {
+          "$list": [
+            "umple 429",
+            "foloseste 451",
+            "foloseste 781",
+            "umple 280",
+            "foloseste 404",
+            "umple 938",
+            "umple 182",
+            "foloseste 826"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 35,
+        "actiuni": {
+          "$list": [
+            "foloseste 18",
+            "umple 38",
+            "umple 64",
+            "umple 22",
+            "foloseste 51",
+            "foloseste 29",
+            "foloseste 30"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 696,
+        "actiuni": {
+          "$list": ["foloseste 326", "foloseste 137"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 114,
+        "actiuni": {
+          "$list": [
+            "foloseste 201",
+            "foloseste 226",
+            "umple 218",
+            "umple 228",
+            "umple 151",
+            "foloseste 67"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 274,
+        "actiuni": {
+          "$list": ["foloseste 397", "foloseste 519", "foloseste 518"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 67,
+        "actiuni": {
+          "$list": ["umple 124", "foloseste 86", "foloseste 61", "foloseste 129", "umple 60"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 267,
+        "actiuni": {
+          "$list": ["foloseste 505", "foloseste 303", "umple 273", "umple 381"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 713,
+        "actiuni": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 837,
+        "actiuni": {
+          "$list": [
+            "foloseste 450",
+            "umple 754",
+            "foloseste 732",
+            "umple 646",
+            "umple 196",
+            "foloseste 713",
+            "foloseste 853",
+            "umple 519",
+            "foloseste 822"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 850,
+        "actiuni": {
+          "$list": [
+            "umple 241",
+            "umple 135",
+            "umple 478",
+            "foloseste 607",
+            "umple 525",
+            "umple 508"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 47,
+        "actiuni": {
+          "$list": [
+            "foloseste 87",
+            "umple 84",
+            "foloseste 86",
+            "foloseste 44",
+            "umple 28",
+            "umple 0",
+            "foloseste 65",
+            "foloseste 60"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 165,
+        "actiuni": {
+          "$list": [
+            "umple 310",
+            "foloseste 285",
+            "umple 90",
+            "umple 44",
+            "foloseste 118",
+            "foloseste 154",
+            "foloseste 60"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 377,
+        "actiuni": {
+          "$list": ["umple 266", "umple 647", "foloseste 477", "foloseste 330"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 119,
+        "actiuni": {
+          "$list": [
+            "umple 198",
+            "foloseste 218",
+            "foloseste 214",
+            "foloseste 182",
+            "umple 148",
+            "foloseste 134",
+            "umple 39"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 906,
+        "actiuni": {
+          "$list": ["foloseste 468", "foloseste 545", "umple 497", "foloseste 24"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "capacitate": 683,
+        "actiuni": {
+          "$list": ["umple 831", "umple 739", "umple 742", "umple 739", "foloseste 299"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

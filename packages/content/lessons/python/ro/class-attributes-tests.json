@@ -1,0 +1,348 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Nava"
+      },
+      {
+        "kind": "class_attribute",
+        "name": "urmatorul_numar"
+      },
+      {
+        "kind": "class_attribute",
+        "name": "flota"
+      },
+      {
+        "kind": "function",
+        "name": "__init__"
+      },
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "flota"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Speranta", "Fulger"]
+        },
+        "flota": "Flota Stelara"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Nova"]
+        },
+        "flota": "Flota Libera"
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Swift", "Bob", "Nova", "Comet", "Ray", "Echo", "Atlas", "Iris", "Vega"]
+        },
+        "flota": "Moon Guard"
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["A", "A"]
+        },
+        "flota": "x"
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Atlas", "Swift", "Bob", "Echo", "Vega", "Echo", "Iris", "Nova", "Comet"]
+        },
+        "flota": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Bob", "Vega"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Atlas", "Iris"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Ray", "Iris", "Comet", "Ray"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Ray", "Ray", "Atlas", "Bob", "Bob", "Bob", "Echo", "Bob", "Ray"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Ray", "Vega"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Swift", "Hope", "Bob", "Atlas", "Ray", "Nova"]
+        },
+        "flota": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Bob", "Comet", "Swift", "Comet", "Nova", "Iris", "Comet", "Atlas"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Hope", "Bob", "Nova", "Atlas"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Vega", "Comet", "Echo", "Hope", "Bob", "Swift", "Nova"]
+        },
+        "flota": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ray"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Vega", "Swift", "Vega"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Bob", "Vega", "Echo", "Ray", "Iris", "Swift", "Iris", "Bob"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Ray", "Echo", "Hope", "Hope", "Vega"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Comet", "Bob", "Nova"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Nova", "Vega", "Echo", "Bob", "Comet", "Bob", "Nova", "Hope"]
+        },
+        "flota": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Nova", "Bob", "Vega", "Swift"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Echo",
+            "Hope",
+            "Nova",
+            "Comet",
+            "Iris",
+            "Hope",
+            "Bob",
+            "Comet",
+            "Swift",
+            "Echo"
+          ]
+        },
+        "flota": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Nova", "Vega", "Swift"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Nova", "Echo"]
+        },
+        "flota": "Moon Guard"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Bob", "Hope", "Comet", "Ray"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Iris", "Bob", "Hope"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope"]
+        },
+        "flota": "Deep Blue"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Vega", "Iris", "Echo", "Iris"]
+        },
+        "flota": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Swift", "Swift", "Nova", "Vega", "Bob", "Nova", "Vega"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Comet", "Echo"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ray", "Comet", "Echo", "Echo", "Swift", "Hope", "Comet"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Nova", "Echo", "Iris", "Hope", "Hope", "Atlas", "Comet"]
+        },
+        "flota": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hope", "Vega", "Echo", "Atlas", "Bob", "Vega", "Bob", "Swift", "Vega"]
+        },
+        "flota": "Red Wing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Echo", "Hope", "Comet", "Iris", "Comet", "Ray", "Hope", "Echo", "Comet", "Ray"]
+        },
+        "flota": "Star Fleet"
+      },
+      "generated": true
+    }
+  ]
+}

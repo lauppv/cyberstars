@@ -71,6 +71,7 @@
   },
   "overrides": {
     "shell-quote": "^1.10.0",
-    "deepmerge-ts": "^8.0.1"
+    "deepmerge-ts": "^8.0.1",
+    "effect": "^3.22.1"
   }
 }

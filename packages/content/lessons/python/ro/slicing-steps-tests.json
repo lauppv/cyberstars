@@ -1,0 +1,268 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "semnal"
+      },
+      {
+        "kind": "slice"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "semnal": "S7R2A9T4S"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "semnal": "x1y2z3"
+      }
+    },
+    {
+      "inject": {
+        "semnal": "abc"
+      }
+    },
+    {
+      "inject": {
+        "semnal": "abcd"
+      }
+    },
+    {
+      "inject": {
+        "semnal": "o9l5l1e8h"
+      }
+    },
+    {
+      "inject": {
+        "semnal": "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+      }
+    },
+    {
+      "inject": {
+        "semnal": "a1b"
+      }
+    },
+    {
+      "inject": {
+        "semnal": "mLnMR5xNYPhhhgGvexcIIFCJNOHfrE"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "HtO65Uw2qkGNytMUjKy9gVoOeVT4vwe"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "T9mmUoppAF0CSYoL2g"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "4Yu8I6WyV96R7is6KjVx8h3XhAt5bxRx9ZiiCI6"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "KY7lYbwq973ucPhlk9LO4BaodIJv59cxbTh3Iz7"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "9fbdH87Ue59JKz13"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "yi5dvS8ENi9aVrE"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "UXj2AT42twDLhdZG63a3Kn"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "krljeElo"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "XkZKWsgzdGANL2X6unm46KlayNpSO"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "YWVDQd4QzMEQvwtHy1P"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "Xlwt7FRZtNU0pgjz9"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "eMSTQH5FT"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "2mfohL"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "OX1K91BWLVHNdZrhLfWVcKmZP"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "gYUqvmjF4S050AGdwkryP1CGIA"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "d8M58bZHI5buDSo"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "AFKvnS25qBHMmr1wJ6PbkYTtopurQsTuhbk"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "DFQmY9mFRFL4dOek2sCqg6xmjbcxN2AU2undwJK"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "PuI9P4ccW32lQ10RspIGoTysdX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "GVplw7iq6OlznsoPA1mWi"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "8kQtAwrYNtJPNzFkx70P"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "9hzzoL8QOs1"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "JGqcGwU4OolBlMbrv"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "EntIPrbKXb0KSuo4sYje5YV9Vt50ogPnXiInZl5"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "v5nVHjDbV0tUdanvqvy7eKdWxMmCW8aZRgrdqHl"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "NF3yb62A67HwHgRFFXOP3E"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "UyQ32oPZzWjV1OetMlmoe0BaYt0N6TPBOnYuoO0"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "mU6OVa2C8sDyN1WLBmBcTJzztaBVhw"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "RyQ0HghhNcFrrG2UvA98g6Oe2"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "Thz7ctVKlIagynpUDB564yhflSTMer1U8Ali"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "ygvvYE363eu1dzijo5mFgzAUlIVekquNjf"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "vA81nUcrurz6OuehTCsX5c8CK"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "gCzioYiHF9dz7uLp5glQ7"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "semnal": "CTakGC3Ro"
+      },
+      "generated": true
+    }
+  ]
+}

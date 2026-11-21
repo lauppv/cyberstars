@@ -1,0 +1,333 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "book"
+      },
+      {
+        "kind": "default_param"
+      },
+      {
+        "kind": "keyword_arg"
+      },
+      {
+        "kind": "return"
+      },
+      {
+        "kind": "variable",
+        "name": "name"
+      },
+      {
+        "kind": "variable",
+        "name": "destination"
+      },
+      {
+        "kind": "variable",
+        "name": "seats"
+      },
+      {
+        "kind": "variable",
+        "name": "window"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name": "Ada",
+        "destination": "Mars",
+        "seats": 2,
+        "window": true
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "name": "Kai",
+        "destination": "Titan",
+        "seats": 1,
+        "window": false
+      }
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Moon",
+        "seats": 9,
+        "window": true
+      }
+    },
+    {
+      "inject": {
+        "name": "Zara",
+        "destination": "Io",
+        "seats": 5,
+        "window": false
+      }
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Venus",
+        "seats": 8,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "destination": "Io",
+        "seats": 9,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Grace",
+        "destination": "Ceres",
+        "seats": 6,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "destination": "Io",
+        "seats": 4,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "destination": "Mars",
+        "seats": 8,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "destination": "Titan",
+        "seats": 7,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mila",
+        "destination": "Titan",
+        "seats": 4,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Io",
+        "seats": 2,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Titan",
+        "seats": 9,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara",
+        "destination": "Venus",
+        "seats": 9,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara",
+        "destination": "Titan",
+        "seats": 7,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara",
+        "destination": "Venus",
+        "seats": 6,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Leo",
+        "destination": "Io",
+        "seats": 6,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "destination": "Mars",
+        "seats": 8,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Leo",
+        "destination": "Europa",
+        "seats": 3,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "destination": "Titan",
+        "seats": 1,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Grace",
+        "destination": "Titan",
+        "seats": 1,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Mars",
+        "seats": 7,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Grace",
+        "destination": "Mars",
+        "seats": 1,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Kai",
+        "destination": "Titan",
+        "seats": 8,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Mars",
+        "seats": 5,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara",
+        "destination": "Europa",
+        "seats": 1,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Leo",
+        "destination": "Io",
+        "seats": 4,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "destination": "Titan",
+        "seats": 6,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Leo",
+        "destination": "Venus",
+        "seats": 5,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Leo",
+        "destination": "Venus",
+        "seats": 9,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "destination": "Ceres",
+        "seats": 2,
+        "window": true
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mila",
+        "destination": "Europa",
+        "seats": 9,
+        "window": false
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tom",
+        "destination": "Venus",
+        "seats": 4,
+        "window": false
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "crew"
+      },
+      {
+        "kind": "call",
+        "name": "split"
+      },
+      {
+        "kind": "call",
+        "name": "join"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "crew": "ada lovelace,alan turing,grace hopper"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "crew": "sally ride"
+      }
+    },
+    {
+      "inject": {
+        "crew": "neil armstrong,buzz aldrin"
+      }
+    },
+    {
+      "inject": {
+        "crew": "a b"
+      }
+    },
+    {
+      "inject": {
+        "crew": "ada lovelace,alan turing,grace hopper,sally ride,neil armstrong,yuri gagarin,mae jemison,chris hadfield,valentina tereshkova,buzz aldrin"
+      }
+    },
+    {
+      "inject": {
+        "crew": "tim johnson,grace ride,mae whitson,buzz hopper,katherine hopper,sally peake,yuri li,tim aldrin,katherine armstrong"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "neil white,sally white,grace hadfield,katherine white,grace turing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "sally li,yuri li,ed lovelace,peggy peake,tim li,buzz tereshkova,tim gagarin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "peggy tereshkova,ada jemison,chris gagarin,chris johnson,jo gagarin,yuri ride,jo lovelace,ed lovelace,neil tereshkova"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "ada peake,jo gagarin,ada tereshkova,katherine hadfield,alan turing,grace ride,tim johnson,alan peake"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "chris lovelace,neil whitson,yuri hadfield,jo gagarin,alan li,tim li,buzz tereshkova,yuri li,buzz li"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "sally hadfield,neil li,chris johnson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "yuri hadfield,sally ride,grace armstrong,ed armstrong"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "ed aldrin,ed johnson,ada tereshkova,ada peake,sally turing,tim white,tim tereshkova"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "jo gagarin,peggy tereshkova,ed hopper,ada johnson,mae whitson,neil turing,tim tereshkova,jo li,valentina turing,mae peake"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "buzz turing,tim li,katherine johnson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "peggy aldrin,ed hopper,neil peake,chris li"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "yuri hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "tim whitson,jo johnson,ed whitson,ada gagarin,tim hopper,ada white,katherine white,mae johnson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "sally jemison"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "ed turing,alan tereshkova,yuri white,tim aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "katherine hopper,grace gagarin,sally white,tim gagarin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "neil johnson,buzz hadfield,chris hopper,ada peake,alan peake,katherine li,valentina hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "mae armstrong,alan jemison,mae aldrin,alan jemison,chris turing"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "alan peake,sally aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "grace hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "tim li,neil turing,grace hopper,tim johnson,yuri tereshkova,tim ride"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "alan gagarin,sally ride,chris aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "peggy tereshkova,ed turing,buzz johnson,neil gagarin,sally white,jo lovelace,jo jemison,alan hadfield,sally aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "ada lovelace"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "alan jemison,yuri tereshkova,jo hadfield,grace hopper,peggy gagarin,yuri aldrin,sally li"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "grace hopper,sally johnson,grace turing,peggy jemison,neil hadfield,valentina whitson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "katherine tereshkova,neil hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "valentina hopper,yuri white"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "jo armstrong,peggy li,mae whitson,grace aldrin,tim li,ed hadfield,katherine aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "katherine armstrong,peggy hopper,mae ride,neil armstrong,sally li,sally whitson,sally hopper,tim hopper,ada turing,yuri hopper"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "neil aldrin,jo hadfield,ada armstrong,peggy whitson"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "alan aldrin,yuri whitson,valentina aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "alan jemison,katherine gagarin,valentina aldrin,ed li,buzz li,grace aldrin"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "crew": "grace hopper,peggy turing,chris jemison"
+      },
+      "generated": true
+    }
+  ]
+}

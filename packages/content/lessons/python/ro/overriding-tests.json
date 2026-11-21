@@ -1,0 +1,597 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "Alarma"
+      },
+      {
+        "kind": "class",
+        "name": "AlarmaIncendiu"
+      },
+      {
+        "kind": "class",
+        "name": "AlarmaUsa"
+      },
+      {
+        "kind": "extends",
+        "name": "Alarma"
+      },
+      {
+        "kind": "override",
+        "name": "mesaj"
+      },
+      {
+        "kind": "call",
+        "name": "super"
+      },
+      {
+        "kind": "variable",
+        "name": "locuri"
+      },
+      {
+        "kind": "variable",
+        "name": "feluri"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "locuri": {
+          "$list": ["Doc", "Laborator", "Sala de sport"]
+        },
+        "feluri": {
+          "$list": ["simpla", "incendiu", "usa"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "locuri": {
+          "$list": ["Ferma"]
+        },
+        "feluri": {
+          "$list": ["usa"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Dock",
+            "Lab",
+            "Gym",
+            "Farm",
+            "Bridge",
+            "Kitchen",
+            "Air Lock",
+            "Bay 2",
+            "Store",
+            "Clinic"
+          ]
+        },
+        "feluri": {
+          "$list": [
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bay 2", "Bay 2"]
+        },
+        "feluri": {
+          "$list": ["simpla", "simpla"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Store"]
+        },
+        "feluri": {
+          "$list": ["simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Lab", "Store", "Bridge"]
+        },
+        "feluri": {
+          "$list": ["simpla", "incendiu", "incendiu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Lab", "Bay 2"]
+        },
+        "feluri": {
+          "$list": ["usa", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Store", "Gym", "Bridge", "Dock", "Gym", "Store", "Kitchen", "Store"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "usa", "incendiu", "usa", "usa", "incendiu", "incendiu", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Clinic",
+            "Lab",
+            "Air Lock",
+            "Lab",
+            "Air Lock",
+            "Clinic",
+            "Dock",
+            "Dock",
+            "Farm",
+            "Store"
+          ]
+        },
+        "feluri": {
+          "$list": [
+            "usa",
+            "usa",
+            "usa",
+            "incendiu",
+            "usa",
+            "simpla",
+            "incendiu",
+            "usa",
+            "usa",
+            "simpla"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Lab", "Dock", "Clinic", "Air Lock", "Dock", "Kitchen", "Bridge"]
+        },
+        "feluri": {
+          "$list": ["simpla", "usa", "usa", "incendiu", "simpla", "usa", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Gym", "Bay 2", "Farm"]
+        },
+        "feluri": {
+          "$list": ["simpla", "simpla", "incendiu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Farm", "Bridge", "Gym"]
+        },
+        "feluri": {
+          "$list": ["usa", "simpla", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bay 2"]
+        },
+        "feluri": {
+          "$list": ["incendiu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bridge", "Gym", "Farm", "Lab", "Gym", "Clinic", "Farm"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "incendiu", "usa", "simpla", "usa", "simpla", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Air Lock", "Store"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bridge", "Farm", "Dock"]
+        },
+        "feluri": {
+          "$list": ["simpla", "incendiu", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Gym", "Gym"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Dock",
+            "Kitchen",
+            "Gym",
+            "Bay 2",
+            "Store",
+            "Dock",
+            "Kitchen",
+            "Farm",
+            "Air Lock",
+            "Clinic"
+          ]
+        },
+        "feluri": {
+          "$list": [
+            "simpla",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "usa",
+            "usa",
+            "simpla",
+            "usa",
+            "incendiu",
+            "usa"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Gym", "Dock"]
+        },
+        "feluri": {
+          "$list": ["simpla", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bridge", "Kitchen", "Store", "Bay 2", "Lab", "Clinic", "Gym", "Bay 2", "Farm"]
+        },
+        "feluri": {
+          "$list": [
+            "usa",
+            "incendiu",
+            "usa",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "usa",
+            "incendiu",
+            "usa"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Gym",
+            "Gym",
+            "Lab",
+            "Clinic",
+            "Farm",
+            "Gym",
+            "Dock",
+            "Farm",
+            "Bridge",
+            "Kitchen"
+          ]
+        },
+        "feluri": {
+          "$list": [
+            "usa",
+            "simpla",
+            "simpla",
+            "incendiu",
+            "usa",
+            "simpla",
+            "incendiu",
+            "usa",
+            "usa",
+            "usa"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Air Lock",
+            "Kitchen",
+            "Dock",
+            "Store",
+            "Air Lock",
+            "Bay 2",
+            "Air Lock",
+            "Dock",
+            "Farm",
+            "Bridge"
+          ]
+        },
+        "feluri": {
+          "$list": [
+            "incendiu",
+            "simpla",
+            "usa",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "simpla",
+            "incendiu",
+            "simpla"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Air Lock",
+            "Lab",
+            "Gym",
+            "Kitchen",
+            "Bridge",
+            "Kitchen",
+            "Bay 2",
+            "Bay 2",
+            "Bridge"
+          ]
+        },
+        "feluri": {
+          "$list": ["simpla", "incendiu", "simpla", "usa", "usa", "simpla", "usa", "simpla", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bay 2", "Dock", "Gym", "Air Lock"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "usa", "usa", "incendiu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Dock", "Bridge", "Farm"]
+        },
+        "feluri": {
+          "$list": ["simpla", "usa", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Dock", "Store", "Dock", "Store", "Clinic", "Bay 2", "Gym", "Bridge", "Clinic"]
+        },
+        "feluri": {
+          "$list": ["usa", "usa", "incendiu", "usa", "simpla", "usa", "simpla", "simpla", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Clinic", "Air Lock", "Bridge", "Farm", "Dock", "Dock"]
+        },
+        "feluri": {
+          "$list": ["simpla", "simpla", "incendiu", "incendiu", "usa", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Air Lock", "Store", "Kitchen", "Gym"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "simpla", "simpla", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Clinic", "Air Lock", "Gym", "Gym", "Clinic", "Air Lock"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "simpla", "usa", "usa", "simpla", "usa"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Air Lock", "Kitchen", "Bay 2", "Bay 2", "Clinic", "Clinic", "Kitchen"]
+        },
+        "feluri": {
+          "$list": ["usa", "usa", "simpla", "usa", "incendiu", "simpla", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Bay 2", "Store", "Clinic", "Farm", "Kitchen", "Air Lock"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "simpla", "usa", "incendiu", "incendiu", "incendiu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": [
+            "Kitchen",
+            "Gym",
+            "Dock",
+            "Air Lock",
+            "Kitchen",
+            "Clinic",
+            "Farm",
+            "Dock",
+            "Dock",
+            "Store"
+          ]
+        },
+        "feluri": {
+          "$list": [
+            "usa",
+            "simpla",
+            "simpla",
+            "incendiu",
+            "usa",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "simpla",
+            "simpla"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Lab", "Air Lock", "Store", "Bay 2", "Gym", "Bay 2", "Air Lock", "Dock"]
+        },
+        "feluri": {
+          "$list": ["usa", "usa", "incendiu", "usa", "usa", "incendiu", "incendiu", "simpla"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Clinic"]
+        },
+        "feluri": {
+          "$list": ["incendiu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Kitchen", "Farm", "Clinic", "Store", "Gym", "Store", "Gym", "Farm", "Clinic"]
+        },
+        "feluri": {
+          "$list": [
+            "simpla",
+            "incendiu",
+            "incendiu",
+            "usa",
+            "usa",
+            "incendiu",
+            "incendiu",
+            "incendiu",
+            "simpla"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "locuri": {
+          "$list": ["Kitchen", "Bay 2", "Farm", "Clinic", "Dock", "Bay 2"]
+        },
+        "feluri": {
+          "$list": ["incendiu", "simpla", "simpla", "incendiu", "usa", "usa"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

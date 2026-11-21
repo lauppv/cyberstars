@@ -1,0 +1,85 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "sigaction"
+      },
+      {
+        "kind": "call",
+        "name": "setitimer"
+      },
+      {
+        "kind": "call",
+        "name": "waitpid"
+      },
+      {
+        "kind": "call",
+        "name": "kill"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "seq 2\nsleep 5\nfalse\n"
+    },
+    {
+      "stdin": "true\n"
+    },
+    {
+      "stdin": "sleep 10\n"
+    },
+    {
+      "stdin": "nosuchcmd\necho done\n"
+    },
+    {
+      "stdin": "sleep 0\nexpr 2 + 2"
+    },
+    {
+      "stdin": "seq 3\nnosuch-job\necho night shift\nseq 3\nsleep 30\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 30\nexpr 6 * 7\nexpr 6 * 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "nosuch-job\nfalse\nsleep 30\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 30\nseq 3\nexpr 6 * 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 0\nfalse\nseq 3\nfalse\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 3\nseq 3\nexpr 6 * 7\nnosuch-job\n",
+      "generated": true
+    },
+    {
+      "stdin": "true\nsleep 30\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "expr 6 * 7\nexpr 6 * 7\nsleep 30\necho night shift\nsleep 0\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 3\nfalse\ntrue\n",
+      "generated": true
+    },
+    {
+      "stdin": "sleep 0\n",
+      "generated": true
+    }
+  ]
+}

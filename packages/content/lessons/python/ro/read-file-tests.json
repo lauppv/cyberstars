@@ -1,0 +1,592 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "stoc"
+      },
+      {
+        "kind": "call",
+        "name": "open"
+      },
+      {
+        "kind": "call",
+        "name": "write"
+      },
+      {
+        "kind": "call",
+        "name": "read"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "stoc": {
+          "$list": ["orez,12", "sare,3", "ceai,40"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "stoc": {
+          "$list": ["sapun,0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["a,5", "b,5", "c,1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "rice,999",
+            "salt,999",
+            "tea,999",
+            "soap,999",
+            "flour,999",
+            "beans,999",
+            "oil,999",
+            "sugar,999",
+            "milk,999",
+            "socks,999",
+            "pens,999",
+            "tape,999",
+            "glue,999",
+            "nuts,999",
+            "jam,999"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["x,0", "y,0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["rice,784", "beans,950", "glue,586", "tea,981", "tape,0", "milk,308", "jam,577"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["pens,597", "glue,957", "rice,331"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "flour,519",
+            "tape,573",
+            "pens,107",
+            "socks,364",
+            "tea,600",
+            "nuts,739",
+            "soap,361",
+            "jam,298",
+            "glue,926",
+            "milk,383",
+            "oil,437",
+            "beans,525",
+            "sugar,611",
+            "salt,560",
+            "rice,11"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "glue,707",
+            "jam,289",
+            "milk,254",
+            "socks,436",
+            "pens,855",
+            "tape,466",
+            "beans,350",
+            "tea,712",
+            "rice,172",
+            "flour,327"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "oil,343",
+            "milk,945",
+            "beans,999",
+            "tea,451",
+            "salt,491",
+            "socks,955",
+            "nuts,114",
+            "sugar,429",
+            "soap,293"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "milk,560",
+            "sugar,637",
+            "salt,829",
+            "pens,902",
+            "oil,847",
+            "beans,96",
+            "nuts,865",
+            "jam,135"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["pens,572", "milk,555", "tape,520", "jam,865", "socks,172", "sugar,855"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "rice,807",
+            "oil,653",
+            "milk,58",
+            "glue,503",
+            "nuts,574",
+            "beans,296",
+            "tape,348",
+            "flour,201",
+            "socks,165",
+            "soap,255",
+            "sugar,447",
+            "jam,321",
+            "pens,344",
+            "salt,373"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["tea,525", "oil,792", "pens,552"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "jam,810",
+            "oil,187",
+            "soap,487",
+            "socks,197",
+            "nuts,634",
+            "sugar,122",
+            "glue,727",
+            "rice,101",
+            "flour,645",
+            "pens,850",
+            "tea,778",
+            "beans,437"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "oil,139",
+            "beans,552",
+            "pens,441",
+            "tea,987",
+            "soap,261",
+            "nuts,601",
+            "flour,747",
+            "jam,212",
+            "milk,783",
+            "sugar,118"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "pens,700",
+            "beans,920",
+            "sugar,894",
+            "socks,582",
+            "salt,414",
+            "flour,376",
+            "nuts,183",
+            "oil,161",
+            "tape,298",
+            "jam,600"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "milk,712",
+            "salt,744",
+            "nuts,852",
+            "tea,399",
+            "flour,862",
+            "rice,853",
+            "oil,386",
+            "beans,552",
+            "sugar,596"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "socks,191",
+            "pens,487",
+            "sugar,55",
+            "oil,144",
+            "salt,288",
+            "tape,783",
+            "nuts,45",
+            "milk,128",
+            "tea,151"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["sugar,284", "glue,930", "socks,607", "beans,292", "jam,935"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["flour,303", "tea,935", "soap,957", "glue,8", "beans,293", "rice,405"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["nuts,981", "flour,435", "milk,81", "tea,531", "pens,947", "beans,723"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "rice,929",
+            "oil,857",
+            "salt,490",
+            "soap,183",
+            "sugar,286",
+            "tea,680",
+            "pens,219",
+            "jam,318",
+            "milk,219",
+            "tape,118",
+            "nuts,987",
+            "flour,898",
+            "glue,383"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["sugar,764", "pens,736", "tea,106", "glue,128"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "salt,342",
+            "milk,806",
+            "sugar,786",
+            "socks,952",
+            "flour,265",
+            "pens,214",
+            "tea,255"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "rice,871",
+            "nuts,719",
+            "oil,628",
+            "soap,499",
+            "salt,408",
+            "glue,338",
+            "tape,272",
+            "milk,254",
+            "jam,621",
+            "flour,833",
+            "beans,15",
+            "pens,567",
+            "socks,261",
+            "sugar,28",
+            "tea,411"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "milk,7",
+            "socks,356",
+            "beans,852",
+            "tape,73",
+            "oil,239",
+            "flour,17",
+            "salt,860",
+            "jam,705",
+            "tea,399",
+            "soap,516",
+            "nuts,4",
+            "pens,367"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "tape,201",
+            "oil,625",
+            "flour,353",
+            "sugar,966",
+            "pens,546",
+            "nuts,772",
+            "beans,551",
+            "tea,650",
+            "jam,560",
+            "milk,483",
+            "socks,152",
+            "glue,936"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["tape,511", "oil,349"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["sugar,913", "nuts,873", "salt,33", "pens,609"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["oil,446", "rice,58"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "glue,357",
+            "beans,620",
+            "pens,831",
+            "sugar,478",
+            "salt,636",
+            "soap,852",
+            "socks,425",
+            "milk,440",
+            "nuts,888",
+            "flour,775",
+            "tea,309",
+            "oil,363",
+            "tape,191",
+            "rice,101"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["soap,786", "oil,653", "glue,621"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "oil,226",
+            "tape,252",
+            "socks,906",
+            "sugar,962",
+            "flour,893",
+            "rice,362",
+            "tea,503",
+            "milk,379",
+            "glue,849"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "tea,197",
+            "nuts,616",
+            "socks,976",
+            "tape,321",
+            "jam,937",
+            "flour,550",
+            "rice,612",
+            "oil,711",
+            "salt,281",
+            "milk,197"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "nuts,708",
+            "milk,108",
+            "flour,912",
+            "beans,653",
+            "glue,442",
+            "oil,80",
+            "rice,235",
+            "soap,823",
+            "socks,148",
+            "pens,410",
+            "jam,470",
+            "tape,834",
+            "tea,975",
+            "salt,711"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": ["tea,172"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": {
+          "$list": [
+            "socks,431",
+            "milk,432",
+            "rice,745",
+            "beans,414",
+            "oil,383",
+            "pens,78",
+            "nuts,376",
+            "soap,2",
+            "salt,582",
+            "jam,105",
+            "glue,53",
+            "tape,133",
+            "flour,232",
+            "tea,194",
+            "sugar,332"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

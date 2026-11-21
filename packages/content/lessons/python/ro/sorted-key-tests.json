@@ -1,0 +1,2233 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "piloti"
+      },
+      {
+        "kind": "keyword_arg",
+        "name": "key"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 50
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 50
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 29
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "solo",
+                "timp": 99
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 60
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 60
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "b",
+                "timp": 1
+              }
+            },
+            {
+              "$dict": {
+                "nume": "A",
+                "timp": 1
+              }
+            },
+            {
+              "$dict": {
+                "nume": "c",
+                "timp": 1
+              }
+            },
+            {
+              "$dict": {
+                "nume": "B2",
+                "timp": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "zed",
+                "timp": 10
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Amy",
+                "timp": 20
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 34
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 35
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 32
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 45
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 44
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 33
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 43
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 43
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 35
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 37
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 31
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 30
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 36
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 44
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 35
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 34
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 42
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 42
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 39
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 42
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 45
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 34
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 33
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 32
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 34
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 32
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "kai",
+                "timp": 41
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 37
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 36
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ola",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 41
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ivy",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Ada",
+                "timp": 35
+              }
+            },
+            {
+              "$dict": {
+                "nume": "leo",
+                "timp": 45
+              }
+            },
+            {
+              "$dict": {
+                "nume": "raj",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 33
+              }
+            },
+            {
+              "$dict": {
+                "nume": "sol",
+                "timp": 31
+              }
+            },
+            {
+              "$dict": {
+                "nume": "omar",
+                "timp": 39
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Nia",
+                "timp": 44
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 38
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 37
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "piloti": {
+          "$list": [
+            {
+              "$dict": {
+                "nume": "Zara",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "tom",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Lin",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "max",
+                "timp": 32
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Eve",
+                "timp": 43
+              }
+            },
+            {
+              "$dict": {
+                "nume": "ben",
+                "timp": 40
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Yuki",
+                "timp": 30
+              }
+            },
+            {
+              "$dict": {
+                "nume": "Mila",
+                "timp": 43
+              }
+            }
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

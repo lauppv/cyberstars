@@ -1,0 +1,149 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "opendir"
+      },
+      {
+        "kind": "call",
+        "name": "readdir"
+      },
+      {
+        "kind": "call",
+        "name": "closedir"
+      },
+      {
+        "kind": "call",
+        "name": "mkdir"
+      },
+      {
+        "kind": "call",
+        "name": "unlink"
+      },
+      {
+        "kind": "call",
+        "name": "stat"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "tape.txt 30\ncrew.txt 12\nlog.txt 0\n"
+    },
+    {
+      "stdin": "only.txt 5\n"
+    },
+    {
+      "stdin": "b 1\na 2\nB 3\nA 4\n"
+    },
+    {
+      "stdin": "x.dat 2000\ny.dat 2000\n"
+    },
+    {
+      "stdin": "reel10.txt 1\nreel2.txt 2\nreel1.txt 3"
+    },
+    {
+      "stdin": "notes16.log 0\ndump52.txt 0\nlog16.log 115\n",
+      "generated": true
+    },
+    {
+      "stdin": "crew3 165\norbit75 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape44.log 0\nnotes17 1121\norbit73.txt 181\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel6.txt 1599\ntape36 1961\norbit25.log 0\ntape43.dat 0\ndump70 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "notes32 0\ncrew6 0\ndump95.log 759\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump21.txt 805\nreel67.log 1954\ntape38.log 0\ndump44.dat 1845\npayroll68.dat 979\n",
+      "generated": true
+    },
+    {
+      "stdin": "log67.txt 0\ntape19 1568\n",
+      "generated": true
+    },
+    {
+      "stdin": "orbit88.dat 1554\ndump60.dat 0\npayroll82.dat 0\nreel55 1107\npayroll43.dat 1685\ncore53.log 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "notes55.txt 0\norbit5.log 1767\npayroll8.dat 0\norbit91 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump65.txt 1074\ntape18.dat 1704\n",
+      "generated": true
+    },
+    {
+      "stdin": "census71.dat 0\ntape90 0\ncrew26.dat 0\ncore29.txt 424\n",
+      "generated": true
+    },
+    {
+      "stdin": "log56.log 0\nlog49.dat 0\nnotes39 1884\ntape98.dat 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "crew11.dat 0\norbit50.log 688\ntape68.log 1507\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel77.txt 0\npayroll51.txt 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump19.txt 0\norbit6.log 1024\nnotes73.dat 1702\ncrew82.log 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "payroll73.txt 0\ncrew28.dat 0\ntape77.log 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "orbit11.log 0\ncore14.dat 1420\ncrew40.dat 183\nnotes29 1255\nnotes90.dat 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape15.log 930\ncore3.log 0\nreel14 0\nreel40.log 0\ncrew59.txt 0\ntape71.log 0\ntape23.txt 929\npayroll92.log 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "log18 0\ncensus88.txt 0\npayroll24 766\n",
+      "generated": true
+    },
+    {
+      "stdin": "core52.txt 5\ncore12.txt 0\ntape63.txt 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "census37.log 1565\npayroll75 311\ntape72.log 0\nlog86 259\ncore81 1639\n",
+      "generated": true
+    },
+    {
+      "stdin": "notes35 0\ndump43 0\nnotes92.txt 0\ndump22.dat 0\n",
+      "generated": true
+    },
+    {
+      "stdin": "log74 902\ntape31 365\nlog50 1189\ntape16 664\n",
+      "generated": true
+    },
+    {
+      "stdin": "census81.txt 0\npayroll42.dat 0\nlog62 340\ncrew66.log 1876\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel59.txt 0\ncrew76.txt 1957\nreel56.txt 1341\n",
+      "generated": true
+    }
+  ]
+}

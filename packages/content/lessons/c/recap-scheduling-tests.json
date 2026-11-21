@@ -1,0 +1,117 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "fcfs"
+      },
+      {
+        "kind": "function",
+        "name": "sjf"
+      },
+      {
+        "kind": "function",
+        "name": "round_robin"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "4 2\nP1 0 7\nP2 1 4\nP3 2 1\nP4 3 4\n"
+    },
+    {
+      "stdin": "1 3\nX 5 4\n"
+    },
+    {
+      "stdin": "3 1\nA 0 1\nB 0 1\nC 0 1\n"
+    },
+    {
+      "stdin": "3 10\nA 0 9\nB 1 2\nC 2 2\n"
+    },
+    {
+      "stdin": "2 2\nA 0 2\nB 50 2\n"
+    },
+    {
+      "stdin": "19 7\nP1 54 4\nP2 0 2\nJOB2 70 1\nP4 0 13\nP5 3 5\nSORT5 4 5\nSORT6 0 3\nP8 9 47\nP9 9 34\nP10 3 41\nA10 66 19\nJOB11 8 38\nP13 0 4\nP14 28 36\nP15 0 21\nJOB15 0 15\nP17 0 4\nP18 20 8\nP19 99 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "19 1\nSORT0 0 2\nP2 9 2\nP3 10 5\nP4 0 28\nP5 37 4\nP6 35 4\nP7 0 38\nP8 0 2\nA8 55 1\nP10 0 4\nP11 0 5\nP12 93 42\nP13 75 2\nP14 0 17\nA14 0 48\nP16 4 2\nTAPE16 1 2\nRUN17 0 4\nP19 91 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 8\nP1 0 2\nP2 97 2\nTAPE2 10 2\nP4 36 3\nP5 3 2\nP6 64 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "17 7\nP1 31 5\nB1 0 33\nP3 6 3\nP4 42 6\nP5 0 44\nP6 9 31\nP7 0 5\nP8 0 26\nP9 0 5\nRUN9 0 13\nRUN10 5 45\nSORT11 63 4\nP13 0 23\nP14 50 3\nP15 10 16\nP16 5 4\nP17 1 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "17 6\nSORT0 66 49\nP2 0 17\nP3 32 38\nP4 0 20\nP5 6 1\nA5 0 5\nP7 8 3\nSORT7 49 29\nA8 5 27\nP10 0 1\nB10 2 5\nP12 32 42\nP13 0 2\nP14 0 5\nP15 1 2\nA15 0 3\nP17 0 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "9 2\nP1 0 44\nP2 73 40\nP3 0 2\nP4 0 3\nP5 10 24\nB5 0 3\nP7 8 8\nP8 1 3\nP9 41 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "13 2\nTAPE0 0 11\nP2 85 1\nP3 8 33\nP4 70 20\nP5 6 4\nP6 0 4\nP7 9 2\nP8 0 13\nP9 1 12\nP10 0 3\nP11 93 4\nP12 83 1\nP13 52 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 1\nP1 6 10\nA1 0 2\nP3 9 4\nP4 0 4\nJOB4 10 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "11 3\nP1 0 47\nP2 32 43\nP3 34 12\nP4 99 11\nP5 73 4\nRUN5 4 8\nP7 10 5\nJOB7 79 13\nP9 4 1\nP10 0 2\nP11 0 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "15 6\nP1 0 40\nP2 31 1\nP3 1 25\nRUN3 2 1\nSORT4 0 33\nP6 0 23\nP7 0 4\nP8 71 30\nP9 3 39\nP10 3 4\nP11 2 36\nP12 0 12\nP13 6 42\nP14 13 3\nP15 28 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "16 10\nP1 6 44\nP2 8 5\nRUN2 23 3\nP4 59 3\nSORT4 3 9\nTAPE5 0 3\nP7 0 1\nP8 4 29\nP9 5 12\nP10 4 39\nP11 5 20\nP12 66 5\nP13 0 5\nP14 0 1\nP15 82 12\nA15 0 50\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 2\nP1 0 2\nTAPE1 0 15\nP3 84 1\nP4 0 5\nP5 16 5\nB5 7 6\nP7 89 10\n",
+      "generated": true
+    },
+    {
+      "stdin": "13 4\nP1 0 1\nP2 17 4\nP3 5 4\nP4 4 49\nP5 88 3\nP6 0 49\nP7 70 11\nP8 7 3\nRUN8 0 18\nB9 2 5\nP11 10 34\nP12 31 5\nP13 8 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 1\nJOB0 74 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "2 7\nP1 2 16\nP2 9 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "15 1\nP1 98 1\nRUN1 0 5\nP3 17 13\nP4 74 2\nP5 0 4\nP6 0 2\nP7 7 3\nP8 0 2\nP9 0 34\nP10 97 14\nP11 0 4\nP12 89 4\nP13 10 9\nP14 9 5\nP15 9 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 6\nP1 64 39\nP2 85 43\nP3 34 17\nP4 9 24\nP5 0 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "18 4\nP1 5 4\nP2 0 5\nA2 81 21\nP4 9 1\nP5 0 49\nP6 0 2\nP7 55 2\nP8 0 2\nSORT8 0 37\nRUN9 0 18\nP11 44 10\nP12 89 21\nP13 0 48\nP14 0 42\nTAPE14 93 1\nP16 0 4\nP17 8 45\nTAPE17 0 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 4\nP1 7 11\nSORT1 10 3\nSORT2 4 2\nB3 0 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 7\nP1 0 3\nP2 82 1\nSORT2 64 2\nP4 5 1\nP5 0 1\nP6 4 1\nP7 0 3\nA7 0 25\nP9 7 5\nP10 4 4\nP11 0 27\nP12 0 24\nP13 7 42\nP14 0 5\nRUN14 79 4\nP16 0 3\nP17 0 43\nB17 0 5\nP19 0 30\nP20 0 1\n",
+      "generated": true
+    }
+  ]
+}

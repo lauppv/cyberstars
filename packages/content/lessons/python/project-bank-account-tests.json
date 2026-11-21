@@ -1,0 +1,196 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "BankError"
+      },
+      {
+        "kind": "class",
+        "name": "InvalidAmount"
+      },
+      {
+        "kind": "class",
+        "name": "NotEnoughMoney"
+      },
+      {
+        "kind": "class",
+        "name": "Account"
+      },
+      {
+        "kind": "extends",
+        "name": "BankError"
+      },
+      {
+        "kind": "function",
+        "name": "deposit"
+      },
+      {
+        "kind": "function",
+        "name": "withdraw"
+      },
+      {
+        "kind": "function",
+        "name": "__str__"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "input"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "Ada\ndeposit 100\nwithdraw 130\ndeposit 0\nwithdraw 40\nend\n"
+    },
+    {
+      "visible": true,
+      "stdin": "Ben\nend\n"
+    },
+    {
+      "stdin": "Kai\nwithdraw 1\nend\n"
+    },
+    {
+      "stdin": "Mila\ndeposit -100\nwithdraw -5\ndeposit 10000\nwithdraw 10000\nwithdraw 1\nend\n"
+    },
+    {
+      "stdin": "Zara Lee\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\ndeposit 5\nend\n"
+    },
+    {
+      "stdin": "Eli\nwithdraw -59\nwithdraw -71\nwithdraw 5950\ndeposit -90\nwithdraw -12\nwithdraw -12\ndeposit 8821\nwithdraw 9105\nwithdraw -50\ndeposit 444\nwithdraw -60\nwithdraw -99\ndeposit 190\nwithdraw 352\ndeposit 3452\nwithdraw -7\ndeposit 3077\nwithdraw 129\nwithdraw 5546\ndeposit -48\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\nwithdraw 6745\ndeposit 232\ndeposit -26\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\ndeposit 318\ndeposit 4762\ndeposit -35\nwithdraw 8213\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit 737\ndeposit 6247\nwithdraw -84\ndeposit 6044\ndeposit 457\nwithdraw -96\nwithdraw -73\ndeposit 396\ndeposit 343\ndeposit -80\nwithdraw -28\nwithdraw -54\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\nwithdraw 320\nwithdraw 162\ndeposit 24\ndeposit 235\nwithdraw 37\ndeposit -10\nwithdraw -2\nwithdraw 255\nwithdraw -27\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit -32\nwithdraw -47\nwithdraw -72\ndeposit 78\nwithdraw 7866\ndeposit 7513\ndeposit -52\ndeposit 1938\nwithdraw -42\nwithdraw 485\nwithdraw 248\nwithdraw 135\nwithdraw 174\ndeposit 6743\nwithdraw -5\nwithdraw 353\nwithdraw 9099\ndeposit 404\ndeposit 6319\nwithdraw -19\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\nwithdraw 8263\ndeposit -35\nwithdraw 57\ndeposit 1777\ndeposit 4440\ndeposit 31\nwithdraw -71\ndeposit 109\nwithdraw 7805\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndeposit 442\nwithdraw -53\nwithdraw 7508\ndeposit 1825\ndeposit 8251\ndeposit 8456\nwithdraw -41\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\ndeposit -31\ndeposit -24\nwithdraw 422\ndeposit 346\ndeposit 220\ndeposit -34\ndeposit 9220\ndeposit 5451\ndeposit 7884\ndeposit -30\ndeposit 12\ndeposit -20\ndeposit 1684\nwithdraw 482\ndeposit -69\ndeposit -14\ndeposit 378\nwithdraw -54\ndeposit 6096\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\ndeposit 456\nwithdraw -70\ndeposit 2850\ndeposit 353\nwithdraw 3090\nwithdraw 399\ndeposit 5507\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit -51\ndeposit 287\nwithdraw 299\nwithdraw -30\nwithdraw 435\nwithdraw 1038\ndeposit 6491\ndeposit 3441\ndeposit -41\ndeposit -22\nwithdraw 2015\nwithdraw 1857\ndeposit 335\nwithdraw 289\nwithdraw -12\nwithdraw 103\nwithdraw 72\nwithdraw 4214\nwithdraw -69\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit -100\nwithdraw -88\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit 7140\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndeposit -56\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\ndeposit 82\nwithdraw 5252\ndeposit 387\ndeposit 9691\ndeposit 9781\nwithdraw 2961\ndeposit -14\ndeposit 226\ndeposit -71\nwithdraw 7681\nwithdraw 1483\nwithdraw 5245\ndeposit -53\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nwithdraw 5462\nwithdraw -43\nwithdraw 231\ndeposit -55\nwithdraw 72\ndeposit 2399\nwithdraw -80\ndeposit 3431\ndeposit 82\nwithdraw 255\nwithdraw 7619\ndeposit 2368\ndeposit -91\ndeposit 76\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\nwithdraw 4604\nwithdraw 413\nwithdraw 7379\nwithdraw 4013\nwithdraw -15\nwithdraw 5348\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Cy\nwithdraw 8552\nwithdraw -5\ndeposit 100\ndeposit 319\nwithdraw 5136\ndeposit 494\nwithdraw 1824\nwithdraw -57\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\nwithdraw 8079\nwithdraw -46\ndeposit 241\nwithdraw 2681\ndeposit 8554\nwithdraw 9197\ndeposit 109\nwithdraw 474\ndeposit -67\ndeposit -60\ndeposit 9001\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit 483\ndeposit 81\nwithdraw -61\nwithdraw -19\ndeposit -33\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndeposit -84\ndeposit 59\nwithdraw -73\nwithdraw 352\ndeposit 149\ndeposit 333\nwithdraw 1172\nwithdraw -52\nwithdraw 140\ndeposit 437\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nwithdraw 1921\ndeposit -35\ndeposit 485\nwithdraw 1394\ndeposit 236\ndeposit -93\ndeposit -41\ndeposit -4\ndeposit 230\nwithdraw 205\ndeposit 252\ndeposit 80\nwithdraw 322\ndeposit 221\ndeposit 377\ndeposit 1243\nwithdraw -29\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ada\ndeposit 304\ndeposit 6901\ndeposit 9892\ndeposit 4711\nwithdraw 2888\ndeposit 63\ndeposit 4844\nwithdraw -52\ndeposit 2749\ndeposit -41\nwithdraw 674\ndeposit -37\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\nwithdraw 9358\nwithdraw 333\nwithdraw 6296\nwithdraw 560\nwithdraw 3974\ndeposit 6647\ndeposit -34\nwithdraw 404\ndeposit 7944\ndeposit 8196\ndeposit 3653\nwithdraw 8930\ndeposit 8468\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nwithdraw 3955\ndeposit -47\ndeposit 6967\ndeposit 3690\ndeposit -27\nwithdraw 348\nwithdraw 58\nwithdraw -22\nwithdraw -9\nwithdraw -42\nwithdraw -73\ndeposit 187\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\ndeposit 1555\ndeposit 8632\ndeposit 1482\ndeposit 2479\ndeposit -31\nwithdraw -70\nwithdraw 2946\ndeposit 4316\ndeposit 91\ndeposit 7121\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Dee\ndeposit 7624\nwithdraw -35\ndeposit 2769\ndeposit 7508\ndeposit 493\ndeposit 5500\ndeposit -43\ndeposit -2\ndeposit -64\nwithdraw 1901\nwithdraw 1337\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\ndeposit 8215\nwithdraw 107\ndeposit 4752\nwithdraw 2902\ndeposit 229\ndeposit 3375\ndeposit 5783\nwithdraw 98\nwithdraw 344\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nwithdraw -2\ndeposit 9172\ndeposit 276\nwithdraw -41\ndeposit 277\nwithdraw 50\ndeposit 4480\ndeposit 0\nwithdraw -67\ndeposit 6542\ndeposit 389\ndeposit -32\ndeposit 1236\ndeposit -14\ndeposit -49\nwithdraw -92\nwithdraw 3656\ndeposit -76\nwithdraw 5434\ndeposit 8385\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Ben\nwithdraw 63\ndeposit 4775\ndeposit 6939\ndeposit 370\ndeposit -33\ndeposit 4158\ndeposit 4411\ndeposit -92\nwithdraw 449\ndeposit 210\ndeposit 135\nwithdraw -95\ndeposit -12\nwithdraw -21\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "Eli\nwithdraw 110\nwithdraw -92\ndeposit 325\nwithdraw 458\ndeposit 1507\ndeposit 8328\ndeposit 2313\nwithdraw 471\nend\n",
+      "generated": true
+    }
+  ]
+}

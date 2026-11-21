@@ -1,0 +1,211 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "class",
+        "name": "InventoryError"
+      },
+      {
+        "kind": "class",
+        "name": "Inventory"
+      },
+      {
+        "kind": "extends",
+        "name": "Exception"
+      },
+      {
+        "kind": "function",
+        "name": "add"
+      },
+      {
+        "kind": "function",
+        "name": "remove"
+      },
+      {
+        "kind": "function",
+        "name": "save"
+      },
+      {
+        "kind": "function",
+        "name": "load_inventory"
+      },
+      {
+        "kind": "raise"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "with"
+      },
+      {
+        "kind": "import",
+        "name": "json"
+      },
+      {
+        "kind": "call",
+        "name": "dump"
+      },
+      {
+        "kind": "call",
+        "name": "load"
+      },
+      {
+        "kind": "call",
+        "name": "input"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "add rice 10 2\nadd tools 1 30\nremove rice 4\nremove rice 9\nremove tea 1\nadd rice 5 9\nend\n"
+    },
+    {
+      "visible": true,
+      "stdin": "end\n"
+    },
+    {
+      "stdin": "add rice 3 1\nremove rice 3\nend\n"
+    },
+    {
+      "stdin": "add water 10 5\nadd seeds 50 1\nadd tools 2 25\nend\n"
+    },
+    {
+      "stdin": "remove soap 1\nadd soap 1 1\nremove soap 2\nremove soap 1\nadd cable 100 50\nend\n"
+    },
+    {
+      "stdin": "remove fuel 29\nremove rice 4\nadd cable 50 4\nremove seeds 26\nadd glass 53 31\nremove cable 32\nremove seeds 2\nadd glass 13 45\nremove cable 33\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add cable 99 45\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add cable 66 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add water 86 19\nremove water 1\nremove cable 7\nadd soap 8 34\nadd tools 64 23\nremove tools 25\nremove tools 25\nadd tools 86 25\nadd tea 16 14\nadd fuel 15 35\nadd glass 31 32\nadd cable 80 36\nremove fuel 60\nremove seeds 9\nremove soap 58\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add glass 27 39\nremove water 10\nremove water 29\nadd rice 33 44\nremove tea 16\nremove glass 22\nremove tea 33\nadd seeds 50 6\nadd rice 13 12\nremove water 8\nadd tea 63 19\nadd water 43 27\nremove cable 22\nremove fuel 27\nremove tea 2\nadd rice 20 29\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add tools 32 24\nremove tools 10\nadd water 36 5\nadd fuel 80 22\nremove water 6\nadd water 20 1\nadd fuel 34 3\nadd water 81 8\nadd tools 59 42\nadd tools 60 34\nremove fuel 50\nadd tools 97 18\nremove glass 30\nadd glass 35 17\nadd tea 43 36\nadd glass 64 41\nremove soap 27\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add soap 74 49\nadd tea 53 6\nadd fuel 81 9\nadd seeds 52 45\nadd water 53 42\nadd tools 20 18\nremove rice 35\nremove soap 37\nadd cable 48 7\nremove glass 12\nremove soap 47\nremove water 24\nremove cable 11\nadd rice 15 37\nadd glass 75 24\nadd cable 11 35\nadd tools 76 30\nadd water 12 35\nadd soap 77 31\nremove tools 45\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove cable 51\nadd soap 4 22\nremove rice 45\nremove soap 1\nremove water 32\nremove rice 26\nadd water 89 20\nadd soap 52 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add soap 6 29\nremove fuel 47\nremove water 53\nadd glass 8 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add rice 26 49\nremove cable 52\nadd tea 43 44\nremove tea 60\nadd seeds 23 27\nremove water 41\nadd fuel 62 43\nremove fuel 60\nadd cable 94 25\nadd rice 86 3\nremove seeds 32\nadd glass 54 32\nadd tools 7 30\nremove seeds 15\nadd glass 51 20\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add seeds 62 14\nremove tea 8\nadd tea 62 1\nremove water 54\nremove soap 5\nremove seeds 49\nremove glass 47\nremove tea 14\nremove rice 10\nremove cable 1\nadd glass 82 42\nadd water 5 50\nremove tea 15\nadd rice 31 47\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add rice 67 11\nadd tea 15 7\nadd seeds 67 11\nremove cable 25\nremove tea 23\nremove seeds 11\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add soap 86 5\nremove glass 54\nremove seeds 7\nremove water 16\nremove tea 38\nremove cable 37\nremove tea 37\nremove soap 31\nremove tools 29\nadd rice 32 33\nremove tea 6\nremove fuel 39\nremove glass 34\nadd rice 24 11\nadd seeds 13 4\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add water 14 23\nremove seeds 13\nadd cable 72 25\nremove fuel 29\nremove fuel 6\nremove water 37\nremove soap 29\nadd rice 17 42\nadd rice 61 2\nadd water 71 48\nremove cable 19\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove rice 41\nadd water 51 39\nadd glass 70 5\nadd water 67 26\nadd rice 57 2\nadd tools 69 19\nremove tools 54\nremove rice 18\nadd cable 93 41\nadd rice 85 38\nadd seeds 20 34\nremove tools 52\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove rice 50\nadd fuel 4 31\nadd soap 100 42\nremove water 58\nadd cable 65 10\nremove soap 3\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add fuel 23 20\nremove rice 27\nadd seeds 24 29\nremove soap 42\nadd tea 94 10\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add rice 33 42\nadd seeds 63 2\nadd tea 80 5\nremove fuel 31\nremove tools 48\nadd fuel 53 41\nremove soap 41\nadd soap 10 18\nremove rice 56\nadd seeds 26 8\nadd seeds 33 10\nremove tea 37\nremove seeds 39\nremove water 59\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add rice 52 24\nadd tools 42 11\nadd seeds 11 27\nadd soap 12 49\nadd fuel 97 29\nremove soap 1\nremove tools 8\nadd glass 100 44\nadd tools 21 11\nremove seeds 39\nremove seeds 30\nadd cable 60 8\nremove tea 23\nadd rice 99 21\nremove tea 38\nadd seeds 88 44\nadd water 57 24\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove cable 34\nremove water 14\nadd soap 60 25\nadd glass 46 23\nadd soap 6 25\nadd seeds 5 43\nadd seeds 71 4\nremove fuel 55\nadd tea 76 16\nremove tea 17\nadd fuel 27 25\nremove tools 5\nremove water 56\nadd tea 82 9\nadd rice 83 18\nadd rice 56 47\nremove tea 18\nadd water 27 21\nremove rice 59\nremove cable 60\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add rice 59 44\nadd cable 93 33\nremove soap 17\nremove seeds 47\nremove seeds 33\nremove glass 59\nremove cable 30\nremove tools 30\nremove fuel 39\nadd soap 67 15\nremove fuel 34\nadd tools 98 38\nremove soap 31\nremove rice 20\nremove water 26\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add fuel 45 45\nremove cable 48\nremove fuel 53\nremove seeds 20\nadd soap 45 38\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove water 60\nremove rice 56\nremove tea 31\nadd rice 56 38\nadd tools 22 4\nremove cable 23\nadd rice 54 29\nremove water 54\nadd fuel 70 27\nadd fuel 69 18\nremove rice 41\nadd seeds 3 18\nremove soap 35\nremove rice 52\nremove glass 59\nadd seeds 8 22\nadd tools 4 50\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove tea 37\nadd soap 36 47\nremove rice 27\nadd cable 81 17\nremove fuel 19\nadd glass 23 30\nremove tea 57\nadd tea 38 20\nremove cable 46\nremove soap 38\nadd tools 51 20\nadd rice 33 6\nremove soap 26\nadd tools 42 32\nadd glass 24 12\nremove tools 59\nremove soap 6\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove tea 29\nremove fuel 35\nadd seeds 49 6\nremove tools 39\nadd glass 49 16\nremove fuel 34\nremove fuel 32\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove tools 7\nremove fuel 51\nadd soap 91 43\nremove cable 60\nadd glass 38 26\nremove cable 48\nadd water 34 39\nadd tea 53 48\nadd tea 99 30\nremove fuel 29\nremove soap 30\nadd tools 59 35\nadd soap 26 24\nadd cable 3 18\nremove fuel 18\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove soap 20\nadd tea 56 37\nremove water 15\nremove tea 27\nremove fuel 35\nadd soap 42 40\nadd cable 86 39\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add soap 89 48\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add cable 7 13\nremove fuel 49\nadd seeds 61 23\nadd tools 93 31\nremove soap 48\nadd cable 32 32\nremove water 59\nremove tools 55\nremove tea 1\nremove fuel 33\nadd tea 47 23\nadd fuel 95 49\nremove fuel 16\nadd tools 92 6\nadd fuel 86 13\nadd tea 27 32\nremove cable 44\nremove rice 39\nremove seeds 27\nremove tea 29\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove water 7\nadd water 13 8\nadd cable 4 48\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add cable 97 1\nadd glass 67 31\nremove tea 57\nadd tools 86 9\nadd cable 13 37\nadd fuel 93 44\nadd soap 99 10\nadd glass 62 27\nadd tea 58 32\nadd tools 5 44\nremove cable 26\nadd water 28 37\nremove water 25\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add seeds 90 23\nremove glass 7\nadd tools 68 28\nadd fuel 91 40\nremove tea 52\nremove fuel 39\nend\n",
+      "generated": true
+    },
+    {
+      "stdin": "add glass 33 26\nremove soap 30\nadd rice 94 27\nremove cable 53\nadd water 45 2\nremove seeds 14\nadd tools 11 38\nremove fuel 23\nend\n",
+      "generated": true
+    }
+  ]
+}

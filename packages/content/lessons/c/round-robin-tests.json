@@ -1,0 +1,114 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "3 2\nP1 0 5\nP2 1 3\nP3 2 1\n"
+    },
+    {
+      "stdin": "1 3\nX 4 7\n"
+    },
+    {
+      "stdin": "2 10\nA 0 3\nB 0 3\n"
+    },
+    {
+      "stdin": "3 1\nA 0 3\nB 1 2\nC 2 1\n"
+    },
+    {
+      "stdin": "2 2\nA 0 2\nB 2 2\n"
+    },
+    {
+      "stdin": "2 3\nA 0 4\nB 3 2\n"
+    },
+    {
+      "stdin": "3 4\nA 0 1\nB 20 6\nC 21 3\n"
+    },
+    {
+      "stdin": "2 6\nP1 0 35\nP2 1 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 6\nB0 8 1\nP2 0 1\nP3 6 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 3\nP1 0 3\nP2 0 4\nP3 2 4\nP4 0 46\nP5 0 2\nP6 9 3\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 5\nP1 6 3\nP2 0 16\nTAPE2 0 1\nP4 0 3\nP5 15 26\nP6 0 6\nP7 3 8\nP8 36 5\nP9 88 3\nP10 0 22\nP11 30 2\nP12 0 27\nP13 4 1\nP14 81 25\nP15 1 22\nP16 1 36\nB16 6 3\nP18 0 35\nP19 3 30\nP20 0 5\n",
+      "generated": true
+    },
+    {
+      "stdin": "16 6\nA0 6 49\nA1 57 13\nTAPE2 3 1\nP4 1 32\nP5 8 5\nP6 35 4\nP7 67 10\nP8 0 3\nP9 95 1\nA9 4 44\nJOB10 65 2\nA11 0 2\nP13 7 3\nP14 0 3\nP15 87 2\nP16 99 16\n",
+      "generated": true
+    },
+    {
+      "stdin": "18 3\nA0 0 1\nB1 0 24\nP3 4 19\nP4 0 7\nP5 56 20\nP6 9 24\nRUN6 1 4\nP8 1 49\nP9 0 5\nP10 5 11\nP11 0 50\nP12 0 2\nP13 6 3\nP14 0 4\nP15 79 5\nJOB15 1 4\nP17 0 1\nP18 6 29\n",
+      "generated": true
+    },
+    {
+      "stdin": "10 10\nP1 11 42\nJOB1 2 2\nB2 4 2\nP4 0 26\nP5 0 20\nA5 0 42\nP7 1 2\nP8 4 46\nP9 47 3\nP10 83 18\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 5\nP1 81 3\nP2 0 2\nP3 29 17\n",
+      "generated": true
+    },
+    {
+      "stdin": "17 3\nP1 71 32\nB1 0 2\nB2 0 3\nP4 8 4\nP5 8 1\nP6 0 5\nP7 0 4\nP8 0 29\nP9 0 3\nP10 0 41\nP11 8 5\nP12 7 48\nP13 3 4\nP14 0 2\nP15 10 14\nJOB15 8 13\nP17 4 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 7\nP1 0 2\nP2 0 3\nP3 9 49\nP4 1 3\nP5 2 21\nP6 1 1\nP7 6 33\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 2\nB0 14 18\nP2 41 38\nP3 8 12\n",
+      "generated": true
+    },
+    {
+      "stdin": "12 2\nP1 0 30\nP2 0 1\nP3 3 33\nP4 70 6\nP5 85 1\nP6 5 13\nP7 0 31\nP8 3 24\nRUN8 0 27\nP10 10 23\nP11 0 1\nP12 9 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 7\nP1 5 24\nP2 0 31\nP3 0 36\nP4 0 5\nP5 59 6\n",
+      "generated": true
+    },
+    {
+      "stdin": "1 3\nA0 40 8\n",
+      "generated": true
+    },
+    {
+      "stdin": "20 3\nP1 5 4\nP2 87 49\nP3 0 35\nP4 43 5\nP5 0 1\nP6 53 32\nP7 0 45\nP8 91 2\nP9 0 17\nP10 56 1\nP11 0 19\nP12 0 1\nP13 34 7\nJOB13 7 14\nP15 93 1\nP16 37 3\nP17 0 36\nP18 75 10\nJOB18 97 14\nP20 3 14\n",
+      "generated": true
+    },
+    {
+      "stdin": "5 6\nP1 38 1\nRUN1 39 49\nP3 0 5\nB3 61 33\nP5 27 12\n",
+      "generated": true
+    },
+    {
+      "stdin": "6 1\nP1 2 38\nP2 79 5\nP3 0 5\nB3 0 2\nP5 8 16\nB5 10 2\n",
+      "generated": true
+    },
+    {
+      "stdin": "15 10\nP1 0 5\nP2 8 5\nP3 0 18\nTAPE3 0 1\nP5 0 2\nP6 0 4\nP7 0 4\nP8 9 47\nA8 6 1\nP10 2 1\nP11 17 14\nP12 62 4\nJOB12 4 4\nP14 5 3\nP15 0 28\n",
+      "generated": true
+    },
+    {
+      "stdin": "3 3\nP1 0 46\nP2 6 47\nP3 0 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "4 8\nP1 0 1\nB1 96 1\nSORT2 0 1\nP4 44 26\n",
+      "generated": true
+    }
+  ]
+}

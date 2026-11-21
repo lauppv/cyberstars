@@ -1,0 +1,465 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "card"
+      },
+      {
+        "kind": "var_kwargs"
+      },
+      {
+        "kind": "variable",
+        "name": "name"
+      },
+      {
+        "kind": "variable",
+        "name": "info"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name": "Ada",
+        "info": {
+          "$dict": {
+            "role": "engineer",
+            "deck": 3
+          }
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "name": "Kai",
+        "info": {
+          "$dict": {}
+        }
+      }
+    },
+    {
+      "inject": {
+        "name": "grace",
+        "info": {
+          "$dict": {
+            "role": "engineer",
+            "deck": "pilot",
+            "age": 3,
+            "city": 41,
+            "team": "London",
+            "rank": "blue"
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "name": "x",
+        "info": {
+          "$dict": {
+            "a": 0
+          }
+        }
+      }
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {
+            "rank": "chess",
+            "deck": "pilot"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "info": {
+          "$dict": {}
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "lang": "red"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "team": "pilot",
+            "hobby": "cat",
+            "age": 41
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "badge": 41,
+            "lang": "London"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "rank": 41,
+            "city": 7
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "lang": "medic",
+            "city": "red",
+            "team": "pilot",
+            "role": 7,
+            "room": 41,
+            "badge": "red"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "city": "blue",
+            "hobby": 41
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mila",
+        "info": {
+          "$dict": {
+            "lang": "rice"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "room": "pilot",
+            "hobby": "chess"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "room": "blue"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "pet": "rice",
+            "rank": 3,
+            "badge": "chess",
+            "age": "red",
+            "room": 7
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mila",
+        "info": {
+          "$dict": {
+            "food": 7,
+            "role": "blue"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "room": "cat"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "team": "rice",
+            "food": "blue"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "rank": "engineer",
+            "hobby": "medic"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {
+            "role": "London",
+            "food": 41,
+            "deck": "engineer",
+            "room": 7,
+            "age": 3,
+            "lang": "chess"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mila",
+        "info": {
+          "$dict": {
+            "rank": "pilot",
+            "age": "rice",
+            "food": "pilot",
+            "city": "rice",
+            "deck": 3,
+            "team": "pilot"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {}
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {
+            "room": 41,
+            "pet": "red",
+            "hobby": "red",
+            "badge": 3,
+            "age": "pilot",
+            "lang": "pilot"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {}
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "team": 41,
+            "rank": "chess",
+            "food": "London"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {
+            "city": "pilot",
+            "hobby": "chess"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {}
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "team": "blue",
+            "age": "rice"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {
+            "city": "chess",
+            "food": "chess",
+            "age": "London",
+            "team": "rice",
+            "rank": 41
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "lang": 3,
+            "food": "engineer",
+            "badge": "cat"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Alan",
+        "info": {
+          "$dict": {
+            "rank": "blue"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ada",
+        "info": {
+          "$dict": {
+            "city": "chess",
+            "hobby": "medic"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "tom",
+        "info": {
+          "$dict": {
+            "team": "cat",
+            "rank": "engineer",
+            "role": 3,
+            "food": "blue",
+            "deck": 41,
+            "hobby": "blue"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mila",
+        "info": {
+          "$dict": {
+            "deck": 3,
+            "pet": "cat"
+          }
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Zara Lee",
+        "info": {
+          "$dict": {
+            "role": "medic"
+          }
+        }
+      },
+      "generated": true
+    }
+  ]
+}

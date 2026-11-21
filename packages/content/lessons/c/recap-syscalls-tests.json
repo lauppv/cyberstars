@@ -1,0 +1,158 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "open"
+      },
+      {
+        "kind": "call",
+        "name": "read"
+      },
+      {
+        "kind": "call",
+        "name": "write"
+      },
+      {
+        "kind": "call",
+        "name": "unlink"
+      },
+      {
+        "kind": "call",
+        "name": "readdir"
+      },
+      {
+        "kind": "call",
+        "name": "strerror"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "fopen"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "write crew.txt ada\nappend crew.txt ken\nshow crew.txt\ncopy crew.txt backup.txt\nappend ghost.txt x\nlist\nremove crew.txt\nlist\nshow crew.txt\n"
+    },
+    {
+      "stdin": "list\nremove backup.txt\nlist\n"
+    },
+    {
+      "stdin": "write a.txt one\nwrite a.txt two\nshow a.txt\nremove a.txt\n"
+    },
+    {
+      "stdin": "copy nothing.txt b.txt\nlist\nwrite nofolder/x.txt hi\n"
+    },
+    {
+      "stdin": "write notes.dat x\nwrite notes.txt y\nlist\nremove notes.dat\nremove notes.txt\nremove notes.txt\n"
+    },
+    {
+      "stdin": "write big.txt wwwwwwwwwwwwwwwwwwww\nappend big.txt vvvvvvvvvvvvvvvvvvvv\ncopy big.txt big2.txt\nshow big2.txt\nlist\nremove big.txt\nremove big2.txt"
+    },
+    {
+      "stdin": "write z.txt ada\nwrite backup.txt payroll\nshow a.txt\nlist\nremove reel.dat\nwrite z.txt ken\nlist\nlist\nlist\nappend backup.txt 1969\nshow log.txt\nappend tape.txt ken\nappend crew.txt payroll\nremove log.txt\nlist\nappend backup.txt reel\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append tape.txt payroll\nappend crew.txt x\nremove backup.txt\nremove crew.txt\nwrite backup.txt ada\nwrite reel.dat 1969\nappend log.txt ken\nappend crew.txt x\ncopy z.txt a.txt\nremove reel.dat\nremove reel.dat\nwrite z.txt reel\nlist\nremove crew.txt\nremove log.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "write backup.txt payroll\nremove backup.txt\nlist\nshow tape.txt\nlist\nappend tape.txt payroll\nappend crew.txt ken\nwrite tape.txt 1969\nwrite tape.txt ada\nwrite tape.txt ada\nappend backup.txt x\nappend crew.txt x\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append a.txt 1969\nappend log.txt reel\nwrite reel.dat ken\nshow reel.dat\nremove crew.txt\nremove backup.txt\nremove tape.txt\nappend log.txt payroll\nremove reel.dat\nlist\nshow z.txt\nremove reel.dat\nshow a.txt\nshow a.txt\nshow backup.txt\nlist\nappend z.txt x\nappend reel.dat x\ncopy log.txt z.txt\nwrite crew.txt reel\nappend reel.dat payroll\nappend crew.txt ada\nshow backup.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "write crew.txt reel\nwrite tape.txt grace\nremove tape.txt\nappend log.txt grace\nappend a.txt grace\nwrite crew.txt reel\nappend z.txt x\nwrite crew.txt payroll\nremove backup.txt\nremove log.txt\nappend log.txt reel\nshow log.txt\nappend backup.txt payroll\nappend a.txt ada\nshow backup.txt\nwrite backup.txt x\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove log.txt\nwrite a.txt reel\nremove tape.txt\ncopy backup.txt reel.dat\nappend z.txt payroll\nwrite a.txt ada\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append z.txt payroll\nlist\nlist\nlist\nwrite crew.txt ada\nappend crew.txt grace\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "show log.txt\ncopy reel.dat a.txt\ncopy crew.txt z.txt\nlist\nappend crew.txt 1969\nappend log.txt grace\nwrite z.txt x\nwrite log.txt payroll\nwrite reel.dat ada\nshow crew.txt\nremove z.txt\ncopy backup.txt z.txt\nwrite reel.dat x\nwrite a.txt grace\nlist\nappend a.txt x\nwrite reel.dat ada\nwrite crew.txt ada\nshow log.txt\nwrite z.txt x\nlist\nshow backup.txt\nshow z.txt\nremove z.txt\nappend reel.dat payroll\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append a.txt payroll\ncopy backup.txt tape.txt\nlist\nappend crew.txt 1969\nappend crew.txt payroll\nlist\nappend crew.txt x\nlist\ncopy tape.txt crew.txt\nappend crew.txt payroll\ncopy a.txt tape.txt\nlist\ncopy reel.dat a.txt\nwrite crew.txt 1969\nremove z.txt\nappend z.txt reel\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append reel.dat grace\nlist\nshow backup.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove tape.txt\nlist\nappend reel.dat ken\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "list\nwrite reel.dat reel\ncopy tape.txt z.txt\ncopy z.txt tape.txt\nshow reel.dat\nappend z.txt x\nappend reel.dat 1969\nwrite reel.dat reel\ncopy crew.txt tape.txt\nlist\nlist\nlist\nremove a.txt\nappend backup.txt ken\nshow tape.txt\nappend crew.txt payroll\ncopy log.txt backup.txt\nwrite reel.dat ada\nappend crew.txt 1969\nshow backup.txt\nremove tape.txt\nshow tape.txt\ncopy log.txt backup.txt\nlist\nwrite z.txt grace\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "show backup.txt\nwrite z.txt grace\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append tape.txt ken\nwrite crew.txt payroll\nlist\nremove reel.dat\nappend reel.dat grace\nappend backup.txt ken\nwrite a.txt grace\nremove log.txt\ncopy a.txt tape.txt\nappend a.txt ada\nwrite z.txt payroll\nremove reel.dat\nwrite reel.dat payroll\nappend log.txt payroll\nremove tape.txt\nappend a.txt ada\nappend reel.dat payroll\nshow crew.txt\nwrite log.txt grace\nlist\nremove a.txt\nshow z.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "show reel.dat\nwrite z.txt payroll\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "copy a.txt tape.txt\nwrite reel.dat ada\nwrite log.txt reel\nwrite log.txt ada\nappend backup.txt 1969\nappend reel.dat grace\nlist\nremove reel.dat\ncopy backup.txt reel.dat\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "show log.txt\ncopy backup.txt log.txt\nlist\nappend crew.txt payroll\nlist\nremove z.txt\nappend log.txt grace\nappend log.txt ken\nshow tape.txt\nremove crew.txt\nremove tape.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append crew.txt ada\nappend tape.txt ada\nshow tape.txt\nwrite a.txt reel\nremove tape.txt\ncopy crew.txt backup.txt\nremove a.txt\nshow a.txt\nappend tape.txt ada\ncopy a.txt tape.txt\nshow reel.dat\nwrite log.txt 1969\nlist\nlist\nappend log.txt reel\nappend reel.dat payroll\nappend z.txt payroll\nlist\nwrite reel.dat payroll\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "write log.txt x\nremove log.txt\ncopy a.txt tape.txt\nlist\nlist\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove a.txt\nshow tape.txt\nshow reel.dat\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "show crew.txt\ncopy log.txt backup.txt\nlist\nwrite a.txt ada\nwrite log.txt ken\nappend log.txt payroll\nremove a.txt\nwrite tape.txt payroll\nremove crew.txt\ncopy tape.txt a.txt\nremove z.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "remove tape.txt\nappend a.txt ada\nlist\nwrite log.txt payroll\nlist\nshow z.txt\nwrite a.txt x\nappend z.txt ken\nwrite z.txt ada\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "show z.txt\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "write z.txt ken\nshow log.txt\nshow z.txt\nwrite backup.txt payroll\nappend a.txt ken\nappend a.txt reel\nappend log.txt ken\nwrite backup.txt x\nappend a.txt x\nwrite backup.txt payroll\nappend log.txt payroll\nappend crew.txt reel\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "append crew.txt grace\nshow z.txt\nwrite tape.txt reel\nremove tape.txt\ncopy tape.txt backup.txt\nappend log.txt payroll\nshow log.txt\nlist\nlist\nwrite z.txt grace\nshow reel.dat\nwrite log.txt 1969\nwrite reel.dat ken\nremove a.txt\nappend reel.dat ken\nappend tape.txt payroll\nlist\nremove crew.txt\nremove log.txt\nremove tape.txt\nremove reel.dat\nremove a.txt\nremove z.txt\nremove backup.txt\n",
+      "generated": true
+    }
+  ]
+}

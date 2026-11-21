@@ -1,0 +1,97 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "dup2"
+      },
+      {
+        "kind": "call",
+        "name": "fork"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      },
+      {
+        "kind": "call",
+        "name": "open"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "run list.txt seq 3\nshow list.txt\nfeed list.txt sort -r\nfeed list.txt wc -l\nrun out.txt nosuchcmd\n"
+    },
+    {
+      "stdin": "run a.txt echo hello tape\nfeed a.txt tr a-z A-Z\n"
+    },
+    {
+      "stdin": "run big.txt seq 1000\nrun big.txt seq 2\nshow big.txt\n"
+    },
+    {
+      "stdin": "run e.txt true\nshow e.txt\nfeed e.txt wc -c\n"
+    },
+    {
+      "stdin": "run n.txt seq 5 -1 1\nfeed n.txt sort -n\nfeed n.txt head -n 2"
+    },
+    {
+      "stdin": "run b.txt uname\nrun a.txt nosuch-thing\nfeed b.txt head -n 1\nrun b.txt seq 10 -3 1\nrun b.txt expr 6 * 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "run a.txt seq 4\nfeed a.txt sort -r\nrun b.txt uname\nshow b.txt\nfeed b.txt rev\n",
+      "generated": true
+    },
+    {
+      "stdin": "run c.txt echo b a c\nfeed c.txt sort -n\nrun a.txt expr 6 * 7\nfeed a.txt rev\nfeed a.txt head -n 1\nshow c.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "run c.txt echo b a c\nfeed c.txt sort -n\nrun c.txt uname\n",
+      "generated": true
+    },
+    {
+      "stdin": "run a.txt true\n",
+      "generated": true
+    },
+    {
+      "stdin": "run a.txt echo reel seven\nfeed a.txt sort\n",
+      "generated": true
+    },
+    {
+      "stdin": "run a.txt seq 4\nshow a.txt\nfeed a.txt sort\nshow a.txt\nrun b.txt seq 4\n",
+      "generated": true
+    },
+    {
+      "stdin": "run b.txt nosuch-thing\nrun b.txt nosuch-thing\nfeed b.txt sort -r\nfeed b.txt wc -l\nfeed b.txt head -n 1\n",
+      "generated": true
+    },
+    {
+      "stdin": "run a.txt seq 4\nshow a.txt\nfeed a.txt sort -r\nshow a.txt\nrun c.txt echo reel seven\nrun a.txt expr 6 * 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "run b.txt uname\nrun b.txt uname\nshow b.txt\nfeed b.txt tr a-z A-Z\n",
+      "generated": true
+    },
+    {
+      "stdin": "run c.txt nosuch-thing\nrun a.txt echo b a c\nrun b.txt seq 4\nrun b.txt echo b a c\n",
+      "generated": true
+    },
+    {
+      "stdin": "run b.txt true\nfeed b.txt tr a-z A-Z\nshow b.txt\nrun a.txt expr 6 * 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "run c.txt uname\nfeed c.txt sort\nfeed c.txt rev\nrun c.txt uname\nrun a.txt seq 4\nshow a.txt\n",
+      "generated": true
+    },
+    {
+      "stdin": "run a.txt nosuch-thing\nfeed a.txt sort -r\nrun a.txt nosuch-thing\n",
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "function",
+        "name": "afiseaza_binar"
+      },
+      {
+        "kind": "function",
+        "name": "numara_unu"
+      },
+      {
+        "kind": "recursion",
+        "name": "afiseaza_binar"
+      },
+      {
+        "kind": "recursion",
+        "name": "numara_unu"
+      },
+      {
+        "kind": "call",
+        "name": "scanf"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "13\n"
+    },
+    {
+      "visible": true,
+      "stdin": "0\n"
+    },
+    {
+      "stdin": "1\n"
+    },
+    {
+      "stdin": "2\n"
+    },
+    {
+      "stdin": "3\n"
+    },
+    {
+      "stdin": "7\n"
+    },
+    {
+      "stdin": "8\n"
+    },
+    {
+      "stdin": "255\n"
+    },
+    {
+      "stdin": "256\n"
+    },
+    {
+      "stdin": "1023\n"
+    },
+    {
+      "stdin": "1024\n"
+    },
+    {
+      "stdin": "1000000\n"
+    },
+    {
+      "stdin": "524288\n"
+    },
+    {
+      "stdin": "699050\n"
+    },
+    {
+      "stdin": "596523\n",
+      "generated": true
+    },
+    {
+      "stdin": "44853\n",
+      "generated": true
+    },
+    {
+      "stdin": "258767\n",
+      "generated": true
+    },
+    {
+      "stdin": "718352\n",
+      "generated": true
+    },
+    {
+      "stdin": "37376\n",
+      "generated": true
+    },
+    {
+      "stdin": "925534\n",
+      "generated": true
+    },
+    {
+      "stdin": "954539\n",
+      "generated": true
+    },
+    {
+      "stdin": "50905\n",
+      "generated": true
+    },
+    {
+      "stdin": "647543\n",
+      "generated": true
+    },
+    {
+      "stdin": "939655\n",
+      "generated": true
+    },
+    {
+      "stdin": "596534\n",
+      "generated": true
+    },
+    {
+      "stdin": "47280\n",
+      "generated": true
+    },
+    {
+      "stdin": "830115\n",
+      "generated": true
+    },
+    {
+      "stdin": "725801\n",
+      "generated": true
+    },
+    {
+      "stdin": "603895\n",
+      "generated": true
+    },
+    {
+      "stdin": "983900\n",
+      "generated": true
+    },
+    {
+      "stdin": "115295\n",
+      "generated": true
+    },
+    {
+      "stdin": "523151\n",
+      "generated": true
+    },
+    {
+      "stdin": "565733\n",
+      "generated": true
+    },
+    {
+      "stdin": "934578\n",
+      "generated": true
+    },
+    {
+      "stdin": "53905\n",
+      "generated": true
+    },
+    {
+      "stdin": "206481\n",
+      "generated": true
+    },
+    {
+      "stdin": "445294\n",
+      "generated": true
+    },
+    {
+      "stdin": "998514\n",
+      "generated": true
+    },
+    {
+      "stdin": "355854\n",
+      "generated": true
+    },
+    {
+      "stdin": "8501\n",
+      "generated": true
+    },
+    {
+      "stdin": "252359\n",
+      "generated": true
+    },
+    {
+      "stdin": "86996\n",
+      "generated": true
+    },
+    {
+      "stdin": "919304\n",
+      "generated": true
+    },
+    {
+      "stdin": "257720\n",
+      "generated": true
+    }
+  ]
+}

@@ -32,7 +32,7 @@ cyberstars/
 │       ├── curriculum.ts          # Every course and its lessons, in order
 │       ├── paths.ts               # courseDir: a course key (and language) to its folder
 │       ├── visuals.ts             # Puts a multi-language course's named visuals into its lessons
-│       ├── lessons/               # Courses: python (60), c (47), java (109), linux (55),
+│       ├── lessons/               # Courses: python (112), c (106), java (109), linux (55),
 │       │                          #   trees-graphs (12) in python/, java/, c/ plus visuals/,
 │       │                          #   and web-dev (375, English only)
 │       ├── algorithms/            # Challenge sets: python (20), java (20), c (32), and

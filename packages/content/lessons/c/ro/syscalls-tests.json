@@ -1,0 +1,197 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "read"
+      },
+      {
+        "kind": "call",
+        "name": "write"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "call",
+        "name": "scanf"
+      },
+      {
+        "kind": "call",
+        "name": "fgets"
+      },
+      {
+        "kind": "call",
+        "name": "getchar"
+      },
+      {
+        "kind": "call",
+        "name": "fread"
+      },
+      {
+        "kind": "call",
+        "name": "fscanf"
+      },
+      {
+        "kind": "call",
+        "name": "getc"
+      },
+      {
+        "kind": "call",
+        "name": "fgetc"
+      },
+      {
+        "kind": "call",
+        "name": "gets"
+      },
+      {
+        "kind": "call",
+        "name": "getline"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "load tape 7\nrun\n"
+    },
+    {
+      "stdin": "x\n"
+    },
+    {
+      "stdin": "no newline"
+    },
+    {
+      "stdin": "\n\n\n"
+    },
+    {
+      "stdin": "exactly sixteen\n"
+    },
+    {
+      "stdin": "aaaaaaaaaaaaaaaaa\n"
+    },
+    {
+      "stdin": "tabs\tand  spaces  \n"
+    },
+    {
+      "stdin": "print print -- -- reel core run reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "run 42 run load\ntape 7 print\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel # core 42 -- reel\n42 7 reel core load dump 7\n-- tape tape -- -- load reel 42 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "42 print dump #\ncore load end dump\n",
+      "generated": true
+    },
+    {
+      "stdin": "run end end -- reel core -- run dump run --\ntape 7 core run 42 # load run # 42 7\ntape core run 42 core reel end\n\n# end 7 7 run 7 dump load dump run load\n",
+      "generated": true
+    },
+    {
+      "stdin": "\ndump core tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 reel load # tape\nrun\n",
+      "generated": true
+    },
+    {
+      "stdin": "load dump 42\n-- -- core 42 dump dump print\n",
+      "generated": true
+    },
+    {
+      "stdin": "run print\nload 42 end\nload 7 42 end\n# 42 print end end dump dump dump end load end\nreel core reel\ndump reel dump print load run load # core end\ncore 42 reel -- 42 7 reel tape run # print\n7\n# 42 print tape load 42 7\nend\nload run # # dump dump 42 run run run\ntape\n-- load 7 7 # dump # reel core 42\nreel #\nend reel load print end -- tape # dump\n7 7 7 tape run end\ndump -- -- 7 # run tape tape core\nload # # -- tape core core # run print 42\ntape end print core reel core # 7 load -- load\n42 -- core dump load 7\ncore tape 7 core\n\n\ncore 42 reel load load 42 load core tape 7 run\ndump -- # load reel reel 42 7 print --\nrun -- -- run end\n7 --\ncore core dump run run print core\nrun core print reel 7 # 42 tape --\n\nload core run run load # tape core 42 core\nload 7 42 print end load run tape\nprint\n42 load load dump\nend 42 7 42 core reel --\nend core tape dump end core -- print load\n\n7 run core load tape 7 core reel 7 42\nrun dump reel # run\ntape run 7 load run end 7\nreel load tape\n42 -- end dump 42 run load 42 print\nrun print 7\n\n\n-- run load 42 -- core 7 print dump 42 run #\n7 tape tape load tape run core tape\nreel tape -- -- print\n7 42 dump tape load core end run run\n42 42 7 # #\ndump # # tape 7 print -- reel\nrun 7 -- # -- 7 run dump print\n\n# # run dump\n-- -- core 7 42 42 end print core print end\ncore --\ntape # -- 7 load # #\nload\nload run reel\nend print dump 42 reel\n# dump 7 dump print load reel reel tape -- dump\nend dump 42 # tape run 42 run\nend load -- reel 42 reel -- print 7 tape load\nreel # -- tape reel dump reel reel # reel -- load\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "# reel end run\nprint end print run tape load reel\nend core tape -- load 7 load tape dump core #\n-- end run end end end core reel tape run\n\n-- print 42 core tape end\ntape tape run print # load dump core core core\n7 tape print print load run\nrun reel\n42 -- tape core 42 tape -- -- 42 end #\nreel load core\ntape run\n# # dump run\n# dump print load load\n-- print 42 load tape tape\n\ntape # core run run run 7 reel run 42 42\nreel tape core tape 7 reel tape run reel core 42\ntape tape\nrun -- 7 reel --\n42 dump tape run dump tape # 7 end end\nreel core tape reel reel core\ntape reel # core dump tape tape 7 load load run tape\n42 # dump load end load --\n--\nrun 7 -- 7 # # tape reel\n-- -- load core end dump -- print core -- --\n7 load tape dump reel end 42 -- load print\n-- tape -- tape tape 42 # -- load\n\n42 load -- run end reel\nreel core print -- tape load 7\n42 7 reel dump 42 42 dump\n-- 7 -- core dump 7 dump load\ncore reel -- core tape\ncore dump -- -- dump reel --\nend --\nprint run print reel dump # core reel -- core print\nload tape dump print --\ncore -- run 42 # # load run reel dump reel\nend print end print load 42 42 run 42 42\n7 load end dump 42 7\ncore run run -- # --\n\nprint reel\ncore 42 42 tape end 42 42\n7 dump core # 7 7\n# load 42 print\nload 7 dump core end\nload run load run load reel\n-- reel 42 7 end\n# # core run tape dump 42\nprint tape dump 7 dump\nend print load print dump dump 7\nrun # --\nend 42 end reel reel load print end print end\nend print\n\n\nprint load 42 print tape dump reel # 42\n42 load dump -- load # core\nrun end 42 print\ndump core 42 run reel print end\ndump dump dump print dump load\ncore 7 42\nprint 7 core load 42 tape\n42 run run -- end run # 42 print core -- --\n7 -- tape\n-- 42 core core core run\n7\ncore run reel end dump # core -- 7 print run reel\ndump -- end 42 tape\n# core\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump 42 tape\n# 42 run load load --\n42 reel print load core\nload -- # core\n42 end print 42 7 dump dump core -- reel\n-- 42 tape tape reel --\n42 -- end\n\ncore -- load reel tape core run -- -- tape reel --\n# 7 # print tape\nprint tape 7 load -- core\n42 run reel print print core load print\nend run print run 42 print end tape # reel core\n7\n-- dump end # dump # # 7\n7 load 42 7\n\n7 tape end #\nrun dump # print 42 run run 42 reel\nrun # reel -- tape # 42 run 7 core core #\n42 tape reel print end tape end dump 7 print 7 dump\n-- 42 tape 42 42\ncore # tape -- -- 42 tape 7 -- core load reel\nend print 42 end\n\nend 42 load\nend 42 reel run print\nprint reel\nend # reel print print run\nreel tape # tape reel dump end 7\ntape\n",
+      "generated": true
+    },
+    {
+      "stdin": "dump tape tape print reel dump end run -- run\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 reel run run\n",
+      "generated": true
+    },
+    {
+      "stdin": "# dump load print -- end load end 7 run --\n-- tape core end load end\n\nreel reel # tape dump dump load reel reel end 42\nload reel load run core 7 reel print # 42 load\n\nend core -- 42 dump end run tape\n-- -- tape\nload dump\nprint load 7 print load # load load core\n# 7\n7 tape tape # print end run tape\n42 tape tape load\nreel reel tape end 42 reel print core core load\nrun\nreel load dump reel run end load core load run\n7 tape run run load load --\ntape dump\ntape 42 7 42 dump end print end end #\n\nreel run 42 run dump load dump 7 load 42 42\n42 end tape\ncore\n# run tape tape -- 42 42 # dump -- #\n42 dump load dump\ndump\n# core 42 # dump dump 42 dump run reel tape\n42 tape\nload end\ndump reel end tape # tape\ncore # run\n\n7 reel core load\ntape core dump\nend print 42\ntape run reel\n42 end tape reel # -- tape\ntape dump #\n# 7 run\n42 end dump end dump reel tape print 7\nload tape dump # reel -- -- reel 7\n-- core load dump -- 7 -- run\ncore 42\n7 dump run\nreel\nend\nreel end print --\n-- print print end\n\ncore tape end load load run load tape reel -- -- 42\n-- 42 load run dump 7 #\nload # print 7\nreel # core reel 7 end 7 tape tape reel\nload\ncore -- --\n42 dump 42 tape tape\n7\nreel\nprint 42 # print end run 7 dump dump core load tape\nend print 7 run core run load reel run reel dump\nend reel print tape -- end dump load reel\nreel end core print end run\nreel -- print print\n\ntape # end\ncore 7 print end run 42 load run load run run\nend tape load 42 print\n\nrun print tape 42 42 print tape end dump load print --\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape # load # # # --\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape end -- end dump dump run print 7 #\ndump core dump 7 # -- reel\n--\n",
+      "generated": true
+    },
+    {
+      "stdin": "-- print print\n",
+      "generated": true
+    },
+    {
+      "stdin": "42 core core run # tape reel core -- # dump print\n\n-- -- run\ncore 42 dump load tape -- # print run dump reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel end tape # 7 reel load end end tape load\nrun run 42 7 -- 7 tape tape 7 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "tape # -- # run # 7 -- # 7 print\nreel print core tape 42 tape run end -- tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "load 7 #\n-- run load run\n42 reel reel dump load 42\n42 dump dump dump reel load print 42 end 42 tape tape\nprint tape\n",
+      "generated": true
+    },
+    {
+      "stdin": "reel # load\n# # reel # print reel load print 7 load load end\nprint tape reel end 7 load print\n\n42\n#\n7 dump 7\nend core 7 # # -- tape reel # 42\n42 # # load # 7 load\ncore print load print -- -- 7 print dump\nend # -- core run\nload # load tape core dump -- run run end load print\n-- core 42 reel run tape # 42\n\n42 end tape load reel tape core reel\n7 load #\n\n7\nend load 7 run core load tape reel end -- # --\n-- core end\nload core core reel end # end\nload print # # print run\n\n7 7\n\nreel 7 end # -- dump\ncore reel tape dump dump 7 dump 7 --\nend\ntape tape tape run load --\ncore print -- # end load load tape dump end\nrun 42 tape run\n-- -- dump 7 42 -- reel\n\n# -- load end core\nprint -- end 42 run core tape 42 tape\n42 run -- tape # tape tape tape reel\n\n",
+      "generated": true
+    },
+    {
+      "stdin": "\nload core core end -- reel tape # run\nprint tape\n7\nload # end -- reel load print 42\ndump print reel #\nprint 7 -- print core run run 7 tape load --\nload -- end core load\ncore dump 42 end load # # #\n# tape\n42 tape\nend\n\n\n42 7 core run run core 7\n42 load # tape end 42 7 reel --\nend reel load # --\n42\nend load 42 42 load end 7 7 load\n-- dump tape dump 7 dump run\n# load 7 7 run run 7 reel tape tape\n-- run print 7 dump print reel reel run\n",
+      "generated": true
+    },
+    {
+      "stdin": "print 42 run # core run -- dump run\n7 # tape -- print print -- reel reel\ndump end\ntape -- tape\n42 reel\ncore # print -- 42 core -- end\ncore 7 reel reel -- reel\ncore end load -- run # core run\nend reel reel\nreel -- -- end print # 7 reel 7 tape\nprint 7 run # -- load print dump reel tape\nend run # reel -- 42 # # #\nend # -- tape core -- reel tape load 7 core tape\ndump end -- -- core reel run reel print load load\ntape\nreel 7\n",
+      "generated": true
+    },
+    {
+      "stdin": "# end reel reel tape reel reel load load\ndump dump run load\nload 42 reel load 42 7 7 -- core\nload 7\n-- 42 run load\n# -- # 42 load\nrun end print print reel run\nreel dump end reel reel reel\n\ncore reel reel load load 7 tape load reel print core\n7 load reel load reel load run 7 # load 42 #\ncore\n42 7 reel tape 7 -- 42 run\nload run tape print\n7 dump load dump core load core\ndump dump load reel load 42 core reel\n7 load reel -- dump 7 42 tape 7 core\n42 end tape # dump reel 42 load print --\n-- tape 42 load dump tape run core tape end dump\n\n7 core 7 reel\nrun load core # dump 42 tape\ncore 42 tape reel tape\nload 42 load 42\ncore\nprint load reel run\nreel tape\n42 end 7 dump dump 7 42 42 end\ntape # load\ntape 42 print 42 -- print end tape load print load tape\nend core load run load tape run dump end\n-- reel\ntape load load print -- print #\nrun run end tape print 7 dump run print --\ndump run # 7 print dump load\nend end load run 7 print run load\nend reel print 7 42 tape\n42 core end 42 run\ntape run reel\ncore reel\n-- -- dump 42 7 run --\ndump dump 7 run reel end -- run load end #\n-- # print tape dump\n7 dump end print print run 42 # # #\nprint 42 -- end run tape load\n7 # print 42 end 42 42 print 42\n\nreel core core tape # core -- load --\nload dump -- 7 end tape core run print\n42 reel tape 7 42\n7 end reel core print end core\nreel run\nend dump 7\ndump tape print tape core\n42 run dump -- run reel load load 7 dump print print\ntape reel load -- 7 core\ndump -- 42 7 dump dump load load end\n\ndump tape\nreel dump dump end 7 reel end core load\nend core -- end dump end print run core core core\n-- # tape run 7 end\n",
+      "generated": true
+    },
+    {
+      "stdin": "load run -- -- -- load -- print end print\n# load -- print core # print run print -- load load\n# print dump load run # 42\nrun run 42\ntape reel 7 run load core 7 7 print tape\nend 7 run # 42 tape -- dump end reel\n-- -- # reel # core print reel reel\n# core load 42 -- 7 tape reel\n7 tape end core run reel core tape reel core 7\nprint 42 # run 7\nprint run run end reel 42 dump\n7 print core core end\nrun\nreel dump print dump -- -- # dump\nload 7 reel run dump 7 run 7\n-- load dump 7 tape end print # # print\n42 7 print tape run\nend 7 42 7 print dump\nrun 42 core print print run load dump core reel\nend tape # load run 7 dump print\nrun\nprint load reel dump # 7 -- 7 --\ncore tape --\ndump reel\n7 core dump print run 7 end 42",
+      "generated": true
+    },
+    {
+      "stdin": "run print\n7 reel # 42 # run tape tape 42\n",
+      "generated": true
+    },
+    {
+      "stdin": "\ncore tape\n42\ntape tape dump run reel\ntape reel -- # end 7 end tape end\nreel print dump dump run dump 7 tape dump run run\ncore 7 reel print\ncore # run\n7 end\nreel core -- end\ntape load reel reel end load # print 42 reel\n42 --\nreel -- run run 42 end tape core dump core 7\n-- --\nreel end tape load # reel\n",
+      "generated": true
+    },
+    {
+      "stdin": "7 7 reel #\ndump\ntape load print\ncore 7 load print core run\nrun\n",
+      "generated": true
+    },
+    {
+      "stdin": "print 7 tape reel end dump 7 load core -- reel run\n\n",
+      "generated": true
+    }
+  ]
+}

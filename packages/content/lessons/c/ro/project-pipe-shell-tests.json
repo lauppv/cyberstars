@@ -1,0 +1,114 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "call",
+        "name": "pipe"
+      },
+      {
+        "kind": "call",
+        "name": "dup2"
+      },
+      {
+        "kind": "call",
+        "name": "execvp"
+      },
+      {
+        "kind": "call",
+        "name": "chdir"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "stdin": "echo hello tape room | tr a-z A-Z\nseq 5 > nums.txt\nsort -rn < nums.txt | head -n 2\nseq 3 >> nums.txt\nwc -l < nums.txt\nnosuchcmd\nstatus\ncd nowhere\nstatus\n"
+    },
+    {
+      "stdin": "status\n"
+    },
+    {
+      "stdin": "\nfalse\nstatus\ntrue\nstatus\n"
+    },
+    {
+      "stdin": "seq 10 | sort -rn | head -n 3 | tail -n 1\n"
+    },
+    {
+      "stdin": "wc -l < missing.txt\nstatus\n"
+    },
+    {
+      "stdin": "mkdir -p box\ncd box\necho inside > f.txt\ncat f.txt\ncd ..\ncat box/f.txt\nstatus\n"
+    },
+    {
+      "stdin": "echo one\nexit\necho never\n"
+    },
+    {
+      "stdin": "seq 3 | nosuch\nstatus\nnosuch | wc -l\nstatus"
+    },
+    {
+      "stdin": "seq 7 > nums.txt\ntrue\nsort -rn < nums.txt | sort -r >> out.txt\necho reel tape card\nstatus\nuname | sort -r | nosuch-later\necho b a c | sort -r >> out.txt\nfalse | wc -l | wc -l | tail -n 1\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nsort -rn < nums.txt >> out.txt\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nuname | nosuch-later | head -n 2 | nosuch-later >> out.txt\nstatus\nstatus\nseq 12 | head -n 2 | tail -n 1\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nnosuch-first\nfalse | sort -r | sort -n | tail -n 1\ncat nums.txt | wc -l\ntrue | nosuch-later | sort -n | sort -r\necho reel tape card | head -n 2 | head -n 2 | sort -r\nseq 12 | nosuch-later | rev | tr a-z A-Z\nstatus\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nuname | wc -l >> out.txt\ncd .\nseq 4 | wc -l\necho reel tape card | sort -r | wc -l | sort -n\nuname | tr a-z A-Z\ntrue | tail -n 1 | sort -n | head -n 2\necho b a c | sort -r | tr a-z A-Z\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\necho b a c | tr a-z A-Z | head -n 2 | head -n 2\ncd .\nuname > out.txt\nstatus\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nseq 4\ncd nowhere\ncat nums.txt | sort -n\nuname | nosuch-later | tail -n 1\nsort -rn < nums.txt\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\ncat nums.txt | sort -n\ntrue | rev | wc -l | tail -n 1\nseq 12 | sort -r | nosuch-later\nstatus\ncat nums.txt | head -n 2\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\necho b a c\necho b a c\ntrue | sort -n | nosuch-later | tr a-z A-Z\nseq 4 | tr a-z A-Z | tail -n 1 | wc -l\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nfalse | tail -n 1 | head -n 2 | tail -n 1 >> out.txt\necho b a c | tr a-z A-Z | wc -l\nuname\necho b a c > out.txt\nstatus\nsort -rn < nums.txt | nosuch-later | tail -n 1 | sort -n\nuname | sort -r | sort -r | rev > out.txt\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nfalse | tail -n 1\nuname | head -n 2\nseq 4\nseq 4\nsort -rn < nums.txt | head -n 2 | sort -n >> out.txt\necho b a c | tr a-z A-Z\nstatus\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nstatus\nstatus\nstatus\nsort -rn < nums.txt\nstatus\necho reel tape card | wc -l | nosuch-later\nstatus\ntrue | tail -n 1 | tail -n 1\nseq 4 > out.txt\ncd .\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nnosuch-first | wc -l > out.txt\necho reel tape card | head -n 2\ncat nums.txt\necho reel tape card | tail -n 1 | nosuch-later | head -n 2\nfalse | wc -l | sort -r | tr a-z A-Z\nnosuch-first\necho reel tape card | tail -n 1 | head -n 2\nseq 12 | sort -n | wc -l | sort -n\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\nseq 12 | rev\necho reel tape card | tail -n 1\nfalse | sort -r\necho b a c | tail -n 1 | head -n 2 | tail -n 1\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\ncat nums.txt > out.txt\nuname\nseq 4 > out.txt\ntrue | wc -l | sort -n | tr a-z A-Z\ntrue | wc -l | nosuch-later | nosuch-later > out.txt\nstatus\n",
+      "generated": true
+    },
+    {
+      "stdin": "seq 7 > nums.txt\ntrue | tail -n 1\nnosuch-first | tail -n 1 | head -n 2 | sort -n\nfalse\nsort -rn < nums.txt | tr a-z A-Z\ncat nums.txt | head -n 2\nsort -rn < nums.txt | rev | tail -n 1\nsort -rn < nums.txt | tr a-z A-Z | sort -n | head -n 2\nstatus\n",
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,547 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "seed"
+      },
+      {
+        "kind": "variable",
+        "name": "start"
+      },
+      {
+        "kind": "variable",
+        "name": "ships"
+      },
+      {
+        "kind": "variable",
+        "name": "distances"
+      },
+      {
+        "kind": "import",
+        "name": "math"
+      },
+      {
+        "kind": "import",
+        "name": "random"
+      },
+      {
+        "kind": "import",
+        "name": "collections"
+      },
+      {
+        "kind": "import",
+        "name": "datetime"
+      },
+      {
+        "kind": "call",
+        "name": "sample"
+      },
+      {
+        "kind": "call",
+        "name": "ceil"
+      },
+      {
+        "kind": "call",
+        "name": "timedelta"
+      },
+      {
+        "kind": "call",
+        "name": "Counter"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "seed": 5,
+        "start": "2031-05-14",
+        "ships": {
+          "$list": ["Hope", "Swift", "Bob"]
+        },
+        "distances": {
+          "$list": [7000, 3000, 9500]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "seed": 1,
+        "start": "2031-12-30",
+        "ships": {
+          "$list": ["Nova", "Ray", "Echo", "Atlas"]
+        },
+        "distances": {
+          "$list": [3000, 3001, 6000, 2999]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 0,
+        "start": "2028-02-27",
+        "ships": {
+          "$list": ["Solo"]
+        },
+        "distances": {
+          "$list": [1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 99,
+        "start": "2099-12-25",
+        "ships": {
+          "$list": ["Hope", "Swift", "Bob", "Nova", "Comet", "Ray", "Echo", "Atlas", "Iris", "Vega"]
+        },
+        "distances": {
+          "$list": [50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000, 50000]
+        }
+      }
+    },
+    {
+      "inject": {
+        "seed": 458,
+        "start": "2093-07-29",
+        "ships": {
+          "$list": ["Vega", "Iris", "Swift", "Nova", "Hope", "Comet"]
+        },
+        "distances": {
+          "$list": [12000, 12000, 33352, 16479, 14525, 5728]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 6,
+        "start": "2053-05-06",
+        "ships": {
+          "$list": ["Atlas"]
+        },
+        "distances": {
+          "$list": [12000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 14,
+        "start": "2019-06-27",
+        "ships": {
+          "$list": ["Echo", "Ray", "Juno", "Atlas", "Vega", "Kite"]
+        },
+        "distances": {
+          "$list": [2291, 33877, 25584, 27936, 11470, 6000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 497,
+        "start": "2010-07-31",
+        "ships": {
+          "$list": ["Comet", "Ray", "Echo"]
+        },
+        "distances": {
+          "$list": [12000, 35550, 46225]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 135,
+        "start": "2061-05-24",
+        "ships": {
+          "$list": ["Bob", "Atlas", "Vega", "Echo", "Nova", "Hope", "Ray", "Comet", "Kite", "Swift"]
+        },
+        "distances": {
+          "$list": [9000, 9752, 1986, 41702, 23040, 15267, 3000, 12000, 20099, 3000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 819,
+        "start": "2005-05-16",
+        "ships": {
+          "$list": ["Nova", "Bob", "Vega", "Comet"]
+        },
+        "distances": {
+          "$list": [3000, 14790, 47368, 35273]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 726,
+        "start": "2023-07-09",
+        "ships": {
+          "$list": ["Echo", "Hope", "Juno", "Swift"]
+        },
+        "distances": {
+          "$list": [23745, 3000, 3000, 37313]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 998,
+        "start": "2076-05-21",
+        "ships": {
+          "$list": ["Nova", "Echo", "Vega", "Atlas", "Hope", "Kite"]
+        },
+        "distances": {
+          "$list": [45584, 9000, 3000, 26315, 30390, 30671]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 282,
+        "start": "2059-01-12",
+        "ships": {
+          "$list": ["Bob", "Hope", "Nova", "Comet", "Kite", "Vega"]
+        },
+        "distances": {
+          "$list": [45893, 9000, 2749, 9000, 13700, 6000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 411,
+        "start": "2005-03-12",
+        "ships": {
+          "$list": ["Iris", "Juno", "Bob", "Atlas", "Hope"]
+        },
+        "distances": {
+          "$list": [27795, 9000, 37148, 12000, 9000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 134,
+        "start": "2073-08-29",
+        "ships": {
+          "$list": ["Ray", "Echo", "Nova", "Kite", "Comet", "Atlas", "Juno", "Vega", "Bob"]
+        },
+        "distances": {
+          "$list": [5779, 6000, 9000, 9000, 12000, 18870, 43250, 3000, 21224]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 632,
+        "start": "2037-11-23",
+        "ships": {
+          "$list": ["Swift", "Comet", "Bob", "Juno", "Ray"]
+        },
+        "distances": {
+          "$list": [26466, 23146, 9000, 9000, 36898]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 478,
+        "start": "2024-08-11",
+        "ships": {
+          "$list": ["Hope", "Nova", "Juno", "Iris", "Ray", "Echo", "Kite", "Atlas"]
+        },
+        "distances": {
+          "$list": [4651, 9000, 6000, 45507, 9000, 11017, 38208, 16244]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 790,
+        "start": "2047-10-09",
+        "ships": {
+          "$list": ["Nova", "Ray", "Bob", "Juno", "Comet", "Swift", "Vega", "Kite"]
+        },
+        "distances": {
+          "$list": [3000, 12000, 24251, 9000, 13100, 12000, 27891, 28817]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 590,
+        "start": "2081-07-28",
+        "ships": {
+          "$list": ["Kite", "Atlas", "Hope"]
+        },
+        "distances": {
+          "$list": [20657, 13463, 22104]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 314,
+        "start": "2066-01-20",
+        "ships": {
+          "$list": ["Juno", "Atlas"]
+        },
+        "distances": {
+          "$list": [47032, 12000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 586,
+        "start": "2072-08-20",
+        "ships": {
+          "$list": ["Comet", "Atlas", "Juno", "Vega", "Echo", "Swift", "Bob", "Kite"]
+        },
+        "distances": {
+          "$list": [34653, 3000, 12000, 3000, 9000, 20826, 12000, 40572]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 263,
+        "start": "2037-12-04",
+        "ships": {
+          "$list": ["Bob", "Juno", "Swift", "Ray", "Atlas", "Echo", "Nova", "Hope"]
+        },
+        "distances": {
+          "$list": [7042, 38378, 4246, 6000, 43463, 16387, 6000, 28228]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 628,
+        "start": "2044-05-01",
+        "ships": {
+          "$list": ["Kite", "Atlas", "Ray", "Nova", "Iris", "Bob", "Juno", "Swift"]
+        },
+        "distances": {
+          "$list": [3000, 27654, 37142, 9000, 3000, 12000, 6000, 6000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 259,
+        "start": "2064-12-21",
+        "ships": {
+          "$list": ["Bob", "Swift", "Comet", "Vega"]
+        },
+        "distances": {
+          "$list": [3000, 14976, 3000, 3000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 732,
+        "start": "2080-05-20",
+        "ships": {
+          "$list": ["Vega", "Kite", "Echo", "Iris", "Hope"]
+        },
+        "distances": {
+          "$list": [6000, 17920, 16935, 3000, 9000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 675,
+        "start": "2069-04-12",
+        "ships": {
+          "$list": [
+            "Kite",
+            "Nova",
+            "Vega",
+            "Juno",
+            "Hope",
+            "Echo",
+            "Comet",
+            "Swift",
+            "Ray",
+            "Atlas"
+          ]
+        },
+        "distances": {
+          "$list": [3000, 9000, 9000, 40758, 3000, 9000, 6000, 3000, 9000, 6000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 320,
+        "start": "2025-10-10",
+        "ships": {
+          "$list": ["Kite", "Iris", "Bob", "Echo", "Ray", "Nova", "Atlas", "Swift"]
+        },
+        "distances": {
+          "$list": [9650, 9000, 3000, 3263, 3000, 38028, 3000, 4451]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 284,
+        "start": "2045-12-22",
+        "ships": {
+          "$list": ["Atlas", "Comet", "Vega", "Swift", "Kite", "Ray"]
+        },
+        "distances": {
+          "$list": [9000, 9000, 21185, 6000, 3000, 3521]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 478,
+        "start": "2051-10-21",
+        "ships": {
+          "$list": ["Nova", "Bob"]
+        },
+        "distances": {
+          "$list": [9000, 4901]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 176,
+        "start": "2080-02-18",
+        "ships": {
+          "$list": ["Ray", "Echo", "Kite", "Vega", "Comet", "Swift", "Nova", "Bob", "Juno", "Atlas"]
+        },
+        "distances": {
+          "$list": [18593, 6000, 25593, 3000, 42252, 43662, 3000, 47637, 16451, 34048]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 278,
+        "start": "2047-03-28",
+        "ships": {
+          "$list": ["Nova", "Atlas", "Vega", "Iris", "Bob", "Echo", "Swift", "Kite"]
+        },
+        "distances": {
+          "$list": [9000, 6000, 9562, 1998, 3000, 12000, 6000, 3000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 574,
+        "start": "2080-12-23",
+        "ships": {
+          "$list": ["Kite", "Atlas", "Nova", "Comet"]
+        },
+        "distances": {
+          "$list": [12000, 12000, 6000, 5657]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 735,
+        "start": "2000-06-06",
+        "ships": {
+          "$list": ["Echo", "Atlas"]
+        },
+        "distances": {
+          "$list": [6000, 12000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 410,
+        "start": "2016-04-15",
+        "ships": {
+          "$list": ["Kite", "Bob", "Swift", "Hope", "Nova", "Juno", "Iris"]
+        },
+        "distances": {
+          "$list": [968, 16823, 12000, 12000, 43309, 9000, 3000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 654,
+        "start": "2047-12-10",
+        "ships": {
+          "$list": ["Ray", "Juno", "Swift", "Bob", "Hope"]
+        },
+        "distances": {
+          "$list": [12000, 12000, 6000, 3000, 3000]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 608,
+        "start": "2044-07-08",
+        "ships": {
+          "$list": ["Comet"]
+        },
+        "distances": {
+          "$list": [9504]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "seed": 674,
+        "start": "2032-10-12",
+        "ships": {
+          "$list": ["Atlas"]
+        },
+        "distances": {
+          "$list": [48881]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
