@@ -112,19 +112,19 @@ Phil (durere 4)
 
 Tommy are o listă de treburi pentru noaptea asta. Fiecare treabă are un număr de urgență: 1 înseamnă „fă-o acum”, numerele mai mari pot aștepta. Tommy vrea să le facă de la cea mai urgentă la cea mai puțin urgentă
 
-Treburile sunt într-un array `String[] treburi`, iar urgența lor într-un array `int[] urgenta`. `treburi[i]` are urgența `urgenta[i]`. Pune fiecare treabă într-o PriorityQueue și scoate-le una câte una. Afișează fiecare ca `urgență - treabă`. Când două treburi au aceeași urgență, prima merge cea al cărei nume vine primul în ordine alfabetică
+Treburile sunt într-un array `String[] treburi`, iar urgența lor într-un array `int[] urgenta`. `treburi[i]` are urgența `urgenta[i]`. Pune fiecare treabă într-o PriorityQueue și scoate-le una câte una. Afișează fiecare ca `urgenta - treaba`. Când două treburi au aceeași urgență, prima merge cea al cărei nume vine primul în ordine alfabetică
 
 **Exemplu**
 
 ```text
-1 - Plătesc poliția
-2 - Mă văd cu Diaz
-2 - Îl iau pe Lance
-5 - Cumpăr o barcă
+1 - Platesc politia
+2 - Il iau pe Lance
+2 - Ma vad cu Diaz
+5 - Cumpar o barca
 ```
 
 **Exemplu**
 
 ```text
-3 - Îl sun pe Kent
+3 - Il sun pe Kent
 ```

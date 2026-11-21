@@ -10,16 +10,16 @@ public class Main {
         for (String eveniment : evenimente) {
             if (eveniment.equals("urmatoarea")) {
                 if (rand.isEmpty()) {
-                    System.out.println("Nicio mașină nu așteaptă");
+                    System.out.println("Nicio masina nu asteapta");
                 } else {
-                    System.out.println("Reparată: " + rand.poll());
+                    System.out.println("Reparata: " + rand.poll());
                 }
             } else {
                 rand.offer(eveniment);
-                System.out.println("Așteaptă: " + eveniment + " (" + rand.size() + " la rând)");
+                System.out.println("Asteapta: " + eveniment + " (" + rand.size() + " la rand)");
             }
         }
-        System.out.println("Mai așteaptă: " + rand.size());
+        System.out.println("Mai asteapta: " + rand.size());
     }
 }
 ```

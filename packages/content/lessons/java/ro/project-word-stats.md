@@ -24,7 +24,7 @@ try (PrintWriter out = new PrintWriter(new FileWriter("scrisoare.txt"))) {
 
 ```text
 List<String> randuri = Files.readAllLines(Path.of("scrisoare.txt"));
-System.out.println("Rânduri: " + randuri.size());
+System.out.println("Randuri: " + randuri.size());
 ```
 
 ---
@@ -107,8 +107,8 @@ public class Main {
     public static void main(String[] args) {
         TreeMap<String, Integer> numar = new TreeMap<>();
         numar.put("bani", 3);
-        numar.put("mașini", 1);
-        numar.put("bărci", 3);
+        numar.put("masini", 1);
+        numar.put("barci", 3);
         numar.put("arme", 2);
 
         numar.entrySet().stream()
@@ -128,7 +128,7 @@ Ieșire
 
 ```text
 bani (3)
-bărci (3)
+barci (3)
 arme (2)
 ```
 
@@ -142,7 +142,7 @@ Construiește analizorul din pașii de mai sus și rulează-l pe una dintre scri
 
 Scrisoarea e într-un `String text`, cu `\n` între rânduri. Are mereu cel puțin un cuvânt. Salveaz-o în fișierul `scrisoare.txt`, citește-o înapoi și afișează:
 
-- `Rânduri: ` și câte rânduri are fișierul
+- `Randuri: ` și câte rânduri are fișierul
 - `Cuvinte: ` și câte cuvinte sunt în total
 - `Cuvinte diferite: ` și câte cuvinte diferite sunt
 - `Cel mai lung: ` și cel mai lung cuvânt, primul în ordine alfabetică dacă mai multe au aceeași lungime
@@ -153,20 +153,20 @@ Cuvintele sunt șiruri de litere, numărate cu litere mici
 **Exemplu**
 
 ```text
-Rânduri: 2
+Randuri: 2
 Cuvinte: 11
 Cuvinte diferite: 8
-Cel mai lung: siguranță
+Cel mai lung: siguranta
 Primele 3:
 1. banii (2)
-2. sunt (2)
-3. în (2)
+2. in (2)
+3. sunt (2)
 ```
 
 **Exemplu**
 
 ```text
-Rânduri: 1
+Randuri: 1
 Cuvinte: 1
 Cuvinte diferite: 1
 Cel mai lung: ajutor

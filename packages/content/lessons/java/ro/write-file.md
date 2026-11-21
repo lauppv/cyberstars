@@ -47,7 +47,7 @@ public class Main {
         try (PrintWriter out = new PrintWriter(new FileWriter("/nu/exista/jurnal.txt"))) {
             out.println("salut");
         } catch (IOException e) {
-            System.out.println("Nu am putut scrie fișierul");
+            System.out.println("Nu am putut scrie fisierul");
         }
     }
 }
@@ -56,7 +56,7 @@ public class Main {
 Ieșire
 
 ```text
-Nu am putut scrie fișierul
+Nu am putut scrie fisierul
 ```
 
 ---
@@ -73,10 +73,10 @@ import java.nio.file.Path;
 public class Main {
     public static void main(String[] args) throws IOException {
         try (PrintWriter out = new PrintWriter(new FileWriter("jurnal.txt"))) {
-            out.println("Luni: liniște");
+            out.println("Luni: liniste");
         }
         try (PrintWriter out = new PrintWriter(new FileWriter("jurnal.txt", true))) {
-            out.println("Marți: agitație");
+            out.println("Marti: agitatie");
         }
 
         System.out.print(Files.readString(Path.of("jurnal.txt")));
@@ -87,8 +87,8 @@ public class Main {
 Ieșire
 
 ```text
-Luni: liniște
-Marți: agitație
+Luni: liniste
+Marti: agitatie
 ```
 
 Fără `true`, ar fi rămas doar „Marți: agitație”
@@ -105,7 +105,7 @@ Zilele sunt într-un array `String[] zile`, iar câștigurile într-un array `in
 
 ```text
 Luni: 1200
-Marți: 800
+Marti: 800
 Miercuri: 2500
 Total: 4500
 ```

@@ -17,7 +17,7 @@ public class Main {
             vizite.put(nume, vizite.getOrDefault(nume, 0) + 1);
         }
 
-        System.out.println("Cartea de oaspeți:");
+        System.out.println("Cartea de oaspeti:");
         String fidel = "";
         int maxim = 0;
         for (String nume : vizite.keySet()) {

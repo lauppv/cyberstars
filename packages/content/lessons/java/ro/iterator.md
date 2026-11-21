@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         ArrayList<String> echipa = new ArrayList<>();
-        echipa.add("Turnător");
+        echipa.add("Turnator");
         echipa.add("Tommy");
         echipa.add("Lance");
 
         for (String nume : echipa) {
-            if (nume.equals("Turnător")) {
+            if (nume.equals("Turnator")) {
                 echipa.remove(nume);
             }
         }
@@ -39,13 +39,13 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<String> echipa = new ArrayList<>();
         echipa.add("Tommy");
-        echipa.add("Turnător");
+        echipa.add("Turnator");
         echipa.add("Lance");
 
         Iterator<String> it = echipa.iterator();
         while (it.hasNext()) {
             String nume = it.next();
-            if (nume.equals("Turnător")) {
+            if (nume.equals("Turnator")) {
                 it.remove();
             }
         }
@@ -110,18 +110,18 @@ Două reguli de ținut minte
 
 Oamenii vor să cumpere afacerile lui Tommy, iar ofertele se adună. Tommy e ocupat, așa că vrea ca ofertele mici să dispară înainte să citească lista
 
-Ofertele sunt într-un array `int[] oferte`, iar cea mai mică ofertă la care se uită Tommy e în `int minim`. Pune ofertele într-un ArrayList, în aceeași ordine. Apoi parcurge-l și scoate fiecare ofertă mai mică decât `minim`. Afișează `Păstrate: ` cu lista rămasă, apoi `Scoase: ` cu câte ai scos
+Ofertele sunt într-un array `int[] oferte`, iar cea mai mică ofertă la care se uită Tommy e în `int minim`. Pune ofertele într-un ArrayList, în aceeași ordine. Apoi parcurge-l și scoate fiecare ofertă mai mică decât `minim`. Afișează `Pastrate: ` cu lista rămasă, apoi `Scoase: ` cu câte ai scos
 
 **Exemplu**
 
 ```text
-Păstrate: [9000, 12000, 7500]
+Pastrate: [9000, 12000, 7500]
 Scoase: 3
 ```
 
 **Exemplu**
 
 ```text
-Păstrate: []
+Pastrate: []
 Scoase: 2
 ```

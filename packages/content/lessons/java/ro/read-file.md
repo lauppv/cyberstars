@@ -16,7 +16,7 @@ public class Main {
         }
 
         List<String> randuri = Files.readAllLines(Path.of("masini.txt"));
-        System.out.println(randuri.size() + " mașini");
+        System.out.println(randuri.size() + " masini");
         for (String rand : randuri) {
             System.out.println("- " + rand);
         }
@@ -27,7 +27,7 @@ public class Main {
 Ieșire
 
 ```text
-2 mașini
+2 masini
 - Infernus
 - Cheetah
 ```
@@ -54,7 +54,7 @@ public class Main {
         try (BufferedReader in = new BufferedReader(new FileReader("apeluri.txt"))) {
             String rand = in.readLine();
             while (rand != null) {
-                System.out.println("Îl sun pe " + rand);
+                System.out.println("Il sun pe " + rand);
                 rand = in.readLine();
             }
         }
@@ -65,9 +65,9 @@ public class Main {
 Ieșire
 
 ```text
-Îl sun pe Lance
-Îl sun pe Kent
-Îl sun pe Phil
+Il sun pe Lance
+Il sun pe Kent
+Il sun pe Phil
 ```
 
 E oglinda scrisului: `FileReader` deschide fișierul, `BufferedReader` îl îmbracă ca să poți citi rânduri întregi, iar try-with-resources îl închide

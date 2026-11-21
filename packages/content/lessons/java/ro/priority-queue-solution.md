@@ -20,7 +20,7 @@ class Treaba implements Comparable<Treaba> {
 
 public class Main {
     public static void main(String[] args) {
-        String[] treburi = {"Îl iau pe Lance", "Cumpăr o barcă", "Plătesc poliția", "Mă văd cu Diaz"};
+        String[] treburi = {"Il iau pe Lance", "Cumpar o barca", "Platesc politia", "Ma vad cu Diaz"};
         int[] urgenta = {2, 5, 1, 2};
 
         PriorityQueue<Treaba> diseara = new PriorityQueue<>();

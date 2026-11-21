@@ -20,7 +20,7 @@ class Avion {
         int rand = Integer.parseInt(cod.substring(0, cod.length() - 1)) - 1;
         int coloana = cod.charAt(cod.length() - 1) - 'A';
         if (rand < 0 || rand >= locuri.length || coloana < 0 || coloana >= locuri[0].length) {
-            throw new LocException("Nu există locul " + cod);
+            throw new LocException("Nu exista locul " + cod);
         }
         if (locuri[rand][coloana] != null) {
             throw new LocException("Locul " + cod + " e ocupat");
@@ -69,14 +69,14 @@ public class Main {
             if (parti[1].equals("oricare")) {
                 String loc = avion.rezervaOricare(nume);
                 if (loc == null) {
-                    System.out.println(nume + " așteaptă un loc");
+                    System.out.println(nume + " asteapta un loc");
                 } else {
-                    System.out.println(nume + " primește " + loc);
+                    System.out.println(nume + " primeste " + loc);
                 }
             } else {
                 try {
                     avion.rezerva(nume, parti[1]);
-                    System.out.println(nume + " primește " + parti[1]);
+                    System.out.println(nume + " primeste " + parti[1]);
                 } catch (LocException e) {
                     System.out.println("Refuzat: " + e.getMessage());
                 }
@@ -85,9 +85,9 @@ public class Main {
 
         avion.afiseazaHarta();
         if (avion.asteptare.isEmpty()) {
-            System.out.println("Așteaptă: nimeni");
+            System.out.println("Asteapta: nimeni");
         } else {
-            System.out.println("Așteaptă: " + String.join(", ", avion.asteptare));
+            System.out.println("Asteapta: " + String.join(", ", avion.asteptare));
         }
     }
 }

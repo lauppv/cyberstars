@@ -44,7 +44,7 @@ public class Main {
         Consumer<String> striga = s -> System.out.println(s.toUpperCase() + "!");
         Supplier<String> sef = () -> "Tommy";
 
-        striga.accept("mâinile sus");
+        striga.accept("mainile sus");
         System.out.println(sef.get());
     }
 }
@@ -53,7 +53,7 @@ public class Main {
 Ieșire
 
 ```text
-MÂINILE SUS!
+MAINILE SUS!
 Tommy
 ```
 
@@ -129,14 +129,14 @@ Fiecare lambda scris până acum era unul dintre acestea. `removeIf` primește u
 
 E zi de reduceri la Sunshine Autos. Fiecare mașină peste o limită de preț primește o reducere. Mașinile mai ieftine își păstrează prețul
 
-Prețurile sunt într-un array `int[] preturi`, limita e în `int limita`, iar reducerea în `int procent`. Fă un `Predicate<Integer>` care spune dacă un preț e peste limită și o `Function<Integer, Integer>` care dă noul preț: prețul minus `pret * procent / 100`. Pentru fiecare preț, afișează `pret -> pret nou` când primește reducerea, sau `pret rămâne` când nu o primește. La final afișează `Total: ` și suma tuturor prețurilor după reduceri
+Prețurile sunt într-un array `int[] preturi`, limita e în `int limita`, iar reducerea în `int procent`. Fă un `Predicate<Integer>` care spune dacă un preț e peste limită și o `Function<Integer, Integer>` care dă noul preț: prețul minus `pret * procent / 100`. Pentru fiecare preț, afișează `pret -> pret nou` când primește reducerea, sau `pret ramane` când nu o primește. La final afișează `Total: ` și suma tuturor prețurilor după reduceri
 
 **Exemplu**
 
 ```text
-20000 rămâne
+20000 ramane
 100000 -> 80000
-50000 rămâne
+50000 ramane
 60000 -> 48000
 Total: 198000
 ```

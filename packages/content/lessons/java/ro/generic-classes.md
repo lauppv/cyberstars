@@ -59,7 +59,7 @@ class Cutie<T> {
 public class Main {
     public static void main(String[] args) {
         Cutie<String> bilet = new Cutie<>("salut");
-        // int n = bilet.ia();   // nu compilează: un String nu e un int
+        // int n = bilet.ia();   // nu compileaza: un String nu e un int
         System.out.println(bilet.ia().toUpperCase());
     }
 }

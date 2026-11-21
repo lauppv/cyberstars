@@ -20,7 +20,7 @@ public class Main {
                 scoase++;
             }
         }
-        System.out.println("Păstrate: " + lista);
+        System.out.println("Pastrate: " + lista);
         System.out.println("Scoase: " + scoase);
     }
 }

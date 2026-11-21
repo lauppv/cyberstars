@@ -14,7 +14,7 @@ public class Main {
         masini.removeIf(p -> p > buget);
         masini.sort((a, b) -> b - a);
         masini.forEach(p -> System.out.println("$" + p));
-        System.out.println("Opțiuni: " + masini.size());
+        System.out.println("Optiuni: " + masini.size());
     }
 }
 ```

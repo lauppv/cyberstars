@@ -40,9 +40,9 @@ Un lambda e o mică bucată de cod pe care o poți da unei metode, ca pe o valoa
 
 ```text
 x -> x * 2                  // o intrare: nu trebuie paranteze
-(a, b) -> a + b             // două intrări: paranteze
+(a, b) -> a + b             // doua intrari: paranteze
 () -> "salut"               // nicio intrare: paranteze goale
-x -> {                      // mai multe rânduri: acolade și return
+x -> {                      // mai multe randuri: acolade si return
     int y = x * 2;
     return y + 1;
 }
@@ -135,7 +135,7 @@ Dacă scrii mai târziu `limita = 1;` undeva, programul nu se compilează
 
 Lance vrea o mașină nouă de la Sunshine Autos, dar poate plăti doar până la o sumă. Vrea să vadă mașinile pe care și le permite, cea mai scumpă prima, pentru că vrea cea mai bună pe care o poate plăti
 
-Prețurile mașinilor din parcare sunt într-un array `int[] preturi`, iar banii lui Lance sunt în `int buget`. Pune prețurile într-un ArrayList. Scoate fiecare preț mai mare decât `buget`, sortează restul de la cel mai mare la cel mai mic și afișează fiecare ca `$pret`. Apoi afișează `Opțiuni: ` și câte mașini au rămas. Folosește lambda-uri pentru scos, sortat și afișat
+Prețurile mașinilor din parcare sunt într-un array `int[] preturi`, iar banii lui Lance sunt în `int buget`. Pune prețurile într-un ArrayList. Scoate fiecare preț mai mare decât `buget`, sortează restul de la cel mai mare la cel mai mic și afișează fiecare ca `$pret`. Apoi afișează `Optiuni: ` și câte mașini au rămas. Folosește lambda-uri pentru scos, sortat și afișat
 
 **Exemplu**
 
@@ -144,11 +144,11 @@ $45000
 $32000
 $32000
 $9000
-Opțiuni: 4
+Optiuni: 4
 ```
 
 **Exemplu**
 
 ```text
-Opțiuni: 0
+Optiuni: 0
 ```

@@ -26,7 +26,7 @@ class Biblioteca {
     Carte gaseste(String titlu) throws BibliotecaException {
         Carte carte = raft.get(titlu);
         if (carte == null) {
-            throw new BibliotecaException("Nicio carte numită " + titlu);
+            throw new BibliotecaException("Nicio carte numita " + titlu);
         }
         return carte;
     }
@@ -34,7 +34,7 @@ class Biblioteca {
     void imprumuta(String titlu, String nume) throws BibliotecaException {
         Carte carte = gaseste(titlu);
         if (carte.cititor != null) {
-            throw new BibliotecaException(titlu + " e deja împrumutată");
+            throw new BibliotecaException(titlu + " e deja imprumutata");
         }
         carte.cititor = nume;
     }
@@ -42,7 +42,7 @@ class Biblioteca {
     void returneaza(String titlu) throws BibliotecaException {
         Carte carte = gaseste(titlu);
         if (carte.cititor == null) {
-            throw new BibliotecaException(titlu + " nu era împrumutată");
+            throw new BibliotecaException(titlu + " nu era imprumutata");
         }
         carte.cititor = null;
     }
@@ -83,7 +83,7 @@ public class Main {
                     System.out.println(parti[2] + " a luat " + parti[1]);
                 } else {
                     biblioteca.returneaza(parti[1]);
-                    System.out.println(parti[1] + " s-a întors");
+                    System.out.println(parti[1] + " s-a intors");
                 }
             } catch (BibliotecaException e) {
                 System.out.println("Refuzat: " + e.getMessage());

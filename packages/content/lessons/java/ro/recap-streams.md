@@ -8,22 +8,22 @@ Tommy are nevoie de o echipă pentru o treabă mare. Toți cei care vor să intr
 
 Numele sunt într-un array `String[] nume`, iar scorurile într-un array `int[] scoruri`. `nume[i]` a luat `scoruri[i]`. Minimul e în `int minim`. Afișează trei rânduri:
 
-- `Angajați: ` și oamenii angajați, de la scorul cel mai mare la cel mai mic, despărțiți de o virgulă și un spațiu. Cei cu același scor păstrează ordinea din array-uri. Dacă nu e angajat nimeni, afișează `Angajați: nimeni`
-- `Pricepere totală: ` și suma scorurilor celor angajați
+- `Angajati: ` și oamenii angajați, de la scorul cel mai mare la cel mai mic, despărțiți de o virgulă și un spațiu. Cei cu același scor păstrează ordinea din array-uri. Dacă nu e angajat nimeni, afișează `Angajati: nimeni`
+- `Pricepere totala: ` și suma scorurilor celor angajați
 - `Cel mai bun: ` și angajatul cu scorul cel mai mare, sau `Cel mai bun: nimeni`. Dacă mai mulți au scorul cel mai mare, alege-l pe primul din array-uri
 
 **Exemplu**
 
 ```text
-Angajați: Mitch, Lance, Earnest, Phil
-Pricepere totală: 330
+Angajati: Mitch, Lance, Earnest, Phil
+Pricepere totala: 330
 Cel mai bun: Mitch
 ```
 
 **Exemplu**
 
 ```text
-Angajați: nimeni
-Pricepere totală: 0
+Angajati: nimeni
+Pricepere totala: 0
 Cel mai bun: nimeni
 ```

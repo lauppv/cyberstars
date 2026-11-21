@@ -26,8 +26,8 @@ public class Main {
         int pricepere = angajati.stream().map(Recrut::scor).reduce(0, Integer::sum);
         Optional<Recrut> celMaiBun = angajati.stream().findFirst();
 
-        System.out.println("Angajați: " + (angajati.isEmpty() ? "nimeni" : lista));
-        System.out.println("Pricepere totală: " + pricepere);
+        System.out.println("Angajati: " + (angajati.isEmpty() ? "nimeni" : lista));
+        System.out.println("Pricepere totala: " + pricepere);
         System.out.println("Cel mai bun: " + celMaiBun.map(Recrut::nume).orElse("nimeni"));
     }
 }

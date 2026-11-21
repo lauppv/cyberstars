@@ -50,9 +50,9 @@ public class Main {
         farfurii.push(2);
         farfurii.push(3);
 
-        System.out.println("Vârf: " + farfurii.peek());
+        System.out.println("Varf: " + farfurii.peek());
         System.out.println(farfurii);
-        System.out.println("Mărime: " + farfurii.size());
+        System.out.println("Marime: " + farfurii.size());
     }
 }
 ```
@@ -60,9 +60,9 @@ public class Main {
 Ieșire
 
 ```text
-Vârf: 3
+Varf: 3
 [3, 2, 1]
-Mărime: 3
+Marime: 3
 ```
 
 Când afișezi o stivă, vârful vine primul
@@ -104,13 +104,13 @@ import java.util.Deque;
 public class Main {
     public static void main(String[] args) {
         Deque<String> schimbari = new ArrayDeque<>();
-        schimbari.push("vopsesc mașina roz");
+        schimbari.push("vopsesc masina roz");
         schimbari.push("pun un eleron");
-        schimbari.push("scot ușile");
+        schimbari.push("scot usile");
 
         System.out.println("Undo: " + schimbari.pop());
         System.out.println("Undo: " + schimbari.pop());
-        System.out.println("Ultima schimbare păstrată: " + schimbari.peek());
+        System.out.println("Ultima schimbare pastrata: " + schimbari.peek());
     }
 }
 ```
@@ -118,9 +118,9 @@ public class Main {
 Ieșire
 
 ```text
-Undo: scot ușile
+Undo: scot usile
 Undo: pun un eleron
-Ultima schimbare păstrată: vopsesc mașina roz
+Ultima schimbare pastrata: vopsesc masina roz
 ```
 
 ---
@@ -129,7 +129,7 @@ Ultima schimbare păstrată: vopsesc mașina roz
 
 Tommy se plimbă prin Vice City și ține minte locurile prin care a trecut. Când se încinge treaba, vrea să se întoarcă pe drumul pe care a venit, câte un loc o dată
 
-Tot ce face e într-un array `String[] miscari`. Un nume de loc înseamnă că merge acolo: afișează `Merg la loc`. Cuvântul `inapoi` înseamnă că se întoarce la locul unde era înainte: afișează `Înapoi la loc`. Dacă nu există un loc înaintea celui în care e, afișează `Nu am unde să mă întorc`. La final afișează `Acum la: loc`, sau `Acum la: nicăieri` dacă n-a mers nicăieri
+Tot ce face e într-un array `String[] miscari`. Un nume de loc înseamnă că merge acolo: afișează `Merg la loc`. Cuvântul `inapoi` înseamnă că se întoarce la locul unde era înainte: afișează `Inapoi la loc`. Dacă nu există un loc înaintea celui în care e, afișează `Nu am unde sa ma intorc`. La final afișează `Acum la: loc`, sau `Acum la: nicaieri` dacă n-a mers nicăieri
 
 **Exemplu**
 
@@ -137,9 +137,9 @@ Tot ce face e într-un array `String[] miscari`. Un nume de loc înseamnă că m
 Merg la Ocean Beach
 Merg la Little Havana
 Merg la Downtown
-Înapoi la Little Havana
-Înapoi la Ocean Beach
-Nu am unde să mă întorc
+Inapoi la Little Havana
+Inapoi la Ocean Beach
+Nu am unde sa ma intorc
 Acum la: Ocean Beach
 ```
 
@@ -148,7 +148,7 @@ Acum la: Ocean Beach
 ```text
 Merg la Starfish Island
 Merg la Vice Point
-Înapoi la Starfish Island
+Inapoi la Starfish Island
 Merg la Prawn Island
 Acum la: Prawn Island
 ```

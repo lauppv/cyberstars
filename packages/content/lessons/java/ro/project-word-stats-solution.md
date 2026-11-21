@@ -24,7 +24,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        String text = "Banii sunt în barcă.\nTommy spune: banii sunt în siguranță, Lance!";
+        String text = "Banii sunt in barca.\nTommy spune: banii sunt in siguranta, Lance!";
 
         try (PrintWriter out = new PrintWriter(new FileWriter("scrisoare.txt"))) {
             out.print(text);
@@ -44,7 +44,7 @@ public class Main {
             .max((a, b) -> a.length() - b.length())
             .orElse("");
 
-        System.out.println("Rânduri: " + randuri.size());
+        System.out.println("Randuri: " + randuri.size());
         System.out.println("Cuvinte: " + total);
         System.out.println("Cuvinte diferite: " + numar.size());
         System.out.println("Cel mai lung: " + celMaiLung);

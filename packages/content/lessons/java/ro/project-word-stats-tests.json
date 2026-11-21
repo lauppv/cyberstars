@@ -24,7 +24,7 @@
     {
       "visible": true,
       "inject": {
-        "text": "Banii sunt în barcă.\nTommy spune: banii sunt în siguranță, Lance!"
+        "text": "Banii sunt in barca.\nTommy spune: banii sunt in siguranta, Lance!"
       }
     },
     {
@@ -35,7 +35,7 @@
     },
     {
       "inject": {
-        "text": "Sună mă.\n\nSună mă Acum, Tommy!!!"
+        "text": "Suna ma.\n\nSuna ma Acum, Tommy!!!"
       }
     },
     {
@@ -50,7 +50,7 @@
     },
     {
       "inject": {
-        "text": "Noapte, club, bani, mașină, șef, afacere"
+        "text": "Noapte, club, bani, masina, sef, afacere"
       }
     },
     {
@@ -61,43 +61,43 @@
     },
     {
       "inject": {
-        "text": "sunt! sună, foarte! mașină!"
+        "text": "sunt! suna, foarte! masina!"
       },
       "generated": true
     },
     {
       "inject": {
-        "text": "ajutor,\nrepede? timp necaz sună, avocat"
+        "text": "ajutor,\nrepede? timp necaz suna, avocat"
       },
       "generated": true
     },
     {
       "inject": {
-        "text": "mă mă, mă Mă mă, mă, mă! mă. mă?"
+        "text": "ma ma, ma Ma ma, ma, ma! ma. ma?"
       },
       "generated": true
     },
     {
       "inject": {
-        "text": "Noi! noapte Mai? Lance în,\nsiguranță? Sună siguranță. banii\nRepede!\nnoapte Lance"
+        "text": "Noi! noapte Mai? Lance in,\nsiguranta? Suna siguranta. banii\nRepede!\nnoapte Lance"
       },
       "generated": true
     },
     {
       "inject": {
-        "text": "afacere\nsunt în. afacere! sunt. cei! Sunt\ncei? sunt În, afacere\ncei afacere cei În\ncei."
+        "text": "afacere\nsunt in. afacere! sunt. cei! Sunt\ncei? sunt In, afacere\ncei afacere cei In\ncei."
       },
       "generated": true
     },
     {
       "inject": {
-        "text": "Șef! Acum! Tommy. Șef. club! acum. Club!\nclub. timp?\nfoarte Tommy? Sună\nsună.\nnoi\nnoi, șef\nșef\nClub. foarte Noi"
+        "text": "Sef! Acum! Tommy. Sef. club! acum. Club!\nclub. timp?\nfoarte Tommy? Suna\nsuna.\nnoi\nnoi, sef\nsef\nClub. foarte Noi"
       },
       "generated": true
     },
     {
       "inject": {
-        "text": "mașină necaz? Club timp necaz\nNoi? Lance! șef avocat necaz? Barcă mașină afacere, club, Spune. noi, Șef Club! Spune șef, barcă.\nLance. foarte, sună foarte Lance. Club noi? noi, avocat"
+        "text": "masina necaz? Club timp necaz\nNoi? Lance! sef avocat necaz? Barca masina afacere, club, Spune. noi, Sef Club! Spune sef, barca.\nLance. foarte, suna foarte Lance. Club noi? noi, avocat"
       },
       "generated": true
     },
@@ -109,7 +109,7 @@
     },
     {
       "inject": {
-        "text": "Avocat Lance\nsunt! siguranță! Bani bani vrem! Mare, repede? Lance vrem, în, șef avocat mai? siguranță, în? mai, barcă barcă noi\nBarcă.\nLance, bani. Lance!\nbani? Necaz șef barcă Cei? noi, mare, sunt? Tommy Vrem. timp!\nafacere? Lance foarte\nspune? Necaz? foarte, mă! vrem Tommy Tommy, afacere în.\nVrem\nafacere sunt, foarte.\ncei! foarte? Sună afacere mă? mă? afacere Avocat"
+        "text": "Avocat Lance\nsunt! siguranta! Bani bani vrem! Mare, repede? Lance vrem, in, sef avocat mai? siguranta, in? mai, barca barca noi\nBarca.\nLance, bani. Lance!\nbani? Necaz sef barca Cei? noi, mare, sunt? Tommy Vrem. timp!\nafacere? Lance foarte\nspune? Necaz? foarte, ma! vrem Tommy Tommy, afacere in.\nVrem\nafacere sunt, foarte.\ncei! foarte? Suna afacere ma? ma? afacere Avocat"
       },
       "generated": true
     }

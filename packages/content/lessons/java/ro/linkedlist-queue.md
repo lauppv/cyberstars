@@ -47,8 +47,8 @@ public class Main {
         apeluri.offer("Lance");
         apeluri.offer("Kent");
 
-        System.out.println("Următorul: " + apeluri.peek());
-        System.out.println("Așteaptă: " + apeluri.size());
+        System.out.println("Urmatorul: " + apeluri.peek());
+        System.out.println("Asteapta: " + apeluri.size());
     }
 }
 ```
@@ -56,8 +56,8 @@ public class Main {
 Ieșire
 
 ```text
-Următorul: Lance
-Așteaptă: 2
+Urmatorul: Lance
+Asteapta: 2
 ```
 
 `peek` nu l-a scos pe Lance. El e tot primul în rând
@@ -99,9 +99,9 @@ import java.util.Queue;
 public class Main {
     public static void main(String[] args) {
         Queue<String> treburi = new LinkedList<>();
-        treburi.offer("Îl iau pe Lance");
+        treburi.offer("Il iau pe Lance");
         treburi.offer("Trec pe la Phil");
-        treburi.offer("Mă văd cu Diaz");
+        treburi.offer("Ma vad cu Diaz");
 
         while (!treburi.isEmpty()) {
             System.out.println("Fac: " + treburi.poll());
@@ -113,9 +113,9 @@ public class Main {
 Ieșire
 
 ```text
-Fac: Îl iau pe Lance
+Fac: Il iau pe Lance
 Fac: Trec pe la Phil
-Fac: Mă văd cu Diaz
+Fac: Ma vad cu Diaz
 ```
 
 ---
@@ -124,27 +124,27 @@ Fac: Mă văd cu Diaz
 
 Service-ul de la Sunshine Autos repară mașinile în ordinea în care ajung. Toată ziua se întâmplă două lucruri: intră o mașină nouă sau un mecanic se eliberează și ia următoarea mașină
 
-Tot ce se întâmplă e într-un array `String[] evenimente`. Un nume de mașină înseamnă că mașina intră: afișează `Așteaptă: nume (n la rând)`, unde n e lungimea rândului după ce a intrat. Cuvântul `urmatoarea` înseamnă că un mecanic e liber: ia prima mașină din rând și afișează `Reparată: nume`. Dacă nu așteaptă nicio mașină, afișează `Nicio mașină nu așteaptă`. La final afișează `Mai așteaptă: ` și câte mașini au rămas la rând
+Tot ce se întâmplă e într-un array `String[] evenimente`. Un nume de mașină înseamnă că mașina intră: afișează `Asteapta: nume (n la rand)`, unde n e lungimea rândului după ce a intrat. Cuvântul `urmatoarea` înseamnă că un mecanic e liber: ia prima mașină din rând și afișează `Reparata: nume`. Dacă nu așteaptă nicio mașină, afișează `Nicio masina nu asteapta`. La final afișează `Mai asteapta: ` și câte mașini au rămas la rând
 
 **Exemplu**
 
 ```text
-Așteaptă: Infernus (1 la rând)
-Așteaptă: Cheetah (2 la rând)
-Reparată: Infernus
-Așteaptă: Stinger (2 la rând)
-Reparată: Cheetah
-Reparată: Stinger
-Nicio mașină nu așteaptă
-Mai așteaptă: 0
+Asteapta: Infernus (1 la rand)
+Asteapta: Cheetah (2 la rand)
+Reparata: Infernus
+Asteapta: Stinger (2 la rand)
+Reparata: Cheetah
+Reparata: Stinger
+Nicio masina nu asteapta
+Mai asteapta: 0
 ```
 
 **Exemplu**
 
 ```text
-Așteaptă: Admiral (1 la rând)
-Așteaptă: Banshee (2 la rând)
-Așteaptă: PCJ 600 (3 la rând)
-Reparată: Admiral
-Mai așteaptă: 2
+Asteapta: Admiral (1 la rand)
+Asteapta: Banshee (2 la rand)
+Asteapta: PCJ 600 (3 la rand)
+Reparata: Admiral
+Mai asteapta: 2
 ```

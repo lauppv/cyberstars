@@ -75,7 +75,7 @@ void rezerva(String nume, String cod) throws LocException {
     int rand = Integer.parseInt(cod.substring(0, cod.length() - 1)) - 1;
     int coloana = cod.charAt(cod.length() - 1) - 'A';
     if (rand < 0 || rand >= locuri.length || coloana < 0 || coloana >= locuri[0].length) {
-        throw new LocException("Nu există locul " + cod);
+        throw new LocException("Nu exista locul " + cod);
     }
     if (locuri[rand][coloana] != null) {
         throw new LocException("Locul " + cod + " e ocupat");
@@ -151,31 +151,31 @@ Construiește avionul din pașii de mai sus, apoi trece prin el rezervările zil
 
 Avionul are `int randuri` rânduri și `int locuriPeRand` locuri pe fiecare rând (cel mult 6, deci literele merg de la A la F). Rezervările sunt într-un array `String[] rezervari`. Fiecare e `nume:loc`, de exemplu `Tommy:1A`, sau `nume:oricare`. Fă o `LocException` care extinde `Exception` și ține locurile într-un array 2D. Pentru fiecare rezervare, afișează:
 
-- `nume primește loc` când merge, cu locul primit
-- `Refuzat: Nu există locul cod` când locul nu e în avion și `Refuzat: Locul cod e ocupat` când îl are cineva
-- `nume așteaptă un loc` când a cerut orice loc și avionul e plin
+- `nume primeste loc` când merge, cu locul primit
+- `Refuzat: Nu exista locul cod` când locul nu e în avion și `Refuzat: Locul cod e ocupat` când îl are cineva
+- `nume asteapta un loc` când a cerut orice loc și avionul e plin
 
-La final afișează harta, câte un rând pentru fiecare rând de locuri, ca la pasul 6, apoi `Așteaptă: ` și numele de pe lista de așteptare în ordine, despărțite de o virgulă și un spațiu, sau `Așteaptă: nimeni`
+La final afișează harta, câte un rând pentru fiecare rând de locuri, ca la pasul 6, apoi `Asteapta: ` și numele de pe lista de așteptare în ordine, despărțite de o virgulă și un spațiu, sau `Asteapta: nimeni`
 
 **Exemplu**
 
 ```text
-Tommy primește 1A
+Tommy primeste 1A
 Refuzat: Locul 1A e ocupat
-Lance primește 1B
-Refuzat: Nu există locul 3A
-Kent primește 2B
-Phil primește 2A
-Candy așteaptă un loc
-Diaz așteaptă un loc
+Lance primeste 1B
+Refuzat: Nu exista locul 3A
+Kent primeste 2B
+Phil primeste 2A
+Candy asteapta un loc
+Diaz asteapta un loc
 1 XX
 2 XX
-Așteaptă: Candy, Diaz
+Asteapta: Candy, Diaz
 ```
 
 **Exemplu**
 
 ```text
 1 ...
-Așteaptă: nimeni
+Asteapta: nimeni
 ```

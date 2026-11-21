@@ -2,7 +2,7 @@
 public class Main {
     static int retrage(int sold, int suma) {
         if (suma <= 0) {
-            throw new IllegalArgumentException("Suma trebuie să fie pozitivă");
+            throw new IllegalArgumentException("Suma trebuie sa fie pozitiva");
         }
         if (suma > sold) {
             throw new IllegalArgumentException("Nu sunt destui bani");
@@ -17,7 +17,7 @@ public class Main {
         for (int suma : retrageri) {
             try {
                 sold = retrage(sold, suma);
-                System.out.println("Am scos " + suma + ", a rămas " + sold);
+                System.out.println("Am scos " + suma + ", a ramas " + sold);
             } catch (IllegalArgumentException e) {
                 System.out.println("Refuzat: " + e.getMessage());
             }

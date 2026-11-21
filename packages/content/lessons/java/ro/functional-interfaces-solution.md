@@ -18,7 +18,7 @@ public class Main {
                 System.out.println(pret + " -> " + pretNou);
                 total += pretNou;
             } else {
-                System.out.println(pret + " rămâne");
+                System.out.println(pret + " ramane");
                 total += pret;
             }
         }

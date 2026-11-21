@@ -63,7 +63,7 @@ Extinde `Exception`, deci e checked. Fiecare metodă care o aruncă trebuie să 
 Carte gaseste(String titlu) throws BibliotecaException {
     Carte carte = raft.get(titlu);
     if (carte == null) {
-        throw new BibliotecaException("Nicio carte numită " + titlu);
+        throw new BibliotecaException("Nicio carte numita " + titlu);
     }
     return carte;
 }
@@ -81,7 +81,7 @@ Acum cele două acțiuni. Fiecare verifică întâi starea cărții și aruncă 
 void imprumuta(String titlu, String nume) throws BibliotecaException {
     Carte carte = gaseste(titlu);
     if (carte.cititor != null) {
-        throw new BibliotecaException(titlu + " e deja împrumutată");
+        throw new BibliotecaException(titlu + " e deja imprumutata");
     }
     carte.cititor = nume;
 }
@@ -89,7 +89,7 @@ void imprumuta(String titlu, String nume) throws BibliotecaException {
 void returneaza(String titlu) throws BibliotecaException {
     Carte carte = gaseste(titlu);
     if (carte.cititor == null) {
-        throw new BibliotecaException(titlu + " nu era împrumutată");
+        throw new BibliotecaException(titlu + " nu era imprumutata");
     }
     carte.cititor = null;
 }
@@ -142,7 +142,7 @@ try {
         System.out.println(parti[2] + " a luat " + parti[1]);
     } else {
         biblioteca.returneaza(parti[1]);
-        System.out.println(parti[1] + " s-a întors");
+        System.out.println(parti[1] + " s-a intors");
     }
 } catch (BibliotecaException e) {
     System.out.println("Refuzat: " + e.getMessage());
@@ -160,8 +160,8 @@ Construiește biblioteca din pașii de mai sus, apoi trece prin ea cererile unei
 Titlurile cărților sunt într-un array `String[] carti`, iar cererile într-un array `String[] cereri`. O cerere e `imprumuta:titlu:nume` sau `returneaza:titlu`. Scrie clasele `Carte`, `Biblioteca` (cu metodele `imprumuta` și `returneaza`) și `BibliotecaException`. Pentru fiecare cerere, afișează:
 
 - `nume a luat titlu` când un împrumut merge
-- `titlu s-a întors` când o returnare merge
-- `Refuzat: ` și motivul când nu merge. Motivele sunt `Nicio carte numită titlu`, `titlu e deja împrumutată` și `titlu nu era împrumutată`
+- `titlu s-a intors` când o returnare merge
+- `Refuzat: ` și motivul când nu merge. Motivele sunt `Nicio carte numita titlu`, `titlu e deja imprumutata` și `titlu nu era imprumutata`
 
 La final afișează `Catalog:` și apoi fiecare carte în ordine alfabetică, ca `titlu: pe raft` sau `titlu: la nume`
 
@@ -169,10 +169,10 @@ La final afișează `Catalog:` și apoi fiecare carte în ordine alfabetică, ca
 
 ```text
 Lance a luat Dracula
-Refuzat: Dracula e deja împrumutată
-Refuzat: Nicio carte numită Scarface
-Refuzat: Moby Dick nu era împrumutată
-Dracula s-a întors
+Refuzat: Dracula e deja imprumutata
+Refuzat: Nicio carte numita Scarface
+Refuzat: Moby Dick nu era imprumutata
+Dracula s-a intors
 Phil a luat Dracula
 Catalog:
 Dracula: la Phil

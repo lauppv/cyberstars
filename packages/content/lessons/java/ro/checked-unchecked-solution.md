@@ -2,7 +2,7 @@
 public class Main {
     static int verificaCod(String cod) throws Exception {
         if (cod.length() != 4) {
-            throw new Exception("trebuie să aibă 4 caractere");
+            throw new Exception("trebuie sa aiba 4 caractere");
         }
         return Integer.parseInt(cod);
     }
@@ -17,9 +17,9 @@ public class Main {
                 System.out.println("Cod bun: " + cod);
                 bune++;
             } catch (NumberFormatException e) {
-                System.out.println("Nu e număr: " + cod);
+                System.out.println("Nu e numar: " + cod);
             } catch (Exception e) {
-                System.out.println("Cod greșit: " + e.getMessage());
+                System.out.println("Cod gresit: " + e.getMessage());
             }
         }
         System.out.println("Coduri bune: " + bune);

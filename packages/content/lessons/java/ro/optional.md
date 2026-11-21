@@ -37,10 +37,10 @@ import java.util.Optional;
 public class Main {
     public static void main(String[] args) {
         Optional<String> sofer = Optional.empty();
-        System.out.println("Șofer: " + sofer.orElse("nimeni"));
+        System.out.println("Sofer: " + sofer.orElse("nimeni"));
 
         Optional<String> sef = Optional.of("Tommy");
-        System.out.println("Șef: " + sef.orElse("nimeni"));
+        System.out.println("Sef: " + sef.orElse("nimeni"));
     }
 }
 ```
@@ -48,8 +48,8 @@ public class Main {
 Ieșire
 
 ```text
-Șofer: nimeni
-Șef: Tommy
+Sofer: nimeni
+Sef: Tommy
 ```
 
 Încă două ajutoare
@@ -65,7 +65,7 @@ public class Main {
         Optional<String> nume = Optional.of("phil");
         Optional<String> nimic = Optional.empty();
 
-        nume.ifPresent(n -> System.out.println("L-am găsit pe " + n));
+        nume.ifPresent(n -> System.out.println("L-am gasit pe " + n));
         System.out.println(nume.map(n -> n.toUpperCase()).orElse("-"));
         System.out.println(nimic.map(n -> n.toUpperCase()).orElse("-"));
     }
@@ -75,7 +75,7 @@ public class Main {
 Ieșire
 
 ```text
-L-am găsit pe phil
+L-am gasit pe phil
 PHIL
 -
 ```

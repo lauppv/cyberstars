@@ -10,7 +10,7 @@ class CodGresitException extends Exception {
 public class Main {
     static void deschideSeiful(String cod) throws CodGresitException {
         if (!cod.equals("1986")) {
-            throw new CodGresitException("Seiful rămâne închis");
+            throw new CodGresitException("Seiful ramane inchis");
         }
         System.out.println("Deschis");
     }
@@ -28,7 +28,7 @@ public class Main {
 Ieșire
 
 ```text
-Seiful rămâne închis
+Seiful ramane inchis
 ```
 
 Trei lucruri de văzut
@@ -50,7 +50,7 @@ class PreaTanarException extends Exception {
     int varsta;
 
     PreaTanarException(int varsta) {
-        super("Prea tânăr: " + varsta);
+        super("Prea tanar: " + varsta);
         this.varsta = varsta;
     }
 }
@@ -77,7 +77,7 @@ public class Main {
 Ieșire
 
 ```text
-Prea tânăr: 15
+Prea tanar: 15
 Revino peste 3 ani
 ```
 
@@ -91,20 +91,20 @@ Fă o clasă excepție `StocEpuizatException` care extinde `Exception`. Ea ține
 
 Scrie o metodă `vinde(int stoc, int cantitate)` care întoarce stocul rămas după vânzare. Când comanda e mai mare decât stocul, aruncă în schimb o `StocEpuizatException` și nu vinde nimic
 
-Lăzile lui Phil sunt în `int stoc`, iar comenzile într-un array `int[] comenzi`. Pentru fiecare comandă, apelează `vinde`. Dacă merge, afișează `Am vândut cantitate, au rămas stoc`. Dacă aruncă, afișează `Îmi pare rău, ` și mesajul. La final afișează `Stoc rămas: ` și ce mai are Phil
+Lăzile lui Phil sunt în `int stoc`, iar comenzile într-un array `int[] comenzi`. Pentru fiecare comandă, apelează `vinde`. Dacă merge, afișează `Am vandut cantitate, au ramas stoc`. Dacă aruncă, afișează `Imi pare rau, ` și mesajul. La final afișează `Stoc ramas: ` și ce mai are Phil
 
 **Exemplu**
 
 ```text
-Am vândut 4, au rămas 6
-Îmi pare rău, lipsesc 2
-Am vândut 6, au rămas 0
-Îmi pare rău, lipsesc 1
-Stoc rămas: 0
+Am vandut 4, au ramas 6
+Imi pare rau, lipsesc 2
+Am vandut 6, au ramas 0
+Imi pare rau, lipsesc 1
+Stoc ramas: 0
 ```
 
 **Exemplu**
 
 ```text
-Stoc rămas: 3
+Stoc ramas: 3
 ```

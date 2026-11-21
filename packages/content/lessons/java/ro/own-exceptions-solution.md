@@ -23,12 +23,12 @@ public class Main {
         for (int cantitate : comenzi) {
             try {
                 stoc = vinde(stoc, cantitate);
-                System.out.println("Am vândut " + cantitate + ", au rămas " + stoc);
+                System.out.println("Am vandut " + cantitate + ", au ramas " + stoc);
             } catch (StocEpuizatException e) {
-                System.out.println("Îmi pare rău, " + e.getMessage());
+                System.out.println("Imi pare rau, " + e.getMessage());
             }
         }
-        System.out.println("Stoc rămas: " + stoc);
+        System.out.println("Stoc ramas: " + stoc);
     }
 }
 ```

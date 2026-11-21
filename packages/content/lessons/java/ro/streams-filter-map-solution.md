@@ -21,7 +21,7 @@ public class Main {
             .forEach(System.out::println);
 
         long rapide = garaj.stream().filter(m -> m.viteza() >= vitezaMinima).count();
-        System.out.println("Mașini rapide: " + rapide);
+        System.out.println("Masini rapide: " + rapide);
     }
 }
 ```

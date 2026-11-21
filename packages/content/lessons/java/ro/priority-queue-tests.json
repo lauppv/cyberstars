@@ -32,7 +32,7 @@
       "visible": true,
       "inject": {
         "treburi": {
-          "$list": ["Îl iau pe Lance", "Cumpăr o barcă", "Plătesc poliția", "Mă văd cu Diaz"]
+          "$list": ["Il iau pe Lance", "Cumpar o barca", "Platesc politia", "Ma vad cu Diaz"]
         },
         "urgenta": {
           "$list": [2, 5, 1, 2]
@@ -43,7 +43,7 @@
       "visible": true,
       "inject": {
         "treburi": {
-          "$list": ["Îl sun pe Kent"]
+          "$list": ["Il sun pe Kent"]
         },
         "urgenta": {
           "$list": [3]
@@ -73,7 +73,7 @@
     {
       "inject": {
         "treburi": {
-          "$list": ["Trec pe la Phil", "Mă văd cu Sonny", "Vând trabucurile", "Vopsesc mașina"]
+          "$list": ["Trec pe la Phil", "Ma vad cu Sonny", "Vand trabucurile", "Vopsesc masina"]
         },
         "urgenta": {
           "$list": [9, 8, 7, 6]
@@ -83,7 +83,7 @@
     {
       "inject": {
         "treburi": {
-          "$list": ["Mă văd cu Sonny", "Mă văd cu Diaz", "Cumpăr o barcă", "Îl sun pe Kent"]
+          "$list": ["Ma vad cu Sonny", "Ma vad cu Diaz", "Cumpar o barca", "Il sun pe Kent"]
         },
         "urgenta": {
           "$list": [1, 1, 2, 2]
@@ -93,7 +93,7 @@
     {
       "inject": {
         "treburi": {
-          "$list": ["Mă văd cu Diaz", "Ascund banii"]
+          "$list": ["Ma vad cu Diaz", "Ascund banii"]
         },
         "urgenta": {
           "$list": [1, 2]
@@ -104,7 +104,7 @@
     {
       "inject": {
         "treburi": {
-          "$list": ["Repar barca", "Mă văd cu Diaz", "Îl iau pe Lance"]
+          "$list": ["Repar barca", "Ma vad cu Diaz", "Il iau pe Lance"]
         },
         "urgenta": {
           "$list": [3, 1, 2]
@@ -116,11 +116,11 @@
       "inject": {
         "treburi": {
           "$list": [
-            "Cumpăr o barcă",
+            "Cumpar o barca",
             "Trec pe la Phil",
-            "Vopsesc mașina",
-            "Îl iau pe Lance",
-            "Mă văd cu Sonny"
+            "Vopsesc masina",
+            "Il iau pe Lance",
+            "Ma vad cu Sonny"
           ]
         },
         "urgenta": {
@@ -133,11 +133,11 @@
       "inject": {
         "treburi": {
           "$list": [
-            "Vopsesc mașina",
-            "Plătesc poliția",
-            "Îl sun pe Kent",
-            "Vând trabucurile",
-            "Îl iau pe Lance",
+            "Vopsesc masina",
+            "Platesc politia",
+            "Il sun pe Kent",
+            "Vand trabucurile",
+            "Il iau pe Lance",
             "Repar barca"
           ]
         },
@@ -151,12 +151,12 @@
       "inject": {
         "treburi": {
           "$list": [
-            "Mă văd cu Diaz",
-            "Vând trabucurile",
-            "Mă văd cu Sonny",
-            "Îl sun pe Kent",
-            "Cumpăr o barcă",
-            "Plătesc poliția",
+            "Ma vad cu Diaz",
+            "Vand trabucurile",
+            "Ma vad cu Sonny",
+            "Il sun pe Kent",
+            "Cumpar o barca",
+            "Platesc politia",
             "Trec pe la Phil",
             "Repar barca"
           ]
@@ -171,15 +171,15 @@
       "inject": {
         "treburi": {
           "$list": [
-            "Mă văd cu Diaz",
-            "Cumpăr o barcă",
+            "Ma vad cu Diaz",
+            "Cumpar o barca",
             "Repar barca",
-            "Îl sun pe Kent",
-            "Plătesc poliția",
-            "Vând trabucurile",
+            "Il sun pe Kent",
+            "Platesc politia",
+            "Vand trabucurile",
             "Trec pe la Phil",
-            "Mă văd cu Sonny",
-            "Vopsesc mașina",
+            "Ma vad cu Sonny",
+            "Vopsesc masina",
             "Jefuiesc banca"
           ]
         },
@@ -193,18 +193,18 @@
       "inject": {
         "treburi": {
           "$list": [
-            "Vopsesc mașina",
+            "Vopsesc masina",
             "Repar barca",
-            "Mă văd cu Sonny",
-            "Plătesc poliția",
+            "Ma vad cu Sonny",
+            "Platesc politia",
             "Jefuiesc banca",
             "Ascund banii",
-            "Cumpăr o barcă",
-            "Îl sun pe Kent",
-            "Vând trabucurile",
-            "Îl iau pe Lance",
+            "Cumpar o barca",
+            "Il sun pe Kent",
+            "Vand trabucurile",
+            "Il iau pe Lance",
             "Trec pe la Phil",
-            "Mă văd cu Diaz"
+            "Ma vad cu Diaz"
           ]
         },
         "urgenta": {
@@ -217,18 +217,18 @@
       "inject": {
         "treburi": {
           "$list": [
-            "Mă văd cu Diaz",
-            "Plătesc poliția",
+            "Ma vad cu Diaz",
+            "Platesc politia",
             "Trec pe la Phil",
             "Repar barca",
-            "Îl iau pe Lance",
+            "Il iau pe Lance",
             "Jefuiesc banca",
-            "Mă văd cu Sonny",
-            "Vopsesc mașina",
-            "Vând trabucurile",
+            "Ma vad cu Sonny",
+            "Vopsesc masina",
+            "Vand trabucurile",
             "Ascund banii",
-            "Cumpăr o barcă",
-            "Îl sun pe Kent"
+            "Cumpar o barca",
+            "Il sun pe Kent"
           ]
         },
         "urgenta": {
@@ -242,17 +242,17 @@
         "treburi": {
           "$list": [
             "Trec pe la Phil",
-            "Îl iau pe Lance",
-            "Vopsesc mașina",
-            "Vând trabucurile",
+            "Il iau pe Lance",
+            "Vopsesc masina",
+            "Vand trabucurile",
             "Repar barca",
             "Jefuiesc banca",
-            "Mă văd cu Sonny",
-            "Mă văd cu Diaz",
-            "Plătesc poliția",
+            "Ma vad cu Sonny",
+            "Ma vad cu Diaz",
+            "Platesc politia",
             "Ascund banii",
-            "Cumpăr o barcă",
-            "Îl sun pe Kent"
+            "Cumpar o barca",
+            "Il sun pe Kent"
           ]
         },
         "urgenta": {

@@ -104,7 +104,7 @@ Folosește o referință la metodă când lambda-ul doar apelează o metodă. C�
 
 Kent Paul îi dă lui Tommy o listă cu oameni de sunat. Kent a scris-o în grabă: unele nume au majuscule, altele nu, iar ordinea e un haos. Tommy o vrea curată
 
-Numele sunt într-un array `String[] nume`. Pune-le într-un ArrayList. Fă fiecare nume cu majuscule, sortează lista alfabetic și afișează câte un nume pe rând. Apoi afișează `Apeluri de făcut: ` și câte nume sunt. Folosește referințe la metode, nu lambda-uri
+Numele sunt într-un array `String[] nume`. Pune-le într-un ArrayList. Fă fiecare nume cu majuscule, sortează lista alfabetic și afișează câte un nume pe rând. Apoi afișează `Apeluri de facut: ` și câte nume sunt. Folosește referințe la metode, nu lambda-uri
 
 **Exemplu**
 
@@ -113,11 +113,11 @@ CORTEZ
 KENT
 LANCE
 PHIL
-Apeluri de făcut: 4
+Apeluri de facut: 4
 ```
 
 **Exemplu**
 
 ```text
-Apeluri de făcut: 0
+Apeluri de facut: 0
 ```

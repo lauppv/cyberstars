@@ -11,7 +11,7 @@ Aruncă o excepție checked și uit-o, iar programul nici nu se compilează
 public class Main {
     static void deschideSeiful(String cod) {
         if (!cod.equals("1986")) {
-            throw new Exception("Cod greșit");
+            throw new Exception("Cod gresit");
         }
         System.out.println("Deschis");
     }
@@ -32,7 +32,7 @@ Deci ai două variante. Ori o prinzi chiar acolo, ori scrii `throws Exception` p
 public class Main {
     static void deschideSeiful(String cod) throws Exception {
         if (!cod.equals("1986")) {
-            throw new Exception("Cod greșit");
+            throw new Exception("Cod gresit");
         }
         System.out.println("Deschis");
     }
@@ -42,7 +42,7 @@ public class Main {
             deschideSeiful("1986");
             deschideSeiful("1234");
         } catch (Exception e) {
-            System.out.println("Alarmă: " + e.getMessage());
+            System.out.println("Alarma: " + e.getMessage());
         }
     }
 }
@@ -52,7 +52,7 @@ Ieșire
 
 ```text
 Deschis
-Alarmă: Cod greșit
+Alarma: Cod gresit
 ```
 
 Cu `throws Exception`, oricine apelează `deschideSeiful` vede că poate eșua, iar Java verifică să nu uite asta. De aceea se numesc checked
@@ -76,9 +76,9 @@ public class Main {
             try {
                 System.out.println("Cod " + citesteCod(t));
             } catch (NumberFormatException e) {
-                System.out.println("Nu e număr: " + t);
+                System.out.println("Nu e numar: " + t);
             } catch (Exception e) {
-                System.out.println("Problemă: " + e.getMessage());
+                System.out.println("Problema: " + e.getMessage());
             }
         }
     }
@@ -89,8 +89,8 @@ Ieșire
 
 ```text
 Cod 42
-Nu e număr: abc
-Problemă: Cod gol
+Nu e numar: abc
+Problema: Cod gol
 ```
 
 `parseInt` aruncă o `NumberFormatException` unchecked. `throw`-ul nostru face o `Exception` checked. Fiecare ajunge în catch-ul ei
@@ -108,16 +108,16 @@ Pe care să o arunci? O regulă simplă
 
 Tommy încearcă coduri la un seif din spatele clubului Pole Position. Un cod bun are exact 4 caractere și toate sunt cifre
 
-Scrie o metodă `verificaCod(String cod)` care aruncă o `Exception` checked cu mesajul `trebuie să aibă 4 caractere` când codul nu are 4 caractere. Altfel transformă codul în număr cu `Integer.parseInt`, care aruncă o `NumberFormatException` când are litere
+Scrie o metodă `verificaCod(String cod)` care aruncă o `Exception` checked cu mesajul `trebuie sa aiba 4 caractere` când codul nu are 4 caractere. Altfel transformă codul în număr cu `Integer.parseInt`, care aruncă o `NumberFormatException` când are litere
 
-Codurile sunt într-un array `String[] coduri`. Pentru fiecare, apelează `verificaCod`. Dacă merge, afișează `Cod bun: cod`. Dacă are litere, afișează `Nu e număr: cod`. Dacă are lungimea greșită, afișează `Cod greșit: ` și mesajul. La final afișează `Coduri bune: ` și câte coduri au mers
+Codurile sunt într-un array `String[] coduri`. Pentru fiecare, apelează `verificaCod`. Dacă merge, afișează `Cod bun: cod`. Dacă are litere, afișează `Nu e numar: cod`. Dacă are lungimea greșită, afișează `Cod gresit: ` și mesajul. La final afișează `Coduri bune: ` și câte coduri au mers
 
 **Exemplu**
 
 ```text
 Cod bun: 1986
-Cod greșit: trebuie să aibă 4 caractere
-Nu e număr: 19x6
+Cod gresit: trebuie sa aiba 4 caractere
+Nu e numar: 19x6
 Cod bun: 0042
 Coduri bune: 2
 ```
@@ -125,6 +125,6 @@ Coduri bune: 2
 **Exemplu**
 
 ```text
-Cod greșit: trebuie să aibă 4 caractere
+Cod gresit: trebuie sa aiba 4 caractere
 Coduri bune: 0
 ```

@@ -138,17 +138,17 @@ Aici am sortat String-urile după lungime, nu alfabetic
 
 Tommy a organizat o cursă pe străzi. Acum vrea două liste: una după timp, să vadă cine a câștigat, și una după nume, ca să plătească pe toată lumea
 
-Piloții sunt într-un array `String[] piloti`, iar timpii lor în secunde într-un array `int[] timpi`. `piloti[i]` a terminat în `timpi[i]` secunde. Afișează `După timp:`, apoi fiecare pilot ca `nume - timp s`, cel mai rapid primul. Dacă doi piloți au același timp, păstrează-i în ordinea din array-uri. Apoi afișează `După nume:` și aceleași rânduri în ordine alfabetică
+Piloții sunt într-un array `String[] piloti`, iar timpii lor în secunde într-un array `int[] timpi`. `piloti[i]` a terminat în `timpi[i]` secunde. Afișează `Dupa timp:`, apoi fiecare pilot ca `nume - timp s`, cel mai rapid primul. Dacă doi piloți au același timp, păstrează-i în ordinea din array-uri. Apoi afișează `Dupa nume:` și aceleași rânduri în ordine alfabetică
 
 **Exemplu**
 
 ```text
-După timp:
+Dupa timp:
 Lance - 58 s
 Tommy - 61 s
 Candy - 61 s
 Phil - 75 s
-După nume:
+Dupa nume:
 Candy - 61 s
 Lance - 58 s
 Phil - 75 s
@@ -158,8 +158,8 @@ Tommy - 61 s
 **Exemplu**
 
 ```text
-După timp:
+Dupa timp:
 Kent - 90 s
-După nume:
+Dupa nume:
 Kent - 90 s
 ```

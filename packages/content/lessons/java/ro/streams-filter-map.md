@@ -116,7 +116,7 @@ Infernus
 
 Diaz are nevoie de mașini rapide pentru o treabă în seara asta. Are o listă cu toate mașinile pe care le poate lua, cu viteza maximă a fiecăreia. Le vrea doar pe cele rapide, cea mai rapidă prima
 
-Numele mașinilor sunt într-un array `String[] masini`, iar vitezele maxime într-un array `int[] viteze`. `masini[i]` are viteza maximă `viteze[i]`. Cea mai mică viteză pe care o acceptă Diaz e în `int vitezaMinima`. Pune mașinile într-o listă, apoi folosește un stream ca să păstrezi mașinile cu viteza de cel puțin `vitezaMinima`, să le sortezi de la cea mai rapidă la cea mai lentă și să afișezi fiecare ca `nume (viteza km/h)`. Dacă două mașini au aceeași viteză, păstrează ordinea din array-uri. Apoi afișează `Mașini rapide: ` și câte sunt
+Numele mașinilor sunt într-un array `String[] masini`, iar vitezele maxime într-un array `int[] viteze`. `masini[i]` are viteza maximă `viteze[i]`. Cea mai mică viteză pe care o acceptă Diaz e în `int vitezaMinima`. Pune mașinile într-o listă, apoi folosește un stream ca să păstrezi mașinile cu viteza de cel puțin `vitezaMinima`, să le sortezi de la cea mai rapidă la cea mai lentă și să afișezi fiecare ca `nume (viteza km/h)`. Dacă două mașini au aceeași viteză, păstrează ordinea din array-uri. Apoi afișează `Masini rapide: ` și câte sunt
 
 **Exemplu**
 
@@ -124,11 +124,11 @@ Numele mașinilor sunt într-un array `String[] masini`, iar vitezele maxime în
 Infernus (240 km/h)
 Cheetah (230 km/h)
 Banshee (230 km/h)
-Mașini rapide: 3
+Masini rapide: 3
 ```
 
 **Exemplu**
 
 ```text
-Mașini rapide: 0
+Masini rapide: 0
 ```

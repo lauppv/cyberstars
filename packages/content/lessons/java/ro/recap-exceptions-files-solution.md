@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 class SumaNegativaException extends Exception {
     SumaNegativaException() {
-        super("sumă negativă");
+        super("suma negativa");
     }
 }
 
@@ -35,10 +35,10 @@ public class Main {
                 String[] parti = rand.split(",");
                 try {
                     int suma = verificaSuma(Integer.parseInt(parti[1]));
-                    System.out.println(parti[0] + " a plătit " + suma);
+                    System.out.println(parti[0] + " a platit " + suma);
                     total += suma;
                 } catch (NumberFormatException e) {
-                    System.out.println("Sumă greșită: " + rand);
+                    System.out.println("Suma gresita: " + rand);
                 } catch (SumaNegativaException e) {
                     System.out.println("Respins: " + rand + " (" + e.getMessage() + ")");
                 }

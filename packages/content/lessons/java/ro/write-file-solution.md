@@ -7,7 +7,7 @@ import java.nio.file.Path;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String[] zile = {"Luni", "Marți", "Miercuri"};
+        String[] zile = {"Luni", "Marti", "Miercuri"};
         int[] castiguri = {1200, 800, 2500};
 
         int total = 0;

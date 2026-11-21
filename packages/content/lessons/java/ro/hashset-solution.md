@@ -10,10 +10,10 @@ public class Main {
             if (inauntru.add(nume)) {
                 System.out.println("Invitat nou: " + nume);
             } else {
-                System.out.println("Deja înăuntru: " + nume);
+                System.out.println("Deja inauntru: " + nume);
             }
         }
-        System.out.println("Invitați diferiți: " + inauntru.size());
+        System.out.println("Invitati diferiti: " + inauntru.size());
     }
 }
 ```

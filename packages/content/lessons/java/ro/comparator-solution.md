@@ -35,13 +35,13 @@ public class Main {
         }
 
         cursa.sort(new DupaTimp());
-        System.out.println("După timp:");
+        System.out.println("Dupa timp:");
         for (Pilot p : cursa) {
             System.out.println(p.nume + " - " + p.timp + " s");
         }
 
         cursa.sort(new DupaNume());
-        System.out.println("După nume:");
+        System.out.println("Dupa nume:");
         for (Pilot p : cursa) {
             System.out.println(p.nume + " - " + p.timp + " s");
         }

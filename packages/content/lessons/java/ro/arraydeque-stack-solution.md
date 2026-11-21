@@ -10,10 +10,10 @@ public class Main {
         for (String miscare : miscari) {
             if (miscare.equals("inapoi")) {
                 if (locuri.size() < 2) {
-                    System.out.println("Nu am unde să mă întorc");
+                    System.out.println("Nu am unde sa ma intorc");
                 } else {
                     locuri.pop();
-                    System.out.println("Înapoi la " + locuri.peek());
+                    System.out.println("Inapoi la " + locuri.peek());
                 }
             } else {
                 locuri.push(miscare);
@@ -22,7 +22,7 @@ public class Main {
         }
 
         if (locuri.isEmpty()) {
-            System.out.println("Acum la: nicăieri");
+            System.out.println("Acum la: nicaieri");
         } else {
             System.out.println("Acum la: " + locuri.peek());
         }

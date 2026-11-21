@@ -37,11 +37,11 @@ public class Main {
         echipa.add("Lance");
         echipa.add("Phil");
 
-        // contains: e în set?
+        // contains: e in set?
         System.out.println(echipa.contains("Lance"));
         System.out.println(echipa.contains("Sonny"));
 
-        // remove: îl scoate
+        // remove: il scoate
         echipa.remove("Phil");
         System.out.println(echipa.size());
     }
@@ -100,7 +100,7 @@ public class Main {
                 System.out.println("Primul apel de la " + nume);
             }
         }
-        System.out.println("Apelanți diferiți: " + apelanti.size());
+        System.out.println("Apelanti diferiti: " + apelanti.size());
     }
 }
 ```
@@ -111,7 +111,7 @@ Ieșire
 Primul apel de la Lance
 Primul apel de la Tommy
 Primul apel de la Kent
-Apelanți diferiți: 3
+Apelanti diferiti: 3
 ```
 
 Aici ordinea e bună, pentru că afișăm în timp ce parcurgem array-ul, nu set-ul
@@ -122,25 +122,25 @@ Aici ordinea e bună, pentru că afișăm în timp ce parcurgem array-ul, nu set
 
 Diseară Lance stă la ușa clubului Malibu. Notează fiecare nume care intră. Unii ies la aer și se întorc, așa că numele lor apare din nou. Tommy vrea să știe cine e nou și cine e deja înăuntru
 
-Numele sunt într-un array `String[] intrari`, în ordinea în care au intrat oamenii. Parcurge-le. Prima dată când apare un nume, afișează `Invitat nou: nume`. Când apare din nou, afișează `Deja înăuntru: nume`. La final afișează `Invitați diferiți: ` și câți oameni diferiți au venit
+Numele sunt într-un array `String[] intrari`, în ordinea în care au intrat oamenii. Parcurge-le. Prima dată când apare un nume, afișează `Invitat nou: nume`. Când apare din nou, afișează `Deja inauntru: nume`. La final afișează `Invitati diferiti: ` și câți oameni diferiți au venit
 
 **Exemplu**
 
 ```text
 Invitat nou: Tommy
 Invitat nou: Lance
-Deja înăuntru: Tommy
+Deja inauntru: Tommy
 Invitat nou: Mercedes
-Deja înăuntru: Lance
+Deja inauntru: Lance
 Invitat nou: Phil
-Invitați diferiți: 4
+Invitati diferiti: 4
 ```
 
 **Exemplu**
 
 ```text
 Invitat nou: Kent
-Deja înăuntru: Kent
-Deja înăuntru: Kent
-Invitați diferiți: 1
+Deja inauntru: Kent
+Deja inauntru: Kent
+Invitati diferiti: 1
 ```

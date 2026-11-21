@@ -4,7 +4,7 @@ Până acum, Java arunca excepțiile: împărțire la zero, un index greșit, un
 public class Main {
     static int imparte(int bani, int oameni) {
         if (oameni <= 0) {
-            throw new IllegalArgumentException("Nu am cu cine să împart");
+            throw new IllegalArgumentException("Nu am cu cine sa impart");
         }
         return bani / oameni;
     }
@@ -23,7 +23,7 @@ Ieșire
 300
 ```
 
-Apoi programul se oprește cu `IllegalArgumentException: Nu am cu cine să împart`. „Gata” nu se mai afișează. `throw` încheie metoda pe loc, ca un `return`, dar cu o eroare
+Apoi programul se oprește cu `IllegalArgumentException: Nu am cu cine sa impart`. „Gata” nu se mai afișează. `throw` încheie metoda pe loc, ca un `return`, dar cu o eroare
 
 ---
 
@@ -40,7 +40,7 @@ Cine apelează metoda poate prinde excepția, cum ai făcut înainte cu `try` ș
 public class Main {
     static int imparte(int bani, int oameni) {
         if (oameni <= 0) {
-            throw new IllegalArgumentException("Nu am cu cine să împart");
+            throw new IllegalArgumentException("Nu am cu cine sa impart");
         }
         return bani / oameni;
     }
@@ -49,9 +49,9 @@ public class Main {
         int[] echipe = {3, 0, 2};
         for (int oameni : echipe) {
             try {
-                System.out.println("Fiecare primește " + imparte(900, oameni));
+                System.out.println("Fiecare primeste " + imparte(900, oameni));
             } catch (IllegalArgumentException e) {
-                System.out.println("Problemă: " + e.getMessage());
+                System.out.println("Problema: " + e.getMessage());
             }
         }
     }
@@ -61,9 +61,9 @@ public class Main {
 Ieșire
 
 ```text
-Fiecare primește 300
-Problemă: Nu am cu cine să împart
-Fiecare primește 450
+Fiecare primeste 300
+Problema: Nu am cu cine sa impart
+Fiecare primeste 450
 ```
 
 Metoda găsește problema. Cel care o apelează decide ce face cu ea
@@ -82,9 +82,9 @@ Pentru `IllegalArgumentException` asta e doar o notă pentru cititor. În lecți
 public class Main {
     static void verificaVarsta(int varsta) throws IllegalArgumentException {
         if (varsta < 18) {
-            throw new IllegalArgumentException("Prea tânăr pentru club: " + varsta);
+            throw new IllegalArgumentException("Prea tanar pentru club: " + varsta);
         }
-        System.out.println("Intră");
+        System.out.println("Intra");
     }
 
     public static void main(String[] args) {
@@ -101,8 +101,8 @@ public class Main {
 Ieșire
 
 ```text
-Intră
-Prea tânăr pentru club: 16
+Intra
+Prea tanar pentru club: 16
 ```
 
 ---
@@ -111,17 +111,17 @@ Prea tânăr pentru club: 16
 
 Tommy are un cont la o bancă din Vice City și trimite o listă de retrageri. Banca plătește doar ce are sens
 
-Scrie o metodă `retrage(int sold, int suma)` care întoarce noul sold. Ea aruncă o `IllegalArgumentException` cu mesajul `Suma trebuie să fie pozitivă` când suma e 0 sau mai mică și cu `Nu sunt destui bani` când suma e mai mare decât soldul
+Scrie o metodă `retrage(int sold, int suma)` care întoarce noul sold. Ea aruncă o `IllegalArgumentException` cu mesajul `Suma trebuie sa fie pozitiva` când suma e 0 sau mai mică și cu `Nu sunt destui bani` când suma e mai mare decât soldul
 
-Banii pornesc în `int sold`, iar retragerile sunt într-un array `int[] retrageri`. Pentru fiecare, apelează `retrage`. Dacă merge, afișează `Am scos suma, a rămas sold`. Dacă aruncă, afișează `Refuzat: ` și mesajul. La final afișează `Sold: ` și ce a rămas
+Banii pornesc în `int sold`, iar retragerile sunt într-un array `int[] retrageri`. Pentru fiecare, apelează `retrage`. Dacă merge, afișează `Am scos suma, a ramas sold`. Dacă aruncă, afișează `Refuzat: ` și mesajul. La final afișează `Sold: ` și ce a rămas
 
 **Exemplu**
 
 ```text
-Am scos 300, a rămas 700
+Am scos 300, a ramas 700
 Refuzat: Nu sunt destui bani
-Refuzat: Suma trebuie să fie pozitivă
-Am scos 700, a rămas 0
+Refuzat: Suma trebuie sa fie pozitiva
+Am scos 700, a ramas 0
 Sold: 0
 ```
 

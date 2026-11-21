@@ -13,7 +13,7 @@ public class Main {
         apeluri.replaceAll(String::toUpperCase);
         apeluri.sort(String::compareTo);
         apeluri.forEach(System.out::println);
-        System.out.println("Apeluri de făcut: " + apeluri.size());
+        System.out.println("Apeluri de facut: " + apeluri.size());
     }
 }
 ```
