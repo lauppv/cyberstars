@@ -1,0 +1,215 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "carName"
+      },
+      {
+        "kind": "variable",
+        "name": "carSpeed"
+      },
+      {
+        "kind": "variable",
+        "name": "boatName"
+      },
+      {
+        "kind": "variable",
+        "name": "boatSpeed"
+      },
+      {
+        "kind": "interface"
+      },
+      {
+        "kind": "modifier",
+        "name": "default"
+      },
+      {
+        "kind": "class",
+        "name": "Car"
+      },
+      {
+        "kind": "class",
+        "name": "Boat"
+      },
+      {
+        "kind": "implements"
+      },
+      {
+        "kind": "function",
+        "name": "describe"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "carName": "Infernus",
+        "carSpeed": 240,
+        "boatName": "Squalo",
+        "boatSpeed": 95
+      }
+    },
+    {
+      "inject": {
+        "carName": "Idaho",
+        "carSpeed": 150,
+        "boatName": "Jetmax",
+        "boatSpeed": 210
+      }
+    },
+    {
+      "inject": {
+        "carName": "Cheetah",
+        "carSpeed": 200,
+        "boatName": "Dinghy",
+        "boatSpeed": 0
+      }
+    },
+    {
+      "inject": {
+        "carName": "Faggio",
+        "carSpeed": 199,
+        "boatName": "Reefer",
+        "boatSpeed": 199
+      }
+    },
+    {
+      "inject": {
+        "carName": "Comet",
+        "carSpeed": 183,
+        "boatName": "Tropic",
+        "boatSpeed": 71
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 253,
+        "boatName": "Tropic",
+        "boatSpeed": 198
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 237,
+        "boatName": "Tropic",
+        "boatSpeed": 190
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Idaho",
+        "carSpeed": 226,
+        "boatName": "Tropic",
+        "boatSpeed": 250
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 256,
+        "boatName": "Jetmax",
+        "boatSpeed": 184
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Stinger",
+        "carSpeed": 156,
+        "boatName": "Speeder",
+        "boatSpeed": 63
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Infernus",
+        "carSpeed": 164,
+        "boatName": "Marquis",
+        "boatSpeed": 125
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 132,
+        "boatName": "Marquis",
+        "boatSpeed": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Banshee",
+        "carSpeed": 227,
+        "boatName": "Marquis",
+        "boatSpeed": 243
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 188,
+        "boatName": "Speeder",
+        "boatSpeed": 247
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 220,
+        "boatName": "Tropic",
+        "boatSpeed": 26
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Sentinel",
+        "carSpeed": 177,
+        "boatName": "Jetmax",
+        "boatSpeed": 224
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Admiral",
+        "carSpeed": 156,
+        "boatName": "Tropic",
+        "boatSpeed": 259
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Idaho",
+        "carSpeed": 183,
+        "boatName": "Speeder",
+        "boatSpeed": 118
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "carName": "Infernus",
+        "carSpeed": 178,
+        "boatName": "Tropic",
+        "boatSpeed": 171
+      },
+      "generated": true
+    }
+  ]
+}

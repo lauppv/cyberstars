@@ -1,0 +1,143 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "cuvant"
+      },
+      {
+        "kind": "recursion",
+        "name": "inverseaza"
+      },
+      {
+        "kind": "recursion",
+        "name": "estePalindrom"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "loop"
+      },
+      {
+        "kind": "call",
+        "name": "StringBuilder"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cuvant": "level"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "Tommy"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "abba"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "a"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": ""
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "ab"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "racecar"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "Abba"
+      }
+    },
+    {
+      "inject": {
+        "cuvant": "cbc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "bacbzbbbbbbzbcab"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "abzccq"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "bbaabb"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "xbbcyycbbx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "cac"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "xzbzx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "xycxabycybaxcyx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "cabazaccccazabac"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "xbxaxzcczxaxbx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "bxxb"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvant": "azbxzq"
+      },
+      "generated": true
+    }
+  ]
+}

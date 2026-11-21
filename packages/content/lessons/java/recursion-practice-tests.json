@@ -1,0 +1,143 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "word"
+      },
+      {
+        "kind": "recursion",
+        "name": "reverse"
+      },
+      {
+        "kind": "recursion",
+        "name": "isPalindrome"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "loop"
+      },
+      {
+        "kind": "call",
+        "name": "StringBuilder"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "word": "level"
+      }
+    },
+    {
+      "inject": {
+        "word": "Tommy"
+      }
+    },
+    {
+      "inject": {
+        "word": "abba"
+      }
+    },
+    {
+      "inject": {
+        "word": "a"
+      }
+    },
+    {
+      "inject": {
+        "word": ""
+      }
+    },
+    {
+      "inject": {
+        "word": "ab"
+      }
+    },
+    {
+      "inject": {
+        "word": "racecar"
+      }
+    },
+    {
+      "inject": {
+        "word": "Abba"
+      }
+    },
+    {
+      "inject": {
+        "word": "cbc"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "bacbzbbbbbbzbcab"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "abzccq"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "bbaabb"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "xbbcyycbbx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "cac"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "xzbzx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "xycxabycybaxcyx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "cabazaccccazabac"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "xbxaxzcczxaxbx"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "bxxb"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "word": "azbxzq"
+      },
+      "generated": true
+    }
+  ]
+}

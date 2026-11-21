@@ -1,0 +1,161 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "dialed"
+      },
+      {
+        "kind": "variable",
+        "name": "minutes"
+      },
+      {
+        "kind": "function"
+      },
+      {
+        "kind": "switch_expression"
+      },
+      {
+        "kind": "ternary"
+      },
+      {
+        "kind": "call",
+        "name": "Character.isDigit"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "dialed": "305-555-0142",
+        "minutes": 3
+      }
+    },
+    {
+      "inject": {
+        "dialed": "212 555 0199",
+        "minutes": 0
+      }
+    },
+    {
+      "inject": {
+        "dialed": "786-555-0100",
+        "minutes": 1
+      }
+    },
+    {
+      "inject": {
+        "dialed": "555-0142",
+        "minutes": 2
+      }
+    },
+    {
+      "inject": {
+        "dialed": "415-555-0000",
+        "minutes": 4
+      }
+    },
+    {
+      "inject": {
+        "dialed": "310-555-0123",
+        "minutes": 2
+      }
+    },
+    {
+      "inject": {
+        "dialed": "3055550142",
+        "minutes": 10
+      }
+    },
+    {
+      "inject": {
+        "dialed": "305-555-01423",
+        "minutes": 1
+      }
+    },
+    {
+      "inject": {
+        "dialed": "",
+        "minutes": 5
+      }
+    },
+    {
+      "inject": {
+        "dialed": "(212) 555-0101",
+        "minutes": 1
+      }
+    },
+    {
+      "inject": {
+        "dialed": "786-494-76831",
+        "minutes": 30
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "41593338632",
+        "minutes": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "123 041 9019",
+        "minutes": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "305 548 90663",
+        "minutes": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "123-329-2102",
+        "minutes": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "786 262 014",
+        "minutes": 26
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "415 140 6824",
+        "minutes": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "305 676 445",
+        "minutes": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "70215433891",
+        "minutes": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "dialed": "786-454-9400",
+        "minutes": 26
+      },
+      "generated": true
+    }
+  ]
+}

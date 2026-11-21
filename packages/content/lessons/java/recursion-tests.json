@@ -1,0 +1,138 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "boxes"
+      },
+      {
+        "kind": "recursion",
+        "name": "open"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "boxes": 3
+      }
+    },
+    {
+      "inject": {
+        "boxes": 1
+      }
+    },
+    {
+      "inject": {
+        "boxes": 0
+      }
+    },
+    {
+      "inject": {
+        "boxes": 2
+      }
+    },
+    {
+      "inject": {
+        "boxes": 5
+      }
+    },
+    {
+      "inject": {
+        "boxes": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 12
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 15
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 150
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "boxes": 200
+      },
+      "generated": true
+    }
+  ]
+}

@@ -853,6 +853,28 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
   const main = (members: string) =>
     `public class Main {\n${members}\n    public static void main(String[] args) {}\n}\n`;
 
+  it("injects main's variable, not a helper's parameter it reassigns", () => {
+    const payloadPath = path.join(dir, 'payload.json');
+    const program =
+      'public class Main {\n' +
+      '    static void raise(int pay) {\n        pay = pay + 1;\n    }\n' +
+      '    public static void main(String[] args) {\n' +
+      '        int pay = 500;\n        raise(pay);\n        System.out.println(pay);\n    }\n}\n';
+    fs.writeFileSync(
+      payloadPath,
+      JSON.stringify({ userCode: program, structure: {}, cases: [{ inject: { pay: 0 } }] }),
+    );
+    const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
+      input: 'stop\n',
+      encoding: 'utf8',
+      timeout: 60_000,
+    });
+    expect(result.status).toBe(0);
+    expect(JSON.parse(result.stdout.trim().split('\n')[1])).toEqual({
+      user: expect.objectContaining({ stdout: '0\n', exit: 0 }),
+    });
+  });
+
   it('compiles the timer once, beside its own classes, and again when its source changes', () => {
     const payloadPath = path.join(dir, 'payload.json');
     const program =
@@ -1055,6 +1077,155 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
         structureFailures: [{ type: 'require', rule: recursion }],
       });
     }
+  });
+
+  it('sees the constructs of the later Java lessons by their shape', () => {
+    const kinds = [
+      'ternary',
+      'switch_expression',
+      'lambda',
+      'method_reference',
+      'throw',
+      'throws',
+      'synchronized',
+      'record',
+      'generic_class',
+      'generic_method',
+      'bounded_type',
+      'try_resources',
+      'anonymous_class',
+      'inner_class',
+      'array_2d',
+      'varargs',
+    ];
+    const found = (code: string) => {
+      const { structureFailures } = header(
+        code,
+        kinds.map((kind) => ({ kind })),
+      ) as { structureFailures: { rule: { kind: string } }[] };
+      const missing = new Set(structureFailures.map((f) => f.rule.kind));
+      return kinds.filter((k) => !missing.has(k));
+    };
+    const imports = 'import java.util.*;\n';
+    // A plain program shows none of them: a "?" in a string, a switch statement with arrows,
+    // an int[] parameter, a static nested class, a record's absence.
+    expect(
+      found(
+        imports +
+          main(
+            '    static class Car {}\n    static int f(int[] xs) { return xs[0]; }\n' +
+              '    static void g(int d) { String s = "a ? b : c"; switch (d) { case 1 -> f(new int[] {d}); default -> {} } }',
+          ),
+      ),
+    ).toEqual([]);
+    const cases: [string, string[]][] = [
+      [main('    static int f(int x) { return x > 2 ? 1 : 0; }'), ['ternary']],
+      [
+        main(
+          '    static String f(int d) { return switch (d) { case 1 -> "a"; default -> "b"; }; }',
+        ),
+        ['switch_expression'],
+      ],
+      [main('    static Runnable r = () -> {};'), ['lambda']],
+      [
+        imports + main('    static void f(List<String> l) { l.forEach(System.out::println); }'),
+        ['method_reference'],
+      ],
+      [main('    static void f() { throw new IllegalStateException(); }'), ['throw']],
+      [main('    static void f() throws Exception {}'), ['throws']],
+      [
+        main(
+          '    static final Object LOCK = new Object();\n    static void f() { synchronized (LOCK) {} }',
+        ),
+        ['synchronized'],
+      ],
+      [main('    static synchronized void f() {}'), ['synchronized']],
+      [main('') + 'record Point(int x, int y) {}\n', ['record']],
+      [main('') + 'class Box<T> { T value; }\n', ['generic_class']],
+      [
+        imports + main('    static <T> T first(List<T> l) { return l.get(0); }'),
+        ['generic_method'],
+      ],
+      [
+        main(
+          '    static <T extends Comparable<T>> boolean f(T a, T b) { return a.compareTo(b) > 0; }',
+        ),
+        ['generic_method', 'bounded_type'],
+      ],
+      [
+        imports + main('    static double f(List<? extends Number> l) { return 0; }'),
+        ['bounded_type'],
+      ],
+      [
+        imports + main('    static void f() { try (Scanner sc = new Scanner(System.in)) {} }'),
+        ['try_resources'],
+      ],
+      [
+        main('    static Runnable r = new Runnable() { public void run() {} };'),
+        ['anonymous_class'],
+      ],
+      [main('') + 'class Garage {\n    class Car {}\n}\n', ['inner_class']],
+      [main('    static int[][] grid = {{1, 2}, {3, 4}};'), ['array_2d']],
+      [main('    static Object grid = new int[3][4];'), ['array_2d']],
+      [main('    static int f(int... xs) { return xs.length; }'), ['varargs']],
+    ];
+    for (const [code, want] of cases) expect(found(code)).toEqual(want);
+  });
+
+  it("doesn't take main's own declaration for varargs, throws, synchronized or a generic method", () => {
+    const rules = ['varargs', 'throws', 'synchronized', 'generic_method'].map((kind) => ({ kind }));
+    const code =
+      'public class Main {\n    static void roll(String[] crew) {}\n' +
+      '    public static synchronized <T> void main(String... args) throws Exception {}\n}\n';
+    expect(header(code, rules)).toEqual({
+      syntaxError: null,
+      structureFailures: rules.map((rule) => ({ type: 'require', rule })),
+    });
+  });
+
+  it('takes only a member class of a class, enum or record as an inner class', () => {
+    const rule = { kind: 'inner_class' };
+    const missing = { syntaxError: null, structureFailures: [{ type: 'require', rule }] };
+    // A class inside an interface is static without saying so.
+    expect(header(main('') + 'interface Shape {\n    class Circle {}\n}\n', [rule])).toEqual(
+      missing,
+    );
+    expect(header(main('') + 'enum Size {\n    S;\n    class Box {}\n}\n', [rule])).toEqual({
+      syntaxError: null,
+      structureFailures: [],
+    });
+  });
+
+  it('names the method a recursion rule wants recursive', () => {
+    const code = main(
+      '    static int fact(int n) { return n < 2 ? 1 : n * fact(n - 1); }\n    static int twice(int n) { return 2 * n; }',
+    );
+    const fact = { kind: 'recursion', name: 'fact' };
+    const twice = { kind: 'recursion', name: 'twice' };
+    expect(header(code, [fact, twice])).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule: twice }],
+    });
+  });
+
+  it("takes a call through the method's own class as recursion, not another class's method", () => {
+    const open = { kind: 'recursion', name: 'open' };
+    const passes = { syntaxError: null, structureFailures: [] };
+    const recursive = '    static void open(int n) { if (n > 0) Main.open(n - 1); }';
+    expect(header(main(recursive), [open])).toEqual(passes);
+    // Another class's open with as many parameters is a different method.
+    const bare = '    static void open(int n) { if (n > 0) open(n - 1); }';
+    expect(header(main(bare) + 'class Box {\n    void open(int k) {}\n}\n', [open])).toEqual(
+      passes,
+    );
+    // Box.open from Main's open isn't Main's open calling itself.
+    const other = '    static void open(int n) { Box.open(n); }';
+    expect(
+      header(main(other) + 'class Box {\n    static void open(int k) {}\n}\n', [open]),
+    ).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule: open }],
+    });
   });
 
   it('counts static or private only outside the class holding main', () => {

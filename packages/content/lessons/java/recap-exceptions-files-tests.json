@@ -1,0 +1,235 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "entries"
+      },
+      {
+        "kind": "call",
+        "name": "FileWriter"
+      },
+      {
+        "kind": "call",
+        "name": "NegativeAmountException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "parseInt"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "entries": {
+          "$list": ["Phil,500", "Kent,lots", "Lance,-200", "Mercedes,1500"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "entries": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Sonny,0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Diaz,-1", "Diaz,-1000"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Ken,12.5", "Ken,1 000", "Ken,x"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Candy,999999", "Umberto,1"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Phil,4500", "Lance,1200"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Diaz,-251", "Diaz,600", "Sonny,x"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Cortez,x", "Ken,1800", "Mercedes,1800", "Ken,800"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Ken,3600", "Sonny,4400", "Cortez,1900", "Umberto,x", "Diaz,1800"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Diaz,-594",
+            "Diaz,3100",
+            "Mercedes,soon",
+            "Sonny,1000",
+            "Sonny,4500",
+            "Kent,1300"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Phil,4000",
+            "Umberto,1100",
+            "Lance,soon",
+            "Sonny,3400",
+            "Lance,soon",
+            "Cortez,x",
+            "Mercedes,dunno",
+            "Umberto,1300"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Umberto,2300",
+            "Ken,1000",
+            "Diaz,2500",
+            "Umberto,2900",
+            "Diaz,4000",
+            "Ken,-682",
+            "Sonny,soon",
+            "Mercedes,700",
+            "Lance,soon",
+            "Lance,3100"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Sonny,1300",
+            "Sonny,x",
+            "Sonny,3000",
+            "Ken,5000",
+            "Ken,4300",
+            "Ken,1600",
+            "Cortez,1200",
+            "Cortez,1000",
+            "Sonny,dunno",
+            "Ken,2800",
+            "Umberto,soon",
+            "Umberto,soon"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Ken,-832",
+            "Candy,2800",
+            "Kent,500",
+            "Kent,-440",
+            "Cortez,lots",
+            "Cortez,lots",
+            "Diaz,3800",
+            "Umberto,lots",
+            "Mercedes,4100",
+            "Cortez,1400",
+            "Phil,-894",
+            "Lance,2600",
+            "Phil,-285",
+            "Mercedes,800",
+            "Cortez,1800"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Sonny,3000",
+            "Lance,-141",
+            "Cortez,2400",
+            "Lance,4200",
+            "Cortez,4300",
+            "Umberto,600",
+            "Sonny,-27",
+            "Sonny,soon",
+            "Candy,3300",
+            "Cortez,dunno",
+            "Lance,1800",
+            "Lance,-49",
+            "Ken,4400",
+            "Diaz,100",
+            "Ken,dunno",
+            "Candy,3000",
+            "Candy,4200",
+            "Candy,dunno",
+            "Umberto,soon",
+            "Mercedes,soon"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -197,13 +197,16 @@ describe('auditKinds', () => {
     );
   });
 
-  it('takes a named recursion rule only in c, the one judge that checks the name', () => {
+  it('takes a named recursion rule only in c and java, the judges that check the name', () => {
     const spec: LessonTestsSpec = {
       structure: { requires: [{ kind: 'recursion', name: 'fib' }] },
       cases: [],
     };
     expect(auditKinds('c', spec)).toEqual([]);
-    expect(auditKinds('python', spec)).toEqual(['a recursion rule with a name is c-only']);
+    expect(auditKinds('java', spec)).toEqual([]);
+    expect(auditKinds('python', spec)).toEqual([
+      'a recursion rule with a name is only for c and java',
+    ]);
   });
 });
 

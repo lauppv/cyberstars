@@ -1,0 +1,442 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "entries"
+      },
+      {
+        "kind": "call",
+        "name": "HashSet"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "entries": {
+          "$list": ["Tommy", "Lance", "Tommy", "Mercedes", "Lance", "Phil"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "entries": {
+          "$list": ["Kent", "Kent", "Kent"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Sonny"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Diaz", "Lance", "Phil", "Kent"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Tommy", "tommy", "Tommy"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["A", "B", "A", "B", "A", "B"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Mercedes", "Cortez", "Mercedes", "Mercedes", "Candy", "Cortez", "Ricardo"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Tommy", "Phil", "Phil"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Ken", "Kent", "Diaz", "Diaz", "Mercedes"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["Mercedes", "Umberto", "Diaz", "Kent", "Phil", "Mercedes", "Lance", "Ken"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Sonny",
+            "Candy",
+            "Cortez",
+            "Candy",
+            "Candy",
+            "Candy",
+            "Sonny",
+            "Cortez",
+            "Sonny",
+            "Candy",
+            "Sonny",
+            "Candy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Mercedes",
+            "Mercedes",
+            "Avery",
+            "Avery",
+            "Lance",
+            "Phil",
+            "Cortez",
+            "Phil",
+            "Avery",
+            "Lance",
+            "Avery",
+            "Ken",
+            "Mercedes",
+            "Cortez",
+            "Phil"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Sonny",
+            "Cortez",
+            "Candy",
+            "Candy",
+            "Sonny",
+            "Candy",
+            "Cortez",
+            "Umberto",
+            "Phil",
+            "Cortez",
+            "Umberto",
+            "Candy",
+            "Candy",
+            "Cortez",
+            "Avery",
+            "Diaz",
+            "Kent",
+            "Cortez",
+            "Diaz",
+            "Avery"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Mercedes",
+            "Lance",
+            "Cortez",
+            "Cortez",
+            "Umberto",
+            "Diaz",
+            "Phil",
+            "Tommy",
+            "Kent",
+            "Ken",
+            "Diaz",
+            "Phil",
+            "Tommy",
+            "Candy",
+            "Phil",
+            "Lance",
+            "Candy",
+            "Umberto",
+            "Kent",
+            "Candy",
+            "Lance",
+            "Phil",
+            "Mercedes",
+            "Tommy",
+            "Avery",
+            "Umberto",
+            "Ken",
+            "Ken",
+            "Diaz",
+            "Umberto"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Cortez",
+            "Kent",
+            "Lance",
+            "Phil",
+            "Candy",
+            "Candy",
+            "Lance",
+            "Phil",
+            "Tommy",
+            "Candy",
+            "Umberto",
+            "Diaz",
+            "Cortez",
+            "Cortez",
+            "Lance",
+            "Candy",
+            "Lance",
+            "Candy",
+            "Cortez",
+            "Lance",
+            "Umberto",
+            "Ken",
+            "Kent",
+            "Umberto",
+            "Tommy",
+            "Candy",
+            "Phil",
+            "Diaz",
+            "Diaz",
+            "Phil",
+            "Kent",
+            "Tommy",
+            "Umberto",
+            "Lance",
+            "Candy",
+            "Ken",
+            "Kent",
+            "Lance",
+            "Avery",
+            "Kent"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Diaz",
+            "Kent",
+            "Diaz",
+            "Sonny",
+            "Sonny",
+            "Sonny",
+            "Kent",
+            "Kent",
+            "Kent",
+            "Sonny",
+            "Diaz",
+            "Diaz",
+            "Kent",
+            "Diaz",
+            "Sonny",
+            "Diaz",
+            "Kent",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Kent",
+            "Sonny",
+            "Kent",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Sonny",
+            "Diaz",
+            "Diaz",
+            "Kent",
+            "Sonny",
+            "Kent",
+            "Kent",
+            "Kent",
+            "Diaz",
+            "Sonny",
+            "Diaz",
+            "Sonny",
+            "Diaz",
+            "Sonny",
+            "Sonny",
+            "Sonny",
+            "Diaz",
+            "Sonny",
+            "Kent",
+            "Sonny",
+            "Diaz",
+            "Kent",
+            "Sonny",
+            "Diaz",
+            "Kent",
+            "Kent",
+            "Diaz",
+            "Diaz",
+            "Diaz",
+            "Sonny",
+            "Diaz",
+            "Sonny",
+            "Diaz"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "Diaz",
+            "Candy",
+            "Diaz",
+            "Ken",
+            "Tommy",
+            "Kent",
+            "Candy",
+            "Mercedes",
+            "Candy",
+            "Ken",
+            "Lance",
+            "Sonny",
+            "Umberto",
+            "Avery",
+            "Cortez",
+            "Umberto",
+            "Cortez",
+            "Lance",
+            "Sonny",
+            "Umberto",
+            "Umberto",
+            "Phil",
+            "Sonny",
+            "Tommy",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Kent",
+            "Avery",
+            "Ken",
+            "Ken",
+            "Avery",
+            "Phil",
+            "Ken",
+            "Diaz",
+            "Kent",
+            "Tommy",
+            "Avery",
+            "Phil",
+            "Ken",
+            "Umberto",
+            "Umberto",
+            "Ken",
+            "Ken",
+            "Mercedes",
+            "Lance",
+            "Sonny",
+            "Phil",
+            "Avery",
+            "Ken",
+            "Lance",
+            "Phil",
+            "Mercedes",
+            "Avery",
+            "Tommy",
+            "Avery",
+            "Lance",
+            "Umberto",
+            "Ken",
+            "Sonny",
+            "Avery",
+            "Avery",
+            "Lance",
+            "Sonny",
+            "Cortez",
+            "Diaz",
+            "Avery",
+            "Diaz",
+            "Phil",
+            "Diaz",
+            "Diaz",
+            "Umberto",
+            "Candy",
+            "Lance",
+            "Sonny",
+            "Avery",
+            "Sonny",
+            "Ken",
+            "Phil",
+            "Tommy",
+            "Tommy",
+            "Umberto",
+            "Phil",
+            "Diaz",
+            "Candy",
+            "Umberto",
+            "Umberto",
+            "Avery",
+            "Candy",
+            "Kent",
+            "Avery",
+            "Phil",
+            "Cortez",
+            "Tommy",
+            "Mercedes",
+            "Diaz",
+            "Avery",
+            "Mercedes",
+            "Avery"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

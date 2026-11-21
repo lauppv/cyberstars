@@ -1,0 +1,346 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "modele"
+      },
+      {
+        "kind": "variable",
+        "name": "preturi"
+      },
+      {
+        "kind": "variable",
+        "name": "comenzi"
+      },
+      {
+        "kind": "variable",
+        "name": "reducere"
+      },
+      {
+        "kind": "record"
+      },
+      {
+        "kind": "class",
+        "name": "Masina"
+      },
+      {
+        "kind": "class",
+        "name": "Showroom"
+      },
+      {
+        "kind": "interface"
+      },
+      {
+        "kind": "anonymous_class"
+      },
+      {
+        "kind": "function",
+        "name": "vinde"
+      },
+      {
+        "kind": "function",
+        "name": "adauga"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "modele": {
+          "$list": ["Infernus", "Cheetah", "Infernus"]
+        },
+        "preturi": {
+          "$list": [1000, 800, 900]
+        },
+        "comenzi": {
+          "$list": ["Infernus", "Banshee"]
+        },
+        "reducere": 10
+      }
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Stinger"]
+        },
+        "preturi": {
+          "$list": [500]
+        },
+        "comenzi": {
+          "$list": ["Stinger", "Stinger"]
+        },
+        "reducere": 0
+      }
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": []
+        },
+        "preturi": {
+          "$list": []
+        },
+        "comenzi": {
+          "$list": ["Comet"]
+        },
+        "reducere": 50
+      }
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Comet", "Banshee"]
+        },
+        "preturi": {
+          "$list": [999, 1]
+        },
+        "comenzi": {
+          "$list": []
+        },
+        "reducere": 25
+      }
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Admiral", "Admiral"]
+        },
+        "preturi": {
+          "$list": [333, 777]
+        },
+        "comenzi": {
+          "$list": ["Admiral"]
+        },
+        "reducere": 33
+      }
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Cheetah", "Cheetah", "Comet", "Stinger", "Banshee"]
+        },
+        "preturi": {
+          "$list": [4491, 1574, 4001, 2051, 2049]
+        },
+        "comenzi": {
+          "$list": ["Stinger", "Comet", "Banshee"]
+        },
+        "reducere": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Comet"]
+        },
+        "preturi": {
+          "$list": [1167]
+        },
+        "comenzi": {
+          "$list": ["Cheetah", "Banshee", "Stinger", "Cheetah"]
+        },
+        "reducere": 23
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Admiral", "Admiral", "Banshee"]
+        },
+        "preturi": {
+          "$list": [1219, 4264, 2937]
+        },
+        "comenzi": {
+          "$list": ["Admiral", "Stinger", "Stinger"]
+        },
+        "reducere": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Comet", "Banshee", "Cheetah"]
+        },
+        "preturi": {
+          "$list": [3195, 3592, 4911]
+        },
+        "comenzi": {
+          "$list": ["Stinger", "Infernus"]
+        },
+        "reducere": 88
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Infernus", "Infernus"]
+        },
+        "preturi": {
+          "$list": [2572, 1835]
+        },
+        "comenzi": {
+          "$list": ["Cheetah", "Cheetah", "Banshee", "Admiral"]
+        },
+        "reducere": 0
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Stinger", "Stinger"]
+        },
+        "preturi": {
+          "$list": [2214, 3957]
+        },
+        "comenzi": {
+          "$list": ["Admiral", "Stinger", "Banshee", "Banshee", "Stinger"]
+        },
+        "reducere": 57
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Comet", "Stinger"]
+        },
+        "preturi": {
+          "$list": [2122, 3495]
+        },
+        "comenzi": {
+          "$list": []
+        },
+        "reducere": 38
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Infernus", "Cheetah"]
+        },
+        "preturi": {
+          "$list": [666, 1377]
+        },
+        "comenzi": {
+          "$list": ["Stinger", "Stinger", "Comet"]
+        },
+        "reducere": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Cheetah", "Banshee", "Comet", "Comet", "Infernus"]
+        },
+        "preturi": {
+          "$list": [270, 2494, 4983, 4370, 2860]
+        },
+        "comenzi": {
+          "$list": ["Cheetah", "Cheetah", "Stinger"]
+        },
+        "reducere": 72
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": []
+        },
+        "preturi": {
+          "$list": []
+        },
+        "comenzi": {
+          "$list": ["Banshee", "Banshee", "Banshee", "Admiral"]
+        },
+        "reducere": 62
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Infernus", "Cheetah", "Admiral", "Admiral", "Infernus"]
+        },
+        "preturi": {
+          "$list": [4737, 1406, 268, 104, 792]
+        },
+        "comenzi": {
+          "$list": []
+        },
+        "reducere": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Admiral", "Cheetah", "Comet", "Cheetah", "Comet"]
+        },
+        "preturi": {
+          "$list": [3332, 241, 3829, 2297, 332]
+        },
+        "comenzi": {
+          "$list": ["Stinger", "Infernus", "Admiral"]
+        },
+        "reducere": 55
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Banshee"]
+        },
+        "preturi": {
+          "$list": [2624]
+        },
+        "comenzi": {
+          "$list": ["Admiral"]
+        },
+        "reducere": 24
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Cheetah"]
+        },
+        "preturi": {
+          "$list": [450]
+        },
+        "comenzi": {
+          "$list": ["Comet", "Admiral", "Cheetah"]
+        },
+        "reducere": 82
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "modele": {
+          "$list": ["Infernus", "Comet", "Infernus", "Admiral", "Stinger"]
+        },
+        "preturi": {
+          "$list": [2792, 1217, 1431, 4897, 1771]
+        },
+        "comenzi": {
+          "$list": ["Cheetah", "Infernus"]
+        },
+        "reducere": 45
+      },
+      "generated": true
+    }
+  ]
+}

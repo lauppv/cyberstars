@@ -1,0 +1,292 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "words"
+      },
+      {
+        "kind": "variable",
+        "name": "word"
+      },
+      {
+        "kind": "variable",
+        "name": "numbers"
+      },
+      {
+        "kind": "variable",
+        "name": "number"
+      },
+      {
+        "kind": "generic_method"
+      },
+      {
+        "kind": "function",
+        "name": "count"
+      },
+      {
+        "kind": "function",
+        "name": "lastOf"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "words": {
+          "$list": ["cash", "gun", "cash"]
+        },
+        "word": "cash",
+        "numbers": {
+          "$list": [1000, 5, 1000, 1000]
+        },
+        "number": 1000
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["tape"]
+        },
+        "word": "cash",
+        "numbers": {
+          "$list": [7, 8]
+        },
+        "number": 8
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["map", "map"]
+        },
+        "word": "map",
+        "numbers": {
+          "$list": [128, 128, 127]
+        },
+        "number": 128
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["car"]
+        },
+        "word": "car",
+        "numbers": {
+          "$list": [-500]
+        },
+        "number": -500
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["keys", "gun"]
+        },
+        "word": "Keys",
+        "numbers": {
+          "$list": [2000000]
+        },
+        "number": 2000000
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["keys", "map", "keys", "gun", "gun"]
+        },
+        "word": "cash",
+        "numbers": {
+          "$list": [1907, 1907, 1907, 1719]
+        },
+        "number": 1907
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["tape", "cash", "tape", "keys", "map", "tape", "car"]
+        },
+        "word": "map",
+        "numbers": {
+          "$list": [628, 628]
+        },
+        "number": 628
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["cash", "tape", "cash", "car", "keys", "cash", "car", "car"]
+        },
+        "word": "keys",
+        "numbers": {
+          "$list": [2308]
+        },
+        "number": 2595
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["map", "map", "keys", "cash", "gun", "map", "tape", "car"]
+        },
+        "word": "cash",
+        "numbers": {
+          "$list": [2850, 2850]
+        },
+        "number": 2951
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["keys", "cash", "tape", "keys", "gun", "cash", "keys", "keys"]
+        },
+        "word": "keys",
+        "numbers": {
+          "$list": [432]
+        },
+        "number": 432
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["map", "car"]
+        },
+        "word": "map",
+        "numbers": {
+          "$list": [2800, 2194, 2428, 2800, 2428, 2428, 2800, 2428]
+        },
+        "number": 2194
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["tape", "tape", "cash", "tape", "keys", "tape"]
+        },
+        "word": "cash",
+        "numbers": {
+          "$list": [2898, 2749, 2749, 2749, 415, 2898, 415]
+        },
+        "number": 2898
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["car", "tape", "tape"]
+        },
+        "word": "keys",
+        "numbers": {
+          "$list": [1218, 2011]
+        },
+        "number": 1218
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["tape", "map", "map", "cash", "car", "cash", "car", "map"]
+        },
+        "word": "car",
+        "numbers": {
+          "$list": [318, 2933, 2412]
+        },
+        "number": 318
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["gun", "gun"]
+        },
+        "word": "tape",
+        "numbers": {
+          "$list": [2626, 2626, 2626, 1526]
+        },
+        "number": 2626
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["gun", "gun", "car", "tape", "car", "keys", "keys", "tape"]
+        },
+        "word": "gun",
+        "numbers": {
+          "$list": [1603, 1603, 1853, 1853, 1603]
+        },
+        "number": 1853
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["keys", "gun", "keys", "car", "cash", "car", "gun", "tape"]
+        },
+        "word": "tape",
+        "numbers": {
+          "$list": [993, 993, 1104, 2145, 993, 2145, 993]
+        },
+        "number": 1104
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["car", "gun", "cash", "car", "cash", "tape", "gun", "car"]
+        },
+        "word": "gun",
+        "numbers": {
+          "$list": [2386, 2386, 2386, 2386]
+        },
+        "number": 2818
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["tape", "gun", "tape", "cash", "tape"]
+        },
+        "word": "map",
+        "numbers": {
+          "$list": [1165, 847, 1968, 847, 1968]
+        },
+        "number": 1968
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["keys", "gun", "tape", "car", "car", "tape", "cash"]
+        },
+        "word": "map",
+        "numbers": {
+          "$list": [1467, 1871, 1467, 1467, 544, 1871, 544]
+        },
+        "number": 1467
+      },
+      "generated": true
+    }
+  ]
+}

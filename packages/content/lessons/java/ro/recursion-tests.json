@@ -1,0 +1,138 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "cutii"
+      },
+      {
+        "kind": "recursion",
+        "name": "deschide"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cutii": 3
+      }
+    },
+    {
+      "inject": {
+        "cutii": 1
+      }
+    },
+    {
+      "inject": {
+        "cutii": 0
+      }
+    },
+    {
+      "inject": {
+        "cutii": 2
+      }
+    },
+    {
+      "inject": {
+        "cutii": 5
+      }
+    },
+    {
+      "inject": {
+        "cutii": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 12
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 15
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 20
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 33
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 64
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 150
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cutii": 200
+      },
+      "generated": true
+    }
+  ]
+}

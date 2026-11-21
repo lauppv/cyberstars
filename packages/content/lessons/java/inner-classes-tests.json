@@ -1,0 +1,204 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "gangName"
+      },
+      {
+        "kind": "variable",
+        "name": "nicks"
+      },
+      {
+        "kind": "class",
+        "name": "Gang"
+      },
+      {
+        "kind": "class",
+        "name": "Member"
+      },
+      {
+        "kind": "inner_class"
+      },
+      {
+        "kind": "function",
+        "name": "badge"
+      },
+      {
+        "kind": "function",
+        "name": "recruit"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "gangName": "Vercetti Gang",
+        "nicks": {
+          "$list": ["Lance", "Ken"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "gangName": "Sharks",
+        "nicks": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "gangName": "Haitians",
+        "nicks": {
+          "$list": ["Auntie Poulet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "gangName": "Cubans",
+        "nicks": {
+          "$list": ["Umberto", "Alberto", "Rico", "Paco"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "gangName": "Vercetti Gang",
+        "nicks": {
+          "$list": ["Zeppelin", "Lance", "Ken", "Mercedes", "Mitch"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Sharks",
+        "nicks": {
+          "$list": ["Lance", "Tommy", "Mercedes", "Phil"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Cubans",
+        "nicks": {
+          "$list": ["Mitch", "Umberto", "Ken", "Hilary", "Tommy", "Lance", "Zeppelin"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Vercetti Gang",
+        "nicks": {
+          "$list": ["Mitch", "Mercedes", "Hilary", "Zeppelin"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Vercetti Gang",
+        "nicks": {
+          "$list": ["Zeppelin", "Mercedes", "Lance", "Ken", "Cam", "Phil", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Haitians",
+        "nicks": {
+          "$list": ["Lance", "Cam", "Ken"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Sharks",
+        "nicks": {
+          "$list": ["Ken", "Hilary", "Lance", "Cam", "Tommy", "Phil", "Umberto", "Zeppelin"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Bikers",
+        "nicks": {
+          "$list": ["Tommy", "Ken", "Umberto"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Haitians",
+        "nicks": {
+          "$list": ["Mitch", "Zeppelin", "Mercedes", "Hilary", "Lance", "Cam", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Vercetti Gang",
+        "nicks": {
+          "$list": ["Phil", "Umberto", "Cam", "Zeppelin", "Mercedes", "Mitch"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Diaz Cartel",
+        "nicks": {
+          "$list": ["Zeppelin", "Mitch", "Ken", "Mercedes", "Phil", "Lance", "Candy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Sharks",
+        "nicks": {
+          "$list": ["Candy", "Ken", "Hilary", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Diaz Cartel",
+        "nicks": {
+          "$list": ["Candy", "Lance"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Sharks",
+        "nicks": {
+          "$list": ["Cam"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "gangName": "Haitians",
+        "nicks": {
+          "$list": ["Tommy", "Phil", "Ken", "Mitch", "Zeppelin", "Cam"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

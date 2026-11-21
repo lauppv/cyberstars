@@ -1,0 +1,198 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "cuvinte"
+      },
+      {
+        "kind": "lambda"
+      },
+      {
+        "kind": "call",
+        "name": "Thread"
+      },
+      {
+        "kind": "call",
+        "name": "start"
+      },
+      {
+        "kind": "call",
+        "name": "join"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "extends"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cuvinte": {
+          "$list": ["Malibu", "doc", "Ocean"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["xyz"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["AEIOU", "aeiou"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["barca", "politia", "liniste"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": [""]
+        }
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Downtown", "Links"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Vice", "Leaf", "Starfish", "politia", "fugi", "Starfish", "fugi", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": [
+            "liniste",
+            "Malibu",
+            "Downtown",
+            "Ocean",
+            "Escobar",
+            "fugi",
+            "Prawn",
+            "Starfish"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Leaf", "bani", "Washington", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Malibu", "Starfish", "barca", "Haiti", "Malibu", "Haiti", "liniste", "politia"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Links", "Malibu", "Vice"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Leaf", "Starfish", "Escobar", "Downtown", "politia", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Haiti", "doc", "Vice", "Vice", "Escobar"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Leaf"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Haiti", "barca", "Prawn"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Escobar", "Downtown"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["fugi"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["bani", "Malibu", "Vice", "Escobar", "Starfish", "Haiti", "liniste", "Downtown"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["barca", "politia", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["Ocean", "Vice", "liniste", "barca"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

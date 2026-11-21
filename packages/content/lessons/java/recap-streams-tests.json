@@ -1,0 +1,270 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "scores"
+      },
+      {
+        "kind": "variable",
+        "name": "minimum"
+      },
+      {
+        "kind": "call",
+        "name": "stream"
+      },
+      {
+        "kind": "call",
+        "name": "filter"
+      },
+      {
+        "kind": "call",
+        "name": "collect"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Phil", "Lance", "Candy", "Mitch", "Earnest"]
+        },
+        "scores": {
+          "$list": [70, 85, 40, 90, 85]
+        },
+        "minimum": 60
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Candy", "Pepe"]
+        },
+        "scores": {
+          "$list": [10, 20]
+        },
+        "minimum": 50
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": []
+        },
+        "scores": {
+          "$list": []
+        },
+        "minimum": 10
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Hilary"]
+        },
+        "scores": {
+          "$list": [50]
+        },
+        "minimum": 50
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Cam", "Kent", "Ken"]
+        },
+        "scores": {
+          "$list": [99, 99, 99]
+        },
+        "minimum": 0
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Victor", "Lance", "Diaz"]
+        },
+        "scores": {
+          "$list": [60, 59, 61]
+        },
+        "minimum": 60
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Candy"]
+        },
+        "scores": {
+          "$list": [50]
+        },
+        "minimum": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ken", "Sonny", "Mitch"]
+        },
+        "scores": {
+          "$list": [90, 70, 70]
+        },
+        "minimum": 95
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Avery", "Ken", "Hilary", "Cortez", "Diaz"]
+        },
+        "scores": {
+          "$list": [2, 70, 85, 90, 8]
+        },
+        "minimum": 30
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mitch", "Avery", "Kent", "Phil", "Victor", "Cortez"]
+        },
+        "scores": {
+          "$list": [90, 63, 20, 49, 28, 85]
+        },
+        "minimum": 93
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["BJ", "Kent", "Earnest", "Sonny", "Avery", "Ricardo", "Mitch", "Hilary"]
+        },
+        "scores": {
+          "$list": [70, 90, 14, 49, 90, 70, 90, 22]
+        },
+        "minimum": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Kent",
+            "BJ",
+            "Sonny",
+            "Cam",
+            "Mercedes",
+            "Victor",
+            "Candy",
+            "Cortez",
+            "Phil",
+            "Umberto"
+          ]
+        },
+        "scores": {
+          "$list": [38, 22, 50, 86, 91, 50, 70, 85, 50, 19]
+        },
+        "minimum": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Ken",
+            "Umberto",
+            "Lance",
+            "Kent",
+            "Diaz",
+            "Mitch",
+            "Avery",
+            "Sonny",
+            "Phil",
+            "Earnest",
+            "Ricardo",
+            "Victor"
+          ]
+        },
+        "scores": {
+          "$list": [14, 91, 85, 38, 50, 54, 10, 75, 52, 4, 92, 39]
+        },
+        "minimum": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Pepe",
+            "Umberto",
+            "Phil",
+            "BJ",
+            "Earnest",
+            "Kent",
+            "Sonny",
+            "Mitch",
+            "Ricardo",
+            "Victor",
+            "Lance",
+            "Cortez",
+            "Candy",
+            "Ken",
+            "Mercedes"
+          ]
+        },
+        "scores": {
+          "$list": [90, 86, 50, 59, 50, 99, 82, 2, 60, 52, 76, 85, 19, 85, 77]
+        },
+        "minimum": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": [
+            "Mercedes",
+            "Umberto",
+            "Phil",
+            "Kent",
+            "Lance",
+            "Victor",
+            "BJ",
+            "Cam",
+            "Pepe",
+            "Earnest",
+            "Diaz",
+            "Candy",
+            "Mitch",
+            "Ken",
+            "Avery",
+            "Cortez",
+            "Ricardo",
+            "Hilary",
+            "Sonny",
+            "Maude"
+          ]
+        },
+        "scores": {
+          "$list": [50, 80, 67, 50, 50, 93, 70, 54, 53, 13, 95, 61, 50, 50, 70, 70, 90, 50, 70, 54]
+        },
+        "minimum": 74
+      },
+      "generated": true
+    }
+  ]
+}

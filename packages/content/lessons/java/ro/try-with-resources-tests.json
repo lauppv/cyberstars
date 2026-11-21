@@ -1,0 +1,246 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "vizitatori"
+      },
+      {
+        "kind": "call",
+        "name": "Usa"
+      },
+      {
+        "kind": "implements"
+      },
+      {
+        "kind": "function",
+        "name": "close"
+      },
+      {
+        "kind": "try_resources"
+      },
+      {
+        "kind": "throw"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "vizitatori": {
+          "$list": ["Lance", "Politia", "Phil"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "vizitatori": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Politia"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Politia", "Politia"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Kent"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["cops", "COPS", "Politia", "Diaz"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Cortez", "Politia"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Mercedes", "Ken", "Politia"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Sonny", "Ken", "Lance", "Politia"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Umberto", "Sonny", "Diaz", "Cortez", "Candy", "Cortez"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": ["Cortez", "Diaz", "Politia", "Politia", "Politia", "Politia", "Politia", "Kent"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": [
+            "Politia",
+            "Politia",
+            "Politia",
+            "Lance",
+            "Politia",
+            "Politia",
+            "Politia",
+            "Politia",
+            "Kent",
+            "Cortez"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": [
+            "Cortez",
+            "Ken",
+            "Kent",
+            "Phil",
+            "Mercedes",
+            "Kent",
+            "Politia",
+            "Phil",
+            "Politia",
+            "Lance",
+            "Candy",
+            "Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": [
+            "Diaz",
+            "Politia",
+            "Politia",
+            "Politia",
+            "Umberto",
+            "Phil",
+            "Politia",
+            "Phil",
+            "Kent",
+            "Politia",
+            "Mercedes",
+            "Politia",
+            "Lance",
+            "Mercedes",
+            "Mercedes"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": [
+            "Politia",
+            "Ken",
+            "Politia",
+            "Politia",
+            "Candy",
+            "Cortez",
+            "Phil",
+            "Lance",
+            "Ken",
+            "Mercedes",
+            "Diaz",
+            "Cortez",
+            "Kent",
+            "Cortez",
+            "Sonny",
+            "Ken",
+            "Sonny",
+            "Politia",
+            "Umberto",
+            "Kent"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "vizitatori": {
+          "$list": [
+            "Politia",
+            "Ken",
+            "Politia",
+            "Lance",
+            "Candy",
+            "Cortez",
+            "Ken",
+            "Politia",
+            "Kent",
+            "Lance",
+            "Phil",
+            "Sonny",
+            "Diaz",
+            "Umberto",
+            "Mercedes",
+            "Politia",
+            "Politia",
+            "Ken",
+            "Phil",
+            "Ken",
+            "Mercedes",
+            "Diaz",
+            "Lance",
+            "Politia",
+            "Mercedes",
+            "Phil",
+            "Politia",
+            "Politia",
+            "Mercedes",
+            "Politia"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

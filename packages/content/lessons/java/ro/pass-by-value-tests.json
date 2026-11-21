@@ -1,0 +1,182 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "salariu"
+      },
+      {
+        "kind": "variable",
+        "name": "suma"
+      },
+      {
+        "kind": "class",
+        "name": "Membru"
+      },
+      {
+        "kind": "function",
+        "name": "maresteSalariu"
+      },
+      {
+        "kind": "function",
+        "name": "maresteMembru"
+      },
+      {
+        "kind": "call",
+        "name": "maresteSalariu"
+      },
+      {
+        "kind": "call",
+        "name": "maresteMembru"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": "Lance",
+        "salariu": 500,
+        "suma": 100
+      }
+    },
+    {
+      "inject": {
+        "nume": "Ken",
+        "salariu": 0,
+        "suma": 75
+      }
+    },
+    {
+      "inject": {
+        "nume": "Mercedes",
+        "salariu": 1200,
+        "suma": 0
+      }
+    },
+    {
+      "inject": {
+        "nume": "Phil",
+        "salariu": 10,
+        "suma": -5
+      }
+    },
+    {
+      "inject": {
+        "nume": "Phil",
+        "salariu": 48,
+        "suma": 509
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Diaz",
+        "salariu": 526,
+        "suma": 634
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Sonny",
+        "salariu": 3092,
+        "suma": 77
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tommy",
+        "salariu": 257,
+        "suma": 157
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Lance",
+        "salariu": 3845,
+        "suma": 119
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Mercedes",
+        "salariu": 1504,
+        "suma": 372
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tommy",
+        "salariu": 4312,
+        "suma": 375
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Lance",
+        "salariu": 558,
+        "suma": 496
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Phil",
+        "salariu": 2225,
+        "suma": 517
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Mercedes",
+        "salariu": 3261,
+        "suma": 834
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Diaz",
+        "salariu": 3368,
+        "suma": 54
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Cortez",
+        "salariu": 2238,
+        "suma": 415
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Avery",
+        "salariu": 1683,
+        "suma": 853
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Mercedes",
+        "salariu": 993,
+        "suma": 131
+      },
+      "generated": true
+    }
+  ]
+}

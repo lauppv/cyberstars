@@ -1,0 +1,204 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "numeBanda"
+      },
+      {
+        "kind": "variable",
+        "name": "porecle"
+      },
+      {
+        "kind": "class",
+        "name": "Banda"
+      },
+      {
+        "kind": "class",
+        "name": "Membru"
+      },
+      {
+        "kind": "inner_class"
+      },
+      {
+        "kind": "function",
+        "name": "ecuson"
+      },
+      {
+        "kind": "function",
+        "name": "recruteaza"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "numeBanda": "Banda Vercetti",
+        "porecle": {
+          "$list": ["Lance", "Ken"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "numeBanda": "Rechinii",
+        "porecle": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "numeBanda": "Haitienii",
+        "porecle": {
+          "$list": ["Auntie Poulet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "numeBanda": "Cubanezii",
+        "porecle": {
+          "$list": ["Umberto", "Alberto", "Rico", "Paco"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "numeBanda": "Banda Vercetti",
+        "porecle": {
+          "$list": ["Zeppelin", "Lance", "Ken", "Mercedes", "Mitch"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Rechinii",
+        "porecle": {
+          "$list": ["Lance", "Tommy", "Mercedes", "Phil"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Cubanezii",
+        "porecle": {
+          "$list": ["Mitch", "Umberto", "Ken", "Hilary", "Tommy", "Lance", "Zeppelin"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Banda Vercetti",
+        "porecle": {
+          "$list": ["Mitch", "Mercedes", "Hilary", "Zeppelin"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Banda Vercetti",
+        "porecle": {
+          "$list": ["Zeppelin", "Mercedes", "Lance", "Ken", "Cam", "Phil", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Haitienii",
+        "porecle": {
+          "$list": ["Lance", "Cam", "Ken"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Rechinii",
+        "porecle": {
+          "$list": ["Ken", "Hilary", "Lance", "Cam", "Tommy", "Phil", "Umberto", "Zeppelin"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Motociclistii",
+        "porecle": {
+          "$list": ["Tommy", "Ken", "Umberto"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Haitienii",
+        "porecle": {
+          "$list": ["Mitch", "Zeppelin", "Mercedes", "Hilary", "Lance", "Cam", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Banda Vercetti",
+        "porecle": {
+          "$list": ["Phil", "Umberto", "Cam", "Zeppelin", "Mercedes", "Mitch"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Cartelul Diaz",
+        "porecle": {
+          "$list": ["Zeppelin", "Mitch", "Ken", "Mercedes", "Phil", "Lance", "Candy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Rechinii",
+        "porecle": {
+          "$list": ["Candy", "Ken", "Hilary", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Cartelul Diaz",
+        "porecle": {
+          "$list": ["Candy", "Lance"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Rechinii",
+        "porecle": {
+          "$list": ["Cam"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "numeBanda": "Haitienii",
+        "porecle": {
+          "$list": ["Tommy", "Phil", "Ken", "Mitch", "Zeppelin", "Cam"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

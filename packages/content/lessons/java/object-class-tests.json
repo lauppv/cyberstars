@@ -1,0 +1,174 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "evidence"
+      },
+      {
+        "kind": "call",
+        "name": "getClass"
+      },
+      {
+        "kind": "call",
+        "name": "getSimpleName"
+      },
+      {
+        "kind": "instanceof"
+      },
+      {
+        "kind": "cast"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "evidence": {
+          "$list": ["knife", 3, "photo", 10]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["gun", "tape"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [-5, 5, "keys", 0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["money", 1000000, "map", 2, 3]
+        }
+      }
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [492, 413, "tape", "knife", 333, 429, -34, "map"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["photo", 206, "money", 308, "keys", 258, 497]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [460]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [21, "photo", 396, 426]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["gun", "money", "money"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["knife", 369, "tape", "tape", "money"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["gun", "map", "tape", 323, "knife", 156, "map"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [369, 441, "keys", 182, "photo", "map"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [199, "gun", "tape", "keys", 209, "knife"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [-28, "gun", 330]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [178, 129, 57, "money", 443, "photo"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": ["photo", 247, "money", 395, "keys", "money", 54, "gun", 272]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "evidence": {
+          "$list": [264, 31, "gun", 199, 209, 394, "knife", "keys"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

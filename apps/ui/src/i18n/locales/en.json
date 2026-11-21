@@ -536,7 +536,7 @@
     "descriptions": {
       "python": "The best place to start if you've never coded. From print and variables to functions, lists and dictionaries, then searching, sorting and recursion, modules, files and classes, ending with six small projects.",
       "c": "How a program really works underneath: pointers, recursion, memory you manage by hand, linked lists and files, then a full tour of the operating system: system calls, processes, exec, pipes, signals, threads, deadlock, and the scheduling and memory algorithms behind them, ending with a shell of your own.",
-      "java": "Object-oriented programming from the ground up. After the basics, you build programs from classes and objects, inheritance, polymorphism and interfaces, then collections, ending with three larger projects.",
+      "java": "Object-oriented programming from the ground up. After the basics, recursion and the tools for text and arrays, you build programs from classes and objects, inheritance, interfaces, records and generics, then collections, lambdas and streams, exceptions, files and threads, ending with six larger projects.",
       "linux": "A real terminal, right in your browser. Manage files, search with grep and find, chain commands with pipes, edit text with sed and awk, then permissions and processes.",
       "algo-python": "Python problems from easy to hard: strings, lists and dictionaries put to work in palindromes, a Caesar cipher, Two Sum, sorting and a matrix spiral.",
       "algo-java": "Java problems where you design the classes yourself: a bank account, a shape hierarchy, your own stack, queue and linked list, generics and iterators, plus searching and sorting.",
@@ -1381,6 +1381,19 @@
         "format_spec": "Shape the number with a format spec, like {x:.2f}",
         "try_else": "Use else after try, for the code that runs only when nothing failed",
         "finally": "Use finally, for the code that always runs",
+        "switch_expression": "Use a switch that gives back a value (switch expression)",
+        "method_reference": "Use a method reference, like System.out::println",
+        "throw": "Throw an exception with throw",
+        "throws": "Declare with throws what a method can throw",
+        "synchronized": "Let only one thread in at a time with synchronized",
+        "record": "Define a record",
+        "generic_class": "Define a generic class, like Box<T>",
+        "generic_method": "Write a generic method, like <T> T first(...)",
+        "bounded_type": "Limit a type parameter with extends, like <T extends Number>",
+        "try_resources": "Open the resource with try-with-resources: try (...)",
+        "anonymous_class": "Use an anonymous class: new ...() { ... }",
+        "inner_class": "Define an inner class: a class inside another, without static",
+        "varargs": "Give a method a varargs parameter, like int... values",
         "other": "Your code doesn't use what this lesson asks for"
       },
       "forbid": {
@@ -1401,6 +1414,11 @@
         "operator": "Don't use the {{name}} operator here",
         "break": "Don't use break here",
         "slice": "Don't use a slice here",
+        "if": "Don't use if here",
+        "switch": "Don't use switch here",
+        "lambda": "Don't use a lambda here",
+        "extends": "Don't use extends here",
+        "implements": "Don't use implements here",
         "other": "Your code uses something this lesson asks you to do without"
       }
     },

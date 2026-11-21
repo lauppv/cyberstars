@@ -1,0 +1,161 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "format"
+      },
+      {
+        "kind": "variable",
+        "name": "minute"
+      },
+      {
+        "kind": "function"
+      },
+      {
+        "kind": "switch_expression"
+      },
+      {
+        "kind": "ternary"
+      },
+      {
+        "kind": "call",
+        "name": "Character.isDigit"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "format": "305-555-0142",
+        "minute": 3
+      }
+    },
+    {
+      "inject": {
+        "format": "212 555 0199",
+        "minute": 0
+      }
+    },
+    {
+      "inject": {
+        "format": "786-555-0100",
+        "minute": 1
+      }
+    },
+    {
+      "inject": {
+        "format": "555-0142",
+        "minute": 2
+      }
+    },
+    {
+      "inject": {
+        "format": "415-555-0000",
+        "minute": 4
+      }
+    },
+    {
+      "inject": {
+        "format": "310-555-0123",
+        "minute": 2
+      }
+    },
+    {
+      "inject": {
+        "format": "3055550142",
+        "minute": 10
+      }
+    },
+    {
+      "inject": {
+        "format": "305-555-01423",
+        "minute": 1
+      }
+    },
+    {
+      "inject": {
+        "format": "",
+        "minute": 5
+      }
+    },
+    {
+      "inject": {
+        "format": "(212) 555-0101",
+        "minute": 1
+      }
+    },
+    {
+      "inject": {
+        "format": "786-494-76831",
+        "minute": 30
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "41593338632",
+        "minute": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "123 041 9019",
+        "minute": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "305 548 90663",
+        "minute": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "123-329-2102",
+        "minute": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "786 262 014",
+        "minute": 26
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "415 140 6824",
+        "minute": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "305 676 445",
+        "minute": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "70215433891",
+        "minute": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "format": "786-454-9400",
+        "minute": 26
+      },
+      "generated": true
+    }
+  ]
+}

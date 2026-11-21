@@ -1,0 +1,292 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "cuvinte"
+      },
+      {
+        "kind": "variable",
+        "name": "cuvant"
+      },
+      {
+        "kind": "variable",
+        "name": "numere"
+      },
+      {
+        "kind": "variable",
+        "name": "numar"
+      },
+      {
+        "kind": "generic_method"
+      },
+      {
+        "kind": "function",
+        "name": "numara"
+      },
+      {
+        "kind": "function",
+        "name": "ultimulDin"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "cuvinte": {
+          "$list": ["bani", "pistol", "bani"]
+        },
+        "cuvant": "bani",
+        "numere": {
+          "$list": [1000, 5, 1000, 1000]
+        },
+        "numar": 1000
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["caseta"]
+        },
+        "cuvant": "bani",
+        "numere": {
+          "$list": [7, 8]
+        },
+        "numar": 8
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["harta", "harta"]
+        },
+        "cuvant": "harta",
+        "numere": {
+          "$list": [128, 128, 127]
+        },
+        "numar": 128
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["masina"]
+        },
+        "cuvant": "masina",
+        "numere": {
+          "$list": [-500]
+        },
+        "numar": -500
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["chei", "pistol"]
+        },
+        "cuvant": "Keys",
+        "numere": {
+          "$list": [2000000]
+        },
+        "numar": 2000000
+      }
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["chei", "harta", "chei", "pistol", "pistol"]
+        },
+        "cuvant": "bani",
+        "numere": {
+          "$list": [1907, 1907, 1907, 1719]
+        },
+        "numar": 1907
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["caseta", "bani", "caseta", "chei", "harta", "caseta", "masina"]
+        },
+        "cuvant": "harta",
+        "numere": {
+          "$list": [628, 628]
+        },
+        "numar": 628
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["bani", "caseta", "bani", "masina", "chei", "bani", "masina", "masina"]
+        },
+        "cuvant": "chei",
+        "numere": {
+          "$list": [2308]
+        },
+        "numar": 2595
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["harta", "harta", "chei", "bani", "pistol", "harta", "caseta", "masina"]
+        },
+        "cuvant": "bani",
+        "numere": {
+          "$list": [2850, 2850]
+        },
+        "numar": 2951
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["chei", "bani", "caseta", "chei", "pistol", "bani", "chei", "chei"]
+        },
+        "cuvant": "chei",
+        "numere": {
+          "$list": [432]
+        },
+        "numar": 432
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["harta", "masina"]
+        },
+        "cuvant": "harta",
+        "numere": {
+          "$list": [2800, 2194, 2428, 2800, 2428, 2428, 2800, 2428]
+        },
+        "numar": 2194
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["caseta", "caseta", "bani", "caseta", "chei", "caseta"]
+        },
+        "cuvant": "bani",
+        "numere": {
+          "$list": [2898, 2749, 2749, 2749, 415, 2898, 415]
+        },
+        "numar": 2898
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["masina", "caseta", "caseta"]
+        },
+        "cuvant": "chei",
+        "numere": {
+          "$list": [1218, 2011]
+        },
+        "numar": 1218
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["caseta", "harta", "harta", "bani", "masina", "bani", "masina", "harta"]
+        },
+        "cuvant": "masina",
+        "numere": {
+          "$list": [318, 2933, 2412]
+        },
+        "numar": 318
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["pistol", "pistol"]
+        },
+        "cuvant": "caseta",
+        "numere": {
+          "$list": [2626, 2626, 2626, 1526]
+        },
+        "numar": 2626
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["pistol", "pistol", "masina", "caseta", "masina", "chei", "chei", "caseta"]
+        },
+        "cuvant": "pistol",
+        "numere": {
+          "$list": [1603, 1603, 1853, 1853, 1603]
+        },
+        "numar": 1853
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["chei", "pistol", "chei", "masina", "bani", "masina", "pistol", "caseta"]
+        },
+        "cuvant": "caseta",
+        "numere": {
+          "$list": [993, 993, 1104, 2145, 993, 2145, 993]
+        },
+        "numar": 1104
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["masina", "pistol", "bani", "masina", "bani", "caseta", "pistol", "masina"]
+        },
+        "cuvant": "pistol",
+        "numere": {
+          "$list": [2386, 2386, 2386, 2386]
+        },
+        "numar": 2818
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["caseta", "pistol", "caseta", "bani", "caseta"]
+        },
+        "cuvant": "harta",
+        "numere": {
+          "$list": [1165, 847, 1968, 847, 1968]
+        },
+        "numar": 1968
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "cuvinte": {
+          "$list": ["chei", "pistol", "caseta", "masina", "masina", "caseta", "bani"]
+        },
+        "cuvant": "harta",
+        "numere": {
+          "$list": [1467, 1871, 1467, 1467, 544, 1871, 544]
+        },
+        "numar": 1467
+      },
+      "generated": true
+    }
+  ]
+}

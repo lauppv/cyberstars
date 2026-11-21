@@ -1,0 +1,170 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "scor"
+      },
+      {
+        "kind": "generic_class"
+      },
+      {
+        "kind": "class",
+        "name": "Pereche"
+      },
+      {
+        "kind": "function",
+        "name": "inverseaza"
+      },
+      {
+        "kind": "function",
+        "name": "primul"
+      },
+      {
+        "kind": "function",
+        "name": "alDoilea"
+      },
+      {
+        "kind": "call",
+        "name": "inverseaza"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": "Tommy",
+        "scor": 120
+      }
+    },
+    {
+      "inject": {
+        "nume": "Ken",
+        "scor": 0
+      }
+    },
+    {
+      "inject": {
+        "nume": "Lance Vance",
+        "scor": -5
+      }
+    },
+    {
+      "inject": {
+        "nume": "",
+        "scor": 7
+      }
+    },
+    {
+      "inject": {
+        "nume": "Phil",
+        "scor": 1708
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Lance",
+        "scor": 52757
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Tommy",
+        "scor": 60599
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Umberto",
+        "scor": 38775
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Candy",
+        "scor": 78945
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Candy",
+        "scor": 72910
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Umberto",
+        "scor": 10887
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Candy",
+        "scor": 4067
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Candy",
+        "scor": 2003
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Sonny",
+        "scor": 17332
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Diaz",
+        "scor": 55340
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Mercedes",
+        "scor": 26476
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ken",
+        "scor": 11297
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Ken",
+        "scor": 1681
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": "Avery",
+        "scor": 49285
+      },
+      "generated": true
+    }
+  ]
+}

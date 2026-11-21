@@ -1,0 +1,117 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "text"
+      },
+      {
+        "kind": "call",
+        "name": "FileWriter"
+      },
+      {
+        "kind": "call",
+        "name": "TreeMap"
+      },
+      {
+        "kind": "call",
+        "name": "stream"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "text": "The money is in the boat.\nTommy says: the money is safe, Lance!"
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "text": "Help!"
+      }
+    },
+    {
+      "inject": {
+        "text": "Call me.\n\nCall me NOW, Tommy!!!"
+      }
+    },
+    {
+      "inject": {
+        "text": "big big BIG Big"
+      }
+    },
+    {
+      "inject": {
+        "text": "We need 100 more... we need time.\n42\nTrouble"
+      }
+    },
+    {
+      "inject": {
+        "text": "Night, club, cash, car, boss, deal"
+      }
+    },
+    {
+      "inject": {
+        "text": "is, says?"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "is! call, very! car!"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "help,\nfast? time trouble call, lawyer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "me me, me Me me, me, me! me. me?"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "We! night More? Lance in,\nsafe? Call safe. money\nFast!\nnight lance"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "deal\nis in. deal! is. the! Is\nthe? is In, deal\nthe deal the In\nthe."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "Boss! Now! tommy. Boss. club! now. Club!\nclub. time?\nvery tommy? Call\ncall.\nwe\nwe, boss\nboss\nClub. very We"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "car trouble? Club time trouble\nWe? lance! boss lawyer trouble? Boat car deal, club, Says. we, Boss Club! Says boss, boat.\nlance. very, call very lance. Club we? we, lawyer"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "says is. Says? We! Help!\nneed? we! help, we says\nneed. fast, says is? help!\nmoney we,\nlawyer! Help is is big Is! We! we? Lawyer help? help? money! Money. need?\nneed? Big We\nneed! Money\nis fast! lawyer says is is, is we fast?"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "text": "Lawyer lance\nis! safe! Cash cash need! Big, fast? lance need, in, boss lawyer more? safe, in? more, boat boat we\nBoat.\nlance, cash. Lance!\ncash? Trouble boss boat The? we, big, is? tommy Need. time!\ndeal? Lance very\nsays? Trouble? very, me! need tommy Tommy, deal in.\nNeed\ndeal is, very.\nthe! very? Call deal me? me? deal Lawyer"
+      },
+      "generated": true
+    }
+  ]
+}

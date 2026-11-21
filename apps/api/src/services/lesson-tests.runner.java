@@ -27,6 +27,8 @@
 //   (char/long/float; $list -> `new T[]{...}` or `new ArrayList<>(List.of())`;
 //   $dict -> LinkedHashMap subclass so iteration order follows insertion).
 
+import com.sun.source.tree.ArrayAccessTree;
+import com.sun.source.tree.ArrayTypeTree;
 import com.sun.source.tree.AssignmentTree;
 import com.sun.source.tree.BlockTree;
 import com.sun.source.tree.ClassTree;
@@ -44,9 +46,12 @@ import com.sun.source.tree.MemberReferenceTree;
 import com.sun.source.tree.MemberSelectTree;
 import com.sun.source.tree.MethodInvocationTree;
 import com.sun.source.tree.MethodTree;
+import com.sun.source.tree.NewArrayTree;
 import com.sun.source.tree.NewClassTree;
 import com.sun.source.tree.ParameterizedTypeTree;
 import com.sun.source.tree.Tree;
+import com.sun.source.tree.TryTree;
+import com.sun.source.tree.TypeParameterTree;
 import com.sun.source.tree.VariableTree;
 import com.sun.source.tree.WhileLoopTree;
 import com.sun.source.util.JavacTask;
@@ -226,8 +231,9 @@ public class Runner {
     final java.util.Set<String> staticOwners = new java.util.HashSet<>();
     final java.util.Set<String> variableNames = new java.util.HashSet<>();
     final java.util.Set<String> methodNames = new java.util.HashSet<>();
-    // A method that calls itself somewhere in its own body.
+    // A method that calls itself somewhere in its own body, and the names of those that do.
     boolean hasRecursion;
+    final java.util.Set<String> recursiveMethods = new java.util.HashSet<>();
     final java.util.Set<Long> intLiterals = new java.util.HashSet<>();
     final List<String> comments = new ArrayList<>();
     // Loop statements seen, by spec name: "for" (for-each included), "while", "do_while".
@@ -332,13 +338,19 @@ public class Runner {
               }
             }
           }
-          return super.visitClass(node, unused);
+          enclosingClasses.push(node.getSimpleName().toString());
+          try {
+            return super.visitClass(node, unused);
+          } finally {
+            enclosingClasses.pop();
+          }
         }
 
         @Override
         public Void visitMethod(MethodTree node, Void unused) {
           methodNames.add(node.getName().toString());
-          String key = node.getName() + "/" + node.getParameters().size();
+          String key =
+              enclosingClasses.peek() + "." + node.getName() + "/" + node.getParameters().size();
           methodsByArity.merge(key, 1, Integer::sum);
           enclosingMethods.push(key);
           try {
@@ -348,6 +360,7 @@ public class Runner {
           }
         }
 
+        private final java.util.ArrayDeque<String> enclosingClasses = new java.util.ArrayDeque<>();
         private final java.util.ArrayDeque<String> enclosingMethods = new java.util.ArrayDeque<>();
         private final Map<String, Integer> methodsByArity = new java.util.HashMap<>();
         private final java.util.Set<String> selfCalls = new java.util.HashSet<>();
@@ -364,19 +377,22 @@ public class Runner {
             String owner = lastName(ms.getExpression());
             if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
           }
-          // A method calls itself by its bare name or through this., with as
-          // many arguments as it takes: name.equals(...) on a field or an
-          // overload with another arity is a different method, and with an
-          // overload of the same arity it can't be told apart without types.
+          // A method calls itself by its bare name, through this. or through its
+          // own class's name (Main.open), with as many arguments as it takes:
+          // name.equals(...) on a field, an overload with another arity or a
+          // method of another class is a different method, and with an
+          // overload of the same arity in its class it can't be told apart
+          // without types.
           String called =
               select instanceof IdentifierTree id
                   ? id.getName().toString()
                   : select instanceof MemberSelectTree ms
                           && ms.getExpression() instanceof IdentifierTree target
-                          && target.getName().contentEquals("this")
+                          && (target.getName().contentEquals("this")
+                              || target.getName().contentEquals(enclosingClasses.peek()))
                       ? ms.getIdentifier().toString()
                       : null;
-          String key = called + "/" + node.getArguments().size();
+          String key = enclosingClasses.peek() + "." + called + "/" + node.getArguments().size();
           if (called != null && key.equals(enclosingMethods.peek())) selfCalls.add(key);
           return super.visitMethodInvocation(node, unused);
         }
@@ -479,8 +495,11 @@ public class Runner {
         }
 
         private boolean inMain(Tree parent) {
+          // Methods are keyed Class.name/arity, so main is Main.main/1.
           String method = enclosingMethods.peek();
-          return parent instanceof BlockTree && method != null && method.startsWith("main/");
+          return parent instanceof BlockTree
+              && method != null
+              && method.substring(method.lastIndexOf('.') + 1).startsWith("main/");
         }
 
         private Tree findParentOf(Tree tree) {
@@ -533,7 +552,12 @@ public class Runner {
         @Override
         public Void visitCompilationUnit(CompilationUnitTree node, Void unused) {
           super.visitCompilationUnit(node, unused);
-          for (String key : selfCalls) if (methodsByArity.get(key) == 1) hasRecursion = true;
+          for (String key : selfCalls) {
+            if (methodsByArity.get(key) == 1) {
+              hasRecursion = true;
+              recursiveMethods.add(key.substring(key.lastIndexOf('.') + 1, key.indexOf('/')));
+            }
+          }
           for (String owner : staticOwners) {
             for (String call : bareCalls) {
               if (!methodNames.contains(call)) callNames.add(owner + "." + call);
@@ -599,6 +623,53 @@ public class Runner {
             Tree.Kind.INTERFACE, "interface",
             Tree.Kind.ENUM, "enum");
 
+    // Kinds a single node shows by its shape: a ternary, a switch that gives a value, a lambda,
+    // a 2D array (its type, a new int[3][4], or grid[i][j]), a throw, a try with resources...
+    static String shapeFact(Tree tree) {
+      switch (tree.getKind()) {
+        case CONDITIONAL_EXPRESSION:
+          return "ternary";
+        case SWITCH_EXPRESSION:
+          return "switch_expression";
+        case LAMBDA_EXPRESSION:
+          return "lambda";
+        case MEMBER_REFERENCE:
+          return "method_reference";
+        case THROW:
+          return "throw";
+        case SYNCHRONIZED:
+          return "synchronized";
+        case RECORD:
+          return "record";
+        case EXTENDS_WILDCARD:
+        case SUPER_WILDCARD:
+          return "bounded_type";
+        case TYPE_PARAMETER:
+          return ((TypeParameterTree) tree).getBounds().isEmpty() ? null : "bounded_type";
+        case TRY:
+          return ((TryTree) tree).getResources().isEmpty() ? null : "try_resources";
+        case NEW_CLASS:
+          return ((NewClassTree) tree).getClassBody() == null ? null : "anonymous_class";
+        case ARRAY_TYPE:
+          return ((ArrayTypeTree) tree).getType().getKind() == Tree.Kind.ARRAY_TYPE ? "array_2d" : null;
+        case ARRAY_ACCESS:
+          return ((ArrayAccessTree) tree).getExpression().getKind() == Tree.Kind.ARRAY_ACCESS
+              ? "array_2d"
+              : null;
+        case NEW_ARRAY:
+          {
+            NewArrayTree array = (NewArrayTree) tree;
+            boolean nested =
+                array.getInitializers() != null
+                    && array.getInitializers().stream()
+                        .anyMatch(e -> e.getKind() == Tree.Kind.NEW_ARRAY);
+            return array.getDimensions().size() > 1 || nested ? "array_2d" : null;
+          }
+        default:
+          return null;
+      }
+    }
+
     static final java.util.Set<Tree.Kind> LOOP_KINDS =
         java.util.EnumSet.of(
             Tree.Kind.FOR_LOOP,
@@ -620,6 +691,8 @@ public class Runner {
           if (tree == null) return null;
           String fact = STATEMENT_FACTS.get(tree.getKind());
           if (fact != null) facts.add(fact);
+          String shape = shapeFact(tree);
+          if (shape != null) facts.add(shape);
           String op = OPERATORS.get(tree.getKind());
           if (op != null) operators.add(op);
           boolean loop = LOOP_KINDS.contains(tree.getKind());
@@ -643,6 +716,20 @@ public class Runner {
             parents.put(name, simpleType(node.getExtendsClause()));
           }
           if (!node.getImplementsClause().isEmpty()) facts.add("implements");
+          if (!node.getTypeParameters().isEmpty()) facts.add("generic_class");
+          // An inner class belongs to an object of the class around it; a static nested one
+          // (how single-file Java holds its classes), a record, enum or interface doesn't, nor
+          // does a class inside an interface, static without saying so. A class declared in a
+          // method is an inner class too, but the lesson teaches the member kind.
+          Tree around = getCurrentPath().getParentPath().getLeaf();
+          if (node.getKind() == Tree.Kind.CLASS
+              && around instanceof ClassTree outer
+              && (outer.getKind() == Tree.Kind.CLASS
+                  || outer.getKind() == Tree.Kind.ENUM
+                  || outer.getKind() == Tree.Kind.RECORD)
+              && !node.getModifiers().getFlags().contains(javax.lang.model.element.Modifier.STATIC)) {
+            facts.add("inner_class");
+          }
           // A static nested class is how single-file Java holds its classes,
           // so it doesn't count as using static.
           for (var m : node.getModifiers().getFlags()) {
@@ -676,6 +763,21 @@ public class Runner {
           }
           for (var a : node.getModifiers().getAnnotations()) {
             if (simpleType(a.getAnnotationType()).equals("Override")) facts.add("override");
+          }
+          // main's own declaration shows none of these: String... args, throws Exception or a
+          // synchronized main leaves the student's own methods as they were.
+          if (besideMain && node.getName().contentEquals("main")) {
+            return super.visitMethod(node, unused);
+          }
+          if (!node.getTypeParameters().isEmpty()) facts.add("generic_method");
+          if (!node.getThrows().isEmpty()) facts.add("throws");
+          if (node.getModifiers().getFlags().contains(javax.lang.model.element.Modifier.SYNCHRONIZED)) {
+            facts.add("synchronized");
+          }
+          // javac prints a varargs parameter with its dots: int... values.
+          List<? extends VariableTree> params = node.getParameters();
+          if (!params.isEmpty() && params.get(params.size() - 1).toString().contains("...")) {
+            facts.add("varargs");
           }
           return super.visitMethod(node, unused);
         }
@@ -957,9 +1059,12 @@ public class Runner {
           }
           return parsed.methodNames.contains(name);
         case "recursion":
-          return parsed.hasRecursion;
+          return name.isEmpty() ? parsed.hasRecursion : parsed.recursiveMethods.contains(name);
         case "if", "switch", "break", "continue", "try", "nested_loop", "instanceof", "cast",
-            "interface", "enum", "extends", "implements", "override", "overload":
+            "interface", "enum", "extends", "implements", "override", "overload", "ternary",
+            "switch_expression", "lambda", "method_reference", "throw", "throws", "synchronized",
+            "record", "generic_class", "generic_method", "bounded_type", "try_resources",
+            "anonymous_class", "inner_class", "array_2d", "varargs":
           return parsed.facts.contains(kind);
         case "operator":
           return parsed.operators.contains(name);

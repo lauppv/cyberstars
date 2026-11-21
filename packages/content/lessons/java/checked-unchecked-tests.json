@@ -1,0 +1,203 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "codes"
+      },
+      {
+        "kind": "function",
+        "name": "checkCode"
+      },
+      {
+        "kind": "throws"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "parseInt"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "codes": {
+          "$list": ["1986", "12345", "19x6", "0042"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "codes": {
+          "$list": [""]
+        }
+      }
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["0000", "9999"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["abcd", "ab", "abcde"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["12 4", " 123", "1234 "]
+        }
+      }
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["1", "12", "123", "1234", "12345"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["637309", "1308"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["6116", "8147", ""]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["1441", "y48y", "02b5", "x9ax", "4207"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["70x5", "7475", "xb1b", "z776", "5", "0176"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["3651", "32476", "0az1", "8161", "47", "85196", "5703", "8082"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": ["b", "5625", "2343", "2278", "0", "98", "x67a", "80x6", "xz70", "6268"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": [
+            "2247",
+            "202",
+            "8821",
+            "5164",
+            "2",
+            "aaa8",
+            "4361",
+            "48521",
+            "9304",
+            "4513",
+            "1413",
+            "4208"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": [
+            "1787",
+            "3864",
+            "9001",
+            "4c4b",
+            "44a364",
+            "5803",
+            "1x99",
+            "806461",
+            "b2",
+            "a9x1",
+            "azyx",
+            "43",
+            "b0984",
+            "81",
+            "9838"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "codes": {
+          "$list": [
+            "5841",
+            "b",
+            "1673",
+            "3932",
+            "",
+            "b1xz",
+            "0867",
+            "b",
+            "3916",
+            "81ab",
+            "9zyy",
+            "",
+            "8",
+            "30by",
+            "3592",
+            "85",
+            "0bb2",
+            "a6aa6",
+            "551b52",
+            "81"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

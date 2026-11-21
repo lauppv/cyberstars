@@ -281,6 +281,22 @@ export const STRUCTURE_KINDS: Record<Lang, Set<string>> = {
     'modifier',
     'instanceof',
     'cast',
+    'ternary',
+    'switch_expression',
+    'lambda',
+    'method_reference',
+    'throw',
+    'throws',
+    'synchronized',
+    'record',
+    'generic_class',
+    'generic_method',
+    'bounded_type',
+    'try_resources',
+    'anonymous_class',
+    'inner_class',
+    'array_2d',
+    'varargs',
   ]),
 };
 const LOOP_TYPES: Record<Lang, Set<string>> = {
@@ -305,8 +321,8 @@ export function auditKinds(lang: Lang, spec: LessonTestsSpec): string[] {
       messages.push(`structure kind "${rule.kind}" is not implemented for ${lang}`);
     } else if (rule.kind === 'loop' && rule.type && !LOOP_TYPES[lang].has(rule.type)) {
       messages.push(`loop type "${rule.type}" does not exist in ${lang}`);
-    } else if (rule.kind === 'recursion' && rule.name && lang !== 'c') {
-      messages.push(`a recursion rule with a name is c-only`);
+    } else if (rule.kind === 'recursion' && rule.name && lang !== 'c' && lang !== 'java') {
+      messages.push(`a recursion rule with a name is only for c and java`);
     } else if (rule.in && lang !== 'python') {
       messages.push(`a rule scoped with "in" is python-only`);
     } else if (['operator', 'modifier'].includes(rule.kind) && !rule.name) {

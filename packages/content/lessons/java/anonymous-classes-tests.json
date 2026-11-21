@@ -1,0 +1,171 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "price"
+      },
+      {
+        "kind": "variable",
+        "name": "coupon"
+      },
+      {
+        "kind": "interface"
+      },
+      {
+        "kind": "anonymous_class"
+      },
+      {
+        "kind": "variable",
+        "name": "half"
+      },
+      {
+        "kind": "variable",
+        "name": "minus"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "implements"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "price": 90,
+        "coupon": 20
+      }
+    },
+    {
+      "inject": {
+        "price": 30,
+        "coupon": 50
+      }
+    },
+    {
+      "inject": {
+        "price": 0,
+        "coupon": 0
+      }
+    },
+    {
+      "inject": {
+        "price": 1,
+        "coupon": 1
+      }
+    },
+    {
+      "inject": {
+        "price": 101,
+        "coupon": 51
+      }
+    },
+    {
+      "inject": {
+        "price": 100,
+        "coupon": 50
+      }
+    },
+    {
+      "inject": {
+        "price": 451,
+        "coupon": 367
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 73,
+        "coupon": 223
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 826,
+        "coupon": 294
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 889,
+        "coupon": 348
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 744,
+        "coupon": 248
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 35,
+        "coupon": 441
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 394,
+        "coupon": 261
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 457,
+        "coupon": 589
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 89,
+        "coupon": 519
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 609,
+        "coupon": 231
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 383,
+        "coupon": 177
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 89,
+        "coupon": 134
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 952,
+        "coupon": 245
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "price": 775,
+        "coupon": 591
+      },
+      "generated": true
+    }
+  ]
+}

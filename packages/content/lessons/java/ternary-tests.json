@@ -1,0 +1,97 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "stars"
+      },
+      {
+        "kind": "ternary"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "if"
+      },
+      {
+        "kind": "switch"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "stars": 3
+      }
+    },
+    {
+      "inject": {
+        "stars": 1
+      }
+    },
+    {
+      "inject": {
+        "stars": 0
+      }
+    },
+    {
+      "inject": {
+        "stars": 2
+      }
+    },
+    {
+      "inject": {
+        "stars": 5
+      }
+    },
+    {
+      "inject": {
+        "stars": 6
+      }
+    },
+    {
+      "inject": {
+        "stars": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stars": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stars": 11
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stars": 21
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stars": 100
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stars": 101
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stars": 1000
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,302 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "scores"
+      },
+      {
+        "kind": "variable",
+        "name": "times"
+      },
+      {
+        "kind": "generic_method"
+      },
+      {
+        "kind": "bounded_type"
+      },
+      {
+        "kind": "function",
+        "name": "best"
+      },
+      {
+        "kind": "function",
+        "name": "total"
+      },
+      {
+        "kind": "call",
+        "name": "compareTo"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Tommy", "Ken", "Lance"]
+        },
+        "scores": {
+          "$list": [120, 85, 40]
+        },
+        "times": {
+          "$list": [61.5, 58.25]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Phil"]
+        },
+        "scores": {
+          "$list": [-3]
+        },
+        "times": {
+          "$list": [0.5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["ken", "Lance"]
+        },
+        "scores": {
+          "$list": [5, 5]
+        },
+        "times": {
+          "$list": [0.25, 0.75, 1.5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Avery", "Diaz", "Cortez"]
+        },
+        "scores": {
+          "$list": [-10, -2, -7]
+        },
+        "times": {
+          "$list": [100.5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Candy"]
+        },
+        "scores": {
+          "$list": [341, 92, -36]
+        },
+        "times": {
+          "$list": [63.75, 34.25]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ken", "Umberto"]
+        },
+        "scores": {
+          "$list": [230, 195, 237]
+        },
+        "times": {
+          "$list": [87.5, 21.25, 63.5, 86.75, 36.75, 57.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ken"]
+        },
+        "scores": {
+          "$list": [36, 145, 27, 227]
+        },
+        "times": {
+          "$list": [48.5]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Cortez", "Ken", "Avery", "Phil"]
+        },
+        "scores": {
+          "$list": [371, 99]
+        },
+        "times": {
+          "$list": [88.5, 79.25, 56.5, 39.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Sonny", "Lance", "Diaz", "Umberto", "Tommy"]
+        },
+        "scores": {
+          "$list": [166, 100, 179, 91]
+        },
+        "times": {
+          "$list": [51.5, 26.25, 49.25, 40.25, 33.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Diaz", "Lance"]
+        },
+        "scores": {
+          "$list": [275, 457, 276, 180, 244]
+        },
+        "times": {
+          "$list": [37.5, 71.5, 77.75, 47.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Diaz", "Lance"]
+        },
+        "scores": {
+          "$list": [-3, 49, 325, -9, 30, 377]
+        },
+        "times": {
+          "$list": [23.25, 33.25, 62.25, 64.25, 67.25, 84.5]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Umberto", "Phil", "Mercedes"]
+        },
+        "scores": {
+          "$list": [177]
+        },
+        "times": {
+          "$list": [28.5, 79.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Cortez", "Tommy", "Diaz"]
+        },
+        "scores": {
+          "$list": [408, 440, 244, 13]
+        },
+        "times": {
+          "$list": [33.25, 84.75, 25.75, 50.5, 43.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mercedes", "Lance", "Phil", "Umberto"]
+        },
+        "scores": {
+          "$list": [254, 83, 161, 295, 428, 130]
+        },
+        "times": {
+          "$list": [46.5, 32.5, 64.75, 90.5]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Sonny", "Tommy", "Lance", "Ken"]
+        },
+        "scores": {
+          "$list": [242, 341, 163, 446, 321]
+        },
+        "times": {
+          "$list": [31.5, 64.25, 80.25]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Tommy", "Umberto", "Sonny", "Diaz", "Ken", "Cortez"]
+        },
+        "scores": {
+          "$list": [399, -30]
+        },
+        "times": {
+          "$list": [26.75, 74.25]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Umberto", "Diaz", "Mercedes", "Phil"]
+        },
+        "scores": {
+          "$list": [248, 266]
+        },
+        "times": {
+          "$list": [52.25, 48.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Diaz", "Lance", "Sonny", "Umberto", "Avery", "Cortez"]
+        },
+        "scores": {
+          "$list": [274, 400, 107, 441]
+        },
+        "times": {
+          "$list": [51.5, 77.75, 30.75, 20.75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Mercedes", "Diaz", "Candy", "Umberto"]
+        },
+        "scores": {
+          "$list": [400, 454]
+        },
+        "times": {
+          "$list": [43.75, 43.25, 20.75]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

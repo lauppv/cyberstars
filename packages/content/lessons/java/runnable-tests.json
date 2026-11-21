@@ -1,0 +1,189 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "words"
+      },
+      {
+        "kind": "lambda"
+      },
+      {
+        "kind": "call",
+        "name": "Thread"
+      },
+      {
+        "kind": "call",
+        "name": "start"
+      },
+      {
+        "kind": "call",
+        "name": "join"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "extends"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "words": {
+          "$list": ["Malibu", "dock", "Ocean"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["xyz"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["AEIOU", "aeiou"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["boat", "police", "quiet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": [""]
+        }
+      }
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Downtown", "Links"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Vice", "Leaf", "Starfish", "police", "run", "Starfish", "run", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["quiet", "Malibu", "Downtown", "Ocean", "Escobar", "run", "Prawn", "Starfish"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Leaf", "cash", "Washington", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Malibu", "Starfish", "boat", "Haiti", "Malibu", "Haiti", "quiet", "police"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Links", "Malibu", "Vice"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Leaf", "Starfish", "Escobar", "Downtown", "police", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Haiti", "dock", "Vice", "Vice", "Escobar"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Leaf"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Haiti", "boat", "Prawn"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Escobar", "Downtown"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["run"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["cash", "Malibu", "Vice", "Escobar", "Starfish", "Haiti", "quiet", "Downtown"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["boat", "police", "Malibu"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "words": {
+          "$list": ["Ocean", "Vice", "quiet", "boat"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

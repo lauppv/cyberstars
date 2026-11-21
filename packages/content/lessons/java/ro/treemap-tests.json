@@ -1,0 +1,579 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "sume"
+      },
+      {
+        "kind": "call",
+        "name": "TreeMap"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Tommy", "Lance", "Vic", "Tommy", "Lance"]
+        },
+        "sume": {
+          "$list": [4000, 1000, 500, 3000, 2000]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Kent"]
+        },
+        "sume": {
+          "$list": [1200]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ken", "Kent", "Ke"]
+        },
+        "sume": {
+          "$list": [10, 20, 30]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Zed", "Avery"]
+        },
+        "sume": {
+          "$list": [1, 2]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Phil", "Phil"]
+        },
+        "sume": {
+          "$list": [0, 0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Diaz", "Diaz", "Candy"]
+        },
+        "sume": {
+          "$list": [999999, 1, 50]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Umberto", "Mercedes", "Umberto", "Cortez"]
+        },
+        "sume": {
+          "$list": [300, 300, 300, 300]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Cortez", "Tommy"]
+        },
+        "sume": {
+          "$list": [4900, 800]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Umberto", "Diaz", "Umberto"]
+        },
+        "sume": {
+          "$list": [2500, 3300, 4200]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ricardo", "Cortez", "Lance", "Cortez", "Candy"]
+        },
+        "sume": {
+          "$list": [3100, 4200, 1400, 2400, 1500]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Sonny", "Diaz", "Tommy", "Lance", "Tommy", "Diaz", "Phil", "Ken"]
+        },
+        "sume": {
+          "$list": [4100, 3200, 4900, 5000, 3900, 5000, 2600, 900]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Vic",
+            "Avery",
+            "Kent",
+            "Candy",
+            "Candy",
+            "Tommy",
+            "Vic",
+            "Candy",
+            "Vic",
+            "Ricardo"
+          ]
+        },
+        "sume": {
+          "$list": [300, 1600, 3100, 200, 3800, 2000, 3200, 4400, 800, 800]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Kent",
+            "Sonny",
+            "Phil",
+            "Mercedes",
+            "Phil",
+            "Diaz",
+            "Sonny",
+            "Candy",
+            "Diaz",
+            "Mercedes",
+            "Phil",
+            "Phil",
+            "Kent",
+            "Lance",
+            "Lance"
+          ]
+        },
+        "sume": {
+          "$list": [
+            1600, 4500, 800, 3900, 4800, 500, 4900, 100, 3300, 2800, 500, 1200, 4200, 3700, 400
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Diaz",
+            "Candy",
+            "Candy",
+            "Vic",
+            "Mercedes",
+            "Mercedes",
+            "Umberto",
+            "Candy",
+            "Umberto",
+            "Vic",
+            "Mercedes",
+            "Candy",
+            "Vic",
+            "Candy",
+            "Mercedes",
+            "Diaz",
+            "Mercedes",
+            "Ricardo",
+            "Diaz",
+            "Mercedes"
+          ]
+        },
+        "sume": {
+          "$list": [
+            3500, 300, 1500, 4000, 2700, 1900, 5000, 4600, 4500, 2000, 300, 2900, 1400, 2400, 3100,
+            1000, 700, 800, 1200, 2800
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Sonny",
+            "Phil",
+            "Lance",
+            "Candy",
+            "Kent",
+            "Phil",
+            "Phil",
+            "Candy",
+            "Ricardo",
+            "Mercedes",
+            "Ricardo",
+            "Kent",
+            "Candy",
+            "Umberto",
+            "Vic",
+            "Sonny",
+            "Candy",
+            "Sonny",
+            "Tommy",
+            "Tommy",
+            "Diaz",
+            "Ken",
+            "Ricardo",
+            "Vic",
+            "Vic",
+            "Umberto",
+            "Vic",
+            "Ricardo",
+            "Kent",
+            "Kent"
+          ]
+        },
+        "sume": {
+          "$list": [
+            4700, 1700, 2100, 4200, 4900, 3600, 600, 1300, 4500, 900, 2600, 2500, 3100, 3500, 4000,
+            300, 4100, 900, 3600, 1100, 4600, 2700, 1600, 2100, 4600, 4400, 400, 2700, 3800, 2100
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Mercedes",
+            "Vic",
+            "Candy",
+            "Kent",
+            "Candy",
+            "Vic",
+            "Kent",
+            "Vic",
+            "Umberto",
+            "Candy",
+            "Kent",
+            "Sonny",
+            "Mercedes",
+            "Umberto",
+            "Sonny",
+            "Sonny",
+            "Mercedes",
+            "Sonny",
+            "Kent",
+            "Umberto",
+            "Kent",
+            "Phil",
+            "Vic",
+            "Vic",
+            "Sonny",
+            "Candy",
+            "Kent",
+            "Sonny",
+            "Phil",
+            "Phil",
+            "Umberto",
+            "Vic",
+            "Phil",
+            "Kent",
+            "Candy",
+            "Vic",
+            "Candy",
+            "Kent",
+            "Mercedes",
+            "Kent",
+            "Umberto",
+            "Sonny",
+            "Mercedes",
+            "Candy",
+            "Candy",
+            "Mercedes",
+            "Phil",
+            "Phil",
+            "Mercedes",
+            "Umberto"
+          ]
+        },
+        "sume": {
+          "$list": [
+            900, 2600, 3400, 3400, 4000, 200, 2900, 3000, 3700, 900, 4100, 1200, 1000, 500, 1100,
+            4600, 1000, 3000, 2400, 1300, 4600, 200, 4500, 900, 2600, 1300, 5000, 2700, 5000, 100,
+            4300, 1800, 4800, 4700, 400, 2300, 3500, 700, 5000, 3900, 3100, 1000, 1500, 4800, 2100,
+            3300, 200, 100, 2900, 5000
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken",
+            "Ken"
+          ]
+        },
+        "sume": {
+          "$list": [
+            600, 1700, 1300, 1700, 4400, 1500, 3300, 3300, 4900, 2300, 1200, 4600, 4300, 1900, 4500,
+            3900, 4800, 3700, 1400, 300, 1200, 100, 2200, 3200, 4100, 4500, 1500, 3300, 3100, 4600,
+            1400, 4300, 5000, 3200, 2600, 400, 700, 2600, 3700, 3100, 1500, 500, 3400, 1900, 3600,
+            4200, 3600, 1300, 2000, 800, 2400, 1200, 5000, 800, 4100, 4600, 1100, 3300, 4000, 1200,
+            1200, 4300, 2600, 1700, 3400, 4300, 2500, 4500, 2300, 3400, 1700, 400, 4200, 800, 1600,
+            1100, 300, 4800, 200, 3600
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Ricardo",
+            "Umberto",
+            "Umberto",
+            "Lance",
+            "Vic",
+            "Sonny",
+            "Ricardo",
+            "Sonny",
+            "Ricardo",
+            "Sonny",
+            "Umberto",
+            "Lance",
+            "Sonny",
+            "Ricardo",
+            "Ricardo",
+            "Vic",
+            "Vic",
+            "Vic",
+            "Lance",
+            "Umberto",
+            "Lance",
+            "Vic",
+            "Umberto",
+            "Ricardo",
+            "Ricardo",
+            "Lance",
+            "Lance",
+            "Vic",
+            "Sonny",
+            "Sonny",
+            "Sonny",
+            "Sonny",
+            "Umberto",
+            "Ricardo",
+            "Ricardo",
+            "Ricardo",
+            "Vic",
+            "Vic",
+            "Vic",
+            "Lance",
+            "Lance",
+            "Vic",
+            "Vic",
+            "Ricardo",
+            "Ricardo",
+            "Vic",
+            "Ricardo",
+            "Umberto",
+            "Lance",
+            "Lance",
+            "Vic",
+            "Vic",
+            "Sonny",
+            "Vic",
+            "Ricardo",
+            "Vic",
+            "Umberto",
+            "Ricardo",
+            "Vic",
+            "Sonny",
+            "Lance",
+            "Vic",
+            "Lance",
+            "Sonny",
+            "Vic",
+            "Sonny",
+            "Ricardo",
+            "Sonny",
+            "Sonny",
+            "Umberto",
+            "Ricardo",
+            "Lance",
+            "Sonny",
+            "Vic",
+            "Ricardo",
+            "Sonny",
+            "Vic",
+            "Vic",
+            "Ricardo",
+            "Sonny",
+            "Sonny",
+            "Lance",
+            "Umberto",
+            "Ricardo",
+            "Sonny",
+            "Vic",
+            "Sonny",
+            "Lance",
+            "Ricardo",
+            "Umberto",
+            "Ricardo",
+            "Lance",
+            "Vic",
+            "Ricardo",
+            "Umberto",
+            "Ricardo",
+            "Ricardo",
+            "Vic",
+            "Ricardo",
+            "Sonny",
+            "Sonny",
+            "Vic",
+            "Vic",
+            "Ricardo",
+            "Umberto",
+            "Sonny",
+            "Umberto",
+            "Vic",
+            "Ricardo",
+            "Lance",
+            "Umberto",
+            "Umberto",
+            "Lance",
+            "Sonny",
+            "Lance",
+            "Ricardo",
+            "Lance",
+            "Sonny",
+            "Lance",
+            "Ricardo"
+          ]
+        },
+        "sume": {
+          "$list": [
+            2300, 3600, 1000, 3500, 3600, 700, 2700, 4500, 4100, 2000, 500, 4100, 300, 200, 3600,
+            1100, 2000, 1200, 400, 4000, 1700, 100, 700, 2800, 3500, 1600, 1900, 3600, 1500, 2000,
+            2000, 3700, 300, 4900, 3200, 2100, 2100, 1300, 1000, 3300, 3500, 3000, 1000, 3300, 1800,
+            2700, 2900, 900, 4400, 2700, 3800, 4800, 1600, 1500, 3600, 2600, 3200, 3900, 700, 2900,
+            2200, 4400, 800, 3400, 2000, 2000, 3500, 4400, 4500, 2300, 1100, 1600, 900, 3900, 2700,
+            2300, 2800, 2400, 1300, 3900, 3500, 4400, 1300, 4300, 4700, 2400, 3800, 3600, 4800,
+            1000, 1100, 600, 1300, 2600, 700, 2000, 4700, 200, 3400, 4600, 2000, 4100, 1700, 700,
+            1000, 300, 4800, 3800, 4700, 1400, 2800, 1300, 3200, 3700, 2300, 4000, 3700, 4300, 2300,
+            3700
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

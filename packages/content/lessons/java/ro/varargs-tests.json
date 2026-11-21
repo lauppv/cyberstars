@@ -1,0 +1,182 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "sef"
+      },
+      {
+        "kind": "variable",
+        "name": "banda"
+      },
+      {
+        "kind": "function",
+        "name": "apel"
+      },
+      {
+        "kind": "varargs"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "sef": "Tommy",
+        "banda": {
+          "$list": ["Lance", "Ken"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sef": "Sonny",
+        "banda": {
+          "$list": ["Diaz"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sef": "Avery",
+        "banda": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "sef": "Ken",
+        "banda": {
+          "$list": ["Tommy", "Lance", "Mercedes", "Phil"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sef": "Umberto",
+        "banda": {
+          "$list": ["Umberto"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sef": "Sonny",
+        "banda": {
+          "$list": ["Sonny", "Diaz", "Umberto", "Mercedes", "Ken", "Candy", "Kent Paul"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Candy",
+        "banda": {
+          "$list": ["Umberto", "Avery", "Diaz", "Lance", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Tommy",
+        "banda": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Mercedes",
+        "banda": {
+          "$list": ["Avery", "Umberto", "Phil", "Lance", "Sonny", "Diaz"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Avery",
+        "banda": {
+          "$list": ["Mercedes", "Diaz", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Phil",
+        "banda": {
+          "$list": ["Mercedes", "Avery", "Umberto", "Diaz", "Phil"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Diaz",
+        "banda": {
+          "$list": ["Phil", "Mercedes", "Avery", "Lance"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Avery",
+        "banda": {
+          "$list": ["Tommy", "Sonny", "Cortez", "Lance", "Umberto"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Phil",
+        "banda": {
+          "$list": ["Mercedes", "Lance", "Candy", "Ken"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Umberto",
+        "banda": {
+          "$list": ["Kent Paul", "Lance", "Avery", "Mercedes", "Candy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Lance",
+        "banda": {
+          "$list": ["Diaz", "Ken", "Candy", "Lance", "Phil", "Umberto"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Candy",
+        "banda": {
+          "$list": ["Sonny", "Diaz", "Cortez", "Tommy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sef": "Mercedes",
+        "banda": {
+          "$list": ["Lance", "Ken", "Umberto", "Cortez", "Kent Paul"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -47,6 +47,7 @@ type StructureKind =
   | 'return'
   | 'default_param'
   | 'slice'
+  /** python and java */
   | 'lambda'
   /** a generator: yield or yield from */
   | 'yield'
@@ -78,14 +79,38 @@ type StructureKind =
   | 'deref'
   | 'sizeof'
   | 'define'
-  /** c: cond ? a : b */
+  /** c and java: cond ? a : b */
   | 'ternary'
   /** c: a variable declared static (not a static function) */
   | 'static'
-  /** c: an array of arrays, int grid[3][4] */
+  /** c and java: an array of arrays, int grid[3][4]; in java new int[3][4] or grid[i][j] too */
   | 'array_2d'
   /** c: int (*op)(int, int), as a variable, parameter, field or typedef */
-  | 'function_pointer';
+  | 'function_pointer'
+  // java
+  /** java: a switch that gives a value, String n = switch (d) { case 1 -> "a"; ... } */
+  | 'switch_expression'
+  /** java: Type::method or Type::new */
+  | 'method_reference'
+  | 'throw'
+  /** java: a method that declares throws */
+  | 'throws'
+  /** java: a synchronized block or method */
+  | 'synchronized'
+  | 'record'
+  /** java: a class or method with a type parameter, class Box<T>, <T> T first(...) */
+  | 'generic_class'
+  | 'generic_method'
+  /** java: <T extends X>, or a wildcard ? extends X / ? super X */
+  | 'bounded_type'
+  /** java: try (Resource r = ...) */
+  | 'try_resources'
+  /** java: new Interface() { ... } */
+  | 'anonymous_class'
+  /** java: a non-static class inside another class */
+  | 'inner_class'
+  /** java: a parameter like int... values */
+  | 'varargs';
 
 type LoopType =
   | 'for'
@@ -102,7 +127,7 @@ interface StructureRule {
   kind: StructureKind;
   /**
    * call / variable / function / class name, operator spelling, modifier
-   * keyword, define name, or (c) the function a recursion rule wants recursive. A function or class rule without one asks for any
+   * keyword, define name, or (c and java) the function or method a recursion rule wants recursive. A function or class rule without one asks for any
    * function / class of the student's own (main aside), named however they like.
    */
   name?: string;

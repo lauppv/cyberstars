@@ -1,0 +1,152 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "lungime"
+      },
+      {
+        "kind": "variable",
+        "name": "tinta"
+      },
+      {
+        "kind": "recursion"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "lungime": 2,
+        "tinta": 3
+      }
+    },
+    {
+      "inject": {
+        "lungime": 3,
+        "tinta": 1
+      }
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 12
+      }
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 0
+      }
+    },
+    {
+      "inject": {
+        "lungime": 2,
+        "tinta": 18
+      }
+    },
+    {
+      "inject": {
+        "lungime": 3,
+        "tinta": 27
+      }
+    },
+    {
+      "inject": {
+        "lungime": 3,
+        "tinta": 0
+      }
+    },
+    {
+      "inject": {
+        "lungime": 2,
+        "tinta": 19
+      }
+    },
+    {
+      "inject": {
+        "lungime": 4,
+        "tinta": 35
+      }
+    },
+    {
+      "inject": {
+        "lungime": 3,
+        "tinta": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 3,
+        "tinta": 8
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 9
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 2,
+        "tinta": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 2,
+        "tinta": 4
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 7
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 1,
+        "tinta": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 3,
+        "tinta": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lungime": 2,
+        "tinta": 6
+      },
+      "generated": true
+    }
+  ]
+}

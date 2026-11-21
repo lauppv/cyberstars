@@ -1,0 +1,295 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "models"
+      },
+      {
+        "kind": "variable",
+        "name": "years"
+      },
+      {
+        "kind": "class",
+        "name": "Car"
+      },
+      {
+        "kind": "function",
+        "name": "equals"
+      },
+      {
+        "kind": "function",
+        "name": "hashCode"
+      },
+      {
+        "kind": "call",
+        "name": "HashMap"
+      },
+      {
+        "kind": "call",
+        "name": "contains"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "models": {
+          "$list": ["Infernus", "Cheetah", "Infernus", "Infernus"]
+        },
+        "years": {
+          "$list": [1986, 1986, 1986, 1985]
+        }
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Stinger", "Stinger"]
+        },
+        "years": {
+          "$list": [1984, 1984]
+        }
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Banshee"]
+        },
+        "years": {
+          "$list": [1983]
+        }
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": []
+        },
+        "years": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Admiral", "Admiral", "Sentinel", "Admiral"]
+        },
+        "years": {
+          "$list": [1980, 1981, 1980, 1980]
+        }
+      }
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Infernus", "Infernus", "Infernus", "Cheetah"]
+        },
+        "years": {
+          "$list": [1984, 1984, 1985, 1985]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Stinger", "Stinger", "Stinger", "Stinger", "Stinger"]
+        },
+        "years": {
+          "$list": [1986, 1986, 1986, 1984, 1985]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Infernus"]
+        },
+        "years": {
+          "$list": [1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Cheetah", "Cheetah"]
+        },
+        "years": {
+          "$list": [1984, 1985]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Stinger",
+            "Cheetah",
+            "Stinger",
+            "Infernus",
+            "Stinger",
+            "Infernus",
+            "Stinger",
+            "Cheetah",
+            "Infernus",
+            "Cheetah",
+            "Cheetah"
+          ]
+        },
+        "years": {
+          "$list": [1986, 1985, 1984, 1986, 1984, 1986, 1984, 1986, 1985, 1986, 1986]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Stinger",
+            "Cheetah",
+            "Stinger",
+            "Infernus",
+            "Stinger",
+            "Stinger",
+            "Stinger",
+            "Cheetah",
+            "Stinger",
+            "Infernus",
+            "Stinger"
+          ]
+        },
+        "years": {
+          "$list": [1986, 1986, 1984, 1985, 1984, 1984, 1985, 1985, 1985, 1985, 1985]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Stinger", "Stinger", "Cheetah", "Stinger", "Stinger", "Stinger"]
+        },
+        "years": {
+          "$list": [1985, 1985, 1985, 1986, 1986, 1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Cheetah", "Infernus", "Cheetah", "Stinger", "Cheetah"]
+        },
+        "years": {
+          "$list": [1984, 1984, 1985, 1986, 1986]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Infernus", "Stinger", "Stinger", "Infernus", "Stinger", "Infernus"]
+        },
+        "years": {
+          "$list": [1986, 1986, 1984, 1985, 1986, 1985]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Stinger", "Infernus", "Stinger", "Cheetah", "Stinger"]
+        },
+        "years": {
+          "$list": [1985, 1985, 1984, 1985, 1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Infernus",
+            "Infernus",
+            "Stinger",
+            "Cheetah",
+            "Cheetah",
+            "Stinger",
+            "Cheetah",
+            "Infernus"
+          ]
+        },
+        "years": {
+          "$list": [1984, 1984, 1986, 1984, 1986, 1984, 1984, 1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Cheetah", "Cheetah", "Infernus", "Infernus", "Cheetah"]
+        },
+        "years": {
+          "$list": [1985, 1985, 1986, 1985, 1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Cheetah", "Infernus", "Stinger", "Stinger", "Cheetah", "Cheetah", "Stinger"]
+        },
+        "years": {
+          "$list": [1984, 1984, 1985, 1984, 1984, 1985, 1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": [
+            "Cheetah",
+            "Stinger",
+            "Infernus",
+            "Infernus",
+            "Stinger",
+            "Stinger",
+            "Cheetah",
+            "Infernus"
+          ]
+        },
+        "years": {
+          "$list": [1984, 1986, 1985, 1984, 1985, 1985, 1986, 1984]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "models": {
+          "$list": ["Cheetah", "Infernus"]
+        },
+        "years": {
+          "$list": [1985, 1985]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

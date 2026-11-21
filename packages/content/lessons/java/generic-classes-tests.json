@@ -1,0 +1,170 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "name"
+      },
+      {
+        "kind": "variable",
+        "name": "score"
+      },
+      {
+        "kind": "generic_class"
+      },
+      {
+        "kind": "class",
+        "name": "Pair"
+      },
+      {
+        "kind": "function",
+        "name": "swap"
+      },
+      {
+        "kind": "function",
+        "name": "first"
+      },
+      {
+        "kind": "function",
+        "name": "second"
+      },
+      {
+        "kind": "call",
+        "name": "swap"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "name": "Tommy",
+        "score": 120
+      }
+    },
+    {
+      "inject": {
+        "name": "Ken",
+        "score": 0
+      }
+    },
+    {
+      "inject": {
+        "name": "Lance Vance",
+        "score": -5
+      }
+    },
+    {
+      "inject": {
+        "name": "",
+        "score": 7
+      }
+    },
+    {
+      "inject": {
+        "name": "Phil",
+        "score": 1708
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Lance",
+        "score": 52757
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Tommy",
+        "score": 60599
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Umberto",
+        "score": 38775
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Candy",
+        "score": 78945
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Candy",
+        "score": 72910
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Umberto",
+        "score": 10887
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Candy",
+        "score": 4067
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Candy",
+        "score": 2003
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Sonny",
+        "score": 17332
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Diaz",
+        "score": 55340
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Mercedes",
+        "score": 26476
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ken",
+        "score": 11297
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Ken",
+        "score": 1681
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "name": "Avery",
+        "score": 49285
+      },
+      "generated": true
+    }
+  ]
+}

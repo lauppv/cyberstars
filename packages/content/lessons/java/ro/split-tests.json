@@ -1,0 +1,136 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "rezultate"
+      },
+      {
+        "kind": "call",
+        "name": "split"
+      },
+      {
+        "kind": "call",
+        "name": "Integer.parseInt"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "rezultate": "Tommy:120;Lance:85;Ken:40"
+      }
+    },
+    {
+      "inject": {
+        "rezultate": "Sonny:10;Diaz:55;Avery:55"
+      }
+    },
+    {
+      "inject": {
+        "rezultate": "Phil:7"
+      }
+    },
+    {
+      "inject": {
+        "rezultate": "A:0;B:0"
+      }
+    },
+    {
+      "inject": {
+        "rezultate": "Kent Paul:3;Umberto:9"
+      }
+    },
+    {
+      "inject": {
+        "rezultate": "X:1;Y:2;Z:3;W:4"
+      }
+    },
+    {
+      "inject": {
+        "rezultate": "Ken:408;Sonny:283;Lance:110"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Avery:239;Sonny:176"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Candy:196;Phil:500;Tommy:302;Mercedes:383;Sonny:412;Avery:374;Cortez:175;Diaz:459"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Phil:220;Cortez:406;Umberto:343;Sonny:95"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Diaz:7;Candy:393"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Avery:361"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Umberto:422;Lance:63;Mercedes:253;Cortez:158;Ken:26;Avery:59;Tommy:486"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Sonny:299;Cortez:396;Ken:470;Diaz:439;Candy:390"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Tommy:236;Sonny:397;Phil:429;Lance:121;Cortez:284"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Umberto:496;Avery:486;Phil:19;Ken:202;Tommy:385"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Cortez:339;Lance:136;Sonny:499;Candy:7;Tommy:35;Mercedes:106;Umberto:136;Phil:4"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Candy:121;Avery:328;Umberto:351"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Mercedes:296;Avery:469;Umberto:186;Diaz:344;Ken:428;Candy:381"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rezultate": "Ken:386;Avery:322;Mercedes:288;Umberto:169;Lance:389;Sonny:93"
+      },
+      "generated": true
+    }
+  ]
+}

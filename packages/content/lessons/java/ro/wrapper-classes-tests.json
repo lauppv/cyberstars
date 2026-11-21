@@ -1,0 +1,212 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "intrari"
+      },
+      {
+        "kind": "call",
+        "name": "Integer.parseInt"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "ArrayList"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "intrari": {
+          "$list": ["42", "caseta", "-7", "300"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["abc", ""]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["2147483647", "-2147483648", "2147483648"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["0", "007", "+5", "1.5"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["1000", "1000"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["503", "-3719"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["-4582", "-1405", "-1113", "chei", "-4223", "-85"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["-4985", "713", "portofel", "1408", "-4207", "pistol", "3263", "2394"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["portofel", "4638", "1066", "2686", "chei"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["3921", "caseta", "3193", "-3301", "chei", "-1991", "4305", "4058", "-4644"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["pistol", "-860"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["-3021", "1266", "-1969", "-2894"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["-390"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "pistol",
+            "-2557",
+            "-697",
+            "-4511",
+            "chei",
+            "906",
+            "-4760",
+            "3123",
+            "pistol",
+            "caseta"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["4052", "2018", "-3900", "-2283", "1774", "-1849"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["1217", "3404", "-1356", "-532", "-3377"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "3929",
+            "941",
+            "pistol",
+            "3176",
+            "2923",
+            "-4866",
+            "pistol",
+            "3720",
+            "-3786",
+            "portofel"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": [
+            "-1981",
+            "2617",
+            "chei",
+            "caseta",
+            "3008",
+            "1486",
+            "-629",
+            "caseta",
+            "1080",
+            "portofel"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "intrari": {
+          "$list": ["987", "chei", "-1357", "-2427", "-3217", "3811", "1419", "-3648"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

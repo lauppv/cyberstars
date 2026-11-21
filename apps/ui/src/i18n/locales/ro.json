@@ -572,7 +572,7 @@
     "descriptions": {
       "python": "Cel mai bun început dacă n-ai mai programat. De la print și variabile la funcții, liste și dicționare, apoi căutare, sortare și recursivitate, module, fișiere și clase, cu șase proiecte mici la final.",
       "c": "Cum funcționează un program pe dedesubt: pointeri, recursivitate, memorie gestionată de mână, liste înlănțuite și fișiere, apoi un tur complet al sistemului de operare: apeluri de sistem, procese, exec, pipe-uri, semnale, thread-uri, deadlock și algoritmii de planificare și de memorie din spatele lor, cu un shell construit de tine la final.",
-      "java": "Programare orientată pe obiecte de la zero. După bazele limbajului, construiești programe din clase și obiecte, moștenire, polimorfism și interfețe, apoi colecții, cu trei proiecte mai mari la final.",
+      "java": "Programare orientată pe obiecte de la zero. După bazele limbajului, recursivitate și uneltele pentru text și array-uri, construiești programe din clase și obiecte, moștenire, interfețe, record-uri și generice, apoi colecții, lambda și stream-uri, excepții, fișiere și thread-uri, cu șase proiecte mai mari la final.",
       "linux": "Un terminal adevărat, direct în browser. Lucrezi cu fișiere, cauți cu grep și find, legi comenzi cu pipe-uri, editezi text cu sed și awk, apoi permisiuni și procese.",
       "algo-python": "Probleme de Python de la ușor la greu: șiruri, liste și dicționare puse la treabă în palindroame, cifrul lui Cezar, Two Sum, sortare și o matrice parcursă în spirală.",
       "algo-java": "Probleme de Java în care proiectezi singur clasele: un cont bancar, o ierarhie de forme, propria stivă, coadă și listă înlănțuită, tipuri generice și iteratori, plus căutare și sortare.",
@@ -1410,6 +1410,19 @@
         "format_spec": "Formatează numărul cu un format, ca {x:.2f}",
         "try_else": "Folosește else după try, pentru codul care rulează doar când nu a dat nimic greș",
         "finally": "Folosește finally, pentru codul care rulează mereu",
+        "switch_expression": "Folosește un switch care dă înapoi o valoare (switch expression)",
+        "method_reference": "Folosește o referință la metodă, ca System.out::println",
+        "throw": "Aruncă o excepție cu throw",
+        "throws": "Declară cu throws ce poate arunca o metodă",
+        "synchronized": "Lasă un singur thread odată cu synchronized",
+        "record": "Definește un record",
+        "generic_class": "Definește o clasă generică, ca Box<T>",
+        "generic_method": "Scrie o metodă generică, ca <T> T primul(...)",
+        "bounded_type": "Limitează un parametru de tip cu extends, ca <T extends Number>",
+        "try_resources": "Deschide resursa cu try-with-resources: try (...)",
+        "anonymous_class": "Folosește o clasă anonimă: new ...() { ... }",
+        "inner_class": "Definește o clasă interioară: o clasă în alta, fără static",
+        "varargs": "Dă unei metode un parametru varargs, ca int... valori",
         "other": "Codul tău nu folosește ce cere lecția"
       },
       "forbid": {
@@ -1430,6 +1443,11 @@
         "operator": "Nu folosi operatorul {{name}} aici",
         "break": "Nu folosi break aici",
         "slice": "Nu folosi un slice aici",
+        "if": "Nu folosi if aici",
+        "switch": "Nu folosi switch aici",
+        "lambda": "Nu folosi o lambda aici",
+        "extends": "Nu folosi extends aici",
+        "implements": "Nu folosi implements aici",
         "other": "Codul tău folosește ceva ce lecția îți cere să eviți"
       }
     },

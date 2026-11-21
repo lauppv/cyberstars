@@ -1,0 +1,157 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "district"
+      },
+      {
+        "kind": "variable",
+        "name": "rides"
+      },
+      {
+        "kind": "switch_expression"
+      }
+    ],
+    "forbids": [
+      {
+        "kind": "if"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "district": "Downtown",
+        "rides": 3
+      }
+    },
+    {
+      "inject": {
+        "district": "Little Haiti",
+        "rides": 2
+      }
+    },
+    {
+      "inject": {
+        "district": "Starfish Island",
+        "rides": 1
+      }
+    },
+    {
+      "inject": {
+        "district": "Ocean Beach",
+        "rides": 4
+      }
+    },
+    {
+      "inject": {
+        "district": "Washington Beach",
+        "rides": 1
+      }
+    },
+    {
+      "inject": {
+        "district": "Little Havana",
+        "rides": 7
+      }
+    },
+    {
+      "inject": {
+        "district": "Downtown",
+        "rides": 0
+      }
+    },
+    {
+      "inject": {
+        "district": "downtown",
+        "rides": 2
+      }
+    },
+    {
+      "inject": {
+        "district": "Vice Point",
+        "rides": 5
+      }
+    },
+    {
+      "inject": {
+        "district": "Little Havana",
+        "rides": 25
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Prawn Island",
+        "rides": 37
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Washington Beach",
+        "rides": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Beach",
+        "rides": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Escobar International",
+        "rides": 34
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Washington Beach",
+        "rides": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Beach",
+        "rides": 10
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Little Havana",
+        "rides": 41
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Downtown",
+        "rides": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Ocean",
+        "rides": 13
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "district": "Little Haiti",
+        "rides": 23
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "tellers"
+      },
+      {
+        "kind": "variable",
+        "name": "deposits"
+      },
+      {
+        "kind": "variable",
+        "name": "amount"
+      },
+      {
+        "kind": "class",
+        "name": "Vault"
+      },
+      {
+        "kind": "function",
+        "name": "deposit"
+      },
+      {
+        "kind": "synchronized"
+      },
+      {
+        "kind": "call",
+        "name": "start"
+      },
+      {
+        "kind": "call",
+        "name": "join"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "tellers": 4,
+        "deposits": 1000,
+        "amount": 10
+      }
+    },
+    {
+      "inject": {
+        "tellers": 1,
+        "deposits": 3,
+        "amount": 50
+      }
+    },
+    {
+      "inject": {
+        "tellers": 3,
+        "deposits": 0,
+        "amount": 5
+      }
+    },
+    {
+      "inject": {
+        "tellers": 4,
+        "deposits": 20000,
+        "amount": 1
+      }
+    },
+    {
+      "inject": {
+        "tellers": 2,
+        "deposits": 15000,
+        "amount": 7
+      }
+    },
+    {
+      "inject": {
+        "tellers": 2,
+        "deposits": 1930,
+        "amount": 31
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 4,
+        "deposits": 1113,
+        "amount": 47
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 2,
+        "deposits": 763,
+        "amount": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 2,
+        "deposits": 9536,
+        "amount": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 4,
+        "deposits": 6116,
+        "amount": 40
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 4,
+        "deposits": 6312,
+        "amount": 43
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 3,
+        "deposits": 1444,
+        "amount": 22
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 4,
+        "deposits": 803,
+        "amount": 23
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 4,
+        "deposits": 3905,
+        "amount": 2
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 1,
+        "deposits": 5339,
+        "amount": 27
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 1,
+        "deposits": 2918,
+        "amount": 41
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "tellers": 2,
+        "deposits": 1396,
+        "amount": 39
+      },
+      "generated": true
+    }
+  ]
+}

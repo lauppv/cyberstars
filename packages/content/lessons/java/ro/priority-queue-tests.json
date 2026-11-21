@@ -1,0 +1,265 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "treburi"
+      },
+      {
+        "kind": "variable",
+        "name": "urgenta"
+      },
+      {
+        "kind": "call",
+        "name": "PriorityQueue"
+      },
+      {
+        "kind": "call",
+        "name": "poll"
+      },
+      {
+        "kind": "implements"
+      },
+      {
+        "kind": "function",
+        "name": "compareTo"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "treburi": {
+          "$list": ["Il iau pe Lance", "Cumpar o barca", "Platesc politia", "Ma vad cu Diaz"]
+        },
+        "urgenta": {
+          "$list": [2, 5, 1, 2]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "treburi": {
+          "$list": ["Il sun pe Kent"]
+        },
+        "urgenta": {
+          "$list": [3]
+        }
+      }
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": []
+        },
+        "urgenta": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": ["Jefuiesc banca", "Ascund banii", "Repar barca"]
+        },
+        "urgenta": {
+          "$list": [1, 1, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": ["Trec pe la Phil", "Ma vad cu Sonny", "Vand trabucurile", "Vopsesc masina"]
+        },
+        "urgenta": {
+          "$list": [9, 8, 7, 6]
+        }
+      }
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": ["Ma vad cu Sonny", "Ma vad cu Diaz", "Cumpar o barca", "Il sun pe Kent"]
+        },
+        "urgenta": {
+          "$list": [1, 1, 2, 2]
+        }
+      }
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": ["Ma vad cu Diaz", "Ascund banii"]
+        },
+        "urgenta": {
+          "$list": [1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": ["Repar barca", "Ma vad cu Diaz", "Il iau pe Lance"]
+        },
+        "urgenta": {
+          "$list": [3, 1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Cumpar o barca",
+            "Trec pe la Phil",
+            "Vopsesc masina",
+            "Il iau pe Lance",
+            "Ma vad cu Sonny"
+          ]
+        },
+        "urgenta": {
+          "$list": [2, 2, 1, 1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Vopsesc masina",
+            "Platesc politia",
+            "Il sun pe Kent",
+            "Vand trabucurile",
+            "Il iau pe Lance",
+            "Repar barca"
+          ]
+        },
+        "urgenta": {
+          "$list": [2, 1, 2, 1, 1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Ma vad cu Diaz",
+            "Vand trabucurile",
+            "Ma vad cu Sonny",
+            "Il sun pe Kent",
+            "Cumpar o barca",
+            "Platesc politia",
+            "Trec pe la Phil",
+            "Repar barca"
+          ]
+        },
+        "urgenta": {
+          "$list": [4, 2, 2, 4, 1, 3, 3, 3]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Ma vad cu Diaz",
+            "Cumpar o barca",
+            "Repar barca",
+            "Il sun pe Kent",
+            "Platesc politia",
+            "Vand trabucurile",
+            "Trec pe la Phil",
+            "Ma vad cu Sonny",
+            "Vopsesc masina",
+            "Jefuiesc banca"
+          ]
+        },
+        "urgenta": {
+          "$list": [6, 3, 9, 1, 10, 9, 1, 1, 5, 8]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Vopsesc masina",
+            "Repar barca",
+            "Ma vad cu Sonny",
+            "Platesc politia",
+            "Jefuiesc banca",
+            "Ascund banii",
+            "Cumpar o barca",
+            "Il sun pe Kent",
+            "Vand trabucurile",
+            "Il iau pe Lance",
+            "Trec pe la Phil",
+            "Ma vad cu Diaz"
+          ]
+        },
+        "urgenta": {
+          "$list": [1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Ma vad cu Diaz",
+            "Platesc politia",
+            "Trec pe la Phil",
+            "Repar barca",
+            "Il iau pe Lance",
+            "Jefuiesc banca",
+            "Ma vad cu Sonny",
+            "Vopsesc masina",
+            "Vand trabucurile",
+            "Ascund banii",
+            "Cumpar o barca",
+            "Il sun pe Kent"
+          ]
+        },
+        "urgenta": {
+          "$list": [2, 3, 2, 2, 2, 1, 2, 5, 2, 4, 4, 1]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "treburi": {
+          "$list": [
+            "Trec pe la Phil",
+            "Il iau pe Lance",
+            "Vopsesc masina",
+            "Vand trabucurile",
+            "Repar barca",
+            "Jefuiesc banca",
+            "Ma vad cu Sonny",
+            "Ma vad cu Diaz",
+            "Platesc politia",
+            "Ascund banii",
+            "Cumpar o barca",
+            "Il sun pe Kent"
+          ]
+        },
+        "urgenta": {
+          "$list": [1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

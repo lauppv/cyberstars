@@ -1,0 +1,223 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "lines"
+      },
+      {
+        "kind": "call",
+        "name": "FileWriter"
+      },
+      {
+        "kind": "call",
+        "name": "BufferedReader"
+      },
+      {
+        "kind": "call",
+        "name": "readLine"
+      },
+      {
+        "kind": "call",
+        "name": "split"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "lines": {
+          "$list": ["Tommy,47", "Lance,12", "Mercedes,23"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "lines": {
+          "$list": ["Phil,8"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Kent,0"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Diaz,5", "Cortez,5", "Sonny,5"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Ken,1", "Kent,2", "Ken,3"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Candy,100", "Umberto,99", "Avery,101"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Cortez,30", "Mercedes,10"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Candy,30", "Candy,9", "Candy,30"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Kent,44", "Candy,30", "Kent,30", "Sonny,30"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Kent,32", "Diaz,30", "Kent,30", "Cortez,32", "Candy,30"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": ["Mercedes,30", "Phil,30", "Diaz,44", "Diaz,30", "Ken,21", "Lance,30"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": [
+            "Sonny,30",
+            "Sonny,59",
+            "Cortez,30",
+            "Ken,31",
+            "Umberto,30",
+            "Sonny,30",
+            "Ken,39",
+            "Mercedes,30"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": [
+            "Ken,34",
+            "Tommy,30",
+            "Ken,30",
+            "Diaz,30",
+            "Umberto,30",
+            "Ken,7",
+            "Diaz,50",
+            "Sonny,30",
+            "Diaz,12",
+            "Phil,30"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": [
+            "Diaz,23",
+            "Mercedes,30",
+            "Phil,30",
+            "Avery,31",
+            "Tommy,30",
+            "Candy,19",
+            "Sonny,12",
+            "Avery,30",
+            "Candy,30",
+            "Umberto,10",
+            "Avery,30",
+            "Cortez,33"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": [
+            "Ken,30",
+            "Candy,46",
+            "Lance,30",
+            "Sonny,37",
+            "Kent,30",
+            "Ken,30",
+            "Diaz,11",
+            "Kent,37",
+            "Lance,30",
+            "Tommy,30",
+            "Avery,30",
+            "Cortez,30",
+            "Cortez,56",
+            "Cortez,5",
+            "Diaz,30"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "lines": {
+          "$list": [
+            "Tommy,30",
+            "Tommy,8",
+            "Kent,30",
+            "Sonny,30",
+            "Diaz,17",
+            "Phil,30",
+            "Tommy,18",
+            "Kent,30",
+            "Kent,33",
+            "Umberto,30",
+            "Lance,33",
+            "Cortez,7",
+            "Sonny,58",
+            "Avery,30",
+            "Umberto,51",
+            "Tommy,26",
+            "Lance,30",
+            "Mercedes,17",
+            "Kent,13",
+            "Diaz,30"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

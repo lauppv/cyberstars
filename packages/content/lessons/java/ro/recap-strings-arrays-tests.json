@@ -1,0 +1,136 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "raport"
+      },
+      {
+        "kind": "call",
+        "name": "split"
+      },
+      {
+        "kind": "call",
+        "name": "StringBuilder"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "raport": "XX.X/..X./XXXX"
+      }
+    },
+    {
+      "inject": {
+        "raport": "XX/X"
+      }
+    },
+    {
+      "inject": {
+        "raport": "."
+      }
+    },
+    {
+      "inject": {
+        "raport": "..../...."
+      }
+    },
+    {
+      "inject": {
+        "raport": "X.X.X.X.X.X"
+      }
+    },
+    {
+      "inject": {
+        "raport": "XXXXXXXXXX/X/X./.X"
+      }
+    },
+    {
+      "inject": {
+        "raport": "XX./..XX.XX/XXXX.XXX.X/XXXX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "X../X.X/.XX.X..XX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": ".XX.XXX.XX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "X.X.X/X.XXXX/XX../..XXX.XX./X...X./.X.XX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XXX..XXXX/..XX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XX."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "...XX./X"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XX/....XX.XXX/./..XXXXX../X.XXXXX."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XX.X.X.XXX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "X..X..XX/XXXX.XXX/XX.XXXXX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XX/X/.X.XX/XX.X/.X"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "X/X.XX.X../X.XXX.X./XXX.."
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XXXX/XXXX.XX"
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "raport": "XXXXXX.X.X/XXXX.X.XXX/XXX.X.X"
+      },
+      "generated": true
+    }
+  ]
+}

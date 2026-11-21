@@ -1,0 +1,190 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "days"
+      },
+      {
+        "kind": "variable",
+        "name": "earnings"
+      },
+      {
+        "kind": "call",
+        "name": "FileWriter"
+      },
+      {
+        "kind": "try_resources"
+      },
+      {
+        "kind": "call",
+        "name": "readString"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "days": {
+          "$list": ["Monday", "Tuesday", "Wednesday"]
+        },
+        "earnings": {
+          "$list": [1200, 800, 2500]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "days": {
+          "$list": []
+        },
+        "earnings": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Sunday"]
+        },
+        "earnings": {
+          "$list": [0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Friday", "Saturday"]
+        },
+        "earnings": {
+          "$list": [99999, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Monday", "Monday", "Monday"]
+        },
+        "earnings": {
+          "$list": [5, 5, 5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Friday"]
+        },
+        "earnings": {
+          "$list": [4600]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Wednesday", "Wednesday"]
+        },
+        "earnings": {
+          "$list": [4400, 2700]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Wednesday", "Tuesday", "Monday"]
+        },
+        "earnings": {
+          "$list": [3700, 800, 1900]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Tuesday", "Monday", "Saturday", "Wednesday"]
+        },
+        "earnings": {
+          "$list": [1500, 3400, 4600, 600]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Tuesday", "Friday", "Friday", "Saturday", "Wednesday"]
+        },
+        "earnings": {
+          "$list": [4900, 2500, 1600, 5000, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Sunday", "Sunday", "Thursday", "Sunday", "Wednesday", "Saturday"]
+        },
+        "earnings": {
+          "$list": [2700, 900, 700, 2900, 4500, 1600]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Saturday", "Friday", "Sunday", "Thursday", "Monday", "Wednesday", "Friday"]
+        },
+        "earnings": {
+          "$list": [1900, 1500, 1500, 700, 2400, 1500, 2600]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Wednesday", "Thursday", "Friday", "Monday", "Friday", "Tuesday", "Sunday"]
+        },
+        "earnings": {
+          "$list": [1500, 200, 300, 700, 1500, 1000, 2500]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Friday", "Monday", "Saturday", "Tuesday", "Thursday", "Saturday", "Sunday"]
+        },
+        "earnings": {
+          "$list": [500, 1300, 2700, 3300, 2000, 3000, 1700]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "days": {
+          "$list": ["Wednesday", "Thursday", "Wednesday", "Monday", "Tuesday", "Monday", "Thursday"]
+        },
+        "earnings": {
+          "$list": [1200, 1100, 3000, 900, 1400, 3500, 3600]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
