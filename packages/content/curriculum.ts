@@ -968,26 +968,62 @@ export const lessons = [
     sortOrder: 71,
     hasCodeFile: true,
   },
-  // Module 12: Capstone OOP Projects [3]
+  // Module 12: Generics [5]
+  {
+    courseKey: 'java',
+    slug: 'wrapper-classes',
+    title: 'Wrapper Classes',
+    sortOrder: 72,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'generic-classes',
+    title: 'Generic Classes',
+    sortOrder: 73,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'generic-methods',
+    title: 'Generic Methods',
+    sortOrder: 74,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'bounded-types',
+    title: 'Bounded Types',
+    sortOrder: 75,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'recap-generics',
+    title: 'Recap: Storage Lockers',
+    sortOrder: 76,
+    hasCodeFile: true,
+  },
+  // Module 13: Capstone OOP Projects [3]
   {
     courseKey: 'java',
     slug: 'project-inventory',
     title: 'Project: Inventory System',
-    sortOrder: 72,
+    sortOrder: 77,
     hasCodeFile: true,
   },
   {
     courseKey: 'java',
     slug: 'project-battle',
     title: 'Project: Battle Simulator',
-    sortOrder: 73,
+    sortOrder: 78,
     hasCodeFile: true,
   },
   {
     courseKey: 'java',
     slug: 'project-student-grades',
     title: 'Project: Student Gradebook',
-    sortOrder: 74,
+    sortOrder: 79,
     hasCodeFile: true,
   },
 

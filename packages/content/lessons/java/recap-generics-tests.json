@@ -1,0 +1,254 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "names"
+      },
+      {
+        "kind": "variable",
+        "name": "weights"
+      },
+      {
+        "kind": "class",
+        "name": "Shelf"
+      },
+      {
+        "kind": "generic_class"
+      },
+      {
+        "kind": "generic_method"
+      },
+      {
+        "kind": "bounded_type"
+      },
+      {
+        "kind": "function",
+        "name": "report"
+      },
+      {
+        "kind": "call",
+        "name": "compareTo"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "names": {
+          "$list": ["Tommy", "Ken", "Lance"]
+        },
+        "weights": {
+          "$list": [12, 5, 30]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Phil"]
+        },
+        "weights": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": []
+        },
+        "weights": {
+          "$list": [7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": []
+        },
+        "weights": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["b", "B", "a"]
+        },
+        "weights": {
+          "$list": [-1, -1, 1000]
+        }
+      }
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Candy", "Tommy"]
+        },
+        "weights": {
+          "$list": [1916]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Candy", "Cortez", "Phil", "Diaz", "Sonny", "Ken"]
+        },
+        "weights": {
+          "$list": [1341]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": []
+        },
+        "weights": {
+          "$list": [1571, 1355, 1071, 17, 683]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Tommy", "Cortez", "Ken"]
+        },
+        "weights": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Candy"]
+        },
+        "weights": {
+          "$list": [10, 278, 1406, 632, 1162]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Sonny", "Lance", "Phil", "Diaz", "Umberto"]
+        },
+        "weights": {
+          "$list": [1295, 1425, 1185, 902, 1727, 1629, 1714]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ken", "Diaz", "Mercedes"]
+        },
+        "weights": {
+          "$list": [209]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Ken", "Diaz", "Lance"]
+        },
+        "weights": {
+          "$list": [1998, 1355, 1293, 800]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Umberto", "Mercedes", "Candy", "Avery", "Lance"]
+        },
+        "weights": {
+          "$list": [1221, 180, 1820, 1641, 13]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": []
+        },
+        "weights": {
+          "$list": [1889, 866, 1079, 733]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Umberto", "Diaz"]
+        },
+        "weights": {
+          "$list": [1516, 1395]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Avery"]
+        },
+        "weights": {
+          "$list": [1298, 1414, 1193]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Phil", "Sonny", "Avery", "Candy", "Umberto", "Cortez", "Ken"]
+        },
+        "weights": {
+          "$list": [1602, 593, 246, 1422, 1682, 966]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Diaz"]
+        },
+        "weights": {
+          "$list": [428, 1707, 644, 369, 1907]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "names": {
+          "$list": ["Diaz", "Tommy", "Mercedes"]
+        },
+        "weights": {
+          "$list": [493, 229, 1001]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

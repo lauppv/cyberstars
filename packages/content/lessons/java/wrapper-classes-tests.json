@@ -1,0 +1,190 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "entries"
+      },
+      {
+        "kind": "call",
+        "name": "Integer.parseInt"
+      },
+      {
+        "kind": "try"
+      },
+      {
+        "kind": "call",
+        "name": "ArrayList"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "entries": {
+          "$list": ["42", "tape", "-7", "300"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["abc", ""]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["2147483647", "-2147483648", "2147483648"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["0", "007", "+5", "1.5"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["1000", "1000"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["503", "-3719"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["-4582", "-1405", "-1113", "keys", "-4223", "-85"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["-4985", "713", "wallet", "1408", "-4207", "gun", "3263", "2394"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["wallet", "4638", "1066", "2686", "keys"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["3921", "tape", "3193", "-3301", "keys", "-1991", "4305", "4058", "-4644"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["gun", "-860"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["-3021", "1266", "-1969", "-2894"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["-390"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["gun", "-2557", "-697", "-4511", "keys", "906", "-4760", "3123", "gun", "tape"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["4052", "2018", "-3900", "-2283", "1774", "-1849"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["1217", "3404", "-1356", "-532", "-3377"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["3929", "941", "gun", "3176", "2923", "-4866", "gun", "3720", "-3786", "wallet"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": [
+            "-1981",
+            "2617",
+            "keys",
+            "tape",
+            "3008",
+            "1486",
+            "-629",
+            "tape",
+            "1080",
+            "wallet"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "entries": {
+          "$list": ["987", "keys", "-1357", "-2427", "-3217", "3811", "1419", "-3648"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "greutati"
+      },
+      {
+        "kind": "class",
+        "name": "Raft"
+      },
+      {
+        "kind": "generic_class"
+      },
+      {
+        "kind": "generic_method"
+      },
+      {
+        "kind": "bounded_type"
+      },
+      {
+        "kind": "function",
+        "name": "raport"
+      },
+      {
+        "kind": "call",
+        "name": "compareTo"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Tommy", "Ken", "Lance"]
+        },
+        "greutati": {
+          "$list": [12, 5, 30]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Phil"]
+        },
+        "greutati": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": []
+        },
+        "greutati": {
+          "$list": [7]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": []
+        },
+        "greutati": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["b", "B", "a"]
+        },
+        "greutati": {
+          "$list": [-1, -1, 1000]
+        }
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Candy", "Tommy"]
+        },
+        "greutati": {
+          "$list": [1916]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Candy", "Cortez", "Phil", "Diaz", "Sonny", "Ken"]
+        },
+        "greutati": {
+          "$list": [1341]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": []
+        },
+        "greutati": {
+          "$list": [1571, 1355, 1071, 17, 683]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Tommy", "Cortez", "Ken"]
+        },
+        "greutati": {
+          "$list": []
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Candy"]
+        },
+        "greutati": {
+          "$list": [10, 278, 1406, 632, 1162]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Sonny", "Lance", "Phil", "Diaz", "Umberto"]
+        },
+        "greutati": {
+          "$list": [1295, 1425, 1185, 902, 1727, 1629, 1714]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ken", "Diaz", "Mercedes"]
+        },
+        "greutati": {
+          "$list": [209]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ken", "Diaz", "Lance"]
+        },
+        "greutati": {
+          "$list": [1998, 1355, 1293, 800]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Umberto", "Mercedes", "Candy", "Avery", "Lance"]
+        },
+        "greutati": {
+          "$list": [1221, 180, 1820, 1641, 13]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": []
+        },
+        "greutati": {
+          "$list": [1889, 866, 1079, 733]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Umberto", "Diaz"]
+        },
+        "greutati": {
+          "$list": [1516, 1395]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Avery"]
+        },
+        "greutati": {
+          "$list": [1298, 1414, 1193]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Phil", "Sonny", "Avery", "Candy", "Umberto", "Cortez", "Ken"]
+        },
+        "greutati": {
+          "$list": [1602, 593, 246, 1422, 1682, 966]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Diaz"]
+        },
+        "greutati": {
+          "$list": [428, 1707, 644, 369, 1907]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Diaz", "Tommy", "Mercedes"]
+        },
+        "greutati": {
+          "$list": [493, 229, 1001]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
