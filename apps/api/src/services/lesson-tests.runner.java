@@ -495,8 +495,11 @@ public class Runner {
         }
 
         private boolean inMain(Tree parent) {
+          // Methods are keyed Class.name/arity, so main is Main.main/1.
           String method = enclosingMethods.peek();
-          return parent instanceof BlockTree && method != null && method.startsWith("main/");
+          return parent instanceof BlockTree
+              && method != null
+              && method.substring(method.lastIndexOf('.') + 1).startsWith("main/");
         }
 
         private Tree findParentOf(Tree tree) {

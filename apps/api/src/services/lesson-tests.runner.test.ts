@@ -853,6 +853,28 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
   const main = (members: string) =>
     `public class Main {\n${members}\n    public static void main(String[] args) {}\n}\n`;
 
+  it("injects main's variable, not a helper's parameter it reassigns", () => {
+    const payloadPath = path.join(dir, 'payload.json');
+    const program =
+      'public class Main {\n' +
+      '    static void raise(int pay) {\n        pay = pay + 1;\n    }\n' +
+      '    public static void main(String[] args) {\n' +
+      '        int pay = 500;\n        raise(pay);\n        System.out.println(pay);\n    }\n}\n';
+    fs.writeFileSync(
+      payloadPath,
+      JSON.stringify({ userCode: program, structure: {}, cases: [{ inject: { pay: 0 } }] }),
+    );
+    const result = spawnSync('java', ['-cp', classes, 'Runner', payloadPath], {
+      input: 'stop\n',
+      encoding: 'utf8',
+      timeout: 60_000,
+    });
+    expect(result.status).toBe(0);
+    expect(JSON.parse(result.stdout.trim().split('\n')[1])).toEqual({
+      user: expect.objectContaining({ stdout: '0\n', exit: 0 }),
+    });
+  });
+
   it('compiles the timer once, beside its own classes, and again when its source changes', () => {
     const payloadPath = path.join(dir, 'payload.json');
     const program =
