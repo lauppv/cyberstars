@@ -323,7 +323,16 @@ function UserMenu({ onNavigate }: { onNavigate: () => void }) {
   );
 }
 
-export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate: () => void }) {
+export function Sidebar({
+  state,
+  floating = false,
+  onNavigate,
+}: {
+  state: SidebarState;
+  // Floating, it lies over dev mode's window (z-60) and the backdrop beside it
+  floating?: boolean;
+  onNavigate: () => void;
+}) {
   const { t } = useTranslation();
   const { user } = useAuth();
   const { enabled: messagesEnabled, totalUnread } = useMessages();
@@ -334,7 +343,7 @@ export function Sidebar({ state, onNavigate }: { state: SidebarState; onNavigate
   return (
     <aside
       aria-label={t('sidebar.label')}
-      className={`fixed inset-y-0 left-0 z-50 w-[240px] flex flex-col bg-[var(--bg2)] border-r border-[var(--border)] transition-[transform,visibility] duration-200 ${PANEL[state]}`}
+      className={`fixed inset-y-0 left-0 ${floating ? 'z-[70]' : 'z-50'} w-[240px] flex flex-col bg-[var(--bg2)] border-r border-[var(--border)] transition-[transform,visibility] duration-200 ${PANEL[state]}`}
     >
       <Link
         to="/"
