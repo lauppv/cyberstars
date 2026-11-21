@@ -125,3 +125,17 @@ describe("a web lesson's start", () => {
     expect(over).toEqual([]);
   });
 });
+
+// The tutor reads a course's description from here, the site from en.json:
+// when one changes alone, the tutor sends students by what a course used to be.
+describe('course descriptions', () => {
+  it('match the ones the site shows', () => {
+    const en = JSON.parse(
+      fs.readFileSync(
+        path.join(import.meta.dirname, '../../apps/ui/src/i18n/locales/en.json'),
+        'utf8',
+      ),
+    );
+    for (const c of courses) expect(c.description, c.key).toBe(en.courses.descriptions[c.key]);
+  });
+});
