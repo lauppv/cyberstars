@@ -144,51 +144,24 @@
       "answer": 0
     },
     {
-      "id": "st-log-fc0e6a",
+      "id": "st-log-ce2418",
       "text": "Ce afișează?",
-      "code": "semnale = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"]\nprint(f\"Total: {len(semnale)}\")\nunice = set(semnale)\nprint(f\"Unice: {len(unice)}\")\nif \"C3\" in unice:\n    print(\"C3 detectat\")\nelse:\n    print(\"C3 lipseste\")",
-      "options": [
-        "Total: 5\nUnice: 3\nC3 detectat",
-        "Total: 5\nUnice: 5\nC3 detectat",
-        "Total: 5\nUnice: 3\nC3 lipseste",
-        "Total: 3\nUnice: 3\nC3 detectat"
-      ],
+      "code": "echipa_1 = set([\"A1\", \"B2\", \"C3\", \"F6\"])\nechipa_2 = set([\"B2\", \"D4\"])\nprint(len(echipa_1 & echipa_2))\nprint(len(echipa_1 - echipa_2))\nprint(len(echipa_1 | echipa_2))\nprint(len(echipa_1 ^ echipa_2))",
+      "options": ["1\n3\n5\n4", "5\n3\n5\n4", "1\n1\n5\n4", "1\n3\n5\n3"],
       "answer": 0
     },
     {
-      "id": "st-log-66a8c8",
+      "id": "st-log-2b9c24",
       "text": "Ce afișează?",
-      "code": "semnale = [\"X1\", \"X1\", \"Y2\", \"X1\"]\nprint(f\"Total: {len(semnale)}\")\nunice = set(semnale)\nprint(f\"Unice: {len(unice)}\")\nif \"Z3\" in unice:\n    print(\"Z3 detectat\")\nelse:\n    print(\"Z3 lipseste\")",
-      "options": [
-        "Total: 4\nUnice: 2\nZ3 lipseste",
-        "Total: 4\nUnice: 4\nZ3 lipseste",
-        "Total: 4\nUnice: 2\nZ3 detectat",
-        "Total: 2\nUnice: 2\nZ3 lipseste"
-      ],
+      "code": "echipaj = set([\"Tommy\", \"Lance\", \"Cortez\"])\ningineri = set([\"Lance\", \"Phil\"])\nprint(len(echipaj & ingineri))\nprint(len(echipaj - ingineri))\nprint(len(echipaj | ingineri))\nprint(len(echipaj ^ ingineri))",
+      "options": ["1\n2\n4\n3", "4\n2\n4\n3", "1\n1\n4\n3", "1\n2\n4\n2"],
       "answer": 0
     },
     {
-      "id": "st-log-197a08",
+      "id": "st-log-46bf87",
       "text": "Ce afișează?",
-      "code": "pinguri = [\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"]\nprint(f\"Total: {len(pinguri)}\")\nunice = set(pinguri)\nprint(f\"Unice: {len(unice)}\")\nif \"N1\" in unice:\n    print(\"N1 detectat\")\nelse:\n    print(\"N1 lipseste\")",
-      "options": [
-        "Total: 7\nUnice: 4\nN1 detectat",
-        "Total: 7\nUnice: 7\nN1 detectat",
-        "Total: 7\nUnice: 4\nN1 lipseste",
-        "Total: 4\nUnice: 4\nN1 detectat"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "st-log-c7be6f",
-      "text": "Ce afișează?",
-      "code": "pinguri = [\"Q1\", \"R2\", \"S3\", \"Q1\"]\nprint(f\"Total: {len(pinguri)}\")\nunice = set(pinguri)\nprint(f\"Unice: {len(unice)}\")\nif \"T4\" in unice:\n    print(\"T4 detectat\")\nelse:\n    print(\"T4 lipseste\")",
-      "options": [
-        "Total: 4\nUnice: 3\nT4 lipseste",
-        "Total: 4\nUnice: 4\nT4 lipseste",
-        "Total: 4\nUnice: 3\nT4 detectat",
-        "Total: 3\nUnice: 3\nT4 lipseste"
-      ],
+      "code": "coduri_a = set([\"X1\", \"Y2\", \"Z3\", \"W4\"])\ncoduri_b = set([\"Y2\", \"Q5\"])\nprint(len(coduri_a & coduri_b))\nprint(len(coduri_a - coduri_b))\nprint(len(coduri_a | coduri_b))\nprint(len(coduri_a ^ coduri_b))",
+      "options": ["1\n3\n5\n4", "5\n3\n5\n4", "1\n1\n5\n4", "1\n3\n5\n3"],
       "answer": 0
     },
     {

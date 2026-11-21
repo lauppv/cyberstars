@@ -139,51 +139,24 @@
       "answer": 0
     },
     {
-      "id": "st-log-fc0e6a",
+      "id": "st-log-ce2418",
       "text": "What does this print?",
-      "code": "signals = [\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"]\nprint(f\"Total: {len(signals)}\")\nunique = set(signals)\nprint(f\"Unique: {len(unique)}\")\nif \"C3\" in unique:\n    print(\"C3 detected\")\nelse:\n    print(\"C3 missing\")",
-      "options": [
-        "Total: 5\nUnique: 3\nC3 detected",
-        "Total: 5\nUnique: 5\nC3 detected",
-        "Total: 5\nUnique: 3\nC3 missing",
-        "Total: 3\nUnique: 3\nC3 detected"
-      ],
+      "code": "team_a = set([\"A1\", \"B2\", \"C3\", \"F6\"])\nteam_b = set([\"B2\", \"D4\"])\nprint(len(team_a & team_b))\nprint(len(team_a - team_b))\nprint(len(team_a | team_b))\nprint(len(team_a ^ team_b))",
+      "options": ["1\n3\n5\n4", "5\n3\n5\n4", "1\n1\n5\n4", "1\n3\n5\n3"],
       "answer": 0
     },
     {
-      "id": "st-log-66a8c8",
+      "id": "st-log-2b9c24",
       "text": "What does this print?",
-      "code": "signals = [\"X1\", \"X1\", \"Y2\", \"X1\"]\nprint(f\"Total: {len(signals)}\")\nunique = set(signals)\nprint(f\"Unique: {len(unique)}\")\nif \"Z3\" in unique:\n    print(\"Z3 detected\")\nelse:\n    print(\"Z3 missing\")",
-      "options": [
-        "Total: 4\nUnique: 2\nZ3 missing",
-        "Total: 4\nUnique: 4\nZ3 missing",
-        "Total: 4\nUnique: 2\nZ3 detected",
-        "Total: 2\nUnique: 2\nZ3 missing"
-      ],
+      "code": "crew = set([\"Tommy\", \"Lance\", \"Cortez\"])\nengineers = set([\"Lance\", \"Phil\"])\nprint(len(crew & engineers))\nprint(len(crew - engineers))\nprint(len(crew | engineers))\nprint(len(crew ^ engineers))",
+      "options": ["1\n2\n4\n3", "4\n2\n4\n3", "1\n1\n4\n3", "1\n2\n4\n2"],
       "answer": 0
     },
     {
-      "id": "st-log-197a08",
+      "id": "st-log-46bf87",
       "text": "What does this print?",
-      "code": "pings = [\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"]\nprint(f\"Total: {len(pings)}\")\nunique = set(pings)\nprint(f\"Unique: {len(unique)}\")\nif \"N1\" in unique:\n    print(\"N1 detected\")\nelse:\n    print(\"N1 missing\")",
-      "options": [
-        "Total: 7\nUnique: 4\nN1 detected",
-        "Total: 7\nUnique: 7\nN1 detected",
-        "Total: 7\nUnique: 4\nN1 missing",
-        "Total: 4\nUnique: 4\nN1 detected"
-      ],
-      "answer": 0
-    },
-    {
-      "id": "st-log-c7be6f",
-      "text": "What does this print?",
-      "code": "pings = [\"Q1\", \"R2\", \"S3\", \"Q1\"]\nprint(f\"Total: {len(pings)}\")\nunique = set(pings)\nprint(f\"Unique: {len(unique)}\")\nif \"T4\" in unique:\n    print(\"T4 detected\")\nelse:\n    print(\"T4 missing\")",
-      "options": [
-        "Total: 4\nUnique: 3\nT4 missing",
-        "Total: 4\nUnique: 4\nT4 missing",
-        "Total: 4\nUnique: 3\nT4 detected",
-        "Total: 3\nUnique: 3\nT4 missing"
-      ],
+      "code": "codes_a = set([\"X1\", \"Y2\", \"Z3\", \"W4\"])\ncodes_b = set([\"Y2\", \"Q5\"])\nprint(len(codes_a & codes_b))\nprint(len(codes_a - codes_b))\nprint(len(codes_a | codes_b))\nprint(len(codes_a ^ codes_b))",
+      "options": ["1\n3\n5\n4", "5\n3\n5\n4", "1\n1\n5\n4", "1\n3\n5\n3"],
       "answer": 0
     },
     {

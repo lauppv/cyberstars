@@ -1,13 +1,18 @@
 ```py
-semnale = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
+echipa_a = ["A1", "B2", "C3"]
+echipa_b = ["B2", "D4", "E5"]
 
-print(f"Total: {len(semnale)}")
+echipa_1 = set(echipa_a)
+echipa_2 = set(echipa_b)
+comune = echipa_1 & echipa_2
 
-unice = set(semnale)
-print(f"Unice: {len(unice)}")
+print(f"Comune: {len(comune)}")
 
-if "D4" in unice:
-    print("D4 detectat")
+cod = input("Cod semnal: ")
+if cod in comune:
+    print("Confirmat de ambele")
+elif cod in echipa_1 or cod in echipa_2:
+    print("Detectat de una")
 else:
-    print("D4 lipseste")
+    print("Nedetectat")
 ```

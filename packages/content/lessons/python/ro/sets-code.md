@@ -1,1 +1,2 @@
-semnale = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
+echipa_a = ["A1", "B2", "C3"]
+echipa_b = ["B2", "D4", "E5"]
