@@ -11,7 +11,7 @@ import {
   type CSSProperties,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Eye, LayoutPanelLeft, RotateCcw, Save, Share2 } from 'lucide-react';
+import { Eye, LayoutPanelLeft, PanelLeft, RotateCcw, Save, Share2 } from 'lucide-react';
 import { useParams, useNavigate } from 'react-router';
 import { useLesson } from '../hooks/useLesson';
 import { useCodeSave } from '../hooks/useCodeSave';
@@ -26,6 +26,7 @@ import { useGuestSignupPrompt } from '../context/GuestSignupPromptContext';
 import { useTutor, type TutorLessonStage } from '../context/TutorContext';
 import { xpForLesson } from '@cyberstars/shared/constants';
 import { Topbar } from '../components/layout/Topbar';
+import { useFloatingSidebar, useSidebar } from '../components/layout/AppShell';
 import { LessonHeading } from '../components/ui/LessonHeading';
 import type { Difficulty } from '../constants/difficulty';
 import { TutorFace } from '../components/tutor/TutorFace';
@@ -236,6 +237,10 @@ export function LessonPage() {
   // A web lesson recommends dev mode once a session, until the student says
   // not to again
   const devModeHint = useDevModeHint();
+  // Dev mode's window holds the whole screen, so its sidebar floats over the
+  // lesson: opened to go somewhere else, not to keep beside the code
+  const sidebar = useSidebar();
+  useFloatingSidebar(devMode);
   const devModeHintShown = isWeb && devModeChoice.available && !devMode && devModeHint.open;
   const devHSplit = useResizeSplit({
     axis: 'x',
@@ -869,6 +874,22 @@ export function LessonPage() {
         <span className="text-[12px] font-semibold text-[var(--success)]">
           {t('lesson.completed')}
         </span>
+      )}
+      {devMode && sidebar && !inTour && (
+        <button
+          type="button"
+          data-track="dev-mode-sidebar"
+          onClick={() => {
+            setMenuOpen(false);
+            sidebar.toggle();
+          }}
+          aria-label={t(sidebar.state === 'open' ? 'sidebar.hide' : 'sidebar.show')}
+          aria-expanded={sidebar.state === 'open'}
+          title={t(sidebar.state === 'open' ? 'sidebar.hide' : 'sidebar.show')}
+          className="w-8 h-8 shrink-0 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
+        >
+          <PanelLeft size={14} aria-hidden="true" />
+        </button>
       )}
       {/* A web lesson's IDE keeps splits of its own */}
       {devMode && !isWeb && (
