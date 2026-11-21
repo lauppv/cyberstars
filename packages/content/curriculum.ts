@@ -1149,7 +1149,7 @@ export const lessons = [
     sortOrder: 103,
     hasCodeFile: true,
   },
-  // Module 17: Capstone OOP Projects [3]
+  // Module 17: Capstone OOP Projects [6]
   {
     courseKey: 'java',
     slug: 'project-inventory',
@@ -1169,6 +1169,27 @@ export const lessons = [
     slug: 'project-student-grades',
     title: 'Project: Student Gradebook',
     sortOrder: 106,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'project-library-system',
+    title: 'Project: Library System',
+    sortOrder: 107,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'project-flight-booking',
+    title: 'Project: Flight Booking',
+    sortOrder: 108,
+    hasCodeFile: true,
+  },
+  {
+    courseKey: 'java',
+    slug: 'project-word-stats',
+    title: 'Project: Word Stats',
+    sortOrder: 109,
     hasCodeFile: true,
   },
 

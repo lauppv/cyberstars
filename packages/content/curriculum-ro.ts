@@ -224,6 +224,9 @@ export const lessonTitlesRo: Record<string, Record<string, string>> = {
     'project-inventory': 'Proiect: Sistem de inventar',
     'project-battle': 'Proiect: Simulator de luptă',
     'project-student-grades': 'Proiect: Catalogul studenților',
+    'project-library-system': 'Proiect: Sistemul bibliotecii',
+    'project-flight-booking': 'Proiect: Rezervarea zborurilor',
+    'project-word-stats': 'Proiect: Statistici de cuvinte',
   },
   linux: {
     'what-is-terminal': 'Ce este un terminal?',
