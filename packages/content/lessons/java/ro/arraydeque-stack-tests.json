@@ -1,0 +1,376 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "miscari"
+      },
+      {
+        "kind": "call",
+        "name": "ArrayDeque"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "miscari": {
+          "$list": ["Ocean Beach", "Little Havana", "Downtown", "inapoi", "inapoi", "inapoi"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "miscari": {
+          "$list": ["Starfish Island", "Vice Point", "inapoi", "Prawn Island"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": ["inapoi"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": ["inapoi", "inapoi", "Downtown"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": ["Downtown"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": ["Downtown", "inapoi"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": ["Downtown", "Downtown", "inapoi"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "Escobar Airport",
+            "Viceport",
+            "Little Haiti",
+            "inapoi",
+            "Washington Beach",
+            "inapoi",
+            "inapoi",
+            "inapoi"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": ["Starfish Island", "inapoi", "Little Haiti", "Starfish Island", "Ocean Beach"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Viceport",
+            "inapoi",
+            "inapoi",
+            "inapoi"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "Escobar Airport",
+            "Little Havana",
+            "Leaf Links",
+            "Starfish Island",
+            "inapoi",
+            "inapoi",
+            "Viceport",
+            "Vice Point",
+            "Leaf Links",
+            "Viceport"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "inapoi",
+            "Vice Point",
+            "Little Haiti",
+            "Escobar Airport",
+            "Starfish Island",
+            "Escobar Airport",
+            "Vice Point",
+            "Little Haiti",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "Prawn Island",
+            "Vice Point",
+            "inapoi",
+            "Prawn Island",
+            "inapoi",
+            "inapoi",
+            "Escobar Airport",
+            "Vice Point",
+            "inapoi",
+            "inapoi",
+            "Prawn Island",
+            "inapoi",
+            "Vice Point",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Leaf Links",
+            "Downtown"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "inapoi",
+            "Starfish Island",
+            "Ocean Beach",
+            "Prawn Island",
+            "Downtown",
+            "inapoi",
+            "Leaf Links",
+            "Starfish Island",
+            "inapoi",
+            "Prawn Island",
+            "Starfish Island",
+            "Prawn Island",
+            "Starfish Island",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Leaf Links",
+            "Little Havana",
+            "inapoi",
+            "Prawn Island",
+            "Vice Point",
+            "inapoi"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "Ocean Beach",
+            "Vice Point",
+            "inapoi",
+            "inapoi",
+            "Little Haiti",
+            "inapoi",
+            "Viceport",
+            "Little Haiti",
+            "Ocean Beach",
+            "inapoi",
+            "Viceport",
+            "Little Haiti",
+            "Little Haiti",
+            "Little Havana",
+            "inapoi",
+            "Little Haiti",
+            "Prawn Island",
+            "Little Haiti",
+            "Viceport",
+            "inapoi",
+            "inapoi",
+            "Starfish Island",
+            "inapoi",
+            "Ocean Beach",
+            "Starfish Island",
+            "Downtown",
+            "Washington Beach",
+            "Little Havana",
+            "Leaf Links",
+            "Vice Point"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "inapoi",
+            "Ocean Beach",
+            "Little Havana",
+            "Escobar Airport",
+            "Escobar Airport",
+            "Prawn Island",
+            "Vice Point",
+            "Prawn Island",
+            "Vice Point",
+            "inapoi",
+            "Little Haiti",
+            "Prawn Island",
+            "inapoi",
+            "Vice Point",
+            "Starfish Island",
+            "Washington Beach",
+            "Little Haiti",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Viceport",
+            "inapoi",
+            "Little Havana",
+            "Little Haiti",
+            "Washington Beach",
+            "Vice Point",
+            "Washington Beach",
+            "Prawn Island",
+            "Vice Point",
+            "Leaf Links",
+            "Washington Beach",
+            "Escobar Airport",
+            "inapoi",
+            "Starfish Island",
+            "Prawn Island",
+            "Starfish Island",
+            "Washington Beach",
+            "Ocean Beach",
+            "Little Haiti"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "miscari": {
+          "$list": [
+            "Vice Point",
+            "inapoi",
+            "Vice Point",
+            "Little Haiti",
+            "inapoi",
+            "Viceport",
+            "inapoi",
+            "Starfish Island",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Prawn Island",
+            "Leaf Links",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Prawn Island",
+            "inapoi",
+            "Leaf Links",
+            "Prawn Island",
+            "Escobar Airport",
+            "inapoi",
+            "Little Haiti",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Vice Point",
+            "Leaf Links",
+            "inapoi",
+            "Starfish Island",
+            "inapoi",
+            "inapoi",
+            "Little Havana",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Vice Point",
+            "Little Havana",
+            "Downtown",
+            "Washington Beach",
+            "Starfish Island",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Washington Beach",
+            "inapoi",
+            "Starfish Island",
+            "Leaf Links",
+            "inapoi",
+            "inapoi",
+            "inapoi",
+            "Little Haiti",
+            "Washington Beach",
+            "Little Haiti",
+            "inapoi",
+            "inapoi"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "events"
+      },
+      {
+        "kind": "call",
+        "name": "LinkedList"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "events": {
+          "$list": ["Infernus", "Cheetah", "next", "Stinger", "next", "next", "next"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "events": {
+          "$list": ["Admiral", "Banshee", "PCJ 600", "next"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["next"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["next", "next", "Sentinel"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["Voodoo"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["Voodoo", "next", "Voodoo", "next"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["Idaho", "Comet", "Hermes", "next", "next", "next", "next", "next", "Pony"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["Comet", "next", "Hermes", "Pony"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["PCJ 600", "PCJ 600", "next", "Comet", "PCJ 600", "next"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": ["next", "Banshee", "Idaho", "next", "next", "next", "Idaho", "next", "next"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "Sentinel",
+            "Admiral",
+            "Comet",
+            "next",
+            "Banshee",
+            "Idaho",
+            "Admiral",
+            "next",
+            "next",
+            "Comet",
+            "Banshee",
+            "Hermes"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "PCJ 600",
+            "Infernus",
+            "next",
+            "Infernus",
+            "next",
+            "next",
+            "Idaho",
+            "next",
+            "Pony",
+            "Sentinel",
+            "next",
+            "Stinger",
+            "Comet",
+            "Cheetah",
+            "Idaho",
+            "Idaho"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "next",
+            "next",
+            "PCJ 600",
+            "next",
+            "next",
+            "Sentinel",
+            "Comet",
+            "Sentinel",
+            "Idaho",
+            "next",
+            "Cheetah",
+            "Admiral",
+            "Cheetah",
+            "Voodoo",
+            "Stinger",
+            "next",
+            "next",
+            "Infernus",
+            "Stinger",
+            "Voodoo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "Cheetah",
+            "next",
+            "PCJ 600",
+            "Infernus",
+            "Hermes",
+            "next",
+            "next",
+            "next",
+            "next",
+            "next",
+            "next",
+            "Admiral",
+            "next",
+            "next",
+            "next",
+            "next",
+            "Stinger",
+            "next",
+            "Voodoo",
+            "Idaho",
+            "Admiral",
+            "next",
+            "next",
+            "Stinger",
+            "next"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "Cheetah",
+            "Cheetah",
+            "next",
+            "Comet",
+            "Stinger",
+            "Infernus",
+            "next",
+            "next",
+            "next",
+            "Banshee",
+            "Voodoo",
+            "next",
+            "next",
+            "Hermes",
+            "next",
+            "Cheetah",
+            "next",
+            "next",
+            "Stinger",
+            "next",
+            "Idaho",
+            "Stinger",
+            "PCJ 600",
+            "Cheetah",
+            "next",
+            "Banshee",
+            "next",
+            "next",
+            "next",
+            "Voodoo"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "next",
+            "Voodoo",
+            "next",
+            "Cheetah",
+            "PCJ 600",
+            "Voodoo",
+            "next",
+            "next",
+            "Voodoo",
+            "Banshee",
+            "next",
+            "Sentinel",
+            "Hermes",
+            "Cheetah",
+            "Hermes",
+            "next",
+            "Sentinel",
+            "next",
+            "Comet",
+            "Banshee",
+            "Sentinel",
+            "Stinger",
+            "next",
+            "next",
+            "Voodoo",
+            "Admiral",
+            "next",
+            "next",
+            "Sentinel",
+            "next",
+            "Admiral",
+            "PCJ 600",
+            "Infernus",
+            "Idaho",
+            "next",
+            "next",
+            "next",
+            "Pony",
+            "next",
+            "next"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "events": {
+          "$list": [
+            "next",
+            "next",
+            "next",
+            "next",
+            "Sentinel",
+            "next",
+            "next",
+            "Stinger",
+            "next",
+            "next",
+            "Admiral",
+            "next",
+            "Sentinel",
+            "Pony",
+            "Idaho",
+            "Voodoo",
+            "PCJ 600",
+            "Stinger",
+            "next",
+            "Hermes",
+            "Stinger",
+            "next",
+            "Banshee",
+            "next",
+            "Pony",
+            "next",
+            "Voodoo",
+            "Infernus",
+            "next",
+            "Stinger",
+            "Comet",
+            "Pony",
+            "next",
+            "next",
+            "Idaho",
+            "PCJ 600",
+            "Cheetah",
+            "Hermes",
+            "Idaho",
+            "Pony",
+            "next",
+            "next",
+            "Infernus",
+            "next",
+            "Infernus",
+            "Sentinel",
+            "next",
+            "PCJ 600",
+            "next",
+            "PCJ 600"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

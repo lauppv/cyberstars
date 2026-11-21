@@ -1,0 +1,259 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "jobs"
+      },
+      {
+        "kind": "variable",
+        "name": "urgency"
+      },
+      {
+        "kind": "call",
+        "name": "PriorityQueue"
+      },
+      {
+        "kind": "call",
+        "name": "poll"
+      },
+      {
+        "kind": "implements"
+      },
+      {
+        "kind": "function",
+        "name": "compareTo"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "jobs": {
+          "$list": ["Pick up Lance", "Buy a boat", "Pay the cops", "Meet Diaz"]
+        },
+        "urgency": {
+          "$list": [2, 5, 1, 2]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "jobs": {
+          "$list": ["Call Kent"]
+        },
+        "urgency": {
+          "$list": [3]
+        }
+      }
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": []
+        },
+        "urgency": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": ["Rob the bank", "Hide the cash", "Fix the boat"]
+        },
+        "urgency": {
+          "$list": [1, 1, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": ["Visit Phil", "Meet Sonny", "Sell the cigars", "Paint the car"]
+        },
+        "urgency": {
+          "$list": [9, 8, 7, 6]
+        }
+      }
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": ["Meet Sonny", "Meet Diaz", "Buy a boat", "Call Kent"]
+        },
+        "urgency": {
+          "$list": [1, 1, 2, 2]
+        }
+      }
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": ["Meet Diaz", "Hide the cash"]
+        },
+        "urgency": {
+          "$list": [1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": ["Fix the boat", "Meet Diaz", "Pick up Lance"]
+        },
+        "urgency": {
+          "$list": [3, 1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": ["Buy a boat", "Visit Phil", "Paint the car", "Pick up Lance", "Meet Sonny"]
+        },
+        "urgency": {
+          "$list": [2, 2, 1, 1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": [
+            "Paint the car",
+            "Pay the cops",
+            "Call Kent",
+            "Sell the cigars",
+            "Pick up Lance",
+            "Fix the boat"
+          ]
+        },
+        "urgency": {
+          "$list": [2, 1, 2, 1, 1, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": [
+            "Meet Diaz",
+            "Sell the cigars",
+            "Meet Sonny",
+            "Call Kent",
+            "Buy a boat",
+            "Pay the cops",
+            "Visit Phil",
+            "Fix the boat"
+          ]
+        },
+        "urgency": {
+          "$list": [4, 2, 2, 4, 1, 3, 3, 3]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": [
+            "Meet Diaz",
+            "Buy a boat",
+            "Fix the boat",
+            "Call Kent",
+            "Pay the cops",
+            "Sell the cigars",
+            "Visit Phil",
+            "Meet Sonny",
+            "Paint the car",
+            "Rob the bank"
+          ]
+        },
+        "urgency": {
+          "$list": [6, 3, 9, 1, 10, 9, 1, 1, 5, 8]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": [
+            "Paint the car",
+            "Fix the boat",
+            "Meet Sonny",
+            "Pay the cops",
+            "Rob the bank",
+            "Hide the cash",
+            "Buy a boat",
+            "Call Kent",
+            "Sell the cigars",
+            "Pick up Lance",
+            "Visit Phil",
+            "Meet Diaz"
+          ]
+        },
+        "urgency": {
+          "$list": [1, 2, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": [
+            "Meet Diaz",
+            "Pay the cops",
+            "Visit Phil",
+            "Fix the boat",
+            "Pick up Lance",
+            "Rob the bank",
+            "Meet Sonny",
+            "Paint the car",
+            "Sell the cigars",
+            "Hide the cash",
+            "Buy a boat",
+            "Call Kent"
+          ]
+        },
+        "urgency": {
+          "$list": [2, 3, 2, 2, 2, 1, 2, 5, 2, 4, 4, 1]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "jobs": {
+          "$list": [
+            "Visit Phil",
+            "Pick up Lance",
+            "Paint the car",
+            "Sell the cigars",
+            "Fix the boat",
+            "Rob the bank",
+            "Meet Sonny",
+            "Meet Diaz",
+            "Pay the cops",
+            "Hide the cash",
+            "Buy a boat",
+            "Call Kent"
+          ]
+        },
+        "urgency": {
+          "$list": [1, 2, 2, 2, 2, 1, 2, 2, 1, 1, 2, 2]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

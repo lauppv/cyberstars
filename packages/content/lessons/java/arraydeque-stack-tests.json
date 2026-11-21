@@ -1,0 +1,367 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "moves"
+      },
+      {
+        "kind": "call",
+        "name": "ArrayDeque"
+      },
+      {
+        "kind": "loop"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "moves": {
+          "$list": ["Ocean Beach", "Little Havana", "Downtown", "back", "back", "back"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "moves": {
+          "$list": ["Starfish Island", "Vice Point", "back", "Prawn Island"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["back"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["back", "back", "Downtown"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["Downtown"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["Downtown", "back"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["Downtown", "Downtown", "back"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "Escobar Airport",
+            "Viceport",
+            "Little Haiti",
+            "back",
+            "Washington Beach",
+            "back",
+            "back",
+            "back"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["Starfish Island", "back", "Little Haiti", "Starfish Island", "Ocean Beach"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": ["back", "back", "back", "back", "Viceport", "back", "back", "back"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "Escobar Airport",
+            "Little Havana",
+            "Leaf Links",
+            "Starfish Island",
+            "back",
+            "back",
+            "Viceport",
+            "Vice Point",
+            "Leaf Links",
+            "Viceport"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "back",
+            "Vice Point",
+            "Little Haiti",
+            "Escobar Airport",
+            "Starfish Island",
+            "Escobar Airport",
+            "Vice Point",
+            "Little Haiti",
+            "back",
+            "back",
+            "back",
+            "back",
+            "back",
+            "back"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "Prawn Island",
+            "Vice Point",
+            "back",
+            "Prawn Island",
+            "back",
+            "back",
+            "Escobar Airport",
+            "Vice Point",
+            "back",
+            "back",
+            "Prawn Island",
+            "back",
+            "Vice Point",
+            "back",
+            "back",
+            "back",
+            "Leaf Links",
+            "Downtown"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "back",
+            "Starfish Island",
+            "Ocean Beach",
+            "Prawn Island",
+            "Downtown",
+            "back",
+            "Leaf Links",
+            "Starfish Island",
+            "back",
+            "Prawn Island",
+            "Starfish Island",
+            "Prawn Island",
+            "Starfish Island",
+            "back",
+            "back",
+            "back",
+            "Leaf Links",
+            "Little Havana",
+            "back",
+            "Prawn Island",
+            "Vice Point",
+            "back"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "Ocean Beach",
+            "Vice Point",
+            "back",
+            "back",
+            "Little Haiti",
+            "back",
+            "Viceport",
+            "Little Haiti",
+            "Ocean Beach",
+            "back",
+            "Viceport",
+            "Little Haiti",
+            "Little Haiti",
+            "Little Havana",
+            "back",
+            "Little Haiti",
+            "Prawn Island",
+            "Little Haiti",
+            "Viceport",
+            "back",
+            "back",
+            "Starfish Island",
+            "back",
+            "Ocean Beach",
+            "Starfish Island",
+            "Downtown",
+            "Washington Beach",
+            "Little Havana",
+            "Leaf Links",
+            "Vice Point"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "back",
+            "Ocean Beach",
+            "Little Havana",
+            "Escobar Airport",
+            "Escobar Airport",
+            "Prawn Island",
+            "Vice Point",
+            "Prawn Island",
+            "Vice Point",
+            "back",
+            "Little Haiti",
+            "Prawn Island",
+            "back",
+            "Vice Point",
+            "Starfish Island",
+            "Washington Beach",
+            "Little Haiti",
+            "back",
+            "back",
+            "back",
+            "back",
+            "Viceport",
+            "back",
+            "Little Havana",
+            "Little Haiti",
+            "Washington Beach",
+            "Vice Point",
+            "Washington Beach",
+            "Prawn Island",
+            "Vice Point",
+            "Leaf Links",
+            "Washington Beach",
+            "Escobar Airport",
+            "back",
+            "Starfish Island",
+            "Prawn Island",
+            "Starfish Island",
+            "Washington Beach",
+            "Ocean Beach",
+            "Little Haiti"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "moves": {
+          "$list": [
+            "Vice Point",
+            "back",
+            "Vice Point",
+            "Little Haiti",
+            "back",
+            "Viceport",
+            "back",
+            "Starfish Island",
+            "back",
+            "back",
+            "back",
+            "back",
+            "Prawn Island",
+            "Leaf Links",
+            "back",
+            "back",
+            "back",
+            "Prawn Island",
+            "back",
+            "Leaf Links",
+            "Prawn Island",
+            "Escobar Airport",
+            "back",
+            "Little Haiti",
+            "back",
+            "back",
+            "back",
+            "Vice Point",
+            "Leaf Links",
+            "back",
+            "Starfish Island",
+            "back",
+            "back",
+            "Little Havana",
+            "back",
+            "back",
+            "back",
+            "Vice Point",
+            "Little Havana",
+            "Downtown",
+            "Washington Beach",
+            "Starfish Island",
+            "back",
+            "back",
+            "back",
+            "back",
+            "back",
+            "back",
+            "Washington Beach",
+            "back",
+            "Starfish Island",
+            "Leaf Links",
+            "back",
+            "back",
+            "back",
+            "Little Haiti",
+            "Washington Beach",
+            "Little Haiti",
+            "back",
+            "back"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
