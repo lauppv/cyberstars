@@ -976,6 +976,26 @@ describe.skipIf(!has('javac'))('java runner', { timeout: 60_000 }, () => {
     });
   });
 
+  it("takes a call through the method's own class as recursion, not another class's method", () => {
+    const open = { kind: 'recursion', name: 'open' };
+    const passes = { syntaxError: null, structureFailures: [] };
+    const recursive = '    static void open(int n) { if (n > 0) Main.open(n - 1); }';
+    expect(header(main(recursive), [open])).toEqual(passes);
+    // Another class's open with as many parameters is a different method.
+    const bare = '    static void open(int n) { if (n > 0) open(n - 1); }';
+    expect(header(main(bare) + 'class Box {\n    void open(int k) {}\n}\n', [open])).toEqual(
+      passes,
+    );
+    // Box.open from Main's open isn't Main's open calling itself.
+    const other = '    static void open(int n) { Box.open(n); }';
+    expect(
+      header(main(other) + 'class Box {\n    static void open(int k) {}\n}\n', [open]),
+    ).toEqual({
+      syntaxError: null,
+      structureFailures: [{ type: 'require', rule: open }],
+    });
+  });
+
   it('counts static or private only outside the class holding main', () => {
     const rules = [
       { kind: 'modifier', name: 'static' },

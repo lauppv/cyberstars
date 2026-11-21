@@ -338,13 +338,19 @@ public class Runner {
               }
             }
           }
-          return super.visitClass(node, unused);
+          enclosingClasses.push(node.getSimpleName().toString());
+          try {
+            return super.visitClass(node, unused);
+          } finally {
+            enclosingClasses.pop();
+          }
         }
 
         @Override
         public Void visitMethod(MethodTree node, Void unused) {
           methodNames.add(node.getName().toString());
-          String key = node.getName() + "/" + node.getParameters().size();
+          String key =
+              enclosingClasses.peek() + "." + node.getName() + "/" + node.getParameters().size();
           methodsByArity.merge(key, 1, Integer::sum);
           enclosingMethods.push(key);
           try {
@@ -354,6 +360,7 @@ public class Runner {
           }
         }
 
+        private final java.util.ArrayDeque<String> enclosingClasses = new java.util.ArrayDeque<>();
         private final java.util.ArrayDeque<String> enclosingMethods = new java.util.ArrayDeque<>();
         private final Map<String, Integer> methodsByArity = new java.util.HashMap<>();
         private final java.util.Set<String> selfCalls = new java.util.HashSet<>();
@@ -370,19 +377,22 @@ public class Runner {
             String owner = lastName(ms.getExpression());
             if (owner != null) callNames.add(owner + "." + ms.getIdentifier());
           }
-          // A method calls itself by its bare name or through this., with as
-          // many arguments as it takes: name.equals(...) on a field or an
-          // overload with another arity is a different method, and with an
-          // overload of the same arity it can't be told apart without types.
+          // A method calls itself by its bare name, through this. or through its
+          // own class's name (Main.open), with as many arguments as it takes:
+          // name.equals(...) on a field, an overload with another arity or a
+          // method of another class is a different method, and with an
+          // overload of the same arity in its class it can't be told apart
+          // without types.
           String called =
               select instanceof IdentifierTree id
                   ? id.getName().toString()
                   : select instanceof MemberSelectTree ms
                           && ms.getExpression() instanceof IdentifierTree target
-                          && target.getName().contentEquals("this")
+                          && (target.getName().contentEquals("this")
+                              || target.getName().contentEquals(enclosingClasses.peek()))
                       ? ms.getIdentifier().toString()
                       : null;
-          String key = called + "/" + node.getArguments().size();
+          String key = enclosingClasses.peek() + "." + called + "/" + node.getArguments().size();
           if (called != null && key.equals(enclosingMethods.peek())) selfCalls.add(key);
           return super.visitMethodInvocation(node, unused);
         }
@@ -542,7 +552,7 @@ public class Runner {
           for (String key : selfCalls) {
             if (methodsByArity.get(key) == 1) {
               hasRecursion = true;
-              recursiveMethods.add(key.substring(0, key.indexOf('/')));
+              recursiveMethods.add(key.substring(key.lastIndexOf('.') + 1, key.indexOf('/')));
             }
           }
           for (String owner : staticOwners) {
