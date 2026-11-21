@@ -1,0 +1,266 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "contacte"
+      },
+      {
+        "kind": "variable",
+        "name": "cautari"
+      },
+      {
+        "kind": "call",
+        "name": "stream"
+      },
+      {
+        "kind": "call",
+        "name": "findFirst"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "contacte": {
+          "$list": ["Kent Paul", "Lance Vance", "Ken Rosenberg", "Phil Cassidy"]
+        },
+        "cautari": {
+          "$list": ["Ken", "Lan", "Son", "Ken R"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "contacte": {
+          "$list": ["Phil Cassidy"]
+        },
+        "cautari": {
+          "$list": ["T"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": []
+        },
+        "cautari": {
+          "$list": ["A"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": ["Kent Paul", "Lance Vance", "Ken Rosenberg", "Phil Cassidy"]
+        },
+        "cautari": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": ["Kent Paul", "Lance Vance", "Ken Rosenberg", "Phil Cassidy"]
+        },
+        "cautari": {
+          "$list": ["", "Kent Paul", "Kent Paul!", "ken"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": ["Mercedes Cortez", "Colonel Cortez", "Mercedes"]
+        },
+        "cautari": {
+          "$list": ["Merc", "Col", "Cortez", "Mercedes C"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": ["Kendl", "Umberto Robina"]
+        },
+        "cautari": {
+          "$list": ["Tommy", "Ke", "Sonny Fore", "Lance Va", "Ph"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": ["Lance", "Ricardo Diaz", "Ken Rosenberg", "Umberto Robina"]
+        },
+        "cautari": {
+          "$list": ["P", "Cam J", "Z", "Hila", "Lanc", "Sonny "]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": [
+            "Colonel Cortez",
+            "Kendl",
+            "Umberto Robina",
+            "Sonny Forelli",
+            "Mitch Baker",
+            "Cam Jones"
+          ]
+        },
+        "cautari": {
+          "$list": [
+            "Colonel Cortez",
+            "Candy Sux",
+            "Sonny For",
+            "Umber",
+            "Lan",
+            "Umb",
+            "Mitch Bak",
+            "Vic"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": [
+            "Ken Rosenberg",
+            "Colonel Cortez",
+            "Hilary King",
+            "Lance",
+            "Kendl",
+            "Umberto Robina",
+            "Lance Vance",
+            "Ricardo Diaz"
+          ]
+        },
+        "cautari": {
+          "$list": ["Phil", "Phil Cassidy"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": [
+            "Lance Vance",
+            "Colonel Cortez",
+            "Mercedes Cortez",
+            "Phil",
+            "Candy Suxxx",
+            "Hilary King",
+            "Cam Jones",
+            "Mitch Baker",
+            "Avery Carrington",
+            "Umberto Robina"
+          ]
+        },
+        "cautari": {
+          "$list": [
+            "Lance Va",
+            "Umberto R",
+            "Z",
+            "Ken Rosenber",
+            "K",
+            "Avery Carri",
+            "Phil",
+            "Cand"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": [
+            "Hilary King",
+            "Phil",
+            "Umberto Robina",
+            "Phil Cassidy",
+            "Kent Paul",
+            "Cam Jones",
+            "Mercedes Cortez",
+            "Sonny Forelli",
+            "Ricardo Diaz",
+            "Kendl",
+            "Mitch Baker",
+            "Lance Vance"
+          ]
+        },
+        "cautari": {
+          "$list": ["Lan", "Ph", "Lan"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": [
+            "Lance",
+            "Kendl",
+            "Candy Suxxx",
+            "Phil",
+            "Mercedes Cortez",
+            "Mitch Baker",
+            "Ricardo Diaz",
+            "Hilary King",
+            "Colonel Cortez",
+            "Cam Jones",
+            "Umberto Robina",
+            "Kent Paul",
+            "Ken Rosenberg",
+            "Lance Vance"
+          ]
+        },
+        "cautari": {
+          "$list": ["Vic", "Vic", "Z", "Sonny", "Ricardo D", "Candy "]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "contacte": {
+          "$list": [
+            "Umberto Robina",
+            "Candy Suxxx",
+            "Ricardo Diaz",
+            "Phil",
+            "Phil Cassidy",
+            "Hilary King",
+            "Mercedes Cortez",
+            "Lance Vance",
+            "Lance",
+            "Cam Jones",
+            "Sonny Forelli",
+            "Kent Paul",
+            "Colonel Cortez",
+            "Kendl",
+            "Mitch Baker",
+            "Ken Rosenberg",
+            "Avery Carrington"
+          ]
+        },
+        "cautari": {
+          "$list": ["K", "Colo", "Cam Jone", "Ken Ros", "Phil", "Z", "Ricardo D", "Mitch"]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

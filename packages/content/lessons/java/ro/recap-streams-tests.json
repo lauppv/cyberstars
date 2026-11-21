@@ -1,0 +1,270 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "nume"
+      },
+      {
+        "kind": "variable",
+        "name": "scoruri"
+      },
+      {
+        "kind": "variable",
+        "name": "minim"
+      },
+      {
+        "kind": "call",
+        "name": "stream"
+      },
+      {
+        "kind": "call",
+        "name": "filter"
+      },
+      {
+        "kind": "call",
+        "name": "collect"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Phil", "Lance", "Candy", "Mitch", "Earnest"]
+        },
+        "scoruri": {
+          "$list": [70, 85, 40, 90, 85]
+        },
+        "minim": 60
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "nume": {
+          "$list": ["Candy", "Pepe"]
+        },
+        "scoruri": {
+          "$list": [10, 20]
+        },
+        "minim": 50
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": []
+        },
+        "scoruri": {
+          "$list": []
+        },
+        "minim": 10
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Hilary"]
+        },
+        "scoruri": {
+          "$list": [50]
+        },
+        "minim": 50
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Cam", "Kent", "Ken"]
+        },
+        "scoruri": {
+          "$list": [99, 99, 99]
+        },
+        "minim": 0
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Victor", "Lance", "Diaz"]
+        },
+        "scoruri": {
+          "$list": [60, 59, 61]
+        },
+        "minim": 60
+      }
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Candy"]
+        },
+        "scoruri": {
+          "$list": [50]
+        },
+        "minim": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Ken", "Sonny", "Mitch"]
+        },
+        "scoruri": {
+          "$list": [90, 70, 70]
+        },
+        "minim": 95
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Avery", "Ken", "Hilary", "Cortez", "Diaz"]
+        },
+        "scoruri": {
+          "$list": [2, 70, 85, 90, 8]
+        },
+        "minim": 30
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["Mitch", "Avery", "Kent", "Phil", "Victor", "Cortez"]
+        },
+        "scoruri": {
+          "$list": [90, 63, 20, 49, 28, 85]
+        },
+        "minim": 93
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": ["BJ", "Kent", "Earnest", "Sonny", "Avery", "Ricardo", "Mitch", "Hilary"]
+        },
+        "scoruri": {
+          "$list": [70, 90, 14, 49, 90, 70, 90, 22]
+        },
+        "minim": 6
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Kent",
+            "BJ",
+            "Sonny",
+            "Cam",
+            "Mercedes",
+            "Victor",
+            "Candy",
+            "Cortez",
+            "Phil",
+            "Umberto"
+          ]
+        },
+        "scoruri": {
+          "$list": [38, 22, 50, 86, 91, 50, 70, 85, 50, 19]
+        },
+        "minim": 50
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Ken",
+            "Umberto",
+            "Lance",
+            "Kent",
+            "Diaz",
+            "Mitch",
+            "Avery",
+            "Sonny",
+            "Phil",
+            "Earnest",
+            "Ricardo",
+            "Victor"
+          ]
+        },
+        "scoruri": {
+          "$list": [14, 91, 85, 38, 50, 54, 10, 75, 52, 4, 92, 39]
+        },
+        "minim": 14
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Pepe",
+            "Umberto",
+            "Phil",
+            "BJ",
+            "Earnest",
+            "Kent",
+            "Sonny",
+            "Mitch",
+            "Ricardo",
+            "Victor",
+            "Lance",
+            "Cortez",
+            "Candy",
+            "Ken",
+            "Mercedes"
+          ]
+        },
+        "scoruri": {
+          "$list": [90, 86, 50, 59, 50, 99, 82, 2, 60, 52, 76, 85, 19, 85, 77]
+        },
+        "minim": 51
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "nume": {
+          "$list": [
+            "Mercedes",
+            "Umberto",
+            "Phil",
+            "Kent",
+            "Lance",
+            "Victor",
+            "BJ",
+            "Cam",
+            "Pepe",
+            "Earnest",
+            "Diaz",
+            "Candy",
+            "Mitch",
+            "Ken",
+            "Avery",
+            "Cortez",
+            "Ricardo",
+            "Hilary",
+            "Sonny",
+            "Maude"
+          ]
+        },
+        "scoruri": {
+          "$list": [50, 80, 67, 50, 50, 93, 70, 54, 53, 13, 95, 61, 50, 50, 70, 70, 90, 50, 70, 54]
+        },
+        "minim": 74
+      },
+      "generated": true
+    }
+  ]
+}

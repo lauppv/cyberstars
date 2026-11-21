@@ -1,0 +1,449 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "places"
+      },
+      {
+        "kind": "variable",
+        "name": "amounts"
+      },
+      {
+        "kind": "call",
+        "name": "stream"
+      },
+      {
+        "kind": "call",
+        "name": "reduce"
+      },
+      {
+        "kind": "call",
+        "name": "collect"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "places": {
+          "$list": ["Malibu Club", "Pole Position", "Malibu Club", "Print Works"]
+        },
+        "amounts": {
+          "$list": [5000, 3000, 7000, 1500]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "places": {
+          "$list": ["Kaufman Cabs"]
+        },
+        "amounts": {
+          "$list": [800]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Sunshine Autos", "Boatyard"]
+        },
+        "amounts": {
+          "$list": [0, 0]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Ice Cream Factory", "Ice Cream Factory", "Ice Cream Factory"]
+        },
+        "amounts": {
+          "$list": [99, 1, 100]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Print Works", "Kaufman Cabs", "Boatyard", "Car Showroom", "Film Studio"]
+        },
+        "amounts": {
+          "$list": [1, 2, 3, 4, 5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Boatyard"]
+        },
+        "amounts": {
+          "$list": [1100]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Film Studio", "Pole Position"]
+        },
+        "amounts": {
+          "$list": [1300, 1800]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": ["Sunshine Autos", "Sunshine Autos", "Boatyard", "Car Showroom"]
+        },
+        "amounts": {
+          "$list": [9300, 4800, 9100, 4700]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Cherry Poppers",
+            "Pole Position",
+            "Pole Position",
+            "Pole Position",
+            "Malibu Club",
+            "Film Studio"
+          ]
+        },
+        "amounts": {
+          "$list": [3900, 1500, 9400, 9200, 4300, 5700]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Car Showroom",
+            "Malibu Club",
+            "Car Showroom",
+            "Car Showroom",
+            "Malibu Club",
+            "Print Works",
+            "Car Showroom",
+            "Car Showroom"
+          ]
+        },
+        "amounts": {
+          "$list": [7300, 500, 1700, 3300, 2500, 6900, 8500, 8400]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Kaufman Cabs",
+            "Ice Cream Factory",
+            "Malibu Club",
+            "Ice Cream Factory",
+            "Print Works",
+            "Car Showroom",
+            "Print Works",
+            "Print Works",
+            "Car Showroom",
+            "Kaufman Cabs"
+          ]
+        },
+        "amounts": {
+          "$list": [9100, 3400, 4500, 800, 1800, 8500, 7100, 700, 6900, 2900]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Boatyard",
+            "Film Studio",
+            "Boatyard",
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Boatyard",
+            "Boatyard",
+            "Film Studio"
+          ]
+        },
+        "amounts": {
+          "$list": [
+            8800, 5500, 6600, 5400, 200, 6500, 5400, 1500, 9800, 6000, 100, 200, 5500, 3000, 3000
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory",
+            "Ice Cream Factory"
+          ]
+        },
+        "amounts": {
+          "$list": [
+            10000, 1700, 7800, 6600, 8300, 3600, 200, 8100, 600, 9700, 7400, 2100, 6200, 8800, 6400,
+            5900, 3800, 7600, 9400, 2300
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Film Studio",
+            "Boatyard",
+            "Car Showroom",
+            "Kaufman Cabs",
+            "Car Showroom",
+            "Kaufman Cabs",
+            "Print Works",
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Boatyard",
+            "Ice Cream Factory",
+            "Film Studio",
+            "Kaufman Cabs",
+            "Kaufman Cabs",
+            "Print Works",
+            "Kaufman Cabs",
+            "Car Showroom",
+            "Car Showroom",
+            "Kaufman Cabs",
+            "Cherry Poppers",
+            "Cherry Poppers",
+            "Car Showroom",
+            "Cherry Poppers",
+            "Print Works",
+            "Cherry Poppers",
+            "Print Works",
+            "Film Studio",
+            "Kaufman Cabs",
+            "Ice Cream Factory"
+          ]
+        },
+        "amounts": {
+          "$list": [
+            8400, 6200, 8100, 1200, 2600, 6000, 4100, 3200, 4500, 8900, 4400, 6100, 7000, 5900, 800,
+            5200, 3000, 5800, 2900, 8700, 5000, 5700, 4400, 2200, 5200, 5800, 100, 2900, 4500, 2200
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Boatyard",
+            "Boatyard",
+            "Boatyard",
+            "Car Showroom",
+            "Boatyard",
+            "Car Showroom",
+            "Boatyard",
+            "Film Studio",
+            "Boatyard",
+            "Car Showroom",
+            "Boatyard",
+            "Film Studio",
+            "Film Studio",
+            "Film Studio",
+            "Boatyard",
+            "Boatyard",
+            "Car Showroom",
+            "Film Studio",
+            "Boatyard",
+            "Film Studio",
+            "Film Studio",
+            "Car Showroom",
+            "Car Showroom",
+            "Film Studio",
+            "Car Showroom",
+            "Car Showroom",
+            "Boatyard",
+            "Boatyard",
+            "Boatyard",
+            "Boatyard",
+            "Film Studio",
+            "Car Showroom",
+            "Film Studio",
+            "Boatyard",
+            "Car Showroom",
+            "Film Studio",
+            "Boatyard",
+            "Car Showroom",
+            "Film Studio",
+            "Film Studio",
+            "Boatyard",
+            "Car Showroom",
+            "Film Studio",
+            "Film Studio",
+            "Boatyard",
+            "Film Studio",
+            "Film Studio",
+            "Car Showroom",
+            "Car Showroom",
+            "Boatyard"
+          ]
+        },
+        "amounts": {
+          "$list": [
+            3600, 7700, 7400, 1900, 3200, 1500, 8800, 9900, 3900, 3200, 7100, 4600, 4600, 7000,
+            4800, 1200, 2200, 7800, 8800, 5900, 8300, 5700, 8000, 8500, 1800, 2600, 3900, 7100,
+            7900, 4000, 2000, 3600, 8200, 8300, 3400, 700, 8600, 300, 300, 1000, 6400, 6700, 400,
+            800, 2900, 900, 9700, 4400, 4000, 5800
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "places": {
+          "$list": [
+            "Kaufman Cabs",
+            "Pole Position",
+            "Boatyard",
+            "Kaufman Cabs",
+            "Pole Position",
+            "Sunshine Autos",
+            "Kaufman Cabs",
+            "Malibu Club",
+            "Kaufman Cabs",
+            "Film Studio",
+            "Malibu Club",
+            "Kaufman Cabs",
+            "Malibu Club",
+            "Print Works",
+            "Print Works",
+            "Print Works",
+            "Cherry Poppers",
+            "Car Showroom",
+            "Boatyard",
+            "Print Works",
+            "Cherry Poppers",
+            "Pole Position",
+            "Pole Position",
+            "Kaufman Cabs",
+            "Pole Position",
+            "Malibu Club",
+            "Sunshine Autos",
+            "Car Showroom",
+            "Malibu Club",
+            "Boatyard",
+            "Car Showroom",
+            "Pole Position",
+            "Sunshine Autos",
+            "Cherry Poppers",
+            "Film Studio",
+            "Car Showroom",
+            "Sunshine Autos",
+            "Ice Cream Factory",
+            "Pole Position",
+            "Pole Position",
+            "Ice Cream Factory",
+            "Malibu Club",
+            "Malibu Club",
+            "Film Studio",
+            "Sunshine Autos",
+            "Print Works",
+            "Kaufman Cabs",
+            "Kaufman Cabs",
+            "Boatyard",
+            "Cherry Poppers",
+            "Boatyard",
+            "Boatyard",
+            "Malibu Club",
+            "Ice Cream Factory",
+            "Car Showroom",
+            "Kaufman Cabs",
+            "Boatyard",
+            "Cherry Poppers",
+            "Sunshine Autos",
+            "Boatyard",
+            "Cherry Poppers",
+            "Film Studio",
+            "Print Works",
+            "Film Studio",
+            "Ice Cream Factory",
+            "Malibu Club",
+            "Malibu Club",
+            "Cherry Poppers",
+            "Boatyard",
+            "Cherry Poppers",
+            "Print Works",
+            "Kaufman Cabs",
+            "Ice Cream Factory",
+            "Cherry Poppers",
+            "Car Showroom",
+            "Sunshine Autos",
+            "Pole Position",
+            "Kaufman Cabs",
+            "Pole Position",
+            "Cherry Poppers"
+          ]
+        },
+        "amounts": {
+          "$list": [
+            5400, 9600, 8900, 7400, 2600, 7100, 8300, 1300, 5100, 8600, 1200, 6600, 4700, 7500,
+            8200, 9200, 4100, 4700, 6100, 3000, 5100, 9200, 4100, 1400, 6000, 1700, 4600, 3000,
+            6300, 6600, 6200, 6800, 9700, 9100, 8200, 3900, 5200, 2300, 6500, 4000, 8300, 8300,
+            2300, 1400, 3600, 5200, 9300, 700, 8900, 3700, 7800, 6300, 7600, 6100, 200, 7400, 5800,
+            5900, 2200, 2000, 6200, 4700, 3300, 800, 3000, 6900, 7900, 6500, 8300, 3300, 3600, 8200,
+            7400, 5100, 8100, 2400, 3300, 7400, 2300, 300
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "masini"
+      },
+      {
+        "kind": "variable",
+        "name": "viteze"
+      },
+      {
+        "kind": "variable",
+        "name": "vitezaMinima"
+      },
+      {
+        "kind": "call",
+        "name": "stream"
+      },
+      {
+        "kind": "call",
+        "name": "filter"
+      },
+      {
+        "kind": "lambda"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "masini": {
+          "$list": ["Infernus", "Admiral", "Cheetah", "Banshee", "Faggio"]
+        },
+        "viteze": {
+          "$list": [240, 150, 230, 230, 90]
+        },
+        "vitezaMinima": 200
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "masini": {
+          "$list": ["Faggio", "Pony"]
+        },
+        "viteze": {
+          "$list": [90, 110]
+        },
+        "vitezaMinima": 150
+      }
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": []
+        },
+        "viteze": {
+          "$list": []
+        },
+        "vitezaMinima": 100
+      }
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Stinger", "Comet", "Phoenix"]
+        },
+        "viteze": {
+          "$list": [200, 199, 201]
+        },
+        "vitezaMinima": 200
+      }
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Hotring", "Bloodring", "Sabre"]
+        },
+        "viteze": {
+          "$list": [250, 250, 250]
+        },
+        "vitezaMinima": 0
+      }
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Idaho", "Voodoo", "Esperanto", "Hermes"]
+        },
+        "viteze": {
+          "$list": [160, 170, 180, 190]
+        },
+        "vitezaMinima": 170
+      }
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Pony"]
+        },
+        "viteze": {
+          "$list": [223]
+        },
+        "vitezaMinima": 223
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Banshee", "Admiral", "Washington"]
+        },
+        "viteze": {
+          "$list": [200, 97, 150]
+        },
+        "vitezaMinima": 97
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Sabre", "Esperanto", "Hermes", "Comet", "Cheetah"]
+        },
+        "viteze": {
+          "$list": [207, 144, 126, 180, 150]
+        },
+        "vitezaMinima": 180
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Sabre", "Banshee", "Washington", "Sandking", "Deluxo", "Sentinel"]
+        },
+        "viteze": {
+          "$list": [227, 102, 140, 217, 134, 180]
+        },
+        "vitezaMinima": 182
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": ["Deluxo", "Comet", "Stinger", "Phoenix", "Voodoo", "Hermes", "Faggio", "Sabre"]
+        },
+        "viteze": {
+          "$list": [123, 116, 176, 240, 120, 208, 180, 150]
+        },
+        "vitezaMinima": 140
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": [
+            "Hermes",
+            "Phoenix",
+            "Patriot",
+            "Hotring",
+            "Voodoo",
+            "Deluxo",
+            "Cheetah",
+            "Sentinel",
+            "Faggio",
+            "Pony"
+          ]
+        },
+        "viteze": {
+          "$list": [125, 246, 118, 150, 101, 84, 146, 248, 162, 192]
+        },
+        "vitezaMinima": 170
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": [
+            "Sabre",
+            "Phoenix",
+            "Patriot",
+            "Cheetah",
+            "Voodoo",
+            "Infernus",
+            "Hotring",
+            "Stinger",
+            "Admiral",
+            "Faggio",
+            "Idaho",
+            "Pony"
+          ]
+        },
+        "viteze": {
+          "$list": [244, 150, 240, 97, 223, 249, 205, 156, 116, 104, 240, 201]
+        },
+        "vitezaMinima": 260
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": [
+            "Sandking",
+            "Admiral",
+            "Infernus",
+            "Hermes",
+            "Faggio",
+            "Voodoo",
+            "Patriot",
+            "Hotring",
+            "Esperanto",
+            "Pony",
+            "Cheetah",
+            "Phoenix",
+            "Deluxo",
+            "Sabre",
+            "Washington"
+          ]
+        },
+        "viteze": {
+          "$list": [155, 200, 190, 94, 230, 129, 105, 130, 150, 181, 115, 150, 150, 180, 164]
+        },
+        "vitezaMinima": 150
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "masini": {
+          "$list": [
+            "Patriot",
+            "Cheetah",
+            "Sabre",
+            "Banshee",
+            "Deluxo",
+            "Idaho",
+            "Infernus",
+            "Esperanto",
+            "Pony",
+            "Hermes",
+            "Phoenix",
+            "Comet",
+            "Stinger",
+            "Sandking",
+            "Sentinel",
+            "Faggio",
+            "Voodoo",
+            "Hotring",
+            "Admiral",
+            "Washington"
+          ]
+        },
+        "viteze": {
+          "$list": [
+            200, 104, 230, 83, 105, 213, 180, 150, 200, 233, 137, 176, 256, 150, 239, 238, 230, 179,
+            233, 150
+          ]
+        },
+        "vitezaMinima": 278
+      },
+      "generated": true
+    }
+  ]
+}
