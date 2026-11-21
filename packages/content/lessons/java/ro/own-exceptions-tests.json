@@ -1,0 +1,183 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "stoc"
+      },
+      {
+        "kind": "variable",
+        "name": "comenzi"
+      },
+      {
+        "kind": "function",
+        "name": "vinde"
+      },
+      {
+        "kind": "call",
+        "name": "StocEpuizatException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "throws"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "stoc": 10,
+        "comenzi": {
+          "$list": [4, 8, 6, 1]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "stoc": 3,
+        "comenzi": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 0,
+        "comenzi": {
+          "$list": [1, 2, 3]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 5,
+        "comenzi": {
+          "$list": [5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 5,
+        "comenzi": {
+          "$list": [6, 5, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 100,
+        "comenzi": {
+          "$list": [1, 1, 1, 1, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stoc": 52,
+        "comenzi": {
+          "$list": [7, 8]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 19,
+        "comenzi": {
+          "$list": [15, 5, 8]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 19,
+        "comenzi": {
+          "$list": [9, 1, 6, 14, 7]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 0,
+        "comenzi": {
+          "$list": [12, 14, 6, 7, 7, 3, 6]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 31,
+        "comenzi": {
+          "$list": [14, 14, 1, 10, 10, 1, 12, 11, 9, 3]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 43,
+        "comenzi": {
+          "$list": [12, 11, 4, 2, 15, 12, 12, 2, 6, 12, 9, 13]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 40,
+        "comenzi": {
+          "$list": [5, 1, 15, 4, 3, 14, 5, 12, 8, 8, 12, 15, 4, 1, 9]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 28,
+        "comenzi": {
+          "$list": [6, 12, 1, 8, 11, 10, 3, 10, 15, 11, 5, 14, 10, 1, 6, 9, 10, 8, 14, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 9,
+        "comenzi": {
+          "$list": [
+            13, 8, 5, 6, 6, 5, 7, 15, 11, 9, 6, 1, 9, 1, 10, 15, 3, 10, 9, 2, 10, 13, 1, 11, 2, 5,
+            6, 7, 2, 2
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stoc": 5,
+        "comenzi": {
+          "$list": [
+            13, 15, 9, 3, 2, 13, 14, 4, 2, 7, 10, 14, 7, 2, 13, 1, 14, 8, 7, 14, 8, 6, 15, 14, 9,
+            14, 13, 11, 4, 15, 12, 15, 6, 11, 10, 10, 7, 7, 8, 1, 3, 7, 15, 15, 14, 14, 13, 7, 1, 5
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

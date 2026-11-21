@@ -1,0 +1,179 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "sold"
+      },
+      {
+        "kind": "variable",
+        "name": "retrageri"
+      },
+      {
+        "kind": "function",
+        "name": "retrage"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "sold": 1000,
+        "retrageri": {
+          "$list": [300, 5000, -20, 700]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "sold": 50,
+        "retrageri": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "sold": 0,
+        "retrageri": {
+          "$list": [1, 0, -1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sold": 100,
+        "retrageri": {
+          "$list": [100, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sold": 100,
+        "retrageri": {
+          "$list": [101, 99, 2, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sold": 5000,
+        "retrageri": {
+          "$list": [0, 0, 0, 5000]
+        }
+      }
+    },
+    {
+      "inject": {
+        "sold": 300,
+        "retrageri": {
+          "$list": [4400, -75]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 4500,
+        "retrageri": {
+          "$list": [5000, -395, -24]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 9100,
+        "retrageri": {
+          "$list": [0, 0, 1921, 1400, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 8500,
+        "retrageri": {
+          "$list": [3100, -243, 0, -173, 1189, 2416, 621]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 5600,
+        "retrageri": {
+          "$list": [-111, -361, -279, 4300, 3600, 2000, 1400, 0, 0, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 6600,
+        "retrageri": {
+          "$list": [0, -368, 2100, 0, 0, -324, 0, -176, 0, 173, -198, 0]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 5400,
+        "retrageri": {
+          "$list": [
+            0, 277, 4400, 2403, 180, 2762, -206, 700, -159, -202, 1200, 2700, 3500, -147, -300
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 7100,
+        "retrageri": {
+          "$list": [
+            -441, 2331, 1621, 0, -137, -68, -359, 0, 2575, 2060, 2400, 556, 1404, 0, -308, -278, 0,
+            4200, 0, 0
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 4900,
+        "retrageri": {
+          "$list": [
+            0, 846, 0, 2100, 2549, 214, 2789, 400, 3800, 800, 0, 0, 2500, 1000, 2332, -210, 2432,
+            -111, 234, -140, 383, -182, 849, -425, -213, 3900, -395, 100, 4000, 4700
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "sold": 8500,
+        "retrageri": {
+          "$list": [
+            -322, 4100, -262, 300, 2900, -455, 477, 2444, 0, 1109, 2176, 2232, -101, 1091, 2100, 0,
+            1900, 0, 1658, 2183, 3700, 2797, 3800, 3700, 0, 4100, 0, 654, 0, 2741, 1383, 1908, 1290,
+            -409, 2339, -488, -4, 0, 800, 0, 1999, -46, -58, 200, 2410, 2521, 2509, 1698, 0, 2210
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

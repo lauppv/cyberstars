@@ -1,0 +1,183 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "stock"
+      },
+      {
+        "kind": "variable",
+        "name": "orders"
+      },
+      {
+        "kind": "function",
+        "name": "sell"
+      },
+      {
+        "kind": "call",
+        "name": "OutOfStockException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "throws"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "stock": 10,
+        "orders": {
+          "$list": [4, 8, 6, 1]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "stock": 3,
+        "orders": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 0,
+        "orders": {
+          "$list": [1, 2, 3]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 5,
+        "orders": {
+          "$list": [5]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 5,
+        "orders": {
+          "$list": [6, 5, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 100,
+        "orders": {
+          "$list": [1, 1, 1, 1, 1]
+        }
+      }
+    },
+    {
+      "inject": {
+        "stock": 52,
+        "orders": {
+          "$list": [7, 8]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 19,
+        "orders": {
+          "$list": [15, 5, 8]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 19,
+        "orders": {
+          "$list": [9, 1, 6, 14, 7]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 0,
+        "orders": {
+          "$list": [12, 14, 6, 7, 7, 3, 6]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 31,
+        "orders": {
+          "$list": [14, 14, 1, 10, 10, 1, 12, 11, 9, 3]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 43,
+        "orders": {
+          "$list": [12, 11, 4, 2, 15, 12, 12, 2, 6, 12, 9, 13]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 40,
+        "orders": {
+          "$list": [5, 1, 15, 4, 3, 14, 5, 12, 8, 8, 12, 15, 4, 1, 9]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 28,
+        "orders": {
+          "$list": [6, 12, 1, 8, 11, 10, 3, 10, 15, 11, 5, 14, 10, 1, 6, 9, 10, 8, 14, 2]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 9,
+        "orders": {
+          "$list": [
+            13, 8, 5, 6, 6, 5, 7, 15, 11, 9, 6, 1, 9, 1, 10, 15, 3, 10, 9, 2, 10, 13, 1, 11, 2, 5,
+            6, 7, 2, 2
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "stock": 5,
+        "orders": {
+          "$list": [
+            13, 15, 9, 3, 2, 13, 14, 4, 2, 7, 10, 14, 7, 2, 13, 1, 14, 8, 7, 14, 8, 6, 15, 14, 9,
+            14, 13, 11, 4, 15, 12, 15, 6, 11, 10, 10, 7, 7, 8, 1, 3, 7, 15, 15, 14, 14, 13, 7, 1, 5
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

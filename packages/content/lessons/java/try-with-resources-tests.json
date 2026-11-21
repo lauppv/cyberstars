@@ -1,0 +1,246 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "visitors"
+      },
+      {
+        "kind": "call",
+        "name": "Door"
+      },
+      {
+        "kind": "implements"
+      },
+      {
+        "kind": "function",
+        "name": "close"
+      },
+      {
+        "kind": "try_resources"
+      },
+      {
+        "kind": "throw"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "visitors": {
+          "$list": ["Lance", "Cops", "Phil"]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "visitors": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Cops"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Cops", "Cops"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Kent"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["cops", "COPS", "Cops", "Diaz"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Cortez", "Cops"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Mercedes", "Ken", "Cops"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Sonny", "Ken", "Lance", "Cops"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Umberto", "Sonny", "Diaz", "Cortez", "Candy", "Cortez"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": ["Cortez", "Diaz", "Cops", "Cops", "Cops", "Cops", "Cops", "Kent"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": [
+            "Cops",
+            "Cops",
+            "Cops",
+            "Lance",
+            "Cops",
+            "Cops",
+            "Cops",
+            "Cops",
+            "Kent",
+            "Cortez"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": [
+            "Cortez",
+            "Ken",
+            "Kent",
+            "Phil",
+            "Mercedes",
+            "Kent",
+            "Cops",
+            "Phil",
+            "Cops",
+            "Lance",
+            "Candy",
+            "Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": [
+            "Diaz",
+            "Cops",
+            "Cops",
+            "Cops",
+            "Umberto",
+            "Phil",
+            "Cops",
+            "Phil",
+            "Kent",
+            "Cops",
+            "Mercedes",
+            "Cops",
+            "Lance",
+            "Mercedes",
+            "Mercedes"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": [
+            "Cops",
+            "Ken",
+            "Cops",
+            "Cops",
+            "Candy",
+            "Cortez",
+            "Phil",
+            "Lance",
+            "Ken",
+            "Mercedes",
+            "Diaz",
+            "Cortez",
+            "Kent",
+            "Cortez",
+            "Sonny",
+            "Ken",
+            "Sonny",
+            "Cops",
+            "Umberto",
+            "Kent"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "visitors": {
+          "$list": [
+            "Cops",
+            "Ken",
+            "Cops",
+            "Lance",
+            "Candy",
+            "Cortez",
+            "Ken",
+            "Cops",
+            "Kent",
+            "Lance",
+            "Phil",
+            "Sonny",
+            "Diaz",
+            "Umberto",
+            "Mercedes",
+            "Cops",
+            "Cops",
+            "Ken",
+            "Phil",
+            "Ken",
+            "Mercedes",
+            "Diaz",
+            "Lance",
+            "Cops",
+            "Mercedes",
+            "Phil",
+            "Cops",
+            "Cops",
+            "Mercedes",
+            "Cops"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
