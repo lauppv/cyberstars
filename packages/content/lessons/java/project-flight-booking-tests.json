@@ -1,0 +1,329 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "rows"
+      },
+      {
+        "kind": "variable",
+        "name": "seatsPerRow"
+      },
+      {
+        "kind": "variable",
+        "name": "bookings"
+      },
+      {
+        "kind": "array_2d"
+      },
+      {
+        "kind": "call",
+        "name": "SeatException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "rows": 2,
+        "seatsPerRow": 2,
+        "bookings": {
+          "$list": [
+            "Tommy:1A",
+            "Kent:1A",
+            "Lance:any",
+            "Mitch:3A",
+            "Kent:2B",
+            "Phil:any",
+            "Candy:any",
+            "Diaz:any"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "rows": 1,
+        "seatsPerRow": 3,
+        "bookings": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "rows": 1,
+        "seatsPerRow": 1,
+        "bookings": {
+          "$list": ["A:any", "B:any", "C:1A", "D:any"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "rows": 3,
+        "seatsPerRow": 6,
+        "bookings": {
+          "$list": ["Tommy:3F", "Lance:3G", "Phil:0A", "Kent:10A", "Ken:1a", "Diaz:1A"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "rows": 2,
+        "seatsPerRow": 3,
+        "bookings": {
+          "$list": [
+            "Candy:2C",
+            "Mitch:any",
+            "Pepe:any",
+            "Hilary:any",
+            "Cam:any",
+            "Victor:any",
+            "BJ:any",
+            "Maude:1A"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "rows": 5,
+        "seatsPerRow": 6,
+        "bookings": {
+          "$list": ["Diaz:any", "Pepe:any", "Diaz:1D"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 3,
+        "seatsPerRow": 6,
+        "bookings": {
+          "$list": ["Maude:0D", "BJ:any", "Mitch:0G", "BJ:4E", "Phil:1F"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 5,
+        "seatsPerRow": 5,
+        "bookings": {
+          "$list": ["Lance:6F", "Ken:0B", "Maude:any", "Lance:4F", "Cam:5E", "Hilary:5E"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 2,
+        "seatsPerRow": 1,
+        "bookings": {
+          "$list": [
+            "Maude:3A",
+            "Tommy:1A",
+            "Cam:3B",
+            "Lance:3B",
+            "Cam:0B",
+            "Candy:2B",
+            "Tommy:any",
+            "BJ:any"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 2,
+        "seatsPerRow": 1,
+        "bookings": {
+          "$list": [
+            "Kent:any",
+            "Victor:0A",
+            "Tommy:3A",
+            "Diaz:any",
+            "Lance:any",
+            "Mitch:0B",
+            "Mitch:any",
+            "Phil:any",
+            "Cam:1B",
+            "Lance:1A"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 4,
+        "seatsPerRow": 3,
+        "bookings": {
+          "$list": [
+            "Maude:any",
+            "Diaz:any",
+            "Maude:5C",
+            "Ken:0B",
+            "Maude:5A",
+            "Candy:2A",
+            "Diaz:any",
+            "Maude:any",
+            "Kent:2B",
+            "Pepe:1C",
+            "BJ:any",
+            "Diaz:5C"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 3,
+        "seatsPerRow": 5,
+        "bookings": {
+          "$list": [
+            "Victor:any",
+            "Kent:1A",
+            "Ken:3C",
+            "Victor:4C",
+            "BJ:any",
+            "Maude:2E",
+            "Kent:4E",
+            "Lance:any",
+            "Hilary:2D",
+            "Lance:1A",
+            "Pepe:4C",
+            "Pepe:0F",
+            "Candy:any",
+            "Ken:any",
+            "Lance:3B"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 1,
+        "seatsPerRow": 3,
+        "bookings": {
+          "$list": [
+            "Pepe:any",
+            "Phil:any",
+            "Diaz:1D",
+            "Diaz:any",
+            "Tommy:1C",
+            "Hilary:any",
+            "Pepe:any",
+            "Cam:1C",
+            "Mitch:0D",
+            "Phil:0C",
+            "Hilary:0C",
+            "Cam:any",
+            "Candy:any",
+            "Hilary:0D",
+            "Cam:any",
+            "Maude:0B",
+            "Victor:0A",
+            "Hilary:1B",
+            "Candy:any",
+            "Victor:any"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 4,
+        "seatsPerRow": 6,
+        "bookings": {
+          "$list": [
+            "Cam:5C",
+            "Phil:0E",
+            "Tommy:4A",
+            "Victor:2B",
+            "Kent:4E",
+            "Kent:any",
+            "Hilary:0D",
+            "Tommy:4D",
+            "Maude:1E",
+            "Cam:2G",
+            "Candy:3E",
+            "Kent:0C",
+            "Lance:0D",
+            "Phil:3F",
+            "Pepe:3B",
+            "Tommy:any",
+            "Mitch:5D",
+            "Maude:2B",
+            "Kent:any",
+            "Hilary:any",
+            "Ken:any",
+            "Cam:0C",
+            "Mitch:any",
+            "Phil:2F",
+            "Kent:3E"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "rows": 3,
+        "seatsPerRow": 3,
+        "bookings": {
+          "$list": [
+            "Candy:4B",
+            "Victor:any",
+            "Cam:any",
+            "Hilary:any",
+            "Kent:1A",
+            "Kent:any",
+            "Diaz:any",
+            "Lance:any",
+            "Candy:4A",
+            "Kent:4B",
+            "Cam:any",
+            "Kent:any",
+            "Pepe:any",
+            "Ken:any",
+            "Maude:4B",
+            "Kent:1D",
+            "Lance:any",
+            "Diaz:4B",
+            "Mitch:any",
+            "Candy:0B",
+            "Pepe:1D",
+            "Kent:0D",
+            "Maude:0B",
+            "Lance:any",
+            "Kent:any",
+            "Maude:any",
+            "Phil:1B",
+            "Pepe:1A",
+            "BJ:any",
+            "Hilary:any"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "books"
+      },
+      {
+        "kind": "variable",
+        "name": "requests"
+      },
+      {
+        "kind": "call",
+        "name": "Library"
+      },
+      {
+        "kind": "call",
+        "name": "Book"
+      },
+      {
+        "kind": "function",
+        "name": "borrow"
+      },
+      {
+        "kind": "function",
+        "name": "giveBack"
+      },
+      {
+        "kind": "call",
+        "name": "LibraryException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "books": {
+          "$list": ["Treasure Island", "Dracula", "Moby Dick"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Dracula:Lance",
+            "borrow:Dracula:Kent",
+            "borrow:Scarface:Tommy",
+            "return:Moby Dick",
+            "return:Dracula",
+            "borrow:Dracula:Phil"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "books": {
+          "$list": ["Hamlet"]
+        },
+        "requests": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": []
+        },
+        "requests": {
+          "$list": ["borrow:Hamlet:Tommy", "return:Hamlet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Hamlet", "Hamlet"]
+        },
+        "requests": {
+          "$list": ["borrow:Hamlet:Lance", "return:Hamlet", "return:Hamlet"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Dracula", "Frankenstein"]
+        },
+        "requests": {
+          "$list": ["borrow:Frankenstein:Candy", "borrow:Dracula:Candy", "borrow:dracula:Ken"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Treasure Island", "Oliver Twist"]
+        },
+        "requests": {
+          "$list": ["return:Oliver Twist", "return:Treasure Island"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": [
+            "Dracula",
+            "The Odyssey",
+            "Hamlet",
+            "Robinson Crusoe",
+            "Moby Dick",
+            "Oliver Twist",
+            "Treasure Island"
+          ]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Robinson Crusoe:Phil",
+            "borrow:Oliver Twist:Ken",
+            "return:Treasure Island",
+            "return:The Odyssey"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Frankenstein", "Dracula", "Hamlet", "The Odyssey", "Oliver Twist", "Moby Dick"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Frankenstein:Kent",
+            "borrow:The Odyssey:Lance",
+            "borrow:The Odyssey:Diaz",
+            "borrow:The Odyssey:Diaz",
+            "borrow:Moby Dick:Tommy",
+            "return:The Odyssey"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Robinson Crusoe"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Robinson Crusoe:Lance",
+            "return:Robinson Crusoe",
+            "return:Robinson Crusoe",
+            "return:Robinson Crusoe",
+            "borrow:Robinson Crusoe:Ken",
+            "return:Robinson Crusoe",
+            "return:Robinson Crusoe",
+            "borrow:Robinson Crusoe:Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Robinson Crusoe", "Oliver Twist", "Dracula"]
+        },
+        "requests": {
+          "$list": [
+            "return:Oliver Twist",
+            "return:Oliver Twist",
+            "return:Hamlet",
+            "return:Robinson Crusoe",
+            "return:Dracula",
+            "borrow:The Odyssey:Tommy",
+            "return:Oliver Twist",
+            "borrow:Robinson Crusoe:Kent",
+            "borrow:Oliver Twist:Mercedes",
+            "return:Robinson Crusoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": [
+            "Robinson Crusoe",
+            "Moby Dick",
+            "Oliver Twist",
+            "Hamlet",
+            "The Odyssey",
+            "Dracula",
+            "Frankenstein",
+            "Treasure Island"
+          ]
+        },
+        "requests": {
+          "$list": [
+            "return:Hamlet",
+            "borrow:Robinson Crusoe:Lance",
+            "borrow:Treasure Island:Mercedes",
+            "return:The Odyssey",
+            "borrow:Moby Dick:Lance",
+            "return:Dracula",
+            "return:Hamlet",
+            "borrow:Dracula:Candy",
+            "return:Dracula",
+            "borrow:The Odyssey:Candy",
+            "borrow:Moby Dick:Phil",
+            "borrow:Robinson Crusoe:Lance"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Robinson Crusoe", "Frankenstein", "Moby Dick", "Hamlet"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Frankenstein:Diaz",
+            "borrow:Frankenstein:Phil",
+            "borrow:Hamlet:Ken",
+            "borrow:Frankenstein:Lance",
+            "return:Hamlet",
+            "borrow:Hamlet:Candy",
+            "return:Moby Dick",
+            "return:Moby Dick",
+            "return:Hamlet",
+            "return:Moby Dick",
+            "borrow:Moby Dick:Phil",
+            "borrow:Moby Dick:Tommy",
+            "return:Hamlet",
+            "borrow:Hamlet:Ken",
+            "return:Robinson Crusoe"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["The Odyssey", "Moby Dick", "Robinson Crusoe"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Robinson Crusoe:Diaz",
+            "return:Robinson Crusoe",
+            "return:Robinson Crusoe",
+            "borrow:Hamlet:Ken",
+            "borrow:The Odyssey:Diaz",
+            "return:Robinson Crusoe",
+            "borrow:Moby Dick:Tommy",
+            "borrow:The Odyssey:Lance",
+            "borrow:Robinson Crusoe:Tommy",
+            "return:The Odyssey",
+            "borrow:The Odyssey:Tommy",
+            "borrow:Robinson Crusoe:Tommy",
+            "borrow:Robinson Crusoe:Ken",
+            "borrow:The Odyssey:Diaz",
+            "return:The Odyssey",
+            "return:Robinson Crusoe",
+            "return:Moby Dick",
+            "return:The Odyssey",
+            "borrow:Moby Dick:Lance",
+            "borrow:Hamlet:Tommy"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Hamlet"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Hamlet:Mercedes",
+            "return:Hamlet",
+            "return:Hamlet",
+            "return:Hamlet",
+            "return:Hamlet",
+            "return:Hamlet",
+            "borrow:Hamlet:Tommy",
+            "return:Hamlet",
+            "return:Hamlet",
+            "borrow:Hamlet:Ken",
+            "borrow:Hamlet:Ken",
+            "borrow:Hamlet:Diaz",
+            "return:Moby Dick",
+            "borrow:Moby Dick:Kent",
+            "return:Hamlet",
+            "return:Hamlet",
+            "return:Hamlet",
+            "borrow:Hamlet:Candy",
+            "borrow:Hamlet:Candy",
+            "return:Hamlet",
+            "borrow:Hamlet:Ken",
+            "return:Hamlet",
+            "borrow:Hamlet:Kent",
+            "borrow:Scarface:Candy",
+            "borrow:Hamlet:Ken"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "books": {
+          "$list": ["Treasure Island", "Hamlet"]
+        },
+        "requests": {
+          "$list": [
+            "borrow:Treasure Island:Diaz",
+            "borrow:Hamlet:Phil",
+            "borrow:Hamlet:Phil",
+            "return:Hamlet",
+            "return:Treasure Island",
+            "borrow:Hamlet:Mercedes",
+            "return:Treasure Island",
+            "borrow:Treasure Island:Ken",
+            "return:The Odyssey",
+            "return:The Odyssey",
+            "borrow:Treasure Island:Lance",
+            "return:Treasure Island",
+            "return:Hamlet",
+            "borrow:Hamlet:Diaz",
+            "return:Treasure Island",
+            "return:Hamlet",
+            "borrow:Oliver Twist:Lance",
+            "borrow:Treasure Island:Diaz",
+            "return:Treasure Island",
+            "borrow:Treasure Island:Mercedes",
+            "return:Treasure Island",
+            "return:Treasure Island",
+            "borrow:Hamlet:Phil",
+            "return:Dracula",
+            "return:Treasure Island",
+            "borrow:Hamlet:Mercedes",
+            "borrow:Treasure Island:Diaz",
+            "return:Hamlet",
+            "return:Treasure Island",
+            "borrow:Robinson Crusoe:Phil"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}

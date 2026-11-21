@@ -1,0 +1,329 @@
+{
+  "comparator": "trimmed",
+  "structure": {
+    "requires": [
+      {
+        "kind": "variable",
+        "name": "randuri"
+      },
+      {
+        "kind": "variable",
+        "name": "locuriPeRand"
+      },
+      {
+        "kind": "variable",
+        "name": "rezervari"
+      },
+      {
+        "kind": "array_2d"
+      },
+      {
+        "kind": "call",
+        "name": "LocException"
+      },
+      {
+        "kind": "extends"
+      },
+      {
+        "kind": "throw"
+      },
+      {
+        "kind": "try"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "visible": true,
+      "inject": {
+        "randuri": 2,
+        "locuriPeRand": 2,
+        "rezervari": {
+          "$list": [
+            "Tommy:1A",
+            "Kent:1A",
+            "Lance:oricare",
+            "Mitch:3A",
+            "Kent:2B",
+            "Phil:oricare",
+            "Candy:oricare",
+            "Diaz:oricare"
+          ]
+        }
+      }
+    },
+    {
+      "visible": true,
+      "inject": {
+        "randuri": 1,
+        "locuriPeRand": 3,
+        "rezervari": {
+          "$list": []
+        }
+      }
+    },
+    {
+      "inject": {
+        "randuri": 1,
+        "locuriPeRand": 1,
+        "rezervari": {
+          "$list": ["A:oricare", "B:oricare", "C:1A", "D:oricare"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "randuri": 3,
+        "locuriPeRand": 6,
+        "rezervari": {
+          "$list": ["Tommy:3F", "Lance:3G", "Phil:0A", "Kent:10A", "Ken:1a", "Diaz:1A"]
+        }
+      }
+    },
+    {
+      "inject": {
+        "randuri": 2,
+        "locuriPeRand": 3,
+        "rezervari": {
+          "$list": [
+            "Candy:2C",
+            "Mitch:oricare",
+            "Pepe:oricare",
+            "Hilary:oricare",
+            "Cam:oricare",
+            "Victor:oricare",
+            "BJ:oricare",
+            "Maude:1A"
+          ]
+        }
+      }
+    },
+    {
+      "inject": {
+        "randuri": 5,
+        "locuriPeRand": 6,
+        "rezervari": {
+          "$list": ["Diaz:oricare", "Pepe:oricare", "Diaz:1D"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 3,
+        "locuriPeRand": 6,
+        "rezervari": {
+          "$list": ["Maude:0D", "BJ:oricare", "Mitch:0G", "BJ:4E", "Phil:1F"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 5,
+        "locuriPeRand": 5,
+        "rezervari": {
+          "$list": ["Lance:6F", "Ken:0B", "Maude:oricare", "Lance:4F", "Cam:5E", "Hilary:5E"]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 2,
+        "locuriPeRand": 1,
+        "rezervari": {
+          "$list": [
+            "Maude:3A",
+            "Tommy:1A",
+            "Cam:3B",
+            "Lance:3B",
+            "Cam:0B",
+            "Candy:2B",
+            "Tommy:oricare",
+            "BJ:oricare"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 2,
+        "locuriPeRand": 1,
+        "rezervari": {
+          "$list": [
+            "Kent:oricare",
+            "Victor:0A",
+            "Tommy:3A",
+            "Diaz:oricare",
+            "Lance:oricare",
+            "Mitch:0B",
+            "Mitch:oricare",
+            "Phil:oricare",
+            "Cam:1B",
+            "Lance:1A"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 4,
+        "locuriPeRand": 3,
+        "rezervari": {
+          "$list": [
+            "Maude:oricare",
+            "Diaz:oricare",
+            "Maude:5C",
+            "Ken:0B",
+            "Maude:5A",
+            "Candy:2A",
+            "Diaz:oricare",
+            "Maude:oricare",
+            "Kent:2B",
+            "Pepe:1C",
+            "BJ:oricare",
+            "Diaz:5C"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 3,
+        "locuriPeRand": 5,
+        "rezervari": {
+          "$list": [
+            "Victor:oricare",
+            "Kent:1A",
+            "Ken:3C",
+            "Victor:4C",
+            "BJ:oricare",
+            "Maude:2E",
+            "Kent:4E",
+            "Lance:oricare",
+            "Hilary:2D",
+            "Lance:1A",
+            "Pepe:4C",
+            "Pepe:0F",
+            "Candy:oricare",
+            "Ken:oricare",
+            "Lance:3B"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 1,
+        "locuriPeRand": 3,
+        "rezervari": {
+          "$list": [
+            "Pepe:oricare",
+            "Phil:oricare",
+            "Diaz:1D",
+            "Diaz:oricare",
+            "Tommy:1C",
+            "Hilary:oricare",
+            "Pepe:oricare",
+            "Cam:1C",
+            "Mitch:0D",
+            "Phil:0C",
+            "Hilary:0C",
+            "Cam:oricare",
+            "Candy:oricare",
+            "Hilary:0D",
+            "Cam:oricare",
+            "Maude:0B",
+            "Victor:0A",
+            "Hilary:1B",
+            "Candy:oricare",
+            "Victor:oricare"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 4,
+        "locuriPeRand": 6,
+        "rezervari": {
+          "$list": [
+            "Cam:5C",
+            "Phil:0E",
+            "Tommy:4A",
+            "Victor:2B",
+            "Kent:4E",
+            "Kent:oricare",
+            "Hilary:0D",
+            "Tommy:4D",
+            "Maude:1E",
+            "Cam:2G",
+            "Candy:3E",
+            "Kent:0C",
+            "Lance:0D",
+            "Phil:3F",
+            "Pepe:3B",
+            "Tommy:oricare",
+            "Mitch:5D",
+            "Maude:2B",
+            "Kent:oricare",
+            "Hilary:oricare",
+            "Ken:oricare",
+            "Cam:0C",
+            "Mitch:oricare",
+            "Phil:2F",
+            "Kent:3E"
+          ]
+        }
+      },
+      "generated": true
+    },
+    {
+      "inject": {
+        "randuri": 3,
+        "locuriPeRand": 3,
+        "rezervari": {
+          "$list": [
+            "Candy:4B",
+            "Victor:oricare",
+            "Cam:oricare",
+            "Hilary:oricare",
+            "Kent:1A",
+            "Kent:oricare",
+            "Diaz:oricare",
+            "Lance:oricare",
+            "Candy:4A",
+            "Kent:4B",
+            "Cam:oricare",
+            "Kent:oricare",
+            "Pepe:oricare",
+            "Ken:oricare",
+            "Maude:4B",
+            "Kent:1D",
+            "Lance:oricare",
+            "Diaz:4B",
+            "Mitch:oricare",
+            "Candy:0B",
+            "Pepe:1D",
+            "Kent:0D",
+            "Maude:0B",
+            "Lance:oricare",
+            "Kent:oricare",
+            "Maude:oricare",
+            "Phil:1B",
+            "Pepe:1A",
+            "BJ:oricare",
+            "Hilary:oricare"
+          ]
+        }
+      },
+      "generated": true
+    }
+  ]
+}
