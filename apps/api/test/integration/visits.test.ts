@@ -22,12 +22,12 @@ describe('Visitor counts', () => {
   it('a few pages from one browser are one visitor, with its pages and where it came from', async () => {
     const guest = agent();
     await visit(guest, { path: '/', referrer: 'www.reddit.com' });
-    await visit(guest, { path: '/courses' });
+    await visit(guest, { path: '/courses', active: true });
     await visit(guest, { path: '/ro/courses' });
 
     const res = await (await admin()).get('/api/admin/visits').expect(200);
     const day = res.body.days.at(-1);
-    expect(day).toMatchObject({ day: today(), visitors: 1, views: 3 });
+    expect(day).toMatchObject({ day: today(), visitors: 1, views: 3, idle: 0 });
     expect(res.body.pages).toEqual([
       { key: '/courses', visitors: 1, views: 2 },
       { key: '/', visitors: 1, views: 1 },
@@ -50,6 +50,77 @@ describe('Visitor counts', () => {
     const res = await (await admin()).get('/api/admin/visits').expect(200);
     expect(res.body.auth).toEqual([{ key: 'signedIn', visitors: 1, views: 1 }]);
     expect(await prisma.pageVisit.count()).toBe(1);
+  });
+
+  it('counts a guest who only loads pages apart, out of every other number and the list', async () => {
+    // A person: did something on the placement test's page, then left
+    const person = agent();
+    await visit(person, { path: '/placement', referrer: 'www.google.com' }, 'Person');
+    await person
+      .post('/api/visits/steps')
+      .set('User-Agent', 'Person')
+      .send({ steps: [], active: true })
+      .expect(204);
+    // Scrapers: a real browser from three home IPs, one page each, nothing done.
+    // A scroll alone doesn't make one a person, since a script can scroll.
+    await visit(agent(), { path: '/placement', referrer: '' }, 'Scraper 1');
+    await visit(agent(), { path: '/lesson/python/print', referrer: '' }, 'Scraper 2');
+    const third = agent();
+    await visit(third, { path: '/ro/almanac', referrer: '' }, 'Scraper 3');
+    await third
+      .post('/api/visits/steps')
+      .set('User-Agent', 'Scraper 3')
+      .send({ steps: [{ kind: 'scroll', target: '100' }] })
+      .expect(204);
+
+    const a = await admin();
+    const res = await a.get('/api/admin/visits').expect(200);
+    expect(res.body.days.at(-1)).toMatchObject({ visitors: 1, views: 1, idle: 3 });
+    expect(res.body.pages).toEqual([{ key: '/placement', visitors: 1, views: 1 }]);
+    expect(res.body.sources).toEqual([{ key: 'google', visitors: 1, views: 1 }]);
+    expect(res.body.auth).toEqual([{ key: 'guest', visitors: 1, views: 1 }]);
+    expect(res.body.lang).toEqual([{ key: 'en', visitors: 1, views: 1 }]);
+    expect(res.body.placement.opened).toBe(1);
+
+    const list = await a.get('/api/admin/visits/guests').expect(200);
+    expect(list.body.visits.map((v: { source: string }) => v.source)).toEqual(['google']);
+    expect(list.body.idle).toBe(3);
+    const direct = await a.get('/api/admin/visits/guests?source=direct').expect(200);
+    expect(direct.body).toMatchObject({ visits: [], idle: 3 });
+  });
+
+  it('counts a guest with the people from the moment they do something, all their pages too', async () => {
+    const guest = agent();
+    await visit(guest, { path: '/' });
+    await visit(guest, { path: '/courses' });
+    const a = await admin();
+    expect((await a.get('/api/admin/visits').expect(200)).body.days.at(-1)).toMatchObject({
+      visitors: 0,
+      idle: 1,
+    });
+
+    await visit(guest, { path: '/algorithms', active: true });
+    expect((await a.get('/api/admin/visits').expect(200)).body.days.at(-1)).toMatchObject({
+      visitors: 1,
+      views: 3,
+      idle: 0,
+    });
+  });
+
+  it('counts a signed-in student with the people without anything done, and a guest who signs in', async () => {
+    const { agent: student } = await createAuthenticatedAgent();
+    await visit(student, { path: '/dashboard' }, 'Student browser');
+    // A guest who looked around, made an account and goes on signed in
+    const guest = agent();
+    await visit(guest, { path: '/getstarted' }, 'New browser');
+    await guest
+      .post('/auth/signup')
+      .send({ name: 'Ana Maria', email: 'ana@test.com', password: 'password123' })
+      .expect(200);
+    await visit(guest, { path: '/tour' }, 'New browser');
+
+    const res = await (await admin()).get('/api/admin/visits').expect(200);
+    expect(res.body.days.at(-1)).toMatchObject({ visitors: 2, views: 3, idle: 0 });
   });
 
   it('only an admin sees the numbers', async () => {
@@ -87,9 +158,32 @@ describe('Visitor counts', () => {
           signedIn: true,
           lang: 'ro',
         },
+        // A guest who only loaded two pages
+        {
+          day: yesterday,
+          visitor: 'c'.repeat(64),
+          path: '/almanac',
+          source: 'direct',
+          signedIn: false,
+          lang: 'en',
+        },
+        {
+          day: yesterday,
+          visitor: 'c'.repeat(64),
+          path: '/courses',
+          source: null,
+          signedIn: false,
+          lang: 'en',
+        },
       ],
     });
-    await visit(agent(), { path: '/almanac' });
+    await prisma.guestVisit.createMany({
+      data: [
+        { day: yesterday, visitor: 'a'.repeat(64), source: 'google', lang: 'en', active: true },
+        { day: yesterday, visitor: 'c'.repeat(64), source: 'direct', lang: 'en' },
+      ],
+    });
+    await visit(agent(), { path: '/almanac', active: true });
 
     await rollUp();
     await rollUp(); // a second run finds nothing left to do
@@ -105,13 +199,16 @@ describe('Visitor counts', () => {
         expect.objectContaining({ dimension: 'source', key: 'google', visitors: 1, views: 1 }),
         expect.objectContaining({ dimension: 'auth', key: 'guest', visitors: 1, views: 2 }),
         expect.objectContaining({ dimension: 'lang', key: 'ro', visitors: 1, views: 1 }),
+        expect.objectContaining({ dimension: 'idle', key: '', visitors: 1, views: 2 }),
       ]),
     );
-    expect(totals).toHaveLength(9);
+    expect(totals).toHaveLength(10);
+    // Read before the hashes went: the people stay the people
+    expect(await prisma.guestVisit.count({ where: { day: yesterday, visitor: null } })).toBe(2);
 
     const res = await (await admin()).get('/api/admin/visits').expect(200);
-    expect(res.body.days.at(-2)).toMatchObject({ visitors: 2, views: 3 });
-    expect(res.body.days.at(-1)).toMatchObject({ visitors: 1, views: 1 });
+    expect(res.body.days.at(-2)).toMatchObject({ visitors: 2, views: 3, idle: 1 });
+    expect(res.body.days.at(-1)).toMatchObject({ visitors: 1, views: 1, idle: 0 });
   });
 
   it("keeps a guest's pages, clicks and scrolls as one visit, in order, from its first page's time", async () => {
@@ -143,6 +240,7 @@ describe('Visitor counts', () => {
         },
       ],
       next: null,
+      idle: 0,
     });
     // Set when the first page came in
     const startedAt = Date.parse(res.body.visits[0].startedAt);

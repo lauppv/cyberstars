@@ -793,7 +793,9 @@ model VisitTotal {
 // is the same hash as page_visits, so a guest's pages and clicks that day land
 // on one visit; the roll-up blanks it once the day is over, which leaves the
 // visit leading back to no one. source, lang and startedAt come from its first
-// page; visits from before startedAt was kept have none. Kept for
+// page; visits from before startedAt was kept have none. active: the guest
+// pressed, typed, scrolled by hand or touched the screen; a visit without it
+// (a scraper loading pages) is counted apart from the people. Kept for
 // VISIT_KEEP_DAYS, then deleted with its steps.
 model GuestVisit {
   id        Int       @id @default(autoincrement())
@@ -802,6 +804,7 @@ model GuestVisit {
   source    String?   @db.VarChar(100)
   lang      String    @db.VarChar(2)
   startedAt DateTime? @default(now()) @map("started_at")
+  active    Boolean   @default(false)
 
   steps VisitStep[]
 

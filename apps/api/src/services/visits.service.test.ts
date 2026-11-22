@@ -13,6 +13,8 @@ const mockRepo = {
   topClicksSince: vi.fn(),
   placementStepsSince: vi.fn(),
   guestVisitsSince: vi.fn(),
+  idleGuestVisitsSince: vi.fn(),
+  markActive: vi.fn(),
 };
 vi.mock('../repositories/visits.repository.js', () => mockRepo);
 
@@ -30,6 +32,8 @@ beforeEach(() => {
   mockRepo.countSteps.mockResolvedValue(0);
   mockRepo.topClicksSince.mockResolvedValue([]);
   mockRepo.placementStepsSince.mockResolvedValue([]);
+  mockRepo.idleGuestVisitsSince.mockResolvedValue(0);
+  mockRepo.markActive.mockResolvedValue({ count: 1 });
 });
 
 afterEach(() => vi.useRealTimers());
@@ -191,6 +195,40 @@ describe('guest steps', () => {
     ]);
   });
 
+  it('counts a guest with the people once the app says they did something, or they pressed a button', async () => {
+    await service.recordPageView({ path: '/', active: true }, '1.1.1.1', BROWSER, false);
+    expect(mockRepo.markActive).toHaveBeenCalledWith(7);
+
+    mockRepo.markActive.mockClear();
+    await service.recordPageView({ path: '/', steps: [run] }, '1.1.1.1', BROWSER, false);
+    expect(mockRepo.markActive).toHaveBeenCalledWith(7);
+
+    mockRepo.markActive.mockClear();
+    await service.recordSteps({ steps: [], active: true }, '1.1.1.1', BROWSER);
+    expect(mockRepo.markActive).toHaveBeenCalledWith(7);
+    expect(mockRepo.addSteps).toHaveBeenCalledTimes(2); // nothing added for no steps
+  });
+
+  it("doesn't count a guest who only loaded pages or scrolled with the people", async () => {
+    await service.recordPageView({ path: '/' }, '1.1.1.1', BROWSER, false);
+    await service.recordPageView({ path: '/courses', steps: [deep] }, '1.1.1.1', BROWSER, false);
+    await service.recordSteps({ steps: [deep] }, '1.1.1.1', BROWSER);
+    expect(mockRepo.markActive).not.toHaveBeenCalled();
+  });
+
+  it('marks the visit of a guest who just made an account and did something on the way', async () => {
+    await service.recordPageView({ path: '/', active: true }, '1.1.1.1', BROWSER, true);
+    expect(mockRepo.guestVisitFor).not.toHaveBeenCalled();
+    expect(mockRepo.markActive).toHaveBeenCalledWith(7);
+    expect(mockRepo.addSteps).not.toHaveBeenCalled();
+  });
+
+  it('marks nothing when a guest has no visit today', async () => {
+    mockRepo.guestVisitId.mockResolvedValueOnce(null);
+    await service.recordSteps({ steps: [], active: true }, '1.1.1.1', BROWSER);
+    expect(mockRepo.markActive).not.toHaveBeenCalled();
+  });
+
   it('gives a signed-in page no step, and looks for no visit when nothing came with it', async () => {
     await service.recordPageView({ path: '/' }, '1.1.1.1', BROWSER, true);
     expect(mockRepo.guestVisitFor).not.toHaveBeenCalled();
@@ -278,9 +316,42 @@ describe('report', () => {
     expect(mockRepo.totalsSince).toHaveBeenCalledWith(day('2026-11-01'));
     expect(dto.range).toBe(30);
     expect(dto.days).toHaveLength(30);
-    expect(dto.days[0]).toEqual({ day: '2026-11-01', visitors: 0, views: 0, newAccounts: 0 });
-    expect(dto.days[27]).toEqual({ day: '2026-11-28', visitors: 2, views: 3, newAccounts: 0 });
-    expect(dto.days[29]).toEqual({ day: '2026-11-30', visitors: 4, views: 9, newAccounts: 1 });
+    expect(dto.days[0]).toEqual({
+      day: '2026-11-01',
+      visitors: 0,
+      views: 0,
+      newAccounts: 0,
+      idle: 0,
+    });
+    expect(dto.days[27]).toEqual({
+      day: '2026-11-28',
+      visitors: 2,
+      views: 3,
+      newAccounts: 0,
+      idle: 0,
+    });
+    expect(dto.days[29]).toEqual({
+      day: '2026-11-30',
+      visitors: 4,
+      views: 9,
+      newAccounts: 1,
+      idle: 0,
+    });
+  });
+
+  it('gives the guests who only loaded pages apart, each day', async () => {
+    mockRepo.totalsSince.mockResolvedValue([
+      { day: day('2026-11-30'), dimension: 'all', key: '', visitors: 4, views: 9 },
+      { day: day('2026-11-30'), dimension: 'idle', key: '', visitors: 287, views: 290 },
+      { day: day('2026-11-29'), dimension: 'idle', key: '', visitors: 5, views: 5 },
+    ]);
+    mockRepo.newAccountsSince.mockResolvedValue([]);
+
+    const dto = await service.report(30);
+
+    expect(dto.days[28]).toMatchObject({ visitors: 0, views: 0, idle: 5 });
+    expect(dto.days[29]).toMatchObject({ visitors: 4, views: 9, idle: 287 });
+    expect(dto.pages).toEqual([]);
   });
 
   it('adds each page, source, guest/signed-in and language up across days', async () => {
@@ -377,6 +448,18 @@ describe('guestVisits', () => {
       steps: [{ kind: 'page', target: '/' }],
     });
     expect(dto.next).toBe(81);
+    expect(mockRepo.idleGuestVisitsSince).toHaveBeenCalledWith(
+      new Date('2026-11-01T00:00:00Z'),
+      'reddit',
+    );
+  });
+
+  it('says how many visits it left out for only loading pages', async () => {
+    mockRepo.guestVisitsSince.mockResolvedValue([row(5)]);
+    mockRepo.idleGuestVisitsSince.mockResolvedValue(287);
+    const dto = await service.guestVisits(90);
+    expect(dto.idle).toBe(287);
+    expect(mockRepo.idleGuestVisitsSince).toHaveBeenCalledWith(expect.any(Date), undefined);
   });
 
   it('gives no start time for a visit from before it was kept', async () => {

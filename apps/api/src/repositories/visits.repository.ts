@@ -49,6 +49,14 @@ export async function guestVisitId(day: Date, visitor: string): Promise<number |
   return row?.id ?? null;
 }
 
+// The guest did something: from then on the visit counts with the people.
+export function markActive(visitId: number) {
+  return prisma.guestVisit.updateMany({
+    where: { id: visitId, active: false },
+    data: { active: true },
+  });
+}
+
 export function countSteps(visitId: number): Promise<number> {
   return prisma.visitStep.count({ where: { visitId } });
 }
@@ -73,22 +81,38 @@ export async function saltFor(day: Date, fresh: string): Promise<string> {
 
 // Every count kept for a day, straight from its visits. A visitor is counted
 // once per page, source, guest or signed in and language, so a student who
-// signs in halfway shows up as both. Built when called, like the leaderboard's
-// query, so tests that mock @prisma/client can still import this module.
+// signs in halfway shows up as both. Only people count: a visitor signed in at
+// some point that day, or a guest whose visit says they did something. The
+// rest only loaded pages, mostly scrapers, and count apart as `idle`. Read
+// before the roll-up blanks the guest visits' hashes, which tie them to their
+// pages. Built when called, like the leaderboard's query, so tests that mock
+// @prisma/client can still import this module.
 function totalsFrom(where: Prisma.Sql) {
   const counts = Prisma.sql`COUNT(DISTINCT visitor)::int AS visitors, COUNT(*)::int AS views`;
   return Prisma.sql`
-    SELECT day, 'all' AS dimension, '' AS key, ${counts} FROM page_visits WHERE ${where} GROUP BY day
-    UNION ALL
-    SELECT day, 'page', path, ${counts} FROM page_visits WHERE ${where} GROUP BY day, path
-    UNION ALL
-    SELECT day, 'source', source, ${counts} FROM page_visits
-      WHERE ${where} AND source IS NOT NULL GROUP BY day, source
-    UNION ALL
-    SELECT day, 'auth', CASE WHEN signed_in THEN 'signedIn' ELSE 'guest' END, ${counts}
-      FROM page_visits WHERE ${where} GROUP BY 1, 3
-    UNION ALL
-    SELECT day, 'lang', lang, ${counts} FROM page_visits WHERE ${where} GROUP BY day, lang
+    SELECT day, dimension, key, visitors, views FROM (
+      WITH visits AS (
+        SELECT p.day, p.visitor, p.path, p.source, p.signed_in, p.lang,
+          bool_or(p.signed_in) OVER (PARTITION BY p.day, p.visitor)
+            OR COALESCE(g.active, false) AS person
+        FROM (SELECT * FROM page_visits WHERE ${where}) p
+        LEFT JOIN guest_visits g ON g.day = p.day AND g.visitor = p.visitor
+      ),
+      people AS (SELECT * FROM visits WHERE person)
+      SELECT day, 'all' AS dimension, '' AS key, ${counts} FROM people GROUP BY day
+      UNION ALL
+      SELECT day, 'page', path, ${counts} FROM people GROUP BY day, path
+      UNION ALL
+      SELECT day, 'source', source, ${counts} FROM people
+        WHERE source IS NOT NULL GROUP BY day, source
+      UNION ALL
+      SELECT day, 'auth', CASE WHEN signed_in THEN 'signedIn' ELSE 'guest' END, ${counts}
+        FROM people GROUP BY 1, 3
+      UNION ALL
+      SELECT day, 'lang', lang, ${counts} FROM people GROUP BY day, lang
+      UNION ALL
+      SELECT day, 'idle', '', ${counts} FROM visits WHERE NOT person GROUP BY day
+    ) totals
   `;
 }
 
@@ -140,29 +164,31 @@ export function topClicksSince(from: Date, limit: number): Promise<VisitCount[]>
   return prisma.$queryRaw<VisitCount[]>(Prisma.sql`
     SELECT s.target AS key, COUNT(DISTINCT s.visit_id)::int AS visitors, COUNT(*)::int AS views
     FROM visit_steps s JOIN guest_visits v ON v.id = s.visit_id
-    WHERE v.day >= ${from} AND s.kind = 'click'
+    WHERE v.day >= ${from} AND v.active AND s.kind = 'click'
     GROUP BY s.target
     ORDER BY views DESC, key
     LIMIT ${limit}
   `);
 }
 
-// The placement test's steps since `from`, each by how many visits took it.
+// The placement test's steps since `from`, each by how many visits took it,
+// of guests who did something (opening its page alone isn't enough).
 // Its page counts once per visit as `opened`, in English or Romanian.
 export function placementStepsSince(from: Date): Promise<{ key: string; visitors: number }[]> {
   return prisma.$queryRaw<{ key: string; visitors: number }[]>(Prisma.sql`
     SELECT CASE WHEN s.kind = 'page' THEN 'opened' ELSE s.target END AS key,
       COUNT(DISTINCT s.visit_id)::int AS visitors
     FROM visit_steps s JOIN guest_visits v ON v.id = s.visit_id
-    WHERE v.day >= ${from}
+    WHERE v.day >= ${from} AND v.active
       AND ((s.kind = 'page' AND s.target IN ('/placement', '/ro/placement'))
         OR (s.kind = 'click' AND s.target LIKE 'placement-%'))
     GROUP BY 1
   `);
 }
 
-// Guest visits since `from`, newest first, each with its steps in order.
-// before is the id the page starts under; source keeps only visits from there.
+// Guest visits since `from` of guests who did something, newest first, each
+// with its steps in order. before is the id the page starts under; source keeps
+// only visits from there.
 export function guestVisitsSince(
   from: Date,
   { source, before, take }: { source?: string; before?: number; take: number },
@@ -170,6 +196,7 @@ export function guestVisitsSince(
   return prisma.guestVisit.findMany({
     where: {
       day: { gte: from },
+      active: true,
       ...(source !== undefined && { source }),
       ...(before !== undefined && { id: { lt: before } }),
     },
@@ -183,5 +210,13 @@ export function guestVisitsSince(
       lang: true,
       steps: { select: { kind: true, target: true }, orderBy: { id: 'asc' } },
     },
+  });
+}
+
+// The guest visits since `from` (from `source`, when given) left out of that
+// list for only loading pages.
+export function idleGuestVisitsSince(from: Date, source?: string): Promise<number> {
+  return prisma.guestVisit.count({
+    where: { day: { gte: from }, active: false, ...(source !== undefined && { source }) },
   });
 }
