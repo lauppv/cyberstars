@@ -711,16 +711,38 @@ export function LessonPage() {
     );
   }
 
+  // Dev mode's sidebar button, first on the left, before the lesson's tabs
+  const sidebarButton =
+    devMode && sidebar && !inTour ? (
+      <button
+        type="button"
+        data-track="dev-mode-sidebar"
+        onClick={() => {
+          setMenuOpen(false);
+          sidebar.toggle();
+        }}
+        aria-label={t(sidebar.state === 'open' ? 'sidebar.hide' : 'sidebar.show')}
+        aria-expanded={sidebar.state === 'open'}
+        title={t(sidebar.state === 'open' ? 'sidebar.hide' : 'sidebar.show')}
+        className="w-8 h-8 shrink-0 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
+      >
+        <PanelLeft size={14} aria-hidden="true" />
+      </button>
+    ) : null;
+  // A web lesson puts it in its own bar
+  const lessonBarButton = isWeb ? null : sidebarButton;
+
   // The lesson's text and the latest test run, on the left of every lesson
   const lessonColumn = (
     <>
-      {leftTabs.length > 1 && (
+      {(leftTabs.length > 1 || lessonBarButton) && (
         <PanelTabs
           aria-label={t('lesson.panelTabs')}
           className="hidden @2xl:flex shrink-0 px-3"
           tabs={leftTabs}
           active={view}
           onSelect={setLeftView}
+          lead={lessonBarButton}
         />
       )}
       <div
@@ -874,22 +896,6 @@ export function LessonPage() {
         <span className="text-[12px] font-semibold text-[var(--success)]">
           {t('lesson.completed')}
         </span>
-      )}
-      {devMode && sidebar && !inTour && (
-        <button
-          type="button"
-          data-track="dev-mode-sidebar"
-          onClick={() => {
-            setMenuOpen(false);
-            sidebar.toggle();
-          }}
-          aria-label={t(sidebar.state === 'open' ? 'sidebar.hide' : 'sidebar.show')}
-          aria-expanded={sidebar.state === 'open'}
-          title={t(sidebar.state === 'open' ? 'sidebar.hide' : 'sidebar.show')}
-          className="w-8 h-8 shrink-0 flex items-center justify-center rounded-[var(--radius-sm)] text-[var(--text2)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition cursor-pointer bg-transparent border border-[var(--border)]"
-        >
-          <PanelLeft size={14} aria-hidden="true" />
-        </button>
       )}
       {/* A web lesson's IDE keeps splits of its own */}
       {devMode && !isWeb && (
@@ -1091,8 +1097,9 @@ export function LessonPage() {
           panels are tabs that take the full width */}
       {!isWeb && (
         <PanelTabs
-          className="@2xl:hidden bg-[var(--glass)]"
+          className={`@2xl:hidden bg-[var(--glass)] ${sidebarButton ? 'pl-2' : ''}`}
           fill
+          lead={sidebarButton}
           tabs={[
             ...leftTabs,
             {
@@ -1131,6 +1138,7 @@ export function LessonPage() {
                 onConsole={setWebConsole}
                 lesson={lessonColumn}
                 actions={actions}
+                sidebarButton={sidebarButton}
                 banner={
                   <>
                     {startAlert}

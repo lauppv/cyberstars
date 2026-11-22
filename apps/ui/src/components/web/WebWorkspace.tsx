@@ -45,6 +45,8 @@ interface WebWorkspaceProps {
   lesson: ReactNode;
   // The lesson's actions (save, solution, forum, reset, the tutor, dev mode)
   actions: ReactNode;
+  // Dev mode's sidebar button, first on the left, before Lesson and Code
+  sidebarButton?: ReactNode;
   // Dev mode is on: the IDE keeps splits of its own, saved on the device
   devMode?: boolean;
   // A note over the whole workspace (the saved code couldn't be loaded)
@@ -129,6 +131,7 @@ export default function WebWorkspace({
   lesson,
   actions,
   devMode = false,
+  sidebarButton,
   banner,
   runTests,
   testsError,
@@ -519,8 +522,9 @@ export default function WebWorkspace({
   return (
     <div className="flex-1 min-w-0 flex flex-col">
       <PanelTabs
-        className="@2xl:hidden shrink-0 bg-[var(--glass)]"
+        className={`@2xl:hidden shrink-0 bg-[var(--glass)] ${sidebarButton ? 'pl-2' : ''}`}
         fill
+        lead={sidebarButton}
         tabs={panelTabs}
         active={view}
         onSelect={setView}
@@ -532,12 +536,13 @@ export default function WebWorkspace({
           // With the lesson and the code side by side, the side widens to
           // hold 10rem of lesson beside the code, as far as the site keeps
           // room for its buttons. In dev mode the side never takes that
-          // room, whatever it shows (27rem: Run, Run Tests, Reset, the
-          // sidebar, Dev mode and the menu)
-          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none ${devMode ? '@2xl:max-w-[calc(100%-27rem-6px)]' : ''} ${!bothShown ? 'min-w-0' : filesSplit.closed ? 'min-w-[min(calc(22rem+12px),calc(100%-27rem-6px))]' : 'min-w-[min(calc(28rem+12px),calc(100%-27rem-6px))]'} flex-col bg-[var(--panel-bg)]`}
+          // room, whatever it shows (24.5rem: Run, Run Tests, Reset, Dev mode
+          // and the menu)
+          className={`${view === 'site' ? 'hidden' : 'flex'} @2xl:flex w-full @2xl:w-[var(--split)] @2xl:flex-none ${devMode ? '@2xl:max-w-[calc(100%-24.5rem-6px)]' : ''} ${!bothShown ? 'min-w-0' : filesSplit.closed ? 'min-w-[min(calc(22rem+12px),calc(100%-24.5rem-6px))]' : 'min-w-[min(calc(28rem+12px),calc(100%-24.5rem-6px))]'} flex-col bg-[var(--panel-bg)]`}
         >
           <div className="shrink-0 h-12 flex items-center justify-between gap-2 px-3 border-b border-[var(--border)]">
-            <div className="hidden @2xl:block">
+            <div className="hidden @2xl:flex items-center gap-2">
+              {sidebarButton}
               {devMode ? (
                 <div
                   role="group"
