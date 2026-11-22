@@ -7,9 +7,9 @@ import { axisTicks } from './axisTicks';
 import type { VisitDay } from '@cyberstars/shared/visits';
 
 const days: VisitDay[] = [
-  { day: '2026-11-01', visitors: 1, views: 5, newAccounts: 0 },
-  { day: '2026-11-02', visitors: 7, views: 9, newAccounts: 2 },
-  { day: '2026-11-03', visitors: 4, views: 4, newAccounts: 1 },
+  { day: '2026-11-01', visitors: 1, views: 5, newAccounts: 0, idle: 0 },
+  { day: '2026-11-02', visitors: 7, views: 9, newAccounts: 2, idle: 40 },
+  { day: '2026-11-03', visitors: 4, views: 4, newAccounts: 1, idle: 3 },
 ];
 
 describe('axisTicks', () => {
@@ -51,6 +51,7 @@ describe('DailyChart', () => {
       visitors: 1,
       views: 1,
       newAccounts: 0,
+      idle: 0,
     }));
     render(<Chart days={turn} field="visitors" title="Visitors a day" />);
     expect(screen.getByText('Oct')).toHaveAttribute('text-anchor', 'start');
@@ -91,6 +92,13 @@ describe('DailyChart', () => {
 
     fireEvent.blur(svg());
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
+  });
+
+  it('counts the guests without interaction in visitors', () => {
+    render(<Chart days={days} field="idle" title="Without interaction a day" />);
+    const chart = screen.getByRole('img', { name: 'Without interaction a day' });
+    fireEvent.keyDown(chart, { key: 'ArrowLeft' });
+    expect(screen.getByRole('status')).toHaveTextContent('40 visitors');
   });
 
   it('names a week by its first day and year', () => {

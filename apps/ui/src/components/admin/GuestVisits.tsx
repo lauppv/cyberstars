@@ -108,6 +108,7 @@ export function GuestVisits({
   const [source, setSource] = useState('');
   const [visits, setVisits] = useState<GuestVisitDTO[] | null>(null);
   const [next, setNext] = useState<number | null>(null);
+  const [idle, setIdle] = useState(0);
   const [loadingMore, setLoadingMore] = useState(false);
   // Which list is current: an answer for an older range or source is dropped.
   const asked = useRef(0);
@@ -119,6 +120,7 @@ export function GuestVisits({
         if (query !== asked.current) return;
         setVisits(page.visits);
         setNext(page.next);
+        setIdle(page.idle);
       })
       .catch(() => {});
   }, [range, source, reload]);
@@ -158,7 +160,10 @@ export function GuestVisits({
           ))}
         </select>
       </div>
-      <p className="mt-0 mb-3 text-[11px] text-[var(--text3)]">{t('admin.guestVisitsHint')}</p>
+      <p className="mt-0 mb-3 text-[11px] text-[var(--text3)]">
+        {t('admin.guestVisitsHint')}
+        {visits !== null && idle > 0 && <> {t('admin.guestVisitsIdle', { count: idle })}</>}
+      </p>
 
       {!visits || visits.length === 0 ? (
         <span className="text-[12px] text-[var(--text3)]">{t('admin.noData')}</span>

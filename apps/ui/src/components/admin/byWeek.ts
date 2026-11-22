@@ -6,13 +6,14 @@ export function byWeek(days: VisitDay[]): VisitDay[] {
   const weeks: VisitDay[] = [];
   for (let i = 0; i < days.length; i += 7) {
     const week = days.slice(i, i + 7);
-    const sum = (field: 'visitors' | 'views' | 'newAccounts') =>
+    const sum = (field: 'visitors' | 'views' | 'newAccounts' | 'idle') =>
       week.reduce((n, d) => n + d[field], 0);
     weeks.push({
       day: week[0].day,
       visitors: sum('visitors'),
       views: sum('views'),
       newAccounts: sum('newAccounts'),
+      idle: sum('idle'),
     });
   }
   return weeks;
