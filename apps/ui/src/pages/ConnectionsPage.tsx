@@ -131,6 +131,12 @@ export function ConnectionsPage() {
     }
   };
 
+  const removeConnection = (c: AcceptedConnection) => {
+    if (window.confirm(t('connections.confirmRemove', { name: c.user.name }))) {
+      void act(c.id, connectionsService.remove);
+    }
+  };
+
   const goToProfile = (id: number) => navigate(`/u/${id}`);
 
   const incoming = data?.incoming ?? [];
@@ -206,11 +212,7 @@ export function ConnectionsPage() {
                     >
                       <button
                         disabled={busy === c.id}
-                        onClick={() => {
-                          if (window.confirm(t('connections.confirmRemove', { name: c.user.name }))) {
-                            void act(c.id, connectionsService.remove);
-                          }
-                        }}
+                        onClick={() => removeConnection(c)}
                         className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
                       >
                         {t('connections.remove')}
