@@ -93,6 +93,20 @@ Rezultatul **3**, nu 4, pentru că duplicatul rosu a fost eliminat
 
 ---
 
+## Transformă o listă într-o mulțime
+
+Putem transforma o listă într-o mulțime cu `set()`
+
+```py
+semnale = ["A1", "B2", "A1"]
+set_semnale = set(semnale)
+print(set_semnale)
+```
+
+Duplicatul este eliminat când lista devine o mulțime
+
+---
+
 ## Misiune: Triajul Semnalelor
 
 Două antene ale stației au raportat codurile de semnal detectate. Listele sunt în `echipa_a` și `echipa_b`. Transformă fiecare listă într-o mulțime, apoi:

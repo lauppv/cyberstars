@@ -19,10 +19,6 @@
         "name": "input"
       },
       {
-        "kind": "operator",
-        "name": "&"
-      },
-      {
         "kind": "if"
       }
     ]

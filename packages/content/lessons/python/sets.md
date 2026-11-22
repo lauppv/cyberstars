@@ -93,6 +93,20 @@ Output **3**, not 4, because the duplicate red was removed
 
 ---
 
+## Convert a list to a set
+
+We can turn a list into a set with `set()`
+
+```py
+signals = ["A1", "B2", "A1"]
+signal_set = set(signals)
+print(signal_set)
+```
+
+The duplicate is removed when the list becomes a set
+
+---
+
 ## Mission: Signal Triage
 
 Two station antennas reported the signal codes they detected. Their lists are stored in `crew_a` and `crew_b`. Turn each list into a set, then:
