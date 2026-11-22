@@ -206,7 +206,11 @@ export function ConnectionsPage() {
                     >
                       <button
                         disabled={busy === c.id}
-                        onClick={() => act(c.id, connectionsService.remove)}
+                        onClick={() => {
+                          if (window.confirm(t('connections.confirmRemove', { name: c.user.name }))) {
+                            void act(c.id, connectionsService.remove);
+                          }
+                        }}
                         className="px-3 py-1.5 rounded-[var(--radius-sm)] border border-[var(--border)] bg-transparent text-[var(--text3)] text-[12px] font-semibold cursor-pointer hover:text-[var(--error)] transition disabled:opacity-50"
                       >
                         {t('connections.remove')}
