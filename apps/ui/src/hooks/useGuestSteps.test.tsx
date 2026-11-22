@@ -8,7 +8,8 @@ vi.mock('../services/visitsService', () => ({ reportSteps }));
 const auth = { user: null as { role: string } | null, isLoading: false };
 vi.mock('../context/AuthContext', () => ({ useAuth: () => auth }));
 
-const { useGuestSteps, takeSteps } = await import('./useGuestSteps');
+const { useGuestSteps, takePending } = await import('./useGuestSteps');
+const takeSteps = () => takePending().steps;
 
 function wrapper({ children }: { children: ReactNode }) {
   return <MemoryRouter initialEntries={['/']}>{children}</MemoryRouter>;
@@ -32,11 +33,29 @@ function scrollTo(scrollY: number, scrollHeight = 4000) {
   window.dispatchEvent(new Event('scroll'));
 }
 
+// What a person does, the way the browser sends it. jsdom marks every event a
+// script dispatches untrusted, so the test reaches behind both objects and
+// dispatches the way the browser itself would.
+type Impl = { isTrusted?: boolean; _dispatch?: (event: unknown) => void };
+function implOf(obj: object): Impl {
+  for (const key of Object.getOwnPropertySymbols(obj)) {
+    const impl = (obj as Record<symbol, unknown>)[key];
+    if (impl && typeof impl === 'object') return impl as Impl;
+  }
+  throw new Error('no jsdom impl');
+}
+
+function personDoes(type: string, target: EventTarget = document.body) {
+  const event = implOf(new Event(type, { bubbles: true }));
+  event.isTrusted = true;
+  implOf(target)._dispatch!(event);
+}
+
 const click = (target: string) => ({ kind: 'click', target });
 const scroll = (target: string) => ({ kind: 'scroll', target });
 
 beforeEach(() => {
-  takeSteps();
+  takePending();
   localStorage.clear();
   document.body.innerHTML = '';
   reportSteps.mockReset().mockResolvedValue(undefined);
@@ -96,6 +115,56 @@ describe('useGuestSteps', () => {
     expect(takeSteps()).toEqual([]);
   });
 
+  describe('doing something', () => {
+    it.each(['pointerdown', 'keydown', 'wheel', 'touchstart'])(
+      'notes that a guest did something on %s, once a page',
+      (type) => {
+        const { result } = renderHook(
+          () => {
+            useGuestSteps();
+            return useNavigate();
+          },
+          { wrapper },
+        );
+        personDoes(type);
+        personDoes(type);
+        expect(takePending()).toEqual({ steps: [], active: true });
+        personDoes(type);
+        expect(takePending().active).toBe(false);
+
+        act(() => result.current('/courses'));
+        personDoes(type, button('run'));
+        expect(takePending().active).toBe(true);
+      },
+    );
+
+    it("doesn't take a page's own scripts, a scroll or a moving mouse for a person", () => {
+      renderHook(() => useGuestSteps(), { wrapper });
+      document.body.dispatchEvent(new Event('pointerdown', { bubbles: true }));
+      document.body.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true }));
+      personDoes('scroll');
+      personDoes('mousemove');
+      expect(takePending().active).toBe(false);
+    });
+
+    it.each([
+      ['a signed-in student', { user: { role: 'USER' }, isLoading: false }],
+      ['someone the app is still checking', { user: null, isLoading: true }],
+    ])('notes nothing from %s', (_, state) => {
+      Object.assign(auth, state);
+      renderHook(() => useGuestSteps(), { wrapper });
+      personDoes('pointerdown');
+      expect(takePending().active).toBe(false);
+    });
+
+    it('stops listening once the guest leaves', () => {
+      const { unmount } = renderHook(() => useGuestSteps(), { wrapper });
+      unmount();
+      personDoes('keydown');
+      expect(takePending().active).toBe(false);
+    });
+  });
+
   describe('sending', () => {
     beforeEach(() => vi.useFakeTimers());
     afterEach(() => vi.useRealTimers());
@@ -136,6 +205,25 @@ describe('useGuestSteps', () => {
       button('run').click();
       document.dispatchEvent(new Event('visibilitychange'));
       expect(reportSteps).toHaveBeenCalledTimes(2);
+    });
+
+    it('sends that the guest did something by itself after ten seconds, and with the steps', () => {
+      renderHook(() => useGuestSteps(), { wrapper });
+      personDoes('pointerdown');
+      vi.advanceTimersByTime(10_000);
+      expect(reportSteps).toHaveBeenLastCalledWith({ steps: [], active: true });
+
+      personDoes('keydown'); // the same page: already noted
+      button('run').click();
+      vi.advanceTimersByTime(10_000);
+      expect(reportSteps).toHaveBeenLastCalledWith({ steps: [click('run')] });
+    });
+
+    it('sends that the guest did something when the tab is hidden', () => {
+      renderHook(() => useGuestSteps(), { wrapper });
+      personDoes('touchstart');
+      window.dispatchEvent(new Event('pagehide'));
+      expect(reportSteps).toHaveBeenCalledWith({ steps: [], active: true });
     });
 
     it('drops a report that failed without a fuss', async () => {
