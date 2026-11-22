@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 export interface PanelTab<K extends string> {
   key: K;
@@ -15,6 +15,9 @@ interface PanelTabsProps<K extends string> extends Omit<
   // Stretch the tabs across the bar (the phone switcher) instead of packing
   // them at the start (the lesson panel's own bar).
   fill?: boolean;
+  // Something on the bar before the tabs, outside the tab list (dev mode's
+  // sidebar button)
+  lead?: ReactNode;
 }
 
 export function PanelTabs<K extends string>({
@@ -22,11 +25,18 @@ export function PanelTabs<K extends string>({
   active,
   onSelect,
   fill = false,
+  lead,
   className = '',
   ...rest
 }: PanelTabsProps<K>) {
-  return (
-    <div role="tablist" className={`flex border-b border-[var(--border)] ${className}`} {...rest}>
+  const list = (
+    <div
+      role="tablist"
+      className={
+        lead ? `flex ${fill ? 'flex-1' : ''}` : `flex border-b border-[var(--border)] ${className}`
+      }
+      {...rest}
+    >
       {tabs.map((tab) => {
         const selected = tab.key === active;
         return (
@@ -46,6 +56,13 @@ export function PanelTabs<K extends string>({
           </button>
         );
       })}
+    </div>
+  );
+  if (!lead) return list;
+  return (
+    <div className={`flex gap-1 border-b border-[var(--border)] ${className}`}>
+      <div className="shrink-0 flex items-center">{lead}</div>
+      {list}
     </div>
   );
 }
