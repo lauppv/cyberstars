@@ -5,7 +5,13 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mockPrisma = {
   pageVisit: { create: vi.fn(), deleteMany: vi.fn() },
   visitSalt: { upsert: vi.fn(), deleteMany: vi.fn() },
-  guestVisit: { findFirst: vi.fn(), findMany: vi.fn(), updateMany: vi.fn(), deleteMany: vi.fn() },
+  guestVisit: {
+    findFirst: vi.fn(),
+    findMany: vi.fn(),
+    updateMany: vi.fn(),
+    deleteMany: vi.fn(),
+    count: vi.fn(),
+  },
   visitStep: { count: vi.fn(), createMany: vi.fn() },
   $executeRaw: vi.fn(),
   $queryRaw: vi.fn(),
@@ -99,6 +105,16 @@ describe('guestVisitId', () => {
   });
 });
 
+describe('markActive', () => {
+  it('marks the visit, and writes nothing when it already was', async () => {
+    await repo.markActive(3);
+    expect(mockPrisma.guestVisit.updateMany).toHaveBeenCalledWith({
+      where: { id: 3, active: false },
+      data: { active: true },
+    });
+  });
+});
+
 describe('countSteps and addSteps', () => {
   it("count and store a visit's steps", async () => {
     mockPrisma.visitStep.count.mockResolvedValue(4);
@@ -111,19 +127,34 @@ describe('countSteps and addSteps', () => {
 });
 
 describe('guestVisitsSince', () => {
-  it('filters by source and by where the page starts only when asked', async () => {
+  it('keeps the guests who did something, by source and page only when asked', async () => {
     mockPrisma.guestVisit.findMany.mockResolvedValue([]);
     await repo.guestVisitsSince(day, { take: 21 });
     expect(mockPrisma.guestVisit.findMany.mock.calls[0][0]).toMatchObject({
-      where: { day: { gte: day } },
+      where: { day: { gte: day }, active: true },
       orderBy: { id: 'desc' },
       take: 21,
     });
     await repo.guestVisitsSince(day, { source: 'reddit', before: 40, take: 21 });
     expect(mockPrisma.guestVisit.findMany.mock.calls[1][0].where).toEqual({
       day: { gte: day },
+      active: true,
       source: 'reddit',
       id: { lt: 40 },
+    });
+  });
+});
+
+describe('idleGuestVisitsSince', () => {
+  it('counts the visits left out, by source only when asked', async () => {
+    mockPrisma.guestVisit.count.mockResolvedValue(287);
+    expect(await repo.idleGuestVisitsSince(day)).toBe(287);
+    expect(mockPrisma.guestVisit.count).toHaveBeenLastCalledWith({
+      where: { day: { gte: day }, active: false },
+    });
+    await repo.idleGuestVisitsSince(day, 'reddit');
+    expect(mockPrisma.guestVisit.count).toHaveBeenLastCalledWith({
+      where: { day: { gte: day }, active: false, source: 'reddit' },
     });
   });
 });

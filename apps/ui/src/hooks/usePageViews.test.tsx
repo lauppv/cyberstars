@@ -7,8 +7,8 @@ const reportPageView = vi.fn();
 vi.mock('../services/visitsService', () => ({ reportPageView }));
 const auth = { user: null as { role: string } | null };
 vi.mock('../context/AuthContext', () => ({ useAuth: () => auth }));
-const takeSteps = vi.fn();
-vi.mock('./useGuestSteps', () => ({ takeSteps }));
+const takePending = vi.fn();
+vi.mock('./useGuestSteps', () => ({ takePending }));
 
 const { usePageViews, referrerDomain } = await import('./usePageViews');
 
@@ -22,7 +22,7 @@ function setReferrer(value: string) {
 
 beforeEach(() => {
   reportPageView.mockReset().mockResolvedValue(undefined);
-  takeSteps.mockReset().mockReturnValue([]);
+  takePending.mockReset().mockReturnValue({ steps: [], active: false });
   auth.user = null;
   localStorage.clear();
   setReferrer('');
@@ -100,10 +100,18 @@ describe('usePageViews', () => {
 
   it("sends the guest's steps since the last page along with the page", () => {
     const steps = [{ kind: 'click', target: 'start-learning' }];
-    takeSteps.mockReturnValueOnce(steps);
+    takePending.mockReturnValueOnce({ steps, active: false });
     renderHook(() => usePageViews(), { wrapper });
     act(() => vi.runAllTimers());
     expect(reportPageView.mock.calls[0][0].steps).toEqual(steps);
+    expect(reportPageView.mock.calls[0][0]).not.toHaveProperty('active');
+  });
+
+  it('says along with the page that the guest did something on the one before', () => {
+    takePending.mockReturnValueOnce({ steps: [], active: true });
+    renderHook(() => usePageViews(), { wrapper });
+    act(() => vi.runAllTimers());
+    expect(reportPageView.mock.calls[0][0]).toEqual({ path: '/', referrer: '', active: true });
   });
 
   it('stops counting a browser once an admin has signed in on it', () => {

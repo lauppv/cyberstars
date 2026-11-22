@@ -11,8 +11,8 @@ const { VisitorsSection } = await import('./VisitorsSection');
 const dto: AdminVisitsDTO = {
   range: 30,
   days: [
-    { day: '2026-11-01', visitors: 3, views: 5, newAccounts: 0 },
-    { day: '2026-11-02', visitors: 7, views: 9, newAccounts: 2 },
+    { day: '2026-11-01', visitors: 3, views: 5, newAccounts: 0, idle: 12 },
+    { day: '2026-11-02', visitors: 7, views: 9, newAccounts: 2, idle: 0 },
   ],
   pages: [{ key: '/lesson/python/print', visitors: 4, views: 6 }],
   sources: [
@@ -36,7 +36,7 @@ const dto: AdminVisitsDTO = {
 
 beforeEach(() => {
   getVisits.mockReset().mockResolvedValue(dto);
-  getGuestVisits.mockReset().mockResolvedValue({ visits: [], next: null });
+  getGuestVisits.mockReset().mockResolvedValue({ visits: [], next: null, idle: 0 });
   localStorage.clear();
 });
 
@@ -61,6 +61,8 @@ describe('VisitorsSection', () => {
     expect(getVisits).toHaveBeenCalledWith(30);
     expect(screen.getByRole('img', { name: 'Visitors a day' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'New accounts a day' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Without interaction a day' })).toBeInTheDocument();
+    expect(screen.getByText(/Mostly bots\. They're in no other number/)).toBeInTheDocument();
     expect(screen.getByText('6 views · 4 visitors')).toBeInTheDocument();
     expect(screen.getByText('Hacker News', { selector: 'span' })).toBeInTheDocument();
     expect(screen.getByText('Direct', { selector: 'span' })).toBeInTheDocument();
@@ -88,13 +90,14 @@ describe('VisitorsSection', () => {
     expect(card.compareDocumentPosition(pages) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it('stacks the charts and picks the same day on both', async () => {
+  it('stacks the charts and picks the same day on all three', async () => {
     render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     const visitors = await screen.findByRole('img', { name: 'Visitors a day' });
     fireEvent.keyDown(visitors, { key: 'ArrowLeft' });
     expect(screen.getAllByRole('status').map((s) => s.textContent)).toEqual([
       expect.stringContaining('3 visitors'),
       expect.stringContaining('0 new accounts'),
+      expect.stringContaining('12 visitors'),
     ]);
     fireEvent.blur(visitors);
     expect(screen.queryByRole('status')).not.toBeInTheDocument();
@@ -106,14 +109,19 @@ describe('VisitorsSection', () => {
       visitors: 1,
       views: 1,
       newAccounts: 0,
+      idle: 2,
     }));
     getVisits.mockResolvedValue({ ...dto, range: 182, days });
     render(<VisitorsSection chartsClassName="" className="" reload={0} />);
     expect(await screen.findByRole('img', { name: 'Visitors a week' })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: 'New accounts a week' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Without interaction a week' })).toBeInTheDocument();
     const table = screen.getByRole('table', { name: 'Visitors' });
     expect(within(table).getAllByRole('row')).toHaveLength(3); // the header and two weeks
     expect(within(table).getByText('2026-06-01')).toBeInTheDocument();
+    // the second week's guests without interaction, 2 a day
+    const week = within(within(table).getAllByRole('row')[2]).getAllByRole('cell');
+    expect(week.at(-1)).toHaveTextContent('14');
   });
 
   it('lists the guest visits for the same range, filtered by the sources above', async () => {

@@ -15,6 +15,12 @@ describe('pageViewSchema', () => {
   it('takes a page without steps, as before', () => {
     expect(pageViewSchema.parse({ path: '/' })).toEqual({ path: '/' });
   });
+
+  it('takes the word that the guest did something, and only as true', () => {
+    expect(pageViewSchema.parse({ path: '/', active: true })).toEqual({ path: '/', active: true });
+    expect(pageViewSchema.safeParse({ path: '/', active: false }).success).toBe(false);
+    expect(pageViewSchema.safeParse({ path: '/', active: 'yes' }).success).toBe(false);
+  });
 });
 
 describe('stepsReportSchema', () => {
@@ -28,8 +34,22 @@ describe('stepsReportSchema', () => {
     expect(stepsReportSchema.safeParse({ steps: [step] }).success).toBe(false);
   });
 
+  it('takes steps, the word that the guest did something, or both', () => {
+    expect(stepsReportSchema.parse({ steps: [click('run')] })).toEqual({ steps: [click('run')] });
+    expect(stepsReportSchema.parse({ steps: [], active: true })).toEqual({
+      steps: [],
+      active: true,
+    });
+    expect(stepsReportSchema.parse({ steps: [click('run')], active: true })).toEqual({
+      steps: [click('run')],
+      active: true,
+    });
+  });
+
   it('refuses an empty report and one with more than 30 steps', () => {
     expect(stepsReportSchema.safeParse({ steps: [] }).success).toBe(false);
+    expect(stepsReportSchema.safeParse({ steps: [], active: false }).success).toBe(false);
+    expect(stepsReportSchema.safeParse({ active: true }).success).toBe(false);
     const many = Array.from({ length: 31 }, () => click('run'));
     expect(stepsReportSchema.safeParse({ steps: many }).success).toBe(false);
   });

@@ -113,6 +113,20 @@ describe('GuestVisits', () => {
     ]);
   });
 
+  it('says how many visits without interaction it leaves out, and nothing when none', async () => {
+    getGuestVisits.mockResolvedValue({ visits: [visit(1, [page('/')])], next: null, idle: 287 });
+    const { unmount } = show();
+    expect(
+      await screen.findByText(/287 visits without interaction aren't listed\./),
+    ).toBeInTheDocument();
+    unmount();
+
+    getGuestVisits.mockResolvedValue({ visits: [visit(1, [page('/')])], next: null, idle: 0 });
+    show();
+    await screen.findByText('2026-11-30 · 14:05 · Reddit · en');
+    expect(screen.queryByText(/without interaction/)).not.toBeInTheDocument();
+  });
+
   it('leaves the source out of a visit that started inside the app', async () => {
     getGuestVisits.mockResolvedValue({ visits: [visit(1, [page('/')], null)], next: null });
     show();

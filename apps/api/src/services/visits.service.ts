@@ -24,6 +24,11 @@ import type {
 // far down each page they scrolled, in order (CYB-66). Once the day ends the
 // visit loses its hash, so it can't be tied to anyone, and it's deleted after
 // the longest range the admin page shows.
+//
+// Only people make the numbers: a scraper running a real browser from home IPs
+// passes as one, but it only loads pages. A guest counts once the app says they
+// pressed, typed, scrolled by hand or touched the screen; the rest are counted
+// apart as idle.
 
 const DAY_FORMAT = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Bucharest' });
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -100,8 +105,18 @@ async function visitorFor(day: string, ip: string, userAgent: string | undefined
 // can't fill the table for two years. A real guest stays far below it.
 const MAX_STEPS = 500;
 
-async function addSteps(visitId: number | null, steps: VisitStep[]): Promise<void> {
-  if (visitId === null || steps.length === 0) return;
+// A guest's steps, and whether they did something: the app says so (active),
+// or a button they pressed says it for an app from before that word.
+async function addSteps(
+  visitId: number | null,
+  steps: VisitStep[],
+  active: boolean | undefined,
+): Promise<void> {
+  if (visitId === null) return;
+  if (active || steps.some((step) => step.kind === 'click')) {
+    await visitsRepo.markActive(visitId);
+  }
+  if (steps.length === 0) return;
   const room = MAX_STEPS - (await visitsRepo.countSteps(visitId));
   if (room > 0) await visitsRepo.addSteps(visitId, steps.slice(0, room));
 }
@@ -126,17 +141,18 @@ export async function recordPageView(
   if (signedIn) {
     // Only a guest who just made an account sends any: what they pressed on the
     // way still belongs to their visit, and the pages after it don't.
-    if (steps.length > 0) {
-      await addSteps(await visitsRepo.guestVisitId(asDate(day), visitor), steps);
+    if (steps.length > 0 || report.active) {
+      await addSteps(await visitsRepo.guestVisitId(asDate(day), visitor), steps, report.active);
     }
     return;
   }
   const visitId = await visitsRepo.guestVisitFor(asDate(day), visitor, source, lang);
-  await addSteps(visitId, [...steps, { kind: 'page', target: path }]);
+  await addSteps(visitId, [...steps, { kind: 'page', target: path }], report.active);
 }
 
-// Clicks and scrolls on the page a guest is still on. They join the visit their
-// first page made; with none today there's nothing to add them to.
+// Clicks and scrolls on the page a guest is still on, and whether they did
+// something there. They join the visit their first page made; with none today
+// there's nothing to add them to.
 export async function recordSteps(
   report: StepsReport,
   ip: string,
@@ -145,7 +161,7 @@ export async function recordSteps(
   if (isBot(userAgent)) return;
   const day = today();
   const visitor = await visitorFor(day, ip, userAgent);
-  await addSteps(await visitsRepo.guestVisitId(asDate(day), visitor), report.steps);
+  await addSteps(await visitsRepo.guestVisitId(asDate(day), visitor), report.steps, report.active);
 }
 
 // Guest visits are kept as long as the longest range the admin page shows.
@@ -196,9 +212,10 @@ export async function report(range: VisitRange): Promise<AdminVisitsDTO> {
   ]);
 
   const dayKey = (d: Date) => d.toISOString().slice(0, 10);
-  const totals = new Map(
-    rows.filter((r) => r.dimension === 'all').map((r) => [dayKey(r.day), r] as const),
-  );
+  const byDay = (dimension: string) =>
+    new Map(rows.filter((r) => r.dimension === dimension).map((r) => [dayKey(r.day), r] as const));
+  const totals = byDay('all');
+  const idle = byDay('idle');
   const newAccounts = new Map(accounts.map((a) => [dayKey(a.day), a.count] as const));
   const days: VisitDay[] = [];
   for (let i = range - 1; i >= 0; i--) {
@@ -208,6 +225,7 @@ export async function report(range: VisitRange): Promise<AdminVisitsDTO> {
       visitors: totals.get(day)?.visitors ?? 0,
       views: totals.get(day)?.views ?? 0,
       newAccounts: newAccounts.get(day) ?? 0,
+      idle: idle.get(day)?.visitors ?? 0,
     });
   }
 
@@ -244,17 +262,17 @@ function placementFunnel(steps: { key: string; visitors: number }[]): PlacementF
 
 const VISITS_PAGE = 20;
 
-// The guest visits of the range, newest first, a page at a time.
+// The guest visits of the range that did something, newest first, a page at a
+// time, and how many were left out for only loading pages.
 export async function guestVisits(
   range: VisitRange,
   { source, before }: { source?: string; before?: number } = {},
 ): Promise<GuestVisitsDTO> {
   const first = dayBefore(today(), range - 1);
-  const rows = await visitsRepo.guestVisitsSince(asDate(first), {
-    source,
-    before,
-    take: VISITS_PAGE + 1,
-  });
+  const [rows, idle] = await Promise.all([
+    visitsRepo.guestVisitsSince(asDate(first), { source, before, take: VISITS_PAGE + 1 }),
+    visitsRepo.idleGuestVisitsSince(asDate(first), source),
+  ]);
   const page = rows.slice(0, VISITS_PAGE);
   return {
     visits: page.map((row) => ({
@@ -266,5 +284,6 @@ export async function guestVisits(
       steps: row.steps as VisitStep[],
     })),
     next: rows.length > VISITS_PAGE ? page[page.length - 1].id : null,
+    idle,
   };
 }

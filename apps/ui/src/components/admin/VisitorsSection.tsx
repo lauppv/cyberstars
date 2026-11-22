@@ -206,6 +206,18 @@ export function VisitorsSection({
                 active={active}
                 onActive={setActive}
               />
+              {/* Apart from the people: the guests who only loaded pages */}
+              <div>
+                <DailyChart
+                  days={points}
+                  field="idle"
+                  title={t(weekly ? 'admin.idleAWeek' : 'admin.idleADay')}
+                  weekly={weekly}
+                  active={active}
+                  onActive={setActive}
+                />
+                <p className="mt-2 mb-0 text-[11px] text-[var(--text3)]">{t('admin.idleHint')}</p>
+              </div>
             </div>
             <table className="sr-only">
               <caption>{t('admin.visits')}</caption>
@@ -215,6 +227,7 @@ export function VisitorsSection({
                   <th>{t('admin.visitorsWord', { count: 2 })}</th>
                   <th>{t('admin.viewsWord', { count: 2 })}</th>
                   <th>{t('admin.newAccountsWord', { count: 2 })}</th>
+                  <th>{t(weekly ? 'admin.idleAWeek' : 'admin.idleADay')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -224,6 +237,7 @@ export function VisitorsSection({
                     <td>{d.visitors}</td>
                     <td>{d.views}</td>
                     <td>{d.newAccounts}</td>
+                    <td>{d.idle}</td>
                   </tr>
                 ))}
               </tbody>

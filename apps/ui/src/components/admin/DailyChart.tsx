@@ -52,7 +52,7 @@ export function DailyChart({
   onActive: setActive,
 }: {
   days: VisitDay[];
-  field: 'visitors' | 'newAccounts';
+  field: 'visitors' | 'newAccounts' | 'idle';
   title: string;
   weekly?: boolean;
   active: number | null;
@@ -212,7 +212,7 @@ export function DailyChart({
           <div>
             <strong className="tabular-nums">{shown[field]}</strong>{' '}
             <span className="text-[var(--text2)]">
-              {t(field === 'visitors' ? 'admin.visitorsWord' : 'admin.newAccountsWord', {
+              {t(field === 'newAccounts' ? 'admin.newAccountsWord' : 'admin.visitorsWord', {
                 count: shown[field],
               })}
             </span>

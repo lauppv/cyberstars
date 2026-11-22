@@ -10,15 +10,20 @@ export interface VisitStep {
 // the first page of a visit: the referring site's domain, or "" when there was
 // none (a typed address or a bookmark). steps are a guest's clicks and scrolls
 // since the last report, sent along so they land before the page they led to.
+// active: the guest pressed, typed, scrolled by hand or touched the screen on
+// the page before, which a scraper that only loads pages never does.
 export interface PageViewReport {
   path: string;
   referrer?: string;
   steps?: VisitStep[];
+  active?: true;
 }
 
-// The clicks and scrolls a guest made on a page they're still on.
+// The clicks and scrolls a guest made on a page they're still on, and whether
+// they did anything there (see PageViewReport). Either can come alone.
 export interface StepsReport {
   steps: VisitStep[];
+  active?: true;
 }
 
 export const SCROLL_DEPTHS = [25, 50, 75, 100] as const;
@@ -34,11 +39,15 @@ export interface VisitCount {
   views: number;
 }
 
+// visitors and views count people: signed-in students and guests who did
+// something on the site. idle counts the guests who only loaded pages (mostly
+// scrapers), apart; days rolled up before it was kept have 0.
 export interface VisitDay {
   day: string; // YYYY-MM-DD, Romania's time
   visitors: number;
   views: number;
   newAccounts: number;
+  idle: number;
 }
 
 // How far guests got in the placement test over the range (CYB-68), in visits:
@@ -51,6 +60,8 @@ export interface PlacementFunnel {
   getStarted: number;
 }
 
+// Every count here is of people; the guests who only loaded pages are only in
+// days[].idle.
 export interface AdminVisitsDTO {
   range: VisitRange;
   days: VisitDay[];
@@ -78,9 +89,11 @@ export interface GuestVisitDTO {
   steps: VisitStep[];
 }
 
-// A page of the list. next is the id to pass as before for the page after it,
-// null on the last one.
+// A page of the list, which holds only the guests who did something. next is
+// the id to pass as before for the page after it, null on the last one. idle:
+// how many visits of the range (and source) were left out for only loading pages.
 export interface GuestVisitsDTO {
   visits: GuestVisitDTO[];
   next: number | null;
+  idle: number;
 }

@@ -9,10 +9,11 @@ describe('byWeek', () => {
       visitors: i,
       views: 2 * i,
       newAccounts: i === 9 ? 1 : 0,
+      idle: i < 7 ? 0 : 10,
     }));
     expect(byWeek(days)).toEqual([
-      { day: '2026-11-01', visitors: 21, views: 42, newAccounts: 0 },
-      { day: '2026-11-08', visitors: 70, views: 140, newAccounts: 1 },
+      { day: '2026-11-01', visitors: 21, views: 42, newAccounts: 0, idle: 0 },
+      { day: '2026-11-08', visitors: 70, views: 140, newAccounts: 1, idle: 70 },
     ]);
   });
 });

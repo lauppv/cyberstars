@@ -18,6 +18,11 @@ export const pageViewSchema = z.object({
     .regex(/^\/[A-Za-z0-9\-._~%/]*$/),
   referrer: z.string().max(253).optional(),
   steps: stepsSchema.optional(),
+  // The guest did something on the page before (PageViewReport)
+  active: z.literal(true).optional(),
 });
 
-export const stepsReportSchema = z.object({ steps: stepsSchema.min(1) });
+// Steps, the word that the guest did something, or both; never neither.
+export const stepsReportSchema = z
+  .object({ steps: stepsSchema, active: z.literal(true).optional() })
+  .refine((report) => report.steps.length > 0 || report.active === true);
