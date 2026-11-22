@@ -8,3 +8,8 @@ date > rapoarte/rezumat-misiune.txt
 echo "Stare: complet" >> rapoarte/rezumat-misiune.txt
 cat rapoarte/probleme-critice.txt
 ```
+
+```text
+jurnale/reactor.log:[CRITICAL] Reactor supraincalzit - actiune imediata necesara
+jurnale/navigatie.log:[CRITICAL] Dezaliniere detectata in matricea de navigatie
+```
