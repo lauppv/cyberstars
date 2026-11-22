@@ -1510,6 +1510,7 @@
     "accept": "Accept",
     "decline": "Decline",
     "remove": "Remove",
+    "confirmRemove": "Remove {{name}} from your connections?",
     "cancel": "Cancel",
     "pending": "Pending",
     "loadFailed": "Your connections couldn't be loaded.",
