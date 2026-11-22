@@ -142,31 +142,26 @@
     },
     {
       "id": "q16",
-      "text": "In the Signal Log mission, how many signals does `signals` hold, and how many different codes?",
+      "text": "In the Signal Triage mission, what does `team_a & team_b` contain?",
       "options": [
-        "8 signals, 4 different codes",
-        "4 signals, 8 different codes",
-        "8 signals, 8 different codes",
-        "4 signals, 4 different codes"
+        "Codes either antenna detected",
+        "Codes both antennas detected",
+        "Codes only antenna A detected",
+        "Codes neither antenna detected"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": "q17-v2",
-      "text": "In the Signal Log mission, `\"D4\" in signals` would also find D4. Why check in the set?",
-      "options": [
-        "in doesn't work on a list",
-        "The list would say D4 missing, since D4 is near the end of the list",
-        "The set keeps D4 first, so it is found sooner",
-        "Both give the same answer, but checking in a set is much faster"
-      ],
-      "answer": 3
+      "text": "If the entered code is in `team_a` but not `team_b`, which message should the mission print?",
+      "options": ["Confirmed by both", "Detected by one", "Not detected", "Signal code"],
+      "answer": 1
     },
     {
       "id": "q18",
-      "text": "In the Signal Log mission, what does the Unique line print if we write `len(signals)` instead of `len(unique)`?",
-      "options": ["Unique: 4", "Unique: 1", "It stops with an error", "Unique: 8"],
-      "answer": 3
+      "text": "Which block runs when the entered code is in neither set?",
+      "options": ["if", "elif", "else", "input"],
+      "answer": 2
     },
     {
       "id": "q19",
@@ -262,14 +257,14 @@
     },
     {
       "id": "q30-v2",
-      "text": "In the Signal Log mission, A1 is three times in signals. How many times is it in the set unique?",
+      "text": "Why does the mission check `code in shared` before checking either antenna set?",
       "options": [
-        "Three times: the set copies the list",
-        "Once: a set keeps each value only once",
-        "Twice: only the first copy is dropped",
-        "Not at all: a value that repeats is dropped from the set entirely"
+        "A shared code was detected by both antennas",
+        "in works only on the shared set",
+        "The shared set contains every code",
+        "The input is always a shared code"
       ],
-      "answer": 1
+      "answer": 0
     }
   ],
   "templates": [
@@ -443,33 +438,31 @@
       "id": "st-log",
       "kind": "prints",
       "text": "What does this print?",
-      "code": "{{v}} = [{{items}}]\nprint(f\"Total: {len({{v}})}\")\nunique = set({{v}})\nprint(f\"Unique: {len(unique)}\")\nif \"{{c}}\" in unique:\n    print(\"{{c}} detected\")\nelse:\n    print(\"{{c}} missing\")",
+      "code": "{{a}} = set([{{xs}}])\n{{b}} = set([{{ys}}])\nprint(len({{a}} & {{b}}))\nprint(len({{a}} - {{b}}))\nprint(len({{a}} | {{b}}))\nprint(len({{a}} ^ {{b}}))",
       "values": [
         {
-          "v": "signals",
-          "items": "\"A1\", \"B2\", \"A1\", \"C3\", \"B2\"",
-          "c": "C3"
+          "a": "team_a",
+          "b": "team_b",
+          "xs": "\"A1\", \"B2\", \"C3\", \"F6\"",
+          "ys": "\"B2\", \"D4\""
         },
         {
-          "v": "signals",
-          "items": "\"X1\", \"X1\", \"Y2\", \"X1\"",
-          "c": "Z3"
+          "a": "crew",
+          "b": "engineers",
+          "xs": "\"Tommy\", \"Lance\", \"Cortez\"",
+          "ys": "\"Lance\", \"Phil\""
         },
         {
-          "v": "pings",
-          "items": "\"K7\", \"L8\", \"K7\", \"M9\", \"L8\", \"K7\", \"N1\"",
-          "c": "N1"
-        },
-        {
-          "v": "pings",
-          "items": "\"Q1\", \"R2\", \"S3\", \"Q1\"",
-          "c": "T4"
+          "a": "codes_a",
+          "b": "codes_b",
+          "xs": "\"X1\", \"Y2\", \"Z3\", \"W4\"",
+          "ys": "\"Y2\", \"Q5\""
         }
       ],
       "mistakes": [
-        ["Unique: {len(unique)}", "Unique: {len({{v}})}"],
-        ["if \"{{c}}\" in unique:", "if \"{{c}}\" not in unique:"],
-        ["Total: {len({{v}})}", "Total: {len(set({{v}}))}"]
+        ["{{a}} & {{b}}", "{{a}} | {{b}}"],
+        ["{{a}} - {{b}}", "{{b}} - {{a}}"],
+        ["{{a}} ^ {{b}}", "{{a}} - {{b}}"]
       ]
     },
     {

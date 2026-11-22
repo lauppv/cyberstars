@@ -1,13 +1,18 @@
 ```py
-signals = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
+crew_a = ["A1", "B2", "C3"]
+crew_b = ["B2", "D4", "E5"]
 
-print(f"Total: {len(signals)}")
+team_a = set(crew_a)
+team_b = set(crew_b)
+shared = team_a & team_b
 
-unique = set(signals)
-print(f"Unique: {len(unique)}")
+print(f"Shared: {len(shared)}")
 
-if "D4" in unique:
-    print("D4 detected")
+code = input("Signal code: ")
+if code in shared:
+    print("Confirmed by both")
+elif code in team_a or code in team_b:
+    print("Detected by one")
 else:
-    print("D4 missing")
+    print("Not detected")
 ```

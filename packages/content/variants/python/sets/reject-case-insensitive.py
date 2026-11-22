@@ -1,5 +1,13 @@
-signals = ["A1", "B2", "A1", "C3", "B2", "A1", "D4", "C3"]
-unique = set(s.upper() for s in signals)
-print(f"Total: {len(signals)}")
-print(f"Unique: {len(unique)}")
-print("D4 detected" if "D4" in unique else "D4 missing")
+crew_a = ["A1", "B2", "C3"]
+crew_b = ["B2", "D4", "E5"]
+team_a = set(code.upper() for code in crew_a)
+team_b = set(code.upper() for code in crew_b)
+shared = team_a & team_b
+print(f"Shared: {len(shared)}")
+code = input("Signal code: ").upper()
+if code in shared:
+    print("Confirmed by both")
+elif code in team_a or code in team_b:
+    print("Detected by one")
+else:
+    print("Not detected")
