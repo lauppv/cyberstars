@@ -84,13 +84,19 @@ jobs:
         if: github.event_name == 'pull_request' && always()
         run: node .github/scripts/coverage-comment.js > coverage-comment.txt
 
+      # A fork's PR gets a read-only token and cannot comment, so there the
+      # coverage goes to the job summary instead.
       - name: Comment coverage on PR
         uses: marocchino/sticky-pull-request-comment@v2
-        if: github.event_name == 'pull_request' && always()
+        if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         with:
           recreate: true
           path: coverage-comment.txt
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Coverage in job summary
+        if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: cat coverage-comment.txt >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
