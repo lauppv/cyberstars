@@ -21,6 +21,7 @@ import { isAdmin, type AuthenticatedUser, type UserRole } from '@cyberstars/shar
 import './ForumPage.css';
 import { MessagesSquare } from 'lucide-react';
 import { EmptyState } from '../components/ui/EmptyState';
+import { Avatar } from '../components/ui/Avatar';
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -858,11 +859,12 @@ function PostCard({
       <div className={`forum-post deleted${isOp ? ' op' : ''}`}>
         <div className="post-sidebar">
           <UserLink userId={post.authorId}>
-            {post.authorAvatarUrl ? (
-              <img src={post.authorAvatarUrl} alt="" className="post-avatar" />
-            ) : (
-              <div className="post-avatar">{post.authorName.charAt(0).toUpperCase()}</div>
-            )}
+            <Avatar
+              url={post.authorAvatarUrl}
+              userId={post.authorId}
+              size={48}
+              className="post-avatar"
+            />
           </UserLink>
           <UserLink userId={post.authorId}>
             <div className="post-username">{post.authorName}</div>
@@ -883,17 +885,12 @@ function PostCard({
     <div className={`forum-post${isOp ? ' op' : ''}`}>
       <div className="post-sidebar">
         <UserLink userId={post.authorId}>
-          {post.authorAvatarUrl ? (
-            <img
-              src={post.authorAvatarUrl}
-              alt=""
-              className={`post-avatar${isOp ? ' op-avatar' : ''}`}
-            />
-          ) : (
-            <div className={`post-avatar${isOp ? ' op-avatar' : ''}`}>
-              {post.authorName.charAt(0).toUpperCase()}
-            </div>
-          )}
+          <Avatar
+            url={post.authorAvatarUrl}
+            userId={post.authorId}
+            size={48}
+            className={`post-avatar${isOp ? ' op-avatar' : ''}`}
+          />
         </UserLink>
         <UserLink userId={post.authorId}>
           <div className="post-username">{post.authorName}</div>
