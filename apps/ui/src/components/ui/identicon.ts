@@ -12,6 +12,9 @@ function hash(seed: string): number {
   h ^= h >>> 16;
   h = Math.imul(h, 0x85ebca6b);
   h ^= h >>> 13;
+  // minidenticon draws only from the 15 lowest bits, so when they are all 0
+  // (id 14026 is the first) it would draw nothing. Light the centre cell.
+  if ((h & 0x7fff) === 0) h |= 1 << 12;
   return h >>> 0;
 }
 

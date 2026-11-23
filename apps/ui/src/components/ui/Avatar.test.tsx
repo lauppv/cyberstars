@@ -28,6 +28,10 @@ describe('Avatar', () => {
     expect(uris.size).toBe(500);
   });
 
+  it('never draws an empty pattern', () => {
+    expect(decodeURIComponent(identiconUri(14026))).toContain('<rect');
+  });
+
   it('falls back to the identicon when the picture fails to load', () => {
     const { container } = render(<Avatar url="/uploads/gone.png" userId={7} />);
     fireEvent.error(img(container));
