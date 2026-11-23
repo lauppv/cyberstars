@@ -44,7 +44,7 @@ function Row({
         onClick={() => onProfile(userId)}
         className="flex items-center gap-3 flex-1 min-w-0 bg-transparent border-none cursor-pointer text-left p-0"
       >
-        <Avatar url={avatarUrl} name={name} size={40} />
+        <Avatar url={avatarUrl} userId={userId} size={40} />
         <span className="text-[14px] font-semibold text-[var(--text)] truncate">{name}</span>
       </button>
       {children}
