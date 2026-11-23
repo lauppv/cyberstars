@@ -1540,6 +1540,7 @@
     "accept": "Acceptă",
     "decline": "Refuză",
     "remove": "Elimină",
+    "confirmRemove": "Elimini pe {{name}} din conexiunile tale?",
     "cancel": "Anulează",
     "pending": "În așteptare",
     "loadFailed": "Conexiunile tale nu s-au putut încărca.",

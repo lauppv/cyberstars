@@ -55,11 +55,13 @@ function renderPage() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  vi.spyOn(window, 'confirm').mockReturnValue(true);
   mockGetOverview.mockResolvedValue(overview);
 });
 
 // The language is a global i18n singleton; reset it so the ro test can't leak.
 afterEach(async () => {
+  vi.restoreAllMocks();
   await i18n.changeLanguage('en');
 });
 
@@ -177,6 +179,28 @@ describe('ConnectionsPage', () => {
     await screen.findByRole('alert');
     fireEvent.click(screen.getByText('Decline'));
     await waitFor(() => expect(screen.queryByRole('alert')).toBeNull());
+  });
+
+  it('asks for confirmation with the person name before removing a connection', async () => {
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
+    mockRemove.mockResolvedValue(ok);
+    renderPage();
+    await screen.findByText('Orion');
+    mockGetOverview.mockResolvedValue({ ...overview, connections: [] });
+    fireEvent.click(screen.getByText('Remove'));
+    expect(confirmSpy).toHaveBeenCalledWith('Remove Orion from your connections?');
+    await waitFor(() => expect(screen.queryByText('Orion')).toBeNull());
+    expect(mockRemove).toHaveBeenCalledWith(12);
+  });
+
+  it('does not remove a connection when confirmation is cancelled', async () => {
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(false);
+    renderPage();
+    await screen.findByText('Orion');
+    fireEvent.click(screen.getByText('Remove'));
+    expect(confirmSpy).toHaveBeenCalledWith('Remove Orion from your connections?');
+    expect(mockRemove).not.toHaveBeenCalled();
+    expect(screen.getByText('Orion')).toBeDefined();
   });
 
   it('says the reason in Romanian on a Romanian page', async () => {
