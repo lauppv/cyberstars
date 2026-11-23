@@ -158,7 +158,7 @@ export function ProfilePage() {
           {/* Header with avatar */}
           <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
             <div className="relative group">
-              <Avatar url={user.avatarUrl} name={user.name} size={64} />
+              <Avatar url={user.avatarUrl} userId={user.id} size={64} />
               <button
                 onClick={() => fileRef.current?.click()}
                 className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-xs font-semibold cursor-pointer border-none"

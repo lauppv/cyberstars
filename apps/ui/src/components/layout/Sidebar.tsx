@@ -310,7 +310,7 @@ function UserMenu({ onNavigate }: { onNavigate: () => void }) {
         aria-expanded={open}
         className="w-full flex items-center gap-2.5 px-2 py-1.5 rounded-[var(--radius-sm)] bg-transparent border-none hover:bg-[var(--surface)] transition cursor-pointer text-left"
       >
-        <Avatar url={user.avatarUrl} name={user.name} size={26} />
+        <Avatar url={user.avatarUrl} userId={user.id} size={26} />
         <span className="flex flex-col min-w-0 flex-1">
           <span className="text-[13px] text-[var(--text)] truncate">{user.name}</span>
           <span className="text-[11px] text-[var(--text3)] truncate" title={t(xp.titleKey)}>

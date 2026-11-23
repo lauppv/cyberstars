@@ -295,7 +295,7 @@ export function MessageThread({
           ←
         </button>
         <UserLink userId={conversation.other.id} className="flex items-center gap-3 min-w-0">
-          <Avatar url={conversation.other.avatarUrl} name={conversation.other.name} size={32} />
+          <Avatar url={conversation.other.avatarUrl} userId={conversation.other.id} size={32} />
           <span className="font-semibold text-[14px] text-[var(--text)] truncate">
             {conversation.other.name}
           </span>

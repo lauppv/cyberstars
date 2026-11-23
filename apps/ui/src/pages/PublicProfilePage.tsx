@@ -261,7 +261,7 @@ export function PublicProfilePage() {
           <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
             {/* Header */}
             <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
-              <Avatar url={profile.avatarUrl} name={profile.name} size={80} />
+              <Avatar url={profile.avatarUrl} userId={profile.userId} size={80} />
               <div className="flex-1 min-w-0">
                 <h1 className="text-[22px] font-bold tracking-[-0.3px] truncate">{profile.name}</h1>
                 {memberSinceLabel && (
@@ -386,7 +386,7 @@ export function PublicProfilePage() {
                       onClick={() => navigate(`/u/${c.id}`)}
                       className="w-full flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--accent)]/10 hover:bg-[var(--accent)]/20 transition cursor-pointer text-left"
                     >
-                      <Avatar url={c.avatarUrl} name={c.name} size={24} />
+                      <Avatar url={c.avatarUrl} userId={c.id} size={24} />
                       <span className="text-[13px] font-semibold text-[var(--text)] truncate">
                         {c.name}
                       </span>

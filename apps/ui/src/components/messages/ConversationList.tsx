@@ -51,7 +51,7 @@ export function ConversationList({
                 : ''
             }`}
           >
-            <Avatar url={c.other.avatarUrl} name={c.other.name} size={40} />
+            <Avatar url={c.other.avatarUrl} userId={c.other.id} size={40} />
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
                 <span className="truncate font-semibold text-[13.5px] text-[var(--text)]">

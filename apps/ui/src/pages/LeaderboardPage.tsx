@@ -50,7 +50,7 @@ function Row({
           entry.rank
         )}
       </span>
-      <Avatar url={entry.avatarUrl} name={entry.name} size={36} />
+      <Avatar url={entry.avatarUrl} userId={entry.userId} size={36} />
       <div className="min-w-0 flex-1">
         <div className="truncate font-semibold text-[14px] text-[var(--text)] flex items-center gap-2">
           {entry.name}
