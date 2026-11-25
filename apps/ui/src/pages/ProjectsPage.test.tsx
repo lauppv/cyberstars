@@ -98,7 +98,9 @@ describe('ProjectsPage', () => {
   it('shows a card per language, as Algorithms does, each opening its projects', () => {
     renderPage();
     for (const name of ['Python', 'C', 'Java', 'Linux']) {
-      expect(screen.getByRole('heading', { level: 2, name: new RegExp(`^${name}`) })).toBeVisible();
+      expect(
+        screen.getByRole('heading', { level: 2, name: new RegExp(`^${name}`) }),
+      ).toBeInTheDocument();
     }
     fireEvent.click(screen.getAllByRole('button', { name: /View Projects/ })[2]);
     expect(mockNavigate).toHaveBeenCalledWith('/projects/java');

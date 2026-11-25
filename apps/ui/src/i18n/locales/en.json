@@ -449,7 +449,10 @@
     "unavailable": "CyberStars is being updated or is unavailable right now. Try again in a few minutes.",
     "back": "Back",
     "breadcrumb": "Breadcrumb",
-    "retry": "Try again"
+    "retry": "Try again",
+    "previous": "Previous",
+    "next": "Next",
+    "position": "{{n}} of {{total}}"
   },
   "leaderboard": {
     "you": "You",
