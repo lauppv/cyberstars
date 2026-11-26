@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import { BOT_EMAIL_ENDINGS } from './user.repository.js';
 import type { VisitCount, VisitStep } from '@cyberstars/shared/visits';
 
 export interface PageVisitRow {
@@ -147,14 +148,20 @@ export function totalsSince(from: Date): Promise<TotalRow[]> {
   `);
 }
 
-// Accounts made each day since `from`, by Romania's calendar. created_at is
-// stored as UTC without a zone, hence the double AT TIME ZONE.
+// Students' accounts made each day since `from`, by Romania's calendar, the
+// same accounts as PEOPLE in user.repository. created_at is stored as UTC
+// without a zone, hence the double AT TIME ZONE.
 export function newAccountsSince(from: Date): Promise<{ day: Date; count: number }[]> {
+  const bots = Prisma.join(
+    BOT_EMAIL_ENDINGS.map((ending) => Prisma.sql`email LIKE ${'%' + ending}`),
+    ' OR ',
+  );
   return prisma.$queryRaw<{ day: Date; count: number }[]>(Prisma.sql`
     SELECT (created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Bucharest')::date AS day,
       COUNT(*)::int AS count
     FROM users
     WHERE (created_at AT TIME ZONE 'UTC' AT TIME ZONE 'Europe/Bucharest')::date >= ${from}
+      AND role = 'USER' AND NOT (${bots})
     GROUP BY 1
   `);
 }

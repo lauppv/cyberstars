@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import { PEOPLE } from './user.repository.js';
 import {
   BELL_TYPES,
   NOTICE_TYPES,
@@ -116,18 +117,21 @@ export function create(input: CreateNotificationInput): Promise<NotificationRow>
 }
 
 // The announcement and a bell row of it for every account but the author's, in
-// one insert and one transaction, so the history never lists one nobody got
-export function createAnnouncement(authorId: number, text: string): Promise<NotificationRow[]> {
+// one insert and one transaction, so the history never lists one nobody got.
+// Only the students among them count as recipients
+export function createAnnouncement(
+  authorId: number,
+  text: string,
+): Promise<{ rows: NotificationRow[]; recipients: number }> {
   return prisma.$transaction(async (tx) => {
-    const users = await tx.user.findMany({
-      where: { id: { not: authorId } },
-      select: { id: true },
-    });
+    const notAuthor = { id: { not: authorId } };
+    const users = await tx.user.findMany({ where: notAuthor, select: { id: true } });
+    const recipients = await tx.user.count({ where: { ...notAuthor, ...PEOPLE } });
     const { id } = await tx.announcement.create({
-      data: { authorId, text, recipients: users.length },
+      data: { authorId, text, recipients },
       select: { id: true },
     });
-    return tx.notification.createManyAndReturn({
+    const rows = await tx.notification.createManyAndReturn({
       data: users.map((u) => ({
         userId: u.id,
         actorId: authorId,
@@ -137,6 +141,7 @@ export function createAnnouncement(authorId: number, text: string): Promise<Noti
       })),
       include: actorInclude,
     });
+    return { rows, recipients };
   });
 }
 

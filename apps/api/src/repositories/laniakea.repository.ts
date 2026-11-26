@@ -129,22 +129,6 @@ async function countAnswer(
       picks[${at}::int] = laniakea_question_stats.picks[${at}::int] + 1`;
 }
 
-export interface QuestionStatRow {
-  lessonSlug: string;
-  questionId: string;
-  answered: number;
-  wrong: number;
-  picks: number[];
-}
-
-// The course's questions answered at least `min` times.
-export function listQuestionStats(courseKey: string, min: number): Promise<QuestionStatRow[]> {
-  return prisma.laniakeaQuestionStat.findMany({
-    where: { courseKey, answered: { gte: min } },
-    select: { lessonSlug: true, questionId: true, answered: true, wrong: true, picks: true },
-  });
-}
-
 // When each of the student's planets moved, for the activity heatmap and the streak
 export async function listPasses(userId: number): Promise<Date[]> {
   const rows = await prisma.laniakeaPass.findMany({

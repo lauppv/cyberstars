@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { Plus, X } from 'lucide-react';
+import { ChevronRight, Plus, X } from 'lucide-react';
 import * as adminService from '../../services/adminService';
 import { announcementDay } from '../notifications/announcementDay';
 import {
@@ -11,6 +11,9 @@ import {
   POLL_QUESTION_MAX_LENGTH,
   type PollResultsDTO,
 } from '@cyberstars/shared/polls';
+
+// The newest polls listed at first; the rest wait behind Show more
+const SHOWN = 5;
 
 const INPUT_CLS =
   'w-full px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] border border-[var(--border)] text-[14px] text-[var(--text)] outline-none focus:border-[var(--accent)]/60 transition';
@@ -29,6 +32,9 @@ export function PollSection({ className }: { className: string }) {
   // null until the history loads, so an empty one is only ever a real one
   const [history, setHistory] = useState<PollResultsDTO[] | null>(null);
   const [historyFailed, setHistoryFailed] = useState(false);
+  const [all, setAll] = useState(false);
+  // The polls opened to their results, by id; each starts as one line
+  const [opened, setOpened] = useState<Set<number>>(new Set());
 
   const loadHistory = useCallback(() => {
     adminService
@@ -86,9 +92,15 @@ export function PollSection({ className }: { className: string }) {
     }
   };
 
+  const toggle = (id: number) =>
+    setOpened((ids) => {
+      const next = new Set(ids);
+      if (!next.delete(id)) next.add(id);
+      return next;
+    });
+
   return (
     <section className={className}>
-      <h2 className="text-[14px] font-semibold mb-4">{t('admin.poll.title')}</h2>
       <textarea
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
@@ -167,70 +179,98 @@ export function PollSection({ className }: { className: string }) {
       ) : history === null ? null : history.length === 0 ? (
         <p className="m-0 text-[12px] text-[var(--text3)]">{t('admin.poll.none')}</p>
       ) : (
-        <ul className="m-0 p-0 list-none border-t border-[var(--border)]">
-          {history.map((p) => (
-            <li key={p.id} className="px-2 py-3 border-b border-[var(--border)]">
-              <p className="m-0 text-[13px] font-semibold text-[var(--text)] break-words">
-                {p.question}
-              </p>
-              <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
-                {announcementDay(p.createdAt)} · {p.authorName ?? t('notif.someone')} ·{' '}
-                {t('admin.poll.voters', { voters: p.voters, recipients: p.recipients })}
-              </span>
-              {/* Counts only, never who. The polls sent before opening one was counted have no line */}
-              {p.viewers !== null && (
-                <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
-                  {t('admin.poll.ignored', {
-                    ignored: p.viewers - p.voters,
-                    unopened: p.recipients - p.viewers,
-                  })}
-                </span>
-              )}
-              <ul className="mt-2.5 mb-0 p-0 list-none flex flex-col gap-2">
-                {p.options.map((o) => {
-                  // A share of the voters, so with several picks each the shares add up past 100%
-                  const pct = p.voters ? Math.round((o.votes / p.voters) * 100) : 0;
-                  return (
-                    <li key={o.id}>
-                      <div className="flex items-baseline justify-between gap-3 text-[12px]">
-                        <span className="text-[var(--text2)] break-words min-w-0">
-                          {o.writeIn ? t('admin.poll.other') : o.text}
+        <>
+          <ul className="m-0 p-0 list-none border-t border-[var(--border)]">
+            {(all ? history : history.slice(0, SHOWN)).map((p) => {
+              const open = opened.has(p.id);
+              return (
+                <li key={p.id} className="border-b border-[var(--border)]">
+                  <button
+                    onClick={() => toggle(p.id)}
+                    aria-expanded={open}
+                    className="w-full flex items-start gap-2 text-left px-2 py-2.5 bg-transparent border-none cursor-pointer hover:bg-[var(--surface)] transition"
+                  >
+                    <ChevronRight
+                      size={14}
+                      aria-hidden="true"
+                      className={`mt-0.5 flex-shrink-0 text-[var(--text3)] transition-transform ${open ? 'rotate-90' : ''}`}
+                    />
+                    <span className="min-w-0">
+                      <span className="block text-[13px] font-semibold text-[var(--text)] break-words">
+                        {p.question}
+                      </span>
+                      <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
+                        {announcementDay(p.createdAt)} · {p.authorName ?? t('notif.someone')} ·{' '}
+                        {t('admin.poll.voters', { voters: p.voters, recipients: p.recipients })}
+                      </span>
+                    </span>
+                  </button>
+                  {open && (
+                    <div className="pl-8 pr-2 pb-3">
+                      {/* Counts only, never who. The polls sent before opening one was counted have no line */}
+                      {p.viewers !== null && (
+                        <span className="block text-[11px] text-[var(--text3)]">
+                          {t('admin.poll.ignored', {
+                            ignored: p.viewers - p.voters,
+                            unopened: p.recipients - p.viewers,
+                          })}
                         </span>
-                        <span className="flex-shrink-0 tabular-nums text-[var(--text3)]">
-                          {o.votes} · {pct}%
-                        </span>
-                      </div>
-                      <div
-                        aria-hidden="true"
-                        className="mt-1 h-1.5 rounded-full bg-[var(--surface)] overflow-hidden"
-                      >
-                        <div
-                          className="h-full rounded-full bg-[var(--accent)]"
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                      {o.writeIn && p.answers.length > 0 && (
-                        <ul
-                          aria-label={t('admin.poll.answers')}
-                          className="mt-2 mb-0 p-0 list-none flex flex-col gap-1.5"
-                        >
-                          {p.answers.map((a, i) => (
-                            <li
-                              key={i}
-                              className="px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] text-[12px] text-[var(--text2)] whitespace-pre-wrap break-words"
-                            >
-                              {a}
-                            </li>
-                          ))}
-                        </ul>
                       )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
-          ))}
-        </ul>
+                      <ul className="mt-2.5 mb-0 p-0 list-none flex flex-col gap-2">
+                        {p.options.map((o) => {
+                          // A share of the voters, so with several picks each the shares add up past 100%
+                          const pct = p.voters ? Math.round((o.votes / p.voters) * 100) : 0;
+                          return (
+                            <li key={o.id}>
+                              <div className="flex items-baseline justify-between gap-3 text-[12px]">
+                                <span className="text-[var(--text2)] break-words min-w-0">
+                                  {o.writeIn ? t('admin.poll.other') : o.text}
+                                </span>
+                                <span className="flex-shrink-0 tabular-nums text-[var(--text3)]">
+                                  {o.votes} · {pct}%
+                                </span>
+                              </div>
+                              <div
+                                aria-hidden="true"
+                                className="mt-1 h-1.5 rounded-full bg-[var(--surface)] overflow-hidden"
+                              >
+                                {/* A vote cast before only students counted can take an option past its voters */}
+                                <div
+                                  className="h-full rounded-full bg-[var(--accent)]"
+                                  style={{ width: `${Math.min(pct, 100)}%` }}
+                                />
+                              </div>
+                              {o.writeIn && p.answers.length > 0 && (
+                                <ul
+                                  aria-label={t('admin.poll.answers')}
+                                  className="mt-2 mb-0 p-0 list-none flex flex-col gap-1.5"
+                                >
+                                  {p.answers.map((a, i) => (
+                                    <li
+                                      key={i}
+                                      className="px-3 py-2 rounded-[var(--radius-sm)] bg-[var(--surface)] text-[12px] text-[var(--text2)] whitespace-pre-wrap break-words"
+                                    >
+                                      {a}
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          {!all && history.length > SHOWN && (
+            <button onClick={() => setAll(true)} className="btn btn-secondary btn-sm mt-3">
+              {t('admin.showMore')}
+            </button>
+          )}
+        </>
       )}
 
       {confirming &&

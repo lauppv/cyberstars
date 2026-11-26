@@ -9,7 +9,7 @@ const mockRepo = {
   listPolls: vi.fn(),
 };
 const mockNotifications = { pushLive: vi.fn(), notify: vi.fn() };
-const mockUserRepo = { getAdminIds: vi.fn() };
+const mockUserRepo = { getAdminIds: vi.fn(), isPerson: vi.fn() };
 
 vi.mock('../repositories/polls.repository.js', () => mockRepo);
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
@@ -39,19 +39,21 @@ beforeEach(() => {
   vi.clearAllMocks();
   // Signed up before the poll went out, so it got it
   mockRepo.joinedAt.mockResolvedValue(new Date('2026-11-01T10:00:00.000Z'));
+  // A student, whose views and votes count, unless a test says otherwise
+  mockUserRepo.isPerson.mockResolvedValue(true);
 });
 
 describe('polls.service send', () => {
-  it('inserts it for everyone, pushes it live and says how many got it', async () => {
+  it('inserts it for everyone, pushes it live and says how many students got it', async () => {
     const rows = [{ id: 1 }, { id: 2 }];
-    mockRepo.createPoll.mockResolvedValue(rows);
-    expect(await send(2, 'Next?', ['Rust', 'Go'])).toBe(2);
+    mockRepo.createPoll.mockResolvedValue({ rows, recipients: 1 });
+    expect(await send(2, 'Next?', ['Rust', 'Go'])).toBe(1);
     expect(mockRepo.createPoll).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go'], false);
     expect(mockNotifications.pushLive).toHaveBeenCalledWith(rows);
   });
 
   it('asks for an Other when the admin wants one', async () => {
-    mockRepo.createPoll.mockResolvedValue([]);
+    mockRepo.createPoll.mockResolvedValue({ rows: [], recipients: 0 });
     await send(2, 'Next?', ['Rust', 'Go'], true);
     expect(mockRepo.createPoll).toHaveBeenCalledWith(2, 'Next?', ['Rust', 'Go'], true);
   });
@@ -81,7 +83,15 @@ describe('polls.service get', () => {
   it('counts this user among the ones who opened it', async () => {
     mockRepo.findPoll.mockResolvedValue(stored);
     await get(4, 10);
+    expect(mockUserRepo.isPerson).toHaveBeenCalledWith(10);
     expect(mockRepo.noteView).toHaveBeenCalledWith(4, 10);
+  });
+
+  it("opens it without counting an account that isn't a student", async () => {
+    mockRepo.findPoll.mockResolvedValue(stored);
+    mockUserRepo.isPerson.mockResolvedValue(false);
+    expect((await get(4, 10)).question).toBe('Next?');
+    expect(mockRepo.noteView).not.toHaveBeenCalled();
   });
 
   it('still opens the poll when the view is not counted, and logs it', async () => {
@@ -120,14 +130,14 @@ describe('polls.service vote', () => {
     mockRepo.findPoll.mockResolvedValue(stored);
     mockRepo.vote.mockResolvedValue(true);
     await expect(vote(4, 10, [7, 8])).resolves.toBeUndefined();
-    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 8], undefined);
+    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 8], undefined, true);
   });
 
   it('keeps what was written under Other', async () => {
     mockRepo.findPoll.mockResolvedValue(withOther);
     mockRepo.vote.mockResolvedValue(true);
     await expect(vote(4, 10, [7, 9], 'More C')).resolves.toBeUndefined();
-    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 9], 'More C');
+    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [7, 9], 'More C', true);
   });
 
   it("brings the answer to every admin's bell with no actor, the writer left out", async () => {
@@ -141,6 +151,15 @@ describe('polls.service vote', () => {
       entityId: 4,
       data: { text: 'More C', title: 'Next?' },
     });
+  });
+
+  it("only marks the vote of an account that isn't a student, and tells no admin its answer", async () => {
+    mockRepo.findPoll.mockResolvedValue(withOther);
+    mockRepo.vote.mockResolvedValue(true);
+    mockUserRepo.isPerson.mockResolvedValue(false);
+    await vote(4, 10, [9], 'More C');
+    expect(mockRepo.vote).toHaveBeenCalledWith(4, 10, [9], 'More C', false);
+    expect(mockNotifications.notify).not.toHaveBeenCalled();
   });
 
   it('tells no admin about a vote without an answer, nor about a second vote', async () => {

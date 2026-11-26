@@ -15,7 +15,7 @@ export interface PollDTO {
 }
 
 export interface PollSentDTO {
-  sent: number; // accounts that got it in their bell
+  sent: number; // students that got it in their bell
 }
 
 // A poll with its counts, for the admin page

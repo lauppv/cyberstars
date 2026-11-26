@@ -8,7 +8,7 @@ const mockService = {
   guestVisits: vi.fn(),
 };
 vi.mock('../services/visits.service.js', () => mockService);
-const mockUserRepo = { getRole: vi.fn() };
+const mockUserRepo = { isPerson: vi.fn() };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
 const { recordPageView, recordSteps, getVisits, getGuestVisits } =
@@ -32,7 +32,7 @@ describe('recordPageView', () => {
     }) as unknown as Request;
 
   it('passes the page, IP, browser and whether someone is signed in', async () => {
-    mockUserRepo.getRole.mockResolvedValue('USER');
+    mockUserRepo.isPerson.mockResolvedValue(true);
     mockService.recordPageView.mockResolvedValue(undefined);
     const res = mockRes();
     await recordPageView(req({ id: 1 }), res);
@@ -45,19 +45,19 @@ describe('recordPageView', () => {
     expect(res.status).toHaveBeenCalledWith(204);
   });
 
-  it.each(['ADMIN', 'FOUNDER'])('leaves out the visits of an %s', async (role) => {
-    mockUserRepo.getRole.mockResolvedValue(role);
+  it("leaves out the visits of an account that isn't a student", async () => {
+    mockUserRepo.isPerson.mockResolvedValue(false);
     const res = mockRes();
     await recordPageView(req({ id: 1 }), res);
-    expect(mockUserRepo.getRole).toHaveBeenCalledWith(1);
+    expect(mockUserRepo.isPerson).toHaveBeenCalledWith(1);
     expect(mockService.recordPageView).not.toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(204);
   });
 
-  it('counts a guest without asking for a role', async () => {
+  it('counts a guest without asking who they are', async () => {
     mockService.recordPageView.mockResolvedValue(undefined);
     await recordPageView(req(), mockRes());
-    expect(mockUserRepo.getRole).not.toHaveBeenCalled();
+    expect(mockUserRepo.isPerson).not.toHaveBeenCalled();
     expect(mockService.recordPageView).toHaveBeenCalled();
   });
 
@@ -85,8 +85,8 @@ describe('recordSteps', () => {
     expect(res.status).toHaveBeenCalledWith(204);
   });
 
-  it('leaves out the steps of an admin', async () => {
-    mockUserRepo.getRole.mockResolvedValue('FOUNDER');
+  it("leaves out the steps of an account that isn't a student", async () => {
+    mockUserRepo.isPerson.mockResolvedValue(false);
     await recordSteps(req({ id: 1 }), mockRes());
     expect(mockService.recordSteps).not.toHaveBeenCalled();
   });

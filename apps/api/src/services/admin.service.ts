@@ -10,13 +10,14 @@ let cached: { dto: AdminStatsDTO; expiresAt: number } | null = null;
 // The DB-heavy aggregates are cached for a few minutes to spare the small VPS;
 // the code-execution metrics are read live from memory on every call (cheap).
 function codeExec() {
-  return { ...sandbox.liveMetrics(), ...sandbox.slots() };
+  const { activeContainers, maxContainers, perLanguage } = sandbox.liveMetrics();
+  return { activeContainers, maxContainers, perLanguage, ...sandbox.slots() };
 }
 
-// Who has the app open right now, read live too; the founder doesn't count
+// Who has the app open right now, read live too; only students count
 async function online() {
   return {
-    users: await adminRepo.countNonFounders(onlineUserIds()),
+    users: await adminRepo.countPeople(onlineUserIds()),
     guests: onlineGuests(),
   };
 }
@@ -27,12 +28,10 @@ export async function getStats(force = false): Promise<AdminStatsDTO> {
     return { ...cached.dto, codeExec: codeExec(), online: await online() };
   }
 
-  const [tutor, users, progress, forum, support, onlineNow] = await Promise.all([
+  const [tutor, users, progress, onlineNow] = await Promise.all([
     adminRepo.tutorStats(),
     adminRepo.userStats(),
     adminRepo.progressStats(),
-    adminRepo.forumStats(),
-    adminRepo.supportStats(),
     online(),
   ]);
 
@@ -40,8 +39,6 @@ export async function getStats(force = false): Promise<AdminStatsDTO> {
     tutor,
     users,
     progress,
-    forum,
-    support,
     codeExec: codeExec(),
     online: onlineNow,
     generatedAt: new Date().toISOString(),

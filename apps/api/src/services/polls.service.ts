@@ -8,11 +8,12 @@ import type { PollDTO, PollResultsDTO } from '@cyberstars/shared/polls';
 const POLL_HISTORY = 50;
 
 // A poll for every account but the sender's, sent like an announcement: one
-// insert, live only to those online, and it throws when the insert fails
+// insert, live only to those online, and it throws when the insert fails. Says
+// how many students got it, like the history
 export async function send(authorId: number, question: string, options: string[], other = false) {
-  const rows = await repo.createPoll(authorId, question, options, other);
+  const { rows, recipients } = await repo.createPoll(authorId, question, options, other);
   await pushLive(rows);
-  return rows.length;
+  return recipients;
 }
 
 // Only an account it went to opens it: everyone but the author who was here
@@ -25,12 +26,12 @@ async function received(id: number, userId: number) {
   return poll;
 }
 
-// The poll as a student opens it, no counts. Opening it counts them among its
-// viewers, and a failure there is only logged, the poll still opens
+// The poll as a student opens it, no counts. Opening it counts a student among
+// its viewers, and a failure there is only logged, the poll still opens
 export async function get(id: number, userId: number): Promise<PollDTO> {
   const poll = await received(id, userId);
   try {
-    await repo.noteView(id, userId);
+    if (await userRepo.isPerson(userId)) await repo.noteView(id, userId);
   } catch (err) {
     console.error(`[polls] poll ${id} opened without counting the view:`, err);
   }
@@ -72,10 +73,12 @@ export async function vote(
   const writes = !!other && optionIds.includes(other.id);
   if (writes && !answer) throw new AppError(400, 'Write your answer under Other');
   if (!writes && answer) throw new AppError(400, 'Tick Other to write your own answer');
-  if (!(await repo.vote(id, userId, optionIds, answer))) {
+  // Anyone else's vote only keeps them from voting again, their answer goes nowhere
+  const counted = await userRepo.isPerson(userId);
+  if (!(await repo.vote(id, userId, optionIds, answer, counted))) {
     throw new AppError(409, 'You already voted in this poll');
   }
-  if (answer) await tellAdmins(id, poll.question, answer, userId);
+  if (answer && counted) await tellAdmins(id, poll.question, answer, userId);
 }
 
 // The latest polls with their counts, newest first, for the admin page

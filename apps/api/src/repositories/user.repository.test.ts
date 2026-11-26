@@ -100,6 +100,15 @@ describe('isBot', () => {
   });
 });
 
+describe('isPerson', () => {
+  it('looks for a USER account without a test email ending', async () => {
+    mockPrisma.user.count.mockResolvedValueOnce(1).mockResolvedValueOnce(0);
+    expect(await repo.isPerson(1)).toBe(true);
+    expect(await repo.isPerson(2)).toBe(false);
+    expect(mockPrisma.user.count).toHaveBeenCalledWith({ where: { id: 1, ...repo.PEOPLE } });
+  });
+});
+
 describe('getTutorProfile', () => {
   it('returns the stored score and interests, or none for a missing user', async () => {
     mockPrisma.user.findUnique.mockResolvedValueOnce({ placementScore: 9, interests: ['c'] });

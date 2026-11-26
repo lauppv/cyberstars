@@ -8,6 +8,9 @@ import { announcementDay } from '../notifications/announcementDay';
 import { ANNOUNCEMENT_MAX_LENGTH, type NotificationDTO } from '@cyberstars/shared/notifications';
 import type { AnnouncementDTO } from '@cyberstars/shared/admin';
 
+// The newest announcements listed at first; the rest wait behind Show more
+const SHOWN = 5;
+
 // An official announcement for every user's bell, sent only after a look at how it shows there
 export function AnnouncementSection({ className }: { className: string }) {
   const { t } = useTranslation();
@@ -21,6 +24,7 @@ export function AnnouncementSection({ className }: { className: string }) {
   const [history, setHistory] = useState<AnnouncementDTO[] | null>(null);
   const [historyFailed, setHistoryFailed] = useState(false);
   const [past, setPast] = useState<AnnouncementDTO | null>(null);
+  const [all, setAll] = useState(false);
 
   const loadHistory = useCallback(() => {
     adminService
@@ -84,7 +88,6 @@ export function AnnouncementSection({ className }: { className: string }) {
 
   return (
     <section className={className}>
-      <h2 className="text-[14px] font-semibold mb-4">{t('admin.announcement.title')}</h2>
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -115,27 +118,34 @@ export function AnnouncementSection({ className }: { className: string }) {
       ) : history === null ? null : history.length === 0 ? (
         <p className="m-0 text-[12px] text-[var(--text3)]">{t('admin.announcement.none')}</p>
       ) : (
-        <ul className="m-0 p-0 list-none border-t border-[var(--border)]">
-          {history.map((a) => (
-            <li key={a.id} className="border-b border-[var(--border)]">
-              <button
-                onClick={() => setPast(a)}
-                className="w-full text-left px-2 py-2.5 bg-transparent border-none cursor-pointer hover:bg-[var(--surface)] transition"
-              >
-                <span className="text-[13px] text-[var(--text)] line-clamp-2">{a.text}</span>
-                <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
-                  {announcementDay(a.createdAt)} · {a.authorName ?? t('notif.someone')}
-                  {/* Counts only, never who. The ones sent before a click was counted have none */}
-                  {a.opens &&
-                    ` · ${t('admin.announcement.opened', {
-                      openers: a.opens.openers,
-                      recipients: a.opens.recipients,
-                    })}`}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className="m-0 p-0 list-none border-t border-[var(--border)]">
+            {(all ? history : history.slice(0, SHOWN)).map((a) => (
+              <li key={a.id} className="border-b border-[var(--border)]">
+                <button
+                  onClick={() => setPast(a)}
+                  className="w-full text-left px-2 py-2.5 bg-transparent border-none cursor-pointer hover:bg-[var(--surface)] transition"
+                >
+                  <span className="text-[13px] text-[var(--text)] line-clamp-2">{a.text}</span>
+                  <span className="block mt-0.5 text-[11px] text-[var(--text3)]">
+                    {announcementDay(a.createdAt)} · {a.authorName ?? t('notif.someone')}
+                    {/* Counts only, never who. The ones sent before a click was counted have none */}
+                    {a.opens &&
+                      ` · ${t('admin.announcement.opened', {
+                        openers: a.opens.openers,
+                        recipients: a.opens.recipients,
+                      })}`}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          {!all && history.length > SHOWN && (
+            <button onClick={() => setAll(true)} className="btn btn-secondary btn-sm mt-3">
+              {t('admin.showMore')}
+            </button>
+          )}
+        </>
       )}
       {past && (
         <AnnouncementModal

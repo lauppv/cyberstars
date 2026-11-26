@@ -353,7 +353,7 @@ describe('Visitor counts', () => {
     await prisma.user.update({ where: { id }, data: { createdAt: late } });
 
     const res = await (await admin()).get('/api/admin/visits').expect(200);
-    // The sentinel, this account and the admin all fall on today
-    expect(res.body.days.at(-1).newAccounts).toBe(3);
+    // Falls on today, with the sentinel and the admin left out: they aren't students
+    expect(res.body.days.at(-1).newAccounts).toBe(1);
   });
 });
