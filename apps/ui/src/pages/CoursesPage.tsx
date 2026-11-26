@@ -183,13 +183,15 @@ export function CoursesPage() {
             <LoadError text={t('progress.loadFailed')} onRetry={refreshProgress} />
           </div>
         )}
-        <SetGrid>
+        {/* The web courses are a row of their own, with their own card in front */}
+        <SetGrid key={inWeb ? 'web' : 'main'} remember={inWeb ? 'webCourses' : 'courses'}>
           {allCourses.map((c) => (
             <CourseCard key={c.key} course={c} open onOpen={openCourse} />
           ))}
           {!inWeb &&
             (webCourse ? (
               <CourseCard
+                key={webCourse.key}
                 course={webCourse}
                 badge={webBadge}
                 open={webOpen}
@@ -198,6 +200,7 @@ export function CoursesPage() {
               />
             ) : (
               <SetCard
+                key={WEB_DEVELOPMENT}
                 setKey={WEB_DEVELOPMENT}
                 title={courseTitle(WEB_DEVELOPMENT, t)}
                 subtitle={courseMeta(WEB_DEVELOPMENT).langLabel}

@@ -1,17 +1,26 @@
-import { Children, useRef, useState, type ReactNode } from 'react';
+import { Children, isValidElement, useRef, useState, type ReactNode } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 // The cards of Courses, Algorithms and Projects as a coverflow: one card in
 // front, its neighbours turned away on either side, and below them where the
-// student is in the row, so the first and the last card are plain to see
-export function SetGrid({ children }: { children: ReactNode }) {
+// student is in the row, so the first and the last card are plain to see.
+// With `remember` the card in front is kept in this browser, so the student
+// comes back to the course they left, not to the first one
+export function SetGrid({ children, remember }: { children: ReactNode; remember?: string }) {
   const { t } = useTranslation();
   const cards = Children.toArray(children);
-  const [front, setFront] = useState(0);
+  const keys = cards.map((card) => (isValidElement(card) ? String(card.key) : ''));
+  const storageKey = remember ? `cyberstars.frontCard.${remember}` : null;
+  // A card that is gone since leaves the first one in front
+  const [front, setFront] = useState(() => Math.max(0, keys.indexOf(readFront(storageKey) ?? '')));
   const swipe = useRef<{ x: number; moved: boolean } | null>(null);
   const total = cards.length;
-  const go = (i: number) => setFront(Math.max(0, Math.min(total - 1, i)));
+  const go = (i: number) => {
+    const next = Math.max(0, Math.min(total - 1, i));
+    setFront(next);
+    saveFront(storageKey, keys[next]);
+  };
 
   return (
     // In the middle of the window: its height less the topbar (3rem) and the
@@ -105,4 +114,24 @@ export function SetGrid({ children }: { children: ReactNode }) {
       )}
     </div>
   );
+}
+
+// Storage can be off (private windows, blocked site data): then every visit
+// starts on the first card, as before
+function readFront(storageKey: string | null) {
+  if (!storageKey) return null;
+  try {
+    return localStorage.getItem(storageKey);
+  } catch {
+    return null;
+  }
+}
+
+function saveFront(storageKey: string | null, key: string | undefined) {
+  if (!storageKey || !key) return;
+  try {
+    localStorage.setItem(storageKey, key);
+  } catch {
+    // Not kept, nothing else lost
+  }
 }

@@ -107,7 +107,7 @@ export function ProjectsPage() {
             <LoadError text={t('projects.checksFailed')} onRetry={retry} />
           </div>
         )}
-        <SetGrid>
+        <SetGrid remember="projects">
           {byLanguage.map((l) => {
             const count = l.projects.length;
             // The one to go on with: a project started and not finished, else

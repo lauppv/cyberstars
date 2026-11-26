@@ -61,7 +61,7 @@ export function AlgorithmsPage() {
       <Topbar />
 
       <PageContainer>
-        <SetGrid>
+        <SetGrid remember="algorithms">
           {sets.map((course) => {
             const progress = progressMap[course.key];
             const count = course.lessons.length;
