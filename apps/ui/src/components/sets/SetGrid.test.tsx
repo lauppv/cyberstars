@@ -1,11 +1,19 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SetGrid } from './SetGrid';
 
-function Grid({ onOpen = () => {} }: { onOpen?: (name: string) => void }) {
+function Grid({
+  onOpen = () => {},
+  remember,
+  names = ['Python', 'C', 'Java'],
+}: {
+  onOpen?: (name: string) => void;
+  remember?: string;
+  names?: string[];
+}) {
   return (
-    <SetGrid>
-      {['Python', 'C', 'Java'].map((name) => (
+    <SetGrid remember={remember}>
+      {names.map((name) => (
         <button key={name} onClick={() => onOpen(name)}>
           {name}
         </button>
@@ -19,6 +27,8 @@ const slots = () => screen.getAllByTestId('set-slot');
 const front = () => slots().findIndex((s) => !s.firstElementChild!.hasAttribute('inert'));
 
 describe('SetGrid', () => {
+  beforeEach(() => localStorage.clear());
+
   it('starts on the first card, with Previous off and the place shown', () => {
     render(<Grid />);
     expect(slots()).toHaveLength(3);
@@ -73,5 +83,46 @@ describe('SetGrid', () => {
       </SetGrid>,
     );
     expect(screen.queryByRole('button', { name: 'Next' })).toBeNull();
+  });
+
+  it('comes back to the card left in front', () => {
+    const first = render(<Grid remember="courses" />);
+    fireEvent.click(screen.getByRole('button', { name: '3 of 3' }));
+    first.unmount();
+
+    render(<Grid remember="courses" />);
+    expect(front()).toBe(2);
+    expect(screen.getByText('3 / 3')).toBeInTheDocument();
+  });
+
+  it('finds the card left in front by its key, not its place', () => {
+    const first = render(<Grid remember="courses" />);
+    fireEvent.click(screen.getByRole('button', { name: '2 of 3' }));
+    first.unmount();
+
+    render(<Grid remember="courses" names={['Go', 'Python', 'C', 'Java']} />);
+    expect(front()).toBe(2);
+  });
+
+  it('starts on the first card when the one left is gone', () => {
+    const first = render(<Grid remember="courses" />);
+    fireEvent.click(screen.getByRole('button', { name: '3 of 3' }));
+    first.unmount();
+
+    render(<Grid remember="courses" names={['Python', 'C']} />);
+    expect(front()).toBe(0);
+  });
+
+  it('keeps each row apart, and nothing without remember', () => {
+    const first = render(<Grid remember="courses" />);
+    fireEvent.click(screen.getByRole('button', { name: '3 of 3' }));
+    first.unmount();
+
+    const other = render(<Grid remember="projects" />);
+    expect(front()).toBe(0);
+    other.unmount();
+
+    render(<Grid />);
+    expect(front()).toBe(0);
   });
 });
