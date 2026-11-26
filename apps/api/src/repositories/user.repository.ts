@@ -1,6 +1,6 @@
 import { prisma } from '../config/db.js';
 import { config } from '../config/index.js';
-import type { User, Role } from '@prisma/client';
+import type { Prisma, User, Role } from '@prisma/client';
 
 export async function findByEmail(email: string): Promise<User | null> {
   return prisma.user.findUnique({ where: { email } });
@@ -77,6 +77,17 @@ export async function isBot(id: number): Promise<boolean> {
     where: { id, OR: BOT_EMAIL_ENDINGS.map((endsWith) => ({ email: { endsWith } })) },
   });
   return found > 0;
+}
+
+// The accounts the admin page counts: students, never moderators, admins, the
+// founder or our test accounts
+export const PEOPLE: Prisma.UserWhereInput = {
+  role: 'USER',
+  NOT: { OR: BOT_EMAIL_ENDINGS.map((endsWith) => ({ email: { endsWith } })) },
+};
+
+export async function isPerson(id: number): Promise<boolean> {
+  return (await prisma.user.count({ where: { id, ...PEOPLE } })) > 0;
 }
 
 // What the tutor goes by about the student, besides their progress

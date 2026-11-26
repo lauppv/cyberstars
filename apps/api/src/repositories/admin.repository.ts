@@ -1,40 +1,23 @@
 import { prisma } from '../config/db.js';
-import { BOT_EMAIL_ENDINGS } from './user.repository.js';
-import type { Role } from '@prisma/client';
-import type {
-  AdminUserStats,
-  AdminProgressStats,
-  AdminForumStats,
-  AdminSupportStats,
-  AdminTutorStats,
-} from '@cyberstars/shared/admin';
-import type { TicketStatus } from '@cyberstars/shared/support';
+import { PEOPLE } from './user.repository.js';
+import type { AdminUserStats, AdminProgressStats, AdminTutorStats } from '@cyberstars/shared/admin';
 
 function daysAgo(days: number): Date {
   return new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 }
 
+// Students only, like every number on the admin page (see PEOPLE)
 export async function userStats(): Promise<AdminUserStats> {
-  const [total, roleGroups, newLast7Days, newLast30Days, bots] = await Promise.all([
-    prisma.user.count(),
-    prisma.user.groupBy({ by: ['role'], _count: { _all: true } }),
-    prisma.user.count({ where: { createdAt: { gte: daysAgo(7) } } }),
-    prisma.user.count({ where: { createdAt: { gte: daysAgo(30) } } }),
-    prisma.user.count({
-      where: { role: 'USER', OR: BOT_EMAIL_ENDINGS.map((endsWith) => ({ email: { endsWith } })) },
-    }),
+  const [total, newLast7Days, newLast30Days] = await Promise.all([
+    prisma.user.count({ where: PEOPLE }),
+    prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(7) } } }),
+    prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(30) } } }),
   ]);
-
-  const byRole: Record<Role, number> = { USER: 0, MODERATOR: 0, ADMIN: 0, FOUNDER: 0 };
-  for (const g of roleGroups) byRole[g.role] = g._count._all;
-  // Bots are USER accounts, shown apart from the real ones
-  byRole.USER -= bots;
-
-  return { total, byRole, bots, newLast7Days, newLast30Days };
+  return { total, newLast7Days, newLast30Days };
 }
 
 export async function progressStats(): Promise<AdminProgressStats> {
-  const where = { completed: true };
+  const where = { completed: true, user: PEOPLE };
   const [totalCompletions, courseUserGroups, lessonGroups] = await Promise.all([
     prisma.userLessonProgress.count({ where }),
     prisma.userLessonProgress.groupBy({ by: ['courseKey', 'userId'], where }),
@@ -81,30 +64,6 @@ export async function progressStats(): Promise<AdminProgressStats> {
   return { totalCompletions, byCourse, topLessons };
 }
 
-export async function forumStats(): Promise<AdminForumStats> {
-  const [threads, posts, reactions] = await Promise.all([
-    prisma.forumThread.count(),
-    prisma.forumPost.count({ where: { deleted: false } }),
-    prisma.forumReaction.count(),
-  ]);
-  return { threads, posts, reactions };
-}
-
-export async function supportStats(): Promise<AdminSupportStats> {
-  const [total, statusGroups] = await Promise.all([
-    prisma.supportTicket.count(),
-    prisma.supportTicket.groupBy({ by: ['status'], _count: { _all: true } }),
-  ]);
-  const byStatus: Record<TicketStatus, number> = {
-    OPEN: 0,
-    IN_PROGRESS: 0,
-    RESOLVED: 0,
-    CLOSED: 0,
-  };
-  for (const g of statusGroups) byStatus[g.status] = g._count._all;
-  return { total, byStatus };
-}
-
 // How many messages students sent the tutor in the last 7 and 30 days; only
 // USER accounts that aren't bots were ever counted.
 export async function tutorStats(): Promise<AdminTutorStats> {
@@ -115,7 +74,7 @@ export async function tutorStats(): Promise<AdminTutorStats> {
   return { promptsLast7Days, promptsLast30Days };
 }
 
-// How many of these users aren't the founder
-export async function countNonFounders(ids: number[]): Promise<number> {
-  return prisma.user.count({ where: { id: { in: ids }, role: { not: 'FOUNDER' } } });
+// How many of these users are students
+export async function countPeople(ids: number[]): Promise<number> {
+  return prisma.user.count({ where: { id: { in: ids }, ...PEOPLE } });
 }

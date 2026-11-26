@@ -1,58 +1,51 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
-  user: {
-    count: vi.fn(),
-    groupBy: vi.fn(),
-  },
+  user: { count: vi.fn() },
   userLessonProgress: {
     count: vi.fn(),
     groupBy: vi.fn(),
   },
-  forumThread: { count: vi.fn() },
-  forumPost: { count: vi.fn() },
-  forumReaction: { count: vi.fn() },
   tutorPrompt: { count: vi.fn() },
-  supportTicket: {
-    count: vi.fn(),
-    groupBy: vi.fn(),
-  },
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
 
 const repo = await import('./admin.repository.js');
+const { PEOPLE } = await import('./user.repository.js');
 
 beforeEach(() => vi.clearAllMocks());
 
 describe('userStats', () => {
-  it('aggregates totals, roles and recency', async () => {
+  it('counts students only: in all and made in the last 7 and 30 days', async () => {
+    vi.useFakeTimers({ now: new Date('2026-11-15T12:00:00Z') });
     mockPrisma.user.count
       .mockResolvedValueOnce(10) // total
       .mockResolvedValueOnce(3) // newLast7Days
-      .mockResolvedValueOnce(6) // newLast30Days
-      .mockResolvedValueOnce(2); // bots
-    mockPrisma.user.groupBy.mockResolvedValueOnce([
-      { role: 'ADMIN', _count: { _all: 1 } },
-      { role: 'USER', _count: { _all: 8 } },
-    ]);
-    const result = await repo.userStats();
+      .mockResolvedValueOnce(6); // newLast30Days
 
-    expect(result.total).toBe(10);
-    expect(result.byRole).toEqual({ USER: 6, MODERATOR: 0, ADMIN: 1, FOUNDER: 0 });
-    expect(result.bots).toBe(2);
-    expect(result.newLast7Days).toBe(3);
-    expect(result.newLast30Days).toBe(6);
+    const result = await repo.userStats();
+    vi.useRealTimers();
+
+    expect(result).toEqual({ total: 10, newLast7Days: 3, newLast30Days: 6 });
+    expect(mockPrisma.user.count.mock.calls).toEqual([
+      [{ where: PEOPLE }],
+      [{ where: { ...PEOPLE, createdAt: { gte: new Date('2026-11-08T12:00:00Z') } } }],
+      [{ where: { ...PEOPLE, createdAt: { gte: new Date('2026-10-16T12:00:00Z') } } }],
+    ]);
   });
 
-  it('filters new-user counts by a createdAt lower bound', async () => {
-    mockPrisma.user.count.mockResolvedValue(0);
-    mockPrisma.user.groupBy.mockResolvedValue([]);
-
-    await repo.userStats();
-
-    const sevenDayArg = mockPrisma.user.count.mock.calls[1][0];
-    expect(sevenDayArg.where.createdAt.gte).toBeInstanceOf(Date);
+  it('leaves out moderators, admins, the founder and the test accounts', () => {
+    expect(PEOPLE).toEqual({
+      role: 'USER',
+      NOT: {
+        OR: [
+          { email: { endsWith: '@fake.com' } },
+          { email: { endsWith: '.fake.com' } },
+          { email: { endsWith: '@bots.cyberstars.app' } },
+        ],
+      },
+    });
   });
 });
 
@@ -86,6 +79,19 @@ describe('progressStats', () => {
     expect(result.topLessons).toEqual([
       { courseKey: 'python', lessonSlug: 'intro', completions: 4 },
     ]);
+  });
+
+  it("counts students' completions only", async () => {
+    mockPrisma.userLessonProgress.count.mockResolvedValueOnce(0);
+    mockPrisma.userLessonProgress.groupBy.mockResolvedValue([]);
+
+    await repo.progressStats();
+
+    const where = { completed: true, user: PEOPLE };
+    expect(mockPrisma.userLessonProgress.count).toHaveBeenCalledWith({ where });
+    for (const [arg] of mockPrisma.userLessonProgress.groupBy.mock.calls) {
+      expect(arg.where).toEqual(where);
+    }
   });
 
   it('sorts courses by completions descending', async () => {
@@ -137,30 +143,13 @@ describe('tutorStats', () => {
   });
 });
 
-describe('forumStats', () => {
-  it('counts threads, non-deleted posts and reactions', async () => {
-    mockPrisma.forumThread.count.mockResolvedValue(2);
-    mockPrisma.forumPost.count.mockResolvedValue(7);
-    mockPrisma.forumReaction.count.mockResolvedValue(11);
+describe('countPeople', () => {
+  it('counts the students among the given accounts', async () => {
+    mockPrisma.user.count.mockResolvedValueOnce(2);
 
-    const result = await repo.forumStats();
-
-    expect(result).toEqual({ threads: 2, posts: 7, reactions: 11 });
-    expect(mockPrisma.forumPost.count).toHaveBeenCalledWith({ where: { deleted: false } });
-  });
-});
-
-describe('supportStats', () => {
-  it('aggregates ticket totals by status with a zeroed baseline', async () => {
-    mockPrisma.supportTicket.count.mockResolvedValue(3);
-    mockPrisma.supportTicket.groupBy.mockResolvedValue([
-      { status: 'OPEN', _count: { _all: 2 } },
-      { status: 'CLOSED', _count: { _all: 1 } },
-    ]);
-
-    const result = await repo.supportStats();
-
-    expect(result.total).toBe(3);
-    expect(result.byStatus).toEqual({ OPEN: 2, IN_PROGRESS: 0, RESOLVED: 0, CLOSED: 1 });
+    expect(await repo.countPeople([1, 2, 3])).toBe(2);
+    expect(mockPrisma.user.count).toHaveBeenCalledWith({
+      where: { id: { in: [1, 2, 3] }, ...PEOPLE },
+    });
   });
 });

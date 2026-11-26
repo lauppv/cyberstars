@@ -1,9 +1,7 @@
-import type { TicketStatus } from './support.js';
-
+// Every number on the admin page counts students only: USER accounts that
+// aren't our test accounts, never moderators, admins or the founder
 export interface AdminUserStats {
   total: number;
-  byRole: { USER: number; MODERATOR: number; ADMIN: number; FOUNDER: number };
-  bots: number; // our test accounts, left out of byRole.USER
   newLast7Days: number;
   newLast30Days: number;
 }
@@ -31,21 +29,9 @@ export interface AdminProgressStats {
   topLessons: AdminLessonStat[];
 }
 
-export interface AdminForumStats {
-  threads: number;
-  posts: number;
-  reactions: number;
-}
-
-export interface AdminSupportStats {
-  total: number;
-  byStatus: Record<TicketStatus, number>;
-}
-
 interface AdminCodeExecStats {
   activeContainers: number;
   maxContainers: number;
-  openSessions: number;
   perLanguage: Record<string, number>;
   /** Sandboxes busy right now (editor runs, Run Tests, terminal commands), out of the server's limit. */
   busySlots: number;
@@ -53,7 +39,7 @@ interface AdminCodeExecStats {
 }
 
 interface AdminOnline {
-  users: number; // signed in with the app open now, the founder left out
+  users: number; // students signed in with the app open now
   guests: number; // browsers with the app open and no account
 }
 
@@ -61,8 +47,6 @@ export interface AdminStatsDTO {
   tutor: AdminTutorStats;
   users: AdminUserStats;
   progress: AdminProgressStats;
-  forum: AdminForumStats;
-  support: AdminSupportStats;
   codeExec: AdminCodeExecStats;
   online: AdminOnline;
   /** ISO time the cached aggregates were computed. */
@@ -70,7 +54,7 @@ export interface AdminStatsDTO {
 }
 
 export interface AnnouncementSentDTO {
-  sent: number; // accounts that got it in their bell
+  sent: number; // students that got it in their bell
 }
 
 export interface AnnouncementDTO {

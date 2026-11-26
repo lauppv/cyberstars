@@ -12,9 +12,7 @@ const mockAdminRepo = {
   tutorStats: vi.fn(),
   userStats: vi.fn(),
   progressStats: vi.fn(),
-  forumStats: vi.fn(),
-  supportStats: vi.fn(),
-  countNonFounders: vi.fn(),
+  countPeople: vi.fn(),
 };
 
 const mockContainer = {
@@ -41,13 +39,11 @@ beforeEach(() => {
   vi.clearAllMocks();
   clearCache();
   clearUserSockets();
-  mockAdminRepo.countNonFounders.mockResolvedValue(0);
+  mockAdminRepo.countPeople.mockResolvedValue(0);
   mockContainer.onlineGuests.mockReturnValue(0);
   mockAdminRepo.tutorStats.mockResolvedValue({ promptsLast7Days: 9, promptsLast30Days: 30 });
   mockAdminRepo.userStats.mockResolvedValue({
     total: 3,
-    byRole: { USER: 2, MODERATOR: 0, ADMIN: 1 },
-    bots: 0,
     newLast7Days: 1,
     newLast30Days: 2,
   });
@@ -55,11 +51,6 @@ beforeEach(() => {
     totalCompletions: 5,
     byCourse: [],
     topLessons: [],
-  });
-  mockAdminRepo.forumStats.mockResolvedValue({ threads: 1, posts: 2, reactions: 3 });
-  mockAdminRepo.supportStats.mockResolvedValue({
-    total: 0,
-    byStatus: { OPEN: 0, IN_PROGRESS: 0, RESOLVED: 0, CLOSED: 0 },
   });
   mockContainer.liveMetrics.mockReturnValue({
     activeContainers: 0,
@@ -75,7 +66,6 @@ describe('admin.service getStats', () => {
     expect(stats.tutor.promptsLast7Days).toBe(9);
     expect(stats.users.total).toBe(3);
     expect(stats.progress.totalCompletions).toBe(5);
-    expect(stats.forum.posts).toBe(2);
     expect(stats.codeExec.maxContainers).toBe(50);
     expect(stats.codeExec.busySlots).toBe(0);
     expect(stats.codeExec.maxBusySlots).toBe(os.availableParallelism() * 4);
@@ -100,7 +90,14 @@ describe('admin.service getStats', () => {
     const release = await sandbox.acquireSlot();
     const second = await getStats();
     release();
-    expect(second.codeExec.activeContainers).toBe(4);
+    // The sandbox's open sessions aren't shown: who has the app open says it
+    expect(second.codeExec).toEqual({
+      activeContainers: 4,
+      maxContainers: 50,
+      perLanguage: { python: 4 },
+      busySlots: 1,
+      maxBusySlots: os.availableParallelism() * 4,
+    });
     expect(second.codeExec.busySlots).toBe(1);
     expect(mockContainer.liveMetrics).toHaveBeenCalledTimes(2);
     expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
@@ -110,11 +107,11 @@ describe('admin.service getStats', () => {
     await getStats();
     registerUserSocket(7, {} as WebSocket);
     registerUserSocket(9, {} as WebSocket);
-    mockAdminRepo.countNonFounders.mockResolvedValue(1);
+    mockAdminRepo.countPeople.mockResolvedValue(1);
     mockContainer.onlineGuests.mockReturnValue(4);
     const second = await getStats();
     expect(second.online).toEqual({ users: 1, guests: 4 });
-    expect(mockAdminRepo.countNonFounders).toHaveBeenLastCalledWith([7, 9]);
+    expect(mockAdminRepo.countPeople).toHaveBeenLastCalledWith([7, 9]);
     expect(mockAdminRepo.userStats).toHaveBeenCalledTimes(1);
   });
 
