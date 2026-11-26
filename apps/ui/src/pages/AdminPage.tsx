@@ -10,9 +10,7 @@ import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { courseTitle } from '../constants/courses';
 import * as adminService from '../services/adminService';
 import { VisitorsSection } from '../components/admin/VisitorsSection';
-import { MissedQuestions } from '../components/admin/MissedQuestions';
-import { AnnouncementSection } from '../components/admin/AnnouncementSection';
-import { PollSection } from '../components/admin/PollSection';
+import { NoticesSection } from '../components/admin/NoticesSection';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
@@ -111,19 +109,10 @@ export function AdminPage() {
                   <Stat label={t('admin.tutorPrompts7')} value={stats.tutor.promptsLast7Days} />
                   <Stat label={t('admin.tutorPrompts30')} value={stats.tutor.promptsLast30Days} />
                 </div>
-                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
-                  {(['FOUNDER', 'ADMIN', 'MODERATOR', 'USER'] as const).map((role) => (
-                    <span key={role}>
-                      {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
-                    </span>
-                  ))}
-                  <span>
-                    {t('admin.bots')} {stats.users.bots}
-                  </span>
-                  <span className="ml-auto">
-                    {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
-                    {t('admin.guestsOnline', { count: stats.online.guests })}
-                  </span>
+                {/* Who has the app open now: students signed in (no moderators, admins, founder or bots) and guests */}
+                <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
+                  {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
+                  {t('admin.guestsOnline', { count: stats.online.guests })}
                 </div>
               </section>
 
@@ -135,7 +124,7 @@ export function AdminPage() {
                 afterCharts={
                   <section className={CARD_CLS + ' @2xl:col-span-3'}>
                     <h2 className="text-[14px] font-semibold mb-4">{t('admin.codeExec')}</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
+                    <div className="grid grid-cols-2 gap-4 mb-4">
                       <Stat
                         label={t('admin.activeContainers')}
                         value={`${stats.codeExec.activeContainers}/${stats.codeExec.maxContainers}`}
@@ -144,7 +133,6 @@ export function AdminPage() {
                         label={t('admin.busySandboxes')}
                         value={`${stats.codeExec.busySlots}/${stats.codeExec.maxBusySlots}`}
                       />
-                      <Stat label={t('admin.openSessions')} value={stats.codeExec.openSessions} />
                     </div>
                     <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
                       <div className="text-[var(--text3)] mb-1">{t('admin.perLanguage')}</div>
@@ -220,26 +208,6 @@ export function AdminPage() {
                 </div>
               </section>
 
-              <MissedQuestions className={CARD_CLS + ' @2xl:col-span-3'} reload={reloads} />
-
-              {/* Forum & Support */}
-              <section className={CARD_CLS + ' @2xl:col-span-3'}>
-                <h2 className="text-[14px] font-semibold mb-4">{t('admin.forum')}</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
-                  <Stat label={t('admin.threads')} value={stats.forum.threads} />
-                  <Stat label={t('admin.posts')} value={stats.forum.posts} />
-                  <Stat label={t('admin.reactions')} value={stats.forum.reactions} />
-                  <Stat label={t('admin.tickets')} value={stats.support.total} />
-                </div>
-                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-4 text-[12px] text-[var(--text2)]">
-                  {Object.entries(stats.support.byStatus).map(([status, n]) => (
-                    <span key={status}>
-                      {t(`support.status.${status}`, { defaultValue: status })} {n}
-                    </span>
-                  ))}
-                </div>
-              </section>
-
               <p className="@2xl:col-span-3 text-[11px] text-[var(--text3)] text-center">
                 {t('admin.generatedAt', {
                   time: new Date(stats.generatedAt).toLocaleTimeString(i18next.language),
@@ -248,9 +216,8 @@ export function AdminPage() {
             </div>
           ) : null}
 
-          {/* After the stats, since announcements are rare; outside them so it works without them */}
-          <AnnouncementSection className={CARD_CLS + ' mt-5'} />
-          <PollSection className={CARD_CLS + ' mt-5'} />
+          {/* After the stats, since they are rare; outside them so they work without them */}
+          <NoticesSection className={CARD_CLS + ' mt-5'} />
         </div>
       </PageContainer>
     </div>

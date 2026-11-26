@@ -1,6 +1,5 @@
 import { api } from './apiClient';
 import type { AdminStatsDTO, AnnouncementDTO, AnnouncementSentDTO } from '@cyberstars/shared/admin';
-import type { MissedQuestion } from '@cyberstars/shared/laniakea';
 import type { PollResultsDTO, PollSentDTO } from '@cyberstars/shared/polls';
 
 export function getStats(force = false) {
@@ -21,8 +20,4 @@ export function getPolls() {
 
 export function sendPoll(question: string, options: string[], other: boolean) {
   return api.post<PollSentDTO>('/api/admin/polls', { question, options, other });
-}
-
-export function getMissedQuestions(lang: 'en' | 'ro') {
-  return api.get<MissedQuestion[]>(`/api/admin/laniakea/questions?lang=${lang}`);
 }

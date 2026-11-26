@@ -8,12 +8,8 @@ vi.mock('../components/layout/Topbar', () => ({ Topbar: () => <nav>Topbar</nav> 
 vi.mock('../components/admin/VisitorsSection', () => ({
   VisitorsSection: ({ afterCharts }: { afterCharts?: ReactNode }) => afterCharts ?? null,
 }));
-vi.mock('../components/admin/MissedQuestions', () => ({ MissedQuestions: () => null }));
-vi.mock('../components/admin/AnnouncementSection', () => ({
-  AnnouncementSection: () => <section>Announcement</section>,
-}));
-vi.mock('../components/admin/PollSection', () => ({
-  PollSection: () => <section>Poll</section>,
+vi.mock('../components/admin/NoticesSection', () => ({
+  NoticesSection: () => <section>Announcements and polls</section>,
 }));
 vi.mock('../context/AuthContext', () => ({
   useAuth: () => ({ user: { role: 'ADMIN' }, isLoading: false }),
@@ -29,21 +25,16 @@ const stats: AdminStatsDTO = {
   tutor: { promptsLast7Days: 37, promptsLast30Days: 90 },
   users: {
     total: 12,
-    byRole: { USER: 10, MODERATOR: 0, ADMIN: 1, FOUNDER: 1 },
-    bots: 4,
     newLast7Days: 1,
     newLast30Days: 3,
   },
   progress: { totalCompletions: 0, byCourse: [], topLessons: [] },
-  forum: { threads: 0, posts: 0, reactions: 0 },
-  support: { total: 0, byStatus: { OPEN: 0, IN_PROGRESS: 0, RESOLVED: 0, CLOSED: 0 } },
   codeExec: {
     activeContainers: 0,
     maxContainers: 4,
     perLanguage: {},
     busySlots: 0,
     maxBusySlots: 2,
-    openSessions: 0,
   },
   online: { users: 3, guests: 5 },
   generatedAt: '2026-11-02T10:00:00Z',
@@ -60,11 +51,11 @@ function renderPage() {
 beforeEach(() => getStats.mockReset());
 
 describe('AdminPage', () => {
-  it('lets an admin write an announcement even when the stats fail', async () => {
+  it('lets an admin write an announcement or a poll even when the stats fail', async () => {
     getStats.mockRejectedValueOnce(new Error('500'));
     renderPage();
     expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByText('Announcement')).toBeInTheDocument();
+    expect(screen.getByText('Announcements and polls')).toBeInTheDocument();
   });
 
   it('shows the messages sent to the tutor, 7 then 30 days, last in the users row', async () => {
@@ -86,39 +77,31 @@ describe('AdminPage', () => {
     expect(screen.queryByText('Active (with progress)')).not.toBeInTheDocument();
   });
 
-  it('keeps the announcement card at the foot, after the stats', async () => {
+  it('keeps the announcements and polls card at the foot, after the stats', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
     const users = await screen.findByText('Total users');
     expect(
-      users.compareDocumentPosition(screen.getByText('Announcement')) &
+      users.compareDocumentPosition(screen.getByText('Announcements and polls')) &
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
   });
 
-  it('puts the poll card after the announcement card', async () => {
+  it('shows how many users and guests are online now under the users row, with no roles', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    await screen.findByText('Total users');
-    expect(
-      screen.getByText('Announcement').compareDocumentPosition(screen.getByText('Poll')) &
-        Node.DOCUMENT_POSITION_FOLLOWING,
-    ).toBeTruthy();
+    expect(await screen.findByText('Online now: 3 signed in · 5 guests')).toBeInTheDocument();
+    expect(screen.queryByText(/^Bot/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/^Founder/)).not.toBeInTheDocument();
   });
 
-  it('lets an admin send a poll even when the stats fail', async () => {
-    getStats.mockRejectedValueOnce(new Error('500'));
-    renderPage();
-    expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByText('Poll')).toBeInTheDocument();
-  });
-
-  it('shows how many users and guests are online now in the role row, after the User and Bot counts', async () => {
+  it('leaves out the open sessions, the forum and support, and the missed questions', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    const online = await screen.findByText('Online now: 3 signed in · 5 guests');
-    expect(online.previousElementSibling).toHaveTextContent('Bot 4');
-    expect(online.previousElementSibling?.previousElementSibling).toHaveTextContent('User 10');
+    expect(await screen.findByText('Busy sandboxes')).toBeInTheDocument();
+    expect(screen.queryByText('Open sessions')).not.toBeInTheDocument();
+    expect(screen.queryByText('Forum & Support')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Laniakea/)).not.toBeInTheDocument();
   });
 
   it('says the stats could not be loaded, and clears it once a refresh brings them', async () => {

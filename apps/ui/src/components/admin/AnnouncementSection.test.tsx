@@ -133,6 +133,21 @@ describe('AnnouncementSection history', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
   });
 
+  it('lists the newest five, the rest behind Show more', async () => {
+    getAnnouncements.mockResolvedValue(
+      Array.from({ length: 6 }, (_, i) => ({
+        ...sentBefore[1],
+        id: 10 - i,
+        text: `Note ${i + 1}`,
+      })),
+    );
+    render(<AnnouncementSection className="" />);
+    expect(await screen.findByText('Note 5')).toBeInTheDocument();
+    expect(screen.queryByText('Note 6')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Show more' }));
+    expect(screen.getByText('Note 6')).toBeInTheDocument();
+  });
+
   it('says when none was sent yet', async () => {
     render(<AnnouncementSection className="" />);
     expect(await screen.findByText('No announcement has been sent yet.')).toBeInTheDocument();

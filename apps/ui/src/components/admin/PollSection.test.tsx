@@ -13,6 +13,11 @@ const option = (n: number) => screen.getByLabelText(`Option ${n}`);
 const send = () => screen.getByRole('button', { name: 'Send' });
 const confirm = () => screen.getByRole('dialog', { name: 'Send this poll to all users?' });
 
+// A poll sent before, opened to its results
+async function openPoll(q: string) {
+  fireEvent.click(await screen.findByRole('button', { name: new RegExp(q) }));
+}
+
 function write(q: string, ...options: string[]) {
   render(<PollSection className="" />);
   fireEvent.change(question(), { target: { value: q } });
@@ -169,19 +174,35 @@ describe('PollSection', () => {
 });
 
 describe('PollSection results', () => {
-  it('lists the polls sent before with who voted and each option as a share of the voters', async () => {
+  it('lists the polls sent before as one line each with who voted', async () => {
     getPolls.mockResolvedValue(sentBefore);
     render(<PollSection className="" />);
     expect(await screen.findByText('Which course next?')).toBeInTheDocument();
     expect(screen.getByText('November 3, 2026 · Ada · 4 of 40 voted')).toBeInTheDocument();
+    // The options wait for a click
+    expect(screen.queryByText('3 · 75%')).not.toBeInTheDocument();
+  });
+
+  it('opens a poll to each option as a share of the voters, and closes it again', async () => {
+    getPolls.mockResolvedValue(sentBefore);
+    render(<PollSection className="" />);
+    await openPoll('Which course next?');
+    expect(screen.getByRole('button', { name: /Which course next\?/ })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
     expect(screen.getByText('3 · 75%')).toBeInTheDocument();
     expect(screen.getByText('2 · 50%')).toBeInTheDocument();
+    await openPoll('Which course next?');
+    expect(screen.queryByText('3 · 75%')).not.toBeInTheDocument();
   });
 
   it('counts who saw a poll without voting and who never opened it, never naming them', async () => {
     getPolls.mockResolvedValue(sentBefore);
     render(<PollSection className="" />);
-    expect(await screen.findByText('Seen, no vote: 5 · Not opened yet: 31')).toBeInTheDocument();
+    await openPoll('Which course next?');
+    await openPoll('Too hard?');
+    expect(screen.getByText('Seen, no vote: 5 · Not opened yet: 31')).toBeInTheDocument();
     // The poll sent before opening one was counted has no such line
     expect(screen.getAllByText(/Seen, no vote/)).toHaveLength(1);
   });
@@ -195,7 +216,8 @@ describe('PollSection results', () => {
       },
     ]);
     render(<PollSection className="" />);
-    expect(await screen.findByText('Other')).toBeInTheDocument();
+    await openPoll('Which course next?');
+    expect(screen.getByText('Other')).toBeInTheDocument();
     const answers = screen.getByRole('list', { name: 'What they wrote under Other' });
     expect(
       within(answers)
@@ -212,7 +234,8 @@ describe('PollSection results', () => {
       },
     ]);
     render(<PollSection className="" />);
-    expect(await screen.findByText('Other')).toBeInTheDocument();
+    await openPoll('Which course next?');
+    expect(screen.getByText('Other')).toBeInTheDocument();
     expect(screen.queryByRole('list', { name: 'What they wrote under Other' })).toBeNull();
   });
 
@@ -222,7 +245,24 @@ describe('PollSection results', () => {
     expect(
       await screen.findByText('October 20, 2026 · Someone · 0 of 30 voted'),
     ).toBeInTheDocument();
+    await openPoll('Too hard?');
     expect(screen.getAllByText('0 · 0%')).toHaveLength(2);
+  });
+
+  it('lists the newest five, the rest behind Show more', async () => {
+    getPolls.mockResolvedValue(
+      Array.from({ length: 7 }, (_, i) => ({
+        ...sentBefore[1],
+        id: 10 - i,
+        question: `Q${i + 1}?`,
+      })),
+    );
+    render(<PollSection className="" />);
+    expect(await screen.findByText('Q5?')).toBeInTheDocument();
+    expect(screen.queryByText('Q6?')).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Show more' }));
+    expect(screen.getByText('Q7?')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Show more' })).not.toBeInTheDocument();
   });
 
   it('says when none was sent yet', async () => {
