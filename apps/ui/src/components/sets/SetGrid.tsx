@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 // The cards of Courses, Algorithms and Projects as a coverflow: one card in
 // front, its neighbours turned away on either side, and below them where the
-// student is in the row, so the first and the last card are plain to see.
+// student is in the row. The row is a loop: past the last card comes the first.
 // With `remember` the card in front is kept in this browser, so the student
 // comes back to the course they left, not to the first one
 export function SetGrid({ children, remember }: { children: ReactNode; remember?: string }) {
@@ -17,7 +17,7 @@ export function SetGrid({ children, remember }: { children: ReactNode; remember?
   const swipe = useRef<{ x: number; moved: boolean } | null>(null);
   const total = cards.length;
   const go = (i: number) => {
-    const next = Math.max(0, Math.min(total - 1, i));
+    const next = ((i % total) + total) % total;
     setFront(next);
     saveFront(storageKey, keys[next]);
   };
@@ -43,7 +43,9 @@ export function SetGrid({ children, remember }: { children: ReactNode; remember?
         }}
       >
         {cards.map((card, i) => {
-          const d = i - front;
+          // How far the card is from the front, the short way round the loop
+          let d = (((i - front) % total) + total) % total;
+          if (d > total / 2) d -= total;
           const a = Math.abs(d);
           return (
             <div
@@ -78,9 +80,8 @@ export function SetGrid({ children, remember }: { children: ReactNode; remember?
           <button
             type="button"
             onClick={() => go(front - 1)}
-            disabled={front === 0}
             aria-label={t('common.previous')}
-            className="p-1 bg-transparent border-0 cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition-colors disabled:opacity-30 disabled:cursor-default disabled:hover:text-[var(--text3)]"
+            className="p-1 bg-transparent border-0 cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition-colors"
           >
             <ChevronLeft size={20} aria-hidden="true" />
           </button>
@@ -104,9 +105,8 @@ export function SetGrid({ children, remember }: { children: ReactNode; remember?
           <button
             type="button"
             onClick={() => go(front + 1)}
-            disabled={front === total - 1}
             aria-label={t('common.next')}
-            className="p-1 bg-transparent border-0 cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition-colors disabled:opacity-30 disabled:cursor-default disabled:hover:text-[var(--text3)]"
+            className="p-1 bg-transparent border-0 cursor-pointer text-[var(--text3)] hover:text-[var(--text)] transition-colors"
           >
             <ChevronRight size={20} aria-hidden="true" />
           </button>
