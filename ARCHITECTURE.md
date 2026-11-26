@@ -267,18 +267,17 @@ Once an hour the server tells each student in the bell how many of their recaps 
 
 ### Admin and visits
 
-| Method | Endpoint                        | Auth     | Description                                                                                          |
-| ------ | ------------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
-| GET    | `/api/admin/stats`              | Admin    | Stats (cached 5 min), live code-exec metrics and users online                                        |
-| GET    | `/api/admin/visits`             | Admin    | Visitors a day (and apart, guests who only loaded pages), top pages, sources and clicks over a range |
-| GET    | `/api/admin/visits/guests`      | Admin    | Guest visits that did something, with their steps, paged                                             |
-| GET    | `/api/admin/laniakea/questions` | Admin    | The Laniakea questions students miss most                                                            |
-| GET    | `/api/admin/announcements`      | Admin    | The last 50 official announcements sent, newest first                                                |
-| POST   | `/api/admin/announcements`      | Admin    | Send an official announcement to every user's bell                                                   |
-| GET    | `/api/admin/polls`              | Admin    | The last 50 polls sent with their counts, newest first                                               |
-| POST   | `/api/admin/polls`              | Admin    | Send a poll to every user's bell                                                                     |
-| POST   | `/api/visits`                   | Optional | The app reports a page it showed; bots are left out                                                  |
-| POST   | `/api/visits/steps`             | Optional | A guest's clicks and scrolls on the page they're on, and that they did something                     |
+| Method | Endpoint                   | Auth     | Description                                                                                          |
+| ------ | -------------------------- | -------- | ---------------------------------------------------------------------------------------------------- |
+| GET    | `/api/admin/stats`         | Admin    | Stats (cached 5 min), live code-exec metrics and users online                                        |
+| GET    | `/api/admin/visits`        | Admin    | Visitors a day (and apart, guests who only loaded pages), top pages, sources and clicks over a range |
+| GET    | `/api/admin/visits/guests` | Admin    | Guest visits that did something, with their steps, paged                                             |
+| GET    | `/api/admin/announcements` | Admin    | The last 50 official announcements sent, newest first                                                |
+| POST   | `/api/admin/announcements` | Admin    | Send an official announcement to every user's bell                                                   |
+| GET    | `/api/admin/polls`         | Admin    | The last 50 polls sent with their counts, newest first                                               |
+| POST   | `/api/admin/polls`         | Admin    | Send a poll to every user's bell                                                                     |
+| POST   | `/api/visits`              | Optional | The app reports a page it showed; bots are left out                                                  |
+| POST   | `/api/visits/steps`        | Optional | A guest's clicks and scrolls on the page they're on, and that they did something                     |
 
 Visits keep no IP and no guest id: a visitor is a hash of the day's salt, the IP and the user agent, and the salt is gone with its day.
 
@@ -296,7 +295,7 @@ Defined in [`apps/api/prisma/schema.prisma`](apps/api/prisma/schema.prisma), cam
 - **LaniakeaPlanet**: a student's planet: level, last pass, questions seen and the test going on
 - **LaniakeaPass**: each test that moved a planet, its conquest or a recap, for the activity heatmap and the streak
 - **LaniakeaPlayer**: when a student last opened the game and was last told of open recaps
-- **LaniakeaQuestionStat**: how often each Laniakea question was answered, missed and each option picked, without who answered
+- **LaniakeaQuestionStat**: how often each Laniakea question was answered, missed and each option picked, without who answered (counted, read by nothing now)
 - **PageVisit**, **VisitSalt**, **VisitTotal**, **GuestVisit**, **VisitStep**: visitor counts
 
 ## Code execution
