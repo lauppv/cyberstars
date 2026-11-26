@@ -3,8 +3,6 @@ import {
   DAY_MS,
   FOREVER_LEVEL,
   LANIAKEA_COURSE,
-  MISSED_LIST,
-  MISSED_MIN_ANSWERS,
   QUIZ_IDLE_MS,
   QUIZ_LENGTH,
   QUIZ_OUT,
@@ -14,7 +12,6 @@ import {
   planetLessons,
   type LaniakeaPlanet,
   type LaniakeaState,
-  type MissedQuestion,
   type QuizAnswer,
   type QuizAnswerResult,
   type QuizMode,
@@ -370,43 +367,4 @@ export async function answerQuiz(
       result: { ...answer, status: 'active', planet: null, leveledUp: false },
     };
   });
-}
-
-// The questions students miss most, for the admin page, in the page's language:
-// the highest share of wrong answers first and, of two alike, the one answered
-// more. As in the game, a question the page's language file lacks shows in
-// English. A question no longer in its planet's file is left out.
-export async function missedQuestions(lang: 'en' | 'ro'): Promise<MissedQuestion[]> {
-  const rows = await laniakeaRepo.listQuestionStats(LANIAKEA_COURSE, MISSED_MIN_ANSWERS);
-  const quizzes = new Map<string, { spec: QuizSpec | null; shown: QuizSpec | null }>();
-  const quizOf = (slug: string) => {
-    if (!quizzes.has(slug)) {
-      const spec = PLANETS.has(slug) ? loadQuiz(slug, 'en') : null;
-      quizzes.set(slug, { spec, shown: spec && lang !== 'en' ? loadQuiz(slug, lang) : spec });
-    }
-    return quizzes.get(slug)!;
-  };
-  return rows
-    .flatMap((row): MissedQuestion[] => {
-      const { spec, shown } = quizOf(row.lessonSlug);
-      const q =
-        (shown && questionOf(shown, row.questionId)) ?? (spec && questionOf(spec, row.questionId));
-      if (!q) return [];
-      return [
-        {
-          slug: row.lessonSlug,
-          id: q.id,
-          text: q.text,
-          code: q.code,
-          output: q.output,
-          options: q.options,
-          answer: q.answer,
-          picks: row.picks,
-          answered: row.answered,
-          wrong: row.wrong,
-        },
-      ];
-    })
-    .sort((a, b) => b.wrong * a.answered - a.wrong * b.answered || b.answered - a.answered)
-    .slice(0, MISSED_LIST);
 }
