@@ -2,6 +2,7 @@ import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { PART_STARTS, WEB_COURSE_KEYS, isClosedCourse } from '@cyberstars/shared/constants';
 import { PROJECTS, PROJECT_XP } from '@cyberstars/shared/projects';
+import { BOT_EMAIL_ENDINGS } from './user.repository.js';
 
 export interface LeaderboardRow {
   id: number;
@@ -35,8 +36,11 @@ export interface LeaderboardRow {
 //
 // Finished projects add their PROJECT_XP, read from the catalog as a VALUES
 // table, since the catalog lives in code; a project taken out of it gives none.
+//
+// Our test accounts (BOT_EMAIL_ENDINGS) never show on the board.
 export async function getRanked(): Promise<LeaderboardRow[]> {
   const closed = WEB_COURSE_KEYS.filter(isClosedCourse);
+  const bots = BOT_EMAIL_ENDINGS.map((ending) => `%${ending}`);
   const catalog = Prisma.join(
     PROJECTS.map(
       (p) => Prisma.sql`(${p.language}::text, ${p.slug}::text, ${PROJECT_XP[p.difficulty]}::int)`,
@@ -82,6 +86,7 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
     LEFT JOIN lessons l ON l.course_key = p.course_key AND l.slug = p.lesson_slug
     LEFT JOIN (VALUES ${parts}) AS pr(course_key, first, last)
       ON pr.course_key = l.course_key AND l.sort_order BETWEEN pr.first AND pr.last
+    WHERE NOT (u.email LIKE ANY(${bots}::text[]))
     GROUP BY u.id, u.name, u.avatar_url
   `;
   return prisma.$queryRaw<LeaderboardRow[]>(Prisma.sql`
