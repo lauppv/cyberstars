@@ -34,4 +34,12 @@ describe('getRanked', () => {
     expect(query.sql).toContain('p.course_key <> ALL(');
     expect(query.values).toContainEqual(['web-js']);
   });
+
+  it('leaves our test accounts out', async () => {
+    mockPrisma.$queryRaw.mockResolvedValue([]);
+    await repo.getRanked();
+    const query = mockPrisma.$queryRaw.mock.calls[0][0];
+    expect(query.sql).toContain('NOT (u.email LIKE ANY(');
+    expect(query.values).toContainEqual(['%@fake.com', '%.fake.com', '%@bots.cyberstars.app']);
+  });
 });

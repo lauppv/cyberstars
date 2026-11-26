@@ -143,4 +143,23 @@ describe('Leaderboard', () => {
 
     await agent().get('/api/leaderboard/me').expect(401);
   });
+
+  it('never shows our test accounts, however much XP they have', async () => {
+    const [l0, l1] = await twoPythonLessons();
+    const { agent: student, name, email } = await createAuthenticatedAgent();
+    const { agent: bot, email: botEmail } = await createAuthenticatedAgent({
+      email: 'board@bots.cyberstars.app',
+    });
+    await markComplete(await userIdFor(email), 'python', l0.slug);
+    await markComplete(await userIdFor(botEmail), 'python', l0.slug);
+    await markComplete(await userIdFor(botEmail), 'python', l1.slug);
+
+    const board = await fetchBoard(student);
+    expect(board.total).toBe(2); // the student and Sentinel
+    expect(board.entries[0].name).toBe(name);
+    expect(board.entries[0].rank).toBe(1);
+
+    const me = await bot.get('/api/leaderboard/me').expect(200);
+    expect(me.body).toBeNull();
+  });
 });
