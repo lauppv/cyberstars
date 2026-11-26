@@ -23,8 +23,10 @@ const mockRepo = {
   markSectionRead: vi.fn(),
 };
 const mockWs = { pushToUser: vi.fn(), isUserOnline: vi.fn() };
+const mockUserRepo = { isPerson: vi.fn() };
 
 vi.mock('../repositories/notifications.repository.js', () => mockRepo);
+vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('./ws-user.js', () => mockWs);
 
 const {
@@ -371,11 +373,11 @@ describe('notifications.service announce', () => {
   const sent = (userId: number) =>
     row({ id: 100 + userId, userId, type: 'ANNOUNCEMENT', entityId: 0, data: { text: 'Hi' } });
 
-  it('inserts it for everyone at once and pushes it only to those online', async () => {
-    mockRepo.createAnnouncement.mockResolvedValue([sent(10), sent(11)]);
+  it('inserts it for everyone at once, pushes it only to those online and says how many students got it', async () => {
+    mockRepo.createAnnouncement.mockResolvedValue({ rows: [sent(10), sent(11)], recipients: 1 });
     mockWs.isUserOnline.mockImplementation((id: number) => id === 11);
     const count = await announce(2, 'Hi');
-    expect(count).toBe(2);
+    expect(count).toBe(1);
     expect(mockRepo.createAnnouncement).toHaveBeenCalledWith(2, 'Hi');
     expect(mockRepo.create).not.toHaveBeenCalled();
     expect(mockRepo.countUnread).toHaveBeenCalledTimes(1);
@@ -394,7 +396,7 @@ describe('notifications.service announce', () => {
 
   it('still counts it sent when a live push fails for one user', async () => {
     const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    mockRepo.createAnnouncement.mockResolvedValue([sent(10), sent(11)]);
+    mockRepo.createAnnouncement.mockResolvedValue({ rows: [sent(10), sent(11)], recipients: 2 });
     mockWs.isUserOnline.mockReturnValue(true);
     mockRepo.countUnread.mockRejectedValueOnce(new Error('boom'));
     await expect(announce(2, 'Hi')).resolves.toBe(2);
@@ -438,9 +440,17 @@ describe('notifications.service listAnnouncements', () => {
 });
 
 describe('notifications.service noteOpen', () => {
-  it("counts the click on the user's announcement row", async () => {
+  it("counts a student's click on their announcement row", async () => {
+    mockUserRepo.isPerson.mockResolvedValue(true);
     mockRepo.noteOpen.mockResolvedValue(undefined);
     await noteOpen(10, 7);
+    expect(mockUserRepo.isPerson).toHaveBeenCalledWith(10);
     expect(mockRepo.noteOpen).toHaveBeenCalledWith(10, 7);
+  });
+
+  it("doesn't count the click of an account that isn't a student", async () => {
+    mockUserRepo.isPerson.mockResolvedValue(false);
+    await noteOpen(10, 7);
+    expect(mockRepo.noteOpen).not.toHaveBeenCalled();
   });
 });

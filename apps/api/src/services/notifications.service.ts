@@ -1,4 +1,5 @@
 import * as repo from '../repositories/notifications.repository.js';
+import { isPerson } from '../repositories/user.repository.js';
 import { isUserOnline, pushToUser } from './ws-user.js';
 import {
   COLLAPSIBLE_TYPES,
@@ -142,11 +143,12 @@ export async function pushLive(rows: repo.NotificationRow[]): Promise<void> {
 // An official announcement for every account but the sender's: one insert
 // instead of notify()'s loop, and only those online get it live. It skips the
 // prune, the next notify() brings a user back under the cap. Unlike notify() it
-// throws when the insert fails, so the admin knows it didn't go out
+// throws when the insert fails, so the admin knows it didn't go out. Says how
+// many students got it, like the history
 export async function announce(actorId: number, text: string): Promise<number> {
-  const rows = await repo.createAnnouncement(actorId, text);
+  const { rows, recipients } = await repo.createAnnouncement(actorId, text);
   await pushLive(rows);
-  return rows.length;
+  return recipients;
 }
 
 // The latest announcements, newest first, for the admin page
@@ -162,9 +164,9 @@ export async function listAnnouncements(): Promise<AnnouncementDTO[]> {
 }
 
 // A click on an announcement in the bell. Mark all as read and the dashboard's
-// window don't come here, so only a click counts
+// window don't come here, so only a click counts, and only a student's
 export async function noteOpen(userId: number, notificationId: number): Promise<void> {
-  await repo.noteOpen(userId, notificationId);
+  if (await isPerson(userId)) await repo.noteOpen(userId, notificationId);
 }
 
 // Redaction hook for source-entity soft-deletes (forum post delete): drop the

@@ -1,26 +1,26 @@
 import type { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { actorInclude, type NotificationRow } from './notifications.repository.js';
+import { PEOPLE } from './user.repository.js';
 
 // The poll, its options (Other last, when asked for) and a bell row of it for
 // every account but the author's, in one transaction, so the history never
-// lists one nobody got
+// lists one nobody got. Only the students among them count as recipients
 export function createPoll(
   authorId: number,
   question: string,
   options: string[],
   other: boolean,
-): Promise<NotificationRow[]> {
+): Promise<{ rows: NotificationRow[]; recipients: number }> {
   return prisma.$transaction(async (tx) => {
-    const users = await tx.user.findMany({
-      where: { id: { not: authorId } },
-      select: { id: true },
-    });
+    const notAuthor = { id: { not: authorId } };
+    const users = await tx.user.findMany({ where: notAuthor, select: { id: true } });
+    const recipients = await tx.user.count({ where: { ...notAuthor, ...PEOPLE } });
     const { id } = await tx.poll.create({
       data: {
         authorId,
         question,
-        recipients: users.length,
+        recipients,
         options: {
           create: [
             ...options.map((text) => ({ text })),
@@ -30,7 +30,7 @@ export function createPoll(
       },
       select: { id: true },
     });
-    return tx.notification.createManyAndReturn({
+    const rows = await tx.notification.createManyAndReturn({
       data: users.map((u) => ({
         userId: u.id,
         actorId: authorId,
@@ -40,6 +40,7 @@ export function createPoll(
       })),
       include: actorInclude,
     });
+    return { rows, recipients };
   });
 }
 
@@ -79,13 +80,15 @@ export function noteView(pollId: number, userId: number): Promise<void> {
 
 // One anonymous vote: the voter goes in poll_voters so they can't vote again,
 // and each option picked counts one more, with nothing tying the two, nor to
-// what they wrote under Other. False when they had voted already, from another
-// tab too
+// what they wrote under Other. Only a student's vote counts: anyone else's
+// just keeps them from voting again. False when they had voted already, from
+// another tab too
 export function vote(
   pollId: number,
   userId: number,
   optionIds: number[],
-  answer?: string,
+  answer: string | undefined,
+  counted: boolean,
 ): Promise<boolean> {
   return prisma.$transaction(async (tx) => {
     const { count } = await tx.pollVoter.createMany({
@@ -93,6 +96,7 @@ export function vote(
       skipDuplicates: true,
     });
     if (count === 0) return false;
+    if (!counted) return true;
     await view(tx, pollId, userId);
     await tx.pollOption.updateMany({
       where: { pollId, id: { in: optionIds } },

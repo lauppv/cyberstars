@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
-  user: { findMany: vi.fn() },
+  user: { findMany: vi.fn(), count: vi.fn() },
   pollVoter: { findMany: vi.fn() },
   announcement: { create: vi.fn(), findMany: vi.fn(), updateMany: vi.fn() },
   announcementOpener: { createMany: vi.fn() },
@@ -24,6 +24,7 @@ const mockPrisma = {
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
 
 const repo = await import('./notifications.repository.js');
+const { PEOPLE } = await import('./user.repository.js');
 
 beforeEach(() => vi.clearAllMocks());
 
@@ -320,12 +321,15 @@ describe('pruneOverCap', () => {
 });
 
 describe('createAnnouncement', () => {
-  it('keeps the announcement with its recipients and inserts a row of it per account but the author', async () => {
+  it('keeps the announcement with how many students got it and inserts a row of it per account but the author', async () => {
     mockPrisma.announcement.create.mockResolvedValue({ id: 4 });
-    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }]);
+    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }, { id: 12 }]);
+    mockPrisma.user.count.mockResolvedValue(2);
     mockPrisma.notification.createManyAndReturn.mockResolvedValue([{ id: 1 }, { id: 2 }]);
-    const rows = await repo.createAnnouncement(2, 'Hi');
-    expect(rows).toEqual([{ id: 1 }, { id: 2 }]);
+    expect(await repo.createAnnouncement(2, 'Hi')).toEqual({
+      rows: [{ id: 1 }, { id: 2 }],
+      recipients: 2,
+    });
     expect(mockPrisma.$transaction).toHaveBeenCalledWith(expect.any(Function));
     expect(mockPrisma.announcement.create).toHaveBeenCalledWith(
       expect.objectContaining({ data: { authorId: 2, text: 'Hi', recipients: 2 } }),
@@ -333,12 +337,14 @@ describe('createAnnouncement', () => {
     expect(mockPrisma.user.findMany).toHaveBeenCalledWith(
       expect.objectContaining({ where: { id: { not: 2 } } }),
     );
+    expect(mockPrisma.user.count).toHaveBeenCalledWith({ where: { id: { not: 2 }, ...PEOPLE } });
     const row = { actorId: 2, type: 'ANNOUNCEMENT', entityId: 4, data: { text: 'Hi' } };
     expect(mockPrisma.notification.createManyAndReturn).toHaveBeenCalledWith(
       expect.objectContaining({
         data: [
           { userId: 10, ...row },
           { userId: 11, ...row },
+          { userId: 12, ...row },
         ],
       }),
     );

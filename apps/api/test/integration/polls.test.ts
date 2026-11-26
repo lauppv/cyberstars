@@ -35,11 +35,13 @@ describe('Admin polls', () => {
       .post('/api/admin/polls')
       .send({ question: '  Which course next?  ', options: [' Rust ', 'Go'] })
       .expect(201);
-    // The sentinel ADMIN and the user above, not the sender
-    expect(res.body).toEqual({ sent: 2 });
+    // The sentinel ADMIN and the user above, not the sender, get it in their
+    // bell; only the user counts, the admin isn't a student
+    expect(res.body).toEqual({ sent: 1 });
+    expect(await prisma.notification.count({ where: { type: 'POLL' } })).toBe(2);
 
     const poll = await prisma.poll.findFirstOrThrow({ include: { options: true } });
-    expect(poll).toMatchObject({ question: 'Which course next?', recipients: 2, voters: 0 });
+    expect(poll).toMatchObject({ question: 'Which course next?', recipients: 1, voters: 0 });
     expect(poll.options.map((o) => o.text)).toEqual(['Rust', 'Go']);
 
     const { body } = await user.get('/api/notifications').expect(200);
@@ -86,7 +88,8 @@ describe('Admin polls', () => {
       {
         question: 'Second?',
         authorName: expect.any(String),
-        recipients: 1,
+        // Only the sentinel ADMIN got it, and an admin isn't a student
+        recipients: 0,
         voters: 0,
         viewers: 0,
         options: [
@@ -196,6 +199,37 @@ describe('Voting in a poll', () => {
     expect(Object.keys(viewers[0]).sort()).toEqual(['pollId', 'userId']);
   });
 
+  it("lets an account that isn't a student open it and vote once, counting neither", async () => {
+    const { agent: mod, email } = await createAuthenticatedAgent();
+    await prisma.user.update({
+      where: { id: await userIdFor(email) },
+      data: { role: 'MODERATOR' },
+    });
+    const { agent: bot } = await createAuthenticatedAgent({ email: 'z@fake.com' });
+    const { agent: ana } = await createAuthenticatedAgent();
+    const { admin: a, poll } = await sendPoll(['Rust', 'Go']);
+    for (const who of [mod, bot]) {
+      await who.get(`/api/polls/${poll.id}`).expect(200);
+      await who
+        .post(`/api/polls/${poll.id}/vote`)
+        .send({ optionIds: [poll.options[0].id] })
+        .expect(204);
+      await who
+        .post(`/api/polls/${poll.id}/vote`)
+        .send({ optionIds: [poll.options[1].id] })
+        .expect(409);
+      expect((await who.get(`/api/polls/${poll.id}`).expect(200)).body.voted).toBe(true);
+    }
+    await ana
+      .post(`/api/polls/${poll.id}/vote`)
+      .send({ optionIds: [poll.options[1].id] })
+      .expect(204);
+
+    const [results] = (await a.get('/api/admin/polls').expect(200)).body;
+    expect(results).toMatchObject({ recipients: 1, viewers: 1, voters: 1 });
+    expect(results.options.map((o: { votes: number }) => o.votes)).toEqual([0, 1]);
+  });
+
   it('gives no viewers for a poll sent before opening one was counted', async () => {
     const { admin: a, poll } = await sendPoll();
     await prisma.poll.update({ where: { id: poll.id }, data: { countsViewers: false } });
@@ -231,7 +265,7 @@ describe('Voting in a poll', () => {
     }
     expect(await prisma.pollVoter.count()).toBe(0);
     const [results] = (await a.get('/api/admin/polls').expect(200)).body;
-    expect(results).toMatchObject({ recipients: 1, voters: 0 });
+    expect(results).toMatchObject({ recipients: 0, voters: 0 });
   });
 
   it('takes an answer under Other, kept with no voter, and lists it for the admin only', async () => {

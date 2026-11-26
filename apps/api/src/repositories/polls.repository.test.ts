@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockPrisma = {
-  user: { findMany: vi.fn(), findUnique: vi.fn() },
+  user: { findMany: vi.fn(), findUnique: vi.fn(), count: vi.fn() },
   poll: { create: vi.fn(), findUnique: vi.fn(), findMany: vi.fn(), update: vi.fn() },
   pollOption: { updateMany: vi.fn() },
   pollVoter: { createMany: vi.fn() },
@@ -15,20 +15,25 @@ const mockPrisma = {
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
 
 const repo = await import('./polls.repository.js');
+const { PEOPLE } = await import('./user.repository.js');
 
 beforeEach(() => vi.clearAllMocks());
 
 describe('createPoll', () => {
-  it('keeps the poll with its options and how many got it, and a bell row per account but the author', async () => {
-    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }]);
+  it('keeps the poll with its options and how many students got it, and a bell row per account but the author', async () => {
+    mockPrisma.user.findMany.mockResolvedValue([{ id: 10 }, { id: 11 }, { id: 12 }]);
+    mockPrisma.user.count.mockResolvedValue(2);
     mockPrisma.poll.create.mockResolvedValue({ id: 4 });
     mockPrisma.notification.createManyAndReturn.mockResolvedValue([{ id: 1 }, { id: 2 }]);
-    const rows = await repo.createPoll(2, 'Next?', ['Rust', 'Go'], false);
-    expect(rows).toEqual([{ id: 1 }, { id: 2 }]);
+    expect(await repo.createPoll(2, 'Next?', ['Rust', 'Go'], false)).toEqual({
+      rows: [{ id: 1 }, { id: 2 }],
+      recipients: 2,
+    });
     expect(mockPrisma.$transaction).toHaveBeenCalledWith(expect.any(Function));
     expect(mockPrisma.user.findMany).toHaveBeenCalledWith(
       expect.objectContaining({ where: { id: { not: 2 } } }),
     );
+    expect(mockPrisma.user.count).toHaveBeenCalledWith({ where: { id: { not: 2 }, ...PEOPLE } });
     expect(mockPrisma.poll.create).toHaveBeenCalledWith(
       expect.objectContaining({
         data: {
@@ -45,6 +50,7 @@ describe('createPoll', () => {
         data: [
           { userId: 10, ...row },
           { userId: 11, ...row },
+          { userId: 12, ...row },
         ],
       }),
     );
@@ -123,7 +129,7 @@ describe('vote', () => {
 
   it('marks the voter and counts each option picked once more, with nothing tying the two', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
-    expect(await repo.vote(4, 10, [7, 9])).toBe(true);
+    expect(await repo.vote(4, 10, [7, 9], undefined, true)).toBe(true);
     expect(mockPrisma.pollVoter.createMany).toHaveBeenCalledWith({
       data: [{ pollId: 4, userId: 10 }],
       skipDuplicates: true,
@@ -141,7 +147,7 @@ describe('vote', () => {
   it('counts a voter that never opened it among its viewers too', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
     mockPrisma.pollViewer.createMany.mockResolvedValue({ count: 1 });
-    expect(await repo.vote(4, 10, [7])).toBe(true);
+    expect(await repo.vote(4, 10, [7], undefined, true)).toBe(true);
     expect(mockPrisma.pollViewer.createMany).toHaveBeenCalledWith({
       data: [{ pollId: 4, userId: 10 }],
       skipDuplicates: true,
@@ -158,18 +164,31 @@ describe('vote', () => {
 
   it('keeps what was written under Other on its own, and nothing without it', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
-    expect(await repo.vote(4, 10, [9], 'More C')).toBe(true);
+    expect(await repo.vote(4, 10, [9], 'More C', true)).toBe(true);
     expect(mockPrisma.pollAnswer.create).toHaveBeenCalledWith({
       data: { pollId: 4, text: 'More C' },
     });
     mockPrisma.pollAnswer.create.mockClear();
-    await repo.vote(4, 11, [7]);
+    await repo.vote(4, 11, [7], undefined, true);
     expect(mockPrisma.pollAnswer.create).not.toHaveBeenCalled();
   });
 
   it('counts nothing when the user had voted already', async () => {
     mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 0 });
-    expect(await repo.vote(4, 10, [9], 'More C')).toBe(false);
+    expect(await repo.vote(4, 10, [9], 'More C', true)).toBe(false);
+    expect(mockPrisma.pollViewer.createMany).not.toHaveBeenCalled();
+    expect(mockPrisma.pollOption.updateMany).not.toHaveBeenCalled();
+    expect(mockPrisma.poll.update).not.toHaveBeenCalled();
+    expect(mockPrisma.pollAnswer.create).not.toHaveBeenCalled();
+  });
+
+  it("only marks the voter of an account that isn't a student, so they can't vote again", async () => {
+    mockPrisma.pollVoter.createMany.mockResolvedValue({ count: 1 });
+    expect(await repo.vote(4, 10, [9], 'More C', false)).toBe(true);
+    expect(mockPrisma.pollVoter.createMany).toHaveBeenCalledWith({
+      data: [{ pollId: 4, userId: 10 }],
+      skipDuplicates: true,
+    });
     expect(mockPrisma.pollViewer.createMany).not.toHaveBeenCalled();
     expect(mockPrisma.pollOption.updateMany).not.toHaveBeenCalled();
     expect(mockPrisma.poll.update).not.toHaveBeenCalled();
