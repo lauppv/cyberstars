@@ -29,26 +29,26 @@ const front = () => slots().findIndex((s) => !s.firstElementChild!.hasAttribute(
 describe('SetGrid', () => {
   beforeEach(() => localStorage.clear());
 
-  it('starts on the first card, with Previous off and the place shown', () => {
+  it('starts on the first card, with the place shown', () => {
     render(<Grid />);
     expect(slots()).toHaveLength(3);
     expect(front()).toBe(0);
     expect(screen.getByText('1 / 3')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Previous' })).toBeDisabled();
     expect(screen.getByRole('button', { name: '1 of 3' })).toHaveAttribute('aria-current', 'true');
   });
 
-  it('steps with Next and Previous, and stops at the last card', () => {
+  it('steps with Next and Previous, round the loop past either end', () => {
     render(<Grid />);
     const next = screen.getByRole('button', { name: 'Next' });
     fireEvent.click(next);
     fireEvent.click(next);
     expect(front()).toBe(2);
     expect(screen.getByText('3 / 3')).toBeInTheDocument();
-    expect(next).toBeDisabled();
+    fireEvent.click(next);
+    expect(front()).toBe(0);
 
     fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
-    expect(front()).toBe(1);
+    expect(front()).toBe(2);
   });
 
   it('jumps to a card from its place in the row', () => {

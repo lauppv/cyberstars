@@ -70,7 +70,6 @@ export function SetCard({
       } ${dimmed ? 'opacity-70' : ''}`}
       style={{ '--course': color, backgroundImage: courseWash(setKey) } as CSSProperties}
     >
-      <div className="h-1.5 w-full" style={{ background: color }} />
       <div className="p-5 flex-1 flex flex-col">
         <div className="flex items-center gap-3.5 mb-3.5">
           <CourseMark courseKey={setKey} />
