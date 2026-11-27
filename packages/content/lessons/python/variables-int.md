@@ -52,7 +52,7 @@ k = 33
 print(pi + k)
 ```
 
-this displays `text 36.159`
+this displays `36.14159`
 
 ---
 
