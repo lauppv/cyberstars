@@ -74,15 +74,27 @@ beforeEach(() => {
 describe('Sidebar', () => {
   it('shows a guest only Courses, Algorithms, Projects, the Almanac and a sign in link', () => {
     renderSidebar();
-    const links = screen.getAllByRole('link').map((link) => link.textContent);
+    const links = screen
+      .getAllByRole('link')
+      .map((link) => link.textContent || link.getAttribute('aria-label'));
     expect(links).toEqual([
       'CyberStars',
+      'Source code on GitHub',
       'CoursesNew',
       'Algorithms',
       'ProjectsNew',
       'Almanac',
       'Sign in',
     ]);
+  });
+
+  it('opens the code on GitHub in a new tab, next to the logo that leads home', () => {
+    renderSidebar();
+    expect(screen.getByRole('link', { name: 'CyberStars' })).toHaveAttribute('href', '/');
+    const github = screen.getByRole('link', { name: 'Source code on GitHub' });
+    expect(github).toHaveAttribute('href', 'https://github.com/lauppv/cyberstars');
+    expect(github).toHaveAttribute('target', '_blank');
+    expect(github).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it("groups a student's rows by lines, with the tutor last", () => {

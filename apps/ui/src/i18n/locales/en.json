@@ -21,6 +21,7 @@
     "label": "Main navigation",
     "show": "Show sidebar",
     "hide": "Hide sidebar",
+    "source": "Source code on GitHub",
     "laniakeaLeft_one": "{{count}} lesson to go",
     "laniakeaLeft_other": "{{count}} lessons to go"
   },

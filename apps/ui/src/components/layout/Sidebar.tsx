@@ -27,6 +27,8 @@ import {
 } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
 import { BrandMark } from '../ui/BrandMark';
+import { GitHubMark } from '../ui/GitHubMark';
+import { SOURCE_URL } from '../landing/links';
 import { TutorFace } from '../tutor/TutorFace';
 import { useAuth } from '../../context/AuthContext';
 import { useMessages } from '../../context/MessagesContext';
@@ -345,14 +347,26 @@ export function Sidebar({
       aria-label={t('sidebar.label')}
       className={`fixed inset-y-0 left-0 ${floating ? 'z-[70]' : 'z-50'} w-[240px] flex flex-col bg-[var(--bg2)] border-r border-[var(--border)] transition-[transform,visibility] duration-200 ${PANEL[state]}`}
     >
-      <Link
-        to="/"
-        onClick={onNavigate}
-        className="flex items-center gap-2 h-12 px-4 flex-shrink-0 no-underline text-[var(--text)]"
-      >
-        <BrandMark />
-        <span className="font-semibold text-[14px] tracking-[-0.2px]">CyberStars</span>
-      </Link>
+      <div className="flex items-center h-12 px-4 flex-shrink-0">
+        <Link
+          to="/"
+          onClick={onNavigate}
+          className="flex items-center gap-2 no-underline text-[var(--text)]"
+        >
+          <BrandMark />
+          <span className="font-semibold text-[14px] tracking-[-0.2px]">CyberStars</span>
+        </Link>
+        <a
+          href={SOURCE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t('sidebar.source')}
+          title={t('sidebar.source')}
+          className="ml-auto flex items-center justify-center w-7 h-7 rounded-[var(--radius-sm)] text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition"
+        >
+          <GitHubMark />
+        </a>
+      </div>
 
       <nav className="flex-1 overflow-y-auto px-2 py-2">
         <Section>

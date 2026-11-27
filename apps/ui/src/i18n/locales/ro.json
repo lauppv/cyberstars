@@ -20,6 +20,7 @@
     "label": "Navigare principală",
     "show": "Arată bara laterală",
     "hide": "Ascunde bara laterală",
+    "source": "Codul sursă pe GitHub",
     "laniakeaLeft_one": "încă {{count}} lecție",
     "laniakeaLeft_few": "încă {{count}} lecții",
     "laniakeaLeft_other": "încă {{count}} de lecții"
