@@ -1664,8 +1664,9 @@
   },
   "placement": {
     "title": "A short test before we start",
-    "intro": "Don't worry and don't stress, this isn't an exam. It's 12 quick questions about Python, C, Java and Linux, so we know where to start with you. If you don't know an answer, pick the one that seems right. Getting them all wrong is fine too: it only means we start the lessons from zero together.",
-    "meta": "12 questions, about 5 minutes",
+    "intro": "Don't worry and don't stress, this isn't an exam. Pick what you want to learn, then answer 10 quick questions about it, so we know where to start with you. If you don't know an answer, pick the one that seems right. Getting them all wrong is fine too: it only means we start the lessons from zero together.",
+    "pick": "What do you want to learn? Pick one course or more.",
+    "meta": "10 questions, about 5 minutes",
     "start": "Start the test",
     "progress": "Question {{n}} of {{total}}",
     "back": "Back",
@@ -1679,14 +1680,55 @@
       "cta": "Get started",
       "ctaText": "Make a free account and we'll start from where you are."
     },
+    "courses": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "web": "Web Development",
+      "algorithms": "Algorithms"
+    },
     "questions": {
       "py1": {
         "q": "What does this print?",
         "options": ["14", "10", "11", "24"]
       },
+      "py4": {
+        "q": "What does this print?",
+        "options": ["ha ha ha", "hahaha", "ha3", "An error"]
+      },
+      "py5": {
+        "q": "What does this print?",
+        "options": ["4", "10", "6", "3"]
+      },
       "py2": {
         "q": "What does this print?",
         "options": ["4", "3", "1", "An error"]
+      },
+      "py6": {
+        "q": "What does this print?",
+        "options": ["pyt", "yth", "ytho", "pyth"]
+      },
+      "py7": {
+        "q": "What does this print?",
+        "options": ["6", "1", "2", "3"]
+      },
+      "py8": {
+        "q": "What does this print?",
+        "options": ["[0, 4, 16]", "[4, 16]", "[1, 9]", "[0, 2, 4]"]
+      },
+      "py9": {
+        "q": "What does this print?",
+        "options": [
+          "['banana', 'fig', 'kiwi']",
+          "['banana', 'kiwi', 'fig']",
+          "['fig', 'kiwi', 'banana']",
+          "['kiwi', 'fig', 'banana']"
+        ]
+      },
+      "py10": {
+        "q": "What does this print?",
+        "options": ["0", "1", "An error", "2"]
       },
       "py3": {
         "q": "What does this print?",
@@ -1696,21 +1738,77 @@
         "q": "What does this print?",
         "options": ["3.5", "3", "4", "3.0"]
       },
+      "c4": {
+        "q": "What does this print?",
+        "options": ["16", "13", "10", "11"]
+      },
+      "c5": {
+        "q": "What does this print?",
+        "options": ["123", "0123", "012", "3"]
+      },
+      "c6": {
+        "q": "What does this print?",
+        "options": ["A2", "67", "B", "C"]
+      },
+      "c7": {
+        "q": "What does this print?",
+        "options": ["100", "5", "0", "It doesn't compile"]
+      },
       "c2": {
         "q": "What does this print?",
         "options": ["10", "11", "20", "An address in memory"]
+      },
+      "c8": {
+        "q": "What does this print?",
+        "options": ["9 2", "1 2", "9 9", "1 9"]
+      },
+      "c9": {
+        "q": "What does this print?",
+        "options": ["1", "0", "3", "2"]
       },
       "c3": {
         "q": "What does this print?",
         "options": ["3", "2", "4", "8"]
       },
+      "c10": {
+        "q": "How many times does this print hi?",
+        "options": ["2", "3", "1", "4"]
+      },
       "java1": {
         "q": "Which line makes a variable that holds a whole number?",
         "options": ["age = 20", "int age = 20;", "integer age = 20;", "var age: int = 20;"]
       },
+      "java5": {
+        "q": "What does this print?",
+        "options": ["4", "5", "3", "Java"]
+      },
+      "java4": {
+        "q": "What does this print?",
+        "options": ["8", "5 + 3", "53", "An error"]
+      },
+      "java7": {
+        "q": "What does this print?",
+        "options": ["8", "15", "3", "An error"]
+      },
+      "java6": {
+        "q": "What does this print?",
+        "options": ["3", "10", "5", "4"]
+      },
       "java2": {
         "q": "What does this print?",
         "options": ["hi!", "null", "hi", "An error"]
+      },
+      "java8": {
+        "q": "What does this print?",
+        "options": ["2 8", "1 5", "1 3", "2 5"]
+      },
+      "java9": {
+        "q": "What does this print?",
+        "options": ["Woof", "...", "It doesn't compile", "Dog"]
+      },
+      "java10": {
+        "q": "What does this print?",
+        "options": ["150", "9", "60", "90"]
       },
       "java3": {
         "q": "What does this print?",
@@ -1719,6 +1817,14 @@
       "linux1": {
         "q": "Which command shows the folder you're in?",
         "options": ["ls", "cd", "whoami", "pwd"]
+      },
+      "linux4": {
+        "q": "Which command makes a new folder named photos?",
+        "options": ["touch photos", "mkdir photos", "cd photos", "new photos"]
+      },
+      "linux5": {
+        "q": "Which command deletes the file old.txt?",
+        "options": ["rm old.txt", "del old.txt", "mv old.txt", "cut old.txt"]
       },
       "linux2": {
         "q": "What does ls -a show that a plain ls doesn't?",
@@ -1729,6 +1835,33 @@
           "Only the folders"
         ]
       },
+      "linux6": {
+        "q": "What does ls > files.txt do?",
+        "options": [
+          "Adds the list of files at the end of files.txt",
+          "Shows the list, then opens files.txt",
+          "Writes the list of files into files.txt, in place of what was there",
+          "Lists only files.txt"
+        ]
+      },
+      "linux7": {
+        "q": "Which lines does grep -i error log.txt show?",
+        "options": [
+          "Only the lines that start with error",
+          "The lines with error in them, in capital or small letters",
+          "Every line except the ones with error",
+          "How many lines have error in them"
+        ]
+      },
+      "linux8": {
+        "q": "What does sort names.txt | uniq print?",
+        "options": [
+          "Only the names that are in the file more than once",
+          "How many names there are",
+          "The names in the order of the file, each once",
+          "Every name once, in alphabetical order"
+        ]
+      },
       "linux3": {
         "q": "After chmod 640 notes.txt, who can read the file?",
         "options": [
@@ -1737,6 +1870,119 @@
           "Its owner and its group",
           "Nobody, until it's made executable"
         ]
+      },
+      "linux9": {
+        "q": "What does the last command print?",
+        "options": ["amy 7", "tom 12", "lee 9", "amy"]
+      },
+      "linux10": {
+        "q": "What does the last command print?",
+        "options": ["5 3 4", "3", "12", "mon tue wed"]
+      },
+      "web1": {
+        "q": "Which tag makes the most important heading of a page?",
+        "options": ["<h6>", "<head>", "<h1>", "<title>"]
+      },
+      "web2": {
+        "q": "Which line makes a link to example.com?",
+        "options": [
+          "<link to=\"https://example.com\">Example</link>",
+          "<a src=\"https://example.com\">Example</a>",
+          "<url>https://example.com</url>",
+          "<a href=\"https://example.com\">Example</a>"
+        ]
+      },
+      "web3": {
+        "q": "Which rule makes the text of every paragraph red?",
+        "options": [
+          "p { color: red; }",
+          "p { background-color: red; }",
+          ".p { color: red; }",
+          "p { text: red; }"
+        ]
+      },
+      "web4": {
+        "q": "What does this show in the console?",
+        "options": ["3", "012", "0123", "An error"]
+      },
+      "web5": {
+        "q": "Which CSS puts the items of a box in its middle, from left to right and from top to bottom?",
+        "options": [
+          "text-align: center;",
+          "display: flex; justify-content: center; align-items: center;",
+          "margin: center;",
+          "display: block; vertical-align: middle;"
+        ]
+      },
+      "web6": {
+        "q": "How wide is this box on the page?",
+        "options": ["200px", "215px", "230px", "220px"]
+      },
+      "web7": {
+        "q": "What color is Hello?",
+        "options": ["Red", "Blue", "Green", "Black"]
+      },
+      "web8": {
+        "q": "What does this show in the console?",
+        "options": ["12", "24", "[4, 8, 12]", "48"]
+      },
+      "web9": {
+        "q": "What does this show in the console?",
+        "options": ["10, then 0", "10, then 10", "0, then 0", "0, then 10"]
+      },
+      "web10": {
+        "q": "In what order do the letters show in the console?",
+        "options": ["A, B, C", "B, A, C", "A, C", "A, C, B"]
+      },
+      "algo1": {
+        "q": "What does this print?",
+        "options": ["star", "rats", "s", "tar"]
+      },
+      "algo2": {
+        "q": "Which word reads the same from the start and from the end?",
+        "options": ["lever", "label", "level", "llama"]
+      },
+      "algo3": {
+        "q": "You put 1, then 2, then 3 on a stack, then take one off. Which number comes off?",
+        "options": ["1", "2", "All three at once", "3"]
+      },
+      "algo4": {
+        "q": "Binary search looks for a number in a sorted list of 1,000 numbers. At most about how many numbers does it check?",
+        "options": ["1,000", "500", "100", "10"]
+      },
+      "algo5": {
+        "q": "Bubble sort goes once over [4, 3, 1, 2] from left to right and swaps every two neighbours in the wrong order. What is the list after that?",
+        "options": ["[1, 2, 3, 4]", "[3, 1, 2, 4]", "[3, 4, 1, 2]", "[1, 3, 2, 4]"]
+      },
+      "algo6": {
+        "q": "What does this print?",
+        "options": ["5", "13", "6", "8"]
+      },
+      "algo7": {
+        "q": "You put 5, 3, 8 and 1, in this order, into an empty binary search tree. Where does 1 go?",
+        "options": [
+          "The right child of 3",
+          "The left child of 3",
+          "The left child of 8",
+          "The right child of 5"
+        ]
+      },
+      "algo8": {
+        "q": "Breadth-first search finds the fewest steps through a maze. Where does it keep the places it still has to visit?",
+        "options": [
+          "In a queue: first in, first out",
+          "In a stack: last in, first out",
+          "In a list sorted by name",
+          "Nowhere, it only goes back with recursion"
+        ]
+      },
+      "algo9": {
+        "q": "In what order does a preorder walk visit this tree?",
+        "options": ["1 2 3 4 5", "4 2 5 1 3", "4 5 2 3 1", "1 2 4 5 3"]
+      },
+      "algo10": {
+        "q": "Each arrow is a road with its length. How long is the shortest way from A to D?",
+        "options": ["5", "4", "6", "3"]
       }
     }
   },

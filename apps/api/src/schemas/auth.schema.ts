@@ -25,6 +25,8 @@ export const signupSchema = z.object({
     ),
   email: emailField,
   password: passwordField,
-  // The landing page's placement test, when the visitor took it first
-  placementScore: z.number().int().min(0).max(PLACEMENT_QUESTION_COUNT).optional(),
+  // The landing page's placement test, when the visitor took it first. A score
+  // it can't be (a page from before the test had 10 questions) is dropped, not
+  // a failed sign-up
+  placementScore: z.number().int().min(0).max(PLACEMENT_QUESTION_COUNT).optional().catch(undefined),
 });
