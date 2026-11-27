@@ -48,3 +48,15 @@ describe('signupSchema name', () => {
     expect(result.error?.issues[0].message).toBe('Name has invalid characters');
   });
 });
+
+describe('signupSchema placementScore', () => {
+  it('keeps a score out of 10', () => {
+    expect(signupSchema.parse({ ...signup('Adam'), placementScore: 7 }).placementScore).toBe(7);
+  });
+
+  it.each([11, -1, 2.5, '7'])('drops %s and still signs up', (placementScore) => {
+    const result = signupSchema.safeParse({ ...signup('Adam'), placementScore });
+    expect(result.success).toBe(true);
+    expect(result.data?.placementScore).toBeUndefined();
+  });
+});
