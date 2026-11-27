@@ -63,7 +63,7 @@ describe('AuthPage', () => {
   });
 
   it('signs up with the placement score this browser kept, then forgets it', async () => {
-    localStorage.setItem('cyberstars.placement', '7');
+    localStorage.setItem('cyberstars.placement10', '7');
     signUp();
     await waitFor(() => expect(screen.getByText('tour')).toBeInTheDocument());
     expect(signup).toHaveBeenCalledWith({
@@ -72,11 +72,11 @@ describe('AuthPage', () => {
       password: 'secret-password',
       placementScore: 7,
     });
-    expect(localStorage.getItem('cyberstars.placement')).toBeNull();
+    expect(localStorage.getItem('cyberstars.placement10')).toBeNull();
   });
 
   it('signs up without a score when the test was skipped', async () => {
-    localStorage.removeItem('cyberstars.placement');
+    localStorage.removeItem('cyberstars.placement10');
     signUp();
     await waitFor(() => expect(screen.getByText('tour')).toBeInTheDocument());
     expect(signup).toHaveBeenLastCalledWith(expect.objectContaining({ placementScore: undefined }));

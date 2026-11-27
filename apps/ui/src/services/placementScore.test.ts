@@ -17,9 +17,14 @@ describe('placementScore', () => {
 
   it('ignores anything that is not a score out of 10', () => {
     for (const value of ['11', '-1', '2.5', 'abc']) {
-      localStorage.setItem('cyberstars.placement', value);
+      localStorage.setItem('cyberstars.placement10', value);
       expect(readPlacementScore()).toBeUndefined();
     }
+  });
+
+  it('ignores a score from the old 12-question test', () => {
+    localStorage.setItem('cyberstars.placement', '7');
+    expect(readPlacementScore()).toBeUndefined();
   });
 
   it('keeps nothing and breaks nothing when storage is blocked', () => {

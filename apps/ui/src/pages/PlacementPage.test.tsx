@@ -98,7 +98,7 @@ describe('PlacementPage', () => {
     answerAll((i) => i < 7);
 
     expect(screen.getByText('7/10')).toBeDefined();
-    expect(localStorage.getItem('cyberstars.placement')).toBe('7');
+    expect(localStorage.getItem('cyberstars.placement10')).toBe('7');
     const reviewed = screen.getAllByRole('listitem').filter((li) => li.className.includes('panel'));
     expect(reviewed).toHaveLength(10);
     // A right answer is only the correct one; a wrong one names the student's too
@@ -116,6 +116,6 @@ describe('PlacementPage', () => {
     startPython();
     answerAll(() => false);
     expect(screen.getByText('0/10')).toBeDefined();
-    expect(localStorage.getItem('cyberstars.placement')).toBe('0');
+    expect(localStorage.getItem('cyberstars.placement10')).toBe('0');
   });
 });
