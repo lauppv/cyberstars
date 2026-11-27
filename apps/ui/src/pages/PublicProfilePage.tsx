@@ -5,7 +5,6 @@ import { Avatar } from '../components/ui/Avatar';
 import { RankCrown } from '../components/gamification/RankCrown';
 import { CROWNS } from '../components/gamification/crowns';
 import { useAuth } from '../context/AuthContext';
-import { useMessages } from '../context/MessagesContext';
 import { Topbar } from '../components/layout/Topbar';
 import { PageContainer } from '../components/layout/PageContainer';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
@@ -108,7 +107,6 @@ export function PublicProfilePage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
-  const { openWith } = useMessages();
   const { courses: curriculum } = useCurriculum();
   // A part badge is named by its part, the others by their course or project language
   const badgeName = (b: BadgeRef) =>
@@ -125,7 +123,6 @@ export function PublicProfilePage() {
   const [profile, setProfile] = useState<PublicProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<'notFound' | 'generic' | null>(null);
-  const [messaging, setMessaging] = useState(false);
   const [relation, setRelation] = useState<ConnectionRelation>('none');
   const [connecting, setConnecting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
@@ -169,21 +166,11 @@ export function PublicProfilePage() {
     };
   }, [userId, authLoading, canAccess]);
 
-  const startConversation = async () => {
+  // Opens a draft; the conversation is created only by the first message
+  const startConversation = () => {
     if (!profile) return;
-    setMessaging(true);
-    setActionError(null);
-    try {
-      // Through the context (not the raw service) so a newly created
-      // conversation lands in the inbox state before /messages renders it.
-      const conversation = await openWith(profile.userId);
-      navigate('/messages', { state: { openConversationId: conversation.id } });
-    } catch (err) {
-      setActionError(
-        err instanceof Error && err.message ? err.message : t('common.somethingWrong'),
-      );
-      setMessaging(false);
-    }
+    const { userId: id, name, avatarUrl } = profile;
+    navigate('/messages', { state: { draftWith: { id, name, avatarUrl } } });
   };
 
   const sendConnectionRequest = async () => {
@@ -410,11 +397,7 @@ export function PublicProfilePage() {
               ) : (
                 <>
                   {canMessage && (
-                    <button
-                      onClick={startConversation}
-                      disabled={messaging}
-                      className="btn btn-primary"
-                    >
+                    <button onClick={startConversation} className="btn btn-primary">
                       {t('publicProfile.sendMessage')}
                     </button>
                   )}

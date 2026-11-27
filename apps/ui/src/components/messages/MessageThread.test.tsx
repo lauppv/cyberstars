@@ -26,7 +26,7 @@ vi.mock('../ui/UserLink', () => ({
   UserLink: ({ children }: { children: React.ReactNode }) => <span>{children}</span>,
 }));
 
-import { MessageThread } from './MessageThread';
+import { DraftThread, MessageThread } from './MessageThread';
 
 const conversation: ConversationDTO = {
   id: 10,
@@ -213,5 +213,25 @@ describe('MessageThread failures', () => {
     } finally {
       await i18next.changeLanguage('en');
     }
+  });
+});
+
+describe('DraftThread', () => {
+  const ben = { id: 2, name: 'Ben', avatarUrl: null };
+
+  it('shows who the draft is to and loads nothing', () => {
+    render(<DraftThread other={ben} onSend={vi.fn()} onBack={() => {}} />);
+    expect(screen.getByText('Ben')).toBeInTheDocument();
+    expect(h.service.getHistory).not.toHaveBeenCalled();
+  });
+
+  it('keeps the text and says why when the first message is not sent', async () => {
+    const onSend = vi.fn().mockRejectedValue(new Error('nope'));
+    render(<DraftThread other={ben} onSend={onSend} onBack={() => {}} />);
+    fireEvent.change(box(), { target: { value: 'hi' } });
+    fireEvent.click(screen.getByText('Send'));
+    expect(await screen.findByRole('alert')).toHaveTextContent('nope');
+    expect(onSend).toHaveBeenCalledWith('hi');
+    expect(box().value).toBe('hi');
   });
 });

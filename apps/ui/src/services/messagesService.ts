@@ -5,10 +5,12 @@ export function getConversations() {
   return api.get<{ conversations: ConversationDTO[] }>('/api/messages/conversations');
 }
 
-export function openConversation(recipientId: number) {
-  return api.post<{ conversation: ConversationDTO }>('/api/messages/conversations', {
-    recipientId,
-  });
+// The first message to someone, which creates the conversation
+export function startConversation(recipientId: number, content: string) {
+  return api.post<{ conversation: ConversationDTO; message: MessageDTO }>(
+    '/api/messages/conversations',
+    { recipientId, content },
+  );
 }
 
 export function getHistory(conversationId: number, take = 30, before?: number) {

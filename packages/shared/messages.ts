@@ -1,7 +1,7 @@
 // DTOs for 1-to-1 direct messaging. The DB is the source of truth; the shared
 // /ws/user socket only delivers these instantly when the recipient is online.
 
-interface ConversationParticipant {
+export interface ConversationParticipant {
   id: number;
   name: string;
   avatarUrl: string | null;

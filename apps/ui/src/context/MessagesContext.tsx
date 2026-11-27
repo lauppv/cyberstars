@@ -23,7 +23,8 @@ interface MessagesContextValue {
   // The last inbox load failed; the page shows it only when it has no list to keep
   loadFailed: boolean;
   refresh: () => void;
-  openWith: (recipientId: number) => Promise<ConversationDTO>;
+  // Sends the first message to someone, which creates the conversation
+  startWith: (recipientId: number, content: string) => Promise<ConversationDTO>;
   // The page marks which conversation is on screen so incoming messages for it
   // don't inflate the unread badge (they're being read live).
   setActiveConversation: (id: number | null) => void;
@@ -150,11 +151,10 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
   );
   useUserSocketFrames(onFrame);
 
-  const openWith = useCallback(async (recipientId: number) => {
-    const { conversation } = await messagesService.openConversation(recipientId);
-    setConversations((prev) =>
-      prev.some((c) => c.id === conversation.id) ? prev : [conversation, ...prev],
-    );
+  // The conversation lands in the inbox before the page opens it
+  const startWith = useCallback(async (recipientId: number, content: string) => {
+    const { conversation } = await messagesService.startConversation(recipientId, content);
+    setConversations((prev) => [conversation, ...prev.filter((c) => c.id !== conversation.id)]);
     return conversation;
   }, []);
 
@@ -180,7 +180,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
         loading,
         loadFailed,
         refresh: load,
-        openWith,
+        startWith,
         setActiveConversation,
         markConversationRead,
       }}
