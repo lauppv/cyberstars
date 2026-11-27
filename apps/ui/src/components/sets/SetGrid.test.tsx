@@ -57,6 +57,33 @@ describe('SetGrid', () => {
     expect(front()).toBe(2);
   });
 
+  it('fades only the outermost visible cards toward their side of the row', () => {
+    render(<Grid names={['Python', 'C', 'Java', 'Linux', 'Web', 'Trees', 'Graphs']} />);
+    const right = 'linear-gradient(to left, transparent 35%, #000)';
+    const left = 'linear-gradient(to right, transparent 35%, #000)';
+    const expectMasks = (masks: string[]) => {
+      expect(slots().map((slot) => slot.style.maskImage)).toEqual(masks);
+    };
+
+    expectMasks(['', '', right, '', '', left, '']);
+    expect(slots()[3]).toHaveStyle({ opacity: '0' });
+    expect(slots()[4]).toHaveStyle({ opacity: '0' });
+
+    fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+    expectMasks(['', '', '', right, '', '', left]);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Previous' }));
+    expectMasks(['', right, '', '', left, '', '']);
+  });
+
+  it('does not mask a row with only the front card and its neighbours', () => {
+    render(<Grid />);
+    for (const slot of slots()) {
+      expect(slot.style.maskImage).toBe('');
+    }
+  });
+
   it('brings a side card to the front instead of opening it', () => {
     const onOpen = vi.fn();
     render(<Grid onOpen={onOpen} />);

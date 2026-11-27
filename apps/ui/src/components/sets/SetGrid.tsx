@@ -47,6 +47,11 @@ export function SetGrid({ children, remember }: { children: ReactNode; remember?
           let d = (((i - front) % total) + total) % total;
           if (d > total / 2) d -= total;
           const a = Math.abs(d);
+          // Only the far cards fade outward; the clear end also hides the page's clip.
+          const mask =
+            a === 2
+              ? `linear-gradient(to ${d < 0 ? 'right' : 'left'}, transparent 35%, #000)`
+              : undefined;
           return (
             <div
               key={i}
@@ -62,6 +67,8 @@ export function SetGrid({ children, remember }: { children: ReactNode; remember?
                 opacity: a > 2 ? 0 : 1 - a * 0.28,
                 // The cards behind go soft, so the front one stands out
                 filter: d ? `blur(${a * 1.5}px) brightness(${1 - a * 0.2})` : 'none',
+                maskImage: mask,
+                WebkitMaskImage: mask,
                 zIndex: total - a,
               }}
             >
