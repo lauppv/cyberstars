@@ -111,10 +111,10 @@ describe('FeaturesSection', () => {
     expect(within(picture).queryByRole('heading')).toBeNull();
   });
 
-  it('marks Web Development New, its picture a page and the site it draws', () => {
+  it('shows Web Development without a mark, its picture a page and the site it draws', () => {
     renderSection();
     const row = parts().getByRole('heading', { name: 'Web Development' }).closest('li')!;
-    expect(within(row).getByText('New')).toHaveClass('bg-[#facc15]');
+    expect(within(row).queryByText('New')).toBeNull();
     expect(within(row).queryByText('Coming soon')).toBeNull();
     const picture = within(row).getByRole('img', { name: /A web lesson as the student has it/ });
     expect(picture).toHaveTextContent('index.htmlstyle.cssscript.js');
@@ -123,10 +123,10 @@ describe('FeaturesSection', () => {
     expect(picture).toHaveTextContent('Doors openOpen the doors');
   });
 
-  it('marks Projects New, its picture a real project with its steps, the first three ticked', () => {
+  it('shows Projects without a mark, its picture a real project with its steps, the first three ticked', () => {
     renderSection();
     const row = parts().getByRole('heading', { name: 'Projects' }).closest('li')!;
-    expect(within(row).getByText('New')).toHaveClass('bg-[#facc15]');
+    expect(within(row).queryByText('New')).toBeNull();
     expect(within(row).queryByText('Coming soon')).toBeNull();
     const picture = within(row).getByRole('img', { name: /The League Table project/ });
     expect(picture).toHaveTextContent('League Tableeasy');
