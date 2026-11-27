@@ -145,7 +145,7 @@ describe('CoursesPage', () => {
     expect(screen.queryByText('Beta')).toBeNull();
   });
 
-  it('shows the one web course as Web Development, New, and opens its lessons at once', () => {
+  it('shows the one web course as Web Development, with no mark, and opens its lessons at once', () => {
     vi.stubEnv('PROD', true);
     signedInAs('USER');
     mockUseCurriculum.mockReturnValue({
@@ -158,7 +158,7 @@ describe('CoursesPage', () => {
     const card = screen.getByText('Web Development').closest('.panel') as HTMLElement;
     expect(card).not.toHaveAttribute('aria-disabled');
     expect(within(card).getByText('HTML · CSS · JavaScript')).toBeInTheDocument();
-    expect(within(card).getByText('New')).toHaveClass('bg-[#facc15]');
+    expect(within(card).queryByText('New')).toBeNull();
     expect(within(card).queryByText('Coming soon')).toBeNull();
     expect(within(card).getByText(/lesson/)).toBeInTheDocument();
     fireEvent.click(within(card).getByRole('button', { name: /View Syllabus/ }));
@@ -225,7 +225,7 @@ describe('CoursesPage', () => {
       // A web course has no card of its own next to the others
       expect(screen.queryByText('JavaScript')).toBeNull();
       const card = screen.getByText('Web Development').closest('.panel') as HTMLElement;
-      expect(within(card).getByText('New')).toBeInTheDocument();
+      expect(within(card).queryByText('New')).toBeNull();
       fireEvent.click(within(card).getByRole('button', { name: /View Courses/ }));
       expect(mockNavigate).toHaveBeenCalledWith('/courses/web');
       outside.unmount();

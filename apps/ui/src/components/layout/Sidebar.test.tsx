@@ -80,9 +80,9 @@ describe('Sidebar', () => {
     expect(links).toEqual([
       'CyberStars',
       'Source code on GitHub',
-      'CoursesNew',
+      'Courses',
       'Algorithms',
-      'ProjectsNew',
+      'Projects',
       'Almanac',
       'Sign in',
     ]);
@@ -106,7 +106,7 @@ describe('Sidebar', () => {
       Array.from(group.children).map((row) => row.textContent),
     );
     expect(groups).toEqual([
-      ['Dashboard', 'CoursesNew', 'Algorithms', 'ProjectsNew', 'Progress'],
+      ['Dashboard', 'Courses', 'Algorithms', 'Projects', 'Progress'],
       ['Almanac', 'LaniakeaBeta', 'Leaderboard'],
       ['Forum', 'Messages', 'Connections'],
       ['Tutor'],
@@ -259,13 +259,12 @@ describe('Sidebar', () => {
     expect(link).toHaveTextContent(/^ProjectsComing soon$/);
   });
 
-  it('marks Courses and Projects New in yellow once Web Development and Projects launch', () => {
+  it('shows Courses and Projects without a New mark once Web Development and Projects launch', () => {
     h.auth = { user: USER };
     renderSidebar();
     for (const name of ['Courses', 'Projects']) {
       const link = screen.getByRole('link', { name: new RegExp(name) });
-      expect(link).toHaveTextContent(new RegExp(`^${name}New$`));
-      expect(within(link).getByText('New')).toHaveClass('bg-[#facc15]');
+      expect(link).toHaveTextContent(new RegExp(`^${name}$`));
     }
   });
 
