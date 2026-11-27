@@ -86,7 +86,7 @@ describe('GuestVisits', () => {
         visit(3, [
           page('/placement'),
           click('placement-start'),
-          ...Array.from({ length: 11 }, (_, i) => click(`placement-q${i + 1}`)),
+          ...Array.from({ length: 9 }, (_, i) => click(`placement-q${i + 1}`)),
           click('placement-submit'),
           click('placement-get-started'),
           page('/getstarted'),
@@ -102,11 +102,11 @@ describe('GuestVisits', () => {
         .map((li) => li.textContent?.replace('→', '').trim()),
     );
     expect(visits).toEqual([
-      ['/', 'test-me', '/placement', 'placement-start', 'placement test 3/12'],
+      ['/', 'test-me', '/placement', 'placement-start', 'placement test 3/10'],
       [
         '/placement',
         'placement-start',
-        'placement test 12/12',
+        'placement test 10/10',
         'placement-get-started',
         '/getstarted',
       ],

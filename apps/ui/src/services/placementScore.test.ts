@@ -15,8 +15,8 @@ describe('placementScore', () => {
     expect(readPlacementScore()).toBeUndefined();
   });
 
-  it('ignores anything that is not a score out of 12', () => {
-    for (const value of ['13', '-1', '2.5', 'abc']) {
+  it('ignores anything that is not a score out of 10', () => {
+    for (const value of ['11', '-1', '2.5', 'abc']) {
       localStorage.setItem('cyberstars.placement', value);
       expect(readPlacementScore()).toBeUndefined();
     }

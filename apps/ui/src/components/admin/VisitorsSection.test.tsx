@@ -29,7 +29,7 @@ const dto: AdminVisitsDTO = {
   placement: {
     opened: 6,
     started: 4,
-    answered: [4, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2],
+    answered: [4, 3, 3, 3, 2, 2, 2, 2, 2, 2],
     getStarted: 1,
   },
 };
@@ -47,12 +47,12 @@ describe('VisitorsSection', () => {
     const rows = within(funnel)
       .getAllByRole('listitem')
       .map((li) => li.textContent);
-    expect(rows).toHaveLength(15);
+    expect(rows).toHaveLength(13);
     expect(rows[0]).toBe('Opened the test6');
     expect(rows[1]).toBe('Pressed Start4');
     expect(rows[2]).toBe('Got past question 14');
-    expect(rows[13]).toBe('Submitted2');
-    expect(rows[14]).toBe('Pressed Get started1');
+    expect(rows[11]).toBe('Submitted2');
+    expect(rows[12]).toBe('Pressed Get started1');
   });
 
   it('shows the charts, the pages, the sources and the split', async () => {

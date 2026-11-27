@@ -1687,8 +1687,9 @@
   },
   "placement": {
     "title": "Un test scurt înainte să începem",
-    "intro": "Nu te speria și nu te stresa, nu e un examen. Sunt 12 întrebări scurte despre Python, C, Java și Linux, ca să știm de unde pornim cu tine. Dacă nu știi un răspuns, alege-l pe cel care ți se pare corect. Și dacă le greșești pe toate e în regulă: înseamnă doar că pornim împreună de la zero cu lecțiile.",
-    "meta": "12 întrebări, cam 5 minute",
+    "intro": "Nu te speria și nu te stresa, nu e un examen. Alege ce vrei să înveți, apoi răspunde la 10 întrebări scurte despre asta, ca să știm de unde pornim cu tine. Dacă nu știi un răspuns, alege-l pe cel care ți se pare corect. Și dacă le greșești pe toate e în regulă: înseamnă doar că pornim împreună de la zero cu lecțiile.",
+    "pick": "Ce vrei să înveți? Alege un curs sau mai multe.",
+    "meta": "10 întrebări, cam 5 minute",
     "start": "Începe testul",
     "progress": "Întrebarea {{n}} din {{total}}",
     "back": "Înapoi",
@@ -1702,14 +1703,55 @@
       "cta": "Începe",
       "ctaText": "Fă-ți un cont gratuit și pornim de unde ești."
     },
+    "courses": {
+      "python": "Python",
+      "c": "C",
+      "java": "Java",
+      "linux": "Linux",
+      "web": "Dezvoltare web",
+      "algorithms": "Algoritmi"
+    },
     "questions": {
       "py1": {
         "q": "Ce afișează?",
         "options": ["14", "10", "11", "24"]
       },
+      "py4": {
+        "q": "Ce afișează?",
+        "options": ["ha ha ha", "hahaha", "ha3", "O eroare"]
+      },
+      "py5": {
+        "q": "Ce afișează?",
+        "options": ["4", "10", "6", "3"]
+      },
       "py2": {
         "q": "Ce afișează?",
         "options": ["4", "3", "1", "O eroare"]
+      },
+      "py6": {
+        "q": "Ce afișează?",
+        "options": ["pyt", "yth", "ytho", "pyth"]
+      },
+      "py7": {
+        "q": "Ce afișează?",
+        "options": ["6", "1", "2", "3"]
+      },
+      "py8": {
+        "q": "Ce afișează?",
+        "options": ["[0, 4, 16]", "[4, 16]", "[1, 9]", "[0, 2, 4]"]
+      },
+      "py9": {
+        "q": "Ce afișează?",
+        "options": [
+          "['banana', 'fig', 'kiwi']",
+          "['banana', 'kiwi', 'fig']",
+          "['fig', 'kiwi', 'banana']",
+          "['kiwi', 'fig', 'banana']"
+        ]
+      },
+      "py10": {
+        "q": "Ce afișează?",
+        "options": ["0", "1", "O eroare", "2"]
       },
       "py3": {
         "q": "Ce afișează?",
@@ -1719,21 +1761,77 @@
         "q": "Ce afișează?",
         "options": ["3.5", "3", "4", "3.0"]
       },
+      "c4": {
+        "q": "Ce afișează?",
+        "options": ["16", "13", "10", "11"]
+      },
+      "c5": {
+        "q": "Ce afișează?",
+        "options": ["123", "0123", "012", "3"]
+      },
+      "c6": {
+        "q": "Ce afișează?",
+        "options": ["A2", "67", "B", "C"]
+      },
+      "c7": {
+        "q": "Ce afișează?",
+        "options": ["100", "5", "0", "Nu compilează"]
+      },
       "c2": {
         "q": "Ce afișează?",
         "options": ["10", "11", "20", "O adresă din memorie"]
+      },
+      "c8": {
+        "q": "Ce afișează?",
+        "options": ["9 2", "1 2", "9 9", "1 9"]
+      },
+      "c9": {
+        "q": "Ce afișează?",
+        "options": ["1", "0", "3", "2"]
       },
       "c3": {
         "q": "Ce afișează?",
         "options": ["3", "2", "4", "8"]
       },
+      "c10": {
+        "q": "De câte ori afișează hi?",
+        "options": ["2", "3", "1", "4"]
+      },
       "java1": {
         "q": "Care linie face o variabilă care ține un număr întreg?",
         "options": ["age = 20", "int age = 20;", "integer age = 20;", "var age: int = 20;"]
       },
+      "java5": {
+        "q": "Ce afișează?",
+        "options": ["4", "5", "3", "Java"]
+      },
+      "java4": {
+        "q": "Ce afișează?",
+        "options": ["8", "5 + 3", "53", "O eroare"]
+      },
+      "java7": {
+        "q": "Ce afișează?",
+        "options": ["8", "15", "3", "O eroare"]
+      },
+      "java6": {
+        "q": "Ce afișează?",
+        "options": ["3", "10", "5", "4"]
+      },
       "java2": {
         "q": "Ce afișează?",
         "options": ["hi!", "null", "hi", "O eroare"]
+      },
+      "java8": {
+        "q": "Ce afișează?",
+        "options": ["2 8", "1 5", "1 3", "2 5"]
+      },
+      "java9": {
+        "q": "Ce afișează?",
+        "options": ["Woof", "...", "Nu compilează", "Dog"]
+      },
+      "java10": {
+        "q": "Ce afișează?",
+        "options": ["150", "9", "60", "90"]
       },
       "java3": {
         "q": "Ce afișează?",
@@ -1742,6 +1840,14 @@
       "linux1": {
         "q": "Ce comandă arată folderul în care ești?",
         "options": ["ls", "cd", "whoami", "pwd"]
+      },
+      "linux4": {
+        "q": "Ce comandă face un folder nou numit photos?",
+        "options": ["touch photos", "mkdir photos", "cd photos", "new photos"]
+      },
+      "linux5": {
+        "q": "Ce comandă șterge fișierul old.txt?",
+        "options": ["rm old.txt", "del old.txt", "mv old.txt", "cut old.txt"]
       },
       "linux2": {
         "q": "Ce arată ls -a în plus față de un simplu ls?",
@@ -1752,6 +1858,33 @@
           "Doar folderele"
         ]
       },
+      "linux6": {
+        "q": "Ce face ls > files.txt?",
+        "options": [
+          "Adaugă lista de fișiere la finalul lui files.txt",
+          "Arată lista, apoi deschide files.txt",
+          "Scrie lista de fișiere în files.txt, în locul a ce era acolo",
+          "Listează doar files.txt"
+        ]
+      },
+      "linux7": {
+        "q": "Ce linii arată grep -i error log.txt?",
+        "options": [
+          "Doar liniile care încep cu error",
+          "Liniile care conțin error, scris cu litere mari sau mici",
+          "Toate liniile, în afară de cele cu error",
+          "Câte linii conțin error"
+        ]
+      },
+      "linux8": {
+        "q": "Ce afișează sort names.txt | uniq?",
+        "options": [
+          "Doar numele care sunt în fișier de mai multe ori",
+          "Câte nume sunt",
+          "Numele în ordinea din fișier, fiecare o dată",
+          "Fiecare nume o dată, în ordine alfabetică"
+        ]
+      },
       "linux3": {
         "q": "După chmod 640 notes.txt, cine poate citi fișierul?",
         "options": [
@@ -1760,6 +1893,119 @@
           "Proprietarul și grupul lui",
           "Nimeni, până nu e făcut executabil"
         ]
+      },
+      "linux9": {
+        "q": "Ce afișează ultima comandă?",
+        "options": ["amy 7", "tom 12", "lee 9", "amy"]
+      },
+      "linux10": {
+        "q": "Ce afișează ultima comandă?",
+        "options": ["5 3 4", "3", "12", "mon tue wed"]
+      },
+      "web1": {
+        "q": "Ce tag face cel mai important titlu din pagină?",
+        "options": ["<h6>", "<head>", "<h1>", "<title>"]
+      },
+      "web2": {
+        "q": "Care linie face un link spre example.com?",
+        "options": [
+          "<link to=\"https://example.com\">Example</link>",
+          "<a src=\"https://example.com\">Example</a>",
+          "<url>https://example.com</url>",
+          "<a href=\"https://example.com\">Example</a>"
+        ]
+      },
+      "web3": {
+        "q": "Care regulă face roșu textul fiecărui paragraf?",
+        "options": [
+          "p { color: red; }",
+          "p { background-color: red; }",
+          ".p { color: red; }",
+          "p { text: red; }"
+        ]
+      },
+      "web4": {
+        "q": "Ce arată în consolă?",
+        "options": ["3", "012", "0123", "O eroare"]
+      },
+      "web5": {
+        "q": "Ce CSS pune elementele unei cutii la mijlocul ei, și de la stânga la dreapta, și de sus în jos?",
+        "options": [
+          "text-align: center;",
+          "display: flex; justify-content: center; align-items: center;",
+          "margin: center;",
+          "display: block; vertical-align: middle;"
+        ]
+      },
+      "web6": {
+        "q": "Cât de lată e cutia pe pagină?",
+        "options": ["200px", "215px", "230px", "220px"]
+      },
+      "web7": {
+        "q": "Ce culoare are Hello?",
+        "options": ["Roșu", "Albastru", "Verde", "Negru"]
+      },
+      "web8": {
+        "q": "Ce arată în consolă?",
+        "options": ["12", "24", "[4, 8, 12]", "48"]
+      },
+      "web9": {
+        "q": "Ce arată în consolă?",
+        "options": ["10, apoi 0", "10, apoi 10", "0, apoi 0", "0, apoi 10"]
+      },
+      "web10": {
+        "q": "În ce ordine apar literele în consolă?",
+        "options": ["A, B, C", "B, A, C", "A, C", "A, C, B"]
+      },
+      "algo1": {
+        "q": "Ce afișează?",
+        "options": ["star", "rats", "s", "tar"]
+      },
+      "algo2": {
+        "q": "Care cuvânt se citește la fel de la început și de la sfârșit?",
+        "options": ["lever", "label", "level", "llama"]
+      },
+      "algo3": {
+        "q": "Pui 1, apoi 2, apoi 3 pe o stivă, apoi scoți unul. Ce număr iese?",
+        "options": ["1", "2", "Toate trei deodată", "3"]
+      },
+      "algo4": {
+        "q": "Căutarea binară caută un număr într-o listă sortată de 1.000 de numere. Cam câte numere verifică cel mult?",
+        "options": ["1.000", "500", "100", "10"]
+      },
+      "algo5": {
+        "q": "Bubble sort trece o dată prin [4, 3, 1, 2] de la stânga la dreapta și schimbă între ei oricare doi vecini aflați în ordinea greșită. Cum arată lista după asta?",
+        "options": ["[1, 2, 3, 4]", "[3, 1, 2, 4]", "[3, 4, 1, 2]", "[1, 3, 2, 4]"]
+      },
+      "algo6": {
+        "q": "Ce afișează?",
+        "options": ["5", "13", "6", "8"]
+      },
+      "algo7": {
+        "q": "Pui 5, 3, 8 și 1, în ordinea asta, într-un arbore binar de căutare gol. Unde ajunge 1?",
+        "options": [
+          "Copilul din dreapta al lui 3",
+          "Copilul din stânga al lui 3",
+          "Copilul din stânga al lui 8",
+          "Copilul din dreapta al lui 5"
+        ]
+      },
+      "algo8": {
+        "q": "Parcurgerea în lățime găsește cei mai puțini pași printr-un labirint. Unde ține locurile pe care mai are să le viziteze?",
+        "options": [
+          "Într-o coadă: primul intrat, primul ieșit",
+          "Într-o stivă: ultimul intrat, primul ieșit",
+          "Într-o listă sortată după nume",
+          "Nicăieri, doar se întoarce cu recursivitate"
+        ]
+      },
+      "algo9": {
+        "q": "În ce ordine vizitează parcurgerea în preordine arborele ăsta?",
+        "options": ["1 2 3 4 5", "4 2 5 1 3", "4 5 2 3 1", "1 2 4 5 3"]
+      },
+      "algo10": {
+        "q": "Fiecare săgeată e un drum cu lungimea lui. Cât de lung e cel mai scurt drum de la A la D?",
+        "options": ["5", "4", "6", "3"]
       }
     }
   },

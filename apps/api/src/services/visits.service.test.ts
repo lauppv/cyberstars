@@ -407,7 +407,7 @@ describe('report', () => {
     expect(dto.placement).toEqual({
       opened: 9,
       started: 6,
-      answered: [5, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2],
+      answered: [5, 4, 0, 0, 0, 0, 0, 0, 0, 2],
       getStarted: 1,
     });
   });

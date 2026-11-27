@@ -260,7 +260,7 @@ describe('Visitor counts', () => {
     const finisher = agent();
     const other = 'Other browser';
     await visit(finisher, { path: '/ro/placement' }, other);
-    const answers = Array.from({ length: 11 }, (_, i) => `placement-q${i + 1}`);
+    const answers = Array.from({ length: 9 }, (_, i) => `placement-q${i + 1}`);
     await visit(
       finisher,
       {
@@ -275,7 +275,7 @@ describe('Visitor counts', () => {
     expect(res.body.placement).toEqual({
       opened: 2,
       started: 2,
-      answered: [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      answered: [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       getStarted: 1,
     });
   });
