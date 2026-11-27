@@ -29,42 +29,51 @@ const repo = await import('./messages.repository.js');
 
 beforeEach(() => vi.clearAllMocks());
 
-describe('findOrCreatePair', () => {
-  it('orders the pair canonically (a<b) and returns an existing row', async () => {
+describe('sendToPair', () => {
+  it('appends to the existing conversation of the canonical pair (a<b)', async () => {
     mockPrisma.conversation.findUnique.mockResolvedValue({ id: 1 });
-    const row = await repo.findOrCreatePair(5, 2);
-    expect(row).toEqual({ id: 1 });
+    mockPrisma.$transaction.mockResolvedValue([{ id: 50 }, {}]);
+    const message = await repo.sendToPair(5, 2, 'hi');
+    expect(message).toEqual({ id: 50 });
     expect(mockPrisma.conversation.findUnique).toHaveBeenCalledWith(
       expect.objectContaining({ where: { userAId_userBId: { userAId: 2, userBId: 5 } } }),
+    );
+    expect(mockPrisma.directMessage.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { conversationId: 1, senderId: 5, content: 'hi' } }),
     );
     expect(mockPrisma.conversation.create).not.toHaveBeenCalled();
   });
 
-  it('creates the pair when none exists (a<b keeps order)', async () => {
+  it('creates the conversation together with its first message', async () => {
     mockPrisma.conversation.findUnique.mockResolvedValue(null);
-    mockPrisma.conversation.create.mockResolvedValue({ id: 9 });
-    const row = await repo.findOrCreatePair(2, 5);
-    expect(row).toEqual({ id: 9 });
+    mockPrisma.conversation.create.mockResolvedValue({ id: 9, messages: [{ id: 51 }] });
+    const message = await repo.sendToPair(2, 5, 'hi');
+    expect(message).toEqual({ id: 51 });
     expect(mockPrisma.conversation.create).toHaveBeenCalledWith(
-      expect.objectContaining({ data: { userAId: 2, userBId: 5 } }),
+      expect.objectContaining({
+        data: { userAId: 2, userBId: 5, messages: { create: { senderId: 2, content: 'hi' } } },
+      }),
     );
   });
 
-  it('re-reads the winner row when a concurrent create hits the unique constraint', async () => {
+  it('appends to the winner when a concurrent create hits the unique constraint', async () => {
     const { Prisma } = await import('@prisma/client');
     mockPrisma.conversation.findUnique.mockResolvedValueOnce(null).mockResolvedValueOnce({ id: 7 });
     mockPrisma.conversation.create.mockRejectedValue(
       new Prisma.PrismaClientKnownRequestError('unique', { code: 'P2002', clientVersion: 'test' }),
     );
-    const row = await repo.findOrCreatePair(2, 5);
-    expect(row).toEqual({ id: 7 });
-    expect(mockPrisma.conversation.findUnique).toHaveBeenCalledTimes(2);
+    mockPrisma.$transaction.mockResolvedValue([{ id: 52 }, {}]);
+    const message = await repo.sendToPair(2, 5, 'hi');
+    expect(message).toEqual({ id: 52 });
+    expect(mockPrisma.directMessage.create).toHaveBeenCalledWith(
+      expect.objectContaining({ data: { conversationId: 7, senderId: 2, content: 'hi' } }),
+    );
   });
 
   it('rethrows non-P2002 create errors', async () => {
     mockPrisma.conversation.findUnique.mockResolvedValue(null);
     mockPrisma.conversation.create.mockRejectedValue(new Error('boom'));
-    await expect(repo.findOrCreatePair(2, 5)).rejects.toThrow('boom');
+    await expect(repo.sendToPair(2, 5, 'hi')).rejects.toThrow('boom');
   });
 });
 

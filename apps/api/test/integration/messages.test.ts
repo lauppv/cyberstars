@@ -1,40 +1,60 @@
 import { describe, it, expect } from 'vitest';
 import { agent, createAuthenticatedAgent, userIdFor } from './helpers.js';
 
-// Open a fresh conversation between two new users and return their agents/ids
-// plus the conversation id, the common setup for most cases below.
+// Start a fresh conversation between two new users with A's first message and
+// return their agents/ids plus the conversation id, the common setup below.
 async function pair() {
   const { agent: a, email: emailA } = await createAuthenticatedAgent();
   const { agent: b, email: emailB } = await createAuthenticatedAgent();
   const idA = await userIdFor(emailA);
   const idB = await userIdFor(emailB);
-  const open = await a.post('/api/messages/conversations').send({ recipientId: idB }).expect(201);
-  return { a, b, idA, idB, conversationId: open.body.conversation.id as number };
+  const start = await a
+    .post('/api/messages/conversations')
+    .send({ recipientId: idB, content: 'one' })
+    .expect(201);
+  return { a, b, idA, idB, conversationId: start.body.conversation.id as number };
 }
 
 describe('Messaging flow', () => {
-  it('send → recipient sees it in the inbox with an unread count', async () => {
-    const { a, b, conversationId } = await pair();
+  it('the first message creates the conversation; the recipient sees it unread', async () => {
+    const { agent: a, email: emailA } = await createAuthenticatedAgent();
+    const { agent: b, email: emailB } = await createAuthenticatedAgent();
+    const idB = await userIdFor(emailB);
 
-    await a
-      .post(`/api/messages/conversations/${conversationId}`)
-      .send({ content: 'hello' })
+    // Nothing exists before the first message
+    expect((await a.get('/api/messages/conversations').expect(200)).body.conversations).toEqual([]);
+
+    const start = await a
+      .post('/api/messages/conversations')
+      .send({ recipientId: idB, content: 'hello' })
       .expect(201);
+    expect(start.body.message.content).toBe('hello');
+    expect(start.body.conversation.lastMessage.content).toBe('hello');
+    expect(start.body.message.conversationId).toBe(start.body.conversation.id);
 
     const inbox = await b.get('/api/messages/conversations').expect(200);
     expect(inbox.body.conversations).toHaveLength(1);
     const convo = inbox.body.conversations[0];
-    expect(convo.id).toBe(conversationId);
+    expect(convo.id).toBe(start.body.conversation.id);
+    expect(convo.other.id).toBe(await userIdFor(emailA));
     expect(convo.lastMessage.content).toBe('hello');
     expect(convo.unreadCount).toBe(1);
   });
 
+  it('a first message to someone you already talk to lands in the same conversation', async () => {
+    const { b, idA, conversationId } = await pair();
+    const reply = await b
+      .post('/api/messages/conversations')
+      .send({ recipientId: idA, content: 'back' })
+      .expect(201);
+    expect(reply.body.conversation.id).toBe(conversationId);
+
+    const inbox = await b.get('/api/messages/conversations').expect(200);
+    expect(inbox.body.conversations).toHaveLength(1);
+  });
+
   it('history returns the messages for a participant', async () => {
     const { a, b, conversationId } = await pair();
-    await a
-      .post(`/api/messages/conversations/${conversationId}`)
-      .send({ content: 'one' })
-      .expect(201);
     await a
       .post(`/api/messages/conversations/${conversationId}`)
       .send({ content: 'two' })
@@ -143,15 +163,29 @@ describe('Messaging flow', () => {
       .expect(404);
   });
 
-  it('cannot open a conversation with yourself', async () => {
+  it('cannot start a conversation with yourself', async () => {
     const { agent: a, email } = await createAuthenticatedAgent();
     const id = await userIdFor(email);
-    await a.post('/api/messages/conversations').send({ recipientId: id }).expect(400);
+    await a
+      .post('/api/messages/conversations')
+      .send({ recipientId: id, content: 'hi' })
+      .expect(400);
   });
 
-  it('opening against an unknown user 404s', async () => {
+  it('starting against an unknown user 404s', async () => {
     const { agent: a } = await createAuthenticatedAgent();
-    await a.post('/api/messages/conversations').send({ recipientId: 999999 }).expect(404);
+    await a
+      .post('/api/messages/conversations')
+      .send({ recipientId: 999999, content: 'hi' })
+      .expect(404);
+  });
+
+  it('a start without a message 400s and creates nothing', async () => {
+    const { agent: a } = await createAuthenticatedAgent();
+    const { email: emailB } = await createAuthenticatedAgent();
+    const idB = await userIdFor(emailB);
+    await a.post('/api/messages/conversations').send({ recipientId: idB }).expect(400);
+    expect((await a.get('/api/messages/conversations').expect(200)).body.conversations).toEqual([]);
   });
 
   it('unauthenticated requests are rejected', async () => {

@@ -17,14 +17,15 @@ export async function getInbox(req: Request, res: Response, next: NextFunction):
   }
 }
 
-export async function openConversation(
+export async function startConversation(
   req: Request,
   res: Response,
   next: NextFunction,
 ): Promise<void> {
   try {
-    const conversation = await messagesService.openConversation(req.user!.id, req.body.recipientId);
-    res.status(201).json({ conversation });
+    const { recipientId, content } = req.body;
+    const result = await messagesService.startConversation(req.user!.id, recipientId, content);
+    res.status(201).json(result);
   } catch (err) {
     next(err);
   }

@@ -23,24 +23,31 @@ const conversationInclude = {
   messages: { take: 1, orderBy: { id: 'desc' }, include: reactionsInclude },
 } satisfies Prisma.ConversationInclude;
 
-// Canonical ordered pair (userAId < userBId) so A<->B and B<->A resolve to the
-// same row. Idempotent: relies on the @@unique([userAId, userBId]).
-export async function findOrCreatePair(a: number, b: number): Promise<ConversationRow> {
-  const [userAId, userBId] = a < b ? [a, b] : [b, a];
+// The first message creates the conversation in the same write, so a
+// conversation never exists without a message. Canonical ordered pair
+// (userAId < userBId) so A<->B and B<->A resolve to the same row.
+export async function sendToPair(
+  senderId: number,
+  recipientId: number,
+  content: string,
+): Promise<MessageRow> {
+  const [userAId, userBId] =
+    senderId < recipientId ? [senderId, recipientId] : [recipientId, senderId];
   const where = { userAId_userBId: { userAId, userBId } };
-  const existing = await prisma.conversation.findUnique({ where, include: conversationInclude });
-  if (existing) return existing;
+  const existing = await prisma.conversation.findUnique({ where, select: { id: true } });
+  if (existing) return createMessage(existing.id, senderId, content);
   try {
-    return await prisma.conversation.create({
-      data: { userAId, userBId },
-      include: conversationInclude,
+    const created = await prisma.conversation.create({
+      data: { userAId, userBId, messages: { create: { senderId, content } } },
+      include: { messages: { include: reactionsInclude } },
     });
+    return created.messages[0];
   } catch (err) {
-    // Two concurrent opens can both miss the findUnique and race the create;
-    // the loser hits the unique constraint, so re-read the winner's row.
+    // Two concurrent first messages can both miss the findUnique and race the
+    // create; the loser hits the unique constraint, so append to the winner's row.
     if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2002') {
-      const winner = await prisma.conversation.findUnique({ where, include: conversationInclude });
-      if (winner) return winner;
+      const winner = await prisma.conversation.findUnique({ where, select: { id: true } });
+      if (winner) return createMessage(winner.id, senderId, content);
     }
     throw err;
   }

@@ -5,8 +5,8 @@ import { authenticateToken } from '../middleware/auth.js';
 import { requireFeatureAccess } from '../middleware/features.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
-  openConversationSchema,
   sendMessageSchema,
+  startConversationSchema,
   markReadSchema,
   toggleReactionSchema,
 } from '../schemas/messages.schema.js';
@@ -17,20 +17,11 @@ import * as messagesController from '../controllers/messages.controller.js';
 // authenticateToken runs before the limiters, so req.user is always set here.
 const perUser = (req: Request) => String(req.user!.id);
 
-// Cap message sends per user; abuse is otherwise held in check by this + (later)
-// the block feature. Reads are cheap and unlimited.
+// Cap message sends per user, first messages included; abuse is otherwise held
+// in check by this + (later) the block feature. Reads are cheap and unlimited.
 const sendLimiter = limiter({
   windowMs: 60_000,
   limit: 20,
-  keyGenerator: perUser,
-});
-
-// Opening a conversation creates a row, so cap it too, otherwise a caller could
-// spam new conversations against every user id. Higher than sends since it's an
-// idempotent find-or-create.
-const openLimiter = limiter({
-  windowMs: 60_000,
-  limit: 30,
   keyGenerator: perUser,
 });
 
@@ -51,9 +42,9 @@ router.use(authenticateToken, requireFeatureAccess('messaging'));
 router.get('/conversations', messagesController.getInbox);
 router.post(
   '/conversations',
-  openLimiter,
-  validateBody(openConversationSchema),
-  messagesController.openConversation,
+  sendLimiter,
+  validateBody(startConversationSchema),
+  messagesController.startConversation,
 );
 router.get('/conversations/:id', messagesController.getHistory);
 router.post(

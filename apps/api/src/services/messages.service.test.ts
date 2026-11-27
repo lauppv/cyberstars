@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 const mockRepo = {
-  findOrCreatePair: vi.fn(),
+  sendToPair: vi.fn(),
   findConversation: vi.fn(),
   listConversations: vi.fn(),
   unreadByConversation: vi.fn(),
@@ -22,7 +22,7 @@ vi.mock('./ws-user.js', () => mockWs);
 
 const {
   getInbox,
-  openConversation,
+  startConversation,
   getHistory,
   sendMessage,
   markRead,
@@ -86,24 +86,33 @@ describe('messages.service getInbox', () => {
   });
 });
 
-describe('messages.service openConversation', () => {
+describe('messages.service startConversation', () => {
   it('rejects messaging yourself', async () => {
-    await expect(openConversation(1, 1)).rejects.toMatchObject({ statusCode: 400 });
-    expect(mockRepo.findOrCreatePair).not.toHaveBeenCalled();
+    await expect(startConversation(1, 1, 'hi')).rejects.toMatchObject({ statusCode: 400 });
+    expect(mockRepo.sendToPair).not.toHaveBeenCalled();
   });
 
   it('404s when the recipient does not exist', async () => {
     mockUserRepo.findById.mockResolvedValue(null);
-    await expect(openConversation(1, 99)).rejects.toMatchObject({ statusCode: 404 });
+    await expect(startConversation(1, 99, 'hi')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.sendToPair).not.toHaveBeenCalled();
   });
 
-  it('creates or reuses the canonical pair and shapes it', async () => {
+  it('sends the first message, shapes the conversation and pushes to both', async () => {
     mockUserRepo.findById.mockResolvedValue({ id: 2 });
-    mockRepo.findOrCreatePair.mockResolvedValue(convRow());
-    const conv = await openConversation(1, 2);
-    expect(mockRepo.findOrCreatePair).toHaveBeenCalledWith(1, 2);
-    expect(conv.id).toBe(100);
-    expect(conv.other.id).toBe(2);
+    mockRepo.sendToPair.mockResolvedValue(msgRow({ senderId: 1, content: 'hi' }));
+    mockRepo.findConversation.mockResolvedValue(
+      convRow({ messages: [msgRow({ senderId: 1, content: 'hi' })] }),
+    );
+    const { conversation, message } = await startConversation(1, 2, 'hi');
+    expect(mockRepo.sendToPair).toHaveBeenCalledWith(1, 2, 'hi');
+    expect(mockRepo.findConversation).toHaveBeenCalledWith(100);
+    expect(conversation.id).toBe(100);
+    expect(conversation.other.id).toBe(2);
+    expect(conversation.lastMessage?.content).toBe('hi');
+    expect(message.content).toBe('hi');
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(2, expect.objectContaining({ type: 'message' }));
+    expect(mockWs.pushToUser).toHaveBeenCalledWith(1, expect.objectContaining({ type: 'message' }));
   });
 });
 
