@@ -7,7 +7,7 @@ const h = vi.hoisted(() => ({
   auth: { isLoggedIn: true, user: { id: 1, role: 'USER' } as { id: number; role: string } | null },
   service: {
     getConversations: vi.fn(),
-    openConversation: vi.fn(),
+    startConversation: vi.fn(),
     getHistory: vi.fn(),
     sendMessage: vi.fn(),
     markRead: vi.fn(),
@@ -61,7 +61,7 @@ function Probe() {
     totalUnread,
     loadFailed,
     refresh,
-    openWith,
+    startWith,
     setActiveConversation,
     markConversationRead,
   } = useMessages();
@@ -72,7 +72,7 @@ function Probe() {
       <span data-testid="unread">{totalUnread}</span>
       <span data-testid="count">{conversations.length}</span>
       <span data-testid="ids">{conversations.map((c) => c.id).join(',')}</span>
-      <button onClick={() => openWith(2)}>open</button>
+      <button onClick={() => startWith(2, 'hi')}>start</button>
       <button onClick={() => setActiveConversation(10)}>activate</button>
       <button onClick={() => markConversationRead(10)}>read</button>
     </div>
@@ -192,18 +192,23 @@ describe('MessagesContext', () => {
     await waitFor(() => expect(screen.getByTestId('unread')).toHaveTextContent('2'));
   });
 
-  it('opens a conversation, adding it only if new', async () => {
-    h.service.getConversations.mockResolvedValue({ conversations: [] });
-    h.service.openConversation.mockResolvedValue({ conversation: conv({ id: 20 }) });
+  it('starts a conversation with its first message, adding it only if new', async () => {
+    h.service.getConversations.mockResolvedValue({ conversations: [conv({ id: 30 })] });
+    h.service.startConversation.mockResolvedValue({
+      conversation: conv({ id: 20, lastMessage: msg({ id: 1, conversationId: 20 }) }),
+      message: msg({ id: 1, conversationId: 20 }),
+    });
     renderProvider();
-    await screen.findByTestId('count');
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('30'));
 
-    fireEvent.click(screen.getByText('open'));
-    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('20'));
+    fireEvent.click(screen.getByText('start'));
+    await waitFor(() => expect(screen.getByTestId('ids')).toHaveTextContent('20,30'));
+    expect(h.service.startConversation).toHaveBeenCalledWith(2, 'hi');
 
-    // Opening the same one again must not duplicate it.
-    fireEvent.click(screen.getByText('open'));
-    await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'));
+    // A second first message to the same person must not duplicate it
+    fireEvent.click(screen.getByText('start'));
+    await waitFor(() => expect(h.service.startConversation).toHaveBeenCalledTimes(2));
+    expect(screen.getByTestId('ids')).toHaveTextContent('20,30');
   });
 
   it('clears a conversation unread count when marked read', async () => {

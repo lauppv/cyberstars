@@ -9,7 +9,12 @@ import { MessageActions } from './MessageActions';
 import { UserLink } from '../ui/UserLink';
 import { LoadError } from '../ui/LoadError';
 import * as messagesService from '../../services/messagesService';
-import type { ConversationDTO, MessageDTO, MessageReactionDTO } from '@cyberstars/shared/messages';
+import type {
+  ConversationDTO,
+  ConversationParticipant,
+  MessageDTO,
+  MessageReactionDTO,
+} from '@cyberstars/shared/messages';
 import type { UserSocketFrame } from '@cyberstars/shared/notifications';
 
 function timeLabel(iso: string): string {
@@ -45,6 +50,54 @@ function groupReactions(reactions: MessageReactionDTO[], currentUserId: number) 
     groups.set(r.emoji, g);
   }
   return Array.from(groups, ([emoji, g]) => ({ emoji, ...g }));
+}
+
+function ThreadHeader({ other, onBack }: { other: ConversationParticipant; onBack: () => void }) {
+  const { t } = useTranslation();
+  return (
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
+      <button
+        onClick={onBack}
+        className="@2xl:hidden text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[16px]"
+        aria-label={t('messages.back')}
+      >
+        ←
+      </button>
+      <UserLink userId={other.id} className="flex items-center gap-3 min-w-0">
+        <Avatar url={other.avatarUrl} userId={other.id} size={32} />
+        <span className="font-semibold text-[14px] text-[var(--text)] truncate">{other.name}</span>
+      </UserLink>
+    </div>
+  );
+}
+
+// A conversation not created yet: its first message creates it, and the page
+// then shows the real thread in its place
+export function DraftThread({
+  other,
+  onSend,
+  onBack,
+}: {
+  other: ConversationParticipant;
+  onSend: (content: string) => Promise<void>;
+  onBack: () => void;
+}) {
+  const [sendError, setSendError] = useState<string | null>(null);
+  const send = async (content: string) => {
+    try {
+      await onSend(content);
+    } catch (err) {
+      setSendError(errMsg(err));
+      throw err; // the composer keeps the text
+    }
+  };
+  return (
+    <div className="flex flex-col h-full">
+      <ThreadHeader other={other} onBack={onBack} />
+      <div className="flex-1" />
+      <MessageComposer onSend={send} error={sendError} />
+    </div>
+  );
 }
 
 export function MessageThread({
@@ -286,21 +339,7 @@ export function MessageThread({
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
-        <button
-          onClick={onBack}
-          className="@2xl:hidden text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[16px]"
-          aria-label={t('messages.back')}
-        >
-          ←
-        </button>
-        <UserLink userId={conversation.other.id} className="flex items-center gap-3 min-w-0">
-          <Avatar url={conversation.other.avatarUrl} userId={conversation.other.id} size={32} />
-          <span className="font-semibold text-[14px] text-[var(--text)] truncate">
-            {conversation.other.name}
-          </span>
-        </UserLink>
-      </div>
+      <ThreadHeader other={conversation.other} onBack={onBack} />
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
         {loading ? (

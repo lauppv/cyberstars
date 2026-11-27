@@ -4,7 +4,7 @@ import { AppError } from '@cyberstars-framework/server-kit/errors';
 
 const mockService = {
   getInbox: vi.fn(),
-  openConversation: vi.fn(),
+  startConversation: vi.fn(),
   getHistory: vi.fn(),
   sendMessage: vi.fn(),
   markRead: vi.fn(),
@@ -44,20 +44,31 @@ describe('getInbox', () => {
   });
 });
 
-describe('openConversation', () => {
-  it('creates/opens a conversation and returns 201', async () => {
-    mockService.openConversation.mockResolvedValue({ id: 3 });
+describe('startConversation', () => {
+  it('sends the first message and returns 201', async () => {
+    mockService.startConversation.mockResolvedValue({
+      conversation: { id: 3 },
+      message: { id: 7 },
+    });
     const res = mockRes();
-    await ctrl.openConversation(mockReq({ body: { recipientId: 2 } }), res, vi.fn());
-    expect(mockService.openConversation).toHaveBeenCalledWith(10, 2);
+    await ctrl.startConversation(
+      mockReq({ body: { recipientId: 2, content: 'hi' } }),
+      res,
+      vi.fn(),
+    );
+    expect(mockService.startConversation).toHaveBeenCalledWith(10, 2, 'hi');
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(res.json).toHaveBeenCalledWith({ conversation: { id: 3 } });
+    expect(res.json).toHaveBeenCalledWith({ conversation: { id: 3 }, message: { id: 7 } });
   });
 
   it('forwards errors to next', async () => {
-    mockService.openConversation.mockRejectedValue(new Error('boom'));
+    mockService.startConversation.mockRejectedValue(new Error('boom'));
     const next = vi.fn();
-    await ctrl.openConversation(mockReq({ body: { recipientId: 2 } }), mockRes(), next);
+    await ctrl.startConversation(
+      mockReq({ body: { recipientId: 2, content: 'hi' } }),
+      mockRes(),
+      next,
+    );
     expect(next).toHaveBeenCalledWith(expect.any(Error));
   });
 });

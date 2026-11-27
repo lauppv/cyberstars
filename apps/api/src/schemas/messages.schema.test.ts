@@ -1,17 +1,24 @@
 import { describe, it, expect } from 'vitest';
 import {
-  openConversationSchema,
   sendMessageSchema,
+  startConversationSchema,
   markReadSchema,
   historyQuerySchema,
 } from './messages.schema.js';
 
-describe('openConversationSchema', () => {
-  it('accepts a positive recipient id', () => {
-    expect(openConversationSchema.parse({ recipientId: 3 })).toEqual({ recipientId: 3 });
+describe('startConversationSchema', () => {
+  it('accepts a positive recipient id and trims the content', () => {
+    expect(startConversationSchema.parse({ recipientId: 3, content: ' hi ' })).toEqual({
+      recipientId: 3,
+      content: 'hi',
+    });
   });
   it('rejects a non-positive id', () => {
-    expect(() => openConversationSchema.parse({ recipientId: 0 })).toThrow();
+    expect(() => startConversationSchema.parse({ recipientId: 0, content: 'hi' })).toThrow();
+  });
+  it('rejects a first message without content', () => {
+    expect(() => startConversationSchema.parse({ recipientId: 3, content: '   ' })).toThrow();
+    expect(() => startConversationSchema.parse({ recipientId: 3 })).toThrow();
   });
 });
 

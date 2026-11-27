@@ -7,30 +7,44 @@ import { Topbar } from '../components/layout/Topbar';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
 import { LoadError } from '../components/ui/LoadError';
 import { ConversationList } from '../components/messages/ConversationList';
-import { MessageThread } from '../components/messages/MessageThread';
+import { DraftThread, MessageThread } from '../components/messages/MessageThread';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import { MessageSquare } from 'lucide-react';
 import { EmptyState } from '../components/ui/EmptyState';
+import type { ConversationParticipant } from '@cyberstars/shared/messages';
 
 export function MessagesPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
-  const { conversations, loading, loadFailed, refresh } = useMessages();
+  const { conversations, loading, loadFailed, refresh, startWith } = useMessages();
   const canAccess = canAccessFeature('messaging', user?.role, import.meta.env.PROD);
 
   // Deep-link from a DM notification: /messages with { openConversationId }.
-  const deepLinkId =
-    (location.state as { openConversationId?: number } | null)?.openConversationId ?? null;
+  // Message on a profile sends { draftWith }: a draft to that person, with
+  // nothing created until the first message.
+  const linkState = location.state as {
+    openConversationId?: number;
+    draftWith?: ConversationParticipant;
+  } | null;
+  const deepLinkId = linkState?.openConversationId ?? null;
+  const draftLink = linkState?.draftWith ?? null;
   const [selectedId, setSelectedId] = useState<number | null>(deepLinkId);
+  const [draft, setDraft] = useState<ConversationParticipant | null>(draftLink);
 
   // Re-apply the deep-link on every navigation (location.key changes even when
   // the target conversation id is the same), since an initializer alone would ignore
   // clicks made while this page is already mounted.
   useEffect(() => {
-    if (deepLinkId != null) setSelectedId(deepLinkId); // eslint-disable-line react-hooks/set-state-in-effect
-  }, [deepLinkId, location.key]);
+    if (deepLinkId != null) {
+      setSelectedId(deepLinkId); // eslint-disable-line react-hooks/set-state-in-effect
+      setDraft(null);
+    } else if (draftLink) {
+      setSelectedId(null);
+      setDraft(draftLink);
+    }
+  }, [deepLinkId, draftLink, location.key]);
 
   // Client-side guard is UX only; /api/messages is server-authoritative.
   useEffect(() => {
@@ -38,7 +52,23 @@ export function MessagesPage() {
     if (!canAccess) navigate('/');
   }, [authLoading, canAccess, navigate]);
 
-  const selected = conversations.find((c) => c.id === selectedId) ?? null;
+  // A draft to someone you already talk to opens that conversation instead
+  const selected =
+    conversations.find((c) => c.id === selectedId) ??
+    (draft && conversations.find((c) => c.other.id === draft.id)) ??
+    null;
+  const showThread = !!selected || !!draft;
+
+  const select = (id: number | null) => {
+    setDraft(null);
+    setSelectedId(id);
+  };
+
+  const sendFirst = async (content: string) => {
+    if (!draft) return;
+    const conversation = await startWith(draft.id, content);
+    select(conversation.id);
+  };
 
   if (authLoading || !canAccess || !user) {
     return (
@@ -59,7 +89,7 @@ export function MessagesPage() {
           {/* Conversation list, full width on mobile until one is picked. */}
           <div
             className={`w-full @2xl:w-[300px] @2xl:flex-shrink-0 flex-col border-r border-[var(--border)] ${
-              selected ? 'hidden @2xl:flex' : 'flex'
+              showThread ? 'hidden @2xl:flex' : 'flex'
             }`}
           >
             <div className="px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
@@ -76,21 +106,28 @@ export function MessagesPage() {
             ) : (
               <ConversationList
                 conversations={conversations}
-                selectedId={selectedId}
+                selectedId={selected?.id ?? null}
                 currentUserId={user.id}
-                onSelect={setSelectedId}
+                onSelect={select}
               />
             )}
           </div>
 
           {/* Thread pane. */}
-          <div className={`flex-1 min-w-0 ${selected ? 'flex' : 'hidden @2xl:flex'} flex-col`}>
+          <div className={`flex-1 min-w-0 ${showThread ? 'flex' : 'hidden @2xl:flex'} flex-col`}>
             {selected ? (
               <MessageThread
                 key={selected.id}
                 conversation={selected}
                 currentUserId={user.id}
-                onBack={() => setSelectedId(null)}
+                onBack={() => select(null)}
+              />
+            ) : draft ? (
+              <DraftThread
+                key={`draft-${draft.id}`}
+                other={draft}
+                onSend={sendFirst}
+                onBack={() => select(null)}
               />
             ) : (
               <div className="flex-1 flex items-center justify-center">

@@ -1,12 +1,13 @@
 import { z } from 'zod';
 
-export const openConversationSchema = z.object({
-  recipientId: z.number().int().positive(),
-});
-
 // Also reused for edits: an edit swaps the content under the same constraints.
 export const sendMessageSchema = z.object({
   content: z.string().trim().min(1).max(2000),
+});
+
+// The first message to someone, which creates the conversation
+export const startConversationSchema = sendMessageSchema.extend({
+  recipientId: z.number().int().positive(),
 });
 
 export const markReadSchema = z.object({

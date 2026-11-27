@@ -19,10 +19,6 @@ vi.mock('../components/layout/Topbar', () => ({
 }));
 vi.mock('../services/userService', () => ({ getPublicProfile: vi.fn() }));
 vi.mock('../services/connectionsService', () => ({ sendRequest: vi.fn() }));
-const mockOpenWith = vi.fn();
-vi.mock('../context/MessagesContext', () => ({
-  useMessages: () => ({ openWith: mockOpenWith }),
-}));
 vi.mock('../context/CurriculumContext', () => ({
   useCurriculum: () => ({
     courses: [
@@ -206,18 +202,15 @@ describe('PublicProfilePage', () => {
     expect(mockGetPublicProfile).not.toHaveBeenCalled();
   });
 
-  it('opens a conversation from the Send message button', async () => {
+  it('opens a draft to them from the Send message button', async () => {
     mockUseAuth.mockReturnValue({
       user: { id: 1, role: 'USER' },
       isLoading: false,
     } as unknown as ReturnType<typeof useAuth>);
-    mockOpenWith.mockResolvedValue({ id: 55 });
     renderPage();
-    const btn = await screen.findByText('Send message');
-    fireEvent.click(btn);
-    await waitFor(() => expect(mockOpenWith).toHaveBeenCalledWith(7));
+    fireEvent.click(await screen.findByText('Send message'));
     expect(mockNavigate).toHaveBeenCalledWith('/messages', {
-      state: { openConversationId: 55 },
+      state: { draftWith: { id: 7, name: 'Nova', avatarUrl: null } },
     });
   });
 
@@ -238,43 +231,6 @@ describe('PublicProfilePage', () => {
     renderPage();
     expect(await screen.findByText('This explorer could not be found.')).toBeDefined();
     expect(mockGetPublicProfile).not.toHaveBeenCalled();
-  });
-
-  it('says why opening a conversation failed and re-enables the button', async () => {
-    loggedIn();
-    mockOpenWith.mockRejectedValue(new Error('nope'));
-    renderPage();
-    const btn = (await screen.findByText('Send message')) as HTMLButtonElement;
-    fireEvent.click(btn);
-    expect(await screen.findByRole('alert')).toHaveTextContent('nope');
-    await waitFor(() => expect(btn).not.toBeDisabled());
-    expect(mockNavigate).not.toHaveBeenCalledWith('/messages', expect.anything());
-  });
-
-  it('says something went wrong when opening a conversation fails with no reason', async () => {
-    loggedIn();
-    mockOpenWith.mockRejectedValue(new Error(''));
-    renderPage();
-    fireEvent.click(await screen.findByText('Send message'));
-    expect(await screen.findByRole('alert')).toHaveTextContent(
-      'Something went wrong. Please try again.',
-    );
-  });
-
-  it('clears the reason when the next try opens the conversation', async () => {
-    loggedIn();
-    mockOpenWith.mockRejectedValueOnce(new Error('nope'));
-    mockOpenWith.mockResolvedValueOnce({ id: 42 });
-    renderPage();
-    fireEvent.click(await screen.findByText('Send message'));
-    await screen.findByRole('alert');
-    fireEvent.click(screen.getByText('Send message'));
-    await waitFor(() =>
-      expect(mockNavigate).toHaveBeenCalledWith('/messages', {
-        state: { openConversationId: 42 },
-      }),
-    );
-    expect(screen.queryByRole('alert')).toBeNull();
   });
 
   it('sends a connection request and shows the pending state', async () => {

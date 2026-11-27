@@ -62,16 +62,24 @@ export async function getInbox(userId: number): Promise<ConversationDTO[]> {
   return rows.map((row) => shapeConversation(row, userId, unread.get(row.id) ?? 0));
 }
 
-export async function openConversation(
+// No conversation exists until its first message: this sends that message,
+// creating the conversation, or appends to the pair's conversation if it exists.
+export async function startConversation(
   userId: number,
   recipientId: number,
-): Promise<ConversationDTO> {
+  content: string,
+): Promise<{ conversation: ConversationDTO; message: MessageDTO }> {
   if (recipientId === userId) throw new AppError(400, 'Cannot message yourself');
   const recipient = await userRepo.findById(recipientId);
   if (!recipient) throw new AppError(404, 'User not found');
-  const row = await repo.findOrCreatePair(userId, recipientId);
+  const message = shapeMessage(await repo.sendToPair(userId, recipientId, content));
+  const row = await requireConversation(message.conversationId, userId);
   const unread = await repo.unreadByConversation(userId);
-  return shapeConversation(row, userId, unread.get(row.id) ?? 0);
+
+  // Same live delivery as sendMessage
+  pushToUser(recipientId, { channel: 'dm', type: 'message', payload: message });
+  pushToUser(userId, { channel: 'dm', type: 'message', payload: message });
+  return { conversation: shapeConversation(row, userId, unread.get(row.id) ?? 0), message };
 }
 
 export async function getHistory(

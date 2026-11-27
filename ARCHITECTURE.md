@@ -210,7 +210,7 @@ Open to everyone since 2026-11-15, in English only.
 | GET    | `/api/polls/:id`                       | Yes  | A poll I got, no counts, and if I voted |
 | POST   | `/api/polls/:id/vote`                  | Yes  | Vote once, anonymously                  |
 | GET    | `/api/messages/conversations`          | Yes  | Inbox with unread counts                |
-| POST   | `/api/messages/conversations`          | Yes  | Open (or find) a conversation           |
+| POST   | `/api/messages/conversations`          | Yes  | First message, creates the conversation |
 | GET    | `/api/messages/conversations/:id`      | Yes  | Message history, paged                  |
 | POST   | `/api/messages/conversations/:id`      | Yes  | Send a message                          |
 | POST   | `/api/messages/conversations/:id/read` | Yes  | Mark read up to an id                   |
