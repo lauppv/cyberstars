@@ -43,6 +43,7 @@ describe('Admin stats', () => {
         USER: expect.any(Number),
         BOT: expect.any(Number),
       },
+      emailVerified: expect.any(Number),
       newLast7Days: expect.any(Number),
       newLast30Days: expect.any(Number),
     });
@@ -77,9 +78,25 @@ describe('Admin stats', () => {
     expect(res.body.users).toEqual({
       total: 7,
       byRole: { FOUNDER: 1, ADMIN: 2, USER: 1, BOT: 3 },
+      emailVerified: 0,
       newLast7Days: 1,
       newLast30Days: 1,
     });
+  });
+
+  it('counts the verified emails of every account but the moderators', async () => {
+    const a = await admin();
+    const student = await userIdFor((await createAuthenticatedAgent()).email);
+    const bot = await userIdFor((await createAuthenticatedAgent({ email: 'v@fake.com' })).email);
+    const moderator = await userIdFor((await createAuthenticatedAgent()).email);
+    await createAuthenticatedAgent(); // not verified
+    await prisma.user.update({ where: { id: moderator }, data: { role: 'MODERATOR' } });
+    await prisma.user.updateMany({
+      where: { id: { in: [student, bot, moderator] } },
+      data: { emailConfirmedAt: new Date() },
+    });
+    const res = await a.get('/api/admin/stats').expect(200);
+    expect(res.body.users.emailVerified).toBe(2);
   });
 
   it("counts students' completed lessons only", async () => {

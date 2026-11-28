@@ -24,8 +24,9 @@ const { AdminPage } = await import('./AdminPage');
 const stats: AdminStatsDTO = {
   tutor: { promptsLast7Days: 37, promptsLast30Days: 90 },
   users: {
-    total: 12,
+    total: 19,
     byRole: { FOUNDER: 1, ADMIN: 2, USER: 12, BOT: 4 },
+    emailVerified: 9,
     newLast7Days: 1,
     newLast30Days: 3,
   },

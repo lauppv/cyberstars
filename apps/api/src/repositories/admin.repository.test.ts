@@ -17,7 +17,7 @@ const { PEOPLE } = await import('./user.repository.js');
 beforeEach(() => vi.clearAllMocks());
 
 describe('userStats', () => {
-  it('counts all accounts but moderators in total and per role, students only in the new ones', async () => {
+  it('counts all accounts but moderators in total, per role and verified, students only in the new ones', async () => {
     vi.useFakeTimers({ now: new Date('2026-11-15T12:00:00Z') });
     mockPrisma.user.count
       .mockResolvedValueOnce(17) // total
@@ -26,7 +26,8 @@ describe('userStats', () => {
       .mockResolvedValueOnce(6) // newLast30Days
       .mockResolvedValueOnce(1) // founders
       .mockResolvedValueOnce(2) // admins
-      .mockResolvedValueOnce(4); // bots
+      .mockResolvedValueOnce(4) // bots
+      .mockResolvedValueOnce(9); // emailVerified
 
     const result = await repo.userStats();
     vi.useRealTimers();
@@ -34,6 +35,7 @@ describe('userStats', () => {
     expect(result).toEqual({
       total: 17,
       byRole: { FOUNDER: 1, ADMIN: 2, USER: 10, BOT: 4 },
+      emailVerified: 9,
       newLast7Days: 3,
       newLast30Days: 6,
     });
@@ -53,6 +55,14 @@ describe('userStats', () => {
               { email: { endsWith: '.fake.com' } },
               { email: { endsWith: '@bots.cyberstars.app' } },
             ],
+          },
+        },
+      ],
+      [
+        {
+          where: {
+            role: { in: ['FOUNDER', 'ADMIN', 'USER'] },
+            emailConfirmedAt: { not: null },
           },
         },
       ],

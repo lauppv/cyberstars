@@ -11,23 +11,26 @@ function daysAgo(days: number): Date {
 const ACCOUNTS: Prisma.UserWhereInput = { role: { in: ['FOUNDER', 'ADMIN', 'USER'] } };
 
 // Students only, like every number on the admin page (see PEOPLE), except
-// Total and byRole, which also count the founder, the admins and our test
-// accounts (ACCOUNTS)
+// Total, byRole and emailVerified, which also count the founder, the admins
+// and our test accounts (ACCOUNTS)
 export async function userStats(): Promise<AdminUserStats> {
-  const [total, students, newLast7Days, newLast30Days, founders, admins, bots] = await Promise.all([
-    prisma.user.count({ where: ACCOUNTS }),
-    prisma.user.count({ where: PEOPLE }),
-    prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(7) } } }),
-    prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(30) } } }),
-    prisma.user.count({ where: { role: 'FOUNDER' } }),
-    prisma.user.count({ where: { role: 'ADMIN' } }),
-    prisma.user.count({
-      where: { role: 'USER', OR: BOT_EMAIL_ENDINGS.map((endsWith) => ({ email: { endsWith } })) },
-    }),
-  ]);
+  const [total, students, newLast7Days, newLast30Days, founders, admins, bots, emailVerified] =
+    await Promise.all([
+      prisma.user.count({ where: ACCOUNTS }),
+      prisma.user.count({ where: PEOPLE }),
+      prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(7) } } }),
+      prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(30) } } }),
+      prisma.user.count({ where: { role: 'FOUNDER' } }),
+      prisma.user.count({ where: { role: 'ADMIN' } }),
+      prisma.user.count({
+        where: { role: 'USER', OR: BOT_EMAIL_ENDINGS.map((endsWith) => ({ email: { endsWith } })) },
+      }),
+      prisma.user.count({ where: { ...ACCOUNTS, emailConfirmedAt: { not: null } } }),
+    ]);
   return {
     total,
     byRole: { FOUNDER: founders, ADMIN: admins, USER: students, BOT: bots },
+    emailVerified,
     newLast7Days,
     newLast30Days,
   };
