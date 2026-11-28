@@ -9,6 +9,10 @@ const mockPrisma = {
     deleteMany: vi.fn(),
     findMany: vi.fn(),
   },
+  userBlock: { findFirst: vi.fn() },
+  $executeRaw: vi.fn(),
+  // The interactive transaction runs its callback on the same client
+  $transaction: vi.fn(async (fn: (tx: unknown) => unknown) => fn(mockPrisma)),
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
@@ -54,6 +58,13 @@ describe('create', () => {
     expect(mockPrisma.connection.create).toHaveBeenCalledWith(
       expect.objectContaining({ data: { requesterId: 1, addresseeId: 2 } }),
     );
+    expect(mockPrisma.$executeRaw).toHaveBeenCalled();
+  });
+
+  it('writes nothing when a block stands between the two', async () => {
+    mockPrisma.userBlock.findFirst.mockResolvedValue({ id: 3 });
+    await expect(repo.create(1, 2)).resolves.toBeNull();
+    expect(mockPrisma.connection.create).not.toHaveBeenCalled();
   });
 });
 
