@@ -139,9 +139,18 @@ main() {
   fi
 
   # The previous build stays as dist.old, a way back for the site's files.
-  rm -rf "$old_dist"
-  if [ -d "$dist" ]; then
-    mv "$dist" "$old_dist"
+  # Each build keeps its commit in dist/.commit (express.static never serves a
+  # dot file). A re-run after a deploy that failed further down finds dist
+  # already holding this commit's build: it replaces that build and leaves
+  # dist.old alone, or the way back would become the build that failed.
+  if [ "$(cat "$dist/.commit" 2> /dev/null)" = "$target" ]; then
+    echo "==> dist already holds ${target:0:8} from a failed try, keeping dist.old"
+    rm -rf "$dist"
+  else
+    rm -rf "$old_dist"
+    if [ -d "$dist" ]; then
+      mv "$dist" "$old_dist"
+    fi
   fi
   if [ "$build_on_server" = 1 ]; then
     echo "==> Building on the server"
@@ -150,6 +159,7 @@ main() {
     echo "==> Swapping in the new build"
     mv "$new_dist" "$dist"
   fi
+  echo "$target" > "$dist/.commit"
 
   # Apply any pending schema migrations BEFORE the new code starts, so the fresh
   # process boots against the migrated schema. No-op when nothing is pending.
