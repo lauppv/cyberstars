@@ -1,10 +1,31 @@
 import { prisma } from '../config/db.js';
+import * as userRepo from '../repositories/user.repository.js';
+import * as notificationsService from './notifications.service.js';
 import type { TicketType, TicketStatus } from '@prisma/client';
 
 export function create(userId: number, type: TicketType, subject: string, message: string) {
   return prisma.supportTicket.create({
     data: { userId, type, subject, message },
   });
+}
+
+// A new ticket, which every admin hears about (the actor, if themselves an
+// admin, is excluded inside notify)
+export async function openTicket(
+  userId: number,
+  type: TicketType,
+  subject: string,
+  message: string,
+): Promise<number> {
+  const ticket = await create(userId, type, subject, message);
+  void notificationsService.notify({
+    recipientIds: await userRepo.getAdminIds(),
+    actorId: userId,
+    type: 'SUPPORT_TICKET_NEW',
+    entityId: ticket.id,
+    data: { title: ticket.subject },
+  });
+  return ticket.id;
 }
 
 export function findByUser(userId: number) {
