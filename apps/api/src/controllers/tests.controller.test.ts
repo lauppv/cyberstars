@@ -32,6 +32,8 @@ vi.mock('@prisma/client', () => ({
 }));
 
 const ctrl = await import('./tests.controller.js');
+// A guest id shaped like the ones the server hands out
+const GUEST = '3f2c8a4e-9b1d-4c7a-8e5f-0a6b2d9c1e74';
 
 function mockReq(overrides: Partial<Request> = {}): Request {
   return {
@@ -57,7 +59,11 @@ describe('resolveOwnerKey', () => {
   });
 
   it('keys a guest by the guestId cookie', () => {
-    expect(ctrl.resolveOwnerKey(mockReq({ cookies: { guestId: 'g-1' } }))).toBe('guest:g-1');
+    expect(ctrl.resolveOwnerKey(mockReq({ cookies: { guestId: GUEST } }))).toBe(`guest:${GUEST}`);
+  });
+
+  it('gives no key for a guestId the server never handed out', () => {
+    expect(ctrl.resolveOwnerKey(mockReq({ cookies: { guestId: 'user:5' } }))).toBeNull();
   });
 
   it('returns null when neither is present', () => {
@@ -79,7 +85,7 @@ describe('runTests', () => {
 
   it('does not mark complete for a guest who passes (no account, no progress)', async () => {
     mockRunLessonTests.mockResolvedValue({ status: 'passed' });
-    const req = mockReq({ cookies: { guestId: 'g-1' } });
+    const req = mockReq({ cookies: { guestId: GUEST } });
     const res = mockRes();
 
     await ctrl.runTests(req, res, next);
@@ -229,7 +235,7 @@ describe('runTests submission history', () => {
     mockRunLessonTests.mockResolvedValue({ ...verdict });
     const res = mockRes();
 
-    await ctrl.runTests(mockReq({ cookies: { guestId: 'g-1' } }), res, next);
+    await ctrl.runTests(mockReq({ cookies: { guestId: GUEST } }), res, next);
 
     expect(mockRecord).not.toHaveBeenCalled();
     expect(res.json).toHaveBeenCalledWith(verdict);

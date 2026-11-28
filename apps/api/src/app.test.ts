@@ -211,19 +211,22 @@ describe('page views', () => {
 describe('a run waiting for a sandbox', () => {
   it("tells the page whether its own request is waiting, and nobody else's", async () => {
     let grant: (release: () => void) => void = () => {};
-    const slot = inLine('guest:g-1|run-1', (onWait) => {
+    const [me, them] = [crypto.randomUUID(), crypto.randomUUID()];
+    const slot = inLine(`guest:${me}|run-1`, (onWait) => {
       onWait();
       return new Promise<() => void>((resolve) => (grant = resolve));
     });
 
-    const mine = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-1');
+    const mine = await request(app).get('/api/runs/run-1/waiting').set('Cookie', `guestId=${me}`);
     expect(mine.body).toEqual({ waiting: true });
-    const theirs = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-2');
+    const theirs = await request(app)
+      .get('/api/runs/run-1/waiting')
+      .set('Cookie', `guestId=${them}`);
     expect(theirs.body).toEqual({ waiting: false });
 
     grant(() => {});
     await slot;
-    const after = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-1');
+    const after = await request(app).get('/api/runs/run-1/waiting').set('Cookie', `guestId=${me}`);
     expect(after.body).toEqual({ waiting: false });
   });
 });

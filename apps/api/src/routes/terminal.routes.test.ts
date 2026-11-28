@@ -62,6 +62,8 @@ const mockSessionService = vi.hoisted(() => ({
 vi.mock('../services/terminal-session.service.js', () => mockSessionService);
 
 const { app } = await import('../app.js');
+// A guest id shaped like the ones the server hands out
+const GUEST = '3f2c8a4e-9b1d-4c7a-8e5f-0a6b2d9c1e74';
 const { execRateLimitHandler, guestIpLimiter } = await import('./terminal.routes.js');
 
 vi.mock('../repositories/session.repository.js', async () =>
@@ -103,14 +105,14 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
 
     const res = await request(app)
       .post('/api/terminal/session')
-      .set('Cookie', 'guestId=guest-abc')
+      .set('Cookie', `guestId=${GUEST}`)
       .send({ courseKey: 'linux', lessonSlug: 'ls-basics' });
 
     expect(res.status).toBe(200);
     expect(mockSessionService.createSession).toHaveBeenCalledWith(
       'linux',
       'ls-basics',
-      'guest:guest-abc',
+      `guest:${GUEST}`,
       undefined,
       // The guest's network, which their sandboxes count against
       '127.0.0.1',
@@ -132,10 +134,10 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
       .delete(`/api/terminal/session/${sessionId}`)
       .set('Cookie', 'guestId=user:42');
 
-    expect(created.status).toBe(200);
-    expect(mockSessionService.createSession.mock.calls[0][2]).toBe('guest:user:42');
-    expect(closed.status).toBe(200);
-    expect(mockSessionService.destroySession).toHaveBeenCalledWith(sessionId, 'guest:user:42');
+    expect(created.status).toBe(401);
+    expect(closed.status).toBe(401);
+    expect(mockSessionService.createSession).not.toHaveBeenCalled();
+    expect(mockSessionService.destroySession).not.toHaveBeenCalled();
   });
 
   it("starts a Linux project's sandbox when the body names a project", async () => {
@@ -174,7 +176,7 @@ describe('terminal routes: owner resolution (requireOwner)', () => {
 
     const res = await request(app)
       .post('/api/terminal/exec')
-      .set('Cookie', 'guestId=guest-xyz')
+      .set('Cookie', `guestId=${GUEST}`)
       .send({ sessionId: '11111111-1111-4111-8111-111111111111', command: 'echo hi' });
 
     expect(res.status).toBe(200);

@@ -5,14 +5,14 @@ import * as submissionsService from '../services/submissions.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { guestIpOf } from './terminal.controller.js';
 import { requestWaitKey } from './runs.controller.js';
+import { guestKey } from '../services/guest-id.js';
 import { codeLanguageOf, type CodeLanguage } from '@cyberstars/shared/constants';
 
 // Same owner keyspace as the editor's WebSocket runs (ws-run.ts), so a test run
 // reuses the owner's warm container instead of starting a second one.
 export function resolveOwnerKey(req: Request): string | null {
   if (req.user?.id) return `user:${req.user.id}`;
-  const guestId = req.cookies?.guestId;
-  return guestId ? `guest:${guestId}` : null;
+  return guestKey(req.cookies?.guestId);
 }
 
 export async function runTests(req: Request, res: Response, next: NextFunction) {
