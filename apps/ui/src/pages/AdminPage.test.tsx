@@ -1,12 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import type { ReactNode } from 'react';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 
 vi.mock('../components/layout/Topbar', () => ({ Topbar: () => <nav>Topbar</nav> }));
 vi.mock('../components/admin/VisitorsSection', () => ({
-  VisitorsSection: ({ afterCharts }: { afterCharts?: ReactNode }) => afterCharts ?? null,
+  VisitorsSection: () => null,
 }));
 vi.mock('../components/admin/NoticesSection', () => ({
   NoticesSection: () => <section>Announcements and polls</section>,
@@ -34,7 +33,7 @@ const stats: AdminStatsDTO = {
   codeExec: {
     activeContainers: 0,
     maxContainers: 4,
-    perLanguage: {},
+    perLanguage: { python: 2, java: 1 },
     busySlots: 0,
     maxBusySlots: 2,
   },
@@ -60,59 +59,89 @@ describe('AdminPage', () => {
     expect(screen.getByText('Announcements and polls')).toBeInTheDocument();
   });
 
-  it('shows the messages sent to the tutor, 7 then 30 days, last in the users row', async () => {
-    getStats.mockResolvedValue(stats);
-    renderPage();
-    const tutor = await screen.findByText('Messages to the tutor (7 days)');
-    expect(tutor.previousElementSibling).toHaveTextContent('37');
-    expect(
-      screen.getByText('Messages to the tutor (30 days)').previousElementSibling,
-    ).toHaveTextContent('90');
-    const row = tutor.closest('div')!.parentElement!;
-    expect(Array.from(row.children, (c) => c.lastElementChild?.textContent)).toEqual([
-      'Total users',
-      'New (7 days)',
-      'New (30 days)',
-      'Messages to the tutor (7 days)',
-      'Messages to the tutor (30 days)',
-    ]);
-    expect(screen.queryByText('Active (with progress)')).not.toBeInTheDocument();
-  });
-
   it('keeps the announcements and polls card at the foot, after the stats', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    const users = await screen.findByText('Total users');
+    const users = await screen.findByText('Accounts per role');
     expect(
       users.compareDocumentPosition(screen.getByText('Announcements and polls')) &
         Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
   });
 
-  it('shows a table under the users row: accounts per role, verified emails, then online now', async () => {
+  it('shows every count in one table, a column per subject and a line per count', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    const table = (await screen.findByText('Accounts per role')).closest('table')!;
+    await screen.findByText('Accounts per role');
+    const columns = screen.getAllByRole('group');
+    const lines = (column: HTMLElement) =>
+      within(column)
+        .getAllByRole('listitem')
+        .map((li) => [...li.children].map((c) => c.textContent));
+    expect(columns.map((column) => [column.firstChild?.textContent, lines(column)])).toEqual([
+      [
+        'Users',
+        [
+          ['Total', '19'],
+          ['New (7 days)', '1'],
+          ['New (30 days)', '3'],
+        ],
+      ],
+      [
+        'Accounts per role',
+        [
+          ['User', '12'],
+          ['Founder', '1'],
+          ['Admin', '2'],
+          ['Bots', '4'],
+        ],
+      ],
+      [
+        'Emails',
+        [
+          ['Verified', '9'],
+          ['Unverified', '10'],
+        ],
+      ],
+      [
+        'Online now',
+        [
+          ['Signed in', '3'],
+          ['Guests', '5'],
+        ],
+      ],
+      [
+        'Messages to the tutor',
+        [
+          ['7 days', '37'],
+          ['30 days', '90'],
+        ],
+      ],
+      [
+        'Code execution (live)',
+        [
+          ['Active containers', '0/4'],
+          ['Busy sandboxes', '0/2'],
+          ['python', '2'],
+          ['java', '1'],
+        ],
+      ],
+    ]);
     expect(
-      within(table)
-        .getAllByRole('columnheader')
-        .map((th) => th.textContent),
-    ).toEqual(['Accounts per role', 'Verified emails', 'Online now']);
-    const [roles, verified, online] = within(table).getAllByRole('cell');
-    for (const role of ['Founder 1', 'Admin 2', 'User 12', 'Bots 4']) {
-      expect(within(roles).getByText(role)).toBeInTheDocument();
-    }
-    expect(within(roles).queryByText(/^Moderator/)).not.toBeInTheDocument();
-    expect(verified).toHaveTextContent(/^9$/);
-    expect(online).toHaveTextContent('3 signed in · 5 guests');
-    expect(within(online).getByText('3 signed in')).toHaveClass('text-[var(--success)]');
-    expect(within(online).getByText('5 guests')).toHaveClass('text-[var(--warning)]');
+      screen
+        .getByRole('group', { name: 'Online now' })
+        .querySelector('[class*="--success"], [class*="--warning"]'),
+    ).toBeNull();
+    expect(screen.queryByText('Active (with progress)')).not.toBeInTheDocument();
   });
 
-  it('counts every account in Total users, not just the students', async () => {
-    getStats.mockResolvedValue(stats);
+  it('lists no runtime in the code execution column when none is running', async () => {
+    getStats.mockResolvedValue({ ...stats, codeExec: { ...stats.codeExec, perLanguage: {} } });
     renderPage();
-    expect((await screen.findByText('Total users')).previousSibling).toHaveTextContent(/^19$/);
+    const codeExec = await screen.findByRole('group', { name: 'Code execution (live)' });
+    expect(within(codeExec).getAllByRole('listitem')).toHaveLength(2);
+    expect(within(codeExec).queryByText('Per runtime')).not.toBeInTheDocument();
+    expect(within(codeExec).queryByText('No data yet')).not.toBeInTheDocument();
   });
 
   it('puts the time of the data last, under the announcements and polls', async () => {
@@ -140,7 +169,7 @@ describe('AdminPage', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent("Couldn't load these numbers.");
 
     fireEvent.click(screen.getByRole('button', { name: 'Refresh' }));
-    expect(await screen.findByText('Total users')).toBeInTheDocument();
+    expect(await screen.findByText('Accounts per role')).toBeInTheDocument();
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     expect(getStats).toHaveBeenLastCalledWith(true);
   });
@@ -148,10 +177,10 @@ describe('AdminPage', () => {
   it('keeps the stats it has when a refresh fails', async () => {
     getStats.mockResolvedValueOnce(stats).mockRejectedValueOnce(new Error('500'));
     renderPage();
-    expect(await screen.findByText('Total users')).toBeInTheDocument();
+    expect(await screen.findByText('Accounts per role')).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole('button', { name: 'Refresh' }));
     expect(await screen.findByRole('alert')).toBeInTheDocument();
-    expect(screen.getByText('Total users')).toBeInTheDocument();
+    expect(screen.getByText('Accounts per role')).toBeInTheDocument();
   });
 });
