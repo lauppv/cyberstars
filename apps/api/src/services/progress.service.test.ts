@@ -17,6 +17,7 @@ const mockCurriculumRepo = {
   getLessonsByCourse: vi.fn(),
   getLessonCount: vi.fn(),
   lessonExists: vi.fn(),
+  courseLessonCount: vi.fn(),
 };
 
 const mockDailyRepo = {
@@ -53,6 +54,7 @@ describe('getCourseProgress', () => {
       { slug: 'b', title: 'Lesson B', sortOrder: 2 },
       { slug: 'c', title: 'Lesson C', sortOrder: 3 },
     ]);
+    mockCurriculumRepo.courseLessonCount.mockReturnValue(3);
     mockProgressRepo.getByCourse.mockResolvedValue([
       {
         lessonSlug: 'a',
@@ -79,6 +81,7 @@ describe('getCourseProgress', () => {
       { slug: 'a', title: 'Lesson A', sortOrder: 1 },
       { slug: 'b', title: 'Lesson B', sortOrder: 2 },
     ]);
+    mockCurriculumRepo.courseLessonCount.mockReturnValue(2);
     mockProgressRepo.getByCourse.mockResolvedValue([
       {
         lessonSlug: 'a',
@@ -107,6 +110,7 @@ describe('getCourseProgress', () => {
       { slug: 'a', title: 'Hard · A', sortOrder: 1 },
       { slug: 'b', title: 'Easy · B', sortOrder: 2 },
     ]);
+    mockCurriculumRepo.courseLessonCount.mockReturnValue(2);
     mockProgressRepo.getByCourse.mockResolvedValue([
       {
         lessonSlug: 'a',
@@ -122,10 +126,32 @@ describe('getCourseProgress', () => {
     expect(result.totalXp).toBe(140);
   });
 
+  it('spreads XP over the curriculum, not a lesson row left over in the table', async () => {
+    mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
+      { slug: 'a', title: 'Lesson A', sortOrder: 1 },
+      { slug: 'b', title: 'Lesson B', sortOrder: 2 },
+      { slug: 'gone', title: 'Taken out', sortOrder: 3 },
+    ]);
+    mockCurriculumRepo.courseLessonCount.mockReturnValue(2);
+    mockProgressRepo.getByCourse.mockResolvedValue([
+      {
+        lessonSlug: 'b',
+        completed: true,
+        completedAt: new Date('2025-01-01'),
+        lastAccessedAt: null,
+      },
+    ]);
+
+    const result = await getCourseProgress(1, 'python');
+    // b is still the last of 2 lessons, so it pays 30
+    expect(result.earnedXp).toBe(30);
+  });
+
   it('returns zero progress when no lessons completed', async () => {
     mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
       { slug: 'a', title: 'A', sortOrder: 1 },
     ]);
+    mockCurriculumRepo.courseLessonCount.mockReturnValue(1);
     mockProgressRepo.getByCourse.mockResolvedValue([]);
 
     const result = await getCourseProgress(1, 'python');

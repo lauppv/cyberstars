@@ -6,6 +6,10 @@ const mockPrisma = {
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
+// The curriculum has 2 python lessons, whatever rows the table keeps
+vi.mock('./curriculum.repository.js', () => ({
+  courseLessonCount: (courseKey: string) => (courseKey === 'python' ? 2 : 1),
+}));
 // No web course exists yet, so web-js plays a closed one and web-css an open one
 vi.mock('@cyberstars/shared/constants', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@cyberstars/shared/constants')>()),
@@ -51,6 +55,7 @@ describe('getRanked', () => {
     mockPrisma.lesson.findMany.mockResolvedValue([
       { courseKey: 'python', slug: 'print', sortOrder: 1, title: 'Print' },
       { courseKey: 'python', slug: 'files', sortOrder: 2, title: 'Files' },
+      { courseKey: 'python', slug: 'gone', sortOrder: 3, title: 'Taken out' },
       { courseKey: 'algo-python', slug: 'anagrams', sortOrder: 1, title: 'Hard · Anagrams' },
     ]);
     mockPrisma.$queryRaw.mockResolvedValue([]);

@@ -40,16 +40,17 @@ export async function getCourseProgress(
 
   let earnedXp = 0;
   let totalXp = 0;
+  const count = curriculumRepo.courseLessonCount(courseKey);
   const lessonItems = lessons.map((l) => {
     const p = progressMap.get(l.slug);
     const completed = p?.completed ?? false;
-    const xp = xpForLesson(courseKey, l, lessons.length);
+    const xp = xpForLesson(courseKey, l, count);
     totalXp += xp;
     // The daily-of-the-day bonus is extra on top of the base award, so it
     // counts toward earned XP (and thus level) without inflating the course's
     // baseline total.
     if (completed)
-      earnedXp += xp + (bonusSlugs.has(l.slug) ? dailyBonusXp(courseKey, l, lessons.length) : 0);
+      earnedXp += xp + (bonusSlugs.has(l.slug) ? dailyBonusXp(courseKey, l, count) : 0);
     return {
       slug: l.slug,
       title: l.title,

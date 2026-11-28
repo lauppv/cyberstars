@@ -8,6 +8,7 @@ import {
 } from '@cyberstars/shared/constants';
 import { PROJECTS, PROJECT_XP } from '@cyberstars/shared/projects';
 import { BOT_EMAIL_ENDINGS } from './user.repository.js';
+import { courseLessonCount } from './curriculum.repository.js';
 
 export interface LeaderboardRow {
   id: number;
@@ -18,18 +19,16 @@ export interface LeaderboardRow {
   rank: number;
 }
 
-// Every lesson's XP as VALUES rows (course_key, slug, xp), counted with the
-// course's lesson count as progress.service does. A row that matches nothing
+// Every lesson's XP as VALUES rows (course_key, slug, xp), spread over the
+// course's lesson count in the curriculum, as progress.service does. A row that matches nothing
 // stands in when there are no lessons, since VALUES can't be empty.
 async function lessonXpTable(): Promise<Prisma.Sql> {
   const lessons = await prisma.lesson.findMany({
     select: { courseKey: true, slug: true, sortOrder: true, title: true },
   });
-  const counts = new Map<string, number>();
-  for (const l of lessons) counts.set(l.courseKey, (counts.get(l.courseKey) ?? 0) + 1);
   const rows = lessons.map(
     (l) =>
-      Prisma.sql`(${l.courseKey}::text, ${l.slug}::text, ${xpForLesson(l.courseKey, l, counts.get(l.courseKey)!)}::int)`,
+      Prisma.sql`(${l.courseKey}::text, ${l.slug}::text, ${xpForLesson(l.courseKey, l, courseLessonCount(l.courseKey))}::int)`,
   );
   return Prisma.join(rows.length ? rows : [Prisma.sql`(NULL::text, NULL::text, 0::int)`]);
 }
