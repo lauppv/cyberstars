@@ -742,3 +742,120 @@ describe('upgrade routing', () => {
     });
   });
 });
+
+describe('connections per address', () => {
+  const cap = config.websockets.maxPerAddress;
+  beforeEach(() => Object.assign(config.websockets, { maxPerAddress: 2 }));
+  afterEach(() => Object.assign(config.websockets, { maxPerAddress: cap }));
+
+  /** Opens one upgrade from `ip` and hands back its network socket. */
+  function open(ip: string, url = '/ws/presence', headers: Record<string, string> = {}) {
+    const server = new EventEmitter();
+    attachRunWebSocket(server as unknown as Parameters<typeof attachRunWebSocket>[0]);
+    upgradedSocket = new FakeWs() as unknown as typeof upgradedSocket;
+    const socket = fakeSocket();
+    server.emit(
+      'upgrade',
+      { url, headers, socket: { remoteAddress: ip } },
+      socket,
+      Buffer.alloc(0),
+    );
+    return socket;
+  }
+  const refused = (socket: ReturnType<typeof fakeSocket>) =>
+    socket.write.mock.calls.some(([data]) => /^HTTP\/1\.1 429 /.test(String(data)));
+
+  it('refuses a socket past the cap with a 429, before its session is checked', async () => {
+    const held = [open('198.51.100.1'), open('198.51.100.1')];
+    await settle();
+    sessionUserIdMock.mockClear();
+
+    const third = open('198.51.100.1', '/ws/run');
+    await settle();
+    expect(refused(third)).toBe(true);
+    expect(third.destroy).toHaveBeenCalled();
+    expect(sessionUserIdMock).not.toHaveBeenCalled();
+    expect(mockRun).not.toHaveBeenCalled();
+    held.forEach((socket) => socket.emit('close'));
+  });
+
+  it('counts the sockets still waiting on their session check', async () => {
+    sessionUserIdMock.mockReturnValue(new Promise(() => {}));
+    const waiting = [open('198.51.100.2'), open('198.51.100.2')];
+    expect(refused(open('198.51.100.2'))).toBe(true);
+    waiting.forEach((socket) => socket.emit('close'));
+  });
+
+  it('gives the place back once a socket closes', async () => {
+    const [first, second] = [open('198.51.100.3'), open('198.51.100.3')];
+    await settle();
+    first.emit('close');
+
+    const next = open('198.51.100.3');
+    await settle();
+    expect(refused(next)).toBe(false);
+    expect(refused(open('198.51.100.3'))).toBe(true);
+    second.emit('close');
+    next.emit('close');
+  });
+
+  it('gives the place back when the session check fails and drops the socket', async () => {
+    sessionUserIdMock.mockRejectedValueOnce(new Error('db down'));
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const dropped = open('198.51.100.4');
+    await settle();
+    expect(dropped.destroy).toHaveBeenCalled();
+    dropped.emit('close');
+    errSpy.mockRestore();
+
+    const held = [open('198.51.100.4'), open('198.51.100.4')];
+    expect(held.some(refused)).toBe(false);
+    held.forEach((socket) => socket.emit('close'));
+  });
+
+  it('counts no socket it refuses, whatever for', async () => {
+    const held = open('198.51.100.5');
+    const foreign = open('198.51.100.5', '/ws/run', { origin: 'https://evil.example' });
+    const nowhere = open('198.51.100.5', '/nope');
+    const overCap = [open('198.51.100.5'), open('198.51.100.5')][1];
+    await settle();
+    expect(foreign.destroy).toHaveBeenCalled();
+    expect(nowhere.destroy).toHaveBeenCalled();
+    expect(refused(overCap)).toBe(true);
+
+    // A refused socket closes as well; that gives back nothing it never held
+    [foreign, nowhere, overCap].forEach((socket) => socket.emit('close'));
+    expect(refused(open('198.51.100.5'))).toBe(true);
+    held.emit('close');
+  });
+
+  it('counts each address on its own, and a whole IPv6 block as one', async () => {
+    const held = [open('198.51.100.6'), open('198.51.100.6'), open('198.51.100.7')];
+    expect(held.some(refused)).toBe(false);
+
+    const v6 = [open('2001:db8:9:1::1'), open('2001:db8:9:2::2')];
+    expect(v6.some(refused)).toBe(false);
+    expect(refused(open('2001:db8:9:3::3'))).toBe(true);
+    [...held, ...v6].forEach((socket) => socket.emit('close'));
+    await settle();
+  });
+
+  describe('on production', () => {
+    beforeEach(() => Object.assign(config, { isProduction: true }));
+    afterEach(() => Object.assign(config, { isProduction: false }));
+
+    it('counts the address nginx saw, not the one the client wrote', async () => {
+      // Every socket comes from nginx on the same host; the last hop tells them apart
+      const via = (client: string, written = '10.0.0.1') =>
+        open('127.0.0.1', '/ws/presence', { 'x-forwarded-for': `${written}, ${client}` });
+      const held = [via('198.51.100.8'), via('198.51.100.8', '10.0.0.2')];
+      expect(held.some(refused)).toBe(false);
+      expect(refused(via('198.51.100.8', '10.0.0.3'))).toBe(true);
+
+      const other = via('198.51.100.9');
+      expect(refused(other)).toBe(false);
+      [...held, other].forEach((socket) => socket.emit('close'));
+      await settle();
+    });
+  });
+});
