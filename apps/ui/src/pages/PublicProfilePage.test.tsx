@@ -64,6 +64,7 @@ const fullProfile: PublicProfile = {
   name: 'Nova',
   avatarUrl: null,
   memberSince: '2025-01-01T00:00:00.000Z',
+  emailConfirmed: true,
   isSelf: false,
   status: 'coding',
   bio: 'Exploring the cosmos',
@@ -125,6 +126,15 @@ describe('PublicProfilePage', () => {
     expect(screen.getByText('Exploring the cosmos')).toBeDefined();
     expect(screen.getByText(/coding/)).toBeDefined();
     expect(mockGetPublicProfile).toHaveBeenCalledWith(7);
+  });
+
+  it('marks a confirmed email with a check and an unconfirmed one with a cross', async () => {
+    const { unmount } = renderPage();
+    expect(await screen.findByRole('img', { name: 'Email confirmed' })).toBeDefined();
+    unmount();
+    mockGetPublicProfile.mockResolvedValue({ ...fullProfile, emailConfirmed: false });
+    renderPage();
+    expect(await screen.findByRole('img', { name: 'Email not confirmed' })).toBeDefined();
   });
 
   it('renders stats and progress cells when present', async () => {

@@ -44,6 +44,7 @@ function makeUser(overrides: Record<string, unknown> = {}) {
     status: 'coding',
     statusExpiresAt: new Date('2999-01-01T00:00:00Z'),
     createdAt: new Date('2025-01-01T00:00:00Z'),
+    emailConfirmedAt: new Date('2025-01-02T00:00:00Z'),
     showBio: true,
     showStats: true,
     showProgress: true,
@@ -77,6 +78,13 @@ describe('getPublicProfile', () => {
     expect(p.name).toBe('Nova');
     expect(p.avatarUrl).toBe('/uploads/avatars/nova.png');
     expect(p.memberSince).toBe('2025-01-01T00:00:00.000Z');
+    expect(p.emailConfirmed).toBe(true);
+  });
+
+  it('says when the email is not confirmed yet', async () => {
+    mockUserRepo.findById.mockResolvedValue(makeUser({ emailConfirmedAt: null }));
+    const p = await getPublicProfile(7, null);
+    expect(p.emailConfirmed).toBe(false);
   });
 
   it('hides every optional section for another viewer when all flags are off', async () => {

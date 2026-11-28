@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '../components/ui/Avatar';
+import { EmailBadge } from '../components/ui/EmailBadge';
 import { useAuth } from '../context/AuthContext';
 import { useGamification } from '../hooks/useGamification';
 import { Topbar } from '../components/layout/Topbar';
@@ -172,6 +173,7 @@ export function ProfilePage() {
                 className="hidden"
                 onChange={handleAvatarChange}
               />
+              <EmailBadge confirmed={user.emailConfirmed} size={20} />
             </div>
             <div className="flex-1 min-w-0">
               <h1 className="text-[22px] font-bold tracking-[-0.3px]">{user.name}</h1>

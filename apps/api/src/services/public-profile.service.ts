@@ -55,6 +55,7 @@ export async function getPublicProfile(
     name: user.name,
     avatarUrl: user.avatarUrl,
     memberSince: user.createdAt.toISOString(),
+    emailConfirmed: user.emailConfirmedAt !== null,
     isSelf,
     status: isSelf || user.showBio ? activeStatus : null,
     bio: isSelf || user.showBio ? user.bio : null,

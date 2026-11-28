@@ -44,6 +44,7 @@ export interface PublicProfile {
   name: string;
   avatarUrl: string | null;
   memberSince: string; // ISO
+  emailConfirmed: boolean; // the check or cross next to the avatar
   isSelf: boolean; // true when the viewer is looking at their own profile
   status: string | null; // null when hidden or unset
   bio: string | null; // null when hidden or unset

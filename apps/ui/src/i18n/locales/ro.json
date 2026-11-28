@@ -1264,7 +1264,9 @@
     "errorText": "Conexiunea s-a întrerupt sau au fost prea multe încercări deodată. Așteaptă un minut și încearcă din nou.",
     "tryAgain": "Încearcă din nou",
     "confirmedShort": "confirmat",
-    "unconfirmedShort": "neconfirmat"
+    "unconfirmedShort": "neconfirmat",
+    "badgeConfirmed": "Email confirmat",
+    "badgeUnconfirmed": "Email neconfirmat"
   },
   "sessionEnded": {
     "message": "Sesiunea ta s-a încheiat. Conectează-te din nou ca să-ți vezi progresul și să-ți salvezi codul.",
