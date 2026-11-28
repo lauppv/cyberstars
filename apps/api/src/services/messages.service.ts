@@ -1,5 +1,6 @@
 import * as repo from '../repositories/messages.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
+import * as blocks from './blocks.service.js';
 import { pushToUser } from './ws-user.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type { ConversationDTO, ConversationHistory, MessageDTO } from '@cyberstars/shared/messages';
@@ -47,16 +48,37 @@ function otherParticipant(row: repo.ConversationRow, userId: number): number {
 }
 
 // Load a conversation and assert the caller participates. A non-participant gets
-// 404 (not 403) so they can't even probe which conversation ids exist.
+// 404 (not 403) so they can't even probe which conversation ids exist. A
+// conversation with someone the caller blocked is hidden from them the same way
+// until they unblock.
 async function requireConversation(id: number, userId: number): Promise<repo.ConversationRow> {
   const row = await repo.findConversation(id);
-  if (!row || !isParticipant(row, userId)) throw new AppError(404, 'Conversation not found');
+  if (
+    !row ||
+    !isParticipant(row, userId) ||
+    (await blocks.isBlockedBy(userId, otherParticipant(row, userId)))
+  ) {
+    throw new AppError(404, 'Conversation not found');
+  }
   return row;
 }
 
+// Live frames reach the other side unless they blocked the one acting: their
+// conversation is hidden from them, so nothing of it should show up live either
+async function pushToOther(
+  row: repo.ConversationRow,
+  actorId: number,
+  frame: Parameters<typeof pushToUser>[1],
+): Promise<void> {
+  const otherId = otherParticipant(row, actorId);
+  if (await blocks.isBlockedBy(otherId, actorId)) return;
+  pushToUser(otherId, frame);
+}
+
 export async function getInbox(userId: number): Promise<ConversationDTO[]> {
+  const hidden = await blocks.blockedIds(userId);
   const [rows, unread] = await Promise.all([
-    repo.listConversations(userId),
+    repo.listConversations(userId, hidden),
     repo.unreadByConversation(userId),
   ]);
   return rows.map((row) => shapeConversation(row, userId, unread.get(row.id) ?? 0));
@@ -72,6 +94,9 @@ export async function startConversation(
   if (recipientId === userId) throw new AppError(400, 'Cannot message yourself');
   const recipient = await userRepo.findById(recipientId);
   if (!recipient) throw new AppError(404, 'User not found');
+  if (await blocks.existsBetween(userId, recipientId)) {
+    throw new AppError(403, blocks.MESSAGE_NOT_SENT);
+  }
   const message = shapeMessage(await repo.sendToPair(userId, recipientId, content));
   const row = await requireConversation(message.conversationId, userId);
   const unread = await repo.unreadByConversation(userId);
@@ -106,8 +131,13 @@ export async function sendMessage(
   content: string,
 ): Promise<MessageDTO> {
   const row = await requireConversation(conversationId, userId);
-  const message = shapeMessage(await repo.createMessage(conversationId, userId, content));
   const recipientId = otherParticipant(row, userId);
+  // The caller didn't block them (requireConversation), but they may have
+  // blocked the caller
+  if (await blocks.isBlockedBy(recipientId, userId)) {
+    throw new AppError(403, blocks.MESSAGE_NOT_SENT);
+  }
+  const message = shapeMessage(await repo.createMessage(conversationId, userId, content));
 
   // Live-deliver to both participants (recipient sees it instantly; the sender's
   // other tabs stay in sync). DB is the source of truth if either is offline.
@@ -134,7 +164,7 @@ export async function markRead(
       type: 'read',
       payload: { conversationId, upToMessageId, readerId: userId },
     } as const;
-    pushToUser(otherParticipant(row, userId), frame);
+    await pushToOther(row, userId, frame);
     pushToUser(userId, frame);
   }
   return count;
@@ -150,6 +180,9 @@ export async function toggleReaction(
   const row = await requireConversation(message.conversationId, userId);
   // A deleted message shows only a placeholder; reacting to it is noise.
   if (message.deleted) throw new AppError(400, 'Cannot react to a deleted message');
+  if (await blocks.isBlockedBy(otherParticipant(row, userId), userId)) {
+    throw new AppError(403, blocks.REACTION_NOT_ADDED);
+  }
 
   const reactions = await repo.toggleReaction(messageId, userId, emoji);
 
@@ -161,7 +194,7 @@ export async function toggleReaction(
     type: 'reaction',
     payload: { conversationId: message.conversationId, messageId, reactions },
   } as const;
-  pushToUser(otherParticipant(row, userId), frame);
+  await pushToOther(row, userId, frame);
   pushToUser(userId, frame);
 
   return shapeMessage({ ...message, reactions });
@@ -186,7 +219,7 @@ export async function editMessage(
   // edit lands on the other participant's screen without a refetch.
   const row = await repo.findConversation(message.conversationId);
   if (row) {
-    pushToUser(otherParticipant(row, userId), { channel: 'dm', type: 'edited', payload: dto });
+    await pushToOther(row, userId, { channel: 'dm', type: 'edited', payload: dto });
     pushToUser(userId, { channel: 'dm', type: 'edited', payload: dto });
   }
   return dto;
@@ -203,7 +236,7 @@ export async function deleteMessage(userId: number, messageId: number): Promise<
   // deleted content doesn't linger on the other participant's screen.
   const row = await repo.findConversation(message.conversationId);
   if (row) {
-    pushToUser(otherParticipant(row, userId), { channel: 'dm', type: 'deleted', payload: dto });
+    await pushToOther(row, userId, { channel: 'dm', type: 'deleted', payload: dto });
     pushToUser(userId, { channel: 'dm', type: 'deleted', payload: dto });
   }
   return dto;

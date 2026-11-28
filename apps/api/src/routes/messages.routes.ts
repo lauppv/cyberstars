@@ -18,7 +18,7 @@ import * as messagesController from '../controllers/messages.controller.js';
 const perUser = (req: Request) => String(req.user!.id);
 
 // Cap message sends per user, first messages included; abuse is otherwise held
-// in check by this + (later) the block feature. Reads are cheap and unlimited.
+// in check by this + blocking (CYB-140). Reads are cheap and unlimited.
 const sendLimiter = limiter({
   windowMs: 60_000,
   limit: 20,

@@ -93,8 +93,26 @@ describe('listConversations', () => {
     expect(await repo.listConversations(7)).toEqual([{ id: 1 }]);
     expect(mockPrisma.conversation.findMany).toHaveBeenCalledWith(
       expect.objectContaining({
-        where: { OR: [{ userAId: 7 }, { userBId: 7 }] },
+        where: {
+          OR: [{ userAId: 7 }, { userBId: 7 }],
+          userAId: { notIn: [] },
+          userBId: { notIn: [] },
+        },
         orderBy: { updatedAt: 'desc' },
+      }),
+    );
+  });
+
+  it('leaves out the conversations with people the user blocked', async () => {
+    mockPrisma.conversation.findMany.mockResolvedValue([]);
+    await repo.listConversations(7, [3, 9]);
+    expect(mockPrisma.conversation.findMany).toHaveBeenCalledWith(
+      expect.objectContaining({
+        where: {
+          OR: [{ userAId: 7 }, { userBId: 7 }],
+          userAId: { notIn: [3, 9] },
+          userBId: { notIn: [3, 9] },
+        },
       }),
     );
   });

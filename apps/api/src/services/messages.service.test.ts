@@ -15,10 +15,19 @@ const mockRepo = {
 };
 const mockUserRepo = { findById: vi.fn() };
 const mockWs = { pushToUser: vi.fn() };
+const mockBlocks = {
+  MESSAGE_NOT_SENT: 'Message could not be sent',
+  REQUEST_NOT_SENT: 'Request could not be sent',
+  REACTION_NOT_ADDED: 'Reaction could not be added',
+  existsBetween: vi.fn(async () => false),
+  isBlockedBy: vi.fn(async (_blockerId: number, _blockedId: number) => false),
+  blockedIds: vi.fn(async (): Promise<number[]> => []),
+};
 
 vi.mock('../repositories/messages.repository.js', () => mockRepo);
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('./ws-user.js', () => mockWs);
+vi.mock('./blocks.service.js', () => mockBlocks);
 
 const {
   getInbox,
@@ -62,7 +71,18 @@ function msgRow(over: Partial<Record<string, unknown>> = {}) {
 beforeEach(() => {
   vi.clearAllMocks();
   mockRepo.unreadByConversation.mockResolvedValue(new Map());
+  mockBlocks.existsBetween.mockImplementation(async () => false);
+  mockBlocks.isBlockedBy.mockImplementation(async () => false);
+  mockBlocks.blockedIds.mockImplementation(async () => []);
 });
+
+// `blocker` blocked `blocked`, nobody else
+function block(blocker: number, blocked: number) {
+  mockBlocks.isBlockedBy.mockImplementation(
+    async (a: number, b: number) => a === blocker && b === blocked,
+  );
+  mockBlocks.existsBetween.mockImplementation(async () => true);
+}
 
 describe('messages.service getInbox', () => {
   it('shapes each conversation from the caller perspective with its unread count', async () => {
@@ -372,5 +392,71 @@ describe('messages.service deleteMessage', () => {
     const res = await deleteMessage(1, 500);
     expect(res.deleted).toBe(true);
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+});
+
+describe('messages.service blocks (CYB-140)', () => {
+  beforeEach(() => {
+    mockRepo.findConversation.mockResolvedValue(convRow());
+  });
+
+  it('leaves the people the caller blocked out of the inbox', async () => {
+    mockBlocks.blockedIds.mockImplementation(async () => [2]);
+    mockRepo.listConversations.mockResolvedValue([]);
+    await getInbox(1);
+    expect(mockRepo.listConversations).toHaveBeenCalledWith(1, [2]);
+  });
+
+  it('refuses a first message either way with the same neutral words', async () => {
+    mockUserRepo.findById.mockResolvedValue({ id: 2 });
+    block(2, 1);
+    await expect(startConversation(1, 2, 'hi')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Message could not be sent',
+    });
+    expect(mockRepo.sendToPair).not.toHaveBeenCalled();
+  });
+
+  it('hides the conversation from the one who blocked', async () => {
+    block(1, 2);
+    await expect(getHistory(1, 100)).rejects.toMatchObject({ statusCode: 404 });
+    await expect(sendMessage(1, 100, 'hi')).rejects.toMatchObject({ statusCode: 404 });
+  });
+
+  it('lets the blocked one read the conversation but not send', async () => {
+    block(1, 2);
+    mockRepo.listMessages.mockResolvedValue([msgRow({ senderId: 1 })]);
+    await expect(getHistory(2, 100)).resolves.toMatchObject({ messages: [{ id: 500 }] });
+    await expect(sendMessage(2, 100, 'hi')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Message could not be sent',
+    });
+    expect(mockRepo.createMessage).not.toHaveBeenCalled();
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+
+  it('refuses a reaction from the blocked one', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    await expect(toggleReaction(2, 500, '👍')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Reaction could not be added',
+    });
+    expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
+  });
+
+  it("keeps the blocked one's edits, deletes and reads off the blocker's screen", async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
+    mockRepo.editMessage.mockResolvedValue(msgRow({ senderId: 2, content: 'x' }));
+    mockRepo.softDeleteMessage.mockResolvedValue(msgRow({ senderId: 2, deleted: true }));
+    mockRepo.markRead.mockResolvedValue(1);
+
+    await editMessage(2, 500, 'x');
+    await deleteMessage(2, 500);
+    await markRead(2, 100, 500);
+
+    const recipients = mockWs.pushToUser.mock.calls.map((c) => c[0]);
+    expect(recipients).toEqual([2, 2, 2]);
   });
 });
