@@ -15,6 +15,9 @@ import type { AdminStatsDTO } from '@cyberstars/shared/admin';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
 const CARD_CLS = 'p-5 rounded-[var(--radius)] panel';
+// A cell of the users card's table, a line between the columns
+const TABLE_CELL_CLS =
+  'px-3 py-2 text-left align-top border-l border-[var(--border)] first:border-l-0';
 
 function Stat({ label, value }: { label: string; value: number | string }) {
   return (
@@ -101,7 +104,7 @@ export function AdminPage() {
               {/* Users, on its own row above the visitors charts */}
               <section className={CARD_CLS + ' @2xl:col-span-3'}>
                 <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-4">
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-5">
                   <Stat label={t('admin.totalUsers')} value={stats.users.total} />
                   <Stat label={t('admin.new7')} value={stats.users.newLast7Days} />
                   <Stat label={t('admin.new30')} value={stats.users.newLast30Days} />
@@ -109,26 +112,59 @@ export function AdminPage() {
                   <Stat label={t('admin.tutorPrompts7')} value={stats.tutor.promptsLast7Days} />
                   <Stat label={t('admin.tutorPrompts30')} value={stats.tutor.promptsLast30Days} />
                 </div>
-                {/* Accounts per role on the left; on the right who has the app open now:
-                    students signed in (no moderators, admins, founder or bots) and guests */}
-                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
-                  {(['FOUNDER', 'ADMIN', 'USER'] as const).map((role) => (
-                    <span key={role}>
-                      {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
-                    </span>
-                  ))}
-                  <span>
-                    {t('admin.bots')} {stats.users.byRole.BOT}
-                  </span>
-                  <span className="ml-auto">
-                    <span className="text-[var(--success)]">
-                      {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })}
-                    </span>{' '}
-                    ·{' '}
-                    <span className="text-[var(--warning)]">
-                      {t('admin.guestsOnline', { count: stats.online.guests })}
-                    </span>
-                  </span>
+                {/* A small table of its own under the numbers: the accounts per role, the
+                    verified emails, and who has the app open now (students signed in, no
+                    moderators, admins, founder or bots, and guests) */}
+                <div className="rounded-[var(--radius)] border border-[var(--border)] overflow-hidden">
+                  <table className="w-full table-fixed border-collapse text-[12px] text-[var(--text2)]">
+                    <thead>
+                      <tr>
+                        {[
+                          t('admin.accountsPerRole'),
+                          t('admin.emailVerified'),
+                          t('admin.onlineNow'),
+                        ].map((title) => (
+                          <th
+                            key={title}
+                            scope="col"
+                            className={
+                              TABLE_CELL_CLS + ' font-normal text-[11px] text-[var(--text3)]'
+                            }
+                          >
+                            {title}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-t border-[var(--border)]">
+                        <td className={TABLE_CELL_CLS}>
+                          <span className="flex flex-wrap gap-x-3 gap-y-1">
+                            {(['FOUNDER', 'ADMIN', 'USER'] as const).map((role) => (
+                              <span key={role}>
+                                {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
+                              </span>
+                            ))}
+                            <span>
+                              {t('admin.bots')} {stats.users.byRole.BOT}
+                            </span>
+                          </span>
+                        </td>
+                        <td className={TABLE_CELL_CLS + ' tabular-nums'}>
+                          {stats.users.emailVerified}
+                        </td>
+                        <td className={TABLE_CELL_CLS}>
+                          <span className="text-[var(--success)]">
+                            {t('admin.signedIn', { count: stats.online.users })}
+                          </span>{' '}
+                          ·{' '}
+                          <span className="text-[var(--warning)]">
+                            {t('admin.guestsOnline', { count: stats.online.guests })}
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </section>
 

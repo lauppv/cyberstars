@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import type { ReactNode } from 'react';
 import type { AdminStatsDTO } from '@cyberstars/shared/admin';
@@ -89,18 +89,30 @@ describe('AdminPage', () => {
     ).toBeTruthy();
   });
 
-  it('shows the accounts per role under the users row, and who is online now on its right', async () => {
+  it('shows a table under the users row: accounts per role, verified emails, then online now', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    const signedIn = await screen.findByText('Online now: 3 signed in');
-    expect(signedIn).toHaveClass('text-[var(--success)]');
-    expect(screen.getByText('5 guests')).toHaveClass('text-[var(--warning)]');
-    expect(signedIn.parentElement).toHaveClass('ml-auto');
-    expect(signedIn.parentElement).toHaveTextContent('Online now: 3 signed in · 5 guests');
+    const table = (await screen.findByText('Accounts per role')).closest('table')!;
+    expect(
+      within(table)
+        .getAllByRole('columnheader')
+        .map((th) => th.textContent),
+    ).toEqual(['Accounts per role', 'Verified emails', 'Online now']);
+    const [roles, verified, online] = within(table).getAllByRole('cell');
     for (const role of ['Founder 1', 'Admin 2', 'User 12', 'Bots 4']) {
-      expect(screen.getByText(role)).toBeInTheDocument();
+      expect(within(roles).getByText(role)).toBeInTheDocument();
     }
-    expect(screen.queryByText(/^Moderator/)).not.toBeInTheDocument();
+    expect(within(roles).queryByText(/^Moderator/)).not.toBeInTheDocument();
+    expect(verified).toHaveTextContent(/^9$/);
+    expect(online).toHaveTextContent('3 signed in · 5 guests');
+    expect(within(online).getByText('3 signed in')).toHaveClass('text-[var(--success)]');
+    expect(within(online).getByText('5 guests')).toHaveClass('text-[var(--warning)]');
+  });
+
+  it('counts every account in Total users, not just the students', async () => {
+    getStats.mockResolvedValue(stats);
+    renderPage();
+    expect((await screen.findByText('Total users')).previousSibling).toHaveTextContent(/^19$/);
   });
 
   it('puts the time of the data last, under the announcements and polls', async () => {

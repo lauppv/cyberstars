@@ -47,6 +47,8 @@
     "new30": "Noi (30 de zile)",
     "onlineNow": "Online acum",
     "bots": "Boți",
+    "accountsPerRole": "Conturi pe roluri",
+    "emailVerified": "Emailuri confirmate",
     "signedIn_one": "{{count}} conectat",
     "signedIn_few": "{{count}} conectați",
     "signedIn_other": "{{count}} de conectați",

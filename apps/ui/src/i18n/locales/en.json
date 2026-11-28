@@ -47,6 +47,8 @@
     "new30": "New (30 days)",
     "onlineNow": "Online now",
     "bots": "Bots",
+    "accountsPerRole": "Accounts per role",
+    "emailVerified": "Verified emails",
     "signedIn_one": "{{count}} signed in",
     "signedIn_other": "{{count}} signed in",
     "guestsOnline_one": "{{count}} guest",
