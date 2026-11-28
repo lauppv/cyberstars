@@ -4,10 +4,7 @@ import { SUPPORT_MESSAGE_MAX_LENGTH, SUPPORT_SUBJECT_MAX_LENGTH } from '@cyberst
 const message = z
   .string()
   .min(1, 'Message is required')
-  .max(
-    SUPPORT_MESSAGE_MAX_LENGTH,
-    `Message is too long (max ${SUPPORT_MESSAGE_MAX_LENGTH} characters)`,
-  );
+  .max(SUPPORT_MESSAGE_MAX_LENGTH, `Message is too long (max ${SUPPORT_MESSAGE_MAX_LENGTH} chars)`);
 
 export const createTicketSchema = z.object({
   type: z.enum(['BUG', 'QUESTION', 'RULE_VIOLATION', 'FEEDBACK', 'ACCOUNT', 'OTHER']),

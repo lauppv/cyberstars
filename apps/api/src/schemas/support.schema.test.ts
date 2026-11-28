@@ -13,7 +13,7 @@ describe('createTicketSchema', () => {
   it('refuses a longer message and says why', () => {
     const result = createTicketSchema.safeParse(ticket('a'.repeat(SUPPORT_MESSAGE_MAX_LENGTH + 1)));
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0]?.message).toBe('Message is too long (max 5000 characters)');
+    expect(result.error?.issues[0]?.message).toBe('Message is too long (max 5000 chars)');
   });
 
   it('refuses a subject past its column', () => {
