@@ -23,11 +23,13 @@ const mockBlocks = {
   isBlockedBy: vi.fn(async (_blockerId: number, _blockedId: number) => false),
   blockedIds: vi.fn(async (): Promise<number[]> => []),
 };
+const mockSupport = { openTicket: vi.fn() };
 
 vi.mock('../repositories/messages.repository.js', () => mockRepo);
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('./ws-user.js', () => mockWs);
 vi.mock('./blocks.service.js', () => mockBlocks);
+vi.mock('./support.service.js', () => mockSupport);
 
 const {
   getInbox,
@@ -38,6 +40,7 @@ const {
   editMessage,
   deleteMessage,
   toggleReaction,
+  reportMessage,
 } = await import('./messages.service.js');
 
 function convRow(over: Partial<Record<string, unknown>> = {}) {
@@ -458,5 +461,38 @@ describe('messages.service blocks (CYB-140)', () => {
 
     const recipients = mockWs.pushToUser.mock.calls.map((c) => c[0]);
     expect(recipients).toEqual([2, 2, 2]);
+  });
+});
+
+describe('messages.service reportMessage', () => {
+  beforeEach(() => {
+    mockRepo.findConversation.mockResolvedValue(convRow());
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2, content: 'go away' }));
+    mockSupport.openTicket.mockResolvedValue(77);
+  });
+
+  it('opens a rule violation ticket holding a copy of the message', async () => {
+    const id = await reportMessage(1, 500, 'he keeps writing');
+    expect(id).toBe(77);
+    const [userId, type, subject, body] = mockSupport.openTicket.mock.calls[0];
+    expect(userId).toBe(1);
+    expect(type).toBe('RULE_VIOLATION');
+    expect(subject).toBe('Reported message from Ben');
+    expect(body).toContain('From: Ben (user 2)');
+    expect(body).toContain('go away');
+    expect(body).toContain('Note from the student: he keeps writing');
+  });
+
+  it('works after the reporter blocked the sender', async () => {
+    block(1, 2);
+    await expect(reportMessage(1, 500, undefined)).resolves.toBe(77);
+  });
+
+  it("refuses one's own message, a deleted one and someone else's conversation", async () => {
+    await expect(reportMessage(2, 500, undefined)).rejects.toMatchObject({ statusCode: 400 });
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2, deleted: true }));
+    await expect(reportMessage(1, 500, undefined)).rejects.toMatchObject({ statusCode: 400 });
+    await expect(reportMessage(3, 500, undefined)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockSupport.openTicket).not.toHaveBeenCalled();
   });
 });

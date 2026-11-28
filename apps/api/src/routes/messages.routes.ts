@@ -9,6 +9,7 @@ import {
   startConversationSchema,
   markReadSchema,
   toggleReactionSchema,
+  reportMessageSchema,
 } from '../schemas/messages.schema.js';
 import * as messagesController from '../controllers/messages.controller.js';
 
@@ -30,6 +31,14 @@ const sendLimiter = limiter({
 const reactLimiter = limiter({
   windowMs: 60_000,
   limit: 60,
+  keyGenerator: perUser,
+});
+
+// Every report is a support ticket that notifies every admin, so it takes the
+// support form's cap: 5 in 15 minutes
+const reportLimiter = limiter({
+  windowMs: 15 * 60_000,
+  limit: 5,
   keyGenerator: perUser,
 });
 
@@ -66,6 +75,13 @@ router.post(
   reactLimiter,
   validateBody(toggleReactionSchema),
   messagesController.toggleReaction,
+);
+
+router.post(
+  '/:messageId/report',
+  reportLimiter,
+  validateBody(reportMessageSchema),
+  messagesController.reportMessage,
 );
 
 export default router;

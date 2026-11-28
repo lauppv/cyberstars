@@ -1,6 +1,7 @@
 import * as repo from '../repositories/messages.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as blocks from './blocks.service.js';
+import * as supportService from './support.service.js';
 import { pushToUser } from './ws-user.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type { ConversationDTO, ConversationHistory, MessageDTO } from '@cyberstars/shared/messages';
@@ -223,6 +224,37 @@ export async function editMessage(
     pushToUser(userId, { channel: 'dm', type: 'edited', payload: dto });
   }
   return dto;
+}
+
+// A student reports a message they received: it reaches the admins as a
+// support ticket holding a copy of the message, so a later edit or delete by
+// its sender doesn't change what they see. Reporting works after a block too.
+export async function reportMessage(
+  userId: number,
+  messageId: number,
+  note: string | undefined,
+): Promise<number> {
+  const message = await repo.findMessage(messageId);
+  const row = message ? await repo.findConversation(message.conversationId) : null;
+  if (!message || !row || !isParticipant(row, userId)) {
+    throw new AppError(404, 'Message not found');
+  }
+  if (message.senderId === userId) throw new AppError(400, 'Cannot report your own message');
+  if (message.deleted) throw new AppError(400, 'Cannot report a deleted message');
+
+  const sender = row.userAId === message.senderId ? row.userA : row.userB;
+  const subject = `Reported message from ${sender.name}`.slice(0, 200);
+  const body = [
+    'A direct message was reported.',
+    '',
+    `From: ${sender.name} (user ${sender.id})`,
+    `Sent: ${message.createdAt.toISOString()}`,
+    `Message ${message.id}, conversation ${message.conversationId}`,
+    '',
+    message.content,
+    ...(note ? ['', `Note from the student: ${note}`] : []),
+  ].join('\n');
+  return supportService.openTicket(userId, 'RULE_VIOLATION', subject, body);
 }
 
 export async function deleteMessage(userId: number, messageId: number): Promise<MessageDTO> {

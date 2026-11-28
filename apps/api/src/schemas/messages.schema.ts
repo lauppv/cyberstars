@@ -14,6 +14,11 @@ export const markReadSchema = z.object({
   upToMessageId: z.number().int().positive(),
 });
 
+// An optional word on what's wrong with a reported message
+export const reportMessageSchema = z.object({
+  note: z.string().trim().max(1000).optional(),
+});
+
 export const toggleReactionSchema = z.object({
   emoji: z.string().min(1).max(10),
 });
