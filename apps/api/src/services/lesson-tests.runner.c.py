@@ -1,5 +1,5 @@
 # Thin C judge runner, executed inside a sandbox container
-# (gcc:latest, which ships python3; --network=none, pids/memory capped). Unlike
+# (gcc:16.1.0, which ships python3; --network=none, pids/memory capped). Unlike
 # the python/java runners it does NO parsing/structure/injection; for C those
 # happen on the SERVER via tree-sitter (see c-analysis.ts). This runner only:
 #   1. compiles the pristine user code once (gate 2: gcc surfaces semantic
