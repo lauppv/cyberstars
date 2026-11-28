@@ -124,7 +124,7 @@ export function DraftThread({
   return (
     <div className="flex flex-col h-full">
       <ThreadHeader other={other} onBack={onBack} />
-      <div className="flex-1 bg-[var(--bg2)]" />
+      <div className="flex-1 chat-glow" />
       <MessageComposer onSend={send} error={sendError} />
     </div>
   );
@@ -412,7 +412,7 @@ export function MessageThread({
       <div
         ref={scrollRef}
         // A step darker than the header and the box, so the conversation reads as its own pane
-        className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-[var(--bg2)]"
+        className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 chat-glow"
       >
         {loading ? (
           <div className="text-center text-[13px] text-[var(--text3)] py-8">…</div>

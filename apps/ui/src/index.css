@@ -109,6 +109,13 @@ body {
 .landing-glow {
   background: radial-gradient(ellipse 70% 60% at 70% 40%, var(--accent-wash), transparent 70%);
 }
+/* Messages and the Tutor panel: the landing's purple light, kept faint and
+   up in a corner, so the bubbles below read as they do on plain --bg2. Set
+   on the scroll box itself, where it stays put while the messages scroll. */
+.chat-glow {
+  background:
+    radial-gradient(ellipse 90% 55% at 85% 0%, var(--accent-wash), transparent 70%), var(--bg2);
+}
 .landing-wash-strong {
   background: linear-gradient(
     var(--page-bg),
