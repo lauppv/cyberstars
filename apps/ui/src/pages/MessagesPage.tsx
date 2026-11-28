@@ -92,7 +92,8 @@ export function MessagesPage() {
               showThread ? 'hidden @2xl:flex' : 'flex'
             }`}
           >
-            <div className="px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
+            {/* As tall as the conversation header, so their lines meet */}
+            <div className="px-4 h-[60px] flex items-center border-b border-[var(--border)] flex-shrink-0">
               <h2 className="m-0 section-label">{t('messages.conversations')}</h2>
             </div>
             {loading && conversations.length === 0 ? (
