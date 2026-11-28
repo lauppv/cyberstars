@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Check, CheckCheck } from 'lucide-react';
+import { ArrowLeft, Ban, Check, CheckCheck } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
 import i18next from 'i18next';
 import { useMessages } from '../../context/MessagesContext';
@@ -73,23 +73,24 @@ function ThreadHeader({
     onBlocked?.();
   };
   return (
-    <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
+    <div className="flex items-center gap-2 px-3 sm:px-4 h-[60px] border-b border-[var(--border)] flex-shrink-0">
       <button
         onClick={onBack}
-        className="@2xl:hidden text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[16px]"
+        className="@2xl:hidden w-8 h-8 -ml-1 flex items-center justify-center rounded-full text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] bg-transparent border-none cursor-pointer transition"
         aria-label={t('messages.back')}
       >
-        ←
+        <ArrowLeft size={18} aria-hidden />
       </button>
       <UserLink userId={other.id} className="flex items-center gap-3 min-w-0">
-        <Avatar url={other.avatarUrl} userId={other.id} size={32} />
-        <span className="font-semibold text-[14px] text-[var(--text)] truncate">{other.name}</span>
+        <Avatar url={other.avatarUrl} userId={other.id} size={36} />
+        <span className="font-semibold text-[15px] text-[var(--text)] truncate">{other.name}</span>
       </UserLink>
       {onBlocked && !other.staff && (
         <button
           onClick={() => setConfirming(true)}
-          className="ml-auto flex-shrink-0 text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"
+          className="ml-auto flex-shrink-0 flex items-center gap-1.5 h-8 px-2.5 rounded-[var(--radius-sm)] text-[12px] text-[var(--text3)] hover:text-[var(--error)] hover:bg-[var(--error)]/10 bg-transparent border-none cursor-pointer transition"
         >
+          <Ban size={14} aria-hidden />
           {t('block.block')}
         </button>
       )}
