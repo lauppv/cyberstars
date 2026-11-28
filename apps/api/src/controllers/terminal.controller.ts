@@ -8,10 +8,13 @@ import { runProjectTerminalTests, runTerminalTests } from '../services/terminal-
 import { completeIfPassed } from './projects.controller.js';
 import * as progressService from '../services/progress.service.js';
 import { requestWaitKey } from './runs.controller.js';
+import { guestKey } from '../services/guest-id.js';
 
+// Keyed like runs and Run Tests: a guest's id is a cookie they can set by hand,
+// so it gets its own `guest:` space and can never be read as a student's key
 export function resolveOwnerKey(req: Request): string | null {
   if (req.user?.id) return `user:${req.user.id}`;
-  return req.cookies?.guestId ?? null;
+  return guestKey(req.cookies?.guestId);
 }
 
 // A guest's network, which their sandboxes count against (guest-sandboxes.ts),

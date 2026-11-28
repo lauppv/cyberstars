@@ -8,6 +8,7 @@ process.env.DB_PASSWORD = 'test';
 process.env.CORS_DEV_ORIGIN = 'http://localhost:5173, http://second.test';
 
 import { SESSION_COOKIE } from './testing/sessions.js';
+import { isGuestId } from './services/guest-id.js';
 
 function makePrismaProxy() {
   return new Proxy(
@@ -105,6 +106,19 @@ describe('guest id cookie', () => {
     const res = await request(app).get('/api/time');
     const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
+  });
+
+  it('keeps a guestId the server handed out', async () => {
+    const res = await request(app).get('/api/time').set('Cookie', `guestId=${crypto.randomUUID()}`);
+    const cookies = res.get('Set-Cookie') ?? [];
+    expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
+  });
+
+  it('replaces a guestId the server never handed out with a real one', async () => {
+    const res = await request(app).get('/api/time').set('Cookie', 'guestId=user:42');
+    const cookie = (res.get('Set-Cookie') ?? []).find((c) => c.startsWith('guestId='));
+    const id = decodeURIComponent(cookie!.split(';')[0].slice('guestId='.length));
+    expect(isGuestId(id)).toBe(true);
   });
 
   it('does not set a guestId when a session cookie is already present', async () => {
@@ -211,19 +225,22 @@ describe('page views', () => {
 describe('a run waiting for a sandbox', () => {
   it("tells the page whether its own request is waiting, and nobody else's", async () => {
     let grant: (release: () => void) => void = () => {};
-    const slot = inLine('guest:g-1|run-1', (onWait) => {
+    const [me, them] = [crypto.randomUUID(), crypto.randomUUID()];
+    const slot = inLine(`guest:${me}|run-1`, (onWait) => {
       onWait();
       return new Promise<() => void>((resolve) => (grant = resolve));
     });
 
-    const mine = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-1');
+    const mine = await request(app).get('/api/runs/run-1/waiting').set('Cookie', `guestId=${me}`);
     expect(mine.body).toEqual({ waiting: true });
-    const theirs = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-2');
+    const theirs = await request(app)
+      .get('/api/runs/run-1/waiting')
+      .set('Cookie', `guestId=${them}`);
     expect(theirs.body).toEqual({ waiting: false });
 
     grant(() => {});
     await slot;
-    const after = await request(app).get('/api/runs/run-1/waiting').set('Cookie', 'guestId=g-1');
+    const after = await request(app).get('/api/runs/run-1/waiting').set('Cookie', `guestId=${me}`);
     expect(after.body).toEqual({ waiting: false });
   });
 });

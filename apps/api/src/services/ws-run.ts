@@ -8,6 +8,7 @@ import { isEditorLanguage, languageOf } from '../runtimes/registry.js';
 import { sandbox } from './sandbox.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
+import { guestKey } from './guest-id.js';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
 import { auth } from './auth.js';
@@ -125,15 +126,15 @@ function undoStartRun(key: string): void {
 
 // Resolve who a connection belongs to. Logged-in users key by id; guests key by
 // a per-browser `guestId` cookie (so guests behind a shared IP don't collide on
-// the same container), falling back to IP only when no cookie is present yet.
+// the same container), falling back to IP when there is no valid one yet.
 // `userId` is the session the upgrade checked, null for a guest.
 export function resolveOwner(
   req: IncomingMessage,
   userId: number | null,
 ): { ownerKey: string; isGuest: boolean } {
   if (userId !== null) return { ownerKey: `user:${userId}`, isGuest: false };
-  const guestId = parseCookie(req.headers.cookie, 'guestId');
-  return { ownerKey: guestId ? `guest:${guestId}` : `ip:${extractIp(req)}`, isGuest: true };
+  const ownerKey = guestKey(parseCookie(req.headers.cookie, 'guestId'));
+  return { ownerKey: ownerKey ?? `ip:${extractIp(req)}`, isGuest: true };
 }
 
 export function handleConnection(ws: WebSocket, req: IncomingMessage, userId: number | null): void {

@@ -101,6 +101,13 @@ function fakeSocket() {
   return Object.assign(new EventEmitter(), { write: vi.fn(), destroy: vi.fn() });
 }
 
+// A guest id shaped like the ones the server hands out, the same for the same label
+const guestIds = new Map<string, string>();
+function gid(label: string): string {
+  if (!guestIds.has(label)) guestIds.set(label, crypto.randomUUID());
+  return guestIds.get(label)!;
+}
+
 function fakeReq(cookie?: string, ip = '127.0.0.1'): IncomingMessage {
   return {
     headers: cookie ? { cookie } : {},
@@ -176,17 +183,20 @@ describe('resolveOwner', () => {
   });
 
   it('keys guests by their per-browser guestId cookie', () => {
-    expect(resolveOwner(fakeReq('guestId=abc-123'), null)).toEqual({
-      ownerKey: 'guest:abc-123',
+    expect(resolveOwner(fakeReq(`guestId=${gid('abc')}`), null)).toEqual({
+      ownerKey: `guest:${gid('abc')}`,
       isGuest: true,
     });
   });
 
-  it('keeps a guestId that is not valid percent-encoding as it came', () => {
-    expect(resolveOwner(fakeReq('guestId=%E0'), null)).toEqual({
-      ownerKey: 'guest:%E0',
-      isGuest: true,
-    });
+  // A student's key, or bytes that are not even valid percent-encoding
+  it('falls back to IP for a guestId the server never handed out', () => {
+    for (const cookie of ['guestId=user:42', 'guestId=%E0']) {
+      expect(resolveOwner(fakeReq(cookie, '9.9.9.9'), null)).toEqual({
+        ownerKey: 'ip:9.9.9.9',
+        isGuest: true,
+      });
+    }
   });
 
   it('falls back to IP when a guest has no guestId cookie yet', () => {
@@ -332,17 +342,23 @@ describe('handleConnection', () => {
 
   it('lets a guest run within budget and records the run under their guestId', () => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-ok'), null);
+    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${gid('budget-ok')}`), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
-    expect(mockRun).toHaveBeenCalledWith(ws, 'print(1)', 'python', 'guest:budget-ok', '127.0.0.1');
+    expect(mockRun).toHaveBeenCalledWith(
+      ws,
+      'print(1)',
+      'python',
+      `guest:${gid('budget-ok')}`,
+      '127.0.0.1',
+    );
     ws.emit('close');
   });
 
   it('blocks a guest over budget with a sign-up nudge and no run', () => {
-    const key = 'guest:budget-spent';
+    const key = `guest:${gid('budget-spent')}`;
     for (let i = 0; i < GUEST_RUN_BUDGET; i++) recordGuestRun(key);
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq('guestId=budget-spent'), null);
+    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${gid('budget-spent')}`), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'print(1)', language: 'python' }));
     expect(mockRun).not.toHaveBeenCalled();
     const messages = ws.send.mock.calls.map((c) => JSON.parse(c[0] as string));
@@ -409,7 +425,7 @@ describe('handleConnection', () => {
 describe('guest runs per IP', () => {
   const runAs = (guestId: string, ip: string) => {
     const ws = new FakeWs();
-    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${guestId}`, ip), null);
+    handleConnection(ws as unknown as WebSocket, fakeReq(`guestId=${gid(guestId)}`, ip), null);
     ws.emit('message', JSON.stringify({ type: 'run', code: 'x', language: 'python' }));
     return ws;
   };
@@ -427,8 +443,8 @@ describe('guest runs per IP', () => {
       true,
     );
     // The refused attempt is handed back: that guest's own window is untouched.
-    expect(tryStartRun('guest:rot-60')).toEqual({ ok: true });
-    endRun('guest:rot-60');
+    expect(tryStartRun(`guest:${gid('rot-60')}`)).toEqual({ ok: true });
+    endRun(`guest:${gid('rot-60')}`);
   });
 
   it('counts a whole IPv6 block as one address, so rotating within it buys nothing', () => {
@@ -656,7 +672,7 @@ describe('upgrade routing', () => {
 
   it('outlives a guest cookie that is not valid percent-encoding', async () => {
     await upgrade('/ws/presence', 'guestId=%E0');
-    expect(openSessionMock).toHaveBeenCalledWith('guest:%E0');
+    expect(openSessionMock).toHaveBeenCalledWith('ip:127.0.0.1');
   });
 
   it('drops an upgrade whose path is not a URL, and goes on', async () => {

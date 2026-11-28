@@ -72,7 +72,7 @@ Separate deploys don't need separate repos: workspaces already give each part it
 
 ## API endpoints
 
-Auth is a session kept on the server, its random token in an httpOnly cookie (`__Host-session` in production). In the tables, **Yes** is a signed-in student, **Owner** a student or a guest (keyed by the per-browser `guestId` cookie), **Staff** a moderator or admin, **Admin** an admin or the founder. Roles are always read from the database, never from the session. The auth package (`framework/auth`) does it; the app creates it once with its user and session stores, roles, session lifetimes and sign-up form (`apps/api/src/services/auth.ts`).
+Auth is a session kept on the server, its random token in an httpOnly cookie (`__Host-session` in production). In the tables, **Yes** is a signed-in student, **Owner** a student or a guest (keyed `guest:<id>` by the per-browser `guestId` cookie, which must be the UUID the server handed out), **Staff** a moderator or admin, **Admin** an admin or the founder. Roles are always read from the database, never from the session. The auth package (`framework/auth`) does it; the app creates it once with its user and session stores, roles, session lifetimes and sign-up form (`apps/api/src/services/auth.ts`).
 
 ### Auth
 

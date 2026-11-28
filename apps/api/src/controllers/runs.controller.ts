@@ -1,12 +1,12 @@
 import type { Request, Response } from 'express';
 import { isWaiting, waitKey } from '../services/run-waits.js';
+import { guestKey } from '../services/guest-id.js';
 
 // Who is asking, the same way on every route that runs code: a request that
 // waits and the page asking about it have to agree on it
 function ownerOf(req: Request): string | null {
   if (req.user?.id) return `user:${req.user.id}`;
-  const guestId = req.cookies?.guestId;
-  return guestId ? `guest:${guestId}` : null;
+  return guestKey(req.cookies?.guestId);
 }
 
 // The key a Run Tests or terminal command waits under, from the id the page sent

@@ -82,7 +82,7 @@ describe('runTests', () => {
   const req = (user?: { id: number }) =>
     ({
       user,
-      cookies: user ? {} : { guestId: 'g1' },
+      cookies: user ? {} : { guestId: '3f2c8a4e-9b1d-4c7a-8e5f-0a6b2d9c1e74' },
       ip: '127.0.0.1',
       get: () => undefined,
       params: { language: 'python', slug: 'library-desk' },
