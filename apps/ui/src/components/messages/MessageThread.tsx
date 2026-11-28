@@ -487,7 +487,9 @@ export function MessageThread({
                       </div>
                       {!m.deleted && (
                         <MessageActions
-                          align={mine ? 'left' : 'right'}
+                          // The menu opens toward the middle of the pane, so
+                          // the panel's edge never cuts it
+                          align={mine ? 'right' : 'left'}
                           canModify={mine}
                           onReact={(emoji) => react(m.id, emoji)}
                           onEdit={() => startEdit(m)}
