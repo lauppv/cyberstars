@@ -332,14 +332,11 @@ describe('messages.service editMessage', () => {
     await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
   });
 
-  it('skips the live push when the conversation cannot be loaded', async () => {
+  it('404s without editing when the conversation cannot be loaded', async () => {
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
-    mockRepo.editMessage.mockResolvedValue(msgRow({ senderId: 1, content: 'nou' }));
     mockRepo.findConversation.mockResolvedValue(null);
-
-    const res = await editMessage(1, 500, 'nou');
-    expect(res.content).toBe('nou');
-    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+    await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
   });
 });
 
@@ -352,6 +349,7 @@ describe('messages.service deleteMessage', () => {
 
   it('soft-deletes an owned message and blanks its content', async () => {
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.findConversation.mockResolvedValue(convRow());
     mockRepo.softDeleteMessage.mockResolvedValue(
       msgRow({ senderId: 1, deleted: true, content: '' }),
     );
@@ -385,16 +383,11 @@ describe('messages.service deleteMessage', () => {
     await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
   });
 
-  it('skips the live push when the conversation cannot be loaded', async () => {
+  it('404s without deleting when the conversation cannot be loaded', async () => {
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
-    mockRepo.softDeleteMessage.mockResolvedValue(
-      msgRow({ senderId: 1, deleted: true, content: '' }),
-    );
     mockRepo.findConversation.mockResolvedValue(null);
-
-    const res = await deleteMessage(1, 500);
-    expect(res.deleted).toBe(true);
-    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+    await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.softDeleteMessage).not.toHaveBeenCalled();
   });
 });
 
@@ -456,6 +449,16 @@ describe('messages.service blocks (CYB-140)', () => {
       message: 'Message could not be sent',
     });
     expect(mockRepo.editMessage).not.toHaveBeenCalled();
+  });
+
+  it('hides the conversation from the one who blocked for edits and deletes too', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    await expect(editMessage(1, 500, 'x')).rejects.toMatchObject({ statusCode: 404 });
+    await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
+    expect(mockRepo.softDeleteMessage).not.toHaveBeenCalled();
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
   });
 
   it("keeps the blocked one's deletes and reads off the blocker's screen", async () => {

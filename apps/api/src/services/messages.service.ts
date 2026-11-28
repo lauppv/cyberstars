@@ -219,10 +219,11 @@ export async function editMessage(
   if (!message || message.senderId !== userId || message.deleted) {
     throw new AppError(404, 'Message not found');
   }
-  const row = await repo.findConversation(message.conversationId);
+  // Hidden from one who blocked the other side, as everywhere else
+  const row = await requireConversation(message.conversationId, userId);
   // An edit puts new words in front of the other side, so a block refuses it
   // as it refuses a send
-  if (row && (await blocks.isBlockedBy(otherParticipant(row, userId), userId))) {
+  if (await blocks.isBlockedBy(otherParticipant(row, userId), userId)) {
     throw new AppError(403, blocks.MESSAGE_NOT_SENT);
   }
   const updated = await repo.editMessage(messageId, userId, content);
@@ -231,10 +232,8 @@ export async function editMessage(
 
   // Push the refreshed content live to both sides (like send/delete) so the
   // edit lands on the other participant's screen without a refetch.
-  if (row) {
-    await pushToOther(row, userId, { channel: 'dm', type: 'edited', payload: dto });
-    pushToUser(userId, { channel: 'dm', type: 'edited', payload: dto });
-  }
+  await pushToOther(row, userId, { channel: 'dm', type: 'edited', payload: dto });
+  pushToUser(userId, { channel: 'dm', type: 'edited', payload: dto });
   return dto;
 }
 
@@ -272,16 +271,15 @@ export async function reportMessage(
 export async function deleteMessage(userId: number, messageId: number): Promise<MessageDTO> {
   const message = await repo.findMessage(messageId);
   if (!message || message.senderId !== userId) throw new AppError(404, 'Message not found');
+  // Hidden from one who blocked the other side, as everywhere else
+  const row = await requireConversation(message.conversationId, userId);
   const updated = await repo.softDeleteMessage(messageId, userId);
   if (!updated) throw new AppError(404, 'Message not found');
   const dto = shapeMessage(updated);
 
   // A delete is a redaction, so push it live to both sides (like send/read) so the
   // deleted content doesn't linger on the other participant's screen.
-  const row = await repo.findConversation(message.conversationId);
-  if (row) {
-    await pushToOther(row, userId, { channel: 'dm', type: 'deleted', payload: dto });
-    pushToUser(userId, { channel: 'dm', type: 'deleted', payload: dto });
-  }
+  await pushToOther(row, userId, { channel: 'dm', type: 'deleted', payload: dto });
+  pushToUser(userId, { channel: 'dm', type: 'deleted', payload: dto });
   return dto;
 }
