@@ -12,6 +12,7 @@ import type { Course } from '@cyberstars/shared/lesson';
 import type { CourseProgress } from '@cyberstars/shared/progress';
 import { courseMeta, courseTitle, courseWash } from '../constants/courses';
 import {
+  difficultyOf,
   ALGO_COURSE_KEYS,
   LISTED_COURSE_KEYS,
   isBeta,
@@ -23,11 +24,6 @@ const DIFFICULTIES = [
   { key: 'medium', color: 'var(--warning)' },
   { key: 'hard', color: 'var(--error)' },
 ] as const;
-
-// A challenge's title starts with its difficulty, in English in both languages
-function difficultyOf(title: string): string {
-  return title.match(/^(Easy|Medium|Hard)\s*·/i)?.[1].toLowerCase() ?? 'easy';
-}
 
 // How far along each course and challenge set is
 export function ProgressPage() {
@@ -211,7 +207,7 @@ function AlgoCard({ course, progress }: { course: Course; progress?: CourseProgr
       </div>
       <div className="flex flex-col gap-1.5">
         {DIFFICULTIES.map(({ key, color }) => {
-          const lessons = course.lessons.filter((l) => difficultyOf(l.title) === key);
+          const lessons = course.lessons.filter((l) => (difficultyOf(l.title) ?? 'easy') === key);
           if (lessons.length === 0) return null;
           const n = lessons.filter((l) => done.has(l.slug)).length;
           return (
