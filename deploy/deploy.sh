@@ -121,11 +121,13 @@ main() {
   # peer dependencies are recorded, so a lockfile written by one can make the
   # other's `npm ci` refuse the tree outright. A deploy must not die on that.
   # `npm install` resolves it, and the lockfile guard above cleans up next run.
-  # The stamp keeps the committed lockfile's hash, taken before either runs.
+  # The stamp keeps the committed lockfile's hash, taken before either runs,
+  # together with the Node version: native addons are built for one Node, so
+  # an upgrade on the server must reinstall them even with the same lockfile.
   local lock_sum
-  lock_sum=$(sha256sum package-lock.json | cut -d' ' -f1)
+  lock_sum=$({ cat package-lock.json; node -v; } | sha256sum | cut -d' ' -f1)
   if [ "$(cat "$deps_stamp" 2> /dev/null)" != "$lock_sum" ]; then
-    echo "==> Installing dependencies (the lockfile changed)"
+    echo "==> Installing dependencies (the lockfile or Node changed)"
     npm ci || {
       echo "!! npm ci refused the lockfile, falling back to npm install" >&2
       npm install
