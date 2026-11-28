@@ -11,6 +11,7 @@ vi.mock('react-router', async (importOriginal) => {
   return { ...actual, useNavigate: () => mockNavigate, useParams: () => mockParams };
 });
 
+vi.mock('../context/MessagesContext', () => ({ useMessages: () => ({ refresh: vi.fn() }) }));
 vi.mock('../context/AuthContext', () => ({
   useAuth: vi.fn(() => ({ user: null, isLoading: false })),
 }));

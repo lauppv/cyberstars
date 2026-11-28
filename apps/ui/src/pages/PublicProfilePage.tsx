@@ -18,6 +18,9 @@ import { badgeLabel, badgeDescription } from '../components/gamification/badgeMe
 import { courseTitle } from '../constants/courses';
 import * as userService from '../services/userService';
 import * as connectionsService from '../services/connectionsService';
+import * as blocksService from '../services/blocksService';
+import { BlockDialog } from '../components/messages/ConfirmDialog';
+import { useMessages } from '../context/MessagesContext';
 import { ApiClientError } from '../services/apiClient';
 import type { PublicProfile } from '@cyberstars/shared/profile';
 import { badgeId, type BadgeRef } from '@cyberstars/shared/badges';
@@ -127,6 +130,10 @@ export function PublicProfilePage() {
   const [relation, setRelation] = useState<ConnectionRelation>('none');
   const [connecting, setConnecting] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
+  const { refresh: refreshInbox } = useMessages();
+  const [blockedByMe, setBlockedByMe] = useState(false);
+  const [confirmingBlock, setConfirmingBlock] = useState(false);
+  const [unblocking, setUnblocking] = useState(false);
 
   // Client-side guard is UX only; the API is server-authoritative.
   useEffect(() => {
@@ -152,6 +159,7 @@ export function PublicProfilePage() {
         if (!cancelled) {
           setProfile(p);
           setRelation(p.connectionRelation);
+          setBlockedByMe(p.blockedByMe);
         }
       })
       .catch((err: unknown) => {
@@ -193,6 +201,34 @@ export function PublicProfilePage() {
       }
     } finally {
       setConnecting(false);
+    }
+  };
+
+  // The block also ended any connection or request between the two
+  const block = async () => {
+    if (!profile) return;
+    await blocksService.block(profile.userId);
+    setConfirmingBlock(false);
+    setBlockedByMe(true);
+    setRelation('none');
+    setActionError(null);
+    refreshInbox(); // their conversation leaves the inbox
+  };
+
+  const unblock = async () => {
+    if (!profile) return;
+    setUnblocking(true);
+    setActionError(null);
+    try {
+      await blocksService.unblock(profile.userId);
+      setBlockedByMe(false);
+      refreshInbox(); // their conversation comes back
+    } catch (err) {
+      setActionError(
+        err instanceof Error && err.message ? err.message : t('common.somethingWrong'),
+      );
+    } finally {
+      setUnblocking(false);
     }
   };
 
@@ -398,6 +434,10 @@ export function PublicProfilePage() {
                     {t('publicProfile.settings')}
                   </button>
                 </>
+              ) : blockedByMe ? (
+                <button onClick={unblock} disabled={unblocking} className="btn btn-secondary">
+                  {t('block.unblock')}
+                </button>
               ) : (
                 <>
                   {canMessage && (
@@ -429,9 +469,22 @@ export function PublicProfilePage() {
                       {t('publicProfile.connected')} ✓
                     </span>
                   )}
+                  <button
+                    onClick={() => setConfirmingBlock(true)}
+                    className="ml-auto text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"
+                  >
+                    {t('block.block')}
+                  </button>
                 </>
               )}
             </div>
+            {confirmingBlock && (
+              <BlockDialog
+                name={profile.name}
+                onConfirm={block}
+                onClose={() => setConfirmingBlock(false)}
+              />
+            )}
             {actionError && (
               <p role="alert" className="pt-3 text-[12px] text-[var(--error)]">
                 {actionError}

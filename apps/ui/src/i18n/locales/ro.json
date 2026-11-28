@@ -509,6 +509,16 @@
     "actions": "Acțiuni mesaj",
     "emptyInboxHint": "Începe una din profilul cuiva sau din conexiunile tale."
   },
+  "block": {
+    "block": "Blochează",
+    "unblock": "Deblochează",
+    "confirmTitle": "Blochezi persoana aceasta?",
+    "confirmText": "{{name}} nu îți va mai putea trimite mesaje și nici cereri de conectare. Conversația voastră va fi ascunsă, iar conexiunea dintre voi, dacă există, se încheie. Nu i se va spune nimic. Poți debloca oricând din Setări.",
+    "settingsTitle": "Persoane blocate",
+    "settingsHint": "Nu îți pot trimite mesaje și nici cereri de conectare.",
+    "none": "Nu ai blocat pe nimeni.",
+    "loadFailed": "Nu am putut încărca persoanele blocate."
+  },
   "notif": {
     "title": "Notificări",
     "empty": "Ești la zi.",
