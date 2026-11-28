@@ -298,6 +298,18 @@ describe('POST /signup', () => {
     await vi.waitFor(() => expect(error).toHaveBeenCalled());
     error.mockRestore();
   });
+
+  it('still answers 200 when the link fails to be kept, the account signed in', async () => {
+    const { app, store } = setup();
+    vi.spyOn(store, 'setConfirmToken').mockRejectedValueOnce(new Error('lock timeout'));
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const res = await request(app).post('/auth/signup').send(ADA);
+    expect(res.status).toBe(200);
+    expect(res.headers['set-cookie']![0]).toMatch(/^session=/);
+    expect(store.rows).toHaveLength(1);
+    expect(error).toHaveBeenCalled();
+    error.mockRestore();
+  });
 });
 
 describe('POST /confirm-email', () => {

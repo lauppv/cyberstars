@@ -7,6 +7,7 @@ import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 import { useAuth } from '../../context/AuthContext';
 import { useUserSocketFrames } from '../../context/UserSocketContext';
 import * as authService from '../../services/authService';
+import { ApiClientError } from '../../services/apiClient';
 import { CONFIRM_EMAIL_PATH } from '../../constants/confirmEmail';
 
 // How long the X puts the banner away: it is the price of an unconfirmed
@@ -100,6 +101,9 @@ function Banner({ user }: { user: AuthenticatedUser }) {
       setSend({ state: 'sent' });
       refreshUser();
     } catch (err) {
+      // Confirmed elsewhere while this tab's socket was down: reading the
+      // account again takes the banner off
+      if (err instanceof ApiClientError && err.status === 409) refreshUser();
       setSend({
         state: 'error',
         message: err instanceof Error && err.message ? err.message : t('emailConfirm.sendFailed'),

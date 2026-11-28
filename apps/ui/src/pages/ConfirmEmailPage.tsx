@@ -1,12 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { MailCheck, MailX } from 'lucide-react';
+import { MailCheck, MailWarning, MailX } from 'lucide-react';
 import { PageContainer } from '../components/layout/PageContainer';
 import { useAuth } from '../context/AuthContext';
 import * as authService from '../services/authService';
+import { ApiClientError } from '../services/apiClient';
 
-type Outcome = 'confirming' | 'confirmed' | 'failed';
+// failed: the server turned the link down (expired or used). error: the
+// answer never said so (a dropped connection, too many tries, a server error),
+// so the page keeps the token and lets it be tried again
+type Outcome = 'confirming' | 'confirmed' | 'failed' | 'error';
 type Send = 'idle' | 'sending' | 'sent' | 'error';
 
 // Where the confirmation email's link lands (CYB-135). It sends the token once,
@@ -22,18 +26,28 @@ export function ConfirmEmailPage() {
   const [send, setSend] = useState<Send>('idle');
   const sent = useRef(false);
 
+  const confirm = useCallback(
+    (value: string) => {
+      setOutcome('confirming');
+      authService
+        .confirmEmail(value)
+        .then(() => {
+          setOutcome('confirmed');
+          refreshUser();
+        })
+        .catch((err) =>
+          setOutcome(err instanceof ApiClientError && err.status === 400 ? 'failed' : 'error'),
+        );
+    },
+    [refreshUser],
+  );
+
   useEffect(() => {
     if (!token || sent.current) return;
     sent.current = true;
     navigate(pathname, { replace: true });
-    authService
-      .confirmEmail(token)
-      .then(() => {
-        setOutcome('confirmed');
-        refreshUser();
-      })
-      .catch(() => setOutcome('failed'));
-  }, [token, pathname, navigate, refreshUser]);
+    confirm(token);
+  }, [token, pathname, navigate, confirm]);
 
   const sendLink = async () => {
     setSend('sending');
@@ -45,9 +59,9 @@ export function ConfirmEmailPage() {
     }
   };
 
-  // A link opened twice (or a mail app that opened it first) fails the second
-  // time, but the email it confirmed is still confirmed
-  const confirmed = outcome === 'confirmed' || (outcome === 'failed' && !!user?.emailConfirmed);
+  // A link opened twice fails the second time. The page can't tell whose link
+  // it was, so it says only that the signed-in account's email is confirmed
+  const alreadyConfirmed = outcome === 'failed' && !!user?.emailConfirmed;
 
   if (outcome === 'confirming' || (outcome === 'failed' && isLoading)) {
     return (
@@ -62,7 +76,35 @@ export function ConfirmEmailPage() {
   return (
     <PageContainer width="narrow">
       <div className="panel p-6 text-center">
-        {confirmed ? (
+        {outcome === 'error' && token ? (
+          <>
+            <MailWarning
+              size={28}
+              className="mx-auto mb-3 text-[var(--warning)]"
+              aria-hidden="true"
+            />
+            <h1 className="text-lg font-semibold mb-2">{t('emailConfirm.errorTitle')}</h1>
+            <p className="text-[13px] text-[var(--text2)] mb-5">{t('emailConfirm.errorText')}</p>
+            <button type="button" onClick={() => confirm(token)} className="btn btn-primary">
+              {t('emailConfirm.tryAgain')}
+            </button>
+          </>
+        ) : alreadyConfirmed ? (
+          <>
+            <MailCheck
+              size={28}
+              className="mx-auto mb-3 text-[var(--success)]"
+              aria-hidden="true"
+            />
+            <h1 className="text-lg font-semibold mb-2">{t('emailConfirm.alreadyTitle')}</h1>
+            <p className="text-[13px] text-[var(--text2)] mb-5">
+              {t('emailConfirm.alreadyText', { email: user?.email })}
+            </p>
+            <Link to="/" className="btn btn-primary">
+              {t('emailConfirm.continue')}
+            </Link>
+          </>
+        ) : outcome === 'confirmed' ? (
           <>
             <MailCheck
               size={28}

@@ -481,7 +481,11 @@ export function createAuth<
       if (id === null) throw new AppError(409, 'User already exists');
       await endSession(req);
       await startSession(res, id);
-      await sendConfirmation(id, fields.email, languageOf(res.locals.lang));
+      // The account and its session are made by now, so a link that can't be
+      // kept fails not the sign-up: the banner asks for a new one
+      await sendConfirmation(id, fields.email, languageOf(res.locals.lang)).catch((err) => {
+        console.error('[confirm-email] failed to keep the link at sign-up:', err);
+      });
       res.json({ message: 'User created successfully' });
     },
   );

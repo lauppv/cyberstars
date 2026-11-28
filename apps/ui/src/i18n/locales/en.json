@@ -1234,6 +1234,11 @@
     "failedTitle": "This link doesn't work anymore",
     "failedText": "It has expired or was already used. A link works once, for 24 hours.",
     "signIn": "Sign in to get a new link",
+    "alreadyTitle": "Your email is already confirmed",
+    "alreadyText": "This link doesn't work anymore, but the account you are signed in to, {{email}}, is already confirmed.",
+    "errorTitle": "We couldn't check the link",
+    "errorText": "The connection dropped or there were too many tries at once. Wait a minute and try again.",
+    "tryAgain": "Try again",
     "confirmedShort": "confirmed",
     "unconfirmedShort": "not confirmed"
   },

@@ -21,8 +21,9 @@ function isEmailTaken(err: unknown): boolean {
 }
 
 // CyberStars' accounts as the auth package reaches them. The user table and its
-// queries stay here, and so does the rule that the founder's email signs up as
-// FOUNDER and the first account as ADMIN (userRepo.create)
+// queries stay here, and so do the roles: the first account signs up as ADMIN
+// (userRepo.create), and the founder's email becomes FOUNDER only once it is
+// confirmed (founderRole)
 const store: UserStore<UserRole, Account, Signup> = {
   async create({ name, email, passwordHash, placementScore }) {
     try {

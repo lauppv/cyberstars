@@ -18,6 +18,9 @@ vi.mock('../services/authService', () => ({
 }));
 
 const { ConfirmEmailPage } = await import('./ConfirmEmailPage');
+const { ApiClientError } = await import('../services/apiClient');
+
+const spent = () => new ApiClientError(400, 'This link has expired or was already used');
 
 const TOKEN = 'a'.repeat(43);
 
@@ -65,7 +68,7 @@ describe('ConfirmEmailPage', () => {
 
   it('lets a signed-in account ask for a new link when this one is spent', async () => {
     auth.user = { id: 1, email: 'ana@gmail.com', emailConfirmed: false };
-    confirmEmail.mockRejectedValue(new Error('This link has expired or was already used'));
+    confirmEmail.mockRejectedValue(spent());
     resendConfirmation.mockResolvedValue({ message: 'Confirmation link sent' });
     await renderAt(`/confirm-email?token=${TOKEN}`);
     expect(
@@ -79,7 +82,7 @@ describe('ConfirmEmailPage', () => {
   });
 
   it('sends a guest with a spent link to sign in', async () => {
-    confirmEmail.mockRejectedValue(new Error('This link has expired or was already used'));
+    confirmEmail.mockRejectedValue(spent());
     await renderAt(`/confirm-email?token=${TOKEN}`);
     expect(screen.getByRole('link', { name: 'Sign in to get a new link' })).toHaveAttribute(
       'href',
@@ -87,10 +90,30 @@ describe('ConfirmEmailPage', () => {
     );
   });
 
-  it('still says confirmed when a link opened twice finds the email confirmed already', async () => {
+  it("says the signed-in account's email is confirmed when a spent link finds it so", async () => {
     auth.user = { id: 1, email: 'ana@gmail.com', emailConfirmed: true };
-    confirmEmail.mockRejectedValue(new Error('This link has expired or was already used'));
+    confirmEmail.mockRejectedValue(spent());
     await renderAt(`/confirm-email?token=${TOKEN}`);
+    expect(
+      screen.getByRole('heading', { name: 'Your email is already confirmed' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/signed in to, ana@gmail.com, is already confirmed/),
+    ).toBeInTheDocument();
+  });
+
+  it('keeps the token to try again when the answer never came', async () => {
+    confirmEmail
+      .mockRejectedValueOnce(new ApiClientError(429, 'Too many requests'))
+      .mockResolvedValueOnce({ message: 'Email confirmed' });
+    await renderAt(`/confirm-email?token=${TOKEN}`);
+    expect(screen.getByRole('heading', { name: "We couldn't check the link" })).toBeInTheDocument();
+    expect(screen.getByTestId('address')).toHaveTextContent(/^\/confirm-email$/);
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Try again' }));
+    });
+    expect(confirmEmail).toHaveBeenCalledTimes(2);
+    expect(confirmEmail).toHaveBeenLastCalledWith(TOKEN);
     expect(screen.getByRole('heading', { name: 'Your email is confirmed' })).toBeInTheDocument();
   });
 

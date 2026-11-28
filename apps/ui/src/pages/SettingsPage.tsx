@@ -8,6 +8,7 @@ import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS, switchLanguage } from '../i18n';
 import * as profileService from '../services/profileService';
 import * as authService from '../services/authService';
+import { ApiClientError } from '../services/apiClient';
 import { INPUT_CLS } from '../constants/styles';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
@@ -82,6 +83,8 @@ export function SettingsPage() {
       setLinkMessage({ type: 'ok', text: t('emailConfirm.sent', { email: user?.email }) });
       refreshUser();
     } catch (err) {
+      // Confirmed elsewhere: reading the account again shows it confirmed
+      if (err instanceof ApiClientError && err.status === 409) refreshUser();
       setLinkMessage({
         type: 'err',
         text: err instanceof Error && err.message ? err.message : t('emailConfirm.sendFailed'),

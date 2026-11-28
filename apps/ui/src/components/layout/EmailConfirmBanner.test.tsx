@@ -23,6 +23,7 @@ vi.mock('../../services/authService', () => ({
 }));
 
 const { EmailConfirmBanner, BANNER_AWAY_MS } = await import('./EmailConfirmBanner');
+const { ApiClientError } = await import('../../services/apiClient');
 
 const USER = {
   id: 4,
@@ -100,6 +101,16 @@ describe('EmailConfirmBanner', () => {
       fireEvent.click(screen.getByRole('button', { name: 'Send again' }));
     });
     expect(screen.getByRole('alert')).toHaveTextContent('Too many links asked for');
+    expect(refreshUser).not.toHaveBeenCalled();
+  });
+
+  it('reads the account again when the email was confirmed elsewhere', async () => {
+    resendConfirmation.mockRejectedValue(new ApiClientError(409, 'Email already confirmed'));
+    renderAt();
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'Send again' }));
+    });
+    expect(refreshUser).toHaveBeenCalled();
   });
 
   it('opens Settings on its email section', () => {

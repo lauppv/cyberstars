@@ -1257,6 +1257,11 @@
     "failedTitle": "Linkul ăsta nu mai merge",
     "failedText": "A expirat sau a fost deja folosit. Un link merge o singură dată, timp de 24 de ore.",
     "signIn": "Conectează-te ca să primești un link nou",
+    "alreadyTitle": "Emailul tău e deja confirmat",
+    "alreadyText": "Linkul ăsta nu mai merge, dar contul în care ești conectat, {{email}}, e deja confirmat.",
+    "errorTitle": "Nu am putut verifica linkul",
+    "errorText": "Conexiunea s-a întrerupt sau au fost prea multe încercări deodată. Așteaptă un minut și încearcă din nou.",
+    "tryAgain": "Încearcă din nou",
     "confirmedShort": "confirmat",
     "unconfirmedShort": "neconfirmat"
   },
