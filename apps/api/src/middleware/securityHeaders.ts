@@ -3,15 +3,15 @@ import helmet from 'helmet';
 import { WEB_PREVIEW_PATH } from '@cyberstars/shared/webFiles';
 
 // Restricted CSP as defence-in-depth: scripts/objects locked to our own origin
-// (plus the unpkg three.js bundle the Laniakea explorer loads at runtime), so a
-// future regression that injects raw HTML can't pull in arbitrary scripts.
+// (three.js too, which ships with the site since CYB-144), so a future
+// regression that injects raw HTML can't pull in arbitrary scripts.
 // 'unsafe-inline' stays for styles only: React inline styles and CodeMirror's
 // injected <style> tags need it, and inline styles are not an XSS vector.
 const siteHeaders = helmet({
   contentSecurityPolicy: {
     useDefaults: true,
     directives: {
-      scriptSrc: ["'self'", 'https://unpkg.com'],
+      scriptSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       // The fonts ship with the app, so nothing is fetched from a font host.
       fontSrc: ["'self'"],
