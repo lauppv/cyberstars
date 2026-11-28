@@ -17,6 +17,38 @@ import type {
 // passing attempt besides.
 const HISTORY_CAP = 20;
 
+// What an attempt keeps of the program's own output and errors. The runners
+// stop a program only at 1 MB of each, so 10 Run Tests a minute could write
+// about 20 MB a minute into the history. The student saw it all right after
+// the run; the history keeps the start, which is where a failure shows.
+export const SAVED_OUTPUT_MAX_LENGTH = 8000;
+
+const CUT_NOTE = {
+  en: '\n… [cut here: the history keeps only the start]',
+  ro: '\n… [tăiat aici: istoricul păstrează doar începutul]',
+};
+
+function cut(text: string, lang: 'en' | 'ro'): string {
+  if (text.length <= SAVED_OUTPUT_MAX_LENGTH) return text;
+  let end = SAVED_OUTPUT_MAX_LENGTH;
+  // Never keep half of a character written as two code units (an emoji):
+  // Postgres refuses a lone one in JSON, and the attempt would go unsaved
+  const last = text.charCodeAt(end - 1);
+  if (last >= 0xd800 && last <= 0xdbff) end -= 1;
+  return text.slice(0, end) + CUT_NOTE[lang];
+}
+
+// The failed case as the history keeps it: what the student's program wrote
+// (its output, its errors, what a web page had) cut, the rest as it was
+function savedCase(c: TestCaseResult, lang: 'en' | 'ro'): TestCaseResult {
+  return {
+    ...c,
+    ...(c.actual !== undefined && { actual: cut(c.actual, lang) }),
+    ...(c.error !== undefined && { error: cut(c.error, lang) }),
+    ...(c.web?.found != null && { web: { ...c.web, found: cut(c.web.found, lang) } }),
+  };
+}
+
 function toSummary(row: repo.SubmissionSummaryRow): SubmissionSummary {
   return {
     id: row.id,
@@ -48,8 +80,10 @@ function toDetail(row: LessonSubmission): SubmissionDetail {
 }
 
 // Store one judge verdict in the student's history and return it as listed.
-// The failed case is the one the run stopped on, kept exactly as the student
-// saw it (a hidden case has no expected output to leak).
+// The failed case is the one the run stopped on, kept as the student saw it
+// (a hidden case has no expected output to leak) but for its output, errors
+// and a compile error, cut to SAVED_OUTPUT_MAX_LENGTH. `result` itself, which
+// goes back to the student, stays whole.
 export async function record(
   userId: number,
   courseKey: string,
@@ -73,9 +107,10 @@ export async function record(
       lang,
       language,
       code,
-      syntaxError: result.syntaxError ?? null,
+      syntaxError: result.syntaxError == null ? null : cut(result.syntaxError, lang),
       structureFailures: result.structureFailures as unknown as Prisma.InputJsonValue,
-      failedCase: failedCase as unknown as Prisma.InputJsonValue | null,
+      failedCase: (failedCase &&
+        savedCase(failedCase, lang)) as unknown as Prisma.InputJsonValue | null,
     },
     HISTORY_CAP,
     // A web lesson's next lesson starts from its newest passing site

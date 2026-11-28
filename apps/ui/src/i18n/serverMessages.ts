@@ -133,6 +133,7 @@ const RO: Record<string, string> = {
   'Subject is required': 'Subiectul este obligatoriu',
   'Subject is too long (max 200 chars)': 'Subiectul e prea lung (cel mult 200 de caractere)',
   'Message is required': 'Mesajul este obligatoriu',
+  'Message is too long (max 5000 chars)': 'Mesajul e prea lung (cel mult 5000 de caractere)',
   // lessons, tests, the terminal and the tutor
   'Invalid course': 'Curs invalid',
   'Invalid language': 'Limbaj invalid',

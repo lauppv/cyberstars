@@ -244,7 +244,9 @@ model DailyPick {
 // for the lesson's submission history. Guests keep no history. Only the newest
 // 20 per user and lesson are kept: submissions.repository prunes older rows in
 // the same transaction as each insert. failedCase is the case the run stopped
-// on, stored as the student saw it (a hidden case carries no expected output).
+// on, stored as the student saw it (a hidden case carries no expected output),
+// but what the program wrote, and syntaxError, cut to their first 8,000
+// characters (submissions.service).
 model LessonSubmission {
   id                Int      @id @default(autoincrement())
   userId            Int      @map("user_id")

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { MessageSquarePlus } from 'lucide-react';
 import { INPUT_CLS } from '../../constants/styles';
 import * as supportService from '../../services/supportService';
+import { SUPPORT_MESSAGE_MAX_LENGTH, SUPPORT_SUBJECT_MAX_LENGTH } from '@cyberstars/shared/support';
 
 // The page's look, or Laniakea's cockpit
 const LOOKS = {
@@ -70,8 +71,12 @@ export function SendFeedback({
     try {
       await supportService.createTicket({
         type: 'FEEDBACK',
-        subject: subject.slice(0, 200),
-        message: context ? `${message.trim()}\n\n${context}` : message.trim(),
+        subject: subject.slice(0, SUPPORT_SUBJECT_MAX_LENGTH),
+        // The context goes last, so past the limit it is what gets cut
+        message: (context ? `${message.trim()}\n\n${context}` : message.trim()).slice(
+          0,
+          SUPPORT_MESSAGE_MAX_LENGTH,
+        ),
       });
       setSent(true);
     } catch (err) {
@@ -90,6 +95,7 @@ export function SendFeedback({
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder={t('feedback.placeholder')}
+          maxLength={SUPPORT_MESSAGE_MAX_LENGTH}
           rows={3}
           autoFocus
           className={`${cls.field} mt-1.5 block`}
