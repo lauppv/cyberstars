@@ -63,7 +63,7 @@ describe('planChecks', () => {
       ]),
     ).toEqual([
       { name: 'python', image: 'python:3.10-slim', targets: 'python/string-reverse' },
-      { name: 'c', image: 'gcc:latest', targets: 'algo-c/binary-search-c' },
+      { name: 'c', image: 'gcc:16.1.0', targets: 'algo-c/binary-search-c' },
       { name: 'java', image: 'eclipse-temurin:21-jdk-alpine', targets: 'java/hashmap' },
     ]);
   });
@@ -78,7 +78,7 @@ describe('planChecks', () => {
       ]),
     ).toEqual([
       { name: 'python', image: 'python:3.10-slim', targets: 'trees-graphs/python/trees' },
-      { name: 'c', image: 'gcc:latest', targets: 'trees-graphs/c/trees' },
+      { name: 'c', image: 'gcc:16.1.0', targets: 'trees-graphs/c/trees' },
       { name: 'java', image: 'eclipse-temurin:21-jdk-alpine', targets: 'trees-graphs/java/trees' },
     ]);
   });
@@ -92,7 +92,7 @@ describe('planChecks', () => {
       ]),
     ).toEqual([
       { name: 'python', image: 'python:3.10-slim', targets: 'algo-trees-graphs/python/max-depth' },
-      { name: 'c', image: 'gcc:latest', targets: 'algo-trees-graphs/c/max-depth' },
+      { name: 'c', image: 'gcc:16.1.0', targets: 'algo-trees-graphs/c/max-depth' },
       {
         name: 'java',
         image: 'eclipse-temurin:21-jdk-alpine',

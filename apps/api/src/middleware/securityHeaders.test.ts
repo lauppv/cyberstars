@@ -33,7 +33,7 @@ describe('securityHeaders', () => {
       '/lesson/web-dev/first-page',
     ]) {
       const policy = await policyOf(path);
-      expect(policy, path).toContain("script-src 'self' https://unpkg.com");
+      expect(policy, path).toContain("script-src 'self';");
       expect(policy, path).not.toContain('sandbox');
     }
   });

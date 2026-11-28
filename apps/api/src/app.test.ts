@@ -79,7 +79,9 @@ describe('content security policy', () => {
     const res = await request(app).get('/api/time');
     const csp = res.headers['content-security-policy'];
     expect(csp).toBeDefined();
-    expect(csp).toContain("script-src 'self' https://unpkg.com");
+    // Only the site's own scripts: three.js ships with it (CYB-144)
+    expect(csp).toContain("script-src 'self';");
+    expect(csp).not.toContain('unpkg');
     expect(csp).toContain("font-src 'self';");
     expect(csp).not.toContain('fonts.googleapis.com');
     expect(csp).not.toContain('fonts.gstatic.com');

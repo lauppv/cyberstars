@@ -275,7 +275,7 @@ jobs:
       # The runner image already has Chromium's libraries; --with-deps only added
       # fonts and xvfb through apt, which took up to 11 min on a slow mirror
       - run: npx playwright install chromium
-      - run: docker pull python:3.10-slim && docker pull gcc:latest && docker pull eclipse-temurin:21-jdk-alpine
+      - run: docker pull python:3.10-slim && docker pull gcc:16.1.0 && docker pull eclipse-temurin:21-jdk-alpine
       - run: docker build -t cyberstars-linux-sandbox apps/api/src/runtimes/linux-sandbox
       - run: docker build -t cyberstars-web-sandbox apps/api/src/runtimes/web-sandbox
       - run: npm run test:e2e:docker

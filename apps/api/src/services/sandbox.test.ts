@@ -7,7 +7,7 @@ describe('the code sandbox', () => {
   it('runs Python, Java and C, and nothing by a course name', () => {
     expect(sandbox.runtimeOf('python')?.image).toBe('python:3.10-slim');
     expect(sandbox.runtimeOf('java')?.memory).toBe('256m');
-    expect(sandbox.runtimeOf('c')?.image).toBe('gcc:latest');
+    expect(sandbox.runtimeOf('c')?.image).toBe('gcc:16.1.0');
     expect(sandbox.runtimeOf('algo-java')).toBeNull();
   });
 });
