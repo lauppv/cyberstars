@@ -1,19 +1,30 @@
 import { prisma } from '../config/db.js';
-import { PEOPLE } from './user.repository.js';
+import { BOT_EMAIL_ENDINGS, PEOPLE } from './user.repository.js';
 import type { AdminUserStats, AdminProgressStats, AdminTutorStats } from '@cyberstars/shared/admin';
 
 function daysAgo(days: number): Date {
   return new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 }
 
-// Students only, like every number on the admin page (see PEOPLE)
+// Students only, like every number on the admin page (see PEOPLE); byRole
+// alone also counts the founder, the admins and our test accounts
 export async function userStats(): Promise<AdminUserStats> {
-  const [total, newLast7Days, newLast30Days] = await Promise.all([
+  const [total, newLast7Days, newLast30Days, founders, admins, bots] = await Promise.all([
     prisma.user.count({ where: PEOPLE }),
     prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(7) } } }),
     prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(30) } } }),
+    prisma.user.count({ where: { role: 'FOUNDER' } }),
+    prisma.user.count({ where: { role: 'ADMIN' } }),
+    prisma.user.count({
+      where: { role: 'USER', OR: BOT_EMAIL_ENDINGS.map((endsWith) => ({ email: { endsWith } })) },
+    }),
   ]);
-  return { total, newLast7Days, newLast30Days };
+  return {
+    total,
+    byRole: { FOUNDER: founders, ADMIN: admins, USER: total, BOT: bots },
+    newLast7Days,
+    newLast30Days,
+  };
 }
 
 export async function progressStats(): Promise<AdminProgressStats> {

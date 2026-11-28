@@ -44,6 +44,7 @@ beforeEach(() => {
   mockAdminRepo.tutorStats.mockResolvedValue({ promptsLast7Days: 9, promptsLast30Days: 30 });
   mockAdminRepo.userStats.mockResolvedValue({
     total: 3,
+    byRole: { FOUNDER: 1, ADMIN: 1, USER: 3, BOT: 0 },
     newLast7Days: 1,
     newLast30Days: 2,
   });

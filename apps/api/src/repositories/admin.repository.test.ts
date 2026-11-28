@@ -17,21 +17,43 @@ const { PEOPLE } = await import('./user.repository.js');
 beforeEach(() => vi.clearAllMocks());
 
 describe('userStats', () => {
-  it('counts students only: in all and made in the last 7 and 30 days', async () => {
+  it('counts students only: in all and made in the last 7 and 30 days, and the accounts per role', async () => {
     vi.useFakeTimers({ now: new Date('2026-11-15T12:00:00Z') });
     mockPrisma.user.count
       .mockResolvedValueOnce(10) // total
       .mockResolvedValueOnce(3) // newLast7Days
-      .mockResolvedValueOnce(6); // newLast30Days
+      .mockResolvedValueOnce(6) // newLast30Days
+      .mockResolvedValueOnce(1) // founders
+      .mockResolvedValueOnce(2) // admins
+      .mockResolvedValueOnce(4); // bots
 
     const result = await repo.userStats();
     vi.useRealTimers();
 
-    expect(result).toEqual({ total: 10, newLast7Days: 3, newLast30Days: 6 });
+    expect(result).toEqual({
+      total: 10,
+      byRole: { FOUNDER: 1, ADMIN: 2, USER: 10, BOT: 4 },
+      newLast7Days: 3,
+      newLast30Days: 6,
+    });
     expect(mockPrisma.user.count.mock.calls).toEqual([
       [{ where: PEOPLE }],
       [{ where: { ...PEOPLE, createdAt: { gte: new Date('2026-11-08T12:00:00Z') } } }],
       [{ where: { ...PEOPLE, createdAt: { gte: new Date('2026-10-16T12:00:00Z') } } }],
+      [{ where: { role: 'FOUNDER' } }],
+      [{ where: { role: 'ADMIN' } }],
+      [
+        {
+          where: {
+            role: 'USER',
+            OR: [
+              { email: { endsWith: '@fake.com' } },
+              { email: { endsWith: '.fake.com' } },
+              { email: { endsWith: '@bots.cyberstars.app' } },
+            ],
+          },
+        },
+      ],
     ]);
   });
 

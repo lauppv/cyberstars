@@ -37,6 +37,12 @@ describe('Admin stats', () => {
     });
     expect(body.users).toEqual({
       total: expect.any(Number),
+      byRole: {
+        FOUNDER: expect.any(Number),
+        ADMIN: expect.any(Number),
+        USER: expect.any(Number),
+        BOT: expect.any(Number),
+      },
       newLast7Days: expect.any(Number),
       newLast30Days: expect.any(Number),
     });
@@ -66,8 +72,13 @@ describe('Admin stats', () => {
     await createAuthenticatedAgent();
     const res = await a.get('/api/admin/stats').expect(200);
     // Of the sentinel ADMIN, the promoted admin, a moderator, the founder, 3
-    // bots and 1 real student, only the student
-    expect(res.body.users).toEqual({ total: 1, newLast7Days: 1, newLast30Days: 1 });
+    // bots and 1 real student, only the student; byRole counts them all but the moderator
+    expect(res.body.users).toEqual({
+      total: 1,
+      byRole: { FOUNDER: 1, ADMIN: 2, USER: 1, BOT: 3 },
+      newLast7Days: 1,
+      newLast30Days: 1,
+    });
   });
 
   it("counts students' completed lessons only", async () => {

@@ -2,6 +2,8 @@
 // aren't our test accounts, never moderators, admins or the founder
 export interface AdminUserStats {
   total: number;
+  /** The one count past the students: accounts per role, USER being the students (= total) and BOT our test accounts. */
+  byRole: { FOUNDER: number; ADMIN: number; USER: number; BOT: number };
   newLast7Days: number;
   newLast30Days: number;
 }
