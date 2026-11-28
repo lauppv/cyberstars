@@ -69,9 +69,9 @@ describe('getCourseProgress', () => {
     expect(result.lessons).toHaveLength(3);
     expect(result.lessons[0].completed).toBe(true);
     expect(result.lessons[1].completed).toBe(false);
-    // XP derived from 1-based sortOrder: lesson 'a' (sortOrder 1) worth 10; total 10+11+12.
+    // A lesson gives 10 XP first and 30 last: a=10, b=20, c=30.
     expect(result.earnedXp).toBe(10);
-    expect(result.totalXp).toBe(33);
+    expect(result.totalXp).toBe(60);
   });
 
   it('adds the daily bonus XP for a completed lesson that won the daily pick', async () => {
@@ -93,13 +93,33 @@ describe('getCourseProgress', () => {
         lastAccessedAt: null,
       },
     ]);
-    // 'a' won the daily bonus; base XP a=10, b=11. Bonus = round(10*0.2)=2.
+    // 'a' won the daily bonus; base XP a=10, b=30. Bonus = round(10*0.2)=2.
     mockDailyRepo.getAwardedSlugs.mockResolvedValue(['a']);
 
     const result = await getCourseProgress(1, 'python');
-    expect(result.earnedXp).toBe(10 + 11 + 2);
+    expect(result.earnedXp).toBe(10 + 30 + 2);
     // Bonus never inflates the course baseline total.
-    expect(result.totalXp).toBe(21);
+    expect(result.totalXp).toBe(40);
+  });
+
+  it('pays a challenge by the difficulty in its title, bonus included', async () => {
+    mockCurriculumRepo.getLessonsByCourse.mockResolvedValue([
+      { slug: 'a', title: 'Hard · A', sortOrder: 1 },
+      { slug: 'b', title: 'Easy · B', sortOrder: 2 },
+    ]);
+    mockProgressRepo.getByCourse.mockResolvedValue([
+      {
+        lessonSlug: 'a',
+        completed: true,
+        completedAt: new Date('2025-01-01'),
+        lastAccessedAt: null,
+      },
+    ]);
+    mockDailyRepo.getAwardedSlugs.mockResolvedValue(['a']);
+
+    const result = await getCourseProgress(1, 'algo-python');
+    expect(result.earnedXp).toBe(100 + 20);
+    expect(result.totalXp).toBe(140);
   });
 
   it('returns zero progress when no lessons completed', async () => {
