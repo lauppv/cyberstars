@@ -512,21 +512,26 @@ export function MessageThread({
                     </div>
                   )}
                   {!m.deleted && m.reactions.length > 0 && (
-                    <div className={`flex flex-wrap gap-1 mt-1 ${mine ? 'justify-end' : ''}`}>
+                    // Pinned to the bubble's bottom edge
+                    <div
+                      className={`relative flex flex-wrap gap-1 -mt-1.5 px-2 ${mine ? 'justify-end' : ''}`}
+                    >
                       {groupReactions(m.reactions, currentUserId).map((g) => (
                         <button
                           key={g.emoji}
                           onClick={() => react(m.id, g.emoji)}
                           aria-pressed={g.active}
-                          className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[12px] leading-none border transition cursor-pointer ${
+                          // Opaque, with a ring of the thread's background, so the
+                          // chip reads apart from the bubble it overlaps
+                          className={`flex items-center gap-1 h-[22px] px-1.5 rounded-full text-[12px] leading-none border ring-2 ring-[var(--bg2)] transition cursor-pointer ${
                             g.active
-                              ? 'bg-[var(--accent)]/25 border-[var(--accent)]/50'
-                              : 'bg-[var(--glass)] border-[var(--border)] hover:bg-[var(--accent)]/15'
+                              ? 'bg-[color-mix(in_srgb,var(--accent)_28%,var(--surface2))] border-[var(--accent)]/60'
+                              : 'bg-[var(--surface2)] border-[var(--border)] hover:border-[var(--accent)]/50'
                           }`}
                         >
                           <span>{g.emoji}</span>
                           {g.count > 1 && (
-                            <span className="text-[10px] text-[var(--text3)] tabular-nums">
+                            <span className="text-[11px] text-[var(--text2)] tabular-nums">
                               {g.count}
                             </span>
                           )}
