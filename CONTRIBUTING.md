@@ -13,7 +13,7 @@ git remote add upstream https://github.com/lauppv/cyberstars.git
 cp .env.example .env
 sudo -u postgres psql -c "CREATE USER cyberstars WITH PASSWORD 'change-me';"
 sudo -u postgres psql -c "CREATE DATABASE cyberstars OWNER cyberstars;"
-for i in gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine; do docker pull $i; done
+for i in gcc:16.1.0 python:3.10-slim eclipse-temurin:21-jdk-alpine; do docker pull $i; done
 docker build -t cyberstars-linux-sandbox apps/api/src/runtimes/linux-sandbox
 docker build -t cyberstars-web-sandbox apps/api/src/runtimes/web-sandbox
 npm ci
