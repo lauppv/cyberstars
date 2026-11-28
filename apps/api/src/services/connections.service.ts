@@ -67,6 +67,8 @@ export async function sendRequest(requesterId: number, addresseeId: number): Pro
   }
 
   const row = await repo.create(requesterId, addresseeId);
+  // A block that landed since the check above
+  if (!row) throw new AppError(403, blocks.REQUEST_NOT_SENT);
   void notificationsService.notify({
     recipientIds: [addresseeId],
     actorId: requesterId,

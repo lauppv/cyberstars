@@ -1,5 +1,6 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
+import { lockPair } from './blocks.repository.js';
 
 const userSelect = { id: true, name: true, avatarUrl: true } as const;
 
@@ -34,10 +35,26 @@ export function findById(id: number): Promise<ConnectionRow | null> {
   return prisma.connection.findUnique({ where: { id }, include: connectionInclude });
 }
 
-export function create(requesterId: number, addresseeId: number): Promise<ConnectionRow> {
-  return prisma.connection.create({
-    data: { requesterId, addresseeId },
-    include: connectionInclude,
+// The request, or null when a block stands between the two: checked under
+// the pair's lock, which a block takes too, so one landing at the same moment
+// can't leave the request behind
+export function create(requesterId: number, addresseeId: number): Promise<ConnectionRow | null> {
+  return prisma.$transaction(async (tx) => {
+    await lockPair(tx, requesterId, addresseeId);
+    const blocked = await tx.userBlock.findFirst({
+      where: {
+        OR: [
+          { blockerId: requesterId, blockedId: addresseeId },
+          { blockerId: addresseeId, blockedId: requesterId },
+        ],
+      },
+      select: { id: true },
+    });
+    if (blocked) return null;
+    return tx.connection.create({
+      data: { requesterId, addresseeId },
+      include: connectionInclude,
+    });
   });
 }
 

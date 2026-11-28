@@ -431,6 +431,16 @@ describe('messages.service blocks (CYB-140)', () => {
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
   });
 
+  it('keeps a message off the screen of one who blocked while it was being sent', async () => {
+    mockRepo.createMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockBlocks.isBlockedBy
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => true);
+    await sendMessage(1, 100, 'hi');
+    expect(mockWs.pushToUser.mock.calls.map((c) => c[0])).toEqual([1]);
+  });
+
   it('refuses a reaction from the blocked one', async () => {
     block(1, 2);
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));

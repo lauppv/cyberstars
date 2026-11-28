@@ -236,4 +236,15 @@ describe('connections.service sendRequest with a block (CYB-140)', () => {
     });
     expect(mockRepo.create).not.toHaveBeenCalled();
   });
+
+  it('refuses a request when a block lands between the check and the write', async () => {
+    mockUserRepo.findById.mockResolvedValue({ id: 2 });
+    mockRepo.findBetween.mockResolvedValue(null);
+    mockRepo.create.mockResolvedValue(null);
+    await expect(sendRequest(1, 2)).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Request could not be sent',
+    });
+    expect(mockNotifications.notify).not.toHaveBeenCalled();
+  });
 });

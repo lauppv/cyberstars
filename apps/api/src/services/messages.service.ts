@@ -110,7 +110,7 @@ export async function startConversation(
   const unread = await repo.unreadByConversation(userId);
 
   // Same live delivery as sendMessage
-  pushToUser(recipientId, { channel: 'dm', type: 'message', payload: message });
+  await pushToOther(row, userId, { channel: 'dm', type: 'message', payload: message });
   pushToUser(userId, { channel: 'dm', type: 'message', payload: message });
   return { conversation: shapeConversation(row, userId, unread.get(row.id) ?? 0), message };
 }
@@ -150,7 +150,9 @@ export async function sendMessage(
   // Live-deliver to both participants (recipient sees it instantly; the sender's
   // other tabs stay in sync). DB is the source of truth if either is offline.
   // No bell notification: the messages button's unread badge already covers it.
-  pushToUser(recipientId, { channel: 'dm', type: 'message', payload: message });
+  // pushToOther checks the block again: one that landed since the check above
+  // keeps the message off the blocker's screen, as it is out of their inbox.
+  await pushToOther(row, userId, { channel: 'dm', type: 'message', payload: message });
   pushToUser(userId, { channel: 'dm', type: 'message', payload: message });
   return message;
 }
