@@ -479,11 +479,17 @@ export function MessageThread({
                       className={`flex items-center gap-1 max-w-full ${mine ? 'flex-row-reverse' : 'flex-row'}`}
                     >
                       <div
-                        className={`px-3 py-2 rounded-[var(--radius)] text-[13px] leading-snug whitespace-pre-wrap break-words min-w-0 ${
-                          mine
-                            ? 'bg-[var(--accent)]/25 border border-[var(--accent)]/40 text-[var(--text)]'
-                            : 'bg-[var(--glass)] border border-[var(--border)] text-[var(--text)]'
-                        } ${m.deleted ? 'italic text-[var(--text3)]' : ''}`}
+                        // A bubble with one sharp corner on the sender's side:
+                        // yours filled with the accent, theirs a quiet glass
+                        className={`px-3.5 py-2 rounded-2xl text-[13.5px] leading-relaxed whitespace-pre-wrap break-words min-w-0 ${
+                          mine ? 'rounded-br-[4px]' : 'rounded-bl-[4px]'
+                        } ${
+                          m.deleted
+                            ? 'bg-transparent border border-dashed border-[var(--border)] italic text-[var(--text3)]'
+                            : mine
+                              ? 'bg-[var(--accent)] text-white'
+                              : 'bg-[var(--glass)] border border-[var(--border)] text-[var(--text)]'
+                        }`}
                       >
                         {m.deleted ? t('messages.deletedMessage') : m.content}
                       </div>
