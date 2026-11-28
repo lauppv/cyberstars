@@ -8,5 +8,6 @@ const REPO_ROOT = path.resolve(import.meta.dirname, '../../../..');
 // put when the code moves around: the secrets and uploaded avatars
 export const ENV_FILE = path.join(REPO_ROOT, '.env');
 export const UPLOADS_DIR = path.join(REPO_ROOT, 'uploads');
+export const AVATARS_DIR = path.join(UPLOADS_DIR, 'avatars');
 
 export const UI_BUILD_DIR = path.join(REPO_ROOT, 'apps', 'ui', 'dist');

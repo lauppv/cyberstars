@@ -10,16 +10,14 @@ import * as emailService from '../services/email.service.js';
 import { auth } from '../services/auth.js';
 import { computeStreak, listDone, recentActivity } from '../services/activity.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { UPLOADS_DIR } from '../config/paths.js';
-
-const UPLOAD_DIR = path.join(UPLOADS_DIR, 'avatars');
+import { AVATARS_DIR } from '../config/paths.js';
 
 // Create the upload dir lazily on first use instead of at import time, so the
 // module imports without filesystem side effects (audit H9). Cached so the
 // mkdir runs at most once.
 let uploadDirReady: Promise<void> | null = null;
 function ensureUploadDir(): Promise<void> {
-  if (!uploadDirReady) uploadDirReady = fs.mkdir(UPLOAD_DIR, { recursive: true }).then(() => {});
+  if (!uploadDirReady) uploadDirReady = fs.mkdir(AVATARS_DIR, { recursive: true }).then(() => {});
   return uploadDirReady;
 }
 
@@ -103,11 +101,11 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
     const avatarUrl = await withAvatarLock(userId, async () => {
       const ext = type.ext;
       const filename = `${userId}-${Date.now()}.${ext}`;
-      const filepath = path.join(UPLOAD_DIR, filename);
+      const filepath = path.join(AVATARS_DIR, filename);
 
       const user = await userRepo.findById(userId);
       if (user?.avatarUrl) {
-        const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
+        const oldFile = path.join(AVATARS_DIR, path.basename(user.avatarUrl));
         await fs.unlink(oldFile).catch(() => {});
       }
 
@@ -130,7 +128,7 @@ export async function deleteAvatar(req: Request, res: Response, next: NextFuncti
     await withAvatarLock(userId, async () => {
       const user = await userRepo.findById(userId);
       if (user?.avatarUrl) {
-        const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
+        const oldFile = path.join(AVATARS_DIR, path.basename(user.avatarUrl));
         await fs.unlink(oldFile).catch(() => {});
       }
       await userRepo.updateProfile(userId, { avatarUrl: null });
