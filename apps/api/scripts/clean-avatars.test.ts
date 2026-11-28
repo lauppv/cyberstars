@@ -1,15 +1,29 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
 import { cleanAvatarsDir } from './clean-avatars.js';
 
+// Lets a test do something while a file is being cleaned, as an upload would
+const during = vi.hoisted(() => ({ clean: null as null | ((input: Buffer) => Promise<void>) }));
+vi.mock('../src/services/avatar-image.service.js', async (importOriginal) => {
+  const real = await importOriginal<typeof import('../src/services/avatar-image.service.js')>();
+  return {
+    ...real,
+    cleanAvatar: async (...args: Parameters<typeof real.cleanAvatar>) => {
+      await during.clean?.(args[0]);
+      return real.cleanAvatar(...args);
+    },
+  };
+});
+
 let dir: string;
 beforeEach(async () => {
   dir = await fs.mkdtemp(path.join(os.tmpdir(), 'avatars-'));
 });
 afterEach(async () => {
+  during.clean = null;
   await fs.rm(dir, { recursive: true, force: true });
 });
 
@@ -105,6 +119,35 @@ describe('cleanAvatarsDir', () => {
       ['2-2.jpg', 'cleaned'],
     ]);
     expect(await fs.readFile(path.join(dir, '1-1.png'), 'utf8')).toBe('not a picture');
+  });
+
+  it('skips an avatar its owner replaced while it was cleaned, bringing nothing back', async () => {
+    await fs.writeFile(path.join(dir, '1-1.jpg'), await photo('jpeg'));
+    await fs.writeFile(path.join(dir, '2-2.jpg'), await photo('jpeg'));
+    during.clean = async () => {
+      // The upload of a new avatar deletes the old file
+      await fs.rm(path.join(dir, '1-1.jpg'), { force: true });
+    };
+
+    const report = await cleanAvatarsDir(dir);
+    expect(report.map((r) => [r.file, r.outcome, r.reason])).toEqual([
+      ['1-1.jpg', 'skipped', 'gone'],
+      ['2-2.jpg', 'cleaned', undefined],
+    ]);
+    expect(await fs.readdir(dir)).toEqual(['2-2.jpg']);
+  });
+
+  it('reports a file it cannot write and goes on with the rest', async () => {
+    await fs.writeFile(path.join(dir, '1-1.jpg'), await photo('jpeg'));
+    await fs.writeFile(path.join(dir, '2-2.jpg'), await photo('jpeg'));
+    // The first file's temporary name is taken by a folder, so writing it fails
+    await fs.mkdir(path.join(dir, '.1-1.jpg.tmp'));
+
+    const report = await cleanAvatarsDir(dir);
+    expect(report.map((r) => [r.file, r.outcome])).toEqual([
+      ['1-1.jpg', 'failed'],
+      ['2-2.jpg', 'cleaned'],
+    ]);
   });
 
   it('finds nothing to do without the folder', async () => {

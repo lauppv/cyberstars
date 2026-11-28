@@ -77,10 +77,22 @@ async function cleanOne(dir: string, file: string, dryRun: boolean): Promise<Cle
   }
 
   // Written beside it and renamed over it, so the site never serves half a file.
-  const { mode } = await fs.stat(full);
+  // Its owner may have replaced it meanwhile (the upload deletes the old file):
+  // renaming then would bring back a file nobody points to, so it is checked again
+  // just before.
   const tmp = path.join(dir, `.${file}.tmp`);
-  await fs.writeFile(tmp, output, { mode });
-  await fs.rename(tmp, full);
+  try {
+    const { mode } = await fs.stat(full);
+    await fs.writeFile(tmp, output, { mode });
+    await fs.access(full);
+    await fs.rename(tmp, full);
+  } catch (err) {
+    await fs.rm(tmp, { force: true }).catch(() => {});
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+      return { file, outcome: 'skipped', reason: 'gone' };
+    }
+    throw err;
+  }
   return { file, outcome: 'cleaned' };
 }
 
@@ -96,7 +108,14 @@ export async function cleanAvatarsDir(dir: string, { dryRun = false } = {}): Pro
   // One at a time: the server has one CPU and the site keeps running.
   for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
     if (!entry.isFile() || entry.name.startsWith('.')) continue;
-    report.push(await cleanOne(dir, entry.name, dryRun));
+    // One file that can't be written mustn't stop the others
+    report.push(
+      await cleanOne(dir, entry.name, dryRun).catch((err: Error) => ({
+        file: entry.name,
+        outcome: 'failed' as const,
+        reason: err.message,
+      })),
+    );
   }
   return report;
 }
