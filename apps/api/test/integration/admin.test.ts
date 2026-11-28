@@ -43,6 +43,7 @@ describe('Admin stats', () => {
         USER: expect.any(Number),
         BOT: expect.any(Number),
       },
+      emailVerified: expect.any(Number),
       newLast7Days: expect.any(Number),
       newLast30Days: expect.any(Number),
     });
@@ -60,7 +61,7 @@ describe('Admin stats', () => {
     expect(typeof body.generatedAt).toBe('string');
   });
 
-  it('counts students only, no moderators, admins, founder or test accounts', async () => {
+  it('counts students only in the new accounts, everyone but moderators in total and per role', async () => {
     const a = await admin();
     for (const role of ['MODERATOR', 'FOUNDER'] as const) {
       const id = await userIdFor((await createAuthenticatedAgent()).email);
@@ -72,13 +73,30 @@ describe('Admin stats', () => {
     await createAuthenticatedAgent();
     const res = await a.get('/api/admin/stats').expect(200);
     // Of the sentinel ADMIN, the promoted admin, a moderator, the founder, 3
-    // bots and 1 real student, only the student; byRole counts them all but the moderator
+    // bots and 1 real student, the new ones count only the student; total and
+    // byRole count them all but the moderator
     expect(res.body.users).toEqual({
-      total: 1,
+      total: 7,
       byRole: { FOUNDER: 1, ADMIN: 2, USER: 1, BOT: 3 },
+      emailVerified: 0,
       newLast7Days: 1,
       newLast30Days: 1,
     });
+  });
+
+  it('counts the verified emails of every account but the moderators', async () => {
+    const a = await admin();
+    const student = await userIdFor((await createAuthenticatedAgent()).email);
+    const bot = await userIdFor((await createAuthenticatedAgent({ email: 'v@fake.com' })).email);
+    const moderator = await userIdFor((await createAuthenticatedAgent()).email);
+    await createAuthenticatedAgent(); // not verified
+    await prisma.user.update({ where: { id: moderator }, data: { role: 'MODERATOR' } });
+    await prisma.user.updateMany({
+      where: { id: { in: [student, bot, moderator] } },
+      data: { emailConfirmedAt: new Date() },
+    });
+    const res = await a.get('/api/admin/stats').expect(200);
+    expect(res.body.users.emailVerified).toBe(2);
   });
 
   it("counts students' completed lessons only", async () => {

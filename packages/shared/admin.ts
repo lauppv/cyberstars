@@ -1,9 +1,13 @@
 // Every number on the admin page counts students only: USER accounts that
-// aren't our test accounts, never moderators, admins or the founder
+// aren't our test accounts, never moderators, admins or the founder. The
+// users row's Total, its roles and the verified emails are the exception.
 export interface AdminUserStats {
+  /** All accounts but the moderators: the founder, the admins, the students and our test accounts. */
   total: number;
-  /** The one count past the students: accounts per role, USER being the students (= total) and BOT our test accounts. */
+  /** Accounts per role, USER being the students and BOT our test accounts; they add up to total. */
   byRole: { FOUNDER: number; ADMIN: number; USER: number; BOT: number };
+  /** Of the accounts in total, those that confirmed their email. */
+  emailVerified: number;
   newLast7Days: number;
   newLast30Days: number;
 }

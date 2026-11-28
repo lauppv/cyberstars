@@ -43,8 +43,9 @@ beforeEach(() => {
   mockContainer.onlineGuests.mockReturnValue(0);
   mockAdminRepo.tutorStats.mockResolvedValue({ promptsLast7Days: 9, promptsLast30Days: 30 });
   mockAdminRepo.userStats.mockResolvedValue({
-    total: 3,
+    total: 5,
     byRole: { FOUNDER: 1, ADMIN: 1, USER: 3, BOT: 0 },
+    emailVerified: 2,
     newLast7Days: 1,
     newLast30Days: 2,
   });
@@ -65,7 +66,7 @@ describe('admin.service getStats', () => {
   it('aggregates all sources on a cold call', async () => {
     const stats = await getStats();
     expect(stats.tutor.promptsLast7Days).toBe(9);
-    expect(stats.users.total).toBe(3);
+    expect(stats.users.total).toBe(5);
     expect(stats.progress.totalCompletions).toBe(5);
     expect(stats.codeExec.maxContainers).toBe(50);
     expect(stats.codeExec.busySlots).toBe(0);

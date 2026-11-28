@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useId } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useCurriculum } from '../context/CurriculumContext';
@@ -16,11 +16,38 @@ import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 
 const CARD_CLS = 'p-5 rounded-[var(--radius)] panel';
 
-function Stat({ label, value }: { label: string; value: number | string }) {
+// A column of the stats table: its title, then one line per count, the label on
+// the left and the number on the right. The table is a grid so its columns wrap on
+// narrow screens; the -mr-px/-mb-px tuck each cell's right and bottom lines under
+// the frame where they meet it.
+function StatsColumn({
+  title,
+  lines,
+}: {
+  title: string;
+  lines: { label: string; value: number | string }[];
+}) {
+  const id = useId();
   return (
-    <div className="flex flex-col gap-1">
-      <span className="text-[22px] font-bold tabular-nums text-[var(--text)]">{value}</span>
-      <span className="text-[11px] text-[var(--text3)]">{label}</span>
+    <div
+      role="group"
+      aria-labelledby={id}
+      className="-mr-px -mb-px border-r border-b border-[var(--border)]"
+    >
+      <div
+        id={id}
+        className="px-3 py-2 border-b border-[var(--border)] text-[11px] text-[var(--text3)]"
+      >
+        {title}
+      </div>
+      <ul className="m-0 px-3 py-2 list-none flex flex-col gap-1">
+        {lines.map(({ label, value }) => (
+          <li key={label} className="flex justify-between gap-2">
+            <span>{label}</span>
+            <span className="tabular-nums text-[var(--text)]">{value}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -98,74 +125,80 @@ export function AdminPage() {
             </div>
           ) : stats ? (
             <div className="grid grid-cols-1 @2xl:grid-cols-3 gap-5">
-              {/* Users, on its own row above the visitors charts */}
-              <section className={CARD_CLS + ' @2xl:col-span-3'}>
-                <h2 className="text-[14px] font-semibold mb-4">{t('admin.users')}</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-4">
-                  <Stat label={t('admin.totalUsers')} value={stats.users.total} />
-                  <Stat label={t('admin.new7')} value={stats.users.newLast7Days} />
-                  <Stat label={t('admin.new30')} value={stats.users.newLast30Days} />
-                  {/* Whether students talk to the tutor: a count only, never who */}
-                  <Stat label={t('admin.tutorPrompts7')} value={stats.tutor.promptsLast7Days} />
-                  <Stat label={t('admin.tutorPrompts30')} value={stats.tutor.promptsLast30Days} />
-                </div>
-                {/* Accounts per role on the left; on the right who has the app open now:
-                    students signed in (no moderators, admins, founder or bots) and guests */}
-                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
-                  {(['FOUNDER', 'ADMIN', 'USER'] as const).map((role) => (
-                    <span key={role}>
-                      {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
-                    </span>
-                  ))}
-                  <span>
-                    {t('admin.bots')} {stats.users.byRole.BOT}
-                  </span>
-                  <span className="ml-auto">
-                    <span className="text-[var(--success)]">
-                      {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })}
-                    </span>{' '}
-                    ·{' '}
-                    <span className="text-[var(--warning)]">
-                      {t('admin.guestsOnline', { count: stats.online.guests })}
-                    </span>
-                  </span>
-                </div>
+              {/* One table on its own row above the visitors charts, a column per subject
+                  and a line per count; Online now and Code execution are live, the rest cached */}
+              <section
+                aria-label={t('admin.users')}
+                className="panel @2xl:col-span-3 grid grid-cols-2 @xl:grid-cols-3 @4xl:grid-cols-6 rounded-[var(--radius)] overflow-hidden text-[12px] text-[var(--text2)]"
+              >
+                <StatsColumn
+                  title={t('admin.users')}
+                  lines={[
+                    { label: t('admin.total'), value: stats.users.total },
+                    { label: t('admin.new7'), value: stats.users.newLast7Days },
+                    { label: t('admin.new30'), value: stats.users.newLast30Days },
+                  ]}
+                />
+                <StatsColumn
+                  title={t('admin.accountsPerRole')}
+                  lines={[
+                    ...(['USER', 'FOUNDER', 'ADMIN'] as const).map((role) => ({
+                      label: t(`forum.roles.${role}`),
+                      value: stats.users.byRole[role],
+                    })),
+                    { label: t('admin.bots'), value: stats.users.byRole.BOT },
+                  ]}
+                />
+                <StatsColumn
+                  title={t('admin.emails')}
+                  lines={[
+                    { label: t('admin.verified'), value: stats.users.emailVerified },
+                    {
+                      label: t('admin.unverified'),
+                      value: stats.users.total - stats.users.emailVerified,
+                    },
+                  ]}
+                />
+                {/* Students signed in (no moderators, admins, founder or bots) and guests */}
+                <StatsColumn
+                  title={t('admin.onlineNow')}
+                  lines={[
+                    { label: t('admin.signedIn'), value: stats.online.users },
+                    { label: t('admin.guests'), value: stats.online.guests },
+                  ]}
+                />
+                {/* Whether students talk to the tutor: a count only, never who */}
+                <StatsColumn
+                  title={t('admin.tutorMessages')}
+                  lines={[
+                    { label: t('admin.days7'), value: stats.tutor.promptsLast7Days },
+                    { label: t('admin.days30'), value: stats.tutor.promptsLast30Days },
+                  ]}
+                />
+                <StatsColumn
+                  title={t('admin.codeExec')}
+                  lines={[
+                    {
+                      label: t('admin.activeContainers'),
+                      value: `${stats.codeExec.activeContainers}/${stats.codeExec.maxContainers}`,
+                    },
+                    {
+                      label: t('admin.busySandboxes'),
+                      value: `${stats.codeExec.busySlots}/${stats.codeExec.maxBusySlots}`,
+                    },
+                    // The runtimes running now, nothing when none is
+                    ...Object.entries(stats.codeExec.perLanguage).map(([lang, n]) => ({
+                      label: lang,
+                      value: n,
+                    })),
+                  ]}
+                />
               </section>
 
-              {/* Code execution (live) sits right under the new accounts chart */}
               <VisitorsSection
                 chartsClassName={CARD_CLS + ' @2xl:col-span-3'}
                 className={CARD_CLS + ' @2xl:col-span-3'}
                 reload={reloads}
-                afterCharts={
-                  <section className={CARD_CLS + ' @2xl:col-span-3'}>
-                    <h2 className="text-[14px] font-semibold mb-4">{t('admin.codeExec')}</h2>
-                    <div className="grid grid-cols-2 gap-4 mb-4">
-                      <Stat
-                        label={t('admin.activeContainers')}
-                        value={`${stats.codeExec.activeContainers}/${stats.codeExec.maxContainers}`}
-                      />
-                      <Stat
-                        label={t('admin.busySandboxes')}
-                        value={`${stats.codeExec.busySlots}/${stats.codeExec.maxBusySlots}`}
-                      />
-                    </div>
-                    <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
-                      <div className="text-[var(--text3)] mb-1">{t('admin.perLanguage')}</div>
-                      {Object.keys(stats.codeExec.perLanguage).length === 0 ? (
-                        <span className="text-[var(--text3)]">{t('admin.noData')}</span>
-                      ) : (
-                        <div className="flex flex-wrap gap-x-4 gap-y-1">
-                          {Object.entries(stats.codeExec.perLanguage).map(([lang, n]) => (
-                            <span key={lang}>
-                              {lang} {n}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </section>
-                }
               />
 
               {/* Progress */}
