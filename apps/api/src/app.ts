@@ -32,6 +32,7 @@ import runsRoutes from './routes/runs.routes.js';
 import projectsRoutes from './routes/projects.routes.js';
 import practiceRoutes from './routes/practice.routes.js';
 import { PRACTICE_API_PATH } from '@cyberstars/shared/practice';
+import { isGuestId } from './services/guest-id.js';
 
 export const app = express();
 
@@ -54,9 +55,10 @@ app.use(cookieParser());
 
 // Give signed-out visitors a stable per-browser id so guest code runs are
 // isolated per browser (not shared by IP) and the guest run budget can be
-// tracked. The WebSocket handshake reads this cookie back.
+// tracked. The WebSocket handshake reads this cookie back. A guestId the server
+// never handed out counts as none (guest-id.ts), so it is replaced too.
 app.use((req, res, next) => {
-  if (!req.cookies?.[auth.cookieName] && !req.cookies?.guestId) {
+  if (!req.cookies?.[auth.cookieName] && !isGuestId(req.cookies?.guestId)) {
     res.cookie('guestId', crypto.randomUUID(), {
       httpOnly: true,
       sameSite: 'lax',

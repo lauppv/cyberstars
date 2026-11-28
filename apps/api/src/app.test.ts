@@ -8,6 +8,7 @@ process.env.DB_PASSWORD = 'test';
 process.env.CORS_DEV_ORIGIN = 'http://localhost:5173, http://second.test';
 
 import { SESSION_COOKIE } from './testing/sessions.js';
+import { isGuestId } from './services/guest-id.js';
 
 function makePrismaProxy() {
   return new Proxy(
@@ -105,6 +106,19 @@ describe('guest id cookie', () => {
     const res = await request(app).get('/api/time');
     const cookies = res.get('Set-Cookie') ?? [];
     expect(cookies.some((c) => c.startsWith('guestId='))).toBe(true);
+  });
+
+  it('keeps a guestId the server handed out', async () => {
+    const res = await request(app).get('/api/time').set('Cookie', `guestId=${crypto.randomUUID()}`);
+    const cookies = res.get('Set-Cookie') ?? [];
+    expect(cookies.some((c) => c.startsWith('guestId='))).toBe(false);
+  });
+
+  it('replaces a guestId the server never handed out with a real one', async () => {
+    const res = await request(app).get('/api/time').set('Cookie', 'guestId=user:42');
+    const cookie = (res.get('Set-Cookie') ?? []).find((c) => c.startsWith('guestId='));
+    const id = decodeURIComponent(cookie!.split(';')[0].slice('guestId='.length));
+    expect(isGuestId(id)).toBe(true);
   });
 
   it('does not set a guestId when a session cookie is already present', async () => {
