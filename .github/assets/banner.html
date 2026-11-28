@@ -1,0 +1,272 @@
+<!doctype html>
+<!--
+  The README banner and the link preview (apps/ui/public/og-image.png), drawn from one scene.
+  Render from the repo root, after npm install (the fonts come from node_modules):
+    google-chrome --headless=new --hide-scrollbars --window-size=1500,500 --force-device-scale-factor=2 \
+      --screenshot=$PWD/.github/assets/banner.png "file://$PWD/.github/assets/banner.html"
+    google-chrome --headless=new --hide-scrollbars --window-size=1200,630 \
+      --screenshot=$PWD/apps/ui/public/og-image.png "file://$PWD/.github/assets/banner.html#og"
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: Inter;
+        src: url(../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2);
+        font-weight: 100 900;
+      }
+      @font-face {
+        font-family: Mono;
+        src: url(../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2);
+        font-weight: 100 800;
+      }
+      html,
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #06061a;
+      }
+      .wrap {
+        position: relative;
+      }
+      svg.scene {
+        position: absolute;
+        inset: 0;
+      }
+      .text {
+        position: absolute;
+        color: #fff;
+        font-family: Inter;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-size: 76px;
+        font-weight: 750;
+        letter-spacing: -1.5px;
+        text-shadow: 0 4px 30px rgba(108, 92, 231, 0.55);
+      }
+      .brand svg {
+        filter: drop-shadow(0 0 14px rgba(140, 125, 255, 0.8));
+      }
+      .tag {
+        margin-top: 12px;
+        font-size: 30px;
+        font-weight: 450;
+        color: #dcd6ff;
+        letter-spacing: -0.2px;
+      }
+      .chips {
+        margin-top: 30px;
+        display: flex;
+        gap: 10px;
+      }
+      .chips span {
+        font-family: Mono;
+        font-size: 21px;
+        font-weight: 500;
+        color: #ece8ff;
+        padding: 7px 14px;
+        border-radius: 10px;
+        background: rgba(20, 14, 52, 0.55);
+        border: 1px solid rgba(160, 150, 255, 0.38);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="wrap">
+      <svg class="scene" id="scene"></svg>
+      <div class="text" id="text">
+        <div class="brand">
+          <svg width="70" height="70" viewBox="0 0 64 64">
+            <polygon
+              points="32,4 39,24 60,24 43,37 49,58 32,46 15,58 21,37 4,24 25,24"
+              fill="#8C7CFF"
+            /></svg
+          >CyberStars
+        </div>
+        <div class="tag">Learn to code for free, right in your browser</div>
+        <div class="chips">
+          <span>Python</span><span>Java</span><span>C</span><span>Linux</span><span>HTML</span
+          ><span>CSS</span><span>JavaScript</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Where things sit: the README banner (1500x500) or the link preview (1200x630, #og).
+      const L =
+        location.hash === '#og'
+          ? {
+              W: 1200,
+              H: 630,
+              text: [80, 170],
+              stars: 620,
+              constellation: [900, 140],
+              planet: [1095, 105],
+              meteor: [560, 120],
+              telescope: [1040, 520],
+              sparkles: [
+                [700, 60, 1],
+                [300, 70, 0.8],
+                [960, 300, 0.9],
+                [40, 460, 0.7],
+                [1170, 330, 0.8],
+              ],
+            }
+          : {
+              W: 1500,
+              H: 500,
+              text: [96, 118],
+              stars: 520,
+              constellation: [940, 118],
+              planet: [1365, 98],
+              meteor: [600, 92],
+              telescope: [1290, 390],
+              sparkles: [
+                [810, 40, 1],
+                [330, 58, 0.8],
+                [1180, 215, 0.9],
+                [60, 300, 0.7],
+                [1460, 250, 0.8],
+                [700, 330, 0.6],
+              ],
+            };
+      const { W, H } = L;
+      const wrap = document.getElementById('wrap'),
+        scene = document.getElementById('scene'),
+        text = document.getElementById('text');
+      wrap.style.width = W + 'px';
+      wrap.style.height = H + 'px';
+      scene.setAttribute('width', W);
+      scene.setAttribute('height', H);
+      scene.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      text.style.left = L.text[0] + 'px';
+      text.style.top = L.text[1] + 'px';
+
+      // Seeded, so every render draws the same sky.
+      let seed = 7;
+      const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+      let h = `<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05051a"/><stop offset=".45" stop-color="#141040"/><stop offset=".75" stop-color="#2f1d66"/><stop offset="1" stop-color="#5a2f7e"/></linearGradient>
+<radialGradient id="glow" cx="72%" cy="88%" r="45%"><stop offset="0" stop-color="#f29ac0" stop-opacity=".75"/><stop offset=".4" stop-color="#a35aa8" stop-opacity=".35"/><stop offset="1" stop-color="#5a2f7e" stop-opacity="0"/></radialGradient>
+<filter id="blur" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="38"/></filter>
+<filter id="soft"><feGaussianBlur stdDeviation="2.2"/></filter>
+<radialGradient id="planet" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#b3a7ff"/><stop offset=".55" stop-color="#6C5CE7"/><stop offset="1" stop-color="#2a1d6e"/></radialGradient>
+<linearGradient id="trail" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".95"/></linearGradient>
+<linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3290"/><stop offset="1" stop-color="#2a1c5c"/></linearGradient>
+</defs>
+<rect width="${W}" height="${H}" fill="url(#sky)"/>
+<rect width="${W}" height="${H}" fill="url(#glow)"/>`;
+
+      // The Milky Way, a blurred band across the sky, and its stars.
+      const cx = W / 2,
+        cy = H / 2,
+        k = W / 1500;
+      h += `<g filter="url(#blur)" opacity=".55" transform="rotate(-18 ${cx} ${cy})">
+<ellipse cx="${cx + 10 * k}" cy="${cy - 20}" rx="${620 * k}" ry="70" fill="#5b45b8"/>
+<ellipse cx="${cx + 230 * k}" cy="${cy - 35}" rx="${260 * k}" ry="45" fill="#c06aa8" opacity=".6"/>
+<ellipse cx="${cx - 230 * k}" cy="${cy - 5}" rx="${230 * k}" ry="40" fill="#3f7fc0" opacity=".5"/></g>`;
+      for (let i = 0; i < L.stars; i++) {
+        const x = rnd() * W,
+          y = rnd() * (H - 70),
+          r = rnd() < 0.92 ? rnd() * 0.9 + 0.3 : rnd() * 1.2 + 1;
+        h += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(2)}" fill="#fff" opacity="${(0.35 + rnd() * 0.6).toFixed(2)}"/>`;
+      }
+      for (let i = 0; i < 260; i++) {
+        const t = rnd(),
+          x = 0.1 * W + t * (W - 0.17 * W),
+          y = H - 80 - t * 380 + (rnd() - 0.5) * 90;
+        h += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(rnd() * 0.7 + 0.25).toFixed(2)}" fill="#e9e4ff" opacity="${(0.3 + rnd() * 0.5).toFixed(2)}"/>`;
+      }
+      const sparkle = (x, y, s) =>
+        `<g transform="translate(${x} ${y})"><circle r="${6 * s}" fill="#fff" opacity=".25" filter="url(#soft)"/><path d="M0 ${-9 * s} L${1.2 * s} ${-1.2 * s} L${9 * s} 0 L${1.2 * s} ${1.2 * s} L0 ${9 * s} L${-1.2 * s} ${1.2 * s} L${-9 * s} 0 L${-1.2 * s} ${-1.2 * s}Z" fill="#fff"/></g>`;
+      L.sparkles.forEach((a) => (h += sparkle(...a)));
+
+      // A ringed planet.
+      h += `<g transform="translate(${L.planet[0]} ${L.planet[1]})"><ellipse rx="92" ry="20" fill="none" stroke="#d9ccff" stroke-opacity=".55" stroke-width="5" transform="rotate(-16)"/>
+<circle r="50" fill="url(#planet)"/><path d="M-36 -8 Q0 -16 40 -2" stroke="#fff" stroke-opacity=".12" stroke-width="6" fill="none"/><path d="M-44 14 Q0 6 46 18" stroke="#1b1250" stroke-opacity=".3" stroke-width="7" fill="none"/>
+<g transform="rotate(-16)"><path d="M-92 0 A92 20 0 0 0 92 0" fill="none" stroke="#e6dcff" stroke-opacity=".8" stroke-width="5"/></g></g>`;
+
+      // A constellation shaped </>.
+      const [ox, oy] = L.constellation;
+      const P = [
+        [-35, -46],
+        [-82, 0],
+        [-35, 46],
+        [-18, 52],
+        [18, -52],
+        [35, -46],
+        [82, 0],
+        [35, 46],
+      ].map(([x, y]) => [ox + x, oy + y]);
+      [
+        [0, 1],
+        [1, 2],
+        [3, 4],
+        [5, 6],
+        [6, 7],
+      ].forEach(
+        ([a, b]) =>
+          (h += `<line x1="${P[a][0]}" y1="${P[a][1]}" x2="${P[b][0]}" y2="${P[b][1]}" stroke="#cfc6ff" stroke-opacity=".5" stroke-width="1.6"/>`),
+      );
+      P.forEach(
+        ([x, y]) =>
+          (h += `<circle cx="${x}" cy="${y}" r="7" fill="#b9adff" opacity=".35" filter="url(#soft)"/><circle cx="${x}" cy="${y}" r="2.8" fill="#fff"/>`),
+      );
+
+      // A shooting star.
+      h += `<g transform="translate(${L.meteor[0]} ${L.meteor[1]}) rotate(-18)"><rect x="-150" y="-1.2" width="150" height="2.4" rx="1.2" fill="url(#trail)"/><circle r="2.6" fill="#fff"/></g>`;
+
+      // Three mountain ridges, far to near (midpoint displacement).
+      function ridge(base, amp, rough, s) {
+        seed = s;
+        const split = (a, b, depth, am) => {
+          if (depth === 0) return [a];
+          const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + (rnd() - 0.5) * am];
+          return [...split(a, m, depth - 1, am * rough), ...split(m, b, depth - 1, am * rough)];
+        };
+        const pts = [...split([0, base], [W, base], 7, amp), [W, base]];
+        return (
+          `M0 ${H} L` +
+          pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L') +
+          ` L${W} ${H}Z`
+        );
+      }
+      h += `<path d="${ridge(H - 155, 260, 0.62, 11)}" fill="url(#haze)" opacity=".9"/>`;
+      h += `<path d="${ridge(H - 100, 190, 0.6, 23)}" fill="#22184f"/>`;
+      h += `<path d="${ridge(H - 60, 110, 0.58, 41)}" fill="#150f36"/>`;
+
+      // The near ground: a hill with a telescope on the right, a slope on the left, pines.
+      const [tx, ty] = L.telescope,
+        dark = '#0b0822';
+      h += `<path d="M${tx - 310} ${H} C${tx - 210} ${ty + 40} ${tx - 110} ${ty + 2} ${tx} ${ty} C${tx + 100} ${ty - 2} ${tx + 160} ${ty + 15} ${W} ${ty + 30} L${W} ${H}Z" fill="${dark}"/>`;
+      h += `<path d="M0 ${H - 32} C120 ${H - 60} 260 ${H - 50} 380 ${H - 26} C430 ${H - 14} 470 ${H - 6} 520 ${H} L0 ${H}Z" fill="${dark}"/>`;
+      const pine = (x, y, s) => {
+        let d = '';
+        for (let i = 0; i < 4; i++) {
+          const w = (16 - i * 3) * s,
+            yy = y - i * 11 * s;
+          d += `M${x - w} ${yy} L${x} ${yy - 20 * s} L${x + w} ${yy}Z `;
+        }
+        return `<path d="${d}M${x - 1.5 * s} ${y} h${3 * s} v${8 * s} h${-3 * s}Z" fill="${dark}"/>`;
+      };
+      [
+        [tx - 240, ty + 56, 1.1],
+        [tx - 208, ty + 42, 1.4],
+        [tx - 170, ty + 30, 0.9],
+        [tx + 140, ty + 22, 1.2],
+        [tx + 172, ty + 26, 0.9],
+        [40, H - 34, 1.3],
+        [78, H - 40, 1],
+        [300, H - 34, 1.1],
+      ].forEach((a) => (h += pine(...a)));
+      const angle = (Math.atan2(oy - (ty - 60), ox - tx) * 180) / Math.PI;
+      h += `<g stroke="${dark}" stroke-width="5" stroke-linecap="round"><line x1="${tx}" y1="${ty - 50}" x2="${tx - 20}" y2="${ty + 2}"/><line x1="${tx}" y1="${ty - 50}" x2="${tx + 22}" y2="${ty + 2}"/><line x1="${tx}" y1="${ty - 50}" x2="${tx + 2}" y2="${ty + 4}"/></g>
+<g transform="translate(${tx} ${ty - 52}) rotate(${angle})"><rect x="-22" y="-9" width="86" height="18" rx="4" fill="${dark}"/><rect x="60" y="-12" width="14" height="24" rx="3" fill="${dark}"/><rect x="-22" y="-9" width="86" height="18" rx="4" fill="none" stroke="#8C7CFF" stroke-opacity=".35" stroke-width="1.5"/></g>`;
+
+      scene.innerHTML = h;
+    </script>
+  </body>
+</html>

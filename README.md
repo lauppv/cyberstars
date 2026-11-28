@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://cyberstars.app"><img src="apps/ui/public/og-image.png" alt="CyberStars: learn to code for free, no card, nothing to install" width="720"></a>
+  <a href="https://cyberstars.app"><img src=".github/assets/banner.png" alt="CyberStars: learn to code for free, right in your browser. Python, Java, C, Linux, HTML, CSS and JavaScript."></a>
 </p>
 
 <p align="center">
