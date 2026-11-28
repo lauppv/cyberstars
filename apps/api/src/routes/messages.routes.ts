@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import type { Request } from 'express';
-import { limiter } from '../middleware/rateLimit.js';
+import { limiter, newTicketLimiter } from '../middleware/rateLimit.js';
 import { authenticateToken } from '../middleware/auth.js';
 import { requireFeatureAccess } from '../middleware/features.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
@@ -31,14 +31,6 @@ const sendLimiter = limiter({
 const reactLimiter = limiter({
   windowMs: 60_000,
   limit: 60,
-  keyGenerator: perUser,
-});
-
-// Every report is a support ticket that notifies every admin, so it takes the
-// support form's cap: 5 in 15 minutes
-const reportLimiter = limiter({
-  windowMs: 15 * 60_000,
-  limit: 5,
   keyGenerator: perUser,
 });
 
@@ -79,7 +71,8 @@ router.post(
 
 router.post(
   '/:messageId/report',
-  reportLimiter,
+  // A report is a support ticket, so it shares the support form's bucket
+  newTicketLimiter,
   validateBody(reportMessageSchema),
   messagesController.reportMessage,
 );
