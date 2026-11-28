@@ -290,7 +290,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      # The whole history: the sitemap's lastmod is the day git last committed
+      # each page's file (apps/ui/scripts/prerender.tsx), and a shallow clone
+      # has one commit holding every file.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: ./.github/actions/setup-node-and-deps
       - uses: actions/cache/restore@v4
         with:
