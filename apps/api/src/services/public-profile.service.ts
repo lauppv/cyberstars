@@ -4,6 +4,7 @@ import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as projectsRepo from '../repositories/projects.repository.js';
 import * as leaderboardService from './leaderboard.service.js';
 import * as connectionsService from './connections.service.js';
+import * as blocksService from './blocks.service.js';
 import { computeStreak, listDone, recentActivity } from './activity.service.js';
 import {
   isClosedCourse,
@@ -64,6 +65,8 @@ export async function getPublicProfile(
     activity: null,
     connections: null,
     connectionRelation: await connectionsService.relationTo(viewerId, targetId),
+    blockedByMe:
+      viewerId !== null && !isSelf && (await blocksService.isBlockedBy(viewerId, targetId)),
   };
 
   const needStats = isSelf || user.showStats;

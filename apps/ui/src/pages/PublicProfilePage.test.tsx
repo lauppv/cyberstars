@@ -98,6 +98,7 @@ const fullProfile: PublicProfile = {
   ],
   connections: { users: [], count: 0 },
   connectionRelation: 'none',
+  blockedByMe: false,
 };
 
 function renderPage() {
