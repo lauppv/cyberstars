@@ -448,19 +448,27 @@ describe('messages.service blocks (CYB-140)', () => {
     expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
   });
 
-  it("keeps the blocked one's edits, deletes and reads off the blocker's screen", async () => {
+  it('refuses an edit from the blocked one', async () => {
     block(1, 2);
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
-    mockRepo.editMessage.mockResolvedValue(msgRow({ senderId: 2, content: 'x' }));
+    await expect(editMessage(2, 500, 'x')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Message could not be sent',
+    });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
+  });
+
+  it("keeps the blocked one's deletes and reads off the blocker's screen", async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
     mockRepo.softDeleteMessage.mockResolvedValue(msgRow({ senderId: 2, deleted: true }));
     mockRepo.markRead.mockResolvedValue(1);
 
-    await editMessage(2, 500, 'x');
     await deleteMessage(2, 500);
     await markRead(2, 100, 500);
 
     const recipients = mockWs.pushToUser.mock.calls.map((c) => c[0]);
-    expect(recipients).toEqual([2, 2, 2]);
+    expect(recipients).toEqual([2, 2]);
   });
 
   it('answers with the saved reaction when the block check before the live frame fails', async () => {

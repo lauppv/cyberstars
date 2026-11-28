@@ -219,13 +219,18 @@ export async function editMessage(
   if (!message || message.senderId !== userId || message.deleted) {
     throw new AppError(404, 'Message not found');
   }
+  const row = await repo.findConversation(message.conversationId);
+  // An edit puts new words in front of the other side, so a block refuses it
+  // as it refuses a send
+  if (row && (await blocks.isBlockedBy(otherParticipant(row, userId), userId))) {
+    throw new AppError(403, blocks.MESSAGE_NOT_SENT);
+  }
   const updated = await repo.editMessage(messageId, userId, content);
   if (!updated) throw new AppError(404, 'Message not found');
   const dto = shapeMessage(updated);
 
   // Push the refreshed content live to both sides (like send/delete) so the
   // edit lands on the other participant's screen without a refetch.
-  const row = await repo.findConversation(message.conversationId);
   if (row) {
     await pushToOther(row, userId, { channel: 'dm', type: 'edited', payload: dto });
     pushToUser(userId, { channel: 'dm', type: 'edited', payload: dto });
