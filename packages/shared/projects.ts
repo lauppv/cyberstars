@@ -9,8 +9,8 @@ export type ProjectLanguage = (typeof PROJECT_LANGUAGES)[number];
 
 export type ProjectDifficulty = 'easy' | 'medium' | 'hard';
 
-// A finished project is worth more than any lesson or challenge (the most a
-// lesson gives is 77). XP is derived from the completions and this table, never
+// A finished project is worth at least as much as any challenge (a hard one
+// gives 100, CHALLENGE_XP) and more than any lesson (at most 30). XP is derived from the completions and this table, never
 // stored, like a lesson's (see shared/constants.ts); the leaderboard's query
 // uses the same numbers.
 export const PROJECT_XP: Record<ProjectDifficulty, number> = { easy: 100, medium: 150, hard: 200 };
