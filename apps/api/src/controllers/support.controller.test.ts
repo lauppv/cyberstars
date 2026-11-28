@@ -9,6 +9,7 @@ process.env.DB_PASSWORD = 'test';
 
 const mockSupportService = {
   create: vi.fn(),
+  openTicket: vi.fn(),
   findByUser: vi.fn(),
   findAll: vi.fn(),
   findById: vi.fn(),
@@ -49,7 +50,7 @@ beforeEach(() => vi.clearAllMocks());
 
 describe('createTicket', () => {
   it('creates ticket successfully', async () => {
-    mockSupportService.create.mockResolvedValue({ id: 10 });
+    mockSupportService.openTicket.mockResolvedValue(10);
     const res = mockRes();
     await createTicket(
       mockReq({
@@ -59,6 +60,7 @@ describe('createTicket', () => {
       res,
       vi.fn(),
     );
+    expect(mockSupportService.openTicket).toHaveBeenCalledWith(1, 'BUG', 'Bug report', 'Details');
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({ ticketId: 10 });
   });
@@ -346,7 +348,7 @@ describe('addTicketMessage', () => {
 
 describe('error forwarding via next()', () => {
   it('createTicket forwards service errors to next()', async () => {
-    mockSupportService.create.mockRejectedValue(new Error('DB down'));
+    mockSupportService.openTicket.mockRejectedValue(new Error('DB down'));
     const next = vi.fn();
     await createTicket(
       mockReq({

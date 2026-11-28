@@ -1,6 +1,7 @@
 import * as repo from '../repositories/connections.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as notificationsService from './notifications.service.js';
+import * as blocks from './blocks.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type {
   AcceptedConnection,
@@ -55,6 +56,9 @@ export async function sendRequest(requesterId: number, addresseeId: number): Pro
   if (addresseeId === requesterId) throw new AppError(400, 'Cannot connect with yourself');
   const target = await userRepo.findById(addresseeId);
   if (!target) throw new AppError(404, 'User not found');
+  if (await blocks.existsBetween(requesterId, addresseeId)) {
+    throw new AppError(403, blocks.REQUEST_NOT_SENT);
+  }
 
   const existing = await repo.findBetween(requesterId, addresseeId);
   if (existing) {
@@ -63,6 +67,8 @@ export async function sendRequest(requesterId: number, addresseeId: number): Pro
   }
 
   const row = await repo.create(requesterId, addresseeId);
+  // A block that landed since the check above
+  if (!row) throw new AppError(403, blocks.REQUEST_NOT_SENT);
   void notificationsService.notify({
     recipientIds: [addresseeId],
     actorId: requesterId,

@@ -88,6 +88,22 @@ export async function deleteMessage(
   }
 }
 
+export async function reportMessage(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> {
+  try {
+    const id = parseInt(req.params.messageId as string);
+    if (isNaN(id)) throw new AppError(400, 'Invalid message ID');
+    const note = req.body.note || undefined;
+    const ticketId = await messagesService.reportMessage(req.user!.id, id, note);
+    res.status(201).json({ ticketId });
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function toggleReaction(
   req: Request,
   res: Response,

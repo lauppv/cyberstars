@@ -14,6 +14,10 @@ const mockPrisma = {
 };
 
 vi.mock('../config/db.js', () => ({ prisma: mockPrisma }));
+const mockUserRepo = { getAdminIds: vi.fn() };
+const mockNotifications = { notify: vi.fn() };
+vi.mock('../repositories/user.repository.js', () => mockUserRepo);
+vi.mock('./notifications.service.js', () => mockNotifications);
 
 const supportService = await import('./support.service.js');
 
@@ -91,5 +95,47 @@ describe('addMessage', () => {
     mockPrisma.supportMessage.create.mockResolvedValue(msg);
     const result = await supportService.addMessage(2, 3, 'Reply');
     expect(result).toEqual(msg);
+  });
+});
+
+describe('openTicket', () => {
+  it('creates the ticket and tells every admin', async () => {
+    mockPrisma.supportTicket.create.mockResolvedValue({ id: 7, subject: 'Help' });
+    mockUserRepo.getAdminIds.mockResolvedValue([90, 91]);
+    const id = await supportService.openTicket(3, 'RULE_VIOLATION', 'Help', 'Body');
+    expect(id).toBe(7);
+    expect(mockPrisma.supportTicket.create).toHaveBeenCalledWith({
+      data: { userId: 3, type: 'RULE_VIOLATION', subject: 'Help', message: 'Body' },
+    });
+    await vi.waitFor(() =>
+      expect(mockNotifications.notify).toHaveBeenCalledWith({
+        recipientIds: [90, 91],
+        actorId: 3,
+        type: 'SUPPORT_TICKET_NEW',
+        entityId: 7,
+        data: { title: 'Help' },
+      }),
+    );
+  });
+
+  it('keeps the admins it is told to skip out of the bell', async () => {
+    mockPrisma.supportTicket.create.mockResolvedValue({ id: 9, subject: 'Report' });
+    mockUserRepo.getAdminIds.mockResolvedValue([90, 91]);
+    await supportService.openTicket(3, 'RULE_VIOLATION', 'Report', 'Body', [91]);
+    await vi.waitFor(() =>
+      expect(mockNotifications.notify).toHaveBeenCalledWith(
+        expect.objectContaining({ recipientIds: [90] }),
+      ),
+    );
+  });
+
+  it('answers with the saved ticket when the admins cannot be read', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockPrisma.supportTicket.create.mockResolvedValue({ id: 8, subject: 'Help' });
+    mockUserRepo.getAdminIds.mockRejectedValue(new Error('db down'));
+    await expect(supportService.openTicket(3, 'BUG', 'Help', 'Body')).resolves.toBe(8);
+    await vi.waitFor(() => expect(error).toHaveBeenCalled());
+    expect(mockNotifications.notify).not.toHaveBeenCalled();
+    error.mockRestore();
   });
 });

@@ -3,6 +3,11 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import type { AuthenticatedUser } from '@cyberstars/shared/auth';
 
+vi.mock('../services/blocksService', () => ({
+  getBlocked: vi.fn().mockResolvedValue({ users: [] }),
+  unblock: vi.fn(),
+}));
+vi.mock('../context/MessagesContext', () => ({ useMessages: () => ({ refresh: vi.fn() }) }));
 vi.mock('../context/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../components/layout/Topbar', () => ({
   Topbar: () => <nav data-testid="topbar">Topbar</nav>,

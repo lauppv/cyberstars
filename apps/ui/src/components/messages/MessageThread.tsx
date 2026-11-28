@@ -6,6 +6,8 @@ import { useMessages } from '../../context/MessagesContext';
 import { useUserSocketFrames } from '../../context/UserSocketContext';
 import { MessageComposer } from './MessageComposer';
 import { MessageActions } from './MessageActions';
+import { BlockDialog, ConfirmDialog } from './ConfirmDialog';
+import * as blocksService from '../../services/blocksService';
 import { UserLink } from '../ui/UserLink';
 import { LoadError } from '../ui/LoadError';
 import * as messagesService from '../../services/messagesService';
@@ -52,8 +54,23 @@ function groupReactions(reactions: MessageReactionDTO[], currentUserId: number) 
   return Array.from(groups, ([emoji, g]) => ({ emoji, ...g }));
 }
 
-function ThreadHeader({ other, onBack }: { other: ConversationParticipant; onBack: () => void }) {
+function ThreadHeader({
+  other,
+  onBack,
+  onBlocked,
+}: {
+  other: ConversationParticipant;
+  onBack: () => void;
+  // Set where Block is offered: after the block the conversation is hidden
+  onBlocked?: () => void;
+}) {
   const { t } = useTranslation();
+  const [confirming, setConfirming] = useState(false);
+  const block = async () => {
+    await blocksService.block(other.id);
+    setConfirming(false);
+    onBlocked?.();
+  };
   return (
     <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
       <button
@@ -67,6 +84,17 @@ function ThreadHeader({ other, onBack }: { other: ConversationParticipant; onBac
         <Avatar url={other.avatarUrl} userId={other.id} size={32} />
         <span className="font-semibold text-[14px] text-[var(--text)] truncate">{other.name}</span>
       </UserLink>
+      {onBlocked && !other.staff && (
+        <button
+          onClick={() => setConfirming(true)}
+          className="ml-auto flex-shrink-0 text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"
+        >
+          {t('block.block')}
+        </button>
+      )}
+      {confirming && (
+        <BlockDialog name={other.name} onConfirm={block} onClose={() => setConfirming(false)} />
+      )}
     </div>
   );
 }
@@ -110,7 +138,7 @@ export function MessageThread({
   onBack: () => void;
 }) {
   const { t } = useTranslation();
-  const { setActiveConversation, markConversationRead } = useMessages();
+  const { setActiveConversation, markConversationRead, refresh, dropConversation } = useMessages();
   const conversationId = conversation.id;
 
   const [messages, setMessages] = useState<MessageDTO[]>([]);
@@ -126,6 +154,9 @@ export function MessageThread({
   const [sendError, setSendError] = useState<string | null>(null);
   const [editError, setEditError] = useState<string | null>(null);
   const [actionError, setActionError] = useState<string | null>(null);
+  // The message being reported (its dialog open), with the student's note
+  const [reporting, setReporting] = useState<{ id: number; note: string } | null>(null);
+  const [reported, setReported] = useState(false);
   // Any action that goes through clears them all
   const clearErrors = useCallback(() => {
     setOlderError(null);
@@ -337,9 +368,44 @@ export function MessageThread({
     [clearErrors],
   );
 
+  const sendReport = async () => {
+    if (!reporting) return;
+    await messagesService.reportMessage(reporting.id, reporting.note.trim() || undefined);
+    setReporting(null);
+    setReported(true);
+  };
+
+  // The conversation leaves the inbox, so the page goes back to the list; it
+  // goes at once, and the reload brings the rest up to date
+  const onBlocked = () => {
+    dropConversation(conversation.id);
+    refresh();
+    onBack();
+  };
+
   return (
     <div className="flex flex-col h-full">
-      <ThreadHeader other={conversation.other} onBack={onBack} />
+      <ThreadHeader other={conversation.other} onBack={onBack} onBlocked={onBlocked} />
+      {reporting && (
+        <ConfirmDialog
+          title={t('report.title')}
+          confirmLabel={t('report.send')}
+          onConfirm={sendReport}
+          onClose={() => setReporting(null)}
+        >
+          <p className="m-0">{t('report.text')}</p>
+          <label className="block mt-3 text-[12px] text-[var(--text3)]">
+            {t('report.noteLabel')}
+            <textarea
+              value={reporting.note}
+              onChange={(e) => setReporting({ id: reporting.id, note: e.target.value })}
+              rows={3}
+              maxLength={1000}
+              className="mt-1 w-full resize-none px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
+            />
+          </label>
+        </ConfirmDialog>
+      )}
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
         {loading ? (
@@ -423,11 +489,17 @@ export function MessageThread({
                       </div>
                       {!m.deleted && (
                         <MessageActions
-                          align={mine ? 'left' : 'right'}
+                          // The menu opens toward the middle of the pane, so
+                          // the panel's edge never cuts it
+                          align={mine ? 'right' : 'left'}
                           canModify={mine}
                           onReact={(emoji) => react(m.id, emoji)}
                           onEdit={() => startEdit(m)}
                           onDelete={() => remove(m.id)}
+                          onReport={() => {
+                            setReported(false);
+                            setReporting({ id: m.id, note: '' });
+                          }}
                         />
                       )}
                     </div>
@@ -484,6 +556,14 @@ export function MessageThread({
         )}
       </div>
 
+      {reported && (
+        <p
+          role="status"
+          className="px-4 py-2 border-t border-[var(--border)] text-[12px] text-[var(--text2)] flex-shrink-0"
+        >
+          {t('report.sent')}
+        </p>
+      )}
       {actionError && (
         <p
           role="alert"

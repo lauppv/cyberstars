@@ -1,10 +1,40 @@
 import { prisma } from '../config/db.js';
+import * as userRepo from '../repositories/user.repository.js';
+import * as notificationsService from './notifications.service.js';
 import type { TicketType, TicketStatus } from '@prisma/client';
 
 export function create(userId: number, type: TicketType, subject: string, message: string) {
   return prisma.supportTicket.create({
     data: { userId, type, subject, message },
   });
+}
+
+// A new ticket, which every admin hears about (the actor, if themselves an
+// admin, is excluded inside notify). Once the ticket is saved the bell is best
+// effort: a failure there never fails the request, whose retry would open a
+// second ticket. `skipIds`: admins kept out of the bell, such as the sender
+// of a reported message, who shouldn't hear of a report about themselves.
+export async function openTicket(
+  userId: number,
+  type: TicketType,
+  subject: string,
+  message: string,
+  skipIds: number[] = [],
+): Promise<number> {
+  const ticket = await create(userId, type, subject, message);
+  void userRepo
+    .getAdminIds()
+    .then((adminIds) =>
+      notificationsService.notify({
+        recipientIds: adminIds.filter((id) => !skipIds.includes(id)),
+        actorId: userId,
+        type: 'SUPPORT_TICKET_NEW',
+        entityId: ticket.id,
+        data: { title: ticket.subject },
+      }),
+    )
+    .catch((err) => console.error(`[support] admin bell for ticket ${ticket.id} failed:`, err));
+  return ticket.id;
 }
 
 export function findByUser(userId: number) {

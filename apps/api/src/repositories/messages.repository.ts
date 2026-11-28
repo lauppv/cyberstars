@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 
-const participantSelect = { id: true, name: true, avatarUrl: true } as const;
+const participantSelect = { id: true, name: true, avatarUrl: true, role: true } as const;
 
 const reactionsInclude = {
   reactions: { select: { emoji: true, userId: true }, orderBy: { id: 'asc' } },
@@ -57,9 +57,18 @@ export function findConversation(id: number): Promise<ConversationRow | null> {
   return prisma.conversation.findUnique({ where: { id }, include: conversationInclude });
 }
 
-export function listConversations(userId: number): Promise<ConversationRow[]> {
+// `hiddenUserIds`: people the user blocked, whose conversations stay out of the
+// inbox until they're unblocked
+export function listConversations(
+  userId: number,
+  hiddenUserIds: number[] = [],
+): Promise<ConversationRow[]> {
   return prisma.conversation.findMany({
-    where: { OR: [{ userAId: userId }, { userBId: userId }] },
+    where: {
+      OR: [{ userAId: userId }, { userBId: userId }],
+      userAId: { notIn: hiddenUserIds },
+      userBId: { notIn: hiddenUserIds },
+    },
     orderBy: { updatedAt: 'desc' },
     include: conversationInclude,
   });

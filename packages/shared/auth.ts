@@ -11,6 +11,12 @@ export function isAdmin(role: UserRole | undefined | null): boolean {
   return role === 'ADMIN' || role === 'FOUNDER';
 }
 
+// The team: moderators, admins and the founder. A student can't block them, so
+// a word from the team about the rules always gets through.
+export function isStaff(role: UserRole | undefined | null): boolean {
+  return role === 'MODERATOR' || isAdmin(role);
+}
+
 export interface AuthenticatedUser {
   id: number;
   name: string;

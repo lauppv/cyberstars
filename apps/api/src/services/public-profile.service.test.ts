@@ -15,6 +15,7 @@ const mockLaniakeaRepo = { listPasses: vi.fn() };
 const mockProjectsRepo = { listCompletions: vi.fn() };
 const mockActivityService = { computeStreak: vi.fn() };
 const mockConnectionsService = { relationTo: vi.fn(), publicConnections: vi.fn() };
+const mockBlocksService = { isBlockedBy: vi.fn(async () => false) };
 
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('../repositories/progress.repository.js', () => mockProgressRepo);
@@ -26,6 +27,7 @@ vi.mock('./activity.service.js', async (importOriginal) => ({
   ...mockActivityService,
 }));
 vi.mock('./connections.service.js', () => mockConnectionsService);
+vi.mock('./blocks.service.js', () => mockBlocksService);
 // No web course exists yet, so web-js plays a closed course here
 vi.mock('@cyberstars/shared/constants', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@cyberstars/shared/constants')>()),

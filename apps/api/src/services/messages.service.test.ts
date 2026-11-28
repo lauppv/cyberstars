@@ -15,10 +15,21 @@ const mockRepo = {
 };
 const mockUserRepo = { findById: vi.fn() };
 const mockWs = { pushToUser: vi.fn() };
+const mockBlocks = {
+  MESSAGE_NOT_SENT: 'Message could not be sent',
+  REQUEST_NOT_SENT: 'Request could not be sent',
+  REACTION_NOT_ADDED: 'Reaction could not be added',
+  existsBetween: vi.fn(async () => false),
+  isBlockedBy: vi.fn(async (_blockerId: number, _blockedId: number) => false),
+  blockedIds: vi.fn(async (): Promise<number[]> => []),
+};
+const mockSupport = { openTicket: vi.fn() };
 
 vi.mock('../repositories/messages.repository.js', () => mockRepo);
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('./ws-user.js', () => mockWs);
+vi.mock('./blocks.service.js', () => mockBlocks);
+vi.mock('./support.service.js', () => mockSupport);
 
 const {
   getInbox,
@@ -29,6 +40,7 @@ const {
   editMessage,
   deleteMessage,
   toggleReaction,
+  reportMessage,
 } = await import('./messages.service.js');
 
 function convRow(over: Partial<Record<string, unknown>> = {}) {
@@ -38,8 +50,8 @@ function convRow(over: Partial<Record<string, unknown>> = {}) {
     userBId: 2,
     createdAt: new Date('2026-07-17T10:00:00.000Z'),
     updatedAt: new Date('2026-07-17T11:00:00.000Z'),
-    userA: { id: 1, name: 'Ada', avatarUrl: '/a.png' },
-    userB: { id: 2, name: 'Ben', avatarUrl: null },
+    userA: { id: 1, name: 'Ada', avatarUrl: '/a.png', role: 'ADMIN' },
+    userB: { id: 2, name: 'Ben', avatarUrl: null, role: 'USER' },
     messages: [],
     ...over,
   };
@@ -62,7 +74,18 @@ function msgRow(over: Partial<Record<string, unknown>> = {}) {
 beforeEach(() => {
   vi.clearAllMocks();
   mockRepo.unreadByConversation.mockResolvedValue(new Map());
+  mockBlocks.existsBetween.mockImplementation(async () => false);
+  mockBlocks.isBlockedBy.mockImplementation(async () => false);
+  mockBlocks.blockedIds.mockImplementation(async () => []);
 });
+
+// `blocker` blocked `blocked`, nobody else
+function block(blocker: number, blocked: number) {
+  mockBlocks.isBlockedBy.mockImplementation(
+    async (a: number, b: number) => a === blocker && b === blocked,
+  );
+  mockBlocks.existsBetween.mockImplementation(async () => true);
+}
 
 describe('messages.service getInbox', () => {
   it('shapes each conversation from the caller perspective with its unread count', async () => {
@@ -73,7 +96,7 @@ describe('messages.service getInbox', () => {
 
     expect(inbox).toHaveLength(1);
     // caller is userA (id 1), so `other` must be userB.
-    expect(inbox[0].other).toEqual({ id: 2, name: 'Ben', avatarUrl: null });
+    expect(inbox[0].other).toEqual({ id: 2, name: 'Ben', avatarUrl: null, staff: false });
     expect(inbox[0].unreadCount).toBe(3);
     expect(inbox[0].lastMessage?.content).toBe('salut');
   });
@@ -81,7 +104,7 @@ describe('messages.service getInbox', () => {
   it('reports the other participant when the caller is userB', async () => {
     mockRepo.listConversations.mockResolvedValue([convRow()]);
     const inbox = await getInbox(2);
-    expect(inbox[0].other).toEqual({ id: 1, name: 'Ada', avatarUrl: '/a.png' });
+    expect(inbox[0].other).toEqual({ id: 1, name: 'Ada', avatarUrl: '/a.png', staff: true });
     expect(inbox[0].unreadCount).toBe(0);
   });
 });
@@ -309,14 +332,11 @@ describe('messages.service editMessage', () => {
     await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
   });
 
-  it('skips the live push when the conversation cannot be loaded', async () => {
+  it('404s without editing when the conversation cannot be loaded', async () => {
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
-    mockRepo.editMessage.mockResolvedValue(msgRow({ senderId: 1, content: 'nou' }));
     mockRepo.findConversation.mockResolvedValue(null);
-
-    const res = await editMessage(1, 500, 'nou');
-    expect(res.content).toBe('nou');
-    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+    await expect(editMessage(1, 500, 'nou')).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
   });
 });
 
@@ -329,6 +349,7 @@ describe('messages.service deleteMessage', () => {
 
   it('soft-deletes an owned message and blanks its content', async () => {
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockRepo.findConversation.mockResolvedValue(convRow());
     mockRepo.softDeleteMessage.mockResolvedValue(
       msgRow({ senderId: 1, deleted: true, content: '' }),
     );
@@ -362,15 +383,166 @@ describe('messages.service deleteMessage', () => {
     await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
   });
 
-  it('skips the live push when the conversation cannot be loaded', async () => {
+  it('404s without deleting when the conversation cannot be loaded', async () => {
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
-    mockRepo.softDeleteMessage.mockResolvedValue(
-      msgRow({ senderId: 1, deleted: true, content: '' }),
-    );
     mockRepo.findConversation.mockResolvedValue(null);
+    await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.softDeleteMessage).not.toHaveBeenCalled();
+  });
+});
 
-    const res = await deleteMessage(1, 500);
-    expect(res.deleted).toBe(true);
+describe('messages.service blocks (CYB-140)', () => {
+  beforeEach(() => {
+    mockRepo.findConversation.mockResolvedValue(convRow());
+  });
+
+  it('leaves the people the caller blocked out of the inbox', async () => {
+    mockBlocks.blockedIds.mockImplementation(async () => [2]);
+    mockRepo.listConversations.mockResolvedValue([]);
+    await getInbox(1);
+    expect(mockRepo.listConversations).toHaveBeenCalledWith(1, [2]);
+  });
+
+  it('refuses a first message either way with the same neutral words', async () => {
+    mockUserRepo.findById.mockResolvedValue({ id: 2 });
+    block(2, 1);
+    await expect(startConversation(1, 2, 'hi')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Message could not be sent',
+    });
+    expect(mockRepo.sendToPair).not.toHaveBeenCalled();
+  });
+
+  it('hides the conversation from the one who blocked', async () => {
+    block(1, 2);
+    await expect(getHistory(1, 100)).rejects.toMatchObject({ statusCode: 404 });
+    await expect(sendMessage(1, 100, 'hi')).rejects.toMatchObject({ statusCode: 404 });
+  });
+
+  it('lets the blocked one read the conversation but not send', async () => {
+    block(1, 2);
+    mockRepo.listMessages.mockResolvedValue([msgRow({ senderId: 1 })]);
+    await expect(getHistory(2, 100)).resolves.toMatchObject({ messages: [{ id: 500 }] });
+    await expect(sendMessage(2, 100, 'hi')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Message could not be sent',
+    });
+    expect(mockRepo.createMessage).not.toHaveBeenCalled();
     expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+
+  it('keeps a message off the screen of one who blocked while it was being sent', async () => {
+    mockRepo.createMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    mockBlocks.isBlockedBy
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => true);
+    await sendMessage(1, 100, 'hi');
+    expect(mockWs.pushToUser.mock.calls.map((c) => c[0])).toEqual([1]);
+  });
+
+  it('refuses a reaction from the blocked one', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    await expect(toggleReaction(2, 500, '👍')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Reaction could not be added',
+    });
+    expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
+  });
+
+  it('lets the blocked one take back a reaction left before the block', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(
+      msgRow({ senderId: 1, reactions: [{ emoji: '👍', userId: 2 }] }),
+    );
+    mockRepo.toggleReaction.mockResolvedValue([]);
+    await expect(toggleReaction(2, 500, '👍')).resolves.toMatchObject({ reactions: [] });
+    expect(mockRepo.toggleReaction).toHaveBeenCalledWith(500, 2, '👍');
+  });
+
+  it('refuses an edit from the blocked one', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
+    await expect(editMessage(2, 500, 'x')).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Message could not be sent',
+    });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
+  });
+
+  it('hides the conversation from the one who blocked for edits and deletes too', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 1 }));
+    await expect(editMessage(1, 500, 'x')).rejects.toMatchObject({ statusCode: 404 });
+    await expect(deleteMessage(1, 500)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.editMessage).not.toHaveBeenCalled();
+    expect(mockRepo.softDeleteMessage).not.toHaveBeenCalled();
+    expect(mockWs.pushToUser).not.toHaveBeenCalled();
+  });
+
+  it("keeps the blocked one's deletes and reads off the blocker's screen", async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
+    mockRepo.softDeleteMessage.mockResolvedValue(msgRow({ senderId: 2, deleted: true }));
+    mockRepo.markRead.mockResolvedValue(1);
+
+    await deleteMessage(2, 500);
+    await markRead(2, 100, 500);
+
+    const recipients = mockWs.pushToUser.mock.calls.map((c) => c[0]);
+    expect(recipients).toEqual([2, 2]);
+  });
+
+  it('answers with the saved reaction when the block check before the live frame fails', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
+    mockRepo.toggleReaction.mockResolvedValue([{ emoji: '👍', userId: 1 }]);
+    mockBlocks.isBlockedBy
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => {
+        throw new Error('db down');
+      });
+
+    const res = await toggleReaction(1, 500, '👍');
+    expect(res.reactions).toEqual([{ emoji: '👍', userId: 1 }]);
+    expect(mockWs.pushToUser.mock.calls.map((c) => c[0])).toEqual([1]);
+    error.mockRestore();
+  });
+});
+
+describe('messages.service reportMessage', () => {
+  beforeEach(() => {
+    mockRepo.findConversation.mockResolvedValue(convRow());
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2, content: 'go away' }));
+    mockSupport.openTicket.mockResolvedValue(77);
+  });
+
+  it('opens a rule violation ticket holding a copy of the message', async () => {
+    const id = await reportMessage(1, 500, 'he keeps writing');
+    expect(id).toBe(77);
+    const [userId, type, subject, body, skipIds] = mockSupport.openTicket.mock.calls[0];
+    expect(userId).toBe(1);
+    // The sender, should they be an admin, hears nothing of a report about them
+    expect(skipIds).toEqual([2]);
+    expect(type).toBe('RULE_VIOLATION');
+    expect(subject).toBe('Reported message from Ben');
+    expect(body).toContain('From: Ben (user 2)');
+    expect(body).toContain('go away');
+    expect(body).toContain('Note from the student: he keeps writing');
+  });
+
+  it('works after the reporter blocked the sender', async () => {
+    block(1, 2);
+    await expect(reportMessage(1, 500, undefined)).resolves.toBe(77);
+  });
+
+  it("refuses one's own message, a deleted one and someone else's conversation", async () => {
+    await expect(reportMessage(2, 500, undefined)).rejects.toMatchObject({ statusCode: 400 });
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2, deleted: true }));
+    await expect(reportMessage(1, 500, undefined)).rejects.toMatchObject({ statusCode: 400 });
+    await expect(reportMessage(3, 500, undefined)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockSupport.openTicket).not.toHaveBeenCalled();
   });
 });

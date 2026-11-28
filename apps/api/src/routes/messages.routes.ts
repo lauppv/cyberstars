@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import type { Request } from 'express';
 import { limiter } from '../middleware/rateLimit.js';
+import { newTicketLimiter } from '../middleware/ticketLimit.js';
 import { authenticateToken } from '../middleware/auth.js';
 import { requireFeatureAccess } from '../middleware/features.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
@@ -9,6 +10,7 @@ import {
   startConversationSchema,
   markReadSchema,
   toggleReactionSchema,
+  reportMessageSchema,
 } from '../schemas/messages.schema.js';
 import * as messagesController from '../controllers/messages.controller.js';
 
@@ -18,7 +20,7 @@ import * as messagesController from '../controllers/messages.controller.js';
 const perUser = (req: Request) => String(req.user!.id);
 
 // Cap message sends per user, first messages included; abuse is otherwise held
-// in check by this + (later) the block feature. Reads are cheap and unlimited.
+// in check by this + blocking (CYB-140). Reads are cheap and unlimited.
 const sendLimiter = limiter({
   windowMs: 60_000,
   limit: 20,
@@ -66,6 +68,14 @@ router.post(
   reactLimiter,
   validateBody(toggleReactionSchema),
   messagesController.toggleReaction,
+);
+
+router.post(
+  '/:messageId/report',
+  // A report is a support ticket, so it shares the support form's bucket
+  newTicketLimiter,
+  validateBody(reportMessageSchema),
+  messagesController.reportMessage,
 );
 
 export default router;

@@ -24,19 +24,8 @@ export async function createTicket(req: Request, res: Response, next: NextFuncti
     const userId = req.user!.id;
     const { type, subject, message } = req.body;
 
-    const ticket = await supportService.create(userId, type, subject.trim(), message.trim());
-
-    // Alert every admin about the new ticket (the actor, if themselves an admin,
-    // is excluded inside notify).
-    void notificationsService.notify({
-      recipientIds: await userRepo.getAdminIds(),
-      actorId: userId,
-      type: 'SUPPORT_TICKET_NEW',
-      entityId: ticket.id,
-      data: { title: ticket.subject },
-    });
-
-    res.status(201).json({ ticketId: ticket.id });
+    const ticketId = await supportService.openTicket(userId, type, subject.trim(), message.trim());
+    res.status(201).json({ ticketId });
   } catch (err) {
     next(err);
   }

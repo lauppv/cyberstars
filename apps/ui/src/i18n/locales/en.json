@@ -479,6 +479,24 @@
     "actions": "Message actions",
     "emptyInboxHint": "Start one from someone's profile or your connections."
   },
+  "block": {
+    "block": "Block",
+    "unblock": "Unblock",
+    "confirmTitle": "Block this person?",
+    "confirmText": "{{name}} won't be able to send you messages or ask to connect. Your conversation will be hidden, and your connection ends if you have one. They won't be told. You can unblock them anytime in Settings.",
+    "settingsTitle": "Blocked people",
+    "settingsHint": "They can't send you messages or ask to connect.",
+    "none": "You haven't blocked anyone.",
+    "loadFailed": "The people you blocked couldn't be loaded."
+  },
+  "report": {
+    "report": "Report",
+    "title": "Report this message",
+    "text": "The admins will see this message and who sent it. The sender won't be told.",
+    "noteLabel": "What's wrong? (optional)",
+    "send": "Send report",
+    "sent": "Thank you. The admins will look at it."
+  },
   "notif": {
     "title": "Notifications",
     "empty": "You're all caught up.",

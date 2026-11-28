@@ -29,6 +29,9 @@ interface MessagesContextValue {
   // don't inflate the unread badge (they're being read live).
   setActiveConversation: (id: number | null) => void;
   markConversationRead: (id: number) => void;
+  // Takes a conversation out of the inbox at once, as after a block, without
+  // waiting for a reload that might fail
+  dropConversation: (id: number) => void;
 }
 
 const MessagesContext = createContext<MessagesContextValue | null>(null);
@@ -166,6 +169,10 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
     setConversations((prev) => prev.map((c) => (c.id === id ? { ...c, unreadCount: 0 } : c)));
   }, []);
 
+  const dropConversation = useCallback((id: number) => {
+    setConversations((prev) => prev.filter((c) => c.id !== id));
+  }, []);
+
   const totalUnread = useMemo(
     () => conversations.reduce((sum, c) => sum + c.unreadCount, 0),
     [conversations],
@@ -183,6 +190,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
         startWith,
         setActiveConversation,
         markConversationRead,
+        dropConversation,
       }}
     >
       {children}

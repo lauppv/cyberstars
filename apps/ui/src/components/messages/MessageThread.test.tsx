@@ -12,12 +12,20 @@ const h = vi.hoisted(() => ({
     editMessage: vi.fn(),
     deleteMessage: vi.fn(),
     toggleReaction: vi.fn(),
+    reportMessage: vi.fn(),
   },
+  blocks: { block: vi.fn() },
   // Stable, as the real context's are: new ones each render would reload the history
-  messages: { setActiveConversation: vi.fn(), markConversationRead: vi.fn() },
+  messages: {
+    setActiveConversation: vi.fn(),
+    markConversationRead: vi.fn(),
+    refresh: vi.fn(),
+    dropConversation: vi.fn(),
+  },
 }));
 
 vi.mock('../../services/messagesService', () => h.service);
+vi.mock('../../services/blocksService', () => h.blocks);
 vi.mock('../../context/MessagesContext', () => ({
   useMessages: () => h.messages,
 }));
@@ -30,7 +38,7 @@ import { DraftThread, MessageThread } from './MessageThread';
 
 const conversation: ConversationDTO = {
   id: 10,
-  other: { id: 2, name: 'Ben', avatarUrl: null },
+  other: { id: 2, name: 'Ben', avatarUrl: null, staff: false },
   lastMessage: null,
   unreadCount: 0,
   updatedAt: '2026-07-17T10:00:00.000Z',
@@ -216,8 +224,73 @@ describe('MessageThread failures', () => {
   });
 });
 
+describe('MessageThread block and report (CYB-140)', () => {
+  it('offers Report only on a message received', async () => {
+    renderThread();
+    await screen.findByText('salut');
+    openMenu();
+    expect(screen.queryByRole('menuitem', { name: 'Report' })).toBeNull();
+  });
+
+  it('sends a report with the note and says it went through', async () => {
+    h.service.getHistory.mockResolvedValue({ messages: [msg({ senderId: 2 })], hasMore: false });
+    h.service.reportMessage.mockResolvedValue({ ticketId: 7 });
+    renderThread();
+    await screen.findByText('salut');
+    openMenu();
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Report' }));
+    fireEvent.change(screen.getByLabelText("What's wrong? (optional)"), {
+      target: { value: '  rude  ' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Send report' }));
+    expect(await screen.findByRole('status')).toHaveTextContent(
+      'Thank you. The admins will look at it.',
+    );
+    expect(h.service.reportMessage).toHaveBeenCalledWith(100, 'rude');
+    expect(screen.queryByRole('dialog')).toBeNull();
+  });
+
+  it('keeps the report dialog open and says why when it fails', async () => {
+    h.service.getHistory.mockResolvedValue({ messages: [msg({ senderId: 2 })], hasMore: false });
+    h.service.reportMessage.mockRejectedValue(new Error('Too many requests'));
+    renderThread();
+    await screen.findByText('salut');
+    openMenu();
+    fireEvent.click(screen.getByRole('menuitem', { name: 'Report' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Send report' }));
+    expect(await screen.findByRole('alert')).toHaveTextContent('Too many requests');
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+  });
+
+  it('blocks after asking, then refreshes the inbox and goes back to the list', async () => {
+    h.blocks.block.mockResolvedValue({ ok: true });
+    const onBack = vi.fn();
+    render(<MessageThread conversation={conversation} currentUserId={1} onBack={onBack} />);
+    await screen.findByText('salut');
+    fireEvent.click(screen.getByRole('button', { name: 'Block' }));
+    expect(screen.getByRole('dialog')).toHaveTextContent("Ben won't be able to send you messages");
+    fireEvent.click(screen.getByRole('dialog').querySelectorAll('button')[1]);
+    await waitFor(() => expect(onBack).toHaveBeenCalled());
+    expect(h.blocks.block).toHaveBeenCalledWith(2);
+    expect(h.messages.refresh).toHaveBeenCalled();
+    expect(h.messages.dropConversation).toHaveBeenCalledWith(conversation.id);
+  });
+
+  it('offers no Block for someone of the team', async () => {
+    render(
+      <MessageThread
+        conversation={{ ...conversation, other: { ...conversation.other, staff: true } }}
+        currentUserId={1}
+        onBack={() => {}}
+      />,
+    );
+    await screen.findByText('salut');
+    expect(screen.queryByRole('button', { name: 'Block' })).toBeNull();
+  });
+});
+
 describe('DraftThread', () => {
-  const ben = { id: 2, name: 'Ben', avatarUrl: null };
+  const ben = { id: 2, name: 'Ben', avatarUrl: null, staff: false };
 
   it('shows who the draft is to and loads nothing', () => {
     render(<DraftThread other={ben} onSend={vi.fn()} onBack={() => {}} />);

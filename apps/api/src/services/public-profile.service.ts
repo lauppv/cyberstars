@@ -4,6 +4,7 @@ import * as laniakeaRepo from '../repositories/laniakea.repository.js';
 import * as projectsRepo from '../repositories/projects.repository.js';
 import * as leaderboardService from './leaderboard.service.js';
 import * as connectionsService from './connections.service.js';
+import * as blocksService from './blocks.service.js';
 import { computeStreak, listDone, recentActivity } from './activity.service.js';
 import {
   isClosedCourse,
@@ -16,6 +17,7 @@ import { courseBadges, projectBadges, type BadgeState } from '@cyberstars/shared
 import { PROJECT_LANGUAGES, findProject } from '@cyberstars/shared/projects';
 import { courseParts, lessons } from '@cyberstars/content/curriculum';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
+import { isStaff } from '@cyberstars/shared/auth';
 
 const ACTIVE_COURSE_KEYS = new Set<string>(LISTED_COURSE_KEYS);
 
@@ -64,6 +66,9 @@ export async function getPublicProfile(
     activity: null,
     connections: null,
     connectionRelation: await connectionsService.relationTo(viewerId, targetId),
+    blockedByMe:
+      viewerId !== null && !isSelf && (await blocksService.isBlockedBy(viewerId, targetId)),
+    staff: isStaff(user.role),
   };
 
   const needStats = isSelf || user.showStats;

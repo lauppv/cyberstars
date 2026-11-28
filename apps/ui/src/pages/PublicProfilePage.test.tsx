@@ -11,6 +11,7 @@ vi.mock('react-router', async (importOriginal) => {
   return { ...actual, useNavigate: () => mockNavigate, useParams: () => mockParams };
 });
 
+vi.mock('../context/MessagesContext', () => ({ useMessages: () => ({ refresh: vi.fn() }) }));
 vi.mock('../context/AuthContext', () => ({
   useAuth: vi.fn(() => ({ user: null, isLoading: false })),
 }));
@@ -98,6 +99,8 @@ const fullProfile: PublicProfile = {
   ],
   connections: { users: [], count: 0 },
   connectionRelation: 'none',
+  blockedByMe: false,
+  staff: false,
 };
 
 function renderPage() {
@@ -220,8 +223,18 @@ describe('PublicProfilePage', () => {
     renderPage();
     fireEvent.click(await screen.findByText('Send message'));
     expect(mockNavigate).toHaveBeenCalledWith('/messages', {
-      state: { draftWith: { id: 7, name: 'Nova', avatarUrl: null } },
+      state: { draftWith: { id: 7, name: 'Nova', avatarUrl: null, staff: false } },
     });
+  });
+
+  it('offers Block for a student but not for someone of the team', async () => {
+    const { unmount } = renderPage();
+    expect(await screen.findByRole('button', { name: 'Block' })).toBeDefined();
+    unmount();
+    mockGetPublicProfile.mockResolvedValue({ ...fullProfile, staff: true });
+    renderPage();
+    await screen.findByText('Send message');
+    expect(screen.queryByRole('button', { name: 'Block' })).toBeNull();
   });
 
   it('shows the not-found message on a 404', async () => {

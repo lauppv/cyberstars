@@ -1,6 +1,7 @@
 import { Router, type Request } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
 import { limiter } from '../middleware/rateLimit.js';
+import { newTicketLimiter } from '../middleware/ticketLimit.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
   createTicketSchema,
@@ -13,16 +14,9 @@ import * as supportController from '../controllers/support.controller.js';
 // authenticateToken runs first, so req.user is always set here.
 const perUser = (req: Request) => String(req.user!.id);
 
-// Every new ticket, and every reply of a student, notifies every admin, so a
-// burst from one account would fill their notifications. A real problem
-// takes a ticket or two; 5 in 15 minutes leaves room for a few at once.
-const newTicketLimiter = limiter({
-  windowMs: 15 * 60_000,
-  limit: 5,
-  keyGenerator: perUser,
-});
-
-// A conversation about a ticket, the admins' answers included.
+// Every reply of a student notifies every admin, as a new ticket does
+// (`newTicketLimiter`, shared with reporting a message), so replies are
+// capped too: a conversation about a ticket, the admins' answers included.
 const replyLimiter = limiter({
   windowMs: 60_000,
   limit: 20,
