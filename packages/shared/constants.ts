@@ -172,8 +172,9 @@ export function xpForCourse(courseKey: string, lessons: readonly XpLesson[]): nu
 
 // Quadratic level curve. Level L begins at XP_LEVEL_CONSTANT·(L-1)², so each
 // level costs a bit more than the last (linear marginal cost). c=100 makes
-// level 2 land around the first ~9 lessons and the titled levels (up to 10,
-// ~8,100 XP) come early; the whole catalog goes well past them.
+// level 2 land after about the first 10 lessons of a course (or one hard
+// challenge) and the titled levels (up to 10, ~8,100 XP) come early; the whole
+// catalog goes well past them.
 const XP_LEVEL_CONSTANT = 100;
 
 export function levelFromXp(xp: number): number {
