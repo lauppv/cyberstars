@@ -11,7 +11,7 @@ services:
     # Only checks that box.sh loaded every image a run needs
     entrypoint: >
       docker image inspect --format ok
-        gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine cyberstars-linux-sandbox
+        gcc:16.1.0 python:3.10-slim eclipse-temurin:21-jdk-alpine cyberstars-linux-sandbox
 
   app:
     image: cyberstars-loadtest-app

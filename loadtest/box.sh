@@ -38,7 +38,7 @@ up() {
   echo "==> Building the app from $(git rev-parse --short HEAD)"
   docker build -q -t cyberstars-loadtest-app . >/dev/null
   docker build -q -t cyberstars-loadtest-linux-sandbox apps/api/src/runtimes/linux-sandbox >/dev/null
-  for image in postgres:16-alpine gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine; do
+  for image in postgres:16-alpine gcc:16.1.0 python:3.10-slim eclipse-temurin:21-jdk-alpine; do
     docker image inspect "$image" >/dev/null 2>&1 || docker pull -q "$image"
   done
 
@@ -48,7 +48,7 @@ up() {
 
   copy_in cyberstars-loadtest-app:latest
   copy_in cyberstars-loadtest-linux-sandbox:latest cyberstars-linux-sandbox:latest
-  for image in postgres:16-alpine gcc:latest python:3.10-slim eclipse-temurin:21-jdk-alpine; do
+  for image in postgres:16-alpine gcc:16.1.0 python:3.10-slim eclipse-temurin:21-jdk-alpine; do
     copy_in "$image"
   done
 
