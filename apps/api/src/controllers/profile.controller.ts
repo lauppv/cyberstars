@@ -10,16 +10,15 @@ import * as emailService from '../services/email.service.js';
 import { auth } from '../services/auth.js';
 import { computeStreak, listDone, recentActivity } from '../services/activity.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
-import { UPLOADS_DIR } from '../config/paths.js';
-
-const UPLOAD_DIR = path.join(UPLOADS_DIR, 'avatars');
+import { AVATARS_DIR } from '../config/paths.js';
+import { cleanAvatar } from '../services/avatar-image.service.js';
 
 // Create the upload dir lazily on first use instead of at import time, so the
 // module imports without filesystem side effects (audit H9). Cached so the
 // mkdir runs at most once.
 let uploadDirReady: Promise<void> | null = null;
 function ensureUploadDir(): Promise<void> {
-  if (!uploadDirReady) uploadDirReady = fs.mkdir(UPLOAD_DIR, { recursive: true }).then(() => {});
+  if (!uploadDirReady) uploadDirReady = fs.mkdir(AVATARS_DIR, { recursive: true }).then(() => {});
   return uploadDirReady;
 }
 
@@ -100,19 +99,22 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
       throw new AppError(400, 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.');
     }
 
+    // Before the lock and before the old avatar goes, so a picture that can't be
+    // read leaves the current one in place.
+    const image = await cleanAvatar(file.buffer);
+
     const avatarUrl = await withAvatarLock(userId, async () => {
-      const ext = type.ext;
-      const filename = `${userId}-${Date.now()}.${ext}`;
-      const filepath = path.join(UPLOAD_DIR, filename);
+      const filename = `${userId}-${Date.now()}.webp`;
+      const filepath = path.join(AVATARS_DIR, filename);
 
       const user = await userRepo.findById(userId);
       if (user?.avatarUrl) {
-        const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
+        const oldFile = path.join(AVATARS_DIR, path.basename(user.avatarUrl));
         await fs.unlink(oldFile).catch(() => {});
       }
 
       await ensureUploadDir();
-      await fs.writeFile(filepath, file.buffer);
+      await fs.writeFile(filepath, image);
       const url = `/uploads/avatars/${filename}`;
       await userRepo.updateProfile(userId, { avatarUrl: url });
       return url;
@@ -130,7 +132,7 @@ export async function deleteAvatar(req: Request, res: Response, next: NextFuncti
     await withAvatarLock(userId, async () => {
       const user = await userRepo.findById(userId);
       if (user?.avatarUrl) {
-        const oldFile = path.join(UPLOAD_DIR, path.basename(user.avatarUrl));
+        const oldFile = path.join(AVATARS_DIR, path.basename(user.avatarUrl));
         await fs.unlink(oldFile).catch(() => {});
       }
       await userRepo.updateProfile(userId, { avatarUrl: null });

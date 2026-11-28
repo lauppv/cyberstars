@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import type { Request } from 'express';
 import multer from 'multer';
 import { limiter } from '../middleware/rateLimit.js';
 import { authenticateToken } from '../middleware/auth.js';
@@ -25,6 +26,16 @@ const passwordLimiter = limiter({
   message: { error: 'Too many attempts, try again later' },
 });
 
+// Every upload is decoded and encoded again (cleanAvatar), which costs the
+// server's one CPU far more than saving it did. Keyed per account, since a class
+// shares one school IP; authenticateToken runs first, so req.user is set.
+const avatarLimiter = limiter({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  keyGenerator: (req: Request) => String(req.user!.id),
+  message: { error: 'Too many new pictures, try again in a few minutes' },
+});
+
 const router = Router();
 
 router.patch(
@@ -45,7 +56,13 @@ router.put(
   validateBody(saveCodeLanguageSchema),
   profileController.saveCodeLanguage,
 );
-router.post('/avatar', authenticateToken, upload.single('avatar'), profileController.uploadAvatar);
+router.post(
+  '/avatar',
+  authenticateToken,
+  avatarLimiter,
+  upload.single('avatar'),
+  profileController.uploadAvatar,
+);
 router.delete('/avatar', authenticateToken, profileController.deleteAvatar);
 router.post(
   '/password',
