@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Check, CheckCheck } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
 import i18next from 'i18next';
 import { useMessages } from '../../context/MessagesContext';
@@ -535,23 +536,36 @@ export function MessageThread({
                   )}
                   {editing?.id !== m.id && (
                     <div
-                      className={`flex items-center gap-2 mt-0.5 px-1 ${mine ? 'justify-end' : ''}`}
+                      className={`flex items-center gap-1.5 mt-1 px-1 text-[11px] text-[var(--text3)] tabular-nums ${mine ? 'justify-end' : ''}`}
                     >
-                      <span className="text-[10px] text-[var(--text3)] tabular-nums">
-                        {dateTimeLabel(m.createdAt)}
-                      </span>
+                      <span>{dateTimeLabel(m.createdAt)}</span>
                       {!m.deleted && m.editedAt && (
-                        <span
-                          className="text-[10px] text-[var(--text3)] italic tabular-nums"
-                          title={t('messages.edited', { time: timeLabel(m.editedAt) })}
-                        >
-                          {t('messages.edited', { time: timeLabel(m.editedAt) })}
-                        </span>
+                        <>
+                          <span aria-hidden>·</span>
+                          <span className="italic">
+                            {t('messages.edited', { time: timeLabel(m.editedAt) })}
+                          </span>
+                        </>
                       )}
                       {mine && !m.deleted && (
-                        <span className="text-[10px] text-[var(--text3)]">
-                          {m.readAt ? t('messages.seen') : t('messages.sent')}
-                        </span>
+                        <>
+                          <span aria-hidden>·</span>
+                          {/* Two ticks in the accent once read, one tick before; the word
+                              stays grey, since the accent is too dark for small text */}
+                          <span className="inline-flex items-center gap-0.5">
+                            {m.readAt ? (
+                              <CheckCheck
+                                size={13}
+                                strokeWidth={2.25}
+                                className="text-[var(--accent)]"
+                                aria-hidden
+                              />
+                            ) : (
+                              <Check size={13} strokeWidth={2.25} aria-hidden />
+                            )}
+                            {m.readAt ? t('messages.seen') : t('messages.sent')}
+                          </span>
+                        </>
                       )}
                     </div>
                   )}
