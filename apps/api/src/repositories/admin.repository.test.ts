@@ -17,10 +17,11 @@ const { PEOPLE } = await import('./user.repository.js');
 beforeEach(() => vi.clearAllMocks());
 
 describe('userStats', () => {
-  it('counts students only: in all and made in the last 7 and 30 days, and the accounts per role', async () => {
+  it('counts all accounts but moderators in total and per role, students only in the new ones', async () => {
     vi.useFakeTimers({ now: new Date('2026-11-15T12:00:00Z') });
     mockPrisma.user.count
-      .mockResolvedValueOnce(10) // total
+      .mockResolvedValueOnce(17) // total
+      .mockResolvedValueOnce(10) // students
       .mockResolvedValueOnce(3) // newLast7Days
       .mockResolvedValueOnce(6) // newLast30Days
       .mockResolvedValueOnce(1) // founders
@@ -31,12 +32,13 @@ describe('userStats', () => {
     vi.useRealTimers();
 
     expect(result).toEqual({
-      total: 10,
+      total: 17,
       byRole: { FOUNDER: 1, ADMIN: 2, USER: 10, BOT: 4 },
       newLast7Days: 3,
       newLast30Days: 6,
     });
     expect(mockPrisma.user.count.mock.calls).toEqual([
+      [{ where: { role: { in: ['FOUNDER', 'ADMIN', 'USER'] } } }],
       [{ where: PEOPLE }],
       [{ where: { ...PEOPLE, createdAt: { gte: new Date('2026-11-08T12:00:00Z') } } }],
       [{ where: { ...PEOPLE, createdAt: { gte: new Date('2026-10-16T12:00:00Z') } } }],

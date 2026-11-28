@@ -60,7 +60,7 @@ describe('Admin stats', () => {
     expect(typeof body.generatedAt).toBe('string');
   });
 
-  it('counts students only, no moderators, admins, founder or test accounts', async () => {
+  it('counts students only in the new accounts, everyone but moderators in total and per role', async () => {
     const a = await admin();
     for (const role of ['MODERATOR', 'FOUNDER'] as const) {
       const id = await userIdFor((await createAuthenticatedAgent()).email);
@@ -72,9 +72,10 @@ describe('Admin stats', () => {
     await createAuthenticatedAgent();
     const res = await a.get('/api/admin/stats').expect(200);
     // Of the sentinel ADMIN, the promoted admin, a moderator, the founder, 3
-    // bots and 1 real student, only the student; byRole counts them all but the moderator
+    // bots and 1 real student, the new ones count only the student; total and
+    // byRole count them all but the moderator
     expect(res.body.users).toEqual({
-      total: 1,
+      total: 7,
       byRole: { FOUNDER: 1, ADMIN: 2, USER: 1, BOT: 3 },
       newLast7Days: 1,
       newLast30Days: 1,

@@ -1,3 +1,4 @@
+import type { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 import { BOT_EMAIL_ENDINGS, PEOPLE } from './user.repository.js';
 import type { AdminUserStats, AdminProgressStats, AdminTutorStats } from '@cyberstars/shared/admin';
@@ -6,10 +7,15 @@ function daysAgo(days: number): Date {
   return new Date(Date.now() - days * 24 * 60 * 60 * 1000);
 }
 
-// Students only, like every number on the admin page (see PEOPLE); byRole
-// alone also counts the founder, the admins and our test accounts
+// The accounts in the users row's Total: everyone but the moderators
+const ACCOUNTS: Prisma.UserWhereInput = { role: { in: ['FOUNDER', 'ADMIN', 'USER'] } };
+
+// Students only, like every number on the admin page (see PEOPLE), except
+// Total and byRole, which also count the founder, the admins and our test
+// accounts (ACCOUNTS)
 export async function userStats(): Promise<AdminUserStats> {
-  const [total, newLast7Days, newLast30Days, founders, admins, bots] = await Promise.all([
+  const [total, students, newLast7Days, newLast30Days, founders, admins, bots] = await Promise.all([
+    prisma.user.count({ where: ACCOUNTS }),
     prisma.user.count({ where: PEOPLE }),
     prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(7) } } }),
     prisma.user.count({ where: { ...PEOPLE, createdAt: { gte: daysAgo(30) } } }),
@@ -21,7 +27,7 @@ export async function userStats(): Promise<AdminUserStats> {
   ]);
   return {
     total,
-    byRole: { FOUNDER: founders, ADMIN: admins, USER: total, BOT: bots },
+    byRole: { FOUNDER: founders, ADMIN: admins, USER: students, BOT: bots },
     newLast7Days,
     newLast30Days,
   };
