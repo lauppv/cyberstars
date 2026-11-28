@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
 
-const participantSelect = { id: true, name: true, avatarUrl: true } as const;
+const participantSelect = { id: true, name: true, avatarUrl: true, role: true } as const;
 
 const reactionsInclude = {
   reactions: { select: { emoji: true, userId: true }, orderBy: { id: 'asc' } },

@@ -84,7 +84,7 @@ function ThreadHeader({
         <Avatar url={other.avatarUrl} userId={other.id} size={32} />
         <span className="font-semibold text-[14px] text-[var(--text)] truncate">{other.name}</span>
       </UserLink>
-      {onBlocked && (
+      {onBlocked && !other.staff && (
         <button
           onClick={() => setConfirming(true)}
           className="ml-auto flex-shrink-0 text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"

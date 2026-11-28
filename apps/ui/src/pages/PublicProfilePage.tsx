@@ -178,8 +178,8 @@ export function PublicProfilePage() {
   // Opens a draft; the conversation is created only by the first message
   const startConversation = () => {
     if (!profile) return;
-    const { userId: id, name, avatarUrl } = profile;
-    navigate('/messages', { state: { draftWith: { id, name, avatarUrl } } });
+    const { userId: id, name, avatarUrl, staff } = profile;
+    navigate('/messages', { state: { draftWith: { id, name, avatarUrl, staff } } });
   };
 
   const sendConnectionRequest = async () => {
@@ -469,12 +469,14 @@ export function PublicProfilePage() {
                       {t('publicProfile.connected')} ✓
                     </span>
                   )}
-                  <button
-                    onClick={() => setConfirmingBlock(true)}
-                    className="ml-auto text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"
-                  >
-                    {t('block.block')}
-                  </button>
+                  {!profile.staff && (
+                    <button
+                      onClick={() => setConfirmingBlock(true)}
+                      className="ml-auto text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"
+                    >
+                      {t('block.block')}
+                    </button>
+                  )}
                 </>
               )}
             </div>

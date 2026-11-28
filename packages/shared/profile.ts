@@ -63,4 +63,6 @@ export interface PublicProfile {
   // The viewer blocked this student (CYB-140): the profile offers Unblock in
   // place of Send Message and Connect. Never says whether they blocked the viewer.
   blockedByMe: boolean;
+  // A moderator, an admin or the founder, whom a student can't block
+  staff: boolean;
 }

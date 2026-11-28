@@ -5,6 +5,8 @@ export interface ConversationParticipant {
   id: number;
   name: string;
   avatarUrl: string | null;
+  // A moderator, an admin or the founder, whom a student can't block
+  staff: boolean;
 }
 
 // Raw per-user reaction rows; the client groups by emoji and derives `active`

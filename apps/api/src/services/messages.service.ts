@@ -4,6 +4,7 @@ import * as blocks from './blocks.service.js';
 import * as supportService from './support.service.js';
 import { pushToUser } from './ws-user.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
+import { isStaff } from '@cyberstars/shared/auth';
 import type { ConversationDTO, ConversationHistory, MessageDTO } from '@cyberstars/shared/messages';
 
 const HISTORY_PAGE = 30;
@@ -33,7 +34,12 @@ function shapeConversation(
   const last = row.messages[0] ? shapeMessage(row.messages[0]) : null;
   return {
     id: row.id,
-    other: { id: other.id, name: other.name, avatarUrl: other.avatarUrl },
+    other: {
+      id: other.id,
+      name: other.name,
+      avatarUrl: other.avatarUrl,
+      staff: isStaff(other.role),
+    },
     lastMessage: last,
     unreadCount: unread,
     updatedAt: row.updatedAt.toISOString(),

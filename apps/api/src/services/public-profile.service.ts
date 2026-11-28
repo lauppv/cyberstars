@@ -17,6 +17,7 @@ import { courseBadges, projectBadges, type BadgeState } from '@cyberstars/shared
 import { PROJECT_LANGUAGES, findProject } from '@cyberstars/shared/projects';
 import { courseParts, lessons } from '@cyberstars/content/curriculum';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
+import { isStaff } from '@cyberstars/shared/auth';
 
 const ACTIVE_COURSE_KEYS = new Set<string>(LISTED_COURSE_KEYS);
 
@@ -67,6 +68,7 @@ export async function getPublicProfile(
     connectionRelation: await connectionsService.relationTo(viewerId, targetId),
     blockedByMe:
       viewerId !== null && !isSelf && (await blocksService.isBlockedBy(viewerId, targetId)),
+    staff: isStaff(user.role),
   };
 
   const needStats = isSelf || user.showStats;

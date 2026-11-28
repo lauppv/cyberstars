@@ -40,13 +40,13 @@ import { MessagesPage } from './MessagesPage';
 
 const conv: ConversationDTO = {
   id: 10,
-  other: { id: 2, name: 'Ben', avatarUrl: null },
+  other: { id: 2, name: 'Ben', avatarUrl: null, staff: false },
   lastMessage: null,
   unreadCount: 0,
   updatedAt: '2026-07-17T10:00:00.000Z',
 };
 
-const nova = { id: 7, name: 'Nova', avatarUrl: null };
+const nova = { id: 7, name: 'Nova', avatarUrl: null, staff: false };
 
 function renderPage(state?: unknown) {
   return render(

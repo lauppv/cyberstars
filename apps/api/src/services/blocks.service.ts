@@ -3,6 +3,7 @@ import * as connectionsRepo from '../repositories/connections.repository.js';
 import * as userRepo from '../repositories/user.repository.js';
 import * as notificationsService from './notifications.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
+import { isStaff } from '@cyberstars/shared/auth';
 import type { BlockedUser } from '@cyberstars/shared/blocks';
 
 // What a blocked student sees when a message or a request to the one who
@@ -30,6 +31,8 @@ export async function block(blockerId: number, blockedId: number): Promise<void>
   if (blockedId === blockerId) throw new AppError(400, 'Cannot block yourself');
   const target = await userRepo.findById(blockedId);
   if (!target) throw new AppError(404, 'User not found');
+  // A word from the team about the rules always gets through
+  if (isStaff(target.role)) throw new AppError(403, 'The team cannot be blocked');
 
   const connection = await connectionsRepo.findBetween(blockerId, blockedId);
   await repo.block(blockerId, blockedId);

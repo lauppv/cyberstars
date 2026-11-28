@@ -50,8 +50,8 @@ function convRow(over: Partial<Record<string, unknown>> = {}) {
     userBId: 2,
     createdAt: new Date('2026-07-17T10:00:00.000Z'),
     updatedAt: new Date('2026-07-17T11:00:00.000Z'),
-    userA: { id: 1, name: 'Ada', avatarUrl: '/a.png' },
-    userB: { id: 2, name: 'Ben', avatarUrl: null },
+    userA: { id: 1, name: 'Ada', avatarUrl: '/a.png', role: 'ADMIN' },
+    userB: { id: 2, name: 'Ben', avatarUrl: null, role: 'USER' },
     messages: [],
     ...over,
   };
@@ -96,7 +96,7 @@ describe('messages.service getInbox', () => {
 
     expect(inbox).toHaveLength(1);
     // caller is userA (id 1), so `other` must be userB.
-    expect(inbox[0].other).toEqual({ id: 2, name: 'Ben', avatarUrl: null });
+    expect(inbox[0].other).toEqual({ id: 2, name: 'Ben', avatarUrl: null, staff: false });
     expect(inbox[0].unreadCount).toBe(3);
     expect(inbox[0].lastMessage?.content).toBe('salut');
   });
@@ -104,7 +104,7 @@ describe('messages.service getInbox', () => {
   it('reports the other participant when the caller is userB', async () => {
     mockRepo.listConversations.mockResolvedValue([convRow()]);
     const inbox = await getInbox(2);
-    expect(inbox[0].other).toEqual({ id: 1, name: 'Ada', avatarUrl: '/a.png' });
+    expect(inbox[0].other).toEqual({ id: 1, name: 'Ada', avatarUrl: '/a.png', staff: true });
     expect(inbox[0].unreadCount).toBe(0);
   });
 });

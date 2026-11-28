@@ -20,6 +20,14 @@ describe('Blocks', () => {
     expect(await prisma.userBlock.count({ where: { blockerId: idA, blockedId: idB } })).toBe(1);
   });
 
+  it('refuses blocking someone of the team', async () => {
+    const { a, idB } = await twoUsers();
+    await prisma.user.update({ where: { id: idB }, data: { role: 'MODERATOR' } });
+    await a.put(`/api/blocks/${idB}`).expect(403);
+    const profile = await a.get(`/api/users/${idB}/profile`).expect(200);
+    expect(profile.body.staff).toBe(true);
+  });
+
   it('ends a pending request and refuses new ones either way', async () => {
     const { a, b, idA, idB } = await twoUsers();
     await b.post('/api/connections').send({ addresseeId: idA }).expect(201);

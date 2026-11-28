@@ -21,7 +21,7 @@ const { block, list, unblock } = await import('./blocks.service.js');
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mockUserRepo.findById.mockResolvedValue({ id: 2 });
+  mockUserRepo.findById.mockResolvedValue({ id: 2, role: 'USER' });
   mockConnectionsRepo.findBetween.mockResolvedValue(null);
 });
 
@@ -30,6 +30,14 @@ describe('blocks.service block', () => {
     await expect(block(1, 1)).rejects.toMatchObject({ statusCode: 400 });
     mockUserRepo.findById.mockResolvedValue(null);
     await expect(block(1, 2)).rejects.toMatchObject({ statusCode: 404 });
+    expect(mockRepo.block).not.toHaveBeenCalled();
+  });
+
+  it('refuses blocking a moderator, an admin or the founder', async () => {
+    for (const role of ['MODERATOR', 'ADMIN', 'FOUNDER']) {
+      mockUserRepo.findById.mockResolvedValue({ id: 2, role });
+      await expect(block(1, 2)).rejects.toMatchObject({ statusCode: 403 });
+    }
     expect(mockRepo.block).not.toHaveBeenCalled();
   });
 

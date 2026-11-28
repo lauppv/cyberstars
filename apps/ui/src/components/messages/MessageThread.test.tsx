@@ -33,7 +33,7 @@ import { DraftThread, MessageThread } from './MessageThread';
 
 const conversation: ConversationDTO = {
   id: 10,
-  other: { id: 2, name: 'Ben', avatarUrl: null },
+  other: { id: 2, name: 'Ben', avatarUrl: null, staff: false },
   lastMessage: null,
   unreadCount: 0,
   updatedAt: '2026-07-17T10:00:00.000Z',
@@ -269,10 +269,22 @@ describe('MessageThread block and report (CYB-140)', () => {
     expect(h.blocks.block).toHaveBeenCalledWith(2);
     expect(h.messages.refresh).toHaveBeenCalled();
   });
+
+  it('offers no Block for someone of the team', async () => {
+    render(
+      <MessageThread
+        conversation={{ ...conversation, other: { ...conversation.other, staff: true } }}
+        currentUserId={1}
+        onBack={() => {}}
+      />,
+    );
+    await screen.findByText('salut');
+    expect(screen.queryByRole('button', { name: 'Block' })).toBeNull();
+  });
 });
 
 describe('DraftThread', () => {
-  const ben = { id: 2, name: 'Ben', avatarUrl: null };
+  const ben = { id: 2, name: 'Ben', avatarUrl: null, staff: false };
 
   it('shows who the draft is to and loads nothing', () => {
     render(<DraftThread other={ben} onSend={vi.fn()} onBack={() => {}} />);

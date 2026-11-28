@@ -32,7 +32,7 @@ import { MessagesProvider, useMessages } from './MessagesContext';
 function conv(over: Partial<ConversationDTO> = {}): ConversationDTO {
   return {
     id: 10,
-    other: { id: 2, name: 'Ben', avatarUrl: null },
+    other: { id: 2, name: 'Ben', avatarUrl: null, staff: false },
     lastMessage: null,
     unreadCount: 0,
     updatedAt: '2026-07-17T10:00:00.000Z',
