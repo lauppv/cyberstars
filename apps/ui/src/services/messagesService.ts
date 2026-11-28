@@ -42,3 +42,8 @@ export function deleteMessage(messageId: number) {
 export function toggleReaction(messageId: number, emoji: string) {
   return api.post<{ message: MessageDTO }>(`/api/messages/${messageId}/reactions`, { emoji });
 }
+
+// Sends the message to the admins as a support ticket
+export function reportMessage(messageId: number, note?: string) {
+  return api.post<{ ticketId: number }>(`/api/messages/${messageId}/report`, { note });
+}

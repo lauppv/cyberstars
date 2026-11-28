@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { EMOJIS } from '../ui/emojiPalette';
 
 // Always-visible "⋮" trigger opening a per-message menu: react (emoji grid) plus
-// edit/delete for the owner. Always visible (not hover-only) so it's tappable on
+// edit/delete for the owner, or report for a message received. Always visible (not hover-only) so it's tappable on
 // touch devices, where hover-reveal actions are unreachable.
 export function MessageActions({
   align,
@@ -11,12 +11,14 @@ export function MessageActions({
   onReact,
   onEdit,
   onDelete,
+  onReport,
 }: {
   align: 'left' | 'right';
   canModify: boolean;
   onReact: (emoji: string) => void;
   onEdit: () => void;
   onDelete: () => void;
+  onReport: () => void;
 }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -70,6 +72,21 @@ export function MessageActions({
               </button>
             ))}
           </div>
+          {!canModify && (
+            <div className="mt-1 pt-1 border-t border-[var(--border)] flex flex-col">
+              <button
+                type="button"
+                role="menuitem"
+                onClick={() => {
+                  onReport();
+                  setOpen(false);
+                }}
+                className="text-left px-2 py-1.5 rounded text-[12px] text-[var(--error)] hover:bg-[var(--error)]/10 transition cursor-pointer bg-transparent border-none"
+              >
+                {t('report.report')}
+              </button>
+            </div>
+          )}
           {canModify && (
             <div className="mt-1 pt-1 border-t border-[var(--border)] flex flex-col">
               <button

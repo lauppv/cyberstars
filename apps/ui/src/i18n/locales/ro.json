@@ -519,6 +519,14 @@
     "none": "Nu ai blocat pe nimeni.",
     "loadFailed": "Nu am putut încărca persoanele blocate."
   },
+  "report": {
+    "report": "Raportează",
+    "title": "Raportează mesajul",
+    "text": "Adminii vor vedea mesajul și cine l-a trimis. Expeditorul nu va afla.",
+    "noteLabel": "Ce nu e în regulă? (opțional)",
+    "send": "Trimite raportul",
+    "sent": "Mulțumim. Adminii se vor uita la el."
+  },
   "notif": {
     "title": "Notificări",
     "empty": "Ești la zi.",

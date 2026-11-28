@@ -489,6 +489,14 @@
     "none": "You haven't blocked anyone.",
     "loadFailed": "The people you blocked couldn't be loaded."
   },
+  "report": {
+    "report": "Report",
+    "title": "Report this message",
+    "text": "The admins will see this message and who sent it. The sender won't be told.",
+    "noteLabel": "What's wrong? (optional)",
+    "send": "Send report",
+    "sent": "Thank you. The admins will look at it."
+  },
   "notif": {
     "title": "Notifications",
     "empty": "You're all caught up.",
