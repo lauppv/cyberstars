@@ -441,6 +441,16 @@ describe('messages.service blocks (CYB-140)', () => {
     expect(mockRepo.toggleReaction).not.toHaveBeenCalled();
   });
 
+  it('lets the blocked one take back a reaction left before the block', async () => {
+    block(1, 2);
+    mockRepo.findMessage.mockResolvedValue(
+      msgRow({ senderId: 1, reactions: [{ emoji: '👍', userId: 2 }] }),
+    );
+    mockRepo.toggleReaction.mockResolvedValue([]);
+    await expect(toggleReaction(2, 500, '👍')).resolves.toMatchObject({ reactions: [] });
+    expect(mockRepo.toggleReaction).toHaveBeenCalledWith(500, 2, '👍');
+  });
+
   it('refuses an edit from the blocked one', async () => {
     block(1, 2);
     mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));

@@ -188,7 +188,9 @@ export async function toggleReaction(
   const row = await requireConversation(message.conversationId, userId);
   // A deleted message shows only a placeholder; reacting to it is noise.
   if (message.deleted) throw new AppError(400, 'Cannot react to a deleted message');
-  if (await blocks.isBlockedBy(otherParticipant(row, userId), userId)) {
+  // A block stops new reactions, not taking back one left before it
+  const removing = message.reactions.some((r) => r.userId === userId && r.emoji === emoji);
+  if (!removing && (await blocks.isBlockedBy(otherParticipant(row, userId), userId))) {
     throw new AppError(403, blocks.REACTION_NOT_ADDED);
   }
 
