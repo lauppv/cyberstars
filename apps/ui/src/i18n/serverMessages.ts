@@ -97,6 +97,7 @@ const RO: Record<string, string> = {
   'Reaction could not be added': 'Reacția nu a putut fi adăugată',
   'Request could not be sent': 'Cererea nu a putut fi trimisă',
   'Cannot block yourself': 'Nu te poți bloca singur',
+  'The team cannot be blocked': 'Echipa nu poate fi blocată',
   'Cannot report your own message': 'Nu îți poți raporta propriul mesaj',
   'Cannot report a deleted message': 'Nu poți raporta un mesaj șters',
   'Invalid connection ID': 'Conexiune invalidă',
