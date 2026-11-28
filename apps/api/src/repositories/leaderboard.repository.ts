@@ -1,6 +1,11 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../config/db.js';
-import { PART_STARTS, WEB_COURSE_KEYS, isClosedCourse } from '@cyberstars/shared/constants';
+import {
+  DAILY_BONUS_RATIO,
+  WEB_COURSE_KEYS,
+  isClosedCourse,
+  xpForLesson,
+} from '@cyberstars/shared/constants';
 import { PROJECTS, PROJECT_XP } from '@cyberstars/shared/projects';
 import { BOT_EMAIL_ENDINGS } from './user.repository.js';
 
@@ -13,6 +18,22 @@ export interface LeaderboardRow {
   rank: number;
 }
 
+// Every lesson's XP as VALUES rows (course_key, slug, xp), counted with the
+// course's lesson count as progress.service does. A row that matches nothing
+// stands in when there are no lessons, since VALUES can't be empty.
+async function lessonXpTable(): Promise<Prisma.Sql> {
+  const lessons = await prisma.lesson.findMany({
+    select: { courseKey: true, slug: true, sortOrder: true, title: true },
+  });
+  const counts = new Map<string, number>();
+  for (const l of lessons) counts.set(l.courseKey, (counts.get(l.courseKey) ?? 0) + 1);
+  const rows = lessons.map(
+    (l) =>
+      Prisma.sql`(${l.courseKey}::text, ${l.slug}::text, ${xpForLesson(l.courseKey, l, counts.get(l.courseKey)!)}::int)`,
+  );
+  return Prisma.join(rows.length ? rows : [Prisma.sql`(NULL::text, NULL::text, 0::int)`]);
+}
+
 // Every user ranked by total XP, highest first, each on a place of their own.
 // A tie goes to whoever got there first, the one whose latest counted lesson
 // was completed earlier; id settles the rest (no XP, or no completion time)
@@ -21,14 +42,13 @@ export interface LeaderboardRow {
 //
 // XP is DERIVED, never stored (see shared/constants.ts). We recompute the exact
 // same amount as progress.service.getCourseProgress, but in one aggregate query
-// instead of N Node calculations: the per-lesson award is
-// xpForLesson(courseKey, sortOrder) = 10 + (sortOrder - the sortOrder its part
-// starts at, or 1 on a course without parts; PART_STARTS as a VALUES table of
-// part ranges), plus the daily-pick bonus round(award * 0.2) for
-// lessons the user was awarded a daily bonus on (DailyPick.bonusAwarded). The
-// join is on (course_key, lesson_slug), since UserLessonProgress has no lessonId,
-// and only completed rows that map to a real lesson count. A closed course
-// (isClosedCourse) earns no XP here, as in the client's useGamification.
+// instead of N Node calculations: each lesson's award comes from the shared
+// xpForLesson, read as a VALUES table (course_key, slug, xp), so the formula
+// lives in one place; plus the daily-pick bonus round(award * DAILY_BONUS_RATIO)
+// for lessons the user was awarded a daily bonus on (DailyPick.bonusAwarded).
+// The join is on (course_key, lesson_slug), since UserLessonProgress has no
+// lessonId, and only completed rows that map to a real lesson count. A closed
+// course (isClosedCourse) earns no XP here, as in the client's useGamification.
 //
 // Note: the query is built inside the function (not a module-level constant) so
 // Prisma.sql only evaluates when called, so route tests that mock @prisma/client
@@ -46,16 +66,7 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
       (p) => Prisma.sql`(${p.language}::text, ${p.slug}::text, ${PROJECT_XP[p.difficulty]}::int)`,
     ),
   );
-  // Each part of a course split into parts as (course_key, first, last)
-  // sortOrder; a lesson outside every range counts from 1.
-  const parts = Prisma.join(
-    Object.entries(PART_STARTS).flatMap(([courseKey, starts]) =>
-      starts.map(
-        (first, i) =>
-          Prisma.sql`(${courseKey}::text, ${first}::int, ${(starts[i + 1] ?? 2 ** 31) - 1}::int)`,
-      ),
-    ),
-  );
+  const lessonXp = await lessonXpTable();
   const projects = Prisma.sql`
     SELECT pc.user_id, SUM(px.xp)::int AS xp, MAX(pc.completed_at) AS reached_at
     FROM project_completions pc
@@ -69,23 +80,22 @@ export async function getRanked(): Promise<LeaderboardRow[]> {
       u.name,
       u.avatar_url,
       COALESCE(SUM(
-        (10 + (l.sort_order - COALESCE(pr.first, 1)))
+        l.xp
         + CASE WHEN EXISTS (
             SELECT 1 FROM daily_picks dp
             WHERE dp.user_id = p.user_id
               AND dp.course_key = p.course_key
               AND dp.lesson_slug = p.lesson_slug
               AND dp.bonus_awarded = true
-          ) THEN round((10 + (l.sort_order - COALESCE(pr.first, 1))) * 0.2) ELSE 0 END
+          ) THEN round(l.xp * ${DAILY_BONUS_RATIO}::numeric) ELSE 0 END
       ), 0)::int AS total_xp,
-      COUNT(l.id)::int AS lessons_done,
-      MAX(CASE WHEN l.id IS NOT NULL THEN p.completed_at END) AS reached_at
+      COUNT(l.slug)::int AS lessons_done,
+      MAX(CASE WHEN l.slug IS NOT NULL THEN p.completed_at END) AS reached_at
     FROM users u
     LEFT JOIN user_lesson_progress p ON p.user_id = u.id AND p.completed = true
       AND p.course_key <> ALL(${closed}::text[])
-    LEFT JOIN lessons l ON l.course_key = p.course_key AND l.slug = p.lesson_slug
-    LEFT JOIN (VALUES ${parts}) AS pr(course_key, first, last)
-      ON pr.course_key = l.course_key AND l.sort_order BETWEEN pr.first AND pr.last
+    LEFT JOIN (VALUES ${lessonXp}) AS l(course_key, slug, xp)
+      ON l.course_key = p.course_key AND l.slug = p.lesson_slug
     WHERE NOT (u.email LIKE ANY(${bots}::text[]))
     GROUP BY u.id, u.name, u.avatar_url
   `;
