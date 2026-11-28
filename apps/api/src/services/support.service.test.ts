@@ -117,4 +117,14 @@ describe('openTicket', () => {
       }),
     );
   });
+
+  it('answers with the saved ticket when the admins cannot be read', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockPrisma.supportTicket.create.mockResolvedValue({ id: 8, subject: 'Help' });
+    mockUserRepo.getAdminIds.mockRejectedValue(new Error('db down'));
+    await expect(supportService.openTicket(3, 'BUG', 'Help', 'Body')).resolves.toBe(8);
+    await vi.waitFor(() => expect(error).toHaveBeenCalled());
+    expect(mockNotifications.notify).not.toHaveBeenCalled();
+    error.mockRestore();
+  });
 });
