@@ -104,7 +104,7 @@ export function useGamification(): Gamification {
       comp += done;
       tot += total;
       earnedXp += p?.earnedXp ?? 0;
-      totalXp += p?.totalXp ?? xpForCourse(c.key, c.lessons.length);
+      totalXp += p?.totalXp ?? xpForCourse(c.key, c.lessons);
       pc[c.key] = { done, total };
     }
 

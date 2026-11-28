@@ -3,7 +3,7 @@ import { agent, createAuthenticatedAgent } from './helpers.js';
 import { prisma } from '../../src/config/db.js';
 import { markComplete } from '../../src/services/progress.service.js';
 import { clearCache } from '../../src/services/leaderboard.service.js';
-import { PART_STARTS, xpForLesson } from '@cyberstars/shared/constants';
+import { CHALLENGE_XP, PART_STARTS, xpForLesson } from '@cyberstars/shared/constants';
 import { PROJECT_XP, findProject } from '@cyberstars/shared/projects';
 import type { LeaderboardPage, LeaderboardEntry } from '@cyberstars/shared/leaderboard';
 
@@ -18,7 +18,14 @@ async function twoPythonLessons() {
     orderBy: { sortOrder: 'asc' },
     take: 2,
   });
-  return lessons as { slug: string; sortOrder: number }[];
+  return lessons as { slug: string; sortOrder: number; title: string }[];
+}
+
+// What the given lessons of a course are worth, counted over the seeded course
+// as the server counts them
+async function xpOf(courseKey: string, ...lessons: { sortOrder: number; title: string }[]) {
+  const count = await prisma.lesson.count({ where: { courseKey } });
+  return lessons.reduce((sum, l) => sum + xpForLesson(courseKey, l, count), 0);
 }
 
 // Clear the in-memory cache so it can't leak a prior test's (now truncated)
@@ -48,14 +55,12 @@ describe('Leaderboard', () => {
     const [first, second] = board.entries;
     expect(first.name).toBe(nameA);
     expect(first.rank).toBe(1);
-    expect(first.totalXp).toBe(
-      xpForLesson('python', l0.sortOrder) + xpForLesson('python', l1.sortOrder),
-    );
+    expect(first.totalXp).toBe(await xpOf('python', l0, l1));
     expect(first.lessonsDone).toBe(2);
 
     expect(second.name).toBe(nameB);
     expect(second.rank).toBe(2);
-    expect(second.totalXp).toBe(xpForLesson('python', l0.sortOrder));
+    expect(second.totalXp).toBe(await xpOf('python', l0));
 
     // Sentinel earned nothing and sinks to the bottom.
     const last = board.entries[board.entries.length - 1];
@@ -110,7 +115,7 @@ describe('Leaderboard', () => {
     expect(first.totalXp).toBe(PROJECT_XP[findProject('python', 'library-desk')!.difficulty]);
     expect(first.lessonsDone).toBe(0);
     expect(second.name).toBe(nameA);
-    expect(second.totalXp).toBe(xpForLesson('python', l0.sortOrder));
+    expect(second.totalXp).toBe(await xpOf('python', l0));
   });
 
   it('counts a lesson of a course split into parts from its part, not the course', async () => {
@@ -125,7 +130,21 @@ describe('Leaderboard', () => {
 
     await fetchBoard(a);
     const me = await a.get('/api/leaderboard/me').expect(200);
-    expect(me.body.totalXp).toBe(10 + 11);
+    expect(me.body.totalXp).toBe(await xpOf('web-dev', ...lessons));
+    // The part's first lesson starts again at 10
+    expect(await xpOf('web-dev', lessons[0])).toBe(10);
+  });
+
+  it('pays a challenge by its difficulty', async () => {
+    const hard = await prisma.lesson.findFirstOrThrow({
+      where: { courseKey: 'algo-python', title: { startsWith: 'Hard' } },
+    });
+    const { agent: a, email } = await createAuthenticatedAgent();
+    await markComplete(await userIdFor(email), 'algo-python', hard.slug);
+
+    await fetchBoard(a);
+    const me = await a.get('/api/leaderboard/me').expect(200);
+    expect(me.body.totalXp).toBe(CHALLENGE_XP.hard);
   });
 
   it('GET /me returns the caller rank; 401 without auth', async () => {
@@ -137,9 +156,7 @@ describe('Leaderboard', () => {
     await fetchBoard(a); // refresh cache with current data
     const me = await a.get('/api/leaderboard/me').expect(200);
     expect(me.body.rank).toBe(1);
-    expect(me.body.totalXp).toBe(
-      xpForLesson('python', l0.sortOrder) + xpForLesson('python', l1.sortOrder),
-    );
+    expect(me.body.totalXp).toBe(await xpOf('python', l0, l1));
 
     await agent().get('/api/leaderboard/me').expect(401);
   });

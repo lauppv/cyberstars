@@ -108,23 +108,49 @@ export const PART_STARTS: Readonly<Record<string, readonly number[]>> = {
   'web-dev': [1, 44, 112, 157, 207, 246, 292, 325, 359],
 };
 
-// The sortOrder a lesson's XP counts from: its part's first lesson, or the
-// course's first on a course without parts.
-function partStart(courseKey: string, sortOrder: number): number {
-  const starts = PART_STARTS[courseKey];
-  if (!starts) return 1;
-  let start = 1;
-  for (const s of starts) if (s <= sortOrder) start = s;
-  return start;
+// The lessons a lesson's XP is spread over: its part (first and last
+// sortOrder), or the whole course on a course without parts.
+function partOf(courseKey: string, sortOrder: number, lessonCount: number) {
+  const starts = PART_STARTS[courseKey] ?? [1];
+  let i = 0;
+  while (i + 1 < starts.length && starts[i + 1] <= sortOrder) i++;
+  return { first: starts[i], last: (starts[i + 1] ?? lessonCount + 1) - 1 };
 }
 
-// A lesson's award grows with its position, so later (harder) lessons are
-// worth more. sortOrder is 1-based per course (see
-// packages/content/curriculum.ts): the first lesson is worth 10 XP. On a
-// course split into parts the award starts again at 10 on each part, so a
-// long course earns like several short ones rather than one long climb.
-export function xpForLesson(courseKey: string, sortOrder: number): number {
-  return 10 + (sortOrder - partStart(courseKey, sortOrder));
+export type Difficulty = 'easy' | 'medium' | 'hard';
+
+// A challenge's title starts with its difficulty, in English in both
+// languages: "Easy · Two Sum". null on a title without one.
+export function difficultyOf(title: string): Difficulty | null {
+  const m = title.match(/^(Easy|Medium|Hard)\s*·/i);
+  return m ? (m[1].toLowerCase() as Difficulty) : null;
+}
+
+// A challenge is a whole problem, so even an easy one is worth two late
+// lessons and a hard one as much as an easy project (PROJECT_XP).
+export const CHALLENGE_XP: Record<Difficulty, number> = { easy: 40, medium: 70, hard: 100 };
+
+function isChallengeSet(courseKey: string): boolean {
+  return (ALGO_COURSE_KEYS as readonly string[]).includes(courseKey);
+}
+
+// What a lesson's XP is read from: its place (1-based sortOrder, see
+// packages/content/curriculum.ts) and its title.
+export interface XpLesson {
+  sortOrder: number;
+  title: string;
+}
+
+// A challenge pays by its difficulty (a title without one counts as Easy). A
+// lesson pays 10 XP first in its course and 30 XP last, growing evenly in
+// between, so a long course doesn't inflate its late lessons. On a course
+// split into parts the climb starts again on each part. lessonCount is the
+// course's whole lesson count, which closes its last part.
+export function xpForLesson(courseKey: string, lesson: XpLesson, lessonCount: number): number {
+  if (isChallengeSet(courseKey)) return CHALLENGE_XP[difficultyOf(lesson.title) ?? 'easy'];
+  const { first, last } = partOf(courseKey, lesson.sortOrder, lessonCount);
+  if (last <= first) return 10;
+  return 10 + Math.round((20 * (lesson.sortOrder - first)) / (last - first));
 }
 
 // Completing the lesson/algorithm of the day on its day grants this fraction of
@@ -133,21 +159,22 @@ export function xpForLesson(courseKey: string, sortOrder: number): number {
 // server itself picked for that day, so a tampered client can't self-grant it.
 export const DAILY_BONUS_RATIO = 0.2;
 
-export function dailyBonusXp(courseKey: string, sortOrder: number): number {
-  return Math.round(xpForLesson(courseKey, sortOrder) * DAILY_BONUS_RATIO);
+export function dailyBonusXp(courseKey: string, lesson: XpLesson, lessonCount: number): number {
+  return Math.round(xpForLesson(courseKey, lesson, lessonCount) * DAILY_BONUS_RATIO);
 }
 
-// Total XP an n-lesson course is worth: Σ xpForLesson(courseKey, s) for s in 1..n.
-export function xpForCourse(courseKey: string, lessonCount: number): number {
+// Total XP a course is worth: the sum of xpForLesson over its lessons.
+export function xpForCourse(courseKey: string, lessons: readonly XpLesson[]): number {
   let total = 0;
-  for (let s = 1; s <= lessonCount; s++) total += xpForLesson(courseKey, s);
+  for (const l of lessons) total += xpForLesson(courseKey, l, lessons.length);
   return total;
 }
 
 // Quadratic level curve. Level L begins at XP_LEVEL_CONSTANT·(L-1)², so each
 // level costs a bit more than the last (linear marginal cost). c=100 makes
-// level 2 land around the first ~9 lessons and the full curriculum (~8000 XP)
-// land around level 10, a short, legible scale.
+// level 2 land after about the first 10 lessons of a course (or one hard
+// challenge) and the titled levels (up to 10, ~8,100 XP) come early; the whole
+// catalog goes well past them.
 const XP_LEVEL_CONSTANT = 100;
 
 export function levelFromXp(xp: number): number {
