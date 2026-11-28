@@ -13,6 +13,7 @@
     "check:tutor": "tsx scripts/tutor-redteam.ts",
     "make:quiz": "tsx scripts/make-quiz.ts",
     "check:quiz": "tsx scripts/make-quiz.ts --check",
+    "clean:avatars": "tsx scripts/clean-avatars.ts",
     "db:prepare": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
