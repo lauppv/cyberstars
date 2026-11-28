@@ -8,11 +8,13 @@ import { Topbar } from '../components/layout/Topbar';
 import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { LoadError } from '../components/ui/LoadError';
 import * as supportService from '../services/supportService';
-import type {
-  SupportTicketDTO,
-  SupportMessageDTO,
-  TicketType,
-  TicketStatus,
+import {
+  SUPPORT_MESSAGE_MAX_LENGTH,
+  SUPPORT_SUBJECT_MAX_LENGTH,
+  type SupportTicketDTO,
+  type SupportMessageDTO,
+  type TicketType,
+  type TicketStatus,
 } from '@cyberstars/shared/support';
 import { isAdmin as isAdminRole } from '@cyberstars/shared/auth';
 import { INPUT_CLS } from '../constants/styles';
@@ -177,13 +179,14 @@ export function SupportPage() {
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
                 placeholder={t('support.subjectPlaceholder')}
-                maxLength={200}
+                maxLength={SUPPORT_SUBJECT_MAX_LENGTH}
                 className={INPUT_CLS}
               />
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder={t('support.messagePlaceholder')}
+                maxLength={SUPPORT_MESSAGE_MAX_LENGTH}
                 rows={4}
                 className={INPUT_CLS + ' resize-y'}
               />
@@ -479,6 +482,7 @@ function TicketConversation({
             value={reply}
             onChange={(e) => setReply(e.target.value)}
             placeholder={t('support.replyPlaceholder')}
+            maxLength={SUPPORT_MESSAGE_MAX_LENGTH}
             className={INPUT_CLS + ' flex-1'}
           />
           <button type="submit" disabled={sending || !reply.trim()} className="btn btn-primary">

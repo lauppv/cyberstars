@@ -48,6 +48,19 @@ describe('SendFeedback', () => {
     );
   });
 
+  it('stops the note at the message limit and cuts what it is about, not the note', async () => {
+    service.createTicket.mockResolvedValue({ ticketId: 3 });
+    const field = open('Q'.repeat(3000));
+    expect(field).toHaveAttribute('maxLength', '5000');
+    fireEvent.change(field, { target: { value: 'n'.repeat(4000) } });
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
+
+    await screen.findByRole('status');
+    const { message } = service.createTicket.mock.calls[0][0];
+    expect(message).toHaveLength(5000);
+    expect(message.startsWith(`${'n'.repeat(4000)}\n\nQ`)).toBe(true);
+  });
+
   it('says why it failed and keeps the text', async () => {
     service.createTicket.mockRejectedValue(new Error('Too many requests'));
     const field = open();

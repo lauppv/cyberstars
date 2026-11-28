@@ -155,6 +155,14 @@ describe('SupportPage', () => {
       ).toHaveValue('It froze');
       expect(screen.queryByText('Ticket submitted!')).toBeNull();
     });
+
+    it('stops the subject and the message at what the server takes', () => {
+      render(<SupportPage />);
+      expect(screen.getByPlaceholderText('Subject')).toHaveAttribute('maxLength', '200');
+      expect(
+        screen.getByPlaceholderText('Describe the issue or question in detail...'),
+      ).toHaveAttribute('maxLength', '5000');
+    });
   });
 
   describe('the lists', () => {
@@ -201,6 +209,11 @@ describe('SupportPage', () => {
       fireEvent.click(screen.getByRole('button', { name: 'Send' }));
       await waitFor(() => expect(screen.getByPlaceholderText('Type a reply...')).toHaveValue(''));
       expect(mockAddMessage).toHaveBeenCalledWith(7, 'Thanks');
+    });
+
+    it('stops a reply at what the server takes', async () => {
+      await openTicket();
+      expect(screen.getByPlaceholderText('Type a reply...')).toHaveAttribute('maxLength', '5000');
     });
 
     it('says why a reply was not sent and keeps the text', async () => {
