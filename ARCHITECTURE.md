@@ -50,7 +50,7 @@ cyberstars/
 │
 ├── e2e/                           # Playwright tests that drive the UI and the API together
 ├── test/                          # Shared Vitest setup (jsdom, jest-dom matchers)
-├── deploy/                        # Deploy script, IndexNow ping, nginx config and maintenance page
+├── deploy/                        # Deploy script, IndexNow ping, nginx configs and maintenance page
 └── scripts/                       # Rootless Podman helper
 ```
 
@@ -329,44 +329,45 @@ A lesson is `<slug>.md` (the text, with runnable code blocks) and `<slug>-code.m
 
 ## Environment variables
 
-| Variable                   | Required | Default                               | Description                                                                      |
-| -------------------------- | -------- | ------------------------------------- | -------------------------------------------------------------------------------- |
-| `DB_USER`                  | Yes      | none                                  | PostgreSQL user                                                                  |
-| `DB_HOST`                  | Yes      | none                                  | PostgreSQL host                                                                  |
-| `DB_NAME`                  | Yes      | none                                  | Database name                                                                    |
-| `DB_PASSWORD`              | Yes      | none                                  | Database password                                                                |
-| `DB_PORT`                  | No       | `5432`                                | PostgreSQL port                                                                  |
-| `DATABASE_URL`             | Yes      | none                                  | Prisma CLI connection string                                                     |
-| `EXPRESS_PORT`             | No       | `5000`                                | Backend port (dev)                                                               |
-| `PORT`                     | No       | `8080`                                | Backend port (production)                                                        |
-| `FOUNDER_EMAIL`            | No       | none                                  | Account that becomes the unique FOUNDER once its email is confirmed              |
-| `NODE_ENV`                 | No       | `development`                         | Environment                                                                      |
-| `CORS_DEV_ORIGIN`          | No       | `http://localhost:5173`               | Allowed origins in dev (CORS + WebSockets), comma-separated                      |
-| `CORS_ORIGIN`              | No       | `https://cyberstars.app`              | Allowed origins in production (CORS + WebSockets), comma-separated               |
-| `CODE_RUN_MEMORY`          | No       | `128m`                                | Per-container memory limit                                                       |
-| `CODE_RUN_PIDS`            | No       | `64`                                  | Per-container PID limit                                                          |
-| `CODE_RUN_CPUS`            | No       | `0.5`                                 | Per-container CPU cap                                                            |
-| `CODE_MAX_CONTAINERS`      | No       | `50`                                  | Global cap on concurrent run containers (LRU-evicted)                            |
-| `CODE_CONTAINER_IDLE_MS`   | No       | `900000`                              | Idle TTL before a run container is GC'd (15 min)                                 |
-| `GUEST_RUN_BUDGET`         | No       | `10`                                  | Lifetime code runs a guest gets before a sign-up nudge                           |
-| `GUEST_IP_RUNS_PER_WINDOW` | No       | `60`                                  | Guest code runs per minute shared by one client IP, whatever the guest id        |
-| `GUEST_IP_MAX_ACTIVE_RUNS` | No       | `10`                                  | Concurrent guest code runs per client IP                                         |
-| `GUEST_IP_MAX_SANDBOXES`   | No       | `10`                                  | Sandboxes (editor + terminal, busy or idle) guests from one client IP may hold   |
-| `JUDGE_MAX_CONCURRENT`     | No       | `2`                                   | Judge runs at once; the rest wait their turn                                     |
-| `JUDGE_QUEUE_TIMEOUT_MS`   | No       | `20000`                               | How long a judge run waits for its turn before a 503                             |
-| `SANDBOX_MAX_BUSY`         | No       | 4 per CPU core                        | Sandboxes busy at once across the server (editor, Run Tests, terminal)           |
-| `SANDBOX_QUEUE_TIMEOUT_MS` | No       | `30000`                               | How long a run waits for a free sandbox slot before "the server is busy"         |
-| `SANDBOX_STOP_AFTER_MS`    | No       | `20000`                               | An editor run holding its slot this long is stopped when another run waits       |
-| `SANDBOX_UID`              | No       | `10001`                               | Unprivileged uid (and gid) the editor and Run Tests sandboxes run as             |
-| `SANDBOX_RUN_AS_USER`      | No       | `true`                                | Run sandboxes as `SANDBOX_UID`; set `false` under rootless Podman                |
-| `TERMINAL_MAX_SESSIONS`    | No       | `50`                                  | Global cap on concurrent Linux terminal sandboxes                                |
-| `LEADERBOARD_CACHE_MS`     | No       | `180000`                              | Leaderboard cache TTL (3 min)                                                    |
-| `ADMIN_STATS_CACHE_MS`     | No       | `300000`                              | Admin stats cache TTL (5 min)                                                    |
-| `RESEND_API_KEY`           | No       | none                                  | Resend key for reset and email-change codes; empty logs the codes to the console |
-| `RESEND_FROM`              | No       | `CyberStars <noreply@cyberstars.app>` | Sender for those emails                                                          |
-| `GEMINI_API_KEY`           | No       | none                                  | Gemini key for the tutor; empty disables it                                      |
-| `GEMINI_MODEL`             | No       | `gemini-flash-lite-latest`            | Gemini model used for the tutor                                                  |
-| `VITE_PROD_API_URL`        | No       | none                                  | Client API base URL in production; empty means same origin                       |
+| Variable                    | Required | Default                               | Description                                                                      |
+| --------------------------- | -------- | ------------------------------------- | -------------------------------------------------------------------------------- |
+| `DB_USER`                   | Yes      | none                                  | PostgreSQL user                                                                  |
+| `DB_HOST`                   | Yes      | none                                  | PostgreSQL host                                                                  |
+| `DB_NAME`                   | Yes      | none                                  | Database name                                                                    |
+| `DB_PASSWORD`               | Yes      | none                                  | Database password                                                                |
+| `DB_PORT`                   | No       | `5432`                                | PostgreSQL port                                                                  |
+| `DATABASE_URL`              | Yes      | none                                  | Prisma CLI connection string                                                     |
+| `EXPRESS_PORT`              | No       | `5000`                                | Backend port (dev)                                                               |
+| `PORT`                      | No       | `8080`                                | Backend port (production)                                                        |
+| `FOUNDER_EMAIL`             | No       | none                                  | Account that becomes the unique FOUNDER once its email is confirmed              |
+| `NODE_ENV`                  | No       | `development`                         | Environment                                                                      |
+| `CORS_DEV_ORIGIN`           | No       | `http://localhost:5173`               | Allowed origins in dev (CORS + WebSockets), comma-separated                      |
+| `CORS_ORIGIN`               | No       | `https://cyberstars.app`              | Allowed origins in production (CORS + WebSockets), comma-separated               |
+| `CODE_RUN_MEMORY`           | No       | `128m`                                | Per-container memory limit                                                       |
+| `CODE_RUN_PIDS`             | No       | `64`                                  | Per-container PID limit                                                          |
+| `CODE_RUN_CPUS`             | No       | `0.5`                                 | Per-container CPU cap                                                            |
+| `CODE_MAX_CONTAINERS`       | No       | `50`                                  | Global cap on concurrent run containers (LRU-evicted)                            |
+| `CODE_CONTAINER_IDLE_MS`    | No       | `900000`                              | Idle TTL before a run container is GC'd (15 min)                                 |
+| `GUEST_RUN_BUDGET`          | No       | `10`                                  | Lifetime code runs a guest gets before a sign-up nudge                           |
+| `GUEST_IP_RUNS_PER_WINDOW`  | No       | `60`                                  | Guest code runs per minute shared by one client IP, whatever the guest id        |
+| `GUEST_IP_MAX_ACTIVE_RUNS`  | No       | `10`                                  | Concurrent guest code runs per client IP                                         |
+| `GUEST_IP_MAX_SANDBOXES`    | No       | `10`                                  | Sandboxes (editor + terminal, busy or idle) guests from one client IP may hold   |
+| `WS_MAX_CONNECTIONS_PER_IP` | No       | `500`                                 | WebSockets one client address may hold open at once (nginx keeps the same cap)   |
+| `JUDGE_MAX_CONCURRENT`      | No       | `2`                                   | Judge runs at once; the rest wait their turn                                     |
+| `JUDGE_QUEUE_TIMEOUT_MS`    | No       | `20000`                               | How long a judge run waits for its turn before a 503                             |
+| `SANDBOX_MAX_BUSY`          | No       | 4 per CPU core                        | Sandboxes busy at once across the server (editor, Run Tests, terminal)           |
+| `SANDBOX_QUEUE_TIMEOUT_MS`  | No       | `30000`                               | How long a run waits for a free sandbox slot before "the server is busy"         |
+| `SANDBOX_STOP_AFTER_MS`     | No       | `20000`                               | An editor run holding its slot this long is stopped when another run waits       |
+| `SANDBOX_UID`               | No       | `10001`                               | Unprivileged uid (and gid) the editor and Run Tests sandboxes run as             |
+| `SANDBOX_RUN_AS_USER`       | No       | `true`                                | Run sandboxes as `SANDBOX_UID`; set `false` under rootless Podman                |
+| `TERMINAL_MAX_SESSIONS`     | No       | `50`                                  | Global cap on concurrent Linux terminal sandboxes                                |
+| `LEADERBOARD_CACHE_MS`      | No       | `180000`                              | Leaderboard cache TTL (3 min)                                                    |
+| `ADMIN_STATS_CACHE_MS`      | No       | `300000`                              | Admin stats cache TTL (5 min)                                                    |
+| `RESEND_API_KEY`            | No       | none                                  | Resend key for reset and email-change codes; empty logs the codes to the console |
+| `RESEND_FROM`               | No       | `CyberStars <noreply@cyberstars.app>` | Sender for those emails                                                          |
+| `GEMINI_API_KEY`            | No       | none                                  | Gemini key for the tutor; empty disables it                                      |
+| `GEMINI_MODEL`              | No       | `gemini-flash-lite-latest`            | Gemini model used for the tutor                                                  |
+| `VITE_PROD_API_URL`         | No       | none                                  | Client API base URL in production; empty means same origin                       |
 
 ## Design decisions
 

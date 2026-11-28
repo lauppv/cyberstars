@@ -8,6 +8,7 @@ import { isEditorLanguage, languageOf } from '../runtimes/registry.js';
 import { sandbox } from './sandbox.js';
 import { GUEST_RUN_BUDGET, guestRunsRemaining, recordGuestRun } from './guest-budget.service.js';
 import { registerUserSocket, unregisterUserSocket } from './ws-user.js';
+import { holdConnection } from './ws-connections.js';
 import { guestKey } from './guest-id.js';
 import { canAccessFeature } from '@cyberstars/shared/features';
 import * as userRepo from '../repositories/user.repository.js';
@@ -307,6 +308,17 @@ export function attachRunWebSocket(server: HttpServer): { close: () => void } {
       socket.destroy();
       return;
     }
+    // An address holds only so many sockets open (CYB-141), counted from here,
+    // before the session check, so connections still waiting on it count too.
+    // The network socket closes once whatever happens next is over (a refusal
+    // below, a client gone, the WebSocket's own end), which gives the place back.
+    const release = holdConnection(extractIp(req), config.websockets.maxPerAddress);
+    if (!release) {
+      socket.write('HTTP/1.1 429 Too Many Requests\r\nConnection: close\r\n\r\n');
+      socket.destroy();
+      return;
+    }
+    socket.once('close', release);
     // The session is checked once, before the upgrade, so a handler has it
     // before the first message: an ended or expired one is a guest
     let userId: number | null;

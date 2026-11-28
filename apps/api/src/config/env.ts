@@ -40,6 +40,12 @@ export const env = {
     },
     secureCookie: isProduction,
   },
+  // The WebSockets one client address may hold open at once (CYB-141). A tab
+  // holds one or two and a code run one more while it goes, so a school behind
+  // one address stays far below; a script opening thousands doesn't.
+  websockets: {
+    maxPerAddress: number('WS_MAX_CONNECTIONS_PER_IP', 500),
+  },
   db: {
     user: required('DB_USER'),
     host: required('DB_HOST'),
