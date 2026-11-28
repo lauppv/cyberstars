@@ -1241,7 +1241,9 @@
     "errorText": "The connection dropped or there were too many tries at once. Wait a minute and try again.",
     "tryAgain": "Try again",
     "confirmedShort": "confirmed",
-    "unconfirmedShort": "not confirmed"
+    "unconfirmedShort": "not confirmed",
+    "badgeConfirmed": "Email confirmed",
+    "badgeUnconfirmed": "Email not confirmed"
   },
   "sessionEnded": {
     "message": "Your session has ended. Sign in again to see your progress and save your code.",

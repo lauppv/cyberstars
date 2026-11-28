@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Avatar } from '../components/ui/Avatar';
+import { EmailBadge } from '../components/ui/EmailBadge';
 import { RankCrown } from '../components/gamification/RankCrown';
 import { CROWNS } from '../components/gamification/crowns';
 import { useAuth } from '../context/AuthContext';
@@ -248,7 +249,10 @@ export function PublicProfilePage() {
           <div className="w-full max-w-[520px] rounded-[var(--radius)] panel px-6 py-6">
             {/* Header */}
             <div className="flex items-center gap-5 pb-5 border-b border-[var(--border)]">
-              <Avatar url={profile.avatarUrl} userId={profile.userId} size={80} />
+              <div className="relative flex-shrink-0">
+                <Avatar url={profile.avatarUrl} userId={profile.userId} size={80} />
+                <EmailBadge confirmed={profile.emailConfirmed} />
+              </div>
               <div className="flex-1 min-w-0">
                 <h1 className="text-[22px] font-bold tracking-[-0.3px] truncate">{profile.name}</h1>
                 {memberSinceLabel && (

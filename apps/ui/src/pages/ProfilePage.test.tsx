@@ -96,6 +96,15 @@ beforeEach(() => {
 });
 
 describe('ProfilePage', () => {
+  it('marks the email beside the avatar, confirmed or not', () => {
+    const { unmount } = renderPage();
+    expect(screen.getByRole('img', { name: 'Email confirmed' })).toBeDefined();
+    unmount();
+    mockUseAuth.mockReturnValue(authState({ ...baseUser, emailConfirmed: false }));
+    renderPage();
+    expect(screen.getByRole('img', { name: 'Email not confirmed' })).toBeDefined();
+  });
+
   it('saves the bio when the field loses focus', async () => {
     renderPage();
     fireEvent.change(bioField(), { target: { value: 'New bio' } });
