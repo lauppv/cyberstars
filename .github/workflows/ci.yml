@@ -290,7 +290,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
+      # The whole history: the sitemap's lastmod is the day git last committed
+      # each page's file (apps/ui/scripts/prerender.tsx), and a shallow clone
+      # has one commit holding every file.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: ./.github/actions/setup-node-and-deps
       - uses: actions/cache/restore@v4
         with:
@@ -299,9 +304,96 @@ jobs:
 
       - run: npm run build
 
+      # The deploy ships this artifact, so it keeps dot files too (a future
+      # .well-known/, say), which upload-artifact leaves out by default.
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build
           path: apps/ui/dist/
+          include-hidden-files: true
           retention-days: 3
+
+  # The server's deploy (deploy/deploy.sh) downloads the build for the commit it
+  # deploys from here, so it never builds on its one CPU. Only main, and only
+  # once every job above passed: a red commit never gets a build to deploy.
+  # Everything goes on one pre-release, `ui-build`, so there's no tag per
+  # commit. The repo is public and so is the build: it holds only what any
+  # visitor's browser gets, and the server downloads it without a token.
+  publish-build:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs:
+      [
+        format-check,
+        lint,
+        typecheck,
+        test,
+        audit,
+        dead-code,
+        validate-tests,
+        check-quiz,
+        test-integration,
+        test-e2e-browser,
+        test-e2e-docker,
+        build,
+      ]
+    # Write access to releases in this job only; every other job keeps the
+    # read-only token set at the top.
+    permissions:
+      contents: write
+    # No concurrency group: GitHub keeps only one waiting run per group and
+    # cancels it when a third arrives, so a quick run of merges would leave a
+    # commit with no build. Runs publish side by side instead, and the steps
+    # below put up with another run doing the same thing at once.
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      ARCHIVE: ui-dist-${{ github.sha }}.tar.gz
+      KEEP: 20
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: dist
+
+      # The build reads no secret (no .env in CI), but check what ships anyway:
+      # the page itself, and no env file or source map.
+      - name: Check the build holds only the site
+        run: |
+          test -f dist/index.html
+          leaked=$(find dist \( -name '.env*' -o -name '*.map' \) -print)
+          if [ -n "$leaked" ]; then
+            echo "::error::These files must not ship: $leaked"
+            exit 1
+          fi
+
+      - name: Pack the build
+        run: |
+          tar -czf "$ARCHIVE" -C dist .
+          sha256sum "$ARCHIVE" > "$ARCHIVE.sha256"
+
+      # The checksum goes up last: the deploy waits for it, so once it's there
+      # the archive is too.
+      - name: Publish on the ui-build pre-release
+        run: |
+          # Another run may create the release first: then it's there to view.
+          gh release view ui-build > /dev/null 2>&1 ||
+            gh release create ui-build --prerelease --latest=false \
+              --target "$GITHUB_SHA" --title "UI build" \
+              --notes "The site's build for each recent commit on main, downloaded by deploy/deploy.sh. Made by CI, never by hand." ||
+            gh release view ui-build > /dev/null
+          gh release upload ui-build "$ARCHIVE" --clobber
+          gh release upload ui-build "$ARCHIVE.sha256" --clobber
+
+      # Two runs at once can pick the same old build; whichever deletes it
+      # second finds it gone, which is fine. The newest builds, this run's and
+      # any other's, always sort first and stay.
+      - name: Keep only the last builds
+        run: |
+          gh release view ui-build --json assets \
+            --jq ".assets | map(select(.name | endswith(\".tar.gz\"))) | sort_by(.createdAt) | reverse | .[$KEEP:] | .[].name" |
+            while read -r old; do
+              gh release delete-asset ui-build "$old" --yes || true
+              gh release delete-asset ui-build "$old.sha256" --yes || true
+            done

@@ -10,6 +10,7 @@
 // which public/boot.js hides from any browser running scripts, and the server
 // sends for its address. Blocks render visible by default, which keeps the
 // landing page readable here, where no script ever touches it.
+import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { renderToString } from 'react-dom/server';
@@ -29,9 +30,50 @@ import { StaticPage } from '../src/seo/StaticPages';
 const dist = path.join(import.meta.dirname, '../dist');
 const almanacDir = path.join(import.meta.dirname, '../public/almanac');
 
-// When a file last changed, as the sitemap's lastmod: on the server a deploy's
-// git pull rewrites only the files it changes
-const modified = (file: string) => statSync(file).mtime.toISOString().slice(0, 10);
+const repoRoot = path.join(import.meta.dirname, '../../..');
+
+// The day git last committed each content file, as the sitemap's lastmod. Not
+// the file's mtime: CI checks the repo out fresh, which gives every file the
+// same one, and every page would look changed on every deploy (and go to
+// IndexNow again). One git log, newest first, so a file's first day in it is
+// its last change. CI's build job fetches the whole history for this.
+function commitDays(dirs: string[]): Map<string, string> {
+  const days = new Map<string, string>();
+  let log: string;
+  try {
+    log = execFileSync(
+      'git',
+      [
+        '-c',
+        'core.quotePath=false',
+        'log',
+        '--format=%x00%cs',
+        '--name-only',
+        '--no-renames',
+        '--',
+        ...dirs,
+      ],
+      { cwd: repoRoot, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024 },
+    );
+  } catch {
+    return days;
+  }
+  let day = '';
+  for (const line of log.split('\n')) {
+    if (line.startsWith('\0')) day = line.slice(1);
+    else if (line) {
+      const file = path.join(repoRoot, line);
+      if (!days.has(file)) days.set(file, day);
+    }
+  }
+  return days;
+}
+
+const committed = commitDays([path.dirname(PROJECTS_DIR), almanacDir]);
+
+// A file git doesn't have yet (a lesson being written) falls back to its mtime
+const modified = (file: string) =>
+  committed.get(file) ?? statSync(file).mtime.toISOString().slice(0, 10);
 
 // English sits at the top of a course's folder, each translation in its own subfolder
 const localizedFile = (dir: string, file: string, lang: Lang) =>
