@@ -3,12 +3,13 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // Lets an account skip the first-lesson tour and the question of what it
-// wants to learn after it, which would otherwise hold it there.
+// wants to learn after it, which would otherwise hold it there, and confirms
+// its email, so the banner that asks for it doesn't cover the page's top.
 export async function markOnboarded(email: string) {
   const now = new Date();
   await prisma.user.update({
     where: { email },
-    data: { onboardedAt: now, interests: ['python'], interestsAt: now },
+    data: { onboardedAt: now, interests: ['python'], interestsAt: now, emailConfirmedAt: now },
   });
 }
 

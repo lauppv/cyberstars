@@ -1219,6 +1219,24 @@
     "title": "We're applying an update",
     "body": "CyberStars is updating right now. It takes 1-3 minutes. Your work stays on this page, and this screen goes away by itself when everything is ready."
   },
+  "emailConfirm": {
+    "ask": "Confirm your email {{email}}, so you can always get back into your account.",
+    "waiting": "Confirm your email: we sent a link to {{email}}. Can't find it? Look in spam or send a new one.",
+    "sent": "We sent a new link to {{email}}. It works for 24 hours.",
+    "send": "Send the link",
+    "resend": "Send again",
+    "change": "Change email",
+    "sendFailed": "The link couldn't be sent. Try again in a moment.",
+    "confirming": "Confirming your email...",
+    "confirmedTitle": "Your email is confirmed",
+    "confirmedText": "Thank you. If you ever forget your password, we can send the reset code here.",
+    "continue": "Continue",
+    "failedTitle": "This link doesn't work anymore",
+    "failedText": "It has expired or was already used. A link works once, for 24 hours.",
+    "signIn": "Sign in to get a new link",
+    "confirmedShort": "confirmed",
+    "unconfirmedShort": "not confirmed"
+  },
   "sessionEnded": {
     "message": "Your session has ended. Sign in again to see your progress and save your code.",
     "signIn": "Sign in"

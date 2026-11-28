@@ -3,9 +3,11 @@ import { config } from '../config/index.js';
 
 const client = config.resend.apiKey ? new Resend(config.resend.apiKey) : null;
 
-async function send(to: string, subject: string, html: string): Promise<void> {
+// Without a Resend key (development) the email goes to the console: the code
+// or the link it carries is all a developer needs from it
+async function send(to: string, subject: string, html: string, dev: string): Promise<void> {
   if (!client) {
-    console.log(`[DEV] Email to ${to} (${subject}): ${html.match(/\d{6}/)?.[0] ?? ''}`);
+    console.log(`[DEV] Email to ${to} (${subject}): ${dev}`);
     return;
   }
   const { error } = await client.emails.send({ from: config.resend.from, to, subject, html });
@@ -65,7 +67,7 @@ export async function sendResetCode(
   lang: EmailLang = 'en',
 ): Promise<void> {
   const words = RESET[lang];
-  await send(to, words.subject, codeEmail(words.heading, words.body, code, words.footer));
+  await send(to, words.subject, codeEmail(words.heading, words.body, code, words.footer), code);
 }
 
 export async function sendEmailChangeCode(
@@ -74,5 +76,60 @@ export async function sendEmailChangeCode(
   lang: EmailLang = 'en',
 ): Promise<void> {
   const words = EMAIL_CHANGE[lang];
-  await send(to, words.subject, codeEmail(words.heading, words.body, code, words.footer));
+  await send(to, words.subject, codeEmail(words.heading, words.body, code, words.footer), code);
+}
+
+// A button in a card, the way the confirmation email shows its link
+function linkEmail(heading: string, body: string, button: string, link: string, footer: string) {
+  return `
+      <div style="font-family:sans-serif;max-width:420px;margin:0 auto;padding:32px;background:#16161d;color:#e8e8ff;border-radius:12px">
+        <h2 style="margin:0 0 16px;color:#6C5CE7">${heading}</h2>
+        <p style="margin:0 0 24px;color:#b0b0c0">${body}</p>
+        <div style="text-align:center">
+          <a href="${link}" style="display:inline-block;padding:12px 28px;background:#6C5CE7;color:#fff;font-weight:bold;text-decoration:none;border-radius:8px">${button}</a>
+        </div>
+        <p style="margin:24px 0 0;font-size:13px;color:#888;word-break:break-all">${link}</p>
+        <p style="margin:16px 0 0;font-size:13px;color:#666">${footer}</p>
+      </div>
+    `;
+}
+
+const CONFIRM = {
+  en: {
+    subject: 'CyberStars: Confirm Your Email',
+    heading: 'Confirm Your Email',
+    body: 'Press the button to confirm this is the email of your CyberStars account. The link works for 24 hours.',
+    button: 'Confirm my email',
+    footer: "If you didn't make a CyberStars account, ignore this email.",
+  },
+  ro: {
+    subject: 'CyberStars: confirmă-ți emailul',
+    heading: 'Confirmă-ți emailul',
+    body: 'Apasă butonul ca să confirmi că acesta e emailul contului tău de CyberStars. Linkul merge 24 de ore.',
+    button: 'Confirm emailul',
+    footer: 'Dacă nu ți-ai făcut cont pe CyberStars, ignoră emailul.',
+  },
+};
+
+// The link opens the confirmation page on the site, in the language the email
+// is written in. The site's address is the first allowed origin: the live site
+// in production, Vite's in development
+function confirmLink(token: string, lang: EmailLang): string {
+  const site = config.allowedOrigins[0] ?? 'https://cyberstars.app';
+  return `${site}${lang === 'ro' ? '/ro' : ''}/confirm-email?token=${token}`;
+}
+
+export async function sendConfirmLink(
+  to: string,
+  token: string,
+  lang: EmailLang = 'en',
+): Promise<void> {
+  const words = CONFIRM[lang];
+  const link = confirmLink(token, lang);
+  await send(
+    to,
+    words.subject,
+    linkEmail(words.heading, words.body, words.button, link, words.footer),
+    link,
+  );
 }

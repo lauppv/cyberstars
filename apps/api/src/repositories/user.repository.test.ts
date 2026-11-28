@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 const mockPrisma = {
   user: {
@@ -167,19 +167,85 @@ describe('create', () => {
     );
   });
 
-  it('pins the FOUNDER_EMAIL account as FOUNDER regardless of order', async () => {
+  it("gives the founder's email no role of its own at sign-up, since anyone can type it", async () => {
     Object.assign(config, { founderEmail: 'boss@b.com' });
     const tx = {
       $executeRaw: vi.fn(),
       user: { count: vi.fn().mockResolvedValue(5), create: vi.fn().mockResolvedValue({ id: 7 }) },
     };
     mockPrisma.$transaction.mockImplementation((fn: (t: typeof tx) => unknown) => fn(tx));
-    const id = await repo.create('Boss', 'BOSS@b.com', 'hash');
-    expect(id).toBe(7);
+    await repo.create('Boss', 'boss@b.com', 'hash');
     expect(tx.user.create).toHaveBeenCalledWith(
-      expect.objectContaining({ data: expect.objectContaining({ role: 'FOUNDER' }) }),
+      expect.objectContaining({ data: expect.objectContaining({ role: 'USER' }) }),
     );
     Object.assign(config, { founderEmail: '' });
+  });
+});
+
+describe('confirmEmail', () => {
+  afterEach(() => Object.assign(config, { founderEmail: '' }));
+
+  it('confirms the account of a live link and clears the link, matching it again', async () => {
+    mockPrisma.user.findFirst.mockResolvedValue({ id: 3, email: 'a@b.com' });
+    mockPrisma.user.updateMany.mockResolvedValue({ count: 1 });
+    expect(await repo.confirmEmail('h'.repeat(64))).toBe(3);
+    expect(mockPrisma.user.findFirst).toHaveBeenCalledWith({
+      where: { confirmTokenHash: 'h'.repeat(64), confirmTokenExpiresAt: { gte: expect.any(Date) } },
+      select: { id: true, email: true },
+    });
+    expect(mockPrisma.user.updateMany).toHaveBeenCalledWith({
+      where: { id: 3, email: 'a@b.com', confirmTokenHash: 'h'.repeat(64) },
+      data: {
+        emailConfirmedAt: expect.any(Date),
+        confirmTokenHash: null,
+        confirmTokenExpiresAt: null,
+      },
+    });
+  });
+
+  it("makes the founder's account FOUNDER once its email is confirmed", async () => {
+    Object.assign(config, { founderEmail: ' Boss@B.com ' });
+    mockPrisma.user.findFirst.mockResolvedValue({ id: 7, email: 'boss@b.com' });
+    mockPrisma.user.updateMany.mockResolvedValue({ count: 1 });
+    await repo.confirmEmail('h'.repeat(64));
+    expect(mockPrisma.user.updateMany).toHaveBeenCalledWith(
+      expect.objectContaining({ data: expect.objectContaining({ role: 'FOUNDER' }) }),
+    );
+  });
+
+  it('answers null for a link no account has, or one used meanwhile', async () => {
+    mockPrisma.user.findFirst.mockResolvedValueOnce(null);
+    expect(await repo.confirmEmail('h'.repeat(64))).toBeNull();
+    mockPrisma.user.findFirst.mockResolvedValueOnce({ id: 3, email: 'a@b.com' });
+    mockPrisma.user.updateMany.mockResolvedValueOnce({ count: 0 });
+    expect(await repo.confirmEmail('h'.repeat(64))).toBeNull();
+  });
+});
+
+describe('markEmailConfirmed', () => {
+  it("confirms the account's email, the founder's role with it", async () => {
+    Object.assign(config, { founderEmail: 'boss@b.com' });
+    mockPrisma.user.findUnique.mockResolvedValue({ email: 'boss@b.com' });
+    await repo.markEmailConfirmed(7);
+    expect(mockPrisma.user.updateMany).toHaveBeenCalledWith({
+      where: { id: 7, email: 'boss@b.com' },
+      data: expect.objectContaining({ emailConfirmedAt: expect.any(Date), role: 'FOUNDER' }),
+    });
+    Object.assign(config, { founderEmail: '' });
+  });
+});
+
+describe('unconfirmedEmail', () => {
+  it('gives the email until it is confirmed', async () => {
+    mockPrisma.user.findUnique.mockResolvedValueOnce({ email: 'a@b.com', emailConfirmedAt: null });
+    expect(await repo.unconfirmedEmail(1)).toBe('a@b.com');
+    mockPrisma.user.findUnique.mockResolvedValueOnce({
+      email: 'a@b.com',
+      emailConfirmedAt: new Date(),
+    });
+    expect(await repo.unconfirmedEmail(1)).toBeNull();
+    mockPrisma.user.findUnique.mockResolvedValueOnce(null);
+    expect(await repo.unconfirmedEmail(1)).toBeNull();
   });
 });
 
@@ -326,7 +392,7 @@ describe('findPendingEmailChange', () => {
 });
 
 describe('applyPendingEmailChange', () => {
-  it('swaps the email and clears the change fields', async () => {
+  it('swaps the email, clears the change fields and confirms the new email', async () => {
     mockPrisma.user.update.mockResolvedValue({});
     await repo.applyPendingEmailChange(1, 'new@b.com');
     expect(mockPrisma.user.update).toHaveBeenCalledWith({
@@ -336,6 +402,9 @@ describe('applyPendingEmailChange', () => {
         pendingEmail: null,
         emailChangeCode: null,
         emailChangeCodeExpiresAt: null,
+        emailConfirmedAt: expect.any(Date),
+        confirmTokenHash: null,
+        confirmTokenExpiresAt: null,
       },
     });
   });

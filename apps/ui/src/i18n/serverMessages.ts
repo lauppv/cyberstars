@@ -34,6 +34,12 @@ const RO: Record<string, string> = {
   'Password must be at most 255 characters': 'Parola poate avea cel mult 255 de caractere',
   'Password is required': 'Parola este obligatorie',
   'Code must be 6 digits': 'Codul trebuie să aibă 6 cifre',
+  'Email confirmed': 'Emailul a fost confirmat',
+  'This link has expired or was already used': 'Linkul a expirat sau a fost deja folosit',
+  'Invalid link': 'Link invalid',
+  'Confirmation link sent': 'Ți-am trimis linkul de confirmare',
+  'Email already confirmed': 'Emailul e deja confirmat',
+  'Too many links asked for, try again later': 'Ai cerut prea multe linkuri, încearcă mai târziu',
   // profile and settings
   'No file uploaded': 'Nu ai încărcat niciun fișier',
   'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.':

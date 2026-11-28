@@ -1,10 +1,12 @@
 import type { ReactNode } from 'react';
 import { Navigate, matchPath, useLocation } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
+import { CONFIRM_EMAIL_PATH } from '../../constants/confirmEmail';
 
 // The only pages a guest can open: the welcome page, the placement test,
 // sign-in, the courses, algorithm challenges and projects they can run code in
-// (their runs share one guest budget), and the Almanac. Every other page, a new
+// (their runs share one guest budget), the Almanac, and the page the email
+// confirmation link opens, often on another device. Every other page, a new
 // one included, takes an account.
 const GUEST_PATHS = [
   '/',
@@ -20,6 +22,7 @@ const GUEST_PATHS = [
   '/projects/:language/:slug',
   '/almanac',
   '/almanac/:slug',
+  CONFIRM_EMAIL_PATH,
 ];
 
 // Sends a guest from any other page to sign-in, which brings them back once

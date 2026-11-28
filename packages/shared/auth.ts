@@ -21,6 +21,12 @@ export interface AuthenticatedUser {
   status: string | null;
   statusExpiresAt: string | null;
   pendingEmail: string | null;
+  // Whether the email was proven to be the account's (CYB-135); until it is,
+  // every page asks for it
+  emailConfirmed: boolean;
+  // A confirmation link was sent and waits; false for an account made before
+  // links were sent, which has to ask for one
+  confirmLinkSent: boolean;
   createdAt: string;
   showBio: boolean;
   showStats: boolean;
@@ -47,4 +53,6 @@ export interface SignupPayload {
   email: string;
   password: string;
   placementScore?: number;
+  // the page's language, which the confirmation email is written in
+  lang?: 'en' | 'ro';
 }

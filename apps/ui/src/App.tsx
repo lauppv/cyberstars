@@ -15,6 +15,8 @@ import { TourGate } from './components/tour/TourGate';
 import { GuestGate } from './components/layout/GuestGate';
 import { MaintenanceScreen } from './components/layout/MaintenanceScreen';
 import { SessionEndedNotice } from './components/layout/SessionEndedNotice';
+import { EmailConfirmBanner } from './components/layout/EmailConfirmBanner';
+import { CONFIRM_EMAIL_PATH } from './constants/confirmEmail';
 import { usePresence } from './hooks/usePresence';
 import { usePageViews } from './hooks/usePageViews';
 import { useGuestSteps } from './hooks/useGuestSteps';
@@ -75,6 +77,9 @@ const MessagesPage = lazy(() =>
 const PublicProfilePage = lazy(() =>
   import('./pages/PublicProfilePage').then((m) => ({ default: m.PublicProfilePage })),
 );
+const ConfirmEmailPage = lazy(() =>
+  import('./pages/ConfirmEmailPage').then((m) => ({ default: m.ConfirmEmailPage })),
+);
 const SettingsPage = lazy(() =>
   import('./pages/SettingsPage').then((m) => ({ default: m.SettingsPage })),
 );
@@ -116,6 +121,7 @@ function App() {
                   <GuestSignupPromptProvider>
                     <UsageProvider>
                       <PageViews />
+                      <EmailConfirmBanner />
                       <TutorProvider>
                         <AppShell>
                           <Suspense
@@ -162,6 +168,7 @@ function App() {
                                   <Route path="/messages" element={<MessagesPage />} />
                                   <Route path="/u/:userId" element={<PublicProfilePage />} />
                                   <Route path="/settings" element={<SettingsPage />} />
+                                  <Route path={CONFIRM_EMAIL_PATH} element={<ConfirmEmailPage />} />
                                   <Route path="/connections" element={<ConnectionsPage />} />
                                   <Route path="*" element={<NotFoundPage />} />
                                 </Routes>

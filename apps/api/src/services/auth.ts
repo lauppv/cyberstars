@@ -9,8 +9,8 @@ import * as sessionRepo from '../repositories/session.repository.js';
 import { signupSchema } from '../schemas/auth.schema.js';
 import { limiter } from '../middleware/rateLimit.js';
 import { config } from '../config/index.js';
-import { sendResetCode } from './email.service.js';
-import { closeUserSockets } from './ws-user.js';
+import { sendConfirmLink, sendResetCode } from './email.service.js';
+import { closeUserSockets, pushToUser } from './ws-user.js';
 
 type Signup = z.infer<typeof signupSchema>;
 type Account = NonNullable<Awaited<ReturnType<typeof userRepo.findById>>>;
@@ -47,6 +47,10 @@ const store: UserStore<UserRole, Account, Signup> = {
   async findResetCode(email, code) {
     return (await userRepo.findByResetCode(email, code))?.id ?? null;
   },
+  setConfirmToken: (id, tokenHash, expiresAt) => userRepo.setConfirmToken(id, tokenHash, expiresAt),
+  confirmEmail: (tokenHash) => userRepo.confirmEmail(tokenHash),
+  markEmailConfirmed: (id) => userRepo.markEmailConfirmed(id),
+  unconfirmedEmail: (id) => userRepo.unconfirmedEmail(id),
 };
 
 // The signed-in browsers, in `sessions`
@@ -80,6 +84,9 @@ export function accountAnswer(user: Account): AuthenticatedUser {
     status: statusExpired ? null : user.status,
     statusExpiresAt: statusExpired ? null : (user.statusExpiresAt?.toISOString() ?? null),
     pendingEmail: pendingEmailActive,
+    emailConfirmed: user.emailConfirmedAt !== null,
+    // A link was sent and waits (expired too), so the page says to look for it
+    confirmLinkSent: user.emailConfirmedAt === null && user.confirmTokenHash !== null,
     createdAt: user.createdAt.toISOString(),
     showBio: user.showBio,
     showStats: user.showStats,
@@ -106,6 +113,9 @@ export const auth = createAuth({
   signupSchema,
   emailLanguages: ['en', 'ro'],
   sendResetCode,
+  sendConfirmLink,
+  // Every open page of the account drops its banner at once
+  onEmailConfirmed: (userId) => pushToUser(userId, { channel: 'account', type: 'email-confirmed' }),
   account: accountAnswer,
   limiter,
 });

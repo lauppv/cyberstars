@@ -28,6 +28,7 @@ function renderAt(path: string) {
           <Route path="/projects" element={<span>projects</span>} />
           <Route path="/projects/:language/:slug" element={<span>project</span>} />
           <Route path="/forum/t/:threadId" element={<span>thread</span>} />
+          <Route path="/confirm-email" element={<span>confirm email</span>} />
         </Routes>
       </GuestGate>
     </MemoryRouter>,
@@ -42,6 +43,7 @@ describe('GuestGate', () => {
     ['/almanac', 'almanac'],
     ['/projects', 'projects'],
     ['/projects/python/library-desk', 'project'],
+    ['/confirm-email?token=x', 'confirm email'],
   ])('lets a guest open %s', (path, text) => {
     auth = { user: null, isLoading: false };
     renderAt(path);

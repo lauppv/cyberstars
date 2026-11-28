@@ -32,6 +32,10 @@ const store = {
   setResetCode: vi.fn(),
   takeResetAttempt: vi.fn(),
   findResetCode: vi.fn(),
+  setConfirmToken: vi.fn(),
+  confirmEmail: vi.fn(),
+  markEmailConfirmed: vi.fn(),
+  unconfirmedEmail: vi.fn(),
 };
 
 // The sessions in memory, each with its account's role
@@ -87,6 +91,7 @@ const OPTIONS: AuthOptions<Role, AuthUser<Role>, z.infer<typeof signupSchema>, '
   signupSchema,
   emailLanguages: ['en'],
   sendResetCode: vi.fn(),
+  sendConfirmLink: vi.fn(),
   limiter: makeLimiter(() => true),
 };
 

@@ -20,6 +20,8 @@ export async function findById(id: number) {
       statusExpiresAt: true,
       pendingEmail: true,
       emailChangeCodeExpiresAt: true,
+      emailConfirmedAt: true,
+      confirmTokenHash: true,
       createdAt: true,
       showBio: true,
       showStats: true,
@@ -107,20 +109,15 @@ export async function create(
   hashedPassword: string,
   placementScore?: number,
 ): Promise<number> {
-  // The account matching FOUNDER_EMAIL always bootstraps as FOUNDER (unique
-  // owner). Otherwise the very first account to register bootstraps as ADMIN.
-  // Serialize the count+create with an advisory lock so two concurrent first
-  // signups against an empty DB cannot both see count === 0 and both become ADMIN.
-  const founderEmail = config.founderEmail.toLowerCase();
+  // The very first account to register bootstraps as ADMIN. The founder's role
+  // waits for a confirmed email (founderRole), since anyone can type an
+  // address at sign-up. Serialize the count+create with an advisory lock so two
+  // concurrent first signups against an empty DB cannot both see count === 0
+  // and both become ADMIN.
   return prisma.$transaction(async (tx) => {
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(4242)`;
     const existing = await tx.user.count();
-    const role: Role =
-      founderEmail && email.toLowerCase() === founderEmail
-        ? 'FOUNDER'
-        : existing === 0
-          ? 'ADMIN'
-          : 'USER';
+    const role: Role = existing === 0 ? 'ADMIN' : 'USER';
     const user = await tx.user.create({
       data: { name, email, password: hashedPassword, role, placementScore },
       select: { id: true },
@@ -240,7 +237,9 @@ export async function findPendingEmailChange(id: number): Promise<{
 
 // Swap the account's email to pendingEmail and clear the change fields in a
 // single transaction so a concurrent signup on the same address can't slip in
-// between the uniqueness check and the update.
+// between the uniqueness check and the update. The code reached the new
+// inbox, so the new email is confirmed, and a link sent to the old one stops
+// working.
 export async function applyPendingEmailChange(id: number, newEmail: string): Promise<void> {
   await prisma.user.update({
     where: { id },
@@ -249,8 +248,74 @@ export async function applyPendingEmailChange(id: number, newEmail: string): Pro
       pendingEmail: null,
       emailChangeCode: null,
       emailChangeCodeExpiresAt: null,
+      ...confirmedNow(newEmail),
     },
   });
+}
+
+// The founder's role, for an email just proven to be the account's: the one
+// FOUNDER_EMAIL names, compared lowercase like every email
+function founderRole(email: string): { role?: Role } {
+  const founderEmail = config.founderEmail.trim().toLowerCase();
+  return founderEmail && email === founderEmail ? { role: 'FOUNDER' } : {};
+}
+
+// What confirming an email writes: when, no link waiting, and the founder's
+// role when it is the founder's email
+function confirmedNow(email: string) {
+  return {
+    emailConfirmedAt: new Date(),
+    confirmTokenHash: null,
+    confirmTokenExpiresAt: null,
+    ...founderRole(email),
+  };
+}
+
+// A new confirmation link replaces the one before, which stops working
+export async function setConfirmToken(
+  id: number,
+  tokenHash: string,
+  expiresAt: Date,
+): Promise<void> {
+  await prisma.user.update({
+    where: { id },
+    data: { confirmTokenHash: tokenHash, confirmTokenExpiresAt: expiresAt },
+  });
+}
+
+// Confirms the email of the account whose live link this is; null when no live
+// link has this hash. The write matches the hash again, so two clicks at once
+// confirm once
+export async function confirmEmail(tokenHash: string): Promise<number | null> {
+  const user = await prisma.user.findFirst({
+    where: { confirmTokenHash: tokenHash, confirmTokenExpiresAt: { gte: new Date() } },
+    select: { id: true, email: true },
+  });
+  if (!user) return null;
+  const { count } = await prisma.user.updateMany({
+    where: { id: user.id, email: user.email, confirmTokenHash: tokenHash },
+    data: confirmedNow(user.email),
+  });
+  return count ? user.id : null;
+}
+
+// A reset code reached the inbox, which proves the email as a link would
+export async function markEmailConfirmed(id: number): Promise<void> {
+  const user = await prisma.user.findUnique({ where: { id }, select: { email: true } });
+  if (!user) return;
+  await prisma.user.updateMany({
+    where: { id, email: user.email },
+    data: confirmedNow(user.email),
+  });
+}
+
+// The account's email while it waits to be confirmed, null once it is
+export async function unconfirmedEmail(id: number): Promise<string | null> {
+  const user = await prisma.user.findUnique({
+    where: { id },
+    select: { email: true, emailConfirmedAt: true },
+  });
+  return user && !user.emailConfirmedAt ? user.email : null;
 }
 
 export async function clearPendingEmailChange(id: number): Promise<void> {

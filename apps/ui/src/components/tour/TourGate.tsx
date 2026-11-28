@@ -2,11 +2,14 @@ import { useCallback, useState, type ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import { INTERESTS_PATH, TOUR_PATH } from '../../constants/tour';
+import { CONFIRM_EMAIL_PATH } from '../../constants/confirmEmail';
 import { TourNotice } from './TourNotice';
 
 // A new account sees nothing but the tour lesson until its tests pass and the
 // server stamps onboardedAt, then nothing but the question of what it wants to
-// learn until it answers. Every other route sends it back there.
+// learn until it answers. Every other route sends it back there, but the page
+// the email confirmation link opens, which a new account gets in its first
+// minutes.
 export function TourGate({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   const { pathname } = useLocation();
@@ -23,6 +26,7 @@ export function TourGate({ children }: { children: ReactNode }) {
   const hideNotice = useCallback(() => setReturned(0), []);
   const notice = <TourNotice key={returned} visible={returned > 0} onClose={hideNotice} />;
 
+  if (pathname === CONFIRM_EMAIL_PATH) return <>{children}</>;
   if (inTour && pathname !== TOUR_PATH) {
     return (
       <>

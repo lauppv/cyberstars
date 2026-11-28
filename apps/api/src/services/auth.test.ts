@@ -18,6 +18,10 @@ const mockUserRepo = {
   setResetCode: vi.fn(),
   takeResetAttempt: vi.fn(),
   findByResetCode: vi.fn(),
+  setConfirmToken: vi.fn(),
+  confirmEmail: vi.fn(),
+  markEmailConfirmed: vi.fn(),
+  unconfirmedEmail: vi.fn(),
 };
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 
@@ -42,13 +46,17 @@ vi.mock('../repositories/session.repository.js', () => ({
 }));
 
 const mockSendResetCode = vi.fn();
+const mockSendConfirmLink = vi.fn();
 vi.mock('./email.service.js', () => ({
   sendResetCode: (...args: unknown[]) => mockSendResetCode(...args),
+  sendConfirmLink: (...args: unknown[]) => mockSendConfirmLink(...args),
 }));
 
 const mockCloseUserSockets = vi.fn();
+const mockPushToUser = vi.fn();
 vi.mock('./ws-user.js', () => ({
   closeUserSockets: (...args: unknown[]) => mockCloseUserSockets(...args),
+  pushToUser: (...args: unknown[]) => mockPushToUser(...args),
 }));
 
 const { auth, accountAnswer, scheduleSessionSweep } = await import('./auth.js');
@@ -66,6 +74,7 @@ beforeEach(() => {
   vi.clearAllMocks();
   mockSessions.clear();
   mockUserRepo.findRole.mockResolvedValue('USER');
+  mockSendConfirmLink.mockResolvedValue(undefined);
 });
 
 // The session cookie a response set, as the browser sends it back
@@ -78,6 +87,40 @@ const HOUR = 60 * 60 * 1000;
 const DAY = 24 * HOUR;
 
 describe('sign-up', () => {
+  it('makes the account under its email lowercased and trimmed', async () => {
+    mockUserRepo.create.mockResolvedValue(1);
+    await request(app)
+      .post('/auth/signup')
+      .send({ ...SIGNUP, email: '  Alice@Test.COM ' })
+      .expect(200);
+    expect(mockUserRepo.create).toHaveBeenCalledWith(
+      'Alice',
+      'alice@test.com',
+      expect.any(String),
+      undefined,
+    );
+  });
+
+  it('sends the confirmation link in the language of the page, English by default', async () => {
+    mockUserRepo.create.mockResolvedValue(1);
+    await request(app)
+      .post('/auth/signup')
+      .send({ ...SIGNUP, lang: 'ro' })
+      .expect(200);
+    mockUserRepo.create.mockResolvedValue(2);
+    await request(app)
+      .post('/auth/signup')
+      .send({ ...SIGNUP, email: 'bob@test.com', lang: 'fr' })
+      .expect(200);
+    expect(mockUserRepo.setConfirmToken).toHaveBeenCalledWith(
+      1,
+      expect.stringMatching(/^[0-9a-f]{64}$/),
+      expect.any(Date),
+    );
+    expect(mockSendConfirmLink).toHaveBeenCalledWith('alice@test.com', expect.any(String), 'ro');
+    expect(mockSendConfirmLink).toHaveBeenCalledWith('bob@test.com', expect.any(String), 'en');
+  });
+
   it('keeps the placement score the visitor got before signing up', async () => {
     mockUserRepo.create.mockResolvedValue(42);
     await request(app)
@@ -253,6 +296,20 @@ describe('password reset', () => {
     expect(mockCloseUserSockets).toHaveBeenCalledWith(5);
   });
 
+  it('confirms the email, since the code reached its inbox', async () => {
+    mockUserRepo.takeResetAttempt.mockResolvedValue(true);
+    mockUserRepo.findByResetCode.mockResolvedValue({ id: 5 });
+    await request(app)
+      .post('/auth/reset-password')
+      .send({ email: 'user@test.com', code: '123456', password: 'newpass' })
+      .expect(200);
+    expect(mockUserRepo.markEmailConfirmed).toHaveBeenCalledWith(5);
+    expect(mockPushToUser).toHaveBeenCalledWith(5, {
+      channel: 'account',
+      type: 'email-confirmed',
+    });
+  });
+
   it('refuses a code no account has', async () => {
     mockUserRepo.takeResetAttempt.mockResolvedValue(true);
     mockUserRepo.findByResetCode.mockResolvedValue(null);
@@ -261,6 +318,34 @@ describe('password reset', () => {
       .send({ email: 'user@test.com', code: '000000', password: 'newpass' });
     expect(res.status).toBe(400);
     expect(res.body).toEqual({ error: 'Invalid or expired code' });
+  });
+});
+
+describe('email confirmation', () => {
+  it("tells the account's open pages once its link confirms it", async () => {
+    mockUserRepo.confirmEmail.mockResolvedValue(7);
+    await request(app)
+      .post('/auth/confirm-email')
+      .send({ token: 'a'.repeat(43) })
+      .expect(200);
+    expect(mockUserRepo.confirmEmail).toHaveBeenCalledWith(expect.stringMatching(/^[0-9a-f]{64}$/));
+    expect(mockPushToUser).toHaveBeenCalledWith(7, {
+      channel: 'account',
+      type: 'email-confirmed',
+    });
+  });
+
+  it('sends a signed-in account a new link to its unconfirmed email', async () => {
+    mockUserRepo.create.mockResolvedValue(3);
+    const cookie = sessionCookie(await request(app).post('/auth/signup').send(SIGNUP).expect(200));
+    mockSendConfirmLink.mockClear();
+    mockUserRepo.unconfirmedEmail.mockResolvedValue('alice@test.com');
+    await request(app)
+      .post('/auth/confirm-email/resend')
+      .set('Cookie', cookie)
+      .send({ lang: 'ro' })
+      .expect(200);
+    expect(mockSendConfirmLink).toHaveBeenCalledWith('alice@test.com', expect.any(String), 'ro');
   });
 });
 
@@ -276,6 +361,8 @@ describe('the account answer', () => {
     statusExpiresAt: null,
     pendingEmail: null,
     emailChangeCodeExpiresAt: null,
+    emailConfirmedAt: null,
+    confirmTokenHash: null,
     createdAt: new Date('2024-01-01T00:00:00Z'),
     showBio: true,
     showStats: true,
@@ -341,6 +428,17 @@ describe('the account answer', () => {
     expect(accountAnswer({ ...ada, codeLanguage: 'java' }).codeLanguage).toBe('java');
     expect(accountAnswer({ ...ada, codeLanguage: null }).codeLanguage).toBeNull();
     expect(accountAnswer({ ...ada, codeLanguage: 'cobol' }).codeLanguage).toBeNull();
+  });
+
+  it('says whether the email is confirmed, and whether a link waits for it', () => {
+    expect(accountAnswer(ada)).toMatchObject({ emailConfirmed: false, confirmLinkSent: false });
+    expect(accountAnswer({ ...ada, confirmTokenHash: 'f'.repeat(64) })).toMatchObject({
+      emailConfirmed: false,
+      confirmLinkSent: true,
+    });
+    expect(
+      accountAnswer({ ...ada, emailConfirmedAt: new Date(), confirmTokenHash: null }),
+    ).toMatchObject({ emailConfirmed: true, confirmLinkSent: false });
   });
 
   it('surfaces pendingEmail when the change code has not expired yet', () => {
