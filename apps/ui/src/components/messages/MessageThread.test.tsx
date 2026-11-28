@@ -95,12 +95,12 @@ describe('MessageThread failures', () => {
     renderThread();
     await screen.findByText('salut');
     fireEvent.change(box(), { target: { value: 'hello there' } });
-    fireEvent.click(screen.getByText('Send'));
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
     expect(await screen.findByRole('alert')).toHaveTextContent('Conversation not found');
     expect(box().value).toBe('hello there');
 
     h.service.sendMessage.mockResolvedValueOnce({ message: msg({ id: 101, content: 'hi' }) });
-    fireEvent.click(screen.getByText('Send'));
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
     expect(await screen.findByText('hi')).toBeInTheDocument();
     expect(screen.queryByRole('alert')).toBeNull();
     expect(box().value).toBe('');
@@ -198,7 +198,7 @@ describe('MessageThread failures', () => {
 
     h.service.sendMessage.mockResolvedValueOnce({ message: msg({ id: 101, content: 'hi' }) });
     fireEvent.change(box(), { target: { value: 'hi' } });
-    fireEvent.click(screen.getByText('Send'));
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
     await waitFor(() => expect(screen.queryByRole('alert')).toBeNull());
     expect(screen.getByText('Load older messages')).toBeInTheDocument();
   });
@@ -302,7 +302,7 @@ describe('DraftThread', () => {
     const onSend = vi.fn().mockRejectedValue(new Error('nope'));
     render(<DraftThread other={ben} onSend={onSend} onBack={() => {}} />);
     fireEvent.change(box(), { target: { value: 'hi' } });
-    fireEvent.click(screen.getByText('Send'));
+    fireEvent.click(screen.getByRole('button', { name: 'Send' }));
     expect(await screen.findByRole('alert')).toHaveTextContent('nope');
     expect(onSend).toHaveBeenCalledWith('hi');
     expect(box().value).toBe('hi');

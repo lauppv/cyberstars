@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ArrowLeft, Ban, Check, CheckCheck } from 'lucide-react';
 import { Avatar } from '../ui/Avatar';
 import i18next from 'i18next';
 import { useMessages } from '../../context/MessagesContext';
@@ -72,23 +73,24 @@ function ThreadHeader({
     onBlocked?.();
   };
   return (
-    <div className="flex items-center gap-3 px-4 py-3 border-b border-[var(--border)] flex-shrink-0">
+    <div className="flex items-center gap-2 px-3 sm:px-4 h-[60px] border-b border-[var(--border)] flex-shrink-0">
       <button
         onClick={onBack}
-        className="@2xl:hidden text-[var(--text3)] hover:text-[var(--text)] bg-transparent border-none cursor-pointer text-[16px]"
+        className="@2xl:hidden w-8 h-8 -ml-1 flex items-center justify-center rounded-full text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--surface2)] bg-transparent border-none cursor-pointer transition"
         aria-label={t('messages.back')}
       >
-        ←
+        <ArrowLeft size={18} aria-hidden />
       </button>
       <UserLink userId={other.id} className="flex items-center gap-3 min-w-0">
-        <Avatar url={other.avatarUrl} userId={other.id} size={32} />
-        <span className="font-semibold text-[14px] text-[var(--text)] truncate">{other.name}</span>
+        <Avatar url={other.avatarUrl} userId={other.id} size={36} />
+        <span className="font-semibold text-[15px] text-[var(--text)] truncate">{other.name}</span>
       </UserLink>
       {onBlocked && !other.staff && (
         <button
           onClick={() => setConfirming(true)}
-          className="ml-auto flex-shrink-0 text-[12px] text-[var(--text3)] hover:text-[var(--error)] bg-transparent border-none cursor-pointer"
+          className="ml-auto flex-shrink-0 flex items-center gap-1.5 h-8 px-2.5 rounded-[var(--radius-sm)] text-[12px] text-[var(--text3)] hover:text-[var(--error)] hover:bg-[var(--error)]/10 bg-transparent border-none cursor-pointer transition"
         >
+          <Ban size={14} aria-hidden />
           {t('block.block')}
         </button>
       )}
@@ -122,7 +124,7 @@ export function DraftThread({
   return (
     <div className="flex flex-col h-full">
       <ThreadHeader other={other} onBack={onBack} />
-      <div className="flex-1" />
+      <div className="flex-1 bg-[var(--bg2)]" />
       <MessageComposer onSend={send} error={sendError} />
     </div>
   );
@@ -407,7 +409,11 @@ export function MessageThread({
         </ConfirmDialog>
       )}
 
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
+      <div
+        ref={scrollRef}
+        // A step darker than the header and the box, so the conversation reads as its own pane
+        className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-[var(--bg2)]"
+      >
         {loading ? (
           <div className="text-center text-[13px] text-[var(--text3)] py-8">…</div>
         ) : loadFailed ? (
@@ -451,7 +457,7 @@ export function MessageThread({
                         }}
                         rows={1}
                         maxLength={2000}
-                        className="w-full resize-none max-h-32 min-h-[38px] px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
+                        className="w-full resize-none max-h-32 min-h-[40px] px-3.5 py-2 rounded-2xl bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
                       />
                       <div className="flex items-center gap-2 text-[10px] text-[var(--text3)]">
                         <span>{t('messages.editHint')}</span>
@@ -479,11 +485,17 @@ export function MessageThread({
                       className={`flex items-center gap-1 max-w-full ${mine ? 'flex-row-reverse' : 'flex-row'}`}
                     >
                       <div
-                        className={`px-3 py-2 rounded-[var(--radius)] text-[13px] leading-snug whitespace-pre-wrap break-words min-w-0 ${
-                          mine
-                            ? 'bg-[var(--accent)]/25 border border-[var(--accent)]/40 text-[var(--text)]'
-                            : 'bg-[var(--glass)] border border-[var(--border)] text-[var(--text)]'
-                        } ${m.deleted ? 'italic text-[var(--text3)]' : ''}`}
+                        // A bubble with one sharp corner on the sender's side:
+                        // yours filled with the accent, theirs a quiet glass
+                        className={`px-3.5 py-2 rounded-2xl text-[13.5px] leading-relaxed whitespace-pre-wrap break-words min-w-0 ${
+                          mine ? 'rounded-br-[4px]' : 'rounded-bl-[4px]'
+                        } ${
+                          m.deleted
+                            ? 'bg-transparent border border-dashed border-[var(--border)] italic text-[var(--text3)]'
+                            : mine
+                              ? 'bg-[var(--accent)] text-white'
+                              : 'bg-[var(--glass)] border border-[var(--border)] text-[var(--text)]'
+                        }`}
                       >
                         {m.deleted ? t('messages.deletedMessage') : m.content}
                       </div>
@@ -505,21 +517,27 @@ export function MessageThread({
                     </div>
                   )}
                   {!m.deleted && m.reactions.length > 0 && (
-                    <div className={`flex flex-wrap gap-1 mt-1 ${mine ? 'justify-end' : ''}`}>
+                    // Pinned to the bubble's bottom edge; under the edit box they
+                    // keep clear of its hint
+                    <div
+                      className={`relative flex flex-wrap gap-1 px-2 ${editing?.id === m.id ? 'mt-1' : '-mt-1.5'} ${mine ? 'justify-end' : ''}`}
+                    >
                       {groupReactions(m.reactions, currentUserId).map((g) => (
                         <button
                           key={g.emoji}
                           onClick={() => react(m.id, g.emoji)}
                           aria-pressed={g.active}
-                          className={`flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[12px] leading-none border transition cursor-pointer ${
+                          // Opaque, with a ring of the thread's background, so the
+                          // chip reads apart from the bubble it overlaps
+                          className={`flex items-center gap-1 h-[22px] px-1.5 rounded-full text-[12px] leading-none border ring-2 ring-[var(--bg2)] transition cursor-pointer ${
                             g.active
-                              ? 'bg-[var(--accent)]/25 border-[var(--accent)]/50'
-                              : 'bg-[var(--glass)] border-[var(--border)] hover:bg-[var(--accent)]/15'
+                              ? 'bg-[color-mix(in_srgb,var(--accent)_28%,var(--surface2))] border-[var(--accent)]/60'
+                              : 'bg-[var(--surface2)] border-[var(--border)] hover:border-[var(--accent)]/50'
                           }`}
                         >
                           <span>{g.emoji}</span>
                           {g.count > 1 && (
-                            <span className="text-[10px] text-[var(--text3)] tabular-nums">
+                            <span className="text-[11px] text-[var(--text2)] tabular-nums">
                               {g.count}
                             </span>
                           )}
@@ -529,23 +547,36 @@ export function MessageThread({
                   )}
                   {editing?.id !== m.id && (
                     <div
-                      className={`flex items-center gap-2 mt-0.5 px-1 ${mine ? 'justify-end' : ''}`}
+                      className={`flex items-center gap-1.5 mt-1 px-1 text-[11px] text-[var(--text3)] tabular-nums ${mine ? 'justify-end' : ''}`}
                     >
-                      <span className="text-[10px] text-[var(--text3)] tabular-nums">
-                        {dateTimeLabel(m.createdAt)}
-                      </span>
+                      <span>{dateTimeLabel(m.createdAt)}</span>
                       {!m.deleted && m.editedAt && (
-                        <span
-                          className="text-[10px] text-[var(--text3)] italic tabular-nums"
-                          title={t('messages.edited', { time: timeLabel(m.editedAt) })}
-                        >
-                          {t('messages.edited', { time: timeLabel(m.editedAt) })}
-                        </span>
+                        <>
+                          <span aria-hidden>·</span>
+                          <span className="italic">
+                            {t('messages.edited', { time: timeLabel(m.editedAt) })}
+                          </span>
+                        </>
                       )}
                       {mine && !m.deleted && (
-                        <span className="text-[10px] text-[var(--text3)]">
-                          {m.readAt ? t('messages.seen') : t('messages.sent')}
-                        </span>
+                        <>
+                          <span aria-hidden>·</span>
+                          {/* Two ticks in the accent once read, one tick before; the word
+                              stays grey, since the accent is too dark for small text */}
+                          <span className="inline-flex items-center gap-0.5">
+                            {m.readAt ? (
+                              <CheckCheck
+                                size={13}
+                                strokeWidth={2.25}
+                                className="text-[var(--accent)]"
+                                aria-hidden
+                              />
+                            ) : (
+                              <Check size={13} strokeWidth={2.25} aria-hidden />
+                            )}
+                            {m.readAt ? t('messages.seen') : t('messages.sent')}
+                          </span>
+                        </>
                       )}
                     </div>
                   )}

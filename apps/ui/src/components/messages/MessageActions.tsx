@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { EMOJIS } from '../ui/emojiPalette';
 
-// Always-visible "⋮" trigger opening a per-message menu: react (emoji grid) plus
-// edit/delete for the owner, or report for a message received. Always visible (not hover-only) so it's tappable on
-// touch devices, where hover-reveal actions are unreachable.
+// A "⋮" trigger opening a per-message menu: react (emoji grid) plus
+// edit/delete for the owner, or report for a message received. With a mouse it
+// shows while the message is hovered or the menu is in focus or open; on a touch
+// screen it always shows, since nothing can hover there to bring it up.
 export function MessageActions({
   align,
   canModify,
@@ -48,7 +49,7 @@ export function MessageActions({
         aria-label={t('messages.actions')}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="w-6 h-6 flex items-center justify-center rounded-full text-[13px] leading-none text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--accent)]/15 transition cursor-pointer bg-transparent border-none"
+        className="w-6 h-6 flex items-center justify-center rounded-full text-[13px] leading-none text-[var(--text3)] hover:text-[var(--text)] hover:bg-[var(--accent)]/15 transition cursor-pointer bg-transparent border-none pointer-fine:opacity-0 pointer-fine:group-hover:opacity-100 pointer-fine:group-focus-within:opacity-100 aria-expanded:opacity-100"
       >
         ⋮
       </button>
