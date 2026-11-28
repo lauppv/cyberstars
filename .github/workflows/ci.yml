@@ -342,11 +342,10 @@ jobs:
     # read-only token set at the top.
     permissions:
       contents: write
-    # Two merges in a row publish one after the other, so the cleanup below
-    # never races another run.
-    concurrency:
-      group: publish-build
-      cancel-in-progress: false
+    # No concurrency group: GitHub keeps only one waiting run per group and
+    # cancels it when a third arrives, so a quick run of merges would leave a
+    # commit with no build. Runs publish side by side instead, and the steps
+    # below put up with another run doing the same thing at once.
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
@@ -378,18 +377,23 @@ jobs:
       # the archive is too.
       - name: Publish on the ui-build pre-release
         run: |
+          # Another run may create the release first: then it's there to view.
           gh release view ui-build > /dev/null 2>&1 ||
             gh release create ui-build --prerelease --latest=false \
               --target "$GITHUB_SHA" --title "UI build" \
-              --notes "The site's build for each recent commit on main, downloaded by deploy/deploy.sh. Made by CI, never by hand."
+              --notes "The site's build for each recent commit on main, downloaded by deploy/deploy.sh. Made by CI, never by hand." ||
+            gh release view ui-build > /dev/null
           gh release upload ui-build "$ARCHIVE" --clobber
           gh release upload ui-build "$ARCHIVE.sha256" --clobber
 
+      # Two runs at once can pick the same old build; whichever deletes it
+      # second finds it gone, which is fine. The newest builds, this run's and
+      # any other's, always sort first and stay.
       - name: Keep only the last builds
         run: |
           gh release view ui-build --json assets \
             --jq ".assets | map(select(.name | endswith(\".tar.gz\"))) | sort_by(.createdAt) | reverse | .[$KEEP:] | .[].name" |
             while read -r old; do
-              gh release delete-asset ui-build "$old" --yes
+              gh release delete-asset ui-build "$old" --yes || true
               gh release delete-asset ui-build "$old.sha256" --yes || true
             done
