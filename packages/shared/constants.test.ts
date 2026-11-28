@@ -5,6 +5,8 @@ import {
   baseLanguage,
   MAIN_COURSE_KEYS,
   ALGO_COURSE_KEYS,
+  CHALLENGE_XP,
+  difficultyOf,
   ALL_COURSE_KEYS,
   TERMINAL_COURSE_KEYS,
   WEB_COURSE_KEYS,
@@ -53,42 +55,80 @@ describe('baseLanguage', () => {
   });
 });
 
+// n lessons with plain titles, sortOrder 1..n
+const course = (n: number) =>
+  Array.from({ length: n }, (_, i) => ({ sortOrder: i + 1, title: `Lesson ${i + 1}` }));
+const lesson = (sortOrder: number, title = 'Lesson') => ({ sortOrder, title });
+
+describe('difficultyOf', () => {
+  it("reads a challenge title's difficulty", () => {
+    expect(difficultyOf('Easy · Two Sum')).toBe('easy');
+    expect(difficultyOf('Medium · Spiral')).toBe('medium');
+    expect(difficultyOf('Hard · Group Anagrams')).toBe('hard');
+  });
+
+  it('is null on a title without one', () => {
+    expect(difficultyOf('Variables')).toBeNull();
+    expect(difficultyOf('The Easy · way')).toBeNull();
+  });
+});
+
 describe('xpForLesson', () => {
-  it('awards 10 for the first lesson (sortOrder 1) and grows with position', () => {
-    expect(xpForLesson('python', 1)).toBe(10);
-    expect(xpForLesson('python', 6)).toBe(15);
+  it('gives 10 XP to the first lesson and 30 to the last, evenly in between', () => {
+    expect(xpForLesson('python', lesson(1), 112)).toBe(10);
+    expect(xpForLesson('python', lesson(112), 112)).toBe(30);
+    expect(xpForLesson('python', lesson(3), 5)).toBe(20);
+    expect(xpForLesson('python', lesson(2), 5)).toBe(15);
+  });
+
+  it('gives 10 XP to the only lesson of a one-lesson course', () => {
+    expect(xpForLesson('python', lesson(1), 1)).toBe(10);
   });
 
   it('starts again at 10 on each part of a course split into parts', () => {
-    const [first, second] = PART_STARTS['web-dev'];
-    expect(xpForLesson('web-dev', first)).toBe(10);
-    expect(xpForLesson('web-dev', second - 1)).toBe(10 + (second - 1 - first));
-    expect(xpForLesson('web-dev', second)).toBe(10);
-    expect(xpForLesson('web-dev', second + 2)).toBe(12);
+    const starts = PART_STARTS['web-dev'];
+    const total = 375;
+    expect(xpForLesson('web-dev', lesson(starts[0]), total)).toBe(10);
+    expect(xpForLesson('web-dev', lesson(starts[1] - 1), total)).toBe(30);
+    expect(xpForLesson('web-dev', lesson(starts[1]), total)).toBe(10);
+    expect(xpForLesson('web-dev', lesson(starts.at(-1)!), total)).toBe(10);
+    expect(xpForLesson('web-dev', lesson(total), total)).toBe(30);
+  });
+
+  it('pays a challenge by its difficulty, not its place', () => {
+    for (const key of ALGO_COURSE_KEYS) {
+      expect(xpForLesson(key, lesson(1, 'Hard · A'), 20), key).toBe(100);
+      expect(xpForLesson(key, lesson(20, 'Easy · B'), 20), key).toBe(40);
+      expect(xpForLesson(key, lesson(5, 'Medium · C'), 20), key).toBe(70);
+    }
+  });
+
+  it('counts a challenge without a difficulty as Easy', () => {
+    expect(xpForLesson('algo-python', lesson(3, 'Two Sum'), 20)).toBe(CHALLENGE_XP.easy);
   });
 });
 
 describe('xpForCourse', () => {
-  it('sums the per-lesson awards for an n-lesson course', () => {
-    expect(xpForCourse('python', 0)).toBe(0);
-    expect(xpForCourse('python', 1)).toBe(10);
-    // 10 + 11 + 12 = 33
-    expect(xpForCourse('python', 3)).toBe(33);
-  });
-
-  it('matches the explicit sum of xpForLesson over 1-based sortOrders', () => {
-    for (const courseKey of ['python', 'web-dev']) {
-      let sum = 0;
-      for (let s = 1; s <= 120; s++) sum += xpForLesson(courseKey, s);
-      expect(xpForCourse(courseKey, 120), courseKey).toBe(sum);
-    }
+  it("sums its lessons' awards", () => {
+    expect(xpForCourse('python', [])).toBe(0);
+    expect(xpForCourse('python', course(1))).toBe(10);
+    // 10 + 20 + 30
+    expect(xpForCourse('python', course(3))).toBe(60);
+    expect(
+      xpForCourse('algo-c', [
+        lesson(1, 'Easy · A'),
+        lesson(2, 'Medium · B'),
+        lesson(3, 'Hard · C'),
+      ]),
+    ).toBe(210);
   });
 });
 
 describe('dailyBonusXp', () => {
-  it("is a fifth of the lesson's award, counted within its part", () => {
-    expect(dailyBonusXp('python', 41)).toBe(10);
-    expect(dailyBonusXp('web-dev', PART_STARTS['web-dev'][1])).toBe(2);
+  it("is a fifth of the lesson's award", () => {
+    expect(dailyBonusXp('python', lesson(112), 112)).toBe(6);
+    expect(dailyBonusXp('web-dev', lesson(PART_STARTS['web-dev'][1]), 375)).toBe(2);
+    expect(dailyBonusXp('algo-java', lesson(1, 'Hard · A'), 20)).toBe(20);
   });
 });
 
