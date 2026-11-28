@@ -65,14 +65,21 @@ async function requireConversation(id: number, userId: number): Promise<repo.Con
 }
 
 // Live frames reach the other side unless they blocked the one acting: their
-// conversation is hidden from them, so nothing of it should show up live either
+// conversation is hidden from them, so nothing of it should show up live either.
+// It runs after the write is saved, so a failed check only skips the live
+// frame: the request still answers with what was saved.
 async function pushToOther(
   row: repo.ConversationRow,
   actorId: number,
   frame: Parameters<typeof pushToUser>[1],
 ): Promise<void> {
   const otherId = otherParticipant(row, actorId);
-  if (await blocks.isBlockedBy(otherId, actorId)) return;
+  try {
+    if (await blocks.isBlockedBy(otherId, actorId)) return;
+  } catch (err) {
+    console.error('[dm] block check before a live frame failed:', err);
+    return;
+  }
   pushToUser(otherId, frame);
 }
 

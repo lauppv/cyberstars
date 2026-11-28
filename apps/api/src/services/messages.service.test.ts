@@ -462,6 +462,23 @@ describe('messages.service blocks (CYB-140)', () => {
     const recipients = mockWs.pushToUser.mock.calls.map((c) => c[0]);
     expect(recipients).toEqual([2, 2, 2]);
   });
+
+  it('answers with the saved reaction when the block check before the live frame fails', async () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    mockRepo.findMessage.mockResolvedValue(msgRow({ senderId: 2 }));
+    mockRepo.toggleReaction.mockResolvedValue([{ emoji: '👍', userId: 1 }]);
+    mockBlocks.isBlockedBy
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => false)
+      .mockImplementationOnce(async () => {
+        throw new Error('db down');
+      });
+
+    const res = await toggleReaction(1, 500, '👍');
+    expect(res.reactions).toEqual([{ emoji: '👍', userId: 1 }]);
+    expect(mockWs.pushToUser.mock.calls.map((c) => c[0])).toEqual([1]);
+    error.mockRestore();
+  });
 });
 
 describe('messages.service reportMessage', () => {
