@@ -138,7 +138,7 @@ export function MessageThread({
   onBack: () => void;
 }) {
   const { t } = useTranslation();
-  const { setActiveConversation, markConversationRead, refresh } = useMessages();
+  const { setActiveConversation, markConversationRead, refresh, dropConversation } = useMessages();
   const conversationId = conversation.id;
 
   const [messages, setMessages] = useState<MessageDTO[]>([]);
@@ -375,8 +375,10 @@ export function MessageThread({
     setReported(true);
   };
 
-  // The conversation leaves the inbox, so the page goes back to the list
+  // The conversation leaves the inbox, so the page goes back to the list; it
+  // goes at once, and the reload brings the rest up to date
   const onBlocked = () => {
+    dropConversation(conversation.id);
     refresh();
     onBack();
   };

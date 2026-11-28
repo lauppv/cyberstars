@@ -16,7 +16,12 @@ const h = vi.hoisted(() => ({
   },
   blocks: { block: vi.fn() },
   // Stable, as the real context's are: new ones each render would reload the history
-  messages: { setActiveConversation: vi.fn(), markConversationRead: vi.fn(), refresh: vi.fn() },
+  messages: {
+    setActiveConversation: vi.fn(),
+    markConversationRead: vi.fn(),
+    refresh: vi.fn(),
+    dropConversation: vi.fn(),
+  },
 }));
 
 vi.mock('../../services/messagesService', () => h.service);
@@ -268,6 +273,7 @@ describe('MessageThread block and report (CYB-140)', () => {
     await waitFor(() => expect(onBack).toHaveBeenCalled());
     expect(h.blocks.block).toHaveBeenCalledWith(2);
     expect(h.messages.refresh).toHaveBeenCalled();
+    expect(h.messages.dropConversation).toHaveBeenCalledWith(conversation.id);
   });
 
   it('offers no Block for someone of the team', async () => {

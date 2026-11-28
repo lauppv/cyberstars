@@ -64,6 +64,7 @@ function Probe() {
     startWith,
     setActiveConversation,
     markConversationRead,
+    dropConversation,
   } = useMessages();
   return (
     <div>
@@ -75,6 +76,7 @@ function Probe() {
       <button onClick={() => startWith(2, 'hi')}>start</button>
       <button onClick={() => setActiveConversation(10)}>activate</button>
       <button onClick={() => markConversationRead(10)}>read</button>
+      <button onClick={() => dropConversation(10)}>drop</button>
     </div>
   );
 }
@@ -115,6 +117,13 @@ describe('MessagesContext', () => {
     // '0'), so "found" doesn't mean the inbox fetch has resolved yet.
     await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'));
     expect(screen.getByTestId('unread')).toHaveTextContent('2');
+  });
+
+  it('drops a conversation from the inbox at once', async () => {
+    renderProvider();
+    await waitFor(() => expect(screen.getByTestId('count')).toHaveTextContent('1'));
+    fireEvent.click(screen.getByText('drop'));
+    expect(screen.getByTestId('count')).toHaveTextContent('0');
   });
 
   it('marks the inbox as failed until a load goes through', async () => {
