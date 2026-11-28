@@ -1590,7 +1590,7 @@
     "projectListTitle": "Free {{language}} projects, no card | CyberStars",
     "projectTitle": "{{project}}: a free {{language}} project, no card | CyberStars",
     "home": "Home",
-    "imageAlt": "CyberStars: learn to code for free. Python, Java, C and Linux, right in your browser. No card, nothing to install."
+    "imageAlt": "CyberStars: learn to code for free, right in your browser. Python, Java, C, Linux, HTML, CSS and JavaScript."
   },
   "notFound": {
     "title": "Page not found",
