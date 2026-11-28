@@ -25,6 +25,7 @@ const stats: AdminStatsDTO = {
   tutor: { promptsLast7Days: 37, promptsLast30Days: 90 },
   users: {
     total: 12,
+    byRole: { FOUNDER: 1, ADMIN: 2, USER: 12, BOT: 4 },
     newLast7Days: 1,
     newLast30Days: 3,
   },
@@ -87,12 +88,28 @@ describe('AdminPage', () => {
     ).toBeTruthy();
   });
 
-  it('shows how many users and guests are online now under the users row, with no roles', async () => {
+  it('shows the accounts per role under the users row, and who is online now on its right', async () => {
     getStats.mockResolvedValue(stats);
     renderPage();
-    expect(await screen.findByText('Online now: 3 signed in · 5 guests')).toBeInTheDocument();
-    expect(screen.queryByText(/^Bot/)).not.toBeInTheDocument();
-    expect(screen.queryByText(/^Founder/)).not.toBeInTheDocument();
+    const signedIn = await screen.findByText('Online now: 3 signed in');
+    expect(signedIn).toHaveClass('text-[var(--success)]');
+    expect(screen.getByText('5 guests')).toHaveClass('text-[var(--warning)]');
+    expect(signedIn.parentElement).toHaveClass('ml-auto');
+    expect(signedIn.parentElement).toHaveTextContent('Online now: 3 signed in · 5 guests');
+    for (const role of ['Founder 1', 'Admin 2', 'User 12', 'Bots 4']) {
+      expect(screen.getByText(role)).toBeInTheDocument();
+    }
+    expect(screen.queryByText(/^Moderator/)).not.toBeInTheDocument();
+  });
+
+  it('puts the time of the data last, under the announcements and polls', async () => {
+    getStats.mockResolvedValue(stats);
+    renderPage();
+    const asOf = await screen.findByText(/^Data as of/);
+    expect(
+      screen.getByText('Announcements and polls').compareDocumentPosition(asOf) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it('leaves out the open sessions, the forum and support, and the missed questions', async () => {

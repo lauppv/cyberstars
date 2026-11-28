@@ -219,29 +219,32 @@ export function VisitorsSection({
                 <p className="mt-2 mb-0 text-[11px] text-[var(--text3)]">{t('admin.idleHint')}</p>
               </div>
             </div>
-            <table className="sr-only">
-              <caption>{t('admin.visits')}</caption>
-              <thead>
-                <tr>
-                  <th>{t(weekly ? 'admin.week' : 'admin.day')}</th>
-                  <th>{t('admin.visitorsWord', { count: 2 })}</th>
-                  <th>{t('admin.viewsWord', { count: 2 })}</th>
-                  <th>{t('admin.newAccountsWord', { count: 2 })}</th>
-                  <th>{t(weekly ? 'admin.idleAWeek' : 'admin.idleADay')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {points.map((d) => (
-                  <tr key={d.day}>
-                    <td>{d.day}</td>
-                    <td>{d.visitors}</td>
-                    <td>{d.views}</td>
-                    <td>{d.newAccounts}</td>
-                    <td>{d.idle}</td>
+            {/* The wrapper hides it: on a table itself sr-only leaves the caption showing */}
+            <div className="sr-only">
+              <table>
+                <caption>{t('admin.visits')}</caption>
+                <thead>
+                  <tr>
+                    <th>{t(weekly ? 'admin.week' : 'admin.day')}</th>
+                    <th>{t('admin.visitorsWord', { count: 2 })}</th>
+                    <th>{t('admin.viewsWord', { count: 2 })}</th>
+                    <th>{t('admin.newAccountsWord', { count: 2 })}</th>
+                    <th>{t(weekly ? 'admin.idleAWeek' : 'admin.idleADay')}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {points.map((d) => (
+                    <tr key={d.day}>
+                      <td>{d.day}</td>
+                      <td>{d.visitors}</td>
+                      <td>{d.views}</td>
+                      <td>{d.newAccounts}</td>
+                      <td>{d.idle}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
       </section>
