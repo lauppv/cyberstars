@@ -11,6 +11,7 @@ import { auth } from '../services/auth.js';
 import { computeStreak, listDone, recentActivity } from '../services/activity.service.js';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { AVATARS_DIR } from '../config/paths.js';
+import { cleanAvatar } from '../services/avatar-image.service.js';
 
 // Create the upload dir lazily on first use instead of at import time, so the
 // module imports without filesystem side effects (audit H9). Cached so the
@@ -98,9 +99,12 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
       throw new AppError(400, 'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.');
     }
 
+    // Before the lock and before the old avatar goes, so a picture that can't be
+    // read leaves the current one in place.
+    const image = await cleanAvatar(file.buffer);
+
     const avatarUrl = await withAvatarLock(userId, async () => {
-      const ext = type.ext;
-      const filename = `${userId}-${Date.now()}.${ext}`;
+      const filename = `${userId}-${Date.now()}.webp`;
       const filepath = path.join(AVATARS_DIR, filename);
 
       const user = await userRepo.findById(userId);
@@ -110,7 +114,7 @@ export async function uploadAvatar(req: Request, res: Response, next: NextFuncti
       }
 
       await ensureUploadDir();
-      await fs.writeFile(filepath, file.buffer);
+      await fs.writeFile(filepath, image);
       const url = `/uploads/avatars/${filename}`;
       await userRepo.updateProfile(userId, { avatarUrl: url });
       return url;

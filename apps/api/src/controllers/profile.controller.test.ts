@@ -26,6 +26,7 @@ const {
   mockApplyPendingEmailChange,
   mockClearPendingEmailChange,
   mockSendEmailChangeCode,
+  mockCleanAvatar,
 } = vi.hoisted(() => ({
   mockMkdir: vi.fn(),
   mockWriteFile: vi.fn(),
@@ -43,6 +44,7 @@ const {
   mockApplyPendingEmailChange: vi.fn(),
   mockClearPendingEmailChange: vi.fn(),
   mockSendEmailChangeCode: vi.fn(),
+  mockCleanAvatar: vi.fn(),
 }));
 
 vi.mock('fs/promises', () => {
@@ -55,6 +57,9 @@ vi.mock('fs/promises', () => {
 });
 
 vi.mock('file-type', () => ({ fileTypeFromBuffer: (...a: unknown[]) => mockFileType(...a) }));
+vi.mock('../services/avatar-image.service.js', () => ({
+  cleanAvatar: (...a: unknown[]) => mockCleanAvatar(...a),
+}));
 
 vi.mock('../repositories/user.repository.js', () => ({
   findById: (...a: unknown[]) => mockFindById(...a),
@@ -114,6 +119,7 @@ beforeEach(() => {
   mockWriteFile.mockResolvedValue(undefined);
   mockUnlink.mockResolvedValue(undefined);
   mockFileType.mockResolvedValue({ mime: 'image/png', ext: 'png' });
+  mockCleanAvatar.mockResolvedValue(Buffer.from('clean'));
   mockFindById.mockImplementation(async () => ({ avatarUrl: currentAvatar }));
   mockListPasses.mockResolvedValue([]);
   mockUpdateProfile.mockImplementation(async (_id: number, data: { avatarUrl?: string | null }) => {
@@ -125,12 +131,26 @@ const mkReq = () => ({ user: { id: 7 }, file: { buffer: Buffer.from('x') } }) as
 const mkRes = () => ({ json: vi.fn() }) as unknown as Response;
 
 describe('uploadAvatar', () => {
-  it('writes the file and persists the avatarUrl', async () => {
+  it('writes the cleaned picture as WebP and persists the avatarUrl', async () => {
     const res = mkRes();
     await uploadAvatar(mkReq(), res, vi.fn());
+    expect(mockCleanAvatar).toHaveBeenCalledWith(Buffer.from('x'));
     expect(mockWriteFile).toHaveBeenCalledTimes(1);
-    expect(currentAvatar).toMatch(/^\/uploads\/avatars\/7-\d+\.png$/);
+    // What was uploaded never reaches the disk, only what cleanAvatar made of it
+    expect(mockWriteFile.mock.calls[0][1]).toEqual(Buffer.from('clean'));
+    expect(currentAvatar).toMatch(/^\/uploads\/avatars\/7-\d+\.webp$/);
     expect(res.json).toHaveBeenCalledWith({ avatarUrl: currentAvatar });
+  });
+
+  it('keeps the current avatar when the new picture is refused', async () => {
+    currentAvatar = '/uploads/avatars/7-123.png';
+    mockCleanAvatar.mockRejectedValueOnce(new AppError(400, "We couldn't read this picture."));
+    const next = vi.fn();
+    await uploadAvatar(mkReq(), mkRes(), next);
+    expect((next.mock.calls[0][0] as AppError).statusCode).toBe(400);
+    expect(mockUnlink).not.toHaveBeenCalled();
+    expect(mockWriteFile).not.toHaveBeenCalled();
+    expect(currentAvatar).toBe('/uploads/avatars/7-123.png');
   });
 
   it('rejects with 400 when no file is attached', async () => {

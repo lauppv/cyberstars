@@ -1,6 +1,10 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import request from 'supertest';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import sharp from 'sharp';
 import { SESSION_COOKIE } from '../testing/sessions.js';
+import { AVATARS_DIR } from '../config/paths.js';
 
 process.env.DB_USER = 'test';
 process.env.DB_HOST = 'localhost';
@@ -70,6 +74,21 @@ vi.mock('../repositories/session.repository.js', async () =>
 );
 
 beforeEach(() => vi.clearAllMocks());
+
+// The uploads write real files; take back the ones these tests made.
+const written: string[] = [];
+afterEach(async () => {
+  await Promise.all(
+    written
+      .splice(0)
+      .map((url) => fs.rm(path.join(AVATARS_DIR, path.basename(url)), { force: true })),
+  );
+});
+
+const png = () =>
+  sharp({ create: { width: 30, height: 20, channels: 3, background: '#123' } })
+    .png()
+    .toBuffer();
 
 describe('PATCH /api/profile', () => {
   it('returns 401 without token', async () => {
@@ -217,10 +236,11 @@ describe('POST /api/profile/avatar', () => {
     const res = await request(app)
       .post('/api/profile/avatar')
       .set('Cookie', SESSION_COOKIE)
-      .attach('avatar', Buffer.from('fakepng'), 'test.png');
+      .attach('avatar', await png(), 'test.png');
+    written.push(res.body.avatarUrl);
 
     expect(res.status).toBe(200);
-    expect(res.body.avatarUrl).toMatch(/^\/uploads\/avatars\/1-\d+\.png$/);
+    expect(res.body.avatarUrl).toMatch(/^\/uploads\/avatars\/1-\d+\.webp$/);
     expect(mockUserRepo.updateProfile).toHaveBeenCalledWith(
       1,
       expect.objectContaining({ avatarUrl: expect.stringContaining('/uploads/avatars/') }),
@@ -245,13 +265,56 @@ describe('POST /api/profile/avatar', () => {
     const res = await request(app)
       .post('/api/profile/avatar')
       .set('Cookie', SESSION_COOKIE)
-      .attach('avatar', Buffer.from('fakepng'), 'test.png');
+      .attach('avatar', await png(), 'test.png');
+    written.push(res.body.avatarUrl);
 
     expect(res.status).toBe(200);
     expect(mockUserRepo.updateProfile).toHaveBeenCalledWith(
       1,
       expect.objectContaining({ avatarUrl: expect.stringContaining('/uploads/avatars/') }),
     );
+  });
+  it('saves a phone photo without its location or any other EXIF', async () => {
+    const { fileTypeFromBuffer: realFileType } =
+      await vi.importActual<typeof import('file-type')>('file-type');
+    mockFileType.mockImplementation(realFileType as never);
+    mockUserRepo.findById.mockResolvedValue({ avatarUrl: null });
+    const photo = await sharp({
+      create: { width: 400, height: 300, channels: 3, background: '#888' },
+    })
+      .jpeg()
+      .withExif({
+        IFD0: { Copyright: 'home-secret' },
+        IFD3: { GPSLatitudeRef: 'N', GPSLatitude: '45/1 45/1 0/1' },
+      })
+      .toBuffer();
+
+    const res = await request(app)
+      .post('/api/profile/avatar')
+      .set('Cookie', SESSION_COOKIE)
+      .attach('avatar', photo, 'photo.jpg');
+    written.push(res.body.avatarUrl);
+
+    expect(res.status).toBe(200);
+    const saved = await fs.readFile(path.join(AVATARS_DIR, path.basename(res.body.avatarUrl)));
+    const meta = await sharp(saved).metadata();
+    expect(meta.format).toBe('webp');
+    expect(meta.exif).toBeUndefined();
+    expect(saved.includes('home-secret')).toBe(false);
+  });
+
+  it('refuses a broken picture with a 400 and keeps the old avatar', async () => {
+    mockFileType.mockResolvedValue({ mime: 'image/png', ext: 'png' } as never);
+    mockUserRepo.findById.mockResolvedValue({ avatarUrl: '/uploads/avatars/old.png' });
+
+    const res = await request(app)
+      .post('/api/profile/avatar')
+      .set('Cookie', SESSION_COOKIE)
+      .attach('avatar', Buffer.from('fakepng'), 'test.png');
+
+    expect(res.status).toBe(400);
+    expect(res.body.error).toMatch(/couldn't read/);
+    expect(mockUserRepo.updateProfile).not.toHaveBeenCalled();
   });
 });
 
