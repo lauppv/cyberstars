@@ -105,6 +105,102 @@ describe('record', () => {
     );
   });
 
+  describe('a long output', () => {
+    const MAX = service.SAVED_OUTPUT_MAX_LENGTH;
+    const NOTE = '\n… [cut here: the history keeps only the start]';
+    const MB = 'x'.repeat(1024 * 1024);
+    const run = (failed: object, extra: Partial<RunTestsResponse> = {}): RunTestsResponse => ({
+      status: 'failed',
+      comparator: 'trimmed',
+      structureFailures: [],
+      cases: [failed as RunTestsResponse['cases'][number]],
+      total: 1,
+      passedCount: 0,
+      ...extra,
+    });
+    const saved = () => mockRepo.createAndPrune.mock.calls[0][0];
+
+    beforeEach(() => mockRepo.createAndPrune.mockResolvedValue({ ...summaryRow, code: 'x' }));
+
+    it('keeps the start of the output and the errors, with a note, and the student gets it whole', async () => {
+      const failed = {
+        index: 0,
+        visible: true,
+        passed: false,
+        stdin: '5',
+        expected: '120',
+        actual: MB,
+        error: MB,
+      };
+      const result = run(failed, { syntaxError: MB });
+
+      await service.record(7, 'python', 'print', 'en', 'python', 'x', result);
+
+      const { failedCase, syntaxError } = saved();
+      expect(failedCase.actual).toBe('x'.repeat(MAX) + NOTE);
+      expect(failedCase.error).toBe('x'.repeat(MAX) + NOTE);
+      expect(syntaxError).toBe('x'.repeat(MAX) + NOTE);
+      expect(failedCase).toMatchObject({ index: 0, visible: true, stdin: '5', expected: '120' });
+      expect(result.cases[0].actual).toBe(MB);
+      expect(result.syntaxError).toBe(MB);
+    });
+
+    it("cuts what a web page had, and says it in the student's language", async () => {
+      const web = { kind: 'logged', found: MB, hidden: true };
+      await service.record(
+        7,
+        'web-dev',
+        'first-page',
+        'ro',
+        'web-dev' as never,
+        'site',
+        run({ index: 0, visible: false, passed: false, web }),
+      );
+
+      expect(saved().failedCase.web).toEqual({
+        kind: 'logged',
+        hidden: true,
+        found: 'x'.repeat(MAX) + '\n… [tăiat aici: istoricul păstrează doar începutul]',
+      });
+    });
+
+    it('leaves an output at the limit as it is', async () => {
+      const actual = 'x'.repeat(MAX);
+      await service.record(
+        7,
+        'python',
+        'print',
+        'en',
+        'python',
+        'x',
+        run({ index: 0, visible: true, passed: false, actual, error: 'timeout' }),
+      );
+
+      expect(saved().failedCase).toEqual({
+        index: 0,
+        visible: true,
+        passed: false,
+        actual,
+        error: 'timeout',
+      });
+    });
+
+    it('never keeps half of an emoji', async () => {
+      const actual = 'x'.repeat(MAX - 1) + '😀'.repeat(10);
+      await service.record(
+        7,
+        'python',
+        'print',
+        'en',
+        'python',
+        'x',
+        run({ index: 0, visible: true, passed: false, actual }),
+      );
+
+      expect(saved().failedCase.actual).toBe('x'.repeat(MAX - 1) + NOTE);
+    });
+  });
+
   it('stores nulls for absent timings, a syntax error and no failed case', async () => {
     mockRepo.createAndPrune.mockResolvedValue({ ...summaryRow, runtimeMs: null });
     const result: RunTestsResponse = {
