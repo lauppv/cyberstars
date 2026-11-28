@@ -118,6 +118,17 @@ describe('openTicket', () => {
     );
   });
 
+  it('keeps the admins it is told to skip out of the bell', async () => {
+    mockPrisma.supportTicket.create.mockResolvedValue({ id: 9, subject: 'Report' });
+    mockUserRepo.getAdminIds.mockResolvedValue([90, 91]);
+    await supportService.openTicket(3, 'RULE_VIOLATION', 'Report', 'Body', [91]);
+    await vi.waitFor(() =>
+      expect(mockNotifications.notify).toHaveBeenCalledWith(
+        expect.objectContaining({ recipientIds: [90] }),
+      ),
+    );
+  });
+
   it('answers with the saved ticket when the admins cannot be read', async () => {
     const error = vi.spyOn(console, 'error').mockImplementation(() => {});
     mockPrisma.supportTicket.create.mockResolvedValue({ id: 8, subject: 'Help' });

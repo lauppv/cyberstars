@@ -522,8 +522,10 @@ describe('messages.service reportMessage', () => {
   it('opens a rule violation ticket holding a copy of the message', async () => {
     const id = await reportMessage(1, 500, 'he keeps writing');
     expect(id).toBe(77);
-    const [userId, type, subject, body] = mockSupport.openTicket.mock.calls[0];
+    const [userId, type, subject, body, skipIds] = mockSupport.openTicket.mock.calls[0];
     expect(userId).toBe(1);
+    // The sender, should they be an admin, hears nothing of a report about them
+    expect(skipIds).toEqual([2]);
     expect(type).toBe('RULE_VIOLATION');
     expect(subject).toBe('Reported message from Ben');
     expect(body).toContain('From: Ben (user 2)');

@@ -275,7 +275,8 @@ export async function reportMessage(
     message.content,
     ...(note ? ['', `Note from the student: ${note}`] : []),
   ].join('\n');
-  return supportService.openTicket(userId, 'RULE_VIOLATION', subject, body);
+  // A report about someone of the team reaches the other admins only
+  return supportService.openTicket(userId, 'RULE_VIOLATION', subject, body, [message.senderId]);
 }
 
 export async function deleteMessage(userId: number, messageId: number): Promise<MessageDTO> {

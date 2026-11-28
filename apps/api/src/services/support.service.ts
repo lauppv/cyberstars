@@ -12,19 +12,21 @@ export function create(userId: number, type: TicketType, subject: string, messag
 // A new ticket, which every admin hears about (the actor, if themselves an
 // admin, is excluded inside notify). Once the ticket is saved the bell is best
 // effort: a failure there never fails the request, whose retry would open a
-// second ticket.
+// second ticket. `skipIds`: admins kept out of the bell, such as the sender
+// of a reported message, who shouldn't hear of a report about themselves.
 export async function openTicket(
   userId: number,
   type: TicketType,
   subject: string,
   message: string,
+  skipIds: number[] = [],
 ): Promise<number> {
   const ticket = await create(userId, type, subject, message);
   void userRepo
     .getAdminIds()
-    .then((recipientIds) =>
+    .then((adminIds) =>
       notificationsService.notify({
-        recipientIds,
+        recipientIds: adminIds.filter((id) => !skipIds.includes(id)),
         actorId: userId,
         type: 'SUPPORT_TICKET_NEW',
         entityId: ticket.id,
