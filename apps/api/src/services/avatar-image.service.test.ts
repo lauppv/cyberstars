@@ -1,5 +1,25 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import sharp from 'sharp';
+
+// Counts the pictures being encoded at the same moment
+const encoding = vi.hoisted(() => ({ now: 0, most: 0 }));
+vi.mock('sharp', async (importOriginal) => {
+  const real = (await importOriginal<typeof import('sharp')>()).default;
+  const counted = ((...args: unknown[]) => {
+    const image = (real as (...a: unknown[]) => ReturnType<typeof real>)(...args);
+    const toBuffer = image.toBuffer.bind(image) as (...a: unknown[]) => Promise<unknown>;
+    image.toBuffer = (async (...a: unknown[]) => {
+      encoding.most = Math.max(encoding.most, ++encoding.now);
+      try {
+        return await toBuffer(...a);
+      } finally {
+        encoding.now--;
+      }
+    }) as typeof image.toBuffer;
+    return image;
+  }) as typeof real;
+  return { default: Object.assign(counted, real) };
+});
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import { AVATAR_SIZE, MAX_FRAMES, cleanAvatar } from './avatar-image.service.js';
 
@@ -187,6 +207,16 @@ describe('cleanAvatar', () => {
     const tiff = await solid(20, 20, '#fff').tiff().toBuffer();
     const err = await rejection(cleanAvatar(tiff));
     expect(err.statusCode).toBe(400);
+  });
+
+  it('encodes one picture at a time, so uploads at once cannot take the whole CPU', async () => {
+    const photos = await Promise.all(Array.from({ length: 4 }, phonePhoto));
+    encoding.most = 0;
+    const broken = cleanAvatar(Buffer.from('not a picture'));
+    const done = await Promise.all(photos.map((p) => cleanAvatar(p)));
+    await rejection(broken);
+    expect(done).toHaveLength(4);
+    expect(encoding.most).toBe(1);
   });
 
   it('keeps the format it is asked for (the cleanup of old files)', async () => {

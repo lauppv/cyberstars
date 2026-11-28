@@ -26,15 +26,32 @@ function refusal(err: unknown): AppError {
   return new AppError(400, "We couldn't read this picture. Try another one.");
 }
 
+// One picture at a time. Decoding a big one can hold the server's one CPU for a
+// second, and the upload limit is per account, so several accounts at once would
+// otherwise stall the sandboxes and the database with it.
+let queue: Promise<unknown> = Promise.resolve();
+function oneAtATime<T>(task: () => Promise<T>): Promise<T> {
+  const run = queue.then(task, task);
+  queue = run.catch(() => {});
+  return run;
+}
+
 /**
  * Re-encodes an avatar: turned the right way up, cut to a square, and with no
  * metadata left (the EXIF of a phone photo can hold where it was taken).
  * Animations stay animated. Uploads become WebP; `format` lets the one-off
  * cleanup keep a file's own format so its name doesn't change.
  */
-export async function cleanAvatar(
+export function cleanAvatar(
   input: Buffer,
-  { format = 'webp', maxFrames = MAX_FRAMES }: { format?: AvatarFormat; maxFrames?: number } = {},
+  options: { format?: AvatarFormat; maxFrames?: number } = {},
+): Promise<Buffer> {
+  return oneAtATime(() => encode(input, options));
+}
+
+async function encode(
+  input: Buffer,
+  { format = 'webp', maxFrames = MAX_FRAMES }: { format?: AvatarFormat; maxFrames?: number },
 ): Promise<Buffer> {
   const open = () => sharp(input, { animated: true, limitInputPixels: MAX_PIXELS });
 
