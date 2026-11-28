@@ -44,6 +44,10 @@ const RO: Record<string, string> = {
   'No file uploaded': 'Nu ai încărcat niciun fișier',
   'Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.':
     'Tip de fișier nepermis. Merg doar JPEG, PNG, WebP și GIF.',
+  'This picture is too big. Try a smaller one.': 'Poza e prea mare. Încearcă una mai mică.',
+  "We couldn't read this picture. Try another one.": 'Nu am putut citi poza. Încearcă alta.',
+  'Too many new pictures, try again in a few minutes':
+    'Prea multe poze noi, mai încearcă peste câteva minute',
   'User not found': 'Utilizatorul nu există',
   'Current password is incorrect': 'Parola actuală este greșită',
   'Current password is required': 'Parola actuală este obligatorie',
@@ -224,6 +228,10 @@ const RO_SHAPES: [RegExp, (...parts: string[]) => string][] = [
     /^You have used all (\d+) free runs\. Create a free account to keep running code\.$/,
     (n) =>
       `Ai folosit toate cele ${n} rulări gratuite. Fă-ți un cont gratuit ca să rulezi cod în continuare.`,
+  ],
+  [
+    /^This animated picture is too long\. Pick one with at most (\d+) frames\.$/,
+    (n) => `Poza animată e prea lungă. Alege una cu cel mult ${n} cadre.`,
   ],
 ];
 
