@@ -11,6 +11,7 @@ import * as authService from '../services/authService';
 import { ApiClientError } from '../services/apiClient';
 import { INPUT_CLS } from '../constants/styles';
 import { EyeIcon } from '../components/ui/EyeIcon';
+import { BlockedPeople } from '../components/messages/BlockedPeople';
 
 type PrivacyFlag = 'showBio' | 'showStats' | 'showProgress' | 'showConnections';
 
@@ -300,6 +301,9 @@ export function SettingsPage() {
               />
             </div>
           </section>
+
+          {/* Blocked people */}
+          <BlockedPeople />
 
           {/* Account */}
           <section className="rounded-[var(--radius)] panel px-6 py-5">
