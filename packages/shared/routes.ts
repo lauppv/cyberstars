@@ -15,6 +15,8 @@ export const APP_ONLY_PATHS = [
   '/interests',
   '/profile',
   '/settings',
+  // where the email confirmation link lands, with its token
+  '/confirm-email',
   '/usage',
   '/progress',
   '/rules',

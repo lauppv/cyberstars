@@ -116,6 +116,8 @@ const loggedInAuth = {
     status: null,
     statusExpiresAt: null,
     pendingEmail: null,
+    emailConfirmed: true,
+    confirmLinkSent: false,
     createdAt: '2024-01-01T00:00:00Z',
     showBio: true,
     showStats: true,

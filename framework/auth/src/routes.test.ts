@@ -19,6 +19,9 @@ interface Row extends AuthUser<Role> {
   resetCode: string | null;
   resetCodeExpiresAt: Date | null;
   resetCodeAttempts: number;
+  emailConfirmed: boolean;
+  confirmTokenHash: string | null;
+  confirmTokenExpiresAt: Date | null;
 }
 
 // An app's form: its own rule for names and a field of its own
@@ -50,6 +53,9 @@ function memoryStore() {
         resetCode: null,
         resetCodeExpiresAt: null,
         resetCodeAttempts: 0,
+        emailConfirmed: false,
+        confirmTokenHash: null,
+        confirmTokenExpiresAt: null,
       };
       rows.push(row);
       return row.id;
@@ -86,6 +92,35 @@ function memoryStore() {
     async findResetCode(email: string, code: string) {
       const r = live(byEmail(email));
       return r && r.resetCode === code ? r.id : null;
+    },
+    async setConfirmToken(id: number, tokenHash: string, expiresAt: Date) {
+      Object.assign(byId(id)!, { confirmTokenHash: tokenHash, confirmTokenExpiresAt: expiresAt });
+    },
+    async confirmEmail(tokenHash: string) {
+      const r = rows.find(
+        (row) =>
+          row.confirmTokenHash === tokenHash &&
+          row.confirmTokenExpiresAt &&
+          row.confirmTokenExpiresAt >= new Date(),
+      );
+      if (!r) return null;
+      Object.assign(r, {
+        emailConfirmed: true,
+        confirmTokenHash: null,
+        confirmTokenExpiresAt: null,
+      });
+      return r.id;
+    },
+    async markEmailConfirmed(id: number) {
+      Object.assign(byId(id)!, {
+        emailConfirmed: true,
+        confirmTokenHash: null,
+        confirmTokenExpiresAt: null,
+      });
+    },
+    async unconfirmedEmail(id: number) {
+      const r = byId(id);
+      return r && !r.emailConfirmed ? r.email : null;
     },
   };
 }
@@ -126,7 +161,9 @@ function setup({
   const store = memoryStore();
   const sessions = memorySessions(store);
   const sendResetCode = vi.fn().mockResolvedValue(undefined);
+  const sendConfirmLink = vi.fn().mockResolvedValue(undefined);
   const onSessionsEnded = vi.fn();
+  const onEmailConfirmed = vi.fn();
   const auth = createAuth({
     store,
     sessions,
@@ -141,6 +178,8 @@ function setup({
     signupSchema,
     emailLanguages: ['en', 'ro'],
     sendResetCode,
+    sendConfirmLink,
+    onEmailConfirmed,
     account,
     // like an app's tests: limits are skipped unless one says otherwise
     limiter: makeLimiter(() => !limitsInTests),
@@ -150,7 +189,15 @@ function setup({
   app.use(cookieParser());
   app.use('/auth', auth.router);
   app.use(errorHandler);
-  return { app, store, sessions, sendResetCode, onSessionsEnded };
+  return {
+    app,
+    store,
+    sessions,
+    sendResetCode,
+    sendConfirmLink,
+    onSessionsEnded,
+    onEmailConfirmed,
+  };
 }
 
 const ADA = { name: 'Ada Lovelace', email: 'ada@test.com', password: 'secret123' };
@@ -164,6 +211,11 @@ function sessionCookie(res: request.Response): string {
 async function signUp(app: express.Express, form: object = ADA): Promise<string> {
   const res = await request(app).post('/auth/signup').send(form).expect(200);
   return sessionCookie(res);
+}
+
+// The confirmation token the app was asked to send last
+function sentToken(sendConfirmLink: ReturnType<typeof vi.fn>): string {
+  return sendConfirmLink.mock.calls.at(-1)![1] as string;
 }
 
 // The reset code the app was asked to send last
@@ -208,6 +260,146 @@ describe('POST /signup', () => {
     const res = await request(app).post('/auth/signup').send(ADA);
     expect(res.status).toBe(409);
     expect(res.body).toEqual({ error: 'User already exists' });
+  });
+
+  it('keeps the email lowercased and trimmed, so its case makes no second account', async () => {
+    const { app, store } = setup();
+    await signUp(app, { ...ADA, email: '  Ada@Test.COM ' });
+    expect(store.rows[0]!.email).toBe('ada@test.com');
+    const res = await request(app)
+      .post('/auth/signup')
+      .send({ ...ADA, email: 'ADA@test.com' });
+    expect(res.status).toBe(409);
+    expect(store.rows).toHaveLength(1);
+  });
+
+  it('sends a link to confirm the email, in the language asked, without the link in the store', async () => {
+    const { app, store, sendConfirmLink } = setup();
+    await signUp(app, { ...ADA, lang: 'ro' });
+    const token = sentToken(sendConfirmLink);
+    expect(sendConfirmLink).toHaveBeenCalledWith('ada@test.com', token, 'ro');
+    expect(token).toMatch(/^[\w-]{43}$/);
+    expect(store.rows[0]!.confirmTokenHash).toMatch(/^[0-9a-f]{64}$/);
+    expect(store.rows[0]!.confirmTokenHash).not.toContain(token);
+    expect(store.rows[0]!.emailConfirmed).toBe(false);
+  });
+
+  it('writes the link in the first language when the page asks for another', async () => {
+    const { app, sendConfirmLink } = setup();
+    await signUp(app, { ...ADA, lang: 'fr' });
+    expect(sendConfirmLink).toHaveBeenCalledWith('ada@test.com', expect.any(String), 'en');
+  });
+
+  it('still makes the account when sending the link fails', async () => {
+    const { app, sendConfirmLink } = setup();
+    sendConfirmLink.mockRejectedValueOnce(new Error('provider down'));
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    await signUp(app);
+    await vi.waitFor(() => expect(error).toHaveBeenCalled());
+    error.mockRestore();
+  });
+
+  it('still answers 200 when the link fails to be kept, the account signed in', async () => {
+    const { app, store } = setup();
+    vi.spyOn(store, 'setConfirmToken').mockRejectedValueOnce(new Error('lock timeout'));
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const res = await request(app).post('/auth/signup').send(ADA);
+    expect(res.status).toBe(200);
+    expect(res.headers['set-cookie']![0]).toMatch(/^session=/);
+    expect(store.rows).toHaveLength(1);
+    expect(error).toHaveBeenCalled();
+    error.mockRestore();
+  });
+});
+
+describe('POST /confirm-email', () => {
+  const confirm = (app: express.Express, token: string) =>
+    request(app).post('/auth/confirm-email').send({ token });
+
+  it('confirms the email with the link, without a session, and tells the app', async () => {
+    const { app, store, sendConfirmLink, onEmailConfirmed } = setup();
+    await signUp(app);
+    const res = await confirm(app, sentToken(sendConfirmLink));
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ message: 'Email confirmed' });
+    expect(store.rows[0]!.emailConfirmed).toBe(true);
+    expect(onEmailConfirmed).toHaveBeenCalledWith(1);
+  });
+
+  it('works once', async () => {
+    const { app, sendConfirmLink } = setup();
+    await signUp(app);
+    const token = sentToken(sendConfirmLink);
+    await confirm(app, token).expect(200);
+    const res = await confirm(app, token);
+    expect(res.status).toBe(400);
+    expect(res.body).toEqual({ error: 'This link has expired or was already used' });
+  });
+
+  it('refuses a link past its 24 hours', async () => {
+    const { app, store, sendConfirmLink } = setup();
+    await signUp(app);
+    const expiresAt = store.rows[0]!.confirmTokenExpiresAt!.getTime();
+    expect(expiresAt - Date.now()).toBeGreaterThan(24 * 60 * 60 * 1000 - 60_000);
+    store.rows[0]!.confirmTokenExpiresAt = new Date(Date.now() - 1);
+    await confirm(app, sentToken(sendConfirmLink)).expect(400);
+    expect(store.rows[0]!.emailConfirmed).toBe(false);
+  });
+
+  it('refuses a token no link has, or one of the wrong shape', async () => {
+    const { app, store } = setup();
+    await signUp(app);
+    await confirm(app, 'x'.repeat(43)).expect(400);
+    const res = await confirm(app, 'short');
+    expect(res.status).toBe(400);
+    expect(res.body.error).toBe('Invalid link');
+    expect(store.rows[0]!.emailConfirmed).toBe(false);
+  });
+});
+
+describe('POST /confirm-email/resend', () => {
+  const resend = (app: express.Express, cookie: string, lang?: string) =>
+    request(app).post('/auth/confirm-email/resend').set('Cookie', cookie).send({ lang });
+
+  it('needs a session', async () => {
+    const { app } = setup();
+    await request(app).post('/auth/confirm-email/resend').send({}).expect(401);
+  });
+
+  it('sends a new link, and the one before stops working', async () => {
+    const { app, store, sendConfirmLink } = setup();
+    const cookie = await signUp(app);
+    const first = sentToken(sendConfirmLink);
+    const res = await resend(app, cookie, 'ro');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ message: 'Confirmation link sent' });
+    const second = sentToken(sendConfirmLink);
+    expect(second).not.toBe(first);
+    expect(sendConfirmLink).toHaveBeenLastCalledWith('ada@test.com', second, 'ro');
+    await request(app).post('/auth/confirm-email').send({ token: first }).expect(400);
+    await request(app).post('/auth/confirm-email').send({ token: second }).expect(200);
+    expect(store.rows[0]!.emailConfirmed).toBe(true);
+  });
+
+  it('answers 409 once the email is confirmed', async () => {
+    const { app, sendConfirmLink } = setup();
+    const cookie = await signUp(app);
+    await request(app)
+      .post('/auth/confirm-email')
+      .send({ token: sentToken(sendConfirmLink) })
+      .expect(200);
+    const res = await resend(app, cookie);
+    expect(res.status).toBe(409);
+    expect(res.body).toEqual({ error: 'Email already confirmed' });
+  });
+
+  it('gives an account three links an hour, also in tests', async () => {
+    const { app } = setup();
+    const cookie = await signUp(app);
+    for (let i = 0; i < 3; i++) await resend(app, cookie).expect(200);
+    const res = await resend(app, cookie);
+    expect(res.status).toBe(429);
+    expect(res.body).toEqual({ error: 'Too many links asked for, try again later' });
   });
 });
 
@@ -257,6 +449,15 @@ describe('POST /login', () => {
     expect(res.body).toEqual({ error: 'Invalid email or password' });
     expect(sessions.rows.size).toBe(0);
     expect(res.headers['set-cookie']).toBeUndefined();
+  });
+
+  it('signs in whatever case the email is typed in', async () => {
+    const { app } = setup();
+    await signUp(app);
+    await request(app)
+      .post('/auth/login')
+      .send({ email: ' Ada@TEST.com', password: ADA.password })
+      .expect(200);
   });
 
   it('throws a generic 401 for unknown email (no enumeration)', async () => {
@@ -463,6 +664,21 @@ describe('POST /reset-password', () => {
     await request(app)
       .post('/auth/login')
       .send({ email: ADA.email, password: 'newpass1' })
+      .expect(200);
+  });
+
+  it('confirms the email, since the code reached its inbox', async () => {
+    const { app, store, code, onEmailConfirmed } = await withCode();
+    await reset(app, code).expect(200);
+    expect(store.rows[0]!.emailConfirmed).toBe(true);
+    expect(onEmailConfirmed).toHaveBeenCalledWith(1);
+  });
+
+  it('finds the account whatever case the email is typed in', async () => {
+    const { app, code } = await withCode();
+    await request(app)
+      .post('/auth/reset-password')
+      .send({ email: 'ADA@Test.com', code, password: 'newpass1' })
       .expect(200);
   });
 

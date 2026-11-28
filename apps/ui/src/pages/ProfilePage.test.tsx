@@ -50,6 +50,8 @@ const baseUser: AuthenticatedUser = {
   status: 'Old status',
   statusExpiresAt: null,
   pendingEmail: null,
+  emailConfirmed: true,
+  confirmLinkSent: false,
   createdAt: '2025-01-01T00:00:00.000Z',
   showBio: true,
   showStats: true,

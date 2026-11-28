@@ -76,14 +76,16 @@ Auth is a session kept on the server, its random token in an httpOnly cookie (`_
 
 ### Auth
 
-| Method | Endpoint                | Auth | Description                                         |
-| ------ | ----------------------- | ---- | --------------------------------------------------- |
-| POST   | `/auth/signup`          | No   | Register, set the cookie                            |
-| POST   | `/auth/login`           | No   | Sign in, set the cookie                             |
-| POST   | `/auth/logout`          | No   | End this browser's session, clear the cookie        |
-| GET    | `/auth/me`              | Yes  | The current user                                    |
-| POST   | `/auth/forgot-password` | No   | Email a reset code (15 min, 3 an hour per email)    |
-| POST   | `/auth/reset-password`  | No   | Reset the password with the code (5 tries per code) |
+| Method | Endpoint                     | Auth | Description                                          |
+| ------ | ---------------------------- | ---- | ---------------------------------------------------- |
+| POST   | `/auth/signup`               | No   | Register, set the cookie, email a confirmation link  |
+| POST   | `/auth/login`                | No   | Sign in, set the cookie                              |
+| POST   | `/auth/logout`               | No   | End this browser's session, clear the cookie         |
+| GET    | `/auth/me`                   | Yes  | The current user                                     |
+| POST   | `/auth/forgot-password`      | No   | Email a reset code (15 min, 3 an hour per email)     |
+| POST   | `/auth/reset-password`       | No   | Reset the password with the code (5 tries per code)  |
+| POST   | `/auth/confirm-email`        | No   | Confirm the email with the link's token (24 h, once) |
+| POST   | `/auth/confirm-email/resend` | Yes  | A new confirmation link (3 an hour per account)      |
 
 ### Lessons and curriculum
 
@@ -331,7 +333,7 @@ A lesson is `<slug>.md` (the text, with runnable code blocks) and `<slug>-code.m
 | `DATABASE_URL`             | Yes      | none                                  | Prisma CLI connection string                                                     |
 | `EXPRESS_PORT`             | No       | `5000`                                | Backend port (dev)                                                               |
 | `PORT`                     | No       | `8080`                                | Backend port (production)                                                        |
-| `FOUNDER_EMAIL`            | No       | none                                  | Account that always registers as the unique FOUNDER                              |
+| `FOUNDER_EMAIL`            | No       | none                                  | Account that becomes the unique FOUNDER once its email is confirmed              |
 | `NODE_ENV`                 | No       | `development`                         | Environment                                                                      |
 | `CORS_DEV_ORIGIN`          | No       | `http://localhost:5173`               | Allowed origins in dev (CORS + WebSockets), comma-separated                      |
 | `CORS_ORIGIN`              | No       | `https://cyberstars.app`              | Allowed origins in production (CORS + WebSockets), comma-separated               |

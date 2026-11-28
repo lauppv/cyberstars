@@ -20,13 +20,24 @@ describe('authService', () => {
     });
   });
 
-  it('signs up with the profile payload', async () => {
+  it('signs up with the profile payload and the language the link is written in', async () => {
     await authService.signup({ name: 'Ada', email: 'ada@test.dev', password: 'hunter2' });
     expect(mockApi.post).toHaveBeenCalledWith('/auth/signup', {
       name: 'Ada',
       email: 'ada@test.dev',
       password: 'hunter2',
+      lang: 'en',
     });
+  });
+
+  it('confirms an email with the token of its link', async () => {
+    await authService.confirmEmail('tok');
+    expect(mockApi.post).toHaveBeenCalledWith('/auth/confirm-email', { token: 'tok' });
+  });
+
+  it('asks for a new confirmation link in the page language', async () => {
+    await authService.resendConfirmation();
+    expect(mockApi.post).toHaveBeenCalledWith('/auth/confirm-email/resend', { lang: 'en' });
   });
 
   it('logs out without a body', async () => {

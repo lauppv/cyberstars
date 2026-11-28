@@ -93,6 +93,15 @@ model User {
   pendingEmail             String?   @map("pending_email") @db.VarChar(255)
   emailChangeCode          String?   @map("email_change_code") @db.VarChar(6)
   emailChangeCodeExpiresAt DateTime? @map("email_change_code_expires_at")
+  // When the email was last proven to be the account's (the link sent at
+  // sign-up, a reset code or the code of an email change). NULL until then:
+  // the account works, but the app asks for it on every page. Emails are
+  // stored lowercase, which a CHECK constraint holds (users_email_lowercase)
+  emailConfirmedAt         DateTime? @map("email_confirmed_at")
+  // The SHA-256 of the confirmation link's token, never the token, and when
+  // the link stops working. NULL when no link waits
+  confirmTokenHash         String?   @unique @map("confirm_token_hash") @db.VarChar(64)
+  confirmTokenExpiresAt    DateTime? @map("confirm_token_expires_at")
   createdAt                DateTime  @default(now()) @map("created_at")
 
   // Public-profile privacy toggles (default: everything visible). Own view

@@ -19,6 +19,7 @@ function renderAt(path: string) {
           <Route path="/courses" element={<span>courses</span>} />
           <Route path="/lesson/:category/:lesson" element={<Link to="/courses">lesson</Link>} />
           <Route path={INTERESTS_PATH} element={<span>interests</span>} />
+          <Route path="/confirm-email" element={<span>confirm email</span>} />
         </Routes>
       </TourGate>
     </MemoryRouter>,
@@ -50,6 +51,12 @@ describe('TourGate', () => {
     user = { onboardedAt: null };
     renderAt('/courses');
     expect(screen.getByText('lesson')).toBeInTheDocument();
+  });
+
+  it('lets a new account open the link that confirms its email', () => {
+    user = { onboardedAt: null };
+    renderAt('/confirm-email?token=x');
+    expect(screen.getByText('confirm email')).toBeInTheDocument();
   });
 
   it('keeps a new account on the tour lesson', () => {

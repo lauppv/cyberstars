@@ -86,6 +86,7 @@ vi.mock('../repositories/laniakea.repository.js', () => ({
 // email.service pulls in config -> env.ts, same story as above.
 vi.mock('../services/email.service.js', () => ({
   sendResetCode: vi.fn(),
+  sendConfirmLink: vi.fn(),
   sendEmailChangeCode: (...a: unknown[]) => mockSendEmailChangeCode(...a),
 }));
 

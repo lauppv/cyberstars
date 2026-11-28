@@ -5,7 +5,13 @@ import type { ZodType } from 'zod';
 import { AppError } from '@cyberstars-framework/server-kit/errors';
 import type { makeLimiter } from '@cyberstars-framework/server-kit/rate-limit';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
-import { forgotPasswordSchema, loginSchema, resetPasswordSchema } from './schemas.js';
+import {
+  confirmEmailSchema,
+  forgotPasswordSchema,
+  loginSchema,
+  resendConfirmationSchema,
+  resetPasswordSchema,
+} from './schemas.js';
 import './request.js';
 
 export type { SessionUser } from './request.js';
@@ -63,6 +69,18 @@ export interface UserStore<
   takeResetAttempt(email: string, maxAttempts: number): Promise<boolean>;
   // The account whose live reset code this is, null when none
   findResetCode(email: string, code: string): Promise<number | null>;
+  // Keeps the hash of a new email confirmation token for the account, until
+  // `expiresAt`, in place of any earlier one, whose link stops working
+  setConfirmToken(id: number, tokenHash: string, expiresAt: Date): Promise<void>;
+  // Confirms the email of the account whose live token this is and clears the
+  // token, in one write, so a link works once; the account's id, null when no
+  // live token has this hash
+  confirmEmail(tokenHash: string): Promise<number | null>;
+  // Confirms the account's email without a link: a reset code reached its inbox
+  markEmailConfirmed(id: number): Promise<void>;
+  // The account's email while it isn't confirmed, null once it is or when the
+  // account is gone
+  unconfirmedEmail(id: number): Promise<string | null>;
 }
 
 // A session as the app keeps it: its account, the hash of its secret (never
@@ -134,6 +152,11 @@ export interface AuthOptions<
   emailLanguages: readonly [Lang, ...Lang[]];
   // Sends a reset code, valid for 15 minutes, in the language asked
   sendResetCode: (to: string, code: string, lang: Lang) => Promise<void>;
+  // Sends the link that confirms an account's email, valid for 24 hours, in
+  // the language asked; the app builds the link from the token
+  sendConfirmLink: (to: string, token: string, lang: Lang) => Promise<void>;
+  // Hears that an account's email was just confirmed, to tell its open pages
+  onEmailConfirmed?: (userId: number) => void;
   // The account answer (GET /me): the app's own from the account, or the
   // account's id, name, email and role
   account?: (user: User) => unknown;
@@ -165,12 +188,18 @@ const RESET_CODE_MINUTES = 15;
 // per email an account faces at most 15 guesses an hour
 const MAX_RESET_ATTEMPTS = 5;
 
+// An email confirmation link: a random token (256 bits, base64url) of which
+// the app keeps only the SHA-256, valid this long
+const CONFIRM_TOKEN_BYTES = 32;
+const CONFIRM_LINK_HOURS = 24;
+
 // Accounts and sessions: a random token in an httpOnly cookie, kept by the app
 // as a session row and checked on every request. An app creates one with its
 // user and session stores, its admin rule, its session lifetimes with the
 // roles that get the short one, and its sign-up form, and mounts `router` for
-// sign-up, login, logout, the password reset and the account answer. The routes throw AppError, so the app mounts
-// server-kit's errorHandler after them.
+// sign-up, login, logout, the password reset, the email confirmation and the
+// account answer. The routes throw AppError, so the app mounts server-kit's
+// errorHandler after them.
 export function createAuth<
   Role extends string,
   User extends AuthUser<Role>,
@@ -197,6 +226,11 @@ export function createAuth<
 
   function hashSecret(secret: string): string {
     return crypto.createHash('sha256').update(secret).digest('hex');
+  }
+
+  // A language the emails come in, the first when the page sent none or another
+  function languageOf(lang: string | undefined): Lang {
+    return options.emailLanguages.find((l) => l === lang) ?? options.emailLanguages[0];
   }
 
   function lifetimeOf(role: Role): SessionLifetime {
@@ -314,6 +348,18 @@ export function createAuth<
     options.onSessionsEnded?.(userId);
   }
 
+  // Gives the account a new confirmation link and sends it. The token is kept
+  // before the answer goes; the email is sent outside the request path, so a
+  // mail provider that is down fails neither the sign-up nor the resend
+  async function sendConfirmation(userId: number, email: string, lang: Lang): Promise<void> {
+    const token = crypto.randomBytes(CONFIRM_TOKEN_BYTES).toString('base64url');
+    const expiresAt = new Date(Date.now() + CONFIRM_LINK_HOURS * 60 * 60 * 1000);
+    await store.setConfirmToken(userId, hashSecret(token), expiresAt);
+    void options.sendConfirmLink(email, token, lang).catch((err) => {
+      console.error('[confirm-email] failed to send the link:', err);
+    });
+  }
+
   // Deletes the sessions past the longest lifetime; the app runs it now and
   // then. A shorter one is deleted when its next request finds it timed out
   function deleteExpiredSessions(): Promise<number> {
@@ -399,6 +445,16 @@ export function createAuth<
     message: { error: 'Too many codes asked for this email, try again later' },
   });
 
+  // Three confirmation links an hour per account, keyed by the signed-in user,
+  // so a page left open can't fill someone's inbox. On in tests too
+  const confirmLinkLimiter = limiter({
+    windowMs: 60 * 60 * 1000,
+    limit: 3,
+    alsoInTests: true,
+    keyGenerator: (req) => String(req.user!.id),
+    message: { error: 'Too many links asked for, try again later' },
+  });
+
   const router = Router();
 
   // What the account routes answer is about one account and never to be kept by
@@ -408,14 +464,56 @@ export function createAuth<
     next();
   });
 
-  router.post('/signup', authLimiter, validateBody(options.signupSchema), async (req, res) => {
-    const { password, ...fields } = req.body as Signup;
-    const id = await store.create({ ...fields, passwordHash: hashPassword(password) });
-    if (id === null) throw new AppError(409, 'User already exists');
-    await endSession(req);
-    await startSession(res, id);
-    res.json({ message: 'User created successfully' });
+  // The new account works at once; its email waits for the link sent to it,
+  // written in the page's language (`lang` beside the form, which the app's
+  // form needn't name: it is read before the form strips what it doesn't)
+  router.post(
+    '/signup',
+    authLimiter,
+    (req, res, next) => {
+      res.locals.lang = typeof req.body?.lang === 'string' ? req.body.lang : undefined;
+      next();
+    },
+    validateBody(options.signupSchema),
+    async (req, res) => {
+      const { password, ...fields } = req.body as Signup;
+      const id = await store.create({ ...fields, passwordHash: hashPassword(password) });
+      if (id === null) throw new AppError(409, 'User already exists');
+      await endSession(req);
+      await startSession(res, id);
+      // The account and its session are made by now, so a link that can't be
+      // kept fails not the sign-up: the banner asks for a new one
+      await sendConfirmation(id, fields.email, languageOf(res.locals.lang)).catch((err) => {
+        console.error('[confirm-email] failed to keep the link at sign-up:', err);
+      });
+      res.json({ message: 'User created successfully' });
+    },
+  );
+
+  // The link from the email. It needs no session, since it is often opened on
+  // another device than the one that signed up
+  router.post('/confirm-email', authLimiter, validateBody(confirmEmailSchema), async (req, res) => {
+    const { token } = req.body as { token: string };
+    const id = await store.confirmEmail(hashSecret(token));
+    if (id === null) throw new AppError(400, 'This link has expired or was already used');
+    options.onEmailConfirmed?.(id);
+    res.json({ message: 'Email confirmed' });
   });
+
+  // A new link for the signed-in account, the earlier one no longer working
+  router.post(
+    '/confirm-email/resend',
+    authenticateToken,
+    validateBody(resendConfirmationSchema(options.emailLanguages)),
+    confirmLinkLimiter,
+    async (req, res) => {
+      const { lang } = req.body as { lang?: Lang };
+      const email = await store.unconfirmedEmail(req.user!.id);
+      if (email === null) throw new AppError(409, 'Email already confirmed');
+      await sendConfirmation(req.user!.id, email, languageOf(lang));
+      res.json({ message: 'Confirmation link sent' });
+    },
+  );
 
   router.post('/login', authLimiter, validateBody(loginSchema), async (req, res) => {
     const { email, password } = req.body as { email: string; password: string };
@@ -485,6 +583,9 @@ export function createAuth<
         throw new AppError(400, 'Invalid or expired code');
       }
       await setPassword(id, password);
+      // The code reached the inbox, which is all a confirmation link proves
+      await store.markEmailConfirmed(id);
+      options.onEmailConfirmed?.(id);
       res.json({ message: 'Password reset successfully' });
     },
   );

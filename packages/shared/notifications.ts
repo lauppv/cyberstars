@@ -131,4 +131,6 @@ export interface UnreadState {
 export type UserSocketFrame =
   | { channel: 'notification'; type: 'new'; payload: NotificationDTO }
   | { channel: 'notification'; type: 'unread-count'; payload: UnreadState }
+  // The account's email was just confirmed (a link opened, maybe on another device)
+  | { channel: 'account'; type: 'email-confirmed' }
   | DmSocketFrame;

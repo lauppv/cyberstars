@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
 import { prisma } from '../../src/config/db.js';
+import { config } from '../../src/config/index.js';
 import { agent, createAuthenticatedAgent } from './helpers.js';
 
 async function resetCodeOf(email: string): Promise<string | null> {
@@ -178,3 +179,76 @@ describe('Auth flow', () => {
     await a.post('/api/forum/threads').send({}).expect(401);
   });
 });
+
+// Without a Resend key the email service logs each email; the link is in it
+async function confirmTokenSentTo(email: string): Promise<string> {
+  let token = '';
+  await vi.waitFor(() => {
+    const line = log.mock.calls
+      .map((call) => String(call[0]))
+      .filter((text) => text.includes(`Email to ${email} `) && text.includes('confirm-email'))
+      .at(-1);
+    token = /token=([\w-]{43})/.exec(line ?? '')?.[1] ?? '';
+    expect(token).not.toBe('');
+  });
+  return token;
+}
+
+const log = vi.spyOn(console, 'log').mockImplementation(() => {});
+
+describe('Email case and confirmation (CYB-135)', () => {
+  afterEach(() => {
+    Object.assign(config, { founderEmail: '' });
+  });
+
+  it("keeps a case variant of the founder's email from making a second account or a founder", async () => {
+    Object.assign(config, { founderEmail: 'boss@test.com' });
+    await createAuthenticatedAgent({ email: 'boss@test.com' });
+    await agent()
+      .post('/auth/signup')
+      .send({ name: 'Intruder', email: 'Boss@Test.com', password: 'secret123' })
+      .expect(409);
+    const founders = await prisma.user.findMany({ where: { role: 'FOUNDER' } });
+    expect(founders).toHaveLength(0);
+  });
+
+  it("makes the founder's account FOUNDER once its link is opened", async () => {
+    Object.assign(config, { founderEmail: 'Owner@Test.com' });
+    const { agent: owner } = await createAuthenticatedAgent({ email: 'owner@test.com' });
+    const before = await owner.get('/auth/me').expect(200);
+    expect(before.body).toMatchObject({ emailConfirmed: false, confirmLinkSent: true });
+    expect(before.body.role).not.toBe('FOUNDER');
+
+    const token = await confirmTokenSentTo('owner@test.com');
+    await agent().post('/auth/confirm-email').send({ token }).expect(200);
+    await agent().post('/auth/confirm-email').send({ token }).expect(400);
+
+    const after = await owner.get('/auth/me').expect(200);
+    expect(after.body).toMatchObject({ emailConfirmed: true, role: 'FOUNDER' });
+  });
+
+  it('signs in and resets the password whatever case the email is typed in', async () => {
+    await createAuthenticatedAgent({ email: 'Mixed@Test.com', password: 'secret123' });
+    await userWithEmail('mixed@test.com');
+    await agent()
+      .post('/auth/login')
+      .send({ email: 'MIXED@test.com', password: 'secret123' })
+      .expect(200);
+    await agent().post('/auth/forgot-password').send({ email: 'mixed@TEST.com' }).expect(200);
+    const code = (await resetCodeOf('mixed@test.com'))!;
+    await tryReset('Mixed@test.com', code).expect(200);
+    const user = await userWithEmail('mixed@test.com');
+    expect(user.emailConfirmedAt).not.toBeNull();
+  });
+
+  it('refuses an email with capitals in the database itself', async () => {
+    const { email } = await createAuthenticatedAgent({ email: 'lower@test.com' });
+    await expect(
+      prisma.user.update({ where: { email }, data: { email: 'Lower@test.com' } }),
+    ).rejects.toThrow(/users_email_lowercase/);
+  });
+});
+
+async function userWithEmail(email: string) {
+  return prisma.user.findUniqueOrThrow({ where: { email } });
+}

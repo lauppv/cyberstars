@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { Topbar } from '../components/layout/Topbar';
@@ -7,6 +7,8 @@ import { PageContainer, PageLoading } from '../components/layout/PageContainer';
 import { Segmented } from '../components/ui/Segmented';
 import { SUPPORTED_LANGS, switchLanguage } from '../i18n';
 import * as profileService from '../services/profileService';
+import * as authService from '../services/authService';
+import { ApiClientError } from '../services/apiClient';
 import { INPUT_CLS } from '../constants/styles';
 import { EyeIcon } from '../components/ui/EyeIcon';
 
@@ -62,6 +64,35 @@ export function SettingsPage() {
   const { t, i18n } = useTranslation();
   const { user, isLoading, refreshUser } = useAuth();
   const currentLang = i18n.language === 'ro' ? 'ro' : 'en';
+  const { hash } = useLocation();
+  // The banner's Change email opens the page on its email section
+  const loaded = !!user;
+  useEffect(() => {
+    if (loaded && hash === '#email') {
+      document.getElementById('email')?.scrollIntoView({ block: 'center' });
+    }
+  }, [loaded, hash]);
+
+  const [linkMessage, setLinkMessage] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
+  const [linkSending, setLinkSending] = useState(false);
+  const sendConfirmLink = async () => {
+    setLinkMessage(null);
+    setLinkSending(true);
+    try {
+      await authService.resendConfirmation();
+      setLinkMessage({ type: 'ok', text: t('emailConfirm.sent', { email: user?.email }) });
+      refreshUser();
+    } catch (err) {
+      // Confirmed elsewhere: reading the account again shows it confirmed
+      if (err instanceof ApiClientError && err.status === 409) refreshUser();
+      setLinkMessage({
+        type: 'err',
+        text: err instanceof Error && err.message ? err.message : t('emailConfirm.sendFailed'),
+      });
+    } finally {
+      setLinkSending(false);
+    }
+  };
 
   const [privacy, setPrivacy] = useState<Record<PrivacyFlag, boolean>>({
     showBio: true,
@@ -275,10 +306,45 @@ export function SettingsPage() {
             <h2 className="section-label mb-4">{t('settings.account')}</h2>
 
             {/* Email change */}
-            <div className="pb-5 border-b border-[var(--border)]">
+            <div id="email" className="pb-5 border-b border-[var(--border)]">
               <h3 className="text-[12px] font-semibold text-[var(--text2)] mb-3">
                 {t('profile.emailSection')}
               </h3>
+              <p className="text-[12px] text-[var(--text2)] mb-3 break-all">
+                {user.email}
+                {' · '}
+                {user.emailConfirmed ? (
+                  <span className="text-[var(--success)]">{t('emailConfirm.confirmedShort')}</span>
+                ) : (
+                  <>
+                    <span className="text-[var(--error)]">
+                      {t('emailConfirm.unconfirmedShort')}
+                    </span>
+                    {' · '}
+                    <button
+                      type="button"
+                      onClick={sendConfirmLink}
+                      disabled={linkSending}
+                      className="p-0 bg-transparent border-none text-[12px] font-semibold text-[var(--accent)] hover:underline cursor-pointer"
+                    >
+                      {linkSending
+                        ? '...'
+                        : user.confirmLinkSent
+                          ? t('emailConfirm.resend')
+                          : t('emailConfirm.send')}
+                    </button>
+                  </>
+                )}
+              </p>
+              {linkMessage && (
+                <p
+                  className={`text-[12px] mb-3 ${
+                    linkMessage.type === 'ok' ? 'text-[var(--success)]' : 'text-[var(--error)]'
+                  }`}
+                >
+                  {linkMessage.text}
+                </p>
+              )}
               {user.pendingEmail ? (
                 <form onSubmit={submitEmailConfirm} className="flex flex-col gap-3">
                   <p className="text-[12px] text-[var(--text2)]">

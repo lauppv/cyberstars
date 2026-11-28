@@ -78,6 +78,8 @@ function makeUser(role: UserRole, id = 99): AuthenticatedUser {
     status: null,
     statusExpiresAt: null,
     pendingEmail: null,
+    emailConfirmed: true,
+    confirmLinkSent: false,
     createdAt: now,
     showBio: true,
     showStats: true,

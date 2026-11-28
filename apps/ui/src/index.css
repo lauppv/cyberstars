@@ -485,6 +485,26 @@ body {
     opacity: 1;
   }
 }
+/* The unconfirmed email banner's words breathe slowly between the text colour
+   and a light red, like a critical warning, so the banner is hard to ignore
+   (EmailConfirmBanner); still under reduced motion */
+@keyframes email-alert {
+  0%,
+  100% {
+    color: var(--text);
+  }
+  50% {
+    color: color-mix(in srgb, var(--error) 55%, #fff);
+  }
+}
+.email-alert-text {
+  animation: email-alert 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .email-alert-text {
+    animation: none;
+  }
+}
 @keyframes rain {
   0% {
     transform: translateY(-100%);

@@ -1243,6 +1243,29 @@
     "title": "Aplicăm un update",
     "body": "CyberStars se actualizează chiar acum. Durează 1-3 minute. Ce ai lucrat rămâne pe pagină, iar ecranul ăsta dispare singur când totul e gata."
   },
+  "emailConfirm": {
+    "ask": "Confirmă-ți emailul {{email}}, ca să poți intra oricând înapoi în cont.",
+    "waiting": "Confirmă-ți emailul: ți-am trimis un link pe {{email}}. Nu-l găsești? Uită-te în spam sau cere altul.",
+    "sent": "Ți-am trimis un link nou pe {{email}}. Merge 24 de ore.",
+    "send": "Trimite linkul",
+    "resend": "Trimite din nou",
+    "change": "Schimbă emailul",
+    "sendFailed": "Linkul nu a putut fi trimis. Încearcă din nou peste puțin timp.",
+    "confirming": "Îți confirmăm emailul...",
+    "confirmedTitle": "Emailul tău e confirmat",
+    "confirmedText": "Mulțumim. Dacă îți uiți vreodată parola, îți trimitem aici codul de resetare.",
+    "continue": "Continuă",
+    "failedTitle": "Linkul ăsta nu mai merge",
+    "failedText": "A expirat sau a fost deja folosit. Un link merge o singură dată, timp de 24 de ore.",
+    "signIn": "Conectează-te ca să primești un link nou",
+    "alreadyTitle": "Emailul tău e deja confirmat",
+    "alreadyText": "Linkul ăsta nu mai merge, dar contul în care ești conectat, {{email}}, e deja confirmat.",
+    "errorTitle": "Nu am putut verifica linkul",
+    "errorText": "Conexiunea s-a întrerupt sau au fost prea multe încercări deodată. Așteaptă un minut și încearcă din nou.",
+    "tryAgain": "Încearcă din nou",
+    "confirmedShort": "confirmat",
+    "unconfirmedShort": "neconfirmat"
+  },
   "sessionEnded": {
     "message": "Sesiunea ta s-a încheiat. Conectează-te din nou ca să-ți vezi progresul și să-ți salvezi codul.",
     "signIn": "Conectare"

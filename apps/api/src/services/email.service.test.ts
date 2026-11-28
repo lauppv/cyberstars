@@ -105,3 +105,46 @@ describe('sendEmailChangeCode', () => {
     logSpy.mockRestore();
   });
 });
+
+describe('sendConfirmLink', () => {
+  const live = {
+    resend: { apiKey: 're_test', from: 'CyberStars <noreply@cyberstars.app>' },
+    allowedOrigins: ['https://cyberstars.app'],
+  };
+
+  it("links to the site's confirmation page with the token, in the language asked", async () => {
+    vi.doMock('../config/index.js', () => ({ config: live }));
+    const { sendConfirmLink } = await import('./email.service.js');
+
+    mockSend.mockResolvedValue({ data: { id: 'x' }, error: null });
+    await sendConfirmLink('user@test.com', 'tok_en');
+    await sendConfirmLink('user@test.com', 'tok_ro', 'ro');
+
+    const [en, ro] = mockSend.mock.calls.map((c) => c[0]);
+    expect(en.to).toBe('user@test.com');
+    expect(en.subject).toBe('CyberStars: Confirm Your Email');
+    expect(en.html).toContain('href="https://cyberstars.app/confirm-email?token=tok_en"');
+    expect(ro.subject).toBe('CyberStars: confirmă-ți emailul');
+    expect(ro.html).toContain('href="https://cyberstars.app/ro/confirm-email?token=tok_ro"');
+  });
+
+  it('logs the link to the console when Resend is unconfigured', async () => {
+    vi.doMock('../config/index.js', () => ({
+      config: {
+        ...live,
+        resend: { ...live.resend, apiKey: '' },
+        allowedOrigins: ['http://localhost:5173'],
+      },
+    }));
+    const { sendConfirmLink } = await import('./email.service.js');
+
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    await sendConfirmLink('dev@test.com', 'tok');
+
+    expect(mockSend).not.toHaveBeenCalled();
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining('http://localhost:5173/confirm-email?token=tok'),
+    );
+    logSpy.mockRestore();
+  });
+});
