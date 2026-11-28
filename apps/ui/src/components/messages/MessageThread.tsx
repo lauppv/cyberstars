@@ -457,7 +457,7 @@ export function MessageThread({
                         }}
                         rows={1}
                         maxLength={2000}
-                        className="w-full resize-none max-h-32 min-h-[38px] px-3 py-2 rounded-[var(--radius)] bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
+                        className="w-full resize-none max-h-32 min-h-[40px] px-3.5 py-2 rounded-2xl bg-[var(--glass)] border border-[var(--border)] text-[13px] text-[var(--text)] focus:outline-none focus:border-[var(--accent)]/60"
                       />
                       <div className="flex items-center gap-2 text-[10px] text-[var(--text3)]">
                         <span>{t('messages.editHint')}</span>
