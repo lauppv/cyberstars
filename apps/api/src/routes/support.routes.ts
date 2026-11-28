@@ -1,6 +1,7 @@
 import { Router, type Request } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
-import { limiter, newTicketLimiter } from '../middleware/rateLimit.js';
+import { limiter } from '../middleware/rateLimit.js';
+import { newTicketLimiter } from '../middleware/ticketLimit.js';
 import { validateBody } from '@cyberstars-framework/server-kit/validate';
 import {
   createTicketSchema,
