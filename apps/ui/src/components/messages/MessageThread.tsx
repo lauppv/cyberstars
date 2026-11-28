@@ -517,9 +517,10 @@ export function MessageThread({
                     </div>
                   )}
                   {!m.deleted && m.reactions.length > 0 && (
-                    // Pinned to the bubble's bottom edge
+                    // Pinned to the bubble's bottom edge; under the edit box they
+                    // keep clear of its hint
                     <div
-                      className={`relative flex flex-wrap gap-1 -mt-1.5 px-2 ${mine ? 'justify-end' : ''}`}
+                      className={`relative flex flex-wrap gap-1 px-2 ${editing?.id === m.id ? 'mt-1' : '-mt-1.5'} ${mine ? 'justify-end' : ''}`}
                     >
                       {groupReactions(m.reactions, currentUserId).map((g) => (
                         <button
