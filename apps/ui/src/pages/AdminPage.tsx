@@ -109,10 +109,26 @@ export function AdminPage() {
                   <Stat label={t('admin.tutorPrompts7')} value={stats.tutor.promptsLast7Days} />
                   <Stat label={t('admin.tutorPrompts30')} value={stats.tutor.promptsLast30Days} />
                 </div>
-                {/* Who has the app open now: students signed in (no moderators, admins, founder or bots) and guests */}
-                <div className="pt-3 border-t border-[var(--border)] text-[12px] text-[var(--text2)]">
-                  {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })} ·{' '}
-                  {t('admin.guestsOnline', { count: stats.online.guests })}
+                {/* Accounts per role on the left; on the right who has the app open now:
+                    students signed in (no moderators, admins, founder or bots) and guests */}
+                <div className="pt-3 border-t border-[var(--border)] flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[var(--text2)]">
+                  {(['FOUNDER', 'ADMIN', 'USER'] as const).map((role) => (
+                    <span key={role}>
+                      {t(`forum.roles.${role}`)} {stats.users.byRole[role]}
+                    </span>
+                  ))}
+                  <span>
+                    {t('admin.bots')} {stats.users.byRole.BOT}
+                  </span>
+                  <span className="ml-auto">
+                    <span className="text-[var(--success)]">
+                      {t('admin.onlineNow')}: {t('admin.signedIn', { count: stats.online.users })}
+                    </span>{' '}
+                    ·{' '}
+                    <span className="text-[var(--warning)]">
+                      {t('admin.guestsOnline', { count: stats.online.guests })}
+                    </span>
+                  </span>
                 </div>
               </section>
 
@@ -207,17 +223,20 @@ export function AdminPage() {
                   </div>
                 </div>
               </section>
-
-              <p className="@2xl:col-span-3 text-[11px] text-[var(--text3)] text-center">
-                {t('admin.generatedAt', {
-                  time: new Date(stats.generatedAt).toLocaleTimeString(i18next.language),
-                })}
-              </p>
             </div>
           ) : null}
 
           {/* After the stats, since they are rare; outside them so they work without them */}
           <NoticesSection className={CARD_CLS + ' mt-5'} />
+
+          {/* Always the page's last line, under the announcements and polls too */}
+          {stats && (
+            <p className="mt-5 mb-0 text-[11px] text-[var(--text3)] text-center">
+              {t('admin.generatedAt', {
+                time: new Date(stats.generatedAt).toLocaleTimeString(i18next.language),
+              })}
+            </p>
+          )}
         </div>
       </PageContainer>
     </div>
