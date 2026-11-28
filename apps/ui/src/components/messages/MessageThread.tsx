@@ -123,7 +123,7 @@ export function DraftThread({
   return (
     <div className="flex flex-col h-full">
       <ThreadHeader other={other} onBack={onBack} />
-      <div className="flex-1" />
+      <div className="flex-1 bg-[var(--bg2)]" />
       <MessageComposer onSend={send} error={sendError} />
     </div>
   );
@@ -408,7 +408,11 @@ export function MessageThread({
         </ConfirmDialog>
       )}
 
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-2">
+      <div
+        ref={scrollRef}
+        // A step darker than the header and the box, so the conversation reads as its own pane
+        className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-[var(--bg2)]"
+      >
         {loading ? (
           <div className="text-center text-[13px] text-[var(--text3)] py-8">…</div>
         ) : loadFailed ? (
