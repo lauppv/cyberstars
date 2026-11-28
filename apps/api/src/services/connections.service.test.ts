@@ -12,10 +12,19 @@ const mockRepo = {
 };
 const mockUserRepo = { findById: vi.fn() };
 const mockNotifications = { notify: vi.fn(), markEntityRead: vi.fn() };
+const mockBlocks = {
+  MESSAGE_NOT_SENT: 'Message could not be sent',
+  REQUEST_NOT_SENT: 'Request could not be sent',
+  REACTION_NOT_ADDED: 'Reaction could not be added',
+  existsBetween: vi.fn(async () => false),
+  isBlockedBy: vi.fn(async (_blockerId: number, _blockedId: number) => false),
+  blockedIds: vi.fn(async (): Promise<number[]> => []),
+};
 
 vi.mock('../repositories/connections.repository.js', () => mockRepo);
 vi.mock('../repositories/user.repository.js', () => mockUserRepo);
 vi.mock('./notifications.service.js', () => mockNotifications);
+vi.mock('./blocks.service.js', () => mockBlocks);
 
 const { getOverview, sendRequest, accept, decline, removeByCaller, relationTo, publicConnections } =
   await import('./connections.service.js');
@@ -214,5 +223,17 @@ describe('getOverview / publicConnections shape the other party', () => {
     const res = await publicConnections(2);
     expect(res.count).toBe(1);
     expect(res.users[0].id).toBe(5);
+  });
+});
+
+describe('connections.service sendRequest with a block (CYB-140)', () => {
+  it('refuses a request either way with neutral words', async () => {
+    mockUserRepo.findById.mockResolvedValue({ id: 2 });
+    mockBlocks.existsBetween.mockResolvedValueOnce(true);
+    await expect(sendRequest(1, 2)).rejects.toMatchObject({
+      statusCode: 403,
+      message: 'Request could not be sent',
+    });
+    expect(mockRepo.create).not.toHaveBeenCalled();
   });
 });
