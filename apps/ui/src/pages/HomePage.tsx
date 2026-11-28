@@ -70,7 +70,7 @@ interface ResolvedPick {
   slug: string;
   title: string;
   completed: boolean;
-  xp: number;
+  xp: number | null;
 }
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -148,12 +148,12 @@ export function HomePage() {
       const lesson = course?.lessons.find((l) => l.slug === pick.slug);
       const completed =
         progressMap[pick.courseKey]?.lessons.find((l) => l.slug === pick.slug)?.completed ?? false;
-      const xpLesson = lesson ?? { sortOrder: 1, title: pick.title };
-      const count = course?.lessons.length ?? 1;
       // XP the user actually earns for the daily pick = base + daily bonus.
-      const xp =
-        xpForLesson(pick.courseKey, xpLesson, count) +
-        dailyBonusXp(pick.courseKey, xpLesson, count);
+      // A lesson's XP depends on its place, so none shows until we find it.
+      const count = course?.lessons.length ?? 0;
+      const xp = lesson
+        ? xpForLesson(pick.courseKey, lesson, count) + dailyBonusXp(pick.courseKey, lesson, count)
+        : null;
       return {
         courseKey: pick.courseKey,
         courseTitle: course?.title ?? pick.courseKey,
@@ -597,7 +597,7 @@ function OfTheDayCard({
   slug: string;
   title: string;
   completed: boolean;
-  xp: number;
+  xp: number | null;
   bonusRatio: number;
   completedText: string;
   cta: string;
@@ -626,8 +626,8 @@ function OfTheDayCard({
         <span
           className={`text-[11px] font-semibold ${completed ? 'text-[var(--success)]' : 'text-[var(--accent)]'}`}
         >
-          {completed ? completedText : t('common.xpReward', { xp })}
-          {!completed && bonusRatio > 0 && (
+          {completed ? completedText : xp !== null && t('common.xpReward', { xp })}
+          {!completed && xp !== null && bonusRatio > 0 && (
             <span className="font-medium text-[var(--text3)]">
               {' · '}
               {t('home.dailyBonusToday', { pct: Math.round(bonusRatio * 100) })}
